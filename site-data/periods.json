@@ -1,0 +1,74 @@
+[
+  {
+    "id": "second-temple",
+    "name_he": "בית שני",
+    "name_en": "Second Temple",
+    "approx_dates": "c. 516 BCE–70 CE",
+    "description_he": "תקופת הבית השני כוללת את ימי בית שני עצמו ואת הספרות היהודית-הלניסטית שנוצרה בתפוצות, בעיקר באלכסנדריה.",
+    "description_en": "The Second Temple period includes the era of the Temple itself and the Hellenistic Jewish literature produced in the diaspora, especially Alexandria.",
+    "sage_count": 1,
+    "sage_ids": ["philo-alexandria"],
+    "key_themes": ["hellenistic-synthesis", "biblical-allegory", "diaspora-leadership"]
+  },
+  {
+    "id": "tannaim",
+    "name_he": "תנאים",
+    "name_en": "Tannaim",
+    "approx_dates": "10–220 CE",
+    "description_he": "תקופת התנאים היא עידן יצירת המשנה, המדרשים ההלכתיים הראשונים, ועיצוב יהדות הגלות לאחר חורבן בית שני.",
+    "description_en": "The Tannaitic period is the era of Mishnah composition, the earliest halachic Midrashim, and the shaping of exilic Judaism after the Temple's destruction.",
+    "sage_count": 2,
+    "sage_ids": ["rabbi-meir-tanna", "rabbi-yehuda-bar-ilai"],
+    "key_themes": ["mishnah-redaction", "post-destruction", "usha-reconstruction"]
+  },
+  {
+    "id": "rishonim",
+    "name_he": "ראשונים",
+    "name_en": "Rishonim",
+    "approx_dates": "1038–1563 CE",
+    "description_he": "תקופת הראשונים — מגאונות לאחר חתימת התלמוד ועד לפטירת רבי יוסף קארו — כוללת את ספרות הפרשנות, הפסיקה, הפילוסופיה והקבלה הגדולה ביותר בתולדות ישראל.",
+    "description_en": "The Rishonim era — from the post-Geonic period through the death of R. Joseph Karo — encompasses the greatest bodies of biblical commentary, halachic codification, philosophy, and Kabbalah in Jewish history.",
+    "sage_count": 28,
+    "sage_ids": [
+      "rabbeinu-gershom", "bachya-ibn-paquda", "riva", "ravad-posquieres", "razah",
+      "rashbam", "rabbi-yosef-bechor-shor", "rabbi-yehuda-hechasid", "rambam",
+      "maharam-rothenburg", "ramban", "ritva", "rabbeinu-bachya-ben-asher",
+      "maharam-segal", "maggid-mishneh", "rabbi-shimshon-ben-eliezer",
+      "baal-haturim", "ribash", "hasdai-crescas", "rabbi-yitzhak-abuhav",
+      "rashbatz", "maharak", "maharam-mintz", "rabbi-israel-kremz",
+      "rabbi-yaakov-margaliot", "maharam-segal", "rabbi-shimshon-ben-eliezer",
+      "rabbi-yehuda-hechasid"
+    ],
+    "key_themes": ["talmud-commentary", "halachic-codification", "philosophy", "kabbalah", "peshat-exegesis"]
+  },
+  {
+    "id": "acharonim",
+    "name_he": "אחרונים",
+    "name_en": "Acharonim",
+    "approx_dates": "1563–1900 CE",
+    "description_he": "תקופת האחרונים — מ'שולחן ערוך' ואילך — כוללת את פריחת קבלת צפת, ספרות המוסר, ויצירה ספרדית-עות'מאנית ואיטלקית עשירה.",
+    "description_en": "The Acharonim era — from the Shulchan Aruch onward — encompasses the flowering of Safed Kabbalah, Musar literature, and rich Sephardic-Ottoman and Italian creativity.",
+    "sage_count": 11,
+    "sage_ids": [
+      "rabbi-yaakov-landa", "rabbi-israel-najara", "yehuda-moscato",
+      "rabbi-elazar-azikri", "rabbi-david-gans", "rabbi-menachem-azaria-fano",
+      "rabbi-israel-algazi", "ramchal", "rabbi-israel-kremz", "rashbatz", "maharak"
+    ],
+    "key_themes": ["safed-kabbalah", "musar", "liturgical-poetry", "responsa", "renaissance-synthesis"]
+  },
+  {
+    "id": "modern",
+    "name_he": "עת החדשה",
+    "name_en": "Modern",
+    "approx_dates": "1900 CE–present",
+    "description_he": "התקופה המודרנית כוללת רבנים ומחנכים שפעלו על רקע השואה, קום המדינה, ועיצוב הזהות היהודית בדורנו.",
+    "description_en": "The modern period includes rabbis and educators who operated against the backdrop of the Holocaust, the founding of the State of Israel, and the shaping of contemporary Jewish identity.",
+    "sage_count": 9,
+    "sage_ids": [
+      "rabbi-benzion-uziel", "rabbi-mordechai-sharabi", "rabbi-levi-saadia-nahmani",
+      "pinchas-kehati", "netivot-shalom", "rabbi-elisha-wishlitzky",
+      "rabbi-rafael-moshe-luria", "rabbi-avraham-livni", "rabbi-benzion-uziel"
+    ],
+    "key_themes": ["zionism", "hasidut", "education", "kabbalah", "sephardic-revival"]
+  }
+]

@@ -1,0 +1,84 @@
+[
+  {
+    "id": "shem-mishmuel-leadership",
+    "title_he": "מן הזדון אל הזכות — ניהול כישלונות בתורת השם משמואל",
+    "title_en": "From Sin to Merit — Transforming Failures in the Teaching of the Shem MiShmuel",
+    "type": "thematic-essay",
+    "related_sage": "shem-mishmuel",
+    "movement": "sochatchov-hasidut",
+    "tags": ["leadership", "teshuva", "failure-and-growth"],
+    "source_file": "sources/topics/מן הזדון אל הזכות- טרנספורמציה של כשלונות לנכסים ארגוניים בתורת ה-שם משמואל-.docx",
+    "profile_file": "topics/shem-mishmuel-leadership.md",
+    "note": "Biographical profile of R. Shmuel Bornsztain (Sochatchover Rebbe, 1856–1926) not yet created. See topics/shem-mishmuel-leadership.md."
+  },
+  {
+    "id": "pardes-exegesis",
+    "title_he": "שיטת הפרד\"ס — פשט, רמז, דרוש, סוד",
+    "title_en": "The PaRDeS Method — Peshat, Remez, Derash, Sod",
+    "type": "cross-cutting-theme",
+    "related_sage": null,
+    "movement": null,
+    "tags": ["exegesis", "kabbalah", "torah-commentary"],
+    "sages_involved": ["rabbeinu-bachya-ben-asher", "ramban", "rabbi-yosef-bechor-shor", "rashbam"],
+    "profile_file": null,
+    "note": "No dedicated essay yet. Appears in profiles of Rabbeinu Bachya ben Asher (originator), Ramban, and the peshat-school Tosafists as the counterpoint."
+  },
+  {
+    "id": "ashkenazic-halacha",
+    "title_he": "עיצוב ההלכה האשכנזית",
+    "title_en": "The Shaping of Ashkenazic Halacha",
+    "type": "cross-cutting-theme",
+    "related_sage": null,
+    "movement": "ashkenaz",
+    "tags": ["halacha", "minhag", "ashkenaz"],
+    "sages_involved": [
+      "rabbeinu-gershom", "riva", "rabbi-yehuda-hechasid", "maharam-rothenburg",
+      "rabbi-shimshon-ben-eliezer", "baal-haturim", "maharak", "maharam-mintz",
+      "rabbi-israel-kremz", "rabbi-yaakov-margaliot", "rabbi-yaakov-landa"
+    ],
+    "profile_file": null,
+    "note": "Chain from Rabbeinu Gershom → Maharam of Rothenburg → Rosh → Baal HaTurim → Shulchan Aruch. No dedicated essay yet."
+  },
+  {
+    "id": "safed-kabbalists",
+    "title_he": "מקובלי צפת",
+    "title_en": "The Safed Kabbalists",
+    "type": "cross-cutting-theme",
+    "related_sage": null,
+    "movement": "safed-kabbalists",
+    "tags": ["kabbalah", "safed", "musar"],
+    "sages_involved": ["rabbi-elazar-azikri", "rabbi-israel-najara"],
+    "profile_file": null,
+    "note": "The Ari (R. Yitzhak Luria) and R. Moshe Cordovero are referenced but not profiled. Partial coverage only."
+  },
+  {
+    "id": "rationalism-vs-kabbalah",
+    "title_he": "פילוסופיה מול קבלה — המתח שעיצב את ימי הביניים",
+    "title_en": "Philosophy vs. Kabbalah — The Tension that Shaped Medieval Jewish Thought",
+    "type": "cross-cutting-theme",
+    "related_sage": null,
+    "movement": null,
+    "tags": ["philosophy", "kabbalah", "theology"],
+    "sages_involved": [
+      "rambam", "ravad-posquieres", "ramban", "hasdai-crescas",
+      "bachya-ibn-paquda", "rabbeinu-bachya-ben-asher", "ribash"
+    ],
+    "profile_file": null,
+    "note": "No dedicated essay yet. Runs through most Rishonim profiles."
+  },
+  {
+    "id": "musar-tradition",
+    "title_he": "ספרות המוסר",
+    "title_en": "The Musar Tradition",
+    "type": "cross-cutting-theme",
+    "related_sage": null,
+    "movement": "musar",
+    "tags": ["musar", "ethics", "character-refinement"],
+    "sages_involved": [
+      "bachya-ibn-paquda", "rabbi-yehuda-hechasid", "rabbi-yitzhak-abuhav",
+      "ramchal", "netivot-shalom"
+    ],
+    "profile_file": null,
+    "note": "No dedicated essay yet. Runs from Chovot HaLevavot through Mesillat Yesharim to Netivot Shalom."
+  }
+]
