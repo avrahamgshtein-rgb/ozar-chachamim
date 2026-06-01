@@ -4,118 +4,178 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>אוצר חכמים — חכמי ישראל לדורותיהם</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;700;900&family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root {
-  --bg: #f6f2ea;
-  --surface: #fff;
-  --border: #e0d5c0;
-  --text: #1c1108;
-  --muted: #6e5c47;
-  --accent: #7c4f1a;
-  --sh-sm: 0 1px 4px rgba(0,0,0,.06), 0 2px 8px rgba(0,0,0,.04);
-  --sh-md: 0 4px 16px rgba(0,0,0,.10), 0 2px 6px rgba(0,0,0,.06);
-  --sh-lg: 0 8px 32px rgba(0,0,0,.15);
-  --r: 14px;
-  --r-sm: 8px;
+:root{
+  --bg:#f6f2ea;--surface:#fffdf8;--border:#e0d5c0;--text:#1c1108;--muted:#6e5c47;
+  --accent:#7c4f1a;--accent-l:#a86730;
+  --sh-sm:0 1px 4px rgba(0,0,0,.06),0 2px 8px rgba(0,0,0,.04);
+  --sh-md:0 4px 16px rgba(0,0,0,.10),0 2px 6px rgba(0,0,0,.06);
+  --sh-lg:0 8px 32px rgba(0,0,0,.16);
+  --r:14px;--r-sm:8px;
+  --fhe:'Frank Ruhl Libre',Georgia,serif;
+  --fbody:'Heebo','Segoe UI',Arial,sans-serif;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:'Segoe UI',Arial,'Helvetica Neue',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;line-height:1.5}
-button{font-family:inherit}
+body{font-family:var(--fbody);background:var(--bg);color:var(--text);min-height:100vh;line-height:1.5}
+button{font-family:inherit;cursor:pointer}
 
 /* HEADER */
-.hd{background:linear-gradient(160deg,#1a0b04 0%,#361506 55%,#562510 100%);color:#fff;padding:3.5rem 1.5rem 2.5rem;text-align:center;position:relative;overflow:hidden}
-.hd::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 60%,rgba(255,170,60,.07) 0%,transparent 55%),radial-gradient(ellipse at 70% 40%,rgba(120,80,220,.05) 0%,transparent 55%);pointer-events:none}
+.hd{background:linear-gradient(158deg,#140802 0%,#2c1005 42%,#481c0c 72%,#5a2410 100%);color:#fff;padding:3rem 1.5rem 2.1rem;text-align:center;position:relative;overflow:hidden}
+.hd::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 22% 65%,rgba(255,155,35,.08) 0%,transparent 58%),radial-gradient(ellipse at 78% 35%,rgba(160,90,210,.05) 0%,transparent 55%);pointer-events:none}
 .hd-inner{position:relative;z-index:1}
-.hd h1{font-size:clamp(2.4rem,7vw,4rem);font-weight:800;letter-spacing:.02em;text-shadow:0 2px 12px rgba(0,0,0,.4);margin-bottom:.3rem}
-.hd p{font-size:.98rem;opacity:.62;margin-bottom:1.8rem;letter-spacing:.03em}
-.sb{max-width:500px;margin:0 auto;position:relative}
-.sb input{width:100%;padding:.72rem 1.2rem .72rem 2.9rem;border-radius:50px;border:1.5px solid rgba(255,255,255,.2);background:rgba(255,255,255,.12);color:#fff;font-size:.93rem;direction:rtl;outline:none;backdrop-filter:blur(8px);transition:background .2s,border-color .2s}
-.sb input::placeholder{color:rgba(255,255,255,.52)}
-.sb input:focus{background:rgba(255,255,255,.2);border-color:rgba(255,255,255,.42)}
-.sb .ico{position:absolute;left:1rem;top:50%;transform:translateY(-50%);opacity:.5;pointer-events:none;line-height:1}
+.hd h1{font-family:var(--fhe);font-size:clamp(2.4rem,7vw,4.1rem);font-weight:900;letter-spacing:.02em;text-shadow:0 2px 18px rgba(0,0,0,.55);margin-bottom:.18rem;background:linear-gradient(135deg,#fff 0%,#f5d898 52%,#e8b768 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hd-sub{font-size:.93rem;opacity:.5;margin-bottom:1.75rem;letter-spacing:.05em;font-weight:300}
+.sb{max-width:480px;margin:0 auto;position:relative}
+.sb input{width:100%;padding:.7rem 1.2rem .7rem 2.8rem;border-radius:50px;border:1.5px solid rgba(255,255,255,.18);background:rgba(255,255,255,.1);color:#fff;font-size:.91rem;font-family:var(--fbody);direction:rtl;outline:none;backdrop-filter:blur(8px);transition:background .2s,border-color .2s}
+.sb input::placeholder{color:rgba(255,255,255,.44)}
+.sb input:focus{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.38)}
+.sb .ico{position:absolute;left:1rem;top:50%;transform:translateY(-50%);opacity:.44;pointer-events:none}
 
-/* FILTERS */
-.fb{position:sticky;top:0;z-index:200;background:var(--surface);border-bottom:1px solid var(--border);box-shadow:0 2px 8px rgba(0,0,0,.06)}
-.fs{max-width:1220px;margin:0 auto;padding:.6rem 1.2rem;display:flex;gap:.4rem;overflow-x:auto;scrollbar-width:none;align-items:center}
+/* VIEW TABS */
+.vt{background:var(--surface);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:300;box-shadow:var(--sh-sm)}
+.vt-inner{max-width:1220px;margin:0 auto;padding:0 1.2rem;display:flex;align-items:stretch;overflow-x:auto;scrollbar-width:none}
+.vt-inner::-webkit-scrollbar{display:none}
+.vt-btn{display:flex;align-items:center;gap:.48rem;padding:.78rem 1.35rem;border:none;background:transparent;color:var(--muted);font-size:.86rem;font-weight:500;font-family:var(--fbody);white-space:nowrap;border-bottom:3px solid transparent;margin-bottom:-1px;transition:color .14s,border-color .14s,background .14s;letter-spacing:.01em}
+.vt-btn:hover{color:var(--accent);background:rgba(124,79,26,.04)}
+.vt-btn.active{color:var(--accent);border-bottom-color:var(--accent);font-weight:700;background:rgba(124,79,26,.04)}
+.vt-ico{font-size:1.05rem;line-height:1}
+
+/* FILTER BAR */
+.fb{background:var(--bg);border-bottom:1px solid var(--border);position:sticky;top:48px;z-index:200;box-shadow:0 2px 6px rgba(0,0,0,.04)}
+.fs{max-width:1220px;margin:0 auto;padding:.48rem 1.2rem;display:flex;gap:.3rem;overflow-x:auto;scrollbar-width:none;align-items:center}
 .fs::-webkit-scrollbar{display:none}
-.pill{display:inline-flex;align-items:center;gap:.28rem;padding:.32rem .85rem;border-radius:50px;border:1.5px solid var(--border);background:transparent;color:var(--muted);font-size:.8rem;font-weight:500;white-space:nowrap;cursor:pointer;transition:background .14s,color .14s,border-color .14s;line-height:1}
+.pill{display:inline-flex;align-items:center;gap:.22rem;padding:.27rem .72rem;border-radius:50px;border:1.5px solid var(--border);background:transparent;color:var(--muted);font-size:.76rem;font-weight:500;font-family:var(--fbody);white-space:nowrap;cursor:pointer;transition:all .14s;line-height:1}
 .pill:hover{border-color:var(--accent);color:var(--accent)}
-.pill.on{background:var(--pc,var(--accent));border-color:var(--pc,var(--accent));color:#fff;box-shadow:0 2px 8px rgba(0,0,0,.18)}
-.pill .n{font-size:.7em;opacity:.65;font-weight:400}
-
-/* MAIN */
-.mc{max-width:1220px;margin:0 auto;padding:1.4rem 1.2rem 3rem}
-.rc{font-size:.8rem;color:var(--muted);margin-bottom:1rem;min-height:1.2em}
+.pill.on{background:var(--pc,var(--accent));border-color:var(--pc,var(--accent));color:#fff;box-shadow:0 2px 8px rgba(0,0,0,.14)}
+.pill .n{font-size:.68em;opacity:.6;font-weight:400}
 
 /* GRID */
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:1.1rem}
-
-/* CARD */
-.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:1.15rem;cursor:pointer;display:flex;flex-direction:column;gap:.65rem;position:relative;overflow:hidden;box-shadow:var(--sh-sm);transition:transform .15s,box-shadow .15s;outline:none}
+.mc{max-width:1220px;margin:0 auto;padding:1.2rem 1.2rem 3rem}
+.rc{font-size:.78rem;color:var(--muted);margin-bottom:.82rem;min-height:1.2em}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:1rem}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:1.05rem;cursor:pointer;display:flex;flex-direction:column;gap:.58rem;position:relative;overflow:hidden;box-shadow:var(--sh-sm);transition:transform .15s,box-shadow .15s;outline:none}
 .card::before{content:'';position:absolute;top:0;right:0;width:3px;height:100%;background:var(--cc,#ccc);border-radius:0 var(--r) var(--r) 0}
 .card:hover{transform:translateY(-2px);box-shadow:var(--sh-md)}
 .card:focus-visible{box-shadow:0 0 0 3px var(--accent)}
-.badge{display:inline-flex;align-items:center;padding:.16rem .58rem;border-radius:50px;font-size:.7rem;font-weight:700;color:#fff;background:var(--cc,#888);align-self:flex-start;letter-spacing:.02em}
-.c-he{font-size:1.18rem;font-weight:700;line-height:1.35;color:var(--text)}
-.c-en{font-size:.74rem;color:var(--muted);margin-top:.08rem}
-.c-meta{font-size:.77rem;color:var(--muted);display:flex;flex-direction:column;gap:.18rem}
-.c-row{display:flex;align-items:baseline;gap:.32rem}
-.c-tags{display:flex;flex-wrap:wrap;gap:.28rem;margin-top:auto;padding-top:.2rem}
-.chip{padding:.1rem .48rem;border-radius:50px;font-size:.68rem;font-weight:500;background:var(--cbg,#f0e8d8);color:var(--cfg,var(--accent));border:1px solid var(--cbr,rgba(124,79,26,.14))}
-
-/* EMPTY */
+.badge{display:inline-flex;align-items:center;padding:.12rem .5rem;border-radius:50px;font-size:.66rem;font-weight:700;color:#fff;background:var(--cc,#888);align-self:flex-start;letter-spacing:.02em}
+.c-he{font-family:var(--fhe);font-size:1.18rem;font-weight:700;line-height:1.35;color:var(--text)}
+.c-en{font-size:.71rem;color:var(--muted);margin-top:.04rem}
+.c-meta{font-size:.74rem;color:var(--muted);display:flex;flex-direction:column;gap:.14rem}
+.c-row{display:flex;align-items:baseline;gap:.28rem}
+.c-tags{display:flex;flex-wrap:wrap;gap:.22rem;margin-top:auto;padding-top:.15rem}
+.chip{padding:.07rem .4rem;border-radius:50px;font-size:.65rem;font-weight:500;background:var(--cbg,#f0e8d8);color:var(--cfg,var(--accent));border:1px solid var(--cbr,rgba(124,79,26,.14))}
 .empty{text-align:center;padding:5rem 1.5rem;grid-column:1/-1}
-.eico{font-size:3rem;margin-bottom:.65rem}
-.empty p{color:var(--muted);font-size:.95rem}
+.eico{font-size:3rem;margin-bottom:.55rem}
+.empty p{color:var(--muted);font-size:.91rem}
+
+/* NETWORK VIEW */
+#view-network{display:none;background:#0b1420;min-height:calc(100vh - 98px);position:relative}
+#view-network.active{display:block}
+.graph-wrap{width:100%;height:calc(100vh - 98px);min-height:560px;position:relative;overflow:hidden;user-select:none}
+.graph-svg{width:100%;height:100%;display:block;cursor:grab}
+.graph-svg.panning{cursor:grabbing}
+.gc-btns{position:absolute;bottom:1.3rem;right:1.3rem;display:flex;flex-direction:column;gap:.32rem;z-index:10}
+.gc-btn{width:33px;height:33px;border-radius:7px;border:1px solid rgba(255,255,255,.13);background:rgba(255,255,255,.07);color:rgba(255,255,255,.68);font-size:.95rem;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .14s;backdrop-filter:blur(4px);font-family:var(--fbody);line-height:1}
+.gc-btn:hover{background:rgba(255,255,255,.16)}
+.graph-legend{position:absolute;top:1rem;right:1rem;background:rgba(11,20,32,.9);border:1px solid rgba(255,255,255,.09);border-radius:10px;padding:.68rem .92rem;backdrop-filter:blur(8px);z-index:10}
+.gl-title{font-size:.6rem;color:rgba(255,255,255,.32);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.42rem;font-family:var(--fbody)}
+.gl-item{display:flex;align-items:center;gap:.45rem;font-size:.7rem;color:rgba(255,255,255,.62);margin-bottom:.25rem;font-family:var(--fbody)}
+.gl-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.gl-divider{width:100%;height:1px;background:rgba(255,255,255,.07);margin:.35rem 0}
+.gl-line{width:20px;height:2px;flex-shrink:0}
+.graph-info{position:absolute;bottom:1.1rem;left:1.1rem;font-size:.69rem;color:rgba(255,255,255,.2);z-index:10;font-family:var(--fbody);direction:rtl}
+.graph-tooltip{position:absolute;background:rgba(11,20,32,.96);border:1px solid rgba(255,255,255,.13);border-radius:9px;padding:.58rem .88rem;pointer-events:none;z-index:50;display:none;backdrop-filter:blur(8px);max-width:195px}
+.gt-name{font-family:var(--fhe);font-size:.95rem;color:#fff;font-weight:700;margin-bottom:.16rem}
+.gt-period{font-size:.68rem;color:rgba(255,255,255,.46);font-family:var(--fbody)}
+.gt-stats{font-size:.64rem;color:rgba(255,255,255,.32);margin-top:.15rem;font-family:var(--fbody)}
+
+/* GEO VIEW */
+#view-geo{display:none}
+#view-geo.active{display:block}
+.geo-wrap{max-width:1220px;margin:0 auto;padding:1.2rem 1.2rem 3rem}
+.geo-title{font-size:.71rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;font-weight:600;margin-bottom:1.1rem}
+.geo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(288px,1fr));gap:1rem}
+.geo-region{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh-sm)}
+.geo-rh{padding:.88rem 1rem .62rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.58rem;background:linear-gradient(135deg,var(--surface),var(--bg))}
+.geo-emoji{font-size:1.3rem;line-height:1;flex-shrink:0}
+.geo-name{font-family:var(--fhe);font-size:.96rem;font-weight:700;color:var(--text)}
+.geo-desc{font-size:.68rem;color:var(--muted);margin-top:.05rem}
+.geo-cnt{margin-right:auto;background:var(--bg);border:1px solid var(--border);border-radius:50px;padding:.08rem .48rem;font-size:.68rem;color:var(--muted);font-weight:600;white-space:nowrap;flex-shrink:0}
+.geo-sages{padding:.3rem 0}
+.geo-sage{display:flex;align-items:center;gap:.52rem;padding:.38rem .95rem;cursor:pointer;transition:background .12s}
+.geo-sage:hover{background:var(--bg)}
+.gs-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.gs-info{flex:1;min-width:0}
+.gs-name{font-family:var(--fhe);font-size:.83rem;font-weight:700;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gs-years{font-size:.67rem;color:var(--muted)}
+.gs-path{font-size:.63rem;color:var(--muted);direction:ltr;text-align:left;white-space:nowrap;max-width:95px;overflow:hidden;text-overflow:ellipsis;flex-shrink:0}
 
 /* MODAL */
-.ov{position:fixed;inset:0;background:rgba(10,5,0,.65);backdrop-filter:blur(5px);z-index:500;display:flex;align-items:flex-start;justify-content:center;padding:2rem 1rem 4rem;overflow-y:auto;overscroll-behavior:contain;animation:fi .2s ease}
+.ov{position:fixed;inset:0;background:rgba(8,4,0,.72);backdrop-filter:blur(6px);z-index:500;display:flex;align-items:flex-start;justify-content:center;padding:2rem 1rem 4rem;overflow-y:auto;overscroll-behavior:contain;animation:fi .2s ease}
 .ov.hide{display:none}
 @keyframes fi{from{opacity:0}to{opacity:1}}
-.modal{width:100%;max-width:660px;background:var(--surface);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh-lg);animation:su .24s ease;position:relative}
-@keyframes su{from{transform:translateY(16px);opacity:0}to{transform:translateY(0);opacity:1}}
-.mh{background:linear-gradient(160deg,#1a0b04,#482010);color:#fff;padding:1.7rem 1.5rem 1.45rem;position:relative}
-.mc-btn{position:absolute;top:.9rem;left:.9rem;background:rgba(255,255,255,.14);border:none;color:#fff;width:30px;height:30px;border-radius:50%;font-size:.88rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .14s;line-height:1}
-.mc-btn:hover{background:rgba(255,255,255,.26)}
-.mp{display:inline-flex;align-items:center;gap:.32rem;padding:.18rem .68rem;border-radius:50px;font-size:.7rem;font-weight:700;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);margin-bottom:.7rem;letter-spacing:.03em}
+.modal{width:100%;max-width:680px;background:var(--surface);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh-lg);animation:su .22s ease;position:relative}
+@keyframes su{from{transform:translateY(14px);opacity:0}to{transform:translateY(0);opacity:1}}
+.mh{background:linear-gradient(158deg,#140802,#3a1607 55%,#4c1e0e);color:#fff;padding:1.55rem 1.45rem 1.25rem;position:relative}
+.mc-btn{position:absolute;top:.82rem;left:.82rem;background:rgba(255,255,255,.13);border:none;color:#fff;width:28px;height:28px;border-radius:50%;font-size:.82rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .14s;line-height:1}
+.mc-btn:hover{background:rgba(255,255,255,.25)}
+.mp{display:inline-flex;align-items:center;gap:.27rem;padding:.14rem .6rem;border-radius:50px;font-size:.66rem;font-weight:700;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.19);margin-bottom:.6rem;letter-spacing:.03em}
 .mp-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
-.mhe{font-size:clamp(1.45rem,5vw,2rem);font-weight:800;line-height:1.2;margin-bottom:.25rem}
-.men{font-size:.86rem;opacity:.6}
-.mb{padding:1.4rem 1.5rem;display:flex;flex-direction:column;gap:1.3rem}
-.sec{display:flex;flex-direction:column;gap:.55rem}
-.sec-t{font-size:.66rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding-bottom:.38rem;border-bottom:1px solid var(--border)}
-.dg{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
-.di{display:flex;flex-direction:column;gap:.12rem}
-.dl{font-size:.66rem;color:var(--muted);font-weight:600;letter-spacing:.06em;text-transform:uppercase}
-.dv{font-size:.87rem;font-weight:500;color:var(--text)}
-.wl{list-style:none;display:flex;flex-direction:column;gap:.32rem}
-.wl li{font-size:.87rem;padding:.38rem .75rem;background:var(--bg);border-radius:var(--r-sm);border-right:3px solid var(--accent)}
-.il{list-style:none;display:flex;flex-direction:column;gap:.38rem}
-.il li{font-size:.87rem;padding-right:1.05rem;position:relative;color:var(--text);line-height:1.55}
-.il li::before{content:'◆';position:absolute;right:0;color:var(--accent);font-size:.52rem;top:.46rem}
-.tr{display:flex;flex-wrap:wrap;gap:.38rem}
-.tchip{padding:.26rem .68rem;border-radius:50px;font-size:.77rem;font-weight:500;background:var(--cbg,#f0e8d8);color:var(--cfg,var(--accent));border:1px solid var(--cbr,rgba(124,79,26,.16))}
-.rr{display:flex;flex-wrap:wrap;gap:.42rem}
-.rbtn{padding:.3rem .82rem;border-radius:50px;font-size:.78rem;background:#edf2ff;color:#1a3a8b;border:1.5px solid #c5d5f5;cursor:pointer;font-family:inherit;transition:background .13s,color .13s}
+.mhe{font-family:var(--fhe);font-size:clamp(1.42rem,5vw,1.9rem);font-weight:900;line-height:1.2;margin-bottom:.2rem}
+.men{font-size:.82rem;opacity:.54}
+.mb{padding:1.25rem 1.45rem;display:flex;flex-direction:column;gap:1.1rem}
+.sec{display:flex;flex-direction:column;gap:.45rem}
+.sec-t{font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding-bottom:.32rem;border-bottom:1px solid var(--border)}
+.dg{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+.di{display:flex;flex-direction:column;gap:.09rem}
+.dl{font-size:.62rem;color:var(--muted);font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+.dv{font-size:.83rem;font-weight:500;color:var(--text)}
+.wl{list-style:none;display:flex;flex-direction:column;gap:.26rem}
+.wl li{font-size:.83rem;padding:.32rem .68rem;background:var(--bg);border-radius:var(--r-sm);border-right:3px solid var(--accent)}
+.il{list-style:none;display:flex;flex-direction:column;gap:.3rem}
+.il li{font-size:.83rem;padding-right:.92rem;position:relative;color:var(--text);line-height:1.5}
+.il li::before{content:'◆';position:absolute;right:0;color:var(--accent);font-size:.5rem;top:.4rem}
+.tr{display:flex;flex-wrap:wrap;gap:.3rem}
+.tchip{padding:.21rem .6rem;border-radius:50px;font-size:.73rem;font-weight:500;background:var(--cbg,#f0e8d8);color:var(--cfg,var(--accent));border:1px solid var(--cbr,rgba(124,79,26,.16))}
+.rr{display:flex;flex-wrap:wrap;gap:.35rem}
+.rbtn{padding:.25rem .72rem;border-radius:50px;font-size:.74rem;background:#edf2ff;color:#1a3a8b;border:1.5px solid #c5d5f5;cursor:pointer;font-family:var(--fbody);transition:background .13s,color .13s}
 .rbtn:hover{background:#1a3a8b;color:#fff}
-.sl{list-style:none;display:flex;flex-direction:column;gap:.22rem}
-.sl li{font-size:.76rem;color:var(--muted);direction:ltr;text-align:left;font-family:'Consolas','Courier New',monospace;padding:.18rem .45rem;background:#f8f5f0;border-radius:4px}
+.rbtn.rst{background:#f0fdf4;color:#166534;border-color:#bbf7d0}
+.rbtn.rst:hover{background:#166534;color:#fff}
+.sl{list-style:none;display:flex;flex-direction:column;gap:.16rem}
+.sl li{font-size:.7rem;color:var(--muted);direction:ltr;text-align:left;font-family:'Consolas','Courier New',monospace;padding:.13rem .38rem;background:#f8f5f0;border-radius:4px}
+.mig-path{display:flex;align-items:center;gap:.25rem;flex-wrap:wrap;direction:ltr;padding:.42rem .68rem;background:var(--bg);border-radius:var(--r-sm);border:1px solid var(--border)}
+.mig-loc{font-size:.76rem;color:var(--text);font-weight:500;padding:.09rem .3rem;background:var(--surface);border-radius:4px;border:1px solid var(--border)}
+.mig-arr{color:var(--muted);font-size:.76rem}
+.deep-research{background:#f9f6f0;border-radius:var(--r-sm);border:1px solid var(--border);overflow:hidden}
+.dr-header{padding:.6rem .92rem;background:rgba(124,79,26,.07);font-size:.68rem;font-weight:700;color:var(--accent);letter-spacing:.06em;text-transform:uppercase;display:flex;align-items:center;gap:.4rem;border-bottom:1px solid var(--border)}
+.dr-body{padding:.9rem .95rem;max-height:280px;overflow-y:auto;font-size:.82rem;line-height:1.82;color:var(--text);direction:rtl;text-align:right;white-space:pre-line}
+.dr-body::-webkit-scrollbar{width:4px}
+.dr-body::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+.dr-loading{padding:1.1rem;text-align:center;color:var(--muted);font-size:.81rem;display:flex;align-items:center;justify-content:center;gap:.48rem}
+.dr-spinner{width:14px;height:14px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .7s linear infinite;flex-shrink:0}
+@keyframes spin{to{transform:rotate(360deg)}}
 
-/* FOOTER */
-footer{text-align:center;padding:1.6rem;border-top:1px solid var(--border);color:var(--muted);font-size:.78rem}
+footer{text-align:center;padding:1.4rem;border-top:1px solid var(--border);color:var(--muted);font-size:.74rem}
 
-/* RESPONSIVE */
 @media(max-width:500px){
-  .hd{padding:2.5rem 1rem 2rem}
-  .mc{padding:1rem .9rem 2rem}
+  .hd{padding:2.2rem 1rem 1.75rem}
+  .mc,.geo-wrap{padding:.85rem .8rem 2rem}
   .grid{grid-template-columns:1fr}
   .dg{grid-template-columns:1fr}
   .ov{padding:0;align-items:flex-end}
   .modal{border-radius:var(--r) var(--r) 0 0;max-height:92vh;overflow-y:auto}
+  .graph-wrap{height:56vh;min-height:380px}
+  .geo-grid{grid-template-columns:1fr}
+  .fb{top:44px}
 }
 @media(min-width:501px) and (max-width:860px){
   .grid{grid-template-columns:repeat(2,1fr)}
+  .geo-grid{grid-template-columns:repeat(2,1fr)}
 }
 </style>
 </head>
@@ -124,22 +184,49 @@ footer{text-align:center;padding:1.6rem;border-top:1px solid var(--border);color
 <header class="hd">
   <div class="hd-inner">
     <h1>אוצר חכמים</h1>
-    <p>בסיס ידע על חכמי ישראל לדורותיהם</p>
+    <p class="hd-sub">בסיס ידע על חכמי ישראל לדורותיהם</p>
     <div class="sb">
       <input type="search" id="q" placeholder="חיפוש לפי שם, תחום, מקום, חיבור…" autocomplete="off">
-      <span class="ico">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      </span>
+      <span class="ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>
     </div>
   </div>
 </header>
 
+<nav class="vt">
+  <div class="vt-inner">
+    <button class="vt-btn active" data-view="grid"><span class="vt-ico">📚</span>מאגר החכמים</button>
+    <button class="vt-btn" data-view="network"><span class="vt-ico">🕸</span>שלשלת המסורה</button>
+    <button class="vt-btn" data-view="geo"><span class="vt-ico">🗺</span>נדודים ומסורות</button>
+  </div>
+</nav>
+
 <div class="fb"><div class="fs" id="filters"></div></div>
 
-<main class="mc">
+<div id="view-grid" class="mc">
   <div class="rc" id="rc"></div>
   <div class="grid" id="grid"></div>
-</main>
+</div>
+
+<div id="view-network">
+  <div class="graph-wrap" id="graph-wrap">
+    <svg class="graph-svg" id="graph-svg"></svg>
+    <div class="graph-legend" id="graph-legend"></div>
+    <div class="gc-btns">
+      <button class="gc-btn" id="gc-reset" title="איפוס תצוגה">⌂</button>
+      <button class="gc-btn" id="gc-zi" title="הגדל">＋</button>
+      <button class="gc-btn" id="gc-zo" title="הקטן">－</button>
+    </div>
+    <div class="graph-tooltip" id="graph-tt"></div>
+    <div class="graph-info">גרור לזוז &nbsp;·&nbsp; גלגל להגדיל &nbsp;·&nbsp; לחץ על חכם לפרטים</div>
+  </div>
+</div>
+
+<div id="view-geo">
+  <div class="geo-wrap">
+    <div class="geo-title">חכמי ישראל לפי גיאוגרפיה, נדודים ומסורות</div>
+    <div class="geo-grid" id="geo-grid"></div>
+  </div>
+</div>
 
 <div id="ov" class="ov hide" role="dialog" aria-modal="true" aria-labelledby="mhe">
   <div class="modal" id="modal">
@@ -158,119 +245,128 @@ footer{text-align:center;padding:1.6rem;border-top:1px solid var(--border);color
 <script>
 'use strict';
 
-/* ── embedded data ── */
+/* ─── DATA ─── */
 const SAGES_DATA = [
-  {"id":"philo-alexandria","name_he":"פילון האלכסנדרוני","name_en":"Philo of Alexandria","period":"Second Temple","years":"c. 20 BCE–50 CE","location":"Alexandria, Egypt","main_works":["Life of Moses","On the Creation","Allegorical Commentary","On the Special Laws"],"core_ideas":["Logos as intermediary between God and world","Allegorical Torah interpretation","Greek-Jewish philosophical synthesis"],"tags":["philosophy","biblical-allegory","hellenistic-judaism"],"related_sages":[],"source_files":["sources/philo-alexandria/"]},
-  {"id":"rabbi-meir-tanna","name_he":"רבי מאיר בעל הנס","name_en":"Rabbi Meir (Tanna)","period":"Tannaim","years":"2nd century CE","location":"Land of Israel (Tiberias)","main_works":["Stam Mishnah","Megillat Taanit (attributed)"],"core_ideas":["Author of all anonymous Mishnah rulings","Chaish l'miuta (leniency for rare cases)","Scribe's precision as spiritual value"],"tags":["halacha","mishnah","stam-mishnah"],"related_sages":["rabbi-yehuda-bar-ilai"],"source_files":["sources/rabbi-meir-tanna/"]},
-  {"id":"rabbi-yehuda-bar-ilai","name_he":"רבי יהודה בר עילאי","name_en":"Rabbi Yehuda bar Ilai","period":"Tannaim","years":"2nd century CE","location":"Usha, Galilee, Land of Israel","main_works":["Sifra (attributed)","Stam Mishnah"],"core_ideas":["Leading halachic voice of his generation","Anonymous Sifra rulings attributed to him","Rebuilt Jewish life at Usha after Bar Kokhba"],"tags":["halacha","midrash","usha-sages"],"related_sages":["rabbi-meir-tanna"],"source_files":["sources/rabbi-yehuda-bar-ilai/"]},
-  {"id":"rabbeinu-gershom","name_he":"רבנו גרשום מאור הגולה","name_en":"Rabbeinu Gershom","period":"Rishonim","years":"c. 960–1028","location":"Mainz, Germany","main_works":["Takanot Rabbeinu Gershom","Responsa"],"core_ideas":["Ban on polygamy","Ban on coerced divorce","Founded Ashkenazic Torah tradition"],"tags":["halacha","takanot","ashkenaz-founding"],"related_sages":[],"source_files":["sources/rabbeinu-gershom/"]},
-  {"id":"bachya-ibn-paquda","name_he":"רבנו בחיי אבן פקודה","name_en":"Bachya ibn Paquda","period":"Rishonim","years":"c. 1050–1120","location":"Zaragoza, Spain","main_works":["Duties of the Heart (Chovot HaLevavot)"],"core_ideas":["Duties of heart vs. limbs","Ten gates ascending from divine unity to love of God","Bitachon (trust in God) as spiritual foundation"],"tags":["musar","theology","philosophy","spanish-jewry"],"related_sages":["netivot-shalom"],"source_files":["sources/bachya-ibn-paquda/"]},
-  {"id":"riva","name_he":"ריב\"א","name_en":"Riva","period":"Rishonim","years":"d. c. 1130","location":"Speyer, Germany","main_works":["Tosafot"],"core_ideas":["First-generation Tosafist in Germany","Early Ashkenazic Talmudic method"],"tags":["talmud","tosafists"],"related_sages":["rashbam"],"source_files":["sources/riva/"]},
-  {"id":"ravad-posquieres","name_he":"ראב\"ד מפושקייר","name_en":"Ravad of Posquières","period":"Rishonim","years":"c. 1125–1198","location":"Posquières, Provence, France","main_works":["Hassagot on Mishneh Torah","Baalei HaNefesh"],"core_ideas":["Critical glosses on Rambam in every standard edition","Independent halachic school","Provençal tradition as counterweight to Spanish rationalism"],"tags":["halacha","criticism","provence"],"related_sages":["rambam","razah","ramban"],"source_files":["sources/ravad-posquieres/"]},
-  {"id":"razah","name_he":"הרז\"ה","name_en":"Razah","period":"Rishonim","years":"c. 1125–1186","location":"Girona, Spain / Lunel, Provence","main_works":["HaMaor"],"core_ideas":["Critique of Rif's rulings","Prompted Ravad's Milhamot Hashem","Halachic independence from established authority"],"tags":["halacha","criticism","provence"],"related_sages":["ravad-posquieres","rambam"],"source_files":["sources/razah/"]},
-  {"id":"rashbam","name_he":"רשב\"ם","name_en":"Rashbam","period":"Rishonim","years":"c. 1085–1158","location":"Ramerupt, northern France","main_works":["Commentary on the Torah","Tosafot"],"core_ideas":["Radical peshat even against received halacha","Rashi's grandson who extended and critiqued him","Peshat as independent enterprise from halacha"],"tags":["torah-commentary","peshat","tosafists"],"related_sages":["rabbi-yosef-bechor-shor","riva"],"source_files":["sources/rashbam/"]},
-  {"id":"rabbi-yosef-bechor-shor","name_he":"יוסף בכור שור","name_en":"Rabbi Yosef Bechor Shor","period":"Rishonim","years":"c. 1140","location":"Orléans, northern France","main_works":["Commentary on the Torah"],"core_ideas":["Psychological biblical character analysis","Strict commitment to peshat","Opposition to allegory"],"tags":["torah-commentary","peshat","biblical-psychology","tosafists"],"related_sages":["rashbam","baal-haturim"],"source_files":["sources/rabbi-yosef-bechor-shor/"]},
-  {"id":"rabbi-yehuda-hechasid","name_he":"רבי יהודה החסיד","name_en":"Rabbi Yehuda HeHasid","period":"Rishonim","years":"c. 1150–1217","location":"Speyer / Regensburg, Germany","main_works":["Sefer Hasidim","Sefer HaKavod","Shir HaYichud"],"core_ideas":["German Pietism (Hasidei Ashkenaz)","Ethics beyond formal halacha","Intention, humility, and atonement"],"tags":["musar","mysticism","hasidei-ashkenaz"],"related_sages":["riva","ravad-posquieres"],"source_files":["sources/rabbi-yehuda-hechasid/"]},
-  {"id":"rambam","name_he":"רמב\"ם","name_en":"Rambam","period":"Rishonim","years":"1138–1204","location":"Córdoba, Spain / Cairo, Egypt","main_works":["Mishneh Torah","Guide for the Perplexed","Commentary on the Mishnah","Sefer HaMitzvot"],"core_ideas":["Complete systematic codification of Jewish law","Negative attributes theology","13 Principles of Faith","Rational approach to prophecy"],"tags":["halacha","philosophy","medicine","rationalism"],"related_sages":["ravad-posquieres","maggid-mishneh"],"source_files":["sources/rambam/"]},
-  {"id":"maharam-rothenburg","name_he":"מהר\"ם מרוטנבורג","name_en":"Maharam of Rothenburg","period":"Rishonim","years":"c. 1215–1293","location":"Worms / Rothenburg ob der Tauber, Germany","main_works":["Responsa","Sefer HaParnes (compiled by students)"],"core_ideas":["Architect of Ashkenazic halacha","Died in captivity refusing ransom to prevent kidnapping precedent","Foundation for all later Ashkenazic law"],"tags":["halacha","responsa","minhag","ashkenaz"],"related_sages":["rabbi-israel-kremz","baal-haturim"],"source_files":["sources/maharam-rothenburg/"]},
-  {"id":"ramban","name_he":"רמב\"ן","name_en":"Ramban","period":"Rishonim","years":"1194–1270","location":"Girona, Spain / Acre, Land of Israel","main_works":["Commentary on the Torah","Milhamot Hashem","Torat HaAdam","Iggeret HaKodesh"],"core_ideas":["Divine providence","Superiority of Land of Israel","Peshat-philosophy-Kabbalah synthesis"],"tags":["torah-commentary","halacha","kabbalah","spanish-jewry"],"related_sages":["ravad-posquieres","rambam","ritva"],"source_files":["sources/ramban/"]},
-  {"id":"ritva","name_he":"הריטב\"א","name_en":"Ritva","period":"Rishonim","years":"c. 1250–1330","location":"Seville, Spain","main_works":["Chiddushei HaRitva","Sefer HaZikaron"],"core_ideas":["Sharp analytical Talmudic novellae","Spanish logical-comprehensive method","Apologetics against Christian arguments"],"tags":["talmud","halacha","spanish-jewry"],"related_sages":["ramban","rabbeinu-bachya-ben-asher","ribash"],"source_files":["sources/ritva/"]},
-  {"id":"rabbeinu-bachya-ben-asher","name_he":"רבינו בחיי בן אשר","name_en":"Rabbeinu Bachya ben Asher","period":"Rishonim","years":"c. 1255–1340","location":"Saragossa, Spain","main_works":["Commentary on the Torah","Kad HaKemach","Shulchan shel Arba"],"core_ideas":["First explicit PaRDeS exegetical system","Popularized Kabbalah for general readers","Faith as foundation of all religion"],"tags":["torah-commentary","kabbalah","ethics","pardes"],"related_sages":["ritva","baal-haturim"],"source_files":["sources/rabbeinu-bachya-ben-asher/"]},
-  {"id":"maharam-segal","name_he":"מהר\"ם סג\"ל","name_en":"Maharam Segal","period":"Rishonim","years":"c. 1320–1390","location":"Vienna / Germany","main_works":["Responsa"],"core_ideas":["Continued Maharam of Rothenburg tradition","Post-Black Death Ashkenazic leadership"],"tags":["halacha","responsa","ashkenaz"],"related_sages":["maharam-rothenburg","rabbi-israel-kremz","baal-haturim"],"source_files":["sources/maharam-segal/"]},
-  {"id":"maggid-mishneh","name_he":"המגיד משנה","name_en":"Maggid Mishneh","period":"Rishonim","years":"c. 1310–1376","location":"Toulouse / Catalonia, Spain","main_works":["Maggid Mishneh"],"core_ideas":["Source-tracing for all Mishneh Torah rulings","Defense of Rambam against Ravad's critiques","Bridge between Provençal and Spanish traditions"],"tags":["talmud","mishneh-torah-commentary","rationalism"],"related_sages":["rambam","rashbatz","ribash","ravad-posquieres"],"source_files":["sources/maggid-mishneh/"]},
-  {"id":"rabbi-shimshon-ben-eliezer","name_he":"רבי שמשון בן אליעזר","name_en":"Rabbi Shimshon ben Eliezer","period":"Rishonim","years":"c. 1270–1340","location":"Germany / Ashkenaz","main_works":["Baruch She'amar"],"core_ideas":["Definitive Ashkenazic code for Stam (Torah scrolls, tefillin, mezuzot)","Systematic halachic framework for scribal arts"],"tags":["stam","halacha","ashkenaz"],"related_sages":["maharam-rothenburg"],"source_files":["sources/rabbi-shimshon-ben-eliezer/"]},
-  {"id":"baal-haturim","name_he":"בעל הטורים","name_en":"Baal HaTurim","period":"Rishonim","years":"c. 1270–1343","location":"Cologne, Germany / Toledo, Spain","main_works":["Arba'ah Turim","Peirush al HaTorah"],"core_ideas":["Four-part halachic code that became foundation of Shulchan Aruch","Gematria and numerical symbolism commentary","Ashkenaz-Sephardic synthesis"],"tags":["halacha","torah-commentary","gematria","ashkenaz-sephardic-bridge"],"related_sages":["maharam-rothenburg","rabbeinu-bachya-ben-asher"],"source_files":["sources/baal-haturim/"]},
-  {"id":"ribash","name_he":"הריב\"ש","name_en":"Ribash","period":"Rishonim","years":"1326–1408","location":"Barcelona / Valencia, Spain / Algiers","main_works":["Responsa (Shut HaRibash)"],"core_ideas":["Bridge between Spanish and North African Jewry","Critical of philosophy replacing Talmud","Responsa documenting the transition of Spanish exile"],"tags":["halacha","responsa","sephardic"],"related_sages":["rashbatz","hasdai-crescas","ritva"],"source_files":["sources/ribash/"]},
-  {"id":"hasdai-crescas","name_he":"ר' חסדאי קרשקש","name_en":"Hasdai Crescas","period":"Rishonim","years":"1340–1410/11","location":"Barcelona / Zaragoza, Spain","main_works":["Or Hashem"],"core_ideas":["Anti-Aristotelian Jewish philosophy","God defined by love not intellect","New physics: infinite space and continuous acceleration"],"tags":["philosophy","theology","anti-aristotelian"],"related_sages":["rabbi-yitzhak-abuhav","ribash","rashbatz"],"source_files":["sources/hasdai-crescas/"]},
-  {"id":"rabbi-yitzhak-abuhav","name_he":"הרב יצחק אבוהב הראשון","name_en":"Rabbi Yitzhak Abuhav (the First)","period":"Rishonim","years":"c. 1323–c. 1393","location":"Castile, Spain","main_works":["Menorat HaMaor"],"core_ideas":["Ethical anthology from aggadah organized by menorah's seven lamps","Making aggadah accessible to the general public"],"tags":["musar","aggadah","spanish-jewry"],"related_sages":["hasdai-crescas","rashbatz"],"source_files":["sources/rabbi-yitzhak-abuhav/"]},
-  {"id":"rashbatz","name_he":"הרשב\"ץ","name_en":"Rashbatz","period":"Rishonim / Acharonim","years":"1361–1444","location":"Majorca, Spain / Algiers, North Africa","main_works":["Tashbetz","Magen Avot","Ohev Mishpat"],"core_ideas":["First to justify rabbinical salary from communal funds","Halacha combined with astronomy and philosophy","Shaped North African Jewish leadership"],"tags":["halacha","philosophy","science","sephardic"],"related_sages":["ribash"],"source_files":["sources/rashbatz/"]},
-  {"id":"maharak","name_he":"מהרא\"ק","name_en":"Maharak","period":"Rishonim / Acharonim","years":"c. 1400–1480","location":"Vienna / Austria-Germany","main_works":["Sefer HaMinhagim","Responsa"],"core_ideas":["Codification of Ashkenazic customs after 14th-century persecutions","Teacher of Maharil and Maharam Mintz"],"tags":["minhag","halacha","ashkenaz"],"related_sages":["maharam-rothenburg","maharam-mintz"],"source_files":["sources/maharak/"]},
-  {"id":"maharam-mintz","name_he":"מהר\"ם מינץ","name_en":"Maharam Mintz","period":"Rishonim / Acharonim","years":"c. 1415–1480","location":"Bamberg / Augsburg / Mainz, Germany","main_works":["Responsa (Shut Maharam Mintz)"],"core_ideas":["Authority on gittin, chalitza, and Ashkenazic minhag","Responsa amid German Jewish expulsions"],"tags":["halacha","responsa","ashkenaz"],"related_sages":["maharak","rabbi-yaakov-margaliot","rabbi-yaakov-landa"],"source_files":["sources/maharam-mintz/"]},
-  {"id":"rabbi-israel-kremz","name_he":"רבי ישראל מקרמז'","name_en":"Rabbi Israel of Kremz","period":"Rishonim / Acharonim","years":"c. 1390–1460","location":"Wiener Neustadt, Austria","main_works":["Trumat HaDeshen","Haggahot Asheri","Pesakim UKetavim"],"core_ideas":["Haggahot Asheri printed in all standard Talmud editions","Self-questioning responsa as pedagogical method"],"tags":["halacha","responsa","minhag","ashkenaz"],"related_sages":["maharam-rothenburg","maharam-mintz","rabbi-yaakov-margaliot"],"source_files":["sources/rabbi-israel-kremz/"]},
-  {"id":"rabbi-yaakov-margaliot","name_he":"רבי יעקב מרגליות","name_en":"Rabbi Yaakov Margaliot","period":"Rishonim / Acharonim","years":"c. 1420–1501","location":"Regensburg / Nuremberg, Germany","main_works":["Seder HaGet","Responsa"],"core_ideas":["Definitive Ashkenazic authority on gittin","Halachic leadership in post-1349 community rebuilding"],"tags":["halacha","gittin","ashkenaz"],"related_sages":["maharam-mintz","rabbi-yaakov-landa"],"source_files":["sources/rabbi-yaakov-margaliot/"]},
-  {"id":"rabbi-yaakov-landa","name_he":"רבי יעקב לנדא","name_en":"Rabbi Yaakov Landa","period":"Acharonim","years":"c. 1440–c. 1510","location":"Germany / Brescia, Italy","main_works":["Sefer HaAgur"],"core_ideas":["Early printed halachic compendium","Ashkenaz-Italy cultural bridge","Pre-Shulchan Aruch Ashkenazic code"],"tags":["halacha","minhag","ashkenaz"],"related_sages":["maharam-mintz","rabbi-yaakov-margaliot"],"source_files":["sources/rabbi-yaakov-landa/"]},
-  {"id":"rabbi-israel-najara","name_he":"רבי ישראל נג'ארה","name_en":"Rabbi Israel Najara","period":"Acharonim","years":"c. 1555–1625","location":"Damascus, Syria / Gaza","main_works":["Zemirot Yisrael","Yah Ribbon"],"core_ideas":["Most widely sung Shabbat zemer in Jewish world","Liturgical poetry in Hebrew, Aramaic, and Judeo-Arabic"],"tags":["poetry","piyut","kabbalah","ottoman-sephardic"],"related_sages":[],"source_files":["sources/rabbi-israel-najara/"]},
-  {"id":"yehuda-moscato","name_he":"יהודה מוסקאטו","name_en":"Yehuda Moscato","period":"Acharonim","years":"c. 1530–1593","location":"Mantua, Italy","main_works":["Nefutzot Yehudah","Kol Yehudah"],"core_ideas":["Renaissance Jewish preaching with humanist rhetoric","Music as divine language that elevates the soul","Jewish-Italian Renaissance synthesis"],"tags":["homiletics","philosophy","music","italian-jewry","renaissance"],"related_sages":["rabbi-menachem-azaria-fano"],"source_files":["sources/yehuda-moscato/"]},
-  {"id":"rabbi-elazar-azikri","name_he":"רבי אלעזר אזכרי","name_en":"Rabbi Elazar Azikri","period":"Acharonim","years":"1533–1600","location":"Safed, Ottoman Palestine","main_works":["Sefer Haredim","Yedid Nefesh"],"core_ideas":["Love of God as central motivator of all religious life","Body as instrument of divine service (organized by limbs)","Safed Kabbalistic circle"],"tags":["kabbalah","poetry","musar","safed-kabbalists"],"related_sages":["rabbi-israel-najara"],"source_files":["sources/rabbi-elazar-azikri/"]},
-  {"id":"rabbi-david-gans","name_he":"רבי דוד גנז","name_en":"Rabbi David Gans","period":"Acharonim","years":"1541–1613","location":"Westphalia / Frankfurt / Prague","main_works":["Tzemach David","Nechmad VeNaim"],"core_ideas":["First dual Jewish-general history chronicle","Copernican astronomy within Jewish framework","Personal collaboration with Tycho Brahe and Kepler"],"tags":["history","astronomy","renaissance","prague"],"related_sages":["maharam-mintz"],"source_files":["sources/rabbi-david-gans/"]},
-  {"id":"rabbi-menachem-azaria-fano","name_he":"רבי מנחם עזריה מפאנו","name_en":"Rabbi Menachem Azaria of Fano","period":"Acharonim","years":"1548–1620","location":"Fano / Mantua / Reggio Emilia, Italy","main_works":["Asarah Maamarot","Yonat Elem","Responsa"],"core_ideas":["Lurianic Kabbalah in Italian philosophical style","Bridge between speculative theology and practical ethics"],"tags":["kabbalah","halacha","ari-kabbalah","italian-jewry"],"related_sages":["yehuda-moscato"],"source_files":["sources/rabbi-menachem-azaria-fano/"]},
-  {"id":"rabbi-israel-algazi","name_he":"רבי ישראל יעקב אלגאזי","name_en":"Rabbi Israel Yaakov Algazi","period":"Acharonim","years":"1680–1756","location":"Istanbul / Jerusalem","main_works":["Emet LeYaakov","Shalmei Tzibur"],"core_ideas":["Rishon LeZion (head of Jerusalem rabbinate)","Preserved Sephardic Kabbalistic traditions","Strengthened Jerusalem yeshivot"],"tags":["halacha","kabbalah","sephardic","jerusalem"],"related_sages":[],"source_files":["sources/rabbi-israel-algazi/"]},
-  {"id":"ramchal","name_he":"הרמח\"ל","name_en":"Ramchal","period":"Acharonim","years":"1707–1746","location":"Padua, Italy / Amsterdam / Acre, Israel","main_works":["Mesillat Yesharim","Derekh Hashem","Derech Tevunot","Adir Bamarom","La-Yesharim Tehillah"],"core_ideas":["Ladder of character refinement (Mesillat Yesharim)","Systematic musar as spiritual science","Lurianic Kabbalah and classical Hebrew drama"],"tags":["musar","kabbalah","poetry"],"related_sages":[],"source_files":["sources/ramchal/"]},
-  {"id":"rabbi-benzion-uziel","name_he":"הרב בן-ציון מאיר חי עוזיאל","name_en":"Rabbi Ben-Zion Meir Chai Uziel","period":"Modern","years":"1880–1953","location":"Jerusalem, Israel","main_works":["Mishpetei Uziel","Sha'arei Uziel"],"core_ideas":["Zionist-halachic ruling framework","Progressive Sephardic responsa on conversion and technology","Land of Israel as condition for redemption"],"tags":["halacha","responsa","zionism","sephardic","religious-zionism"],"related_sages":[],"source_files":["sources/rabbi-benzion-uziel/"]},
-  {"id":"rabbi-mordechai-sharabi","name_he":"הרב מרדכי שרעבי","name_en":"Rabbi Mordechai Sharabi","period":"Modern","years":"1908–1983","location":"Yemen / Jerusalem, Israel","main_works":["Rechovot HaNahar"],"core_ideas":["Yemenite Lurianic Kabbalah tradition","Nahar Shalom yeshiva as 20th-century Jerusalem Kabbalistic center"],"tags":["kabbalah","yemenite-jewry","jerusalem"],"related_sages":[],"source_files":["sources/rabbi-mordechai-sharabi/"]},
-  {"id":"rabbi-levi-saadia-nahmani","name_he":"הרב לוי סעדיה נחמני","name_en":"Rabbi Levi Saadia Nahmani","period":"Modern","years":"1906–1993","location":"Libya / Israel","main_works":["Various shiurim and sermons (largely oral)"],"core_ideas":["Prophetic oratory about redemption of Israel","Libyan Jewish communal leader in Israel","Integralist stance on Land of Israel"],"tags":["homiletics","zionism","sephardic","libyan-jewry"],"related_sages":[],"source_files":["sources/rabbi-levi-saadia-nahmani/"]},
-  {"id":"pinchas-kehati","name_he":"פנחס קהתי","name_en":"Pinchas Kehati","period":"Modern","years":"1910–1976","location":"Poland / Israel","main_works":["Mishnayot Kehati"],"core_ideas":["Commentary text integrated into Mishnah itself","Vowelized all six orders of Mishnah","Making Torah accessible to working youth"],"tags":["mishnah","education","religious-zionism"],"related_sages":[],"source_files":["sources/pinchas-kehati/"]},
-  {"id":"netivot-shalom","name_he":"הרב שלום נח ברזובסקי","name_en":"Netivot Shalom","period":"Modern","years":"1911–2000","location":"Poland / Jerusalem, Israel","main_works":["Netivot Shalom"],"core_ideas":["Faith as lived experience not mere doctrine","Joy, trust, and devekut as pillars of divine service","\"Son of the King\" consciousness"],"tags":["hasidut","musar","slonimer-hasidut"],"related_sages":["bachya-ibn-paquda"],"source_files":["sources/netivot-shalom/"]},
-  {"id":"rabbi-elisha-wishlitzky","name_he":"הרב אלישע וישליצקי","name_en":"Rabbi Elisha Wishlitzky","period":"Modern","years":"20th century","location":"Israel","main_works":[],"core_ideas":["Bridge-building between communities and traditions","Humble leadership model","Connecting secular and religious Israelis"],"tags":["leadership","education","religious-zionism"],"related_sages":[],"source_files":["sources/rabbi-elisha-wishlitzky/"]},
-  {"id":"rabbi-rafael-moshe-luria","name_he":"רבי רפאל משה לוריא","name_en":"Rabbi Rafael Moshe Luria","period":"Modern","years":"20th century","location":"Israel","main_works":[],"core_ideas":["Synthesis of exceptional halachic mastery and Kabbalistic depth"],"tags":["halacha","kabbalah","contemporary"],"related_sages":[],"source_files":["sources/rabbi-rafael-moshe-luria/"]},
-  {"id":"rabbi-avraham-livni","name_he":"רב ד\"ר אברהם לבני","name_en":"Rabbi Dr. Avraham Livni","period":"Modern","years":"20th–21st century","location":"Israel","main_works":[],"core_ideas":["Jewish meta-historical framework","Polemic against antisemitism","Redemptive reading of Jewish history"],"tags":["philosophy","history","contemporary"],"related_sages":[],"source_files":["sources/rabbi-avraham-livni/"]}
+  {id:"philo-alexandria",name_he:"פילון האלכסנדרוני",name_en:"Philo of Alexandria",period:"Second Temple",years:"c. 20 BCE–50 CE",location:"Alexandria, Egypt",main_works:["Life of Moses","On the Creation","Allegorical Commentary","On the Special Laws"],core_ideas:["Logos as intermediary between God and world","Allegorical Torah interpretation","Greek-Jewish philosophical synthesis"],tags:["philosophy","biblical-allegory","hellenistic-judaism"],related_sages:[],teachers:[],students:[],origin_country:"Egypt",migration_path:["Alexandria, Egypt"],custom_tradition:"Hellenistic-Jewish synthesis",geo_region:"egypt-babylon"},
+  {id:"rabbi-meir-tanna",name_he:"רבי מאיר בעל הנס",name_en:"Rabbi Meir (Tanna)",period:"Tannaim",years:"2nd century CE",location:"Land of Israel (Tiberias)",main_works:["Stam Mishnah","Megillat Taanit (attributed)"],core_ideas:["Author of all anonymous Mishnah rulings","Chaish l'miuta","Scribe's precision as spiritual value"],tags:["halacha","mishnah","stam-mishnah"],related_sages:["rabbi-yehuda-bar-ilai"],teachers:[],students:[],origin_country:"Land of Israel",migration_path:["ארץ ישראל"],custom_tradition:"מסורת ארץ ישראל",geo_region:"land-of-israel"},
+  {id:"rabbi-yehuda-bar-ilai",name_he:"רבי יהודה בר עילאי",name_en:"Rabbi Yehuda bar Ilai",period:"Tannaim",years:"2nd century CE",location:"Usha, Galilee",main_works:["Sifra (attributed)","Stam Mishnah"],core_ideas:["Leading halachic voice of his generation","Rebuilt Jewish life at Usha","Author of anonymous Sifra rulings"],tags:["halacha","midrash","usha-sages"],related_sages:["rabbi-meir-tanna"],teachers:[],students:[],origin_country:"Land of Israel",migration_path:["אושה, הגליל"],custom_tradition:"מסורת ארץ ישראל",geo_region:"land-of-israel"},
+  {id:"rabbeinu-gershom",name_he:"רבנו גרשום מאור הגולה",name_en:"Rabbeinu Gershom",period:"Rishonim",years:"c. 960–1028",location:"Mainz, Germany",main_works:["Takanot Rabbeinu Gershom","Responsa"],core_ideas:["Ban on polygamy","Ban on coerced divorce","Founded Ashkenazic Torah tradition"],tags:["halacha","takanot","ashkenaz-founding"],related_sages:[],teachers:[],students:[],origin_country:"Germany",migration_path:["מגנצא, גרמניה"],custom_tradition:"מייסד מסורת אשכנז",geo_region:"ashkenaz"},
+  {id:"bachya-ibn-paquda",name_he:"רבנו בחיי אבן פקודה",name_en:"Bachya ibn Paquda",period:"Rishonim",years:"c. 1050–1120",location:"Zaragoza, Spain",main_works:["Duties of the Heart (Chovot HaLevavot)"],core_ideas:["Duties of heart vs. limbs","Ten gates ascending to love of God","Bitachon as spiritual foundation"],tags:["musar","theology","philosophy","spanish-jewry"],related_sages:["netivot-shalom"],teachers:[],students:[],origin_country:"Spain",migration_path:["סרגוסה, ספרד"],custom_tradition:"מוסר ספרדי-פילוסופי",geo_region:"spain"},
+  {id:"riva",name_he:"ריב\"א",name_en:"Riva",period:"Rishonim",years:"d. c. 1130",location:"Speyer, Germany",main_works:["Tosafot"],core_ideas:["First-generation Tosafist in Germany","Early Ashkenazic Talmudic method"],tags:["talmud","tosafists"],related_sages:["rashbam"],teachers:[],students:[],origin_country:"Germany",migration_path:["שפייר, גרמניה"],custom_tradition:"שיטת התוספות הראשונה",geo_region:"ashkenaz"},
+  {id:"ravad-posquieres",name_he:"ראב\"ד מפושקייר",name_en:"Ravad of Posquières",period:"Rishonim",years:"c. 1125–1198",location:"Posquières, Provence",main_works:["Hassagot on Mishneh Torah","Baalei HaNefesh"],core_ideas:["Critical glosses on Rambam","Independent halachic school","Provençal tradition as counterweight to rationalism"],tags:["halacha","criticism","provence"],related_sages:["rambam","razah","ramban"],teachers:[],students:[],origin_country:"Provence, France",migration_path:["פושקייר, פרובינס"],custom_tradition:"מסורת פרובינס העצמאית",geo_region:"provence"},
+  {id:"razah",name_he:"הרז\"ה",name_en:"Razah",period:"Rishonim",years:"c. 1125–1186",location:"Girona, Spain / Lunel, Provence",main_works:["HaMaor"],core_ideas:["Critique of Rif's rulings","Halachic independence from established authority"],tags:["halacha","criticism","provence"],related_sages:["ravad-posquieres","rambam"],teachers:[],students:[],origin_country:"Spain",migration_path:["גירונה, ספרד","לונל, פרובינס"],custom_tradition:"ביקורת הלכתית ספרדית",geo_region:"spain"},
+  {id:"rashbam",name_he:"רשב\"ם",name_en:"Rashbam",period:"Rishonim",years:"c. 1085–1158",location:"Ramerupt, northern France",main_works:["Commentary on the Torah","Tosafot"],core_ideas:["Radical peshat even against received halacha","Extended and critiqued Rashi","Peshat as independent enterprise"],tags:["torah-commentary","peshat","tosafists"],related_sages:["rabbi-yosef-bechor-shor","riva"],teachers:[],students:["rabbi-yosef-bechor-shor"],origin_country:"France",migration_path:["ראמרו, צרפת הצפונית"],custom_tradition:"שיטת הפשט של צרפת",geo_region:"ashkenaz"},
+  {id:"rabbi-yosef-bechor-shor",name_he:"יוסף בכור שור",name_en:"Rabbi Yosef Bechor Shor",period:"Rishonim",years:"c. 1140",location:"Orléans, northern France",main_works:["Commentary on the Torah"],core_ideas:["Psychological biblical character analysis","Strict commitment to peshat","Opposition to allegory"],tags:["torah-commentary","peshat","biblical-psychology","tosafists"],related_sages:["rashbam","baal-haturim"],teachers:["rashbam"],students:[],origin_country:"France",migration_path:["אורליאן, צרפת"],custom_tradition:"שיטת הפשט של בית רש\"ם",geo_region:"ashkenaz"},
+  {id:"rabbi-yehuda-hechasid",name_he:"רבי יהודה החסיד",name_en:"Rabbi Yehuda HeHasid",period:"Rishonim",years:"c. 1150–1217",location:"Speyer / Regensburg, Germany",main_works:["Sefer Hasidim","Sefer HaKavod","Shir HaYichud"],core_ideas:["German Pietism (Hasidei Ashkenaz)","Ethics beyond formal halacha","Intention, humility, and atonement"],tags:["musar","mysticism","hasidei-ashkenaz"],related_sages:["riva"],teachers:[],students:[],origin_country:"Germany",migration_path:["שפייר","רגנסבורג, גרמניה"],custom_tradition:"חסידות אשכנז",geo_region:"ashkenaz"},
+  {id:"rambam",name_he:"רמב\"ם",name_en:"Rambam",period:"Rishonim",years:"1138–1204",location:"Córdoba, Spain / Cairo, Egypt",main_works:["Mishneh Torah","Guide for the Perplexed","Commentary on the Mishnah","Sefer HaMitzvot"],core_ideas:["Complete systematic codification of Jewish law","Negative attributes theology","13 Principles of Faith","Rational approach to prophecy"],tags:["halacha","philosophy","medicine","rationalism"],related_sages:["ravad-posquieres","maggid-mishneh"],teachers:[],students:["maggid-mishneh"],origin_country:"Spain",migration_path:["קורדובה, ספרד","מרוקו","פוסטאט, מצרים"],custom_tradition:"הלכה ספרדית-רציונליסטית",geo_region:"spain"},
+  {id:"maharam-rothenburg",name_he:"מהר\"ם מרוטנבורג",name_en:"Maharam of Rothenburg",period:"Rishonim",years:"c. 1215–1293",location:"Worms / Rothenburg ob der Tauber, Germany",main_works:["Responsa","Sefer HaParnes"],core_ideas:["Architect of Ashkenazic halacha","Died in captivity refusing ransom","Foundation for all later Ashkenazic law"],tags:["halacha","responsa","minhag","ashkenaz"],related_sages:["rabbi-israel-kremz","baal-haturim"],teachers:[],students:["baal-haturim","rabbi-shimshon-ben-eliezer"],origin_country:"Germany",migration_path:["וורמס","רוטנבורג, גרמניה"],custom_tradition:"ארכיטקטורת הלכת אשכנז",geo_region:"ashkenaz"},
+  {id:"ramban",name_he:"רמב\"ן",name_en:"Ramban",period:"Rishonim",years:"1194–1270",location:"Girona, Spain / Acre",main_works:["Commentary on the Torah","Milhamot Hashem","Torat HaAdam","Iggeret HaKodesh"],core_ideas:["Divine providence","Superiority of Land of Israel","Peshat-philosophy-Kabbalah synthesis"],tags:["torah-commentary","halacha","kabbalah","spanish-jewry"],related_sages:["ravad-posquieres","rambam","ritva"],teachers:[],students:["ritva"],origin_country:"Spain",migration_path:["גירונה, ספרד","עכו, ארץ ישראל"],custom_tradition:"שיטת גירונה – פשט, קבלה והלכה",geo_region:"spain"},
+  {id:"ritva",name_he:"הריטב\"א",name_en:"Ritva",period:"Rishonim",years:"c. 1250–1330",location:"Seville, Spain",main_works:["Chiddushei HaRitva","Sefer HaZikaron"],core_ideas:["Sharp analytical Talmudic novellae","Spanish logical-comprehensive method","Apologetics against Christian arguments"],tags:["talmud","halacha","spanish-jewry"],related_sages:["ramban","rabbeinu-bachya-ben-asher","ribash"],teachers:["ramban"],students:[],origin_country:"Spain",migration_path:["סביליה, ספרד"],custom_tradition:"חידושי ספרד – שיטת הריטב\"א",geo_region:"spain"},
+  {id:"rabbeinu-bachya-ben-asher",name_he:"רבינו בחיי בן אשר",name_en:"Rabbeinu Bachya ben Asher",period:"Rishonim",years:"c. 1255–1340",location:"Saragossa, Spain",main_works:["Commentary on the Torah","Kad HaKemach","Shulchan shel Arba"],core_ideas:["First explicit PaRDeS system","Popularized Kabbalah for general readers","Faith as foundation of all religion"],tags:["torah-commentary","kabbalah","ethics","pardes"],related_sages:["ritva","baal-haturim"],teachers:[],students:[],origin_country:"Spain",migration_path:["סרגוסה, ספרד"],custom_tradition:"פרד\"ס – פשט, רמז, דרוש, סוד",geo_region:"spain"},
+  {id:"maharam-segal",name_he:"מהר\"ם סג\"ל",name_en:"Maharam Segal",period:"Rishonim",years:"c. 1320–1390",location:"Vienna / Germany",main_works:["Responsa"],core_ideas:["Continued Maharam of Rothenburg tradition","Post-Black Death Ashkenazic leadership"],tags:["halacha","responsa","ashkenaz"],related_sages:["maharam-rothenburg","rabbi-israel-kremz","baal-haturim"],teachers:[],students:[],origin_country:"Germany",migration_path:["וינה, אוסטריה"],custom_tradition:"המשך שיטת מהר\"ם מרוטנבורג",geo_region:"ashkenaz"},
+  {id:"maggid-mishneh",name_he:"המגיד משנה",name_en:"Maggid Mishneh",period:"Rishonim",years:"c. 1310–1376",location:"Toulouse / Catalonia, Spain",main_works:["Maggid Mishneh"],core_ideas:["Source-tracing for all Mishneh Torah rulings","Defense of Rambam against Ravad's critiques","Bridge between Provençal and Spanish traditions"],tags:["talmud","mishneh-torah-commentary","rationalism"],related_sages:["rambam","rashbatz","ribash","ravad-posquieres"],teachers:["rambam"],students:[],origin_country:"Provence / Catalonia",migration_path:["טולוז","קטלוניה, ספרד"],custom_tradition:"הגנת שיטת הרמב\"ם",geo_region:"provence"},
+  {id:"rabbi-shimshon-ben-eliezer",name_he:"רבי שמשון בן אליעזר",name_en:"Rabbi Shimshon ben Eliezer",period:"Rishonim",years:"c. 1270–1340",location:"Germany / Ashkenaz",main_works:["Baruch She'amar"],core_ideas:["Definitive Ashkenazic code for Stam","Systematic halachic framework for scribal arts"],tags:["stam","halacha","ashkenaz"],related_sages:["maharam-rothenburg"],teachers:["maharam-rothenburg"],students:[],origin_country:"Germany",migration_path:["גרמניה"],custom_tradition:"הלכות סת\"ם אשכנז",geo_region:"ashkenaz"},
+  {id:"baal-haturim",name_he:"בעל הטורים",name_en:"Baal HaTurim",period:"Rishonim",years:"c. 1270–1343",location:"Cologne, Germany / Toledo, Spain",main_works:["Arba'ah Turim","Peirush al HaTorah"],core_ideas:["Four-part halachic code → foundation of Shulchan Aruch","Gematria and numerical symbolism commentary","Ashkenaz-Sephardic synthesis"],tags:["halacha","torah-commentary","gematria","ashkenaz-sephardic-bridge"],related_sages:["maharam-rothenburg","rabbeinu-bachya-ben-asher"],teachers:["maharam-rothenburg"],students:[],origin_country:"Germany",migration_path:["קלן, גרמניה","טולדו, ספרד"],custom_tradition:"ארבעה טורים – סינתזה אשכנז-ספרד",geo_region:"ashkenaz"},
+  {id:"ribash",name_he:"הריב\"ש",name_en:"Ribash",period:"Rishonim",years:"1326–1408",location:"Barcelona / Valencia, Spain / Algiers",main_works:["Responsa (Shut HaRibash)"],core_ideas:["Bridge between Spanish and North African Jewry","Critical of philosophy replacing Talmud","Responsa documenting transition of Spanish exile"],tags:["halacha","responsa","sephardic"],related_sages:["rashbatz","hasdai-crescas","ritva"],teachers:[],students:["rashbatz"],origin_country:"Spain",migration_path:["ברצלונה","ולנסיה","אלג'יר, צפון אפריקה"],custom_tradition:"הלכה ספרדית לגלות צפון אפריקה",geo_region:"spain"},
+  {id:"hasdai-crescas",name_he:"ר' חסדאי קרשקש",name_en:"Hasdai Crescas",period:"Rishonim",years:"1340–1410/11",location:"Barcelona / Zaragoza, Spain",main_works:["Or Hashem"],core_ideas:["Anti-Aristotelian Jewish philosophy","God defined by love not intellect","New physics: infinite space"],tags:["philosophy","theology","anti-aristotelian"],related_sages:["rabbi-yitzhak-abuhav","ribash","rashbatz"],teachers:[],students:[],origin_country:"Spain",migration_path:["ברצלונה","סרגוסה, ספרד"],custom_tradition:"פילוסופיה יהודית אנטי-אריסטוטלית",geo_region:"spain"},
+  {id:"rabbi-yitzhak-abuhav",name_he:"הרב יצחק אבוהב הראשון",name_en:"Rabbi Yitzhak Abuhav (the First)",period:"Rishonim",years:"c. 1323–c. 1393",location:"Castile, Spain",main_works:["Menorat HaMaor"],core_ideas:["Ethical anthology from aggadah organized by menorah","Making aggadah accessible to the public"],tags:["musar","aggadah","spanish-jewry"],related_sages:["hasdai-crescas","rashbatz"],teachers:[],students:[],origin_country:"Spain",migration_path:["קסטיליה, ספרד"],custom_tradition:"מוסר מבוסס אגדה",geo_region:"spain"},
+  {id:"rashbatz",name_he:"הרשב\"ץ",name_en:"Rashbatz",period:"Rishonim / Acharonim",years:"1361–1444",location:"Majorca, Spain / Algiers",main_works:["Tashbetz","Magen Avot","Ohev Mishpat"],core_ideas:["First to justify rabbinical salary from communal funds","Halacha combined with astronomy and philosophy","Shaped North African Jewish leadership"],tags:["halacha","philosophy","science","sephardic"],related_sages:["ribash"],teachers:["ribash"],students:[],origin_country:"Majorca, Spain",migration_path:["מיורקה, ספרד","אלג'יר, צפון אפריקה"],custom_tradition:"הנהגת יהדות צפון אפריקה",geo_region:"north-africa"},
+  {id:"maharak",name_he:"מהרא\"ק",name_en:"Maharak",period:"Rishonim / Acharonim",years:"c. 1400–1480",location:"Vienna / Austria-Germany",main_works:["Sefer HaMinhagim","Responsa"],core_ideas:["Codification of Ashkenazic customs","Teacher of Maharil and Maharam Mintz"],tags:["minhag","halacha","ashkenaz"],related_sages:["maharam-rothenburg","maharam-mintz"],teachers:[],students:["maharam-mintz"],origin_country:"Austria",migration_path:["וינה, אוסטריה"],custom_tradition:"עיצוב מנהגי אשכנז לאחר הגזרות",geo_region:"ashkenaz"},
+  {id:"maharam-mintz",name_he:"מהר\"ם מינץ",name_en:"Maharam Mintz",period:"Rishonim / Acharonim",years:"c. 1415–1480",location:"Bamberg / Augsburg / Mainz, Germany",main_works:["Responsa (Shut Maharam Mintz)"],core_ideas:["Authority on gittin, chalitza, and Ashkenazic minhag","Responsa amid German Jewish expulsions"],tags:["halacha","responsa","ashkenaz"],related_sages:["maharak","rabbi-yaakov-margaliot","rabbi-yaakov-landa"],teachers:["maharak"],students:[],origin_country:"Germany",migration_path:["במברג","אוגסבורג","מגנצא, גרמניה"],custom_tradition:"מסורת אשכנז בתקופת הגירושים",geo_region:"ashkenaz"},
+  {id:"rabbi-israel-kremz",name_he:"רבי ישראל מקרמז'",name_en:"Rabbi Israel of Kremz",period:"Rishonim / Acharonim",years:"c. 1390–1460",location:"Wiener Neustadt, Austria",main_works:["Trumat HaDeshen","Haggahot Asheri"],core_ideas:["Haggahot Asheri printed in all standard Talmud editions","Self-questioning responsa as pedagogical method"],tags:["halacha","responsa","minhag","ashkenaz"],related_sages:["maharam-rothenburg","maharam-mintz","rabbi-yaakov-margaliot"],teachers:[],students:[],origin_country:"Austria",migration_path:["וינר ניישטאט, אוסטריה"],custom_tradition:"הגהות אשר\"י על כל מסכת",geo_region:"ashkenaz"},
+  {id:"rabbi-yaakov-margaliot",name_he:"רבי יעקב מרגליות",name_en:"Rabbi Yaakov Margaliot",period:"Rishonim / Acharonim",years:"c. 1420–1501",location:"Regensburg / Nuremberg, Germany",main_works:["Seder HaGet","Responsa"],core_ideas:["Definitive Ashkenazic authority on gittin","Halachic leadership in post-1349 community rebuilding"],tags:["halacha","gittin","ashkenaz"],related_sages:["maharam-mintz","rabbi-yaakov-landa"],teachers:[],students:[],origin_country:"Germany",migration_path:["רגנסבורג","נירנברג, גרמניה"],custom_tradition:"הלכות גיטין אשכנז",geo_region:"ashkenaz"},
+  {id:"rabbi-yaakov-landa",name_he:"רבי יעקב לנדא",name_en:"Rabbi Yaakov Landa",period:"Acharonim",years:"c. 1440–c. 1510",location:"Germany / Brescia, Italy",main_works:["Sefer HaAgur"],core_ideas:["Early printed halachic compendium","Ashkenaz-Italy cultural bridge","Pre-Shulchan Aruch Ashkenazic code"],tags:["halacha","minhag","ashkenaz"],related_sages:["maharam-mintz","rabbi-yaakov-margaliot"],teachers:[],students:[],origin_country:"Germany",migration_path:["גרמניה","ברשיה, איטליה"],custom_tradition:"ספר האגור – קיצור ראשון",geo_region:"ashkenaz"},
+  {id:"rabbi-israel-najara",name_he:"רבי ישראל נג'ארה",name_en:"Rabbi Israel Najara",period:"Acharonim",years:"c. 1555–1625",location:"Damascus, Syria / Gaza",main_works:["Zemirot Yisrael","Yah Ribbon"],core_ideas:["Most widely sung Shabbat zemer in Jewish world","Liturgical poetry in Hebrew, Aramaic, and Judeo-Arabic"],tags:["poetry","piyut","kabbalah","ottoman-sephardic"],related_sages:[],teachers:[],students:[],origin_country:"Syria",migration_path:["דמשק, סוריה","עזה"],custom_tradition:"פיוט עות'מאני-ספרדי",geo_region:"ottoman"},
+  {id:"yehuda-moscato",name_he:"יהודה מוסקאטו",name_en:"Yehuda Moscato",period:"Acharonim",years:"c. 1530–1593",location:"Mantua, Italy",main_works:["Nefutzot Yehudah","Kol Yehudah"],core_ideas:["Renaissance Jewish preaching with humanist rhetoric","Music as divine language","Jewish-Italian Renaissance synthesis"],tags:["homiletics","philosophy","music","italian-jewry","renaissance"],related_sages:["rabbi-menachem-azaria-fano"],teachers:[],students:["rabbi-menachem-azaria-fano"],origin_country:"Italy",migration_path:["מנטובה, איטליה"],custom_tradition:"רנסנס יהודי-איטלקי",geo_region:"italy"},
+  {id:"rabbi-elazar-azikri",name_he:"רבי אלעזר אזכרי",name_en:"Rabbi Elazar Azikri",period:"Acharonim",years:"1533–1600",location:"Safed, Ottoman Palestine",main_works:["Sefer Haredim","Yedid Nefesh"],core_ideas:["Love of God as central motivator of all religious life","Body as instrument of divine service","Safed Kabbalistic circle"],tags:["kabbalah","poetry","musar","safed-kabbalists"],related_sages:["rabbi-israel-najara"],teachers:[],students:[],origin_country:"Land of Israel",migration_path:["צפת, ארץ ישראל"],custom_tradition:"מעגל המקובלים בצפת",geo_region:"land-of-israel"},
+  {id:"rabbi-david-gans",name_he:"רבי דוד גנז",name_en:"Rabbi David Gans",period:"Acharonim",years:"1541–1613",location:"Westphalia / Frankfurt / Prague",main_works:["Tzemach David","Nechmad VeNaim"],core_ideas:["First dual Jewish-general history chronicle","Copernican astronomy within Jewish framework","Collaboration with Tycho Brahe and Kepler"],tags:["history","astronomy","renaissance","prague"],related_sages:["maharam-mintz"],teachers:[],students:[],origin_country:"Germany",migration_path:["וסטפליה","פרנקפורט","פראג, בוהמיה"],custom_tradition:"היסטוריוגרפיה ומדע יהודי",geo_region:"eastern-europe"},
+  {id:"rabbi-menachem-azaria-fano",name_he:"רבי מנחם עזריה מפאנו",name_en:"Rabbi Menachem Azaria of Fano",period:"Acharonim",years:"1548–1620",location:"Fano / Mantua / Reggio Emilia, Italy",main_works:["Asarah Maamarot","Yonat Elem","Responsa"],core_ideas:["Lurianic Kabbalah in Italian philosophical style","Bridge between speculative theology and practical ethics"],tags:["kabbalah","halacha","ari-kabbalah","italian-jewry"],related_sages:["yehuda-moscato"],teachers:["yehuda-moscato"],students:[],origin_country:"Italy",migration_path:["פאנו","מנטובה","רג'ו אמיליה, איטליה"],custom_tradition:"קבלת האר\"י בסגנון איטלקי",geo_region:"italy"},
+  {id:"rabbi-israel-algazi",name_he:"רבי ישראל יעקב אלגאזי",name_en:"Rabbi Israel Yaakov Algazi",period:"Acharonim",years:"1680–1756",location:"Istanbul / Jerusalem",main_works:["Emet LeYaakov","Shalmei Tzibur"],core_ideas:["Rishon LeZion (head of Jerusalem rabbinate)","Preserved Sephardic Kabbalistic traditions","Strengthened Jerusalem yeshivot"],tags:["halacha","kabbalah","sephardic","jerusalem"],related_sages:[],teachers:[],students:[],origin_country:"Turkey",migration_path:["איסטנבול, טורקיה","ירושלים, ארץ ישראל"],custom_tradition:"ראשון לציון – הנהגת ירושלים",geo_region:"ottoman"},
+  {id:"ramchal",name_he:"הרמח\"ל",name_en:"Ramchal",period:"Acharonim",years:"1707–1746",location:"Padua, Italy / Amsterdam / Acre",main_works:["Mesillat Yesharim","Derekh Hashem","Derech Tevunot","Adir Bamarom"],core_ideas:["Ladder of character refinement","Systematic musar as spiritual science","Lurianic Kabbalah and classical Hebrew drama"],tags:["musar","kabbalah","poetry"],related_sages:[],teachers:[],students:[],origin_country:"Italy",migration_path:["פדובה, איטליה","אמסטרדם","עכו, ארץ ישראל"],custom_tradition:"מוסר שיטתי וקבלת האר\"י",geo_region:"italy"},
+  {id:"rabbi-benzion-uziel",name_he:"הרב בן-ציון מאיר חי עוזיאל",name_en:"Rabbi Ben-Zion Uziel",period:"Modern",years:"1880–1953",location:"Jerusalem, Israel",main_works:["Mishpetei Uziel","Sha'arei Uziel"],core_ideas:["Zionist-halachic ruling framework","Progressive Sephardic responsa","Land of Israel as condition for redemption"],tags:["halacha","responsa","zionism","sephardic","religious-zionism"],related_sages:[],teachers:[],students:[],origin_country:"Land of Israel",migration_path:["ירושלים"],custom_tradition:"הלכה ציונית-ספרדית",geo_region:"modern-israel"},
+  {id:"rabbi-mordechai-sharabi",name_he:"הרב מרדכי שרעבי",name_en:"Rabbi Mordechai Sharabi",period:"Modern",years:"1908–1983",location:"Yemen / Jerusalem",main_works:["Rechovot HaNahar"],core_ideas:["Yemenite Lurianic Kabbalah tradition","Nahar Shalom yeshiva as 20th-century Kabbalistic center"],tags:["kabbalah","yemenite-jewry","jerusalem"],related_sages:[],teachers:[],students:[],origin_country:"Yemen",migration_path:["תימן","ירושלים, ישראל"],custom_tradition:"קבלת האר\"י בנוסח תימן",geo_region:"yemen"},
+  {id:"rabbi-levi-saadia-nahmani",name_he:"הרב לוי סעדיה נחמני",name_en:"Rabbi Levi Saadia Nahmani",period:"Modern",years:"1906–1993",location:"Libya / Israel",main_works:["Various shiurim and sermons"],core_ideas:["Prophetic oratory about redemption of Israel","Libyan Jewish communal leader","Integralist stance on Land of Israel"],tags:["homiletics","zionism","sephardic","libyan-jewry"],related_sages:[],teachers:[],students:[],origin_country:"Libya",migration_path:["לוב","ישראל"],custom_tradition:"נביא הגאולה של יהדות לוב",geo_region:"north-africa"},
+  {id:"pinchas-kehati",name_he:"פנחס קהתי",name_en:"Pinchas Kehati",period:"Modern",years:"1910–1976",location:"Poland / Israel",main_works:["Mishnayot Kehati"],core_ideas:["Commentary integrated into Mishnah itself","Vowelized all six orders of Mishnah","Making Torah accessible to working youth"],tags:["mishnah","education","religious-zionism"],related_sages:[],teachers:[],students:[],origin_country:"Poland",migration_path:["פולין","ישראל"],custom_tradition:"הנגשת המשנה לציבור הרחב",geo_region:"eastern-europe"},
+  {id:"netivot-shalom",name_he:"הרב שלום נח ברזובסקי",name_en:"Netivot Shalom",period:"Modern",years:"1911–2000",location:"Poland / Jerusalem",main_works:["Netivot Shalom"],core_ideas:["Faith as lived experience","Joy, trust, and devekut as pillars","\"Son of the King\" consciousness"],tags:["hasidut","musar","slonimer-hasidut"],related_sages:["bachya-ibn-paquda"],teachers:[],students:[],origin_country:"Poland",migration_path:["פולין","ירושלים, ישראל"],custom_tradition:"חסידות סלונים – אמונה כחוויה",geo_region:"eastern-europe"},
+  {id:"rabbi-elisha-wishlitzky",name_he:"הרב אלישע וישליצקי",name_en:"Rabbi Elisha Wishlitzky",period:"Modern",years:"20th century",location:"Israel",main_works:[],core_ideas:["Bridge-building between communities","Humble leadership model","Connecting secular and religious Israelis"],tags:["leadership","education","religious-zionism"],related_sages:[],teachers:[],students:[],origin_country:"Israel",migration_path:["ישראל"],custom_tradition:"הנהגה ענווה ומגשרת",geo_region:"modern-israel"},
+  {id:"rabbi-rafael-moshe-luria",name_he:"רבי רפאל משה לוריא",name_en:"Rabbi Rafael Moshe Luria",period:"Modern",years:"20th century",location:"Israel",main_works:[],core_ideas:["Synthesis of halachic mastery and Kabbalistic depth"],tags:["halacha","kabbalah","contemporary"],related_sages:[],teachers:[],students:[],origin_country:"Israel",migration_path:["ישראל"],custom_tradition:"סינתזה של הלכה וקבלה",geo_region:"modern-israel"},
+  {id:"rabbi-avraham-livni",name_he:"רב ד\"ר אברהם לבני",name_en:"Rabbi Dr. Avraham Livni",period:"Modern",years:"20th–21st century",location:"Israel",main_works:[],core_ideas:["Jewish meta-historical framework","Polemic against antisemitism","Redemptive reading of Jewish history"],tags:["philosophy","history","contemporary"],related_sages:[],teachers:[],students:[],origin_country:"Israel",migration_path:["ישראל"],custom_tradition:"מטא-היסטוריה ויהדות",geo_region:"modern-israel"}
 ];
 
-const PERIODS_DATA = [
-  {"id":"second-temple","name_he":"בית שני","name_en":"Second Temple","approx_dates":"c. 516 BCE–70 CE"},
-  {"id":"tannaim","name_he":"תנאים","name_en":"Tannaim","approx_dates":"10–220 CE"},
-  {"id":"rishonim","name_he":"ראשונים","name_en":"Rishonim","approx_dates":"1038–1563 CE"},
-  {"id":"acharonim","name_he":"אחרונים","name_en":"Acharonim","approx_dates":"1563–1900 CE"},
-  {"id":"modern","name_he":"עת החדשה","name_en":"Modern","approx_dates":"1900 CE–present"}
+const PERIODS_DATA=[
+  {id:"second-temple",name_he:"בית שני",name_en:"Second Temple",approx_dates:"c. 516 BCE–70 CE"},
+  {id:"tannaim",name_he:"תנאים",name_en:"Tannaim",approx_dates:"10–220 CE"},
+  {id:"rishonim",name_he:"ראשונים",name_en:"Rishonim",approx_dates:"1038–1563 CE"},
+  {id:"acharonim",name_he:"אחרונים",name_en:"Acharonim",approx_dates:"1563–1900 CE"},
+  {id:"modern",name_he:"עת החדשה",name_en:"Modern",approx_dates:"1900 CE–present"}
 ];
 
-/* ── constants ── */
-const PC = {
-  'second-temple':'#5c4a9e',
-  tannaim:'#2e7d32',
-  rishonim:'#8b2020',
-  acharonim:'#1a5ca8',
-  modern:'#3d4f5c'
+const GEO_REGIONS=[
+  {id:"land-of-israel",name_he:"ארץ ישראל",description:"כנען, יהודה, הגליל, ירושלים, צפת",emoji:"🕍"},
+  {id:"spain",name_he:"ספרד",description:"חצי האי האיברי – מרכז יהדות ספרד",emoji:"🏰"},
+  {id:"ashkenaz",name_he:"אשכנז וצרפת",description:"גרמניה, אוסטריה, צרפת הצפונית",emoji:"⚔️"},
+  {id:"provence",name_he:"פרובינס",description:"דרום צרפת – מרכז הפילוסופיה היהודית",emoji:"📜"},
+  {id:"north-africa",name_he:"צפון אפריקה",description:"אלג'יריה, תוניס, מרוקו, לוב",emoji:"🌍"},
+  {id:"egypt-babylon",name_he:"מצרים ובבל",description:"מצרים, בגדד, אלכסנדריה",emoji:"🏺"},
+  {id:"italy",name_he:"איטליה",description:"מנטובה, פדובה, ונציה, רג'ו אמיליה",emoji:"🎭"},
+  {id:"ottoman",name_he:"האימפריה העות'מאנית",description:"טורקיה, סוריה, עזה, ירושלים",emoji:"🌙"},
+  {id:"eastern-europe",name_he:"מזרח אירופה",description:"פולין, ביהמיה, פראג, ליטא",emoji:"❄️"},
+  {id:"yemen",name_he:"תימן",description:"גלות תימן ומסורתה",emoji:"✨"},
+  {id:"modern-israel",name_he:"ישראל המודרנית",description:"ירושלים, בני ברק, ישראל המדינה",emoji:"🇮🇱"}
+];
+
+const SHORT_NAMES={
+  'philo-alexandria':'פילון','rabbi-meir-tanna':'ר\' מאיר','rabbi-yehuda-bar-ilai':'ר\' יהודה',
+  'rabbeinu-gershom':'ר"ג מאה"ג','bachya-ibn-paquda':'ר"ב אבן פקודה','riva':'ריב"א',
+  'ravad-posquieres':'ראב"ד','razah':'הרז"ה','rashbam':'רשב"ם',
+  'rabbi-yosef-bechor-shor':'בכור שור','rabbi-yehuda-hechasid':'יהודה החסיד',
+  'rambam':'רמב"ם','maharam-rothenburg':'מהר"ם','ramban':'רמב"ן',
+  'ritva':'ריטב"א','rabbeinu-bachya-ben-asher':'רבינו בחיי','maharam-segal':'מהר"ם סג"ל',
+  'maggid-mishneh':'מגיד משנה','rabbi-shimshon-ben-eliezer':'ברוך שאמר','baal-haturim':'בעל הטורים',
+  'ribash':'ריב"ש','hasdai-crescas':'ר\' חסדאי','rabbi-yitzhak-abuhav':'אבוהב',
+  'rashbatz':'רשב"ץ','maharak':'מהרא"ק','maharam-mintz':'מהר"ם מינץ',
+  'rabbi-israel-kremz':'ר\' ישראל קרמז\'','rabbi-yaakov-margaliot':'ר\' יעקב מרגליות',
+  'rabbi-yaakov-landa':'ר\' יעקב לנדא','rabbi-israel-najara':'ר\' ישראל נג\'ארה',
+  'yehuda-moscato':'מוסקאטו','rabbi-elazar-azikri':'אזכרי','rabbi-david-gans':'ר\' דוד גנז',
+  'rabbi-menachem-azaria-fano':'ר"מ מפאנו','rabbi-israel-algazi':'אלגאזי',
+  'ramchal':'רמח"ל','rabbi-benzion-uziel':'הרב עוזיאל','rabbi-mordechai-sharabi':'הרב שרעבי',
+  'rabbi-levi-saadia-nahmani':'הרב נחמני','pinchas-kehati':'קהתי',
+  'netivot-shalom':'נתיבות שלום','rabbi-elisha-wishlitzky':'הרב וישליצקי',
+  'rabbi-rafael-moshe-luria':'הרב לוריא','rabbi-avraham-livni':'הרב לבני'
 };
 
-const TP = {
-  halacha:['#dce8ff','#1a3a8b','rgba(26,58,139,.16)'],
-  responsa:['#dce8ff','#1a3a8b','rgba(26,58,139,.16)'],
-  takanot:['#dce8ff','#1a3a8b','rgba(26,58,139,.16)'],
-  minhag:['#dce8ff','#1a3a8b','rgba(26,58,139,.16)'],
-  gittin:['#dce8ff','#1a3a8b','rgba(26,58,139,.16)'],
-  stam:['#dce8ff','#1a3a8b','rgba(26,58,139,.16)'],
-  talmud:['#dce8ff','#1a3a8b','rgba(26,58,139,.16)'],
-  mishnah:['#dce8ff','#1a3a8b','rgba(26,58,139,.16)'],
-  kabbalah:['#ede7f6','#5c1ca8','rgba(92,28,168,.16)'],
-  mysticism:['#ede7f6','#5c1ca8','rgba(92,28,168,.16)'],
-  'safed-kabbalists':['#ede7f6','#5c1ca8','rgba(92,28,168,.16)'],
-  'ari-kabbalah':['#ede7f6','#5c1ca8','rgba(92,28,168,.16)'],
-  philosophy:['#e0f2f1','#005f56','rgba(0,95,86,.16)'],
-  theology:['#e0f2f1','#005f56','rgba(0,95,86,.16)'],
-  rationalism:['#e0f2f1','#005f56','rgba(0,95,86,.16)'],
-  'anti-aristotelian':['#e0f2f1','#005f56','rgba(0,95,86,.16)'],
-  musar:['#fff3e0','#b45309','rgba(180,83,9,.16)'],
-  ethics:['#fff3e0','#b45309','rgba(180,83,9,.16)'],
-  hasidut:['#fff3e0','#b45309','rgba(180,83,9,.16)'],
-  'torah-commentary':['#fce4ec','#880e4f','rgba(136,14,79,.16)'],
-  peshat:['#fce4ec','#880e4f','rgba(136,14,79,.16)'],
-  'biblical-allegory':['#fce4ec','#880e4f','rgba(136,14,79,.16)'],
-  'biblical-psychology':['#fce4ec','#880e4f','rgba(136,14,79,.16)'],
-  pardes:['#fce4ec','#880e4f','rgba(136,14,79,.16)'],
-  poetry:['#fce4ec','#ad1457','rgba(173,20,87,.16)'],
-  piyut:['#fce4ec','#ad1457','rgba(173,20,87,.16)'],
-  music:['#fce4ec','#ad1457','rgba(173,20,87,.16)'],
-  homiletics:['#fce4ec','#ad1457','rgba(173,20,87,.16)'],
-  history:['#e0f7fa','#006064','rgba(0,96,100,.16)'],
-  astronomy:['#e0f7fa','#006064','rgba(0,96,100,.16)'],
-  science:['#e0f7fa','#006064','rgba(0,96,100,.16)'],
-  zionism:['#e8f5e9','#1b5e20','rgba(27,94,32,.16)'],
-  'religious-zionism':['#e8f5e9','#1b5e20','rgba(27,94,32,.16)'],
-  education:['#eceff1','#37474f','rgba(55,71,79,.16)'],
-  leadership:['#eceff1','#37474f','rgba(55,71,79,.16)'],
-  medicine:['#fde0e0','#b71c1c','rgba(183,28,28,.16)']
+const PC={'second-temple':'#5c4a9e',tannaim:'#2e7d32',rishonim:'#8b2020',acharonim:'#1a5ca8',modern:'#3d4f5c'};
+
+const TP={
+  halacha:['#dce8ff','#1a3a8b','rgba(26,58,139,.16)'],responsa:['#dce8ff','#1a3a8b','rgba(26,58,139,.16)'],
+  takanot:['#dce8ff','#1a3a8b','rgba(26,58,139,.16)'],minhag:['#dce8ff','#1a3a8b','rgba(26,58,139,.16)'],
+  gittin:['#dce8ff','#1a3a8b','rgba(26,58,139,.16)'],stam:['#dce8ff','#1a3a8b','rgba(26,58,139,.16)'],
+  talmud:['#dce8ff','#1a3a8b','rgba(26,58,139,.16)'],mishnah:['#dce8ff','#1a3a8b','rgba(26,58,139,.16)'],
+  kabbalah:['#ede7f6','#5c1ca8','rgba(92,28,168,.16)'],mysticism:['#ede7f6','#5c1ca8','rgba(92,28,168,.16)'],
+  'safed-kabbalists':['#ede7f6','#5c1ca8','rgba(92,28,168,.16)'],'ari-kabbalah':['#ede7f6','#5c1ca8','rgba(92,28,168,.16)'],
+  philosophy:['#e0f2f1','#005f56','rgba(0,95,86,.16)'],theology:['#e0f2f1','#005f56','rgba(0,95,86,.16)'],
+  rationalism:['#e0f2f1','#005f56','rgba(0,95,86,.16)'],'anti-aristotelian':['#e0f2f1','#005f56','rgba(0,95,86,.16)'],
+  musar:['#fff3e0','#b45309','rgba(180,83,9,.16)'],ethics:['#fff3e0','#b45309','rgba(180,83,9,.16)'],
+  hasidut:['#fff3e0','#b45309','rgba(180,83,9,.16)'],'torah-commentary':['#fce4ec','#880e4f','rgba(136,14,79,.16)'],
+  peshat:['#fce4ec','#880e4f','rgba(136,14,79,.16)'],'biblical-allegory':['#fce4ec','#880e4f','rgba(136,14,79,.16)'],
+  'biblical-psychology':['#fce4ec','#880e4f','rgba(136,14,79,.16)'],pardes:['#fce4ec','#880e4f','rgba(136,14,79,.16)'],
+  poetry:['#fce4ec','#ad1457','rgba(173,20,87,.16)'],piyut:['#fce4ec','#ad1457','rgba(173,20,87,.16)'],
+  music:['#fce4ec','#ad1457','rgba(173,20,87,.16)'],homiletics:['#fce4ec','#ad1457','rgba(173,20,87,.16)'],
+  history:['#e0f7fa','#006064','rgba(0,96,100,.16)'],astronomy:['#e0f7fa','#006064','rgba(0,96,100,.16)'],
+  science:['#e0f7fa','#006064','rgba(0,96,100,.16)'],zionism:['#e8f5e9','#1b5e20','rgba(27,94,32,.16)'],
+  'religious-zionism':['#e8f5e9','#1b5e20','rgba(27,94,32,.16)'],education:['#eceff1','#37474f','rgba(55,71,79,.16)'],
+  leadership:['#eceff1','#37474f','rgba(55,71,79,.16)'],medicine:['#fde0e0','#b71c1c','rgba(183,28,28,.16)']
 };
 
 function ts(t){const p=TP[t];return p?`--cbg:${p[0]};--cfg:${p[1]};--cbr:${p[2]};`:'';}
 
-/* ── state ── */
-let sages=[], pm={}, pf='all', sq='';
+/* ─── STATE ─── */
+let sages=[], pm={}, pf='all', sq='', currentView='grid';
+let graphInited=false;
 
-/* ── helpers ── */
+/* ─── HELPERS ─── */
 function pk(p){
-  if(!p)return'other';
-  const l=p.toLowerCase();
+  if(!p)return'other';const l=p.toLowerCase();
   if(l.includes('second temple'))return'second-temple';
   if(l.includes('tannaim'))return'tannaim';
   if(l.includes('modern'))return'modern';
@@ -280,33 +376,38 @@ function pk(p){
   return'other';
 }
 function pcolor(p){const k=pk(p);return k==='both'?'#7b6020':(PC[k]||'#888');}
-function phe(p){
-  const k=pk(p);
-  if(k==='both')return'ראשונים / אחרונים';
-  return pm[k]?pm[k].name_he:p;
-}
+function phe(p){const k=pk(p);if(k==='both')return'ראשונים / אחרונים';return pm[k]?pm[k].name_he:p;}
 function fits(s,f){
   if(f==='all')return true;
   const k=pk(s.period);
-  if(f==='rishonim') return k==='rishonim'||k==='both';
+  if(f==='rishonim')return k==='rishonim'||k==='both';
   if(f==='acharonim')return k==='acharonim'||k==='both';
   return k===f;
 }
 function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function svgEl(tag){return document.createElementNS('http://www.w3.org/2000/svg',tag);}
 
-/* ── boot ── */
-sages = SAGES_DATA;
-PERIODS_DATA.forEach(p => pm[p.id] = p);
-
+/* ─── BOOT ─── */
+sages=SAGES_DATA;
+PERIODS_DATA.forEach(p=>pm[p.id]=p);
 buildFilters();
 render();
 
-document.getElementById('q').addEventListener('input', e => { sq = e.target.value.trim().toLowerCase(); render(); });
-document.getElementById('mcl').addEventListener('click', closeModal);
-document.getElementById('ov').addEventListener('click', e => { if(e.target===e.currentTarget) closeModal(); });
-document.addEventListener('keydown', e => { if(e.key==='Escape') closeModal(); });
+document.getElementById('q').addEventListener('input',e=>{sq=e.target.value.trim().toLowerCase();render();});
+document.getElementById('mcl').addEventListener('click',closeModal);
+document.getElementById('ov').addEventListener('click',e=>{if(e.target===e.currentTarget)closeModal();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
 
-/* ── filters ── */
+document.querySelectorAll('.vt-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.vt-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    currentView=btn.dataset.view;
+    render();
+  });
+});
+
+/* ─── FILTERS ─── */
 function buildFilters(){
   const ORDER=['all','second-temple','tannaim','rishonim','acharonim','modern'];
   const LBL={all:'הכל','second-temple':'בית שני',tannaim:'תנאים',rishonim:'ראשונים',acharonim:'אחרונים',modern:'עת החדשה'};
@@ -318,33 +419,35 @@ function buildFilters(){
     return`<button type="button" class="pill${k==='all'?' on':''}" data-k="${k}" style="--pc:${col}">${LBL[k]||k}<span class="n">${cnt}</span></button>`;
   }).join('');
   fc.addEventListener('click',e=>{
-    const b=e.target.closest('.pill');
-    if(!b)return;
+    const b=e.target.closest('.pill');if(!b)return;
     fc.querySelectorAll('.pill').forEach(x=>x.classList.remove('on'));
-    b.classList.add('on');
-    pf=b.dataset.k;
-    render();
+    b.classList.add('on');pf=b.dataset.k;render();
   });
 }
 
-/* ── render ── */
+/* ─── RENDER DISPATCHER ─── */
 function render(){
+  document.getElementById('view-grid').classList.toggle('active',currentView==='grid');
+  document.getElementById('view-network').classList.toggle('active',currentView==='network');
+  document.getElementById('view-geo').classList.toggle('active',currentView==='geo');
+  if(currentView==='grid')renderGrid();
+  else if(currentView==='network'){if(!graphInited){initNetwork();graphInited=true;}else applyNetworkFilter();}
+  else if(currentView==='geo')renderGeo();
+}
+
+/* ─── GRID VIEW ─── */
+function renderGrid(){
   const f=sages.filter(s=>{
     if(!fits(s,pf))return false;
     if(!sq)return true;
     const h=[s.name_he,s.name_en,s.location,s.period,...(s.tags||[]),...(s.core_ideas||[]),...(s.main_works||[])].join(' ').toLowerCase();
     return h.includes(sq);
   });
-  const g=document.getElementById('grid');
-  const rc=document.getElementById('rc');
-  if(!f.length){
-    g.innerHTML='<div class="empty"><div class="eico">📜</div><p>לא נמצאו חכמים התואמים לחיפוש</p></div>';
-    rc.textContent='';return;
-  }
+  const g=document.getElementById('grid'),rc=document.getElementById('rc');
+  if(!f.length){g.innerHTML='<div class="empty"><div class="eico">📜</div><p>לא נמצאו חכמים התואמים לחיפוש</p></div>';rc.textContent='';return;}
   rc.textContent=(sq||pf!=='all')?`נמצאו ${f.length} חכמים`:`${f.length} חכמים`;
   g.innerHTML=f.map(s=>{
-    const col=pcolor(s.period),ph=phe(s.period);
-    const t3=(s.tags||[]).slice(0,3),ex=(s.tags||[]).length-3;
+    const col=pcolor(s.period),ph=phe(s.period),t3=(s.tags||[]).slice(0,3),ex=(s.tags||[]).length-3;
     return`<div class="card" data-id="${s.id}" tabindex="0" role="button" aria-label="${esc(s.name_he)}" style="--cc:${col}">
       <span class="badge">${esc(ph)}</span>
       <div><div class="c-he">${esc(s.name_he)}</div>${s.name_en?`<div class="c-en">${esc(s.name_en)}</div>`:''}</div>
@@ -352,10 +455,7 @@ function render(){
         ${s.years?`<div class="c-row"><span>📅</span><span>${esc(s.years)}</span></div>`:''}
         ${s.location?`<div class="c-row"><span>📍</span><span>${esc(s.location)}</span></div>`:''}
       </div>
-      <div class="c-tags">
-        ${t3.map(t=>`<span class="chip" style="${ts(t)}">${esc(t)}</span>`).join('')}
-        ${ex>0?`<span class="chip">+${ex}</span>`:''}
-      </div>
+      <div class="c-tags">${t3.map(t=>`<span class="chip" style="${ts(t)}">${esc(t)}</span>`).join('')}${ex>0?`<span class="chip">+${ex}</span>`:''}</div>
     </div>`;
   }).join('');
   g.querySelectorAll('.card').forEach(c=>{
@@ -364,39 +464,409 @@ function render(){
   });
 }
 
-/* ── modal ── */
+/* ─── NETWORK GRAPH ─── */
+let SIM_NODES=[], SIM_LINKS=[], nodeIndex=new Map(), nodeEls=new Map(), linkEls=new Map();
+let simFrame=null, simAlpha=1;
+let gTransX=0, gTransY=0, gScale=1;
+let graphW=1200, graphH=650;
+
+const PERIOD_BANDS=[
+  {k:'second-temple',x:0.01,w:0.10,label:'בית שני',fill:'rgba(92,74,158,0.06)'},
+  {k:'tannaim',x:0.10,w:0.09,label:'תנאים',fill:'rgba(46,125,50,0.06)'},
+  {k:'rishonim',x:0.18,w:0.36,label:'ראשונים',fill:'rgba(139,32,32,0.06)'},
+  {k:'acharonim',x:0.53,w:0.27,label:'אחרונים',fill:'rgba(26,92,168,0.06)'},
+  {k:'modern',x:0.79,w:0.21,label:'עת החדשה',fill:'rgba(61,79,92,0.06)'}
+];
+
+const PERIOD_X_FRAC={'second-temple':0.055,'tannaim':0.145,'both':0.515,'rishonim':0.375,'acharonim':0.655,'modern':0.875,'other':0.50};
+
+function buildGraphData(){
+  SIM_NODES=[];SIM_LINKS=[];nodeIndex.clear();
+  sages.forEach(s=>{
+    const node={id:s.id,nameHe:s.name_he,pk:pk(s.period),color:pcolor(s.period),degree:0,x:0,y:0,vx:0,vy:0,ax:0,ay:0,r:22,pinned:false};
+    SIM_NODES.push(node);nodeIndex.set(s.id,node);
+  });
+  const seen=new Set();
+  sages.forEach(s=>{
+    (s.teachers||[]).forEach(tid=>{
+      const key=`${tid}|${s.id}`;
+      if(!seen.has(key)&&nodeIndex.has(tid)){seen.add(key);SIM_LINKS.push({source:tid,target:s.id,type:'teacher'});}
+    });
+    (s.related_sages||[]).forEach(rid=>{
+      const key=[s.id,rid].sort().join('|');
+      if(!seen.has(key)&&nodeIndex.has(rid)){seen.add(key);SIM_LINKS.push({source:s.id,target:rid,type:'related'});}
+    });
+  });
+  SIM_LINKS.forEach(l=>{
+    const sn=nodeIndex.get(l.source),tn=nodeIndex.get(l.target);
+    if(sn)sn.degree++;if(tn)tn.degree++;
+  });
+  SIM_NODES.forEach(n=>{n.r=20+Math.min(n.degree,6)*1.4;});
+}
+
+function initNodePositions(){
+  const byPk={};
+  SIM_NODES.forEach(n=>{if(!byPk[n.pk])byPk[n.pk]=[];byPk[n.pk].push(n);});
+  SIM_NODES.forEach(n=>{
+    const tx=(PERIOD_X_FRAC[n.pk]||0.5)*graphW;
+    const siblings=byPk[n.pk]||[n];
+    const si=siblings.indexOf(n),total=siblings.length;
+    n.x=tx+(Math.random()-.5)*70;
+    n.y=(si+0.5)/total*(graphH*0.86)+graphH*0.07;
+    n.vx=0;n.vy=0;
+  });
+}
+
+function simTick(){
+  const alpha=simAlpha,nodes=SIM_NODES,links=SIM_LINKS;
+  nodes.forEach(n=>{n.ax=0;n.ay=0;});
+  const R=900;
+  for(let i=0;i<nodes.length;i++){
+    for(let j=i+1;j<nodes.length;j++){
+      const a=nodes[i],b=nodes[j];
+      let dx=b.x-a.x||.01,dy=b.y-a.y||.01;
+      const d2=dx*dx+dy*dy,d=Math.sqrt(d2)||.01;
+      const f=R/d2;
+      a.ax-=f*dx/d;a.ay-=f*dy/d;
+      b.ax+=f*dx/d;b.ay+=f*dy/d;
+    }
+  }
+  const LD=105,LK=0.35;
+  links.forEach(l=>{
+    const s=nodeIndex.get(l.source),t=nodeIndex.get(l.target);
+    if(!s||!t)return;
+    const dx=t.x-s.x,dy=t.y-s.y;
+    const d=Math.sqrt(dx*dx+dy*dy)||.01;
+    const f=LK*(d-LD)/d;
+    s.ax+=f*dx;s.ay+=f*dy;t.ax-=f*dx;t.ay-=f*dy;
+  });
+  nodes.forEach(n=>{
+    const tx=(PERIOD_X_FRAC[n.pk]||.5)*graphW;
+    n.ax+=(tx-n.x)*0.055*alpha;
+    n.ay+=(graphH*.5-n.y)*.004;
+  });
+  const VD=0.45;
+  nodes.forEach(n=>{
+    if(n.pinned)return;
+    n.vx=(n.vx+n.ax*alpha)*(1-VD);
+    n.vy=(n.vy+n.ay*alpha)*(1-VD);
+    n.x=Math.max(n.r+2,Math.min(graphW-n.r-2,n.x+n.vx));
+    n.y=Math.max(n.r+2,Math.min(graphH-n.r-2,n.y+n.vy));
+  });
+}
+
+function renderPositions(){
+  nodeEls.forEach((el,id)=>{
+    const n=nodeIndex.get(id);
+    if(n)el.setAttribute('transform',`translate(${n.x.toFixed(1)},${n.y.toFixed(1)})`);
+  });
+  linkEls.forEach((el,key)=>{
+    const sep=key.indexOf('|');
+    const sid=key.slice(0,sep),tid=key.slice(sep+1);
+    const s=nodeIndex.get(sid),t=nodeIndex.get(tid);
+    if(!s||!t)return;
+    const dx=t.x-s.x,dy=t.y-s.y,d=Math.sqrt(dx*dx+dy*dy)||1;
+    const tr=nodeIndex.get(tid)?.r||22;
+    el.setAttribute('x1',s.x.toFixed(1));el.setAttribute('y1',s.y.toFixed(1));
+    el.setAttribute('x2',(t.x-dx/d*(tr+2)).toFixed(1));el.setAttribute('y2',(t.y-dy/d*(tr+2)).toFixed(1));
+  });
+}
+
+function startSim(){
+  simAlpha=1;if(simFrame)cancelAnimationFrame(simFrame);
+  function loop(){
+    if(simAlpha<0.004){simFrame=null;return;}
+    simTick();renderPositions();simAlpha*=0.978;
+    simFrame=requestAnimationFrame(loop);
+  }
+  simFrame=requestAnimationFrame(loop);
+}
+
+function applyTransform(){
+  const g=document.getElementById('graph-g');
+  if(g)g.setAttribute('transform',`translate(${gTransX.toFixed(2)},${gTransY.toFixed(2)}) scale(${gScale.toFixed(3)})`);
+}
+
+function applyNetworkFilter(){
+  const fn=pf;
+  nodeEls.forEach((el,id)=>{
+    const s=sages.find(x=>x.id===id);
+    const vis=!s||fits(s,fn);
+    el.style.opacity=vis?'1':'0.08';
+  });
+  linkEls.forEach((el,key)=>{
+    const sep=key.indexOf('|');
+    const sid=key.slice(0,sep),tid=key.slice(sep+1);
+    const ss=sages.find(x=>x.id===sid),ts=sages.find(x=>x.id===tid);
+    el.style.opacity=(fits(ss,fn)&&fits(ts,fn))?'1':'0.05';
+  });
+}
+
+let selectedNode=null;
+function highlightNode(nid){
+  selectedNode=nid;
+  const conn=new Set([nid]);
+  SIM_LINKS.forEach(l=>{if(l.source===nid)conn.add(l.target);if(l.target===nid)conn.add(l.source);});
+  nodeEls.forEach((el,id)=>{
+    if(conn.has(id)){
+      el.style.opacity='1';
+      const c=el.querySelector('circle');
+      if(c){c.setAttribute('stroke',id===nid?'rgba(255,215,80,.95)':'rgba(255,255,255,.5)');c.setAttribute('stroke-width',id===nid?'3':'1.5');}
+    }else{el.style.opacity='0.1';}
+  });
+  linkEls.forEach((el,key)=>{
+    const sep=key.indexOf('|'),sid=key.slice(0,sep),tid=key.slice(sep+1);
+    if(conn.has(sid)&&conn.has(tid)){el.style.opacity='1';el.setAttribute('stroke-width','2');}
+    else{el.style.opacity='0.06';}
+  });
+}
+
+function clearHighlight(){
+  selectedNode=null;
+  nodeEls.forEach(el=>{
+    el.style.opacity='1';
+    const c=el.querySelector('circle');
+    if(c){c.setAttribute('stroke','rgba(255,255,255,.18)');c.setAttribute('stroke-width','1.5');}
+  });
+  linkEls.forEach((el,key)=>{
+    el.style.opacity='1';
+    const sep=key.indexOf('|'),sid=key.slice(0,sep),tid=key.slice(sep+1);
+    const link=SIM_LINKS.find(l=>l.source===sid&&l.target===tid);
+    if(link)el.setAttribute('stroke-width',link.type==='teacher'?'1.5':'1');
+  });
+  applyNetworkFilter();
+}
+
+function initNetwork(){
+  const wrap=document.getElementById('graph-wrap');
+  graphW=wrap.clientWidth||1200;graphH=wrap.clientHeight||650;
+  const svg=document.getElementById('graph-svg');
+  svg.setAttribute('viewBox',`0 0 ${graphW} ${graphH}`);
+  svg.innerHTML='';
+
+  const defs=svgEl('defs');
+  ['teacher','related'].forEach(type=>{
+    const m=svgEl('marker');
+    m.setAttribute('id',`arr-${type}`);m.setAttribute('markerWidth','9');m.setAttribute('markerHeight','7');
+    m.setAttribute('refX','8');m.setAttribute('refY','3.5');m.setAttribute('orient','auto');
+    const p=svgEl('polygon');
+    p.setAttribute('points','0 0,9 3.5,0 7');
+    p.setAttribute('fill',type==='teacher'?'rgba(255,195,70,0.7)':'rgba(200,200,200,0.25)');
+    m.appendChild(p);defs.appendChild(m);
+  });
+  svg.appendChild(defs);
+
+  const rootG=svgEl('g');rootG.id='graph-g';svg.appendChild(rootG);
+
+  // Period bands
+  PERIOD_BANDS.forEach(b=>{
+    const r=svgEl('rect');
+    r.setAttribute('x',b.x*graphW);r.setAttribute('y',0);
+    r.setAttribute('width',b.w*graphW);r.setAttribute('height',graphH);
+    r.setAttribute('fill',b.fill);rootG.appendChild(r);
+    const line=svgEl('line');
+    line.setAttribute('x1',b.x*graphW);line.setAttribute('y1',0);
+    line.setAttribute('x2',b.x*graphW);line.setAttribute('y2',graphH);
+    line.setAttribute('stroke','rgba(255,255,255,.04)');line.setAttribute('stroke-width','1');
+    rootG.appendChild(line);
+    const txt=svgEl('text');
+    txt.setAttribute('x',(b.x+b.w/2)*graphW);txt.setAttribute('y',22);
+    txt.setAttribute('text-anchor','middle');txt.setAttribute('fill','rgba(255,255,255,.11)');
+    txt.setAttribute('font-size','12');txt.setAttribute('font-family','Heebo,Segoe UI,sans-serif');
+    txt.setAttribute('font-weight','600');txt.textContent=b.label;rootG.appendChild(txt);
+  });
+
+  const linkLayer=svgEl('g');linkLayer.id='link-layer';rootG.appendChild(linkLayer);
+  const nodeLayer=svgEl('g');nodeLayer.id='node-layer';rootG.appendChild(nodeLayer);
+
+  buildGraphData();
+  nodeEls.clear();linkEls.clear();
+
+  SIM_LINKS.forEach(l=>{
+    const el=svgEl('line');
+    el.setAttribute('stroke-width',l.type==='teacher'?'1.5':'1');
+    el.setAttribute('stroke',l.type==='teacher'?'rgba(255,190,60,.4)':'rgba(200,200,200,.16)');
+    if(l.type==='related')el.setAttribute('stroke-dasharray','5,4');
+    if(l.type==='teacher')el.setAttribute('marker-end','url(#arr-teacher)');
+    linkLayer.appendChild(el);
+    linkEls.set(`${l.source}|${l.target}`,el);
+  });
+
+  SIM_NODES.forEach(n=>{
+    const sage=sages.find(s=>s.id===n.id);if(!sage)return;
+    const g=svgEl('g');g.setAttribute('class','g-node');g.dataset.id=n.id;g.style.cursor='pointer';
+    const circle=svgEl('circle');
+    circle.setAttribute('r',n.r);circle.setAttribute('fill',n.color);
+    circle.setAttribute('stroke','rgba(255,255,255,.18)');circle.setAttribute('stroke-width','1.5');
+    g.appendChild(circle);
+    const sn=SHORT_NAMES[n.id]||n.nameHe.slice(0,7);
+    const txtEl=svgEl('text');
+    txtEl.setAttribute('text-anchor','middle');txtEl.setAttribute('dominant-baseline','central');
+    txtEl.setAttribute('fill','rgba(255,255,255,.92)');
+    txtEl.setAttribute('font-size',sn.length>6?'9':'10.5');
+    txtEl.setAttribute('font-weight','700');
+    txtEl.setAttribute('font-family','Heebo,Segoe UI,sans-serif');
+    txtEl.textContent=sn;g.appendChild(txtEl);
+    nodeLayer.appendChild(g);nodeEls.set(n.id,g);
+
+    const tt=document.getElementById('graph-tt');
+    g.addEventListener('mouseenter',e=>{
+      const conn=SIM_LINKS.filter(l=>l.source===n.id||l.target===n.id).length;
+      tt.style.display='block';
+      tt.innerHTML=`<div class="gt-name">${esc(sage.name_he)}</div><div class="gt-period">${esc(phe(sage.period))}${sage.years?` · ${esc(sage.years)}`:''}${sage.location?`<br>${esc(sage.location)}`:''}</div><div class="gt-stats">${conn} קישורים</div>`;
+      const rect=document.getElementById('graph-wrap').getBoundingClientRect();
+      let tx=e.clientX-rect.left+14,ty=e.clientY-rect.top+14;
+      if(tx+200>graphW)tx=e.clientX-rect.left-210;
+      tt.style.left=tx+'px';tt.style.top=ty+'px';
+    });
+    g.addEventListener('mouseleave',()=>{tt.style.display='none';});
+    g.addEventListener('click',e=>{
+      e.stopPropagation();
+      if(selectedNode===n.id){clearHighlight();}
+      else{highlightNode(n.id);}
+      openModal(n.id);
+    });
+    g.addEventListener('mousedown',e=>{
+      e.stopPropagation();n.pinned=true;
+      simAlpha=Math.max(simAlpha,0.25);if(!simFrame)startSim();
+      const svgRect=svg.getBoundingClientRect();
+      function onMove(ev){
+        const cx=(ev.clientX-svgRect.left)/gScale-gTransX/gScale;
+        const cy=(ev.clientY-svgRect.top)/gScale-gTransY/gScale;
+        n.x=Math.max(n.r+2,Math.min(graphW-n.r-2,cx));
+        n.y=Math.max(n.r+2,Math.min(graphH-n.r-2,cy));
+        renderPositions();
+      }
+      function onUp(){n.pinned=false;document.removeEventListener('mousemove',onMove);document.removeEventListener('mouseup',onUp);}
+      document.addEventListener('mousemove',onMove);document.addEventListener('mouseup',onUp);
+    });
+  });
+
+  // Pan/zoom
+  let isPan=false,panX0=0,panY0=0,panTX0=0,panTY0=0;
+  svg.addEventListener('mousedown',e=>{
+    if(e.target.closest('.g-node'))return;
+    isPan=true;svg.classList.add('panning');
+    panX0=e.clientX;panY0=e.clientY;panTX0=gTransX;panTY0=gTransY;
+  });
+  document.addEventListener('mousemove',e=>{
+    if(!isPan)return;
+    gTransX=panTX0+(e.clientX-panX0);gTransY=panTY0+(e.clientY-panY0);applyTransform();
+  });
+  document.addEventListener('mouseup',()=>{isPan=false;svg.classList.remove('panning');});
+  svg.addEventListener('wheel',e=>{
+    e.preventDefault();
+    const factor=e.deltaY>0?0.88:1.14;
+    const rect=svg.getBoundingClientRect();
+    const mx=e.clientX-rect.left,my=e.clientY-rect.top;
+    gTransX=mx-(mx-gTransX)*factor;gTransY=my-(my-gTransY)*factor;
+    gScale=Math.max(.25,Math.min(3.5,gScale*factor));applyTransform();
+  },{passive:false});
+  svg.addEventListener('click',e=>{if(!e.target.closest('.g-node')&&selectedNode){clearHighlight();}});
+
+  document.getElementById('gc-zi').onclick=()=>{gScale=Math.min(3.5,gScale*1.18);applyTransform();};
+  document.getElementById('gc-zo').onclick=()=>{gScale=Math.max(.25,gScale/1.18);applyTransform();};
+  document.getElementById('gc-reset').onclick=()=>{gScale=1;gTransX=0;gTransY=0;applyTransform();if(selectedNode)clearHighlight();};
+
+  // Legend
+  const leg=document.getElementById('graph-legend');
+  leg.innerHTML=`<div class="gl-title">תקופות</div>`+
+    PERIODS_DATA.map(p=>`<div class="gl-item"><span class="gl-dot" style="background:${PC[p.id]||'#888'}"></span>${esc(p.name_he)}</div>`).join('')+
+    `<div class="gl-divider"></div>`+
+    `<div class="gl-item"><span class="gl-line" style="background:rgba(255,190,60,.6)"></span>מורה-תלמיד</div>`+
+    `<div class="gl-item"><span class="gl-line" style="background:rgba(200,200,200,.25);border-top:1px dashed rgba(200,200,200,.4)"></span>קשר עניני</div>`;
+
+  initNodePositions();
+  startSim();
+  applyNetworkFilter();
+}
+
+/* ─── GEO VIEW ─── */
+function renderGeo(){
+  const f=sages.filter(s=>{
+    if(!fits(s,pf))return false;
+    if(!sq)return true;
+    const h=[s.name_he,s.name_en,s.location,s.period,...(s.tags||[])].join(' ').toLowerCase();
+    return h.includes(sq);
+  });
+  const byReg={};GEO_REGIONS.forEach(r=>byReg[r.id]=[]);
+  f.forEach(s=>{ const rid=s.geo_region||'modern-israel'; if(byReg[rid])byReg[rid].push(s); });
+  const active=GEO_REGIONS.filter(r=>byReg[r.id]&&byReg[r.id].length>0);
+  const grid=document.getElementById('geo-grid');
+  if(!active.length){grid.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:3rem;color:var(--muted)">לא נמצאו חכמים</div>';return;}
+  grid.innerHTML=active.map(r=>{
+    const ss=byReg[r.id];
+    return`<div class="geo-region">
+      <div class="geo-rh">
+        <span class="geo-emoji">${r.emoji}</span>
+        <div><div class="geo-name">${esc(r.name_he)}</div><div class="geo-desc">${esc(r.description)}</div></div>
+        <span class="geo-cnt">${ss.length}</span>
+      </div>
+      <div class="geo-sages">${ss.map(s=>{
+        const col=pcolor(s.period);
+        const path=(s.migration_path||[]).length>1?(s.migration_path||[]).join(' → '):s.location||'';
+        return`<div class="geo-sage" data-id="${s.id}">
+          <span class="gs-dot" style="background:${col}"></span>
+          <div class="gs-info"><div class="gs-name">${esc(s.name_he)}</div><div class="gs-years">${esc(s.years||'')}</div></div>
+          ${path?`<div class="gs-path" dir="ltr">${esc(path)}</div>`:''}
+        </div>`;
+      }).join('')}</div>
+    </div>`;
+  }).join('');
+  document.querySelectorAll('.geo-sage').forEach(el=>el.addEventListener('click',()=>openModal(el.dataset.id)));
+}
+
+/* ─── MODAL ─── */
+async function loadDeepResearch(id,container){
+  container.innerHTML=`<div class="deep-research"><div class="dr-header"><div class="dr-spinner"></div>מחקר מעמיק ומקורות</div><div class="dr-loading"><div class="dr-spinner"></div>טוען מחקר מעמיק…</div></div>`;
+  for(const ext of['.txt','.md']){
+    try{
+      const r=await fetch(`DATA/${id}${ext}`);
+      if(!r.ok)continue;
+      const txt=await r.text();
+      container.innerHTML=`<div class="deep-research"><div class="dr-header">📚 מחקר מעמיק ומקורות</div><div class="dr-body">${esc(txt)}</div></div>`;
+      return;
+    }catch{}
+  }
+  container.innerHTML='';
+}
+
 function openModal(id){
-  const s=sages.find(x=>x.id===id);
-  if(!s)return;
+  const s=sages.find(x=>x.id===id);if(!s)return;
   const col=pcolor(s.period),ph=phe(s.period);
   document.getElementById('mper').innerHTML=`<span class="mp-dot" style="background:${col}"></span>${esc(ph)}`;
   document.getElementById('mhe').textContent=s.name_he;
   document.getElementById('men').textContent=s.name_en||'';
   const b=[];
   const det=[];
-  if(s.period) det.push(['תקופה',s.period]);
-  if(s.years)  det.push(['שנות חיים',s.years]);
+  if(s.period)det.push(['תקופה',s.period]);
+  if(s.years)det.push(['שנות חיים',s.years]);
   if(s.location)det.push(['מקום',s.location]);
+  if(s.custom_tradition)det.push(['מסורת',s.custom_tradition]);
   if(det.length)b.push(`<div class="sec"><div class="sec-t">פרטים</div><div class="dg">${det.map(([l,v])=>`<div class="di"><div class="dl">${esc(l)}</div><div class="dv">${esc(v)}</div></div>`).join('')}</div></div>`);
+  if(s.migration_path&&s.migration_path.length>1){
+    const ph2=s.migration_path.map((loc,i)=>`<span class="mig-loc">${esc(loc)}</span>${i<s.migration_path.length-1?'<span class="mig-arr">→</span>':''}`).join('');
+    b.push(`<div class="sec"><div class="sec-t">נדודים ומסע</div><div class="mig-path">${ph2}</div></div>`);
+  }
   if(s.main_works&&s.main_works.length)b.push(`<div class="sec"><div class="sec-t">חיבורים עיקריים</div><ul class="wl">${s.main_works.map(w=>`<li>${esc(w)}</li>`).join('')}</ul></div>`);
   if(s.core_ideas&&s.core_ideas.length)b.push(`<div class="sec"><div class="sec-t">רעיונות מרכזיים</div><ul class="il">${s.core_ideas.map(i=>`<li>${esc(i)}</li>`).join('')}</ul></div>`);
-  if(s.tags&&s.tags.length)b.push(`<div class="sec"><div class="sec-t">תגיות</div><div class="tr">${s.tags.map(t=>`<span class="tchip" style="${ts(t)}">${esc(t)}</span>`).join('')}</div></div>`);
-  const rels=(s.related_sages||[]).map(id=>sages.find(x=>x.id===id)).filter(Boolean);
+  const tch=(s.teachers||[]).map(tid=>sages.find(x=>x.id===tid)).filter(Boolean);
+  if(tch.length)b.push(`<div class="sec"><div class="sec-t">רבותיו</div><div class="rr">${tch.map(t=>`<button type="button" class="rbtn" data-id="${t.id}">${esc(t.name_he)}</button>`).join('')}</div></div>`);
+  const stu=sages.filter(x=>(x.teachers||[]).includes(id));
+  if(stu.length)b.push(`<div class="sec"><div class="sec-t">תלמידיו</div><div class="rr">${stu.map(t=>`<button type="button" class="rbtn rst" data-id="${t.id}">${esc(t.name_he)}</button>`).join('')}</div></div>`);
+  const rels=(s.related_sages||[]).map(rid=>sages.find(x=>x.id===rid)).filter(Boolean);
   if(rels.length)b.push(`<div class="sec"><div class="sec-t">חכמים קשורים</div><div class="rr">${rels.map(r=>`<button type="button" class="rbtn" data-id="${r.id}">${esc(r.name_he)}</button>`).join('')}</div></div>`);
-  if(s.source_files&&s.source_files.length)b.push(`<div class="sec"><div class="sec-t">קבצי מקור</div><ul class="sl">${s.source_files.map(f=>`<li>${esc(f)}</li>`).join('')}</ul></div>`);
+  if(s.tags&&s.tags.length)b.push(`<div class="sec"><div class="sec-t">תגיות</div><div class="tr">${s.tags.map(t=>`<span class="tchip" style="${ts(t)}">${esc(t)}</span>`).join('')}</div></div>`);
+  b.push(`<div id="dr-container"></div>`);
   document.getElementById('mb').innerHTML=b.join('');
   document.querySelectorAll('.rbtn').forEach(btn=>btn.addEventListener('click',()=>openModal(btn.dataset.id)));
+  loadDeepResearch(id,document.getElementById('dr-container'));
   const ov=document.getElementById('ov');
-  ov.scrollTop=0;
-  ov.classList.remove('hide');
-  document.body.style.overflow='hidden';
+  ov.scrollTop=0;ov.classList.remove('hide');document.body.style.overflow='hidden';
   document.getElementById('mcl').focus();
 }
 
-function closeModal(){
-  document.getElementById('ov').classList.add('hide');
-  document.body.style.overflow='';
-}
+function closeModal(){document.getElementById('ov').classList.add('hide');document.body.style.overflow='';}
 </script>
 </body>
 </html>
