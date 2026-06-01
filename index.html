@@ -187,9 +187,9 @@
         legend.addTo(mapInstance);
 
         // Add colored markers for sages using location-mapping
-        if (graphData && graphData.nodes) {
+        if (window.graphData && window.graphData.nodes) {
             let markersAdded = 0;
-            graphData.nodes.forEach(node => {
+            window.graphData.nodes.forEach(node => {
                 if (node.location) {
                     const locations = parseLocation(node.location);
                     const color = getEraColor(node.group);
@@ -217,9 +217,13 @@
     }
 
     function buildTraditions() {
-        if (!graphData || !graphData.nodes) return;
+        if (!window.graphData || !window.graphData.nodes) {
+            console.warn('No graph data for traditions');
+            return;
+        }
+
         const traditions = {};
-        graphData.nodes.forEach(node => {
+        window.graphData.nodes.forEach(node => {
             const t = node.field || 'Other';
             if (!traditions[t]) traditions[t] = [];
             traditions[t].push(node);
@@ -306,29 +310,31 @@
         }
     }
 
-    // Fallback function - load from local data.json with edges
-    async function loadLocalData() {
+    // Load master data from local data.json (single source of truth)
+    async function loadMasterData() {
         try {
             const response = await fetch('data.json');
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
             const data = await response.json();
-            console.log(`✓ Loaded ${data.nodes.length} nodes + ${data.links.length} edges from local data.json`);
+
+            if (!data.nodes || !Array.isArray(data.nodes)) {
+                throw new Error('Invalid data structure: missing nodes array');
+            }
+
+            console.log(`✓ Master data loaded: ${data.nodes.length} nodes + ${data.links?.length || 0} edges`);
             return data;
-        } catch (e) {
-            console.error('✗ Supabase error:', e);
-            console.log('📡 Falling back to local data.json...');
-            const response = await fetch('data.json');
-            return await response.json();
+        } catch (error) {
+            console.error('✗ Failed to load master data:', error);
+            // Return empty structure to prevent null errors
+            return { nodes: [], links: [] };
         }
     }
 
+    // Initialize app with data
     document.addEventListener('DOMContentLoaded', async () => {
-        try {
-            // Use local data.json with edges for visualization
-            graphData = await loadLocalData();
-            console.log('✓ Ready:', graphData.nodes.length, 'sages +', graphData.links.length, 'edges');
-        } catch (e) {
-            console.error('✗ Error loading data:', e);
-        }
+        console.log('📂 Loading master dataset...');
+        window.graphData = await loadMasterData();
+        console.log('✓ Ready to initialize views');
     });
 </script>
 

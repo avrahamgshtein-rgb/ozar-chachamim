@@ -41,26 +41,34 @@ class SageNetwork {
   }
 
   /**
-   * Load data from Supabase or JSON fallback
+   * Load data from global window.graphData (loaded by index.html)
    */
   async init() {
     try {
-      // Data comes from Supabase via index.html's fetchFromSupabase()
-      if (window.graphData) {
-        this.data = window.graphData;
-        console.log(`✓ Using Supabase data: ${this.data.nodes.length} nodes`);
-      } else {
-        // Fallback to JSON file if not loaded by index.html
-        const response = await fetch(this.dataUrl);
-        this.data = await response.json();
-        console.log(`✓ Using local data: ${this.data.nodes.length} nodes`);
+      // Wait for data to be available (loaded by DOMContentLoaded in index.html)
+      let retries = 10;
+      while (!window.graphData && retries > 0) {
+        await new Promise(r => setTimeout(r, 100));
+        retries--;
       }
+
+      if (!window.graphData) {
+        throw new Error('Failed to load master data after retries');
+      }
+
+      this.data = window.graphData;
+
+      if (!this.data.nodes || this.data.nodes.length === 0) {
+        throw new Error('No nodes in dataset');
+      }
+
+      console.log(`✓ Graph initialized: ${this.data.nodes.length} nodes + ${this.data.links?.length || 0} edges`);
 
       this.setupEventListeners();
       this.render();
     } catch (error) {
-      console.error('✗ Error loading data:', error);
-      this.showError('Failed to load graph data');
+      console.error('✗ Graph init failed:', error);
+      this.showError('Failed to load graph data: ' + error.message);
     }
   }
 
@@ -244,7 +252,7 @@ class SageNetwork {
    * FIX BUG 5: Search functionality - matches Hebrew text, highlights nodes
    */
   updateNodeVisibility() {
-    if (!this.node || !this.link || !this.labels) return;
+    if (!this.node || !this.link || !this.labels || !this.data) return;
 
     const query = this.searchQuery.trim();
 
@@ -261,36 +269,40 @@ class SageNetwork {
 
     // Find matching nodes (search by name, era, or field)
     const matchedIds = new Set();
-    this.data.nodes.forEach(d => {
-      if (d.label.toLowerCase().includes(query) ||
-          d.era.toLowerCase().includes(query) ||
-          (d.field && d.field.toLowerCase().includes(query))) {
-        matchedIds.add(d.id);
-      }
-    });
+    if (this.data.nodes) {
+      this.data.nodes.forEach(d => {
+        const nameMatch = d.label && d.label.toLowerCase().includes(query);
+        const eraMatch = d.era && d.era.toLowerCase().includes(query);
+        const fieldMatch = d.field && d.field.toLowerCase().includes(query);
+
+        if (nameMatch || eraMatch || fieldMatch) {
+          matchedIds.add(String(d.id));
+        }
+      });
+    }
 
     console.log(`🔍 Found ${matchedIds.size} matching sages`);
 
     // Update visibility
     this.node
-      .style('opacity', d => matchedIds.has(d.id) ? 1 : 0.1)
-      .attr('r', d => matchedIds.has(d.id) ? 30 : 18)
-      .attr('stroke-width', d => matchedIds.has(d.id) ? 3 : 2);
+      .style('opacity', d => matchedIds.has(String(d.id)) ? 1 : 0.1)
+      .attr('r', d => matchedIds.has(String(d.id)) ? 30 : 18)
+      .attr('stroke-width', d => matchedIds.has(String(d.id)) ? 3 : 2);
 
     this.link
       .style('opacity', d => {
-        const sourceMatch = matchedIds.has(d.source.id);
-        const targetMatch = matchedIds.has(d.target.id);
+        const sourceMatch = matchedIds.has(String(d.source.id));
+        const targetMatch = matchedIds.has(String(d.target.id));
         return (sourceMatch || targetMatch) ? 0.8 : 0.05;
       })
       .style('stroke-width', d => {
-        const sourceMatch = matchedIds.has(d.source.id);
-        const targetMatch = matchedIds.has(d.target.id);
+        const sourceMatch = matchedIds.has(String(d.source.id));
+        const targetMatch = matchedIds.has(String(d.target.id));
         return (sourceMatch || targetMatch) ? 2.5 : 1.5;
       });
 
     this.labels.style('opacity', d => {
-      return matchedIds.has(d.id) ? 1 : 0.1;
+      return matchedIds.has(String(d.id)) ? 1 : 0.1;
     });
   }
 
