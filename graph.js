@@ -185,7 +185,7 @@ class SageNetwork {
     // Render links
     const link = g.append('g')
       .selectAll('line')
-      .data(this.data.links)
+      .data(validLinks)
       .enter()
       .append('line')
       .attr('class', d => `link link-${d.type}`)

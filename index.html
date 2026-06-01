@@ -109,14 +109,24 @@
 
 <div class="legend" id="legend">
     <div class="legend-title">📊 מדריך הצבעים</div>
+
     <div class="legend-section">
         <div class="legend-section-title">תקופות</div>
-        <div class="legend-item"><div class="legend-dot" style="background: #ff7f0e;"></div><span>Second Temple</span></div>
-        <div class="legend-item"><div class="legend-dot" style="background: #2ca02c;"></div><span>Tannaim</span></div>
-        <div class="legend-item"><div class="legend-dot" style="background: #d62728;"></div><span>Amoraim</span></div>
-        <div class="legend-item"><div class="legend-dot" style="background: #9467bd;"></div><span>Rishonim</span></div>
-        <div class="legend-item"><div class="legend-dot" style="background: #8c564b;"></div><span>Acharonim</span></div>
-        <div class="legend-item"><div class="legend-dot" style="background: #e377c2;"></div><span>Modern</span></div>
+        <div class="legend-item"><div class="legend-dot" style="background: #ff7f0e;"></div><span>בית שני</span></div>
+        <div class="legend-item"><div class="legend-dot" style="background: #2ca02c;"></div><span>תנאים</span></div>
+        <div class="legend-item"><div class="legend-dot" style="background: #d62728;"></div><span>אמוראים</span></div>
+        <div class="legend-item"><div class="legend-dot" style="background: #9467bd;"></div><span>ראשונים</span></div>
+        <div class="legend-item"><div class="legend-dot" style="background: #8c564b;"></div><span>אחרונים</span></div>
+        <div class="legend-item"><div class="legend-dot" style="background: #e377c2;"></div><span>עת חדשה</span></div>
+    </div>
+
+    <div class="legend-section">
+        <div class="legend-section-title">קשרים</div>
+        <div class="legend-item"><div class="legend-line" style="background: #4ecdc4;"></div><span>תלמיד</span></div>
+        <div class="legend-item"><div class="legend-line" style="background: #8b7965;"></div><span>השפעה</span></div>
+        <div class="legend-item"><div class="legend-line" style="background: #ff6b6b;"></div><span>התנגדות</span></div>
+        <div class="legend-item"><div class="legend-line" style="background: #95e1d3;"></div><span>עמית</span></div>
+        <div class="legend-item"><div class="legend-line" style="background: #f9ca24;"></div><span>קדמון</span></div>
     </div>
 </div>
 
@@ -388,57 +398,69 @@
             searchInput.addEventListener('input', async (e) => {
                 const query = e.target.value.trim();
 
-                // Import semantic search
-                const { semanticSearch } = await import('./supabase-client.js');
-                const results = await semanticSearch(query);
-
                 if (!query) {
                     // Reset all views
                     if (window.sageNetwork) {
-                        window.sageNetwork.resetFilter();
+                        window.sageNetwork.resetFilter?.();
+                    }
+                    // Reset opacity on all tags
+                    document.querySelectorAll('.sage-tag').forEach(tag => {
+                        tag.style.opacity = '1';
+                    });
+                    // Reset map
+                    if (mapInstance) {
+                        mapInstance.setView([31.5, 35.2], 4);
                     }
                     return;
                 }
 
-                console.log(`🔍 Search: "${query}" → ${results.sages.length} sages`);
+                // Use local search index
+                if (!window.searchIndex || !window.graphData) {
+                    console.warn('Search index not ready');
+                    return;
+                }
+
+                const results = new Set();
+                const tokens = query.toLowerCase().split(/\s+/);
+
+                // Search using local index
+                tokens.forEach(token => {
+                    const matches = window.searchIndex.get(token) || [];
+                    matches.forEach(sage => results.add(sage.id));
+                });
+
+                const matchingSages = window.graphData.nodes.filter(s => results.has(s.id));
+
+                console.log(`🔍 Search: "${query}" → ${matchingSages.length} sages`);
 
                 // Update graph view
-                if (window.sageNetwork) {
-                    window.sageNetwork.filterBySages(results.sages);
+                if (window.sageNetwork && window.sageNetwork.data) {
+                    const searchQuery = query;
+                    window.sageNetwork.searchQuery = searchQuery;
+                    window.sageNetwork.updateNodeVisibility?.();
                 }
 
-                // Highlight results in other tabs
-                const resultIds = new Set(results.sages.map(s => s.id));
-
-                // Update traditions view
-                const traditionsGrid = document.getElementById('traditionsGrid');
-                if (traditionsGrid && traditionsGrid.innerHTML) {
-                    document.querySelectorAll('.sage-tag').forEach(tag => {
-                        const sageText = tag.textContent;
-                        const isMember = Array.from(results.sages).some(s => s.name_he === sageText);
-                        tag.style.opacity = isMember ? '1' : '0.3';
-                    });
-                }
-
-                // Update ideas view
-                const ideasContainer = document.getElementById('ideasContainer');
-                if (ideasContainer && ideasContainer.innerHTML) {
-                    document.querySelectorAll('.sage-tag').forEach(tag => {
-                        const sageText = tag.textContent;
-                        const isMember = Array.from(results.sages).some(s => s.name_he === sageText);
-                        tag.style.opacity = isMember ? '1' : '0.3';
-                    });
-                }
+                // Highlight in other views
+                document.querySelectorAll('.sage-tag').forEach(tag => {
+                    const sageText = tag.textContent;
+                    const isMember = matchingSages.some(s => s.label === sageText || s.name_he === sageText);
+                    tag.style.opacity = isMember ? '1' : '0.3';
+                    tag.style.transition = 'opacity 0.2s';
+                });
 
                 // Zoom map to results
-                if (mapInstance && results.sages.length > 0) {
-                    const coords = results.sages
+                if (mapInstance && matchingSages.length > 0) {
+                    const coords = matchingSages
                         .filter(s => s.coordinates)
                         .map(s => [s.coordinates.lat, s.coordinates.lng]);
 
                     if (coords.length > 0) {
-                        const bounds = L.latLngBounds(coords);
-                        mapInstance.fitBounds(bounds, { padding: [50, 50] });
+                        try {
+                            const bounds = L.latLngBounds(coords);
+                            mapInstance.fitBounds(bounds, { padding: [50, 50], maxZoom: 10 });
+                        } catch (e) {
+                            console.warn('Map zoom failed:', e);
+                        }
                     }
                 }
             });
