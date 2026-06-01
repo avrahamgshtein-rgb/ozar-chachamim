@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>אוצר חכמים</title>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;700&family=Heebo:wght@400;500&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Heebo', sans-serif; background: #f6f2ea; color: #1c1108; line-height: 1.6; }
+.header { background: linear-gradient(135deg, #140802 0%, #5a2410 100%); color: white; padding: 3rem 2rem; text-align: center; }
+.header h1 { font-family: 'Frank Ruhl Libre', serif; font-size: 2.5rem; margin-bottom: 0.5rem; }
+.header p { opacity: 0.7; font-size: 0.95rem; }
+.container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+.search { display: flex; margin-bottom: 2rem; }
+.search input { flex: 1; padding: 12px 16px; border: 2px solid #e0d5c0; border-radius: 8px; font-size: 1rem; font-family: inherit; }
+.filters { display: flex; gap: 0.5rem; margin-bottom: 2rem; flex-wrap: wrap; }
+.filter { padding: 8px 16px; border: 2px solid #e0d5c0; border-radius: 50px; background: white; cursor: pointer; font-size: 0.9rem; transition: all 0.2s; }
+.filter.active { background: #7c4f1a; color: white; border-color: #7c4f1a; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
+.card { background: white; border: 1px solid #e0d5c0; border-radius: 12px; padding: 1.5rem; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; border-right: 4px solid #7c4f1a; }
+.card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12); }
+.card h3 { font-family: 'Frank Ruhl Libre', serif; font-size: 1.3rem; margin-bottom: 0.5rem; }
+.card-meta { font-size: 0.85rem; color: #6e5c47; margin-bottom: 1rem; }
+.tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+.tag { display: inline-block; padding: 4px 12px; background: #f0e8d8; color: #7c4f1a; border-radius: 20px; font-size: 0.75rem; }
+.modal { display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.6); z-index: 1000; overflow-y: auto; }
+.modal.active { display: block; }
+.modal-content { background: white; max-width: 600px; margin: 2rem auto; border-radius: 12px; padding: 2rem; }
+.modal-close { float: left; font-size: 1.5rem; cursor: pointer; background: none; border: none; color: #6e5c47; }
+.empty { text-align: center; padding: 4rem 2rem; color: #6e5c47; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>אוצר חכמים</h1>
+  <p>חכמי ישראל לדורותיהם</p>
+</div>
+
+<div class="container">
+  <div class="search">
+    <input type="text" id="search" placeholder="חיפוש לפי שם..." />
+  </div>
+
+  <div class="filters" id="filters"></div>
+
+  <div id="results"></div>
+  <div class="grid" id="grid"></div>
+</div>
+
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal()">&times;</button>
+    <div id="modal-body"></div>
+  </div>
+</div>
+
+<script>
+const sages = [
+  { id: 1, name_he: "רבי מאיר", name_en: "Rabbi Meir", period: "tannaim", years: "120-180 CE", location: "ארץ ישראל", tags: ["הלכה", "מדרש", "משנה"] },
+  { id: 2, name_he: "רבי יהודה בר עילאי", name_en: "Rabbi Yehuda bar Ilai", period: "tannaim", years: "130-180 CE", location: "ארץ ישראל", tags: ["הלכה", "משנה"] },
+  { id: 3, name_he: "רמב\"ם", name_en: "Maimonides", period: "rishonim", years: "1138-1204", location: "מצרים", tags: ["הלכה", "פילוסופיה", "רפואה"] },
+  { id: 4, name_he: "רמב\"ן", name_en: "Nahmanides", period: "rishonim", years: "1194-1270", location: "ספרד/ארץ ישראל", tags: ["קבלה", "הלכה", "פירוש תורה"] },
+  { id: 5, name_he: "רבנו גרשום", name_en: "Rabbenu Gershom", period: "rishonim", years: "960-1028", location: "צרפת", tags: ["הלכה", "תשובות"] },
+  { id: 6, name_he: "הראב\"ד", name_en: "Raavad", period: "rishonim", years: "1125-1198", location: "דרום צרפת", tags: ["הלכה", "תשובות"] },
+  { id: 7, name_he: "הריטב\"א", name_en: "Ritva", period: "rishonim", years: "1250-1330", location: "ספרד", tags: ["הלכה", "ירושלמי"] },
+  { id: 8, name_he: "הרמח\"ל", name_en: "Ramchal", period: "acharonim", years: "1707-1746", location: "איטליה", tags: ["קבלה", "דרוש", "חכמת"] },
+  { id: 9, name_he: "בעל הטורים", name_en: "Baal HaTurim", period: "rishonim", years: "1275-1343", location: "ספרד", tags: ["הלכה", "קבלה", "פירוש"] },
+  { id: 10, name_he: "מהר\"ם מרוטנבורג", name_en: "Maharam of Rothenburg", period: "rishonim", years: "1220-1293", location: "גרמניה", tags: ["הלכה", "תשובות"] },
+];
+
+let filtered = sages;
+let selectedPeriod = 'all';
+
+const periods = {
+  'all': 'הכל',
+  'tannaim': 'תנאים',
+  'rishonim': 'ראשונים',
+  'acharonim': 'אחרונים'
+};
+
+function renderFilters() {
+  const filters = document.getElementById('filters');
+  filters.innerHTML = Object.entries(periods).map(([key, label]) => {
+    const count = key === 'all' ? sages.length : sages.filter(s => s.period === key).length;
+    return `<button class="filter ${key === 'all' ? 'active' : ''}" onclick="filterBy('${key}')">${label} (${count})</button>`;
+  }).join('');
+}
+
+function filterBy(period) {
+  selectedPeriod = period;
+  document.querySelectorAll('.filter').forEach(f => f.classList.remove('active'));
+  event.target.classList.add('active');
+  search();
+}
+
+function search() {
+  const q = document.getElementById('search').value.toLowerCase();
+  filtered = sages.filter(s => {
+    const matchPeriod = selectedPeriod === 'all' || s.period === selectedPeriod;
+    const matchSearch = q === '' || s.name_he.includes(q) || (s.name_en && s.name_en.toLowerCase().includes(q));
+    return matchPeriod && matchSearch;
+  });
+  render();
+}
+
+function render() {
+  const grid = document.getElementById('grid');
+  const results = document.getElementById('results');
+
+  if (filtered.length === 0) {
+    grid.innerHTML = '<div class="empty">לא נמצאו חכמים</div>';
+    results.textContent = '';
+    return;
+  }
+
+  results.textContent = `נמצאו ${filtered.length} חכמים`;
+  grid.innerHTML = filtered.map(s => `
+    <div class="card" onclick="showModal(${s.id})">
+      <h3>${s.name_he}</h3>
+      <div class="card-meta">
+        <div>${s.name_en}</div>
+        <div>${s.years}</div>
+        <div>${s.location}</div>
+      </div>
+      <div class="tags">
+        ${s.tags.map(t => `<span class="tag">${t}</span>`).join('')}
+      </div>
+    </div>
+  `).join('');
+}
+
+function showModal(id) {
+  const sage = sages.find(s => s.id === id);
+  const modal = document.getElementById('modal');
+  const body = document.getElementById('modal-body');
+  body.innerHTML = `
+    <h2>${sage.name_he}</h2>
+    <p><strong>${sage.name_en}</strong></p>
+    <p><strong>תקופה:</strong> ${periods[sage.period]}</p>
+    <p><strong>שנים:</strong> ${sage.years}</p>
+    <p><strong>מקום:</strong> ${sage.location}</p>
+    <p><strong>תחומים:</strong> ${sage.tags.join(', ')}</p>
+  `;
+  modal.classList.add('active');
+}
+
+function closeModal() {
+  document.getElementById('modal').classList.remove('active');
+}
+
+document.getElementById('search').addEventListener('input', search);
+window.addEventListener('click', (e) => {
+  const modal = document.getElementById('modal');
+  if (e.target === modal) modal.classList.remove('active');
+});
+
+renderFilters();
+render();
+</script>
+
+</body>
+</html>

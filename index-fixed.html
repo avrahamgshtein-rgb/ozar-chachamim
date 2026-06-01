@@ -56,36 +56,8 @@
         <button class="control-btn" onclick="resetZoom()" title="Reset zoom">
             <i class="fas fa-home"></i>
         </button>
-        <button class="control-btn" id="authButton" onclick="window.sageAuth.showAuthModal()" title="התחברות">
-            <i class="fas fa-sign-in-alt"></i> התחברות
-        </button>
     </div>
 </header>
-
-<!-- Authentication Modal -->
-<div id="authModal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 1000; flex-direction: column; justify-content: center; align-items: center;">
-    <div style="background: white; padding: 2rem; border-radius: 12px; max-width: 400px; width: 90%; box-shadow: 0 8px 32px rgba(0,0,0,0.1);">
-        <h2 style="margin-top: 0; text-align: center;">אוצר חכמים</h2>
-
-        <div style="margin-bottom: 1rem;">
-            <input type="email" id="authEmail" placeholder="דוא״ל" style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 6px; font-size: 1rem; margin-bottom: 0.5rem; box-sizing: border-box;">
-            <input type="password" id="authPassword" placeholder="סיסמה" style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 6px; font-size: 1rem; box-sizing: border-box;">
-        </div>
-
-        <div style="display: flex; gap: 0.5rem;">
-            <button onclick="window.sageAuth.login(document.getElementById('authEmail').value, document.getElementById('authPassword').value); window.sageAuth.updateUIForLoggedIn(); window.sageAuth.hideAuthModal();" style="flex: 1; padding: 0.75rem; background: #4a86e8; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600;">
-                התחברות
-            </button>
-            <button onclick="window.sageAuth.signup(document.getElementById('authEmail').value, document.getElementById('authPassword').value); window.sageAuth.updateUIForLoggedIn(); window.sageAuth.hideAuthModal();" style="flex: 1; padding: 0.75rem; background: #34a853; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600;">
-                הרשמה
-            </button>
-        </div>
-
-        <button onclick="window.sageAuth.hideAuthModal()" style="width: 100%; margin-top: 1rem; padding: 0.75rem; background: #f0f0f0; border: none; border-radius: 6px; cursor: pointer;">
-            סגור
-        </button>
-    </div>
-</div>
 
 <div class="container">
     <div id="graph-view" class="main-area active">
@@ -268,59 +240,18 @@
         document.getElementById('ideasContainer').innerHTML = html;
     }
 
-    // Fetch from Supabase
-    async function fetchFromSupabase() {
-        const SUPABASE_URL = 'https://ulluacifirzywhmzkvkr.supabase.co';
-        const SUPABASE_KEY = 'sb_publishable_ObxKLFsDTE41KoAMfMV1dw_Nu38ZI2C';
-
-        try {
-            const response = await fetch(
-                `${SUPABASE_URL}/rest/v1/sages?select=*`,
-                {
-                    headers: {
-                        'apikey': SUPABASE_KEY,
-                        'Content-Type': 'application/json'
-                    }
-                }
-            );
-
-            const sages = await response.json();
-            console.log(`✓ Loaded ${sages.length} sages from Supabase`);
-
-            // Convert Supabase format to graph format
-            const nodes = sages.map(s => ({
-                id: String(s.sage_id),
-                label: s.name_he,
-                era: s.period_key ? s.period_key.charAt(0).toUpperCase() + s.period_key.slice(1).replace('-', ' ') : 'Unknown',
-                group: s.period_key || 'unknown',
-                period: s.years || '',
-                location: s.area || '',
-                field: s.main_field || 'Other',
-                bio: s.summary || '',
-                spotify_url: s.spotify_link || ''
-            }));
-
-            return { nodes: nodes, links: [] };
-        } catch (e) {
-            console.error('✗ Supabase error:', e);
-            console.log('📡 Falling back to local data.json...');
-            const response = await fetch('data.json');
-            return await response.json();
-        }
-    }
-
     document.addEventListener('DOMContentLoaded', async () => {
         try {
-            graphData = await fetchFromSupabase();
-            console.log('✓ Ready:', graphData.nodes.length, 'sages loaded');
+            const response = await fetch('data.json');
+            graphData = await response.json();
+            console.log('✓ Loaded', graphData.nodes.length, 'nodes');
         } catch (e) {
             console.error('✗ Error loading data:', e);
         }
     });
 </script>
 
-<script src="auth-supabase.js"></script>
-<script src="graph.js"></script>
+<script src="graph-fixed.js"></script>
 
 </body>
 </html>

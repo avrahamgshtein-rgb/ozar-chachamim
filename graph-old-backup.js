@@ -1,6 +1,6 @@
 /**
- * FIXED D3.js Force-Directed Network Graph
- * Bug Fixes: Colors, Spotify, Search, Chronology, Geography
+ * D3.js Force-Directed Network Graph for Ozar Chachamim
+ * Renders interactive network of Jewish sages with search, filtering, and details sidebar
  */
 
 class SageNetwork {
@@ -10,51 +10,50 @@ class SageNetwork {
     this.searchSelector = config.searchSelector || '#searchInput';
     this.sidebarSelector = config.sidebarSelector || '#sidebar';
 
-    // FIXED BUG 2: Dynamic color mapping by ERA
+    // Color mapping by era (support both formats)
     this.colorMap = {
-      'second-temple': '#ff7f0e',      // Orange
-      'tannaim': '#2ca02c',             // Green
-      'amoraim': '#d62728',             // Red
-      'geonim': '#9467bd',              // Purple (using as stand-in)
-      'rishonim': '#9467bd',            // Purple
-      'acharonim': '#8c564b',           // Brown
-      'modern': '#e377c2',              // Pink
-      'unknown': '#999999'              // Gray
+      // Lowercase with hyphens (from data.json)
+      'second-temple': '#ff7f0e',
+      'tannaim': '#2ca02c',
+      'amoraim': '#d62728',
+      'rishonim': '#9467bd',
+      'acharonim': '#8c564b',
+      'tannaim-amoraim': '#2ca02c',
+      'rishonim-acharonim': '#9467bd',
+      'modern': '#e377c2',
+      // Capitalized (from index-clean.html)
+      'Second Temple': '#ff7f0e',
+      'Tannaim': '#2ca02c',
+      'Amoraim': '#d62728',
+      'Rishonim': '#9467bd',
+      'Acharonim': '#8c564b',
+      'Modern': '#e377c2'
     };
 
-    this.eraOrder = {
-      'second-temple': 0,
-      'tannaim': 1,
-      'amoraim': 2,
-      'geonim': 3,
-      'rishonim': 4,
-      'acharonim': 5,
-      'modern': 6,
-      'unknown': 3.5
+    // Link color mapping by type
+    this.linkColorMap = {
+      'student': '#4ecdc4',
+      'influence': '#8b7965',
+      'oppose': '#ff6b6b',
+      'colleague': '#95e1d3',
+      'predecessor': '#f9ca24',
+      'precursor': '#f9ca24'
     };
 
     this.data = null;
     this.simulation = null;
     this.selectedNode = null;
     this.searchQuery = '';
-    this.loggedMissingColors = {};
   }
 
   /**
-   * Load data from Supabase or JSON fallback
+   * Load data from JSON file and initialize the graph
    */
   async init() {
     try {
-      // Data comes from Supabase via index.html's fetchFromSupabase()
-      if (window.graphData) {
-        this.data = window.graphData;
-        console.log(`✓ Using Supabase data: ${this.data.nodes.length} nodes`);
-      } else {
-        // Fallback to JSON file if not loaded by index.html
-        const response = await fetch(this.dataUrl);
-        this.data = await response.json();
-        console.log(`✓ Using local data: ${this.data.nodes.length} nodes`);
-      }
+      const response = await fetch(this.dataUrl);
+      this.data = await response.json();
+      console.log(`✓ Loaded ${this.data.nodes.length} nodes and ${this.data.links.length} links`);
 
       this.setupEventListeners();
       this.render();
@@ -71,12 +70,13 @@ class SageNetwork {
     // Search input
     const searchInput = document.querySelector(this.searchSelector);
     if (searchInput) {
-      // FIX BUG 5: Proper search event listener
       searchInput.addEventListener('input', (e) => {
         this.searchQuery = e.target.value.toLowerCase();
-        console.log('🔍 Search:', this.searchQuery);
+        console.log('Search query:', this.searchQuery);
         this.updateNodeVisibility();
       });
+    } else {
+      console.warn('Search input not found:', this.searchSelector);
     }
 
     // Sidebar close button
@@ -84,10 +84,17 @@ class SageNetwork {
     if (closeBtn) {
       closeBtn.addEventListener('click', () => this.closeSidebar());
     }
+
+    // Close sidebar on background click
+    document.addEventListener('click', (e) => {
+      if (e.target === document.querySelector(this.sidebarSelector)) {
+        this.closeSidebar();
+      }
+    });
   }
 
   /**
-   * Main rendering function - creates D3 graph with all fixes
+   * Main rendering function - creates or updates the D3 graph
    */
   render() {
     const svg = d3.select(this.svgSelector);
@@ -114,25 +121,16 @@ class SageNetwork {
       });
     svg.call(zoom);
 
-    // FIX BUG 3: Add chronological X-position force
-    // Sages are positioned left-to-right by era (ancient → modern)
-    const xForce = d3.forceX()
-      .x(d => {
-        const eraIndex = this.eraOrder[d.group] !== undefined ? this.eraOrder[d.group] : 3.5;
-        return (eraIndex / 7) * width;  // Spread across horizontal axis
-      })
-      .strength(0.15);  // Gentle force to maintain historical order
-
     // Initialize force simulation
     this.simulation = d3.forceSimulation(this.data.nodes)
       .force('link', d3.forceLink(this.data.links)
         .id(d => d.id)
-        .distance(100)
+        .distance(80)
         .strength(0.3))
       .force('charge', d3.forceManyBody().strength(-500))
       .force('center', d3.forceCenter(width / 2, height / 2))
-      .force('collision', d3.forceCollide(32))
-      .force('x', xForce);  // Add chronological ordering
+      .force('collision', d3.forceCollide(28))
+      .alpha(1);
 
     // Render links
     const link = g.append('g')
@@ -141,35 +139,30 @@ class SageNetwork {
       .enter()
       .append('line')
       .attr('class', d => `link link-${d.type}`)
-      .attr('stroke', d => {
-        const colorMap = {
-          'student': '#4ecdc4',
-          'influence': '#8b7965',
-          'oppose': '#ff6b6b',
-          'colleague': '#95e1d3',
-          'predecessor': '#f9ca24',
-          'precursor': '#f9ca24'
-        };
-        return colorMap[d.type] || '#999';
-      })
+      .attr('stroke', d => this.linkColorMap[d.type] || '#999')
       .attr('stroke-width', 1.5)
       .attr('opacity', 0.5);
 
-    // FIX BUG 2: Render nodes with dynamic colors based on era
+    // Render nodes
     const node = g.append('g')
       .selectAll('circle')
       .data(this.data.nodes)
       .enter()
       .append('circle')
-      .attr('class', d => `node node-${d.group}`)
+      .attr('class', d => `node node-${d.group || d.era}`)
       .attr('r', 22)
       .attr('fill', d => {
-        const groupKey = d.group || 'unknown';
-        const color = this.colorMap[groupKey];
+        // Use 'group' from data.json first, fallback to 'era'
+        const eraKey = d.group || d.era;
+        const color = this.colorMap[eraKey];
 
-        if (!color && !this.loggedMissingColors[groupKey]) {
-          console.warn(`⚠️  No color for era: "${groupKey}" (sage: ${d.label})`);
-          this.loggedMissingColors[groupKey] = true;
+        // Log missing colors only once per key
+        if (!color && !this.loggedMissingColors) {
+          this.loggedMissingColors = this.loggedMissingColors || {};
+          if (!this.loggedMissingColors[eraKey]) {
+            console.warn(`⚠️  No color mapping for: "${eraKey}" (sage: ${d.label})`);
+            this.loggedMissingColors[eraKey] = true;
+          }
         }
 
         return color || '#999';
@@ -189,16 +182,16 @@ class SageNetwork {
     // Add hover effects
     node.on('mouseover', function() {
       d3.select(this)
-        .attr('r', 28)
+        .attr('r', 22)
         .attr('stroke-width', 3);
     })
     .on('mouseout', function() {
       d3.select(this)
-        .attr('r', 22)
+        .attr('r', 18)
         .attr('stroke-width', 2);
     });
 
-    // Render labels
+    // Render labels (first 3 Hebrew chars)
     const labels = g.append('g')
       .selectAll('text')
       .data(this.data.nodes)
@@ -230,58 +223,67 @@ class SageNetwork {
         .attr('y', d => d.y);
     });
 
-    // Store references
+    // Store references for later manipulation
     this.svg = svg;
     this.g = g;
     this.node = node;
     this.link = link;
     this.labels = labels;
 
-    console.log('✓ Graph rendered with chronological layout');
+    // Reset zoom
+    this.resetZoom(svg, zoom, width, height);
   }
 
   /**
-   * FIX BUG 5: Search functionality - matches Hebrew text, highlights nodes
+   * Update node visibility based on search query
    */
   updateNodeVisibility() {
-    if (!this.node || !this.link || !this.labels) return;
+    if (!this.node || !this.link || !this.labels) {
+      console.warn('Graph not fully initialized for search');
+      return;
+    }
 
     const query = this.searchQuery.trim();
+    console.log('Search query:', query);
 
     if (query === '') {
       // Reset to full visibility
-      this.node
-        .style('opacity', 1)
-        .attr('r', 22)
-        .attr('stroke-width', 2);
+      this.node.style('opacity', 1);
       this.link.style('opacity', 0.5);
       this.labels.style('opacity', 1);
       return;
     }
 
-    // Find matching nodes (search by name, era, or field)
+    // Find matching nodes
     const matchedIds = new Set();
     this.data.nodes.forEach(d => {
       if (d.label.toLowerCase().includes(query) ||
-          d.era.toLowerCase().includes(query) ||
-          (d.field && d.field.toLowerCase().includes(query))) {
+          d.field.toLowerCase().includes(query) ||
+          d.era.toLowerCase().includes(query)) {
         matchedIds.add(d.id);
       }
     });
 
-    console.log(`🔍 Found ${matchedIds.size} matching sages`);
+    console.log(`Found ${matchedIds.size} matching sages`);
 
-    // Update visibility
+    // Update node visibility AND size
     this.node
-      .style('opacity', d => matchedIds.has(d.id) ? 1 : 0.1)
-      .attr('r', d => matchedIds.has(d.id) ? 30 : 18)
-      .attr('stroke-width', d => matchedIds.has(d.id) ? 3 : 2);
+      .style('opacity', d => {
+        return matchedIds.has(d.id) ? 1 : 0.15;
+      })
+      .attr('r', d => {
+        return matchedIds.has(d.id) ? 28 : 18;  // Larger for matches
+      })
+      .attr('stroke-width', d => {
+        return matchedIds.has(d.id) ? 3 : 2;
+      });
 
+    // Update link visibility (show if either end matches)
     this.link
       .style('opacity', d => {
         const sourceMatch = matchedIds.has(d.source.id);
         const targetMatch = matchedIds.has(d.target.id);
-        return (sourceMatch || targetMatch) ? 0.8 : 0.05;
+        return (sourceMatch || targetMatch) ? 0.7 : 0.1;
       })
       .style('stroke-width', d => {
         const sourceMatch = matchedIds.has(d.source.id);
@@ -289,38 +291,73 @@ class SageNetwork {
         return (sourceMatch || targetMatch) ? 2.5 : 1.5;
       });
 
+    // Update label visibility
     this.labels.style('opacity', d => {
-      return matchedIds.has(d.id) ? 1 : 0.1;
+      return matchedIds.has(d.id) ? 1 : 0.15;
     });
   }
 
   /**
-   * FIX BUG 1: Select node and show sidebar with spotify_url
+   * Select a node and show its details in sidebar
    */
   selectNode(node) {
     this.selectedNode = node;
 
-    // Highlight node
+    // Highlight selected node
     if (this.node) {
       this.node.classed('selected', d => d.id === node.id);
     }
+
+    // Update sidebar
+    this.showSidebar(node);
+
+    // Highlight connected nodes
+    this.highlightConnections(node);
+  }
+
+  /**
+   * Highlight nodes connected to selected node
+   */
+  highlightConnections(node) {
+    if (!this.link) return;
+
+    const connectedIds = new Set();
+    this.data.links.forEach(link => {
+      if (link.source.id === node.id) connectedIds.add(link.target.id);
+      if (link.target.id === node.id) connectedIds.add(link.source.id);
+    });
+
+    this.link.classed('active', d =>
+      d.source.id === node.id || d.target.id === node.id
+    ).style('opacity', d =>
+      d.source.id === node.id || d.target.id === node.id ? 0.8 : 0.2
+    ).style('stroke-width', d =>
+      d.source.id === node.id || d.target.id === node.id ? 2.5 : 1.5
+    );
+
+    this.node.classed('related', d => connectedIds.has(d.id))
+      .style('opacity', d => {
+        if (d.id === node.id) return 1;
+        if (connectedIds.has(d.id)) return 1;
+        return 0.3;
+      });
+  }
+
+  /**
+   * Display sidebar with node details
+   */
+  showSidebar(node) {
+    const sidebar = document.querySelector(this.sidebarSelector);
+    if (!sidebar) return;
 
     // Find connected sages
     const related = this.data.links
       .filter(l => l.source.id === node.id || l.target.id === node.id)
       .map(l => l.source.id === node.id ? l.target : l.source);
 
-    // FIX BUG 1: Use spotify_url from node directly
-    const spotifyUrl = node.spotify_url
-      ? node.spotify_url
-      : `https://open.spotify.com/search/${encodeURIComponent(node.label + ' jewish music')}`;
-
-    // Log history if user is logged in
-    if (window.sageAuth && window.sageAuth.user) {
-      window.sageAuth.logHistory(node.id);
-    }
-
-    // Build sidebar HTML with bookmark button
+    // Build HTML
+    // Use spotify query from data if available, otherwise generate
+    const spotifyQuery = node.spotifyQuery || (node.label + ' jewish music');
     const html = `
       <button class="sidebar-close">
         <i class="fas fa-times"></i>
@@ -332,10 +369,10 @@ class SageNetwork {
             <i class="fas fa-calendar"></i> ${node.era}
           </div>
           <div class="sidebar-meta-item">
-            <i class="fas fa-map-pin"></i> ${node.location || 'Unknown'}
+            <i class="fas fa-map-pin"></i> ${node.location}
           </div>
           <div class="sidebar-meta-item">
-            <i class="fas fa-book"></i> ${node.field || 'Other'}
+            <i class="fas fa-book"></i> ${node.field}
           </div>
         </div>
       </div>
@@ -347,19 +384,12 @@ class SageNetwork {
 
         <div class="sidebar-section">
           <h3>🎵 מוזיקה קשורה</h3>
-          <a href="${spotifyUrl}" target="_blank" class="spotify-link">
-            <i class="fab fa-spotify"></i> חפש ב-Spotify
+          <a href="https://open.spotify.com/search/${encodeURIComponent(spotifyQuery)}"
+             target="_blank"
+             class="spotify-link">
+            <i class="fab fa-spotify"></i> חפש בSpotify
           </a>
         </div>
-
-        ${window.sageAuth && window.sageAuth.user ? `
-          <div class="sidebar-section">
-            <button id="bookmarkBtn" onclick="window.sageNetwork.toggleBookmark('${node.id}')"
-              style="width: 100%; padding: 0.75rem; background: #ffb300; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600;">
-              <i class="fas fa-star"></i> שמור
-            </button>
-          </div>
-        ` : ''}
 
         <div class="sidebar-section">
           <h3>קישורים (${related.length})</h3>
@@ -368,6 +398,7 @@ class SageNetwork {
               ? related.map(n => `
                   <div class="related-sage" onclick="window.sageNetwork.selectNode(window.sageNetwork.data.nodes.find(nd => nd.id === '${n.id}'))">
                     ${n.label}
+                    <span style="font-size: 0.75rem; color: #a0917d;">→</span>
                   </div>
                 `).join('')
               : '<p style="color: #a0917d;">אין קישורים ישירים</p>'
@@ -377,37 +408,11 @@ class SageNetwork {
       </div>
     `;
 
-    const sidebar = document.querySelector(this.sidebarSelector);
     sidebar.innerHTML = html;
     sidebar.classList.add('active');
 
     // Re-attach close listener
     sidebar.querySelector('.sidebar-close').addEventListener('click', () => this.closeSidebar());
-
-    // Highlight connections in graph
-    this.highlightConnections(node, related);
-  }
-
-  /**
-   * Highlight connected nodes and links
-   */
-  highlightConnections(node, related) {
-    if (!this.link) return;
-
-    const relatedIds = new Set(related.map(n => n.id));
-
-    this.link
-      .classed('active', d => d.source.id === node.id || d.target.id === node.id)
-      .style('opacity', d => d.source.id === node.id || d.target.id === node.id ? 0.8 : 0.2)
-      .style('stroke-width', d => d.source.id === node.id || d.target.id === node.id ? 2.5 : 1.5);
-
-    this.node
-      .classed('related', d => relatedIds.has(d.id))
-      .style('opacity', d => {
-        if (d.id === node.id) return 1;
-        if (relatedIds.has(d.id)) return 1;
-        return 0.3;
-      });
   }
 
   /**
@@ -433,29 +438,7 @@ class SageNetwork {
   }
 
   /**
-   * Toggle bookmark for a sage
-   */
-  async toggleBookmark(sageId) {
-    if (!window.sageAuth || !window.sageAuth.user) {
-      alert('צריך להיות מחובר לשמור');
-      return;
-    }
-
-    const bookmarks = await window.sageAuth.getBookmarks();
-    const isBookmarked = bookmarks.includes(sageId);
-
-    const btn = document.getElementById('bookmarkBtn');
-    if (isBookmarked) {
-      await window.sageAuth.removeBookmark(sageId);
-      btn.textContent = '⭐ שמור';
-    } else {
-      await window.sageAuth.addBookmark(sageId);
-      btn.textContent = '⭐ שמור (✓)';
-    }
-  }
-
-  /**
-   * Drag event handlers
+   * Drag event handlers for node manipulation
    */
   dragStart(event, d) {
     if (!event.active) this.simulation.alphaTarget(0.3).restart();
@@ -475,7 +458,7 @@ class SageNetwork {
   }
 
   /**
-   * Reset zoom
+   * Reset zoom to default state
    */
   resetZoom(svg, zoom, width, height) {
     svg.transition()
@@ -488,7 +471,7 @@ class SageNetwork {
   }
 
   /**
-   * Show error message
+   * Show error message to user
    */
   showError(message) {
     const svg = document.querySelector(this.svgSelector);
@@ -498,7 +481,7 @@ class SageNetwork {
   }
 }
 
-// Initialize when DOM is ready
+// Initialize graph when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
   window.sageNetwork = new SageNetwork({
     dataUrl: 'data.json',

@@ -41,20 +41,13 @@ class SageNetwork {
   }
 
   /**
-   * Load data from Supabase or JSON fallback
+   * Load data from JSON file and initialize the graph
    */
   async init() {
     try {
-      // Data comes from Supabase via index.html's fetchFromSupabase()
-      if (window.graphData) {
-        this.data = window.graphData;
-        console.log(`✓ Using Supabase data: ${this.data.nodes.length} nodes`);
-      } else {
-        // Fallback to JSON file if not loaded by index.html
-        const response = await fetch(this.dataUrl);
-        this.data = await response.json();
-        console.log(`✓ Using local data: ${this.data.nodes.length} nodes`);
-      }
+      const response = await fetch(this.dataUrl);
+      this.data = await response.json();
+      console.log(`✓ Loaded ${this.data.nodes.length} nodes and ${this.data.links.length} links`);
 
       this.setupEventListeners();
       this.render();
@@ -315,12 +308,7 @@ class SageNetwork {
       ? node.spotify_url
       : `https://open.spotify.com/search/${encodeURIComponent(node.label + ' jewish music')}`;
 
-    // Log history if user is logged in
-    if (window.sageAuth && window.sageAuth.user) {
-      window.sageAuth.logHistory(node.id);
-    }
-
-    // Build sidebar HTML with bookmark button
+    // Build sidebar HTML
     const html = `
       <button class="sidebar-close">
         <i class="fas fa-times"></i>
@@ -351,15 +339,6 @@ class SageNetwork {
             <i class="fab fa-spotify"></i> חפש ב-Spotify
           </a>
         </div>
-
-        ${window.sageAuth && window.sageAuth.user ? `
-          <div class="sidebar-section">
-            <button id="bookmarkBtn" onclick="window.sageNetwork.toggleBookmark('${node.id}')"
-              style="width: 100%; padding: 0.75rem; background: #ffb300; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600;">
-              <i class="fas fa-star"></i> שמור
-            </button>
-          </div>
-        ` : ''}
 
         <div class="sidebar-section">
           <h3>קישורים (${related.length})</h3>
@@ -430,28 +409,6 @@ class SageNetwork {
     }
 
     this.selectedNode = null;
-  }
-
-  /**
-   * Toggle bookmark for a sage
-   */
-  async toggleBookmark(sageId) {
-    if (!window.sageAuth || !window.sageAuth.user) {
-      alert('צריך להיות מחובר לשמור');
-      return;
-    }
-
-    const bookmarks = await window.sageAuth.getBookmarks();
-    const isBookmarked = bookmarks.includes(sageId);
-
-    const btn = document.getElementById('bookmarkBtn');
-    if (isBookmarked) {
-      await window.sageAuth.removeBookmark(sageId);
-      btn.textContent = '⭐ שמור';
-    } else {
-      await window.sageAuth.addBookmark(sageId);
-      btn.textContent = '⭐ שמור (✓)';
-    }
   }
 
   /**

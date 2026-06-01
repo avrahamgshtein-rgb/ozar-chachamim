@@ -1,0 +1,106 @@
+{
+  "nodes": [
+    {
+      "id": "1",
+      "label": "פילון האלכסנדרוני",
+      "era": "Second Temple",
+      "period": "20 BCE - 50 CE",
+      "location": "Alexandria",
+      "field": "Philosophy",
+      "bio": "Hellenistic Jewish philosopher. Pioneered allegorical interpretation of Scripture. Bridged Jewish and Greek philosophical traditions."
+    },
+    {
+      "id": "2",
+      "label": "רבי עקיבא",
+      "era": "Tannaim",
+      "period": "2nd century CE",
+      "location": "Eretz Israel",
+      "field": "Talmud",
+      "bio": "One of the greatest Tannaim. Developed systematic hermeneutics of Torah. Martyred during Bar Kokhba Revolt."
+    },
+    {
+      "id": "3",
+      "label": "רבי מאיר",
+      "era": "Tannaim",
+      "period": "2nd century CE",
+      "location": "Eretz Israel",
+      "field": "Talmud",
+      "bio": "Great Tanna known for brilliant interpretations. Famous for creative hermeneutical methods. Student of Rabbi Akiva."
+    },
+    {
+      "id": "4",
+      "label": "רבה בר בר חנה",
+      "era": "Amoraim",
+      "period": "3rd century CE",
+      "location": "Babylon",
+      "field": "Aggadah",
+      "bio": "Master of mystical and allegorical stories. Teachings on exile and redemption through imaginative narratives."
+    },
+    {
+      "id": "5",
+      "label": "רבנו גרשום",
+      "era": "Rishonim",
+      "period": "960-1028",
+      "location": "France",
+      "field": "Halakha",
+      "bio": "Light of the Diaspora. Founder of Northern French Ashkenazi school. Established halakhic standards for European Jewry."
+    },
+    {
+      "id": "6",
+      "label": "רמב\"ם",
+      "era": "Rishonim",
+      "period": "1138-1204",
+      "location": "Egypt",
+      "field": "Philosophy",
+      "bio": "Maimonides. Greatest medieval Jewish philosopher. Synthesized Aristotelian philosophy with Torah. Codified halakha systematically."
+    },
+    {
+      "id": "7",
+      "label": "רמב\"ן",
+      "era": "Rishonim",
+      "period": "1194-1270",
+      "location": "Spain & Eretz Israel",
+      "field": "Kabbalah",
+      "bio": "Nahmanides. Master of Kabbalah and biblical exegesis. Defender of tradition against Maimonidean rationalism."
+    },
+    {
+      "id": "8",
+      "label": "הרמח\"ל",
+      "era": "Acharonim",
+      "period": "1707-1746",
+      "location": "Italy & Eretz Israel",
+      "field": "Kabbalah",
+      "bio": "Ramchal. Mystical philosopher. Author of Mesillat Yesharim. Mystical systematizer of Jewish thought."
+    },
+    {
+      "id": "9",
+      "label": "רבי ישראל בן אליעזר",
+      "era": "Acharonim",
+      "period": "1700-1760",
+      "location": "Ukraine",
+      "field": "Mysticism",
+      "bio": "Baal Shem Tov. Founder of Hasidic movement. Revolutionized Jewish spirituality and practice."
+    },
+    {
+      "id": "10",
+      "label": "הרב אברהם יצחק קוק",
+      "era": "Modern",
+      "period": "1865-1935",
+      "location": "Eretz Israel",
+      "field": "Kabbalah",
+      "bio": "Chief Rabbi of Palestine. Philosopher and Kabbalist. Visionary thinker on Zionism and Judaism."
+    }
+  ],
+  "links": [
+    { "source": "1", "target": "2", "type": "influence" },
+    { "source": "2", "target": "3", "type": "student" },
+    { "source": "3", "target": "4", "type": "student" },
+    { "source": "5", "target": "6", "type": "influence" },
+    { "source": "6", "target": "7", "type": "oppose" },
+    { "source": "7", "target": "8", "type": "influence" },
+    { "source": "8", "target": "9", "type": "precursor" },
+    { "source": "9", "target": "10", "type": "influence" },
+    { "source": "2", "target": "5", "type": "predecessor" },
+    { "source": "6", "target": "8", "type": "influence" }
+  ]
+}

@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>אוצר חכמים — Network of Jewish Sages</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;700&family=Heebo:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Map Library (if needed) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles-graph.css">
+
+    <style>
+        /* Additional Graph-Specific Tweaks */
+        #graph {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        /* Map View Styles */
+        #map-view {
+            padding: 0;
+            background: var(--color-bg-light);
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        #map {
+            width: 100% !important;
+            height: 100% !important;
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        /* Traditions & Ideas Views */
+        #traditions-view,
+        #ideas-view {
+            padding: var(--spacing-lg);
+            overflow-y: auto;
+            height: 100%;
+            width: 100%;
+            position: relative;
+        }
+
+        .traditions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: var(--spacing-md);
+            width: 100%;
+        }
+
+        .tradition-card {
+            background: var(--color-white);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius);
+            padding: var(--spacing-lg);
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border-left: 4px solid var(--color-secondary);
+        }
+
+        .tradition-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-left-color: var(--color-primary);
+        }
+
+        .tradition-card h3 {
+            font-family: 'Frank Ruhl Libre', serif;
+            font-size: 1.3rem;
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-primary);
+        }
+
+        .tradition-card p {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .tradition-sages {
+            font-size: 0.85rem;
+            color: var(--color-secondary);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .sage-tag {
+            background: var(--color-bg-light);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        .ideas-container {
+            max-width: 100%;
+            width: 100%;
+        }
+
+        .idea-group {
+            margin-bottom: var(--spacing-lg);
+            padding-bottom: var(--spacing-lg);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .idea-group:last-child {
+            border-bottom: none;
+        }
+
+        .idea-group h3 {
+            font-family: 'Frank Ruhl Libre', serif;
+            font-size: 1.4rem;
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .idea-card {
+            background: var(--color-bg-light);
+            border-left: 4px solid var(--color-secondary);
+            padding: var(--spacing-md);
+            border-radius: 8px;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .idea-card h4 {
+            font-family: 'Frank Ruhl Libre', serif;
+            font-size: 1.1rem;
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+            font-style: italic;
+        }
+
+        .idea-card p {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: var(--color-text-secondary);
+        }
+
+        /* Spotify Link Button */
+        .spotify-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 12px 16px;
+            background: linear-gradient(135deg, #1DB954 0%, #1ed760 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            width: 100%;
+            text-align: center;
+            justify-content: center;
+        }
+
+        .spotify-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(29, 185, 84, 0.3);
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+    <!-- Brand -->
+    <div class="header-brand">
+        <h1>אוצר חכמים</h1>
+        <p>Ozar Chachamim — רשת החכמים של ישראל</p>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <div class="tabs">
+        <button class="tab-btn active" onclick="switchView('graph')">
+            <i class="fas fa-project-diagram"></i> רשת קשרים
+        </button>
+        <button class="tab-btn" onclick="switchView('map')">
+            <i class="fas fa-map"></i> גיאוגרפיה
+        </button>
+        <button class="tab-btn" onclick="switchView('traditions')">
+            <i class="fas fa-book"></i> מסורות
+        </button>
+        <button class="tab-btn" onclick="switchView('ideas')">
+            <i class="fas fa-lightbulb"></i> רעיונות
+        </button>
+    </div>
+
+    <!-- Controls -->
+    <div class="header-controls">
+        <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" id="searchInput" placeholder="חפש חכם...">
+        </div>
+        <button class="control-btn" onclick="resetZoom()" title="Reset zoom">
+            <i class="fas fa-home"></i>
+        </button>
+    </div>
+</header>
+
+<!-- MAIN CONTAINER -->
+<div class="container">
+    <!-- GRAPH VIEW -->
+    <div id="graph-view" class="main-area active">
+        <svg id="graph"></svg>
+    </div>
+
+    <!-- MAP VIEW -->
+    <div id="map-view" class="main-area">
+        <div id="map"></div>
+    </div>
+
+    <!-- TRADITIONS VIEW -->
+    <div id="traditions-view" class="main-area">
+        <div class="traditions-grid" id="traditionsGrid"></div>
+    </div>
+
+    <!-- IDEAS VIEW -->
+    <div id="ideas-view" class="main-area">
+        <div class="ideas-container" id="ideasContainer"></div>
+    </div>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar" id="sidebar"></div>
+</div>
+
+<!-- LEGEND (overlay on graph) -->
+<div class="legend" id="legend">
+    <div class="legend-title">📊 מדריך הצבעים</div>
+
+    <div class="legend-section">
+        <div class="legend-section-title">תקופות</div>
+        <div class="legend-item">
+            <div class="legend-dot" style="background: #ff7f0e;"></div>
+            <span>Second Temple (בית שני)</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-dot" style="background: #2ca02c;"></div>
+            <span>Tannaim (תנאים)</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-dot" style="background: #d62728;"></div>
+            <span>Amoraim (אמוראים)</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-dot" style="background: #9467bd;"></div>
+            <span>Rishonim (ראשונים)</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-dot" style="background: #8c564b;"></div>
+            <span>Acharonim (אחרונים)</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-dot" style="background: #e377c2;"></div>
+            <span>Modern (עת חדשה)</span>
+        </div>
+    </div>
+
+    <div class="legend-section">
+        <div class="legend-section-title">סוגי קשרים</div>
+        <div class="legend-item">
+            <div class="legend-line" style="background: #4ecdc4;"></div>
+            <span>Student (תלמיד)</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-line" style="background: #8b7965;"></div>
+            <span>Influence (השפעה)</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-line" style="background: #ff6b6b;"></div>
+            <span>Oppose (התנגדות)</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-line" style="background: #f9ca24;"></div>
+            <span>Predecessor (קדמון)</span>
+        </div>
+    </div>
+</div>
+
+<!-- SCRIPTS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+
+<script>
+    /**
+     * Multi-view Management & Helper Functions
+     */
+
+    let currentView = 'graph';
+    let mapInstance = null;
+    let graphData = null;
+
+    /**
+     * Switch between views (tabs)
+     */
+    function switchView(view) {
+        currentView = view;
+
+        // Update tab styling
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        event.target.closest('.tab-btn').classList.add('active');
+
+        // Update view visibility
+        document.querySelectorAll('.main-area').forEach(area => area.classList.remove('active'));
+        const viewEl = document.getElementById(view + '-view');
+        if (viewEl) viewEl.classList.add('active');
+
+        // Show/hide legend
+        const legend = document.getElementById('legend');
+        if (view === 'graph') {
+            legend.style.display = 'block';
+        } else {
+            legend.style.display = 'none';
+        }
+
+        // Initialize map on first visit
+        if (view === 'map' && !mapInstance) {
+            initMap();
+        }
+
+        // Build views on first visit
+        if (view === 'traditions' && !document.getElementById('traditionsGrid').innerHTML) {
+            buildTraditions();
+        }
+        if (view === 'ideas' && !document.getElementById('ideasContainer').innerHTML) {
+            buildIdeas();
+        }
+    }
+
+    /**
+     * Reset graph zoom
+     */
+    function resetZoom() {
+        if (window.sageNetwork && window.sageNetwork.svg) {
+            const svg = window.sageNetwork.svg;
+            const width = svg.node().clientWidth;
+            const height = svg.node().clientHeight;
+            const zoom = d3.zoom().on('zoom', () => {});
+
+            svg.transition()
+                .duration(750)
+                .call(zoom.transform, d3.zoomIdentity
+                    .translate(width / 2, height / 2)
+                    .scale(0.8)
+                    .translate(-width / 2, -height / 2)
+                );
+        }
+    }
+
+    /**
+     * Initialize map for geography view
+     */
+    function initMap() {
+        mapInstance = L.map('map').setView([31.5, 35.2], 5);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap',
+            maxZoom: 18
+        }).addTo(mapInstance);
+
+        // Add legend to map
+        const legend = L.control({ position: 'bottomleft' });
+        legend.onAdd = function() {
+            const div = L.DomUtil.create('div', 'legend-map');
+            div.innerHTML = `
+                <div style="background: white; padding: 10px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                    <h4 style="margin: 0 0 10px 0; font-size: 12px; font-weight: bold;">תקופות</h4>
+                    <div style="display: flex; flex-direction: column; gap: 5px; font-size: 11px;">
+                        <div><span style="display: inline-block; width: 12px; height: 12px; background: #ff7f0e; border-radius: 50%; margin-right: 5px;"></span>Second Temple</div>
+                        <div><span style="display: inline-block; width: 12px; height: 12px; background: #2ca02c; border-radius: 50%; margin-right: 5px;"></span>Tannaim</div>
+                        <div><span style="display: inline-block; width: 12px; height: 12px; background: #d62728; border-radius: 50%; margin-right: 5px;"></span>Amoraim</div>
+                        <div><span style="display: inline-block; width: 12px; height: 12px; background: #9467bd; border-radius: 50%; margin-right: 5px;"></span>Rishonim</div>
+                        <div><span style="display: inline-block; width: 12px; height: 12px; background: #8c564b; border-radius: 50%; margin-right: 5px;"></span>Acharonim</div>
+                        <div><span style="display: inline-block; width: 12px; height: 12px; background: #e377c2; border-radius: 50%; margin-right: 5px;"></span>Modern</div>
+                    </div>
+                </div>
+            `;
+            return div;
+        };
+        legend.addTo(mapInstance);
+
+        // Add markers for each sage
+        if (graphData && graphData.nodes) {
+            const geoLocations = {
+                'Alexandria': [31.2, 29.9],
+                'Eretz Israel': [31.5, 35.2],
+                'Egypt': [26.8, 30.8],
+                'Babylon': [32.5, 44.4],
+                'France': [46.2, 2.2],
+                'Spain': [40.5, -3.7],
+                'Germany': [51.2, 10.5],
+                'Italy': [41.9, 12.6],
+                'Ukraine': [49.0, 31.3]
+            };
+
+            const colorMap = {
+                'second-temple': '#ff7f0e',
+                'tannaim': '#2ca02c',
+                'amoraim': '#d62728',
+                'rishonim': '#9467bd',
+                'acharonim': '#8c564b',
+                'tannaim-amoraim': '#2ca02c',
+                'rishonim-acharonim': '#9467bd',
+                'modern': '#e377c2',
+                'Second Temple': '#ff7f0e',
+                'Tannaim': '#2ca02c',
+                'Amoraim': '#d62728',
+                'Rishonim': '#9467bd',
+                'Acharonim': '#8c564b',
+                'Modern': '#e377c2'
+            };
+
+            graphData.nodes.forEach(node => {
+                if (node.location && geoLocations[node.location]) {
+                    const coords = geoLocations[node.location];
+                    const groupKey = node.group || node.era;
+                    L.circleMarker(coords, {
+                        radius: 8,
+                        fillColor: colorMap[groupKey] || '#999',
+                        color: 'white',
+                        weight: 2,
+                        opacity: 1,
+                        fillOpacity: 0.8
+                    })
+                        .bindPopup(`<b>${node.label}</b><br>${node.location}`)
+                        .addTo(mapInstance);
+                }
+            });
+        }
+
+        // Trigger resize to ensure map renders properly
+        setTimeout(() => {
+            mapInstance.invalidateSize();
+        }, 300);
+    }
+
+    /**
+     * Build Traditions view (grouping by field/era)
+     */
+    function buildTraditions() {
+        if (!graphData || !graphData.nodes) return;
+
+        const traditions = {};
+        graphData.nodes.forEach(node => {
+            const t = node.field || 'Other';
+            if (!traditions[t]) traditions[t] = [];
+            traditions[t].push(node);
+        });
+
+        let html = '';
+        Object.keys(traditions).sort().forEach(tradition => {
+            const sages = traditions[tradition];
+            html += `
+                <div class="tradition-card">
+                    <h3>${tradition}</h3>
+                    <p>${sages.length} חכמים בעלי התמחות בתחום זה</p>
+                    <div class="tradition-sages">
+                        ${sages.map(s => `<span class="sage-tag">${s.label}</span>`).join('')}
+                    </div>
+                </div>
+            `;
+        });
+
+        document.getElementById('traditionsGrid').innerHTML = html;
+    }
+
+    /**
+     * Build Ideas view with connections to sages
+     */
+    function buildIdeas() {
+        const ideas = {
+            'Philosophy & Ethics': {
+                periods: ['Rishonim', 'Acharonim'],
+                concepts: [
+                    { title: 'תורה כחוק טבע', desc: 'Torah as universal law - Maimonides' },
+                    { title: 'אתיקה יהודית', desc: 'Ethical development across centuries' }
+                ]
+            },
+            'Torah Interpretation': {
+                periods: ['Tannaim', 'Amoraim', 'Rishonim'],
+                concepts: [
+                    { title: 'אלגוריה', desc: 'Allegorical reading - Philo, Maimonides' },
+                    { title: 'דרש ופשט', desc: 'Mystical and literal methods' }
+                ]
+            },
+            'Mysticism & Kabbalah': {
+                periods: ['Rishonim', 'Acharonim', 'Modern'],
+                concepts: [
+                    { title: 'קבלה מעשית', desc: 'Practical mysticism - Medieval period' },
+                    { title: 'חסידות', desc: 'Hasidic revival - Baal Shem Tov' }
+                ]
+            },
+            'Talmudic Analysis': {
+                periods: ['Tannaim', 'Amoraim', 'Rishonim'],
+                concepts: [
+                    { title: 'לוגיקה ויחסים', desc: 'Logical argumentation methods' },
+                    { title: 'תשובות', desc: 'Practical halakha application' }
+                ]
+            }
+        };
+
+        let html = '';
+        Object.keys(ideas).forEach(category => {
+            const idea = ideas[category];
+            const colorMap = {
+                'Tannaim': '#2ca02c',
+                'Amoraim': '#d62728',
+                'Rishonim': '#9467bd',
+                'Acharonim': '#8c564b',
+                'Modern': '#e377c2'
+            };
+
+            html += `<div class="idea-group">
+                <h3>${category}</h3>
+                <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap;">
+                    ${idea.periods.map(p => `
+                        <span style="
+                            display: inline-block;
+                            padding: 4px 10px;
+                            background: ${colorMap[p]};
+                            color: white;
+                            border-radius: 12px;
+                            font-size: 0.8rem;
+                            font-weight: 500;
+                        ">${p}</span>
+                    `).join('')}
+                </div>
+                ${idea.concepts.map(c => `
+                    <div class="idea-card">
+                        <h4>"${c.title}"</h4>
+                        <p>${c.desc}</p>
+                    </div>
+                `).join('')}
+            </div>`;
+        });
+
+        document.getElementById('ideasContainer').innerHTML = html;
+    }
+
+    /**
+     * Initialize everything when page loads
+     */
+    document.addEventListener('DOMContentLoaded', async () => {
+        // Load graph data
+        try {
+            const response = await fetch('data.json');
+            graphData = await response.json();
+            console.log('✓ Loaded', graphData.nodes.length, 'nodes');
+        } catch (e) {
+            console.error('✗ Error loading data:', e);
+        }
+
+        // Initialize D3 graph
+        window.sageNetwork = new SageNetwork({
+            dataUrl: 'data.json',
+            svgSelector: '#graph',
+            searchSelector: '#searchInput',
+            sidebarSelector: '#sidebar'
+        });
+
+        await window.sageNetwork.init();
+    });
+</script>
+
+<script src="graph.js"></script>
+
+</body>
+</html>
