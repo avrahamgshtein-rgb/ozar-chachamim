@@ -122,10 +122,21 @@
 
 <!-- Scripts -->
 <!-- IMPORTANT: Load order matters! -->
-<!-- 1. Validator (used by loader) -->
-<script src="data-validator.js"></script>
-<!-- 2. Data Loader (loads and validates data.json) -->
-<script src="data-loader.js"></script>
+<!-- 1. Supabase Client Module (replaces data-loader + data-validator) -->
+<script type="module">
+  import { initializeApp } from './supabase-client.js';
+
+  // Initialize Supabase backend on page load
+  document.addEventListener('DOMContentLoaded', async () => {
+    console.log('🚀 [index.html] Initializing Supabase backend...');
+    const ready = await initializeApp();
+    if (ready) {
+      console.log('✅ [index.html] Supabase initialization complete');
+    } else {
+      console.error('❌ [index.html] Failed to initialize Supabase');
+    }
+  });
+</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 
@@ -274,78 +285,128 @@
     }
 
     function buildIdeas() {
-        const ideas = {
-            'Philosophy & Ethics': {
-                periods: ['Rishonim', 'Acharonim'],
-                concepts: [
-                    { title: 'תורה כחוק טבע', desc: 'Torah as universal law' },
-                    { title: 'אתיקה יהודית', desc: 'Ethical development' }
-                ]
-            }
-        };
-
-        let html = '';
-        Object.keys(ideas).forEach(category => {
-            const idea = ideas[category];
-            const colorMap = { 'Tannaim': '#2ca02c', 'Amoraim': '#d62728', 'Rishonim': '#9467bd', 'Acharonim': '#8c564b', 'Modern': '#e377c2' };
-            html += `<div class="idea-group">
-                <h3>${category}</h3>
-                <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap;">
-                    ${idea.periods.map(p => `<span style="display: inline-block; padding: 4px 10px; background: ${colorMap[p]}; color: white; border-radius: 12px; font-size: 0.8rem; font-weight: 500;">${p}</span>`).join('')}
-                </div>
-                ${idea.concepts.map(c => `<div class="idea-card"><h4>"${c.title}"</h4><p>${c.desc}</p></div>`).join('')}
-            </div>`;
-        });
-        document.getElementById('ideasContainer').innerHTML = html;
-    }
-
-    // Fetch from Supabase
-    async function fetchFromSupabase() {
-        const SUPABASE_URL = 'https://ulluacifirzywhmzkvkr.supabase.co';
-        const SUPABASE_KEY = 'sb_publishable_ObxKLFsDTE41KoAMfMV1dw_Nu38ZI2C';
-
         try {
-            const response = await fetch(
-                `${SUPABASE_URL}/rest/v1/sages?select=*`,
-                {
-                    headers: {
-                        'apikey': SUPABASE_KEY,
-                        'Content-Type': 'application/json'
-                    }
-                }
-            );
+            if (!window.graphData || !window.graphData.nodes || window.graphData.nodes.length === 0) {
+                console.warn('⚠️  No valid graph data for ideas');
+                document.getElementById('ideasContainer').innerHTML = '<p style="padding: 2rem; color: #999;">Loading...</p>';
+                return;
+            }
 
-            const sages = await response.json();
-            console.log(`✓ Loaded ${sages.length} sages from Supabase`);
+            const ideas = {};
+            window.graphData.nodes.forEach(node => {
+                if (!node || !node.primary_field) return;
+                const idea = node.primary_field || 'Other';
+                if (!ideas[idea]) ideas[idea] = [];
+                ideas[idea].push(node);
+            });
 
-            // Convert Supabase format to graph format
-            const nodes = sages.map(s => ({
-                id: String(s.sage_id),
-                label: s.name_he,
-                era: s.period_key ? s.period_key.charAt(0).toUpperCase() + s.period_key.slice(1).replace('-', ' ') : 'Unknown',
-                group: s.period_key || 'unknown',
-                period: s.years || '',
-                location: s.area || '',
-                field: s.main_field || 'Other',
-                bio: s.summary || '',
-                spotify_url: s.spotify_link || ''
-            }));
-
-            return { nodes: nodes, links: [] };
-        } catch (e) {
-            console.error('✗ Supabase error:', e);
-            console.log('📡 Falling back to local data.json...');
-            const response = await fetch('data.json');
-            return await response.json();
+            let html = '';
+            Object.keys(ideas).sort().forEach(idea => {
+                const sages = ideas[idea];
+                if (!sages || sages.length === 0) return;
+                const eraColors = {
+                    'second-temple': '#ff7f0e',
+                    'tannaim': '#2ca02c',
+                    'amoraim': '#d62728',
+                    'rishonim': '#9467bd',
+                    'acharonim': '#8c564b',
+                    'modern': '#e377c2'
+                };
+                html += `<div class="idea-group">
+                    <h3>${idea}</h3>
+                    <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap;">
+                        ${sages.slice(0, 5).map(s => {
+                            const color = eraColors[s.era_key] || '#999';
+                            return `<span style="display: inline-block; padding: 4px 10px; background: ${color}; color: white; border-radius: 12px; font-size: 0.8rem; font-weight: 500;">${s.era}</span>`;
+                        }).join('')}
+                    </div>
+                    <div class="idea-sages" style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                        ${sages.map(s => `<span class="sage-tag" onclick="window.sageNetwork?.selectNode({id: '${s.id}'})">${s.name_he}</span>`).join('')}
+                    </div>
+                </div>`;
+            });
+            document.getElementById('ideasContainer').innerHTML = html || '<p>No ideas found</p>';
+        } catch (error) {
+            console.error('❌ buildIdeas error:', error);
+            document.getElementById('ideasContainer').innerHTML = '<p style="color: red;">Error loading ideas</p>';
         }
     }
 
-    // Data is loaded by data-loader.js before this script runs
-    console.log('[index.html] Waiting for data...');
+    // ========================================================================
+    // SEMANTIC SEARCH (Cross-Tab)
+    // ========================================================================
+    document.addEventListener('DOMContentLoaded', () => {
+        const searchInput = document.getElementById('searchInput');
+        if (searchInput) {
+            searchInput.addEventListener('input', async (e) => {
+                const query = e.target.value.trim();
 
-    // Listen for data ready event to initialize views
-    document.addEventListener('graphDataReady', () => {
-        console.log('[index.html] Data ready, views can initialize');
+                // Import semantic search
+                const { semanticSearch } = await import('./supabase-client.js');
+                const results = await semanticSearch(query);
+
+                if (!query) {
+                    // Reset all views
+                    if (window.sageNetwork) {
+                        window.sageNetwork.resetFilter();
+                    }
+                    return;
+                }
+
+                console.log(`🔍 Search: "${query}" → ${results.sages.length} sages`);
+
+                // Update graph view
+                if (window.sageNetwork) {
+                    window.sageNetwork.filterBySages(results.sages);
+                }
+
+                // Highlight results in other tabs
+                const resultIds = new Set(results.sages.map(s => s.id));
+
+                // Update traditions view
+                const traditionsGrid = document.getElementById('traditionsGrid');
+                if (traditionsGrid && traditionsGrid.innerHTML) {
+                    document.querySelectorAll('.sage-tag').forEach(tag => {
+                        const sageText = tag.textContent;
+                        const isMember = Array.from(results.sages).some(s => s.name_he === sageText);
+                        tag.style.opacity = isMember ? '1' : '0.3';
+                    });
+                }
+
+                // Update ideas view
+                const ideasContainer = document.getElementById('ideasContainer');
+                if (ideasContainer && ideasContainer.innerHTML) {
+                    document.querySelectorAll('.sage-tag').forEach(tag => {
+                        const sageText = tag.textContent;
+                        const isMember = Array.from(results.sages).some(s => s.name_he === sageText);
+                        tag.style.opacity = isMember ? '1' : '0.3';
+                    });
+                }
+
+                // Zoom map to results
+                if (mapInstance && results.sages.length > 0) {
+                    const coords = results.sages
+                        .filter(s => s.coordinates)
+                        .map(s => [s.coordinates.lat, s.coordinates.lng]);
+
+                    if (coords.length > 0) {
+                        const bounds = L.latLngBounds(coords);
+                        mapInstance.fitBounds(bounds, { padding: [50, 50] });
+                    }
+                }
+            });
+        }
+    });
+
+    // ✅ Supabase data loading handled by supabase-client.js module
+
+    // Data is loaded by supabase-client.js module
+    console.log('[index.html] Waiting for Supabase data...');
+
+    // Listen for Supabase ready event to initialize views
+    document.addEventListener('supabaseReady', (e) => {
+        console.log(`[index.html] ✅ Supabase ready: ${e.detail.nodes} nodes + ${e.detail.links} edges`);
+        // Views initialize lazily when tabs are clicked
     });
 </script>
 
