@@ -17,11 +17,25 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
 // ============================================================================
 
 /**
- * Load all sages from Supabase
+ * Load all sages from Supabase (with stats from view)
+ * Uses sages_with_stats view for connection_count & research availability
  */
 async function loadSages() {
   console.log('📚 Loading sages from Supabase...')
 
+  // Try to load from view first (includes stats)
+  const { data: sagesWithStats, error: viewError } = await supabase
+    .from('sages_with_stats')
+    .select('*')
+    .order('period_order', { ascending: true })
+
+  if (!viewError && sagesWithStats && sagesWithStats.length > 0) {
+    console.log(`✓ Loaded ${sagesWithStats.length} sages (with stats from view)`)
+    return sagesWithStats
+  }
+
+  // Fallback to sages table if view unavailable
+  console.log('⚠️  View unavailable, falling back to sages table')
   const { data: sages, error } = await supabase
     .from('sages')
     .select('id, name_he, name_en, era, era_key, period_order, region, primary_field, tags, summary, core_concept, spotify_url, coordinates')
@@ -38,11 +52,24 @@ async function loadSages() {
 
 /**
  * Load all connections (relationships) from Supabase
+ * Uses connections_with_names view for enriched data
  * FK constraints guarantee all source/target exist
  */
 async function loadConnections() {
   console.log('🔗 Loading connections from Supabase...')
 
+  // Try to load from view first (includes sage names)
+  const { data: connWithNames, error: viewError } = await supabase
+    .from('connections_with_names')
+    .select('*')
+
+  if (!viewError && connWithNames && connWithNames.length > 0) {
+    console.log(`✓ Loaded ${connWithNames.length} connections (from enriched view)`)
+    return connWithNames
+  }
+
+  // Fallback to raw connections table
+  console.log('⚠️  View unavailable, falling back to connections table')
   const { data: connections, error } = await supabase
     .from('connections')
     .select('source_id, target_id, connection_type, historical_period')
@@ -58,20 +85,70 @@ async function loadConnections() {
 
 /**
  * Load research content for a specific sage
+ * Returns enriched research with metadata and timestamps
  */
 async function loadResearchContent(sageId) {
+  console.log(`📖 Loading research for sage ${sageId}...`)
+
   const { data: research, error } = await supabase
     .from('research_content')
-    .select('content_text, content_type, source_file, word_count')
+    .select('id, sage_id, content_text, content_type, content_summary, source_file, word_count, created_at, updated_at')
     .eq('sage_id', sageId)
     .single()
 
   if (error) {
-    console.log(`No research for sage ${sageId}`)
+    console.log(`📝 No research content for sage ${sageId}`)
     return null
   }
 
+  console.log(`✓ Loaded research: ${research.word_count} words`)
   return research
+}
+
+/**
+ * Load complete sage profile with research + metadata
+ * Called when user clicks on a sage node
+ */
+async function loadSageProfile(sageId) {
+  console.log(`👤 Loading full profile for sage ${sageId}...`)
+
+  try {
+    // Fetch from sages_with_stats view
+    const { data: sage, error: sageError } = await supabase
+      .from('sages_with_stats')
+      .select('*')
+      .eq('id', sageId)
+      .single()
+
+    if (sageError) {
+      console.error('❌ Error loading sage:', sageError)
+      return null
+    }
+
+    // Fetch research content (if exists)
+    const research = await loadResearchContent(sageId)
+
+    // Fetch related connections (incoming + outgoing)
+    const { data: relatedConnections, error: connError } = await supabase
+      .from('connections_with_names')
+      .select('*')
+      .or(`source_id.eq.${sageId},target_id.eq.${sageId}`)
+
+    if (connError) {
+      console.warn('⚠️  Error loading connections:', connError)
+    }
+
+    // Return enriched profile
+    return {
+      ...sage,
+      research: research,
+      related_sages: relatedConnections || [],
+      loaded_at: new Date().toISOString()
+    }
+  } catch (error) {
+    console.error('❌ Error in loadSageProfile:', error)
+    return null
+  }
 }
 
 /**
@@ -378,6 +455,7 @@ export {
   loadSages,
   loadConnections,
   loadResearchContent,
+  loadSageProfile,
   semanticSearch,
   getCurrentUser,
   signInWithEmail,

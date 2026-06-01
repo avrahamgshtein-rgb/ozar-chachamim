@@ -367,7 +367,7 @@ class SageNetwork {
   /**
    * FIX BUG 1: Select node and show sidebar with spotify_url
    */
-  selectNode(node) {
+  async selectNode(node) {
     // DEFENSIVE: Validate node
     if (!node || !node.id || !node.label) {
       console.error('❌ selectNode: Invalid node', node);
@@ -375,14 +375,44 @@ class SageNetwork {
     }
 
     this.selectedNode = node;
+    const nodeId = String(node.id);
 
     // Highlight node
     if (this.node) {
-      this.node.classed('selected', d => String(d.id) === String(node.id));
+      this.node.classed('selected', d => String(d.id) === nodeId);
+    }
+
+    // Show loading state immediately
+    const sidebar = document.querySelector(this.sidebarSelector);
+    sidebar.innerHTML = `
+      <button class="sidebar-close">
+        <i class="fas fa-times"></i>
+      </button>
+      <div style="padding: 2rem; text-align: center;">
+        <i class="fas fa-spinner fa-spin" style="font-size: 2rem; color: #4a86e8;"></i>
+        <p style="margin-top: 1rem; color: #666;">Loading profile...</p>
+      </div>
+    `;
+    sidebar.classList.add('active');
+    sidebar.querySelector('.sidebar-close').addEventListener('click', () => this.closeSidebar());
+
+    // Load full sage profile from Supabase
+    let profile = node; // Fallback
+    if (window.supabase) {
+      try {
+        const { loadSageProfile } = await import('./supabase-client.js');
+        profile = await loadSageProfile(nodeId);
+        if (!profile) {
+          console.warn('Profile load failed, using local node');
+          profile = node;
+        }
+      } catch (error) {
+        console.warn('⚠️  Could not load profile from Supabase:', error);
+        profile = node;
+      }
     }
 
     // Find connected sages - with defensive link validation
-    const nodeId = String(node.id);
     const related = (this.data.links || [])
       .filter(l => {
         const sourceId = String(l.source?.id || l.source || '');
@@ -399,40 +429,86 @@ class SageNetwork {
       })
       .filter(n => n); // Remove undefined entries
 
-    // FIX BUG 1: Use spotify_url from node directly
-    const spotifyUrl = node.spotify_url
-      ? node.spotify_url
-      : `https://open.spotify.com/search/${encodeURIComponent(node.label + ' jewish music')}`;
+    // FIX BUG 1: Use spotify_url from profile
+    const spotifyUrl = profile.spotify_url
+      ? profile.spotify_url
+      : `https://open.spotify.com/search/${encodeURIComponent(profile.label + ' jewish music')}`;
+
+    // Build research content section (if available)
+    const researchSection = profile.research ? `
+      <div class="sidebar-section">
+        <h3>📚 מחקר עמוק</h3>
+        <div style="background: #f9f9f9; padding: 1rem; border-radius: 8px; max-height: 300px; overflow-y: auto;">
+          <small style="color: #666;">📄 ${profile.research.source_file || 'Research Document'} • ${profile.research.word_count || 0} words</small>
+          <div style="margin-top: 0.5rem; font-size: 0.9rem; line-height: 1.6; color: #333;">
+            ${profile.research.content_summary
+              ? `<p><strong>Summary:</strong> ${profile.research.content_summary}</p>`
+              : ''}
+            ${profile.research.content_text
+              ? `<p>${profile.research.content_text.substring(0, 500)}...</p>`
+              : '<p>No text content available</p>'}
+          </div>
+          <small style="color: #999; margin-top: 0.5rem; display: block;">
+            Updated: ${new Date(profile.research.updated_at).toLocaleDateString('he-IL')}
+          </small>
+        </div>
+      </div>
+    ` : '';
+
+    // Build stats section (from view data)
+    const statsSection = profile.connection_count || profile.bookmark_count ? `
+      <div class="sidebar-section" style="background: #f0f4f8; padding: 1rem; border-radius: 8px;">
+        <h4>📊 Statistics</h4>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; font-size: 0.9rem;">
+          <div><strong>🔗 Connected:</strong> ${profile.connection_count || 0} sages</div>
+          <div><strong>⭐ Bookmarks:</strong> ${profile.bookmark_count || 0} saved</div>
+        </div>
+      </div>
+    ` : '';
 
     // Log history if user is logged in
     if (window.sageAuth && window.sageAuth.user) {
-      window.sageAuth.logHistory(node.id);
+      try {
+        const { logSageView } = await import('./supabase-client.js');
+        logSageView(nodeId, 'graph');
+      } catch (e) {
+        console.warn('⚠️  Could not log view');
+      }
     }
 
-    // Build sidebar HTML with bookmark button
+    // Build complete sidebar HTML
     const html = `
       <button class="sidebar-close">
         <i class="fas fa-times"></i>
       </button>
       <div class="sidebar-header">
-        <h2>${node.label}</h2>
+        <h2>${profile.label || profile.name_he}</h2>
         <div class="sidebar-meta">
           <div class="sidebar-meta-item">
-            <i class="fas fa-calendar"></i> ${node.era}
+            <i class="fas fa-calendar"></i> ${profile.era || 'Unknown'}
           </div>
           <div class="sidebar-meta-item">
-            <i class="fas fa-map-pin"></i> ${node.location || 'Unknown'}
+            <i class="fas fa-map-pin"></i> ${profile.region || profile.location || 'Unknown'}
           </div>
           <div class="sidebar-meta-item">
-            <i class="fas fa-book"></i> ${node.field || 'Other'}
+            <i class="fas fa-book"></i> ${profile.primary_field || profile.field || 'Other'}
           </div>
         </div>
       </div>
       <div class="sidebar-content">
         <div class="sidebar-section">
           <h3>ביוגרפיה</h3>
-          <p>${node.bio}</p>
+          <p>${profile.summary || profile.bio || 'No biography available'}</p>
         </div>
+
+        ${profile.core_concept ? `
+          <div class="sidebar-section" style="background: #fff3e0; padding: 1rem; border-left: 4px solid #ff9800; border-radius: 4px;">
+            <h4>💡 Core Concept</h4>
+            <p style="margin: 0; font-style: italic; color: #e65100;">${profile.core_concept}</p>
+          </div>
+        ` : ''}
+
+        ${statsSection}
 
         <div class="sidebar-section">
           <h3>🎵 מוזיקה קשורה</h3>
@@ -443,12 +519,14 @@ class SageNetwork {
 
         ${window.sageAuth && window.sageAuth.user ? `
           <div class="sidebar-section">
-            <button id="bookmarkBtn" onclick="window.sageNetwork.toggleBookmark('${node.id}')"
+            <button id="bookmarkBtn" onclick="window.sageNetwork.toggleBookmark('${nodeId}')"
               style="width: 100%; padding: 0.75rem; background: #ffb300; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600;">
               <i class="fas fa-star"></i> שמור
             </button>
           </div>
         ` : ''}
+
+        ${researchSection}
 
         <div class="sidebar-section">
           <h3>קישורים (${related.length})</h3>
@@ -466,7 +544,6 @@ class SageNetwork {
       </div>
     `;
 
-    const sidebar = document.querySelector(this.sidebarSelector);
     sidebar.innerHTML = html;
     sidebar.classList.add('active');
 
@@ -474,7 +551,7 @@ class SageNetwork {
     sidebar.querySelector('.sidebar-close').addEventListener('click', () => this.closeSidebar());
 
     // Highlight connections in graph
-    this.highlightConnections(node, related);
+    this.highlightConnections(profile, related);
   }
 
   /**
