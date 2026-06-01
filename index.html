@@ -236,24 +236,33 @@
                     const color = eraColors[node.era_key] || '#999';
 
                     const marker = L.circleMarker([lat, lng], {
-                        radius: 8,
+                        radius: 10,
                         fillColor: color,
                         color: 'white',
-                        weight: 2,
+                        weight: 2.5,
                         opacity: 1,
-                        fillOpacity: 0.8
+                        fillOpacity: 0.85
                     })
                     .bindPopup(`
-                      <div style="text-align: center; padding: 0.5rem;">
-                        <b>${node.label}</b><br>
-                        <small>${node.era}</small><br>
-                        <small>${node.region || 'Unknown'}</small><br>
+                      <div style="padding: 1rem; min-width: 250px;">
+                        <div style="border-bottom: 2px solid ${color}; padding-bottom: 0.75rem; margin-bottom: 0.75rem;">
+                          <h4 style="margin: 0 0 0.25rem 0; color: #1a1a1a;">${node.label}</h4>
+                          <div style="font-size: 0.85rem; color: #666;">
+                            <div><strong>תקופה:</strong> ${node.era}</div>
+                            <div><strong>אזור:</strong> ${node.region || 'Unknown'}</div>
+                            <div><strong>תחום:</strong> ${node.primary_field || 'Other'}</div>
+                          </div>
+                        </div>
+                        <div style="font-size: 0.85rem; color: #555; margin-bottom: 0.75rem;">
+                          <p style="margin: 0; line-height: 1.4;">${(node.summary || 'אין תיאור זמין').substring(0, 150)}...</p>
+                        </div>
+                        ${node.connection_count ? `<div style="font-size: 0.8rem; color: #888; margin-bottom: 0.5rem;">🔗 ${node.connection_count} קשרים</div>` : ''}
                         <button onclick="window.sageNetwork && window.sageNetwork.selectNode(window.graphData.nodes.find(n => n.id === '${node.id}'))"
-                          style="margin-top: 0.5rem; padding: 0.25rem 0.75rem; background: #4a86e8; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 0.9rem;">
-                          View Profile
+                          style="width: 100%; padding: 0.5rem; background: #4a86e8; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 0.9rem; font-weight: 600;">
+                          📖 ראה פרופיל מלא
                         </button>
                       </div>
-                    `)
+                    `, { maxWidth: 300 })
                     .addTo(mapInstance);
                     markersAdded++;
                 }
@@ -281,8 +290,8 @@
 
             const traditions = {};
             window.graphData.nodes.forEach(node => {
-                if (!node || !node.field) return;
-                const t = node.field || 'Other';
+                if (!node || !node.primary_field) return;
+                const t = node.primary_field || 'Other';
                 if (!traditions[t]) traditions[t] = [];
                 traditions[t].push(node);
             });
@@ -291,11 +300,27 @@
             Object.keys(traditions).sort().forEach(tradition => {
                 const sages = traditions[tradition];
                 if (!sages || sages.length === 0) return;
-                html += `<div class="tradition-card">
-                    <h3>${tradition}</h3>
-                    <p>${sages.length} חכמים בעלי התמחות בתחום זה</p>
-                    <div class="tradition-sages">
-                        ${sages.map(s => `<span class="sage-tag">${s.label || 'Unknown'}</span>`).join('')}
+                const eraColors = {
+                    'second-temple': '#ff7f0e',
+                    'tannaim': '#2ca02c',
+                    'amoraim': '#d62728',
+                    'rishonim': '#9467bd',
+                    'acharonim': '#8c564b',
+                    'modern': '#e377c2'
+                };
+                html += `<div class="tradition-card" style="border-left: 4px solid #4a86e8; padding: 1.5rem; margin-bottom: 1rem; background: #f9f9f9; border-radius: 8px;">
+                    <h3 style="margin: 0 0 0.5rem 0; color: #1a1a1a;">${tradition}</h3>
+                    <p style="margin: 0 0 1rem 0; color: #666; font-size: 0.9rem;"><strong>${sages.length}</strong> חכמים בתחום זה</p>
+                    <div class="tradition-sages" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 0.75rem;">
+                        ${sages.map(s => `
+                            <div onclick="window.sageNetwork && window.sageNetwork.selectNode(window.graphData.nodes.find(n => n.id === '${s.id}'))"
+                              style="padding: 0.75rem; background: white; border-left: 3px solid ${eraColors[s.era_key] || '#999'}; border-radius: 4px; cursor: pointer; transition: all 0.2s; font-size: 0.9rem; line-height: 1.3;"
+                              onmouseover="this.style.boxShadow='0 2px 8px rgba(0,0,0,0.1)'"
+                              onmouseout="this.style.boxShadow='none'">
+                                <div style="font-weight: 600; color: #1a1a1a;">${s.label || 'Unknown'}</div>
+                                <div style="color: #888; font-size: 0.85rem;">${s.era}</div>
+                            </div>
+                        `).join('')}
                     </div>
                 </div>`;
             });
