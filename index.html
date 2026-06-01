@@ -240,11 +240,51 @@
         document.getElementById('ideasContainer').innerHTML = html;
     }
 
+    // Fetch from Supabase
+    async function fetchFromSupabase() {
+        const SUPABASE_URL = 'https://ulluacifirzywhmzkvkr.supabase.co';
+        const SUPABASE_KEY = 'sb_publishable_ObxKLFsDTE41KoAMfMV1dw_Nu38ZI2C';
+
+        try {
+            const response = await fetch(
+                `${SUPABASE_URL}/rest/v1/sages?select=*`,
+                {
+                    headers: {
+                        'apikey': SUPABASE_KEY,
+                        'Content-Type': 'application/json'
+                    }
+                }
+            );
+
+            const sages = await response.json();
+            console.log(`✓ Loaded ${sages.length} sages from Supabase`);
+
+            // Convert Supabase format to graph format
+            const nodes = sages.map(s => ({
+                id: String(s.sage_id),
+                label: s.name_he,
+                era: s.period_key ? s.period_key.charAt(0).toUpperCase() + s.period_key.slice(1).replace('-', ' ') : 'Unknown',
+                group: s.period_key || 'unknown',
+                period: s.years || '',
+                location: s.area || '',
+                field: s.main_field || 'Other',
+                bio: s.summary || '',
+                spotify_url: s.spotify_link || ''
+            }));
+
+            return { nodes: nodes, links: [] };
+        } catch (e) {
+            console.error('✗ Supabase error:', e);
+            console.log('📡 Falling back to local data.json...');
+            const response = await fetch('data.json');
+            return await response.json();
+        }
+    }
+
     document.addEventListener('DOMContentLoaded', async () => {
         try {
-            const response = await fetch('data.json');
-            graphData = await response.json();
-            console.log('✓ Loaded', graphData.nodes.length, 'nodes');
+            graphData = await fetchFromSupabase();
+            console.log('✓ Ready:', graphData.nodes.length, 'sages loaded');
         } catch (e) {
             console.error('✗ Error loading data:', e);
         }

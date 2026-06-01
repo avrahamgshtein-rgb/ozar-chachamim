@@ -41,13 +41,20 @@ class SageNetwork {
   }
 
   /**
-   * Load data from JSON file and initialize the graph
+   * Load data from Supabase or JSON fallback
    */
   async init() {
     try {
-      const response = await fetch(this.dataUrl);
-      this.data = await response.json();
-      console.log(`✓ Loaded ${this.data.nodes.length} nodes and ${this.data.links.length} links`);
+      // Data comes from Supabase via index.html's fetchFromSupabase()
+      if (window.graphData) {
+        this.data = window.graphData;
+        console.log(`✓ Using Supabase data: ${this.data.nodes.length} nodes`);
+      } else {
+        // Fallback to JSON file if not loaded by index.html
+        const response = await fetch(this.dataUrl);
+        this.data = await response.json();
+        console.log(`✓ Using local data: ${this.data.nodes.length} nodes`);
+      }
 
       this.setupEventListeners();
       this.render();
