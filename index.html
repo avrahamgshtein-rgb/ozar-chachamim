@@ -214,15 +214,27 @@
             }
         }
 
-        // Add colored markers for sages using location-mapping
+        // Add colored markers for sages from Supabase coordinates
         let markersAdded = 0;
-        window.graphData.nodes.forEach(node => {
-            if (node.location) {
-                const locations = parseLocation(node.location);
-                const color = getEraColor(node.group);
+        const eraColors = {
+            'second-temple': '#ff7f0e',
+            'tannaim': '#2ca02c',
+            'amoraim': '#d62728',
+            'rishonim': '#9467bd',
+            'acharonim': '#8c564b',
+            'modern': '#e377c2',
+            'unknown': '#999'
+        };
 
-                locations.forEach(loc => {
-                    const [lat, lng] = loc.coords;
+        window.graphData.nodes.forEach(node => {
+            // Check for Supabase coordinates (JSONB)
+            if (node.coordinates && typeof node.coordinates === 'object') {
+                const lat = node.coordinates.lat || node.coordinates.latitude;
+                const lng = node.coordinates.lng || node.coordinates.longitude;
+
+                if (lat && lng) {
+                    const color = eraColors[node.era_key] || '#999';
+
                     L.circleMarker([lat, lng], {
                         radius: 8,
                         fillColor: color,
@@ -231,10 +243,10 @@
                         opacity: 1,
                         fillOpacity: 0.8
                     })
-                        .bindPopup(`<b>${node.label}</b><br>${node.era}<br>${loc.name}`)
+                        .bindPopup(`<b>${node.label}</b><br>${node.era}<br>${node.region || 'Unknown'}`)
                         .addTo(mapInstance);
                     markersAdded++;
-                });
+                }
             }
         });
             console.log(`✓ Map: Added ${markersAdded} markers`);

@@ -97,10 +97,34 @@ async function initializeApp() {
       return valid
     })
 
+    // Convert Supabase format to graph.js format
+    const nodes = sages.map(s => ({
+      id: s.id,
+      label: s.name_he,           // graph.js expects "label"
+      name_he: s.name_he,
+      era: s.era,
+      era_key: s.era_key,
+      group: s.era_key,           // graph.js expects "group" for colors
+      period_order: s.period_order,
+      region: s.region,
+      primary_field: s.primary_field,
+      tags: s.tags,
+      summary: s.summary,
+      core_concept: s.core_concept,
+      spotify_url: s.spotify_url,
+      coordinates: s.coordinates
+    }))
+
+    const links = validConnections.map(c => ({
+      source: c.source_id,
+      target: c.target_id,
+      type: c.connection_type
+    }))
+
     // Store globally
     window.graphData = {
-      nodes: sages,
-      links: validConnections
+      nodes: nodes,
+      links: links
     }
 
     // Create search index

@@ -41,21 +41,22 @@ class SageNetwork {
   }
 
   /**
-   * Load data from global window.graphData (set by data-loader.js)
+   * Load data from global window.graphData (set by supabase-client.js)
    */
   async init() {
     try {
       // Check if data is already available
       if (window.graphData && window.graphData.nodes && window.graphData.nodes.length > 0) {
         this.data = window.graphData;
+        console.log('✓ Graph.js found data in window.graphData');
         this._initializeGraph();
         return;
       }
 
-      // Otherwise wait for graphDataReady event
-      console.log('⏳ Waiting for data...');
-      document.addEventListener('graphDataReady', () => {
-        console.log('📦 Data arrived');
+      // Otherwise wait for supabaseReady event
+      console.log('⏳ [Graph] Waiting for Supabase data...');
+      document.addEventListener('supabaseReady', () => {
+        console.log('📦 [Graph] Data arrived from Supabase');
         this.data = window.graphData;
         this._initializeGraph();
       }, { once: true });

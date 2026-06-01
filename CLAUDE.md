@@ -10,20 +10,32 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **Hebrew:** בסיס ידע מובנה על חכמי ישראל לדורותיהם — עם אתר ויזואליזציה דינמית של קשרים בין חכמים — המיועד לתלמידי ישיבות ובוגריהן.
 
-## Quick Start: Running the Website
+## Quick Start: Running the Website (Supabase Backend)
 
+**Setup (First Time Only)**:
 ```bash
-# Start local development server (macOS/Linux)
+# 1. Create Supabase project: https://app.supabase.com
+# 2. Run SQL schema in Supabase SQL Editor:
+#    → supabase-schema-v3.sql
+# 3. Import 323 sages:
+python migrate_to_supabase_v3.py
+```
+
+**Run Development Server**:
+```bash
+# Start server
 python -m http.server 8080
 
-# Windows users can run the same command or
-python3 -m http.server 8080
-
-# Then open browser to:
+# Open browser:
 # http://localhost:8080
 ```
 
-The site loads from `data.json` (local file). To use Supabase backend later, update the fetch in `index.html` (see "Supabase Integration" below).
+**Check Console (F12)**:
+```
+✓ Loaded 323 sages from Supabase
+✓ Loaded 25 connections (FK-validated)
+✅ Supabase ready: 323 nodes + 25 edges
+```
 
 ## Project Architecture
 
@@ -85,32 +97,44 @@ Then manually merge relevant rows into `data.json`.
 - **Tab Navigation**: Modify `.tab-btn` section and corresponding `.main-area` divs
 - **Sidebar Details**: Adjust `.sidebar-content` HTML structure in JavaScript `selectNode()` function
 
-## Supabase Integration (Phase 2)
+## Supabase Integration (LIVE — Phase 2 Complete)
 
-### Prerequisites
-1. Create Supabase project: https://supabase.com
-2. Get Project URL + Anon Key from Settings → API
-
-### Setup
+### Setup (First Time)
 ```bash
-# 1. Run SQL schema in Supabase SQL Editor
-# Paste contents of supabase-schema-v2.sql
+# 1. Create project at https://supabase.com
 
-# 2. Import data
-python import_simple.py
-# Enter: Project URL, Anon Key
-# Imports sages.json + research.json to database
+# 2. Run SQL schema in Supabase SQL Editor:
+# Paste contents of supabase-schema-v3.sql
 
-# 3. Update index.html
-# Replace placeholder credentials in fetch() call
-# Change: const response = await fetch('data.json');
-# To: const data = await fetchFromSupabase();
+# 3. Import 323 sages + 25 connections:
+python migrate_to_supabase_v3.py
+# This validates FK constraints and imports from "חכמי ישראל.xlsx"
+
+# 4. Frontend automatically loads from Supabase
+# supabase-client.js handles all data loading
 ```
 
-### Credentials Management
-- Store Supabase URL + Anon Key as environment variables or `.env` (never in git)
-- Anon key is safe to embed in frontend (public, read-only)
-- Service Role key goes nowhere near the frontend
+### Data Flow
+```
+index.html (DOMContentLoaded)
+  ↓
+supabase-client.js module (import)
+  ↓
+initializeApp()
+  ├─ loadSages() → SELECT * FROM sages (323 rows)
+  ├─ loadConnections() → SELECT * FROM connections (25 rows)
+  ├─ Validation (FK checks)
+  └─ window.graphData ready → emit 'supabaseReady'
+  ↓
+graph.js, initMap(), buildTraditions(), buildIdeas()
+  ↓
+User sees 4 interactive tabs + search
+```
+
+### Credentials
+- **Supabase URL & Anon Key**: Already in `supabase-client.js` (line 9-10)
+- **Anon key is public** (safe in frontend, read-only via RLS)
+- **RLS policies**: Enforce data access (sages public, user data private)
 
 ## Content Conventions
 
@@ -144,29 +168,42 @@ RTL support tested; note Windows-1252 encoding issues in older IE (not supported
 
 | Issue | Solution |
 |-------|----------|
-| Network graph doesn't render | Check browser console (F12). Verify `data.json` loads and is valid JSON. |
-| Sidebar doesn't open on node click | Ensure `selectNode()` function is called. Check z-index of `.sidebar` (should be 999+). |
-| Map shows blank tiles | Verify Leaflet CSS/JS loaded from CDN. Check OpenStreetMap tile server status. |
-| Search not filtering | Check input value propagation to D3 selection. Ensure node/link opacity styles are applied. |
+| Console shows "Failed to load graph data" | Check `supabase-schema-v3.sql` was run in Supabase. Check `migrate_to_supabase_v3.py` completed. Verify Supabase URL/key. |
+| No nodes or edges display | Check browser console (F12). Look for "Loaded X sages" message. If 0 sages, migration didn't complete. |
+| "node not found" error | Run `python migrate_to_supabase_v3.py` again. This validates FK constraints and imports 323 sages. |
+| Sidebar doesn't open on node click | Check `window.graphData` exists. Verify node has `id` and `label` fields. |
+| Map shows blank tiles | Verify Leaflet CSS/JS loaded from CDN. Check OpenStreetMap server status. |
+| Search not filtering | Check `window.searchIndex` created. Verify search input propagates to `semanticSearch()`. |
 
 ## Future Work (Phase 3+)
 
-- [ ] Finish Supabase import (992 sages from Excel)
-- [ ] Add user authentication (profiles table)
-- [ ] Implement bookmarks + history tracking
-- [ ] Full-text search via Supabase PostgreSQL `tsvector`
-- [ ] PDF export of sage profiles
-- [ ] API endpoint for research access
-- [ ] Timeline view (chronological layout)
-- [ ] Tradition filter UI (Ashkenazi, Sephardic, Hasidic, etc.)
+- [x] **Phase 1**: 323 sages + 25 connections with data integrity
+- [x] **Phase 2**: Supabase backend (PostgreSQL, RLS, FK constraints)
+- [x] **Phase 3**: User authentication (signup/login)
+- [x] **Phase 3**: Bookmarks + view history
+- [x] **Phase 3**: Semantic search (cross-tab filtering)
+- [ ] **Phase 4**: Full-text search via PostgreSQL `tsvector`
+- [ ] **Phase 4**: Research document integration (Word → Markdown)
+- [ ] **Phase 5**: Chronological force layout (שלשלת הקבלה)
+- [ ] **Phase 5**: PDF export of sage profiles
+- [ ] **Phase 5**: Timeline view by era
+- [ ] **Deployment**: Vercel, GitHub Pages, or custom server
 
 ## File Reference
 
-- **`index.html`** — Main SPA (4 tabs: graph, map, traditions, ideas)
-- **`data.json`** — Master dataset for website (44 sages + links)
-- **`export_excel.py`** — Extract Excel → JSON
-- **`export_research.py`** — Extract .docx → JSON (fuzzy matching)
-- **`import_simple.py`** — Import JSON → Supabase REST API
-- **`supabase-schema-v2.sql`** — Database DDL
+### Core Frontend
+- **`index.html`** — Main SPA (4 tabs: graph, map, traditions, ideas) + search
+- **`supabase-client.js`** — Supabase data loading, authentication, bookmarks, search index
+- **`graph.js`** — D3.js force-directed network visualization
+- **`styles-graph.css`** — Responsive CSS for all views
+
+### Supabase Backend
+- **`supabase-schema-v3.sql`** — PostgreSQL schema (sages, connections, research, users, bookmarks, history) + RLS policies
+- **`migrate_to_supabase_v3.py`** — Import 323 sages + 25 connections from Excel → Supabase (FK validated)
+- **`IMPLEMENTATION_GUIDE.md`** — Step-by-step deployment guide
+
+### Data & Utilities
+- **`data.json`** — Fallback local dataset (44 sages, no longer used)
+- **`site-data/חכמי ישראל.xlsx`** — Excel source (992 sage candidates)
+- **`location-mapping.js`** — Geographic coordinates for sage regions
 - **`sages/*.md`** — Archival markdown profiles (not used by site)
-- **`site-data/חכמי ישראל.xlsx`** — Excel source (992 candidates)
