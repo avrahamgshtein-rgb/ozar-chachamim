@@ -162,24 +162,10 @@
 
     // FIX BUG 4: Geography view with colored markers
     function initMap() {
-        mapInstance = L.map('map').setView([31.5, 35.2], 5);
+        mapInstance = L.map('map').setView([31.5, 35.2], 4);
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '© OpenStreetMap', maxZoom: 18
         }).addTo(mapInstance);
-
-        const colorMap = {
-            'second-temple': '#ff7f0e', 'tannaim': '#2ca02c', 'amoraim': '#d62728',
-            'geonim': '#9467bd', 'rishonim': '#9467bd', 'acharonim': '#8c564b',
-            'modern': '#e377c2', 'unknown': '#999999'
-        };
-
-        const geoLocations = {
-            'Jerusalem': [31.768, 35.214], 'Eretz Israel': [31.5, 35.2], 'Alexandria': [31.2, 29.9],
-            'Egypt': [26.8, 30.8], 'Babylon': [32.5, 44.4], 'France': [46.2, 2.2],
-            'Provence': [43.9, 5.0], 'Spain': [40.5, -3.7], 'Germany': [51.2, 10.5],
-            'Italy': [41.9, 12.6], 'Tiberias': [32.8, 35.4], 'Izmir': [38.4, 27.1],
-            'Prague': [50.1, 14.4], 'Ukraine': [49.0, 31.3], 'Yemen': [15.3, 48.2]
-        };
 
         // Add legend
         const legend = L.control({ position: 'bottomleft' });
@@ -200,20 +186,31 @@
         };
         legend.addTo(mapInstance);
 
-        // Add colored markers for sages
+        // Add colored markers for sages using location-mapping
         if (graphData && graphData.nodes) {
+            let markersAdded = 0;
             graphData.nodes.forEach(node => {
-                if (node.location && geoLocations[node.location]) {
-                    const coords = geoLocations[node.location];
-                    const color = colorMap[node.group] || '#999';
-                    L.circleMarker(coords, {
-                        radius: 8, fillColor: color, color: 'white', weight: 2,
-                        opacity: 1, fillOpacity: 0.8
-                    })
-                        .bindPopup(`<b>${node.label}</b><br>${node.location}`)
-                        .addTo(mapInstance);
+                if (node.location) {
+                    const locations = parseLocation(node.location);
+                    const color = getEraColor(node.group);
+
+                    locations.forEach(loc => {
+                        const [lat, lng] = loc.coords;
+                        L.circleMarker([lat, lng], {
+                            radius: 8,
+                            fillColor: color,
+                            color: 'white',
+                            weight: 2,
+                            opacity: 1,
+                            fillOpacity: 0.8
+                        })
+                            .bindPopup(`<b>${node.label}</b><br>${node.era}<br>${loc.name}`)
+                            .addTo(mapInstance);
+                        markersAdded++;
+                    });
                 }
             });
+            console.log(`✓ Added ${markersAdded} markers to map`);
         }
 
         setTimeout(() => mapInstance.invalidateSize(), 300);
@@ -309,16 +306,33 @@
         }
     }
 
+    // Fallback function - load from local data.json with edges
+    async function loadLocalData() {
+        try {
+            const response = await fetch('data.json');
+            const data = await response.json();
+            console.log(`✓ Loaded ${data.nodes.length} nodes + ${data.links.length} edges from local data.json`);
+            return data;
+        } catch (e) {
+            console.error('✗ Supabase error:', e);
+            console.log('📡 Falling back to local data.json...');
+            const response = await fetch('data.json');
+            return await response.json();
+        }
+    }
+
     document.addEventListener('DOMContentLoaded', async () => {
         try {
-            graphData = await fetchFromSupabase();
-            console.log('✓ Ready:', graphData.nodes.length, 'sages loaded');
+            // Use local data.json with edges for visualization
+            graphData = await loadLocalData();
+            console.log('✓ Ready:', graphData.nodes.length, 'sages +', graphData.links.length, 'edges');
         } catch (e) {
             console.error('✗ Error loading data:', e);
         }
     });
 </script>
 
+<script src="location-mapping.js"></script>
 <script src="auth-supabase.js"></script>
 <script src="graph.js"></script>
 
