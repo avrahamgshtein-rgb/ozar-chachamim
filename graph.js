@@ -438,19 +438,19 @@ class SageNetwork {
     const researchSection = profile.research ? `
       <div class="sidebar-section">
         <h3>📚 מחקר עמוק</h3>
-        <div style="background: #f9f9f9; padding: 1rem; border-radius: 8px; max-height: 300px; overflow-y: auto;">
-          <small style="color: #666;">📄 ${profile.research.source_file || 'Research Document'} • ${profile.research.word_count || 0} words</small>
-          <div style="margin-top: 0.5rem; font-size: 0.9rem; line-height: 1.6; color: #333;">
-            ${profile.research.content_summary
-              ? `<p><strong>Summary:</strong> ${profile.research.content_summary}</p>`
-              : ''}
+        <div style="background: #f9f9f9; padding: 1rem; border-radius: 8px;">
+          <small style="color: #666;">📄 ${profile.research.source_file || 'Research Document'} • ${profile.research.word_count || 0} מילים</small>
+          <div style="margin-top: 0.5rem; font-size: 0.9rem; line-height: 1.6; color: #333; max-height: 150px; overflow-y: auto;">
             ${profile.research.content_text
-              ? `<p>${profile.research.content_text.substring(0, 500)}...</p>`
-              : '<p>No text content available</p>'}
+              ? `<p>${profile.research.content_text.substring(0, 300)}...</p>`
+              : '<p>אין תוכן זמין</p>'}
           </div>
-          <small style="color: #999; margin-top: 0.5rem; display: block;">
-            Updated: ${new Date(profile.research.updated_at).toLocaleDateString('he-IL')}
-          </small>
+          <a href="research-view.html?sage=${profile.id}"
+             style="display: inline-block; margin-top: 0.75rem; padding: 0.6rem 1rem; background: #4a86e8; color: white; text-decoration: none; border-radius: 6px; font-size: 0.9rem; font-weight: 600; transition: all 0.2s; cursor: pointer;"
+             onmouseover="this.style.background='#3a75d8'"
+             onmouseout="this.style.background='#4a86e8'">
+            📖 קרא את המחקר המלא
+          </a>
         </div>
       </div>
     ` : '';

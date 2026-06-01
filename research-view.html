@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>חומר מחקר - אוצר חכמים</title>
+    <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;700&family=Heebo:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --color-primary: #3d2817;
+            --color-secondary: #8b7965;
+            --color-border: #ede9e0;
+            --color-bg-light: #f5f2ea;
+            --color-bg: #faf8f3;
+            --color-white: #ffffff;
+            --color-text: #2c2416;
+            --color-text-secondary: #6b6157;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Heebo', sans-serif;
+            background: var(--color-bg);
+            color: var(--color-text);
+            direction: rtl;
+            text-align: right;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid var(--color-border);
+        }
+
+        .back-btn {
+            background: var(--color-bg-light);
+            border: 1px solid var(--color-border);
+            padding: 0.75rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            color: var(--color-secondary);
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .back-btn:hover {
+            background: var(--color-white);
+            border-color: var(--color-secondary);
+        }
+
+        .header h1 {
+            font-family: 'Frank Ruhl Libre', serif;
+            font-size: 2.2rem;
+            color: var(--color-primary);
+            flex: 1;
+            text-align: center;
+        }
+
+        .metadata {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+            background: var(--color-white);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--color-border);
+        }
+
+        .metadata-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .metadata-label {
+            font-size: 0.8rem;
+            color: var(--color-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 600;
+        }
+
+        .metadata-value {
+            font-size: 1.1rem;
+            color: var(--color-text);
+            font-weight: 500;
+        }
+
+        .content {
+            background: var(--color-white);
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid var(--color-border);
+            line-height: 1.8;
+            font-size: 1.05rem;
+            color: var(--color-text);
+        }
+
+        .content p {
+            margin-bottom: 1.2rem;
+            text-align: justify;
+        }
+
+        .content p:first-letter {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: var(--color-primary);
+        }
+
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            color: var(--color-secondary);
+        }
+
+        .loading i {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .error {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            color: #856404;
+            padding: 1.5rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+        }
+
+        .stats {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+        }
+
+        .stat {
+            background: var(--color-bg-light);
+            padding: 0.75rem 1rem;
+            border-radius: 6px;
+            border-right: 3px solid var(--color-secondary);
+        }
+
+        .stat-label {
+            color: var(--color-secondary);
+            font-weight: 600;
+        }
+
+        .stat-value {
+            color: var(--color-primary);
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .header {
+                flex-direction: column-reverse;
+                gap: 1rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .header h1 {
+                font-size: 1.6rem;
+            }
+
+            .content {
+                padding: 1.5rem;
+                font-size: 1rem;
+            }
+
+            .metadata {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <button class="back-btn" onclick="window.location.href='http://localhost:8080'">
+                <i class="fas fa-arrow-right"></i>
+                חזור
+            </button>
+            <h1 id="sageTitle">חומר מחקר</h1>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-label">מילים</div>
+                <div class="stat-value" id="wordCount">0</div>
+            </div>
+            <div class="stat">
+                <div class="stat-label">מקור</div>
+                <div class="stat-value" id="sourceFile" style="font-size: 0.9rem;">-</div>
+            </div>
+            <div class="stat">
+                <div class="stat-label">תקופה</div>
+                <div class="stat-value" id="sagePeriod" style="font-size: 0.9rem;">-</div>
+            </div>
+        </div>
+
+        <!-- Metadata -->
+        <div class="metadata" id="metadata"></div>
+
+        <!-- Content -->
+        <div id="loading" class="loading">
+            <i class="fas fa-spinner"></i>
+            <p>טוען חומר מחקר...</p>
+        </div>
+        <div id="content" class="content" style="display: none;"></div>
+        <div id="error" class="error" style="display: none;"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/supabase@2/+esm"></script>
+    <script type="module">
+        import { supabase } from './supabase-client.js';
+
+        // Get sage ID from URL query param
+        const params = new URLSearchParams(window.location.search);
+        const sageId = params.get('sage');
+
+        if (!sageId) {
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('error').style.display = 'block';
+            document.getElementById('error').innerHTML = '❌ חכם לא נבחר. בחזור לגרף בחר חכם עם חומר מחקר.';
+            document.querySelector('.back-btn').textContent = 'חזור';
+            throw new Error('No sage ID provided');
+        }
+
+        async function loadResearch() {
+            try {
+                // Load sage metadata
+                const { data: sage, error: sageError } = await supabase
+                    .from('sages')
+                    .select('*')
+                    .eq('id', sageId)
+                    .single();
+
+                if (sageError || !sage) {
+                    throw new Error('חכם לא נמצא');
+                }
+
+                // Load research content
+                const { data: research, error: resError } = await supabase
+                    .from('research_content')
+                    .select('*')
+                    .eq('sage_id', sageId)
+                    .single();
+
+                if (resError || !research) {
+                    throw new Error('אין חומר מחקר עבור חכם זה');
+                }
+
+                // Update title
+                document.getElementById('sageTitle').textContent = sage.name_he || 'Unknown';
+
+                // Update metadata
+                const metadataHtml = `
+                    <div class="metadata-item">
+                        <div class="metadata-label">שם</div>
+                        <div class="metadata-value">${sage.name_he || '-'}</div>
+                    </div>
+                    <div class="metadata-item">
+                        <div class="metadata-label">תקופה</div>
+                        <div class="metadata-value">${sage.era || '-'}</div>
+                    </div>
+                    <div class="metadata-item">
+                        <div class="metadata-label">תחום</div>
+                        <div class="metadata-value">${sage.primary_field || '-'}</div>
+                    </div>
+                    <div class="metadata-item">
+                        <div class="metadata-label">אזור</div>
+                        <div class="metadata-value">${sage.region || '-'}</div>
+                    </div>
+                `;
+                document.getElementById('metadata').innerHTML = metadataHtml;
+
+                // Update stats
+                document.getElementById('wordCount').textContent = research.word_count.toLocaleString('he-IL');
+                document.getElementById('sourceFile').textContent = research.source_file.replace('.docx', '');
+                document.getElementById('sagePeriod').textContent = sage.era || '-';
+
+                // Format content
+                const paragraphs = research.content_text
+                    .split('\n\n')
+                    .filter(p => p.trim())
+                    .map(p => `<p>${p.trim()}</p>`)
+                    .join('');
+
+                document.getElementById('content').innerHTML = paragraphs;
+
+                // Hide loading, show content
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('content').style.display = 'block';
+
+            } catch (error) {
+                console.error('Error loading research:', error);
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('error').style.display = 'block';
+                document.getElementById('error').innerHTML = `❌ ${error.message}`;
+            }
+        }
+
+        loadResearch();
+    </script>
+</body>
+</html>
