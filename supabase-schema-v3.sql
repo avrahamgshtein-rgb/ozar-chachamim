@@ -193,6 +193,9 @@ CREATE POLICY "anyone_read_connections" ON public.connections
 CREATE POLICY "anyone_read_research" ON public.research_content
   FOR SELECT USING (true);
 
+CREATE POLICY "anyone_insert_research" ON public.research_content
+  FOR INSERT WITH CHECK (true);
+
 -- Profiles: Users can only read their own
 CREATE POLICY "users_read_own_profile" ON public.user_profiles
   FOR SELECT USING (auth.uid() = id);
