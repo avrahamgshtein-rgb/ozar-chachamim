@@ -151,10 +151,29 @@ class SageNetwork {
       })
       .strength(0.15);  // Gentle force to maintain historical order
 
-    // Initialize force simulation
+    // DEFENSIVE: Validate links before D3 processes them
+    const validNodeIds = new Set(this.data.nodes.map(n => String(n.id)));
+    const validLinks = (this.data.links || []).filter(link => {
+      const sourceId = String(link.source || link.source === 0 ? link.source : '');
+      const targetId = String(link.target || link.target === 0 ? link.target : '');
+
+      if (!validNodeIds.has(sourceId)) {
+        console.warn(`⚠️  Link source not found: ${sourceId} (target: ${targetId})`);
+        return false;
+      }
+      if (!validNodeIds.has(targetId)) {
+        console.warn(`⚠️  Link target not found: ${targetId} (source: ${sourceId})`);
+        return false;
+      }
+      return true;
+    });
+
+    console.log(`✓ Links validated: ${validLinks.length}/${this.data.links?.length || 0} valid`);
+
+    // Initialize force simulation with validated links
     this.simulation = d3.forceSimulation(this.data.nodes)
-      .force('link', d3.forceLink(this.data.links)
-        .id(d => d.id)
+      .force('link', d3.forceLink(validLinks)
+        .id(d => String(d.id))
         .distance(100)
         .strength(0.3))
       .force('charge', d3.forceManyBody().strength(-500))
@@ -348,17 +367,36 @@ class SageNetwork {
    * FIX BUG 1: Select node and show sidebar with spotify_url
    */
   selectNode(node) {
+    // DEFENSIVE: Validate node
+    if (!node || !node.id || !node.label) {
+      console.error('❌ selectNode: Invalid node', node);
+      return;
+    }
+
     this.selectedNode = node;
 
     // Highlight node
     if (this.node) {
-      this.node.classed('selected', d => d.id === node.id);
+      this.node.classed('selected', d => String(d.id) === String(node.id));
     }
 
-    // Find connected sages
-    const related = this.data.links
-      .filter(l => l.source.id === node.id || l.target.id === node.id)
-      .map(l => l.source.id === node.id ? l.target : l.source);
+    // Find connected sages - with defensive link validation
+    const nodeId = String(node.id);
+    const related = (this.data.links || [])
+      .filter(l => {
+        const sourceId = String(l.source?.id || l.source || '');
+        const targetId = String(l.target?.id || l.target || '');
+        return sourceId === nodeId || targetId === nodeId;
+      })
+      .map(l => {
+        const sourceId = String(l.source?.id || l.source || '');
+        const targetId = String(l.target?.id || l.target || '');
+        const connectedId = sourceId === nodeId ? targetId : sourceId;
+
+        // DEFENSIVE: Find the actual node object
+        return window.graphData.nodes.find(n => String(n.id) === connectedId);
+      })
+      .filter(n => n); // Remove undefined entries
 
     // FIX BUG 1: Use spotify_url from node directly
     const spotifyUrl = node.spotify_url

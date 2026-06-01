@@ -121,7 +121,10 @@
 </div>
 
 <!-- Scripts -->
-<!-- IMPORTANT: data-loader.js MUST be first to initialize window.graphData -->
+<!-- IMPORTANT: Load order matters! -->
+<!-- 1. Validator (used by loader) -->
+<script src="data-validator.js"></script>
+<!-- 2. Data Loader (loads and validates data.json) -->
 <script src="data-loader.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
@@ -164,10 +167,11 @@
 
     // FIX BUG 4: Geography view with colored markers
     async function initMap() {
-        mapInstance = L.map('map').setView([31.5, 35.2], 4);
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '© OpenStreetMap', maxZoom: 18
-        }).addTo(mapInstance);
+        try {
+            mapInstance = L.map('map').setView([31.5, 35.2], 4);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap', maxZoom: 18
+            }).addTo(mapInstance);
 
         // Add legend
         const legend = L.control({ position: 'bottomleft' });
@@ -222,36 +226,51 @@
                 });
             }
         });
-        console.log(`✓ Map: Added ${markersAdded} markers`);
+            console.log(`✓ Map: Added ${markersAdded} markers`);
 
-        setTimeout(() => mapInstance.invalidateSize(), 300);
+            setTimeout(() => mapInstance.invalidateSize(), 300);
+        } catch (error) {
+            console.error('❌ initMap error:', error);
+            const mapEl = document.getElementById('map');
+            if (mapEl) {
+                mapEl.innerHTML = '<p style="padding: 2rem; color: red;">Error loading map</p>';
+            }
+        }
     }
 
     function buildTraditions() {
-        if (!window.graphData || !window.graphData.nodes) {
-            console.warn('No graph data for traditions');
-            return;
+        try {
+            if (!window.graphData || !window.graphData.nodes || window.graphData.nodes.length === 0) {
+                console.warn('⚠️  No valid graph data for traditions');
+                document.getElementById('traditionsGrid').innerHTML = '<p style="padding: 2rem; color: #999;">Loading...</p>';
+                return;
+            }
+
+            const traditions = {};
+            window.graphData.nodes.forEach(node => {
+                if (!node || !node.field) return;
+                const t = node.field || 'Other';
+                if (!traditions[t]) traditions[t] = [];
+                traditions[t].push(node);
+            });
+
+            let html = '';
+            Object.keys(traditions).sort().forEach(tradition => {
+                const sages = traditions[tradition];
+                if (!sages || sages.length === 0) return;
+                html += `<div class="tradition-card">
+                    <h3>${tradition}</h3>
+                    <p>${sages.length} חכמים בעלי התמחות בתחום זה</p>
+                    <div class="tradition-sages">
+                        ${sages.map(s => `<span class="sage-tag">${s.label || 'Unknown'}</span>`).join('')}
+                    </div>
+                </div>`;
+            });
+            document.getElementById('traditionsGrid').innerHTML = html || '<p>No traditions found</p>';
+        } catch (error) {
+            console.error('❌ buildTraditions error:', error);
+            document.getElementById('traditionsGrid').innerHTML = '<p style="color: red;">Error loading traditions</p>';
         }
-
-        const traditions = {};
-        window.graphData.nodes.forEach(node => {
-            const t = node.field || 'Other';
-            if (!traditions[t]) traditions[t] = [];
-            traditions[t].push(node);
-        });
-
-        let html = '';
-        Object.keys(traditions).sort().forEach(tradition => {
-            const sages = traditions[tradition];
-            html += `<div class="tradition-card">
-                <h3>${tradition}</h3>
-                <p>${sages.length} חכמים בעלי התמחות בתחום זה</p>
-                <div class="tradition-sages">
-                    ${sages.map(s => `<span class="sage-tag">${s.label}</span>`).join('')}
-                </div>
-            </div>`;
-        });
-        document.getElementById('traditionsGrid').innerHTML = html;
     }
 
     function buildIdeas() {
