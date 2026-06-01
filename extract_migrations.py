@@ -8,6 +8,7 @@ Shows sage movements: birthplace → study locations → teaching locations
 import requests
 import sys
 import io
+import json
 from pathlib import Path
 from docx import Document
 
@@ -115,7 +116,7 @@ for file_path in word_files:
 
             migrations.append({
                 'sage_id': sage['id'],
-                'migration_path': migration_path
+                'migration_path': json.dumps(migration_path, ensure_ascii=False)
             })
 
     except Exception as e:
@@ -138,7 +139,8 @@ if migrations:
             )
 
             if response.status_code in [200, 204]:
-                print(f"  ✓ {migration['sage_id']}: {migration['migration_path']['description']}")
+                path_data = json.loads(migration['migration_path'])
+                print(f"  ✓ {migration['sage_id']}: {path_data['description']}")
             else:
                 print(f"  ⚠️  {migration['sage_id']}: {response.status_code}")
 
