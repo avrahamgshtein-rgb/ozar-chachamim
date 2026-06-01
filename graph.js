@@ -41,23 +41,43 @@ class SageNetwork {
   }
 
   /**
-   * Load data from global window.graphData (loaded by index.html)
+   * Load data from global window.graphData (set by data-loader.js)
    */
   async init() {
     try {
-      // Wait for data to be available (loaded by DOMContentLoaded in index.html)
-      let retries = 10;
-      while (!window.graphData && retries > 0) {
-        await new Promise(r => setTimeout(r, 100));
-        retries--;
+      // Check if data is already available
+      if (window.graphData && window.graphData.nodes && window.graphData.nodes.length > 0) {
+        this.data = window.graphData;
+        this._initializeGraph();
+        return;
       }
 
-      if (!window.graphData) {
-        throw new Error('Failed to load master data after retries');
-      }
+      // Otherwise wait for graphDataReady event
+      console.log('⏳ Waiting for data...');
+      document.addEventListener('graphDataReady', () => {
+        console.log('📦 Data arrived');
+        this.data = window.graphData;
+        this._initializeGraph();
+      }, { once: true });
 
-      this.data = window.graphData;
+      // Timeout after 5 seconds
+      setTimeout(() => {
+        if (!this.data) {
+          throw new Error('Data loading timeout (5s)');
+        }
+      }, 5000);
 
+    } catch (error) {
+      console.error('✗ Graph init failed:', error);
+      this.showError('Failed to load graph data: ' + error.message);
+    }
+  }
+
+  /**
+   * Actually initialize the graph (after data is ready)
+   */
+  _initializeGraph() {
+    try {
       if (!this.data.nodes || this.data.nodes.length === 0) {
         throw new Error('No nodes in dataset');
       }
@@ -67,8 +87,8 @@ class SageNetwork {
       this.setupEventListeners();
       this.render();
     } catch (error) {
-      console.error('✗ Graph init failed:', error);
-      this.showError('Failed to load graph data: ' + error.message);
+      console.error('✗ Graph render failed:', error);
+      this.showError('Failed to render graph: ' + error.message);
     }
   }
 
@@ -252,7 +272,17 @@ class SageNetwork {
    * FIX BUG 5: Search functionality - matches Hebrew text, highlights nodes
    */
   updateNodeVisibility() {
-    if (!this.node || !this.link || !this.labels || !this.data) return;
+    // Guard: ensure graph is rendered
+    if (!this.node || !this.link || !this.labels) {
+      console.warn('Graph not yet rendered, search unavailable');
+      return;
+    }
+
+    // Use window.graphData as source of truth
+    if (!window.graphData || !window.graphData.nodes) {
+      console.warn('No data for search');
+      return;
+    }
 
     const query = this.searchQuery.trim();
 
@@ -269,41 +299,49 @@ class SageNetwork {
 
     // Find matching nodes (search by name, era, or field)
     const matchedIds = new Set();
-    if (this.data.nodes) {
-      this.data.nodes.forEach(d => {
-        const nameMatch = d.label && d.label.toLowerCase().includes(query);
-        const eraMatch = d.era && d.era.toLowerCase().includes(query);
-        const fieldMatch = d.field && d.field.toLowerCase().includes(query);
+    window.graphData.nodes.forEach(d => {
+      const nodeId = String(d.id);
+      const nameMatch = d.label && d.label.toLowerCase().includes(query);
+      const eraMatch = d.era && d.era.toLowerCase().includes(query);
+      const fieldMatch = d.field && d.field.toLowerCase().includes(query);
+      const groupMatch = d.group && d.group.toLowerCase().includes(query);
 
-        if (nameMatch || eraMatch || fieldMatch) {
-          matchedIds.add(String(d.id));
-        }
-      });
+      if (nameMatch || eraMatch || fieldMatch || groupMatch) {
+        matchedIds.add(nodeId);
+      }
+    });
+
+    console.log(`🔍 Search: "${query}" → ${matchedIds.size} matches`);
+
+    // Update node visibility
+    if (this.node) {
+      this.node
+        .style('opacity', d => matchedIds.has(String(d.id)) ? 1 : 0.1)
+        .attr('r', d => matchedIds.has(String(d.id)) ? 30 : 18)
+        .attr('stroke-width', d => matchedIds.has(String(d.id)) ? 3 : 2);
     }
 
-    console.log(`🔍 Found ${matchedIds.size} matching sages`);
+    // Update link visibility
+    if (this.link && window.graphData.links) {
+      this.link
+        .style('opacity', d => {
+          const sourceMatch = matchedIds.has(String(d.source.id));
+          const targetMatch = matchedIds.has(String(d.target.id));
+          return (sourceMatch || targetMatch) ? 0.8 : 0.05;
+        })
+        .style('stroke-width', d => {
+          const sourceMatch = matchedIds.has(String(d.source.id));
+          const targetMatch = matchedIds.has(String(d.target.id));
+          return (sourceMatch || targetMatch) ? 2.5 : 1.5;
+        });
+    }
 
-    // Update visibility
-    this.node
-      .style('opacity', d => matchedIds.has(String(d.id)) ? 1 : 0.1)
-      .attr('r', d => matchedIds.has(String(d.id)) ? 30 : 18)
-      .attr('stroke-width', d => matchedIds.has(String(d.id)) ? 3 : 2);
-
-    this.link
-      .style('opacity', d => {
-        const sourceMatch = matchedIds.has(String(d.source.id));
-        const targetMatch = matchedIds.has(String(d.target.id));
-        return (sourceMatch || targetMatch) ? 0.8 : 0.05;
-      })
-      .style('stroke-width', d => {
-        const sourceMatch = matchedIds.has(String(d.source.id));
-        const targetMatch = matchedIds.has(String(d.target.id));
-        return (sourceMatch || targetMatch) ? 2.5 : 1.5;
+    // Update label visibility
+    if (this.labels) {
+      this.labels.style('opacity', d => {
+        return matchedIds.has(String(d.id)) ? 1 : 0.1;
       });
-
-    this.labels.style('opacity', d => {
-      return matchedIds.has(String(d.id)) ? 1 : 0.1;
-    });
+    }
   }
 
   /**

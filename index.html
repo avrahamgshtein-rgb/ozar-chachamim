@@ -121,6 +121,8 @@
 </div>
 
 <!-- Scripts -->
+<!-- IMPORTANT: data-loader.js MUST be first to initialize window.graphData -->
+<script src="data-loader.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 
@@ -161,7 +163,7 @@
     }
 
     // FIX BUG 4: Geography view with colored markers
-    function initMap() {
+    async function initMap() {
         mapInstance = L.map('map').setView([31.5, 35.2], 4);
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '© OpenStreetMap', maxZoom: 18
@@ -186,32 +188,41 @@
         };
         legend.addTo(mapInstance);
 
-        // Add colored markers for sages using location-mapping
-        if (window.graphData && window.graphData.nodes) {
-            let markersAdded = 0;
-            window.graphData.nodes.forEach(node => {
-                if (node.location) {
-                    const locations = parseLocation(node.location);
-                    const color = getEraColor(node.group);
-
-                    locations.forEach(loc => {
-                        const [lat, lng] = loc.coords;
-                        L.circleMarker([lat, lng], {
-                            radius: 8,
-                            fillColor: color,
-                            color: 'white',
-                            weight: 2,
-                            opacity: 1,
-                            fillOpacity: 0.8
-                        })
-                            .bindPopup(`<b>${node.label}</b><br>${node.era}<br>${loc.name}`)
-                            .addTo(mapInstance);
-                        markersAdded++;
-                    });
-                }
-            });
-            console.log(`✓ Added ${markersAdded} markers to map`);
+        // Wait for data if not ready
+        let retries = 20;
+        while (!window.graphData || !window.graphData.nodes) {
+            await new Promise(r => setTimeout(r, 100));
+            retries--;
+            if (retries < 0) {
+                console.error('Map: Data timeout');
+                return;
+            }
         }
+
+        // Add colored markers for sages using location-mapping
+        let markersAdded = 0;
+        window.graphData.nodes.forEach(node => {
+            if (node.location) {
+                const locations = parseLocation(node.location);
+                const color = getEraColor(node.group);
+
+                locations.forEach(loc => {
+                    const [lat, lng] = loc.coords;
+                    L.circleMarker([lat, lng], {
+                        radius: 8,
+                        fillColor: color,
+                        color: 'white',
+                        weight: 2,
+                        opacity: 1,
+                        fillOpacity: 0.8
+                    })
+                        .bindPopup(`<b>${node.label}</b><br>${node.era}<br>${loc.name}`)
+                        .addTo(mapInstance);
+                    markersAdded++;
+                });
+            }
+        });
+        console.log(`✓ Map: Added ${markersAdded} markers`);
 
         setTimeout(() => mapInstance.invalidateSize(), 300);
     }
@@ -310,31 +321,12 @@
         }
     }
 
-    // Load master data from local data.json (single source of truth)
-    async function loadMasterData() {
-        try {
-            const response = await fetch('data.json');
-            if (!response.ok) throw new Error(`HTTP ${response.status}`);
-            const data = await response.json();
+    // Data is loaded by data-loader.js before this script runs
+    console.log('[index.html] Waiting for data...');
 
-            if (!data.nodes || !Array.isArray(data.nodes)) {
-                throw new Error('Invalid data structure: missing nodes array');
-            }
-
-            console.log(`✓ Master data loaded: ${data.nodes.length} nodes + ${data.links?.length || 0} edges`);
-            return data;
-        } catch (error) {
-            console.error('✗ Failed to load master data:', error);
-            // Return empty structure to prevent null errors
-            return { nodes: [], links: [] };
-        }
-    }
-
-    // Initialize app with data
-    document.addEventListener('DOMContentLoaded', async () => {
-        console.log('📂 Loading master dataset...');
-        window.graphData = await loadMasterData();
-        console.log('✓ Ready to initialize views');
+    // Listen for data ready event to initialize views
+    document.addEventListener('graphDataReady', () => {
+        console.log('[index.html] Data ready, views can initialize');
     });
 </script>
 
