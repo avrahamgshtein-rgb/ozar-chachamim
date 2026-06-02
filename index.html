@@ -23,6 +23,25 @@
         #map { width: 100% !important; height: 100% !important; display: block; position: absolute; top: 0; left: 0; right: 0; bottom: 0; }
         .spotify-link { display: inline-flex; align-items: center; gap: 0.5rem; padding: 12px 16px; background: linear-gradient(135deg, #1DB954 0%, #1ed760 100%); color: white; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 0.95rem; transition: all 0.3s ease; width: 100%; text-align: center; justify-content: center; }
         .spotify-link:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(29, 185, 84, 0.3); }
+
+        /* === Timeline View === */
+        #timeline-view { overflow: hidden; background: var(--color-bg); padding: 0; }
+        #timeline-scroll-wrapper { width: 100%; height: 100%; overflow-x: auto; overflow-y: hidden; cursor: grab; }
+        #timeline-scroll-wrapper:active { cursor: grabbing; }
+        #timeline-svg { display: block; }
+        .tl-era-label { font-family: 'Frank Ruhl Libre', serif; font-size: 0.85rem; font-weight: 700; fill: var(--color-text-secondary); text-anchor: end; dominant-baseline: middle; pointer-events: none; }
+        .tl-sage-group { cursor: pointer; }
+        .tl-sage-group:hover .tl-dot { r: 9; filter: url(#tl-glow); }
+        .tl-sage-group:hover .tl-label { opacity: 1; font-weight: 700; }
+        .tl-dot { stroke: rgba(255,255,255,0.6); stroke-width: 1.5; transition: r 0.15s ease; }
+        .tl-label { font-family: 'Heebo', sans-serif; font-size: 10px; fill: var(--color-text); text-anchor: middle; dominant-baseline: hanging; pointer-events: none; opacity: 0; transition: opacity 0.15s ease; }
+        .tl-band-even { fill: var(--color-bg-light); opacity: 0.6; }
+        .tl-band-odd { fill: var(--color-bg); opacity: 0.6; }
+        .tl-band-border { stroke: var(--color-border); stroke-width: 1; }
+        .tl-band-header { font-family: 'Frank Ruhl Libre', serif; font-size: 11px; font-weight: 700; dominant-baseline: middle; pointer-events: none; fill-opacity: 0.5; }
+        .tl-dot.tl-selected { stroke: var(--color-primary); stroke-width: 3; r: 10; }
+        #tl-tooltip { position: absolute; background: var(--color-white); border: 1px solid var(--color-border); border-radius: 8px; padding: 0.6rem 0.9rem; font-size: 0.85rem; box-shadow: 0 4px 12px rgba(0,0,0,0.15); pointer-events: none; opacity: 0; transition: opacity 0.15s; max-width: 220px; z-index: 500; direction: rtl; text-align: right; line-height: 1.5; }
+        #tl-tooltip.visible { opacity: 1; }
     </style>
 </head>
 <body>
@@ -45,6 +64,9 @@
         </button>
         <button class="tab-btn" onclick="switchView('ideas')">
             <i class="fas fa-lightbulb"></i> רעיונות
+        </button>
+        <button class="tab-btn" onclick="switchView('timeline')">
+            <i class="fas fa-stream"></i> שלשלת הקבלה
         </button>
     </div>
 
@@ -102,6 +124,12 @@
 
     <div id="ideas-view" class="main-area">
         <div class="ideas-container" id="ideasContainer"></div>
+    </div>
+
+    <div id="timeline-view" class="main-area">
+        <div id="timeline-scroll-wrapper">
+            <svg id="timeline-svg"></svg>
+        </div>
     </div>
 
     <div class="sidebar" id="sidebar"></div>
@@ -168,6 +196,7 @@
         if (view === 'map' && !mapInstance) initMap();
         if (view === 'traditions' && !document.getElementById('traditionsGrid').innerHTML) buildTraditions();
         if (view === 'ideas' && !document.getElementById('ideasContainer').innerHTML) buildIdeas();
+        if (view === 'timeline' && !document.getElementById('timeline-svg').getAttribute('data-built')) buildTimeline();
     }
 
     function resetZoom() {
@@ -423,6 +452,215 @@
             console.error('❌ buildIdeas error:', error);
             document.getElementById('ideasContainer').innerHTML = '<p style="color: red;">Error loading ideas</p>';
         }
+    }
+
+    // ========================================================================
+    // CHRONOLOGICAL TIMELINE (שלשלת הקבלה)
+    // ========================================================================
+    function buildTimeline() {
+        const TL_CONFIG = {
+            LANE_HEIGHT: 110,
+            LEFT_MARGIN: 100,
+            RIGHT_MARGIN: 40,
+            TOP_MARGIN: 20,
+            DOT_RADIUS: 6,
+            LABEL_OFFSET: 14,
+            MIN_SAGE_WIDTH: 3000,
+            COLUMN_SLOT_WIDTH: 28,
+        };
+
+        const TL_ERAS = [
+            { key: 'second-temple', heLabel: 'בית שני',   color: '#8e44ad' },
+            { key: 'tannaim',       heLabel: 'תנאים',     color: '#e74c3c' },
+            { key: 'amoraim',       heLabel: 'אמוראים',   color: '#e67e22' },
+            { key: 'geonim',        heLabel: 'גאונים',    color: '#f1c40f' },
+            { key: 'rishonim',      heLabel: 'ראשונים',   color: '#27ae60' },
+            { key: 'acharonim',     heLabel: 'אחרונים',   color: '#2980b9' },
+            { key: 'modern',        heLabel: 'עת חדשה',   color: '#1abc9c' },
+        ];
+
+        const svg = document.getElementById('timeline-svg');
+        svg.setAttribute('data-built', '1');
+
+        if (!window.graphData || !window.graphData.nodes || window.graphData.nodes.length === 0) {
+            svg.innerHTML = '<text x="50%" y="50%" text-anchor="middle" fill="#999" dominant-baseline="middle">טוען נתונים...</text>';
+            document.addEventListener('supabaseReady', buildTimeline, { once: true });
+            return;
+        }
+
+        const nodes = window.graphData.nodes;
+
+        // Group by era
+        const byEra = {};
+        TL_ERAS.forEach(e => { byEra[e.key] = []; });
+        nodes.forEach(n => {
+            const key = n.era_key || n.group || 'modern';
+            if (byEra[key]) byEra[key].push(n);
+            else byEra['modern'].push(n);
+        });
+        TL_ERAS.forEach(e => {
+            byEra[e.key].sort((a, b) => (a.period_order || 0) - (b.period_order || 0));
+        });
+
+        // Find global period_order range
+        let minOrder = Infinity, maxOrder = -Infinity;
+        nodes.forEach(n => {
+            const p = n.period_order || 0;
+            if (p < minOrder) minOrder = p;
+            if (p > maxOrder) maxOrder = p;
+        });
+        const orderRange = maxOrder - minOrder || 1;
+
+        // Canvas dimensions
+        const totalHeight = TL_CONFIG.TOP_MARGIN + TL_ERAS.length * TL_CONFIG.LANE_HEIGHT + 20;
+        const viewportWidth = document.getElementById('timeline-view').clientWidth;
+        const drawWidth = Math.max(
+            TL_CONFIG.MIN_SAGE_WIDTH,
+            viewportWidth - TL_CONFIG.LEFT_MARGIN - TL_CONFIG.RIGHT_MARGIN
+        );
+        const totalWidth = TL_CONFIG.LEFT_MARGIN + drawWidth + TL_CONFIG.RIGHT_MARGIN;
+
+        function xScale(periodOrder) {
+            const fraction = (periodOrder - minOrder) / orderRange;
+            return TL_CONFIG.LEFT_MARGIN + fraction * drawWidth;
+        }
+
+        // Stagger assignment
+        const columnOccupancy = {};
+        const STAGGER_ROWS = 3;
+
+        function assignPosition(sage, eraKey) {
+            if (!columnOccupancy[eraKey]) columnOccupancy[eraKey] = {};
+            const occ = columnOccupancy[eraKey];
+            const xPixel = xScale(sage.period_order || 0);
+            const bucket = Math.round(xPixel / TL_CONFIG.COLUMN_SLOT_WIDTH);
+            if (occ[bucket] === undefined) occ[bucket] = 0;
+            const row = occ[bucket] % STAGGER_ROWS;
+            occ[bucket]++;
+            return { x: xPixel + (occ[bucket] > 1 ? (row - 1) * 4 : 0), row };
+        }
+
+        // Clear and size SVG
+        const svgEl = d3.select('#timeline-svg')
+            .attr('width', totalWidth)
+            .attr('height', totalHeight);
+        svgEl.selectAll('*').remove();
+
+        // Defs: glow filter
+        const defs = svgEl.append('defs');
+        const filter = defs.append('filter').attr('id', 'tl-glow');
+        filter.append('feGaussianBlur').attr('stdDeviation', '3').attr('result', 'coloredBlur');
+        const feMerge = filter.append('feMerge');
+        feMerge.append('feMergeNode').attr('in', 'coloredBlur');
+        feMerge.append('feMergeNode').attr('in', 'SourceGraphic');
+
+        // Era bands
+        TL_ERAS.forEach((era, i) => {
+            const bandY = TL_CONFIG.TOP_MARGIN + i * TL_CONFIG.LANE_HEIGHT;
+
+            svgEl.append('rect')
+                .attr('x', 0).attr('y', bandY)
+                .attr('width', totalWidth).attr('height', TL_CONFIG.LANE_HEIGHT)
+                .attr('class', i % 2 === 0 ? 'tl-band-even' : 'tl-band-odd');
+
+            svgEl.append('rect')
+                .attr('x', 0).attr('y', bandY)
+                .attr('width', 4).attr('height', TL_CONFIG.LANE_HEIGHT)
+                .attr('fill', era.color);
+
+            svgEl.append('line')
+                .attr('x1', 0).attr('y1', bandY + TL_CONFIG.LANE_HEIGHT)
+                .attr('x2', totalWidth).attr('y2', bandY + TL_CONFIG.LANE_HEIGHT)
+                .attr('class', 'tl-band-border');
+
+            svgEl.append('text')
+                .attr('x', TL_CONFIG.LEFT_MARGIN - 12)
+                .attr('y', bandY + TL_CONFIG.LANE_HEIGHT / 2)
+                .attr('class', 'tl-era-label')
+                .attr('fill', era.color)
+                .text(era.heLabel);
+
+            svgEl.append('text')
+                .attr('x', TL_CONFIG.LEFT_MARGIN + 8)
+                .attr('y', bandY + TL_CONFIG.LANE_HEIGHT / 2)
+                .attr('class', 'tl-band-header')
+                .attr('fill', era.color)
+                .text(era.heLabel);
+        });
+
+        // Tooltip
+        let tooltip = document.getElementById('tl-tooltip');
+        if (!tooltip) {
+            tooltip = document.createElement('div');
+            tooltip.id = 'tl-tooltip';
+            document.getElementById('timeline-view').style.position = 'relative';
+            document.getElementById('timeline-view').appendChild(tooltip);
+        }
+
+        // Render sages
+        TL_ERAS.forEach((era, eraIdx) => {
+            const bandY = TL_CONFIG.TOP_MARGIN + eraIdx * TL_CONFIG.LANE_HEIGHT;
+            const sagesInEra = byEra[era.key];
+            const rowHeight = (TL_CONFIG.LANE_HEIGHT - 30) / STAGGER_ROWS;
+
+            sagesInEra.forEach(sage => {
+                const { x, row } = assignPosition(sage, era.key);
+                const dotY = bandY + 20 + row * rowHeight + rowHeight / 2;
+
+                const group = svgEl.append('g')
+                    .attr('class', 'tl-sage-group')
+                    .attr('data-sage-id', sage.id)
+                    .attr('transform', `translate(${x}, ${dotY})`);
+
+                group.append('circle')
+                    .attr('class', 'tl-dot')
+                    .attr('r', TL_CONFIG.DOT_RADIUS)
+                    .attr('fill', era.color)
+                    .attr('id', `tl-dot-${sage.id}`);
+
+                group.append('text')
+                    .attr('class', 'tl-label')
+                    .attr('y', TL_CONFIG.DOT_RADIUS + 3)
+                    .text(sage.label);
+
+                group.on('click', (event) => {
+                    event.stopPropagation();
+                    d3.selectAll('.tl-dot').classed('tl-selected', false);
+                    d3.select(`#tl-dot-${sage.id}`).classed('tl-selected', true);
+                    if (window.sageNetwork) {
+                        window.sageNetwork.selectNode(sage);
+                    }
+                });
+
+                group.on('mouseenter', function(event) {
+                    tooltip.innerHTML = `
+                        <strong style="font-family:'Frank Ruhl Libre',serif;font-size:1rem;color:var(--color-primary)">${sage.label}</strong><br>
+                        <span style="color:${era.color}">${era.heLabel}</span>
+                        ${sage.region ? `<br><small>${sage.region}</small>` : ''}
+                        ${sage.primary_field ? `<br><small style="color:var(--color-secondary)">${sage.primary_field}</small>` : ''}
+                    `;
+                    tooltip.classList.add('visible');
+                });
+
+                group.on('mousemove', function(event) {
+                    const rect = document.getElementById('timeline-view').getBoundingClientRect();
+                    const scrollLeft = document.getElementById('timeline-scroll-wrapper').scrollLeft;
+                    const tx = event.clientX - rect.left + scrollLeft + 12;
+                    const ty = event.clientY - rect.top - 10;
+                    tooltip.style.left = tx + 'px';
+                    tooltip.style.top = ty + 'px';
+                });
+
+                group.on('mouseleave', function() {
+                    tooltip.classList.remove('visible');
+                });
+            });
+        });
+
+        // Reset scroll to leftmost
+        document.getElementById('timeline-scroll-wrapper').scrollLeft = 0;
+
+        console.log(`✓ Timeline built: ${nodes.length} sages across ${TL_ERAS.length} eras`);
     }
 
     // ========================================================================
