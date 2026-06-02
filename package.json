@@ -1,0 +1,25 @@
+{
+  "name": "ozar-chachamim",
+  "version": "1.0.0",
+  "description": "Interactive knowledge base about Jewish sages with network visualization",
+  "type": "module",
+  "scripts": {
+    "build": "node build.js",
+    "dev": "python -m http.server 8080",
+    "validate": "node validate-config.js"
+  },
+  "keywords": [
+    "jewish",
+    "sages",
+    "network",
+    "visualization",
+    "d3",
+    "hebrew",
+    "supabase"
+  ],
+  "author": "Avraham Gshtein",
+  "license": "MIT",
+  "engines": {
+    "node": "18.x || 20.x"
+  }
+}
