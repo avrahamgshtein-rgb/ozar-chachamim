@@ -40,11 +40,16 @@ python -m http.server 8080
 ## Project Architecture
 
 ### Frontend Stack
-- **UI**: `index.html` - Single-page app with 4 tabs (responsive design, Hebrew RTL)
-- **Visualization**: D3.js v7 (force-directed graph, draggable nodes)
-- **Maps**: Leaflet.js (geographic markers by sage location)
-- **Data**: `data.json` - 44 sage nodes + relationship links (source → target type)
-- **Styling**: Inline CSS + responsive breakpoints (desktop → tablet → mobile)
+- **UI**: `index.html` - Single-page app with 5 tabs (responsive design, Hebrew RTL)
+  - Tab 1: **רשת קשרים** (Graph) — D3.js force-directed network
+  - Tab 2: **גיאוגרפיה** (Map) — Leaflet.js with sage markers + migration paths
+  - Tab 3: **מסורות** (Traditions) — Sage groupings by era
+  - Tab 4: **רעיונות** (Ideas) — Thematic clustering
+  - Tab 5: **שלשלת הקבלה** (Timeline) — Chronological view by era bands
+- **Visualization**: D3.js v7 (force-directed graph, dashed migration polylines, timeline bands)
+- **Maps**: Leaflet.js (geographic markers by coordinates, multi-point migration paths)
+- **Data**: 323 sages loaded from Supabase + 18 with geographic migration paths
+- **Styling**: `styles-graph.css` + inline CSS in `index.html` + responsive breakpoints (desktop → tablet → mobile with scroll support)
 
 ### Data Files
 - **`data.json`** - Master dataset: `nodes[]` (sages) + `links[]` (relationships). Update here for new sages/connections.
@@ -121,14 +126,19 @@ index.html (DOMContentLoaded)
 supabase-client.js module (import)
   ↓
 initializeApp()
-  ├─ loadSages() → SELECT * FROM sages (323 rows)
+  ├─ loadSages() → SELECT * FROM sages (323 rows with coordinates + migration_path JSONB)
   ├─ loadConnections() → SELECT * FROM connections (25 rows)
   ├─ Validation (FK checks)
   └─ window.graphData ready → emit 'supabaseReady'
   ↓
-graph.js, initMap(), buildTraditions(), buildIdeas()
+Lazy initialization on tab click:
+  ├─ graph.js → D3 force-directed network (click node → sidebar + PDF export)
+  ├─ initMap() → Leaflet map with dashed migration polylines (multi-point waypoints)
+  ├─ buildTraditions() → era-based sage groupings
+  ├─ buildIdeas() → thematic sage clusters
+  └─ buildTimeline() → שלשלת הקבלה chronological bands (130px per era, 3-row stagger)
   ↓
-User sees 4 interactive tabs + search
+User sees 5 interactive tabs + search + PDF export per sage
 ```
 
 ### Credentials
@@ -136,12 +146,46 @@ User sees 4 interactive tabs + search
 - **Anon key is public** (safe in frontend, read-only via RLS)
 - **RLS policies**: Enforce data access (sages public, user data private)
 
+## Timeline View (שלשלת הקבלה)
+
+The 5th tab shows all 323 sages in 7 horizontal era bands, positioned left=oldest → right=newest.
+
+**Configuration** (in `index.html` `buildTimeline()` function):
+- `LANE_HEIGHT: 130` — vertical space per era band (increased from 110 for better spacing)
+- `STAGGER_ROWS: 3` — max 3 vertical rows per column bucket (prevents overlap)
+- `MIN_SAGE_WIDTH: 3000` — minimum SVG width ensures ~107 columns × 3 rows = 321 slots for 323 sages
+- Era colors match the graph view's color map
+
+**Key features**:
+- Hover reveals Hebrew name label + glow effect
+- Click opens sidebar (same as graph view)
+- Search filters dots by opacity
+- Escape key closes sidebar
+- RTL-aware (scroll starts at left = oldest)
+
+## PDF Export
+
+Clicking "הדפס / Export PDF" in the sidebar opens a new tab with the sage's complete profile formatted for printing.
+
+**PDF includes**:
+- Name, era, region, primary field
+- Full biography + core concept
+- Migration path (from → intermediate waypoints → to)
+- Related sages with connection types (student, influence, colleague, etc.)
+- Research text (if available in research_content table)
+- Embedded print CSS (dark-brown aesthetic, Frank Ruhl Libre serif, Hebrew RTL)
+
+**Implementation**: Uses `window.print()` — no external PDF library. Browser's "Save as PDF" button handles the output.
+
 ## Content Conventions
 
 - **Sage slugs**: English snake_case (e.g., `rabbi-meir-tanna`, `rambam`)
-- **Period keys**: `second-temple`, `tannaim`, `amoraim`, `rishonim`, `acharonim`, `modern`
-- **Links types**: `student`, `influence`, `oppose`, `colleague`, `predecessor`
+- **Period keys**: `second-temple`, `tannaim`, `amoraim`, `geonim`, `rishonim`, `acharonim`, `modern`
+- **Link types**: `student`, `influence`, `oppose`, `colleague`, `predecessor`, `teacher`, `contemporary`
 - **Hebrew + English**: Site runs in RTL; all labels bilingual where possible
+- **Era colors** (used in graph, map, timeline, and PDF):
+  - second-temple: #8e44ad | tannaim: #e74c3c | amoraim: #e67e22
+  - geonim: #f1c40f | rishonim: #27ae60 | acharonim: #2980b9 | modern: #1abc9c
 
 ## Periods Reference
 
@@ -155,14 +199,18 @@ User sees 4 interactive tabs + search
 | Acharonim | אחרונים | 1563–present |
 | Modern | עת חדשה | 19th century+ |
 
-## Browser Compatibility
+## Browser Compatibility & Mobile
 
-- Chrome/Edge 90+
-- Firefox 88+
-- Safari 14+
-- Mobile: iOS 12+, Android 5+
+**Desktop**: Chrome/Edge 90+, Firefox 88+, Safari 14+
+**Mobile**: iOS 12+, Android 5+
 
-RTL support tested; note Windows-1252 encoding issues in older IE (not supported).
+**Mobile optimizations** (viewport <768px):
+- Tab bar scrolls horizontally with hidden icons (saves space)
+- Sidebar slides up from bottom with animation (not fixed off-screen)
+- Uses `100dvh` instead of `100vh` for proper viewport height on mobile
+- RTL page direction preserved with proper right-border hover states
+
+RTL support tested; Windows-1252 encoding issues in older IE (not supported).
 
 ## Troubleshooting
 
@@ -175,35 +223,51 @@ RTL support tested; note Windows-1252 encoding issues in older IE (not supported
 | Map shows blank tiles | Verify Leaflet CSS/JS loaded from CDN. Check OpenStreetMap server status. |
 | Search not filtering | Check `window.searchIndex` created. Verify search input propagates to `semanticSearch()`. |
 
-## Future Work (Phase 3+)
+## Completed Phases & Current Status
 
 - [x] **Phase 1**: 323 sages + 25 connections with data integrity
 - [x] **Phase 2**: Supabase backend (PostgreSQL, RLS, FK constraints)
-- [x] **Phase 3**: User authentication (signup/login)
-- [x] **Phase 3**: Bookmarks + view history
-- [x] **Phase 3**: Semantic search (cross-tab filtering)
-- [ ] **Phase 4**: Full-text search via PostgreSQL `tsvector`
-- [ ] **Phase 4**: Research document integration (Word → Markdown)
-- [ ] **Phase 5**: Chronological force layout (שלשלת הקבלה)
-- [ ] **Phase 5**: PDF export of sage profiles
-- [ ] **Phase 5**: Timeline view by era
+- [x] **Phase 3**: User authentication (signup/login), bookmarks, view history, semantic search
+- [x] **Phase 4**: Chronological timeline (שלשלת הקבלה) with 7 era bands + 3-row stagger
+- [x] **Phase 4**: Migration path extraction (18 sages with geographic journeys)
+- [x] **Phase 5**: PDF export of sage profiles (bio + connections + migration paths + research)
+- [x] **Phase 5**: Frontend polish — mobile responsive, Escape key, RTL fixes, map waypoints
+- [ ] **Phase 5+**: Full-text search via PostgreSQL `tsvector`
+- [ ] **Phase 6**: Research document full integration + dedicated research view
 - [ ] **Deployment**: Vercel, GitHub Pages, or custom server
 
 ## File Reference
 
 ### Core Frontend
-- **`index.html`** — Main SPA (4 tabs: graph, map, traditions, ideas) + search
+- **`index.html`** — Main SPA (5 tabs: graph, map, traditions, ideas, timeline) + search + PDF export function
+  - `buildTimeline()` — שלשלת הקבלה: 7 era bands, 130px LANE_HEIGHT, 3-row stagger, D3 SVG
+  - `exportSagePDF(sageId)` — Opens print-ready HTML with sage profile (bio, connections, migration path)
+  - Escape key handler for sidebar close
 - **`supabase-client.js`** — Supabase data loading, authentication, bookmarks, search index
+  - Loads `coordinates` (JSONB) and `migration_path` (TEXT) for all sages
 - **`graph.js`** — D3.js force-directed network visualization
-- **`styles-graph.css`** — Responsive CSS for all views
+  - PDF export button in `selectNode()` sidebar HTML
+  - Related sages with connection types enriched from graph links
+- **`styles-graph.css`** — Responsive CSS (desktop 1024px, tablet 768px, mobile <768px)
+  - Mobile: tab bar scrolls horizontally with icons hidden, sidebar slides up with animation (bottom -100% → 0)
+  - RTL: `.related-sage:hover` uses right border/padding (not left)
 
 ### Supabase Backend
 - **`supabase-schema-v3.sql`** — PostgreSQL schema (sages, connections, research, users, bookmarks, history) + RLS policies
 - **`migrate_to_supabase_v3.py`** — Import 323 sages + 25 connections from Excel → Supabase (FK validated)
 - **`IMPLEMENTATION_GUIDE.md`** — Step-by-step deployment guide
 
+### Geographic & Migration Data
+- **`location-coords.js`** — Hardcoded geographic coordinates for 28 locations (ירושלים, בבל, ספרד, etc.)
+  - Used by map initialization and migration path rendering
+- **`extract-all-migrations.py`** — Extracts migration paths from 54 Word files
+  - Finds location names mentioned in text, creates `migration_path` JSONB for Supabase
+  - Current: 18 sages with paths (from 45 extractions, some sages appear in multiple files)
+- **`upload-migrations.py`** — Generates SQL UPDATE statements to populate `migration_path` column
+- **Migration path format**: `{"from": "ירושלים", "to": "ספרד", "intermediate": ["מצרים"], "description": "..."}`
+
 ### Data & Utilities
-- **`data.json`** — Fallback local dataset (44 sages, no longer used)
-- **`site-data/חכמי ישראל.xlsx`** — Excel source (992 sage candidates)
-- **`location-mapping.js`** — Geographic coordinates for sage regions
-- **`sages/*.md`** — Archival markdown profiles (not used by site)
+- **`data.json`** — Fallback local dataset (44 sages, no longer used; Supabase is primary)
+- **`site-data/חכמי ישראל.xlsx`** — Excel source (992 sage candidates, used for bulk imports)
+- **`sages/*.md`** — Archival markdown profiles (not used by site, kept for reference)
+- **`migrate_to_supabase_v3.py`** — Imports Excel data → Supabase (323 sages, 25 connections, validates FKs)
