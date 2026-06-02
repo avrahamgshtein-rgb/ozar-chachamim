@@ -183,6 +183,150 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 
 <script>
+    // TASK C: Map Management System with search integration
+    const mapManager = {
+        mapInstance: null,
+        markers: new Map(),        // sage ID → marker object
+        migrationLines: [],        // array of polyline objects
+        searchHighlight: new Set(), // currently highlighted sage IDs
+        baseOpacity: 0.7,
+        highlightOpacity: 1,
+        baseRadius: 10,
+        highlightRadius: 14,
+
+        /**
+         * Initialize marker tracking after map is built
+         */
+        trackMarkers(sageMarkers, polylines) {
+            this.markers = sageMarkers;
+            this.migrationLines = polylines;
+            console.log(`📍 [MapManager] Tracking ${sageMarkers.size} markers + ${polylines.length} migration lines`);
+        },
+
+        /**
+         * TASK C: Highlight markers matching search results
+         */
+        highlightSearchResults(matchingSages) {
+            const matchingIds = new Set(matchingSages.map(s => String(s.id)));
+            this.searchHighlight = matchingIds;
+
+            // Update all markers based on search results
+            this.markers.forEach((marker, sageId) => {
+                const isMatching = matchingIds.has(String(sageId));
+                const newRadius = isMatching ? this.highlightRadius : this.baseRadius;
+                const newOpacity = isMatching ? this.highlightOpacity : (this.baseOpacity * 0.5);
+
+                // Update marker styling
+                marker.setRadius(newRadius);
+                marker.setStyle({
+                    opacity: newOpacity,
+                    fillOpacity: isMatching ? this.highlightOpacity : (this.baseOpacity * 0.6)
+                });
+
+                // Add glow effect on matching markers
+                if (isMatching) {
+                    marker.bringToFront();
+                }
+            });
+
+            // Update migration lines opacity
+            this.migrationLines.forEach(line => {
+                const lineLatLngs = line.getLatLngs();
+                if (lineLatLngs && lineLatLngs.length > 0) {
+                    // Check if any endpoint matches search
+                    const firstLatLng = lineLatLngs[0];
+                    const lastLatLng = lineLatLngs[lineLatLngs.length - 1];
+
+                    const isRelevant = Array.from(matchingIds).some(id => {
+                        const sage = window.graphData.nodes.find(n => String(n.id) === id);
+                        return sage && sage.migration_path;
+                    });
+
+                    line.setStyle({
+                        opacity: isRelevant ? 0.8 : 0.2,
+                        weight: isRelevant ? 4 : 2
+                    });
+                }
+            });
+
+            console.log(`📍 [MapManager] Highlighted ${matchingIds.size} results on map`);
+        },
+
+        /**
+         * TASK C: Auto-zoom map to search results
+         */
+        zoomToResults(matchingSages) {
+            if (!this.mapInstance || matchingSages.length === 0) return;
+
+            // Extract valid coordinates
+            const coordsArray = matchingSages
+                .filter(s => s.coordinates)
+                .map(s => [
+                    s.coordinates.lat || s.coordinates.latitude,
+                    s.coordinates.lng || s.coordinates.longitude
+                ])
+                .filter(([lat, lng]) => lat && lng);
+
+            if (coordsArray.length === 0) {
+                console.warn('No valid coordinates for search results');
+                return;
+            }
+
+            try {
+                if (coordsArray.length === 1) {
+                    // Single result: smooth fly-to with zoom level 12
+                    console.log(`📍 Flying to single result: ${matchingSages[0].label}`);
+                    this.mapInstance.flyTo(coordsArray[0], 12, {
+                        duration: 1.5,
+                        easeLinearity: 0.25
+                    });
+                } else {
+                    // Multiple results: fit all within bounds
+                    console.log(`📍 Fitting ${coordsArray.length} results in bounds`);
+                    const bounds = L.latLngBounds(coordsArray);
+                    this.mapInstance.fitBounds(bounds, {
+                        padding: [100, 100],
+                        maxZoom: 11,
+                        duration: 1.5
+                    });
+                }
+            } catch (error) {
+                console.warn('❌ Map zoom/fit failed:', error);
+            }
+        },
+
+        /**
+         * Reset map to default view
+         */
+        resetView() {
+            if (!this.mapInstance) return;
+
+            // Remove highlight
+            this.searchHighlight.clear();
+
+            // Restore all markers to default state
+            this.markers.forEach(marker => {
+                marker.setRadius(this.baseRadius);
+                marker.setStyle({
+                    opacity: this.baseOpacity,
+                    fillOpacity: this.baseOpacity * 0.85
+                });
+            });
+
+            // Restore migration lines
+            this.migrationLines.forEach(line => {
+                line.setStyle({
+                    opacity: 0.6,
+                    weight: 3
+                });
+            });
+
+            // Reset map view
+            this.mapInstance.setView([31.5, 35.2], 4);
+            console.log('📍 Map reset to default view');
+        }
+    };
+
     let currentView = 'graph';
     let mapInstance = null;
     let graphData = null;
@@ -257,8 +401,11 @@
             }
         }
 
-        // Add colored markers for sages from Supabase coordinates
+        // TASK C: Add colored markers for sages from Supabase coordinates
         let markersAdded = 0;
+        const sageMarkers = new Map();  // Track markers by sage ID
+        const migrationLines = [];      // Track migration polylines
+
         const eraColors = {
             'second-temple': '#ff7f0e',
             'tannaim': '#2ca02c',
@@ -317,9 +464,12 @@
                       </div>
                     `, { maxWidth: 300 })
                     .addTo(mapInstance);
+
+                    // TASK C: Track this marker by sage ID
+                    sageMarkers.set(String(node.id), marker);
                     markersAdded++;
 
-                    // Draw migration path if exists
+                    // TASK C: Draw migration path if exists
                     if (node.migration_path && node.migration_path.from && node.migration_path.to) {
                         const fromCoords = locationCoords[node.migration_path.from];
                         const toCoords = locationCoords[node.migration_path.to];
@@ -336,13 +486,16 @@
                             waypoints.push(toCoords);
 
                             // Draw polyline through all waypoints
-                            L.polyline(waypoints, {
+                            const polyline = L.polyline(waypoints, {
                                 color: color,
                                 weight: 3,
                                 opacity: 0.6,
                                 dashArray: '5, 5',
                                 lineCap: 'round'
                             }).addTo(mapInstance);
+
+                            // TASK C: Track migration line
+                            migrationLines.push(polyline);
 
                             // Add arrow at destination
                             L.circleMarker(toCoords, {
@@ -358,9 +511,14 @@
                 }
             }
         });
-            console.log(`✓ Map: Added ${markersAdded} markers + migration paths`);
 
-            setTimeout(() => mapInstance.invalidateSize(), 300);
+        // TASK C: Register markers with mapManager for search integration
+        mapManager.mapInstance = mapInstance;
+        mapManager.trackMarkers(sageMarkers, migrationLines);
+        console.log(`✓ Map: Added ${markersAdded} markers + ${migrationLines.length} migration paths`);
+        console.log(`📍 [MapManager] Initialized for search result auto-zoom`);
+
+        setTimeout(() => mapInstance.invalidateSize(), 300);
         } catch (error) {
             console.error('❌ initMap error:', error);
             const mapEl = document.getElementById('map');
@@ -708,10 +866,8 @@
                     document.querySelectorAll('.sage-tag').forEach(tag => {
                         tag.style.opacity = '1';
                     });
-                    // Reset map
-                    if (mapInstance) {
-                        mapInstance.setView([31.5, 35.2], 4);
-                    }
+                    // TASK C: Reset map view and highlighting
+                    mapManager.resetView();
                     searchStats.style.display = 'none';
                     return;
                 }
@@ -757,30 +913,13 @@
                     el.style.transition = 'opacity 0.2s ease';
                 });
 
-                // MAP VIEW: Zoom to first matching sage with geographic data
-                if (mapInstance && matchingSages.length > 0) {
-                    const coordsArray = matchingSages
-                        .filter(s => s.coordinates)
-                        .map(s => [
-                            s.coordinates.lat || s.coordinates.latitude,
-                            s.coordinates.lng || s.coordinates.longitude
-                        ])
-                        .filter(([lat, lng]) => lat && lng);
+                // TASK C: MAP VIEW - Auto-zoom and highlight matching sages
+                if (matchingSages.length > 0) {
+                    // Highlight matching markers on map
+                    mapManager.highlightSearchResults(matchingSages);
 
-                    if (coordsArray.length > 0) {
-                        try {
-                            if (coordsArray.length === 1) {
-                                // Single result: zoom to that location
-                                mapInstance.flyTo(coordsArray[0], 10, { duration: 1 });
-                            } else {
-                                // Multiple results: fit bounds
-                                const bounds = L.latLngBounds(coordsArray);
-                                mapInstance.fitBounds(bounds, { padding: [50, 50], maxZoom: 10 });
-                            }
-                        } catch (e) {
-                            console.warn('Map zoom failed:', e);
-                        }
-                    }
+                    // Auto-zoom to matching sages
+                    mapManager.zoomToResults(matchingSages);
                 }
             });
         }
