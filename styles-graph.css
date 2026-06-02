@@ -181,7 +181,7 @@ body {
 /* ===== MAIN CONTAINER ===== */
 .container {
   display: flex;
-  height: calc(100vh - 80px);
+  height: calc(100dvh - 80px);
   margin-top: 80px;
   width: 100%;
 }
@@ -461,8 +461,10 @@ body {
 
 .related-sage:hover {
   background: var(--color-border);
-  padding-left: 1rem;
-  border-left-color: var(--color-secondary);
+  padding-right: 1rem;
+  border-right-color: var(--color-secondary);
+  padding-left: 0;
+  border-left: none;
 }
 
 /* ===== SCROLLBAR ===== */
@@ -518,6 +520,24 @@ body {
     order: 3;
     border-bottom: 1px solid var(--color-border);
     margin-top: var(--spacing-sm);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    padding-bottom: 4px;
+  }
+
+  .tab-btn {
+    flex-shrink: 0;
+    height: 64px;
+    padding: 0 0.75rem;
+    font-size: 0.8rem;
+    white-space: nowrap;
+  }
+
+  .tab-btn i {
+    display: none;
   }
 
   .header-controls {
@@ -534,11 +554,17 @@ body {
     position: fixed;
     width: 100%;
     right: 0;
-    top: 100%;
+    top: auto;
+    bottom: -100%;
     height: 100%;
     z-index: 999;
     border-left: none;
     border-top: 1px solid var(--color-border);
+    transition: bottom 0.3s ease;
+  }
+
+  .sidebar.active {
+    bottom: 0;
   }
 
   .legend {

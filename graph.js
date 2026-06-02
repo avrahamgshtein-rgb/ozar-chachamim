@@ -517,6 +517,13 @@ class SageNetwork {
           </a>
         </div>
 
+        <div class="sidebar-section">
+          <button onclick="exportSagePDF('${nodeId}')"
+            style="width: 100%; padding: 0.75rem; background: #e74c3c; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600;">
+            <i class="fas fa-file-pdf"></i> הדפס / Export PDF
+          </button>
+        </div>
+
         ${window.sageAuth && window.sageAuth.user ? `
           <div class="sidebar-section">
             <button id="bookmarkBtn" onclick="window.sageNetwork.toggleBookmark('${nodeId}')"

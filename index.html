@@ -321,7 +321,18 @@
                         const toCoords = locationCoords[node.migration_path.to];
 
                         if (fromCoords && toCoords) {
-                            L.polyline([fromCoords, toCoords], {
+                            // Build waypoints including intermediates
+                            let waypoints = [fromCoords];
+                            if (node.migration_path.intermediate && Array.isArray(node.migration_path.intermediate)) {
+                                node.migration_path.intermediate.forEach(locName => {
+                                    const locCoords = locationCoords[locName];
+                                    if (locCoords) waypoints.push(locCoords);
+                                });
+                            }
+                            waypoints.push(toCoords);
+
+                            // Draw polyline through all waypoints
+                            L.polyline(waypoints, {
                                 color: color,
                                 weight: 3,
                                 opacity: 0.6,
@@ -459,7 +470,7 @@
     // ========================================================================
     function buildTimeline() {
         const TL_CONFIG = {
-            LANE_HEIGHT: 110,
+            LANE_HEIGHT: 130,
             LEFT_MARGIN: 100,
             RIGHT_MARGIN: 40,
             TOP_MARGIN: 20,
@@ -537,7 +548,7 @@
             if (occ[bucket] === undefined) occ[bucket] = 0;
             const row = occ[bucket] % STAGGER_ROWS;
             occ[bucket]++;
-            return { x: xPixel + (occ[bucket] > 1 ? (row - 1) * 4 : 0), row };
+            return { x: xPixel, row };
         }
 
         // Clear and size SVG
@@ -667,6 +678,15 @@
     // SEMANTIC SEARCH (Cross-Tab)
     // ========================================================================
     document.addEventListener('DOMContentLoaded', () => {
+        // Escape key closes sidebar
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && document.getElementById('sidebar').classList.contains('active')) {
+                if (window.sageNetwork) {
+                    window.sageNetwork.closeSidebar?.();
+                }
+            }
+        });
+
         const searchInput = document.getElementById('searchInput');
         if (searchInput) {
             searchInput.addEventListener('input', async (e) => {
@@ -740,6 +760,164 @@
             });
         }
     });
+
+    // ========================================================================
+    // PDF EXPORT
+    // ========================================================================
+    function exportSagePDF(sageId) {
+        if (!window.graphData || !window.graphData.nodes) {
+            alert('Data not ready. Please try again.');
+            return;
+        }
+
+        const sage = window.graphData.nodes.find(n => n.id === String(sageId));
+        if (!sage) {
+            alert('Sage not found.');
+            return;
+        }
+
+        // Get related sages with connection types
+        const links = (window.graphData.links || []).filter(l =>
+            String(l.source.id || l.source) === String(sageId) ||
+            String(l.target.id || l.target) === String(sageId)
+        );
+
+        // Get connection details
+        let relatedHTML = '';
+        if (links.length > 0) {
+            relatedHTML = '<h2 style="border-right: 4px solid ' + sage.era_key + '; padding-right: 0.75rem;">קישורים (' + links.length + ')</h2>';
+            relatedHTML += '<ul style="margin: 0.5rem 0; padding-right: 1.5rem;">';
+            links.forEach(link => {
+                const relatedId = String(link.source.id || link.source) === String(sageId) ? (link.target.id || link.target) : (link.source.id || link.source);
+                const relatedSage = window.graphData.nodes.find(n => n.id === String(relatedId));
+                if (relatedSage) {
+                    relatedHTML += '<li>' + relatedSage.label + ' (' + link.connection_type + ')</li>';
+                }
+            });
+            relatedHTML += '</ul>';
+        }
+
+        // Get era color
+        const eraColors = {
+            'second-temple': '#8e44ad', 'tannaim': '#e74c3c', 'amoraim': '#e67e22',
+            'geonim': '#f1c40f', 'rishonim': '#27ae60', 'acharonim': '#2980b9', 'modern': '#1abc9c'
+        };
+        const eraColor = eraColors[sage.era_key] || '#999';
+
+        // Build migration path section
+        let migrationHTML = '';
+        if (sage.migration_path && typeof sage.migration_path === 'string') {
+            try {
+                const path = JSON.parse(sage.migration_path);
+                if (path && path.description) {
+                    migrationHTML = '<section><h2 style="border-right: 4px solid ' + eraColor + '; padding-right: 0.75rem;">🛤️ מסלול הנדידה</h2><p>' + path.description + '</p>';
+                    if (path.intermediate && path.intermediate.length > 0) {
+                        migrationHTML += '<p><strong>תחנות:</strong> ' + path.intermediate.join(' ← ') + '</p>';
+                    }
+                    migrationHTML += '</section>';
+                }
+            } catch (e) {}
+        }
+
+        // Build HTML for print
+        const printHTML = `<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>${sage.label}</title>
+    <style>
+        body {
+            direction: rtl;
+            font-family: 'Frank Ruhl Libre', serif;
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 1rem;
+            color: #333;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #3d2817;
+            border-bottom: 3px solid #8b7965;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+        h2 {
+            color: #3d2817;
+            font-size: 1.2rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+        .era-badge {
+            display: inline-block;
+            background: ${eraColor};
+            color: white;
+            padding: 0.4rem 0.9rem;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            margin: 0.25rem 0.25rem 0.25rem 0;
+        }
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1rem 0;
+            padding: 1rem;
+            background: #f5f2ea;
+            border-radius: 8px;
+        }
+        .meta-item {
+            padding: 0.5rem 0;
+        }
+        .meta-label {
+            font-weight: 700;
+            color: #3d2817;
+        }
+        section {
+            margin: 1.5rem 0;
+            padding-bottom: 1rem;
+        }
+        .no-print {
+            display: none;
+        }
+        @media print {
+            body { margin: 0; padding: 0; }
+            h1 { page-break-after: avoid; }
+        }
+    </style>
+</head>
+<body>
+    <h1>${sage.label}</h1>
+    <div class="era-badge">${sage.era}</div>
+
+    <div class="meta-grid">
+        ${sage.region ? '<div class="meta-item"><span class="meta-label">אזור:</span> ' + sage.region + '</div>' : ''}
+        ${sage.primary_field ? '<div class="meta-item"><span class="meta-label">תחום:</span> ' + sage.primary_field + '</div>' : ''}
+    </div>
+
+    <section>
+        <h2 style="border-right: 4px solid ${eraColor}; padding-right: 0.75rem;">📖 ביוגרפיה</h2>
+        <p>${sage.summary || sage.bio || 'No biography available'}</p>
+    </section>
+
+    ${sage.core_concept ? '<section><h2 style="border-right: 4px solid ' + eraColor + '; padding-right: 0.75rem;">💡 הרעיון המרכזי</h2><p><em>' + sage.core_concept + '</em></p></section>' : ''}
+
+    ${migrationHTML}
+
+    ${relatedHTML}
+
+    <footer style="margin-top: 2rem; border-top: 1px solid #ccc; padding-top: 1rem; font-size: 0.8rem; color: #999;">
+        <p>אוצר חכמים — Ozar Chachamim</p>
+        <p>Exported: ${new Date().toLocaleDateString('he-IL')}</p>
+    </footer>
+</body>
+</html>`;
+
+        const win = window.open('', '', 'width=900,height=700');
+        win.document.write(printHTML);
+        win.document.close();
+        setTimeout(() => win.print(), 250);
+    }
 
     // ✅ Supabase data loading handled by supabase-client.js module
 
