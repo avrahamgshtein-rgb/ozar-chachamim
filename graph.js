@@ -3,6 +3,13 @@
  * Bug Fixes: Colors, Spotify, Search, Chronology, Geography
  */
 
+// TASK E: Helper function to escape HTML for safe text display
+function escapeHtml(text) {
+  const div = document.createElement('div');
+  div.textContent = text;
+  return div.innerHTML;
+}
+
 class SageNetwork {
   constructor(config = {}) {
     this.dataUrl = config.dataUrl || 'data.json';
@@ -143,14 +150,49 @@ class SageNetwork {
       });
     svg.call(zoom);
 
-    // FIX BUG 3: Add chronological X-position force
-    // Sages are positioned left-to-right by era (ancient → modern)
+    // TASK B: Add SVG marker definitions for directed links
+    const defs = svg.append('defs');
+
+    // Arrow markers for each link type
+    const linkTypeColors = {
+      'student': '#4ecdc4',      // Teal
+      'influence': '#8b7965',    // Dark grey/brown
+      'oppose': '#ff6b6b',       // Red
+      'colleague': '#95e1d3',    // Cyan
+      'predecessor': '#f9ca24',  // Yellow
+      'precursor': '#f9ca24'     // Yellow
+    };
+
+    Object.entries(linkTypeColors).forEach(([type, color]) => {
+      // Arrow marker for line endings
+      defs.append('marker')
+        .attr('id', `arrow-${type}`)
+        .attr('markerWidth', 13)
+        .attr('markerHeight', 13)
+        .attr('refX', 12)
+        .attr('refY', 6)
+        .attr('orient', 'auto')
+        .append('path')
+        .attr('d', 'M 0 0 L 12 6 L 0 12 Z')
+        .attr('fill', color)
+        .attr('opacity', 0.6);
+    });
+
+    // TASK B: Chronological X-position force (enhanced)
+    // Sages positioned left-to-right by era (ancient → modern)
+    // Uses period_order from database for precise chronological sequence
     const xForce = d3.forceX()
       .x(d => {
+        // Primary: use period_order if available
+        if (d.period_order !== undefined && d.period_order !== null) {
+          const maxOrder = Math.max(...this.data.nodes.map(n => n.period_order || 0));
+          return (d.period_order / maxOrder) * width;
+        }
+        // Fallback: use era_key order
         const eraIndex = this.eraOrder[d.group] !== undefined ? this.eraOrder[d.group] : 3.5;
-        return (eraIndex / 7) * width;  // Spread across horizontal axis
+        return (eraIndex / 7) * width;
       })
-      .strength(0.15);  // Gentle force to maintain historical order
+      .strength(0.25);  // Stronger force for clearer historical layout
 
     // DEFENSIVE: Validate links before D3 processes them
     const validNodeIds = new Set(this.data.nodes.map(n => String(n.id)));
@@ -182,26 +224,56 @@ class SageNetwork {
       .force('collision', d3.forceCollide(32))
       .force('x', xForce);  // Add chronological ordering
 
-    // Render links
+    // TASK B: Render links as curved paths with type-based styling
     const link = g.append('g')
-      .selectAll('line')
+      .attr('class', 'links')
+      .selectAll('path')
       .data(validLinks)
       .enter()
-      .append('line')
+      .append('path')
       .attr('class', d => `link link-${d.type}`)
+      .attr('fill', 'none')
       .attr('stroke', d => {
         const colorMap = {
-          'student': '#4ecdc4',
-          'influence': '#8b7965',
-          'oppose': '#ff6b6b',
-          'colleague': '#95e1d3',
-          'predecessor': '#f9ca24',
-          'precursor': '#f9ca24'
+          'student': '#4ecdc4',           // Teal - teacher-student
+          'influence': '#8b7965',         // Dark grey - intellectual influence
+          'oppose': '#ff6b6b',            // Red - disagreement
+          'colleague': '#95e1d3',         // Cyan - peers
+          'predecessor': '#f9ca24',       // Yellow - succession
+          'precursor': '#f9ca24'          // Yellow - precursor
         };
-        return colorMap[d.type] || '#999';
+        return colorMap[d.type] || '#999999';
       })
-      .attr('stroke-width', 1.5)
-      .attr('opacity', 0.5);
+      .attr('stroke-width', d => {
+        // Higher weight for teacher-student relationships
+        if (d.type === 'student') return 2.5;
+        if (d.type === 'influence') return 2;
+        return 1.5;
+      })
+      .attr('stroke-linecap', 'round')
+      .attr('stroke-linejoin', 'round')
+      .attr('marker-end', d => `url(#arrow-${d.type})`)
+      .attr('opacity', 0.6)
+      .style('cursor', 'pointer')
+      // Hover effects
+      .on('mouseover', function(event, d) {
+        d3.select(this)
+          .attr('stroke-width', d => {
+            if (d.type === 'student') return 4;
+            if (d.type === 'influence') return 3;
+            return 2.5;
+          })
+          .attr('opacity', 1);
+      })
+      .on('mouseout', function(event, d) {
+        d3.select(this)
+          .attr('stroke-width', d => {
+            if (d.type === 'student') return 2.5;
+            if (d.type === 'influence') return 2;
+            return 1.5;
+          })
+          .attr('opacity', 0.6);
+      });
 
     // FIX BUG 2: Render nodes with dynamic colors based on era
     const node = g.append('g')
@@ -261,13 +333,28 @@ class SageNetwork {
       .attr('pointer-events', 'none')
       .text(d => d.label.substring(0, 3));
 
-    // Update positions on simulation tick
+    // TASK B: Update positions on simulation tick with curved paths
     this.simulation.on('tick', () => {
-      link
-        .attr('x1', d => d.source.x)
-        .attr('y1', d => d.source.y)
-        .attr('x2', d => d.target.x)
-        .attr('y2', d => d.target.y);
+      // Render curved links using quadratic Bezier curves
+      link.attr('d', d => {
+        const x1 = d.source.x;
+        const y1 = d.source.y;
+        const x2 = d.target.x;
+        const y2 = d.target.y;
+
+        // Calculate control point for curve (creates slight arc)
+        const dx = x2 - x1;
+        const dy = y2 - y1;
+        const dr = Math.sqrt(dx * dx + dy * dy);
+
+        // Quadratic Bezier: start → control → end
+        // Control point offset by distance based on link type
+        const curve = d.type === 'student' ? 0.3 : 0.15;
+        const cpx = (x1 + x2) / 2 - (dy / dr) * dr * curve;
+        const cpy = (y1 + y2) / 2 + (dx / dr) * dr * curve;
+
+        return `M${x1},${y1}Q${cpx},${cpy},${x2},${y2}`;
+      });
 
       node
         .attr('cx', d => d.x)
@@ -341,18 +428,20 @@ class SageNetwork {
         .attr('stroke-width', d => matchedIds.has(String(d.id)) ? 3 : 2);
     }
 
-    // Update link visibility
+    // TASK D: Update link visibility (now handles curved paths)
     if (this.link && window.graphData.links) {
       this.link
         .style('opacity', d => {
-          const sourceMatch = matchedIds.has(String(d.source.id));
-          const targetMatch = matchedIds.has(String(d.target.id));
-          return (sourceMatch || targetMatch) ? 0.8 : 0.05;
+          const sourceMatch = matchedIds.has(String(d.source?.id || d.source || ''));
+          const targetMatch = matchedIds.has(String(d.target?.id || d.target || ''));
+          return (sourceMatch || targetMatch) ? 0.85 : 0.05;
         })
         .style('stroke-width', d => {
-          const sourceMatch = matchedIds.has(String(d.source.id));
-          const targetMatch = matchedIds.has(String(d.target.id));
-          return (sourceMatch || targetMatch) ? 2.5 : 1.5;
+          const sourceMatch = matchedIds.has(String(d.source?.id || d.source || ''));
+          const targetMatch = matchedIds.has(String(d.target?.id || d.target || ''));
+          // Thicker for student relationships, medium for others
+          const baseWidth = d.type === 'student' ? 2.5 : (d.type === 'influence' ? 2 : 1.5);
+          return (sourceMatch || targetMatch) ? baseWidth * 1.5 : baseWidth;
         });
     }
 
@@ -434,24 +523,32 @@ class SageNetwork {
       ? profile.spotify_url
       : `https://open.spotify.com/search/${encodeURIComponent(profile.label + ' jewish music')}`;
 
-    // Build research content section (if available)
+    // TASK E: Build research content section (enriched with full-text display)
     const researchSection = profile.research ? `
-      <div class="sidebar-section">
-        <h3>📚 מחקר עמוק</h3>
-        <div style="background: #f9f9f9; padding: 1rem; border-radius: 8px;">
-          <small style="color: #666;">📄 ${profile.research.source_file || 'Research Document'} • ${profile.research.word_count || 0} מילים</small>
-          <div style="margin-top: 0.5rem; font-size: 0.9rem; line-height: 1.6; color: #333; max-height: 150px; overflow-y: auto;">
-            ${profile.research.content_text
-              ? `<p>${profile.research.content_text.substring(0, 300)}...</p>`
-              : '<p>אין תוכן זמין</p>'}
+      <div class="sidebar-section" style="background: #f5f8fb; padding: 1rem; border-radius: 8px; border-left: 4px solid #2196F3;">
+        <h3 style="margin-top: 0; color: #1976D2;">📚 Research Document</h3>
+        <div style="font-size: 0.85rem; color: #666; margin-bottom: 0.75rem;">
+          <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+            <span><strong>📄 ${profile.research.source_file || 'Research Document'}</strong></span>
+            <span style="color: #999;">${profile.research.word_count || 0} words</span>
           </div>
-          <a href="research-view.html?sage=${profile.id}"
-             style="display: inline-block; margin-top: 0.75rem; padding: 0.6rem 1rem; background: #4a86e8; color: white; text-decoration: none; border-radius: 6px; font-size: 0.9rem; font-weight: 600; transition: all 0.2s; cursor: pointer;"
-             onmouseover="this.style.background='#3a75d8'"
-             onmouseout="this.style.background='#4a86e8'">
-            📖 קרא את המחקר המלא
-          </a>
+          ${profile.research.content_type ? `<div style="color: #888; font-size: 0.8rem;">Type: ${profile.research.content_type}</div>` : ''}
         </div>
+
+        <!-- TASK E: Full-text research content display -->
+        <div style="background: white; padding: 0.75rem; border-radius: 4px; max-height: 200px; overflow-y: auto; line-height: 1.6; font-size: 0.9rem; color: #333; direction: rtl; text-align: right;">
+          ${profile.research.content_text
+            ? `<p style="margin: 0; white-space: pre-wrap; word-wrap: break-word;">${escapeHtml(profile.research.content_text.substring(0, 400))}</p>`
+            : '<p style="margin: 0; color: #aaa; font-style: italic;">No content available</p>'}
+        </div>
+
+        <!-- TASK E: Link to full research view -->
+        <a href="research-view.html?sage=${profile.id}"
+           style="display: inline-block; margin-top: 0.75rem; padding: 0.6rem 1rem; background: #2196F3; color: white; text-decoration: none; border-radius: 6px; font-size: 0.9rem; font-weight: 600; transition: all 0.2s; cursor: pointer; width: 100%; text-align: center; box-sizing: border-box;"
+           onmouseover="this.style.background='#1976D2'"
+           onmouseout="this.style.background='#2196F3'">
+          📖 Read Full Research
+        </a>
       </div>
     ` : '';
 
@@ -510,6 +607,9 @@ class SageNetwork {
 
         ${statsSection}
 
+        <!-- TASK E: Research section placed before Spotify (as per spec) -->
+        ${researchSection}
+
         <div class="sidebar-section">
           <h3>🎵 מוזיקה קשורה</h3>
           <a href="${spotifyUrl}" target="_blank" class="spotify-link">
@@ -532,8 +632,6 @@ class SageNetwork {
             </button>
           </div>
         ` : ''}
-
-        ${researchSection}
 
         <div class="sidebar-section">
           <h3>קישורים (${related.length})</h3>

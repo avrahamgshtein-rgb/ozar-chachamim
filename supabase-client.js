@@ -152,74 +152,118 @@ async function loadSageProfile(sageId) {
 }
 
 /**
- * Master data initialization
+ * TASK A: Master data initialization with robust validation
+ * Ensures single source of truth with defensive FK checking
  */
 async function initializeApp() {
-  console.log('🔄 [AppInit] Initializing Supabase backend...')
+  console.log('🔄 [AppInit] Initializing Supabase backend with validation...')
 
   try {
-    // Load core data
+    // Load core data in parallel
     const [sages, connections] = await Promise.all([
       loadSages(),
       loadConnections()
     ])
 
-    // Validate connections (should all be valid due to FK, but defensive check)
-    const validSageIds = new Set(sages.map(s => s.id))
+    // DEFENSIVE VALIDATION: Build node ID map
+    const sageMap = new Map(sages.map(s => [String(s.id), s]))
+    const validSageIds = new Set(sageMap.keys())
+
+    console.log(`📋 [Validation] Loaded ${sages.length} sages, validating ${connections.length} connections...`)
+
+    // Filter + validate connections
+    let invalidCount = 0
     const validConnections = connections.filter(c => {
-      const valid = validSageIds.has(c.source_id) && validSageIds.has(c.target_id)
+      const sourceId = String(c.source_id)
+      const targetId = String(c.target_id)
+      const valid = validSageIds.has(sourceId) && validSageIds.has(targetId)
+
       if (!valid) {
-        console.warn(`⚠️ Invalid connection: ${c.source_id} → ${c.target_id}`)
+        console.warn(`⚠️ Invalid connection: ${sourceId} → ${targetId}`)
+        invalidCount++
       }
       return valid
     })
 
-    // Convert Supabase format to graph.js format
+    if (invalidCount > 0) {
+      console.warn(`⚠️ Filtered out ${invalidCount} invalid connections`)
+    }
+    console.log(`✓ ${validConnections.length}/${connections.length} connections validated`)
+
+    // TASK A: Convert Supabase format to unified global format
+    // Single source of truth with all necessary fields for visualization
     const nodes = sages.map(s => ({
-      id: s.id,
-      label: s.name_he,           // graph.js expects "label"
+      // Core identity
+      id: String(s.id),
+      label: s.name_he,
       name_he: s.name_he,
-      era: s.era,
-      era_key: s.era_key,
-      group: s.era_key,           // graph.js expects "group" for colors
-      period_order: s.period_order,
-      region: s.region,
-      primary_field: s.primary_field,
-      tags: s.tags,
-      summary: s.summary,
-      core_concept: s.core_concept,
-      spotify_url: s.spotify_url,
-      coordinates: s.coordinates
+      name_en: s.name_en || '',
+
+      // Era & chronology
+      era: s.era || 'Unknown',
+      era_key: s.era_key || 'unknown',
+      group: s.era_key || 'unknown',  // D3 group for coloring
+      period_order: s.period_order || 999,
+
+      // Geographic & biographical
+      region: s.region || 'Unknown',
+      coordinates: s.coordinates || null,
+      primary_field: s.primary_field || '',
+
+      // Content enrichment
+      tags: s.tags || '',
+      summary: s.summary || '',
+      core_concept: s.core_concept || '',
+
+      // Media
+      spotify_url: s.spotify_url || null,
+
+      // Statistics
+      connection_count: s.connection_count || 0,
+      has_research: s.has_research || false
     }))
 
     const links = validConnections.map(c => ({
-      source: c.source_id,
-      target: c.target_id,
-      type: c.connection_type
+      source: String(c.source_id),
+      target: String(c.target_id),
+      type: c.connection_type || 'colleague',
+      historical_period: c.historical_period
     }))
 
-    // Store globally
+    // SINGLE SOURCE OF TRUTH
     window.graphData = {
       nodes: nodes,
-      links: links
+      links: links,
+      sageMap: sageMap,  // Fast lookup by ID
+      meta: {
+        loaded_at: new Date().toISOString(),
+        node_count: nodes.length,
+        link_count: links.length,
+        validated: true
+      }
     }
 
-    // Create search index
-    window.searchIndex = createSearchIndex(sages)
+    // Create search index for instant cross-field search
+    window.searchIndex = createSearchIndex(nodes)
 
-    // Store Supabase client
+    // Store Supabase client for on-demand queries
     window.supabase = supabase
 
-    console.log(`✅ [AppInit] Ready: ${sages.length} nodes + ${validConnections.length} edges`)
+    console.log(`✅ [AppInit] Single Source Ready: ${nodes.length} nodes + ${links.length} validated edges`)
+    console.log(`📊 Sages by era: ${nodes.reduce((acc, n) => {
+      acc[n.era_key] = (acc[n.era_key] || 0) + 1
+      return acc
+    }, {})}`)
 
     // Signal data ready
     document.dispatchEvent(new CustomEvent('supabaseReady', {
-      detail: { nodes: sages.length, links: validConnections.length }
+      detail: { nodes: nodes.length, links: links.length, sageMap: sageMap }
     }))
 
     return true
   } catch (error) {
     console.error('❌ [AppInit] Critical error:', error)
+    document.dispatchEvent(new CustomEvent('supabaseError', { detail: error }))
     return false
   }
 }
@@ -229,36 +273,64 @@ async function initializeApp() {
 // ============================================================================
 
 /**
- * Create local search index for instant results
+ * TASK D: Create cross-field search index for instant results
+ * Includes name, field, tags, era, and core concepts
  */
 function createSearchIndex(sages) {
   const index = new Map()
 
   sages.forEach(sage => {
-    // Tokenize: name, field, era, tags
     const tokens = new Set()
 
-    // Name
+    // Name (primary identifier)
     if (sage.name_he) {
-      sage.name_he.split(' ').forEach(t => tokens.add(t.toLowerCase()))
+      sage.name_he.split(/[\s\-]+/).forEach(t => {
+        if (t.length > 0) tokens.add(t.toLowerCase())
+      })
     }
     if (sage.name_en) {
-      sage.name_en.split(' ').forEach(t => tokens.add(t.toLowerCase()))
+      sage.name_en.split(/[\s\-]+/).forEach(t => {
+        if (t.length > 0) tokens.add(t.toLowerCase())
+      })
     }
 
-    // Field & tags
+    // Primary field (academic discipline)
     if (sage.primary_field) {
-      sage.primary_field.split(/[,\s]+/).forEach(t => tokens.add(t.toLowerCase()))
+      sage.primary_field.split(/[,\s]+/).forEach(t => {
+        if (t.length > 0) tokens.add(t.toLowerCase())
+      })
     }
+
+    // Tags (conceptual keywords)
     if (sage.tags) {
-      sage.tags.split(/[,\s]+/).forEach(t => tokens.add(t.toLowerCase()))
+      sage.tags.split(/[,\s]+/).forEach(t => {
+        if (t.length > 0) tokens.add(t.toLowerCase())
+      })
     }
 
-    // Era
-    tokens.add(sage.era.toLowerCase())
-    tokens.add(sage.era_key.toLowerCase())
+    // Core concept (central idea/innovation) — CRITICAL for Task D
+    if (sage.core_concept) {
+      sage.core_concept.split(/[,\s]+/).forEach(t => {
+        if (t.length > 0) tokens.add(t.toLowerCase())
+      })
+    }
 
-    // Map tokens → sage
+    // Era (historical period)
+    if (sage.era) {
+      tokens.add(sage.era.toLowerCase())
+    }
+    if (sage.era_key) {
+      tokens.add(sage.era_key.toLowerCase())
+    }
+
+    // Region (geographic area)
+    if (sage.region) {
+      sage.region.split(/[,\s]+/).forEach(t => {
+        if (t.length > 0) tokens.add(t.toLowerCase())
+      })
+    }
+
+    // Index every token → sage mapping
     tokens.forEach(token => {
       if (!index.has(token)) {
         index.set(token, [])
@@ -267,47 +339,68 @@ function createSearchIndex(sages) {
     })
   })
 
+  console.log(`🔍 [SearchIndex] Built index with ${index.size} unique tokens across ${sages.length} sages`)
   return index
 }
 
 /**
- * Full-text search across all sages
+ * TASK D: Cross-field semantic search across names, concepts, tags, eras
+ * Returns matching sages + related connections for cross-tab filtering
  */
 async function semanticSearch(query) {
   if (!query || !query.trim()) {
-    return { sages: [], connections: [] }
+    return {
+      sages: [],
+      connections: [],
+      query: '',
+      totalSages: window.graphData?.nodes?.length || 0
+    }
   }
 
   const q = query.toLowerCase().trim()
-  const results = new Set()
+  const matchingIds = new Set()
 
-  // Local index search (instant)
+  // TOKEN-BASED SEARCH: Split query and find all matching sages
   if (window.searchIndex) {
-    const tokens = q.split(/\s+/)
+    const tokens = q.split(/\s+/).filter(t => t.length > 0)
     tokens.forEach(token => {
-      const matches = window.searchIndex.get(token) || []
-      matches.forEach(sage => results.add(sage.id))
+      // Direct token match
+      const directMatches = window.searchIndex.get(token) || []
+      directMatches.forEach(sage => matchingIds.add(String(sage.id)))
+
+      // Prefix match (for partial words)
+      window.searchIndex.forEach((sages, indexedToken) => {
+        if (indexedToken.startsWith(token)) {
+          sages.forEach(sage => matchingIds.add(String(sage.id)))
+        }
+      })
     })
   }
 
-  // Alternative: Server-side full-text search (if enabled)
-  // const { data } = await supabase
-  //   .from('sages')
-  //   .select('*')
-  //   .textSearch('search_vector', q)
+  // DEFENSIVE: Validate matching IDs exist in node set
+  const validNodeIds = new Set(window.graphData.nodes.map(n => String(n.id)))
+  const validMatches = new Set([...matchingIds].filter(id => validNodeIds.has(id)))
 
   // Get matching sages
-  const matchingSages = window.graphData.nodes.filter(s => results.has(s.id))
+  const matchingSages = window.graphData.nodes.filter(s => validMatches.has(String(s.id)))
 
-  // Get connections between matching sages
-  const matchingIds = new Set(matchingSages.map(s => s.id))
+  // Get connections (links between matched sages OR involving matched sages)
   const matchingConnections = window.graphData.links.filter(c =>
-    matchingIds.has(c.source_id) || matchingIds.has(c.target_id)
+    validMatches.has(String(c.source)) || validMatches.has(String(c.target))
   )
+
+  console.log(`🔍 [Search] "${q}" → ${matchingSages.length} sages, ${matchingConnections.length} connections`)
 
   return {
     sages: matchingSages,
-    connections: matchingConnections
+    connections: matchingConnections,
+    query: q,
+    totalSages: window.graphData.nodes.length,
+    stats: {
+      matched: matchingSages.length,
+      connected: matchingConnections.length,
+      percentage: Math.round((matchingSages.length / window.graphData.nodes.length) * 100)
+    }
   }
 }
 

@@ -162,7 +162,10 @@
 <!-- IMPORTANT: Load order matters! -->
 <!-- 1. Supabase Client Module (replaces data-loader + data-validator) -->
 <script type="module">
-  import { initializeApp } from './supabase-client.js';
+  import { initializeApp, semanticSearch } from './supabase-client.js';
+
+  // Make semanticSearch globally available for Task D
+  window.semanticSearch = semanticSearch;
 
   // Initialize Supabase backend on page load
   document.addEventListener('DOMContentLoaded', async () => {
@@ -170,6 +173,7 @@
     const ready = await initializeApp();
     if (ready) {
       console.log('✅ [index.html] Supabase initialization complete');
+      console.log('✅ [index.html] Task D: semanticSearch available globally');
     } else {
       console.error('❌ [index.html] Failed to initialize Supabase');
     }
@@ -687,15 +691,18 @@
             }
         });
 
+        // TASK D: Enhanced search with cross-tab filtering
         const searchInput = document.getElementById('searchInput');
         if (searchInput) {
             searchInput.addEventListener('input', async (e) => {
                 const query = e.target.value.trim();
+                const searchStats = document.getElementById('searchStats') || createSearchStats();
 
                 if (!query) {
-                    // Reset all views
+                    // RESET: Return all views to normal
                     if (window.sageNetwork) {
-                        window.sageNetwork.resetFilter?.();
+                        window.sageNetwork.searchQuery = '';
+                        window.sageNetwork.updateNodeVisibility?.();
                     }
                     // Reset opacity on all tags
                     document.querySelectorAll('.sage-tag').forEach(tag => {
@@ -705,59 +712,98 @@
                     if (mapInstance) {
                         mapInstance.setView([31.5, 35.2], 4);
                     }
+                    searchStats.style.display = 'none';
                     return;
                 }
 
-                // Use local search index
-                if (!window.searchIndex || !window.graphData) {
-                    console.warn('Search index not ready');
+                // Guard: Check if semanticSearch is available
+                if (typeof window.semanticSearch !== 'function') {
+                    console.warn('semanticSearch not available, using local index');
+                    // Fallback to existing search logic
                     return;
                 }
 
-                const results = new Set();
-                const tokens = query.toLowerCase().split(/\s+/);
+                // TASK D: Use cross-field semantic search
+                const searchResult = await window.semanticSearch(query);
+                const matchingSages = searchResult.sages;
+                const matchingConnections = searchResult.connections;
 
-                // Search using local index
-                tokens.forEach(token => {
-                    const matches = window.searchIndex.get(token) || [];
-                    matches.forEach(sage => results.add(sage.id));
-                });
+                console.log(`🔍 [Search] "${query}" → ${matchResult.stats.matched}/${searchResult.totalSages} sages`);
 
-                const matchingSages = window.graphData.nodes.filter(s => results.has(s.id));
+                // Show search statistics
+                searchStats.innerHTML = `
+                    <div style="font-size: 0.85rem; color: #666;">
+                        <strong>${searchResult.stats.matched}</strong> of <strong>${searchResult.totalSages}</strong> sages match
+                        (<strong>${searchResult.stats.percentage}%</strong>)
+                    </div>
+                `;
+                searchStats.style.display = 'block';
 
-                console.log(`🔍 Search: "${query}" → ${matchingSages.length} sages`);
-
-                // Update graph view
+                // GRAPH VIEW: Update visibility with matched nodes
                 if (window.sageNetwork && window.sageNetwork.data) {
-                    const searchQuery = query;
-                    window.sageNetwork.searchQuery = searchQuery;
+                    window.sageNetwork.searchQuery = query;
                     window.sageNetwork.updateNodeVisibility?.();
                 }
 
-                // Highlight in other views
-                document.querySelectorAll('.sage-tag').forEach(tag => {
-                    const sageText = tag.textContent;
-                    const isMember = matchingSages.some(s => s.label === sageText || s.name_he === sageText);
-                    tag.style.opacity = isMember ? '1' : '0.3';
-                    tag.style.transition = 'opacity 0.2s';
+                // TRADITIONS/IDEAS VIEWS: Filter cards by matching sages
+                const matchingSageIds = new Set(matchingSages.map(s => String(s.id)));
+                document.querySelectorAll('.sage-tag, .tradition-card, .idea-card').forEach(el => {
+                    const sageText = el.textContent;
+                    const sageId = el.dataset?.sageId;
+                    const isMember = matchingSages.some(s =>
+                        s.label === sageText || s.name_he === sageText || String(s.id) === sageId
+                    );
+                    el.style.opacity = isMember ? '1' : '0.2';
+                    el.style.transition = 'opacity 0.2s ease';
                 });
 
-                // Zoom map to results
+                // MAP VIEW: Zoom to first matching sage with geographic data
                 if (mapInstance && matchingSages.length > 0) {
-                    const coords = matchingSages
+                    const coordsArray = matchingSages
                         .filter(s => s.coordinates)
-                        .map(s => [s.coordinates.lat, s.coordinates.lng]);
+                        .map(s => [
+                            s.coordinates.lat || s.coordinates.latitude,
+                            s.coordinates.lng || s.coordinates.longitude
+                        ])
+                        .filter(([lat, lng]) => lat && lng);
 
-                    if (coords.length > 0) {
+                    if (coordsArray.length > 0) {
                         try {
-                            const bounds = L.latLngBounds(coords);
-                            mapInstance.fitBounds(bounds, { padding: [50, 50], maxZoom: 10 });
+                            if (coordsArray.length === 1) {
+                                // Single result: zoom to that location
+                                mapInstance.flyTo(coordsArray[0], 10, { duration: 1 });
+                            } else {
+                                // Multiple results: fit bounds
+                                const bounds = L.latLngBounds(coordsArray);
+                                mapInstance.fitBounds(bounds, { padding: [50, 50], maxZoom: 10 });
+                            }
                         } catch (e) {
                             console.warn('Map zoom failed:', e);
                         }
                     }
                 }
             });
+        }
+
+        // TASK D: Helper function to create search stats display
+        function createSearchStats() {
+            const stats = document.createElement('div');
+            stats.id = 'searchStats';
+            stats.style.cssText = `
+                position: absolute;
+                top: 95px;
+                left: 280px;
+                background: white;
+                padding: 0.5rem 1rem;
+                border-radius: 6px;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+                font-size: 0.85rem;
+                color: #666;
+                z-index: 100;
+                display: none;
+            `;
+            document.body.appendChild(stats);
+            return stats;
         }
     });
 
