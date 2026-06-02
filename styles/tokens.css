@@ -1,0 +1,266 @@
+/*
+  styles/tokens.css
+  Design Token System for אוצר חכמים
+  Premium Academic Platform for Jewish Sages
+
+  Structure:
+  - Color tokens
+  - Typography tokens
+  - Spacing tokens
+  - Shadows tokens
+  - Border radius tokens
+  - Z-index scale
+*/
+
+:root {
+  /* ============================================================
+     COLOR PALETTE - Primary System
+     ============================================================ */
+
+  /* Brand Colors */
+  --color-primary: #1A1410;           /* Deep Brown - primary actions */
+  --color-primary-light: #2D2318;     /* Darker brown for hover */
+  --color-primary-lighter: #3D2F25;   /* Medium brown for active */
+
+  /* Accent Colors */
+  --color-accent: #D4A574;            /* Warm Gold - highlights */
+  --color-accent-light: #E5C4A0;      /* Light gold for hover */
+  --color-accent-dark: #C28A4A;       /* Dark gold for active */
+  --color-secondary: #D4A574;         /* Alias for accent (warm gold) */
+
+  /* Interactive Colors */
+  --color-interactive: #2A5A4A;       /* Sage Green - interactive elements */
+  --color-interactive-light: #3A7A5A; /* Light sage for hover */
+  --color-interactive-dark: #1A4A3A;  /* Dark sage for active */
+
+  /* Semantic Colors */
+  --color-success: #2A5A4A;           /* Sage Green */
+  --color-warning: #C9721D;           /* Amber */
+  --color-error: #A73232;             /* Rose */
+  --color-info: #3D5A7A;              /* Navy Blue */
+
+  /* ============================================================
+     BACKGROUND & SURFACE COLORS
+     ============================================================ */
+
+  /* Light Mode */
+  --color-bg: #F5F1E8;                /* Cream - main background (alias for --color-bg-light) */
+  --color-bg-light: #F5F1E8;          /* Cream - main background */
+  --color-bg-lighter: #FAF8F4;        /* Very light cream */
+  --color-surface: #FFFFFF;           /* Pure white for elevated surfaces */
+  --color-surface-hover: #F9F7F2;     /* Subtle hover tint */
+  --color-surface-active: #EAE4D7;    /* Active surface tint */
+  --color-white: #FFFFFF;             /* Alias for pure white */
+
+  /* Dark Mode */
+  --color-bg-dark: #0F0D0A;           /* Near black */
+  --color-bg-dark-lighter: #1A1715;   /* Very dark brown */
+  --color-surface-dark: #15120E;      /* Dark surface */
+  --color-surface-dark-hover: #1E1A16;/* Dark hover tint */
+  --color-surface-dark-active: #2A251F;/* Dark active tint */
+  --color-white-dark: #F5F1E8;        /* Light cream text in dark mode */
+
+  /* ============================================================
+     TEXT COLORS
+     ============================================================ */
+
+  /* Light Mode Text */
+  --color-text-primary: #1A1410;      /* Primary text - 100% */
+  --color-text: #1A1410;              /* Default text color (alias for primary) */
+  --color-text-secondary: #6B5D52;    /* Secondary text - 70% */
+  --color-text-tertiary: #9C8F83;     /* Tertiary text - 50% */
+  --color-text-disabled: #C5B5A8;     /* Disabled text - 30% */
+  --color-text-inverse: #F5F1E8;      /* Text on dark backgrounds */
+
+  /* Dark Mode Text */
+  --color-text-dark-primary: #F5F1E8; /* Primary text - light */
+  --color-text-dark-secondary: #B5A89C;/* Secondary text - muted */
+  --color-text-dark-tertiary: #8B7D72;/* Tertiary text - very muted */
+  --color-text-dark-disabled: #5C544A;/* Disabled text - dark */
+  --color-text-dark-inverse: #1A1410; /* Text on light backgrounds */
+
+  /* ============================================================
+     BORDER & DIVIDER COLORS
+     ============================================================ */
+
+  --color-border-light: #E5DED5;      /* Light borders */
+  --color-border-medium: #D4C5B9;     /* Medium borders */
+  --color-border-dark: #A89C8F;       /* Dark borders */
+  --color-border: #D4C5B9;            /* Default border color (alias for medium) */
+
+  --color-border-dark-light: #3D3430; /* Dark mode light borders */
+  --color-border-dark-medium: #4D4540;/* Dark mode medium borders */
+  --color-border-dark-dark: #5C544A;  /* Dark mode dark borders */
+
+  /* ============================================================
+     SHADOW SYSTEM
+     ============================================================ */
+
+  --shadow-subtle: 0 2px 8px rgba(26, 20, 16, 0.08);
+  --shadow-soft: 0 4px 12px rgba(26, 20, 16, 0.12);
+  --shadow-medium: 0 8px 16px rgba(26, 20, 16, 0.16);
+  --shadow-elevated: 0 12px 24px rgba(26, 20, 16, 0.20);
+  --shadow-deep: 0 16px 32px rgba(26, 20, 16, 0.25);
+
+  /* Dark mode shadows */
+  --shadow-subtle-dark: 0 2px 8px rgba(0, 0, 0, 0.30);
+  --shadow-soft-dark: 0 4px 12px rgba(0, 0, 0, 0.40);
+  --shadow-medium-dark: 0 8px 16px rgba(0, 0, 0, 0.50);
+  --shadow-elevated-dark: 0 12px 24px rgba(0, 0, 0, 0.60);
+  --shadow-deep-dark: 0 16px 32px rgba(0, 0, 0, 0.70);
+
+  /* ============================================================
+     SPACING SCALE
+     ============================================================ */
+
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+  --space-4xl: 96px;
+
+  /* Common combinations */
+  --space-gutter: var(--space-md);    /* Horizontal gutter */
+  --space-padding: var(--space-lg);   /* Standard padding */
+  --space-gap: var(--space-md);       /* Item gap in lists */
+
+  /* ============================================================
+     BORDER RADIUS SCALE
+     ============================================================ */
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 20px;
+  --radius-full: 50%;
+
+  /* ============================================================
+     TYPOGRAPHY METRICS
+     ============================================================ */
+
+  /* Font sizes */
+  --font-size-display: 36px;
+  --font-size-h1: 28px;
+  --font-size-h2: 24px;
+  --font-size-h3: 20px;
+  --font-size-subtitle: 16px;
+  --font-size-body: 14px;
+  --font-size-small: 12px;
+  --font-size-caption: 11px;
+
+  /* Line heights */
+  --line-height-tight: 1.2;
+  --line-height-snug: 1.3;
+  --line-height-normal: 1.4;
+  --line-height-relaxed: 1.6;
+  --line-height-loose: 1.8;
+
+  /* Font weights */
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Letter spacing */
+  --letter-spacing-tight: -0.5px;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide: 0.5px;
+  --letter-spacing-wider: 1px;
+
+  /* ============================================================
+     TRANSITIONS & ANIMATIONS
+     ============================================================ */
+
+  --duration-fast: 150ms;
+  --duration-base: 250ms;
+  --duration-slow: 350ms;
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+
+  /* ============================================================
+     Z-INDEX SCALE
+     ============================================================ */
+
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+
+  /* ============================================================
+     BREAKPOINTS (for media queries)
+     ============================================================ */
+
+  --breakpoint-xs: 320px;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+}
+
+/* ============================================================
+   DARK MODE OVERRIDES
+   ============================================================ */
+
+[data-theme="dark"],
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg-light: var(--color-bg-dark);
+    --color-bg-lighter: var(--color-bg-dark-lighter);
+    --color-surface: var(--color-surface-dark);
+    --color-surface-hover: var(--color-surface-dark-hover);
+    --color-surface-active: var(--color-surface-dark-active);
+
+    --color-text-primary: var(--color-text-dark-primary);
+    --color-text-secondary: var(--color-text-dark-secondary);
+    --color-text-tertiary: var(--color-text-dark-tertiary);
+    --color-text-disabled: var(--color-text-dark-disabled);
+    --color-text-inverse: var(--color-text-dark-inverse);
+
+    --color-border-light: var(--color-border-dark-light);
+    --color-border-medium: var(--color-border-dark-medium);
+    --color-border-dark: var(--color-border-dark-dark);
+
+    --shadow-subtle: var(--shadow-subtle-dark);
+    --shadow-soft: var(--shadow-soft-dark);
+    --shadow-medium: var(--shadow-medium-dark);
+    --shadow-elevated: var(--shadow-elevated-dark);
+    --shadow-deep: var(--shadow-deep-dark);
+  }
+}
+
+/* ============================================================
+   UTILITY CLASSES for quick token application
+   ============================================================ */
+
+.text-primary { color: var(--color-text-primary); }
+.text-secondary { color: var(--color-text-secondary); }
+.text-tertiary { color: var(--color-text-tertiary); }
+
+.bg-surface { background: var(--color-surface); }
+.bg-light { background: var(--color-bg-light); }
+
+.border-light { border-color: var(--color-border-light); }
+.border-medium { border-color: var(--color-border-medium); }
+
+.shadow-soft { box-shadow: var(--shadow-soft); }
+.shadow-medium { box-shadow: var(--shadow-medium); }
+.shadow-elevated { box-shadow: var(--shadow-elevated); }
+
+.rounded-sm { border-radius: var(--radius-sm); }
+.rounded-md { border-radius: var(--radius-md); }
+.rounded-lg { border-radius: var(--radius-lg); }
+
+.p-md { padding: var(--space-md); }
+.p-lg { padding: var(--space-lg); }
+.gap-md { gap: var(--space-md); }
+.gap-lg { gap: var(--space-lg); }

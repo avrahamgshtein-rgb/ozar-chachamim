@@ -1,16 +1,26 @@
 /**
  * Supabase Client & Data Loading
- * Replaces local data.json with live Supabase backend
+ * Live connection to production backend with defensive validation
+ *
+ * ⚠️ SETUP REQUIRED:
+ * 1. Copy config.example.js to config.js
+ * 2. Paste your Supabase URL and anon key from https://app.supabase.com
+ * 3. DO NOT commit config.js (it's in .gitignore)
+ *
+ * See README or CLAUDE.md for detailed setup instructions.
  */
 
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm'
+import { SUPABASE_CONFIG } from './config.js'
 
-// Supabase Configuration
-const SUPABASE_URL = 'https://ulluacifirzywhmzkvkr.supabase.co'
-const SUPABASE_ANON_KEY = 'sb_publishable_ObxKLFsDTE41KoAMfMV1dw_Nu38ZI2C'
+// Initialize Supabase with config from environment/config file
+const supabase = createClient(
+  SUPABASE_CONFIG.url,
+  SUPABASE_CONFIG.anonKey
+)
 
-// Initialize Supabase
-const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+// Log initialization status
+console.log(`🔌 [Supabase] Connecting to ${SUPABASE_CONFIG.url.split('/')[2]}`)
 
 // ============================================================================
 // PART 1: DATA LOADING FROM SUPABASE

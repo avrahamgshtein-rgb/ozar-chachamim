@@ -14,7 +14,10 @@
     <!-- Map Library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 
-    <!-- Styles -->
+    <!-- Design System (Token-based CSS) -->
+    <link rel="stylesheet" href="styles/tokens.css">
+    <link rel="stylesheet" href="styles/typography.css">
+    <link rel="stylesheet" href="styles/components.css">
     <link rel="stylesheet" href="styles-graph.css">
 
     <style>
@@ -179,6 +182,16 @@
     }
   });
 </script>
+
+<!-- 2. Search Manager Module (Unified multi-tab search) -->
+<script src="search-manager.js"></script>
+
+<!-- 3. Visualization Enhancements (Chronological flow, migration paths) -->
+<script src="visualization-enhancements.js"></script>
+
+<!-- 4. Research Display Module (Sidebar + full research view) -->
+<script src="research-display.js"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 
@@ -518,6 +531,16 @@
         console.log(`✓ Map: Added ${markersAdded} markers + ${migrationLines.length} migration paths`);
         console.log(`📍 [MapManager] Initialized for search result auto-zoom`);
 
+        // VISUALIZATION ENHANCEMENT: Add directional arrows to migration paths
+        const enhancedPathCount = window.VisualizationEnhancer.enhanceMigrationPolylines(
+            mapInstance,
+            window.graphData.nodes,
+            locationCoords
+        );
+
+        // Add enhanced legend with era colors
+        window.VisualizationEnhancer.addMapLegend(mapInstance);
+
         setTimeout(() => mapInstance.invalidateSize(), 300);
         } catch (error) {
             console.error('❌ initMap error:', error);
@@ -849,78 +872,65 @@
             }
         });
 
-        // TASK D: Enhanced search with cross-tab filtering
+        // TASK E: Unified multi-view search with concept/idea filtering
         const searchInput = document.getElementById('searchInput');
         if (searchInput) {
             searchInput.addEventListener('input', async (e) => {
                 const query = e.target.value.trim();
                 const searchStats = document.getElementById('searchStats') || createSearchStats();
 
+                // Guard: Ensure search manager and graph data are ready
+                if (!window.searchManager || !window.graphData) {
+                    console.warn('⚠️ [Search] Manager or data not ready');
+                    return;
+                }
+
+                // Execute unified search (name_he, core_concept, tags, era, field, region)
+                const results = await window.searchManager.search(query);
+
                 if (!query) {
                     // RESET: Return all views to normal
-                    if (window.sageNetwork) {
-                        window.sageNetwork.searchQuery = '';
-                        window.sageNetwork.updateNodeVisibility?.();
-                    }
-                    // Reset opacity on all tags
-                    document.querySelectorAll('.sage-tag').forEach(tag => {
-                        tag.style.opacity = '1';
-                    });
-                    // TASK C: Reset map view and highlighting
-                    mapManager.resetView();
                     searchStats.style.display = 'none';
+
+                    // Reset graph visualization
+                    window.searchManager.updateGraphView(window.sageNetwork, results);
+
+                    // Reset map view
+                    mapManager.resetView();
+
+                    // Reset traditions/ideas opacity
+                    window.searchManager.updateTraditionsAndIdeasViews(results);
+
+                    // Reset timeline
+                    window.searchManager.updateTimelineView(results);
+
                     return;
                 }
 
-                // Guard: Check if semanticSearch is available
-                if (typeof window.semanticSearch !== 'function') {
-                    console.warn('semanticSearch not available, using local index');
-                    // Fallback to existing search logic
-                    return;
-                }
-
-                // TASK D: Use cross-field semantic search
-                const searchResult = await window.semanticSearch(query);
-                const matchingSages = searchResult.sages;
-                const matchingConnections = searchResult.connections;
-
-                console.log(`🔍 [Search] "${query}" → ${matchResult.stats.matched}/${searchResult.totalSages} sages`);
-
-                // Show search statistics
+                // Display search statistics
                 searchStats.innerHTML = `
-                    <div style="font-size: 0.85rem; color: #666;">
-                        <strong>${searchResult.stats.matched}</strong> of <strong>${searchResult.totalSages}</strong> sages match
-                        (<strong>${searchResult.stats.percentage}%</strong>)
+                    <div style="font-size: 0.85rem; color: var(--color-text-secondary); padding: 0.5rem 1rem; background: var(--color-bg-light); border-radius: 6px;">
+                        <strong style="color: var(--color-primary);">${results.stats.matched}</strong> of <strong>${results.stats.totalSages}</strong> sages match
+                        (<strong>${results.stats.percentage}%</strong>)
+                        ${results.stats.matched === 0 ? ' — נא לנסות חיפוש אחר' : ''}
                     </div>
                 `;
                 searchStats.style.display = 'block';
 
-                // GRAPH VIEW: Update visibility with matched nodes
-                if (window.sageNetwork && window.sageNetwork.data) {
-                    window.sageNetwork.searchQuery = query;
-                    window.sageNetwork.updateNodeVisibility?.();
-                }
+                console.log(`🔍 [Search] "${query}" → ${results.stats.matched}/${results.stats.totalSages} sages, ${results.stats.connected} connections`);
 
-                // TRADITIONS/IDEAS VIEWS: Filter cards by matching sages
-                const matchingSageIds = new Set(matchingSages.map(s => String(s.id)));
-                document.querySelectorAll('.sage-tag, .tradition-card, .idea-card').forEach(el => {
-                    const sageText = el.textContent;
-                    const sageId = el.dataset?.sageId;
-                    const isMember = matchingSages.some(s =>
-                        s.label === sageText || s.name_he === sageText || String(s.id) === sageId
-                    );
-                    el.style.opacity = isMember ? '1' : '0.2';
-                    el.style.transition = 'opacity 0.2s ease';
-                });
+                // UPDATE ALL VIEWS SIMULTANEOUSLY
+                // 1. GRAPH VIEW: Dim unmatched, highlight matched with smooth opacity transition
+                window.searchManager.updateGraphView(window.sageNetwork, results);
 
-                // TASK C: MAP VIEW - Auto-zoom and highlight matching sages
-                if (matchingSages.length > 0) {
-                    // Highlight matching markers on map
-                    mapManager.highlightSearchResults(matchingSages);
+                // 2. MAP VIEW: Auto-zoom to matched sages, highlight markers
+                window.searchManager.updateMapView(mapManager, results);
 
-                    // Auto-zoom to matching sages
-                    mapManager.zoomToResults(matchingSages);
-                }
+                // 3. TRADITIONS & IDEAS VIEWS: Filter card grids by matching sages
+                window.searchManager.updateTraditionsAndIdeasViews(results);
+
+                // 4. TIMELINE VIEW: Highlight matching dots with glow effect
+                window.searchManager.updateTimelineView(results);
             });
         }
 
@@ -1112,6 +1122,13 @@
     // Listen for Supabase ready event to initialize views
     document.addEventListener('supabaseReady', (e) => {
         console.log(`[index.html] ✅ Supabase ready: ${e.detail.nodes} nodes + ${e.detail.links} edges`);
+
+        // Initialize search manager with graph data
+        if (window.searchManager && window.graphData) {
+            window.searchManager.initialize(window.graphData);
+            console.log('✅ [index.html] Search manager initialized');
+        }
+
         // Views initialize lazily when tabs are clicked
     });
 </script>

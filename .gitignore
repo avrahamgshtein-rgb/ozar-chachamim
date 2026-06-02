@@ -2,3 +2,15 @@
 migrate.py
 moves.txt
 *.ps1
+
+# Environment & Configuration
+# NEVER commit these files — they contain sensitive API keys
+config.js
+.env
+.env.local
+.env.*.local
+
+# Dependencies
+node_modules/
+.venv/
+venv/

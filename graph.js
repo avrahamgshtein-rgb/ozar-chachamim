@@ -372,7 +372,26 @@ class SageNetwork {
     this.link = link;
     this.labels = labels;
 
-    console.log('✓ Graph rendered with chronological layout');
+    // VISUALIZATION ENHANCEMENT: Apply advanced chronological ordering
+    if (window.VisualizationEnhancer) {
+      console.log('📊 [Graph] Applying visualization enhancements...');
+
+      // Add directional arrows for relationship types
+      window.VisualizationEnhancer.addGraphArrowMarkers(defs);
+
+      // Enhance link styling based on relationship types
+      window.VisualizationEnhancer.enhanceGraphLinks(link);
+
+      // Apply powerful chronological axis force
+      window.VisualizationEnhancer.enhanceGraphChronology(
+        this.simulation,
+        this.data.nodes,
+        width,
+        height
+      );
+    }
+
+    console.log('✓ Graph rendered with enhanced chronological layout');
   }
 
   /**
@@ -523,34 +542,10 @@ class SageNetwork {
       ? profile.spotify_url
       : `https://open.spotify.com/search/${encodeURIComponent(profile.label + ' jewish music')}`;
 
-    // TASK E: Build research content section (enriched with full-text display)
-    const researchSection = profile.research ? `
-      <div class="sidebar-section" style="background: #f5f8fb; padding: 1rem; border-radius: 8px; border-left: 4px solid #2196F3;">
-        <h3 style="margin-top: 0; color: #1976D2;">📚 Research Document</h3>
-        <div style="font-size: 0.85rem; color: #666; margin-bottom: 0.75rem;">
-          <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-            <span><strong>📄 ${profile.research.source_file || 'Research Document'}</strong></span>
-            <span style="color: #999;">${profile.research.word_count || 0} words</span>
-          </div>
-          ${profile.research.content_type ? `<div style="color: #888; font-size: 0.8rem;">Type: ${profile.research.content_type}</div>` : ''}
-        </div>
-
-        <!-- TASK E: Full-text research content display -->
-        <div style="background: white; padding: 0.75rem; border-radius: 4px; max-height: 200px; overflow-y: auto; line-height: 1.6; font-size: 0.9rem; color: #333; direction: rtl; text-align: right;">
-          ${profile.research.content_text
-            ? `<p style="margin: 0; white-space: pre-wrap; word-wrap: break-word;">${escapeHtml(profile.research.content_text.substring(0, 400))}</p>`
-            : '<p style="margin: 0; color: #aaa; font-style: italic;">No content available</p>'}
-        </div>
-
-        <!-- TASK E: Link to full research view -->
-        <a href="research-view.html?sage=${profile.id}"
-           style="display: inline-block; margin-top: 0.75rem; padding: 0.6rem 1rem; background: #2196F3; color: white; text-decoration: none; border-radius: 6px; font-size: 0.9rem; font-weight: 600; transition: all 0.2s; cursor: pointer; width: 100%; text-align: center; box-sizing: border-box;"
-           onmouseover="this.style.background='#1976D2'"
-           onmouseout="this.style.background='#2196F3'">
-          📖 Read Full Research
-        </a>
-      </div>
-    ` : '';
+    // TASK E: Build research content section using enhanced ResearchDisplay module
+    const researchSection = window.ResearchDisplay && profile.research
+      ? window.ResearchDisplay.renderResearchSection(profile.research, nodeId)
+      : '';
 
     // Build stats section (from view data)
     const statsSection = profile.connection_count || profile.bookmark_count ? `

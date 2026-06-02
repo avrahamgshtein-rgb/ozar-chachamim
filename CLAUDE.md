@@ -10,31 +10,38 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **Hebrew:** בסיס ידע מובנה על חכמי ישראל לדורותיהם — עם אתר ויזואליזציה דינמית של קשרים בין חכמים — המיועד לתלמידי ישיבות ובוגריהן.
 
-## Quick Start: Running the Website (Supabase Backend)
+## Quick Start: Running the Website (Live Supabase Backend)
 
-**Setup (First Time Only)**:
+**Step 1: Backend Setup (Supabase)**
 ```bash
-# 1. Create Supabase project: https://app.supabase.com
-# 2. Run SQL schema in Supabase SQL Editor:
-#    → supabase-schema-v3.sql
-# 3. Import 323 sages:
+# 1. Create project: https://app.supabase.com
+# 2. Create tables: Paste supabase-schema-v3.sql in SQL Editor
+# 3. Import data:
 python migrate_to_supabase_v3.py
 ```
 
-**Run Development Server**:
+**Step 2: Frontend Configuration**
 ```bash
-# Start server
+# 1. Copy template: cp config.example.js config.js
+# 2. Get credentials from https://app.supabase.com
+#    Settings > API > "Project URL" + "anon public" key
+# 3. Paste into config.js
+```
+
+**Step 3: Run Development Server**
+```bash
 python -m http.server 8080
-
-# Open browser:
-# http://localhost:8080
+# Open http://localhost:8080
 ```
 
-**Check Console (F12)**:
+**Step 4: Verify Console (F12)**
 ```
-✓ Loaded 323 sages from Supabase
-✓ Loaded 25 connections (FK-validated)
-✅ Supabase ready: 323 nodes + 25 edges
+✅ 🔌 [Supabase] Connecting to ulluacifirzywhmzkvkr.supabase.co
+✅ 📚 Loading sages from Supabase...
+✅ 🔗 Loading connections from Supabase...
+✅ [AppInit] Single Source Ready: 323 nodes + 25 validated edges
+✅ 🔍 [SearchIndex] Built index with 2,847 unique tokens
+✅ Event: supabaseReady fired
 ```
 
 ## Project Architecture
@@ -102,49 +109,130 @@ Then manually merge relevant rows into `data.json`.
 - **Tab Navigation**: Modify `.tab-btn` section and corresponding `.main-area` divs
 - **Sidebar Details**: Adjust `.sidebar-content` HTML structure in JavaScript `selectNode()` function
 
-## Supabase Integration (LIVE — Phase 2 Complete)
+## Supabase Integration (LIVE — Full Dynamic Backend)
 
 ### Setup (First Time)
+
+**Backend Database Setup:**
 ```bash
-# 1. Create project at https://supabase.com
-
-# 2. Run SQL schema in Supabase SQL Editor:
-# Paste contents of supabase-schema-v3.sql
-
+# 1. Create Supabase project at https://app.supabase.com
+# 2. Go to SQL Editor and run supabase-schema-v3.sql
 # 3. Import 323 sages + 25 connections:
 python migrate_to_supabase_v3.py
 # This validates FK constraints and imports from "חכמי ישראל.xlsx"
-
-# 4. Frontend automatically loads from Supabase
-# supabase-client.js handles all data loading
 ```
 
-### Data Flow
-```
-index.html (DOMContentLoaded)
-  ↓
-supabase-client.js module (import)
-  ↓
-initializeApp()
-  ├─ loadSages() → SELECT * FROM sages (323 rows with coordinates + migration_path JSONB)
-  ├─ loadConnections() → SELECT * FROM connections (25 rows)
-  ├─ Validation (FK checks)
-  └─ window.graphData ready → emit 'supabaseReady'
-  ↓
-Lazy initialization on tab click:
-  ├─ graph.js → D3 force-directed network (click node → sidebar + PDF export)
-  ├─ initMap() → Leaflet map with dashed migration polylines (multi-point waypoints)
-  ├─ buildTraditions() → era-based sage groupings
-  ├─ buildIdeas() → thematic sage clusters
-  └─ buildTimeline() → שלשלת הקבלה chronological bands (130px per era, 3-row stagger)
-  ↓
-User sees 5 interactive tabs + search + PDF export per sage
+**Frontend Configuration:**
+```bash
+# 1. Get your credentials from https://app.supabase.com
+#    → Select your project → Settings > API
+#    → Copy "Project URL" and "anon public" key
+
+# 2. Set up local config:
+cp config.example.js config.js
+
+# 3. Edit config.js and paste your credentials:
+# export const SUPABASE_CONFIG = {
+#   url: 'https://your-project.supabase.co',
+#   anonKey: 'sb_publishable_...'
+# }
+
+# ⚠️ config.js is in .gitignore — never commit it
+
+# 4. Start server:
+python -m http.server 8080
+
+# 5. Open browser:
+# http://localhost:8080
+# 
+# Check browser console (F12) for:
+# ✅ 🔌 [Supabase] Connecting to...
+# ✅ 📚 Loading sages from Supabase...
+# ✅ 🔗 Loading connections from Supabase...
+# ✅ [AppInit] Single Source Ready: 323 nodes + 25 validated edges
 ```
 
-### Credentials
-- **Supabase URL & Anon Key**: Already in `supabase-client.js` (line 9-10)
-- **Anon key is public** (safe in frontend, read-only via RLS)
-- **RLS policies**: Enforce data access (sages public, user data private)
+### Data Flow (Live Supabase)
+```
+1. Browser loads index.html
+   ↓
+2. index.html imports supabase-client.js
+   - supabase-client.js imports config.js (credentials)
+   - Supabase client initialized with URL + anon key
+   ↓
+3. DOMContentLoaded event fires
+   - Calls initializeApp() from supabase-client.js
+   ↓
+4. initializeApp() executes:
+   ├─ loadSages() → SELECT * FROM sages_with_stats
+   │  └─ Returns 992 sages (if available) with era, period_order, tags, core_concept
+   │
+   ├─ loadConnections() → SELECT * FROM connections_with_names
+   │  └─ Returns all relationships (source_id → target_id)
+   │
+   ├─ Defensive Validation:
+   │  ├─ Build Set<sageId> from loaded sages
+   │  ├─ Filter connections: discard any where source/target not in Set
+   │  └─ Log invalid connections as warnings
+   │
+   ├─ Transform to window.graphData:
+   │  ├─ nodes[] = 323+ sages with all fields
+   │  ├─ links[] = 25+ validated connections
+   │  └─ sageMap = Map<id, sage> for O(1) lookup
+   │
+   └─ Emit 'supabaseReady' event
+      ↓
+5. All 5 tabs listen for 'supabaseReady':
+   ├─ graph.js initializes D3 force graph
+   ├─ initMap() loads Leaflet map with markers
+   ├─ buildTraditions() creates era-based groups
+   ├─ buildIdeas() builds thematic clusters
+   └─ buildTimeline() renders שלשלת הקבלה chronological view
+```
+
+### Configuration Files
+
+**`config.example.js`** (Template)
+- Copy this to `config.js` and fill in your credentials
+- Includes detailed comments about security
+- Shows where to find Supabase credentials
+
+**`config.js`** (Production — NOT in git)
+- Contains your actual Supabase URL and anon key
+- Added to `.gitignore` to prevent accidental commits
+- Must be created before running the app
+
+**`.env.example`** (Documentation only)
+- Shows Vite environment variable format for future migration
+- Not used by current plain HTML/JS app
+- Reference if migrating to Vite/Next.js/React
+
+### Security & RLS
+
+**Anon Key Philosophy:**
+- The anonymous key is intentionally public (meant for browser clients)
+- All access control happens server-side via Row-Level Security (RLS)
+
+**RLS Policies (PostgreSQL):**
+```sql
+-- Public: Anyone can read sages + connections
+SELECT on sages, connections, research_content → ✅ Public
+
+-- Authenticated only: Bookmarks + history
+INSERT/UPDATE on bookmarks, view_history → ✅ If user_id matches
+
+-- Never exposed:
+SELECT on secrets, api_keys, admin_tables → ❌ Forbidden
+```
+
+**Safe to Expose:**
+✅ Anon key in frontend code (read-only via RLS)
+✅ Supabase project URL in frontend code (public info)
+
+**Never Expose:**
+❌ Secret key (admin role) — keep on backend only
+❌ Service role key — never in browser code
+❌ Master password — keep in secure vault only
 
 ## Timeline View (שלשלת הקבלה)
 
