@@ -246,14 +246,14 @@ class SageNetwork {
       })
       .attr('stroke-width', d => {
         // Higher weight for teacher-student relationships
-        if (d.type === 'student') return 2.5;
-        if (d.type === 'influence') return 2;
-        return 1.5;
+        if (d.type === 'student') return 3.5;
+        if (d.type === 'influence') return 2.5;
+        return 2;
       })
       .attr('stroke-linecap', 'round')
       .attr('stroke-linejoin', 'round')
       .attr('marker-end', d => `url(#arrow-${d.type})`)
-      .attr('opacity', 0.6)
+      .attr('opacity', 0.85)
       .style('cursor', 'pointer')
       // Hover effects
       .on('mouseover', function(event, d) {
@@ -268,11 +268,11 @@ class SageNetwork {
       .on('mouseout', function(event, d) {
         d3.select(this)
           .attr('stroke-width', d => {
-            if (d.type === 'student') return 2.5;
-            if (d.type === 'influence') return 2;
-            return 1.5;
+            if (d.type === 'student') return 3.5;
+            if (d.type === 'influence') return 2.5;
+            return 2;
           })
-          .attr('opacity', 0.6);
+          .attr('opacity', 0.85);
       });
 
     // FIX BUG 2: Render nodes with dynamic colors based on era
@@ -597,6 +597,21 @@ class SageNetwork {
           <div class="sidebar-section" style="background: #fff3e0; padding: 1rem; border-left: 4px solid #ff9800; border-radius: 4px;">
             <h4>💡 Core Concept</h4>
             <p style="margin: 0; font-style: italic; color: #e65100;">${profile.core_concept}</p>
+          </div>
+        ` : ''}
+
+        ${profile.migration_path ? `
+          <div class="sidebar-section" style="background: #e8f5e9; padding: 1rem; border-left: 4px solid #4caf50; border-radius: 4px;">
+            <h4>🌍 נסיעות</h4>
+            <p style="margin: 0; font-size: 0.95rem; color: #2e7d32;">
+              ${profile.migration_path.from ? profile.migration_path.from : 'Unknown'}
+              ←
+              ${profile.migration_path.intermediate && Array.isArray(profile.migration_path.intermediate) && profile.migration_path.intermediate.length > 0
+                ? profile.migration_path.intermediate.join(', ') + ' ← '
+                : ''
+              }
+              ${profile.migration_path.to ? profile.migration_path.to : 'Unknown'}
+            </p>
           </div>
         ` : ''}
 
