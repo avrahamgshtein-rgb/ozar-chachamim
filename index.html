@@ -463,6 +463,15 @@
             'יריחו': [31.861, 35.447]
         };
 
+        // Debug: Check first few nodes for migration_path
+        const firstNode = window.graphData.nodes[0];
+        if (firstNode) {
+            console.log(`🔍 [Map] Sample node: ${firstNode.label}, has migration_path: ${!!firstNode.migration_path}`);
+            if (firstNode.migration_path) {
+                console.log(`   Type: ${typeof firstNode.migration_path}, Value: ${JSON.stringify(firstNode.migration_path).substring(0, 100)}`);
+            }
+        }
+
         window.graphData.nodes.forEach(node => {
             // Check for Supabase coordinates (JSONB)
             if (node.coordinates && typeof node.coordinates === 'object') {
@@ -508,12 +517,14 @@
 
                     // TASK C: Draw migration path if exists
                     if (node.migration_path) {
+                        console.log(`🗺️ [Map] Found migration_path for ${node.label}`);
                         // Parse JSON if it's a string (from Supabase)
                         const migPath = typeof node.migration_path === 'string'
                             ? JSON.parse(node.migration_path)
                             : node.migration_path;
 
                         if (migPath.from && migPath.to) {
+                            console.log(`   Drawing path: ${migPath.from} → ${migPath.to}`);
                             const fromCoords = locationCoords[migPath.from];
                             const toCoords = locationCoords[migPath.to];
 
