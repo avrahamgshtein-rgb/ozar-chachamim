@@ -507,19 +507,25 @@
                     markersAdded++;
 
                     // TASK C: Draw migration path if exists
-                    if (node.migration_path && node.migration_path.from && node.migration_path.to) {
-                        const fromCoords = locationCoords[node.migration_path.from];
-                        const toCoords = locationCoords[node.migration_path.to];
+                    if (node.migration_path) {
+                        // Parse JSON if it's a string (from Supabase)
+                        const migPath = typeof node.migration_path === 'string'
+                            ? JSON.parse(node.migration_path)
+                            : node.migration_path;
 
-                        if (fromCoords && toCoords) {
-                            // Build waypoints including intermediates
-                            let waypoints = [fromCoords];
-                            if (node.migration_path.intermediate && Array.isArray(node.migration_path.intermediate)) {
-                                node.migration_path.intermediate.forEach(locName => {
-                                    const locCoords = locationCoords[locName];
-                                    if (locCoords) waypoints.push(locCoords);
-                                });
-                            }
+                        if (migPath.from && migPath.to) {
+                            const fromCoords = locationCoords[migPath.from];
+                            const toCoords = locationCoords[migPath.to];
+
+                            if (fromCoords && toCoords) {
+                                // Build waypoints including intermediates
+                                let waypoints = [fromCoords];
+                                if (migPath.intermediate && Array.isArray(migPath.intermediate)) {
+                                    migPath.intermediate.forEach(locName => {
+                                        const locCoords = locationCoords[locName];
+                                        if (locCoords) waypoints.push(locCoords);
+                                    });
+                                }
                             waypoints.push(toCoords);
 
                             // Draw polyline through all waypoints
