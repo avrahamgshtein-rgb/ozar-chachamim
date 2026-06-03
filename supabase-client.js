@@ -48,7 +48,7 @@ async function loadSages() {
   console.log('⚠️  View unavailable, falling back to sages table')
   const { data: sages, error } = await supabase
     .from('sages')
-    .select('id, name_he, name_en, era, era_key, period_order, region, primary_field, tags, summary, core_concept, spotify_url, coordinates')
+    .select('id, name_he, name_en, era, era_key, period_order, region, primary_field, tags, summary, core_concept, spotify_url, coordinates, migration_path')
     .order('period_order', { ascending: true })
 
   if (error) {
@@ -218,6 +218,7 @@ async function initializeApp() {
       // Geographic & biographical
       region: s.region || 'Unknown',
       coordinates: s.coordinates || null,
+      migration_path: s.migration_path || null,
       primary_field: s.primary_field || '',
 
       // Content enrichment
