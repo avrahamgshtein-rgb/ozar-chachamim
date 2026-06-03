@@ -516,54 +516,53 @@
                     markersAdded++;
 
                     // TASK C: Draw migration path if exists
+                    // TASK C: Draw migration path if exists
                     if (node.migration_path) {
-                        console.log(`🗺️ [Map] Found migration_path for ${node.label}`);
                         try {
-                            // Parse JSON if it's a string (from Supabase)
                             const migPath = typeof node.migration_path === 'string'
                                 ? JSON.parse(node.migration_path)
                                 : node.migration_path;
 
                             if (migPath && migPath.from && migPath.to) {
-                                console.log(`   Drawing path: ${migPath.from} → ${migPath.to}`);
-                            const fromCoords = locationCoords[migPath.from];
-                            const toCoords = locationCoords[migPath.to];
+                                const fromCoords = locationCoords[migPath.from];
+                                const toCoords = locationCoords[migPath.to];
 
-                            if (fromCoords && toCoords) {
-                                // Build waypoints including intermediates
-                                let waypoints = [fromCoords];
-                                if (migPath.intermediate && Array.isArray(migPath.intermediate)) {
-                                    migPath.intermediate.forEach(locName => {
-                                        const locCoords = locationCoords[locName];
-                                        if (locCoords) waypoints.push(locCoords);
-                                    });
+                                if (fromCoords && toCoords) {
+                                    // Build waypoints including intermediates
+                                    let waypoints = [fromCoords];
+                                    if (migPath.intermediate && Array.isArray(migPath.intermediate)) {
+                                        migPath.intermediate.forEach(locName => {
+                                            const locCoords = locationCoords[locName];
+                                            if (locCoords) waypoints.push(locCoords);
+                                        });
+                                    }
+                                    waypoints.push(toCoords);
+
+                                    // Draw polyline through all waypoints
+                                    const polyline = L.polyline(waypoints, {
+                                        color: color,
+                                        weight: 3,
+                                        opacity: 0.6,
+                                        dashArray: '5, 5',
+                                        lineCap: 'round'
+                                    }).addTo(mapInstance);
+
+                                    // TASK C: Track migration line
+                                    migrationLines.push(polyline);
+
+                                    // Add arrow at destination
+                                    L.circleMarker(toCoords, {
+                                        radius: 4,
+                                        fillColor: color,
+                                        color: color,
+                                        weight: 1,
+                                        opacity: 0.8,
+                                        fillOpacity: 0.8
+                                    }).addTo(mapInstance);
                                 }
-                            waypoints.push(toCoords);
-
-                            // Draw polyline through all waypoints
-                            const polyline = L.polyline(waypoints, {
-                                color: color,
-                                weight: 3,
-                                opacity: 0.6,
-                                dashArray: '5, 5',
-                                lineCap: 'round'
-                            }).addTo(mapInstance);
-
-                            // TASK C: Track migration line
-                            migrationLines.push(polyline);
-
-                            // Add arrow at destination
-                            L.circleMarker(toCoords, {
-                                radius: 4,
-                                fillColor: color,
-                                color: color,
-                                weight: 1,
-                                opacity: 0.8,
-                                fillOpacity: 0.8
-                            }).addTo(mapInstance);
                             }
                         } catch (e) {
-                            console.warn(`⚠️ Error parsing migration_path for ${node.label}:`, e.message);
+                            console.warn(`⚠️ Error parsing migration_path:`, e.message);
                         }
                     }
                 }
