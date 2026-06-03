@@ -356,43 +356,47 @@ class VisualizationEnhancer {
       const div = L.DomUtil.create('div', 'legend-advanced');
       div.style.cssText = `
         background: white;
-        padding: 12px;
+        padding: 14px;
         border-radius: 8px;
         box-shadow: 0 2px 8px rgba(0,0,0,0.15);
         font-family: 'Heebo', sans-serif;
         direction: rtl;
         text-align: right;
+        max-width: 200px;
       `;
 
-      let html = '<h4 style="margin: 0 0 10px 0; font-size: 13px; font-weight: bold; color: #1a1410;">תקופות ונדודים</h4>';
+      let html = '<h4 style="margin: 0 0 12px 0; font-size: 14px; font-weight: bold; color: #1a1410; border-bottom: 2px solid #ddd; padding-bottom: 8px;">מקרא - תקופות החכמים</h4>';
 
-      html += '<div style="display: flex; flex-direction: column; gap: 6px; font-size: 11px;">';
+      html += '<div style="display: flex; flex-direction: column; gap: 8px; font-size: 12px; margin-bottom: 12px;">';
 
       Object.entries(VisualizationEnhancer.eraColorMap).forEach(([era, color]) => {
         const eraLabels = {
-          'second-temple': 'בית שני',
-          'tannaim': 'תנאים',
-          'amoraim': 'אמוראים',
-          'geonim': 'גאונים',
-          'rishonim': 'ראשונים',
-          'acharonim': 'אחרונים',
-          'modern': 'עת חדשה',
+          'second-temple': 'בית שני (516 לפנ״ס - 70 לספ״נ)',
+          'tannaim': 'תנאים (10 - 220 לספ״נ)',
+          'amoraim': 'אמוראים (220 - 500)',
+          'geonim': 'גאונים (589 - 1038)',
+          'rishonim': 'ראשונים (1038 - 1563)',
+          'acharonim': 'אחרונים (1563 - עת חדשה)',
+          'modern': 'עת חדשה (19 כ״א ואילך)',
           'unknown': 'לא ידוע'
         };
 
         const label = eraLabels[era] || era;
         html += `
-          <div style="display: flex; align-items: center; gap: 6px;">
-            <span style="display: inline-block; width: 12px; height: 12px; background: ${color}; border-radius: 50%;"></span>
-            <span style="color: #555;">${label}</span>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span style="display: inline-block; width: 14px; height: 14px; background: ${color}; border-radius: 50%; border: 1px solid white; box-shadow: 0 1px 3px rgba(0,0,0,0.2);"></span>
+            <span style="color: #333; font-size: 11px;">${label}</span>
           </div>
         `;
       });
 
       html += '</div>';
-      html += '<div style="border-top: 1px solid #ddd; margin-top: 8px; padding-top: 8px; font-size: 10px; color: #888;">';
-      html += '<div><svg width="30" height="3" style="margin-bottom: 4px; margin-right: 4px;"><line x1="0" y1="1.5" x2="30" y2="1.5" stroke="#8b7965" stroke-width="2" stroke-dasharray="4,4"/></svg>קו הנדודים</div>';
-      html += '<div>➜ כיוון התנועה</div>';
+      html += '<div style="border-top: 2px solid #ddd; margin-top: 8px; padding-top: 8px;">';
+      html += '<h4 style="margin: 0 0 6px 0; font-size: 12px; font-weight: bold; color: #1a1410;">נדודים ותנועות</h4>';
+      html += '<div style="font-size: 11px; color: #555; margin-bottom: 6px;">';
+      html += '<div style="margin-bottom: 4px; display: flex; align-items: center; gap: 6px;"><svg width="30" height="3" viewBox="0 0 30 3"><line x1="0" y1="1.5" x2="30" y2="1.5" stroke="#8b7965" stroke-width="2" stroke-dasharray="4,4"/></svg><span>קו הנדודים</span></div>';
+      html += '<div style="display: flex; align-items: center; gap: 6px;"><svg width="20" height="20" viewBox="0 0 32 32"><polygon points="16,4 28,24 16,20 4,24" fill="#8b7965" opacity="0.8" stroke="white" stroke-width="1"/></svg><span>כיוון התנועה</span></div>';
+      html += '</div>';
       html += '</div>';
 
       return div;

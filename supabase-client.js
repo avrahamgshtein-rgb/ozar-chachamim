@@ -370,6 +370,7 @@ async function semanticSearch(query) {
 
   const q = query.toLowerCase().trim()
   const matchingIds = new Set()
+  const conceptMatches = new Set()
 
   // TOKEN-BASED SEARCH: Split query and find all matching sages
   if (window.searchIndex) {
@@ -388,9 +389,30 @@ async function semanticSearch(query) {
     })
   }
 
+  // CONCEPT-BASED SEARCH: Find sages with similar core_concepts (רעיונות דומים)
+  // Search query in core_concept field for semantic idea matching
+  if (window.graphData && window.graphData.nodes) {
+    window.graphData.nodes.forEach(sage => {
+      if (sage.core_concept) {
+        const concept = sage.core_concept.toLowerCase()
+        // Match if concept contains query tokens or query contains concept tokens
+        const conceptTokens = concept.split(/\s+/)
+        const queryTokens = q.split(/\s+/)
+
+        const hasConceptMatch = queryTokens.some(qToken => conceptTokens.some(cToken => cToken.includes(qToken) || qToken.includes(cToken)))
+        if (hasConceptMatch) {
+          conceptMatches.add(String(sage.id))
+        }
+      }
+    })
+  }
+
+  // Combine both search types
+  const allMatches = new Set([...matchingIds, ...conceptMatches])
+
   // DEFENSIVE: Validate matching IDs exist in node set
   const validNodeIds = new Set(window.graphData.nodes.map(n => String(n.id)))
-  const validMatches = new Set([...matchingIds].filter(id => validNodeIds.has(id)))
+  const validMatches = new Set([...allMatches].filter(id => validNodeIds.has(id)))
 
   // Get matching sages
   const matchingSages = window.graphData.nodes.filter(s => validMatches.has(String(s.id)))
@@ -400,7 +422,7 @@ async function semanticSearch(query) {
     validMatches.has(String(c.source)) || validMatches.has(String(c.target))
   )
 
-  console.log(`🔍 [Search] "${q}" → ${matchingSages.length} sages, ${matchingConnections.length} connections`)
+  console.log(`🔍 [Search] "${q}" → ${matchingSages.length} sages (${matchingIds.size} name/field + ${conceptMatches.size} concept), ${matchingConnections.length} connections`)
 
   return {
     sages: matchingSages,
@@ -410,7 +432,9 @@ async function semanticSearch(query) {
     stats: {
       matched: matchingSages.length,
       connected: matchingConnections.length,
-      percentage: Math.round((matchingSages.length / window.graphData.nodes.length) * 100)
+      percentage: Math.round((matchingSages.length / window.graphData.nodes.length) * 100),
+      conceptMatches: conceptMatches.size,
+      nameMatches: matchingIds.size
     }
   }
 }

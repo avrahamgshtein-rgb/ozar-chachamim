@@ -566,15 +566,20 @@
                                         const end = waypoints[i + 1];
                                         const mid = [(start[0] + end[0]) / 2, (start[1] + end[1]) / 2];
 
-                                        // Calculate bearing for arrow rotation
-                                        const bearing = Math.atan2(end[1] - start[1], end[0] - start[0]) * 180 / Math.PI + 90;
+                                        // Calculate bearing for arrow rotation (0=up, 90=right, 180=down, 270=left)
+                                        const bearing = Math.atan2(end[1] - start[1], end[0] - start[0]) * 180 / Math.PI;
 
-                                        // Add arrow marker at midpoint
+                                        // Add arrow marker at midpoint using SVG for better rotation
+                                        const arrowSvg = `<svg width="32" height="32" viewBox="0 0 32 32" style="transform: rotate(${bearing}deg);">
+                                            <polygon points="16,4 28,24 16,20 4,24" fill="${color}" opacity="0.8" stroke="white" stroke-width="1"/>
+                                        </svg>`;
+
                                         L.marker(mid, {
                                             icon: L.divIcon({
-                                                html: `<div style="color: ${color}; font-size: 20px; transform: rotate(${bearing}deg); display: flex; align-items: center; justify-content: center;">▼</div>`,
-                                                iconSize: [24, 24],
-                                                className: 'migration-arrow'
+                                                html: arrowSvg,
+                                                iconSize: [32, 32],
+                                                className: 'migration-arrow',
+                                                iconAnchor: [16, 16]
                                             })
                                         }).addTo(mapInstance);
                                     }
@@ -686,39 +691,89 @@
                 return;
             }
 
-            const ideas = {};
+            // Group by CORE CONCEPT (רעיונות דומים) instead of primary field
+            const concepts = {};
+            const conceptColors = {};
+            const colorPalette = ['#FF6B6B', '#4ECDC4', '#45B7D1', '#FFA07A', '#98D8C8', '#F7DC6F', '#BB8FCE', '#85C1E2'];
+            let colorIdx = 0;
+
             window.graphData.nodes.forEach(node => {
-                if (!node || !node.primary_field) return;
-                const idea = node.primary_field || 'Other';
-                if (!ideas[idea]) ideas[idea] = [];
-                ideas[idea].push(node);
+                if (!node || !node.core_concept) return;
+                const concept = node.core_concept.trim();
+                if (!concepts[concept]) {
+                    concepts[concept] = [];
+                    conceptColors[concept] = colorPalette[colorIdx % colorPalette.length];
+                    colorIdx++;
+                }
+                concepts[concept].push(node);
             });
 
-            let html = '';
-            Object.keys(ideas).sort().forEach(idea => {
-                const sages = ideas[idea];
-                if (!sages || sages.length === 0) return;
-                const eraColors = {
-                    'second-temple': '#ff7f0e',
-                    'tannaim': '#2ca02c',
-                    'amoraim': '#d62728',
-                    'rishonim': '#9467bd',
-                    'acharonim': '#8c564b',
-                    'modern': '#e377c2'
-                };
-                html += `<div class="idea-group">
-                    <h3>${idea}</h3>
-                    <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap;">
-                        ${sages.slice(0, 5).map(s => {
-                            const color = eraColors[s.era_key] || '#999';
-                            return `<span style="display: inline-block; padding: 4px 10px; background: ${color}; color: white; border-radius: 12px; font-size: 0.8rem; font-weight: 500;">${s.era}</span>`;
-                        }).join('')}
+            const eraColors = {
+                'second-temple': '#ff7f0e',
+                'tannaim': '#2ca02c',
+                'amoraim': '#d62728',
+                'rishonim': '#9467bd',
+                'acharonim': '#8c564b',
+                'modern': '#e377c2'
+            };
+
+            // Sort by number of sages with this concept
+            const sortedConcepts = Object.keys(concepts)
+                .sort((a, b) => concepts[b].length - concepts[a].length);
+
+            let html = '<div style="padding: 2rem;">';
+            html += `<div style="margin-bottom: 2rem; padding: 1rem; background: #f0f7ff; border-left: 4px solid #2980b9; border-radius: 4px;">
+                <p style="margin: 0; color: #2c3e50; font-size: 0.95rem;">
+                    💡 <strong>${sortedConcepts.length}</strong> רעיונות מרכזיים בין החכמים |
+                    <strong>${window.graphData.nodes.length}</strong> חכמים בסך הכל
+                </p>
+            </div>`;
+
+            sortedConcepts.forEach(concept => {
+                const sages = concepts[concept];
+                const conceptColor = conceptColors[concept];
+
+                // Group sages by era
+                const byEra = {};
+                sages.forEach(s => {
+                    const era = s.era || 'Unknown';
+                    if (!byEra[era]) byEra[era] = [];
+                    byEra[era].push(s);
+                });
+
+                html += `<div style="margin-bottom: 2rem; padding: 1.5rem; background: white; border-left: 5px solid ${conceptColor}; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.08);">
+                    <div style="margin-bottom: 1rem;">
+                        <h3 style="margin: 0 0 0.5rem 0; color: ${conceptColor}; font-size: 1.15rem; font-weight: 600;">${concept}</h3>
+                        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                            <span style="display: inline-block; padding: 4px 10px; background: ${conceptColor}20; color: ${conceptColor}; border-radius: 12px; font-size: 0.8rem; font-weight: 600;">
+                                👥 ${sages.length} חכמים
+                            </span>
+                            <span style="display: inline-block; padding: 4px 10px; background: #f0f0f0; color: #666; border-radius: 12px; font-size: 0.8rem;">
+                                📖 ${Object.keys(byEra).length} תקופות
+                            </span>
+                        </div>
                     </div>
-                    <div class="idea-sages" style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
-                        ${sages.map(s => `<span class="sage-tag" onclick="window.sageNetwork?.selectNode({id: '${s.id}'})">${s.name_he}</span>`).join('')}
+
+                    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem;">
+                        ${sages.map(sage => {
+                            const sageColor = eraColors[sage.era_key] || '#999';
+                            return `<div style="padding: 1rem; background: #f9f9f9; border: 2px solid ${sageColor}33; border-radius: 6px; cursor: pointer; transition: all 0.2s;"
+                                onmouseover="this.style.boxShadow='0 4px 12px ${sageColor}33'; this.style.transform='translateY(-2px)';"
+                                onmouseout="this.style.boxShadow='none'; this.style.transform='translateY(0)';"
+                                onclick="window.sageNetwork && window.sageNetwork.selectNode(window.graphData.nodes.find(n => n.id === '${sage.id}'))">
+                                <div style="font-weight: 600; color: #1a1a1a; margin-bottom: 0.5rem;">${sage.label || 'Unknown'}</div>
+                                <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: #666; margin-bottom: 0.3rem;">
+                                    <span style="display: inline-block; width: 10px; height: 10px; background: ${sageColor}; border-radius: 50%;"></span>
+                                    <span>${sage.era || 'Unknown'}</span>
+                                </div>
+                                <div style="font-size: 0.8rem; color: #888;">📍 ${sage.region || 'לא ידוע'}</div>
+                            </div>`;
+                        }).join('')}
                     </div>
                 </div>`;
             });
+            html += '</div>';
+
             document.getElementById('ideasContainer').innerHTML = html || '<p>No ideas found</p>';
         } catch (error) {
             console.error('❌ buildIdeas error:', error);
