@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>אוצר חכמים — Network of Jewish Sages</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>אוצר חכמים — Network of Jewish Sages (v2.1)</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;700&family=Heebo:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -51,7 +54,7 @@
 
 <header class="header">
     <div class="header-brand">
-        <h1>אוצר חכמים</h1>
+        <h1>אוצר חכמים <span style="background: #4ECDC4; color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.6em; margin-right: 8px;">✨ עדכון</span></h1>
         <p>Ozar Chachamim — רשת החכמים של ישראל</p>
     </div>
 
@@ -119,6 +122,10 @@
 
     <div id="map-view" class="main-area">
         <div id="map"></div>
+        <div id="map-status" style="position: absolute; top: 10px; left: 10px; background: white; padding: 10px 15px; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.15); font-family: Arial; font-size: 12px; color: #333; z-index: 400; border-left: 4px solid #4ECDC4;">
+            <div style="font-weight: bold; margin-bottom: 4px;">🗺️ מפה מעודכנת</div>
+            <div id="map-status-text" style="color: #666; font-size: 11px;">טוען...</div>
+        </div>
     </div>
 
     <div id="traditions-view" class="main-area">
@@ -403,6 +410,10 @@
     // FIX BUG 4: Geography view with colored markers
     async function initMap() {
         try {
+            // Update status
+            const statusEl = document.getElementById('map-status-text');
+            if (statusEl) statusEl.innerHTML = '✅ מפה בטעינה...';
+
             mapInstance = L.map('map').setView([31.5, 35.2], 4);
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 attribution: '© OpenStreetMap', maxZoom: 18
@@ -621,6 +632,10 @@
 
         // Add enhanced legend with era colors
         window.VisualizationEnhancer.addMapLegend(mapInstance);
+
+        // Update status - map loaded successfully
+        const statusEl2 = document.getElementById('map-status-text');
+        if (statusEl2) statusEl2.innerHTML = '✅ חצים + מקרא + ' + window.graphData.nodes.length + ' חכמים';
 
         setTimeout(() => mapInstance.invalidateSize(), 300);
         } catch (error) {
