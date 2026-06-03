@@ -518,13 +518,14 @@
                     // TASK C: Draw migration path if exists
                     if (node.migration_path) {
                         console.log(`🗺️ [Map] Found migration_path for ${node.label}`);
-                        // Parse JSON if it's a string (from Supabase)
-                        const migPath = typeof node.migration_path === 'string'
-                            ? JSON.parse(node.migration_path)
-                            : node.migration_path;
+                        try {
+                            // Parse JSON if it's a string (from Supabase)
+                            const migPath = typeof node.migration_path === 'string'
+                                ? JSON.parse(node.migration_path)
+                                : node.migration_path;
 
-                        if (migPath.from && migPath.to) {
-                            console.log(`   Drawing path: ${migPath.from} → ${migPath.to}`);
+                            if (migPath && migPath.from && migPath.to) {
+                                console.log(`   Drawing path: ${migPath.from} → ${migPath.to}`);
                             const fromCoords = locationCoords[migPath.from];
                             const toCoords = locationCoords[migPath.to];
 
@@ -560,6 +561,9 @@
                                 opacity: 0.8,
                                 fillOpacity: 0.8
                             }).addTo(mapInstance);
+                            }
+                        } catch (e) {
+                            console.warn(`⚠️ Error parsing migration_path for ${node.label}:`, e.message);
                         }
                     }
                 }
