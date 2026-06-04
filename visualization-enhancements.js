@@ -182,10 +182,10 @@ class VisualizationEnhancer {
 
   /**
    * Enhance Map: Add directional arrows to migration polylines
-   * Creates animated arrows showing flow of study/travel
+   * Creates polylines with Polyline Decorator for professional arrow rendering
    */
   static enhanceMigrationPolylines(mapInstance, sages, locationCoords) {
-    console.log('🛤️ [Visualization] Enhancing migration paths...');
+    console.log('🛤️ [Visualization] Enhancing migration paths with Polyline Decorator...');
 
     let pathsAdded = 0;
 
@@ -224,80 +224,77 @@ class VisualizationEnhancer {
       // Get era color for this sage
       const color = this.eraColorMap[sage.era_key] || '#95a5a6';
 
+      // GLOWING SHADOW: For better visibility (bottom layer)
+      L.polyline(waypoints, {
+        color: color,
+        weight: 8,
+        opacity: 0.12,
+        dashArray: '8, 5',
+        lineCap: 'round',
+        lineJoin: 'round',
+        interactive: false,
+        className: 'migration-shadow'
+      }).addTo(mapInstance);
+
       // MAIN POLYLINE: Migration path with era color
       const polyline = L.polyline(waypoints, {
         color: color,
-        weight: 3,
-        opacity: 0.65,
-        dashArray: '8, 5',
+        weight: 3.5,
+        opacity: 0.8,
+        dashArray: '6, 4',
         dashOffset: 0,
         lineCap: 'round',
         lineJoin: 'round',
         className: `migration-path migration-${sage.era_key}`
       }).addTo(mapInstance);
 
-      // GLOWING SHADOW: For better visibility
-      L.polyline(waypoints, {
-        color: color,
-        weight: 6,
-        opacity: 0.15,
-        dashArray: '8, 5',
-        lineCap: 'round',
-        lineJoin: 'round',
-        interactive: false
-      }).addTo(mapInstance);
+      // ADD POLYLINE DECORATOR ARROWS using L.PolylineDecorator
+      if (window.L && window.L.PolylineDecorator) {
+        const decorator = L.polylineDecorator(polyline, {
+          patterns: [
+            {
+              offset: '10%',
+              repeat: '20%',
+              symbol: L.Symbol.arrowHead({
+                pixelSize: 12,
+                polygon: true,
+                pathOptions: {
+                  color: color,
+                  fillOpacity: 0.8,
+                  opacity: 0.9,
+                  weight: 1.5
+                }
+              })
+            }
+          ]
+        }).addTo(mapInstance);
+      } else {
+        // Fallback: Add manual arrows if Polyline Decorator not available
+        console.warn('⚠️ L.PolylineDecorator not available, using manual arrows');
+        for (let i = 0; i < waypoints.length - 1; i++) {
+          const start = waypoints[i];
+          const end = waypoints[i + 1];
+          const midLat = (start[0] + end[0]) / 2;
+          const midLng = (start[1] + end[1]) / 2;
+          const bearing = this.calculateBearing(start, end);
 
-      // Add directional arrows at intermediate points
-      for (let i = 0; i < waypoints.length - 1; i++) {
-        const start = waypoints[i];
-        const end = waypoints[i + 1];
+          const arrowIcon = L.divIcon({
+            html: `<div style="width: 18px; height: 18px; background: ${color}; border-radius: 50%; opacity: 0.75; border: 2px solid white; box-shadow: 0 1px 3px rgba(0,0,0,0.3); position: relative;">
+              <div style="position: absolute; top: 2px; left: 50%; width: 0; height: 0; border-left: 3px solid transparent; border-right: 3px solid transparent; border-bottom: 5px solid white; transform: translateX(-50%) rotate(${bearing}deg); opacity: 0.9;"></div>
+            </div>`,
+            className: 'migration-arrow',
+            iconSize: [18, 18],
+            iconAnchor: [9, 9]
+          });
 
-        // Calculate midpoint for arrow placement
-        const midLat = (start[0] + end[0]) / 2;
-        const midLng = (start[1] + end[1]) / 2;
-
-        // Calculate bearing for arrow rotation
-        const bearing = this.calculateBearing(start, end);
-
-        // Add arrow marker (using rotation)
-        const arrowIcon = L.divIcon({
-          html: `<div style="
-            width: 20px;
-            height: 20px;
-            background: ${color};
-            border-radius: 50%;
-            opacity: 0.7;
-            border: 2px solid white;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.3);
-            position: relative;
-          ">
-            <div style="
-              position: absolute;
-              top: 2px;
-              left: 50%;
-              width: 0;
-              height: 0;
-              border-left: 4px solid transparent;
-              border-right: 4px solid transparent;
-              border-bottom: 6px solid white;
-              transform: translateX(-50%) rotate(${bearing}deg);
-              opacity: 0.9;
-            "></div>
-          </div>`,
-          className: 'migration-arrow',
-          iconSize: [20, 20],
-          iconAnchor: [10, 10]
-        });
-
-        L.marker([midLat, midLng], { icon: arrowIcon })
-          .addTo(mapInstance)
-          .bindPopup(`
-            <div style="font-size: 12px; padding: 0.5rem;">
+          L.marker([midLat, midLng], { icon: arrowIcon })
+            .addTo(mapInstance)
+            .bindPopup(`<div style="font-size: 11px; padding: 0.5rem; text-align: right; direction: rtl;">
               <strong>${sage.name_he}</strong><br>
-              From: ${path.from}<br>
-              To: ${path.to}
-            </div>
-          `);
+              מ-${path.from}<br>
+              ל-${path.to}
+            </div>`);
+        }
       }
 
       // Add destination marker with strong color
@@ -310,18 +307,16 @@ class VisualizationEnhancer {
         fillOpacity: 0.95,
         className: 'migration-destination'
       })
-      .bindPopup(`
-        <div style="font-size: 12px; padding: 0.5rem;">
-          <strong>Destination: ${path.to}</strong><br>
-          Sage: ${sage.name_he}
-        </div>
-      `)
+      .bindPopup(`<div style="font-size: 12px; padding: 0.5rem; text-align: right; direction: rtl;">
+        <strong>יעד: ${path.to}</strong><br>
+        חכם: ${sage.name_he}
+      </div>`)
       .addTo(mapInstance);
 
       pathsAdded++;
     });
 
-    console.log(`✓ [Map] Enhanced ${pathsAdded} migration paths with directional arrows`);
+    console.log(`✓ [Map] Enhanced ${pathsAdded} migration paths with Polyline Decorator arrows`);
     return pathsAdded;
   }
 
