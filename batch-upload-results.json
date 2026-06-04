@@ -1,0 +1,272 @@
+{
+  "total": 53,
+  "success": 0,
+  "failed": 53,
+  "errors": [
+    {
+      "id": "325",
+      "name": "רבנו שמעון בן צמח דוראן הרשבם",
+      "error": "{'message': \"Could not find the 'label' column of 'sages' in the schema cache\", 'code': 'PGRST204', "
+    },
+    {
+      "id": "326",
+      "name": "הבנקאי שהנגיש את המשנה- פנחס קהתי ומהפכת תורה ומלאכה",
+      "error": "{'message': \"Could not find the 'label' column of 'sages' in the schema cache\", 'code': 'PGRST204', "
+    },
+    {
+      "id": "327",
+      "name": "המגיד משנה- דמותו, פועלו ומשנתו התורנית של רבי וידאל די טולוזא בראי הדורות",
+      "error": "{'message': \"Could not find the 'label' column of 'sages' in the schema cache\", 'code': 'PGRST204', "
+    },
+    {
+      "id": "328",
+      "name": "הרב אלישע וישליצקי זצ-ל",
+      "error": "{'message': \"Could not find the 'label' column of 'sages' in the schema cache\", 'code': 'PGRST204', "
+    },
+    {
+      "id": "329",
+      "name": "הרב יוסף בכור שור",
+      "error": "{'message': \"Could not find the 'label' column of 'sages' in the schema cache\", 'code': 'PGRST204', "
+    },
+    {
+      "id": "330",
+      "name": "הרב יצחק אבוהב הראשון- הגותו ויצירתו על רקע תקופתו",
+      "error": "{'message': \"Could not find the 'label' column of 'sages' in the schema cache\", 'code': 'PGRST204', "
+    },
+    {
+      "id": "331",
+      "name": "הרב לוי סעדיה נחמני- משנתו, נבואותיו ומורשתו",
+      "error": "{'message': \"Could not find the 'label' column of 'sages' in the schema cache\", 'code': 'PGRST204', "
+    },
+    {
+      "id": "332",
+      "name": "הרב שלום נח ברזובסקי, בעל הנתיבות שלום- תולדות חייו, משנתו והגותו",
+      "error": "{'message': \"Could not find the 'label' column of 'sages' in the schema cache\", 'code': 'PGRST204', "
+    },
+    {
+      "id": "333",
+      "name": "הריטבא יצירתו, שיטתו הפרשנית ומשנתו ההגותית",
+      "error": "{'message': \"Could not find the 'label' column of 'sages' in the schema cache\", 'code': 'PGRST204', "
+    },
+    {
+      "id": "334",
+      "name": "הרשבם",
+      "error": "{'message': \"Could not find the 'label' column of 'sages' in the schema cache\", 'code': 'PGRST204', "
+    },
+    {
+      "id": "335",
+      "name": "יהודה מוסקאטו דרשן הרנסנס ומשנתו",
+      "error": "{'message': \"Could not find the 'label' column of 'sages' in the schema cache\", 'code': 'PGRST204', "
+    },
+    {
+      "id": "336",
+      "name": "מאור הגולה- פועלו, משנתו התורנית ודמותו ההיסטורית וההגיוגרפית של התנא רבי מאיר",
+      "error": "{'message': \"Could not find the 'label' column of 'sages' in the schema cache\", 'code': 'PGRST204', "
+    },
+    {
+      "id": "337",
+      "name": "מהרי קולון",
+      "error": "{'message': \"Could not find the 'label' column of 'sages' in the schema cache\", 'code': 'PGRST204', "
+    },
+    {
+      "id": "338",
+      "name": "מהרם מינם",
+      "error": "{'message': \"Could not find the 'label' column of 'sages' in the schema cache\", 'code': 'PGRST204', "
+    },
+    {
+      "id": "339",
+      "name": "מהרם מפדובה",
+      "error": "{'message': \"Could not find the 'label' column of 'sages' in the schema cache\", 'code': 'PGRST204', "
+    },
+    {
+      "id": "340",
+      "name": "מן הזדון אל הזכות- טרנספורמציה של כשלונות לנכסים ארגוניים בתורת ה-שם משמואל-",
+      "error": "{'message': \"Could not find the 'label' column of 'sages' in the schema cache\", 'code': 'PGRST204', "
+    },
+    {
+      "id": "341",
+      "name": "מסע חייו של הראשון לציון- רבי ישראל יעקב אלגאזי זצ-ל",
+      "error": "{'message': \"Could not find the 'label' column of 'sages' in the schema cache\", 'code': 'PGRST204', "
+    },
+    {
+      "id": "342",
+      "name": "מסעו של מאור- תחנות בחייו ובמורשתו של הרב מרדכי שרעבי זצ-ל",
+      "error": "{'message': \"Could not find the 'label' column of 'sages' in the schema cache\", 'code': 'PGRST204', "
+    },
+    {
+      "id": "343",
+      "name": "משנתו ההלכתית ופועלו הציבורי של רבי אברהם קלויזנר מהראק",
+      "error": "{'message': \"Could not find the 'label' column of 'sages' in the schema cache\", 'code': 'PGRST204', "
+    },
+    {
+      "id": "344",
+      "name": "משנתו ההלכתית ופועלו הציבורי של רבי שמשון בן אליעזר ברוך שאמר- רנסאנס מלאכת הסת-ם באשכנז וארם ישראל",
+      "error": "{'message': \"Could not find the 'label' column of 'sages' in the schema cache\", 'code': 'PGRST204', "
+    },
+    {
+      "id": "345",
+      "name": "משפחת אברו",
+      "error": "{'message': \"Could not find the 'label' column of 'sages' in the schema cache\", 'code': 'PGRST204', "
+    },
+    {
+      "id": "346",
+      "name": "סינתזת הגותו ופועלו של הגאון המקובל רבי רפאל משה לוריא זצ-ל",
+      "error": "{'message': \"Could not find the 'label' column of 'sages' in the schema cache\", 'code': 'PGRST204', "
+    },
+    {
+      "id": "347",
+      "name": "פועלו ומשנתו התורנית והמדעית של רבי דוד גנז- היסטוריוגרפיה, אסטרונומיה ומפגש התרבויות בפראג של תקופת הרנסנס",
+      "error": "{'message': \"Could not find the 'label' column of 'sages' in the schema cache\", 'code': 'PGRST204', "
+    },
+    {
+      "id": "348",
+      "name": "פועלו ומשנתו התורנית של הרמבן",
+      "error": "{'message': \"Could not find the 'label' column of 'sages' in the schema cache\", 'code': 'PGRST204', "
+    },
+    {
+      "id": "349",
+      "name": "פועלו ומשנתו התורנית של מהרם מרוטנבורג",
+      "error": "{'message': \"Could not find the 'label' column of 'sages' in the schema cache\", 'code': 'PGRST204', "
+    },
+    {
+      "id": "350",
+      "name": "פועלו ומשנתו התורנית של רבי ישראל מקרמז- הארכיטקטורה של -הגהות אשר-י- ועיצוב פסיקת אשכנז המאוחרת",
+      "error": "{'message': \"Could not find the 'label' column of 'sages' in the schema cache\", 'code': 'PGRST204', "
+    },
+    {
+      "id": "351",
+      "name": "פועלו ומשנתו של הרב בן-ציון מאיר חי עוזיאל- עיון ביסודות הגותו הציונית-הלכתית",
+      "error": "{'message': \"Could not find the 'label' column of 'sages' in the schema cache\", 'code': 'PGRST204', "
+    },
+    {
+      "id": "352",
+      "name": "ר חסדאי קרשקש",
+      "error": "{'message': \"Could not find the 'label' column of 'sages' in the schema cache\", 'code': 'PGRST204', "
+    },
+    {
+      "id": "353",
+      "name": "ר יצחק בן אשר הלוי ריבא - מחקר מעמיק",
+      "error": "{'message': \"Could not find the 'label' column of 'sages' in the schema cache\", 'code': 'PGRST204', "
+    },
+    {
+      "id": "354",
+      "name": "ראבד מפושקייר",
+      "error": "{'message': \"Could not find the 'label' column of 'sages' in the schema cache\", 'code': 'PGRST204', "
+    },
+    {
+      "id": "355",
+      "name": "רב דר אברהם לבני מטא-היסטוריה, פולמוס וגאולת ישראל",
+      "error": "{'message': \"Could not find the 'label' column of 'sages' in the schema cache\", 'code': 'PGRST204', "
+    },
+    {
+      "id": "356",
+      "name": "רבי אלעזר אזכרי- משורר, מקובל ומנהיג רוחני בצפת של המאה ה-16",
+      "error": "{'message': \"Could not find the 'label' column of 'sages' in the schema cache\", 'code': 'PGRST204', "
+    },
+    {
+      "id": "357",
+      "name": "רבי יהודה בר עילאי",
+      "error": "{'message': \"Could not find the 'label' column of 'sages' in the schema cache\", 'code': 'PGRST204', "
+    },
+    {
+      "id": "358",
+      "name": "רבי יהודה החסיד- דמותו, הגותו וצוואתו – ניתוח ותובנות",
+      "error": "{'message': \"Could not find the 'label' column of 'sages' in the schema cache\", 'code': 'PGRST204', "
+    },
+    {
+      "id": "359",
+      "name": "רבי יעקב בן אשר - בעל הטורים",
+      "error": "{'message': \"Could not find the 'label' column of 'sages' in the schema cache\", 'code': 'PGRST204', "
+    },
+    {
+      "id": "360",
+      "name": "רבי יעקב לנדא",
+      "error": "{'message': \"Could not find the 'label' column of 'sages' in the schema cache\", 'code': 'PGRST204', "
+    },
+    {
+      "id": "361",
+      "name": "רבי יעקב מרגליות",
+      "error": "{'message': \"Could not find the 'label' column of 'sages' in the schema cache\", 'code': 'PGRST204', "
+    },
+    {
+      "id": "362",
+      "name": "רבי ישראל נגארה",
+      "error": "{'message': \"Could not find the 'label' column of 'sages' in the schema cache\", 'code': 'PGRST204', "
+    },
+    {
+      "id": "363",
+      "name": "רבי מאיר בן ברוך הלוי מהר-ם סג-ל",
+      "error": "{'message': \"Could not find the 'label' column of 'sages' in the schema cache\", 'code': 'PGRST204', "
+    },
+    {
+      "id": "364",
+      "name": "רבי מנחם עזריה מפאנו",
+      "error": "{'message': \"Could not find the 'label' column of 'sages' in the schema cache\", 'code': 'PGRST204', "
+    },
+    {
+      "id": "365",
+      "name": "רבי שמשון בן אליעזר ברוך שאמר- רנסאנס מלאכת הסת-ם",
+      "error": "{'message': \"Could not find the 'label' column of 'sages' in the schema cache\", 'code': 'PGRST204', "
+    },
+    {
+      "id": "366",
+      "name": "רבי שראל מקרמז- הארכיטקטורה של -הגהות אשר-י-",
+      "error": "{'message': \"Could not find the 'label' column of 'sages' in the schema cache\", 'code': 'PGRST204', "
+    },
+    {
+      "id": "367",
+      "name": "רבינו בחיי בן אשר",
+      "error": "{'message': \"Could not find the 'label' column of 'sages' in the schema cache\", 'code': 'PGRST204', "
+    },
+    {
+      "id": "368",
+      "name": "רבינו דוד בר ראובן בונפיד",
+      "error": "{'message': \"Could not find the 'label' column of 'sages' in the schema cache\", 'code': 'PGRST204', "
+    },
+    {
+      "id": "369",
+      "name": "רבינו זרחיה הלוי הרז-ה- פועלו ומשנתו התורנית של בעל -המאור-",
+      "error": "{'message': \"Could not find the 'label' column of 'sages' in the schema cache\", 'code': 'PGRST204', "
+    },
+    {
+      "id": "370",
+      "name": "רבינו זרחיה הלוי הרזה",
+      "error": "{'message': \"Could not find the 'label' column of 'sages' in the schema cache\", 'code': 'PGRST204', "
+    },
+    {
+      "id": "371",
+      "name": "רבנו בחיי אבן פקודה",
+      "error": "{'message': \"Could not find the 'label' column of 'sages' in the schema cache\", 'code': 'PGRST204', "
+    },
+    {
+      "id": "372",
+      "name": "רבנו יצחק בר ששת הריב-ש",
+      "error": "{'message': \"Could not find the 'label' column of 'sages' in the schema cache\", 'code': 'PGRST204', "
+    },
+    {
+      "id": "373",
+      "name": "רבנו משה בן מימון",
+      "error": "{'message': \"Could not find the 'label' column of 'sages' in the schema cache\", 'code': 'PGRST204', "
+    },
+    {
+      "id": "374",
+      "name": "רבנו ניסים הרן",
+      "error": "{'message': \"Could not find the 'label' column of 'sages' in the schema cache\", 'code': 'PGRST204', "
+    },
+    {
+      "id": "375",
+      "name": "רות המואבייה",
+      "error": "{'message': \"Could not find the 'label' column of 'sages' in the schema cache\", 'code': 'PGRST204', "
+    },
+    {
+      "id": "376",
+      "name": "תובנות מרכזיות על הגותו וחייו של רבי משה חיים לוצאטו הרמח-ל",
+      "error": "{'message': \"Could not find the 'label' column of 'sages' in the schema cache\", 'code': 'PGRST204', "
+    },
+    {
+      "id": "377",
+      "name": "תמצית תובנות- פילון האלכסנדרוני, הגותו והשפעתו",
+      "error": "{'message': \"Could not find the 'label' column of 'sages' in the schema cache\", 'code': 'PGRST204', "
+    }
+  ]
+}

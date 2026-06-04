@@ -95,18 +95,18 @@ function getCoordinatesForLocation(locationStr) {
 }
 
 /**
- * Get color by era
+ * Get color by era (consistent with map legend and graph)
  */
 function getEraColor(eraKey) {
   const colorMap = {
-    'second-temple': '#ff7f0e',
-    'tannaim': '#2ca02c',
-    'amoraim': '#d62728',
-    'geonim': '#9467bd',
-    'rishonim': '#9467bd',
-    'acharonim': '#8c564b',
-    'modern': '#e377c2',
-    'unknown': '#999999'
+    'second-temple': '#8e44ad',  // Purple
+    'tannaim': '#e74c3c',        // Red
+    'amoraim': '#e67e22',        // Orange
+    'geonim': '#f1c40f',         // Yellow
+    'rishonim': '#27ae60',       // Green
+    'acharonim': '#2980b9',      // Blue
+    'modern': '#1abc9c',         // Turquoise
+    'unknown': '#999999'         // Gray
   };
 
   return colorMap[eraKey] || colorMap['unknown'];

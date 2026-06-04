@@ -17,15 +17,15 @@ class SageNetwork {
     this.searchSelector = config.searchSelector || '#searchInput';
     this.sidebarSelector = config.sidebarSelector || '#sidebar';
 
-    // FIXED BUG 2: Dynamic color mapping by ERA
+    // FIXED BUG 2: Dynamic color mapping by ERA (consistent across all visualizations)
     this.colorMap = {
-      'second-temple': '#ff7f0e',      // Orange
-      'tannaim': '#2ca02c',             // Green
-      'amoraim': '#d62728',             // Red
-      'geonim': '#9467bd',              // Purple (using as stand-in)
-      'rishonim': '#9467bd',            // Purple
-      'acharonim': '#8c564b',           // Brown
-      'modern': '#e377c2',              // Pink
+      'second-temple': '#8e44ad',      // Purple
+      'tannaim': '#e74c3c',             // Red
+      'amoraim': '#e67e22',             // Orange
+      'geonim': '#f1c40f',              // Yellow
+      'rishonim': '#27ae60',            // Green
+      'acharonim': '#2980b9',           // Blue
+      'modern': '#1abc9c',              // Turquoise
       'unknown': '#999999'              // Gray
     };
 

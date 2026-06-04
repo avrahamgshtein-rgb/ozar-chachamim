@@ -1,0 +1,69 @@
+{
+  "sage_entry": {
+    "id": 324,
+    "name_he": "רבי יוסף בן יהודה אבן שמעון",
+    "name_en": "Rabbi Yosef ben Yehuda Ibn Simeon",
+    "label": "רבי יוסף בן יהודה אבן שמעון",
+    "era": "rishonim",
+    "period": "12th century",
+    "period_order": 5,
+    "region": "מצרים, סוריה (חלב)",
+    "birth_location": "סאוטה (Ceuta), מרוקו",
+    "primary_field": "Philosophy, Theology",
+    "core_concept": "תלמיד הרמב״ם וחלוץ הפילוסופיה היהודית - מתווך בין רציונליזם מערבי למסורת דתית",
+    "bio": "רבי יוסף בן יהודה אבן שמעון (c. 1160–?) היה הפילוסוף היהודי הצפון אפריקאי החשוב ביותר ותלמידו הנלהב של הרמב״ם. נולד בסאוטה תחת רדיפות המואחידון, הפך למנהיג קהילת חלב (אלכסנדריתא) וללוחם הנמרץ להפצת הגישה המיימוניסטית ברחבי בבל וסוריה. יצירתו המטאפיזית ודיונו עם הרמב״ם על טבע האל והקיום עיצבו את דמות היהדות המימוני-רציונלית לדורות.",
+    "tags": ["philosophy", "theology", "maimonidean", "medieval", "rishonim"],
+    "coordinates": {
+      "birth": {
+        "city": "Ceuta",
+        "region": "Morocco",
+        "lat": 35.8883,
+        "lng": -5.3104
+      },
+      "primary_center": {
+        "city": "Aleppo",
+        "region": "Syria",
+        "lat": 36.2021,
+        "lng": 37.1670
+      },
+      "study_center": {
+        "city": "Cairo",
+        "region": "Egypt",
+        "lat": 30.0444,
+        "lng": 31.2357
+      }
+    },
+    "migration_path": {
+      "from": "Ceuta (Morocco)",
+      "to": "Aleppo (Syria)",
+      "intermediate": ["Egypt (Cairo)"],
+      "description": "Fled Almohad persecution from Ceuta to Egypt where he studied with Maimonides; later established community leadership in Aleppo"
+    }
+  },
+  "connections": [
+    {
+      "source_id": 324,
+      "target_id": 16,
+      "connection_type": "student",
+      "description": "Direct disciple and intellectual partner of Maimonides; correspondence shaped the Guide for the Perplexed"
+    },
+    {
+      "source_id": 324,
+      "target_id": 19,
+      "connection_type": "colleague",
+      "description": "Contemporary philosopher; both worked on Maimonidean interpretation"
+    }
+  ],
+  "notes": {
+    "verification_status": "PENDING USER APPROVAL",
+    "source": "Word document: רבי יוסף בן יהודה אבן שמעון.docx",
+    "markdown_profile": "sages/rabbi-yosef-ibn-simeon.md",
+    "next_steps": [
+      "User reviews sage entry and connections",
+      "User approves or requests modifications",
+      "Execute INSERT to Supabase sages table",
+      "Execute INSERT to Supabase connections table",
+      "Verify sage appears in D3 graph with correct links"
+    ]
+  }
+}
