@@ -362,7 +362,12 @@
     function switchView(view) {
         currentView = view;
         document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-        event.target.closest('.tab-btn').classList.add('active');
+        // Find and activate the correct tab button
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            if (btn.getAttribute('onclick').includes("'" + view + "'")) {
+                btn.classList.add('active');
+            }
+        });
         document.querySelectorAll('.main-area').forEach(area => area.classList.remove('active'));
         const viewEl = document.getElementById(view + '-view');
         if (viewEl) viewEl.classList.add('active');
@@ -526,10 +531,11 @@
                               ? (() => {
                                   try {
                                     const path = JSON.parse(node.migration_path);
-                                    return \`<strong>\${path.from}</strong> ← \${path.intermediate?.join(' ← ') || ''} → <strong>\${path.to}</strong>\`;
+                                    const intermediate = path.intermediate?.join(' ← ') || '';
+                                    return '<strong>' + path.from + '</strong> ← ' + intermediate + ' → <strong>' + path.to + '</strong>';
                                   } catch { return 'נתונים בעיבוד'; }
                                 })()
-                              : \`<strong>\${node.migration_path.from}</strong> ← \${node.migration_path.intermediate?.join(' ← ') || ''} → <strong>\${node.migration_path.to}</strong>\`
+                              : '<strong>' + node.migration_path.from + '</strong> ← ' + (node.migration_path.intermediate?.join(' ← ') || '') + ' → <strong>' + node.migration_path.to + '</strong>'
                             }
                           </div>
                         </div>
