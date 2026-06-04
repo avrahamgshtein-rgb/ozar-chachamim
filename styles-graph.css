@@ -225,6 +225,13 @@ body {
   display: block;
 }
 
+/* Desktop: Enable scrolling for traditions and ideas views */
+#traditions-view,
+#ideas-view {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
 #graph-view {
   background: var(--color-white);
   padding: 0;
