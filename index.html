@@ -419,19 +419,25 @@
                 attribution: '© OpenStreetMap', maxZoom: 18
             }).addTo(mapInstance);
 
-        // Add legend
+        // Add legend with Hebrew labels and migration path info
         const legend = L.control({ position: 'bottomleft' });
         legend.onAdd = function() {
             const div = L.DomUtil.create('div', 'legend-map');
-            div.innerHTML = `<div style="background: white; padding: 10px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-                <h4 style="margin: 0 0 10px 0; font-size: 12px; font-weight: bold;">תקופות</h4>
-                <div style="display: flex; flex-direction: column; gap: 5px; font-size: 11px;">
-                    <div><span style="display: inline-block; width: 12px; height: 12px; background: #ff7f0e; border-radius: 50%; margin-right: 5px;"></span>Second Temple</div>
-                    <div><span style="display: inline-block; width: 12px; height: 12px; background: #2ca02c; border-radius: 50%; margin-right: 5px;"></span>Tannaim</div>
-                    <div><span style="display: inline-block; width: 12px; height: 12px; background: #d62728; border-radius: 50%; margin-right: 5px;"></span>Amoraim</div>
-                    <div><span style="display: inline-block; width: 12px; height: 12px; background: #9467bd; border-radius: 50%; margin-right: 5px;"></span>Rishonim</div>
-                    <div><span style="display: inline-block; width: 12px; height: 12px; background: #8c564b; border-radius: 50%; margin-right: 5px;"></span>Acharonim</div>
-                    <div><span style="display: inline-block; width: 12px; height: 12px; background: #e377c2; border-radius: 50%; margin-right: 5px;"></span>Modern</div>
+            div.innerHTML = `<div style="background: white; padding: 12px; border-radius: 8px; box-shadow: 0 2px 12px rgba(0,0,0,0.15); direction: rtl; font-family: Heebo, sans-serif;">
+                <h4 style="margin: 0 0 10px 0; font-size: 13px; font-weight: bold; color: #333;">🗺️ מקרא - תקופות וקשרים</h4>
+                <div style="display: flex; flex-direction: column; gap: 6px; font-size: 12px;">
+                    <div style="display: flex; align-items: center; gap: 6px;"><span style="display: inline-block; width: 14px; height: 14px; background: #ff7f0e; border-radius: 50%; border: 2px solid white;"></span><span>בית שני</span></div>
+                    <div style="display: flex; align-items: center; gap: 6px;"><span style="display: inline-block; width: 14px; height: 14px; background: #e74c3c; border-radius: 50%; border: 2px solid white;"></span><span>תנאים</span></div>
+                    <div style="display: flex; align-items: center; gap: 6px;"><span style="display: inline-block; width: 14px; height: 14px; background: #e67e22; border-radius: 50%; border: 2px solid white;"></span><span>אמוראים</span></div>
+                    <div style="display: flex; align-items: center; gap: 6px;"><span style="display: inline-block; width: 14px; height: 14px; background: #f1c40f; border-radius: 50%; border: 2px solid white;"></span><span>גאונים</span></div>
+                    <div style="display: flex; align-items: center; gap: 6px;"><span style="display: inline-block; width: 14px; height: 14px; background: #27ae60; border-radius: 50%; border: 2px solid white;"></span><span>ראשונים</span></div>
+                    <div style="display: flex; align-items: center; gap: 6px;"><span style="display: inline-block; width: 14px; height: 14px; background: #2980b9; border-radius: 50%; border: 2px solid white;"></span><span>אחרונים</span></div>
+                    <div style="display: flex; align-items: center; gap: 6px;"><span style="display: inline-block; width: 14px; height: 14px; background: #1abc9c; border-radius: 50%; border: 2px solid white;"></span><span>עת חדשה</span></div>
+                    <hr style="margin: 6px 0; border: none; border-top: 1px solid #ddd;">
+                    <div style="font-size: 11px; color: #666;">
+                        <div style="margin-bottom: 3px;">━━━ = מסלול נדידה</div>
+                        <div>➤ = כיוון הנדידה</div>
+                    </div>
                 </div>
             </div>`;
             return div;
@@ -501,7 +507,7 @@
                         fillOpacity: 0.85
                     })
                     .bindPopup(`
-                      <div style="padding: 1rem; min-width: 280px; font-family: Heebo, sans-serif; direction: rtl;">
+                      <div style="padding: 1rem; min-width: 300px; font-family: Heebo, sans-serif; direction: rtl;">
                         <div style="border-bottom: 3px solid ${color}; padding-bottom: 0.75rem; margin-bottom: 0.75rem;">
                           <h3 style="margin: 0 0 0.5rem 0; color: #1a1a1a; font-size: 1.1rem;">${node.label}</h3>
                           <div style="font-size: 0.8rem; color: #666; display: grid; gap: 0.3rem;">
@@ -510,27 +516,47 @@
                             <div>🎓 ${node.primary_field || 'אחר'}</div>
                           </div>
                         </div>
+
+                        ${node.migration_path ? `
+                        <div style="background: #f0f8ff; padding: 0.75rem; border-right: 4px solid ${color}; margin-bottom: 0.75rem; border-radius: 4px;">
+                          <div style="font-size: 0.75rem; color: #555; margin-bottom: 0.5rem; font-weight: 700;">🚶 מסלול נדידה</div>
+                          <div style="font-size: 0.85rem; color: #333; line-height: 1.6; direction: rtl;">
+                            ${typeof node.migration_path === 'string'
+                              ? (() => {
+                                  try {
+                                    const path = JSON.parse(node.migration_path);
+                                    return \`<strong>\${path.from}</strong> ← \${path.intermediate?.join(' ← ') || ''} → <strong>\${path.to}</strong>\`;
+                                  } catch { return 'נתונים בעיבוד'; }
+                                })()
+                              : \`<strong>\${node.migration_path.from}</strong> ← \${node.migration_path.intermediate?.join(' ← ') || ''} → <strong>\${node.migration_path.to}</strong>\`
+                            }
+                          </div>
+                        </div>
+                        ` : ''}
+
                         ${node.core_concept ? `
                         <div style="background: #f5f5f5; padding: 0.75rem; border-right: 3px solid ${color}; margin-bottom: 0.75rem; border-radius: 4px;">
                           <div style="font-size: 0.75rem; color: #888; margin-bottom: 0.3rem; font-weight: 600;">💡 רעיון מרכזי</div>
                           <div style="font-size: 0.85rem; color: #333; line-height: 1.5;">${node.core_concept}</div>
                         </div>
                         ` : ''}
+
                         ${node.summary ? `
-                        <div style="font-size: 0.85rem; color: #555; margin-bottom: 0.75rem; line-height: 1.5;">
-                          ${node.summary.substring(0, 180)}${node.summary.length > 180 ? '...' : ''}
+                        <div style="font-size: 0.82rem; color: #555; margin-bottom: 0.75rem; line-height: 1.5;">
+                          ${node.summary.substring(0, 160)}${node.summary.length > 160 ? '...' : ''}
                         </div>
                         ` : ''}
-                        <div style="font-size: 0.8rem; color: #666; margin-bottom: 0.75rem;">
-                          ${node.connection_count ? `🔗 ${node.connection_count} קשרים` : ''}
-                          ${node.migration_path ? ` | 🗺️ מסלול נדידה` : ''}
+
+                        <div style="font-size: 0.8rem; color: #666; margin-bottom: 0.75rem; padding-top: 0.75rem; border-top: 1px solid #ddd;">
+                          ${node.connection_count ? `<span>🔗 ${node.connection_count} קשרים</span>` : ''}
                         </div>
+
                         <button onclick="window.sageNetwork && window.sageNetwork.selectNode(window.graphData.nodes.find(n => n.id === '${node.id}'))"
-                          style="width: 100%; padding: 0.6rem; background: ${color}; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 0.9rem; font-weight: 600; transition: all 0.2s;">
+                          style="width: 100%; padding: 0.6rem; background: ${color}; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 0.9rem; font-weight: 600; transition: all 0.2s; margin-top: 0.5rem;">
                           📖 פרופיל מלא
                         </button>
                       </div>
-                    `, { maxWidth: 320, className: 'sage-popup' })
+                    `, { maxWidth: 330, className: 'sage-popup' })
                     .addTo(mapInstance);
 
                     // TASK C: Track this marker by sage ID
