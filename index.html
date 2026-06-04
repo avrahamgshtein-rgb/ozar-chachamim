@@ -178,6 +178,9 @@
 
 <!-- Scripts -->
 <!-- IMPORTANT: Load order matters! -->
+<!-- 0. Mobile Handler (must load first) -->
+<script src="mobile-handler.js"></script>
+
 <!-- 1. Supabase Client Module (replaces data-loader + data-validator) -->
 <script type="module">
   import { initializeApp, semanticSearch } from './supabase-client.js';
@@ -377,6 +380,14 @@
         if (viewEl) viewEl.classList.add('active');
         const legend = document.getElementById('legend');
         legend.style.display = view === 'graph' ? 'block' : 'none';
+
+        // Close sidebar on mobile when switching views
+        if (window.mobileHandler && window.mobileHandler.isCurrentlyMobile()) {
+            const sidebar = document.getElementById('sidebar');
+            if (sidebar && sidebar.classList.contains('active')) {
+                window.mobileHandler.closeSidebar();
+            }
+        }
 
         if (view === 'map' && !mapInstance) initMap();
         if (view === 'traditions' && !document.getElementById('traditionsGrid').innerHTML) buildTraditions();

@@ -567,6 +567,12 @@ class SageNetwork {
       </div>
     `;
     sidebar.classList.add('active');
+
+    // Notify mobile handler
+    if (window.mobileHandler) {
+      window.mobileHandler.openSidebar();
+    }
+
     sidebar.querySelector('.sidebar-close').addEventListener('click', () => this.closeSidebar());
 
     // Load full sage profile from Supabase
@@ -784,6 +790,11 @@ class SageNetwork {
     sidebar.innerHTML = html;
     sidebar.classList.add('active');
 
+    // Notify mobile handler
+    if (window.mobileHandler) {
+      window.mobileHandler.openSidebar();
+    }
+
     // Re-attach close listener
     sidebar.querySelector('.sidebar-close').addEventListener('click', () => this.closeSidebar());
 
@@ -833,6 +844,11 @@ class SageNetwork {
     }
 
     this.selectedNode = null;
+
+    // Notify mobile handler if available
+    if (window.mobileHandler && window.mobileHandler.isCurrentlyMobile()) {
+      window.mobileHandler.closeSidebar();
+    }
   }
 
   /**
