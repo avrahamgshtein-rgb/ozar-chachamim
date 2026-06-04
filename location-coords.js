@@ -13,12 +13,17 @@ const LOCATION_COORDS = {
   'טבריה': { lat: 32.789, lng: 35.535, name: 'Tiberias' },
   'צפת': { lat: 32.968, lng: 35.497, name: 'Safed' },
   'עכו': { lat: 32.923, lng: 35.087, name: 'Acre' },
+  'חברון': { lat: 31.539, lng: 35.207, name: 'Hebron' },
+  'קיסריה': { lat: 32.879, lng: 35.086, name: 'Caesarea' },
+  'לוד': { lat: 31.948, lng: 35.144, name: 'Lod' },
 
-  // Diaspora - Babylon
+  // Diaspora - Babylon & Levant
   'בבל': { lat: 33.313, lng: 44.361, name: 'Babylon' },
   'Babylon': { lat: 33.313, lng: 44.361, name: 'Babylon' },
   'בגדד': { lat: 33.313, lng: 44.361, name: 'Baghdad' },
   'Baghdad': { lat: 33.313, lng: 44.361, name: 'Baghdad' },
+  'חלב': { lat: 36.202, lng: 37.167, name: 'Aleppo' },
+  'Aleppo': { lat: 36.202, lng: 37.167, name: 'Aleppo' },
 
   // Egypt
   'מצרים': { lat: 30.044, lng: 31.234, name: 'Egypt' },
@@ -39,11 +44,13 @@ const LOCATION_COORDS = {
   'איטליה': { lat: 41.872, lng: 12.567, name: 'Italy' },
   'Italy': { lat: 41.872, lng: 12.567, name: 'Italy' },
 
-  // Spain
+  // Spain & North Africa
   'ספרד': { lat: 40.463, lng: -3.750, name: 'Spain' },
   'Spain': { lat: 40.463, lng: -3.750, name: 'Spain' },
   'קורדובה': { lat: 37.891, lng: -4.779, name: 'Cordoba' },
   'Cordoba': { lat: 37.891, lng: -4.779, name: 'Cordoba' },
+  'סאוטה': { lat: 35.889, lng: -5.310, name: 'Ceuta' },
+  'Ceuta': { lat: 35.889, lng: -5.310, name: 'Ceuta' },
 
   // France
   'צרפת': { lat: 46.227, lng: 2.213, name: 'France' },
