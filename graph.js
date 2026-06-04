@@ -224,7 +224,7 @@ class SageNetwork {
       .force('collision', d3.forceCollide(32))
       .force('x', xForce);  // Add chronological ordering
 
-    // TASK B: Render links as curved paths with type-based styling
+    // TASK B: Render links as curved paths with type-based styling + labels
     const link = g.append('g')
       .attr('class', 'links')
       .selectAll('path')
@@ -233,6 +233,7 @@ class SageNetwork {
       .append('path')
       .attr('class', d => `link link-${d.type}`)
       .attr('fill', 'none')
+      .attr('id', (d, i) => `link-${i}`)
       .attr('stroke', d => {
         const colorMap = {
           'student': '#4ecdc4',           // Teal - teacher-student
@@ -240,13 +241,16 @@ class SageNetwork {
           'oppose': '#ff6b6b',            // Red - disagreement
           'colleague': '#95e1d3',         // Cyan - peers
           'predecessor': '#f9ca24',       // Yellow - succession
-          'precursor': '#f9ca24'          // Yellow - precursor
+          'precursor': '#f9ca24',         // Yellow - precursor
+          'contemporary': '#a8dadc',     // Light blue - same period
+          'teacher': '#4ecdc4'           // Teal - teaching relationship
         };
         return colorMap[d.type] || '#999999';
       })
       .attr('stroke-width', d => {
         // Higher weight for teacher-student relationships
         if (d.type === 'student') return 3.5;
+        if (d.type === 'teacher') return 3.5;
         if (d.type === 'influence') return 2.5;
         return 2;
       })
@@ -259,20 +263,57 @@ class SageNetwork {
       .on('mouseover', function(event, d) {
         d3.select(this)
           .attr('stroke-width', d => {
-            if (d.type === 'student') return 4;
-            if (d.type === 'influence') return 3;
-            return 2.5;
+            if (d.type === 'student' || d.type === 'teacher') return 4.5;
+            if (d.type === 'influence') return 3.5;
+            return 3;
           })
           .attr('opacity', 1);
+        // Show label on hover
+        d3.select(`#label-${d3.select(this).attr('id')}`)
+          .style('opacity', 1)
+          .style('font-weight', 'bold');
       })
       .on('mouseout', function(event, d) {
         d3.select(this)
           .attr('stroke-width', d => {
-            if (d.type === 'student') return 3.5;
+            if (d.type === 'student' || d.type === 'teacher') return 3.5;
             if (d.type === 'influence') return 2.5;
             return 2;
           })
           .attr('opacity', 0.85);
+        // Hide label on mouseout
+        d3.select(`#label-${d3.select(this).attr('id')}`)
+          .style('opacity', 0.6)
+          .style('font-weight', 'normal');
+      });
+
+    // Add connection type labels on links
+    const linkLabels = g.append('g')
+      .attr('class', 'link-labels')
+      .selectAll('text')
+      .data(validLinks)
+      .enter()
+      .append('text')
+      .attr('class', 'link-label')
+      .attr('id', (d, i) => `label-link-${i}`)
+      .attr('font-size', '11px')
+      .attr('fill', '#666')
+      .attr('text-anchor', 'middle')
+      .attr('pointer-events', 'none')
+      .attr('opacity', 0.6)
+      .style('transition', 'opacity 0.15s')
+      .text(d => {
+        const typeLabels = {
+          'student': 'תלמיד',
+          'teacher': 'מורה',
+          'influence': 'השפעה',
+          'colleague': 'עמית',
+          'predecessor': 'קודם',
+          'contemporary': 'בן זמן',
+          'oppose': 'מתנגד',
+          'precursor': 'קודם'
+        };
+        return typeLabels[d.type] || d.type;
       });
 
     // FIX BUG 2: Render nodes with dynamic colors based on era
@@ -333,7 +374,7 @@ class SageNetwork {
       .attr('pointer-events', 'none')
       .text(d => d.label.substring(0, 3));
 
-    // TASK B: Update positions on simulation tick with curved paths
+    // TASK B: Update positions on simulation tick with curved paths + link labels
     this.simulation.on('tick', () => {
       // Render curved links using quadratic Bezier curves
       link.attr('d', d => {
@@ -356,6 +397,29 @@ class SageNetwork {
         return `M${x1},${y1}Q${cpx},${cpy},${x2},${y2}`;
       });
 
+      // Update link labels position (at curve control point)
+      linkLabels.attr('x', d => {
+        const x1 = d.source.x;
+        const x2 = d.target.x;
+        const y1 = d.source.y;
+        const y2 = d.target.y;
+        const dx = x2 - x1;
+        const dy = y2 - y1;
+        const dr = Math.sqrt(dx * dx + dy * dy);
+        const curve = d.type === 'student' ? 0.3 : 0.15;
+        return (x1 + x2) / 2 - (dy / dr) * dr * curve;
+      }).attr('y', d => {
+        const x1 = d.source.x;
+        const x2 = d.target.x;
+        const y1 = d.source.y;
+        const y2 = d.target.y;
+        const dx = x2 - x1;
+        const dy = y2 - y1;
+        const dr = Math.sqrt(dx * dx + dy * dy);
+        const curve = d.type === 'student' ? 0.3 : 0.15;
+        return (y1 + y2) / 2 + (dx / dr) * dr * curve;
+      });
+
       node
         .attr('cx', d => d.x)
         .attr('cy', d => d.y);
@@ -370,6 +434,7 @@ class SageNetwork {
     this.g = g;
     this.node = node;
     this.link = link;
+    this.linkLabels = linkLabels;
     this.labels = labels;
 
     // VISUALIZATION ENHANCEMENT: Apply advanced chronological ordering
@@ -568,13 +633,25 @@ class SageNetwork {
       }
     }
 
+    // Get connection types for related sages
+    const getConnectionTypes = (sageId, connectedId) => {
+      return (this.data.links || [])
+        .filter(l => {
+          const sourceId = String(l.source?.id || l.source || '');
+          const targetId = String(l.target?.id || l.target || '');
+          return (sourceId === sageId && targetId === connectedId) ||
+                 (sourceId === connectedId && targetId === sageId);
+        })
+        .map(l => l.type);
+    };
+
     // Build complete sidebar HTML
     const html = `
-      <button class="sidebar-close">
-        <i class="fas fa-times"></i>
-      </button>
-      <div class="sidebar-header">
-        <h2>${profile.label || profile.name_he}</h2>
+      <div class="sidebar-header" style="position: relative;">
+        <button class="sidebar-close" style="position: absolute; top: 0; left: 0; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #666; padding: 0.5rem; z-index: 10;" title="סגור">
+          <i class="fas fa-times"></i>
+        </button>
+        <h2 style="padding-right: 2rem;">${profile.label || profile.name_he}</h2>
         <div class="sidebar-meta">
           <div class="sidebar-meta-item">
             <i class="fas fa-calendar"></i> ${profile.era || 'Unknown'}
@@ -595,8 +672,26 @@ class SageNetwork {
 
         ${profile.core_concept ? `
           <div class="sidebar-section" style="background: #fff3e0; padding: 1rem; border-left: 4px solid #ff9800; border-radius: 4px;">
-            <h4>💡 Core Concept</h4>
+            <h4>💡 רעיון עיקרי</h4>
             <p style="margin: 0; font-style: italic; color: #e65100;">${profile.core_concept}</p>
+          </div>
+        ` : ''}
+
+        ${profile.main_works && Array.isArray(profile.main_works) && profile.main_works.length > 0 ? `
+          <div class="sidebar-section" style="background: #f3e5f5; padding: 1rem; border-left: 4px solid #9c27b0; border-radius: 4px;">
+            <h4>📚 יצירות עיקריות</h4>
+            <ul style="margin: 0.5rem 0; padding-left: 1.5rem;">
+              ${profile.main_works.map(work => `<li style="margin: 0.3rem 0; font-size: 0.95rem;">${work}</li>`).join('')}
+            </ul>
+          </div>
+        ` : ''}
+
+        ${profile.key_ideas && Array.isArray(profile.key_ideas) && profile.key_ideas.length > 0 ? `
+          <div class="sidebar-section" style="background: #e3f2fd; padding: 1rem; border-left: 4px solid #2196f3; border-radius: 4px;">
+            <h4>🧠 רעיונות עיקריים</h4>
+            <ul style="margin: 0.5rem 0; padding-left: 1.5rem;">
+              ${profile.key_ideas.map(idea => `<li style="margin: 0.3rem 0; font-size: 0.95rem;">${idea}</li>`).join('')}
+            </ul>
           </div>
         ` : ''}
 
@@ -644,15 +739,42 @@ class SageNetwork {
         ` : ''}
 
         <div class="sidebar-section">
-          <h3>קישורים (${related.length})</h3>
-          <div class="related-sages">
+          <h3>🔗 קישורים בין חכמים (${related.length})</h3>
+          <div class="related-sages" style="display: grid; grid-template-columns: 1fr; gap: 0.5rem;">
             ${related.length > 0
-              ? related.map(n => `
-                  <div class="related-sage" onclick="window.sageNetwork.selectNode(window.sageNetwork.data.nodes.find(nd => nd.id === '${n.id}'))">
-                    ${n.label}
-                  </div>
-                `).join('')
-              : '<p style="color: #a0917d;">אין קישורים ישירים</p>'
+              ? related.map(n => {
+                  const types = getConnectionTypes(nodeId, String(n.id));
+                  const typeEmojis = {
+                    'student': '👨‍🎓',
+                    'teacher': '👨‍🏫',
+                    'influence': '💡',
+                    'colleague': '🤝',
+                    'predecessor': '📖',
+                    'contemporary': '⏰',
+                    'oppose': '⚡'
+                  };
+                  const typeLabels = {
+                    'student': 'תלמיד של',
+                    'teacher': 'מורה של',
+                    'influence': 'השפעה על',
+                    'colleague': 'עמית של',
+                    'predecessor': 'קודם לדורו',
+                    'contemporary': 'בן זמנו',
+                    'oppose': 'מתנגד ל'
+                  };
+                  const typeString = types.length > 0
+                    ? types.map(t => `${typeEmojis[t] || '🔗'} ${typeLabels[t] || t}`).join(' / ')
+                    : '🔗 קשור ל';
+
+                  return `
+                    <div class="related-sage" onclick="window.sageNetwork.selectNode(window.sageNetwork.data.nodes.find(nd => nd.id === '${n.id}'))"
+                         style="padding: 0.75rem; background: #f5f5f5; border-radius: 6px; cursor: pointer; border-left: 4px solid #4ecdc4; transition: all 0.2s;">
+                      <div style="font-weight: 600; color: #333;">${n.label}</div>
+                      <div style="font-size: 0.85rem; color: #666; margin-top: 0.3rem;">${typeString}</div>
+                    </div>
+                  `;
+                }).join('')
+              : '<p style="color: #a0917d; text-align: center; padding: 1rem;">אין קישורים ישירים</p>'
             }
           </div>
         </div>

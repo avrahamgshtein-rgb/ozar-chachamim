@@ -69,6 +69,121 @@ python -m http.server 8080
 - **`supabase-schema-v2.sql`** - Database schema (5 tables: sages, research_content, user_history, bookmarks, profiles)
 - See "Supabase Integration" section below.
 
+## Context Budgeting: What Claude Can Access & Do
+
+**This section clarifies exactly what Claude Code can read, write, and act on (from Session 1 of Claude Workshop).**
+
+### Source Budget (What Claude may read)
+
+| Source | Access | Notes |
+|--------|--------|-------|
+| `sages/*.md` | ✅ Full read | All 44 sage profiles |
+| `notes/*/` | ✅ Full read | Lesson plans, questions, posts (5 sages) |
+| `templates/` | ✅ Full read | Sage profile template |
+| `site-data/חכמי ישראל.xlsx` | ✅ Metadata only | Excel headers, column names (not full content) |
+| `sources/**/*.docx` | ⚠️ Excerpts only | Claude may read & summarize, NOT export full text |
+| `CLAUDE.md`, `MEMORY.md`, `INSTRUCTION.md` | ✅ Full read | Project rules & workflows |
+| `.gitignore`, `config.js` | ❌ No read | Security credentials (never expose) |
+
+### Action Budget (What Claude may do)
+
+| Action | Permission | When |
+|--------|------------|------|
+| Create markdown files | ✅ Yes | In `sages/`, `notes/*/` (you approve first) |
+| Update markdown cross-references | ✅ Yes | Adding `[[sage-slug]]` links (you approve) |
+| Query Supabase | ✅ Yes | SELECT only (read-only queries) |
+| Insert sage to Supabase | ⚠️ With approval | Only after you explicitly approve |
+| Update connections in Supabase | ⚠️ With approval | Only after you explicitly approve |
+| Delete files | ❌ No | Never delete without your explicit instruction |
+| Send research documents | ❌ No | Never email/export full research text |
+| Modify config.js | ❌ No | Security risk |
+
+### Output Budget (What Claude must produce)
+
+| Output Type | Required Format | Notes |
+|-------------|-----------------|-------|
+| New sage profile | Markdown | Must follow `templates/sage-profile.md` |
+| Lesson plan | Markdown + Hebrew | 45 min: 5 intro + 30 main + 10 discussion |
+| Migration path | JSON | `{"from": "...", "to": "...", "intermediate": [...]}` |
+| Connections | SQL INSERT | With human approval before executing |
+| Markdown updates | Diff preview | Show changes before committing |
+
+### Time/Token Budget (Estimated per task)
+
+- **Add new sage:** 5,000–10,000 tokens (2–3 hours of work)
+- **Generate lesson plan:** 3,000–5,000 tokens (1 hour of work)
+- **Extract migration:** 2,000–3,000 tokens (30 min of work)
+- **Create connection:** 1,000 tokens (15 min of work)
+
+If a task exceeds budget, break into smaller steps and use MEMORY.md to resume.
+
+---
+
+## Privacy & Safety Rules (Session 1 Framework)
+
+**Golden rule:** Privacy First — Always.
+
+### The Four Principles
+
+1. **Start read-only**
+   - Before any action, assume you have NO write permissions
+   - Ask: "May I read this file?"
+   - Ask: "May I create this file?"
+
+2. **Limit sources**
+   - Specify exactly which files Claude may access
+   - Don't say "use anything in sources/" — list specific files
+   - For research documents: "Read only the migration section, not biographical details"
+
+3. **Use demo data for practice**
+   - Never load sensitive/personal research for testing
+   - Practice with template files first
+
+4. **Review before acting**
+   - Before sending: Ask permission
+   - Before deleting: Ask permission
+   - Before editing: Ask permission
+   - Before labeling: Ask permission
+   - Before moving files: Ask permission
+   - Before scheduling: Ask permission
+
+### Specific to Research Documents (`sources/**/*.docx`)
+
+**⚠️ Important:** Research files contain biographical research that may include sensitive information.
+
+**Safe practices:**
+- ✅ Claude can: Read, summarize, extract key facts (dates, locations, book titles)
+- ✅ Claude can: Extract migration paths (from → to → intermediate waypoints)
+- ⚠️ Claude should: For modern/living sages, treat personal details as sensitive
+- ❌ Claude cannot: Export full biographical text
+- ❌ Claude cannot: Archive research documents to external services
+- ❌ Claude cannot: Send full text via email/cloud storage
+
+**Before Claude extracts research:**
+- Confirm: "Extract ONLY: dates, locations, major works, migration paths. No personal details or full-text export."
+
+### Specific to Supabase (`sages` table, `connections` table)
+
+**Data integrity rules:**
+- Before INSERT: Validate all FK constraints (referenced sages must exist)
+- Before INSERT: Check for duplicates (is this sage already in database?)
+- Before UPDATE: Confirm the sage ID exists
+- Before DELETE: Ask for explicit human approval
+
+**Valid values (must match these exactly):**
+- `period`: second-temple, tannaim, amoraim, geonim, rishonim, acharonim, modern
+- `connection_type`: student, influence, oppose, colleague, predecessor, teacher, contemporary
+
+### Specific to Hebrew RTL
+
+**Bilingual requirement:**
+- All labels must include Hebrew + English: "Rambam — הרמב״ם"
+- Use proper Hebrew abbreviations: "ר״י" (Rabbi Yitzhak), NOT "RI"
+- Gematria marks (גרשיים) for abbreviations: "ש״ס" (Shas), not "SHS"
+- Never assume English names match Hebrew transliteration
+
+---
+
 ## Common Development Tasks
 
 ### Update Sage Data

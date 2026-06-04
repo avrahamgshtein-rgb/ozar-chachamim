@@ -6,7 +6,25 @@
   "scripts": {
     "build": "node build.js",
     "dev": "python -m http.server 8080",
-    "validate": "node validate-config.js"
+    "validate": "node validate-config.js",
+    "enrich:preview": "node run-enrichment.js --dryrun",
+    "enrich:test": "node run-enrichment.js --test",
+    "enrich:apply": "node run-enrichment.js --apply",
+    "enrich:force": "node run-enrichment.js --apply --force",
+    "watch:start": "node watch-local-folder.js",
+    "watch:once": "node watch-local-folder.js --once",
+    "watch:demo": "node watch-local-folder.js --once --folder=./demo-data",
+    "schedule:start": "pm2 start hooks/schedule-enrichment.js --name ozar-enrichment -- --daemon",
+    "schedule:stop": "pm2 stop ozar-enrichment",
+    "schedule:logs": "pm2 logs ozar-enrichment",
+    "schedule:test": "node hooks/schedule-enrichment.js",
+    "agent:interactive": "node agent-enrichment.js interactive 'sync research from Google Drive'",
+    "agent:enrich": "node agent-enrichment.js autonomous 'sync research from Google Drive'",
+    "agent:plan": "node agent-enrichment.js plan-only 'sync research from Google Drive'",
+    "agent:test:navigate": "node agent-enrichment.js interactive 'test Google Drive navigation'",
+    "agent:test:drive": "node agent-enrichment.js interactive 'test finding research files'",
+    "agent:test:supabase": "node agent-enrichment.js interactive 'test Supabase form filling'",
+    "agent:test:enrich": "node agent-enrichment.js interactive 'test single file enrichment'"
   },
   "keywords": [
     "jewish",
@@ -21,5 +39,20 @@
   "license": "MIT",
   "engines": {
     "node": "18.x || 20.x"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.0",
+    "dotenv": "^16.4.0",
+    "googleapis": "^140.0.0",
+    "readline-sync": "^1.4.10",
+    "node-cron": "^3.0.3",
+    "docx": "^8.5.0",
+    "adm-zip": "^0.5.10"
+  },
+  "devDependencies": {
+    "pm2": "^5.4.0"
+  },
+  "optionalDependencies": {
+    "pm2": "^5.4.0"
   }
 }
