@@ -120,6 +120,16 @@ class SageNetwork {
     if (closeBtn) {
       closeBtn.addEventListener('click', () => this.closeSidebar());
     }
+
+    // Escape key to close sidebar
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        const sidebar = document.querySelector(this.sidebarSelector);
+        if (sidebar && sidebar.classList.contains('active')) {
+          this.closeSidebar();
+        }
+      }
+    });
   }
 
   /**
