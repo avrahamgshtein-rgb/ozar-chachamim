@@ -126,9 +126,17 @@
 
     <div id="map-view" class="main-area">
         <div id="map"></div>
-        <div id="map-status" style="position: absolute; top: 10px; left: 10px; background: white; padding: 10px 15px; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.15); font-family: Arial; font-size: 12px; color: #333; z-index: 400; border-left: 4px solid #4ECDC4;">
+
+        <!-- Legend Toggle Button (always visible) -->
+        <button id="map-legend-toggle" style="position: absolute; top: 10px; left: 10px; background: white; padding: 8px 12px; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.15); font-family: Arial; font-size: 12px; color: #333; z-index: 401; border: 2px solid #4ECDC4; cursor: pointer; font-weight: bold; transition: all 0.3s ease;">
+            📊 הצג מקרא
+        </button>
+
+        <!-- Map Status/Legend (minimized by default) -->
+        <div id="map-status" style="position: absolute; top: 10px; left: 10px; background: white; padding: 10px 15px; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.15); font-family: Arial; font-size: 12px; color: #333; z-index: 400; border-left: 4px solid #4ECDC4; display: none;">
             <div style="font-weight: bold; margin-bottom: 4px;">🗺️ מפה מעודכנת</div>
             <div id="map-status-text" style="color: #666; font-size: 11px;">טוען...</div>
+            <button id="map-status-close" style="position: absolute; top: 5px; right: 5px; background: none; border: none; cursor: pointer; font-size: 16px; color: #999;">&times;</button>
         </div>
     </div>
 
@@ -1178,6 +1186,29 @@
             `;
             document.body.appendChild(stats);
             return stats;
+        }
+
+        // Setup map legend toggle buttons
+        const mapLegendToggle = document.getElementById('map-legend-toggle');
+        const mapStatus = document.getElementById('map-status');
+        const mapStatusClose = document.getElementById('map-status-close');
+
+        if (mapLegendToggle && mapStatus && mapStatusClose) {
+            // Toggle button shows/hides legend
+            mapLegendToggle.addEventListener('click', () => {
+                const isVisible = mapStatus.style.display !== 'none';
+                mapStatus.style.display = isVisible ? 'none' : 'block';
+                mapLegendToggle.textContent = isVisible ? '📊 הצג מקרא' : '📊 הסתר מקרא';
+                mapLegendToggle.style.display = isVisible ? 'block' : 'none';
+            });
+
+            // Close button hides legend
+            mapStatusClose.addEventListener('click', (e) => {
+                e.stopPropagation();
+                mapStatus.style.display = 'none';
+                mapLegendToggle.textContent = '📊 הצג מקרא';
+                mapLegendToggle.style.display = 'block';
+            });
         }
     });
 
