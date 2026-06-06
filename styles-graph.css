@@ -231,8 +231,11 @@ body {
 /* Desktop: Enable scrolling for traditions and ideas views */
 #traditions-view,
 #ideas-view {
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
 }
 
 #graph-view {
