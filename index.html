@@ -127,16 +127,37 @@
     <div id="map-view" class="main-area">
         <div id="map"></div>
 
-        <!-- Legend Toggle Button (always visible) -->
-        <button id="map-legend-toggle" style="position: absolute; bottom: 10px; left: 10px; background: white; padding: 8px 12px; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.15); font-family: Arial; font-size: 12px; color: #333; z-index: 401; border: 2px solid #4ECDC4; cursor: pointer; font-weight: bold; transition: all 0.3s ease;">
-            📊 הצג מקרא
-        </button>
-
-        <!-- Map Status/Legend (minimized by default) -->
-        <div id="map-status" style="position: absolute; bottom: 10px; left: 10px; background: white; padding: 10px 15px; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.15); font-family: Arial; font-size: 12px; color: #333; z-index: 400; border-left: 4px solid #4ECDC4; display: none;">
-            <div style="font-weight: bold; margin-bottom: 4px;">🗺️ מפה מעודכנת</div>
-            <div id="map-status-text" style="color: #666; font-size: 11px;">טוען...</div>
-            <button id="map-status-close" style="position: absolute; top: 5px; right: 5px; background: none; border: none; cursor: pointer; font-size: 16px; color: #999;">&times;</button>
+        <!-- Map Legend -->
+        <div id="map-legend" class="map-legend">
+          <div class="legend-header">
+            <span class="legend-title">מדריך מפה</span>
+            <div class="legend-controls">
+              <button id="legend-minimize" class="legend-btn minimize-legend-btn" title="Minimize">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                  <path d="M13 8H3v-1h10v1z"/>
+                </svg>
+              </button>
+              <button id="legend-close" class="legend-btn close-legend-btn" title="Close">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                  <path d="M12 3L3 12M3 3l9 9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="legend-content">
+            <!-- Legend items -->
+            <div><span class="legend-dot" style="background: #ff7f0e;"></span><span>בית שני</span></div>
+            <div><span class="legend-dot" style="background: #2ca02c;"></span><span>תנאים</span></div>
+            <div><span class="legend-dot" style="background: #d62728;"></span><span>אמוראים</span></div>
+            <div><span class="legend-dot" style="background: #9467bd;"></span><span>ראשונים</span></div>
+            <div><span class="legend-dot" style="background: #8c564b;"></span><span>אחרונים</span></div>
+            <div><span class="legend-dot" style="background: #e377c2;"></span><span>עת חדשה</span></div>
+            <div style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #ddd;">
+              <div style="color: #666; font-size: 11px;">קשרים:</div>
+              <div><span style="color: #4ecdc4; font-weight: bold;">●—●</span><span>תלמיד</span></div>
+              <div><span style="color: #8b7965;">—</span><span>השפעה</span></div>
+            </div>
+          </div>
         </div>
     </div>
 
@@ -1188,28 +1209,39 @@
             return stats;
         }
 
-        // Setup map legend toggle buttons
-        const mapLegendToggle = document.getElementById('map-legend-toggle');
-        const mapStatus = document.getElementById('map-status');
-        const mapStatusClose = document.getElementById('map-status-close');
+        // Initialize map legend controls
+        function initMapLegend() {
+            const legend = document.getElementById('map-legend');
+            const minimizeBtn = document.getElementById('legend-minimize');
+            const closeBtn = document.getElementById('legend-close');
 
-        if (mapLegendToggle && mapStatus && mapStatusClose) {
-            // Toggle button shows/hides legend
-            mapLegendToggle.addEventListener('click', () => {
-                const isVisible = mapStatus.style.display !== 'none';
-                mapStatus.style.display = isVisible ? 'none' : 'block';
-                mapLegendToggle.textContent = isVisible ? '📊 הצג מקרא' : '📊 הסתר מקרא';
-                mapLegendToggle.style.display = isVisible ? 'block' : 'none';
-            });
+            if (minimizeBtn) {
+                minimizeBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    legend.classList.toggle('minimized');
+                    localStorage.setItem('map-legend-minimized', legend.classList.contains('minimized'));
+                });
+            }
 
-            // Close button hides legend
-            mapStatusClose.addEventListener('click', (e) => {
-                e.stopPropagation();
-                mapStatus.style.display = 'none';
-                mapLegendToggle.textContent = '📊 הצג מקרא';
-                mapLegendToggle.style.display = 'block';
-            });
+            if (closeBtn) {
+                closeBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    legend.style.display = 'none';
+                    localStorage.setItem('map-legend-closed', 'true');
+                });
+            }
+
+            // Restore state on page load
+            if (localStorage.getItem('map-legend-minimized') === 'true') {
+                legend.classList.add('minimized');
+            }
+            if (localStorage.getItem('map-legend-closed') === 'true') {
+                legend.style.display = 'none';
+            }
         }
+
+        // Call legend initialization
+        initMapLegend();
     });
 
     // ========================================================================
