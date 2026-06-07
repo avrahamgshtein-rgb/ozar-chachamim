@@ -919,7 +919,7 @@ body {
 /* ===== MAP LEGEND ===== */
 .map-legend {
   position: absolute;
-  bottom: 20px;
+  bottom: 60px;
   left: 20px;
   background: white;
   border: 1px solid #ccc;
@@ -1014,7 +1014,7 @@ body {
 /* Mobile */
 @media (max-width: 768px) {
   .map-legend {
-    bottom: 60px;
+    bottom: 90px;
     left: 10px;
     max-width: 200px;
     font-size: 11px;
