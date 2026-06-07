@@ -6,11 +6,8 @@
   },
   "rewrites": [
     {
-      "source": "/:path*",
-      "destination": "/index.html",
-      "missing": [
-        { "type": "file", "value": "/:path*" }
-      ]
+      "source": "/(?!.*\\.[a-zA-Z0-9]+$)(?!_next).*",
+      "destination": "/index.html"
     }
   ],
   "headers": [
