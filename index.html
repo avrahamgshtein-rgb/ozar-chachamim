@@ -484,6 +484,10 @@
             const div = L.DomUtil.create('div', 'legend-map');
             div.id = 'leaflet-legend';
 
+            // Control buttons container
+            const btnContainer = document.createElement('div');
+            btnContainer.style.cssText = 'position: absolute; top: 8px; left: 8px; display: flex; gap: 4px; z-index: 10;';
+
             // Minimize button
             const minimizeBtn = document.createElement('button');
             minimizeBtn.className = 'legend-minimize-btn';
@@ -497,6 +501,21 @@
                 minimizeBtn.innerHTML = legendMinimized ? '+' : '−';
                 localStorage.setItem('leaflet-legend-minimized', legendMinimized);
             };
+
+            // Close button
+            const closeBtn = document.createElement('button');
+            closeBtn.className = 'legend-close-btn';
+            closeBtn.innerHTML = '×';
+            closeBtn.title = 'Close legend';
+            closeBtn.onclick = (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                div.style.display = 'none';
+                localStorage.setItem('leaflet-legend-closed', 'true');
+            };
+
+            btnContainer.appendChild(minimizeBtn);
+            btnContainer.appendChild(closeBtn);
 
             // Legend content
             const content = document.createElement('div');
@@ -546,13 +565,16 @@
                 </div>
             `;
 
-            div.appendChild(minimizeBtn);
+            div.appendChild(btnContainer);
             div.appendChild(content);
 
-            // Restore minimized state
+            // Restore state from localStorage
             if (legendMinimized) {
                 div.classList.add('minimized');
                 minimizeBtn.innerHTML = '+';
+            }
+            if (localStorage.getItem('leaflet-legend-closed') === 'true') {
+                div.style.display = 'none';
             }
 
             return div;
