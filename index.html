@@ -476,57 +476,88 @@
                 attribution: '© OpenStreetMap', maxZoom: 18
             }).addTo(mapInstance);
 
-        // Add enhanced legend with Hebrew labels and migration path info
+        // Add enhanced legend with minimize + mobile responsive
         const legend = L.control({ position: 'bottomleft' });
-        legend.onAdd = function() {
+        let legendMinimized = localStorage.getItem('leaflet-legend-minimized') === 'true';
+
+        legend.onAdd = function(map) {
             const div = L.DomUtil.create('div', 'legend-map');
-            div.innerHTML = `<div style="background: white; padding: 1rem; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); direction: rtl; font-family: Heebo, sans-serif; min-width: 320px;">
-                <h3 style="margin: 0 0 1rem 0; font-size: 14px; font-weight: 700; color: #1a1a1a; text-align: center;">🗺️ קרא — תקופות ומסלולים</h3>
+            div.id = 'leaflet-legend';
 
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
-                    <div style="display: flex; flex-direction: column; gap: 0.6rem;">
-                        <div style="display: flex; align-items: center; gap: 0.5rem;">
-                            <span style="width: 14px; height: 14px; background: #8e44ad; border-radius: 50%; border: 2px solid white; box-shadow: 0 0 2px rgba(0,0,0,0.2);"></span>
-                            <span style="font-size: 0.85rem;">בית שני</span>
+            // Minimize button
+            const minimizeBtn = document.createElement('button');
+            minimizeBtn.className = 'legend-minimize-btn';
+            minimizeBtn.innerHTML = '−';
+            minimizeBtn.title = 'Minimize legend';
+            minimizeBtn.onclick = (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                legendMinimized = !legendMinimized;
+                div.classList.toggle('minimized', legendMinimized);
+                minimizeBtn.innerHTML = legendMinimized ? '+' : '−';
+                localStorage.setItem('leaflet-legend-minimized', legendMinimized);
+            };
+
+            // Legend content
+            const content = document.createElement('div');
+            content.className = 'legend-content';
+            content.innerHTML = `
+                <div style="direction: rtl; font-family: Heebo, sans-serif; min-width: 280px;">
+                    <h3 style="margin: 0 0 0.8rem 0; font-size: 14px; font-weight: 700; color: #1a1a1a; text-align: center;">🗺️ קרא — תקופות ומסלולים</h3>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-bottom: 1rem;">
+                        <div style="display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.85rem;">
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <span style="width: 12px; height: 12px; background: #8e44ad; border-radius: 50%;"></span>
+                                <span>בית שני</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <span style="width: 12px; height: 12px; background: #e74c3c; border-radius: 50%;"></span>
+                                <span>תנאים</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <span style="width: 12px; height: 12px; background: #e67e22; border-radius: 50%;"></span>
+                                <span>אמוראים</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <span style="width: 12px; height: 12px; background: #f1c40f; border-radius: 50%; border: 1px solid #999;"></span>
+                                <span>גאונים</span>
+                            </div>
                         </div>
-                        <div style="display: flex; align-items: center; gap: 0.5rem;">
-                            <span style="width: 14px; height: 14px; background: #e74c3c; border-radius: 50%; border: 2px solid white; box-shadow: 0 0 2px rgba(0,0,0,0.2);"></span>
-                            <span style="font-size: 0.85rem;">תנאים</span>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 0.5rem;">
-                            <span style="width: 14px; height: 14px; background: #e67e22; border-radius: 50%; border: 2px solid white; box-shadow: 0 0 2px rgba(0,0,0,0.2);"></span>
-                            <span style="font-size: 0.85rem;">אמוראים</span>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 0.5rem;">
-                            <span style="width: 14px; height: 14px; background: #f1c40f; border-radius: 50%; border: 2px solid #666; box-shadow: 0 0 2px rgba(0,0,0,0.2);"></span>
-                            <span style="font-size: 0.85rem;">גאונים</span>
+                        <div style="display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.85rem;">
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <span style="width: 12px; height: 12px; background: #27ae60; border-radius: 50%;"></span>
+                                <span>ראשונים</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <span style="width: 12px; height: 12px; background: #2980b9; border-radius: 50%;"></span>
+                                <span>אחרונים</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <span style="width: 12px; height: 12px; background: #1abc9c; border-radius: 50%;"></span>
+                                <span>עת חדשה</span>
+                            </div>
                         </div>
                     </div>
-
-                    <div style="display: flex; flex-direction: column; gap: 0.6rem;">
-                        <div style="display: flex; align-items: center; gap: 0.5rem;">
-                            <span style="width: 14px; height: 14px; background: #27ae60; border-radius: 50%; border: 2px solid white; box-shadow: 0 0 2px rgba(0,0,0,0.2);"></span>
-                            <span style="font-size: 0.85rem;">ראשונים</span>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 0.5rem;">
-                            <span style="width: 14px; height: 14px; background: #2980b9; border-radius: 50%; border: 2px solid white; box-shadow: 0 0 2px rgba(0,0,0,0.2);"></span>
-                            <span style="font-size: 0.85rem;">אחרונים</span>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 0.5rem;">
-                            <span style="width: 14px; height: 14px; background: #1abc9c; border-radius: 50%; border: 2px solid white; box-shadow: 0 0 2px rgba(0,0,0,0.2);"></span>
-                            <span style="font-size: 0.85rem;">עת חדשה</span>
-                        </div>
+                    <div style="border-top: 1px solid #ddd; padding-top: 0.6rem; font-size: 0.8rem; color: #666;">
+                        <div style="margin-bottom: 0.3rem;"><strong>🔴</strong> מיקום חכם</div>
+                        <div style="margin-bottom: 0.3rem;">━ ━ ━ מסלול נדידה</div>
+                        <div><strong>→</strong> כיוון נדידה</div>
                     </div>
                 </div>
+            `;
 
-                <div style="border-top: 1px solid #ddd; padding-top: 0.8rem; font-size: 0.85rem; color: #555;">
-                    <div style="margin-bottom: 0.4rem;"><strong>🔴</strong> = מיקום חכם</div>
-                    <div style="margin-bottom: 0.4rem;">━ ━ ━ = מסלול נדידה</div>
-                    <div><strong>→</strong> = כיוון נדידה</div>
-                </div>
-            </div>`;
+            div.appendChild(minimizeBtn);
+            div.appendChild(content);
+
+            // Restore minimized state
+            if (legendMinimized) {
+                div.classList.add('minimized');
+                minimizeBtn.innerHTML = '+';
+            }
+
             return div;
         };
+
         legend.addTo(mapInstance);
 
         // Wait for data if not ready
