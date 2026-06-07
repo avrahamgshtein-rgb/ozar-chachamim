@@ -920,7 +920,7 @@ body {
 .map-legend {
   position: absolute;
   bottom: 20px;
-  right: 20px;
+  left: 20px;
   background: white;
   border: 1px solid #ccc;
   border-radius: 6px;
@@ -1015,7 +1015,7 @@ body {
 @media (max-width: 768px) {
   .map-legend {
     bottom: 60px;
-    right: 10px;
+    left: 10px;
     max-width: 200px;
     font-size: 11px;
   }
