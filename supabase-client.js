@@ -67,7 +67,7 @@ async function loadSages() {
   // Try to load from view first (includes stats)
   const { data: sagesWithStats, error: viewError } = await supabase
     .from('sages_with_stats')
-    .select('*, summary, spotify_url')
+    .select('*')
     .order('period_order', { ascending: true })
 
   if (!viewError && sagesWithStats && sagesWithStats.length > 0) {

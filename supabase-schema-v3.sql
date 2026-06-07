@@ -267,10 +267,18 @@ CREATE OR REPLACE VIEW public.sages_with_stats AS
 SELECT
   s.id,
   s.name_he,
+  s.name_en,
   s.era,
+  s.era_key,
+  s.period_order,
   s.region,
   s.primary_field,
+  s.tags,
+  s.summary,
+  s.core_concept,
   s.spotify_url,
+  s.coordinates,
+  s.migration_path,
   (SELECT COUNT(*) FROM public.connections
    WHERE source_id = s.id OR target_id = s.id) as connection_count,
   (SELECT COUNT(*) FROM public.research_content
