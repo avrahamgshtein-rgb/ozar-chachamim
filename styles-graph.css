@@ -929,8 +929,6 @@ body {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
   max-width: 220px;
   font-size: 12px;
-  /* TEMPORARY: Hide legend to test map */
-  display: none !important;
 }
 
 /* Leaflet Legend Container */
