@@ -933,7 +933,7 @@ body {
   display: none !important;
 }
 
-/* Leaflet Legend Styling */
+/* Leaflet Legend Container */
 #leaflet-legend {
   background: white;
   border: 1px solid #ccc;
@@ -941,58 +941,41 @@ body {
   padding: 0;
   box-shadow: 0 2px 8px rgba(0,0,0,0.15);
   overflow: hidden;
+  min-width: 280px;
 }
 
-.legend-minimize-btn {
-  position: absolute;
-  top: 8px;
-  left: 8px;
+.legend-header {
+  display: flex;
+  gap: 4px;
+  padding: 8px;
+  background: #f8f8f8;
+  border-bottom: 1px solid #eee;
+  justify-content: flex-end;
+}
+
+.legend-minimize-btn,
+.legend-close-btn {
   width: 28px;
   height: 28px;
+  padding: 0;
   background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
   color: #666;
   transition: all 0.2s;
-  z-index: 10;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.legend-minimize-btn:hover {
+.legend-minimize-btn:hover,
+.legend-close-btn:hover {
   background: #f0f0f0;
   color: #333;
-}
-
-.legend-close-btn {
-  position: absolute;
-  top: 8px;
-  left: 40px;
-  width: 28px;
-  height: 28px;
-  background: white;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 18px;
-  font-weight: bold;
-  color: #999;
-  transition: all 0.2s;
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-}
-
-.legend-close-btn:hover {
-  background: #ffebee;
-  color: #d32f2f;
-  border-color: #f44336;
+  border-color: #999;
 }
 
 .legend-content {
@@ -1004,57 +987,32 @@ body {
 
 /* Minimized State */
 #leaflet-legend.minimized {
+  min-width: auto;
   width: auto;
-  height: auto;
 }
 
 #leaflet-legend.minimized .legend-content {
   display: none;
 }
 
-#leaflet-legend.minimized .legend-minimize-btn {
-  position: relative;
-  top: 0;
-  left: 0;
-  width: 28px;
-}
-
-#leaflet-legend.minimized .legend-close-btn {
-  position: relative;
-  top: 0;
-  left: 4px;
-  width: 28px;
+#leaflet-legend.minimized .legend-header {
+  border-bottom: none;
 }
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
   #leaflet-legend {
     max-width: 90vw;
-    max-height: 50vh;
+    font-size: 0.85rem;
   }
 
   .legend-content {
     padding: 10px;
-    font-size: 0.8rem;
+    max-height: 50vh;
   }
 
-  #leaflet-legend.minimized {
-    width: 40px;
-    height: 40px;
-  }
-}
-
-@media (max-width: 480px) {
-  #leaflet-legend {
-    max-width: 95vw;
-    font-size: 0.75rem;
-  }
-
-  .legend-content {
-    padding: 8px;
-  }
-
-  .legend-minimize-btn {
+  .legend-minimize-btn,
+  .legend-close-btn {
     width: 24px;
     height: 24px;
     font-size: 14px;
