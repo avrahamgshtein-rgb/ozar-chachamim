@@ -158,22 +158,29 @@
 
     <div class="legend-content" id="legend-content">
         <div class="legend-section">
-            <div class="legend-section-title">תקופות</div>
-            <div class="legend-item"><div class="legend-dot" style="background: #ff7f0e;"></div><span>בית שני</span></div>
-            <div class="legend-item"><div class="legend-dot" style="background: #2ca02c;"></div><span>תנאים</span></div>
-            <div class="legend-item"><div class="legend-dot" style="background: #d62728;"></div><span>אמוראים</span></div>
-            <div class="legend-item"><div class="legend-dot" style="background: #9467bd;"></div><span>ראשונים</span></div>
-            <div class="legend-item"><div class="legend-dot" style="background: #8c564b;"></div><span>אחרונים</span></div>
-            <div class="legend-item"><div class="legend-dot" style="background: #e377c2;"></div><span>עת חדשה</span></div>
+            <div class="legend-section-title">תקופות החכמים</div>
+            <div class="legend-item"><div class="legend-dot" style="background: #8e44ad;"></div><span>בית שני (516 לפנ״ס - 70)</span></div>
+            <div class="legend-item"><div class="legend-dot" style="background: #e74c3c;"></div><span>תנאים (10 - 220)</span></div>
+            <div class="legend-item"><div class="legend-dot" style="background: #e67e22;"></div><span>אמוראים (220 - 500)</span></div>
+            <div class="legend-item"><div class="legend-dot" style="background: #f1c40f;"></div><span>גאונים (589 - 1038)</span></div>
+            <div class="legend-item"><div class="legend-dot" style="background: #27ae60;"></div><span>ראשונים (1038 - 1563)</span></div>
+            <div class="legend-item"><div class="legend-dot" style="background: #2980b9;"></div><span>אחרונים (1563 - עת חדשה)</span></div>
+            <div class="legend-item"><div class="legend-dot" style="background: #1abc9c;"></div><span>עת חדשה (19 כ״א ואילך)</span></div>
         </div>
 
         <div class="legend-section">
-            <div class="legend-section-title">קשרים</div>
+            <div class="legend-section-title">קשרים בין חכמים</div>
             <div class="legend-item"><div class="legend-line" style="background: #4ecdc4;"></div><span>תלמיד</span></div>
             <div class="legend-item"><div class="legend-line" style="background: #8b7965;"></div><span>השפעה</span></div>
             <div class="legend-item"><div class="legend-line" style="background: #ff6b6b;"></div><span>התנגדות</span></div>
             <div class="legend-item"><div class="legend-line" style="background: #95e1d3;"></div><span>עמית</span></div>
             <div class="legend-item"><div class="legend-line" style="background: #f9ca24;"></div><span>קדמון</span></div>
+        </div>
+
+        <div class="legend-section">
+            <div class="legend-section-title">מפה</div>
+            <div class="legend-item"><div class="legend-dot" style="background: #999; width: 6px; height: 6px;"></div><span>נקודת דרך</span></div>
+            <div class="legend-item"><div style="width: 20px; height: 2px; background: #333; border-top: 2px dashed #333; margin: 0 0.6rem 0 0; flex-shrink: 0;"></div><span>מסלול נדידה</span></div>
         </div>
     </div>
 </div>
@@ -382,8 +389,7 @@
         document.querySelectorAll('.main-area').forEach(area => area.classList.remove('active'));
         const viewEl = document.getElementById(view + '-view');
         if (viewEl) viewEl.classList.add('active');
-        const legend = document.getElementById('legend');
-        legend.style.display = view === 'graph' ? 'block' : 'none';
+        // Legend is now available on all views, visibility controlled by toggle
 
         // Close sidebar on mobile when switching views
         if (window.mobileHandler && window.mobileHandler.isCurrentlyMobile()) {
@@ -665,8 +671,7 @@
             locationCoords
         );
 
-        // Add enhanced legend with era colors
-        window.VisualizationEnhancer.addMapLegend(mapInstance);
+        // Legend now managed via HTML toggle (see index.html legend div)
 
         // Update status - map loaded successfully
         const statusEl2 = document.getElementById('map-status-text');
