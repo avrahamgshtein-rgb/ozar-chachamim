@@ -151,27 +151,34 @@
 </div>
 
 <div class="legend" id="legend">
-    <div class="legend-title">📊 מדריך הצבעים</div>
-
-    <div class="legend-section">
-        <div class="legend-section-title">תקופות</div>
-        <div class="legend-item"><div class="legend-dot" style="background: #ff7f0e;"></div><span>בית שני</span></div>
-        <div class="legend-item"><div class="legend-dot" style="background: #2ca02c;"></div><span>תנאים</span></div>
-        <div class="legend-item"><div class="legend-dot" style="background: #d62728;"></div><span>אמוראים</span></div>
-        <div class="legend-item"><div class="legend-dot" style="background: #9467bd;"></div><span>ראשונים</span></div>
-        <div class="legend-item"><div class="legend-dot" style="background: #8c564b;"></div><span>אחרונים</span></div>
-        <div class="legend-item"><div class="legend-dot" style="background: #e377c2;"></div><span>עת חדשה</span></div>
+    <div class="legend-header">
+        <div class="legend-title">📊 מדריך הצבעים</div>
+        <button class="legend-close" id="legend-close" aria-label="סגור מקרא">×</button>
     </div>
 
-    <div class="legend-section">
-        <div class="legend-section-title">קשרים</div>
-        <div class="legend-item"><div class="legend-line" style="background: #4ecdc4;"></div><span>תלמיד</span></div>
-        <div class="legend-item"><div class="legend-line" style="background: #8b7965;"></div><span>השפעה</span></div>
-        <div class="legend-item"><div class="legend-line" style="background: #ff6b6b;"></div><span>התנגדות</span></div>
-        <div class="legend-item"><div class="legend-line" style="background: #95e1d3;"></div><span>עמית</span></div>
-        <div class="legend-item"><div class="legend-line" style="background: #f9ca24;"></div><span>קדמון</span></div>
+    <div class="legend-content" id="legend-content">
+        <div class="legend-section">
+            <div class="legend-section-title">תקופות</div>
+            <div class="legend-item"><div class="legend-dot" style="background: #ff7f0e;"></div><span>בית שני</span></div>
+            <div class="legend-item"><div class="legend-dot" style="background: #2ca02c;"></div><span>תנאים</span></div>
+            <div class="legend-item"><div class="legend-dot" style="background: #d62728;"></div><span>אמוראים</span></div>
+            <div class="legend-item"><div class="legend-dot" style="background: #9467bd;"></div><span>ראשונים</span></div>
+            <div class="legend-item"><div class="legend-dot" style="background: #8c564b;"></div><span>אחרונים</span></div>
+            <div class="legend-item"><div class="legend-dot" style="background: #e377c2;"></div><span>עת חדשה</span></div>
+        </div>
+
+        <div class="legend-section">
+            <div class="legend-section-title">קשרים</div>
+            <div class="legend-item"><div class="legend-line" style="background: #4ecdc4;"></div><span>תלמיד</span></div>
+            <div class="legend-item"><div class="legend-line" style="background: #8b7965;"></div><span>השפעה</span></div>
+            <div class="legend-item"><div class="legend-line" style="background: #ff6b6b;"></div><span>התנגדות</span></div>
+            <div class="legend-item"><div class="legend-line" style="background: #95e1d3;"></div><span>עמית</span></div>
+            <div class="legend-item"><div class="legend-line" style="background: #f9ca24;"></div><span>קדמון</span></div>
+        </div>
     </div>
 </div>
+
+<button class="legend-toggle" id="legend-toggle" aria-label="הצג/הסתר מקרא">📊</button>
 
 <!-- Scripts -->
 <!-- IMPORTANT: Load order matters! -->
@@ -1128,6 +1135,31 @@
             `;
             document.body.appendChild(stats);
             return stats;
+        }
+
+        // Legend Toggle Controls
+        const legendToggle = document.getElementById('legend-toggle');
+        const legendClose = document.getElementById('legend-close');
+        const legend = document.getElementById('legend');
+
+        if (legendToggle) {
+            legendToggle.addEventListener('click', () => {
+                legend.classList.add('visible');
+                localStorage.setItem('legendVisible', 'true');
+            });
+        }
+
+        if (legendClose) {
+            legendClose.addEventListener('click', () => {
+                legend.classList.remove('visible');
+                localStorage.setItem('legendVisible', 'false');
+            });
+        }
+
+        // Restore legend visibility state
+        const legendWasVisible = localStorage.getItem('legendVisible') === 'true';
+        if (legendWasVisible) {
+            legend.classList.add('visible');
         }
 
     });

@@ -331,14 +331,93 @@ body {
   z-index: 100;
   max-width: 320px;
   pointer-events: auto;
+  display: none;
+  flex-direction: column;
+  animation: slideInUp 0.3s ease;
+}
+
+.legend.visible {
+  display: flex;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.legend-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-md);
 }
 
 .legend-title {
   font-weight: 600;
-  margin-bottom: var(--spacing-md);
   color: var(--color-primary);
   font-family: 'Frank Ruhl Libre', serif;
   font-size: 1rem;
+  margin: 0;
+}
+
+.legend-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--color-secondary);
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
+  padding: 0;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.legend-close:hover {
+  opacity: 1;
+}
+
+.legend-toggle {
+  position: fixed;
+  bottom: var(--spacing-lg);
+  left: var(--spacing-lg);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--color-white);
+  border: 2px solid var(--color-primary);
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: var(--shadow-md);
+  z-index: 99;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  pointer-events: auto;
+}
+
+.legend-toggle:hover {
+  transform: scale(1.1);
+  box-shadow: var(--shadow-lg);
+}
+
+.legend.visible ~ .legend-toggle {
+  display: none;
+}
+
+.legend-content {
+  display: flex;
+  flex-direction: column;
 }
 
 .legend-section {
