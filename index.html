@@ -287,6 +287,14 @@ window.mobileHandler = mobileHandler
       console.error('❌ [index.html] Failed to initialize Supabase');
     }
   });
+
+  // Initialize graph when Supabase data is ready
+  document.addEventListener('supabaseReady', () => {
+    console.log('🎨 [index.html] Graph initialization...');
+    const graph = new SageNetwork({ svgSelector: '#graph' });
+    window.graph = graph;
+    graph.init();
+  });
 </script>
 
 <!-- 2. Search Manager Module (Unified multi-tab search) -->
@@ -301,6 +309,9 @@ window.mobileHandler = mobileHandler
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-polylinedecorator/1.6.0/leaflet.polylinedecorator.js"></script>
+
+<!-- 5. Graph Network Visualization (D3 timeline layout) -->
+<script src="graph.js"></script>
 
 <script>
     // Expose environment variables for client-side use (especially Vercel)

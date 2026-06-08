@@ -147,6 +147,13 @@ class SageNetwork {
    * X-axis = regions (Ashkenazi, Sephardic, etc.)
    */
   renderTimelineLayout() {
+    // Safety check: wait for data to load
+    if (!this.data || !this.data.nodes || this.data.nodes.length === 0) {
+      console.warn('⏳ Timeline: Waiting for data to load...');
+      setTimeout(() => this.renderTimelineLayout(), 500);
+      return;
+    }
+
     const svg = d3.select(this.svgSelector);
     const svgNode = svg.node();
 
