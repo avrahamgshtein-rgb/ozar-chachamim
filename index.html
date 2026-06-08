@@ -1195,55 +1195,72 @@
             legend.classList.add('visible');
         }
 
-        // Map Legend Toggle Controls
-        const mapLegend = document.getElementById('mapLegend');
-        const mapLegendToggle = document.getElementById('mapLegendToggle');
-        const mapLegendClose = document.getElementById('mapLegendClose');
-        const mapLegendMinimize = document.getElementById('mapLegendMinimize');
+        // Map Legend Toggle Controls (Initialize lazily when map view is active)
+        function initializeMapLegend() {
+            const mapLegend = document.getElementById('mapLegend');
+            const mapLegendToggle = document.getElementById('mapLegendToggle');
+            const mapLegendClose = document.getElementById('mapLegendClose');
+            const mapLegendMinimize = document.getElementById('mapLegendMinimize');
 
-        if (mapLegendToggle) {
-            mapLegendToggle.addEventListener('click', () => {
-                mapLegend.classList.remove('minimized');
+            if (!mapLegend) return;
+
+            if (mapLegendToggle && !mapLegendToggle.hasListener) {
+                mapLegendToggle.addEventListener('click', () => {
+                    mapLegend.classList.remove('minimized');
+                    mapLegend.style.display = 'flex';
+                    mapLegendToggle.classList.remove('visible');
+                    localStorage.setItem('mapLegendVisible', 'true');
+                });
+                mapLegendToggle.hasListener = true;
+            }
+
+            if (mapLegendClose && !mapLegendClose.hasListener) {
+                mapLegendClose.addEventListener('click', () => {
+                    mapLegend.style.display = 'none';
+                    mapLegendToggle.classList.add('visible');
+                    localStorage.setItem('mapLegendVisible', 'false');
+                });
+                mapLegendClose.hasListener = true;
+            }
+
+            if (mapLegendMinimize && !mapLegendMinimize.hasListener) {
+                mapLegendMinimize.addEventListener('click', () => {
+                    mapLegend.classList.toggle('minimized');
+                    const isMinimized = mapLegend.classList.contains('minimized');
+                    localStorage.setItem('mapLegendMinimized', isMinimized ? 'true' : 'false');
+                });
+                mapLegendMinimize.hasListener = true;
+            }
+
+            // Restore map legend visibility state on map view (default: visible)
+            const mapLegendWasVisible = localStorage.getItem('mapLegendVisible') !== 'false';
+            const mapLegendWasMinimized = localStorage.getItem('mapLegendMinimized') === 'true';
+            if (mapLegendWasVisible) {
+                mapLegend.style.display = 'flex';
                 mapLegendToggle.classList.remove('visible');
-                localStorage.setItem('mapLegendVisible', 'true');
-            });
-        }
-
-        if (mapLegendClose) {
-            mapLegendClose.addEventListener('click', () => {
+                if (mapLegendWasMinimized) {
+                    mapLegend.classList.add('minimized');
+                }
+            } else {
                 mapLegend.style.display = 'none';
                 mapLegendToggle.classList.add('visible');
-                localStorage.setItem('mapLegendVisible', 'false');
-            });
-        }
-
-        if (mapLegendMinimize) {
-            mapLegendMinimize.addEventListener('click', () => {
-                mapLegend.classList.toggle('minimized');
-                const isMinimized = mapLegend.classList.contains('minimized');
-                localStorage.setItem('mapLegendMinimized', isMinimized ? 'true' : 'false');
-            });
-        }
-
-        // Restore map legend visibility state on map view (default: visible)
-        const mapLegendWasVisible = localStorage.getItem('mapLegendVisible') !== 'false';
-        const mapLegendWasMinimized = localStorage.getItem('mapLegendMinimized') === 'true';
-        if (mapLegendWasVisible) {
-            mapLegend.style.display = 'flex';
-            mapLegendToggle.classList.remove('visible');
-            if (mapLegendWasMinimized) {
-                mapLegend.classList.add('minimized');
             }
-        } else {
-            mapLegend.style.display = 'none';
-            mapLegendToggle.classList.add('visible');
+
+            // Override: Show legend by default on first load (when not in localStorage yet)
+            if (!localStorage.getItem('mapLegendVisible')) {
+                mapLegend.style.display = 'flex';
+                mapLegendToggle.classList.remove('visible');
+            }
         }
 
-        // Override: Show legend by default on first load (when not in localStorage yet)
-        if (!localStorage.getItem('mapLegendVisible')) {
-            mapLegend.style.display = 'flex';
-            mapLegendToggle.classList.remove('visible');
-        }
+        // Initialize map legend when map view is shown
+        const originalSwitchView = window.switchView;
+        window.switchView = function(view) {
+            originalSwitchView(view);
+            if (view === 'map') {
+                setTimeout(initializeMapLegend, 100);
+            }
+        };
 
     });
 
