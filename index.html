@@ -270,6 +270,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-polylinedecorator/1.6.0/leaflet.polylinedecorator.js"></script>
 
 <script>
+    // Expose environment variables for client-side use (especially Vercel)
+    window.__SUPABASE_URL__ = window.__SUPABASE_URL__ || 'https://ulluacifirzywhmzkvkr.supabase.co'
+    window.__SUPABASE_ANON_KEY__ = window.__SUPABASE_ANON_KEY__ || 'sb_publishable_ObxKLFsDTE41KoAMfMV1dw_Nu38ZI2C'
+
     // Timeline zoom state
     window.timelineZoom = 1.0;
 

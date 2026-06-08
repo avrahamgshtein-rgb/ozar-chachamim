@@ -15,32 +15,33 @@ import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js
 // Get Supabase credentials from multiple sources (priority order)
 let SUPABASE_CONFIG = null
 
-// Try to import from config.js (local development)
-try {
-  const module = await import('./config.js').catch(() => null)
-  if (module && module.SUPABASE_CONFIG) {
-    SUPABASE_CONFIG = module.SUPABASE_CONFIG
-    console.log('✅ Loaded config from config.js')
+// 1. First priority: Check window variables (set by index.html)
+if (typeof window !== 'undefined' && window.__SUPABASE_URL__) {
+  SUPABASE_CONFIG = {
+    url: window.__SUPABASE_URL__,
+    anonKey: window.__SUPABASE_ANON_KEY__
   }
-} catch (error) {
-  // Silently fail, will try environment variables next
+  console.log('✅ Loaded config from window variables (Vercel/global)')
 }
 
-// Fallback to environment variables (Vercel deployment)
+// 2. Try to import from config.js (local development)
+if (!SUPABASE_CONFIG) {
+  try {
+    const module = await import('./config.js').catch(() => null)
+    if (module && module.SUPABASE_CONFIG) {
+      SUPABASE_CONFIG = module.SUPABASE_CONFIG
+      console.log('✅ Loaded config from config.js')
+    }
+  } catch (error) {
+    // Silently fail, will try environment variables next
+  }
+}
+
+// 3. Fallback to environment variables
 if (!SUPABASE_CONFIG) {
   SUPABASE_CONFIG = {
-    url: window.__SUPABASE_URL__ || import.meta.env.VITE_SUPABASE_URL,
-    anonKey: window.__SUPABASE_ANON_KEY__ || import.meta.env.VITE_SUPABASE_ANON_KEY
-  }
-
-  // For Vercel: check window object for injected env vars
-  if (!SUPABASE_CONFIG.url && typeof window !== 'undefined') {
-    SUPABASE_CONFIG.url = window.env?.SUPABASE_URL ||
-                         localStorage.getItem('SUPABASE_URL') ||
-                         'https://ulluacifirzywhmzkvkr.supabase.co'
-    SUPABASE_CONFIG.anonKey = window.env?.SUPABASE_ANON_KEY ||
-                             localStorage.getItem('SUPABASE_ANON_KEY') ||
-                             'sb_publishable_ObxKLFsDTE41KoAMfMV1dw_Nu38ZI2C'
+    url: import.meta.env.VITE_SUPABASE_URL || 'https://ulluacifirzywhmzkvkr.supabase.co',
+    anonKey: import.meta.env.VITE_SUPABASE_ANON_KEY || 'sb_publishable_ObxKLFsDTE41KoAMfMV1dw_Nu38ZI2C'
   }
 }
 
