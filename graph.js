@@ -302,6 +302,9 @@ class SageNetwork {
         g.attr('transform', event.transform);
       }));
 
+    console.log('✅ Timeline Layout rendered successfully');
+    return; // Timeline layout is static—no simulation needed
+
     // TASK B: Update positions on simulation tick with curved paths + link labels
     this.simulation.on('tick', () => {
       // Render curved links using quadratic Bezier curves
