@@ -1481,28 +1481,4 @@ window.mobileHandler = mobileHandler
 
     // ✅ Supabase data loading handled by supabase-client.js module
 
-    // Data is loaded by supabase-client.js module
-    console.log('[index.html] Waiting for Supabase data...');
-
-    // Listen for Supabase ready event to initialize views
-    document.addEventListener('supabaseReady', (e) => {
-        console.log(`[index.html] ✅ Supabase ready: ${e.detail.nodes} nodes + ${e.detail.links} edges`);
-
-        // Initialize search manager with graph data
-        if (window.searchManager && window.graphData) {
-            window.searchManager.initialize(window.graphData);
-            console.log('✅ [index.html] Search manager initialized');
-        }
-
-        // Views initialize lazily when tabs are clicked
-    });
-</script>
-
-<script src="location-coords.js"></script>
-<script src="location-mapping.js"></script>
-<script src="auth-supabase.js"></script>
-<script src="graph.js"></script>
-
-</body>
-</html>
-// Cache bust: 1780950199
+    // Data is loaded by supabase-c

@@ -664,23 +664,40 @@ class SageNetwork {
         .map(l => l.type);
     };
 
-    // Build complete sidebar HTML
+    // Get era color for the profile
+    const eraColor = this.colorMap[profile.era_key] || this.colorMap['unknown'];
+
+    // Build complete sidebar HTML (New Format with ID, Dates, Relations)
     const html = `
-      <div class="sidebar-header" style="position: relative;">
+      <div class="sidebar-header" style="position: relative; border-bottom: 3px solid ${eraColor}; padding-bottom: 1rem; margin-bottom: 1rem;">
         <button class="sidebar-close" style="position: absolute; top: 0; left: 0; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #666; padding: 0.5rem; z-index: 10;" title="סגור">
           <i class="fas fa-times"></i>
         </button>
-        <h2 style="padding-right: 2rem;">${profile.label || profile.name_he}</h2>
-        <div class="sidebar-meta">
+
+        <!-- ID + Name -->
+        <div style="display: flex; gap: 0.75rem; align-items: baseline; margin-bottom: 0.75rem; padding-right: 2rem;">
+          <span style="background: ${eraColor}; color: white; padding: 4px 10px; border-radius: 4px; font-weight: 700; font-size: 0.85rem; white-space: nowrap;">ID #${profile.id}</span>
+          <h2 style="margin: 0; font-size: 1.3rem; color: #1a1a1a;">${profile.label || profile.name_he}</h2>
+        </div>
+
+        <!-- Meta: Period, Region, Era -->
+        <div class="sidebar-meta" style="padding-right: 2rem;">
           <div class="sidebar-meta-item">
-            <i class="fas fa-calendar"></i> ${profile.era || 'Unknown'}
+            <i class="fas fa-calendar-alt"></i> 📅 ${profile.period || 'לא ידוע'}
           </div>
           <div class="sidebar-meta-item">
-            <i class="fas fa-map-pin"></i> ${profile.region || profile.location || 'Unknown'}
+            <i class="fas fa-map-pin"></i> 📍 ${profile.region || profile.location || 'לא ידוע'}
           </div>
           <div class="sidebar-meta-item">
-            <i class="fas fa-book"></i> ${profile.primary_field || profile.field || 'Other'}
+            <i class="fas fa-book"></i> 🎓 ${profile.primary_field || profile.field || 'אחר'}
           </div>
+        </div>
+
+        <!-- Era Badge -->
+        <div style="padding-right: 2rem; margin-top: 0.75rem;">
+          <span style="display: inline-block; background: ${eraColor}20; color: ${eraColor}; padding: 6px 14px; border-radius: 12px; font-size: 0.85rem; font-weight: 600; border: 1px solid ${eraColor}40;">
+            ${profile.era || 'תקופה לא ידועה'}
+          </span>
         </div>
       </div>
       <div class="sidebar-content">

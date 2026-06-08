@@ -302,25 +302,43 @@ body {
   opacity: 1 !important;
 }
 
+/* Link Type Styling - Different relationship types */
 .link-student {
   stroke: #4ecdc4;
+  stroke-width: 1.5px;
+}
+
+.link-teacher {
+  stroke: #2980b9;
+  stroke-width: 1.5px;
 }
 
 .link-influence {
   stroke: #8b7965;
+  stroke-width: 1.5px;
+  stroke-dasharray: 5,5;
 }
 
 .link-oppose {
   stroke: #ff6b6b;
+  stroke-width: 2px;
 }
 
 .link-colleague {
   stroke: #95e1d3;
+  stroke-width: 1.5px;
+  stroke-dasharray: 3,3;
 }
 
 .link-predecessor,
 .link-precursor {
   stroke: #f9ca24;
+  stroke-width: 1.5px;
+}
+
+.link-contemporary {
+  stroke: #98d8c8;
+  stroke-width: 1.5px;
 }
 
 /* ===== LEGEND ===== */
