@@ -667,37 +667,100 @@ class SageNetwork {
     // Get era color for the profile
     const eraColor = this.colorMap[profile.era_key] || this.colorMap['unknown'];
 
-    // Build complete sidebar HTML (New Format with ID, Dates, Relations)
+    // Build complete sidebar HTML (Graphic Card Format - like Family Tree)
     const html = `
-      <div class="sidebar-header" style="position: relative; border-bottom: 3px solid ${eraColor}; padding-bottom: 1rem; margin-bottom: 1rem;">
-        <button class="sidebar-close" style="position: absolute; top: 0; left: 0; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #666; padding: 0.5rem; z-index: 10;" title="סגור">
+      <div class="sidebar-header" style="position: relative; padding: 0;">
+        <button class="sidebar-close" style="position: absolute; top: 10px; left: 10px; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #666; padding: 0.5rem; z-index: 10;" title="סגור">
           <i class="fas fa-times"></i>
         </button>
 
-        <!-- ID + Name -->
-        <div style="display: flex; gap: 0.75rem; align-items: baseline; margin-bottom: 0.75rem; padding-right: 2rem;">
-          <span style="background: ${eraColor}; color: white; padding: 4px 10px; border-radius: 4px; font-weight: 700; font-size: 0.85rem; white-space: nowrap;">ID #${profile.id}</span>
-          <h2 style="margin: 0; font-size: 1.3rem; color: #1a1a1a;">${profile.label || profile.name_he}</h2>
-        </div>
+        <!-- Main Card - Large Format -->
+        <div style="
+          background: linear-gradient(135deg, ${eraColor}15 0%, ${eraColor}05 100%);
+          border: 3px solid ${eraColor};
+          border-radius: 16px;
+          padding: 2rem 1.5rem;
+          text-align: center;
+          margin: 1rem;
+          min-height: 280px;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          align-items: center;
+        ">
+          <!-- Era Badge at Top -->
+          <div style="align-self: flex-start; width: 100%;">
+            <span style="
+              display: inline-block;
+              background: ${eraColor};
+              color: white;
+              padding: 6px 16px;
+              border-radius: 20px;
+              font-size: 0.75rem;
+              font-weight: 700;
+              text-transform: uppercase;
+              letter-spacing: 1px;
+            ">
+              ${profile.era || 'תקופה לא ידועה'}
+            </span>
+          </div>
 
-        <!-- Meta: Period, Region, Era -->
-        <div class="sidebar-meta" style="padding-right: 2rem;">
-          <div class="sidebar-meta-item">
-            <i class="fas fa-calendar-alt"></i> 📅 ${profile.period || 'לא ידוע'}
-          </div>
-          <div class="sidebar-meta-item">
-            <i class="fas fa-map-pin"></i> 📍 ${profile.region || profile.location || 'לא ידוע'}
-          </div>
-          <div class="sidebar-meta-item">
-            <i class="fas fa-book"></i> 🎓 ${profile.primary_field || profile.field || 'אחר'}
-          </div>
-        </div>
+          <!-- Main Content -->
+          <div style="width: 100%;">
+            <!-- Name - LARGE -->
+            <h2 style="
+              margin: 1.5rem 0 0.5rem 0;
+              font-size: 2rem;
+              font-weight: 800;
+              color: ${eraColor};
+              line-height: 1.2;
+              font-family: 'Frank Ruhl Libre', serif;
+            ">
+              ${profile.label || profile.name_he}
+            </h2>
 
-        <!-- Era Badge -->
-        <div style="padding-right: 2rem; margin-top: 0.75rem;">
-          <span style="display: inline-block; background: ${eraColor}20; color: ${eraColor}; padding: 6px 14px; border-radius: 12px; font-size: 0.85rem; font-weight: 600; border: 1px solid ${eraColor}40;">
-            ${profile.era || 'תקופה לא ידועה'}
-          </span>
+            <!-- Period + Region -->
+            <div style="
+              margin: 1.5rem 0;
+              padding: 1rem;
+              background: white;
+              border-radius: 12px;
+              border: 1px solid ${eraColor}30;
+            ">
+              <div style="font-size: 0.9rem; color: #666; margin-bottom: 0.5rem;">
+                📅 ${profile.period || 'לא ידוע'}
+              </div>
+              <div style="font-size: 0.9rem; color: #666;">
+                📍 ${profile.region || profile.location || 'לא ידוע'}
+              </div>
+            </div>
+
+            <!-- Field -->
+            ${profile.primary_field ? `
+              <div style="
+                font-size: 1rem;
+                color: ${eraColor};
+                font-weight: 600;
+                margin-bottom: 1.5rem;
+              ">
+                🎓 ${profile.primary_field}
+              </div>
+            ` : ''}
+          </div>
+
+          <!-- ID at Bottom - Large & Bold -->
+          <div style="
+            width: 100%;
+            padding-top: 1.5rem;
+            border-top: 2px dashed ${eraColor}40;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: ${eraColor};
+            font-family: 'Courier New', monospace;
+            letter-spacing: 2px;
+          ">
+            #${profile.id}
+          </div>
         </div>
       </div>
       <div class="sidebar-content">
@@ -774,9 +837,11 @@ class SageNetwork {
           </div>
         ` : ''}
 
-        <div class="sidebar-section">
-          <h3>🔗 קישורים בין חכמים (${related.length})</h3>
-          <div class="related-sages" style="display: grid; grid-template-columns: 1fr; gap: 0.5rem;">
+        <div class="sidebar-section" style="margin-top: 2rem;">
+          <h3 style="text-align: center; font-size: 1.3rem; color: ${eraColor}; margin-bottom: 1.5rem;">
+            🔗 קישורים בין חכמים<br><span style="font-size: 0.85rem; color: #999;">(${related.length} קשרים)</span>
+          </h3>
+          <div class="related-sages" style="display: grid; grid-template-columns: 1fr; gap: 1rem;">
             ${related.length > 0
               ? related.map(n => {
                   const types = getConnectionTypes(nodeId, String(n.id));
@@ -804,13 +869,31 @@ class SageNetwork {
 
                   return `
                     <div class="related-sage" onclick="window.sageNetwork.selectNode(window.sageNetwork.data.nodes.find(nd => nd.id === '${n.id}'))"
-                         style="padding: 0.75rem; background: #f5f5f5; border-radius: 6px; cursor: pointer; border-left: 4px solid #4ecdc4; transition: all 0.2s;">
-                      <div style="font-weight: 600; color: #333;">${n.label}</div>
-                      <div style="font-size: 0.85rem; color: #666; margin-top: 0.3rem;">${typeString}</div>
+                         style="
+                           padding: 1.2rem;
+                           background: linear-gradient(135deg, ${eraColor}08 0%, ${eraColor}03 100%);
+                           border: 2px solid ${eraColor}40;
+                           border-radius: 12px;
+                           cursor: pointer;
+                           transition: all 0.3s;
+                         "
+                         onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 16px rgba(0,0,0,0.1)'; this.style.borderColor='${eraColor}';"
+                         onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.borderColor='${eraColor}40';">
+                      <div style="font-weight: 700; color: #1a1a1a; font-size: 1.05rem; margin-bottom: 0.5rem;">
+                        ${n.label}
+                      </div>
+                      <div style="font-size: 0.9rem; color: ${eraColor}; font-weight: 600;">
+                        ${typeString}
+                      </div>
+                      ${n.period ? `
+                        <div style="font-size: 0.8rem; color: #999; margin-top: 0.5rem;">
+                          📅 ${n.period}
+                        </div>
+                      ` : ''}
                     </div>
                   `;
                 }).join('')
-              : '<p style="color: #a0917d; text-align: center; padding: 1rem;">אין קישורים ישירים</p>'
+              : '<div style="text-align: center; padding: 2rem; background: #f5f5f5; border-radius: 12px; color: #999;">אין קישורים ישירים</div>'
             }
           </div>
         </div>
@@ -847,114 +930,4 @@ class SageNetwork {
 
     this.node
       .classed('related', d => relatedIds.has(d.id))
-      .style('opacity', d => {
-        if (d.id === node.id) return 1;
-        if (relatedIds.has(d.id)) return 1;
-        return 0.3;
-      });
-  }
-
-  /**
-   * Close sidebar and deselect node
-   */
-  closeSidebar() {
-    const sidebar = document.querySelector(this.sidebarSelector);
-    if (sidebar) {
-      sidebar.classList.remove('active');
-    }
-
-    if (this.node) {
-      this.node.classed('selected', false).classed('related', false);
-    }
-
-    if (this.link) {
-      this.link.classed('active', false)
-        .style('opacity', 0.5)
-        .style('stroke-width', 1.5);
-    }
-
-    this.selectedNode = null;
-
-    // Notify mobile handler if available
-    if (window.mobileHandler && window.mobileHandler.isCurrentlyMobile()) {
-      window.mobileHandler.closeSidebar();
-    }
-  }
-
-  /**
-   * Toggle bookmark for a sage
-   */
-  async toggleBookmark(sageId) {
-    if (!window.sageAuth || !window.sageAuth.user) {
-      alert('צריך להיות מחובר לשמור');
-      return;
-    }
-
-    const bookmarks = await window.sageAuth.getBookmarks();
-    const isBookmarked = bookmarks.includes(sageId);
-
-    const btn = document.getElementById('bookmarkBtn');
-    if (isBookmarked) {
-      await window.sageAuth.removeBookmark(sageId);
-      btn.textContent = '⭐ שמור';
-    } else {
-      await window.sageAuth.addBookmark(sageId);
-      btn.textContent = '⭐ שמור (✓)';
-    }
-  }
-
-  /**
-   * Drag event handlers
-   */
-  dragStart(event, d) {
-    if (!event.active) this.simulation.alphaTarget(0.3).restart();
-    d.fx = d.x;
-    d.fy = d.y;
-  }
-
-  drag(event, d) {
-    d.fx = event.x;
-    d.fy = event.y;
-  }
-
-  dragEnd(event, d) {
-    if (!event.active) this.simulation.alphaTarget(0);
-    d.fx = null;
-    d.fy = null;
-  }
-
-  /**
-   * Reset zoom
-   */
-  resetZoom(svg, zoom, width, height) {
-    svg.transition()
-      .duration(750)
-      .call(zoom.transform, d3.zoomIdentity
-        .translate(width / 2, height / 2)
-        .scale(0.8)
-        .translate(-width / 2, -height / 2)
-      );
-  }
-
-  /**
-   * Show error message
-   */
-  showError(message) {
-    const svg = document.querySelector(this.svgSelector);
-    if (svg) {
-      svg.innerHTML = `<text x="50%" y="50%" text-anchor="middle" fill="red">${message}</text>`;
-    }
-  }
-}
-
-// Initialize when DOM is ready
-document.addEventListener('DOMContentLoaded', () => {
-  window.sageNetwork = new SageNetwork({
-    dataUrl: 'data.json',
-    svgSelector: '#graph',
-    searchSelector: '#searchInput',
-    sidebarSelector: '#sidebar'
-  });
-
-  window.sageNetwork.init();
-});
+      .style('opacity', d =
