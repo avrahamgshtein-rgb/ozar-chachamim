@@ -55,6 +55,7 @@ body {
   border-bottom: 1px solid var(--color-border);
   display: flex;
   align-items: center;
+  justify-content: center;
   padding: 0 var(--spacing-lg);
   z-index: 1000;
   box-shadow: var(--shadow-sm);
@@ -64,7 +65,7 @@ body {
 .header-brand {
   display: flex;
   flex-direction: column;
-  margin-right: var(--spacing-lg);
+  margin-left: var(--spacing-lg);
   flex-shrink: 0;
 }
 
@@ -88,7 +89,8 @@ body {
 .tabs {
   display: flex;
   gap: 0;
-  margin-right: auto;
+  flex: 1;
+  justify-content: center;
 }
 
 .tab-btn {
@@ -756,6 +758,7 @@ body {
   /* === MAP VIEW === */
   #map-view {
     overflow: hidden;
+    position: relative;
   }
 
   #map {
@@ -979,6 +982,202 @@ body {
 
   .sidebar-content {
     padding: var(--spacing-sm);
+  }
+}
+
+/* ===== MAP LEGEND ===== */
+.map-legend {
+  position: absolute;
+  bottom: var(--spacing-lg);
+  left: var(--spacing-lg);
+  background: var(--color-white);
+  padding: var(--spacing-md);
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border);
+  font-size: 0.85rem;
+  box-shadow: var(--shadow-md);
+  z-index: 101;
+  max-width: 320px;
+  pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  animation: slideInUp 0.3s ease;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.map-legend.minimized {
+  max-height: 44px;
+  padding: 0;
+}
+
+.map-legend.minimized .map-legend-content,
+.map-legend.minimized .map-legend-section {
+  display: none;
+}
+
+.map-legend-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-md);
+  flex-shrink: 0;
+}
+
+.map-legend.minimized .map-legend-header {
+  margin-bottom: 0;
+  padding: var(--spacing-sm);
+  border-bottom: none;
+}
+
+.map-legend-title {
+  font-weight: 600;
+  color: var(--color-primary);
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 1rem;
+  margin: 0;
+}
+
+.map-legend-controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.map-legend-minimize,
+.map-legend-close {
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+  color: var(--color-secondary);
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
+  padding: 0;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.map-legend-minimize:hover,
+.map-legend-close:hover {
+  opacity: 1;
+}
+
+.map-legend-toggle {
+  position: absolute;
+  bottom: var(--spacing-lg);
+  left: var(--spacing-lg);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--color-white);
+  border: 2px solid var(--color-primary);
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: var(--shadow-md);
+  z-index: 100;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  pointer-events: auto;
+}
+
+.map-legend-toggle:hover {
+  transform: scale(1.1);
+  box-shadow: var(--shadow-lg);
+}
+
+.map-legend-toggle.visible {
+  display: flex;
+}
+
+.map-legend-content {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  max-height: 350px;
+}
+
+.map-legend-section {
+  margin-bottom: var(--spacing-md);
+}
+
+.map-legend-section:last-child {
+  margin-bottom: 0;
+}
+
+.map-legend-section-title {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.map-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.4rem;
+  color: var(--color-text-secondary);
+  font-size: 0.85rem;
+}
+
+.map-legend-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== MAP LEGEND RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .map-legend {
+    max-width: 280px;
+    max-height: 300px;
+    bottom: auto;
+    left: auto;
+    right: var(--spacing-sm);
+    top: auto;
+    bottom: var(--spacing-sm);
+    font-size: 0.8rem;
+    padding: var(--spacing-sm);
+  }
+
+  .map-legend-title {
+    font-size: 0.95rem;
+  }
+
+  .map-legend-section-title {
+    font-size: 0.7rem;
+  }
+
+  .map-legend-item {
+    font-size: 0.8rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .map-legend-minimize,
+  .map-legend-close {
+    font-size: 1.1rem;
+    width: 24px;
+    height: 24px;
+  }
+
+  .map-legend-toggle {
+    position: absolute !important;
+    width: 44px;
+    height: 44px;
+    font-size: 1.2rem;
+  }
+
+  .map-legend {
+    position: absolute !important;
   }
 }
 

@@ -29,7 +29,7 @@
 
     <style>
         #graph { width: 100%; height: 100%; display: block; }
-        #map-view { padding: 0; background: var(--color-bg-light); height: 100%; width: 100%; overflow: hidden; position: relative; }
+        #map-view { padding: 0; background: var(--color-bg-light); height: 100%; width: 100%; overflow: hidden; position: relative !important; }
         #map { width: 100% !important; height: 100% !important; display: block; position: absolute; top: 0; left: 0; right: 0; bottom: 0; }
         .spotify-link { display: inline-flex; align-items: center; gap: 0.5rem; padding: 12px 16px; background: linear-gradient(135deg, #1DB954 0%, #1ed760 100%); color: white; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 0.95rem; transition: all 0.3s ease; width: 100%; text-align: center; justify-content: center; }
         .spotify-link:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(29, 185, 84, 0.3); }
@@ -126,6 +126,34 @@
 
     <div id="map-view" class="main-area">
         <div id="map"></div>
+        <!-- Map Legend (collapsed by default) -->
+        <div class="map-legend" id="mapLegend">
+            <div class="map-legend-header">
+                <h3 class="map-legend-title">📊 מדריך צבעים</h3>
+                <div class="map-legend-controls">
+                    <button class="map-legend-minimize" id="mapLegendMinimize" title="Minimize" aria-label="Minimize">−</button>
+                    <button class="map-legend-close" id="mapLegendClose" title="Close" aria-label="Close">×</button>
+                </div>
+            </div>
+            <div class="map-legend-content" id="mapLegendContent">
+                <div class="map-legend-section">
+                    <div class="map-legend-section-title">תקופות החכמים</div>
+                    <div class="map-legend-item"><div class="map-legend-dot" style="background: #8e44ad;"></div><span>בית שני</span></div>
+                    <div class="map-legend-item"><div class="map-legend-dot" style="background: #e74c3c;"></div><span>תנאים</span></div>
+                    <div class="map-legend-item"><div class="map-legend-dot" style="background: #e67e22;"></div><span>אמוראים</span></div>
+                    <div class="map-legend-item"><div class="map-legend-dot" style="background: #f1c40f;"></div><span>גאונים</span></div>
+                    <div class="map-legend-item"><div class="map-legend-dot" style="background: #27ae60;"></div><span>ראשונים</span></div>
+                    <div class="map-legend-item"><div class="map-legend-dot" style="background: #2980b9;"></div><span>אחרונים</span></div>
+                    <div class="map-legend-item"><div class="map-legend-dot" style="background: #1abc9c;"></div><span>עת חדשה</span></div>
+                </div>
+                <div class="map-legend-section">
+                    <div class="map-legend-section-title">מפה</div>
+                    <div class="map-legend-item"><div style="width: 20px; height: 2px; background: #333; border-top: 2px dashed #333; margin: 0 0.6rem 0 0; flex-shrink: 0;"></div><span>מסלול נדידה</span></div>
+                </div>
+            </div>
+        </div>
+        <!-- Map Legend Toggle Button -->
+        <button class="map-legend-toggle" id="mapLegendToggle" title="Show legend" aria-label="Show legend">📊</button>
     </div>
 
     <div id="traditions-view" class="main-area">
@@ -1165,6 +1193,56 @@
         const legendWasVisible = localStorage.getItem('legendVisible') === 'true';
         if (legendWasVisible) {
             legend.classList.add('visible');
+        }
+
+        // Map Legend Toggle Controls
+        const mapLegend = document.getElementById('mapLegend');
+        const mapLegendToggle = document.getElementById('mapLegendToggle');
+        const mapLegendClose = document.getElementById('mapLegendClose');
+        const mapLegendMinimize = document.getElementById('mapLegendMinimize');
+
+        if (mapLegendToggle) {
+            mapLegendToggle.addEventListener('click', () => {
+                mapLegend.classList.remove('minimized');
+                mapLegendToggle.classList.remove('visible');
+                localStorage.setItem('mapLegendVisible', 'true');
+            });
+        }
+
+        if (mapLegendClose) {
+            mapLegendClose.addEventListener('click', () => {
+                mapLegend.style.display = 'none';
+                mapLegendToggle.classList.add('visible');
+                localStorage.setItem('mapLegendVisible', 'false');
+            });
+        }
+
+        if (mapLegendMinimize) {
+            mapLegendMinimize.addEventListener('click', () => {
+                mapLegend.classList.toggle('minimized');
+                const isMinimized = mapLegend.classList.contains('minimized');
+                localStorage.setItem('mapLegendMinimized', isMinimized ? 'true' : 'false');
+            });
+        }
+
+        // Restore map legend visibility state on map view (default: visible)
+        const mapLegendWasVisible = localStorage.getItem('mapLegendVisible') !== 'false';
+        const mapLegendWasMinimized = localStorage.getItem('mapLegendMinimized') === 'true';
+        if (mapLegendWasVisible) {
+            mapLegend.style.display = 'flex';
+            mapLegendToggle.classList.remove('visible');
+            if (mapLegendWasMinimized) {
+                mapLegend.classList.add('minimized');
+            }
+        } else {
+            mapLegend.style.display = 'none';
+            mapLegendToggle.classList.add('visible');
+        }
+
+        // Override: Show legend by default on first load (when not in localStorage yet)
+        if (!localStorage.getItem('mapLegendVisible')) {
+            mapLegend.style.display = 'flex';
+            mapLegendToggle.classList.remove('visible');
         }
 
     });
