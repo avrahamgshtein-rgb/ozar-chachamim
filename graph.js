@@ -157,245 +157,143 @@ class SageNetwork {
 
     const width = svgNode.clientWidth;
     const height = svgNode.clientHeight;
+    const padding = { top: 40, right: 40, bottom: 40, left: 40 };
 
-    // Clear previous content
     svg.selectAll('*').remove();
+    const g = svg.append('g')
+      .attr('transform', `translate(${padding.left},${padding.top})`);
 
-    // Create main group for zooming
-    const g = svg.append('g');
+    const graphWidth = width - padding.left - padding.right;
+    const graphHeight = height - padding.top - padding.bottom;
 
-    // Add zoom behavior
-    const zoom = d3.zoom()
-      .on('zoom', (event) => {
-        g.attr('transform', event.transform);
-      });
-    svg.call(zoom);
+    // Regions: אשכנז, ספרדי, מצרימי, צרפתי, אחר
+    const regions = ['אשכנז', 'ספרדי', 'מצרימי', 'צרפתי', 'אחר'];
 
-    // TASK B: Add SVG marker definitions for directed links
-    const defs = svg.append('defs');
+    // Get time range from period_order
+    const times = this.data.nodes
+      .map(n => n.period_order || 0)
+      .filter(t => t !== null && t !== undefined);
+    const minTime = Math.min(...times);
+    const maxTime = Math.max(...times);
 
-    // Arrow markers for each link type
-    const linkTypeColors = {
-      'student': '#4ecdc4',      // Teal
-      'influence': '#8b7965',    // Dark grey/brown
-      'oppose': '#ff6b6b',       // Red
-      'colleague': '#95e1d3',    // Cyan
-      'predecessor': '#f9ca24',  // Yellow
-      'precursor': '#f9ca24'     // Yellow
-    };
+    // Scales
+    const yScale = d3.scaleLinear()
+      .domain([minTime, maxTime])
+      .range([0, graphHeight]);
 
-    Object.entries(linkTypeColors).forEach(([type, color]) => {
-      // Arrow marker for line endings
-      defs.append('marker')
-        .attr('id', `arrow-${type}`)
-        .attr('markerWidth', 13)
-        .attr('markerHeight', 13)
-        .attr('refX', 12)
-        .attr('refY', 6)
-        .attr('orient', 'auto')
-        .append('path')
-        .attr('d', 'M 0 0 L 12 6 L 0 12 Z')
-        .attr('fill', color)
-        .attr('opacity', 0.6);
+    const xScale = d3.scaleBand()
+      .domain(regions)
+      .range([0, graphWidth])
+      .padding(0.2);
+
+    // Region backgrounds
+    g.selectAll('.region-bg')
+      .data(regions)
+      .enter()
+      .append('rect')
+      .attr('class', 'region-bg')
+      .attr('x', d => xScale(d))
+      .attr('y', 0)
+      .attr('width', xScale.bandwidth())
+      .attr('height', graphHeight)
+      .attr('fill', (d, i) => ['#f0f4ff', '#fff4e6', '#f0fff4', '#ffe6f0', '#f5f5f5'][i])
+      .attr('opacity', 0.2);
+
+    // Position nodes
+    this.data.nodes.forEach(node => {
+      const region = node.region || 'אחר';
+      const regionIdx = Math.min(regions.indexOf(region), regions.length - 1);
+      node.x = xScale(regions[regionIdx]) + xScale.bandwidth() / 2;
+      node.y = yScale(node.period_order || 0);
     });
 
-    // TASK B: Chronological X-position force (enhanced)
-    // Sages positioned left-to-right by era (ancient → modern)
-    // Uses period_order from database for precise chronological sequence
-    const xForce = d3.forceX()
-      .x(d => {
-        // Primary: use period_order if available
-        if (d.period_order !== undefined && d.period_order !== null) {
-          const maxOrder = Math.max(...this.data.nodes.map(n => n.period_order || 0));
-          return (d.period_order / maxOrder) * width;
-        }
-        // Fallback: use era_key order
-        const eraIndex = this.eraOrder[d.group] !== undefined ? this.eraOrder[d.group] : 3.5;
-        return (eraIndex / 7) * width;
-      })
-      .strength(0.25);  // Stronger force for clearer historical layout
-
-    // DEFENSIVE: Validate links before D3 processes them
+    // Validate links
     const validNodeIds = new Set(this.data.nodes.map(n => String(n.id)));
     const validLinks = (this.data.links || []).filter(link => {
       const sourceId = String(link.source || link.source === 0 ? link.source : '');
       const targetId = String(link.target || link.target === 0 ? link.target : '');
-
-      if (!validNodeIds.has(sourceId)) {
-        console.warn(`⚠️  Link source not found: ${sourceId} (target: ${targetId})`);
-        return false;
-      }
-      if (!validNodeIds.has(targetId)) {
-        console.warn(`⚠️  Link target not found: ${targetId} (source: ${sourceId})`);
-        return false;
-      }
-      return true;
+      return validNodeIds.has(sourceId) && validNodeIds.has(targetId);
     });
 
-    console.log(`✓ Links validated: ${validLinks.length}/${this.data.links?.length || 0} valid`);
+    console.log(`✓ Timeline: ${validLinks.length}/${this.data.links?.length || 0} valid links`);
 
-    // Initialize force simulation with validated links
-    this.simulation = d3.forceSimulation(this.data.nodes)
-      .force('link', d3.forceLink(validLinks)
-        .id(d => String(d.id))
-        .distance(100)
-        .strength(0.3))
-      .force('charge', d3.forceManyBody().strength(-500))
-      .force('center', d3.forceCenter(width / 2, height / 2))
-      .force('collision', d3.forceCollide(32))
-      .force('x', xForce);  // Add chronological ordering
+    // Draw links
+    const colorMap = {
+      'student': '#4ecdc4', 'teacher': '#2980b9', 'influence': '#8b7965',
+      'oppose': '#ff6b6b', 'colleague': '#95e1d3', 'predecessor': '#f9ca24'
+    };
 
-    // TASK B: Render links as curved paths with type-based styling + labels
-    const link = g.append('g')
-      .attr('class', 'links')
-      .selectAll('path')
+    g.selectAll('.timeline-link')
       .data(validLinks)
       .enter()
-      .append('path')
-      .attr('class', d => `link link-${d.type}`)
-      .attr('fill', 'none')
-      .attr('id', (d, i) => `link-${i}`)
-      .attr('stroke', d => {
-        const colorMap = {
-          'student': '#4ecdc4',           // Teal - teacher-student
-          'influence': '#8b7965',         // Dark grey - intellectual influence
-          'oppose': '#ff6b6b',            // Red - disagreement
-          'colleague': '#95e1d3',         // Cyan - peers
-          'predecessor': '#f9ca24',       // Yellow - succession
-          'precursor': '#f9ca24',         // Yellow - precursor
-          'contemporary': '#a8dadc',     // Light blue - same period
-          'teacher': '#4ecdc4'           // Teal - teaching relationship
-        };
-        return colorMap[d.type] || '#999999';
+      .append('line')
+      .attr('class', d => `timeline-link link-${d.type}`)
+      .attr('x1', d => {
+        const n = this.data.nodes.find(node => String(node.id) === String(d.source.id || d.source));
+        return n ? n.x : 0;
       })
-      .attr('stroke-width', d => {
-        // Higher weight for teacher-student relationships
-        if (d.type === 'student') return 3.5;
-        if (d.type === 'teacher') return 3.5;
-        if (d.type === 'influence') return 2.5;
-        return 2;
+      .attr('y1', d => {
+        const n = this.data.nodes.find(node => String(node.id) === String(d.source.id || d.source));
+        return n ? n.y : 0;
       })
-      .attr('stroke-linecap', 'round')
-      .attr('stroke-linejoin', 'round')
-      .attr('marker-end', d => `url(#arrow-${d.type})`)
-      .attr('opacity', 0.85)
-      .style('cursor', 'pointer')
-      // Hover effects
-      .on('mouseover', function(event, d) {
-        d3.select(this)
-          .attr('stroke-width', d => {
-            if (d.type === 'student' || d.type === 'teacher') return 4.5;
-            if (d.type === 'influence') return 3.5;
-            return 3;
-          })
-          .attr('opacity', 1);
-        // Show label on hover
-        d3.select(`#label-${d3.select(this).attr('id')}`)
-          .style('opacity', 1)
-          .style('font-weight', 'bold');
+      .attr('x2', d => {
+        const n = this.data.nodes.find(node => String(node.id) === String(d.target.id || d.target));
+        return n ? n.x : 0;
       })
-      .on('mouseout', function(event, d) {
-        d3.select(this)
-          .attr('stroke-width', d => {
-            if (d.type === 'student' || d.type === 'teacher') return 3.5;
-            if (d.type === 'influence') return 2.5;
-            return 2;
-          })
-          .attr('opacity', 0.85);
-        // Hide label on mouseout
-        d3.select(`#label-${d3.select(this).attr('id')}`)
-          .style('opacity', 0.6)
-          .style('font-weight', 'normal');
-      });
+      .attr('y2', d => {
+        const n = this.data.nodes.find(node => String(node.id) === String(d.target.id || d.target));
+        return n ? n.y : 0;
+      })
+      .attr('stroke', d => colorMap[d.type] || '#999')
+      .attr('stroke-width', 2)
+      .attr('opacity', 0.6);
 
-    // Add connection type labels on links
-    const linkLabels = g.append('g')
-      .attr('class', 'link-labels')
-      .selectAll('text')
-      .data(validLinks)
-      .enter()
-      .append('text')
-      .attr('class', 'link-label')
-      .attr('id', (d, i) => `label-link-${i}`)
-      .attr('font-size', '11px')
-      .attr('fill', '#666')
-      .attr('text-anchor', 'middle')
-      .attr('pointer-events', 'none')
-      .attr('opacity', 0.6)
-      .style('transition', 'opacity 0.15s')
-      .text(d => {
-        const typeLabels = {
-          'student': 'תלמיד',
-          'teacher': 'מורה',
-          'influence': 'השפעה',
-          'colleague': 'עמית',
-          'predecessor': 'קודם',
-          'contemporary': 'בן זמן',
-          'oppose': 'מתנגד',
-          'precursor': 'קודם'
-        };
-        return typeLabels[d.type] || d.type;
-      });
-
-    // FIX BUG 2: Render nodes with dynamic colors based on era
-    const node = g.append('g')
-      .selectAll('circle')
+    // Draw nodes
+    this.node = g.selectAll('.node')
       .data(this.data.nodes)
       .enter()
       .append('circle')
       .attr('class', d => `node node-${d.group}`)
-      .attr('r', 22)
-      .attr('fill', d => {
-        const groupKey = d.group || 'unknown';
-        const color = this.colorMap[groupKey];
-
-        if (!color && !this.loggedMissingColors[groupKey]) {
-          console.warn(`⚠️  No color for era: "${groupKey}" (sage: ${d.label})`);
-          this.loggedMissingColors[groupKey] = true;
-        }
-
-        return color || '#999';
-      })
+      .attr('cx', d => d.x)
+      .attr('cy', d => d.y)
+      .attr('r', 12)
+      .attr('fill', d => this.colorMap[d.group] || '#999')
       .attr('stroke', 'white')
       .attr('stroke-width', 2)
       .style('cursor', 'pointer')
-      .on('click', (event, d) => {
-        event.stopPropagation();
-        this.selectNode(d);
+      .on('click', (event, d) => this.selectNode(d))
+      .on('mouseover', function() {
+        d3.select(this)
+          .transition().duration(150)
+          .attr('r', 16)
+          .attr('stroke-width', 3);
       })
-      .call(d3.drag()
-        .on('start', (event, d) => this.dragStart(event, d))
-        .on('drag', (event, d) => this.drag(event, d))
-        .on('end', (event, d) => this.dragEnd(event, d)));
+      .on('mouseout', function() {
+        d3.select(this)
+          .transition().duration(150)
+          .attr('r', 12)
+          .attr('stroke-width', 2);
+      });
 
-    // Add hover effects
-    node.on('mouseover', function() {
-      d3.select(this)
-        .attr('r', 28)
-        .attr('stroke-width', 3);
-    })
-    .on('mouseout', function() {
-      d3.select(this)
-        .attr('r', 22)
-        .attr('stroke-width', 2);
-    });
-
-    // Render labels
-    const labels = g.append('g')
-      .selectAll('text')
+    // Node labels
+    g.selectAll('.node-label')
       .data(this.data.nodes)
       .enter()
       .append('text')
       .attr('class', 'node-label')
+      .attr('x', d => d.x)
+      .attr('y', d => d.y + 28)
       .attr('text-anchor', 'middle')
-      .attr('dy', '0.3em')
-      .attr('font-size', '10px')
-      .attr('fill', 'white')
-      .attr('font-weight', 'bold')
+      .attr('font-size', '9px')
+      .attr('fill', '#666')
       .attr('pointer-events', 'none')
-      .attr('direction', 'rtl')
-      .attr('unicode-bidi', 'bidi-override')
-      .text(d => d.label.substring(0, 3));
+      .text(d => d.label.substring(0, 6));
+
+    // Zoom
+    svg.call(d3.zoom()
+      .on('zoom', (event) => {
+        g.attr('transform', event.transform);
+      }));
 
     // TASK B: Update positions on simulation tick with curved paths + link labels
     this.simulation.on('tick', () => {

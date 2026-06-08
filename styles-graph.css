@@ -1234,6 +1234,62 @@ body {
   }
 }
 
+/* ===== TIMELINE LAYOUT STYLES ===== */
+.timeline-link {
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: stroke-width 0.2s ease, opacity 0.2s ease;
+}
+
+.timeline-link.link-student {
+  stroke: #4ecdc4;
+  stroke-dasharray: 5,5;
+}
+
+.timeline-link.link-teacher {
+  stroke: #2980b9;
+  stroke-width: 2.5;
+}
+
+.timeline-link.link-influence {
+  stroke: #8b7965;
+  stroke-dasharray: 3,3;
+}
+
+.timeline-link.link-oppose {
+  stroke: #ff6b6b;
+  stroke-dasharray: 7,3;
+}
+
+.timeline-link.link-colleague {
+  stroke: #95e1d3;
+}
+
+.timeline-link.link-predecessor {
+  stroke: #f9ca24;
+  stroke-dasharray: 4,4;
+}
+
+.node {
+  transition: r 0.15s ease, stroke-width 0.15s ease;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.node:hover {
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+}
+
+.node-label {
+  font-size: 9px;
+  fill: #666;
+  pointer-events: none;
+  font-weight: 500;
+}
+
+.region-bg {
+  transition: opacity 0.2s ease;
+}
+
 /* ===== UTILITY ===== */
 .hidden {
   display: none !important;
