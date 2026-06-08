@@ -68,12 +68,13 @@ class SageNetwork {
         this._initializeGraph();
       }, { once: true });
 
-      // Timeout after 5 seconds
+      // Timeout after 10 seconds
       setTimeout(() => {
         if (!this.data) {
-          throw new Error('Data loading timeout (5s)');
+          console.error('❌ Data loading timeout (10s) - Supabase may be unreachable');
+          this.showError('Failed to load data from Supabase after 10 seconds');
         }
-      }, 5000);
+      }, 10000);
 
     } catch (error) {
       console.error('✗ Graph init failed:', error);
