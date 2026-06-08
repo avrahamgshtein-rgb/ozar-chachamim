@@ -239,8 +239,34 @@
 
 <!-- Scripts -->
 <!-- IMPORTANT: Load order matters! -->
-<!-- 0. Mobile Handler (must load first) -->
-<script src="mobile-handler.js"></script>
+<!-- 0. Mobile Handler (must load first) - inline to avoid 404 -->
+<script>
+const mobileHandler = {
+  isCurrentlyMobile() {
+    return window.innerWidth < 768
+  },
+  openSidebar() {
+    const sidebar = document.getElementById('sidebar')
+    if (sidebar) sidebar.classList.add('active')
+  },
+  closeSidebar() {
+    const sidebar = document.getElementById('sidebar')
+    if (sidebar) sidebar.classList.remove('active')
+  },
+  init() {
+    console.log('📱 [MobileHandler] Initialized')
+    window.addEventListener('resize', () => {
+      if (!this.isCurrentlyMobile()) this.closeSidebar()
+    })
+  }
+}
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => mobileHandler.init())
+} else {
+  mobileHandler.init()
+}
+window.mobileHandler = mobileHandler
+</script>
 
 <!-- 1. Supabase Client Module (replaces data-loader + data-validator) -->
 <script type="module">
