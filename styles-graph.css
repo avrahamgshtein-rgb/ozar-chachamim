@@ -213,6 +213,7 @@ body {
   flex: 1;
   width: 100%;
   overflow: hidden;
+  flex-direction: row;
 }
 
 /* ===== MAIN AREA (Graph) ===== */
@@ -224,6 +225,7 @@ body {
   width: 100%;
   height: 100%;
   overflow: hidden;
+  transition: margin-right 0.3s ease;
 }
 
 .main-area.active {
@@ -463,18 +465,24 @@ body {
 
 /* ===== SIDEBAR ===== */
 .sidebar {
-  width: 380px;
+  width: 0;
   background: var(--color-white);
   border-left: 1px solid var(--color-border);
   overflow-y: auto;
   box-shadow: -4px 0 16px rgba(0, 0, 0, 0.06);
-  display: none;
+  display: flex;
   flex-direction: column;
   z-index: 999;
+  transition: width 0.3s ease;
+  position: fixed;
+  right: 0;
+  top: 80px;
+  bottom: 0;
+  height: calc(100vh - 80px);
 }
 
 .sidebar.active {
-  display: flex;
+  width: 380px;
 }
 
 .sidebar-header {
@@ -878,7 +886,6 @@ body {
 
   .sidebar.active {
     transform: translateY(0);
-    display: flex;
   }
 
   .sidebar-header {
