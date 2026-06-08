@@ -382,6 +382,8 @@ class SageNetwork {
       .attr('fill', 'white')
       .attr('font-weight', 'bold')
       .attr('pointer-events', 'none')
+      .attr('direction', 'rtl')
+      .attr('unicode-bidi', 'bidi-override')
       .text(d => d.label.substring(0, 3));
 
     // TASK B: Update positions on simulation tick with curved paths + link labels
