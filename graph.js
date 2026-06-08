@@ -137,6 +137,16 @@ class SageNetwork {
    * Main rendering function - creates D3 graph with all fixes
    */
   render() {
+    // Use new Timeline Layout instead of Force-Directed Network
+    this.renderTimelineLayout();
+  }
+
+  /**
+   * New Timeline Layout: Vertical chronology with horizontal regions/areas
+   * Y-axis = time (top=ancient → bottom=modern)
+   * X-axis = regions (Ashkenazi, Sephardic, etc.)
+   */
+  renderTimelineLayout() {
     const svg = d3.select(this.svgSelector);
     const svgNode = svg.node();
 
@@ -676,7 +686,7 @@ class SageNetwork {
 
         <!-- Main Card - Large Format -->
         <div style="
-          background: linear-gradient(135deg, ${eraColor}15 0%, ${eraColor}05 100%);
+          background: linear-gradient(135deg, rgba(0, 0, 0, 0.03) 0%, rgba(0, 0, 0, 0.01) 100%);
           border: 3px solid ${eraColor};
           border-radius: 16px;
           padding: 2rem 1.5rem;
@@ -725,7 +735,7 @@ class SageNetwork {
               padding: 1rem;
               background: white;
               border-radius: 12px;
-              border: 1px solid ${eraColor}30;
+              border: 1px solid rgba(0, 0, 0, 0.1);
             ">
               <div style="font-size: 0.9rem; color: #666; margin-bottom: 0.5rem;">
                 📅 ${profile.period || 'לא ידוע'}
@@ -930,4 +940,114 @@ class SageNetwork {
 
     this.node
       .classed('related', d => relatedIds.has(d.id))
-      .style('opacity', d =
+      .style('opacity', d => {
+        if (d.id === node.id) return 1;
+        if (relatedIds.has(d.id)) return 1;
+        return 0.3;
+      });
+  }
+
+  /**
+   * Close sidebar and deselect node
+   */
+  closeSidebar() {
+    const sidebar = document.querySelector(this.sidebarSelector);
+    if (sidebar) {
+      sidebar.classList.remove('active');
+    }
+
+    if (this.node) {
+      this.node.classed('selected', false).classed('related', false);
+    }
+
+    if (this.link) {
+      this.link.classed('active', false)
+        .style('opacity', 0.5)
+        .style('stroke-width', 1.5);
+    }
+
+    this.selectedNode = null;
+
+    // Notify mobile handler if available
+    if (window.mobileHandler && window.mobileHandler.isCurrentlyMobile()) {
+      window.mobileHandler.closeSidebar();
+    }
+  }
+
+  /**
+   * Toggle bookmark for a sage
+   */
+  async toggleBookmark(sageId) {
+    if (!window.sageAuth || !window.sageAuth.user) {
+      alert('צריך להיות מחובר לשמור');
+      return;
+    }
+
+    const bookmarks = await window.sageAuth.getBookmarks();
+    const isBookmarked = bookmarks.includes(sageId);
+
+    const btn = document.getElementById('bookmarkBtn');
+    if (isBookmarked) {
+      await window.sageAuth.removeBookmark(sageId);
+      btn.textContent = '⭐ שמור';
+    } else {
+      await window.sageAuth.addBookmark(sageId);
+      btn.textContent = '⭐ שמור (✓)';
+    }
+  }
+
+  /**
+   * Drag event handlers
+   */
+  dragStart(event, d) {
+    if (!event.active) this.simulation.alphaTarget(0.3).restart();
+    d.fx = d.x;
+    d.fy = d.y;
+  }
+
+  drag(event, d) {
+    d.fx = event.x;
+    d.fy = event.y;
+  }
+
+  dragEnd(event, d) {
+    if (!event.active) this.simulation.alphaTarget(0);
+    d.fx = null;
+    d.fy = null;
+  }
+
+  /**
+   * Reset zoom
+   */
+  resetZoom(svg, zoom, width, height) {
+    svg.transition()
+      .duration(750)
+      .call(zoom.transform, d3.zoomIdentity
+        .translate(width / 2, height / 2)
+        .scale(0.8)
+        .translate(-width / 2, -height / 2)
+      );
+  }
+
+  /**
+   * Show error message
+   */
+  showError(message) {
+    const svg = document.querySelector(this.svgSelector);
+    if (svg) {
+      svg.innerHTML = `<text x="50%" y="50%" text-anchor="middle" fill="red">${message}</text>`;
+    }
+  }
+}
+
+// Initialize when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+  window.sageNetwork = new SageNetwork({
+    dataUrl: 'data.json',
+    svgSelector: '#graph',
+    searchSelector: '#searchInput',
+    sidebarSelector: '#sidebar'
+  });
+
+  window.sageNetwork.init();
+});
