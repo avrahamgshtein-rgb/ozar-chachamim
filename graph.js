@@ -276,7 +276,17 @@ class SageNetwork {
     const minTime = Math.min(...times);
     const maxTime = Math.max(...times);
 
+    // Debug: check distribution of period_order values
+    const periodStats = {};
+    this.data.nodes.forEach(n => {
+      const p = n.period_order || 0;
+      periodStats[p] = (periodStats[p] || 0) + 1;
+    });
+    const topPeriods = Object.entries(periodStats)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 10);
     console.log(`⏱️ Time range: ${minTime} to ${maxTime}`);
+    console.log(`📊 Top 10 period_order values:`, topPeriods.map(([p, count]) => `${p}(${count})`).join(', '));
 
     // Scales
     const yScale = d3.scaleLinear()
