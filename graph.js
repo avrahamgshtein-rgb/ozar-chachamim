@@ -219,12 +219,15 @@ class SageNetwork {
       .attr('opacity', 0.2);
 
     // Position nodes
+    const regionCounts = {};
     this.data.nodes.forEach(node => {
       const region = node.region || 'אחר';
+      regionCounts[region] = (regionCounts[region] || 0) + 1;
       const regionIdx = Math.min(regions.indexOf(region), regions.length - 1);
       node.x = xScale(regions[regionIdx]) + xScale.bandwidth() / 2;
       node.y = yScale(node.period_order || 0);
     });
+    console.log('🗺️ Region distribution:', regionCounts);
 
     // Validate links
     const validNodeIds = new Set(this.data.nodes.map(n => String(n.id)));
