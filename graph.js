@@ -137,8 +137,85 @@ class SageNetwork {
    * Main rendering function - creates D3 graph with all fixes
    */
   render() {
-    // Use new Timeline Layout instead of Force-Directed Network
-    this.renderTimelineLayout();
+    // Use Force-Directed Network (original layout)
+    this.renderNetwork();
+  }
+
+  renderNetwork() {
+    // Force-directed network visualization
+    const svg = d3.select(this.svgSelector);
+    const svgNode = svg.node();
+
+    if (!svgNode) {
+      console.error('SVG element not found:', this.svgSelector);
+      return;
+    }
+
+    const width = svgNode.clientWidth;
+    const height = svgNode.clientHeight;
+
+    svg.selectAll('*').remove();
+    const g = svg.append('g');
+
+    console.log(`📊 Force network rendering ${this.data.nodes.length} nodes`);
+
+    // Create simulation
+    this.simulation = d3.forceSimulation(this.data.nodes)
+      .force('link', d3.forceLink(this.data.links || [])
+        .id(d => String(d.id))
+        .distance(100)
+        .strength(0.3))
+      .force('charge', d3.forceManyBody().strength(-500))
+      .force('center', d3.forceCenter(width / 2, height / 2))
+      .force('collision', d3.forceCollide(32));
+
+    // Draw links
+    const link = g.selectAll('.link')
+      .data(this.data.links || [])
+      .enter()
+      .append('line')
+      .attr('class', d => `link link-${d.type}`)
+      .attr('stroke', d => {
+        const colorMap = {
+          'student': '#4ecdc4', 'teacher': '#2980b9', 'influence': '#8b7965',
+          'oppose': '#ff6b6b', 'colleague': '#95e1d3', 'predecessor': '#f9ca24'
+        };
+        return colorMap[d.type] || '#999';
+      })
+      .attr('stroke-width', 2)
+      .attr('opacity', 0.6);
+
+    // Draw nodes
+    this.node = g.selectAll('.node')
+      .data(this.data.nodes)
+      .enter()
+      .append('circle')
+      .attr('class', d => `node node-${d.group}`)
+      .attr('r', 10)
+      .attr('fill', d => this.colorMap[d.group] || '#999')
+      .attr('stroke', 'white')
+      .attr('stroke-width', 2)
+      .style('cursor', 'pointer')
+      .on('click', (event, d) => this.selectNode(d));
+
+    // Add zoom
+    svg.call(d3.zoom()
+      .on('zoom', (event) => {
+        g.attr('transform', event.transform);
+      }));
+
+    // Simulation tick
+    this.simulation.on('tick', () => {
+      link.attr('x1', d => d.source.x)
+        .attr('y1', d => d.source.y)
+        .attr('x2', d => d.target.x)
+        .attr('y2', d => d.target.y);
+
+      this.node.attr('cx', d => d.x)
+        .attr('cy', d => d.y);
+    });
+
+    console.log('✅ Force network rendered');
   }
 
   /**
