@@ -137,8 +137,8 @@ class SageNetwork {
    * Main rendering function - creates D3 graph with all fixes
    */
   render() {
-    // Use Force-Directed Network (original layout)
-    this.renderNetwork();
+    // Use Timeline Layout - vertical chronology with big circles
+    this.renderTimelineLayout();
   }
 
   renderNetwork() {
@@ -344,10 +344,10 @@ class SageNetwork {
         return n ? n.y : 0;
       })
       .attr('stroke', d => colorMap[d.type] || '#999')
-      .attr('stroke-width', 2)
-      .attr('opacity', 0.6);
+      .attr('stroke-width', 3)
+      .attr('opacity', 0.7);
 
-    // Draw nodes
+    // Draw nodes - BIG CIRCLES
     this.node = g.selectAll('.node')
       .data(this.data.nodes)
       .enter()
@@ -355,23 +355,23 @@ class SageNetwork {
       .attr('class', d => `node node-${d.group}`)
       .attr('cx', d => d.x)
       .attr('cy', d => d.y)
-      .attr('r', 12)
+      .attr('r', 18)
       .attr('fill', d => this.colorMap[d.group] || '#999')
       .attr('stroke', 'white')
-      .attr('stroke-width', 2)
+      .attr('stroke-width', 3)
       .style('cursor', 'pointer')
       .on('click', (event, d) => this.selectNode(d))
       .on('mouseover', function() {
         d3.select(this)
           .transition().duration(150)
-          .attr('r', 16)
-          .attr('stroke-width', 3);
+          .attr('r', 24)
+          .attr('stroke-width', 4);
       })
       .on('mouseout', function() {
         d3.select(this)
           .transition().duration(150)
-          .attr('r', 12)
-          .attr('stroke-width', 2);
+          .attr('r', 18)
+          .attr('stroke-width', 3);
       });
 
     // Node labels
