@@ -433,6 +433,31 @@ class SageNetwork {
       .attr('stroke-width', 3)
       .attr('opacity', 0.7);
 
+    // Create tooltip element
+    let tooltip = document.querySelector('#sage-tooltip');
+    if (!tooltip) {
+      tooltip = document.createElement('div');
+      tooltip.id = 'sage-tooltip';
+      tooltip.style.cssText = `
+        position: absolute;
+        background: white;
+        border: 2px solid #333;
+        border-radius: 8px;
+        padding: 10px 12px;
+        font-size: 0.9rem;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+        z-index: 1000;
+        pointer-events: none;
+        display: none;
+        direction: rtl;
+        text-align: right;
+        line-height: 1.6;
+        max-width: 250px;
+        font-family: 'Heebo', sans-serif;
+      `;
+      document.body.appendChild(tooltip);
+    }
+
     // Draw nodes - BIG CIRCLES
     this.node = g.selectAll('.node')
       .data(this.data.nodes)
@@ -447,20 +472,39 @@ class SageNetwork {
       .attr('stroke-width', 3)
       .style('cursor', 'pointer')
       .on('click', (event, d) => this.selectNode(d))
-      .on('mouseover', function() {
+      .on('mouseover', function(event, d) {
         d3.select(this)
           .transition().duration(150)
           .attr('r', 32)
           .attr('stroke-width', 4);
+
+        // Show tooltip
+        const birthYear = d.birth_year || '?';
+        const deathYear = d.death_year || '?';
+        const period = d.period || d.era || '';
+        tooltip.innerHTML = `
+          <strong>${d.label}</strong><br>
+          <span style="color: #666; font-size: 0.85rem;">
+            ${birthYear}–${deathYear}<br>
+            ${period}
+          </span>
+        `;
+        tooltip.style.display = 'block';
+
+        // Position tooltip near cursor
+        const rect = svgNode.getBoundingClientRect();
+        tooltip.style.left = (event.clientX + 10) + 'px';
+        tooltip.style.top = (event.clientY - 40) + 'px';
       })
       .on('mouseout', function() {
         d3.select(this)
           .transition().duration(150)
           .attr('r', 26)
           .attr('stroke-width', 3);
+        tooltip.style.display = 'none';
       });
 
-    // Node labels
+    // Node labels (short names visible by default)
     g.selectAll('.node-label')
       .data(this.data.nodes)
       .enter()
@@ -472,7 +516,7 @@ class SageNetwork {
       .attr('font-size', '9px')
       .attr('fill', '#666')
       .attr('pointer-events', 'none')
-      .text(d => d.label.substring(0, 6));
+      .text(d => d.label.substring(0, 10));
 
     // Zoom
     svg.call(d3.zoom()
