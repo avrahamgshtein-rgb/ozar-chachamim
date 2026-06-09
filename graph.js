@@ -170,12 +170,16 @@ class SageNetwork {
     const height = svgNode.clientHeight;
     const padding = { top: 40, right: 40, bottom: 40, left: 40 };
 
+    console.log(`📐 SVG size: ${width}×${height}px`);
+
     svg.selectAll('*').remove();
     const g = svg.append('g')
       .attr('transform', `translate(${padding.left},${padding.top})`);
 
     const graphWidth = width - padding.left - padding.right;
     const graphHeight = height - padding.top - padding.bottom;
+
+    console.log(`📊 Graph area: ${graphWidth}×${graphHeight}px`);
 
     // Regions: אשכנז, ספרדי, מצרימי, צרפתי, אחר
     const regions = ['אשכנז', 'ספרדי', 'מצרימי', 'צרפתי', 'אחר'];
@@ -187,6 +191,8 @@ class SageNetwork {
     const minTime = Math.min(...times);
     const maxTime = Math.max(...times);
 
+    console.log(`⏱️ Time range: ${minTime} to ${maxTime}`);
+
     // Scales
     const yScale = d3.scaleLinear()
       .domain([minTime, maxTime])
@@ -196,6 +202,8 @@ class SageNetwork {
       .domain(regions)
       .range([0, graphWidth])
       .padding(0.2);
+
+    console.log(`📏 X bandwidth: ${xScale.bandwidth()}, Y scale output: ${yScale(minTime)} to ${yScale(maxTime)}`);
 
     // Region backgrounds
     g.selectAll('.region-bg')
