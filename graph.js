@@ -245,7 +245,7 @@ class SageNetwork {
 
     const width = svgNode.clientWidth;
     const height = svgNode.clientHeight;
-    const padding = { top: 40, right: 40, bottom: 40, left: 40 };
+    const padding = { top: 20, right: 20, bottom: 20, left: 20 }; // Minimal padding for full-width
 
     console.log(`📐 SVG size: ${width}×${height}px`);
 
@@ -355,7 +355,7 @@ class SageNetwork {
       .attr('class', d => `node node-${d.group}`)
       .attr('cx', d => d.x)
       .attr('cy', d => d.y)
-      .attr('r', 18)
+      .attr('r', 26)
       .attr('fill', d => this.colorMap[d.group] || '#999')
       .attr('stroke', 'white')
       .attr('stroke-width', 3)
@@ -364,13 +364,13 @@ class SageNetwork {
       .on('mouseover', function() {
         d3.select(this)
           .transition().duration(150)
-          .attr('r', 24)
+          .attr('r', 32)
           .attr('stroke-width', 4);
       })
       .on('mouseout', function() {
         d3.select(this)
           .transition().duration(150)
-          .attr('r', 18)
+          .attr('r', 26)
           .attr('stroke-width', 3);
       });
 
