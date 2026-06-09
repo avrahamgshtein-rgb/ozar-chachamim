@@ -258,8 +258,30 @@ class SageNetwork {
 
     console.log(`📊 Graph area: ${graphWidth}×${graphHeight}px`);
 
-    // Regions: אשכנז, ספרדי, מצרימי, צרפתי, אחר
-    const regions = ['אשכנז', 'ספרדי', 'מצרימי', 'צרפתי', 'אחר'];
+    // Extract primary region from location string (e.g., "ארץ ישראל; רומא; ..." → "ארץ ישראל")
+    const extractPrimaryRegion = (locationStr) => {
+      if (!locationStr) return 'אחר';
+      return locationStr.split(';')[0].trim();
+    };
+
+    // Get unique regions from data
+    const uniqueRegions = [...new Set(this.data.nodes.map(node =>
+      extractPrimaryRegion(node.region)
+    ))].filter(r => r !== 'אחר').sort();
+
+    // Reorder geographically: West→East (Europe, Middle East, North Africa)
+    const geographicalOrder = [
+      'צרפת', 'אשכנז', 'גרמניה', 'פולין', 'ליטא', 'רוסיה', 'אוקראינה',
+      'בוהמיה', 'פראג', 'ורמייזא', 'פדובה', 'איטליה', 'רומא', 'הבלקן',
+      'האימפריה העות\'מאנית', 'בבל', 'פרס', 'מצרים', 'צפון אפריקה',
+      'מרוקו', 'אלג\'יריה', 'ספרד', 'ארץ ישראל', 'תימן'
+    ];
+
+    const regions = geographicalOrder.filter(r => uniqueRegions.includes(r))
+      .concat(uniqueRegions.filter(r => !geographicalOrder.includes(r)))
+      .concat('אחר');
+
+    console.log(`🗺️ Found ${regions.length} unique regions:`, regions);
 
     // Get time range from period_order
     const times = this.data.nodes
@@ -292,19 +314,19 @@ class SageNetwork {
       .attr('y', 0)
       .attr('width', xScale.bandwidth())
       .attr('height', graphHeight)
-      .attr('fill', (d, i) => ['#f0f4ff', '#fff4e6', '#f0fff4', '#ffe6f0', '#f5f5f5'][i])
+      .attr('fill', (d, i) => ['#f0f4ff', '#fff4e6', '#f0fff4', '#ffe6f0', '#f5f5f5', '#e8f5e9', '#fce4ec'][i % 7])
       .attr('opacity', 0.2);
 
     // Position nodes
     const regionCounts = {};
     this.data.nodes.forEach(node => {
-      const region = node.region || 'אחר';
-      regionCounts[region] = (regionCounts[region] || 0) + 1;
-      const regionIdx = Math.min(regions.indexOf(region), regions.length - 1);
+      const primaryRegion = extractPrimaryRegion(node.region);
+      regionCounts[primaryRegion] = (regionCounts[primaryRegion] || 0) + 1;
+      const regionIdx = Math.min(regions.indexOf(primaryRegion), regions.length - 1);
       node.x = xScale(regions[regionIdx]) + xScale.bandwidth() / 2;
       node.y = yScale(node.period_order || 0);
     });
-    console.log('🗺️ Region distribution:', regionCounts);
+    console.log('📊 Region distribution:', regionCounts);
 
     // Validate links
     const validNodeIds = new Set(this.data.nodes.map(n => String(n.id)));
