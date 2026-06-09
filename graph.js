@@ -258,39 +258,18 @@ class SageNetwork {
 
     console.log(`📊 Graph area: ${graphWidth}×${graphHeight}px`);
 
-    // Extract primary region from location string (e.g., "ארץ ישראל; רומא; ..." → "ארץ ישראל")
-    const extractPrimaryRegion = (locationStr) => {
-      if (!locationStr) return 'אחר';
-      const primary = locationStr.split(';')[0].trim();
-      return primary || 'אחר';
-    };
-
-    // Get unique regions from data
-    const uniqueRegions = [...new Set(this.data.nodes.map(node => {
-      const result = extractPrimaryRegion(node.region);
-      return result;
-    }))].filter(r => r && r !== 'אחר' && r !== 'Unknown').sort();
-
-    console.log('🔍 Sample regions extracted:', this.data.nodes.slice(0, 5).map(n => ({
-      fullRegion: n.region,
-      primaryRegion: extractPrimaryRegion(n.region)
-    })));
-
-    // Reorder geographically: West→East (Europe, Middle East, North Africa)
-    const geographicalOrder = [
-      'צרפת', 'אשכנז', 'גרמניה', 'פולין', 'ליטא', 'רוסיה', 'אוקראינה',
-      'בוהמיה', 'פראג', 'ורמייזא', 'פדובה', 'איטליה', 'רומא', 'הבלקן',
-      'האימפריה העות\'מאנית', 'בבל', 'פרס', 'מצרים', 'צפון אפריקה',
-      'מרוקו', 'אלג\'יריה', 'ספרד', 'ארץ ישראל', 'תימן'
+    // Define era periods (X-axis: 7 eras)
+    const eraPeriods = [
+      { key: 'second-temple', label: 'בית שני', shortLabel: 'בית\nשני', order: 0, color: '#8e44ad' },
+      { key: 'tannaim', label: 'תנאים', shortLabel: 'תנאים', order: 100, color: '#e74c3c' },
+      { key: 'amoraim', label: 'אמוראים', shortLabel: 'אמוראים', order: 200, color: '#e67e22' },
+      { key: 'geonim', label: 'גאונים', shortLabel: 'גאונים', order: 300, color: '#f1c40f' },
+      { key: 'rishonim', label: 'ראשונים', shortLabel: 'ראשונים', order: 400, color: '#27ae60' },
+      { key: 'acharonim', label: 'אחרונים', shortLabel: 'אחרונים', order: 500, color: '#2980b9' },
+      { key: 'modern', label: 'עת חדשה', shortLabel: 'עת\nחדשה', order: 600, color: '#1abc9c' }
     ];
 
-    const regions = geographicalOrder.filter(r => uniqueRegions.includes(r))
-      .concat(uniqueRegions.filter(r => !geographicalOrder.includes(r)))
-      .concat('אחר');
-
-    console.log(`🗺️ Found ${regions.length} unique regions:`, regions);
-
-    // Get time range from period_order
+    // Get time range from period_order (Y-axis: time within era)
     const times = this.data.nodes
       .map(n => n.period_order || 0)
       .filter(t => t !== null && t !== undefined);
@@ -299,105 +278,72 @@ class SageNetwork {
 
     console.log(`⏱️ Time range: ${minTime} to ${maxTime}`);
 
-    // Define era periods with order ranges
-    const eraPeriods = [
-      { key: 'second-temple', label: 'בית שני\n(516 BCE–70 CE)', order: 0, color: '#8e44ad' },
-      { key: 'tannaim', label: 'תנאים\n(10–220 CE)', order: 100, color: '#e74c3c' },
-      { key: 'amoraim', label: 'אמוראים\n(220–500 CE)', order: 200, color: '#e67e22' },
-      { key: 'geonim', label: 'גאונים\n(589–1038 CE)', order: 300, color: '#f1c40f' },
-      { key: 'rishonim', label: 'ראשונים\n(1038–1563)', order: 400, color: '#27ae60' },
-      { key: 'acharonim', label: 'אחרונים\n(1563–present)', order: 500, color: '#2980b9' },
-      { key: 'modern', label: 'עת חדשה\n(19th c.+)', order: 600, color: '#1abc9c' }
-    ];
-
     // Scales
     const yScale = d3.scaleLinear()
       .domain([minTime, maxTime])
-      .range([0, graphHeight]);
+      .range([graphHeight, 0]); // Inverted: top = ancient, bottom = modern
 
+    const eraKeys = eraPeriods.map(e => e.key);
     const xScale = d3.scaleBand()
-      .domain(regions)
+      .domain(eraKeys)
       .range([0, graphWidth])
-      .padding(0.2);
+      .padding(0.3);
 
-    console.log(`📏 X bandwidth: ${xScale.bandwidth()}, Y scale output: ${yScale(minTime)} to ${yScale(maxTime)}`);
+    console.log(`📏 Era bands: ${xScale.bandwidth().toFixed(1)}px, Y scale: ${minTime}→${maxTime}`);
 
-    // Draw era bands (colored vertical stripes)
-    eraPeriods.forEach((era, idx) => {
-      const nextEra = eraPeriods[idx + 1];
-      const yStart = yScale(era.order);
-      const yEnd = nextEra ? yScale(nextEra.order) : graphHeight;
-
-      g.append('rect')
-        .attr('class', 'era-band')
-        .attr('x', 0)
-        .attr('y', yStart)
-        .attr('width', graphWidth)
-        .attr('height', yEnd - yStart)
-        .attr('fill', era.color)
-        .attr('opacity', 0.08);
-
-      // Era label on left side
-      g.append('text')
-        .attr('class', 'era-label')
-        .attr('x', -10)
-        .attr('y', (yStart + yEnd) / 2)
-        .attr('text-anchor', 'end')
-        .attr('dominant-baseline', 'middle')
-        .attr('font-size', '11px')
-        .attr('font-weight', 'bold')
-        .attr('fill', era.color)
-        .text(era.label);
-    });
-
-    // Timeline grid with period markers
-    const gridLines = eraPeriods.map(era => ({ order: era.order, label: era.label.split('\n')[0] }));
-    g.selectAll('.timeline-grid-line')
-      .data(gridLines)
-      .enter()
-      .append('line')
-      .attr('class', 'timeline-grid-line')
-      .attr('x1', 0)
-      .attr('x2', graphWidth)
-      .attr('y1', d => yScale(d.order))
-      .attr('y2', d => yScale(d.order))
-      .attr('stroke', '#ddd')
-      .attr('stroke-width', 1)
-      .attr('stroke-dasharray', '4,4')
-      .attr('opacity', 0.5);
-
-    // Region backgrounds
-    g.selectAll('.region-bg')
-      .data(regions)
+    // Draw era column backgrounds
+    g.selectAll('.era-bg')
+      .data(eraPeriods)
       .enter()
       .append('rect')
-      .attr('class', 'region-bg')
-      .attr('x', d => xScale(d))
+      .attr('class', 'era-bg')
+      .attr('x', d => xScale(d.key))
       .attr('y', 0)
       .attr('width', xScale.bandwidth())
       .attr('height', graphHeight)
-      .attr('fill', (d, i) => ['#f0f4ff', '#fff4e6', '#f0fff4', '#ffe6f0', '#f5f5f5', '#e8f5e9', '#fce4ec'][i % 7])
-      .attr('opacity', 0.2);
+      .attr('fill', d => d.color)
+      .attr('opacity', 0.08);
 
-    // Position nodes
-    const regionCounts = {};
+    // Era labels on top
+    g.selectAll('.era-label')
+      .data(eraPeriods)
+      .enter()
+      .append('text')
+      .attr('class', 'era-label')
+      .attr('x', d => xScale(d.key) + xScale.bandwidth() / 2)
+      .attr('y', -8)
+      .attr('text-anchor', 'middle')
+      .attr('font-size', '12px')
+      .attr('font-weight', 'bold')
+      .attr('fill', d => d.color)
+      .attr('font-family', '"Frank Ruhl Libre", serif')
+      .text(d => d.label);
+
+    // Position nodes by era (X) and period_order (Y)
+    const eraCounts = {};
     let sampleNode = null;
     this.data.nodes.forEach((node, idx) => {
-      const primaryRegion = extractPrimaryRegion(node.region);
-      regionCounts[primaryRegion] = (regionCounts[primaryRegion] || 0) + 1;
-      const regionIdx = Math.min(regions.indexOf(primaryRegion), regions.length - 1);
-      node.x = xScale(regions[regionIdx]) + xScale.bandwidth() / 2;
-      node.y = yScale(node.period_order || 0);
+      const eraKey = node.group || node.era_key || 'unknown';
+      eraCounts[eraKey] = (eraCounts[eraKey] || 0) + 1;
 
-      // Sample first few nodes for debugging
+      // X: map to era column
+      if (!xScale.domain().includes(eraKey)) {
+        // Use first available era as fallback
+        node.x = xScale(eraKeys[0]) + xScale.bandwidth() / 2;
+      } else {
+        node.x = xScale(eraKey) + xScale.bandwidth() / 2;
+      }
+
+      // Y: map to time (period_order)
+      node.y = yScale(node.period_order || minTime);
+
       if (idx < 3) {
-        console.log(`📍 Node ${node.id} "${node.label}": region="${primaryRegion}" → regionIdx=${regionIdx}, x=${node.x}, y=${node.y}, period_order=${node.period_order}`);
+        console.log(`📍 Node ${node.id} "${node.label}": era="${eraKey}", x=${node.x?.toFixed(1)}, y=${node.y?.toFixed(1)}, period_order=${node.period_order}`);
         sampleNode = node;
       }
     });
-    console.log('📊 Region distribution:', regionCounts);
-    console.log(`✅ Sample node positioning: x=${sampleNode?.x}, y=${sampleNode?.y}`);
-    console.log(`📏 xScale domain: ${xScale.domain()}, yScale domain: [${minTime},${maxTime}]`);
+    console.log('📊 Era distribution:', eraCounts);
+    console.log(`✅ Sample positioning: x=${sampleNode?.x?.toFixed(1)}, y=${sampleNode?.y?.toFixed(1)}`);
 
     // Validate links
     const validNodeIds = new Set(this.data.nodes.map(n => String(n.id)));
