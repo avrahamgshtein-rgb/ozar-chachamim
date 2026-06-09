@@ -261,13 +261,20 @@ class SageNetwork {
     // Extract primary region from location string (e.g., "ארץ ישראל; רומא; ..." → "ארץ ישראל")
     const extractPrimaryRegion = (locationStr) => {
       if (!locationStr) return 'אחר';
-      return locationStr.split(';')[0].trim();
+      const primary = locationStr.split(';')[0].trim();
+      return primary || 'אחר';
     };
 
     // Get unique regions from data
-    const uniqueRegions = [...new Set(this.data.nodes.map(node =>
-      extractPrimaryRegion(node.region)
-    ))].filter(r => r !== 'אחר').sort();
+    const uniqueRegions = [...new Set(this.data.nodes.map(node => {
+      const result = extractPrimaryRegion(node.region);
+      return result;
+    }))].filter(r => r && r !== 'אחר' && r !== 'Unknown').sort();
+
+    console.log('🔍 Sample regions extracted:', this.data.nodes.slice(0, 5).map(n => ({
+      fullRegion: n.region,
+      primaryRegion: extractPrimaryRegion(n.region)
+    })));
 
     // Reorder geographically: West→East (Europe, Middle East, North Africa)
     const geographicalOrder = [
