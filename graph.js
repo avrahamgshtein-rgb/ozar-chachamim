@@ -292,6 +292,17 @@ class SageNetwork {
 
     console.log(`⏱️ Time range: ${minTime} to ${maxTime}`);
 
+    // Define era periods with order ranges
+    const eraPeriods = [
+      { key: 'second-temple', label: 'בית שני\n(516 BCE–70 CE)', order: 0, color: '#8e44ad' },
+      { key: 'tannaim', label: 'תנאים\n(10–220 CE)', order: 100, color: '#e74c3c' },
+      { key: 'amoraim', label: 'אמוראים\n(220–500 CE)', order: 200, color: '#e67e22' },
+      { key: 'geonim', label: 'גאונים\n(589–1038 CE)', order: 300, color: '#f1c40f' },
+      { key: 'rishonim', label: 'ראשונים\n(1038–1563)', order: 400, color: '#27ae60' },
+      { key: 'acharonim', label: 'אחרונים\n(1563–present)', order: 500, color: '#2980b9' },
+      { key: 'modern', label: 'עת חדשה\n(19th c.+)', order: 600, color: '#1abc9c' }
+    ];
+
     // Scales
     const yScale = d3.scaleLinear()
       .domain([minTime, maxTime])
@@ -303,6 +314,50 @@ class SageNetwork {
       .padding(0.2);
 
     console.log(`📏 X bandwidth: ${xScale.bandwidth()}, Y scale output: ${yScale(minTime)} to ${yScale(maxTime)}`);
+
+    // Draw era bands (colored vertical stripes)
+    eraPeriods.forEach((era, idx) => {
+      const nextEra = eraPeriods[idx + 1];
+      const yStart = yScale(era.order);
+      const yEnd = nextEra ? yScale(nextEra.order) : graphHeight;
+
+      g.append('rect')
+        .attr('class', 'era-band')
+        .attr('x', 0)
+        .attr('y', yStart)
+        .attr('width', graphWidth)
+        .attr('height', yEnd - yStart)
+        .attr('fill', era.color)
+        .attr('opacity', 0.08);
+
+      // Era label on left side
+      g.append('text')
+        .attr('class', 'era-label')
+        .attr('x', -10)
+        .attr('y', (yStart + yEnd) / 2)
+        .attr('text-anchor', 'end')
+        .attr('dominant-baseline', 'middle')
+        .attr('font-size', '11px')
+        .attr('font-weight', 'bold')
+        .attr('fill', era.color)
+        .text(era.label);
+    });
+
+    // Timeline grid with period markers
+    const gridLines = eraPeriods.map(era => ({ order: era.order, label: era.label.split('\n')[0] }));
+    g.selectAll('.timeline-grid-line')
+      .data(gridLines)
+      .enter()
+      .append('line')
+      .attr('class', 'timeline-grid-line')
+      .attr('x1', 0)
+      .attr('x2', graphWidth)
+      .attr('y1', d => yScale(d.order))
+      .attr('y2', d => yScale(d.order))
+      .attr('stroke', '#ddd')
+      .attr('stroke-width', 1)
+      .attr('stroke-dasharray', '4,4')
+      .attr('opacity', 0.5);
 
     // Region backgrounds
     g.selectAll('.region-bg')
