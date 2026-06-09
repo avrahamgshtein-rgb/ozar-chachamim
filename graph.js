@@ -374,14 +374,23 @@ class SageNetwork {
 
     // Position nodes
     const regionCounts = {};
-    this.data.nodes.forEach(node => {
+    let sampleNode = null;
+    this.data.nodes.forEach((node, idx) => {
       const primaryRegion = extractPrimaryRegion(node.region);
       regionCounts[primaryRegion] = (regionCounts[primaryRegion] || 0) + 1;
       const regionIdx = Math.min(regions.indexOf(primaryRegion), regions.length - 1);
       node.x = xScale(regions[regionIdx]) + xScale.bandwidth() / 2;
       node.y = yScale(node.period_order || 0);
+
+      // Sample first few nodes for debugging
+      if (idx < 3) {
+        console.log(`📍 Node ${node.id} "${node.label}": region="${primaryRegion}" → regionIdx=${regionIdx}, x=${node.x}, y=${node.y}, period_order=${node.period_order}`);
+        sampleNode = node;
+      }
     });
     console.log('📊 Region distribution:', regionCounts);
+    console.log(`✅ Sample node positioning: x=${sampleNode?.x}, y=${sampleNode?.y}`);
+    console.log(`📏 xScale domain: ${xScale.domain()}, yScale domain: [${minTime},${maxTime}]`);
 
     // Validate links
     const validNodeIds = new Set(this.data.nodes.map(n => String(n.id)));
