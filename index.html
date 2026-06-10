@@ -659,7 +659,7 @@
 
       <nav class="tabs">
         <button class="tab-btn active" data-view="network">
-          <i class="fas fa-project-diagram"></i>
+          <i class="fas fa-project-sageNetwork"></i>
           רשת קשרים
         </button>
         <button class="tab-btn" data-view="table">
@@ -795,10 +795,10 @@
   <!-- Supabase & Visualization -->
   <script type="module">
     import { initializeApp } from './supabase-client.js';
-    import { InteractiveGenealogy } from './interactive-genealogy.js';
+    import { SageNetwork } from './graph.js';
     import { SageMap } from './map.js';
 
-    let diagram = null;
+    let sageNetwork = null;
     let sageMap = null;
 
     // Initialize (immediately, since <script> runs after DOM is loaded)
@@ -810,9 +810,9 @@
     // On Supabase Ready
     document.addEventListener('supabaseReady', () => {
       console.log('🎨 Building network...');
-      diagram = new InteractiveGenealogy({ svgSelector: '#graph' });
-      window.genealogyDiagram = diagram;
-      diagram.init();
+      sageNetwork = new SageNetwork({ svgSelector: '#graph' });
+      window.sageNetwork = sageNetwork;
+      sageNetwork.init();
 
       console.log('🗺️ Building map...');
       sageMap = new SageMap({ mapSelector: '#map' });
@@ -841,8 +841,8 @@
       // Search
       document.getElementById('searchInput').addEventListener('input', (e) => {
         const query = e.target.value.toLowerCase();
-        if (diagram && diagram.node) {
-          diagram.node.style('opacity', d => {
+        if (sageNetwork && sageNetwork.node) {
+          sageNetwork.node.style('opacity', d => {
             const match = (d.name_he && d.name_he.includes(e.target.value)) ||
                          (d.name_en && d.name_en.toLowerCase().includes(query));
             return match ? 1 : 0.15;
@@ -861,14 +861,14 @@
 
       // Reset
       document.getElementById('resetBtn').addEventListener('click', () => {
-        if (diagram && diagram.simulation) {
-          diagram.simulation.alpha(1).restart();
+        if (sageNetwork && sageNetwork.simulation) {
+          sageNetwork.simulation.alpha(1).restart();
         }
         document.getElementById('searchInput').value = '';
         document.getElementById('eraFilter').value = '';
         document.getElementById('regionFilter').value = '';
-        if (diagram && diagram.node) {
-          diagram.node.style('opacity', 1);
+        if (sageNetwork && sageNetwork.node) {
+          sageNetwork.node.style('opacity', 1);
         }
       });
 
@@ -961,13 +961,13 @@
     }
 
     function filterByEra(era) {
-      if (!diagram || !diagram.node) return;
-      diagram.node.style('opacity', d => d.era_key === era || era === '' ? 1 : 0.15);
+      if (!sageNetwork || !sageNetwork.node) return;
+      sageNetwork.node.style('opacity', d => d.era_key === era || era === '' ? 1 : 0.15);
     }
 
     function filterByRegion(region) {
-      if (!diagram || !diagram.node) return;
-      diagram.node.style('opacity', d => d.region === region || region === '' ? 1 : 0.15);
+      if (!sageNetwork || !sageNetwork.node) return;
+      sageNetwork.node.style('opacity', d => d.region === region || region === '' ? 1 : 0.15);
     }
 
     function showNodeInSidebar(node) {
@@ -1052,9 +1052,9 @@
 
     // Hook selectNode
     document.addEventListener('supabaseReady', () => {
-      if (diagram) {
-        const orig = diagram.selectNode.bind(diagram);
-        diagram.selectNode = function(node) {
+      if (sageNetwork) {
+        const orig = sageNetwork.selectNode.bind(sageNetwork);
+        sageNetwork.selectNode = function(node) {
           showNodeInSidebar(node);
           orig(node);
         };
