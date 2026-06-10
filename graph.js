@@ -282,6 +282,8 @@ class SageNetwork {
    * X-axis = regions (Ashkenazi, Sephardic, etc.)
    */
   renderTimelineLayout() {
+    console.log('🎬 renderTimelineLayout called');
+
     // Safety check: wait for data to load
     if (!this.data || !this.data.nodes || this.data.nodes.length === 0) {
       console.warn('⏳ Timeline: Waiting for data to load...');
