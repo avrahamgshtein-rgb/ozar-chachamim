@@ -71,7 +71,18 @@
       "Bash(curl -s -I \"https://ozar-chachamim.vercel.app/mobile-handler.js\")",
       "Bash(netstat -ano)",
       "Bash(node -c path-finder.js)",
-      "Bash(curl -s http://localhost:8080/path-finder.js)"
+      "Bash(curl -s http://localhost:8080/path-finder.js)",
+      "Bash(curl -I http://localhost:8080)",
+      "Bash(killall python *)",
+      "Bash(curl -I http://localhost:8080/index.html)",
+      "Bash(curl -v http://localhost:8080)",
+      "Bash(timeout 5 curl http://localhost:8080)",
+      "Bash(curl -I http://localhost:8081/test.html)",
+      "Bash(git checkout *)",
+      "Bash(curl -I http://localhost:9999)",
+      "Bash(iconv -f UTF-8 -t UTF-8)",
+      "Bash(unzip -q -c \"הרשב_ם.docx\" word/document.xml)",
+      "Bash(grep -v '^[[:space:]]*$')"
     ]
   }
 }
