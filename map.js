@@ -585,11 +585,10 @@ class SageMap {
     // Hide all markers except the selected one
     this.markers.forEach(m => {
       if (m.sage === sage) {
-        m.setOpacity(1);
         m.setRadius(30);
         m.setStyle({ weight: 4, opacity: 1 });
       } else {
-        m.setOpacity(0.05);
+        m.setStyle({ weight: 2, opacity: 0.05 });
       }
     });
 
