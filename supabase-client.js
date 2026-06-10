@@ -37,22 +37,13 @@ if (!SUPABASE_CONFIG) {
   }
 }
 
-// 3. Fallback to environment variables (for Vite/bundled environments)
+// 3. Fallback to hardcoded credentials (production default)
 if (!SUPABASE_CONFIG) {
-  try {
-    const envUrl = (typeof import !== 'undefined' && import.meta?.env?.VITE_SUPABASE_URL) || null
-    const envKey = (typeof import !== 'undefined' && import.meta?.env?.VITE_SUPABASE_ANON_KEY) || null
-    SUPABASE_CONFIG = {
-      url: envUrl || 'https://ulluacifirzywhmzkvkr.supabase.co',
-      anonKey: envKey || 'sb_publishable_ObxKLFsDTE41KoAMfMV1dw_Nu38ZI2C'
-    }
-  } catch (e) {
-    // Fallback to hardcoded values if import.meta is not available
-    SUPABASE_CONFIG = {
-      url: 'https://ulluacifirzywhmzkvkr.supabase.co',
-      anonKey: 'sb_publishable_ObxKLFsDTE41KoAMfMV1dw_Nu38ZI2C'
-    }
+  SUPABASE_CONFIG = {
+    url: 'https://ulluacifirzywhmzkvkr.supabase.co',
+    anonKey: 'sb_publishable_ObxKLFsDTE41KoAMfMV1dw_Nu38ZI2C'
   }
+  console.log('✅ Loaded config from hardcoded defaults (production fallback)')
 }
 
 // Initialize Supabase with config (lazy initialization)
