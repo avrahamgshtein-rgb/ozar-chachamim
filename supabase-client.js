@@ -94,35 +94,46 @@ async function loadSages() {
 
 /**
  * Load all connections (relationships) from Supabase
- * Uses connections_with_names view for enriched data
- * FK constraints guarantee all source/target exist
+ * Loads from teacher_student_relations table with FK validation
+ * Maps to D3 link format: source, target, type
  */
 async function loadConnections() {
   console.log('🔗 Loading connections from Supabase...')
 
-  // Try to load from view first (includes sage names)
-  const { data: connWithNames, error: viewError } = await supabase
-    .from('connections_with_names')
-    .select('*')
+  // Load from teacher_student_relations table
+  const { data: teacherStudentRels, error: tsError } = await supabase
+    .from('teacher_student_relations')
+    .select('teacher_id, student_id, certainty, source, notes')
+    .order('created_at', { ascending: false })
 
-  if (!viewError && connWithNames && connWithNames.length > 0) {
-    console.log(`✓ Loaded ${connWithNames.length} connections (from enriched view)`)
-    return connWithNames
+  if (!tsError && teacherStudentRels && teacherStudentRels.length > 0) {
+    console.log(`✓ Loaded ${teacherStudentRels.length} teacher-student relations`)
+    // Transform to D3 link format: source → target, type based on certainty
+    const relations = teacherStudentRels.map(r => ({
+      source_id: String(r.teacher_id),
+      target_id: String(r.student_id),
+      connection_type: 'student',  // teacher → student relationship
+      certainty: r.certainty,  // 'probable' or 'high'
+      source: r.source,  // 'חכמי ישראל.xlsx' or 'related_figures.md'
+      notes: r.notes
+    }))
+    return relations
   }
 
-  // Fallback to raw connections table
-  console.log('⚠️  View unavailable, falling back to connections table')
-  const { data: connections, error } = await supabase
+  // Fallback to old connections table if exists
+  console.log('⚠️  teacher_student_relations unavailable, trying connections table')
+  const { data: connections, error: connError } = await supabase
     .from('connections')
     .select('source_id, target_id, connection_type, historical_period')
+    .limit(100)
 
-  if (error) {
-    console.error('❌ Error loading connections:', error)
-    return []
+  if (!connError && connections && connections.length > 0) {
+    console.log(`✓ Loaded ${connections.length} connections (fallback)`)
+    return connections
   }
 
-  console.log(`✓ Loaded ${connections.length} connections (FK-validated)`)
-  return connections
+  console.log('⚠️  No connections found in either table')
+  return []
 }
 
 /**
@@ -269,7 +280,8 @@ async function initializeApp() {
     const links = validConnections.map(c => ({
       source: String(c.source_id),
       target: String(c.target_id),
-      type: c.connection_type || 'colleague',
+      type: c.connection_type || 'student',  // Default to 'student' for teacher-student rels
+      certainty: c.certainty || 'unknown',
       historical_period: c.historical_period
     }))
 
@@ -592,9 +604,9 @@ async function getUserHistory(limit = 20) {
 
   const { data: history, error } = await supabase
     .from('view_history')
-    .select('sage_id, context, viewed_at')
+    .select('*')
     .eq('user_id', user.id)
-    .order('viewed_at', { ascending: false })
+    .order('created_at', { ascending: false })
     .limit(limit)
 
   if (error) {
@@ -605,10 +617,9 @@ async function getUserHistory(limit = 20) {
   return history
 }
 
-// ============================================================================
-// PART 4: EXPORTS FOR USE IN OTHER MODULES
-// ============================================================================
-
+/**
+ * Export all public functions for use in index.html
+ */
 export {
   supabase,
   initializeApp,
@@ -617,9 +628,9 @@ export {
   loadResearchContent,
   loadSageProfile,
   semanticSearch,
-  getCurrentUser,
   signInWithEmail,
   signOut,
+  getCurrentUser,
   bookmarkSage,
   getUserBookmarks,
   logSageView,

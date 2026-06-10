@@ -243,11 +243,29 @@ class SageNetwork {
       return;
     }
 
-    const width = svgNode.clientWidth;
-    const height = svgNode.clientHeight;
-    const padding = { top: 20, right: 20, bottom: 20, left: 20 }; // Minimal padding for full-width
+    const viewportWidth = svgNode.clientWidth;
+    const viewportHeight = svgNode.clientHeight;
 
-    console.log(`📐 SVG size: ${width}×${height}px`);
+    // EXPANDED LAYOUT: 5x viewport width for horizontal scrolling
+    const width = viewportWidth * 5;  // Wide canvas for scrolling
+    const height = viewportHeight;
+    const padding = { top: 60, right: 40, bottom: 20, left: 120 }; // More left margin for region labels
+
+    console.log(`📐 SVG size: ${width}×${height}px (viewport: ${viewportWidth}×${viewportHeight}px)`);
+    console.log(`🔍 Horizontal scroll enabled: ${width}px canvas with ${viewportWidth}px viewport`);
+
+    // Set SVG dimensions for scrolling
+    svg.attr('width', width)
+       .attr('height', height)
+       .style('display', 'block');
+
+    // Enable horizontal scrolling on parent
+    const parentContainer = svgNode.parentElement;
+    if (parentContainer) {
+      parentContainer.style.overflowX = 'auto';
+      parentContainer.style.overflowY = 'hidden';
+      parentContainer.style.height = '100%';
+    }
 
     svg.selectAll('*').remove();
     const g = svg.append('g')
@@ -258,101 +276,129 @@ class SageNetwork {
 
     console.log(`📊 Graph area: ${graphWidth}×${graphHeight}px`);
 
-    // Define era periods (X-axis: 7 eras)
-    const eraPeriods = [
-      { key: 'second-temple', label: 'בית שני', shortLabel: 'בית\nשני', order: 0, color: '#8e44ad' },
-      { key: 'tannaim', label: 'תנאים', shortLabel: 'תנאים', order: 100, color: '#e74c3c' },
-      { key: 'amoraim', label: 'אמוראים', shortLabel: 'אמוראים', order: 200, color: '#e67e22' },
-      { key: 'geonim', label: 'גאונים', shortLabel: 'גאונים', order: 300, color: '#f1c40f' },
-      { key: 'rishonim', label: 'ראשונים', shortLabel: 'ראשונים', order: 400, color: '#27ae60' },
-      { key: 'acharonim', label: 'אחרונים', shortLabel: 'אחרונים', order: 500, color: '#2980b9' },
-      { key: 'modern', label: 'עת חדשה', shortLabel: 'עת\nחדשה', order: 600, color: '#1abc9c' }
-    ];
+    // Get unique regions (Y-axis: geographic distribution)
+    const regionsSet = new Set();
+    this.data.nodes.forEach(n => {
+      const region = n.region || 'Unknown';
+      regionsSet.add(region);
+    });
+    const regions = Array.from(regionsSet).sort();
 
-    // Get time range from period_order (Y-axis: time within era)
+    console.log(`🗺️ Regions: ${regions.length} unique: ${regions.slice(0, 10).join(', ')}${regions.length > 10 ? '...' : ''}`);
+
+    // Get time range from period_order (X-axis: chronological - horizontal)
     const times = this.data.nodes
       .map(n => n.period_order || 0)
       .filter(t => t !== null && t !== undefined);
     const minTime = Math.min(...times);
     const maxTime = Math.max(...times);
 
-    // Debug: check distribution of period_order values
-    const periodStats = {};
-    this.data.nodes.forEach(n => {
-      const p = n.period_order || 0;
-      periodStats[p] = (periodStats[p] || 0) + 1;
-    });
-    const topPeriods = Object.entries(periodStats)
-      .sort((a, b) => b[1] - a[1])
-      .slice(0, 10);
-    console.log(`⏱️ Time range: ${minTime} to ${maxTime}`);
-    console.log(`📊 Top 10 period_order values:`, topPeriods.map(([p, count]) => `${p}(${count})`).join(', '));
+    // Era color map for node coloring
+    const eraColorMap = {
+      'second-temple': '#8e44ad',
+      'tannaim': '#e74c3c',
+      'amoraim': '#e67e22',
+      'geonim': '#f1c40f',
+      'rishonim': '#27ae60',
+      'acharonim': '#2980b9',
+      'modern': '#1abc9c'
+    };
 
-    // Scales
-    const yScale = d3.scaleLinear()
+    // Scales - HORIZONTAL LAYOUT
+    // X: time (left=ancient → right=modern)
+    const xScale = d3.scaleLinear()
       .domain([minTime, maxTime])
-      .range([graphHeight, 0]); // Inverted: top = ancient, bottom = modern
+      .range([0, graphWidth * 2]);  // 2x width for scrolling
 
-    const eraKeys = eraPeriods.map(e => e.key);
-    const xScale = d3.scaleBand()
-      .domain(eraKeys)
-      .range([0, graphWidth])
-      .padding(0.3);
+    // Y: regions (top to bottom)
+    const yScale = d3.scaleBand()
+      .domain(regions)
+      .range([0, graphHeight])
+      .padding(0.1);
 
-    console.log(`📏 Era bands: ${xScale.bandwidth().toFixed(1)}px, Y scale: ${minTime}→${maxTime}`);
+    console.log(`📏 HORIZONTAL Layout: time (X) × ${regions.length} regions (Y)`);
+    console.log(`⏱️ Time range: ${minTime} to ${maxTime}`);
+    console.log(`📊 Scrollable width: ${(graphWidth * 2).toFixed(0)}px`);
 
-    // Draw era column backgrounds
-    g.selectAll('.era-bg')
-      .data(eraPeriods)
+    // Draw horizontal lines for regions (subtle separator)
+    g.selectAll('.region-line')
+      .data(regions.slice(1))  // Skip first region
       .enter()
-      .append('rect')
-      .attr('class', 'era-bg')
-      .attr('x', d => xScale(d.key))
-      .attr('y', 0)
-      .attr('width', xScale.bandwidth())
-      .attr('height', graphHeight)
-      .attr('fill', d => d.color)
-      .attr('opacity', 0.08);
+      .append('line')
+      .attr('class', 'region-line')
+      .attr('x1', 0)
+      .attr('x2', graphWidth * 2)
+      .attr('y1', d => yScale(d))
+      .attr('y2', d => yScale(d))
+      .attr('stroke', '#ddd')
+      .attr('stroke-width', 1)
+      .attr('opacity', 0.3);
 
-    // Era labels on top
-    g.selectAll('.era-label')
-      .data(eraPeriods)
+    // Region labels on left side (LARGER & READABLE)
+    g.selectAll('.region-label')
+      .data(regions)
       .enter()
       .append('text')
-      .attr('class', 'era-label')
-      .attr('x', d => xScale(d.key) + xScale.bandwidth() / 2)
-      .attr('y', -8)
-      .attr('text-anchor', 'middle')
-      .attr('font-size', '12px')
-      .attr('font-weight', 'bold')
-      .attr('fill', d => d.color)
+      .attr('class', 'region-label')
+      .attr('x', -12)
+      .attr('y', d => yScale(d) + yScale.bandwidth() / 2 + 5)
+      .attr('text-anchor', 'end')
+      .attr('font-size', '13px')
+      .attr('font-weight', '600')
+      .attr('fill', '#1a1a1a')
       .attr('font-family', '"Frank Ruhl Libre", serif')
-      .text(d => d.label);
+      .text(d => d);
 
-    // Position nodes by era (X) and period_order (Y)
-    const eraCounts = {};
+    // Position nodes by time (X) and region (Y) with GRID LAYOUT
+    const regionTimeBuckets = {};  // Group nodes by region + time bucket
     let sampleNode = null;
-    this.data.nodes.forEach((node, idx) => {
-      const eraKey = node.group || node.era_key || 'unknown';
-      eraCounts[eraKey] = (eraCounts[eraKey] || 0) + 1;
 
-      // X: map to era column
-      if (!xScale.domain().includes(eraKey)) {
-        // Use first available era as fallback
-        node.x = xScale(eraKeys[0]) + xScale.bandwidth() / 2;
-      } else {
-        node.x = xScale(eraKey) + xScale.bandwidth() / 2;
+    // Group nodes by region and period bucket
+    this.data.nodes.forEach((node) => {
+      const region = node.region || 'Unknown';
+
+      // Create bucket key: region + period bucket (round to nearest 50)
+      const periodBucket = Math.round((node.period_order || minTime) / 50) * 50;
+      const bucketKey = `${region}|${periodBucket}`;
+
+      if (!regionTimeBuckets[bucketKey]) {
+        regionTimeBuckets[bucketKey] = [];
       }
-
-      // Y: map to time (period_order)
-      node.y = yScale(node.period_order || minTime);
-
-      if (idx < 3) {
-        console.log(`📍 Node ${node.id} "${node.label}": era="${eraKey}", x=${node.x?.toFixed(1)}, y=${node.y?.toFixed(1)}, period_order=${node.period_order}`);
-        sampleNode = node;
-      }
+      regionTimeBuckets[bucketKey].push(node);
     });
-    console.log('📊 Era distribution:', eraCounts);
+
+    // Position nodes within each bucket using deterministic grid
+    const GRID_ROWS = 3;  // 3 rows within each time bucket
+    const GRID_CELL_WIDTH = 25;
+    const GRID_CELL_HEIGHT = 25;
+
+    Object.entries(regionTimeBuckets).forEach(([ bucketKey, nodesInBucket ]) => {
+      const [region, periodBucket] = bucketKey.split('|');
+
+      // Base position for this bucket
+      const baseX = xScale(parseFloat(periodBucket) || minTime);
+      const baseY = yScale(region) + yScale.bandwidth() / 2;
+
+      // Position each node in grid (vertical stacking)
+      nodesInBucket.forEach((node, idx) => {
+        const col = Math.floor(idx / GRID_ROWS);
+        const row = idx % GRID_ROWS;
+
+        // Offset from base position
+        const offsetX = (col - (Math.ceil(nodesInBucket.length / GRID_ROWS) - 1) / 2) * GRID_CELL_WIDTH;
+        const offsetY = (row - (GRID_ROWS - 1) / 2) * GRID_CELL_HEIGHT;
+
+        node.x = baseX + offsetX;
+        node.y = baseY + offsetY;
+
+        if (idx < 2) {
+          console.log(`📍 Node ${node.id} "${node.label}": region="${region}", time=${periodBucket}, grid=[${col},${row}], x=${node.x?.toFixed(1)}, y=${node.y?.toFixed(1)}`);
+          sampleNode = node;
+        }
+      });
+    });
+
+    console.log(`✅ HORIZONTAL Grid: time (X) × ${GRID_ROWS} rows per bucket`);
     console.log(`✅ Sample positioning: x=${sampleNode?.x?.toFixed(1)}, y=${sampleNode?.y?.toFixed(1)}`);
 
     // Validate links
@@ -365,10 +411,15 @@ class SageNetwork {
 
     console.log(`✓ Timeline: ${validLinks.length}/${this.data.links?.length || 0} valid links`);
 
-    // Draw links
+    // Draw links with color mapping by connection type
     const colorMap = {
-      'student': '#4ecdc4', 'teacher': '#2980b9', 'influence': '#8b7965',
-      'oppose': '#ff6b6b', 'colleague': '#95e1d3', 'predecessor': '#f9ca24'
+      'student': '#4ecdc4',        // Turquoise (teacher → student)
+      'teacher': '#2980b9',         // Dark Blue
+      'influence': '#8b7965',       // Brown
+      'oppose': '#ff6b6b',          // Red
+      'colleague': '#95e1d3',       // Light Turquoise
+      'predecessor': '#f9ca24',     // Yellow
+      'contemporary': '#9b59b6'     // Purple
     };
 
     g.selectAll('.timeline-link')
@@ -421,7 +472,7 @@ class SageNetwork {
       document.body.appendChild(tooltip);
     }
 
-    // Draw nodes - BIG CIRCLES
+    // Draw nodes - LARGER CIRCLES FOR BETTER VISIBILITY
     this.node = g.selectAll('.node')
       .data(this.data.nodes)
       .enter()
@@ -429,17 +480,17 @@ class SageNetwork {
       .attr('class', d => `node node-${d.group}`)
       .attr('cx', d => d.x)
       .attr('cy', d => d.y)
-      .attr('r', 26)
+      .attr('r', 32)
       .attr('fill', d => this.colorMap[d.group] || '#999')
       .attr('stroke', 'white')
-      .attr('stroke-width', 3)
+      .attr('stroke-width', 3.5)
       .style('cursor', 'pointer')
       .on('click', (event, d) => this.selectNode(d))
       .on('mouseover', function(event, d) {
         d3.select(this)
           .transition().duration(150)
-          .attr('r', 32)
-          .attr('stroke-width', 4);
+          .attr('r', 40)
+          .attr('stroke-width', 4.5);
 
         // Show tooltip
         const birthYear = d.birth_year || '?';
@@ -462,32 +513,53 @@ class SageNetwork {
       .on('mouseout', function() {
         d3.select(this)
           .transition().duration(150)
-          .attr('r', 26)
-          .attr('stroke-width', 3);
+          .attr('r', 32)
+          .attr('stroke-width', 3.5);
         tooltip.style.display = 'none';
       });
 
-    // Node labels (short names visible by default)
+    // Node labels (larger, better positioned)
     g.selectAll('.node-label')
       .data(this.data.nodes)
       .enter()
       .append('text')
       .attr('class', 'node-label')
       .attr('x', d => d.x)
-      .attr('y', d => d.y + 28)
+      .attr('y', d => d.y + 36)
       .attr('text-anchor', 'middle')
-      .attr('font-size', '9px')
-      .attr('fill', '#666')
+      .attr('font-size', '11px')
+      .attr('font-weight', '500')
+      .attr('fill', '#333')
       .attr('pointer-events', 'none')
-      .text(d => d.label.substring(0, 10));
+      .style('font-family', 'Frank Ruhl Libre, serif')
+      .text(d => {
+        // Truncate at word boundary, not character
+        const label = d.label;
+        return label.length > 12 ? label.substring(0, 12) + '...' : label;
+      });
 
-    // Zoom
-    svg.call(d3.zoom()
+    // Enable mouse wheel horizontal scroll
+    parentContainer.addEventListener('wheel', (e) => {
+      if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+        // Vertical wheel → convert to horizontal scroll
+        e.preventDefault();
+        parentContainer.scrollLeft += e.deltaY > 0 ? 50 : -50;
+      }
+    }, { passive: false });
+
+    // Zoom (D3 pan/zoom on SVG)
+    const zoom = d3.zoom()
       .on('zoom', (event) => {
         g.attr('transform', event.transform);
-      }));
+      });
+    svg.call(zoom);
 
-    console.log('✅ Timeline Layout rendered successfully');
+    // Reset zoom to initial position
+    const initialTransform = d3.zoomIdentity
+      .translate(padding.left, padding.top);
+    svg.call(zoom.transform, initialTransform);
+
+    console.log('✅ Timeline Layout rendered - HORIZONTAL SCROLL ENABLED');
     return; // Timeline layout is static—no simulation needed
 
     // TASK B: Update positions on simulation tick with curved paths + link labels
@@ -1133,14 +1205,8 @@ class SageNetwork {
   }
 }
 
+// DISABLED: SageNetwork initialization moved to interactive-genealogy.js
 // Initialize when DOM is ready
-document.addEventListener('DOMContentLoaded', () => {
-  window.sageNetwork = new SageNetwork({
-    dataUrl: 'data.json',
-    svgSelector: '#graph',
-    searchSelector: '#searchInput',
-    sidebarSelector: '#sidebar'
-  });
-
-  window.sageNetwork.init();
-});
+// document.addEventListener('DOMContentLoaded', () => {
+//   window.sageNetwork = new SageNetwork({...
+// });

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Load</title>
+</head>
+<body>
+    <div id="test">Loading...</div>
+    <script>
+        // Check if path-finder loaded
+        fetch('http://localhost:8080/path-finder.js')
+            .then(r => r.text())
+            .then(text => {
+                if (text.includes('class PathFinder')) {
+                    console.log('✓ path-finder.js loads correctly');
+                    document.getElementById('test').innerHTML = '✓ path-finder.js loaded';
+                }
+            })
+            .catch(e => {
+                console.error('✗ Error:', e);
+                document.getElementById('test').innerHTML = '✗ Error loading: ' + e.message;
+            });
+    </script>
+</body>
+</html>

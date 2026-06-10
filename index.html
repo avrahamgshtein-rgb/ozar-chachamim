@@ -41,6 +41,37 @@
             margin: 0;
             padding: 0;
         }
+
+        /* Path Finding Visualization */
+        #path-highlight-layer {
+            pointer-events: none;
+        }
+
+        .path-link-glow {
+            filter: blur(2px);
+            opacity: 0.4;
+        }
+
+        .path-link {
+            animation: pathPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pathPulse {
+            0%, 100% {
+                stroke-width: 6px;
+                opacity: 0.8;
+            }
+            50% {
+                stroke-width: 8px;
+                opacity: 1;
+            }
+        }
+
+        .path-node-highlight {
+            filter: drop-shadow(0 0 12px #FFD700);
+            stroke: #FFD700 !important;
+            stroke-width: 4px !important;
+        }
         #map-view {
             padding: 0;
             background: var(--color-bg-light);
@@ -1278,21 +1309,81 @@ window.mobileHandler = mobileHandler
         const degrees = pathData.distance;
         const pathNodes = pathData.path.map(id => window.graphData.nodes.find(n => n.id === String(id)));
 
-        let html = `<strong>✅ נמצאה דרך עם ${degrees} ${degrees === 1 ? 'קשר' : 'קשרים'}:</strong><br>`;
-        html += pathNodes.map((node, i) => {
-            let connectionType = '';
+        const typeMap = {
+            'student': { symbol: '→', label: 'תלמיד', color: '#4ecdc4' },
+            'teacher': { symbol: '←', label: 'מורה', color: '#2980b9' },
+            'influence': { symbol: '~', label: 'השפעה', color: '#8b7965' },
+            'colleague': { symbol: '↔', label: 'עמית', color: '#95e1d3' },
+            'predecessor': { symbol: '⬅', label: 'קדמון', color: '#f9ca24' },
+            'oppose': { symbol: '✕', label: 'התנגדות', color: '#ff6b6b' }
+        };
+
+        // Build path visualization
+        let html = `
+            <div style="margin-bottom: 1rem;">
+                <div style="font-size: 1.1rem; font-weight: 700; color: #FFD700; margin-bottom: 0.5rem;">
+                    ✅ דרך עם ${degrees} ${degrees === 1 ? 'קשר' : 'קשרים'}
+                </div>
+                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center;">
+        `;
+
+        pathNodes.forEach((node, i) => {
+            // Node box
+            const eraColor = window.genealogyDiagram?.colorMap?.[node.era_key] || '#999';
+            html += `
+                <div style="
+                    padding: 0.6rem 0.9rem;
+                    background: linear-gradient(135deg, ${eraColor}22 0%, ${eraColor}11 100%);
+                    border: 2px solid ${eraColor};
+                    border-radius: 6px;
+                    font-weight: 600;
+                    color: #1a1a1a;
+                    white-space: nowrap;
+                    cursor: pointer;
+                    transition: all 0.2s;
+                "
+                onmouseover="this.style.background='${eraColor}33'; this.style.boxShadow='0 0 12px ${eraColor}'; this.style.transform='scale(1.05)';"
+                onmouseout="this.style.background='${eraColor}11'; this.style.boxShadow='none'; this.style.transform='scale(1)';"
+                onclick="window.sageNetwork && window.sageNetwork.selectNode(window.graphData.nodes.find(n => n.id === '${node.id}'))"
+                title="לחץ כדי לראות פרטים">
+                    ${node.label}
+                </div>
+            `;
+
+            // Connection arrow
             if (i < pathData.connectionTypes.length) {
-                const typeMap = {
-                    'student': '→ תלמיד',
-                    'teacher': '← מורה',
-                    'influence': '~ השפעה',
-                    'colleague': '↔ עמית',
-                    'predecessor': '⬅ קדמון'
-                };
-                connectionType = typeMap[pathData.connectionTypes[i]] || '→';
+                const connType = pathData.connectionTypes[i];
+                const info = typeMap[connType] || { symbol: '→', label: connType, color: '#999' };
+                html += `
+                    <div style="
+                        display: flex;
+                        align-items: center;
+                        gap: 0.3rem;
+                        color: ${info.color};
+                        font-weight: 700;
+                        font-size: 1.2rem;
+                    " title="${info.label}">
+                        ${info.symbol}
+                    </div>
+                `;
             }
-            return `<span style="padding: 0.3rem 0.6rem; margin: 0.2rem 0.2rem 0 0; background: #e3f2fd; border-radius: 4px; display: inline-block; font-weight: 600;">${node.label}</span>` + (i < pathNodes.length - 1 ? ` <span style="color: #999; margin: 0 0.3rem;">${connectionType}</span> ` : '');
-        }).join('');
+        });
+
+        html += `
+                </div>
+            </div>
+            <div style="
+                margin-top: 1rem;
+                padding: 1rem;
+                background: #fffacd;
+                border-left: 4px solid #FFD700;
+                border-radius: 4px;
+                font-size: 0.9rem;
+                color: #333;
+            ">
+                💡 <strong>דרגות הפרדה:</strong> ${degrees === 0 ? 'זה אותו חכם' : degrees === 1 ? 'קשר ישיר' : `${degrees} קפיצות דרך הרשת`}
+            </div>
+        `;
 
         resultDiv.innerHTML = html;
         document.getElementById('path-result').style.display = 'block';
@@ -1302,29 +1393,146 @@ window.mobileHandler = mobileHandler
         if (!window.sageNetwork || !pathData.path) return;
 
         const pathIds = new Set(pathData.path.map(id => String(id)));
+        const svg = d3.select('#graph');
 
-        // Dim all nodes except path
-        if (window.sageNetwork.node) {
-            window.sageNetwork.node.style('opacity', d => pathIds.has(String(d.id)) ? 1 : 0.15);
+        // Create/update path visualization layer
+        let pathLayer = svg.select('#path-highlight-layer');
+        if (pathLayer.empty()) {
+            pathLayer = svg.insert('g', ':first-child').attr('id', 'path-highlight-layer');
+        } else {
+            pathLayer.selectAll('*').remove();
         }
 
-        // Highlight path nodes
-        pathData.path.forEach((id, i) => {
+        // Draw path connections with strong highlight (if nodes have positions)
+        for (let i = 0; i < pathData.path.length - 1; i++) {
+            const sourceId = String(pathData.path[i]);
+            const targetId = String(pathData.path[i + 1]);
+
+            const sourceNode = window.graphData.nodes.find(n => String(n.id) === sourceId);
+            const targetNode = window.graphData.nodes.find(n => String(n.id) === targetId);
+
+            if (sourceNode && targetNode && sourceNode.x && sourceNode.y && targetNode.x && targetNode.y) {
+                // Draw thick glowing line for path
+                pathLayer.append('line')
+                    .attr('class', 'path-link')
+                    .attr('x1', sourceNode.x)
+                    .attr('y1', sourceNode.y)
+                    .attr('x2', targetNode.x)
+                    .attr('y2', targetNode.y)
+                    .attr('stroke', '#FFD700')  // Gold color
+                    .attr('stroke-width', 6)
+                    .attr('opacity', 0.8)
+                    .attr('stroke-linecap', 'round');
+
+                // Add shadow/glow effect
+                pathLayer.append('line')
+                    .attr('class', 'path-link-glow')
+                    .attr('x1', sourceNode.x)
+                    .attr('y1', sourceNode.y)
+                    .attr('x2', targetNode.x)
+                    .attr('y2', targetNode.y)
+                    .attr('stroke', '#FFD700')
+                    .attr('stroke-width', 12)
+                    .attr('opacity', 0.2)
+                    .attr('stroke-linecap', 'round');
+
+                // Draw circle at midpoint
+                const midX = (sourceNode.x + targetNode.x) / 2;
+                const midY = (sourceNode.y + targetNode.y) / 2;
+
+                pathLayer.append('circle')
+                    .attr('cx', midX)
+                    .attr('cy', midY)
+                    .attr('r', 5)
+                    .attr('fill', '#FFD700')
+                    .attr('opacity', 0.9);
+            }
+        }
+
+        // Highlight path nodes with strong styling
+        if (window.sageNetwork.node) {
+            // Apply styling to boxes
+            window.sageNetwork.node.each(function(d) {
+                const isInPath = pathIds.has(String(d.id));
+                const selection = d3.select(this);
+
+                if (isInPath) {
+                    selection.select('rect')
+                        .style('stroke', '#FFD700')
+                        .style('stroke-width', '4px')
+                        .style('filter', 'drop-shadow(0 0 12px #FFD700)')
+                        .style('opacity', '1');
+                } else {
+                    selection.style('opacity', '0.1');
+                }
+            });
+        }
+
+        // Highlight path links
+        const pathLinks = new Set();
+        for (let i = 0; i < pathData.path.length - 1; i++) {
+            pathLinks.add(String(pathData.path[i]) + '-' + String(pathData.path[i + 1]));
+            pathLinks.add(String(pathData.path[i + 1]) + '-' + String(pathData.path[i]));
+        }
+
+        // Update all visible links (timeline-link or regular link)
+        svg.selectAll('line.timeline-link, line.link').each(function(d) {
+            const sourceId = String(d.source?.id || d.source || '');
+            const targetId = String(d.target?.id || d.target || '');
+            const linkKey1 = sourceId + '-' + targetId;
+            const linkKey2 = targetId + '-' + sourceId;
+            const isPathLink = pathLinks.has(linkKey1) || pathLinks.has(linkKey2);
+
+            d3.select(this)
+                .style('opacity', isPathLink ? '1' : '0.05')
+                .style('stroke-width', isPathLink ? '4px' : '1px')
+                .style('stroke', isPathLink ? '#FFD700' : '#ccc');
+        });
+
+        // Select first node in path to show details
+        pathData.path.slice(0, 1).forEach((id) => {
             const nodeId = String(id);
             const node = window.graphData.nodes.find(n => String(n.id) === nodeId);
-            if (node && i === 0) {
-                // Select first node
+            if (node) {
                 window.sageNetwork.selectNode(node);
             }
         });
 
-        console.log(`✓ Path highlighted: ${pathData.path.length} nodes`);
+        console.log(`✓ Path highlighted: ${pathData.path.length} nodes with golden glow`);
     }
 
     function clearPath() {
-        if (!window.sageNetwork || !window.sageNetwork.node) return;
-        window.sageNetwork.node.style('opacity', 1);
+        // Remove path highlight layer
+        d3.select('#path-highlight-layer').remove();
+
+        // Restore nodes visibility
+        if (window.sageNetwork && window.sageNetwork.node) {
+            window.sageNetwork.node.each(function(d) {
+                const selection = d3.select(this);
+                selection.style('opacity', '1');
+                selection.select('rect')
+                    .style('stroke', '#999')
+                    .style('stroke-width', '2px')
+                    .style('filter', 'none')
+                    .style('opacity', '0.95');
+            });
+        }
+
+        // Restore all links to normal state
+        const svg = d3.select('#graph');
+        svg.selectAll('line.timeline-link, line.link').each(function(d) {
+            const colorMap = {
+                'student': '#4ecdc4', 'teacher': '#2980b9', 'influence': '#8b7965',
+                'oppose': '#ff6b6b', 'colleague': '#95e1d3', 'predecessor': '#f9ca24'
+            };
+            d3.select(this)
+                .style('opacity', '0.6')
+                .style('stroke-width', '2px')
+                .style('stroke', colorMap[d.type] || '#999');
+        });
+
         currentPath = null;
+        console.log('✓ Path highlight cleared');
     }
 
     // Initialize path finder when Supabase data is ready

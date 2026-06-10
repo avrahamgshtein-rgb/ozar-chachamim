@@ -219,22 +219,40 @@ body {
 /* ===== MAIN AREA (Graph) ===== */
 .main-area {
   flex: 1;
-  position: relative;
+  position: absolute !important;
   background: var(--color-white);
-  display: none;
+  display: none !important;
   width: 100%;
   height: 100%;
   overflow: hidden;
   margin: 0;
   padding: 0;
+  visibility: hidden;
+  z-index: -1;
 }
 
 .main-area.active {
-  display: flex;
+  position: relative !important;
+  display: flex !important;
   flex-direction: column;
   width: 100%;
   height: 100%;
+  visibility: visible;
+  z-index: 1;
 }
+
+/* Ensure only active tab content is shown */
+#graph-view { display: none !important; }
+#map-view { display: none !important; }
+#traditions-view { display: none !important; }
+#ideas-view { display: none !important; }
+#timeline-view { display: none !important; }
+
+#graph-view.active { display: flex !important; }
+#map-view.active { display: flex !important; }
+#traditions-view.active { display: flex !important; }
+#ideas-view.active { display: flex !important; }
+#timeline-view.active { display: flex !important; }
 
 #graph {
   width: 100% !important;
