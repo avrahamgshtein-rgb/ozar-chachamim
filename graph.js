@@ -250,10 +250,7 @@ class SageNetwork {
         g.attr('transform', event.transform);
       }));
 
-    // Store linkGroup reference for tick updates
-    const self = this;
-
-    // Simulation tick
+    // Simulation tick (self already defined above for nodes)
     this.simulation.on('tick', () => {
       // Update link lines
       linkGroup.select('line')
