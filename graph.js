@@ -588,17 +588,18 @@ class SageNetwork {
       .attr('class', d => `node node-${d.group}`)
       .attr('cx', d => d.x || 0)
       .attr('cy', d => d.y || 0)
-      .attr('r', 32)
+      .attr('r', 12)  // Smaller circles so they don't overlap
       .attr('fill', d => this.colorMap[d.group] || '#999')
       .attr('stroke', 'white')
-      .attr('stroke-width', 3.5)
+      .attr('stroke-width', 1.5)
+      .attr('opacity', 0.85)
       .style('cursor', 'pointer')
       .on('click', (event, d) => this.selectNode(d))
       .on('mouseover', function(event, d) {
         d3.select(this)
           .transition().duration(150)
-          .attr('r', 40)
-          .attr('stroke-width', 4.5);
+          .attr('r', 18)
+          .attr('stroke-width', 2);
 
         // Show tooltip
         const birthYear = d.birth_year || '?';
@@ -621,8 +622,8 @@ class SageNetwork {
       .on('mouseout', function() {
         d3.select(this)
           .transition().duration(150)
-          .attr('r', 32)
-          .attr('stroke-width', 3.5);
+          .attr('r', 12)
+          .attr('stroke-width', 1.5);
         tooltip.style.display = 'none';
       });
 
