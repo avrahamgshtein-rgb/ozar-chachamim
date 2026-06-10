@@ -1,1578 +1,294 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-    <meta name="viewport-fit" content="cover">
-    <title>אוצר חכמים — Network of Jewish Sages (v3.2)</title>
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="אוצר חכמים - רשת חכמי ישראל לדורותיהם">
+  <title>אוצר חכמים — Network of Jewish Sages</title>
 
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;700&family=Heebo:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
-    <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Map Library -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+  <!-- Leaflet.js for Interactive Maps -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 
-    <!-- Leaflet Polyline Decorator (for arrows on paths) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-polylinedecorator/1.6.0/leaflet.polylinedecorator.css">
+  <style>
+    /* ============================================================================
+       OZAR CHACHAMIM - Six Degrees Style with Tabs
+       ============================================================================ */
 
-    <!-- Design System (Token-based CSS) -->
-    <link rel="stylesheet" href="styles/tokens.css?v=1">
-    <link rel="stylesheet" href="styles/typography.css?v=1">
-    <link rel="stylesheet" href="styles/components.css?v=1">
-    <link rel="stylesheet" href="styles-graph.css?v=3.2">
-
-    <style>
-        #graph {
-            width: 100%;
-            height: 100%;
-            display: block;
-            margin: 0;
-            padding: 0;
-        }
-        #map-view {
-            padding: 0;
-            background: var(--color-bg-light);
-            height: 100%;
-            width: 100%;
-            overflow: hidden;
-            position: relative !important;
-        }
-        #map {
-            width: 100% !important;
-            height: 100% !important;
-            display: block;
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-        }
-        .spotify-link { display: inline-flex; align-items: center; gap: 0.5rem; padding: 12px 16px; background: linear-gradient(135deg, #1DB954 0%, #1ed760 100%); color: white; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 0.95rem; transition: all 0.3s ease; width: 100%; text-align: center; justify-content: center; }
-        .spotify-link:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(29, 185, 84, 0.3); }
-
-        /* === Timeline View === */
-        #timeline-view { overflow: hidden; background: var(--color-bg); padding: 0; }
-        #timeline-scroll-wrapper { width: 100%; height: 100%; overflow-x: auto; overflow-y: hidden; cursor: grab; }
-        #timeline-scroll-wrapper:active { cursor: grabbing; }
-        #timeline-svg { display: block; }
-        .tl-era-label { font-family: 'Frank Ruhl Libre', serif; font-size: 0.85rem; font-weight: 700; fill: var(--color-text-secondary); text-anchor: end; dominant-baseline: middle; pointer-events: none; }
-        .tl-sage-group { cursor: pointer; }
-        .tl-sage-group:hover .tl-dot { r: 9; filter: url(#tl-glow); }
-        .tl-sage-group:hover .tl-label { opacity: 1; font-weight: 700; }
-        .tl-dot { stroke: rgba(255,255,255,0.6); stroke-width: 1.5; transition: r 0.15s ease; }
-        .tl-label { font-family: 'Heebo', sans-serif; font-size: 10px; fill: var(--color-text); text-anchor: middle; dominant-baseline: hanging; pointer-events: none; opacity: 0; transition: opacity 0.15s ease; }
-        .tl-band-even { fill: var(--color-bg-light); opacity: 0.6; }
-        .tl-band-odd { fill: var(--color-bg); opacity: 0.6; }
-        .tl-band-border { stroke: var(--color-border); stroke-width: 1; }
-        .tl-band-header { font-family: 'Frank Ruhl Libre', serif; font-size: 11px; font-weight: 700; dominant-baseline: middle; pointer-events: none; fill-opacity: 0.5; }
-        .tl-dot.tl-selected { stroke: var(--color-primary); stroke-width: 3; r: 10; }
-        #tl-tooltip { position: absolute; background: var(--color-white); border: 1px solid var(--color-border); border-radius: 8px; padding: 0.6rem 0.9rem; font-size: 0.85rem; box-shadow: 0 4px 12px rgba(0,0,0,0.15); pointer-events: none; opacity: 0; transition: opacity 0.15s; max-width: 220px; z-index: 500; direction: rtl; text-align: right; line-height: 1.5; }
-        #tl-tooltip.visible { opacity: 1; }
-    </style>
-</head>
-<body>
-
-<header class="header">
-    <div class="header-brand">
-        <h1>אוצר חכמים</h1>
-        <p>Ozar Chachamim — רשת החכמים של ישראל</p>
-    </div>
-
-    <div class="tabs">
-        <button class="tab-btn active" onclick="switchView('graph')">
-            <i class="fas fa-project-diagram"></i> רשת קשרים
-        </button>
-        <button class="tab-btn" onclick="switchView('map')">
-            <i class="fas fa-map"></i> גיאוגרפיה
-        </button>
-        <button class="tab-btn" onclick="switchView('traditions')">
-            <i class="fas fa-book"></i> מסורות
-        </button>
-        <button class="tab-btn" onclick="switchView('ideas')">
-            <i class="fas fa-lightbulb"></i> רעיונות
-        </button>
-        <button class="tab-btn" onclick="switchView('timeline')">
-            <i class="fas fa-stream"></i> שלשלת הקבלה
-        </button>
-    </div>
-
-    <div class="header-controls">
-        <div class="search-box">
-            <i class="fas fa-search"></i>
-            <input type="text" id="searchInput" placeholder="חפש חכם...">
-        </div>
-        <button class="control-btn" onclick="resetZoom()" title="Reset zoom">
-            <i class="fas fa-home"></i>
-        </button>
-        <button class="control-btn" id="authButton" onclick="window.sageAuth.showAuthModal()" title="התחברות">
-            <i class="fas fa-sign-in-alt"></i> התחברות
-        </button>
-    </div>
-</header>
-
-<!-- Authentication Modal -->
-<div id="authModal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 1000; flex-direction: column; justify-content: center; align-items: center;">
-    <div style="background: white; padding: 2rem; border-radius: 12px; max-width: 400px; width: 90%; box-shadow: 0 8px 32px rgba(0,0,0,0.1);">
-        <h2 style="margin-top: 0; text-align: center;">אוצר חכמים</h2>
-
-        <div style="margin-bottom: 1rem;">
-            <input type="email" id="authEmail" placeholder="דוא״ל" style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 6px; font-size: 1rem; margin-bottom: 0.5rem; box-sizing: border-box;">
-            <input type="password" id="authPassword" placeholder="סיסמה" style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 6px; font-size: 1rem; box-sizing: border-box;">
-        </div>
-
-        <div style="display: flex; gap: 0.5rem;">
-            <button onclick="window.sageAuth.login(document.getElementById('authEmail').value, document.getElementById('authPassword').value); window.sageAuth.updateUIForLoggedIn(); window.sageAuth.hideAuthModal();" style="flex: 1; padding: 0.75rem; background: #4a86e8; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600;">
-                התחברות
-            </button>
-            <button onclick="window.sageAuth.signup(document.getElementById('authEmail').value, document.getElementById('authPassword').value); window.sageAuth.updateUIForLoggedIn(); window.sageAuth.hideAuthModal();" style="flex: 1; padding: 0.75rem; background: #34a853; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600;">
-                הרשמה
-            </button>
-        </div>
-
-        <button onclick="window.sageAuth.hideAuthModal()" style="width: 100%; margin-top: 1rem; padding: 0.75rem; background: #f0f0f0; border: none; border-radius: 6px; cursor: pointer;">
-            סגור
-        </button>
-    </div>
-</div>
-
-<div class="container">
-    <div id="graph-view" class="main-area active">
-        <div id="path-section" style="background: white; padding: 1rem; border-bottom: 1px solid #ddd;">
-            <div style="display: flex; gap: 1rem; align-items: flex-end;">
-                <input type="text" id="sageA" placeholder="חכם ראשון" style="padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px; flex: 1;">
-                <input type="text" id="sageB" placeholder="חכם שני" style="padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px; flex: 1;">
-                <button onclick="findPath()" style="padding: 0.5rem 1.5rem; background: #4a86e8; color: white; border: none; border-radius: 4px; cursor: pointer;">מצא דרך</button>
-            </div>
-            <div id="pathMsg" style="margin-top: 0.5rem; color: #666; font-size: 0.9rem;"></div>
-        </div>
-        <svg id="graph"></svg>
-    </div>
-
-    <div id="map-view" class="main-area">
-        <div id="map"></div>
-        <!-- Map Legend (collapsed by default) -->
-        <div class="map-legend" id="mapLegend">
-            <div class="map-legend-header">
-                <h3 class="map-legend-title">📊 מדריך צבעים</h3>
-                <div class="map-legend-controls">
-                    <button class="map-legend-minimize" id="mapLegendMinimize" title="Minimize" aria-label="Minimize">−</button>
-                    <button class="map-legend-close" id="mapLegendClose" title="Close" aria-label="Close">×</button>
-                </div>
-            </div>
-            <div class="map-legend-content" id="mapLegendContent">
-                <div class="map-legend-section">
-                    <div class="map-legend-section-title">תקופות החכמים</div>
-                    <div class="map-legend-item"><div class="map-legend-dot" style="background: #8e44ad;"></div><span>בית שני</span></div>
-                    <div class="map-legend-item"><div class="map-legend-dot" style="background: #e74c3c;"></div><span>תנאים</span></div>
-                    <div class="map-legend-item"><div class="map-legend-dot" style="background: #e67e22;"></div><span>אמוראים</span></div>
-                    <div class="map-legend-item"><div class="map-legend-dot" style="background: #f1c40f;"></div><span>גאונים</span></div>
-                    <div class="map-legend-item"><div class="map-legend-dot" style="background: #27ae60;"></div><span>ראשונים</span></div>
-                    <div class="map-legend-item"><div class="map-legend-dot" style="background: #2980b9;"></div><span>אחרונים</span></div>
-                    <div class="map-legend-item"><div class="map-legend-dot" style="background: #1abc9c;"></div><span>עת חדשה</span></div>
-                </div>
-                <div class="map-legend-section">
-                    <div class="map-legend-section-title">מפה</div>
-                    <div class="map-legend-item"><div style="width: 20px; height: 2px; background: #333; border-top: 2px dashed #333; margin: 0 0.6rem 0 0; flex-shrink: 0;"></div><span>מסלול נדידה</span></div>
-                </div>
-            </div>
-        </div>
-        <!-- Map Legend Toggle Button -->
-        <button class="map-legend-toggle" id="mapLegendToggle" title="Show legend" aria-label="Show legend">📊</button>
-    </div>
-
-    <div id="traditions-view" class="main-area">
-        <div class="traditions-grid" id="traditionsGrid"></div>
-    </div>
-
-    <div id="ideas-view" class="main-area">
-        <div class="ideas-container" id="ideasContainer"></div>
-    </div>
-
-    <div id="timeline-view" class="main-area">
-        <div id="timeline-controls" style="display:none; padding: 8px 12px; background: #f5f5f5; border-bottom: 1px solid #ddd; display: flex; gap: 8px; align-items: center; direction: rtl;">
-            <span id="timeline-zoom-label" style="font-size: 0.85rem; color: #666; min-width: 50px;">100%</span>
-            <button id="timeline-zoom-in" style="padding: 4px 12px; background: #4a86e8; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: 600;">＋</button>
-            <button id="timeline-zoom-out" style="padding: 4px 12px; background: #4a86e8; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: 600;">－</button>
-        </div>
-        <div id="timeline-scroll-wrapper">
-            <svg id="timeline-svg"></svg>
-        </div>
-    </div>
-
-    <div class="sidebar" id="sidebar"></div>
-</div>
-
-<div class="legend" id="legend">
-    <div class="legend-header">
-        <div class="legend-title">📊 מדריך הצבעים</div>
-        <button class="legend-close" id="legend-close" aria-label="סגור מקרא">×</button>
-    </div>
-
-    <div class="legend-content" id="legend-content">
-        <div class="legend-section">
-            <div class="legend-section-title">תקופות החכמים</div>
-            <div class="legend-item"><div class="legend-dot" style="background: #8e44ad;"></div><span>בית שני (516 לפנ״ס - 70)</span></div>
-            <div class="legend-item"><div class="legend-dot" style="background: #e74c3c;"></div><span>תנאים (10 - 220)</span></div>
-            <div class="legend-item"><div class="legend-dot" style="background: #e67e22;"></div><span>אמוראים (220 - 500)</span></div>
-            <div class="legend-item"><div class="legend-dot" style="background: #f1c40f;"></div><span>גאונים (589 - 1038)</span></div>
-            <div class="legend-item"><div class="legend-dot" style="background: #27ae60;"></div><span>ראשונים (1038 - 1563)</span></div>
-            <div class="legend-item"><div class="legend-dot" style="background: #2980b9;"></div><span>אחרונים (1563 - עת חדשה)</span></div>
-            <div class="legend-item"><div class="legend-dot" style="background: #1abc9c;"></div><span>עת חדשה (19 כ״א ואילך)</span></div>
-        </div>
-
-        <div class="legend-section">
-            <div class="legend-section-title">קשרים בין חכמים</div>
-            <div class="legend-item"><div class="legend-line" style="background: #4ecdc4;"></div><span>תלמיד</span></div>
-            <div class="legend-item"><div class="legend-line" style="background: #8b7965;"></div><span>השפעה</span></div>
-            <div class="legend-item"><div class="legend-line" style="background: #ff6b6b;"></div><span>התנגדות</span></div>
-            <div class="legend-item"><div class="legend-line" style="background: #95e1d3;"></div><span>עמית</span></div>
-            <div class="legend-item"><div class="legend-line" style="background: #f9ca24;"></div><span>קדמון</span></div>
-        </div>
-
-        <div class="legend-section">
-            <div class="legend-section-title">מפה</div>
-            <div class="legend-item"><div class="legend-dot" style="background: #999; width: 6px; height: 6px;"></div><span>נקודת דרך</span></div>
-            <div class="legend-item"><div style="width: 20px; height: 2px; background: #333; border-top: 2px dashed #333; margin: 0 0.6rem 0 0; flex-shrink: 0;"></div><span>מסלול נדידה</span></div>
-        </div>
-    </div>
-</div>
-
-<button class="legend-toggle" id="legend-toggle" aria-label="הצג/הסתר מקרא">📊</button>
-
-<!-- Scripts -->
-<!-- IMPORTANT: Load order matters! -->
-<!-- 0. Mobile Handler (must load first) - inline to avoid 404 -->
-<script>
-const mobileHandler = {
-  isCurrentlyMobile() {
-    return window.innerWidth < 768
-  },
-  openSidebar() {
-    const sidebar = document.getElementById('sidebar')
-    if (sidebar) sidebar.classList.add('active')
-  },
-  closeSidebar() {
-    const sidebar = document.getElementById('sidebar')
-    if (sidebar) sidebar.classList.remove('active')
-  },
-  init() {
-    console.log('📱 [MobileHandler] Initialized')
-    window.addEventListener('resize', () => {
-      if (!this.isCurrentlyMobile()) this.closeSidebar()
-    })
-  }
-}
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => mobileHandler.init())
-} else {
-  mobileHandler.init()
-}
-window.mobileHandler = mobileHandler
-</script>
-
-<!-- 1. Supabase Client Module (replaces data-loader + data-validator) -->
-<script type="module">
-  import { initializeApp, semanticSearch } from './supabase-client.js';
-
-  // Make semanticSearch globally available for Task D
-  window.semanticSearch = semanticSearch;
-
-  // Initialize Supabase backend on page load
-  document.addEventListener('DOMContentLoaded', async () => {
-    console.log('🚀 [index.html] Initializing Supabase backend...');
-    const ready = await initializeApp();
-    if (ready) {
-      console.log('✅ [index.html] Supabase initialization complete');
-      console.log('✅ [index.html] Task D: semanticSearch available globally');
-    } else {
-      console.error('❌ [index.html] Failed to initialize Supabase');
-    }
-  });
-
-  // Initialize graph when Supabase data is ready
-  document.addEventListener('supabaseReady', () => {
-    console.log('🎨 [index.html] Graph initialization...');
-    const graph = new SageNetwork({ svgSelector: '#graph' });
-    window.graph = graph;
-    graph.init();
-  });
-</script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-polylinedecorator/1.6.0/leaflet.polylinedecorator.js"></script>
-
-<!-- 5. Graph Network Visualization (D3 timeline layout) -->
-<script src="graph.js"></script>
-
-<script>
-    // Expose environment variables for client-side use (especially Vercel)
-    window.__SUPABASE_URL__ = 'https://ulluacifirzywhmzkvkr.supabase.co'
-    window.__SUPABASE_ANON_KEY__ = 'sb_publishable_ObxKLFsDTE41KoAMfMV1dw_Nu38ZI2C'
-
-    // Log initialization
-    console.log('🔌 [Init] Supabase credentials set')
-    console.log('   URL: ' + window.__SUPABASE_URL__.split('/')[2])
-    console.log('   Key: ' + window.__SUPABASE_ANON_KEY__.substring(0, 20) + '...')
-
-    // Timeline zoom state
-    window.timelineZoom = 1.0;
-
-    // TASK C: Map Management System with search integration
-    const mapManager = {
-        mapInstance: null,
-        markers: new Map(),        // sage ID → marker object
-        migrationLines: [],        // array of polyline objects
-        searchHighlight: new Set(), // currently highlighted sage IDs
-        baseOpacity: 0.7,
-        highlightOpacity: 1,
-        baseRadius: 10,
-        highlightRadius: 14,
-
-        /**
-         * Initialize marker tracking after map is built
-         */
-        trackMarkers(sageMarkers, polylines) {
-            this.markers = sageMarkers;
-            this.migrationLines = polylines;
-            console.log(`📍 [MapManager] Tracking ${sageMarkers.size} markers + ${polylines.length} migration lines`);
-        },
-
-        /**
-         * TASK C: Highlight markers matching search results
-         */
-        highlightSearchResults(matchingSages) {
-            const matchingIds = new Set(matchingSages.map(s => String(s.id)));
-            this.searchHighlight = matchingIds;
-
-            // Update all markers based on search results
-            this.markers.forEach((marker, sageId) => {
-                const isMatching = matchingIds.has(String(sageId));
-                const newRadius = isMatching ? this.highlightRadius : this.baseRadius;
-                const newOpacity = isMatching ? this.highlightOpacity : (this.baseOpacity * 0.5);
-
-                // Update marker styling
-                marker.setRadius(newRadius);
-                marker.setStyle({
-                    opacity: newOpacity,
-                    fillOpacity: isMatching ? this.highlightOpacity : (this.baseOpacity * 0.6)
-                });
-
-                // Add glow effect on matching markers
-                if (isMatching) {
-                    marker.bringToFront();
-                }
-            });
-
-            // Update migration lines opacity
-            this.migrationLines.forEach(line => {
-                const lineLatLngs = line.getLatLngs();
-                if (lineLatLngs && lineLatLngs.length > 0) {
-                    // Check if any endpoint matches search
-                    const firstLatLng = lineLatLngs[0];
-                    const lastLatLng = lineLatLngs[lineLatLngs.length - 1];
-
-                    const isRelevant = Array.from(matchingIds).some(id => {
-                        const sage = window.graphData.nodes.find(n => String(n.id) === id);
-                        return sage && sage.migration_path;
-                    });
-
-                    line.setStyle({
-                        opacity: isRelevant ? 0.8 : 0.2,
-                        weight: isRelevant ? 4 : 2
-                    });
-                }
-            });
-
-            console.log(`📍 [MapManager] Highlighted ${matchingIds.size} results on map`);
-        },
-
-        /**
-         * TASK C: Auto-zoom map to search results
-         */
-        zoomToResults(matchingSages) {
-            if (!this.mapInstance || matchingSages.length === 0) return;
-
-            // Extract valid coordinates
-            const coordsArray = matchingSages
-                .filter(s => s.coordinates)
-                .map(s => [
-                    s.coordinates.lat || s.coordinates.latitude,
-                    s.coordinates.lng || s.coordinates.longitude
-                ])
-                .filter(([lat, lng]) => lat && lng);
-
-            if (coordsArray.length === 0) {
-                console.warn('No valid coordinates for search results');
-                return;
-            }
-
-            try {
-                if (coordsArray.length === 1) {
-                    // Single result: smooth fly-to with zoom level 12
-                    console.log(`📍 Flying to single result: ${matchingSages[0].label}`);
-                    this.mapInstance.flyTo(coordsArray[0], 12, {
-                        duration: 1.5,
-                        easeLinearity: 0.25
-                    });
-                } else {
-                    // Multiple results: fit all within bounds
-                    console.log(`📍 Fitting ${coordsArray.length} results in bounds`);
-                    const bounds = L.latLngBounds(coordsArray);
-                    this.mapInstance.fitBounds(bounds, {
-                        padding: [100, 100],
-                        maxZoom: 11,
-                        duration: 1.5
-                    });
-                }
-            } catch (error) {
-                console.warn('❌ Map zoom/fit failed:', error);
-            }
-        },
-
-        /**
-         * Reset map to default view
-         */
-        resetView() {
-            if (!this.mapInstance) return;
-
-            // Remove highlight
-            this.searchHighlight.clear();
-
-            // Restore all markers to default state
-            this.markers.forEach(marker => {
-                marker.setRadius(this.baseRadius);
-                marker.setStyle({
-                    opacity: this.baseOpacity,
-                    fillOpacity: this.baseOpacity * 0.85
-                });
-            });
-
-            // Restore migration lines
-            this.migrationLines.forEach(line => {
-                line.setStyle({
-                    opacity: 0.6,
-                    weight: 3
-                });
-            });
-
-            // Reset map view
-            this.mapInstance.setView([31.5, 35.2], 4);
-            console.log('📍 Map reset to default view');
-        }
-    };
-
-    let currentView = 'graph';
-    let mapInstance = null;
-    let graphData = null;
-
-    function switchView(view) {
-        currentView = view;
-        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-        // Find and activate the correct tab button
-        document.querySelectorAll('.tab-btn').forEach(btn => {
-            if (btn.getAttribute('onclick').includes("'" + view + "'")) {
-                btn.classList.add('active');
-            }
-        });
-        document.querySelectorAll('.main-area').forEach(area => area.classList.remove('active'));
-        const viewEl = document.getElementById(view + '-view');
-        if (viewEl) viewEl.classList.add('active');
-        // Legend is now available on all views, visibility controlled by toggle
-
-        // Close sidebar on mobile when switching views
-        if (window.mobileHandler && window.mobileHandler.isCurrentlyMobile()) {
-            const sidebar = document.getElementById('sidebar');
-            if (sidebar && sidebar.classList.contains('active')) {
-                window.mobileHandler.closeSidebar();
-            }
-        }
-
-        if (view === 'map') {
-            // Force reload of map to see any CSS changes
-            if (mapInstance) {
-                mapInstance.remove();
-                mapInstance = null;
-            }
-            initMap();
-        }
-        if (view === 'traditions' && !document.getElementById('traditionsGrid').innerHTML) buildTraditions();
-        if (view === 'ideas' && !document.getElementById('ideasContainer').innerHTML) buildIdeas();
-        if (view === 'timeline' && !document.getElementById('timeline-svg').getAttribute('data-built')) {
-            buildTimeline();
-            // Set up zoom controls for timeline
-            document.getElementById('timeline-controls').style.display = 'flex';
-            document.getElementById('timeline-zoom-in').addEventListener('click', () => {
-                window.timelineZoom = Math.min(window.timelineZoom * 1.3, 3.0);
-                document.getElementById('timeline-zoom-label').textContent = Math.round(window.timelineZoom * 100) + '%';
-                buildTimeline();
-            });
-            document.getElementById('timeline-zoom-out').addEventListener('click', () => {
-                window.timelineZoom = Math.max(window.timelineZoom / 1.3, 0.5);
-                document.getElementById('timeline-zoom-label').textContent = Math.round(window.timelineZoom * 100) + '%';
-                buildTimeline();
-            });
-        } else if (view !== 'timeline') {
-            document.getElementById('timeline-controls').style.display = 'none';
-        }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    function resetZoom() {
-        if (window.sageNetwork && window.sageNetwork.svg) {
-            const svg = window.sageNetwork.svg;
-            const width = svg.node().clientWidth;
-            const height = svg.node().clientHeight;
-            const zoom = d3.zoom().on('zoom', () => {});
-            svg.transition()
-                .duration(750)
-                .call(zoom.transform, d3.zoomIdentity
-                    .translate(width / 2, height / 2)
-                    .scale(0.8)
-                    .translate(-width / 2, -height / 2)
-                );
-        }
+    html, body {
+      width: 100%;
+      height: 100%;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #f5f5f5;
+      color: #333;
+      overflow: hidden;
     }
 
-    // FIX BUG 4: Geography view with colored markers
-    async function initMap() {
-        try {
-            // Update status
-            const statusEl = document.getElementById('map-status-text');
-            if (statusEl) statusEl.innerHTML = '✅ מפה בטעינה...';
+    /* ============================================================================
+       HEADER & TABS
+       ============================================================================ */
 
-            mapInstance = L.map('map').setView([31.5, 35.2], 4);
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '© OpenStreetMap', maxZoom: 18
-            }).addTo(mapInstance);
-
-        // Wait for data if not ready
-        let retries = 20;
-        while (!window.graphData || !window.graphData.nodes) {
-            await new Promise(r => setTimeout(r, 100));
-            retries--;
-            if (retries < 0) {
-                console.error('Map: Data timeout');
-                return;
-            }
-        }
-
-        // TASK C: Add colored markers for sages from Supabase coordinates
-        let markersAdded = 0;
-        const sageMarkers = new Map();  // Track markers by sage ID
-        const migrationLines = [];      // Track migration polylines
-
-        const eraColors = {
-            'second-temple': '#8e44ad',
-            'tannaim': '#e74c3c',
-            'amoraim': '#e67e22',
-            'geonim': '#f1c40f',
-            'rishonim': '#27ae60',
-            'acharonim': '#2980b9',
-            'modern': '#1abc9c',
-            'unknown': '#999'
-        };
-
-        // Location coordinates for migration paths
-        const locationCoords = {
-            'ירושלים': [31.768, 35.214], 'בבל': [33.313, 44.361], 'מצרים': [30.044, 31.234],
-            'אלכסנדריה': [31.203, 29.917], 'יוון': [37.774, 25.131], 'אתונה': [37.974, 23.738],
-            'רומא': [41.903, 12.496], 'ספרד': [40.463, -3.750], 'צרפת': [46.227, 2.213],
-            'גרמניה': [51.166, 10.451], 'פולין': [51.919, 19.145], 'רוסיה': [61.524, 105.318],
-            'טבריה': [32.789, 35.535], 'צפת': [32.968, 35.497], 'עכו': [32.923, 35.087],
-            'יריחו': [31.861, 35.447], 'חברון': [31.539, 35.207], 'סאוטה': [35.889, -5.310],
-            'חלב': [36.202, 37.167], 'קיסריה': [32.879, 35.086], 'לוד': [31.948, 35.144]
-        };
-
-        // Debug: Check first few nodes for migration_path
-        const firstNode = window.graphData.nodes[0];
-        if (firstNode) {
-            console.log(`🔍 [Map] Sample node: ${firstNode.label}, has migration_path: ${!!firstNode.migration_path}`);
-            if (firstNode.migration_path) {
-                console.log(`   Type: ${typeof firstNode.migration_path}, Value: ${JSON.stringify(firstNode.migration_path).substring(0, 100)}`);
-            }
-        }
-
-        window.graphData.nodes.forEach(node => {
-            // Check for Supabase coordinates (JSONB)
-            if (node.coordinates && typeof node.coordinates === 'object') {
-                const lat = node.coordinates.lat || node.coordinates.latitude;
-                const lng = node.coordinates.lng || node.coordinates.longitude;
-
-                if (lat && lng) {
-                    const color = eraColors[node.era_key] || '#999';
-
-                    const marker = L.circleMarker([lat, lng], {
-                        radius: 10,
-                        fillColor: color,
-                        color: 'white',
-                        weight: 2.5,
-                        opacity: 1,
-                        fillOpacity: 0.85
-                    })
-                    .bindPopup(`
-                      <div style="padding: 1rem; min-width: 300px; font-family: Heebo, sans-serif; direction: rtl;">
-                        <div style="border-bottom: 3px solid ${color}; padding-bottom: 0.75rem; margin-bottom: 0.75rem;">
-                          <h3 style="margin: 0 0 0.5rem 0; color: #1a1a1a; font-size: 1.1rem;">${node.label}</h3>
-                          <div style="font-size: 0.8rem; color: #666; display: grid; gap: 0.3rem;">
-                            <div>⏰ ${node.era}</div>
-                            <div>📍 ${node.region || 'לא ידוע'}</div>
-                            <div>🎓 ${node.primary_field || 'אחר'}</div>
-                          </div>
-                        </div>
-
-                        ${node.migration_path ? `
-                        <div style="background: #f0f8ff; padding: 0.75rem; border-right: 4px solid ${color}; margin-bottom: 0.75rem; border-radius: 4px;">
-                          <div style="font-size: 0.75rem; color: #555; margin-bottom: 0.5rem; font-weight: 700;">🚶 מסלול נדידה</div>
-                          <div style="font-size: 0.85rem; color: #333; line-height: 1.6; direction: rtl;">
-                            ${typeof node.migration_path === 'string'
-                              ? (() => {
-                                  try {
-                                    const path = JSON.parse(node.migration_path);
-                                    const intermediate = path.intermediate?.join(' ← ') || '';
-                                    return '<strong>' + path.from + '</strong> ← ' + intermediate + ' → <strong>' + path.to + '</strong>';
-                                  } catch { return 'נתונים בעיבוד'; }
-                                })()
-                              : '<strong>' + node.migration_path.from + '</strong> ← ' + (node.migration_path.intermediate?.join(' ← ') || '') + ' → <strong>' + node.migration_path.to + '</strong>'
-                            }
-                          </div>
-                        </div>
-                        ` : ''}
-
-                        ${node.core_concept ? `
-                        <div style="background: #f5f5f5; padding: 0.75rem; border-right: 3px solid ${color}; margin-bottom: 0.75rem; border-radius: 4px;">
-                          <div style="font-size: 0.75rem; color: #888; margin-bottom: 0.3rem; font-weight: 600;">💡 רעיון מרכזי</div>
-                          <div style="font-size: 0.85rem; color: #333; line-height: 1.5;">${node.core_concept}</div>
-                        </div>
-                        ` : ''}
-
-                        ${node.summary ? `
-                        <div style="font-size: 0.82rem; color: #555; margin-bottom: 0.75rem; line-height: 1.5;">
-                          ${node.summary.substring(0, 160)}${node.summary.length > 160 ? '...' : ''}
-                        </div>
-                        ` : ''}
-
-                        <div style="font-size: 0.8rem; color: #666; margin-bottom: 0.75rem; padding-top: 0.75rem; border-top: 1px solid #ddd;">
-                          ${node.connection_count ? `<span>🔗 ${node.connection_count} קשרים</span>` : ''}
-                        </div>
-
-                        <button onclick="window.sageNetwork && window.sageNetwork.selectNode(window.graphData.nodes.find(n => n.id === '${node.id}'))"
-                          style="width: 100%; padding: 0.6rem; background: ${color}; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 0.9rem; font-weight: 600; transition: all 0.2s; margin-top: 0.5rem;">
-                          📖 פרופיל מלא
-                        </button>
-                      </div>
-                    `, { maxWidth: 330, className: 'sage-popup' })
-                    .addTo(mapInstance);
-
-                    // TASK C: Track this marker by sage ID
-                    sageMarkers.set(String(node.id), marker);
-                    markersAdded++;
-
-                    // TASK C: Draw migration path if exists
-                    // TASK C: Draw migration path if exists
-                    if (node.migration_path) {
-                        try {
-                            const migPath = typeof node.migration_path === 'string'
-                                ? JSON.parse(node.migration_path)
-                                : node.migration_path;
-
-                            if (migPath && migPath.from && migPath.to) {
-                                const fromCoords = locationCoords[migPath.from];
-                                const toCoords = locationCoords[migPath.to];
-
-                                if (fromCoords && toCoords) {
-                                    // Build waypoints including intermediates
-                                    let waypoints = [fromCoords];
-                                    if (migPath.intermediate && Array.isArray(migPath.intermediate)) {
-                                        migPath.intermediate.forEach(locName => {
-                                            const locCoords = locationCoords[locName];
-                                            if (locCoords) waypoints.push(locCoords);
-                                        });
-                                    }
-                                    waypoints.push(toCoords);
-
-                                    // Draw polyline through all waypoints
-                                    const polyline = L.polyline(waypoints, {
-                                        color: color,
-                                        weight: 3,
-                                        opacity: 0.7,
-                                        dashArray: '6, 4',
-                                        lineCap: 'round',
-                                        lineJoin: 'round'
-                                    }).addTo(mapInstance);
-
-                                    // Add directional arrows along the path
-                                    const pathLength = waypoints.length;
-                                    for (let i = 0; i < waypoints.length - 1; i++) {
-                                        const start = waypoints[i];
-                                        const end = waypoints[i + 1];
-                                        const mid = [(start[0] + end[0]) / 2, (start[1] + end[1]) / 2];
-
-                                        // Calculate bearing for arrow rotation (0=up, 90=right, 180=down, 270=left)
-                                        const bearing = Math.atan2(end[1] - start[1], end[0] - start[0]) * 180 / Math.PI;
-
-                                        // Add arrow marker at midpoint using SVG for better rotation
-                                        const arrowSvg = `<svg width="32" height="32" viewBox="0 0 32 32" style="transform: rotate(${bearing}deg);">
-                                            <polygon points="16,4 28,24 16,20 4,24" fill="${color}" opacity="0.8" stroke="white" stroke-width="1"/>
-                                        </svg>`;
-
-                                        L.marker(mid, {
-                                            icon: L.divIcon({
-                                                html: arrowSvg,
-                                                iconSize: [32, 32],
-                                                className: 'migration-arrow',
-                                                iconAnchor: [16, 16]
-                                            })
-                                        }).addTo(mapInstance);
-                                    }
-
-                                    // TASK C: Track migration line
-                                    migrationLines.push(polyline);
-
-                                    // Add arrow at destination
-                                    L.circleMarker(toCoords, {
-                                        radius: 4,
-                                        fillColor: color,
-                                        color: color,
-                                        weight: 1,
-                                        opacity: 0.8,
-                                        fillOpacity: 0.8
-                                    }).addTo(mapInstance);
-                                }
-                            }
-                        } catch (e) {
-                            console.warn(`⚠️ Error parsing migration_path:`, e.message);
-                        }
-                    }
-                }
-            }
-        });
-
-        // TASK C: Register markers with mapManager for search integration
-        mapManager.mapInstance = mapInstance;
-        mapManager.trackMarkers(sageMarkers, migrationLines);
-        console.log(`✓ Map: Added ${markersAdded} markers + ${migrationLines.length} migration paths`);
-        console.log(`📍 [MapManager] Initialized for search result auto-zoom`);
-
-        // VISUALIZATION ENHANCEMENT: Add directional arrows to migration paths
-        const enhancedPathCount = window.VisualizationEnhancer.enhanceMigrationPolylines(
-            mapInstance,
-            window.graphData.nodes,
-            locationCoords
-        );
-
-        // Legend now managed via HTML toggle (see index.html legend div)
-
-        // Update status - map loaded successfully
-        const statusEl2 = document.getElementById('map-status-text');
-        if (statusEl2) statusEl2.innerHTML = '✅ חצים + מקרא + ' + window.graphData.nodes.length + ' חכמים';
-
-        setTimeout(() => mapInstance.invalidateSize(), 300);
-        } catch (error) {
-            console.error('❌ initMap error:', error);
-            const mapEl = document.getElementById('map');
-            if (mapEl) {
-                mapEl.innerHTML = '<p style="padding: 2rem; color: red;">Error loading map</p>';
-            }
-        }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.5rem;
+      background: white;
+      border-bottom: 1px solid #e0e0e0;
+      gap: 2rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     }
 
-    function buildTraditions() {
-        try {
-            if (!window.graphData || !window.graphData.nodes || window.graphData.nodes.length === 0) {
-                console.warn('⚠️  No valid graph data for traditions');
-                document.getElementById('traditionsGrid').innerHTML = '<p style="padding: 2rem; color: #999;">Loading...</p>';
-                return;
-            }
-
-            const traditions = {};
-            window.graphData.nodes.forEach(node => {
-                if (!node || !node.primary_field) return;
-                const t = node.primary_field || 'Other';
-                if (!traditions[t]) traditions[t] = [];
-                traditions[t].push(node);
-            });
-
-            let html = '';
-            Object.keys(traditions).sort().forEach(tradition => {
-                const sages = traditions[tradition];
-                if (!sages || sages.length === 0) return;
-                const eraColors = {
-                    'second-temple': '#ff7f0e',
-                    'tannaim': '#2ca02c',
-                    'amoraim': '#d62728',
-                    'rishonim': '#9467bd',
-                    'acharonim': '#8c564b',
-                    'modern': '#e377c2'
-                };
-                html += `<div class="tradition-card" style="border-left: 4px solid #4a86e8; padding: 1.5rem; margin-bottom: 1rem; background: #f9f9f9; border-radius: 8px;">
-                    <h3 style="margin: 0 0 0.5rem 0; color: #1a1a1a;">${tradition}</h3>
-                    <p style="margin: 0 0 1rem 0; color: #666; font-size: 0.9rem;"><strong>${sages.length}</strong> חכמים בתחום זה</p>
-                    <div class="tradition-sages" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 0.75rem;">
-                        ${sages.map(s => `
-                            <div onclick="window.sageNetwork && window.sageNetwork.selectNode(window.graphData.nodes.find(n => n.id === '${s.id}'))"
-                              style="padding: 0.75rem; background: white; border-left: 3px solid ${eraColors[s.era_key] || '#999'}; border-radius: 4px; cursor: pointer; transition: all 0.2s; font-size: 0.9rem; line-height: 1.3;"
-                              onmouseover="this.style.boxShadow='0 2px 8px rgba(0,0,0,0.1)'"
-                              onmouseout="this.style.boxShadow='none'">
-                                <div style="font-weight: 600; color: #1a1a1a;">${s.label || 'Unknown'}</div>
-                                <div style="color: #888; font-size: 0.85rem;">${s.era}</div>
-                            </div>
-                        `).join('')}
-                    </div>
-                </div>`;
-            });
-            document.getElementById('traditionsGrid').innerHTML = html || '<p>No traditions found</p>';
-        } catch (error) {
-            console.error('❌ buildTraditions error:', error);
-            document.getElementById('traditionsGrid').innerHTML = '<p style="color: red;">Error loading traditions</p>';
-        }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      min-width: 250px;
     }
 
-    function buildIdeas() {
-        try {
-            if (!window.graphData || !window.graphData.nodes || window.graphData.nodes.length === 0) {
-                console.warn('⚠️  No valid graph data for ideas');
-                document.getElementById('ideasContainer').innerHTML = '<p style="padding: 2rem; color: #999;">Loading...</p>';
-                return;
-            }
-
-            // Group by CORE CONCEPT (רעיונות דומים) instead of primary field
-            const concepts = {};
-            const conceptColors = {};
-            const colorPalette = ['#FF6B6B', '#4ECDC4', '#45B7D1', '#FFA07A', '#98D8C8', '#F7DC6F', '#BB8FCE', '#85C1E2'];
-            let colorIdx = 0;
-
-            window.graphData.nodes.forEach(node => {
-                if (!node || !node.core_concept) return;
-                const concept = node.core_concept.trim();
-                if (!concepts[concept]) {
-                    concepts[concept] = [];
-                    conceptColors[concept] = colorPalette[colorIdx % colorPalette.length];
-                    colorIdx++;
-                }
-                concepts[concept].push(node);
-            });
-
-            const eraColors = {
-                'second-temple': '#ff7f0e',
-                'tannaim': '#2ca02c',
-                'amoraim': '#d62728',
-                'rishonim': '#9467bd',
-                'acharonim': '#8c564b',
-                'modern': '#e377c2'
-            };
-
-            // Sort by number of sages with this concept
-            const sortedConcepts = Object.keys(concepts)
-                .sort((a, b) => concepts[b].length - concepts[a].length);
-
-            let html = '<div style="padding: 2rem;">';
-            html += `<div style="margin-bottom: 2rem; padding: 1rem; background: #f0f7ff; border-left: 4px solid #2980b9; border-radius: 4px;">
-                <p style="margin: 0; color: #2c3e50; font-size: 0.95rem;">
-                    💡 <strong>${sortedConcepts.length}</strong> רעיונות מרכזיים בין החכמים |
-                    <strong>${window.graphData.nodes.length}</strong> חכמים בסך הכל
-                </p>
-            </div>`;
-
-            sortedConcepts.forEach(concept => {
-                const sages = concepts[concept];
-                const conceptColor = conceptColors[concept];
-
-                // Group sages by era
-                const byEra = {};
-                sages.forEach(s => {
-                    const era = s.era || 'Unknown';
-                    if (!byEra[era]) byEra[era] = [];
-                    byEra[era].push(s);
-                });
-
-                html += `<div style="margin-bottom: 2rem; padding: 1.5rem; background: white; border-left: 5px solid ${conceptColor}; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.08);">
-                    <div style="margin-bottom: 1rem;">
-                        <h3 style="margin: 0 0 0.5rem 0; color: ${conceptColor}; font-size: 1.15rem; font-weight: 600;">${concept}</h3>
-                        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                            <span style="display: inline-block; padding: 4px 10px; background: ${conceptColor}20; color: ${conceptColor}; border-radius: 12px; font-size: 0.8rem; font-weight: 600;">
-                                👥 ${sages.length} חכמים
-                            </span>
-                            <span style="display: inline-block; padding: 4px 10px; background: #f0f0f0; color: #666; border-radius: 12px; font-size: 0.8rem;">
-                                📖 ${Object.keys(byEra).length} תקופות
-                            </span>
-                        </div>
-                    </div>
-
-                    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem;">
-                        ${sages.map(sage => {
-                            const sageColor = eraColors[sage.era_key] || '#999';
-                            return `<div style="padding: 1rem; background: #f9f9f9; border: 2px solid ${sageColor}33; border-radius: 6px; cursor: pointer; transition: all 0.2s;"
-                                onmouseover="this.style.boxShadow='0 4px 12px ${sageColor}33'; this.style.transform='translateY(-2px)';"
-                                onmouseout="this.style.boxShadow='none'; this.style.transform='translateY(0)';"
-                                onclick="window.sageNetwork && window.sageNetwork.selectNode(window.graphData.nodes.find(n => n.id === '${sage.id}'))">
-                                <div style="font-weight: 600; color: #1a1a1a; margin-bottom: 0.5rem;">${sage.label || 'Unknown'}</div>
-                                <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: #666; margin-bottom: 0.3rem;">
-                                    <span style="display: inline-block; width: 10px; height: 10px; background: ${sageColor}; border-radius: 50%;"></span>
-                                    <span>${sage.era || 'Unknown'}</span>
-                                </div>
-                                <div style="font-size: 0.8rem; color: #888;">📍 ${sage.region || 'לא ידוע'}</div>
-                            </div>`;
-                        }).join('')}
-                    </div>
-                </div>`;
-            });
-            html += '</div>';
-
-            document.getElementById('ideasContainer').innerHTML = html || '<p>No ideas found</p>';
-        } catch (error) {
-            console.error('❌ buildIdeas error:', error);
-            document.getElementById('ideasContainer').innerHTML = '<p style="color: red;">Error loading ideas</p>';
-        }
+    .logo h1 {
+      font-family: 'Frank Ruhl Libre', serif;
+      font-size: 1.5rem;
+      color: #1a1a1a;
     }
 
-    // ========================================================================
-    // CHRONOLOGICAL TIMELINE (שלשלת הקבלה)
-    // ========================================================================
-    function buildTimeline() {
-        const zoomMultiplier = window.timelineZoom || 1.0;
-        const TL_CONFIG = {
-            LANE_HEIGHT: 130,
-            LEFT_MARGIN: 100,
-            RIGHT_MARGIN: 40,
-            TOP_MARGIN: 20,
-            DOT_RADIUS: 6,
-            LABEL_OFFSET: 14,
-            MIN_SAGE_WIDTH: 3000 * zoomMultiplier,
-            COLUMN_SLOT_WIDTH: 28 * zoomMultiplier,
-        };
-
-        const TL_ERAS = [
-            { key: 'second-temple', heLabel: 'בית שני',   color: '#8e44ad' },
-            { key: 'tannaim',       heLabel: 'תנאים',     color: '#e74c3c' },
-            { key: 'amoraim',       heLabel: 'אמוראים',   color: '#e67e22' },
-            { key: 'geonim',        heLabel: 'גאונים',    color: '#f1c40f' },
-            { key: 'rishonim',      heLabel: 'ראשונים',   color: '#27ae60' },
-            { key: 'acharonim',     heLabel: 'אחרונים',   color: '#2980b9' },
-            { key: 'modern',        heLabel: 'עת חדשה',   color: '#1abc9c' },
-        ];
-
-        const svg = document.getElementById('timeline-svg');
-        svg.setAttribute('data-built', '1');
-
-        if (!window.graphData || !window.graphData.nodes || window.graphData.nodes.length === 0) {
-            svg.innerHTML = '<text x="50%" y="50%" text-anchor="middle" fill="#999" dominant-baseline="middle">טוען נתונים...</text>';
-            document.addEventListener('supabaseReady', buildTimeline, { once: true });
-            return;
-        }
-
-        const nodes = window.graphData.nodes;
-
-        // Group by era
-        const byEra = {};
-        TL_ERAS.forEach(e => { byEra[e.key] = []; });
-        nodes.forEach(n => {
-            const key = n.era_key || n.group || 'modern';
-            if (byEra[key]) byEra[key].push(n);
-            else byEra['modern'].push(n);
-        });
-        TL_ERAS.forEach(e => {
-            byEra[e.key].sort((a, b) => (a.period_order || 0) - (b.period_order || 0));
-        });
-
-        // Find global period_order range
-        let minOrder = Infinity, maxOrder = -Infinity;
-        nodes.forEach(n => {
-            const p = n.period_order || 0;
-            if (p < minOrder) minOrder = p;
-            if (p > maxOrder) maxOrder = p;
-        });
-        const orderRange = maxOrder - minOrder || 1;
-
-        // Canvas dimensions
-        const totalHeight = TL_CONFIG.TOP_MARGIN + TL_ERAS.length * TL_CONFIG.LANE_HEIGHT + 20;
-        const viewportWidth = document.getElementById('timeline-view').clientWidth;
-        const drawWidth = Math.max(
-            TL_CONFIG.MIN_SAGE_WIDTH,
-            viewportWidth - TL_CONFIG.LEFT_MARGIN - TL_CONFIG.RIGHT_MARGIN
-        );
-        const totalWidth = TL_CONFIG.LEFT_MARGIN + drawWidth + TL_CONFIG.RIGHT_MARGIN;
-
-        function xScale(periodOrder) {
-            const fraction = (periodOrder - minOrder) / orderRange;
-            return TL_CONFIG.LEFT_MARGIN + fraction * drawWidth;
-        }
-
-        // Stagger assignment
-        const columnOccupancy = {};
-        const STAGGER_ROWS = 3;
-
-        function assignPosition(sage, eraKey) {
-            if (!columnOccupancy[eraKey]) columnOccupancy[eraKey] = {};
-            const occ = columnOccupancy[eraKey];
-            const xPixel = xScale(sage.period_order || 0);
-            const bucket = Math.round(xPixel / TL_CONFIG.COLUMN_SLOT_WIDTH);
-            if (occ[bucket] === undefined) occ[bucket] = 0;
-            const row = occ[bucket] % STAGGER_ROWS;
-            occ[bucket]++;
-            return { x: xPixel, row };
-        }
-
-        // Clear and size SVG
-        const svgEl = d3.select('#timeline-svg')
-            .attr('width', totalWidth)
-            .attr('height', totalHeight);
-        svgEl.selectAll('*').remove();
-
-        // Defs: glow filter
-        const defs = svgEl.append('defs');
-        const filter = defs.append('filter').attr('id', 'tl-glow');
-        filter.append('feGaussianBlur').attr('stdDeviation', '3').attr('result', 'coloredBlur');
-        const feMerge = filter.append('feMerge');
-        feMerge.append('feMergeNode').attr('in', 'coloredBlur');
-        feMerge.append('feMergeNode').attr('in', 'SourceGraphic');
-
-        // Era bands
-        TL_ERAS.forEach((era, i) => {
-            const bandY = TL_CONFIG.TOP_MARGIN + i * TL_CONFIG.LANE_HEIGHT;
-
-            svgEl.append('rect')
-                .attr('x', 0).attr('y', bandY)
-                .attr('width', totalWidth).attr('height', TL_CONFIG.LANE_HEIGHT)
-                .attr('class', i % 2 === 0 ? 'tl-band-even' : 'tl-band-odd');
-
-            svgEl.append('rect')
-                .attr('x', 0).attr('y', bandY)
-                .attr('width', 4).attr('height', TL_CONFIG.LANE_HEIGHT)
-                .attr('fill', era.color);
-
-            svgEl.append('line')
-                .attr('x1', 0).attr('y1', bandY + TL_CONFIG.LANE_HEIGHT)
-                .attr('x2', totalWidth).attr('y2', bandY + TL_CONFIG.LANE_HEIGHT)
-                .attr('class', 'tl-band-border');
-
-            svgEl.append('text')
-                .attr('x', TL_CONFIG.LEFT_MARGIN - 12)
-                .attr('y', bandY + TL_CONFIG.LANE_HEIGHT / 2)
-                .attr('class', 'tl-era-label')
-                .attr('fill', era.color)
-                .text(era.heLabel);
-
-            svgEl.append('text')
-                .attr('x', TL_CONFIG.LEFT_MARGIN + 8)
-                .attr('y', bandY + TL_CONFIG.LANE_HEIGHT / 2)
-                .attr('class', 'tl-band-header')
-                .attr('fill', era.color)
-                .text(era.heLabel);
-        });
-
-        // Tooltip
-        let tooltip = document.getElementById('tl-tooltip');
-        if (!tooltip) {
-            tooltip = document.createElement('div');
-            tooltip.id = 'tl-tooltip';
-            document.getElementById('timeline-view').style.position = 'relative';
-            document.getElementById('timeline-view').appendChild(tooltip);
-        }
-
-        // Render sages
-        TL_ERAS.forEach((era, eraIdx) => {
-            const bandY = TL_CONFIG.TOP_MARGIN + eraIdx * TL_CONFIG.LANE_HEIGHT;
-            const sagesInEra = byEra[era.key];
-            const rowHeight = (TL_CONFIG.LANE_HEIGHT - 30) / STAGGER_ROWS;
-
-            sagesInEra.forEach(sage => {
-                const { x, row } = assignPosition(sage, era.key);
-                const dotY = bandY + 20 + row * rowHeight + rowHeight / 2;
-
-                const group = svgEl.append('g')
-                    .attr('class', 'tl-sage-group')
-                    .attr('data-sage-id', sage.id)
-                    .attr('transform', `translate(${x}, ${dotY})`);
-
-                group.append('circle')
-                    .attr('class', 'tl-dot')
-                    .attr('r', TL_CONFIG.DOT_RADIUS)
-                    .attr('fill', era.color)
-                    .attr('id', `tl-dot-${sage.id}`);
-
-                group.append('text')
-                    .attr('class', 'tl-label')
-                    .attr('y', TL_CONFIG.DOT_RADIUS + 3)
-                    .text(sage.label);
-
-                group.on('click', (event) => {
-                    event.stopPropagation();
-                    d3.selectAll('.tl-dot').classed('tl-selected', false);
-                    d3.select(`#tl-dot-${sage.id}`).classed('tl-selected', true);
-                    if (window.sageNetwork) {
-                        window.sageNetwork.selectNode(sage);
-                    }
-                });
-
-                group.on('mouseenter', function(event) {
-                    tooltip.innerHTML = `
-                        <strong style="font-family:'Frank Ruhl Libre',serif;font-size:1rem;color:var(--color-primary)">${sage.label}</strong><br>
-                        <span style="color:${era.color}">${era.heLabel}</span>
-                        ${sage.region ? `<br><small>${sage.region}</small>` : ''}
-                        ${sage.primary_field ? `<br><small style="color:var(--color-secondary)">${sage.primary_field}</small>` : ''}
-                    `;
-                    tooltip.classList.add('visible');
-                });
-
-                group.on('mousemove', function(event) {
-                    const rect = document.getElementById('timeline-view').getBoundingClientRect();
-                    const scrollLeft = document.getElementById('timeline-scroll-wrapper').scrollLeft;
-                    const tx = event.clientX - rect.left + scrollLeft + 12;
-                    const ty = event.clientY - rect.top - 10;
-                    tooltip.style.left = tx + 'px';
-                    tooltip.style.top = ty + 'px';
-                });
-
-                group.on('mouseleave', function() {
-                    tooltip.classList.remove('visible');
-                });
-            });
-        });
-
-        // Reset scroll to leftmost
-        document.getElementById('timeline-scroll-wrapper').scrollLeft = 0;
-
-        console.log(`✓ Timeline built: ${nodes.length} sages across ${TL_ERAS.length} eras`);
+    .logo p {
+      font-size: 0.8rem;
+      color: #888;
     }
 
-    // ========================================================================
-    // SEMANTIC SEARCH (Cross-Tab)
-    // ========================================================================
-    document.addEventListener('DOMContentLoaded', () => {
-        // Escape key closes sidebar
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && document.getElementById('sidebar').classList.contains('active')) {
-                if (window.sageNetwork) {
-                    window.sageNetwork.closeSidebar?.();
-                }
-            }
-        });
-
-        // TASK E: Unified multi-view search with concept/idea filtering
-        const searchInput = document.getElementById('searchInput');
-        if (searchInput) {
-            searchInput.addEventListener('input', async (e) => {
-                const query = e.target.value.trim();
-                const searchStats = document.getElementById('searchStats') || createSearchStats();
-
-                // Guard: Ensure search manager and graph data are ready
-                if (!window.searchManager || !window.graphData) {
-                    console.warn('⚠️ [Search] Manager or data not ready');
-                    return;
-                }
-
-                // Execute unified search (name_he, core_concept, tags, era, field, region)
-                const results = await window.searchManager.search(query);
-
-                if (!query) {
-                    // RESET: Return all views to normal
-                    searchStats.style.display = 'none';
-
-                    // Reset graph visualization
-                    window.searchManager.updateGraphView(window.sageNetwork, results);
-
-                    // Reset map view
-                    mapManager.resetView();
-
-                    // Reset traditions/ideas opacity
-                    window.searchManager.updateTraditionsAndIdeasViews(results);
-
-                    // Reset timeline
-                    window.searchManager.updateTimelineView(results);
-
-                    return;
-                }
-
-                // Display search statistics
-                searchStats.innerHTML = `
-                    <div style="font-size: 0.85rem; color: var(--color-text-secondary); padding: 0.5rem 1rem; background: var(--color-bg-light); border-radius: 6px;">
-                        <strong style="color: var(--color-primary);">${results.stats.matched}</strong> of <strong>${results.stats.totalSages}</strong> sages match
-                        (<strong>${results.stats.percentage}%</strong>)
-                        ${results.stats.matched === 0 ? ' — נא לנסות חיפוש אחר' : ''}
-                    </div>
-                `;
-                searchStats.style.display = 'block';
-
-                console.log(`🔍 [Search] "${query}" → ${results.stats.matched}/${results.stats.totalSages} sages, ${results.stats.connected} connections`);
-
-                // UPDATE ALL VIEWS SIMULTANEOUSLY
-                // 1. GRAPH VIEW: Dim unmatched, highlight matched with smooth opacity transition
-                window.searchManager.updateGraphView(window.sageNetwork, results);
-
-                // 2. MAP VIEW: Auto-zoom to matched sages, highlight markers
-                window.searchManager.updateMapView(mapManager, results);
-
-                // 3. TRADITIONS & IDEAS VIEWS: Filter card grids by matching sages
-                window.searchManager.updateTraditionsAndIdeasViews(results);
-
-                // 4. TIMELINE VIEW: Highlight matching dots with glow effect
-                window.searchManager.updateTimelineView(results);
-            });
-        }
-
-        // TASK D: Helper function to create search stats display
-        function createSearchStats() {
-            const stats = document.createElement('div');
-            stats.id = 'searchStats';
-            stats.style.cssText = `
-                position: absolute;
-                top: 95px;
-                left: 280px;
-                background: white;
-                padding: 0.5rem 1rem;
-                border-radius: 6px;
-                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-                font-size: 0.85rem;
-                color: #666;
-                z-index: 100;
-                display: none;
-            `;
-            document.body.appendChild(stats);
-            return stats;
-        }
-
-        // Legend Toggle Controls
-        const legendToggle = document.getElementById('legend-toggle');
-        const legendClose = document.getElementById('legend-close');
-        const legend = document.getElementById('legend');
-
-        if (legendToggle) {
-            legendToggle.addEventListener('click', () => {
-                legend.classList.add('visible');
-                localStorage.setItem('legendVisible', 'true');
-            });
-        }
-
-        if (legendClose) {
-            legendClose.addEventListener('click', () => {
-                legend.classList.remove('visible');
-                localStorage.setItem('legendVisible', 'false');
-            });
-        }
-
-        // Restore legend visibility state
-        const legendWasVisible = localStorage.getItem('legendVisible') === 'true';
-        if (legendWasVisible) {
-            legend.classList.add('visible');
-        }
-
-        // Map Legend Toggle Controls (Initialize lazily when map view is active)
-        function initializeMapLegend() {
-            const mapLegend = document.getElementById('mapLegend');
-            const mapLegendToggle = document.getElementById('mapLegendToggle');
-            const mapLegendClose = document.getElementById('mapLegendClose');
-            const mapLegendMinimize = document.getElementById('mapLegendMinimize');
-
-            if (!mapLegend) return;
-
-            if (mapLegendToggle && !mapLegendToggle.hasListener) {
-                mapLegendToggle.addEventListener('click', () => {
-                    mapLegend.classList.remove('minimized');
-                    mapLegend.style.display = 'flex';
-                    mapLegendToggle.classList.remove('visible');
-                    localStorage.setItem('mapLegendVisible', 'true');
-                });
-                mapLegendToggle.hasListener = true;
-            }
-
-            if (mapLegendClose && !mapLegendClose.hasListener) {
-                mapLegendClose.addEventListener('click', () => {
-                    mapLegend.style.display = 'none';
-                    mapLegendToggle.classList.add('visible');
-                    localStorage.setItem('mapLegendVisible', 'false');
-                });
-                mapLegendClose.hasListener = true;
-            }
-
-            if (mapLegendMinimize && !mapLegendMinimize.hasListener) {
-                mapLegendMinimize.addEventListener('click', () => {
-                    mapLegend.classList.toggle('minimized');
-                    const isMinimized = mapLegend.classList.contains('minimized');
-                    localStorage.setItem('mapLegendMinimized', isMinimized ? 'true' : 'false');
-                });
-                mapLegendMinimize.hasListener = true;
-            }
-
-            // Restore map legend visibility state on map view (default: visible)
-            const mapLegendWasVisible = localStorage.getItem('mapLegendVisible') !== 'false';
-            const mapLegendWasMinimized = localStorage.getItem('mapLegendMinimized') === 'true';
-            if (mapLegendWasVisible) {
-                mapLegend.style.display = 'flex';
-                mapLegendToggle.classList.remove('visible');
-                if (mapLegendWasMinimized) {
-                    mapLegend.classList.add('minimized');
-                }
-            } else {
-                mapLegend.style.display = 'none';
-                mapLegendToggle.classList.add('visible');
-            }
-
-            // Override: Show legend by default on first load (when not in localStorage yet)
-            if (!localStorage.getItem('mapLegendVisible')) {
-                mapLegend.style.display = 'flex';
-                mapLegendToggle.classList.remove('visible');
-            }
-        }
-
-        // Initialize map legend when map view is shown
-        const originalSwitchView = window.switchView;
-        window.switchView = function(view) {
-            originalSwitchView(view);
-            if (view === 'map') {
-                setTimeout(initializeMapLegend, 100);
-            }
-        };
-
-    });
-
-    // ========================================================================
-    // PDF EXPORT
-    // ========================================================================
-    function exportSagePDF(sageId) {
-        if (!window.graphData || !window.graphData.nodes) {
-            alert('Data not ready. Please try again.');
-            return;
-        }
-
-        const sage = window.graphData.nodes.find(n => n.id === String(sageId));
-        if (!sage) {
-            alert('Sage not found.');
-            return;
-        }
-
-        // Get related sages with connection types
-        const links = (window.graphData.links || []).filter(l =>
-            String(l.source.id || l.source) === String(sageId) ||
-            String(l.target.id || l.target) === String(sageId)
-        );
-
-        // Get connection details
-        let relatedHTML = '';
-        if (links.length > 0) {
-            relatedHTML = '<h2 style="border-right: 4px solid ' + sage.era_key + '; padding-right: 0.75rem;">קישורים (' + links.length + ')</h2>';
-            relatedHTML += '<ul style="margin: 0.5rem 0; padding-right: 1.5rem;">';
-            links.forEach(link => {
-                const relatedId = String(link.source.id || link.source) === String(sageId) ? (link.target.id || link.target) : (link.source.id || link.source);
-                const relatedSage = window.graphData.nodes.find(n => n.id === String(relatedId));
-                if (relatedSage) {
-                    relatedHTML += '<li>' + relatedSage.label + ' (' + link.connection_type + ')</li>';
-                }
-            });
-            relatedHTML += '</ul>';
-        }
-
-        // Get era color
-        const eraColors = {
-            'second-temple': '#8e44ad', 'tannaim': '#e74c3c', 'amoraim': '#e67e22',
-            'geonim': '#f1c40f', 'rishonim': '#27ae60', 'acharonim': '#2980b9', 'modern': '#1abc9c'
-        };
-        const eraColor = eraColors[sage.era_key] || '#999';
-
-        // Build migration path section
-        let migrationHTML = '';
-        if (sage.migration_path && typeof sage.migration_path === 'string') {
-            try {
-                const path = JSON.parse(sage.migration_path);
-                if (path && path.description) {
-                    migrationHTML = '<section><h2 style="border-right: 4px solid ' + eraColor + '; padding-right: 0.75rem;">🛤️ מסלול הנדידה</h2><p>' + path.description + '</p>';
-                    if (path.intermediate && path.intermediate.length > 0) {
-                        migrationHTML += '<p><strong>תחנות:</strong> ' + path.intermediate.join(' ← ') + '</p>';
-                    }
-                    migrationHTML += '</section>';
-                }
-            } catch (e) {}
-        }
-
-        // Build HTML for print
-        const printHTML = `<!DOCTYPE html>
-<html lang="he" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <title>${sage.label}</title>
-    <style>
-        body {
-            direction: rtl;
-            font-family: 'Frank Ruhl Libre', serif;
-            max-width: 800px;
-            margin: 2rem auto;
-            padding: 1rem;
-            color: #333;
-            line-height: 1.6;
-        }
-        h1 {
-            color: #3d2817;
-            border-bottom: 3px solid #8b7965;
-            padding-bottom: 0.75rem;
-            margin-bottom: 1.5rem;
-            font-size: 2rem;
-        }
-        h2 {
-            color: #3d2817;
-            font-size: 1.2rem;
-            margin-top: 1.5rem;
-            margin-bottom: 0.75rem;
-        }
-        .era-badge {
-            display: inline-block;
-            background: ${eraColor};
-            color: white;
-            padding: 0.4rem 0.9rem;
-            border-radius: 12px;
-            font-size: 0.9rem;
-            margin: 0.25rem 0.25rem 0.25rem 0;
-        }
-        .meta-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin: 1rem 0;
-            padding: 1rem;
-            background: #f5f2ea;
-            border-radius: 8px;
-        }
-        .meta-item {
-            padding: 0.5rem 0;
-        }
-        .meta-label {
-            font-weight: 700;
-            color: #3d2817;
-        }
-        section {
-            margin: 1.5rem 0;
-            padding-bottom: 1rem;
-        }
-        .no-print {
-            display: none;
-        }
-        @media print {
-            body { margin: 0; padding: 0; }
-            h1 { page-break-after: avoid; }
-        }
-    </style>
-</head>
-<body>
-    <h1>${sage.label}</h1>
-    <div class="era-badge">${sage.era}</div>
-
-    <div class="meta-grid">
-        ${sage.region ? '<div class="meta-item"><span class="meta-label">אזור:</span> ' + sage.region + '</div>' : ''}
-        ${sage.primary_field ? '<div class="meta-item"><span class="meta-label">תחום:</span> ' + sage.primary_field + '</div>' : ''}
-    </div>
-
-    <section>
-        <h2 style="border-right: 4px solid ${eraColor}; padding-right: 0.75rem;">📖 ביוגרפיה</h2>
-        <p>${sage.summary || sage.bio || 'No biography available'}</p>
-    </section>
-
-    ${sage.core_concept ? '<section><h2 style="border-right: 4px solid ' + eraColor + '; padding-right: 0.75rem;">💡 הרעיון המרכזי</h2><p><em>' + sage.core_concept + '</em></p></section>' : ''}
-
-    ${migrationHTML}
-
-    ${relatedHTML}
-
-    <footer style="margin-top: 2rem; border-top: 1px solid #ccc; padding-top: 1rem; font-size: 0.8rem; color: #999;">
-        <p>אוצר חכמים — Ozar Chachamim</p>
-        <p>Exported: ${new Date().toLocaleDateString('he-IL')}</p>
-    </footer>
-</body>
-</html>`;
-
-        const win = window.open('', '', 'width=900,height=700');
-        win.document.write(printHTML);
-        win.document.close();
-        setTimeout(() => win.print(), 250);
+    .tabs {
+      display: flex;
+      gap: 2rem;
+      flex: 1;
     }
 
-    // ✅ Supabase data loading handled by supabase-client.js module
-
-    // Data is loaded by supabase-client.js module
-    console.log('[index.html] Waiting for Supabase data...');
-
-    // Listen for Supabase ready event to initialize views
-    document.addEventListener('supabaseReady', (e) => {
-        console.log(`[index.html] ✅ Supabase ready: ${e.detail.nodes} nodes + ${e.detail.links} edges`);
-
-        // Initialize search manager with graph data
-        if (window.searchManager && window.graphData) {
-            window.searchManager.initialize(window.graphData);
-            console.log('✅ [index.html] Search manager initialized');
-        }
-
-        // Views initialize lazily when tabs are clicked
-    });
-
-    // Path Finding Function
-    function findPath() {
-        const a = document.getElementById('sageA').value.trim().toLowerCase();
-        const b = document.getElementById('sageB').value.trim().toLowerCase();
-        const msg = document.getElementById('pathMsg');
-
-        if (!a || !b) {
-            msg.textContent = '❌ הקלד שני שמות';
-            return;
-        }
-
-        if (!window.graphData) {
-            msg.textContent = '⏳ טוען נתונים...';
-            return;
-        }
-
-        // Find nodes by name
-        const nodeA = window.graphData.nodes.find(n =>
-            n.label.toLowerCase().includes(a) || n.name_en?.toLowerCase().includes(a)
-        );
-        const nodeB = window.graphData.nodes.find(n =>
-            n.label.toLowerCase().includes(b) || n.name_en?.toLowerCase().includes(b)
-        );
-
-        if (!nodeA) {
-            msg.textContent = `❌ לא נמצא: ${a}`;
-            return;
-        }
-        if (!nodeB) {
-            msg.textContent = `❌ לא נמצא: ${b}`;
-            return;
-        }
-
-        // Simple BFS
-        const queue = [[String(nodeA.id), [String(nodeA.id)]]];
-        const visited = new Set([String(nodeA.id)]);
-        const targetId = String(nodeB.id);
-
-        while (queue.length > 0) {
-            const [current, path] = queue.shift();
-
-            if (current === targetId) {
-                const pathNames = path.map(id =>
-                    window.graphData.nodes.find(n => n.id === id)?.label
-                ).join(' ← ');
-                msg.textContent = `✅ דרך: ${pathNames} (${path.length - 1} קשרים)`;
-                return;
-            }
-
-            const links = window.graphData.links.filter(l =>
-                String(l.source) === current || String(l.target) === current
-            );
-
-            for (const link of links) {
-                const next = String(link.source) === current ? String(link.target) : String(link.source);
-                if (!visited.has(next)) {
-                    visited.add(next);
-                    queue.push([next, [...path, next]]);
-                }
-            }
-        }
-
-        msg.textContent = '❌ אין דרך בין החכמים';
+    .tab-btn {
+      background: none;
+      border: none;
+      padding: 0.75rem 0;
+      font-size: 0.95rem;
+      color: #666;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
-</script>
 
-</body>
-</html>
+    .tab-btn:hover {
+      color: #333;
+      border-bottom-color: #ddd;
+    }
+
+    .tab-btn.active {
+      color: #1a1a1a;
+      border-bottom-color: #333;
+      font-weight: 600;
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .btn {
+      padding: 0.6rem 1rem;
+      border: 1px solid #ddd;
+      background: white;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .btn:hover {
+      background: #f5f5f5;
+      border-color: #999;
+    }
+
+    .btn-primary {
+      background: #333;
+      color: white;
+      border-color: #333;
+    }
+
+    .btn-primary:hover {
+      background: #1a1a1a;
+    }
+
+    /* ============================================================================
+       MAIN CONTAINER
+       ============================================================================ */
+
+    #app {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 100vh;
+    }
+
+    .main {
+      flex: 1;
+      display: flex;
+      overflow: hidden;
+    }
+
+    .view {
+      display: none;
+      width: 100%;
+      height: 100%;
+    }
+
+    .view.active {
+      display: flex;
+    }
+
+    .view.active.map-view {
+      display: block !important;  /* Map MUST be block, not flex */
+      flex: none !important;
+    }
+
+    /* ============================================================================
+       NETWORK VIEW - Three Column Layout
+       ============================================================================ */
+
+    .network-view {
+      gap: 0;
+    }
+
+    /* LEFT SIDEBAR */
+    .sidebar {
+      width: 320px;
+      background: white;
+      border-right: 1px solid #e0e0e0;
+      overflow-y: auto;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 2px 0 8px rgba(0,0,0,0.08);
+    }
+
+    .sidebar-header {
+      padding: 1.5rem;
+      border-bottom: 1px solid #f0f0f0;
+      background: #fafafa;
+    }
+
+    .sidebar-header h2 {
+      font-family: 'Frank Ruhl Libre', serif;
+      font-size: 1.6rem;
+      color: #1a1a1a;
+      margin-bottom: 0.5rem;
+    }
+
+    .sidebar-header p {
+      font-size: 0.9rem;
+      color: #888;
+      margin: 0.5rem 0;
+    }
+
+    .era-badge {
+      display: inline-block;
+      padding: 0.4rem 0.8rem;
+      border-radius: 16px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: white;
+      margin-top: 0.75rem;
+    }
+
+    .sidebar-content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1.5rem;
+    }
+
+    .sidebar-section {
+      margin-bottom: 1.5rem;
+    }
+
+    .sidebar-section h3 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #666;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .sidebar-section p, .sidebar-section li {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: #555;
+    }
+
+    .sidebar-section ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .sidebar-section li {
+      padding: 0.4rem 0;
+      color: #2980b9;
+      cursor: pointer;
+    }
+
+    .sidebar-section li:hover {
+      text-decoration: underline;
+    }
+
+    .sidebar-placeholder {
+      text-align: center;
+      color: #999;
+      padding: 2rem 0;
+    }
+
+    /* CENTER - GRAPH */
+    .graph-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      background: white;
+    }
+
+    .graph-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid #e0e0e0;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .graph-search {
+      flex: 1;
+      max-width: 300px;
+    }
+
+    .graph-search input {
+      width: 100%;
+      padding: 0.6rem 1rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      direction: rtl;
+    }
+
+    .graph-search input:fo

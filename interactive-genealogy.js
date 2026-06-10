@@ -152,21 +152,55 @@ class InteractiveGenealogy {
     const simulation = d3.forceSimulation(this.data.nodes)
       .force('link', d3.forceLink(this.data.links || [])
         .id(d => String(d.id))
-        .distance(150)
-        .strength(0.3))
-      .force('charge', d3.forceManyBody().strength(-800))
+        .distance(200)
+        .strength(0.2))
+      .force('charge', d3.forceManyBody().strength(-1200))
       .force('center', d3.forceCenter(width / 2, height / 2))
-      .force('collision', d3.forceCollide(45));
+      .force('collision', d3.forceCollide(60));
 
-    // Draw links first
+    // Color map for connection types
+    const connectionTypeColors = {
+      'student': '#e74c3c',      // Red - teacher-student
+      'teacher': '#3498db',      // Blue - teacher
+      'colleague': '#2ecc71',    // Green - colleague
+      'influence': '#f39c12',    // Orange - influence
+      'traditional': '#9b59b6',  // Purple - traditional
+      'family': '#e67e22',       // Dark orange - family
+      'default': '#95a5a6'       // Gray - unknown
+    };
+
+    // Draw links first (teacher-student connections)
     const links = g.selectAll('.link')
       .data(this.data.links || [])
       .enter()
-      .append('line')
+      .append('g')
+      .attr('class', 'link-group')
+      .style('cursor', 'pointer')
+      .on('mouseover', function(event, d) {
+        d3.select(this).select('line').attr('stroke-width', 3).attr('opacity', 0.8);
+        d3.select(this).select('text').style('display', 'block');
+      })
+      .on('mouseout', function(event, d) {
+        d3.select(this).select('line').attr('stroke-width', 1.5).attr('opacity', 0.5);
+        d3.select(this).select('text').style('display', 'none');
+      });
+
+    // Add line to link group
+    links.append('line')
       .attr('class', 'link')
-      .attr('stroke', '#ccc')
-      .attr('stroke-width', 2)
-      .attr('opacity', 0.4);
+      .attr('stroke', d => connectionTypeColors[d.type] || connectionTypeColors['default'])
+      .attr('stroke-width', 1.5)
+      .attr('opacity', 0.5)
+      .attr('stroke-dasharray', '5,5');
+
+    // Add text label for link type
+    links.append('text')
+      .attr('class', 'link-label')
+      .attr('font-size', '10px')
+      .attr('fill', '#666')
+      .attr('text-anchor', 'middle')
+      .attr('display', 'none')
+      .text(d => d.type || 'קשר');
 
     // Draw nodes as circles with labels
     const nodes = g.selectAll('.node')
@@ -174,10 +208,10 @@ class InteractiveGenealogy {
       .enter()
       .append('circle')
       .attr('class', d => `node node-${d.era_key || 'unknown'}`)
-      .attr('r', 20)
+      .attr('r', 32)
       .attr('fill', d => this.colorMap[d.era_key || 'unknown'] || '#999')
       .attr('stroke', 'white')
-      .attr('stroke-width', 2)
+      .attr('stroke-width', 3)
       .style('cursor', 'pointer')
       .call(d3.drag()
         .on('start', (event, d) => {
@@ -199,7 +233,7 @@ class InteractiveGenealogy {
         this.selectNode(d);
       });
 
-    // Add labels to nodes
+    // Add labels to nodes (Hebrew names in circles, English below)
     const labels = g.selectAll('.label')
       .data(this.data.nodes)
       .enter()
@@ -207,22 +241,44 @@ class InteractiveGenealogy {
       .attr('class', 'label')
       .attr('text-anchor', 'middle')
       .attr('dy', '.3em')
-      .attr('font-size', '11px')
+      .attr('font-size', '12px')
       .attr('font-weight', 'bold')
+      .attr('font-family', 'Frank Ruhl Libre, serif')
       .attr('fill', 'white')
       .attr('pointer-events', 'none')
       .text(d => {
-        const parts = d.label.split(' ');
-        return parts.length > 1 ? parts.slice(0, 2).join('\n') : d.label;
+        // Show first 10 chars of Hebrew name
+        const name = d.name_he || d.label || '';
+        return name.substring(0, 10);
       });
+
+    // Add English names below nodes
+    const englishLabels = g.selectAll('.english-label')
+      .data(this.data.nodes)
+      .enter()
+      .append('text')
+      .attr('class', 'english-label')
+      .attr('text-anchor', 'middle')
+      .attr('dy', '2em')
+      .attr('font-size', '9px')
+      .attr('font-family', 'Inter, sans-serif')
+      .attr('fill', '#666')
+      .attr('pointer-events', 'none')
+      .text(d => d.name_en ? d.name_en.substring(0, 15) : '');
 
     // Update on simulation tick
     simulation.on('tick', () => {
-      links
+      // Update links with text labels
+      links.select('line')
         .attr('x1', d => d.source.x)
         .attr('y1', d => d.source.y)
         .attr('x2', d => d.target.x)
         .attr('y2', d => d.target.y);
+
+      // Update link labels (position at midpoint)
+      links.select('text')
+        .attr('x', d => (d.source.x + d.target.x) / 2)
+        .attr('y', d => (d.source.y + d.target.y) / 2);
 
       nodes
         .attr('cx', d => d.x)
@@ -231,6 +287,10 @@ class InteractiveGenealogy {
       labels
         .attr('x', d => d.x)
         .attr('y', d => d.y);
+
+      englishLabels
+        .attr('x', d => d.x)
+        .attr('y', d => d.y + 45);
     });
 
     // Add zoom/pan
@@ -456,31 +516,63 @@ class InteractiveGenealogy {
     }
 
     this.selectedNode = node;
+
+    // Call app's showNodeDetails if available
+    if (window.app && window.app.showNodeDetails) {
+      window.app.showNodeDetails(node);
+      return;
+    }
     const sidebar = document.getElementById('sidebar');
 
-    // Build sidebar content similar to graph.js
+    // Build comprehensive sidebar with all enriched data
     const eraColor = this.colorMap[node.era_key] || this.colorMap['unknown'];
 
     const html = `
-      <button class="sidebar-close" style="position: absolute; top: 10px; left: 10px; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #666; padding: 0.5rem;">
+      <button class="sidebar-close" style="position: absolute; top: 10px; left: 10px; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #666; padding: 0.5rem; z-index: 10;">
         <i class="fas fa-times"></i>
       </button>
 
-      <div style="padding: 2rem 1.5rem; text-align: center;">
+      <div style="padding: 2rem 1.5rem; text-align: right;">
+        <!-- Era Badge -->
         <span style="display: inline-block; background: ${eraColor}; color: white; padding: 6px 16px; border-radius: 20px; font-size: 0.75rem; font-weight: 700;">
           ${node.era || 'Unknown'}
         </span>
 
-        <h2 style="margin: 1rem 0 0.5rem 0; font-size: 1.8rem; color: ${eraColor}; font-family: 'Frank Ruhl Libre', serif;">
-          ${node.label}
+        <!-- Name -->
+        <h2 style="margin: 1rem 0 0.5rem 0; font-size: 1.8rem; color: ${eraColor}; font-family: 'Frank Ruhl Libre', serif; line-height: 1.2;">
+          ${node.label || 'Unknown'}
         </h2>
 
-        ${node.region ? `<p style="color: #666; margin: 0.5rem 0;">📍 ${node.region}</p>` : ''}
-        ${node.primary_field ? `<p style="color: #888; margin: 0.5rem 0;">🎓 ${node.primary_field}</p>` : ''}
+        <!-- Dates/Period -->
+        ${node.dates ? `<p style="color: #e74c3c; font-weight: 600; margin: 0.5rem 0; font-size: 0.95rem;">📅 ${node.dates}</p>` : ''}
 
-        ${node.summary ? `<div style="margin: 1.5rem 0; font-size: 0.95rem; line-height: 1.6; color: #333;">${node.summary}</div>` : ''}
+        <!-- Location/Region -->
+        ${node.location ? `<p style="color: #3498db; margin: 0.5rem 0; font-size: 0.95rem;">📍 ${node.location}</p>` : ''}
 
-        ${node.core_concept ? `<div style="background: #f0f8ff; padding: 1rem; border-left: 4px solid ${eraColor}; margin: 1rem 0; border-radius: 4px; font-size: 0.9rem;">💡 ${node.core_concept}</div>` : ''}
+        <!-- Primary Field -->
+        ${node.field ? `<p style="color: #27ae60; margin: 0.5rem 0; font-size: 0.95rem;">🎓 ${node.field}</p>` : ''}
+
+        <!-- Bio/Summary -->
+        ${node.bio || node.summary ? `<div style="margin: 1.5rem 0; padding: 1rem; background: #f8f9fa; border-radius: 6px; font-size: 0.9rem; line-height: 1.6; color: #444; text-align: right;">
+          ${node.bio || node.summary}
+        </div>` : ''}
+
+        <!-- Core Concept -->
+        ${node.core_concept ? `<div style="background: #fff3cd; padding: 1rem; border-right: 4px solid ${eraColor}; margin: 1rem 0; border-radius: 4px; font-size: 0.9rem; text-align: right;">
+          <strong>💡 רעיון מרכזי:</strong><br/>${node.core_concept}
+        </div>` : ''}
+
+        <!-- Related Figures -->
+        ${node.related_sages ? `<div style="margin: 1rem 0; padding: 1rem; background: #e8f4f8; border-radius: 6px; font-size: 0.9rem; text-align: right;">
+          <strong>🔗 דמויות קשורות:</strong><br/>${node.related_sages}
+        </div>` : ''}
+
+        <!-- Spotify Link -->
+        ${node.spotify_url ? `<div style="margin: 1.5rem 0;">
+          <a href="${node.spotify_url}" target="_blank" style="display: inline-block; background: #1DB954; color: white; padding: 0.5rem 1rem; border-radius: 20px; text-decoration: none; font-size: 0.85rem; font-weight: 600;">
+            🎧 שמע בספוטיפיי
+          </a>
+        </div>` : ''}
       </div>
     `;
 
@@ -512,3 +604,4 @@ class InteractiveGenealogy {
 
 // Export for module import
 export { InteractiveGenealogy };
+                                                                          

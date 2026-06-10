@@ -169,21 +169,47 @@ class SageNetwork {
       .force('center', d3.forceCenter(width / 2, height / 2))
       .force('collision', d3.forceCollide(32));
 
-    // Draw links
-    const link = g.selectAll('.link')
+    // Draw links as groups (line + label)
+    const linkGroup = g.selectAll('.link-group')
       .data(this.data.links || [])
       .enter()
-      .append('line')
+      .append('g')
+      .attr('class', 'link-group');
+
+    // Add lines to each group
+    linkGroup.append('line')
       .attr('class', d => `link link-${d.type}`)
       .attr('stroke', d => {
         const colorMap = {
           'student': '#4ecdc4', 'teacher': '#2980b9', 'influence': '#8b7965',
-          'oppose': '#ff6b6b', 'colleague': '#95e1d3', 'predecessor': '#f9ca24'
+          'oppose': '#ff6b6b', 'colleague': '#95e1d3', 'predecessor': '#f9ca24',
+          'contemporary': '#a29bfe', 'family': '#fd79a8'
         };
         return colorMap[d.type] || '#999';
       })
       .attr('stroke-width', 2)
       .attr('opacity', 0.6);
+
+    // Add labels to each line
+    linkGroup.append('text')
+      .attr('class', 'link-label')
+      .attr('font-size', '0.75rem')
+      .attr('fill', '#666')
+      .attr('text-anchor', 'middle')
+      .attr('dy', '-5')
+      .text(d => {
+        const typeMap = {
+          'student': 'תלמיד',
+          'teacher': 'רב',
+          'colleague': 'עמית',
+          'influence': 'השפעה',
+          'oppose': 'עמדה מנוגדת',
+          'predecessor': 'קודם',
+          'contemporary': 'בן דור',
+          'family': 'קשר משפחה'
+        };
+        return typeMap[d.type] || d.type;
+      });
 
     // Draw nodes
     this.node = g.selectAll('.node')
@@ -206,11 +232,19 @@ class SageNetwork {
 
     // Simulation tick
     this.simulation.on('tick', () => {
-      link.attr('x1', d => d.source.x)
+      // Update link lines
+      linkGroup.select('line')
+        .attr('x1', d => d.source.x)
         .attr('y1', d => d.source.y)
         .attr('x2', d => d.target.x)
         .attr('y2', d => d.target.y);
 
+      // Update link labels (centered between source and target)
+      linkGroup.select('text')
+        .attr('x', d => (d.source.x + d.target.x) / 2)
+        .attr('y', d => (d.source.y + d.target.y) / 2);
+
+      // Update node positions
       this.node.attr('cx', d => d.x)
         .attr('cy', d => d.y);
     });
@@ -422,10 +456,15 @@ class SageNetwork {
       'contemporary': '#9b59b6'     // Purple
     };
 
-    g.selectAll('.timeline-link')
+    // Draw link groups (line + label)
+    const linkGroup = g.selectAll('.timeline-link-group')
       .data(validLinks)
       .enter()
-      .append('line')
+      .append('g')
+      .attr('class', 'timeline-link-group');
+
+    // Add lines
+    linkGroup.append('line')
       .attr('class', d => `timeline-link link-${d.type}`)
       .attr('x1', d => {
         const n = this.data.nodes.find(node => String(node.id) === String(d.source.id || d.source));
@@ -446,6 +485,42 @@ class SageNetwork {
       .attr('stroke', d => colorMap[d.type] || '#999')
       .attr('stroke-width', 3)
       .attr('opacity', 0.7);
+
+    // Add labels for connection types
+    linkGroup.append('text')
+      .attr('class', 'link-type-label')
+      .attr('x', d => {
+        const sourceNode = this.data.nodes.find(node => String(node.id) === String(d.source.id || d.source));
+        const targetNode = this.data.nodes.find(node => String(node.id) === String(d.target.id || d.target));
+        return sourceNode && targetNode ? (sourceNode.x + targetNode.x) / 2 : 0;
+      })
+      .attr('y', d => {
+        const sourceNode = this.data.nodes.find(node => String(node.id) === String(d.source.id || d.source));
+        const targetNode = this.data.nodes.find(node => String(node.id) === String(d.target.id || d.target));
+        return sourceNode && targetNode ? (sourceNode.y + targetNode.y) / 2 - 8 : 0;
+      })
+      .attr('text-anchor', 'middle')
+      .attr('font-size', '0.75rem')
+      .attr('font-weight', '600')
+      .attr('fill', d => colorMap[d.type] || '#999')
+      .attr('background', 'white')
+      .attr('paint-order', 'stroke')
+      .attr('stroke', 'white')
+      .attr('stroke-width', 3)
+      .attr('pointer-events', 'none')
+      .text(d => {
+        const typeMap = {
+          'student': 'תלמיד',
+          'teacher': 'רב',
+          'colleague': 'עמית',
+          'influence': 'השפעה',
+          'oppose': 'עמדה מנוגדת',
+          'predecessor': 'קודם',
+          'contemporary': 'בן דור',
+          'family': 'משפחה'
+        };
+        return typeMap[d.type] || d.type;
+      });
 
     // Create tooltip element
     let tooltip = document.querySelector('#sage-tooltip');

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="אוצר חכמים - רשת חכמי ישראל לדורותיהם">
+  <title>אוצר חכמים — Network of Jewish Sages</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Main Styles -->
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+  <!-- Small Screen Warning -->
+  <div id="smallScreenWarning" class="alert alert-warning small-screen-warning">
+    <strong><em>אוצר חכמים</em> עדיף להציג על מסכים גדולים יותר.</strong> מעבר לפתח דפדפן גדול יותר וחדש את הדף.
+  </div>
+
+  <!-- Main Container -->
+  <div id="app" class="app-container">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-content">
+        <div class="logo">
+          <h1>אוצר חכמים</h1>
+          <p class="subtitle">רשת חכמי ישראל לדורותיהם</p>
+        </div>
+
+        <nav class="nav-tabs">
+          <button class="nav-btn active" data-view="visualization">
+            <i class="fas fa-project-diagram"></i>
+            רשת קשרים
+          </button>
+          <button class="nav-btn" data-view="table">
+            <i class="fas fa-table"></i>
+            טבלה
+          </button>
+          <button class="nav-btn" data-view="about">
+            <i class="fas fa-info-circle"></i>
+            אודות
+          </button>
+        </nav>
+
+        <div class="header-actions">
+          <input type="text" id="searchInput" placeholder="חיפוש חכם..." class="search-input">
+          <button class="btn-export" id="exportBtn">
+            <i class="fas fa-download"></i>
+            ייצוא
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="main-area">
+      <!-- Visualization View -->
+      <section id="visualization-view" class="view active">
+        <div class="visualization-container">
+          <!-- Left Sidebar: Node Details -->
+          <aside class="sidebar" id="sidebar">
+            <div class="sidebar-close" id="sidebarClose">
+              <i class="fas fa-times"></i>
+            </div>
+            <div class="sidebar-content" id="sidebarContent">
+              <p>בחר חכם מהרשת...</p>
+            </div>
+          </aside>
+
+          <!-- SVG Visualization -->
+          <div class="graph-wrapper">
+            <svg id="graph" class="force-graph"></svg>
+          </div>
+
+          <!-- Right Legend -->
+          <aside class="legend">
+            <h3>חכמים לפי תקופה</h3>
+            <div class="legend-items" id="legendItems"></div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- Table View -->
+      <section id="table-view" class="view">
+        <div class="table-container">
+          <table id="sagesTable" class="sages-table">
+            <thead>
+              <tr>
+                <th>שם (עברית)</th>
+                <th>שם (אנגלית)</th>
+                <th>תקופה</th>
+                <th>אזור</th>
+                <th>תחום</th>
+              </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- About View -->
+      <section id="about-view" class="view">
+        <div class="about-content">
+          <h2>אודות אוצר חכמים</h2>
+          <p>בסיס ידע מובנה על חכמי ישראל לדורותיהם עם ויזואליזציה דינמית של קשרים בין חכמים.</p>
+          <h3>תכונות:</h3>
+          <ul>
+            <li>רשת חכמים אינטרקטיבית (323+ חכמים)</li>
+            <li>קשרי תלמיד-מורה (190+ קשרים)</li>
+            <li>ארגון לפי תקופה ואזור</li>
+            <li>חיפוש חכם ומתקדם</li>
+            <li>ייצוא נתונים</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- D3 and Dependencies -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+
+  <!-- Supabase Client Module -->
+  <script type="module">
+    import { initializeApp, semanticSearch } from './supabase-client.js';
+    import { InteractiveGenealogy } from './interactive-genealogy.js';
+
+    // Global references
+    window.semanticSearch = semanticSearch;
+
+    // Initialize on DOMContentLoaded
+    document.addEventListener('DOMContentLoaded', async () => {
+      console.log('🚀 [App] Initializing Ozar Chachamim...');
+
+      // Initialize Supabase
+      const ready = await initializeApp();
+      if (ready) {
+        console.log('✅ [App] Supabase ready');
+      }
+    });
+
+    // Initialize visualization when data is ready
+    document.addEventListener('supabaseReady', () => {
+      console.log('🎨 [App] Initializing visualization...');
+      const diagram = new InteractiveGenealogy({ svgSelector: '#graph' });
+      window.genealogyDiagram = diagram;
+      diagram.init();
+      buildLegend();
+    });
+
+    // Build era legend
+    function buildLegend() {
+      const eraColors = {
+        'second-temple': { he: 'בית שני', color: '#8e44ad' },
+        'tannaim': { he: 'תנאים', color: '#e74c3c' },
+        'amoraim': { he: 'אמוראים', color: '#e67e22' },
+        'geonim': { he: 'גאונים', color: '#f1c40f' },
+        'rishonim': { he: 'ראשונים', color: '#27ae60' },
+        'acharonim': { he: 'אחרונים', color: '#2980b9' },
+        'modern': { he: 'עת חדשה', color: '#1abc9c' }
+      };
+
+      const legendDiv = document.getElementById('legendItems');
+      for (const [key, { he, color }] of Object.entries(eraColors)) {
+        const item = document.createElement('div');
+        item.className = 'legend-item';
+        item.innerHTML = `
+          <div class="legend-color" style="background-color: ${color}"></div>
+          <span>${he}</span>
+        `;
+        legendDiv.appendChild(item);
+      }
+    }
+  </script>
+
+  <!-- App Scripts -->
+  <script src="scripts/app.js"></script>
+</body>
+</html>

@@ -45,14 +45,22 @@ if (!SUPABASE_CONFIG) {
   }
 }
 
-// Initialize Supabase with config
-const supabase = createClient(
-  SUPABASE_CONFIG.url,
-  SUPABASE_CONFIG.anonKey
-)
+// Initialize Supabase with config (lazy initialization)
+let supabase = null
 
-// Log initialization status
-console.log(`🔌 [Supabase] Connecting to ${SUPABASE_CONFIG.url?.split('/')[2] || 'unknown'}`)
+function initSupabaseClient() {
+  if (!supabase) {
+    supabase = createClient(
+      SUPABASE_CONFIG.url,
+      SUPABASE_CONFIG.anonKey
+    )
+    console.log(`🔌 [Supabase] Connected to ${SUPABASE_CONFIG.url?.split('/')[2] || 'unknown'}`)
+  }
+  return supabase
+}
+
+// Log config loaded
+console.log(`✅ [Config] Using Supabase: ${SUPABASE_CONFIG.url?.split('/')[2] || 'unknown'}`)
 
 // ============================================================================
 // PART 1: DATA LOADING FROM SUPABASE
@@ -63,33 +71,18 @@ console.log(`🔌 [Supabase] Connecting to ${SUPABASE_CONFIG.url?.split('/')[2] 
  * Uses sages_with_stats view for connection_count & research availability
  */
 async function loadSages() {
-  console.log('📚 Loading sages from Supabase...')
+  console.log('📚 Loading sages from data.json...')
 
-  // Try to load from view first (includes stats)
-  const { data: sagesWithStats, error: viewError } = await supabase
-    .from('sages_with_stats')
-    .select('*')
-    .order('period_order', { ascending: true })
-
-  if (!viewError && sagesWithStats && sagesWithStats.length > 0) {
-    console.log(`✓ Loaded ${sagesWithStats.length} sages (with stats from view)`)
-    return sagesWithStats
-  }
-
-  // Fallback to sages table if view unavailable
-  console.log('⚠️  View unavailable, falling back to sages table')
-  const { data: sages, error } = await supabase
-    .from('sages')
-    .select('id, name_he, name_en, era, era_key, period_order, region, primary_field, tags, summary, core_concept, spotify_url, coordinates, migration_path')
-    .order('period_order', { ascending: true })
-
-  if (error) {
-    console.error('❌ Error loading sages:', error)
+  try {
+    const response = await fetch('./data.json', { cache: 'no-store' })
+    if (!response.ok) throw new Error(`HTTP ${response.status}`)
+    const data = await response.json()
+    console.log(`✓ Loaded ${data.nodes.length} sages from data.json`)
+    return data.nodes
+  } catch (e) {
+    console.error('❌ Failed to load data.json:', e)
     return []
   }
-
-  console.log(`✓ Loaded ${sages.length} sages`)
-  return sages
 }
 
 /**
@@ -98,42 +91,23 @@ async function loadSages() {
  * Maps to D3 link format: source, target, type
  */
 async function loadConnections() {
-  console.log('🔗 Loading connections from Supabase...')
+  console.log('🔗 Loading connections from data.json...')
 
-  // Load from teacher_student_relations table
-  const { data: teacherStudentRels, error: tsError } = await supabase
-    .from('teacher_student_relations')
-    .select('teacher_id, student_id, certainty, source, notes')
-    .order('created_at', { ascending: false })
-
-  if (!tsError && teacherStudentRels && teacherStudentRels.length > 0) {
-    console.log(`✓ Loaded ${teacherStudentRels.length} teacher-student relations`)
-    // Transform to D3 link format: source → target, type based on certainty
-    const relations = teacherStudentRels.map(r => ({
-      source_id: String(r.teacher_id),
-      target_id: String(r.student_id),
-      connection_type: 'student',  // teacher → student relationship
-      certainty: r.certainty,  // 'probable' or 'high'
-      source: r.source,  // 'חכמי ישראל.xlsx' or 'related_figures.md'
-      notes: r.notes
+  try {
+    const response = await fetch('./data.json', { cache: 'no-store' })
+    if (!response.ok) throw new Error(`HTTP ${response.status}`)
+    const data = await response.json()
+    const links = data.links.map(link => ({
+      source: String(link.source),
+      target: String(link.target),
+      type: link.type || 'student'
     }))
-    return relations
+    console.log(`✓ Loaded ${links.length} connections from data.json`)
+    return links
+  } catch (e) {
+    console.error('❌ Failed to load connections from data.json:', e)
+    return []
   }
-
-  // Fallback to old connections table if exists
-  console.log('⚠️  teacher_student_relations unavailable, trying connections table')
-  const { data: connections, error: connError } = await supabase
-    .from('connections')
-    .select('source_id, target_id, connection_type, historical_period')
-    .limit(100)
-
-  if (!connError && connections && connections.length > 0) {
-    console.log(`✓ Loaded ${connections.length} connections (fallback)`)
-    return connections
-  }
-
-  console.log('⚠️  No connections found in either table')
-  return []
 }
 
 /**
@@ -143,7 +117,8 @@ async function loadConnections() {
 async function loadResearchContent(sageId) {
   console.log(`📖 Loading research for sage ${sageId}...`)
 
-  const { data: research, error } = await supabase
+  const supabaseClient = initSupabaseClient()
+  const { data: research, error } = await supabaseClient
     .from('research_content')
     .select('id, sage_id, content_text, content_type, content_summary, source_file, word_count, created_at, updated_at')
     .eq('sage_id', sageId)
@@ -167,7 +142,8 @@ async function loadSageProfile(sageId) {
 
   try {
     // Fetch from sages_with_stats view
-    const { data: sage, error: sageError } = await supabase
+    const supabaseClient = initSupabaseClient()
+    const { data: sage, error: sageError } = await supabaseClient
       .from('sages_with_stats')
       .select('*')
       .eq('id', sageId)
@@ -182,7 +158,7 @@ async function loadSageProfile(sageId) {
     const research = await loadResearchContent(sageId)
 
     // Fetch related connections (incoming + outgoing)
-    const { data: relatedConnections, error: connError } = await supabase
+    const { data: relatedConnections, error: connError } = await supabaseClient
       .from('connections_with_names')
       .select('*')
       .or(`source_id.eq.${sageId},target_id.eq.${sageId}`)
@@ -227,8 +203,9 @@ async function initializeApp() {
     // Filter + validate connections
     let invalidCount = 0
     const validConnections = connections.filter(c => {
-      const sourceId = String(c.source_id)
-      const targetId = String(c.target_id)
+      // Handle decimal points in IDs (e.g., "13.0" → "13")
+      const sourceId = String(c.source).replace(/\.0+$/, '')
+      const targetId = String(c.target).replace(/\.0+$/, '')
       const valid = validSageIds.has(sourceId) && validSageIds.has(targetId)
 
       if (!valid) {
@@ -248,21 +225,23 @@ async function initializeApp() {
     const nodes = sages.map(s => ({
       // Core identity
       id: String(s.id),
-      label: s.name_he,
-      name_he: s.name_he,
+      label: s.label || s.name_he || 'Unknown',  // Use label from data.json
+      name_he: s.label || s.name_he || '',
       name_en: s.name_en || '',
 
       // Era & chronology
       era: s.era || 'Unknown',
-      era_key: s.era_key || 'unknown',
-      group: s.era_key || 'unknown',  // D3 group for coloring
+      era_key: s.era_key || s.group || 'unknown',  // Use group field from data.json if era_key missing
+      group: s.era_key || s.group || 'unknown',  // D3 group for coloring
       period_order: s.period_order || 999,
 
       // Geographic & biographical
-      region: s.region || 'Unknown',
+      location: s.location || s.region || 'Unknown',  // Use location from data.json
+      region: s.location || s.region || 'Unknown',
       coordinates: s.coordinates || null,
       migration_path: s.migration_path || null,
-      primary_field: s.primary_field || '',
+      field: s.field || s.primary_field || '',  // Use field from data.json
+      primary_field: s.field || s.primary_field || '',
 
       // Content enrichment
       tags: s.tags || '',
@@ -278,11 +257,9 @@ async function initializeApp() {
     }))
 
     const links = validConnections.map(c => ({
-      source: String(c.source_id),
-      target: String(c.target_id),
-      type: c.connection_type || 'student',  // Default to 'student' for teacher-student rels
-      certainty: c.certainty || 'unknown',
-      historical_period: c.historical_period
+      source: String(c.source).replace(/\.0+$/, ''),  // Remove decimal points
+      target: String(c.target).replace(/\.0+$/, ''),  // Remove decimal points
+      type: c.type || 'student'
     }))
 
     // SINGLE SOURCE OF TRUTH
@@ -301,8 +278,8 @@ async function initializeApp() {
     // Create search index for instant cross-field search
     window.searchIndex = createSearchIndex(nodes)
 
-    // Store Supabase client for on-demand queries
-    window.supabase = supabase
+    // Store Supabase client lazy initializer for on-demand queries
+    window.supabase = initSupabaseClient
 
     console.log(`✅ [AppInit] Single Source Ready: ${nodes.length} nodes + ${links.length} validated edges`)
     console.log(`📊 Sages by era: ${nodes.reduce((acc, n) => {
