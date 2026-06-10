@@ -1324,3 +1324,6 @@ class SageNetwork {
 // document.addEventListener('DOMContentLoaded', () => {
 //   window.sageNetwork = new SageNetwork({...
 // });
+
+// Export for ES6 modules
+export { SageNetwork };
