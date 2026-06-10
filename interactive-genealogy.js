@@ -604,4 +604,3 @@ class InteractiveGenealogy {
 
 // Export for module import
 export { InteractiveGenealogy };
-                                                                          

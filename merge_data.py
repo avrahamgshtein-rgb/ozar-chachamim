@@ -138,4 +138,7 @@ def merge_data():
             print(f"  {sage.get('name_he', '')} ({sage.get('birth_death', 'N/A')})")
             print(f"    Region: {sage.get('region', 'N/A')}")
             print(f"    Summary: {sage.get('summary', 'N/A')[:100]}...")
-           
+            break
+
+if __name__ == '__main__':
+    merge_data()
