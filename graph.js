@@ -113,6 +113,30 @@ class SageNetwork {
         this.searchQuery = e.target.value.toLowerCase();
         console.log('🔍 Search:', this.searchQuery);
         this.updateNodeVisibility();
+
+        // Jump to matching sage on Enter or single match
+        if (this.searchQuery.length > 0) {
+          const matches = this.data.nodes.filter(n =>
+            n.label.toLowerCase().includes(this.searchQuery)
+          );
+
+          // If Enter key or single match, jump to first result
+          if (matches.length === 1) {
+            setTimeout(() => this.selectNode(matches[0]), 300);
+          }
+        }
+      });
+
+      // Also handle Enter key to jump to first search result
+      searchInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' && this.searchQuery.length > 0) {
+          const matches = this.data.nodes.filter(n =>
+            n.label.toLowerCase().includes(this.searchQuery)
+          );
+          if (matches.length > 0) {
+            this.selectNode(matches[0]);
+          }
+        }
       });
     }
 
@@ -812,10 +836,24 @@ class SageNetwork {
 
     this.selectedNode = node;
     const nodeId = String(node.id);
+    const nodeEra = node.group || node.era_key;
 
-    // Highlight node
+    // Highlight selected node + entire era
     if (this.node) {
       this.node.classed('selected', d => String(d.id) === nodeId);
+      this.node.classed('era-highlight', d => (d.group || d.era_key) === nodeEra);
+
+      // Dim non-era nodes
+      this.node.style('opacity', d => (d.group || d.era_key) === nodeEra ? 1 : 0.3);
+    }
+
+    // Also dim links from other eras
+    if (this.link) {
+      this.link.style('opacity', d => {
+        const sourceEra = (d.source.group || d.source.era_key);
+        const targetEra = (d.target.group || d.target.era_key);
+        return (sourceEra === nodeEra && targetEra === nodeEra) ? 0.6 : 0.1;
+      });
     }
 
     // Show loading state immediately
@@ -1197,7 +1235,8 @@ class SageNetwork {
     }
 
     if (this.node) {
-      this.node.classed('selected', false).classed('related', false);
+      this.node.classed('selected', false).classed('related', false).classed('era-highlight', false);
+      this.node.style('opacity', 1);  // Reset opacity
     }
 
     if (this.link) {
