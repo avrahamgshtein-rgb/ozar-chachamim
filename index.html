@@ -11,7 +11,7 @@
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;700&family=Heebo:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -22,11 +22,16 @@
     <!-- Leaflet Polyline Decorator (for arrows on paths) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-polylinedecorator/1.6.0/leaflet.polylinedecorator.css">
 
+    <!-- Load D3 and Leaflet BEFORE modules use them -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-polylinedecorator/1.6.0/leaflet.polylinedecorator.js"></script>
+
     <!-- Design System (Token-based CSS) -->
     <link rel="stylesheet" href="styles/tokens.css?v=1">
     <link rel="stylesheet" href="styles/typography.css?v=1">
     <link rel="stylesheet" href="styles/components.css?v=1">
-    <link rel="stylesheet" href="styles-graph.css?v=3.2">
+    <link rel="stylesheet" href="styles-graph.css?v=3.3">
 
     <style>
         #graph {
@@ -67,7 +72,7 @@
         .tl-sage-group:hover .tl-dot { r: 9; filter: url(#tl-glow); }
         .tl-sage-group:hover .tl-label { opacity: 1; font-weight: 700; }
         .tl-dot { stroke: rgba(255,255,255,0.6); stroke-width: 1.5; transition: r 0.15s ease; }
-        .tl-label { font-family: 'Heebo', sans-serif; font-size: 10px; fill: var(--color-text); text-anchor: middle; dominant-baseline: hanging; pointer-events: none; opacity: 0; transition: opacity 0.15s ease; }
+        .tl-label { font-family: 'Inter', sans-serif; font-size: 10px; fill: var(--color-text); text-anchor: middle; dominant-baseline: hanging; pointer-events: none; opacity: 0; transition: opacity 0.15s ease; }
         .tl-band-even { fill: var(--color-bg-light); opacity: 0.6; }
         .tl-band-odd { fill: var(--color-bg); opacity: 0.6; }
         .tl-band-border { stroke: var(--color-border); stroke-width: 1; }
@@ -144,6 +149,31 @@
 
 <div class="container">
     <div id="graph-view" class="main-area active">
+        <div id="path-finder-panel" style="background: white; padding: 1.5rem; border-bottom: 2px solid #e0e0e0; display: flex; gap: 1rem; align-items: flex-end; flex-wrap: wrap; direction: rtl;">
+            <div style="flex: 1; min-width: 220px; position: relative;">
+                <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #333; font-size: 0.95rem;">🔍 חכם ראשון</label>
+                <input type="text" id="pathSourceInput" placeholder="חפש חכם..." style="width: 100%; padding: 0.75rem; border: 2px solid #ddd; border-radius: 6px; font-size: 0.95rem; transition: border-color 0.2s;">
+                <div id="pathSourceSuggestions" style="position: absolute; background: white; border: 1px solid #ddd; border-radius: 4px; max-height: 200px; overflow-y: auto; display: none; z-index: 100; width: calc(100% + 2px); margin-top: 0.25rem; box-shadow: 0 2px 8px rgba(0,0,0,0.1); right: -1px;"></div>
+            </div>
+
+            <div style="flex: 1; min-width: 220px; position: relative;">
+                <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #333; font-size: 0.95rem;">🔍 חכם שני</label>
+                <input type="text" id="pathTargetInput" placeholder="חפש חכם..." style="width: 100%; padding: 0.75rem; border: 2px solid #ddd; border-radius: 6px; font-size: 0.95rem; transition: border-color 0.2s;">
+                <div id="pathTargetSuggestions" style="position: absolute; background: white; border: 1px solid #ddd; border-radius: 4px; max-height: 200px; overflow-y: auto; display: none; z-index: 100; width: calc(100% + 2px); margin-top: 0.25rem; box-shadow: 0 2px 8px rgba(0,0,0,0.1); right: -1px;"></div>
+            </div>
+
+            <button id="findPathBtn" style="padding: 0.75rem 1.5rem; background: #4a86e8; color: white; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 0.95rem; transition: all 0.2s; white-space: nowrap;" onmouseover="this.style.background='#3d6ec8'" onmouseout="this.style.background='#4a86e8'">
+                🔗 מצא דרך
+            </button>
+            <button id="clearPathBtn" style="padding: 0.75rem 1.5rem; background: #999; color: white; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 0.95rem; transition: all 0.2s; white-space: nowrap;" onmouseover="this.style.background='#777'" onmouseout="this.style.background='#999'">
+                ❌ נקה
+            </button>
+        </div>
+
+        <div id="path-result" style="background: #f0f8ff; padding: 1rem 1.5rem; border-bottom: 1px solid #bdd9ff; display: none; direction: rtl;">
+            <div id="pathResultContent" style="font-size: 0.95rem; color: #333;"></div>
+        </div>
+
         <svg id="graph"></svg>
     </div>
 
@@ -240,6 +270,9 @@
 
 <!-- Scripts -->
 <!-- IMPORTANT: Load order matters! -->
+<!-- Path Finder Algorithm -->
+<script src="path-finder.js"></script>
+
 <!-- 0. Mobile Handler (must load first) - inline to avoid 404 -->
 <script>
 const mobileHandler = {
@@ -272,6 +305,7 @@ window.mobileHandler = mobileHandler
 <!-- 1. Supabase Client Module (replaces data-loader + data-validator) -->
 <script type="module">
   import { initializeApp, semanticSearch } from './supabase-client.js';
+  import { InteractiveGenealogy } from './interactive-genealogy.js';
 
   // Make semanticSearch globally available for Task D
   window.semanticSearch = semanticSearch;
@@ -288,21 +322,14 @@ window.mobileHandler = mobileHandler
     }
   });
 
-  // Initialize graph when Supabase data is ready
+  // Initialize interactive genealogy when Supabase data is ready
   document.addEventListener('supabaseReady', () => {
-    console.log('🎨 [index.html] Graph initialization...');
-    const graph = new SageNetwork({ svgSelector: '#graph' });
-    window.graph = graph;
-    graph.init();
+    console.log('🎨 [index.html] Initializing Interactive Genealogy...');
+    const diagram = new InteractiveGenealogy({ svgSelector: '#graph' });
+    window.genealogyDiagram = diagram;
+    diagram.init();
   });
 </script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-polylinedecorator/1.6.0/leaflet.polylinedecorator.js"></script>
-
-<!-- 5. Graph Network Visualization (D3 timeline layout) -->
-<script src="graph.js"></script>
 
 <script>
     // Expose environment variables for client-side use (especially Vercel)
@@ -609,7 +636,7 @@ window.mobileHandler = mobileHandler
                         fillOpacity: 0.85
                     })
                     .bindPopup(`
-                      <div style="padding: 1rem; min-width: 300px; font-family: Heebo, sans-serif; direction: rtl;">
+                      <div style="padding: 1rem; min-width: 300px; font-family: Inter, sans-serif; direction: rtl;">
                         <div style="border-bottom: 3px solid ${color}; padding-bottom: 0.75rem; margin-bottom: 0.75rem;">
                           <h3 style="margin: 0 0 0.5rem 0; color: #1a1a1a; font-size: 1.1rem;">${node.label}</h3>
                           <div style="font-size: 0.8rem; color: #666; display: grid; gap: 0.3rem;">
@@ -955,7 +982,7 @@ window.mobileHandler = mobileHandler
 
         if (!window.graphData || !window.graphData.nodes || window.graphData.nodes.length === 0) {
             svg.innerHTML = '<text x="50%" y="50%" text-anchor="middle" fill="#999" dominant-baseline="middle">טוען נתונים...</text>';
-            document.addEventListener('supabaseReady', buildTimeline, { once: true });
+            // Data loaded by interactive-genealogy.js
             return;
         }
 
@@ -1133,6 +1160,177 @@ window.mobileHandler = mobileHandler
 
         console.log(`✓ Timeline built: ${nodes.length} sages across ${TL_ERAS.length} eras`);
     }
+
+    // ========================================================================
+    // PATH FINDING (Degrees of Separation)
+    // ========================================================================
+    let pathFinder = null;
+    let currentPath = null;
+
+    function initializePathFinder() {
+        if (!window.graphData || !window.PathFinder) return;
+        pathFinder = new PathFinder(window.graphData.nodes, window.graphData.links);
+        console.log('✓ PathFinder initialized');
+        setupPathFinderUI();
+    }
+
+    function setupPathFinderUI() {
+        const sourceInput = document.getElementById('pathSourceInput');
+        const targetInput = document.getElementById('pathTargetInput');
+        const findBtn = document.getElementById('findPathBtn');
+        const clearBtn = document.getElementById('clearPathBtn');
+
+        if (!sourceInput || !targetInput) return;
+
+        // Autocomplete helper
+        function createSuggestions(input, suggestionsDiv) {
+            const query = input.value.toLowerCase().trim();
+            suggestionsDiv.innerHTML = '';
+
+            if (!query || query.length < 2) {
+                suggestionsDiv.style.display = 'none';
+                return;
+            }
+
+            const matching = window.graphData.nodes.filter(node =>
+                node.label.includes(query) || node.name_he.includes(query) || node.name_en?.toLowerCase().includes(query)
+            ).slice(0, 10);
+
+            if (matching.length === 0) {
+                suggestionsDiv.style.display = 'none';
+                return;
+            }
+
+            suggestionsDiv.style.display = 'block';
+            matching.forEach(sage => {
+                const div = document.createElement('div');
+                div.style.cssText = 'padding: 0.6rem 0.75rem; cursor: pointer; border-bottom: 1px solid #eee; font-size: 0.9rem; transition: background 0.2s;';
+                div.onmouseover = () => div.style.background = '#f0f0f0';
+                div.onmouseout = () => div.style.background = 'white';
+                div.innerHTML = `<div style="font-weight: 600;">${sage.label}</div><div style="font-size: 0.8rem; color: #888;">${sage.era}</div>`;
+                div.onclick = () => {
+                    input.value = sage.label;
+                    input.dataset.sageId = sage.id;
+                    suggestionsDiv.style.display = 'none';
+                };
+                suggestionsDiv.appendChild(div);
+            });
+        }
+
+        sourceInput.addEventListener('input', (e) => {
+            createSuggestions(e.target, document.getElementById('pathSourceSuggestions'));
+        });
+
+        targetInput.addEventListener('input', (e) => {
+            createSuggestions(e.target, document.getElementById('pathTargetSuggestions'));
+        });
+
+        // Close suggestions when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('#path-finder-panel')) {
+                document.getElementById('pathSourceSuggestions').style.display = 'none';
+                document.getElementById('pathTargetSuggestions').style.display = 'none';
+            }
+        });
+
+        // Find path button
+        findBtn.addEventListener('click', () => {
+            const sourceId = sourceInput.dataset.sageId;
+            const targetId = targetInput.dataset.sageId;
+
+            if (!sourceId || !targetId) {
+                alert('בחר שני חכמים מהרשימה');
+                return;
+            }
+
+            if (sourceId === targetId) {
+                alert('בחר שני חכמים שונים');
+                return;
+            }
+
+            // Find the path
+            currentPath = pathFinder.findPath(sourceId, targetId);
+
+            if (currentPath.error || currentPath.path.length === 0) {
+                document.getElementById('pathResultContent').innerHTML = `<strong>❌ לא נמצאה דרך בין החכמים</strong> ${currentPath.error ? '(' + currentPath.error + ')' : ''}`;
+                document.getElementById('path-result').style.display = 'block';
+                clearPath();
+                return;
+            }
+
+            // Display result
+            displayPathResult(currentPath);
+            highlightPath(currentPath);
+        });
+
+        clearBtn.addEventListener('click', () => {
+            sourceInput.value = '';
+            targetInput.value = '';
+            sourceInput.dataset.sageId = '';
+            targetInput.dataset.sageId = '';
+            document.getElementById('path-result').style.display = 'none';
+            clearPath();
+        });
+    }
+
+    function displayPathResult(pathData) {
+        const resultDiv = document.getElementById('pathResultContent');
+        const degrees = pathData.distance;
+        const pathNodes = pathData.path.map(id => window.graphData.nodes.find(n => n.id === String(id)));
+
+        let html = `<strong>✅ נמצאה דרך עם ${degrees} ${degrees === 1 ? 'קשר' : 'קשרים'}:</strong><br>`;
+        html += pathNodes.map((node, i) => {
+            let connectionType = '';
+            if (i < pathData.connectionTypes.length) {
+                const typeMap = {
+                    'student': '→ תלמיד',
+                    'teacher': '← מורה',
+                    'influence': '~ השפעה',
+                    'colleague': '↔ עמית',
+                    'predecessor': '⬅ קדמון'
+                };
+                connectionType = typeMap[pathData.connectionTypes[i]] || '→';
+            }
+            return `<span style="padding: 0.3rem 0.6rem; margin: 0.2rem 0.2rem 0 0; background: #e3f2fd; border-radius: 4px; display: inline-block; font-weight: 600;">${node.label}</span>` + (i < pathNodes.length - 1 ? ` <span style="color: #999; margin: 0 0.3rem;">${connectionType}</span> ` : '');
+        }).join('');
+
+        resultDiv.innerHTML = html;
+        document.getElementById('path-result').style.display = 'block';
+    }
+
+    function highlightPath(pathData) {
+        if (!window.sageNetwork || !pathData.path) return;
+
+        const pathIds = new Set(pathData.path.map(id => String(id)));
+
+        // Dim all nodes except path
+        if (window.sageNetwork.node) {
+            window.sageNetwork.node.style('opacity', d => pathIds.has(String(d.id)) ? 1 : 0.15);
+        }
+
+        // Highlight path nodes
+        pathData.path.forEach((id, i) => {
+            const nodeId = String(id);
+            const node = window.graphData.nodes.find(n => String(n.id) === nodeId);
+            if (node && i === 0) {
+                // Select first node
+                window.sageNetwork.selectNode(node);
+            }
+        });
+
+        console.log(`✓ Path highlighted: ${pathData.path.length} nodes`);
+    }
+
+    function clearPath() {
+        if (!window.sageNetwork || !window.sageNetwork.node) return;
+        window.sageNetwork.node.style('opacity', 1);
+        currentPath = null;
+    }
+
+    // Initialize path finder when Supabase data is ready
+    document.addEventListener('supabaseReady', () => {
+        setTimeout(initializePathFinder, 100);
+    });
 
     // ========================================================================
     // SEMANTIC SEARCH (Cross-Tab)
@@ -1484,21 +1682,8 @@ window.mobileHandler = mobileHandler
 
     // ✅ Supabase data loading handled by supabase-client.js module
 
-    // Data is loaded by supabase-client.js module
-    console.log('[index.html] Waiting for Supabase data...');
-
-    // Listen for Supabase ready event to initialize views
-    document.addEventListener('supabaseReady', (e) => {
-        console.log(`[index.html] ✅ Supabase ready: ${e.detail.nodes} nodes + ${e.detail.links} edges`);
-
-        // Initialize search manager with graph data
-        if (window.searchManager && window.graphData) {
-            window.searchManager.initialize(window.graphData);
-            console.log('✅ [index.html] Search manager initialized');
-        }
-
-        // Views initialize lazily when tabs are clicked
-    });
+    // Data is loaded by supabase-client.js module (async)
+    // Visualization initialized by interactive-genealogy.js on supabaseReady event
 </script>
 
 </body>
