@@ -128,7 +128,7 @@ class InteractiveGenealogy {
   }
 
   /**
-   * Render the interactive diagram
+   * Render the interactive diagram with force-directed layout
    */
   render() {
     const svg = d3.select(this.svgSelector);
@@ -137,25 +137,111 @@ class InteractiveGenealogy {
       return;
     }
 
-    // Calculate dimensions
-    const width = Math.max(1200, this.data.nodes.length * 0.5 * (this.BOX_WIDTH + 30));
-    const height = Math.max(1800, this.data.nodes.length * 0.8 * (this.BOX_HEIGHT + 20));
+    const width = window.innerWidth - 20;
+    const height = window.innerHeight - 100;
 
     svg
       .attr('width', width)
       .attr('height', height)
       .style('background', '#f8f6f0');
 
-    const g = svg.append('g').attr('transform', 'translate(0,0)');
+    svg.selectAll('*').remove();
+    const g = svg.append('g');
 
-    // Draw connections FIRST (behind boxes)
-    this.drawConnections(g);
+    // Create force simulation
+    const simulation = d3.forceSimulation(this.data.nodes)
+      .force('link', d3.forceLink(this.data.links || [])
+        .id(d => String(d.id))
+        .distance(150)
+        .strength(0.3))
+      .force('charge', d3.forceManyBody().strength(-800))
+      .force('center', d3.forceCenter(width / 2, height / 2))
+      .force('collision', d3.forceCollide(45));
 
-    // Draw boxes (draggable)
-    this.drawBoxes(g);
+    // Draw links first
+    const links = g.selectAll('.link')
+      .data(this.data.links || [])
+      .enter()
+      .append('line')
+      .attr('class', 'link')
+      .attr('stroke', '#ccc')
+      .attr('stroke-width', 2)
+      .attr('opacity', 0.4);
 
-    // Setup pan/zoom
-    this.setupInteraction(svg, g);
+    // Draw nodes as circles with labels
+    const nodes = g.selectAll('.node')
+      .data(this.data.nodes)
+      .enter()
+      .append('circle')
+      .attr('class', d => `node node-${d.era_key || 'unknown'}`)
+      .attr('r', 20)
+      .attr('fill', d => this.colorMap[d.era_key || 'unknown'] || '#999')
+      .attr('stroke', 'white')
+      .attr('stroke-width', 2)
+      .style('cursor', 'pointer')
+      .call(d3.drag()
+        .on('start', (event, d) => {
+          if (!event.active) simulation.alphaTarget(0.3).restart();
+          d.fx = d.x;
+          d.fy = d.y;
+        })
+        .on('drag', (event, d) => {
+          d.fx = event.x;
+          d.fy = event.y;
+        })
+        .on('end', (event, d) => {
+          if (!event.active) simulation.alphaTarget(0);
+          d.fx = null;
+          d.fy = null;
+        }))
+      .on('click', (event, d) => {
+        event.stopPropagation();
+        this.selectNode(d);
+      });
+
+    // Add labels to nodes
+    const labels = g.selectAll('.label')
+      .data(this.data.nodes)
+      .enter()
+      .append('text')
+      .attr('class', 'label')
+      .attr('text-anchor', 'middle')
+      .attr('dy', '.3em')
+      .attr('font-size', '11px')
+      .attr('font-weight', 'bold')
+      .attr('fill', 'white')
+      .attr('pointer-events', 'none')
+      .text(d => {
+        const parts = d.label.split(' ');
+        return parts.length > 1 ? parts.slice(0, 2).join('\n') : d.label;
+      });
+
+    // Update on simulation tick
+    simulation.on('tick', () => {
+      links
+        .attr('x1', d => d.source.x)
+        .attr('y1', d => d.source.y)
+        .attr('x2', d => d.target.x)
+        .attr('y2', d => d.target.y);
+
+      nodes
+        .attr('cx', d => d.x)
+        .attr('cy', d => d.y);
+
+      labels
+        .attr('x', d => d.x)
+        .attr('y', d => d.y);
+    });
+
+    // Add zoom/pan
+    svg.call(d3.zoom()
+      .on('zoom', (event) => {
+        g.attr('transform', event.transform);
+      }));
+
+    this.node = nodes;
+    this.simulation = simulation;
+    console.log('✓ Force-directed network rendered');
   }
 
   /**
