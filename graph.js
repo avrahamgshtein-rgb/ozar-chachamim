@@ -571,14 +571,21 @@ class SageNetwork {
       document.body.appendChild(tooltip);
     }
 
+    // Debug: Check if nodes have x/y positions
+    const nodesSample = this.data.nodes.slice(0, 3);
+    console.log('🔍 Sample nodes with positions:');
+    nodesSample.forEach(n => {
+      console.log(`  ${n.label}: x=${n.x}, y=${n.y}`);
+    });
+
     // Draw nodes - LARGER CIRCLES FOR BETTER VISIBILITY
     this.node = g.selectAll('.node')
       .data(this.data.nodes)
       .enter()
       .append('circle')
       .attr('class', d => `node node-${d.group}`)
-      .attr('cx', d => d.x)
-      .attr('cy', d => d.y)
+      .attr('cx', d => d.x || 0)
+      .attr('cy', d => d.y || 0)
       .attr('r', 32)
       .attr('fill', d => this.colorMap[d.group] || '#999')
       .attr('stroke', 'white')
