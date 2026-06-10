@@ -394,16 +394,26 @@ class SageMap {
 
     legendDiv.onAdd = () => {
       const div = L.DomUtil.create('div', 'map-legend');
+
+      // Responsive sizing
+      const isMobile = window.innerWidth < 768;
+      const padding = isMobile ? '10px' : '15px';
+      const maxWidth = isMobile ? '90vw' : '250px';
+      const fontSize = isMobile ? '0.75rem' : '0.85rem';
+
       div.style.cssText = `
         background: white;
-        padding: 15px;
+        padding: ${padding};
         border-radius: 8px;
         box-shadow: 0 2px 8px rgba(0,0,0,0.15);
         font-family: 'Frank Ruhl Libre', serif;
         direction: rtl;
         text-align: right;
-        max-width: 250px;
+        max-width: ${maxWidth};
+        max-height: 70vh;
+        overflow-y: auto;
         z-index: 1000;
+        font-size: ${fontSize};
       `;
 
       // Title
@@ -466,10 +476,26 @@ class SageMap {
         btn.eraKey = eraKey;
         btn.title = `${count} חכמים, ${migrations} עם מסלולי הגירה`;
 
-        btn.addEventListener('click', () => this.filterByEraAndZoom(eraKey));
+        btn.addEventListener('click', () => {
+          // Update all buttons styling
+          document.querySelectorAll('.era-btn').forEach(b => {
+            if (b === btn) {
+              b.style.background = this.eraColors[eraKey];
+              b.style.color = 'white';
+              b.style.borderColor = this.eraColors[eraKey];
+            } else {
+              b.style.background = 'white';
+              b.style.color = this.eraColors[b.eraKey];
+              b.style.borderColor = this.eraColors[b.eraKey];
+            }
+          });
+          this.filterByEraAndZoom(eraKey);
+        });
         btn.addEventListener('mouseover', () => {
-          btn.style.background = this.eraColors[eraKey];
-          btn.style.color = 'white';
+          if (this.selectedEra !== eraKey) {
+            btn.style.background = this.eraColors[eraKey];
+            btn.style.color = 'white';
+          }
         });
         btn.addEventListener('mouseout', () => {
           if (this.selectedEra !== eraKey) {
@@ -477,6 +503,8 @@ class SageMap {
             btn.style.color = this.eraColors[eraKey];
           }
         });
+
+        btn.className = 'era-btn';
 
         div.appendChild(btn);
       });
@@ -508,8 +536,14 @@ class SageMap {
   // Filter by era
   filterByEra(eraKey) {
     this.selectedEra = eraKey;
-    this.markers.forEach(m => m.setOpacity(!m.sage || m.sage.era_key === eraKey ? 0.8 : 0.1));
-    this.lines.forEach(l => l.setStyle({ opacity: !l.sage || l.sage.era_key === eraKey ? 0.6 : 0.05 }));
+    this.markers.forEach(m => {
+      const showMarker = !m.sage || m.sage.era_key === eraKey;
+      m.setStyle({ opacity: showMarker ? 0.8 : 0.1 });
+    });
+    this.lines.forEach(l => {
+      const showLine = !l.sage || l.sage.era_key === eraKey;
+      l.setStyle({ opacity: showLine ? 0.6 : 0.05 });
+    });
     console.log(`🔍 Filtering: ${eraKey}`);
   }
 
@@ -593,6 +627,9 @@ class SageMap {
     url.searchParams.set('sage', sage.id);
     window.history.pushState({ sage: sage.id }, '', url);
 
+    // Dispatch event to show sidebar with sage details
+    document.dispatchEvent(new CustomEvent('selectNode', { detail: { sage } }));
+
     console.log(`👤 Filtering by sage: ${sage.label} (URL: ?sage=${sage.id})`);
   }
 
@@ -604,7 +641,6 @@ class SageMap {
     this.data.nodes.forEach(s => s.isSelected = false);
 
     this.markers.forEach(m => {
-      m.setOpacity(0.7);
       m.setRadius(Math.min(20, 8));
       m.setStyle({ weight: 2, opacity: 0.8 });
     });
