@@ -581,6 +581,7 @@ class SageNetwork {
     });
 
     // Draw nodes - LARGER CIRCLES FOR BETTER VISIBILITY
+    const self = this;  // Preserve context for click handler
     this.node = g.selectAll('.node')
       .data(this.data.nodes)
       .enter()
@@ -589,12 +590,31 @@ class SageNetwork {
       .attr('cx', d => d.x || 0)
       .attr('cy', d => d.y || 0)
       .attr('r', 12)  // Smaller circles so they don't overlap
-      .attr('fill', d => this.colorMap[d.group] || '#999')
+      .attr('fill', d => self.colorMap[d.group] || '#999')
       .attr('stroke', 'white')
       .attr('stroke-width', 1.5)
       .attr('opacity', 0.85)
       .style('cursor', 'pointer')
-      .on('click', (event, d) => this.selectNode(d))
+      .on('click', function(event, d) {
+        event.stopPropagation();
+        // First click: show tooltip with name
+        tooltip.innerHTML = `<strong>${d.label}</strong><br><small style="color:#999">(לחץ שוב לפרטים)</small>`;
+        tooltip.style.display = 'block';
+        tooltip.style.left = (event.clientX + 10) + 'px';
+        tooltip.style.top = (event.clientY - 40) + 'px';
+
+        // Store clicked node for next click
+        self.lastClickedNode = d;
+        self.clickCount = (self.clickCount || 0) + 1;
+
+        // Double-click or second click on same node: open sidebar
+        setTimeout(() => {
+          if (self.clickCount === 2 && self.lastClickedNode === d) {
+            self.selectNode(d);
+            self.clickCount = 0;
+          }
+        }, 300);
+      })
       .on('mouseover', function(event, d) {
         d3.select(this)
           .transition().duration(150)
@@ -627,25 +647,8 @@ class SageNetwork {
         tooltip.style.display = 'none';
       });
 
-    // Node labels (larger, better positioned)
-    g.selectAll('.node-label')
-      .data(this.data.nodes)
-      .enter()
-      .append('text')
-      .attr('class', 'node-label')
-      .attr('x', d => d.x)
-      .attr('y', d => d.y + 36)
-      .attr('text-anchor', 'middle')
-      .attr('font-size', '11px')
-      .attr('font-weight', '500')
-      .attr('fill', '#333')
-      .attr('pointer-events', 'none')
-      .style('font-family', 'Frank Ruhl Libre, serif')
-      .text(d => {
-        // Truncate at word boundary, not character
-        const label = d.label;
-        return label.length > 12 ? label.substring(0, 12) + '...' : label;
-      });
+    // Node labels removed - only show on hover/click
+    // (Kept for reference but disabled for cleaner visualization)
 
     // Enable mouse wheel horizontal scroll
     parentContainer.addEventListener('wheel', (e) => {
