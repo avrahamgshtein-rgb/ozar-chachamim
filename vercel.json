@@ -1,26 +1,4 @@
 {
-  "buildCommand": "echo 'Static site'",
-  "outputDirectory": ".",
-  "public": true,
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=0, must-revalidate"
-        }
-      ]
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/$1"
-    },
-    {
-      "source": "/(?!.*\\..*)",
-      "destination": "/index.html"
-    }
-  ]
+  "buildCommand": "mkdir -p dist && cp index.html supabase-client.js interactive-genealogy.js map.js path-finder.js styles-graph.css config.example.js dist/ && cp -r data dist/ 2>/dev/null || true && ls -la dist/",
+  "outputDirectory": "dist"
 }
