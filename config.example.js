@@ -18,11 +18,11 @@
 export const SUPABASE_CONFIG = {
   // Your Supabase project URL
   // Example: https://myproject.supabase.co
-  url: 'https://your-project.supabase.co',
+  url: 'https://ulluacifirzywhmzkvkr.supabase.co',
 
   // Your Supabase anonymous (public) key
   // Example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
-  anonKey: 'your-anon-key-here'
+  anonKey: 'sb_publishable_ObxKLFsDTE41KoAMfMV1dw_Nu38ZI2C'
 }
 
 // ============================================================================
