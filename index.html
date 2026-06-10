@@ -1052,13 +1052,8 @@
 
     // Hook selectNode
     document.addEventListener('supabaseReady', () => {
-      if (sageNetwork) {
-        const orig = sageNetwork.selectNode.bind(sageNetwork);
-        sageNetwork.selectNode = function(node) {
-          showNodeInSidebar(node);
-          orig(node);
-        };
-      }
+      // sageNetwork.selectNode already handles sidebar display
+      // No wrapper needed - selectNode in graph.js opens sidebar directly
     });
   </script>
 </body>
