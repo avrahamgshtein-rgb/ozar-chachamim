@@ -24,8 +24,9 @@ if (typeof window !== 'undefined' && window.__SUPABASE_URL__) {
   console.log('✅ Loaded config from window variables (Vercel/global)')
 }
 
-// 2. Try to import from config.js (local development)
-if (!SUPABASE_CONFIG) {
+// 2. Try to import from config.js (local development only)
+// Skip in production/Vercel where config.js doesn't exist
+if (!SUPABASE_CONFIG && typeof window !== 'undefined' && window.location.hostname === 'localhost') {
   try {
     const module = await import('./config.js').catch(() => null)
     if (module && module.SUPABASE_CONFIG) {
@@ -33,7 +34,7 @@ if (!SUPABASE_CONFIG) {
       console.log('✅ Loaded config from config.js')
     }
   } catch (error) {
-    // Silently fail, will try environment variables next
+    // Silently fail for local dev
   }
 }
 
