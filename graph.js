@@ -161,8 +161,8 @@ class SageNetwork {
    * Main rendering function - creates D3 graph with all fixes
    */
   render() {
-    // Use Timeline Layout - vertical chronology with big circles
-    this.renderTimelineLayout();
+    // Use Force-directed Network - interactive layout with scattered circles
+    this.renderNetwork();
   }
 
   renderNetwork() {
@@ -235,18 +235,32 @@ class SageNetwork {
         return typeMap[d.type] || d.type;
       });
 
-    // Draw nodes
+    // Draw nodes - clean minimal design
+    const self = this;
     this.node = g.selectAll('.node')
       .data(this.data.nodes)
       .enter()
       .append('circle')
       .attr('class', d => `node node-${d.group}`)
-      .attr('r', 10)
-      .attr('fill', d => this.colorMap[d.group] || '#999')
+      .attr('r', 16)  // Larger circles for better visibility
+      .attr('fill', d => self.colorMap[d.group] || '#999')
       .attr('stroke', 'white')
       .attr('stroke-width', 2)
+      .attr('opacity', 0.85)
       .style('cursor', 'pointer')
-      .on('click', (event, d) => this.selectNode(d));
+      .on('click', (event, d) => self.selectNode(d))
+      .on('mouseover', function(event, d) {
+        d3.select(this)
+          .transition().duration(150)
+          .attr('r', 22)
+          .attr('stroke-width', 2.5);
+      })
+      .on('mouseout', function(event, d) {
+        d3.select(this)
+          .transition().duration(150)
+          .attr('r', 16)
+          .attr('stroke-width', 2);
+      });
 
     // Add zoom
     svg.call(d3.zoom()
