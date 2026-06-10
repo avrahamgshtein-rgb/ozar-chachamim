@@ -394,20 +394,8 @@ class SageNetwork {
       .attr('stroke-width', 1)
       .attr('opacity', 0.3);
 
-    // Region labels on left side (LARGER & READABLE)
-    g.selectAll('.region-label')
-      .data(regions)
-      .enter()
-      .append('text')
-      .attr('class', 'region-label')
-      .attr('x', -12)
-      .attr('y', d => yScale(d) + yScale.bandwidth() / 2 + 5)
-      .attr('text-anchor', 'end')
-      .attr('font-size', '13px')
-      .attr('font-weight', '600')
-      .attr('fill', '#1a1a1a')
-      .attr('font-family', '"Frank Ruhl Libre", serif')
-      .text(d => d);
+    // Region labels removed for cleaner UI
+    // g.selectAll('.region-label') - DISABLED for minimal design
 
     // Position nodes by time (X) and region (Y) with GRID LAYOUT
     const regionTimeBuckets = {};  // Group nodes by region + time bucket
@@ -512,41 +500,9 @@ class SageNetwork {
       .attr('stroke-width', 3)
       .attr('opacity', 0.7);
 
-    // Add labels for connection types
-    linkGroup.append('text')
-      .attr('class', 'link-type-label')
-      .attr('x', d => {
-        const sourceNode = this.data.nodes.find(node => String(node.id) === String(d.source.id || d.source));
-        const targetNode = this.data.nodes.find(node => String(node.id) === String(d.target.id || d.target));
-        return sourceNode && targetNode ? (sourceNode.x + targetNode.x) / 2 : 0;
-      })
-      .attr('y', d => {
-        const sourceNode = this.data.nodes.find(node => String(node.id) === String(d.source.id || d.source));
-        const targetNode = this.data.nodes.find(node => String(node.id) === String(d.target.id || d.target));
-        return sourceNode && targetNode ? (sourceNode.y + targetNode.y) / 2 - 8 : 0;
-      })
-      .attr('text-anchor', 'middle')
-      .attr('font-size', '0.75rem')
-      .attr('font-weight', '600')
-      .attr('fill', d => colorMap[d.type] || '#999')
-      .attr('background', 'white')
-      .attr('paint-order', 'stroke')
-      .attr('stroke', 'white')
-      .attr('stroke-width', 3)
-      .attr('pointer-events', 'none')
-      .text(d => {
-        const typeMap = {
-          'student': 'תלמיד',
-          'teacher': 'רב',
-          'colleague': 'עמית',
-          'influence': 'השפעה',
-          'oppose': 'עמדה מנוגדת',
-          'predecessor': 'קודם',
-          'contemporary': 'בן דור',
-          'family': 'משפחה'
-        };
-        return typeMap[d.type] || d.type;
-      });
+    // Connection type labels removed for clean minimal design
+    // Kept in comment for reference:
+    // typeMap = { student: 'תלמיד', teacher: 'רב', colleague: 'עמית', ... }
 
     // Create tooltip element
     let tooltip = document.querySelector('#sage-tooltip');
@@ -621,17 +577,8 @@ class SageNetwork {
           .attr('r', 18)
           .attr('stroke-width', 2);
 
-        // Show tooltip
-        const birthYear = d.birth_year || '?';
-        const deathYear = d.death_year || '?';
-        const period = d.period || d.era || '';
-        tooltip.innerHTML = `
-          <strong>${d.label}</strong><br>
-          <span style="color: #666; font-size: 0.85rem;">
-            ${birthYear}–${deathYear}<br>
-            ${period}
-          </span>
-        `;
+        // Show tooltip with just the name
+        tooltip.innerHTML = `<strong>${d.label}</strong>`;
         tooltip.style.display = 'block';
 
         // Position tooltip near cursor
