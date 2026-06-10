@@ -1,4 +1,4 @@
 {
-  "buildCommand": "mkdir -p dist && cp index.html supabase-client.js interactive-genealogy.js map.js path-finder.js styles-graph.css config.example.js dist/ && cp -r data dist/ 2>/dev/null || true && ls -la dist/",
+  "buildCommand": "mkdir -p dist && cp index.html supabase-client.js interactive-genealogy.js map.js path-finder.js styles-graph.css config.example.js dist/ && (test -f config.js && cp config.js dist/config.js || cp config.example.js dist/config.js) && cp -r data dist/ 2>/dev/null || true && ls -la dist/",
   "outputDirectory": "dist"
 }
