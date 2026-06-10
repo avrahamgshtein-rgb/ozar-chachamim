@@ -214,26 +214,8 @@ class SageNetwork {
       .attr('stroke-width', 2)
       .attr('opacity', 0.6);
 
-    // Add labels to each line
-    linkGroup.append('text')
-      .attr('class', 'link-label')
-      .attr('font-size', '0.75rem')
-      .attr('fill', '#666')
-      .attr('text-anchor', 'middle')
-      .attr('dy', '-5')
-      .text(d => {
-        const typeMap = {
-          'student': 'תלמיד',
-          'teacher': 'רב',
-          'colleague': 'עמית',
-          'influence': 'השפעה',
-          'oppose': 'עמדה מנוגדת',
-          'predecessor': 'קודם',
-          'contemporary': 'בן דור',
-          'family': 'קשר משפחה'
-        };
-        return typeMap[d.type] || d.type;
-      });
+    // Link labels removed for clean minimal design
+    // (Text labels on arrows disabled - only show on hover if needed)
 
     // Draw nodes - clean minimal design
     const self = this;
@@ -268,6 +250,9 @@ class SageNetwork {
         g.attr('transform', event.transform);
       }));
 
+    // Store linkGroup reference for tick updates
+    const self = this;
+
     // Simulation tick
     this.simulation.on('tick', () => {
       // Update link lines
@@ -277,13 +262,8 @@ class SageNetwork {
         .attr('x2', d => d.target.x)
         .attr('y2', d => d.target.y);
 
-      // Update link labels (centered between source and target)
-      linkGroup.select('text')
-        .attr('x', d => (d.source.x + d.target.x) / 2)
-        .attr('y', d => (d.source.y + d.target.y) / 2);
-
       // Update node positions
-      this.node.attr('cx', d => d.x)
+      self.node.attr('cx', d => d.x)
         .attr('cy', d => d.y);
     });
 
