@@ -501,21 +501,23 @@ class SageNetwork {
       tooltip = document.createElement('div');
       tooltip.id = 'sage-tooltip';
       tooltip.style.cssText = `
-        position: absolute;
-        background: white;
-        border: 2px solid #333;
+        position: fixed;
+        background: #1a1a1a;
+        border: 2px solid #e74c3c;
         border-radius: 8px;
-        padding: 10px 12px;
-        font-size: 0.9rem;
-        box-shadow: 0 4px 16px rgba(0,0,0,0.2);
-        z-index: 1000;
+        padding: 12px 16px;
+        font-size: 1rem;
+        font-weight: 600;
+        color: white;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        z-index: 1001;
         pointer-events: none;
         display: none;
         direction: rtl;
         text-align: right;
-        line-height: 1.6;
-        max-width: 250px;
-        font-family: 'Heebo', sans-serif;
+        line-height: 1.4;
+        max-width: 300px;
+        font-family: 'Frank Ruhl Libre', serif;
       `;
       document.body.appendChild(tooltip);
     }
@@ -578,6 +580,29 @@ class SageNetwork {
         tooltip.style.top = (event.clientY - 40) + 'px';
       })
       .on('mouseout', function() {
+        d3.select(this)
+          .transition().duration(150)
+          .attr('r', 12)
+          .attr('stroke-width', 1.5);
+        tooltip.style.display = 'none';
+      })
+      .on('touchstart', function(event, d) {
+        // Mobile touch: show tooltip and enlarge circle
+        d3.select(this)
+          .transition().duration(150)
+          .attr('r', 18)
+          .attr('stroke-width', 2);
+
+        tooltip.innerHTML = `<strong>${d.label}</strong>`;
+        tooltip.style.display = 'block';
+
+        // Position tooltip near touch point
+        const touch = event.touches[0];
+        tooltip.style.left = (touch.clientX + 10) + 'px';
+        tooltip.style.top = (touch.clientY - 40) + 'px';
+      })
+      .on('touchend', function() {
+        // Hide on touch end
         d3.select(this)
           .transition().duration(150)
           .attr('r', 12)
