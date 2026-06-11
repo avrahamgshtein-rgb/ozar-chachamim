@@ -218,29 +218,31 @@
       position: absolute;
       top: 6px;
       left: 6px;
-      background: rgba(255, 255, 255, 0.9);
-      border: none;
+      background: rgba(255, 255, 255, 0.95) !important;
+      border: 2px solid #e74c3c !important;
       font-size: 1.8rem;
-      cursor: pointer;
+      cursor: pointer !important;
       color: #e74c3c;
       padding: 4px 8px;
       line-height: 1;
       z-index: 1001;
-      width: 32px;
-      height: 32px;
+      width: 36px;
+      height: 36px;
       display: flex;
       align-items: center;
       justify-content: center;
       border-radius: 50%;
-      pointer-events: auto;
+      pointer-events: auto !important;
       touch-action: manipulation;
+      -webkit-user-select: none;
+      user-select: none;
     }
 
     .sidebar-close:active,
     .sidebar-close:hover {
-      background: rgba(255, 255, 255, 1);
+      background: white !important;
       color: #c0392b;
-      transform: scale(1.1);
+      transform: scale(1.15);
     }
 
     .sidebar-header h2 {
@@ -782,7 +784,7 @@
         <!-- Left Sidebar -->
         <aside class="sidebar" id="sidebar">
           <div class="sidebar-header" id="sidebarHeader">
-            <button class="sidebar-close" id="sidebarCloseBtn" title="סגור">×</button>
+            <button class="sidebar-close" id="sidebarCloseBtn" title="סגור" onclick="document.getElementById('sidebar').style.display='none'; return false;">×</button>
             <div class="sidebar-placeholder">
               <i class="fas fa-mouse-pointer"></i>
               <p>בחר חכם מהרשת</p>
@@ -1139,25 +1141,26 @@
       document.getElementById('sidebarContent').innerHTML = html;
     }
 
-    // Close button handler (click + touch for mobile)
-    const closeBtn = document.getElementById('sidebarCloseBtn');
-    const closeSidebar = () => {
-      const sidebar = document.getElementById('sidebar');
-      sidebar.style.display = 'none';
-      console.log('✓ Sidebar closed');
-    };
+    // Close button handler using event delegation
+    document.addEventListener('click', (e) => {
+      if (e.target.id === 'sidebarCloseBtn' || e.target.closest('#sidebarCloseBtn')) {
+        e.preventDefault();
+        e.stopPropagation();
+        const sidebar = document.getElementById('sidebar');
+        sidebar.style.display = 'none';
+        console.log('✓ Sidebar closed via click');
+      }
+    }, true);
 
-    closeBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      closeSidebar();
-    });
-
-    closeBtn.addEventListener('touchstart', (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      closeSidebar();
-    });
+    document.addEventListener('touchstart', (e) => {
+      if (e.target.id === 'sidebarCloseBtn' || e.target.closest('#sidebarCloseBtn')) {
+        e.preventDefault();
+        e.stopPropagation();
+        const sidebar = document.getElementById('sidebar');
+        sidebar.style.display = 'none';
+        console.log('✓ Sidebar closed via touch');
+      }
+    }, true);
 
     // Hook selectNode
     document.addEventListener('supabaseReady', () => {
