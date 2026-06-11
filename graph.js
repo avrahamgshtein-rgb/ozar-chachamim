@@ -495,34 +495,13 @@ class SageNetwork {
     // Kept in comment for reference:
     // typeMap = { student: 'תלמיד', teacher: 'רב', colleague: 'עמית', ... }
 
-    // Create tooltip element
+    // Get existing tooltip element from HTML
     let tooltip = document.querySelector('#sage-tooltip');
     if (!tooltip) {
-      tooltip = document.createElement('div');
-      tooltip.id = 'sage-tooltip';
-      tooltip.style.cssText = `
-        position: fixed;
-        background: rgba(26, 26, 26, 0.99);
-        border: 3px solid #e74c3c;
-        border-radius: 12px;
-        padding: 1rem;
-        font-size: 1.5rem;
-        font-weight: 800;
-        color: white;
-        box-shadow: 0 10px 40px rgba(0,0,0,0.6);
-        z-index: 2000;
-        pointer-events: none;
-        display: none;
-        opacity: 1;
-        direction: rtl;
-        text-align: center;
-        line-height: 1.3;
-        max-width: 90vw;
-        font-family: 'Frank Ruhl Libre', serif;
-        backdrop-filter: blur(4px);
-      `;
-      document.body.appendChild(tooltip);
+      console.error('❌ Tooltip element not found in HTML!');
+      return;
     }
+    console.log('✓ Tooltip element found');
 
     // Debug: Check if nodes have x/y positions
     const nodesSample = this.data.nodes.slice(0, 3);
