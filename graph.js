@@ -535,24 +535,33 @@ class SageNetwork {
     this.node.append('title')
       .text(d => d.label);
 
-    // Add text labels above nodes (hidden by default)
+    // Add hover card (rect + text)
+    this.node.append('rect')
+      .attr('class', 'node-card')
+      .attr('x', d => (d.x || 0) - 60)
+      .attr('y', d => (d.y || 0) - 45)
+      .attr('width', 120)
+      .attr('height', 35)
+      .attr('fill', '#1a1a1a')
+      .attr('rx', 6)
+      .attr('ry', 6)
+      .attr('opacity', 0)
+      .attr('pointer-events', 'none')
+      .style('transition', 'opacity 0.2s');
+
     this.node.append('text')
       .attr('class', 'node-text')
       .attr('x', d => d.x || 0)
       .attr('y', d => (d.y || 0) - 25)
       .attr('text-anchor', 'middle')
-      .attr('font-size', '14px')
+      .attr('font-size', '12px')
       .attr('font-weight', 'bold')
-      .attr('fill', '#1a1a1a')
+      .attr('fill', 'white')
       .attr('pointer-events', 'none')
       .attr('opacity', 0)
       .attr('dy', '0.35em')
       .text(d => d.label)
-      .style('font-family', "'Frank Ruhl Libre', serif")
-      .style('direction', 'rtl')
-      .style('background', 'white')
-      .style('padding', '2px 8px')
-      .style('border-radius', '4px');
+      .style('font-family', "'Frank Ruhl Libre', serif");
 
     // Add event handlers
     this.node.on('click', function(event, d) {
@@ -579,7 +588,11 @@ class SageNetwork {
           .attr('r', 18)
           .attr('stroke-width', 2);
 
-        // Show text label
+        // Show card + text
+        d3.select(this).select('rect.node-card')
+          .transition().duration(150)
+          .attr('opacity', 0.95);
+
         d3.select(this).select('text.node-text')
           .transition().duration(150)
           .attr('opacity', 1);
@@ -591,7 +604,11 @@ class SageNetwork {
           .attr('r', 12)
           .attr('stroke-width', 1.5);
 
-        // Hide text label
+        // Hide card + text
+        d3.select(this).select('rect.node-card')
+          .transition().duration(150)
+          .attr('opacity', 0);
+
         d3.select(this).select('text.node-text')
           .transition().duration(150)
           .attr('opacity', 0);
