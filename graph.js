@@ -516,18 +516,27 @@ class SageNetwork {
     this.node = g.selectAll('.node')
       .data(this.data.nodes)
       .enter()
-      .append('circle')
+      .append('g')
+      .attr('class', 'node-group');
+
+    // Add circles
+    this.node.append('circle')
       .attr('class', d => `node node-${d.group}`)
       .attr('cx', d => d.x || 0)
       .attr('cy', d => d.y || 0)
-      .attr('r', 12)  // Smaller circles so they don't overlap
+      .attr('r', 12)
       .attr('fill', d => self.colorMap[d.group] || '#999')
       .attr('stroke', 'white')
       .attr('stroke-width', 1.5)
       .attr('opacity', 0.85)
-      .attr('title', d => d.label)
-      .style('cursor', 'pointer')
-      .on('click', function(event, d) {
+      .style('cursor', 'pointer');
+
+    // Add SVG title for native tooltip
+    this.node.append('title')
+      .text(d => d.label);
+
+    // Add event handlers
+    this.node.on('click', function(event, d) {
         event.stopPropagation();
         // Hide tooltip on click
         tooltip.style.display = 'none';
@@ -545,7 +554,7 @@ class SageNetwork {
         }, 300);
       })
       .on('mouseover', function(event, d) {
-        d3.select(this)
+        d3.select(this).select('circle')
           .transition().duration(150)
           .attr('r', 18)
           .attr('stroke-width', 2);
@@ -563,7 +572,7 @@ class SageNetwork {
         tooltip.style.transform = 'translateX(-50%)';
       })
       .on('mouseout', function() {
-        d3.select(this)
+        d3.select(this).select('circle')
           .transition().duration(150)
           .attr('r', 12)
           .attr('stroke-width', 1.5);
