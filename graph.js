@@ -535,6 +535,25 @@ class SageNetwork {
     this.node.append('title')
       .text(d => d.label);
 
+    // Add text labels above nodes (hidden by default)
+    this.node.append('text')
+      .attr('class', 'node-text')
+      .attr('x', d => d.x || 0)
+      .attr('y', d => (d.y || 0) - 25)
+      .attr('text-anchor', 'middle')
+      .attr('font-size', '14px')
+      .attr('font-weight', 'bold')
+      .attr('fill', '#1a1a1a')
+      .attr('pointer-events', 'none')
+      .attr('opacity', 0)
+      .attr('dy', '0.35em')
+      .text(d => d.label)
+      .style('font-family', "'Frank Ruhl Libre', serif")
+      .style('direction', 'rtl')
+      .style('background', 'white')
+      .style('padding', '2px 8px')
+      .style('border-radius', '4px');
+
     // Add event handlers
     this.node.on('click', function(event, d) {
         event.stopPropagation();
@@ -554,29 +573,28 @@ class SageNetwork {
         }, 300);
       })
       .on('mouseover', function(event, d) {
+        // Enlarge circle
         d3.select(this).select('circle')
           .transition().duration(150)
           .attr('r', 18)
           .attr('stroke-width', 2);
 
-        // Show tooltip with just the name
-        tooltip.innerHTML = `<strong style="font-size: 1.8rem; display: block; padding: 1rem;">${d.label}</strong>`;
-        tooltip.style.display = 'block';
-        tooltip.style.opacity = '1';
-
-        console.log('✓ Tooltip shown:', d.label);
-
-        // Position tooltip in center-top area
-        tooltip.style.left = '50%';
-        tooltip.style.top = '50px';
-        tooltip.style.transform = 'translateX(-50%)';
+        // Show text label
+        d3.select(this).select('text.node-text')
+          .transition().duration(150)
+          .attr('opacity', 1);
       })
       .on('mouseout', function() {
+        // Shrink circle
         d3.select(this).select('circle')
           .transition().duration(150)
           .attr('r', 12)
           .attr('stroke-width', 1.5);
-        tooltip.style.display = 'none';
+
+        // Hide text label
+        d3.select(this).select('text.node-text')
+          .transition().duration(150)
+          .attr('opacity', 0);
       })
       .on('touchstart', function(event, d) {
         // Mobile touch: just enlarge circle, no tooltip (hover only)
