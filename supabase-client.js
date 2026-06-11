@@ -119,20 +119,34 @@ async function loadConnections() {
 async function loadResearchContent(sageId) {
   console.log(`📖 Loading research for sage ${sageId}...`)
 
-  const supabaseClient = initSupabaseClient()
-  const { data: research, error } = await supabaseClient
-    .from('research_content')
-    .select('id, sage_id, content_text, content_type, content_summary, source_file, word_count, created_at, updated_at')
-    .eq('sage_id', sageId)
-    .single()
+  try {
+    const supabaseClient = initSupabaseClient()
+    const { data: research, error } = await supabaseClient
+      .from('research_content')
+      .select('id, sage_id, content_text, content_type, content_summary, source_file, word_count, created_at, updated_at')
+      .eq('sage_id', sageId)
+      .maybeSingle()
 
-  if (error) {
-    console.log(`📝 No research content for sage ${sageId}`)
+    if (error) {
+      // Silently skip if table doesn't exist or is inaccessible
+      if (error.code === '42P01' || error.status === 406) {
+        return null
+      }
+      console.warn(`⚠️ Research fetch warning for sage ${sageId}:`, error.message)
+      return null
+    }
+
+    if (!research) {
+      console.log(`📝 No research content for sage ${sageId}`)
+      return null
+    }
+
+    console.log(`✓ Loaded research: ${research.word_count} words`)
+    return research
+  } catch (err) {
+    console.warn(`⚠️ Research content unavailable: ${err.message}`)
     return null
   }
-
-  console.log(`✓ Loaded research: ${research.word_count} words`)
-  return research
 }
 
 /**
