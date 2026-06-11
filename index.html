@@ -563,7 +563,8 @@
 
     /* MOBILE RESPONSIVE */
     @media (max-width: 900px) {
-      .sidebar { display: none; }
+      /* Keep sidebar visible on tablet */
+      .sidebar { display: flex; width: 250px; }
       .legend { width: 180px; }
     }
 
@@ -645,6 +646,30 @@
       }
 
       .legend { display: none; }
+
+      /* Mobile: Show sidebar on top */
+      .sidebar {
+        position: fixed;
+        top: 120px;
+        right: 0;
+        width: 100%;
+        max-width: 300px;
+        height: auto;
+        max-height: 60vh;
+        z-index: 999;
+        border-right: none;
+        border-left: 1px solid #e0e0e0;
+        display: flex !important;
+      }
+
+      .main {
+        flex-direction: column;
+      }
+
+      .graph-container {
+        height: 50vh;
+        min-height: 300px;
+      }
     }
   </style>
 </head>
