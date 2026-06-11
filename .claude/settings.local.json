@@ -82,7 +82,14 @@
       "Bash(curl -I http://localhost:9999)",
       "Bash(iconv -f UTF-8 -t UTF-8)",
       "Bash(unzip -q -c \"הרשב_ם.docx\" word/document.xml)",
-      "Bash(grep -v '^[[:space:]]*$')"
+      "Bash(grep -v '^[[:space:]]*$')",
+      "Bash(xargs -I {} basename {})",
+      "Bash(curl -s http://localhost:9999)",
+      "Bash(vercel --version)",
+      "Bash(curl -s -I http://localhost:9999/interactive-genealogy.js)",
+      "Bash(curl -s https://ozar-chachamim.vercel.app/interactive-genealogy.js)",
+      "Bash(curl -s -I https://ozar-chachamim.vercel.app/interactive-genealogy.js)",
+      "Bash(curl -s -I https://ozar-chachamim.vercel.app/map.js)"
     ]
   }
 }
