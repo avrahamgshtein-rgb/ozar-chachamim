@@ -229,6 +229,7 @@ class SageNetwork {
       .attr('stroke', 'white')
       .attr('stroke-width', 2)
       .attr('opacity', 0.85)
+      .attr('title', d => d.label)
       .style('cursor', 'pointer')
       .on('click', (event, d) => self.selectNode(d))
       .on('mouseover', function(event, d) {
@@ -524,6 +525,7 @@ class SageNetwork {
       .attr('stroke', 'white')
       .attr('stroke-width', 1.5)
       .attr('opacity', 0.85)
+      .attr('title', d => d.label)
       .style('cursor', 'pointer')
       .on('click', function(event, d) {
         event.stopPropagation();
