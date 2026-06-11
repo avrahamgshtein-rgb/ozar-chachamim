@@ -502,22 +502,23 @@ class SageNetwork {
       tooltip.id = 'sage-tooltip';
       tooltip.style.cssText = `
         position: fixed;
-        background: #1a1a1a;
-        border: 2px solid #e74c3c;
-        border-radius: 8px;
-        padding: 12px 16px;
-        font-size: 1rem;
-        font-weight: 600;
+        background: rgba(26, 26, 26, 0.98);
+        border: 3px solid #e74c3c;
+        border-radius: 12px;
+        padding: 16px 24px;
+        font-size: clamp(1rem, 5vw, 2.5rem);
+        font-weight: 700;
         color: white;
-        box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        box-shadow: 0 10px 40px rgba(0,0,0,0.5);
         z-index: 1001;
         pointer-events: none;
         display: none;
         direction: rtl;
-        text-align: right;
-        line-height: 1.4;
-        max-width: 300px;
+        text-align: center;
+        line-height: 1.3;
+        max-width: 90vw;
         font-family: 'Frank Ruhl Libre', serif;
+        backdrop-filter: blur(4px);
       `;
       document.body.appendChild(tooltip);
     }
@@ -571,10 +572,14 @@ class SageNetwork {
         tooltip.innerHTML = `<strong>${d.label}</strong>`;
         tooltip.style.display = 'block';
 
-        // Position tooltip near cursor
-        const rect = svgNode.getBoundingClientRect();
-        tooltip.style.left = (event.clientX + 10) + 'px';
-        tooltip.style.top = (event.clientY - 40) + 'px';
+        // Position tooltip in center-top area
+        const tooltipWidth = tooltip.offsetWidth || 300;
+        const tooltipHeight = tooltip.offsetHeight || 100;
+        const centerX = window.innerWidth / 2 - tooltipWidth / 2;
+        const topY = Math.max(20, event.clientY - tooltipHeight - 20);
+
+        tooltip.style.left = centerX + 'px';
+        tooltip.style.top = topY + 'px';
       })
       .on('mouseout', function() {
         d3.select(this)
@@ -584,19 +589,11 @@ class SageNetwork {
         tooltip.style.display = 'none';
       })
       .on('touchstart', function(event, d) {
-        // Mobile touch: show tooltip and enlarge circle
+        // Mobile touch: just enlarge circle, no tooltip (hover only)
         d3.select(this)
           .transition().duration(150)
           .attr('r', 18)
           .attr('stroke-width', 2);
-
-        tooltip.innerHTML = `<strong>${d.label}</strong>`;
-        tooltip.style.display = 'block';
-
-        // Position tooltip near touch point
-        const touch = event.touches[0];
-        tooltip.style.left = (touch.clientX + 10) + 'px';
-        tooltip.style.top = (touch.clientY - 40) + 'px';
       })
       .on('touchend', function() {
         // Hide on touch end
