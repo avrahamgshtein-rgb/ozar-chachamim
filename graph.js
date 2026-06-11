@@ -691,6 +691,44 @@ class SageNetwork {
       .translate(padding.left, padding.top);
     svg.call(zoom.transform, initialTransform);
 
+    // ADD HOVER HANDLERS BEFORE RETURN
+    console.log('✓ Nodes created with hover handlers:', this.node.size(), 'nodes');
+
+    this.node.on('mouseover', function(event, d) {
+      console.log('🔍 Hover on:', d.label);
+
+      // Enlarge circle
+      d3.select(this).select('circle')
+        .transition().duration(150)
+        .attr('r', 18)
+        .attr('stroke-width', 2);
+
+      // Show card + text
+      d3.select(this).select('rect.node-card')
+        .transition().duration(150)
+        .attr('opacity', 0.95);
+
+      d3.select(this).select('text.node-text')
+        .transition().duration(150)
+        .attr('opacity', 1);
+    })
+    .on('mouseout', function() {
+      // Shrink circle
+      d3.select(this).select('circle')
+        .transition().duration(150)
+        .attr('r', 12)
+        .attr('stroke-width', 1.5);
+
+      // Hide card + text
+      d3.select(this).select('rect.node-card')
+        .transition().duration(150)
+        .attr('opacity', 0);
+
+      d3.select(this).select('text.node-text')
+        .transition().duration(150)
+        .attr('opacity', 0);
+    });
+
     console.log('✅ Timeline Layout rendered - HORIZONTAL SCROLL ENABLED');
     return; // Timeline layout is static—no simulation needed
 
