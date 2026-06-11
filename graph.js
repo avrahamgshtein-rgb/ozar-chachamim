@@ -502,17 +502,18 @@ class SageNetwork {
       tooltip.id = 'sage-tooltip';
       tooltip.style.cssText = `
         position: fixed;
-        background: rgba(26, 26, 26, 0.98);
+        background: rgba(26, 26, 26, 0.99);
         border: 3px solid #e74c3c;
         border-radius: 12px;
-        padding: 16px 24px;
-        font-size: clamp(1rem, 5vw, 2.5rem);
-        font-weight: 700;
+        padding: 1rem;
+        font-size: 1.5rem;
+        font-weight: 800;
         color: white;
-        box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-        z-index: 1001;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+        z-index: 2000;
         pointer-events: none;
         display: none;
+        opacity: 1;
         direction: rtl;
         text-align: center;
         line-height: 1.3;
@@ -569,17 +570,16 @@ class SageNetwork {
           .attr('stroke-width', 2);
 
         // Show tooltip with just the name
-        tooltip.innerHTML = `<strong>${d.label}</strong>`;
+        tooltip.innerHTML = `<strong style="font-size: 1.8rem; display: block; padding: 1rem;">${d.label}</strong>`;
         tooltip.style.display = 'block';
+        tooltip.style.opacity = '1';
+
+        console.log('✓ Tooltip shown:', d.label);
 
         // Position tooltip in center-top area
-        const tooltipWidth = tooltip.offsetWidth || 300;
-        const tooltipHeight = tooltip.offsetHeight || 100;
-        const centerX = window.innerWidth / 2 - tooltipWidth / 2;
-        const topY = Math.max(20, event.clientY - tooltipHeight - 20);
-
-        tooltip.style.left = centerX + 'px';
-        tooltip.style.top = topY + 'px';
+        tooltip.style.left = '50%';
+        tooltip.style.top = '50px';
+        tooltip.style.transform = 'translateX(-50%)';
       })
       .on('mouseout', function() {
         d3.select(this)
