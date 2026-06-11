@@ -583,8 +583,42 @@ class SageNetwork {
         tooltip.style.display = 'none';
       });
 
-    // Node labels removed - only show on hover/click
-    // (Kept for reference but disabled for cleaner visualization)
+    // Add text labels that show on hover
+    const labels = g.selectAll('.node-label')
+      .data(this.data.nodes)
+      .enter()
+      .append('text')
+      .attr('class', 'node-label')
+      .attr('x', d => d.x || 0)
+      .attr('y', d => d.y || -25)
+      .attr('text-anchor', 'middle')
+      .attr('font-size', '14px')
+      .attr('font-weight', 'bold')
+      .attr('fill', '#1a1a1a')
+      .attr('pointer-events', 'none')
+      .attr('opacity', 0)
+      .text(d => d.label)
+      .style('font-family', "'Frank Ruhl Libre', serif")
+      .style('direction', 'rtl')
+      .style('text-shadow', '0 0 3px white, 0 0 6px white');
+
+    // Show/hide labels on hover
+    this.node.on('mouseover.label', function(event, d) {
+      const label = g.selectAll('.node-label')
+        .filter(n => n.id === d.id);
+      label.transition().duration(100).attr('opacity', 1);
+    })
+    .on('mouseout.label', function(event, d) {
+      const label = g.selectAll('.node-label')
+        .filter(n => n.id === d.id);
+      label.transition().duration(100).attr('opacity', 0);
+    });
+
+    // Update label positions on simulation tick
+    this.simulation.on('tick', () => {
+      labels.attr('x', d => d.x)
+        .attr('y', d => d.y - 25);
+    });
 
     // Enable mouse wheel horizontal scroll
     parentContainer.addEventListener('wheel', (e) => {
