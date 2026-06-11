@@ -265,6 +265,29 @@ class SageNetwork {
         .attr('cy', d => d.y);
     });
 
+    // ADD HOVER HANDLERS FOR FORCE LAYOUT
+    console.log('✓ Adding hover handlers to', this.node.size(), 'nodes');
+
+    this.node.on('mouseover', function(event, d) {
+      console.log('🔍 Hover on:', d.label);
+
+      d3.select(this)
+        .transition().duration(150)
+        .attr('r', 20)
+        .attr('stroke-width', 3);
+
+      // Show text label
+      g.selectAll('.node-text-' + d.id)
+        .transition().duration(150)
+        .attr('opacity', 1);
+    })
+    .on('mouseout', function() {
+      d3.select(this)
+        .transition().duration(150)
+        .attr('r', 16)
+        .attr('stroke-width', 2);
+    });
+
     console.log('✅ Force network rendered');
   }
 
