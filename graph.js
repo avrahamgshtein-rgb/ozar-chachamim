@@ -582,6 +582,8 @@ class SageNetwork {
         }, 300);
       })
       .on('mouseover', function(event, d) {
+        console.log('🔍 Hover on:', d.label);
+
         // Enlarge circle
         d3.select(this).select('circle')
           .transition().duration(150)
