@@ -546,11 +546,8 @@ class SageNetwork {
       .style('cursor', 'pointer')
       .on('click', function(event, d) {
         event.stopPropagation();
-        // First click: show tooltip with name
-        tooltip.innerHTML = `<strong>${d.label}</strong><br><small style="color:#999">(לחץ שוב לפרטים)</small>`;
-        tooltip.style.display = 'block';
-        tooltip.style.left = (event.clientX + 10) + 'px';
-        tooltip.style.top = (event.clientY - 40) + 'px';
+        // Hide tooltip on click
+        tooltip.style.display = 'none';
 
         // Store clicked node for next click
         self.lastClickedNode = d;
