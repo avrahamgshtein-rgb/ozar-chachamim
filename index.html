@@ -211,6 +211,18 @@
       padding: 1rem;
       border-bottom: 1px solid #f0f0f0;
       background: #fafafa;
+      position: relative;
+    }
+
+    .sidebar-close {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #e74c3c;
     }
 
     .sidebar-header h2 {
@@ -647,19 +659,33 @@
 
       .legend { display: none; }
 
-      /* Mobile: Show sidebar on top */
+      /* Mobile: Compact card sidebar */
       .sidebar {
         position: fixed;
-        top: 120px;
-        right: 0;
-        width: 100%;
+        bottom: 20px;
+        right: 20px;
+        width: 85vw;
         max-width: 300px;
         height: auto;
-        max-height: 60vh;
+        max-height: 50vh;
         z-index: 999;
-        border-right: none;
-        border-left: 1px solid #e0e0e0;
+        border-right: 2px solid #e74c3c;
+        border-radius: 12px;
         display: flex !important;
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+        animation: slideUp 0.3s ease-out;
+      }
+
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
 
       .main {
@@ -719,6 +745,7 @@
         <!-- Left Sidebar -->
         <aside class="sidebar" id="sidebar">
           <div class="sidebar-header" id="sidebarHeader">
+            <button class="sidebar-close" id="sidebarCloseBtn" title="סגור">×</button>
             <div class="sidebar-placeholder">
               <i class="fas fa-mouse-pointer"></i>
               <p>בחר חכם מהרשת</p>
@@ -1074,6 +1101,12 @@
 
       document.getElementById('sidebarContent').innerHTML = html;
     }
+
+    // Close button handler
+    document.getElementById('sidebarCloseBtn').addEventListener('click', () => {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.style.display = 'none';
+    });
 
     // Hook selectNode
     document.addEventListener('supabaseReady', () => {
