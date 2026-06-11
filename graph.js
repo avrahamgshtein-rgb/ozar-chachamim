@@ -943,15 +943,35 @@ class SageNetwork {
           background: linear-gradient(135deg, rgba(0, 0, 0, 0.03) 0%, rgba(0, 0, 0, 0.01) 100%);
           border: 3px solid ${eraColor};
           border-radius: 16px;
-          padding: 2rem 1.5rem;
+          padding: 1rem 1rem;
           text-align: center;
-          margin: 1rem;
-          min-height: 280px;
+          margin: 0.5rem;
+          min-height: auto;
           display: flex;
           flex-direction: column;
           justify-content: space-between;
           align-items: center;
+          position: relative;
         ">
+          <!-- Minimize Button -->
+          <button onclick="document.getElementById('sidebar').classList.toggle('minimized'); return false;" style="
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            background: ${eraColor} !important;
+            border: none !important;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+          " title="כווץ">⌄</button>
+
           <!-- Era Badge at Top -->
           <div style="align-self: flex-start; width: 100%;">
             <span style="
@@ -973,8 +993,8 @@ class SageNetwork {
           <div style="width: 100%;">
             <!-- Name - LARGE -->
             <h2 style="
-              margin: 1.5rem 0 0.5rem 0;
-              font-size: 2rem;
+              margin: 0.75rem 0 0.25rem 0;
+              font-size: 1.5rem;
               font-weight: 800;
               color: ${eraColor};
               line-height: 1.2;
@@ -985,16 +1005,17 @@ class SageNetwork {
 
             <!-- Period + Region -->
             <div style="
-              margin: 1.5rem 0;
-              padding: 1rem;
+              margin: 0.75rem 0;
+              padding: 0.75rem;
               background: white;
               border-radius: 12px;
               border: 1px solid rgba(0, 0, 0, 0.1);
+              font-size: 0.8rem;
             ">
-              <div style="font-size: 0.9rem; color: #666; margin-bottom: 0.5rem;">
+              <div style="color: #666; margin-bottom: 0.25rem;">
                 📅 ${profile.period || 'לא ידוע'}
               </div>
-              <div style="font-size: 0.9rem; color: #666;">
+              <div style="color: #666;">
                 📍 ${profile.region || profile.location || 'לא ידוע'}
               </div>
             </div>
@@ -1002,10 +1023,10 @@ class SageNetwork {
             <!-- Field -->
             ${profile.primary_field ? `
               <div style="
-                font-size: 1rem;
+                font-size: 0.9rem;
                 color: ${eraColor};
                 font-weight: 600;
-                margin-bottom: 1.5rem;
+                margin-bottom: 0.75rem;
               ">
                 🎓 ${profile.primary_field}
               </div>
@@ -1015,13 +1036,13 @@ class SageNetwork {
           <!-- ID at Bottom - Large & Bold -->
           <div style="
             width: 100%;
-            padding-top: 1.5rem;
+            padding-top: 0.75rem;
             border-top: 2px dashed ${eraColor}40;
-            font-size: 2.5rem;
+            font-size: 1.8rem;
             font-weight: 900;
             color: ${eraColor};
             font-family: 'Courier New', monospace;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
           ">
             #${profile.id}
           </div>
