@@ -563,6 +563,8 @@ class SageNetwork {
       .text(d => d.label)
       .style('font-family', "'Frank Ruhl Libre', serif");
 
+    console.log('✓ Nodes created with hover handlers:', this.node.size(), 'nodes');
+
     // Add event handlers
     this.node.on('click', function(event, d) {
         event.stopPropagation();
