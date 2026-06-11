@@ -276,16 +276,33 @@ class SageNetwork {
         .attr('r', 20)
         .attr('stroke-width', 3);
 
-      // Show text label
-      g.selectAll('.node-text-' + d.id)
-        .transition().duration(150)
-        .attr('opacity', 1);
+      // Add or show text label above node
+      let label = g.select('text.label-' + d.id);
+      if (label.empty()) {
+        label = g.append('text')
+          .attr('class', 'label-' + d.id)
+          .attr('x', d.x)
+          .attr('y', d.y - 30)
+          .attr('text-anchor', 'middle')
+          .attr('font-size', '16px')
+          .attr('font-weight', 'bold')
+          .attr('fill', '#1a1a1a')
+          .attr('pointer-events', 'none')
+          .text(d.label)
+          .style('font-family', "'Frank Ruhl Libre', serif");
+      }
+      label.attr('opacity', 1);
     })
-    .on('mouseout', function() {
+    .on('mouseout', function(event, d) {
       d3.select(this)
         .transition().duration(150)
         .attr('r', 16)
         .attr('stroke-width', 2);
+
+      // Hide text label
+      g.select('text.label-' + d.id)
+        .transition().duration(150)
+        .attr('opacity', 0);
     });
 
     console.log('✅ Force network rendered');
