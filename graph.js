@@ -403,16 +403,23 @@ class SageNetwork {
       return;
     }
 
-    const width = svgNode.clientWidth;
-    const height = svgNode.clientHeight;
+    this.width = svgNode.clientWidth;
+    this.height = svgNode.clientHeight;
+
+    // Fallback to window dimensions if SVG hasn't been laid out yet
+    if (this.width === 0 || this.height === 0) {
+      this.width = window.innerWidth - 300;  // Account for sidebar
+      this.height = window.innerHeight - 120;  // Account for header + search
+      console.warn(`⚠️ SVG not laid out yet, using fallback: ${this.width}x${this.height}`);
+    }
 
     svg.selectAll('*').remove();
-    svg.attr('width', width).attr('height', height);
+    svg.attr('width', this.width).attr('height', this.height);
 
     // Add background
     svg.append('rect')
-      .attr('width', width)
-      .attr('height', height)
+      .attr('width', this.width)
+      .attr('height', this.height)
       .attr('fill', '#ffffff')
       .on('click', () => this.deselectNode());
 
@@ -472,7 +479,7 @@ class SageNetwork {
       .force('charge', d3.forceManyBody()
         .strength(-800)
         .distanceMax(300))
-      .force('center', d3.forceCenter(width / 2, height / 2).strength(0.15))
+      .force('center', d3.forceCenter(this.width / 2, this.height / 2).strength(0.15))
       .force('collision', d3.forceCollide(d => {
         // Size by connection importance (degree + type bonus)
         // Increased collision radius for better spacing
@@ -780,8 +787,8 @@ class SageNetwork {
         .attr('y', d => (d.source.y + d.target.y) / 2);
 
       // Update node positions with bounds checking
-      self.node.attr('cx', d => Math.max(35, Math.min(width - 35, d.x)))
-        .attr('cy', d => Math.max(35, Math.min(height - 35, d.y)));
+      self.node.attr('cx', d => Math.max(35, Math.min(self.width - 35, d.x)))
+        .attr('cy', d => Math.max(35, Math.min(self.height - 35, d.y)));
 
       // Update sage tooltip position
       g.select('text.sage-tooltip')

@@ -1049,7 +1049,8 @@
                 .call(zoom.transform, d3.zoomIdentity.translate(50, 50).scale(0.8));
         };
 
-        svg.addEventListener('click', closeSidebar);
+        // Close sidebar when clicking on graph background
+        svg.on('click', closeSidebar);
     }
 
     function buildTraditions() {
@@ -1174,15 +1175,21 @@
     }
 
     function selectNode(d) {
+        if (!d) return;  // Guard against null
         selectedNode = d;
 
-        document.getElementById('sidebarName').textContent = d.label;
-        document.getElementById('sidebarMeta').innerHTML = `
+        // Safely set sidebar content
+        const nameEl = document.getElementById('sidebarName');
+        const metaEl = document.getElementById('sidebarMeta');
+        const bioEl = document.getElementById('sidebarBio');
+
+        if (nameEl) nameEl.textContent = d.label;
+        if (metaEl) metaEl.innerHTML = `
             <div class="sidebar-meta-item"><i class="fas fa-calendar"></i> ${d.period}</div>
             <div class="sidebar-meta-item"><i class="fas fa-map-pin"></i> ${d.location}</div>
             <div class="sidebar-meta-item"><i class="fas fa-book"></i> ${d.field}</div>
         `;
-        document.getElementById('sidebarBio').textContent = d.bio;
+        if (bioEl) bioEl.textContent = d.bio;
 
         // Related sages
         const related = graphData.links
@@ -1193,7 +1200,8 @@
             related.map(n => `<div class="related-sage" onclick="selectNode(graphData.nodes.find(nd => nd.id === '${n.id}'))">${n.label}</div>`).join('') :
             '<p style="color: #a0917d;">אין קישורים ישירים</p>';
 
-        document.getElementById('sidebarLinks').innerHTML = linksHtml;
+        const linksEl = document.getElementById('sidebarLinks');
+        if (linksEl) linksEl.innerHTML = linksHtml;
 
         // Spotify link
         const spotifySection = document.createElement('div');
@@ -1208,12 +1216,15 @@
         `;
 
         const sidebar = document.getElementById('sidebar');
-        const sidebarContent = sidebar.querySelector('.sidebar-content');
-        const existingSpotify = sidebarContent.querySelector('.spotify-link');
-        if (existingSpotify) existingSpotify.parentElement.parentElement.remove();
-        sidebarContent.appendChild(spotifySection);
-
-        document.getElementById('sidebar').classList.add('active');
+        if (sidebar) {
+            const sidebarContent = sidebar.querySelector('.sidebar-content');
+            if (sidebarContent) {
+                const existingSpotify = sidebarContent.querySelector('.spotify-link');
+                if (existingSpotify) existingSpotify.parentElement.parentElement.remove();
+                sidebarContent.appendChild(spotifySection);
+            }
+            sidebar.classList.add('active');
+        }
 
         // Highlight selected and related nodes
         d3.selectAll('.node').classed('selected', n => n.id === d.id);
