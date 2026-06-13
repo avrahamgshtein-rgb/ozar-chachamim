@@ -131,7 +131,39 @@ class SageNetwork {
    * Setup event listeners for search and UI interactions
    */
   setupEventListeners() {
-    // Search input
+    // Graph Search Bar (new feature)
+    const graphSearch = document.querySelector('#graphSearch');
+    const clearSearchBtn = document.querySelector('#clearSearch');
+    const searchCount = document.querySelector('#searchCount');
+
+    if (graphSearch) {
+      graphSearch.addEventListener('input', (e) => {
+        this.searchQuery = e.target.value.toLowerCase().trim();
+        this.filterNodesBySearch();
+      });
+
+      graphSearch.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' && this.searchQuery.length > 0) {
+          const matches = this.data.nodes.filter(n =>
+            n.label.toLowerCase().includes(this.searchQuery)
+          );
+          if (matches.length > 0) {
+            this.selectNode(matches[0]);
+          }
+        }
+      });
+
+      if (clearSearchBtn) {
+        clearSearchBtn.addEventListener('click', () => {
+          graphSearch.value = '';
+          this.searchQuery = '';
+          this.filterNodesBySearch();
+          graphSearch.focus();
+        });
+      }
+    }
+
+    // Original search input (fallback)
     const searchInput = document.querySelector(this.searchSelector);
     if (searchInput) {
       // FIX BUG 5: Proper search event listener
@@ -248,6 +280,43 @@ class SageNetwork {
     );
   }
 
+  filterNodesBySearch() {
+    const matchingNodes = this.searchQuery.length > 0
+      ? this.data.nodes.filter(n => n.label.toLowerCase().includes(this.searchQuery))
+      : [];
+
+    const searchCount = document.querySelector('#searchCount');
+    if (searchCount) {
+      if (this.searchQuery.length === 0) {
+        searchCount.textContent = '';
+      } else {
+        searchCount.textContent = `${matchingNodes.length} תוצאה${matchingNodes.length !== 1 ? 'ות' : ''}`;
+      }
+    }
+
+    if (!this.svg) return;
+
+    const matchingNodeIds = new Set(matchingNodes.map(n => String(n.id)));
+
+    // Update node opacity
+    this.svg.selectAll('circle.node').transition().duration(150)
+      .attr('opacity', n => {
+        if (this.searchQuery.length === 0) return 1;
+        return matchingNodeIds.has(String(n.id)) ? 1 : 0.15;
+      });
+
+    // Update edge opacity
+    this.svg.selectAll('line.link').transition().duration(150)
+      .attr('opacity', l => {
+        if (this.searchQuery.length === 0) return 0.4;
+        const sourceId = String(l.source?.id || l.source);
+        const targetId = String(l.target?.id || l.target);
+        return (matchingNodeIds.has(sourceId) || matchingNodeIds.has(targetId)) ? 0.6 : 0.05;
+      });
+
+    console.log(`🔍 Search filtered: "${this.searchQuery}" → ${matchingNodes.length} sages`);
+  }
+
   updateConnectionFilters() {
     // Update button UI
     document.querySelectorAll('.filter-btn').forEach(btn => {
@@ -350,15 +419,28 @@ class SageNetwork {
     // Add defs for gradients and filters
     const defs = svg.append('defs');
 
-    // Glow filter for hover effect
+    // Soft shadow filter for nodes (always applied)
     defs.append('filter')
-      .attr('id', 'node-glow')
+      .attr('id', 'node-shadow')
       .attr('x', '-50%')
       .attr('y', '-50%')
       .attr('width', '200%')
       .attr('height', '200%')
       .append('feGaussianBlur')
-      .attr('stdDeviation', 3)
+      .attr('in', 'SourceGraphic')
+      .attr('stdDeviation', 2)
+      .attr('result', 'coloredBlur');
+
+    // Enhanced glow filter for hover effect
+    defs.append('filter')
+      .attr('id', 'node-glow')
+      .attr('x', '-80%')
+      .attr('y', '-80%')
+      .attr('width', '260%')
+      .attr('height', '260%')
+      .append('feGaussianBlur')
+      .attr('in', 'SourceGraphic')
+      .attr('stdDeviation', 4)
       .attr('result', 'coloredBlur');
 
     const g = svg.append('g');
@@ -400,16 +482,16 @@ class SageNetwork {
       .velocityDecay(0.5)
       .alphaDecay(0.015);
 
-    // Connection type styling (color + stroke pattern)
+    // Connection type styling (color + stroke pattern) - Connected Papers style
     const connectionTypeColors = {
-      'student': '#4ecdc4',
-      'teacher': '#2980b9',
-      'influence': '#8b7965',
-      'oppose': '#ff6b6b',
-      'colleague': '#95e1d3',
-      'predecessor': '#f9ca24',
-      'contemporary': '#a29bfe',
-      'family': '#fd79a8'
+      'student': '#4ecdc4',      // Bright teal (learning)
+      'teacher': '#2980b9',      // Deep blue (guidance)
+      'influence': '#e74c3c',    // Bright red (influence)
+      'oppose': '#c0392b',       // Dark red (opposition)
+      'colleague': '#27ae60',    // Green (peer)
+      'predecessor': '#9b59b6',  // Purple (legacy)
+      'contemporary': '#f39c12', // Orange (same era)
+      'family': '#e67e22'        // Dark orange (family)
     };
 
     const connectionTypeStrokes = {
@@ -436,9 +518,23 @@ class SageNetwork {
       .attr('stroke', d => connectionTypeColors[d.type] || '#999')
       .attr('stroke-width', d => {
         // Thicker for primary relationships
-        return (d.type === 'student' || d.type === 'teacher') ? 2.5 : 2;
+        return (d.type === 'student' || d.type === 'teacher') ? 2.8 : 2.2;
       })
-      .attr('opacity', 0.45)
+      .attr('stroke-dasharray', d => {
+        // Different patterns for different types
+        const patterns = {
+          'student': null,      // Solid
+          'teacher': null,      // Solid
+          'influence': '5,5',   // Dashed (weaker)
+          'oppose': '3,3',      // Dotted (opposition)
+          'colleague': null,    // Solid
+          'predecessor': '2,4', // Sparse dots
+          'contemporary': null, // Solid
+          'family': '8,4'       // Dash-dash
+        };
+        return patterns[d.type] || null;
+      })
+      .attr('opacity', 0.5)
       .attr('stroke-linecap', 'round')
       .attr('stroke-dasharray', d => connectionTypeStrokes[d.type] !== 'solid' ? connectionTypeStrokes[d.type] : 'none')
       .style('cursor', 'pointer')
@@ -502,7 +598,7 @@ class SageNetwork {
       .style('text-shadow', '0 0 3px white, 0 0 6px rgba(255,255,255,0.8)')
       .style('transition', 'opacity 0.2s ease');
 
-    // Draw nodes - Connected Papers style with size by degree
+    // Draw nodes - Connected Papers style with size by degree + shadows
     const self = this;
     this.node = g.selectAll('.node')
       .data(this.data.nodes, d => d.id)
@@ -512,16 +608,16 @@ class SageNetwork {
       .attr('r', d => {
         // Size based on connection count (degree centrality)
         const degree = nodeDegree[d.id] || 0;
-        const baseSize = 24;
-        const maxSize = 42;
+        const baseSize = 26;  // Slightly larger base size
+        const maxSize = 44;   // Slightly larger max
         return Math.min(baseSize + (Math.sqrt(degree) * 4), maxSize);
       })
       .attr('fill', d => self.colorMap[d.group] || '#999')
       .attr('stroke', '#ffffff')
       .attr('stroke-width', 2.5)
-      .attr('opacity', 0.88)
+      .attr('opacity', 0.9)
       .style('cursor', 'pointer')
-      .style('filter', 'drop-shadow(0 2px 8px rgba(0,0,0,0.15))')
+      .style('filter', 'url(#node-shadow)')
       .on('click', (event, d) => {
         event.stopPropagation();
         self.selectNode(d);
@@ -549,23 +645,26 @@ class SageNetwork {
           .attr('opacity', 1)
           .text(d.label);
 
-        // Find all connected nodes (1st and 2nd degree)
+        // Find all connected nodes (1st degree only - Connected Papers style)
         const connectedNodeIds = new Set();
-        connectedNodeIds.add(hoveredNodeId);
+        connectedNodeIds.add(String(hoveredNodeId));
         self.data.links.forEach(link => {
-          if (String(link.source.id || link.source) === String(hoveredNodeId)) {
-            connectedNodeIds.add(String(link.target.id || link.target));
+          const sourceId = String(link.source.id || link.source);
+          const targetId = String(link.target.id || link.target);
+          if (sourceId === String(hoveredNodeId)) {
+            connectedNodeIds.add(targetId);
           }
-          if (String(link.target.id || link.target) === String(hoveredNodeId)) {
-            connectedNodeIds.add(String(link.source.id || link.source));
+          if (targetId === String(hoveredNodeId)) {
+            connectedNodeIds.add(sourceId);
           }
         });
 
-        // Enhanced hover effect with better opacity gradation
+        // Enhanced hover effect: Connected Papers style (bright + fade to 20%)
         self.node.transition().duration(150)
           .attr('opacity', n => {
-            if (connectedNodeIds.has(String(n.id))) return 1;
-            return 0.12;
+            if (String(n.id) === String(hoveredNodeId)) return 1;
+            if (connectedNodeIds.has(String(n.id))) return 0.95;
+            return 0.2;  // Fade non-connected to 20%
           })
           .attr('r', n => {
             if (String(n.id) === String(hoveredNodeId)) {
@@ -634,10 +733,10 @@ class SageNetwork {
 
         // Restore all nodes smoothly
         self.node.transition().duration(150)
-          .attr('opacity', 0.88)
-          .attr('r', n => Math.min(24 + (Math.sqrt(nodeDegree[n.id] || 0) * 4), 42))
+          .attr('opacity', 0.9)
+          .attr('r', n => Math.min(26 + (Math.sqrt(nodeDegree[n.id] || 0) * 4), 44))
           .attr('stroke-width', 2.5)
-          .attr('filter', 'drop-shadow(0 2px 8px rgba(0,0,0,0.15))');
+          .attr('filter', 'url(#node-shadow)');
 
         // Restore all edges
         linkLines.transition().duration(150)
