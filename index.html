@@ -199,6 +199,23 @@
             display: block;
         }
 
+        /* Connected Papers Style */
+        .node {
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .node.selected {
+            stroke: #9b59b6 !important;
+            stroke-width: 4 !important;
+            filter: drop-shadow(0 0 6px rgba(155, 89, 182, 0.5));
+        }
+
+        .hover-label {
+            text-shadow: 0 0 3px white, 0 0 6px white, 0 0 10px rgba(255,255,255,0.8);
+            pointer-events: none;
+        }
+
         svg {
             width: 100%;
             height: 100%;
@@ -980,6 +997,33 @@
             .append('line')
             .attr('class', d => 'link ' + d.type);
 
+        // Add connection type labels
+        const linkLabels = container.append('g')
+            .selectAll('text')
+            .data(graphData.links)
+            .enter()
+            .append('text')
+            .attr('class', 'link-label')
+            .attr('font-size', '11px')
+            .attr('fill', '#999')
+            .attr('text-anchor', 'middle')
+            .attr('pointer-events', 'none')
+            .attr('opacity', 0.7)
+            .text(d => {
+                // Translate connection type to Hebrew
+                const typeMap = {
+                    'student': 'תלמיד',
+                    'teacher': 'רב',
+                    'colleague': 'עמית',
+                    'influence': 'השפעה',
+                    'oppose': 'התנגדות',
+                    'predecessor': 'קדמון',
+                    'contemporary': 'עכשווי',
+                    'family': 'משפחה'
+                };
+                return typeMap[d.type] || d.type;
+            });
+
         const node = container.append('g')
             .selectAll('circle')
             .data(graphData.nodes)
@@ -988,9 +1032,54 @@
             .attr('class', 'node')
             .attr('r', 22)
             .attr('fill', d => colorMap[d.group] || '#999')
+            .attr('stroke', '#fff')
+            .attr('stroke-width', 2)
             .on('click', (e, d) => {
                 e.stopPropagation();
                 selectNode(d);
+            })
+            .on('mouseover', function(e, d) {
+                // Highlight connected nodes
+                const connectedIds = new Set();
+                graphData.links.forEach(link => {
+                    if (link.source.id === d.id) connectedIds.add(link.target.id);
+                    if (link.target.id === d.id) connectedIds.add(link.source.id);
+                });
+
+                // Fade non-connected
+                node.transition().duration(200)
+                    .attr('opacity', n => connectedIds.has(n.id) || n.id === d.id ? 1 : 0.2);
+
+                // Show floating label
+                d3.select(this).transition().duration(200)
+                    .attr('r', 28)
+                    .attr('filter', 'drop-shadow(0 0 4px rgba(0,0,0,0.3))');
+
+                // Show full name above circle
+                svg.append('text')
+                    .attr('class', 'hover-label')
+                    .attr('x', d.x)
+                    .attr('y', d.y - 35)
+                    .attr('text-anchor', 'middle')
+                    .attr('font-family', "'Frank Ruhl Libre', serif")
+                    .attr('font-size', '14px')
+                    .attr('font-weight', 'bold')
+                    .attr('fill', '#1a1a1a')
+                    .attr('pointer-events', 'none')
+                    .text(d.label);
+            })
+            .on('mouseout', function(e, d) {
+                // Restore opacity
+                node.transition().duration(200)
+                    .attr('opacity', 1);
+
+                // Restore circle size
+                d3.select(this).transition().duration(200)
+                    .attr('r', 22)
+                    .attr('filter', 'none');
+
+                // Remove hover label
+                d3.selectAll('.hover-label').remove();
             })
             .call(d3.drag()
                 .on('start', dragStart)
@@ -1033,6 +1122,11 @@
                 .attr('y1', d => d.source.y)
                 .attr('x2', d => d.target.x)
                 .attr('y2', d => d.target.y);
+
+            // Position connection type labels at edge center
+            linkLabels
+                .attr('x', d => (d.source.x + d.target.x) / 2)
+                .attr('y', d => (d.source.y + d.target.y) / 2);
 
             node
                 .attr('cx', d => d.x)
@@ -1226,8 +1320,13 @@
             sidebar.classList.add('active');
         }
 
-        // Highlight selected and related nodes
-        d3.selectAll('.node').classed('selected', n => n.id === d.id);
+        // Highlight selected and related nodes (Connected Papers style)
+        d3.selectAll('.node')
+            .classed('selected', n => n.id === d.id)
+            .transition().duration(200)
+            .attr('stroke', n => n.id === d.id ? '#9b59b6' : '#fff')
+            .attr('stroke-width', n => n.id === d.id ? 4 : 2);
+
         d3.selectAll('.node').classed('related', n => related.some(r => r.id === n.id));
         d3.selectAll('.link').classed('active', l => l.source.id === d.id || l.target.id === d.id);
     }
