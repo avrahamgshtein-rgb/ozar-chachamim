@@ -89,7 +89,15 @@
       "Bash(curl -s -I http://localhost:9999/interactive-genealogy.js)",
       "Bash(curl -s https://ozar-chachamim.vercel.app/interactive-genealogy.js)",
       "Bash(curl -s -I https://ozar-chachamim.vercel.app/interactive-genealogy.js)",
-      "Bash(curl -s -I https://ozar-chachamim.vercel.app/map.js)"
+      "Bash(curl -s -I https://ozar-chachamim.vercel.app/map.js)",
+      "PowerShell(\\(Get-Content C:\\\\Users\\\\User\\\\Desktop\\\\ozar-chachamim\\\\styles-graph.css | Measure-Object -Line\\).Lines)",
+      "Bash(xargs -r kill -9)",
+      "PowerShell(Start-Sleep -Seconds 2; curl.exe -s http://localhost:8080 | Select-Object -First 20)",
+      "PowerShell(netstat *)",
+      "Bash(node -c graph.js)",
+      "Bash(pkill -f \"http.server 8080\")",
+      "Bash(cd C:\\\\\\\\Users\\\\\\\\User\\\\\\\\Desktop\\\\\\\\ozar-chachamim)",
+      "Bash(python3 -m http.server 9999)"
     ]
   }
 }

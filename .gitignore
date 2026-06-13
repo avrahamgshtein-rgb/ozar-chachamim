@@ -14,3 +14,4 @@ config.js
 node_modules/
 .venv/
 venv/
+claude.exe

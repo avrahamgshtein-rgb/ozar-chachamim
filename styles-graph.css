@@ -289,13 +289,81 @@ body {
 /* ===== SVG ELEMENTS ===== */
 .node {
   cursor: pointer;
-  transition: all 0.2s ease;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  transition: all 0.15s ease;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.12));
 }
 
 .node:hover {
   stroke-width: 3px !important;
-  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.18));
+}
+
+/* Connected Papers style link styling by type */
+.link {
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.link-student,
+.link-teacher {
+  stroke-width: 2.5px;
+  opacity: 0.5;
+}
+
+.link-influence,
+.link-oppose {
+  stroke-width: 2px;
+  opacity: 0.4;
+  stroke-dasharray: 4, 3;
+}
+
+.link-predecessor {
+  stroke-width: 2px;
+  opacity: 0.4;
+  stroke-dasharray: 2, 4;
+}
+
+.link-colleague,
+.link-contemporary,
+.link-family {
+  stroke-width: 2px;
+  opacity: 0.45;
+}
+
+.link:hover {
+  opacity: 1 !important;
+  stroke-width: 4 !important;
+  filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.2));
+}
+
+/* Node color classes for era-based styling */
+.node-second-temple { fill: #8e44ad; }
+.node-tannaim { fill: #e74c3c; }
+.node-amoraim { fill: #e67e22; }
+.node-geonim { fill: #f1c40f; }
+.node-rishonim { fill: #27ae60; }
+.node-acharonim { fill: #2980b9; }
+.node-modern { fill: #1abc9c; }
+.node-unknown { fill: #999999; }
+
+/* Glow animation for important nodes */
+@keyframes node-glow {
+  0%, 100% {
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.12));
+  }
+  50% {
+    filter: drop-shadow(0 0 12px rgba(100, 150, 255, 0.3));
+  }
+}
+
+.node.selected {
+  animation: node-glow 0.6s ease-in-out infinite;
+}
+
+/* Search highlighting */
+.search-match {
+  opacity: 1 !important;
+  filter: drop-shadow(0 0 8px rgba(255, 200, 100, 0.5)) !important;
 }
 
 .node.selected {
@@ -647,26 +715,42 @@ body {
 .related-sages {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.8rem;
 }
 
 .related-sage {
-  padding: 0.75rem;
-  background: var(--color-bg-light);
-  border-radius: 6px;
+  padding: 1rem;
+  background: linear-gradient(135deg, var(--color-bg-light) 0%, var(--color-white) 100%);
+  border: 2px solid var(--color-border);
+  border-radius: 10px;
   font-size: 0.9rem;
   color: var(--color-secondary);
   cursor: pointer;
-  transition: all 0.2s ease;
-  border-left: 3px solid transparent;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.related-sage::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: right 0.6s ease;
 }
 
 .related-sage:hover {
-  background: var(--color-border);
-  padding-right: 1rem;
-  border-right-color: var(--color-secondary);
-  padding-left: 0;
-  border-left: none;
+  background: var(--color-white);
+  border-color: var(--color-primary);
+  box-shadow: 0 6px 16px rgba(61, 40, 23, 0.12);
+  transform: translateY(-2px);
+}
+
+.related-sage:hover::before {
+  right: 100%;
 }
 
 /* ===== SCROLLBAR ===== */
@@ -1146,6 +1230,80 @@ body {
 .map-legend-minimize:hover,
 .map-legend-close:hover {
   opacity: 1;
+}
+
+/* ===== CONNECTION FILTERS ===== */
+.connection-filters {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  border-left: 1px solid #ddd;
+  padding-left: 1rem;
+}
+
+.filter-btn {
+  padding: 0.6rem 1rem;
+  border: 1px solid #ddd;
+  background: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: #666;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.filter-btn:hover {
+  border-color: #2980b9;
+  color: #2980b9;
+  background: #f0f7ff;
+}
+
+.filter-btn.active {
+  background: #2980b9;
+  color: white;
+  border-color: #2980b9;
+}
+
+/* ===== ZOOM CONTROLS ===== */
+.zoom-controls {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  border-left: 1px solid #ddd;
+  padding-left: 1rem;
+  margin-left: auto;
+}
+
+.zoom-btn {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 1px solid #ddd;
+  background: white;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  color: #666;
+  transition: all 0.2s ease;
+}
+
+.zoom-btn:hover {
+  background: #f5f5f5;
+  border-color: #999;
+  color: #333;
+}
+
+.zoom-btn:active {
+  background: #e8e8e8;
+  transform: scale(0.95);
 }
 
 .map-legend-toggle {

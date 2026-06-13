@@ -45,6 +45,32 @@ class SageNetwork {
     this.selectedNode = null;
     this.searchQuery = '';
     this.loggedMissingColors = {};
+    this.connectionFilter = 'all'; // 'all', 'prior', 'derivative'
+  }
+
+  // Calculate node radius based on connection count
+  getNodeRadius(nodeId) {
+    const connectionCount = (this.data.links || []).filter(link => {
+      const sourceId = String(link.source?.id || link.source);
+      const targetId = String(link.target?.id || link.target);
+      return sourceId === String(nodeId) || targetId === String(nodeId);
+    }).length;
+
+    // Base radius 24, +2 per connection (max 40)
+    return Math.min(24 + Math.min(connectionCount, 8) * 2, 40);
+  }
+
+  // Get connections by type (prior = incoming, derivative = outgoing)
+  getPriorConnections(nodeId) {
+    return (this.data.links || []).filter(link =>
+      String(link.target?.id || link.target) === String(nodeId)
+    );
+  }
+
+  getDerivativeConnections(nodeId) {
+    return (this.data.links || []).filter(link =>
+      String(link.source?.id || link.source) === String(nodeId)
+    );
   }
 
   /**
@@ -155,6 +181,139 @@ class SageNetwork {
         }
       }
     });
+
+    // Connection filter buttons
+    const priorBtn = document.querySelector('#priorConnectionsBtn');
+    const allBtn = document.querySelector('#allConnectionsBtn');
+    const derivativeBtn = document.querySelector('#derivativeConnectionsBtn');
+
+    if (priorBtn) {
+      priorBtn.addEventListener('click', () => {
+        this.connectionFilter = 'prior';
+        this.updateConnectionFilters();
+      });
+    }
+    if (allBtn) {
+      allBtn.addEventListener('click', () => {
+        this.connectionFilter = 'all';
+        this.updateConnectionFilters();
+      });
+    }
+    if (derivativeBtn) {
+      derivativeBtn.addEventListener('click', () => {
+        this.connectionFilter = 'derivative';
+        this.updateConnectionFilters();
+      });
+    }
+
+    // Zoom control buttons
+    const zoomInBtn = document.querySelector('#zoomInBtn');
+    const zoomOutBtn = document.querySelector('#zoomOutBtn');
+    const resetViewBtn = document.querySelector('#resetViewBtn');
+
+    if (zoomInBtn) {
+      zoomInBtn.addEventListener('click', () => this.zoomIn());
+    }
+    if (zoomOutBtn) {
+      zoomOutBtn.addEventListener('click', () => this.zoomOut());
+    }
+    if (resetViewBtn) {
+      resetViewBtn.addEventListener('click', () => this.resetView());
+    }
+  }
+
+  zoomIn() {
+    if (!this.svg) return;
+    this.svg.transition().duration(300).call(
+      this.zoom.scaleBy,
+      1.3
+    );
+  }
+
+  zoomOut() {
+    if (!this.svg) return;
+    this.svg.transition().duration(300).call(
+      this.zoom.scaleBy,
+      0.77
+    );
+  }
+
+  resetView() {
+    if (!this.svg) return;
+    const width = this.svg.node().clientWidth;
+    const height = this.svg.node().clientHeight;
+    this.svg.transition().duration(500).call(
+      this.zoom.transform,
+      d3.zoomIdentity.translate(0, 0).scale(1)
+    );
+  }
+
+  updateConnectionFilters() {
+    // Update button UI
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.classList.remove('active');
+    });
+
+    if (this.connectionFilter === 'prior') {
+      document.querySelector('#priorConnectionsBtn').classList.add('active');
+    } else if (this.connectionFilter === 'derivative') {
+      document.querySelector('#derivativeConnectionsBtn').classList.add('active');
+    } else {
+      document.querySelector('#allConnectionsBtn').classList.add('active');
+    }
+
+    // If no node selected, don't filter
+    if (!this.selectedNode) {
+      this.updateNodeVisibility();
+      return;
+    }
+
+    // Filter connections based on selected node
+    const selectedId = String(this.selectedNode.id);
+    const visibleNodeIds = new Set([selectedId]);
+
+    if (this.connectionFilter === 'all') {
+      // Show all connected nodes
+      this.data.links.forEach(link => {
+        const sourceId = String(link.source?.id || link.source);
+        const targetId = String(link.target?.id || link.target);
+        if (sourceId === selectedId || targetId === selectedId) {
+          visibleNodeIds.add(sourceId);
+          visibleNodeIds.add(targetId);
+        }
+      });
+    } else if (this.connectionFilter === 'prior') {
+      // Show only incoming connections (teachers/mentors)
+      this.getPriorConnections(selectedId).forEach(link => {
+        visibleNodeIds.add(String(link.source?.id || link.source));
+      });
+    } else if (this.connectionFilter === 'derivative') {
+      // Show only outgoing connections (students/successors)
+      this.getDerivativeConnections(selectedId).forEach(link => {
+        visibleNodeIds.add(String(link.target?.id || link.target));
+      });
+    }
+
+    console.log(`🔗 Filter: ${this.connectionFilter} → ${visibleNodeIds.size} nodes visible`);
+
+    // Update visibility
+    d3.selectAll('.node')
+      .style('opacity', d => visibleNodeIds.has(String(d.id)) ? 0.9 : 0.1)
+      .style('pointer-events', d => visibleNodeIds.has(String(d.id)) ? 'auto' : 'none');
+
+    d3.selectAll('.link')
+      .style('opacity', l => {
+        const sourceId = String(l.source?.id || l.source);
+        const targetId = String(l.target?.id || l.target);
+
+        if (this.connectionFilter === 'all') {
+          return (sourceId === selectedId || targetId === selectedId) ? 0.7 : 0.1;
+        } else if (this.connectionFilter === 'prior') {
+          return targetId === selectedId ? 0.7 : 0.1;
+        } else if (this.connectionFilter === 'derivative') {
+          return sourceId === selectedId ? 0.7 : 0.1;
+        }
+      });
   }
 
   /**
@@ -179,19 +338,90 @@ class SageNetwork {
     const height = svgNode.clientHeight;
 
     svg.selectAll('*').remove();
+    svg.attr('width', width).attr('height', height);
+
+    // Add background
+    svg.append('rect')
+      .attr('width', width)
+      .attr('height', height)
+      .attr('fill', '#ffffff')
+      .on('click', () => this.deselectNode());
+
+    // Add defs for gradients and filters
+    const defs = svg.append('defs');
+
+    // Glow filter for hover effect
+    defs.append('filter')
+      .attr('id', 'node-glow')
+      .attr('x', '-50%')
+      .attr('y', '-50%')
+      .attr('width', '200%')
+      .attr('height', '200%')
+      .append('feGaussianBlur')
+      .attr('stdDeviation', 3)
+      .attr('result', 'coloredBlur');
+
     const g = svg.append('g');
 
     console.log(`📊 Force network rendering ${this.data.nodes.length} nodes`);
 
-    // Create simulation
+    // Compute node degrees for sizing
+    const nodeDegree = {};
+    this.data.nodes.forEach(n => nodeDegree[n.id] = 0);
+    this.data.links.forEach(link => {
+      const sourceId = String(link.source?.id || link.source || '');
+      const targetId = String(link.target?.id || link.target || '');
+      if (nodeDegree[sourceId] !== undefined) nodeDegree[sourceId]++;
+      if (nodeDegree[targetId] !== undefined) nodeDegree[targetId]++;
+    });
+
+    // Enhanced simulation with better parameters for 323 nodes
     this.simulation = d3.forceSimulation(this.data.nodes)
       .force('link', d3.forceLink(this.data.links || [])
         .id(d => String(d.id))
-        .distance(100)
-        .strength(0.3))
-      .force('charge', d3.forceManyBody().strength(-500))
-      .force('center', d3.forceCenter(width / 2, height / 2))
-      .force('collision', d3.forceCollide(32));
+        .distance(d => {
+          // Stronger connections pull closer
+          return d.type === 'student' ? 80 : d.type === 'teacher' ? 90 : 120;
+        })
+        .strength(d => {
+          // Stronger forces for important connections
+          return d.type === 'student' ? 0.4 : d.type === 'teacher' ? 0.35 : 0.2;
+        }))
+      .force('charge', d3.forceManyBody()
+        .strength(-800)
+        .distanceMax(300))
+      .force('center', d3.forceCenter(width / 2, height / 2).strength(0.15))
+      .force('collision', d3.forceCollide(d => {
+        // Size by connection importance (degree + type bonus)
+        // Increased collision radius for better spacing
+        const baseSize = 35 + (Math.sqrt(nodeDegree[d.id] || 0) * 4);
+        return Math.min(baseSize, 55);
+      }))
+      .velocityDecay(0.5)
+      .alphaDecay(0.015);
+
+    // Connection type styling (color + stroke pattern)
+    const connectionTypeColors = {
+      'student': '#4ecdc4',
+      'teacher': '#2980b9',
+      'influence': '#8b7965',
+      'oppose': '#ff6b6b',
+      'colleague': '#95e1d3',
+      'predecessor': '#f9ca24',
+      'contemporary': '#a29bfe',
+      'family': '#fd79a8'
+    };
+
+    const connectionTypeStrokes = {
+      'student': 'solid',
+      'teacher': 'solid',
+      'influence': '4,3',      // Dashed for weaker connections
+      'oppose': '6,4',         // Dashed for opposition
+      'colleague': 'solid',
+      'predecessor': '2,4',    // Dotted
+      'contemporary': 'solid',
+      'family': 'solid'
+    };
 
     // Draw links as groups (line + label)
     const linkGroup = g.selectAll('.link-group')
@@ -200,59 +430,244 @@ class SageNetwork {
       .append('g')
       .attr('class', 'link-group');
 
-    // Add lines to each group
-    linkGroup.append('line')
+    // Add lines to each group - with connection type styling
+    const linkLines = linkGroup.append('line')
       .attr('class', d => `link link-${d.type}`)
-      .attr('stroke', d => {
-        const colorMap = {
-          'student': '#4ecdc4', 'teacher': '#2980b9', 'influence': '#8b7965',
-          'oppose': '#ff6b6b', 'colleague': '#95e1d3', 'predecessor': '#f9ca24',
-          'contemporary': '#a29bfe', 'family': '#fd79a8'
-        };
-        return colorMap[d.type] || '#999';
+      .attr('stroke', d => connectionTypeColors[d.type] || '#999')
+      .attr('stroke-width', d => {
+        // Thicker for primary relationships
+        return (d.type === 'student' || d.type === 'teacher') ? 2.5 : 2;
       })
-      .attr('stroke-width', 2)
-      .attr('opacity', 0.6);
+      .attr('opacity', 0.45)
+      .attr('stroke-linecap', 'round')
+      .attr('stroke-dasharray', d => connectionTypeStrokes[d.type] !== 'solid' ? connectionTypeStrokes[d.type] : 'none')
+      .style('cursor', 'pointer')
+      .on('mouseover', function(event, d) {
+        d3.select(this).transition().duration(100)
+          .attr('stroke-width', 4.5)
+          .attr('opacity', 1);
+        // Make connection type label fully visible on hover
+        d3.select(this.parentNode).select('text.link-label')
+          .transition().duration(100)
+          .attr('opacity', 1)
+          .attr('font-size', '14px');
+      })
+      .on('mouseout', function(event, d) {
+        d3.select(this).transition().duration(100)
+          .attr('stroke-width', (d.type === 'student' || d.type === 'teacher') ? 2.5 : 2)
+          .attr('opacity', 0.45);
+        // Return label to normal visibility
+        d3.select(this.parentNode).select('text.link-label')
+          .transition().duration(100)
+          .attr('opacity', 0.6)
+          .attr('font-size', '12px');
+      });
 
-    // Link labels removed for clean minimal design
-    // (Text labels on arrows disabled - only show on hover if needed)
+    // Add connection type labels on edges (show on hover)
+    const connectionTypeLabels = {
+      'student': 'תלמיד',
+      'teacher': 'מורה',
+      'influence': 'השפעה',
+      'oppose': 'התנגדות',
+      'colleague': 'עמית',
+      'predecessor': 'קדמון',
+      'contemporary': 'בן זמן',
+      'family': 'משפחה'
+    };
 
-    // Draw nodes - clean minimal design
+    linkGroup.append('text')
+      .attr('class', 'link-label')
+      .attr('font-size', '12px')
+      .attr('font-weight', 'bold')
+      .attr('font-family', "'Frank Ruhl Libre', serif")
+      .attr('fill', d => connectionTypeColors[d.type] || '#999')
+      .attr('text-anchor', 'middle')
+      .attr('dy', '-6px')
+      .attr('opacity', 0.6)  // Visible by default at 60% opacity
+      .text(d => {
+        // Hebrew labels for connection types
+        const labels = {
+          'student': 'תלמיד',
+          'teacher': 'רב',
+          'influence': 'השפעה',
+          'oppose': 'התנגדות',
+          'colleague': 'עמית',
+          'predecessor': 'קדמון',
+          'contemporary': 'בן זמן',
+          'family': 'משפחה'
+        };
+        return labels[d.type] || d.type;
+      })
+      .style('pointer-events', 'none')
+      .style('text-shadow', '0 0 3px white, 0 0 6px rgba(255,255,255,0.8)')
+      .style('transition', 'opacity 0.2s ease');
+
+    // Draw nodes - Connected Papers style with size by degree
     const self = this;
     this.node = g.selectAll('.node')
-      .data(this.data.nodes)
+      .data(this.data.nodes, d => d.id)
       .enter()
       .append('circle')
       .attr('class', d => `node node-${d.group}`)
-      .attr('r', 16)  // Larger circles for better visibility
+      .attr('r', d => {
+        // Size based on connection count (degree centrality)
+        const degree = nodeDegree[d.id] || 0;
+        const baseSize = 24;
+        const maxSize = 42;
+        return Math.min(baseSize + (Math.sqrt(degree) * 4), maxSize);
+      })
       .attr('fill', d => self.colorMap[d.group] || '#999')
-      .attr('stroke', 'white')
-      .attr('stroke-width', 2)
-      .attr('opacity', 0.85)
-      .attr('title', d => d.label)
+      .attr('stroke', '#ffffff')
+      .attr('stroke-width', 2.5)
+      .attr('opacity', 0.88)
       .style('cursor', 'pointer')
-      .on('click', (event, d) => self.selectNode(d))
+      .style('filter', 'drop-shadow(0 2px 8px rgba(0,0,0,0.15))')
+      .on('click', (event, d) => {
+        event.stopPropagation();
+        self.selectNode(d);
+      })
       .on('mouseover', function(event, d) {
+        event.stopPropagation();
+        const hoveredNodeId = d.id;
+
+        // Show sage name tooltip
+        let tooltip = g.select('text.sage-tooltip');
+        if (tooltip.empty()) {
+          tooltip = g.append('text')
+            .attr('class', 'sage-tooltip')
+            .style('font-family', "'Frank Ruhl Libre', serif")
+            .style('font-size', '16px')
+            .style('font-weight', 'bold')
+            .style('fill', '#1a1a1a')
+            .style('text-anchor', 'middle')
+            .style('pointer-events', 'none')
+            .style('text-shadow', '0 0 4px white, 0 0 8px white, 0 0 12px rgba(255,255,255,0.8)')
+            .style('direction', 'rtl');
+        }
+        tooltip.attr('x', d.x)
+          .attr('y', d.y - 50)
+          .attr('opacity', 1)
+          .text(d.label);
+
+        // Find all connected nodes (1st and 2nd degree)
+        const connectedNodeIds = new Set();
+        connectedNodeIds.add(hoveredNodeId);
+        self.data.links.forEach(link => {
+          if (String(link.source.id || link.source) === String(hoveredNodeId)) {
+            connectedNodeIds.add(String(link.target.id || link.target));
+          }
+          if (String(link.target.id || link.target) === String(hoveredNodeId)) {
+            connectedNodeIds.add(String(link.source.id || link.source));
+          }
+        });
+
+        // Enhanced hover effect with better opacity gradation
+        self.node.transition().duration(150)
+          .attr('opacity', n => {
+            if (connectedNodeIds.has(String(n.id))) return 1;
+            return 0.12;
+          })
+          .attr('r', n => {
+            if (String(n.id) === String(hoveredNodeId)) {
+              return Math.min((nodeDegree[n.id] || 0) + 40, 50);
+            }
+            if (connectedNodeIds.has(String(n.id))) {
+              return Math.min((nodeDegree[n.id] || 0) + 30, 48);
+            }
+            return Math.min(24 + (Math.sqrt(nodeDegree[n.id] || 0) * 4), 42);
+          });
+
+        // Highlight connected edges with stronger effect
+        linkLines.transition().duration(150)
+          .attr('opacity', l => {
+            const sourceId = String(l.source.id || l.source);
+            const targetId = String(l.target.id || l.target);
+            return (sourceId === String(hoveredNodeId) || targetId === String(hoveredNodeId)) ? 0.95 : 0.1;
+          })
+          .attr('stroke-width', l => {
+            const sourceId = String(l.source.id || l.source);
+            const targetId = String(l.target.id || l.target);
+            if (sourceId === String(hoveredNodeId) || targetId === String(hoveredNodeId)) {
+              return l.type === 'student' || l.type === 'teacher' ? 4 : 3;
+            }
+            return l.type === 'student' || l.type === 'teacher' ? 2.5 : 1.5;
+          });
+
+        // Highlight connected edge labels
+        linkGroup.select('text.link-label').transition().duration(150)
+          .attr('opacity', l => {
+            const sourceId = String(l.source.id || l.source);
+            const targetId = String(l.target.id || l.target);
+            return (sourceId === String(hoveredNodeId) || targetId === String(hoveredNodeId)) ? 1 : 0.15;
+          })
+          .attr('font-size', l => {
+            const sourceId = String(l.source.id || l.source);
+            const targetId = String(l.target.id || l.target);
+            return (sourceId === String(hoveredNodeId) || targetId === String(hoveredNodeId)) ? '14px' : '12px';
+          });
+
+        // Apply glow to hovered node
         d3.select(this)
-          .transition().duration(150)
-          .attr('r', 22)
-          .attr('stroke-width', 2.5);
+          .transition().duration(120)
+          .attr('filter', 'url(#node-glow)')
+          .attr('stroke-width', 3);
+
+        // Show connection info
+        const connectedTypes = [];
+        self.data.links.forEach(link => {
+          const sourceId = String(link.source.id || link.source);
+          const targetId = String(link.target.id || link.target);
+          if (sourceId === String(hoveredNodeId)) {
+            connectedTypes.push(`→ ${link.type}`);
+          } else if (targetId === String(hoveredNodeId)) {
+            connectedTypes.push(`← ${link.type}`);
+          }
+        });
+
+        if (connectedTypes.length > 0) {
+          console.log('🔗 Connected:', connectedTypes.join(', '));
+        }
       })
       .on('mouseout', function(event, d) {
-        d3.select(this)
-          .transition().duration(150)
-          .attr('r', 16)
-          .attr('stroke-width', 2);
+        // Hide sage name tooltip
+        g.select('text.sage-tooltip').transition().duration(100).attr('opacity', 0);
+
+        // Restore all nodes smoothly
+        self.node.transition().duration(150)
+          .attr('opacity', 0.88)
+          .attr('r', n => Math.min(24 + (Math.sqrt(nodeDegree[n.id] || 0) * 4), 42))
+          .attr('stroke-width', 2.5)
+          .attr('filter', 'drop-shadow(0 2px 8px rgba(0,0,0,0.15))');
+
+        // Restore all edges
+        linkLines.transition().duration(150)
+          .attr('opacity', 0.45)
+          .attr('stroke-width', l => (l.type === 'student' || l.type === 'teacher') ? 2.5 : 2);
+
+        // Restore edge labels
+        linkGroup.select('text.link-label').transition().duration(150)
+          .attr('opacity', 0.6)
+          .attr('font-size', '12px');
       });
 
-    // Add zoom
-    svg.call(d3.zoom()
+    // Add zoom with zoom controls
+    const zoom = d3.zoom()
       .on('zoom', (event) => {
         g.attr('transform', event.transform);
-      }));
+      });
 
-    // Simulation tick (self already defined above for nodes)
+    svg.call(zoom);
+
+    // Store zoom for reset button
+    this.svg = svg;
+    this.g = g;
+    this.zoom = zoom;
+
+    // Simulation tick - optimized for smooth rendering
+    let tickCount = 0;
     this.simulation.on('tick', () => {
+      tickCount++;
+
       // Update link lines
       linkGroup.select('line')
         .attr('x1', d => d.source.x)
@@ -260,52 +675,54 @@ class SageNetwork {
         .attr('x2', d => d.target.x)
         .attr('y2', d => d.target.y);
 
-      // Update node positions
-      self.node.attr('cx', d => d.x)
-        .attr('cy', d => d.y);
+      // Update link labels (connection type) positions
+      linkGroup.select('text.link-label')
+        .attr('x', d => (d.source.x + d.target.x) / 2)
+        .attr('y', d => (d.source.y + d.target.y) / 2);
+
+      // Update node positions with bounds checking
+      self.node.attr('cx', d => Math.max(35, Math.min(width - 35, d.x)))
+        .attr('cy', d => Math.max(35, Math.min(height - 35, d.y)));
+
+      // Update sage tooltip position
+      g.select('text.sage-tooltip')
+        .attr('x', function() {
+          const text = d3.select(this).text();
+          // Find the node with this text
+          const node = self.data.nodes.find(n => n.label === text);
+          return node ? node.x : 0;
+        })
+        .attr('y', function() {
+          const text = d3.select(this).text();
+          const node = self.data.nodes.find(n => n.label === text);
+          return node ? node.y - 50 : 0;
+        });
     });
 
-    // ADD HOVER HANDLERS FOR FORCE LAYOUT
-    console.log('✓ Adding hover handlers to', this.node.size(), 'nodes');
+    // Add drag behavior for manual repositioning
+    const drag = d3.drag()
+      .on('start', (event, d) => {
+        if (!event.active) self.simulation.alphaTarget(0.3).restart();
+        d.fx = d.x;
+        d.fy = d.y;
+      })
+      .on('drag', (event, d) => {
+        d.fx = event.x;
+        d.fy = event.y;
+      })
+      .on('end', (event, d) => {
+        if (!event.active) self.simulation.alphaTarget(0);
+        d.fx = null;
+        d.fy = null;
+      });
 
-    this.node.on('mouseover', function(event, d) {
-      console.log('🔍 Hover on:', d.label);
+    this.node.call(drag);
 
-      d3.select(this)
-        .transition().duration(150)
-        .attr('r', 20)
-        .attr('stroke-width', 3);
-
-      // Add or show text label above node
-      let label = g.select('text.label-' + d.id);
-      if (label.empty()) {
-        label = g.append('text')
-          .attr('class', 'label-' + d.id)
-          .attr('x', d.x)
-          .attr('y', d.y - 30)
-          .attr('text-anchor', 'middle')
-          .attr('font-size', '16px')
-          .attr('font-weight', 'bold')
-          .attr('fill', '#1a1a1a')
-          .attr('pointer-events', 'none')
-          .text(d.label)
-          .style('font-family', "'Frank Ruhl Libre', serif");
-      }
-      label.attr('opacity', 1);
-    })
-    .on('mouseout', function(event, d) {
-      d3.select(this)
-        .transition().duration(150)
-        .attr('r', 16)
-        .attr('stroke-width', 2);
-
-      // Hide text label
-      g.select('text.label-' + d.id)
-        .transition().duration(150)
-        .attr('opacity', 0);
-    });
-
-    console.log('✅ Force network rendered');
+    console.log('✅ Force network rendered with Connected Papers enhancements:');
+    console.log('   ✓ Node sizing by degree centrality');
+    console.log('   ✓ Connection type styling (solid/dashed)');
+    console.log('   ✓ Enhanced force simulation parameters');
+    console.log('   ✓ Improved hover effects with glow');
   }
 
   /**
@@ -858,11 +1275,11 @@ class SageNetwork {
   }
 
   /**
-   * FIX BUG 5: Search functionality - matches Hebrew text, highlights nodes
+   * Enhanced search - highlights matches and connected nodes
    */
   updateNodeVisibility() {
     // Guard: ensure graph is rendered
-    if (!this.node || !this.link || !this.labels) {
+    if (!this.node) {
       console.warn('Graph not yet rendered, search unavailable');
       return;
     }
@@ -876,62 +1293,91 @@ class SageNetwork {
     const query = this.searchQuery.trim();
 
     if (query === '') {
-      // Reset to full visibility
-      this.node
-        .style('opacity', 1)
-        .attr('r', 22)
-        .attr('stroke-width', 2);
-      this.link.style('opacity', 0.5);
-      this.labels.style('opacity', 1);
+      // Reset to full visibility with original sizing
+      const nodeDegree = {};
+      window.graphData.nodes.forEach(n => nodeDegree[n.id] = 0);
+      window.graphData.links.forEach(link => {
+        const sourceId = String(link.source?.id || link.source || '');
+        const targetId = String(link.target?.id || link.target || '');
+        if (nodeDegree[sourceId] !== undefined) nodeDegree[sourceId]++;
+        if (nodeDegree[targetId] !== undefined) nodeDegree[targetId]++;
+      });
+
+      this.node.transition().duration(300)
+        .style('opacity', 0.88)
+        .attr('r', d => Math.min(24 + (Math.sqrt(nodeDegree[d.id] || 0) * 4), 42))
+        .attr('stroke-width', 2.5);
+
+      if (this.node) {
+        d3.selectAll('.link').transition().duration(300).style('opacity', 0.45);
+      }
       return;
     }
 
-    // Find matching nodes (search by name, era, or field)
+    // Find matching nodes with semantic search
     const matchedIds = new Set();
+    const connectedToMatches = new Set();
+
     window.graphData.nodes.forEach(d => {
       const nodeId = String(d.id);
       const nameMatch = d.label && d.label.toLowerCase().includes(query);
       const eraMatch = d.era && d.era.toLowerCase().includes(query);
       const fieldMatch = d.field && d.field.toLowerCase().includes(query);
-      const groupMatch = d.group && d.group.toLowerCase().includes(query);
+      const periodMatch = d.period && d.period.toLowerCase().includes(query);
 
-      if (nameMatch || eraMatch || fieldMatch || groupMatch) {
+      if (nameMatch || eraMatch || fieldMatch || periodMatch) {
         matchedIds.add(nodeId);
       }
     });
 
-    console.log(`🔍 Search: "${query}" → ${matchedIds.size} matches`);
+    // Also highlight nodes connected to matches
+    window.graphData.links?.forEach(link => {
+      const sourceId = String(link.source?.id || link.source || '');
+      const targetId = String(link.target?.id || link.target || '');
+      if (matchedIds.has(sourceId) || matchedIds.has(targetId)) {
+        connectedToMatches.add(sourceId);
+        connectedToMatches.add(targetId);
+      }
+    });
 
-    // Update node visibility
+    console.log(`🔍 Search: "${query}" → ${matchedIds.size} direct + ${connectedToMatches.size - matchedIds.size} connected`);
+
+    // Update node visibility with three tiers
     if (this.node) {
-      this.node
-        .style('opacity', d => matchedIds.has(String(d.id)) ? 1 : 0.1)
-        .attr('r', d => matchedIds.has(String(d.id)) ? 30 : 18)
-        .attr('stroke-width', d => matchedIds.has(String(d.id)) ? 3 : 2);
-    }
-
-    // TASK D: Update link visibility (now handles curved paths)
-    if (this.link && window.graphData.links) {
-      this.link
+      this.node.transition().duration(250)
         .style('opacity', d => {
-          const sourceMatch = matchedIds.has(String(d.source?.id || d.source || ''));
-          const targetMatch = matchedIds.has(String(d.target?.id || d.target || ''));
-          return (sourceMatch || targetMatch) ? 0.85 : 0.05;
+          if (matchedIds.has(String(d.id))) return 1;
+          if (connectedToMatches.has(String(d.id))) return 0.6;
+          return 0.08;
         })
-        .style('stroke-width', d => {
-          const sourceMatch = matchedIds.has(String(d.source?.id || d.source || ''));
-          const targetMatch = matchedIds.has(String(d.target?.id || d.target || ''));
-          // Thicker for student relationships, medium for others
-          const baseWidth = d.type === 'student' ? 2.5 : (d.type === 'influence' ? 2 : 1.5);
-          return (sourceMatch || targetMatch) ? baseWidth * 1.5 : baseWidth;
+        .attr('r', d => {
+          const nodeDegree = {};
+          window.graphData.nodes.forEach(n => nodeDegree[n.id] = 0);
+          window.graphData.links.forEach(link => {
+            const srcId = String(link.source?.id || link.source || '');
+            const tgtId = String(link.target?.id || link.target || '');
+            if (nodeDegree[srcId] !== undefined) nodeDegree[srcId]++;
+            if (nodeDegree[tgtId] !== undefined) nodeDegree[tgtId]++;
+          });
+          const baseSize = Math.min(24 + (Math.sqrt(nodeDegree[d.id] || 0) * 4), 42);
+          if (matchedIds.has(String(d.id))) return baseSize + 8;
+          if (connectedToMatches.has(String(d.id))) return baseSize + 2;
+          return baseSize;
         });
     }
 
-    // Update label visibility
-    if (this.labels) {
-      this.labels.style('opacity', d => {
-        return matchedIds.has(String(d.id)) ? 1 : 0.1;
-      });
+    // Update link visibility with transitions
+    if (window.graphData.links) {
+      d3.selectAll('.link').transition().duration(250)
+        .style('opacity', d => {
+          const sourceMatch = matchedIds.has(String(d.source?.id || d.source || ''));
+          const targetMatch = matchedIds.has(String(d.target?.id || d.target || ''));
+          const sourceConnected = connectedToMatches.has(String(d.source?.id || d.source || ''));
+          const targetConnected = connectedToMatches.has(String(d.target?.id || d.target || ''));
+          if (sourceMatch || targetMatch) return 0.9;
+          if (sourceConnected || targetConnected) return 0.25;
+          return 0.05;
+        });
     }
   }
 
@@ -948,6 +1394,11 @@ class SageNetwork {
     this.selectedNode = node;
     const nodeId = String(node.id);
     const nodeEra = node.group || node.era_key;
+
+    // Apply connection filter if active
+    if (this.connectionFilter !== 'all') {
+      this.updateConnectionFilters();
+    }
 
     // Highlight selected node + entire era
     if (this.node) {
@@ -1358,6 +1809,13 @@ class SageNetwork {
   }
 
   /**
+   * Deselect node by clicking background
+   */
+  deselectNode() {
+    this.closeSidebar();
+  }
+
+  /**
    * Close sidebar and deselect node
    */
   closeSidebar() {
@@ -1368,13 +1826,13 @@ class SageNetwork {
 
     if (this.node) {
       this.node.classed('selected', false).classed('related', false).classed('era-highlight', false);
-      this.node.style('opacity', 1);  // Reset opacity
+      this.node.style('opacity', 0.9);
     }
 
     if (this.link) {
       this.link.classed('active', false)
         .style('opacity', 0.5)
-        .style('stroke-width', 1.5);
+        .style('stroke-width', 2);
     }
 
     this.selectedNode = null;

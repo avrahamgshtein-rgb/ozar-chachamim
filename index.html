@@ -34,8 +34,8 @@
       width: 100%;
       height: 100%;
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: #f5f5f5;
-      color: #333;
+      background: #fafafa;
+      color: #1a1a1a;
       overflow: hidden;
     }
 
@@ -47,11 +47,11 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1rem 1.5rem;
-      background: white;
-      border-bottom: 1px solid #e0e0e0;
+      padding: 0.75rem 1.5rem;
+      background: #ffffff;
+      border-bottom: 1px solid #e5e5e5;
       gap: 2rem;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
     }
 
     .logo {
@@ -63,13 +63,16 @@
 
     .logo h1 {
       font-family: 'Frank Ruhl Libre', serif;
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       color: #1a1a1a;
+      font-weight: 700;
+      margin: 0;
     }
 
     .logo p {
-      font-size: 0.8rem;
-      color: #888;
+      font-size: 0.75rem;
+      color: #999;
+      margin: 0;
     }
 
     .tabs {
@@ -128,31 +131,39 @@
     }
 
     .btn {
-      padding: 0.6rem 1rem;
-      border: 1px solid #ddd;
+      padding: 0.65rem 1.2rem;
+      border: 1px solid #d0d0d0;
       background: white;
-      border-radius: 4px;
+      border-radius: 6px;
       cursor: pointer;
       font-size: 0.9rem;
       transition: all 0.2s;
       display: flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.5rem;
+      font-weight: 500;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
     }
 
     .btn:hover {
-      background: #f5f5f5;
-      border-color: #999;
+      background: #f9f9f9;
+      border-color: #1a1a1a;
+    }
+
+    .btn:active {
+      transform: scale(0.98);
     }
 
     .btn-primary {
-      background: #333;
+      background: #1a1a1a;
       color: white;
-      border-color: #333;
+      border-color: #1a1a1a;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
 
     .btn-primary:hover {
-      background: #1a1a1a;
+      background: #0d0d0d;
+      border-color: #0d0d0d;
     }
 
     /* ============================================================================
@@ -197,14 +208,14 @@
 
     /* LEFT SIDEBAR */
     .sidebar {
-      width: 280px;
-      background: white;
-      border-right: 1px solid #e0e0e0;
+      width: 300px;
+      background: #ffffff;
+      border-right: 1px solid #e5e5e5;
       overflow-y: auto;
       padding: 0;
       display: flex;
       flex-direction: column;
-      box-shadow: 2px 0 8px rgba(0,0,0,0.08);
+      box-shadow: inset -1px 0 0 rgba(0,0,0,0.03);
     }
 
     .sidebar-header {
@@ -263,16 +274,18 @@
 
     .sidebar-header h2 {
       font-family: 'Frank Ruhl Libre', serif;
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       color: #1a1a1a;
-      margin-bottom: 0.25rem;
-      margin-right: 30px;
+      margin-bottom: 0.35rem;
+      margin-right: 35px;
+      font-weight: 700;
     }
 
     .sidebar-header p {
       font-size: 0.8rem;
-      color: #888;
-      margin: 0.25rem 0 0 0;
+      color: #999;
+      margin: 0.3rem 0 0 0;
+      font-style: italic;
     }
 
     .era-badge {
@@ -299,15 +312,16 @@
     .sidebar-section h3 {
       font-size: 0.75rem;
       font-weight: 700;
-      color: #666;
+      color: #888;
       text-transform: uppercase;
-      margin-bottom: 0.25rem;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.5px;
     }
 
     .sidebar-section p, .sidebar-section li {
-      font-size: 0.8rem;
-      line-height: 1.4;
-      color: #555;
+      font-size: 0.85rem;
+      line-height: 1.5;
+      color: #333;
     }
 
     .sidebar-section ul {
@@ -337,37 +351,48 @@
       flex: 1;
       display: flex;
       flex-direction: column;
-      background: white;
+      background: #ffffff;
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,0.03);
     }
 
     .graph-toolbar {
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-end;
       align-items: center;
       padding: 1rem 1.5rem;
       border-bottom: 1px solid #e0e0e0;
       gap: 1rem;
       flex-wrap: wrap;
+      background: white;
     }
 
     .graph-search {
-      flex: 1;
-      max-width: 300px;
+      flex: 0 1 350px;
+      min-width: 250px;
     }
 
     .graph-search input {
       width: 100%;
-      padding: 0.6rem 1rem;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      font-size: 0.9rem;
+      padding: 0.75rem 1.2rem;
+      border: 1px solid #d0d0d0;
+      border-radius: 6px;
+      font-size: 0.95rem;
       direction: rtl;
+      background: #ffffff;
+      font-family: 'Inter', sans-serif;
+      transition: all 0.3s ease;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    .graph-search input::placeholder {
+      color: #b0b0b0;
     }
 
     .graph-search input:focus {
       outline: none;
-      border-color: #333;
-      box-shadow: 0 0 0 3px rgba(51,51,51,0.1);
+      border-color: #1a1a1a;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1), inset 0 0 0 1px #1a1a1a;
+      background: #ffffff;
     }
 
     .graph-filters {
@@ -390,13 +415,51 @@
     }
 
     .filter-group select {
-      padding: 0.5rem 0.75rem;
-      border: 1px solid #ddd;
-      border-radius: 4px;
+      padding: 0.6rem 0.85rem;
+      border: 1px solid #d0d0d0;
+      border-radius: 6px;
       font-size: 0.85rem;
       background: white;
       cursor: pointer;
       direction: rtl;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      transition: all 0.2s ease;
+    }
+
+    .filter-group select:hover {
+      border-color: #1a1a1a;
+    }
+
+    .filter-group select:focus {
+      outline: none;
+      border-color: #1a1a1a;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .zoom-btn {
+      width: 36px;
+      height: 36px;
+      padding: 0;
+      border: 1px solid #d0d0d0;
+      background: white;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      color: #1a1a1a;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+
+    .zoom-btn:hover {
+      background: #f5f5f5;
+      border-color: #1a1a1a;
+    }
+
+    .zoom-btn:active {
+      transform: scale(0.95);
     }
 
     .graph-wrapper {
@@ -413,19 +476,20 @@
 
     /* RIGHT SIDEBAR - LEGEND */
     .legend {
-      width: 240px;
-      background: white;
-      border-left: 1px solid #e0e0e0;
+      width: 260px;
+      background: #ffffff;
+      border-left: 1px solid #e5e5e5;
       overflow-y: auto;
       padding: 1.5rem;
-      box-shadow: -2px 0 8px rgba(0,0,0,0.08);
+      box-shadow: inset 1px 0 0 rgba(0,0,0,0.03);
     }
 
     .legend h3 {
       font-family: 'Frank Ruhl Libre', serif;
-      font-size: 1.1rem;
-      margin-bottom: 1rem;
+      font-size: 1rem;
+      margin-bottom: 0.75rem;
       color: #1a1a1a;
+      font-weight: 700;
     }
 
     .legend-section {
@@ -485,23 +549,43 @@
       width: 100%;
       border-collapse: collapse;
       background: white;
-      border: 1px solid #e0e0e0;
-      border-radius: 6px;
+      border: 1px solid #e5e5e5;
+      border-radius: 8px;
+      overflow: hidden;
     }
 
     .sages-table thead {
-      background: #f5f5f5;
+      background: #fafafa;
       font-weight: 600;
+      font-size: 0.9rem;
     }
 
     .sages-table th, .sages-table td {
-      padding: 1rem;
+      padding: 1rem 1.2rem;
       text-align: right;
-      border-bottom: 1px solid #e0e0e0;
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    .sages-table th {
+      color: #666;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      letter-spacing: 0.5px;
+    }
+
+    .sages-table tbody tr {
+      transition: background 0.15s ease;
     }
 
     .sages-table tbody tr:hover {
       background: #f9f9f9;
+      cursor: pointer;
+    }
+
+    .sages-table td strong {
+      font-weight: 600;
+      color: #1a1a1a;
     }
 
     /* MAP VIEW */
@@ -816,6 +900,17 @@
               <input type="text" id="searchInput" placeholder="חיפוש חכם...">
             </div>
             <div class="graph-filters">
+              <div class="connection-filters">
+                <button id="priorConnectionsBtn" class="filter-btn" title="הראה חכמים קדומים">
+                  <i class="fas fa-arrow-left"></i> קדומים
+                </button>
+                <button id="allConnectionsBtn" class="filter-btn active" title="הראה את כל הקשרים">
+                  <i class="fas fa-arrows-h"></i> הכל
+                </button>
+                <button id="derivativeConnectionsBtn" class="filter-btn" title="הראה חכמים עוקבים">
+                  עוקבים <i class="fas fa-arrow-right"></i>
+                </button>
+              </div>
               <div class="filter-group">
                 <label>תקופה:</label>
                 <select id="eraFilter">
@@ -835,6 +930,17 @@
                   <option value="">הכל</option>
                 </select>
               </div>
+              <div class="zoom-controls">
+                <button id="zoomInBtn" class="zoom-btn" title="הגדל (Zoom In)">
+                  <i class="fas fa-plus"></i>
+                </button>
+                <button id="zoomOutBtn" class="zoom-btn" title="הקטן (Zoom Out)">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <button id="resetViewBtn" class="zoom-btn" title="איפוס תצוגה (Reset View)">
+                  <i class="fas fa-compress"></i>
+                </button>
+              </div>
             </div>
           </div>
           <div class="graph-wrapper">
@@ -848,7 +954,36 @@
           <div class="legend-section">
             <div class="legend-items" id="legendItems"></div>
           </div>
-          <div style="font-size: 0.8rem; color: #999; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #f0f0f0;">
+
+          <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid #f0f0f0;">
+            <h3 style="font-size: 1rem; margin-bottom: 0.75rem;">סוגי קשרים</h3>
+            <div class="legend-section">
+              <div style="font-size: 0.8rem;">
+                <div style="display: flex; align-items: center; gap: 0.5rem; margin: 0.4rem 0;">
+                  <div style="width: 12px; height: 3px; background: #4ecdc4;"></div>
+                  <span>תלמיד</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.5rem; margin: 0.4rem 0;">
+                  <div style="width: 12px; height: 3px; background: #2980b9;"></div>
+                  <span>מורה</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.5rem; margin: 0.4rem 0;">
+                  <div style="width: 12px; height: 3px; background: #8b7965;"></div>
+                  <span>השפעה</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.5rem; margin: 0.4rem 0;">
+                  <div style="width: 12px; height: 3px; background: #ff6b6b;"></div>
+                  <span>התנגדות</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.5rem; margin: 0.4rem 0;">
+                  <div style="width: 12px; height: 3px; background: #95e1d3;"></div>
+                  <span>עמית</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style="font-size: 0.8rem; color: #999; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid #f0f0f0;">
             <div><strong id="nodeStat">0</strong> חכמים</div>
             <div><strong id="linkStat">0</strong> קשרים</div>
           </div>
@@ -883,14 +1018,26 @@
         <div class="about-content">
           <h2>אוצר חכמים</h2>
           <p>בסיס ידע מובנה על חכמי ישראל לדורותיהם עם ויזואליזציה דינמית של קשרים בין חכמים.</p>
+
           <h3>תכונות:</h3>
           <ul>
-            <li>רשת חכמים אינטרקטיבית (377+ חכמים)</li>
-            <li>קשרי תלמיד-מורה (27+ קשרים)</li>
-            <li>ארגון לפי תקופה ואזור</li>
-            <li>חיפוש וסינון מתקדם</li>
-            <li>ייצוא נתונים</li>
+            <li><strong>רשת חכמים אינטרקטיבית</strong> — 300+ חכמים מלדורות שונות</li>
+            <li><strong>קשרי תלמיד-מורה ושפעות</strong> — מעקב אחר יחסי חיבור ופיתוח</li>
+            <li><strong>ארגון מרחבי וזמני</strong> — חלוקה לפי תקופה, אזור גיאוגרפי</li>
+            <li><strong>חיפוש וסינון מתקדם</strong> — חיפוש לפי שם, תקופה, תחום ידע</li>
+            <li><strong>ייצוא נתונים</strong> — הורדת כל הנתונים כ-JSON</li>
+            <li><strong>מפה אינטראקטיבית</strong> — ראה את המיקומים הגיאוגרפיים של חכמים</li>
+            <li><strong>טבלה מקיפה</strong> — סקירה מלאה של כל החכמים ומאפייניהם</li>
           </ul>
+
+          <h3>על הפרויקט</h3>
+          <p>אתר זה משלב את מתודולוגיית <a href="https://www.connectedpapers.com" target="_blank" style="color: #2980b9; text-decoration: none;">Connected Papers</a> — הצגת רשתות של קשרים דינמיים — כדי להבין את קשרי ההשפעה והמורשת בין חכמי ישראל לדורותיהם.</p>
+
+          <h3>מפתחי הרשת</h3>
+          <p style="font-size: 0.95rem; color: #666;">
+            נבנה עם D3.js, Supabase, ו-Leaflet.js<br>
+            עברית RTL מלאה, מובייל responsive
+          </p>
         </div>
       </section>
     </div>
