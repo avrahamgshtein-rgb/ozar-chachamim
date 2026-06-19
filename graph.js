@@ -1161,6 +1161,31 @@ class SageNetwork {
       .text(d => d.label)
       .style('font-family', "'Frank Ruhl Libre', serif");
 
+    // Add content availability badges
+    this.node.each((d, i, nodes) => {
+      const sageId = String(d.id);
+      const hasLesson = LESSON_PLAN_MAP[sageId];
+      const hasResearch = RESEARCH_BY_SAGE[sageId] && RESEARCH_BY_SAGE[sageId].length > 0;
+
+      if (hasLesson || hasResearch) {
+        const badge = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        badge.setAttribute('x', d.x + 15);
+        badge.setAttribute('y', d.y - 15);
+        badge.setAttribute('font-size', '18');
+        badge.setAttribute('text-anchor', 'middle');
+        badge.setAttribute('pointer-events', 'none');
+        badge.setAttribute('class', 'content-badge');
+
+        if (hasLesson) {
+          badge.textContent = '📚';
+        } else if (hasResearch) {
+          badge.textContent = '📖';
+        }
+
+        svg.append(badge);
+      }
+    });
+
     console.log('✓ Nodes created with hover handlers:', this.node.size(), 'nodes');
 
     // Add event handlers
@@ -1255,11 +1280,37 @@ class SageNetwork {
       const label = g.selectAll('.node-label')
         .filter(n => n.id === d.id);
       label.transition().duration(100).attr('opacity', 1);
+
+      // Show bio hover card
+      const bioCard = document.getElementById('sage-bio-card');
+      if (bioCard) {
+        bioCard.innerHTML = `
+          <div style="padding: 0.75rem;">
+            <h4 style="margin: 0 0 0.5rem 0; font-size: 0.9rem; color: #1a1a1a;">${escapeHtml(d.label)}</h4>
+            <p style="margin: 0 0 0.5rem 0; font-size: 0.75rem; color: #666;">
+              <strong>${d.era || 'Unknown'}</strong><br>
+              📍 ${d.location || 'N/A'}
+            </p>
+            <p style="margin: 0; font-size: 0.8rem; color: #555; line-height: 1.3;">
+              ${(d.bio || d.summary || '').substring(0, 80)}...
+            </p>
+          </div>
+        `;
+        bioCard.style.display = 'block';
+        bioCard.style.left = (event.pageX + 10) + 'px';
+        bioCard.style.top = (event.pageY + 10) + 'px';
+      }
     })
     .on('mouseout.label', function(event, d) {
       const label = g.selectAll('.node-label')
         .filter(n => n.id === d.id);
       label.transition().duration(100).attr('opacity', 0);
+
+      // Hide bio card
+      const bioCard = document.getElementById('sage-bio-card');
+      if (bioCard) {
+        bioCard.style.display = 'none';
+      }
     });
 
     // Update label positions on simulation tick
