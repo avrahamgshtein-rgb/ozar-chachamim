@@ -1892,8 +1892,8 @@
       // Comparator
       setupComparator();
 
-      // Research viewer
-      setupResearchViewer();
+      // Research viewer (lazy-loaded when tab opens to save ~728KB initial load)
+      window.researchViewerInitialized = false;
     }
 
     function switchTab(viewName) {
@@ -1907,6 +1907,15 @@
         view.classList.remove('active');
       });
       document.getElementById(`${viewName}-view`).classList.add('active');
+
+      // Lazy-load research viewer on first tab open (saves ~728KB initial load)
+      if (viewName === 'research' && !window.researchViewerInitialized) {
+        console.log('⏳ Loading research data (~728KB)...');
+        setupResearchViewer().then(() => {
+          window.researchViewerInitialized = true;
+          console.log('✅ Research viewer loaded');
+        });
+      }
     }
 
     function buildLegend() {
@@ -2328,8 +2337,12 @@
     let researchSummaries = {};
     let researchBySage = {};
     let researchContent = [];
+    let researchViewerSetupDone = false;
 
     async function setupResearchViewer() {
+      // Avoid duplicate setup
+      if (researchViewerSetupDone) return;
+
       // Load research data
       try {
         const [summariesRes, bySageRes, contentRes] = await Promise.all([
@@ -2368,6 +2381,8 @@
       // Event listeners
       searchInput.addEventListener('input', (e) => filterResearchDocuments(e.target.value, filterSelect.value));
       filterSelect.addEventListener('change', (e) => filterResearchDocuments(searchInput.value, e.target.value));
+
+      researchViewerSetupDone = true;
     }
 
     function displayResearchList(query = '', sageFiltId = '') {
