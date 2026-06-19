@@ -198,6 +198,40 @@ class SageNetwork {
       }
     }
 
+    // Advanced filters
+    const eraFilter = document.getElementById('eraFilter');
+    const regionFilter = document.getElementById('regionFilter');
+    const fieldFilter = document.getElementById('fieldFilter');
+
+    if (eraFilter) {
+      eraFilter.addEventListener('change', () => this.applyFilters());
+    }
+    if (regionFilter) {
+      regionFilter.addEventListener('change', () => this.applyFilters());
+    }
+    if (fieldFilter) {
+      fieldFilter.addEventListener('change', () => this.applyFilters());
+    }
+
+    // Populate region filter from data
+    if (regionFilter && this.data && this.data.nodes) {
+      const regions = new Set();
+      this.data.nodes.forEach(sage => {
+        if (sage.location) {
+          sage.location.split(';').forEach(loc => {
+            const trimmed = loc.trim();
+            if (trimmed) regions.add(trimmed);
+          });
+        }
+      });
+      Array.from(regions).sort().slice(0, 20).forEach(region => {
+        const option = document.createElement('option');
+        option.value = region;
+        option.textContent = region;
+        regionFilter.appendChild(option);
+      });
+    }
+
     // Original search input (fallback)
     const searchInput = document.querySelector(this.searchSelector);
     if (searchInput) {
@@ -2139,6 +2173,41 @@ class SageNetwork {
       console.error('Error loading research:', e);
       contentDiv.innerHTML = '<div style="color: #999;">לא הצלחנו לטעון את המחקר</div>';
     }
+  }
+
+  /**
+   * Apply filters to graph
+   */
+  applyFilters() {
+    const eraFilter = document.getElementById('eraFilter')?.value || '';
+    const regionFilter = document.getElementById('regionFilter')?.value || '';
+    const fieldFilter = document.getElementById('fieldFilter')?.value || '';
+
+    if (!this.node) return;
+
+    // Filter nodes
+    const filtered = new Set();
+    this.data.nodes.forEach(sage => {
+      let matches = true;
+
+      if (eraFilter && sage.era !== eraFilter) matches = false;
+      if (regionFilter && !(sage.location && sage.location.includes(regionFilter))) matches = false;
+      if (fieldFilter && !(sage.field && sage.field.toLowerCase().includes(fieldFilter))) matches = false;
+
+      if (matches) filtered.add(String(sage.id));
+    });
+
+    // Apply opacity
+    this.node.style('opacity', d => filtered.has(String(d.id)) ? 1 : 0.1);
+    if (this.link) {
+      this.link.style('opacity', d => {
+        const srcMatch = filtered.has(String(d.source.id || d.source));
+        const tgtMatch = filtered.has(String(d.target.id || d.target));
+        return (srcMatch && tgtMatch) ? 1 : 0.05;
+      });
+    }
+
+    console.log(`✅ Filtered: ${filtered.size}/${this.data.nodes.length} sages match criteria`);
   }
 
   /**
