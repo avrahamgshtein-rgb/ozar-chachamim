@@ -541,9 +541,11 @@ class SageNetwork {
 
     // Fallback to window dimensions if SVG hasn't been laid out yet
     if (this.width === 0 || this.height === 0) {
-      this.width = window.innerWidth - 300;  // Account for sidebar
+      // Mobile: use full width (sidebar is overlay); Desktop: account for sidebar
+      const isMobile = window.innerWidth < 768;
+      this.width = isMobile ? window.innerWidth : window.innerWidth - 300;
       this.height = window.innerHeight - 120;  // Account for header + search
-      console.warn(`⚠️ SVG not laid out yet, using fallback: ${this.width}x${this.height}`);
+      console.warn(`⚠️ SVG not laid out yet, using fallback: ${this.width}x${this.height} (${isMobile ? 'mobile' : 'desktop'})`);
     }
 
     svg.selectAll('*').remove();
