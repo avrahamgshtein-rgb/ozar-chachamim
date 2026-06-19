@@ -269,8 +269,17 @@ Examples:
 ## 🎬 Current Phase
 
 - ✅ **Phase 1–5:** Core features complete (sages, connections, visualization, search, PDF export, mobile)
-- 🏗️ **Phase 6:** Full-text search + integrated research view (in progress)
-- 📦 **Deployment:** Website ready for Vercel / GitHub Pages / custom server
+- ✅ **Phase 6:** Network graph redesigned (Connected Papers style + tooltips + connection labels)
+- 📦 **Deployment:** Website live on Vercel + working locally on port 8080
+
+### Latest Session Status (June 2026)
+- **Current working version:** Commit 18afa2a (`feat: redesign network graph to match Connected Papers + add tooltips and connection labels`)
+- **Vercel deployment:** ✅ Operational (auto-deploys on `git push origin main`)
+- **Localhost:** ✅ Running on port 8080 via `python -m http.server 8080`
+- **GitHub:** Synced with Vercel; both versions identical
+- **Frontend:** All 5 tabs functional (graph, map, traditions, ideas, timeline)
+- **Data:** 323 sages + 25 validated connections loaded from Supabase or fallback data.json
+- **Issue resolved:** Vercel config error fixed (removed invalid `"public": true` from vercel.json)
 
 ---
 

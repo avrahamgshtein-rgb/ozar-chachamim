@@ -339,6 +339,138 @@ Claude updates:
 
 ---
 
+## 🚀 Workflow 0: Development & Deployment (Operational)
+
+**When to use:** Every development session; before pushing to production.
+
+### Local Development Server
+
+**Goal:** Run the website locally for testing before deploying to Vercel.
+
+**Setup (one-time):**
+```bash
+# No build step needed; site is plain HTML/JS/CSS
+
+# Run development server from PowerShell (Windows) or terminal (Mac/Linux):
+cd C:\Users\User\Desktop\ozar-chachamim
+python -m http.server 8080
+
+# Output should show:
+# Serving HTTP on 0.0.0.0 port 8080 (http://0.0.0.0:8080/) ...
+```
+
+**Access:**
+- Open browser: `http://localhost:8080`
+- You should see all 5 tabs (graph, map, traditions, ideas, timeline)
+- Check browser console (F12) for errors; should show:
+  ```
+  ✅ 🔌 [Supabase] Connecting to...
+  ✅ 📚 Loading sages from Supabase...
+  ✅ 🔗 Loading connections from Supabase...
+  ✅ [AppInit] Single Source Ready: 323 nodes + 25 validated edges
+  ```
+
+**⚠️ Important:** Always run from Windows PowerShell or terminal **on your machine**, NOT from the sandbox. The sandbox cannot access your Windows browser.
+
+### Git Workflow & Deployment
+
+**Goal:** Commit changes locally, push to GitHub, auto-deploy to Vercel.
+
+**Step-by-step:**
+```bash
+# 1. Check what changed
+git status
+
+# 2. Stage modified files
+git add index.html graph.js styles-graph.css [other files]
+# Or add all changes (if you're sure):
+# git add .
+
+# 3. Commit with descriptive message
+git commit -m "feat: add search bar to network graph"
+# Examples of good commit messages:
+# - "fix: connection highlighting on hover"
+# - "feat: zoom controls + reset button"
+# - "docs: update deployment workflow in INSTRUCTION.md"
+
+# 4. Push to GitHub (Vercel auto-deploys from main)
+git push origin main
+
+# 5. Verify deployment (within 1–2 minutes):
+#    Go to https://vercel.com/ozar-chachamim and check "Deployments" tab
+```
+
+### Common Issues & Solutions
+
+**Issue: Git says "fatal: index.lock exists"**
+```
+Problem: Git process left a stale lock file, preventing commits.
+
+Solution:
+1. Close all PowerShell windows and VS Code
+2. Reopen PowerShell
+3. Try git commit again
+
+If it still fails, manually delete (requires admin):
+# In PowerShell (as Admin):
+rm C:\Users\User\Desktop\ozar-chachamim\.git\index.lock
+```
+
+**Issue: Vercel deployment fails with "Invalid request: should NOT have additional property `public`"**
+```
+Problem: vercel.json contains invalid "public": true property.
+
+Solution: Remove it. vercel.json should be:
+{
+  "buildCommand": "true",
+  "outputDirectory": ".",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
+```
+
+**Issue: Localhost shows "Connection refused" or "Server not running"**
+```
+Problem: Python server not running or running on wrong port.
+
+Solution:
+1. From PowerShell in your project folder:
+   cd C:\Users\User\Desktop\ozar-chachamim
+   python -m http.server 8080
+
+2. Do NOT run from the Claude sandbox (server won't be accessible to your browser)
+
+3. If port 8080 is in use, try:
+   python -m http.server 8081  (or any free port)
+```
+
+**Issue: Changes pushed but Vercel hasn't deployed yet**
+```
+Solution: Vercel takes 1–2 minutes to auto-deploy after git push.
+
+To manually trigger:
+1. Go to https://vercel.com/ozar-chachamim/settings/deployments
+2. Click "Deploy" button (if available)
+3. Check https://vercel.com/ozar-chachamim/deployments for status
+```
+
+### Definition of Done (Before Pushing)
+
+Before running `git push origin main`:
+- [ ] Feature works locally: `http://localhost:8080` shows no console errors
+- [ ] Browser F12 console: No red errors, expected logs present
+- [ ] All 5 tabs accessible and functional
+- [ ] RTL (Hebrew text) displays correctly
+- [ ] Responsive design works (mobile view with F12 device emulation)
+- [ ] Git status clean: `git status` shows "nothing to commit, working tree clean"
+- [ ] Commit message is descriptive (not "update" or "fix")
+
+---
+
 ## ⚠️ Critical Safety Rules (Always Follow)
 
 ### 🔒 Privacy First (Session 1 pattern)
