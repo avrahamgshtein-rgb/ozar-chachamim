@@ -738,22 +738,77 @@
 
     .sage-card {
       background: white;
-      border-radius: 8px;
+      border-radius: 12px;
       padding: 1.5rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
       border-right: 4px solid #2980b9;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .sage-card:hover {
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+      transform: translateY(-4px);
+    }
+
+    .sage-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--card-color), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .sage-card:hover::before {
+      opacity: 1;
     }
 
     .sage-card.card-1 {
       border-right-color: #e74c3c;
+      --card-color: #e74c3c;
     }
 
     .sage-card.card-2 {
       border-right-color: #27ae60;
+      --card-color: #27ae60;
     }
 
     .sage-card.card-3 {
       border-right-color: #f39c12;
+      --card-color: #f39c12;
+    }
+
+    .sage-card-action-btn {
+      display: inline-block;
+      padding: 0.6rem 1.2rem;
+      background: #2980b9;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: all 0.2s ease;
+      margin-top: 0.5rem;
+      margin-left: 0.5rem;
+    }
+
+    .sage-card-action-btn:hover {
+      background: #1f618d;
+      transform: scale(1.05);
+    }
+
+    .sage-card-actions {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid #f0f0f0;
     }
 
     .sage-card-header {
@@ -1337,15 +1392,15 @@
       /* SIDEBAR - mobile card */
       .sidebar {
         position: fixed;
-        bottom: 5px;
-        right: 5px;
-        width: 95vw;
-        max-width: 100%;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        width: 100%;
         height: auto;
-        max-height: 20vh;
+        max-height: 50vh;
         z-index: 999;
-        border-right: 3px solid #e74c3c;
-        border-radius: 8px;
+        border-top: 3px solid #e74c3c;
+        border-radius: 12px 12px 0 0;
         display: flex !important;
         flex-direction: column;
         overflow-y: auto;
@@ -1353,8 +1408,8 @@
         animation: slideUp 0.3s ease-out;
         pointer-events: auto;
         background: white;
-        box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-        padding: 0.4rem;
+        box-shadow: 0 -8px 24px rgba(0,0,0,0.15);
+        padding: 0.6rem;
       }
 
       #sidebarHeader {
@@ -2134,13 +2189,11 @@
       card.innerHTML = `
         <div class="sage-card-header">
           <div class="sage-card-title">${sage.label || 'לא ידוע'}</div>
-          <div class="sage-card-subtitle">${sage.era || 'לא ידוע'}</div>
+          <div class="sage-card-subtitle" style="display: flex; gap: 0.5rem; align-items: center;">
+            <span style="background: ${eraColor}; color: white; padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.75rem; font-weight: 600;">${sage.era || 'לא ידוע'}</span>
+            <span style="color: #999; font-size: 0.8rem;">${sage.dates ? '📅 ' + sage.dates : ''}</span>
+          </div>
         </div>
-
-        ${sage.dates ? `<div class="sage-card-section">
-          <div class="sage-card-section-title">📅 תאריכים</div>
-          <div class="sage-card-section-content">${sage.dates}</div>
-        </div>` : ''}
 
         <div class="sage-card-section">
           <div class="sage-card-section-title">📍 אזור</div>
@@ -2154,7 +2207,7 @@
 
         ${sage.bio ? `<div class="sage-card-section">
           <div class="sage-card-section-title">📖 תיאור</div>
-          <div class="sage-card-section-content">${sage.bio.substring(0, 150)}...</div>
+          <div class="sage-card-section-content">${sage.bio.substring(0, 140)}...</div>
         </div>` : ''}
 
         ${sage.core_concept ? `<div class="sage-card-section">
@@ -2168,6 +2221,10 @@
             <span class="sage-tag">${sage.era || 'לא ידוע'}</span>
             ${sage.field ? `<span class="sage-tag">${sage.field}</span>` : ''}
           </div>
+        </div>
+
+        <div class="sage-card-actions">
+          <button class="sage-card-action-btn" onclick="selectNodeById(${sage.id}); alert('${sage.label} selected in graph')">📍 הצג בגרף</button>
         </div>
       `;
 
@@ -2205,23 +2262,27 @@
         connectionDiv.style.gridColumn = '1 / -1';
         connectionDiv.style.marginTop = '1.5rem';
         connectionDiv.style.padding = '1.5rem';
-        connectionDiv.style.background = '#f0f8ff';
-        connectionDiv.style.borderRadius = '8px';
+        connectionDiv.style.background = 'linear-gradient(135deg, #f0f8ff 0%, #f5f9ff 100%)';
+        connectionDiv.style.borderRadius = '12px';
         connectionDiv.style.borderRight = '4px solid #2980b9';
+        connectionDiv.style.boxShadow = '0 2px 8px rgba(41, 128, 185, 0.1)';
 
-        let html = '<div class="sage-card-section-title" style="padding: 0 0 1rem 0;">🔗 קשרים משותפים</div>';
+        let html = '<div class="sage-card-section-title" style="padding: 0 0 1rem 0; color: #2980b9;">🔗 קשרים משותפים</div>';
 
         if (commonTeachers.length > 0) {
-          html += '<div style="margin-bottom: 1rem;">';
-          html += '<strong style="color: #2980b9; display: block; margin-bottom: 0.5rem;">👨‍🏫 מורים משותפים:</strong>';
+          html += '<div style="margin-bottom: 1.5rem;">';
+          html += '<strong style="color: #2980b9; display: block; margin-bottom: 0.75rem; font-size: 0.9rem;">👨‍🏫 מורים משותפים</strong>';
           commonTeachers.forEach(t => {
             const sage = sageMap[t.id];
-            const strength = t.link.strength || 0;
-            const stars = '★'.repeat(strength) + '☆'.repeat(5 - strength);
-            html += `<div style="font-size: 0.85rem; color: #333; margin-bottom: 0.5rem; padding: 0.5rem; background: white; border-radius: 4px;">
-              <strong>${sage.label}</strong><br>
-              <span style="color: #666;">${t.link.context_he || 'קשר משותף'}</span><br>
-              <span style="color: #f39c12;">${stars}</span>
+            const strength = t.link.strength || 3;
+            const strengthPct = (strength / 5) * 100;
+            html += `<div style="font-size: 0.8rem; color: #333; margin-bottom: 0.75rem; padding: 0.75rem; background: white; border-radius: 6px; border-left: 3px solid #2980b9; cursor: pointer; transition: all 0.2s;" class="connection-item">
+              <strong style="display: block; margin-bottom: 0.25rem;">${sage.label}</strong>
+              <span style="color: #666; font-size: 0.75rem; display: block; margin-bottom: 0.35rem;">${t.link.context_he || 'קשר משותף'}</span>
+              <div style="display: flex; gap: 0.25rem; align-items: center;">
+                <span style="color: #f39c12; font-size: 0.9rem;">${'★'.repeat(strength)}${'☆'.repeat(5-strength)}</span>
+                <span style="color: #999; font-size: 0.7rem;">(${strength}/5)</span>
+              </div>
             </div>`;
           });
           html += '</div>';
@@ -2229,21 +2290,36 @@
 
         if (commonStudents.length > 0) {
           html += '<div>';
-          html += '<strong style="color: #27ae60; display: block; margin-bottom: 0.5rem;">👨‍🎓 תלמידים משותפים:</strong>';
+          html += '<strong style="color: #27ae60; display: block; margin-bottom: 0.75rem; font-size: 0.9rem;">👨‍🎓 תלמידים משותפים</strong>';
           commonStudents.forEach(s => {
             const sage = sageMap[s.id];
-            const strength = s.link.strength || 0;
-            const stars = '★'.repeat(strength) + '☆'.repeat(5 - strength);
-            html += `<div style="font-size: 0.85rem; color: #333; margin-bottom: 0.5rem; padding: 0.5rem; background: white; border-radius: 4px;">
-              <strong>${sage.label}</strong><br>
-              <span style="color: #666;">${s.link.context_he || 'קשר משותף'}</span><br>
-              <span style="color: #f39c12;">${stars}</span>
+            const strength = s.link.strength || 3;
+            html += `<div style="font-size: 0.8rem; color: #333; margin-bottom: 0.75rem; padding: 0.75rem; background: white; border-radius: 6px; border-left: 3px solid #27ae60; cursor: pointer; transition: all 0.2s;" class="connection-item">
+              <strong style="display: block; margin-bottom: 0.25rem;">${sage.label}</strong>
+              <span style="color: #666; font-size: 0.75rem; display: block; margin-bottom: 0.35rem;">${s.link.context_he || 'קשר משותף'}</span>
+              <div style="display: flex; gap: 0.25rem; align-items: center;">
+                <span style="color: #f39c12; font-size: 0.9rem;">${'★'.repeat(strength)}${'☆'.repeat(5-strength)}</span>
+                <span style="color: #999; font-size: 0.7rem;">(${strength}/5)</span>
+              </div>
             </div>`;
           });
           html += '</div>';
         }
 
         connectionDiv.innerHTML = html;
+
+        // Add hover effects to connection items
+        connectionDiv.querySelectorAll('.connection-item').forEach(item => {
+          item.addEventListener('mouseenter', () => {
+            item.style.background = '#f9f9f9';
+            item.style.transform = 'translateX(-4px)';
+          });
+          item.addEventListener('mouseleave', () => {
+            item.style.background = 'white';
+            item.style.transform = 'translateX(0)';
+          });
+        });
+
         container.appendChild(connectionDiv);
       }
     }
