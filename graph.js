@@ -2142,6 +2142,133 @@ class SageNetwork {
   }
 
   /**
+   * Open path finder modal
+   */
+  openPathFinder() {
+    const modal = document.getElementById('path-finder-modal');
+    if (modal) {
+      modal.style.display = 'block';
+      document.getElementById('sage1-search').focus();
+    }
+  }
+
+  /**
+   * Find path between two sages via UI
+   */
+  async findPathBetweenSages() {
+    const sage1Input = document.getElementById('sage1-search').value.trim();
+    const sage2Input = document.getElementById('sage2-search').value.trim();
+
+    if (!sage1Input || !sage2Input) {
+      alert('בחר 2 חכמים');
+      return;
+    }
+
+    // Find matching sages
+    const sage1 = this.data.nodes.find(n => n.label.includes(sage1Input));
+    const sage2 = this.data.nodes.find(n => n.label.includes(sage2Input));
+
+    if (!sage1 || !sage2) {
+      alert('לא נמצא חכם עם שם זה');
+      return;
+    }
+
+    const path = this.findPath(sage1.id, sage2.id);
+    const resultDiv = document.getElementById('path-result');
+
+    if (path) {
+      const pathNames = path.map(id => {
+        const sage = this.data.nodes.find(n => String(n.id) === String(id));
+        return sage ? sage.label : '?';
+      });
+
+      document.getElementById('path-text').textContent = `✅ קשר נמצא (${path.length - 1} שלבים): ${pathNames.join(' ← ')}`;
+      resultDiv.style.display = 'block';
+
+      this.highlightPath(path);
+    } else {
+      document.getElementById('path-text').textContent = '❌ לא נמצא קשר בין שני החכמים';
+      resultDiv.style.display = 'block';
+      resultDiv.style.background = '#fff3cd';
+    }
+  }
+
+  /**
+   * Find shortest path between two sages using BFS
+   */
+  findPath(sourceId, targetId) {
+    if (!this.data || !this.data.links) return null;
+
+    const sageIds = new Set(this.data.nodes.map(n => String(n.id)));
+    if (!sageIds.has(String(sourceId)) || !sageIds.has(String(targetId))) {
+      return null;
+    }
+
+    // Build adjacency list
+    const graph = {};
+    sageIds.forEach(id => graph[id] = []);
+    this.data.links.forEach(link => {
+      const src = String(link.source);
+      const tgt = String(link.target);
+      if (graph[src]) graph[src].push(tgt);
+      if (graph[tgt]) graph[tgt].push(src);  // Bidirectional
+    });
+
+    // BFS
+    const queue = [[String(sourceId)]];
+    const visited = new Set([String(sourceId)]);
+
+    while (queue.length > 0) {
+      const path = queue.shift();
+      const current = path[path.length - 1];
+
+      if (current === String(targetId)) {
+        return path;
+      }
+
+      for (const neighbor of (graph[current] || [])) {
+        if (!visited.has(neighbor)) {
+          visited.add(neighbor);
+          queue.push([...path, neighbor]);
+        }
+      }
+    }
+
+    return null;  // No path found
+  }
+
+  /**
+   * Highlight path in graph
+   */
+  highlightPath(path) {
+    if (!path || path.length < 2) return;
+
+    // Reset all links
+    this.link.style('stroke', d => {
+      const type = d.type || 'unknown';
+      return this.getLinkColor(type);
+    }).style('stroke-width', 2).style('opacity', 0.5);
+
+    // Highlight path links
+    const pathSet = new Set(path);
+    this.link.filter(d => {
+      const src = String(d.source.id || d.source);
+      const tgt = String(d.target.id || d.target);
+      return (pathSet.has(src) && pathSet.has(tgt));
+    })
+    .style('stroke', '#2ecc71')
+    .style('stroke-width', 4)
+    .style('opacity', 1);
+
+    // Highlight path nodes
+    if (this.node) {
+      this.node.style('opacity', d => pathSet.has(String(d.id)) ? 1 : 0.2);
+    }
+
+    console.log(`✅ Path found: ${path.length} sages (${path.length - 1} steps)`);
+  }
+
+  /**
    * Toggle bookmark for a sage
    */
   async toggleBookmark(sageId) {

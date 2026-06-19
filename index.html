@@ -867,6 +867,10 @@
       </nav>
 
       <div class="header-actions">
+        <button class="btn" id="pathFinderBtn" onclick="window.sageNetwork.openPathFinder()" title="חפש קשר בין חכמים">
+          <i class="fas fa-sitemap"></i>
+          🔍 חפש קשר
+        </button>
         <button class="btn" id="resetBtn" title="אתחל">
           <i class="fas fa-redo"></i>
         </button>
@@ -1351,6 +1355,45 @@
     left: 50%;
     transform: translateX(-50%);
   "></div>
+
+  <!-- PATH FINDER MODAL -->
+  <div id="path-finder-modal" style="
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border: 2px solid #2980b9;
+    border-radius: 12px;
+    padding: 2rem;
+    z-index: 3000;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+    max-width: 400px;
+    width: 90%;
+  ">
+    <h3 style="margin: 0 0 1rem 0; color: #2980b9;">🔍 חפש קשר בין חכמים</h3>
+    <p style="margin: 0 0 1rem 0; font-size: 0.9rem; color: #666;">בחר 2 חכמים כדי למצוא את הקשר הקצר ביותר</p>
+
+    <div style="margin-bottom: 1rem;">
+      <input type="text" id="sage1-search" placeholder="חכם ראשון..." style="width: 100%; padding: 0.5rem; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box;">
+      <div id="sage1-results" style="margin-top: 0.5rem; max-height: 100px; overflow-y: auto;"></div>
+    </div>
+
+    <div style="margin-bottom: 1rem;">
+      <input type="text" id="sage2-search" placeholder="חכם שני..." style="width: 100%; padding: 0.5rem; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box;">
+      <div id="sage2-results" style="margin-top: 0.5rem; max-height: 100px; overflow-y: auto;"></div>
+    </div>
+
+    <div id="path-result" style="margin-bottom: 1rem; padding: 1rem; background: #f0f8ff; border-radius: 6px; display: none;">
+      <p id="path-text" style="margin: 0; color: #0066cc; font-size: 0.9rem;"></p>
+    </div>
+
+    <div style="display: flex; gap: 1rem;">
+      <button onclick="document.getElementById('path-finder-modal').style.display='none'" style="flex: 1; padding: 0.75rem; background: #ecf0f1; border: none; border-radius: 6px; cursor: pointer;">סגור</button>
+      <button id="find-path-btn" onclick="window.sageNetwork.findPathBetweenSages()" style="flex: 1; padding: 0.75rem; background: #2980b9; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600;">חפש</button>
+    </div>
+  </div>
 
   <!-- SAGE BIO HOVER CARD -->
   <div id="sage-bio-card" style="
