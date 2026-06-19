@@ -2327,17 +2327,20 @@
     // RESEARCH VIEWER FUNCTIONALITY
     let researchSummaries = {};
     let researchBySage = {};
+    let researchContent = [];
 
     async function setupResearchViewer() {
       // Load research data
       try {
-        const [summariesRes, bySageRes] = await Promise.all([
+        const [summariesRes, bySageRes, contentRes] = await Promise.all([
           fetch('research_summaries.json'),
-          fetch('research_by_sage.json')
+          fetch('research_by_sage.json'),
+          fetch('research.json')
         ]);
         researchSummaries = await summariesRes.json();
         researchBySage = await bySageRes.json();
-        console.log(`✅ 📚 Loaded ${Object.keys(researchSummaries).length} research documents`);
+        researchContent = await contentRes.json();
+        console.log(`✅ 📚 Loaded ${Object.keys(researchSummaries).length} summaries + ${researchContent.length} full documents`);
       } catch (e) {
         console.warn('Could not load research data:', e);
         return;
@@ -2418,24 +2421,90 @@
       const list = document.getElementById('research-list');
       list.style.display = 'none';
 
+      // Find full content from research.json
+      const fullContent = researchContent.find(r =>
+        r.sage_id === doc.sage_id && r.source_file === doc.file
+      );
+
+      // Extract related sages from content
+      let relatedSages = [];
+      if (fullContent && window.graphData) {
+        const contentText = fullContent.content.toLowerCase();
+        window.graphData.nodes.forEach(sage => {
+          if (sage.id !== doc.sage_id) {
+            const label = (sage.label || '').toLowerCase();
+            if (contentText.includes(label) && relatedSages.length < 5) {
+              relatedSages.push(sage);
+            }
+          }
+        });
+      }
+
+      const contentText = fullContent ? fullContent.content : 'טקסט מלא אינו זמין';
+      const wordCount = fullContent ? fullContent.word_count : doc.para_count;
+
       viewer.innerHTML = `
-        <div class="research-document">
-          <div class="research-document-title">${doc.title}</div>
-          <div class="research-document-meta">
-            <span>📄 ${doc.para_count} פסקאות</span>
-            <span>📅 מסמך מחקרי</span>
+        <div class="research-document" style="padding: 0;">
+          <div style="padding: 1.5rem; border-bottom: 1px solid #e0e0e0; background: #f9f9f9; position: sticky; top: 0; z-index: 10;">
+            <div style="display: flex; justify-content: space-between; align-items: start;">
+              <div>
+                <div class="research-document-title" style="margin: 0 0 0.5rem 0;">${doc.title}</div>
+                <div class="research-document-meta" style="display: flex; gap: 1rem; font-size: 0.85rem;">
+                  <span>📄 ${wordCount} מילים</span>
+                  <span>📅 מסמך מחקרי</span>
+                  ${doc.sage_id ? `<span>👤 סג מספר ${doc.sage_id}</span>` : ''}
+                </div>
+              </div>
+              <button onclick="document.getElementById('research-viewer').classList.remove('active'); document.getElementById('research-list').style.display = 'grid'; document.getElementById('research-search').focus();" style="background: #e74c3c; color: white; border: none; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; font-weight: 600;">✕ סגור</button>
+            </div>
           </div>
-          <div class="research-document-content">
-            ${doc.summary ? `<p><strong>תקציר:</strong></p><p>${doc.summary}</p>` : ''}
-            <p style="color: #999; font-size: 0.85rem; margin-top: 2rem;">
-              <em>הטקסט המלא של מסמך זה זמין בתיקיית sources/</em>
-            </p>
+
+          <div style="padding: 1.5rem; overflow-y: auto; height: calc(100% - 120px);">
+            ${doc.summary ? `
+              <div style="background: #f0f8ff; padding: 1rem; border-radius: 8px; border-right: 3px solid #2980b9; margin-bottom: 1.5rem;">
+                <strong style="color: #2980b9; display: block; margin-bottom: 0.5rem;">📋 תקציר</strong>
+                <p style="margin: 0; color: #333; line-height: 1.6;">${doc.summary}</p>
+              </div>
+            ` : ''}
+
+            <div style="color: #333; line-height: 1.8; font-size: 0.95rem; max-width: 900px; margin-bottom: 2rem;">
+              ${contentText.split('\n').map(para =>
+                para.trim() ? `<p style="margin: 0 0 1rem 0; text-align: justify;">${para}</p>` : ''
+              ).join('')}
+            </div>
+
+            ${relatedSages.length > 0 ? `
+              <div style="background: #f5f9ff; padding: 1.5rem; border-radius: 8px; border-right: 3px solid #27ae60; margin-top: 2rem;">
+                <strong style="color: #27ae60; display: block; margin-bottom: 1rem; font-size: 0.95rem;">🔗 חכמים קשורים שהוזכרו במסמך</strong>
+                <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 0.75rem;">
+                  ${relatedSages.map(sage => `
+                    <div style="background: white; padding: 0.75rem; border-radius: 6px; cursor: pointer; transition: all 0.2s; border-left: 3px solid #27ae60;" class="related-sage-tag" onclick="selectNodeById(${sage.id})">
+                      <div style="font-weight: 600; color: #1a1a1a; font-size: 0.85rem;">${sage.label}</div>
+                      <div style="color: #999; font-size: 0.75rem;">${sage.era || 'לא ידוע'}</div>
+                    </div>
+                  `).join('')}
+                </div>
+              </div>
+            ` : ''}
           </div>
-          <div class="research-document-back">
-            <button onclick="document.getElementById('research-viewer').classList.remove('active'); document.getElementById('research-list').style.display = 'grid';">← חזור לרשימה</button>
+
+          <div style="padding: 1rem; border-top: 1px solid #e0e0e0; background: #f9f9f9; display: flex; gap: 0.75rem; justify-content: flex-end;">
+            <button onclick="window.print()" style="background: #2980b9; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 6px; cursor: pointer; font-weight: 600;">🖨️ הדפס</button>
           </div>
         </div>
       `;
+
+      // Add hover effects to related sage tags
+      viewer.querySelectorAll('.related-sage-tag').forEach(tag => {
+        tag.addEventListener('mouseenter', () => {
+          tag.style.background = '#f0f8ff';
+          tag.style.transform = 'translateX(-4px)';
+        });
+        tag.addEventListener('mouseleave', () => {
+          tag.style.background = 'white';
+          tag.style.transform = 'translateX(0)';
+        });
+      });
     }
   </script>
 
