@@ -1085,6 +1085,34 @@
 
       #graph-filters.show {
         display: flex !important;
+        flex-direction: column;
+        position: absolute;
+        left: 0;
+        top: 60px;
+        width: 80px;
+        max-width: 80px;
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 0 4px 4px 0;
+        padding: 0.5rem;
+        z-index: 100;
+        max-height: calc(100vh - 120px);
+        overflow-y: auto;
+        font-size: 0.65rem;
+      }
+
+      #graph-filters.show .filter-group {
+        margin-bottom: 0.5rem;
+      }
+
+      #graph-filters.show .filter-group label {
+        display: none;
+      }
+
+      #graph-filters.show select {
+        width: 100%;
+        font-size: 0.6rem;
+        padding: 0.25rem;
       }
 
       .graph-container {
@@ -1107,7 +1135,9 @@
 
       #searchInput {
         flex: 1;
-        min-height: 44px;
+        min-height: 32px;
+        padding: 0.4rem 0.75rem;
+        font-size: 0.85rem;
       }
 
       .graph-wrapper {
@@ -1189,11 +1219,15 @@
       }
 
       .sages-table {
-        font-size: 0.75rem;
+        font-size: 0.7rem;
       }
 
       .sages-table th, .sages-table td {
-        padding: 0.5rem;
+        padding: 0.35rem 0.25rem;
+      }
+
+      .sages-table tr:hover {
+        background: #f9f9f9;
       }
 
       /* MAP */
