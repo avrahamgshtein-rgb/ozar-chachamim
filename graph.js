@@ -10,6 +10,41 @@ function escapeHtml(text) {
   return div.innerHTML;
 }
 
+// Mapping of sage IDs to lesson plan folders
+const LESSON_PLAN_MAP = {
+  '45': 'rabbi-yosef-bechor-shor',      // ID 45 (Rishonim)
+  '12': 'rabbeinu-bachya-ben-asher',    // ID 12 (Rishonim)
+  '156': 'pinchas-kehati',              // ID 156 (Modern)
+  '324': 'rabbi-meir-tanna',            // ID 324 (Tannaim) — newly added
+  '325': 'maggid-mishneh'               // ID 325 (Rishonim) — newly added
+};
+
+// Load lesson plan content from markdown
+async function loadLessonPlan(sageId) {
+  const folder = LESSON_PLAN_MAP[sageId];
+  if (!folder) return null;
+
+  try {
+    const response = await fetch(`notes/${folder}/lesson_plan.md`);
+    if (!response.ok) return null;
+    const markdown = await response.text();
+    return { folder, markdown };
+  } catch (e) {
+    console.warn(`Failed to load lesson plan for sage ${sageId}:`, e);
+    return null;
+  }
+}
+
+// Load research by sage mapping
+let RESEARCH_BY_SAGE = {};
+fetch('research_by_sage.json')
+  .then(r => r.json())
+  .then(data => {
+    RESEARCH_BY_SAGE = data;
+    console.log(`✅ 📚 Loaded research index: ${Object.keys(data).length} sages with research`);
+  })
+  .catch(e => console.warn('Could not load research index:', e));
+
 class SageNetwork {
   constructor(config = {}) {
     this.dataUrl = config.dataUrl || 'data.json';
@@ -1746,6 +1781,34 @@ class SageNetwork {
           <p>${profile.summary || profile.bio || 'No biography available'}</p>
         </div>
 
+        ${RESEARCH_BY_SAGE[String(profile.id)] && RESEARCH_BY_SAGE[String(profile.id)].length > 0 ? `
+          <div class="sidebar-section" style="background: linear-gradient(135deg, #e3f2fd 0%, #f3f5fd 100%); padding: 1rem; border-left: 4px solid #2196f3; border-radius: 4px; cursor: pointer;"
+               onclick="document.getElementById('researchContent-${profile.id}').style.display = document.getElementById('researchContent-${profile.id}').style.display === 'none' ? 'block' : 'none';">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
+              <h4 style="margin: 0; color: #1565c0; font-weight: 700;">📖 מחקר זמין</h4>
+              <span style="font-size: 1.2rem; color: #1565c0;">▼</span>
+            </div>
+            <p style="margin: 0; font-size: 0.9rem; color: #0d47a1;">${RESEARCH_BY_SAGE[String(profile.id)].length} מסמכי מחקר - לחץ לצפייה</p>
+            <div id="researchContent-${profile.id}" style="display: none; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #2196f350; max-height: 400px; overflow-y: auto;">
+              <div style="color: #666; font-size: 0.85rem;">טוען מחקר...</div>
+            </div>
+          </div>
+        ` : ''}
+
+        ${LESSON_PLAN_MAP[String(profile.id)] ? `
+          <div class="sidebar-section" style="background: linear-gradient(135deg, #fff59d 0%, #fffde7 100%); padding: 1rem; border-left: 4px solid #fbc02d; border-radius: 4px; cursor: pointer;"
+               onclick="document.getElementById('lessonPlanContent-${profile.id}').style.display = document.getElementById('lessonPlanContent-${profile.id}').style.display === 'none' ? 'block' : 'none';">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
+              <h4 style="margin: 0; color: #f57f17; font-weight: 700;">📚 יש שיעור זמין!</h4>
+              <span style="font-size: 1.2rem; color: #f57f17;">▼</span>
+            </div>
+            <p style="margin: 0; font-size: 0.9rem; color: #e65100;">לחץ לפתיחת שיעור 45 דקות עם שאלות דיון</p>
+            <div id="lessonPlanContent-${profile.id}" style="display: none; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #fbc02d50; max-height: 400px; overflow-y: auto;">
+              <div style="color: #666; font-size: 0.85rem;">טוען שיעור...</div>
+            </div>
+          </div>
+        ` : ''}
+
         ${profile.core_concept ? `
           <div class="sidebar-section" style="background: #fff3e0; padding: 1rem; border-left: 4px solid #ff9800; border-radius: 4px;">
             <h4>💡 רעיון עיקרי</h4>
@@ -1888,6 +1951,16 @@ class SageNetwork {
     // Re-attach close listener
     sidebar.querySelector('.sidebar-close').addEventListener('click', () => this.closeSidebar());
 
+    // Load lesson plan if available
+    if (LESSON_PLAN_MAP[String(profile.id)]) {
+      this.loadLessonPlanContent(profile.id);
+    }
+
+    // Load research if available
+    if (RESEARCH_BY_SAGE[String(profile.id)] && RESEARCH_BY_SAGE[String(profile.id)].length > 0) {
+      this.loadResearchContent(profile.id);
+    }
+
     // Highlight connections in graph
     this.highlightConnections(profile, related);
   }
@@ -1946,6 +2019,74 @@ class SageNetwork {
     // Notify mobile handler if available
     if (window.mobileHandler && window.mobileHandler.isCurrentlyMobile()) {
       window.mobileHandler.closeSidebar();
+    }
+  }
+
+  /**
+   * Load and display lesson plan content
+   */
+  async loadLessonPlanContent(sageId) {
+    const contentDiv = document.getElementById(`lessonPlanContent-${sageId}`);
+    if (!contentDiv) return;
+
+    try {
+      const lesson = await loadLessonPlan(sageId);
+      if (!lesson) return;
+
+      // Parse markdown to basic HTML (simple conversion)
+      let html = lesson.markdown
+        .replace(/^### (.+)$/gm, '<h4 style="margin-top: 1rem; color: #f57f17; font-weight: 700;">$1</h4>')
+        .replace(/^## (.+)$/gm, '<h3 style="margin-top: 1rem; font-weight: 700; font-size: 1.1rem;">$1</h3>')
+        .replace(/^\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+        .replace(/^> (.+)$/gm, '<blockquote style="margin-left: 1rem; padding-left: 1rem; border-left: 3px solid #f57f17; font-style: italic; color: #666;">$1</blockquote>')
+        .replace(/\n\n/g, '</p><p>')
+        .replace(/^- (.+)$/gm, '<li style="margin-left: 1.5rem;">$1</li>')
+        .replace(/\n/g, '<br>');
+
+      contentDiv.innerHTML = `
+        <div style="line-height: 1.6; font-size: 0.9rem; color: #333;">
+          <p>${html}</p>
+        </div>
+        <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #fbc02d50;">
+          <a href="notes/${lesson.folder}/lesson_plan.md" target="_blank"
+             style="color: #f57f17; text-decoration: none; font-weight: 600;">
+            📖 קרא את השיעור המלא →
+          </a>
+        </div>
+      `;
+    } catch (e) {
+      console.error('Error loading lesson plan:', e);
+      contentDiv.innerHTML = '<div style="color: #999;">לא הצלחנו לטעון את השיעור</div>';
+    }
+  }
+
+  /**
+   * Load and display research content
+   */
+  async loadResearchContent(sageId) {
+    const contentDiv = document.getElementById(`researchContent-${sageId}`);
+    if (!contentDiv) return;
+
+    try {
+      const researchDocs = RESEARCH_BY_SAGE[String(sageId)];
+      if (!researchDocs || researchDocs.length === 0) return;
+
+      let html = '<div style="line-height: 1.6; font-size: 0.9rem; color: #333;">';
+
+      researchDocs.forEach((doc, idx) => {
+        html += `
+          <div style="margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid #2196f330;">
+            <h5 style="margin: 0 0 0.5rem 0; color: #1565c0; font-size: 0.95rem;">📄 ${doc.title}</h5>
+            ${doc.summary ? `<p style="margin: 0; color: #555; font-size: 0.85rem;">${doc.summary}</p>` : ''}
+          </div>
+        `;
+      });
+
+      html += '</div>';
+      contentDiv.innerHTML = html;
+    } catch (e) {
+      console.error('Error loading research:', e);
+      contentDiv.innerHTML = '<div style="color: #999;">לא הצלחנו לטעון את המחקר</div>';
     }
   }
 

@@ -97,7 +97,8 @@
       "Bash(node -c graph.js)",
       "Bash(pkill -f \"http.server 8080\")",
       "Bash(cd C:\\\\\\\\Users\\\\\\\\User\\\\\\\\Desktop\\\\\\\\ozar-chachamim)",
-      "Bash(python3 -m http.server 9999)"
+      "Bash(python3 -m http.server 9999)",
+      "PowerShell($csvPath = \"C:\\\\Users\\\\User\\\\Desktop\\\\ozar-chachamim\\\\data\\\\חכמי ישראל.csv\"; $lineCount = @\\(Get-Content $csvPath\\).Count; Write-Host \"Total lines: $lineCount\"; Write-Host \"Total sages \\(excluding header\\): $\\($lineCount - 1\\)\")"
     ]
   }
 }
