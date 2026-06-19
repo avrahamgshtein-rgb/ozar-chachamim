@@ -1,379 +1,466 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="אוצר חכמים - רשת חכמי ישראל לדורותיהם">
-  <title>אוצר חכמים — Network of Jewish Sages</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75' font-family='Frank Ruhl Libre'>א</text></svg>">
-  <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body { width: 100%; height: 100%; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #fafafa; color: #1a1a1a; overflow: hidden; }
-    .header { display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 1.5rem; background: #ffffff; border-bottom: 1px solid #e5e5e5; gap: 2rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
-    .logo { display: flex; align-items: center; gap: 1rem; min-width: 250px; }
-    .logo h1 { font-family: 'Frank Ruhl Libre', serif; font-size: 1.4rem; color: #1a1a1a; font-weight: 700; margin: 0; }
-    .logo p { font-size: 0.75rem; color: #999; margin: 0; }
-    .tabs { display: flex; gap: 2rem; flex: 1; overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch; scroll-behavior: smooth; }
-    .tabs::-webkit-scrollbar { height: 2px; }
-    .tabs::-webkit-scrollbar-track { background: transparent; }
-    .tabs::-webkit-scrollbar-thumb { background: #ddd; border-radius: 10px; }
-    .tab-btn { background: none; border: none; padding: 0.75rem 0.5rem; font-size: 0.9rem; color: #666; cursor: pointer; border-bottom: 2px solid transparent; transition: all 0.2s; display: flex; align-items: center; gap: 0.4rem; white-space: nowrap; min-width: fit-content; }
-    .tab-btn:hover { color: #333; border-bottom-color: #ddd; }
-    .tab-btn.active { color: #1a1a1a; border-bottom-color: #333; font-weight: 600; }
-    .header-actions { display: flex; gap: 0.75rem; }
-    .btn { padding: 0.65rem 1.2rem; border: 1px solid #d0d0d0; background: white; border-radius: 6px; cursor: pointer; font-size: 0.9rem; transition: all 0.2s; display: flex; align-items: center; gap: 0.5rem; font-weight: 500; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
-    .btn:hover { background: #f9f9f9; border-color: #1a1a1a; }
-    .btn:active { transform: scale(0.98); }
-    .btn-primary { background: #1a1a1a; color: white; border-color: #1a1a1a; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-    .btn-primary:hover { background: #0d0d0d; border-color: #0d0d0d; }
-    #app { display: flex; flex-direction: column; width: 100%; height: 100vh; }
-    .main { flex: 1; display: flex; overflow: hidden; }
-    .view { display: none; width: 100%; height: 100%; }
-    .view.active { display: flex; }
-    .view.active.map-view { display: block !important; flex: none !important; }
-    .network-view { gap: 0; }
-    .sidebar { width: 300px; background: #ffffff; border-right: 1px solid #e5e5e5; overflow-y: auto; padding: 0; display: flex; flex-direction: column; box-shadow: inset -1px 0 0 rgba(0,0,0,0.03); }
-    .sidebar-header { padding: 0.75rem; border-bottom: 1px solid #f0f0f0; background: #fafafa; position: relative; }
-    .sidebar-minimize { position: absolute; top: 10px; left: 10px; background: #e74c3c !important; border: none !important; font-size: 1.4rem; cursor: pointer !important; color: white; padding: 6px 10px; line-height: 1; z-index: 1001; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; border-radius: 6px; pointer-events: auto !important; touch-action: manipulation; -webkit-user-select: none; user-select: none; transition: all 0.3s ease; }
-    .sidebar-minimize:active, .sidebar-minimize:hover { background: #c0392b !important; transform: scale(1.1); }
-    .sidebar.minimized { max-height: 60px; overflow: hidden; transition: max-height 0.3s ease; }
-    .sidebar.minimized .sidebar-content, .sidebar.minimized .sidebar-placeholder { display: none; }
-    .sidebar.minimized .sidebar-header { padding: 0.5rem 0.75rem; border-bottom: none; }
-    .sidebar-header h2 { font-family: 'Frank Ruhl Libre', serif; font-size: 1.2rem; color: #1a1a1a; margin-bottom: 0.35rem; margin-right: 35px; font-weight: 700; }
-    .sidebar-header p { font-size: 0.8rem; color: #999; margin: 0.3rem 0 0 0; font-style: italic; }
-    .era-badge { display: inline-block; padding: 0.4rem 0.8rem; border-radius: 16px; font-size: 0.75rem; font-weight: 700; color: white; margin-top: 0.75rem; }
-    .sidebar-content { flex: 1; overflow-y: auto; padding: 1rem; font-size: 0.85rem; }
-    .sidebar-section { margin-bottom: 0.75rem; }
-    .sidebar-section h3 { font-size: 0.75rem; font-weight: 700; color: #888; text-transform: uppercase; margin-bottom: 0.5rem; letter-spacing: 0.5px; }
-    .sidebar-section p, .sidebar-section li { font-size: 0.85rem; line-height: 1.5; color: #333; }
-    .sidebar-section ul { list-style: none; padding: 0; }
-    .sidebar-section li { padding: 0.2rem 0; color: #2980b9; cursor: pointer; font-size: 0.8rem; }
-    .sidebar-section li:hover { text-decoration: underline; }
-    .sidebar-placeholder { text-align: center; color: #999; padding: 2rem 0; }
-    .graph-container { flex: 1; display: flex; flex-direction: column; background: #ffffff; box-shadow: inset 0 0 0 1px rgba(0,0,0,0.03); }
-    .graph-toolbar { display: flex; justify-content: flex-end; align-items: center; padding: 1rem 1.5rem; border-bottom: 1px solid #e0e0e0; gap: 1rem; flex-wrap: wrap; background: white; }
-    .graph-search { flex: 0 1 350px; min-width: 250px; }
-    .graph-search input { width: 100%; padding: 0.75rem 1.2rem; border: 1px solid #d0d0d0; border-radius: 6px; font-size: 0.95rem; direction: rtl; background: #ffffff; font-family: 'Inter', sans-serif; transition: all 0.3s ease; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
-    .graph-search input::placeholder { color: #b0b0b0; }
-    .graph-search input:focus { outline: none; border-color: #1a1a1a; box-shadow: 0 2px 8px rgba(0,0,0,0.1), inset 0 0 0 1px #1a1a1a; background: #ffffff; }
-    .graph-filters { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
-    .filter-group { display: flex; align-items: center; gap: 0.5rem; }
-    .filter-group label { font-size: 0.85rem; font-weight: 600; color: #666; }
-    .filter-group select { padding: 0.6rem 0.85rem; border: 1px solid #d0d0d0; border-radius: 6px; font-size: 0.85rem; background: white; cursor: pointer; direction: rtl; box-shadow: 0 1px 3px rgba(0,0,0,0.04); transition: all 0.2s ease; }
-    .filter-group select:hover { border-color: #1a1a1a; }
-    .filter-group select:focus { outline: none; border-color: #1a1a1a; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-    .zoom-btn { width: 36px; height: 36px; padding: 0; border: 1px solid #d0d0d0; background: white; border-radius: 6px; cursor: pointer; font-size: 0.9rem; color: #1a1a1a; transition: all 0.2s ease; display: flex; align-items: center; justify-content: center; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
-    .zoom-btn:hover { background: #f5f5f5; border-color: #1a1a1a; }
-    .zoom-btn:active { transform: scale(0.95); }
-    .graph-wrapper { flex: 1; position: relative; overflow: hidden; }
-    #graph { width: 100%; height: 100%; display: block; }
-    .legend { width: 260px; background: #ffffff; border-left: 1px solid #e5e5e5; overflow-y: auto; padding: 1.5rem; box-shadow: inset 1px 0 0 rgba(0,0,0,0.03); }
-    .legend h3 { font-family: 'Frank Ruhl Libre', serif; font-size: 1rem; margin-bottom: 0.75rem; color: #1a1a1a; font-weight: 700; }
-    .legend-section { margin-bottom: 1.5rem; }
-    .legend-section-title { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: #888; margin-bottom: 0.75rem; }
-    .legend-items { display: flex; flex-direction: column; gap: 0.6rem; }
-    .legend-item { display: flex; align-items: center; gap: 0.75rem; font-size: 0.85rem; color: #555; padding: 0.4rem 0.6rem; border-radius: 3px; cursor: pointer; transition: background 0.2s; }
-    .legend-item:hover { background: #f5f5f5; }
-    .legend-color { width: 14px; height: 14px; border-radius: 2px; flex-shrink: 0; border: 1px solid rgba(0,0,0,0.1); }
-    .table-view { flex-direction: column; }
-    .table-container { flex: 1; overflow: auto; padding: 2rem; }
-    .sages-table { width: 100%; border-collapse: collapse; background: white; border: 1px solid #e5e5e5; border-radius: 8px; overflow: hidden; }
-    .sages-table thead { background: #fafafa; font-weight: 600; font-size: 0.9rem; }
-    .sages-table th, .sages-table td { padding: 1rem 1.2rem; text-align: right; border-bottom: 1px solid #e5e5e5; }
-    .sages-table th { color: #666; font-weight: 600; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.5px; }
-    .sages-table tbody tr { transition: background 0.15s ease; }
-    .sages-table tbody tr:hover { background: #f9f9f9; cursor: pointer; }
-    .sages-table td strong { font-weight: 600; color: #1a1a1a; }
-    .map-view { background: white; width: 100%; height: 100%; padding: 0; margin: 0; display: block !important; position: relative; }
-    #map { width: 100%; height: 100%; z-index: 1; position: absolute; top: 0; left: 0; }
-    .map-legend { position: absolute; bottom: 20px; left: 20px; background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.15); z-index: 1000; font-size: 0.9rem; max-width: 250px; direction: rtl; text-align: right; }
-    .about-view { align-items: center; justify-content: center; }
-    .about-content { max-width: 700px; background: white; padding: 3rem 2rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-    .about-content h2 { font-family: 'Frank Ruhl Libre', serif; font-size: 1.8rem; margin-bottom: 1rem; }
-    .about-content h3 { font-size: 1.2rem; margin-top: 1.5rem; margin-bottom: 0.75rem; }
-    .about-content ul { list-style-position: inside; margin-left: 1rem; }
-    .about-content li { margin-bottom: 0.5rem; }
-    ::-webkit-scrollbar { width: 8px; }
-    ::-webkit-scrollbar-track { background: transparent; }
-    ::-webkit-scrollbar-thumb { background: #ccc; border-radius: 4px; }
-    ::-webkit-scrollbar-thumb:hover { background: #999; }
-    @media (max-width: 768px) {
-      .header { padding: 0.75rem 1rem; gap: 1rem; flex-wrap: wrap; }
-      .logo { min-width: auto; }
-      .logo h1 { font-size: 1.2rem; }
-      .logo p { display: none; }
-      .tabs { gap: 1rem; order: 3; width: 100%; padding: 0.5rem 0; border-top: 1px solid #e0e0e0; }
-      .tab-btn { font-size: 0.8rem; padding: 0.6rem 0.75rem; }
-      .header-actions { gap: 0.5rem; }
-      .btn { padding: 0.5rem 0.75rem; font-size: 0.8rem; }
-      .main { flex-direction: column; }
-      .graph-container { height: 60vh; min-height: 300px; }
-      .view { overflow-y: auto; -webkit-overflow-scrolling: touch; }
-      .table-container { padding: 1rem; }
-      .sages-table th, .sages-table td { padding: 0.75rem; font-size: 0.85rem; }
-      .map-legend { bottom: 10px; left: 10px; right: 10px; max-width: none; font-size: 0.8rem; padding: 1rem; }
-      .legend-item { margin: 0.35rem 0; }
-      .legend { display: none; }
-      .sidebar { position: fixed; bottom: 20px; right: 20px; width: 90vw; max-width: 340px; height: auto; max-height: 55vh; z-index: 999; border-right: 2px solid #e74c3c; border-radius: 12px; display: flex !important; flex-direction: column; overflow: auto; -webkit-overflow-scrolling: touch; animation: slideUp 0.3s ease-out; pointer-events: auto; background: white; box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
-      @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>אוצר חכמים — Network of Jewish Sages</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;700&family=Heebo:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Map Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles-graph.css">
+
+    <style>
+        #graph { width: 100%; height: 100%; display: block; }
+        #map-view { padding: 0; background: var(--color-bg-light); height: 100%; width: 100%; overflow: hidden; position: relative; }
+        #map { width: 100% !important; height: 100% !important; display: block; position: absolute; top: 0; left: 0; right: 0; bottom: 0; }
+        .spotify-link { display: inline-flex; align-items: center; gap: 0.5rem; padding: 12px 16px; background: linear-gradient(135deg, #1DB954 0%, #1ed760 100%); color: white; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 0.95rem; transition: all 0.3s ease; width: 100%; text-align: center; justify-content: center; }
+        .spotify-link:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(29, 185, 84, 0.3); }
+    </style>
 </head>
 <body>
-  <div id="app">
-    <header class="header">
-      <div class="logo">
+
+<header class="header">
+    <div class="header-brand">
         <h1>אוצר חכמים</h1>
-        <p>רשת חכמי ישראל</p>
-      </div>
-      <nav class="tabs">
-        <button class="tab-btn active" data-view="network"><i class="fas fa-project-diagram"></i> רשת קשרים</button>
-        <button class="tab-btn" data-view="table"><i class="fas fa-table"></i> טבלה</button>
-        <button class="tab-btn" data-view="map"><i class="fas fa-map"></i> מפה</button>
-        <button class="tab-btn" data-view="about"><i class="fas fa-info-circle"></i> אודות</button>
-      </nav>
-      <div class="header-actions">
-        <button class="btn" id="resetBtn" title="אתחל"><i class="fas fa-redo"></i></button>
-        <button class="btn btn-primary" id="exportBtn"><i class="fas fa-download"></i> ייצוא</button>
-      </div>
-    </header>
-    <div class="main">
-      <section class="view network-view active" id="network-view">
-        <aside class="sidebar" id="sidebar">
-          <div class="sidebar-header" id="sidebarHeader">
-            <button class="sidebar-minimize" id="sidebarMinimizeBtn" title="כווץ/הרחב" onclick="toggleSidebarMinimize(); return false;">⌄</button>
-            <div class="sidebar-placeholder"><i class="fas fa-mouse-pointer"></i><p>בחר חכם מהרשת</p></div>
-          </div>
-          <div class="sidebar-content" id="sidebarContent"></div>
-        </aside>
-        <div class="graph-container">
-          <div class="graph-toolbar">
-            <div class="graph-search"><input type="text" id="searchInput" placeholder="חיפוש חכם..."></div>
-            <div class="graph-filters">
-              <div class="filter-group">
-                <label>תקופה:</label>
-                <select id="eraFilter">
-                  <option value="">הכל</option>
-                  <option value="second-temple">בית שני</option>
-                  <option value="tannaim">תנאים</option>
-                  <option value="amoraim">אמוראים</option>
-                  <option value="geonim">גאונים</option>
-                  <option value="rishonim">ראשונים</option>
-                  <option value="acharonim">אחרונים</option>
-                  <option value="modern">עת חדשה</option>
-                </select>
-              </div>
-              <div class="filter-group">
-                <label>אזור:</label>
-                <select id="regionFilter"><option value="">הכל</option></select>
-              </div>
-              <div class="zoom-controls">
-                <button id="zoomInBtn" class="zoom-btn" title="הגדל"><i class="fas fa-plus"></i></button>
-                <button id="zoomOutBtn" class="zoom-btn" title="הקטן"><i class="fas fa-minus"></i></button>
-                <button id="resetViewBtn" class="zoom-btn" title="איפוס"><i class="fas fa-compress"></i></button>
-              </div>
-            </div>
-          </div>
-          <div class="graph-wrapper"><svg id="graph"></svg></div>
-        </div>
-        <aside class="legend">
-          <h3>תקופות</h3>
-          <div class="legend-section"><div class="legend-items" id="legendItems"></div></div>
-          <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid #f0f0f0;">
-            <h3 style="font-size: 1rem; margin-bottom: 0.75rem;">סוגי קשרים</h3>
-            <div class="legend-section"><div style="font-size: 0.8rem;">
-              <div style="display: flex; align-items: center; gap: 0.5rem; margin: 0.4rem 0;"><div style="width: 12px; height: 3px; background: #4ecdc4;"></div><span>תלמיד</span></div>
-              <div style="display: flex; align-items: center; gap: 0.5rem; margin: 0.4rem 0;"><div style="width: 12px; height: 3px; background: #2980b9;"></div><span>מורה</span></div>
-              <div style="display: flex; align-items: center; gap: 0.5rem; margin: 0.4rem 0;"><div style="width: 12px; height: 3px; background: #8b7965;"></div><span>השפעה</span></div>
-              <div style="display: flex; align-items: center; gap: 0.5rem; margin: 0.4rem 0;"><div style="width: 12px; height: 3px; background: #ff6b6b;"></div><span>התנגדות</span></div>
-              <div style="display: flex; align-items: center; gap: 0.5rem; margin: 0.4rem 0;"><div style="width: 12px; height: 3px; background: #95e1d3;"></div><span>עמית</span></div>
-            </div></div>
-          </div>
-          <div style="font-size: 0.8rem; color: #999; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid #f0f0f0;">
-            <div><strong id="nodeStat">0</strong> חכמים</div>
-            <div><strong id="linkStat">0</strong> קשרים</div>
-          </div>
-        </aside>
-      </section>
-      <section class="view table-view" id="table-view">
-        <div class="table-container">
-          <table class="sages-table">
-            <thead><tr><th>שם (עברית)</th><th>שם (אנגלית)</th><th>תקופה</th><th>אזור</th><th>תחום</th></tr></thead>
-            <tbody id="tableBody"></tbody>
-          </table>
-        </div>
-      </section>
-      <section class="view" id="map-view"><div id="map"></div></section>
-      <section class="view about-view" id="about-view">
-        <div class="about-content">
-          <h2>אוצר חכמים</h2>
-          <p>בסיס ידע מובנה על חכמי ישראל לדורותיהם עם ויזואליזציה דינמית של קשרים בין חכמים.</p>
-          <h3>תכונות:</h3>
-          <ul>
-            <li><strong>רשת חכמים אינטרקטיבית</strong> — 300+ חכמים</li>
-            <li><strong>קשרי תלמיד-מורה</strong> — מעקב אחר יחסי חיבור</li>
-            <li><strong>ארגון מרחבי וזמני</strong> — חלוקה לפי תקופה</li>
-            <li><strong>חיפוש וסינון מתקדם</strong></li>
-            <li><strong>ייצוא נתונים</strong> — הורדת כל הנתונים כ-JSON</li>
-          </ul>
-        </div>
-      </section>
+        <p>Ozar Chachamim — רשת החכמים של ישראל</p>
     </div>
-  </div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
-  <script>
-    window.graphData = null;
-    async function loadData() {
-      try {
-        const response = await fetch('data.json');
-        const data = await response.json();
-        window.graphData = { nodes: data.nodes || [], links: data.links || [] };
-        console.log('✓ Loaded ' + data.nodes.length + ' nodes');
-        initializeUI();
-      } catch (e) {
-        console.error('✗ Error:', e);
-      }
+
+    <div class="tabs">
+        <button class="tab-btn active" onclick="switchView('graph')">
+            <i class="fas fa-project-diagram"></i> רשת קשרים
+        </button>
+        <button class="tab-btn" onclick="switchView('map')">
+            <i class="fas fa-map"></i> גיאוגרפיה
+        </button>
+        <button class="tab-btn" onclick="switchView('traditions')">
+            <i class="fas fa-book"></i> מסורות
+        </button>
+        <button class="tab-btn" onclick="switchView('ideas')">
+            <i class="fas fa-lightbulb"></i> רעיונות
+        </button>
+    </div>
+
+    <div class="header-controls">
+        <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" id="searchInput" placeholder="חפש חכם...">
+        </div>
+        <button class="control-btn" onclick="resetZoom()" title="Reset zoom">
+            <i class="fas fa-home"></i>
+        </button>
+        <button class="control-btn" id="authButton" onclick="window.sageAuth.showAuthModal()" title="התחברות">
+            <i class="fas fa-sign-in-alt"></i> התחברות
+        </button>
+    </div>
+</header>
+
+<!-- Authentication Modal -->
+<div id="authModal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 1000; flex-direction: column; justify-content: center; align-items: center;">
+    <div style="background: white; padding: 2rem; border-radius: 12px; max-width: 400px; width: 90%; box-shadow: 0 8px 32px rgba(0,0,0,0.1);">
+        <h2 style="margin-top: 0; text-align: center;">אוצר חכמים</h2>
+
+        <div style="margin-bottom: 1rem;">
+            <input type="email" id="authEmail" placeholder="דוא״ל" style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 6px; font-size: 1rem; margin-bottom: 0.5rem; box-sizing: border-box;">
+            <input type="password" id="authPassword" placeholder="סיסמה" style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 6px; font-size: 1rem; box-sizing: border-box;">
+        </div>
+
+        <div style="display: flex; gap: 0.5rem;">
+            <button onclick="window.sageAuth.login(document.getElementById('authEmail').value, document.getElementById('authPassword').value); window.sageAuth.updateUIForLoggedIn(); window.sageAuth.hideAuthModal();" style="flex: 1; padding: 0.75rem; background: #4a86e8; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600;">
+                התחברות
+            </button>
+            <button onclick="window.sageAuth.signup(document.getElementById('authEmail').value, document.getElementById('authPassword').value); window.sageAuth.updateUIForLoggedIn(); window.sageAuth.hideAuthModal();" style="flex: 1; padding: 0.75rem; background: #34a853; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600;">
+                הרשמה
+            </button>
+        </div>
+
+        <button onclick="window.sageAuth.hideAuthModal()" style="width: 100%; margin-top: 1rem; padding: 0.75rem; background: #f0f0f0; border: none; border-radius: 6px; cursor: pointer;">
+            סגור
+        </button>
+    </div>
+</div>
+
+<div class="container">
+    <div id="graph-view" class="main-area active">
+        <svg id="graph"></svg>
+    </div>
+
+    <div id="map-view" class="main-area">
+        <div id="map"></div>
+    </div>
+
+    <div id="traditions-view" class="main-area">
+        <div class="traditions-grid" id="traditionsGrid"></div>
+    </div>
+
+    <div id="ideas-view" class="main-area">
+        <div class="ideas-container" id="ideasContainer"></div>
+    </div>
+
+    <div class="sidebar" id="sidebar"></div>
+</div>
+
+<div class="legend" id="legend">
+    <div class="legend-title">📊 מדריך הצבעים</div>
+    <div class="legend-section">
+        <div class="legend-section-title">תקופות</div>
+        <div class="legend-item"><div class="legend-dot" style="background: #ff7f0e;"></div><span>Second Temple</span></div>
+        <div class="legend-item"><div class="legend-dot" style="background: #2ca02c;"></div><span>Tannaim</span></div>
+        <div class="legend-item"><div class="legend-dot" style="background: #d62728;"></div><span>Amoraim</span></div>
+        <div class="legend-item"><div class="legend-dot" style="background: #9467bd;"></div><span>Rishonim</span></div>
+        <div class="legend-item"><div class="legend-dot" style="background: #8c564b;"></div><span>Acharonim</span></div>
+        <div class="legend-item"><div class="legend-dot" style="background: #e377c2;"></div><span>Modern</span></div>
+    </div>
+</div>
+
+<!-- Scripts -->
+<!-- IMPORTANT: Load order matters! -->
+<!-- 1. Supabase Client Module (replaces data-loader + data-validator) -->
+<script type="module">
+  import { initializeApp } from './supabase-client.js';
+
+  // Initialize Supabase backend on page load
+  document.addEventListener('DOMContentLoaded', async () => {
+    console.log('🚀 [index.html] Initializing Supabase backend...');
+    const ready = await initializeApp();
+    if (ready) {
+      console.log('✅ [index.html] Supabase initialization complete');
+    } else {
+      console.error('❌ [index.html] Failed to initialize Supabase');
     }
-    function initializeUI() {
-      document.querySelectorAll('.tab-btn').forEach(btn => {
-        btn.addEventListener('click', () => switchTab(btn.dataset.view));
-      });
-      document.getElementById('resetBtn').addEventListener('click', () => {
-        document.getElementById('searchInput').value = '';
-        document.getElementById('eraFilter').value = '';
-        document.getElementById('regionFilter').value = '';
-      });
-      document.getElementById('exportBtn').addEventListener('click', () => {
-        if (!window.graphData) return;
-        const json = JSON.stringify(window.graphData, null, 2);
-        const blob = new Blob([json], { type: 'application/json' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `ozar-chachamim-${Date.now()}.json`;
-        a.click();
-      });
-      buildLegend();
-      buildRegionFilter();
-      loadTableData();
-      buildGraph();
+  });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+
+<script>
+    let currentView = 'graph';
+    let mapInstance = null;
+    let graphData = null;
+
+    function switchView(view) {
+        currentView = view;
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        event.target.closest('.tab-btn').classList.add('active');
+        document.querySelectorAll('.main-area').forEach(area => area.classList.remove('active'));
+        const viewEl = document.getElementById(view + '-view');
+        if (viewEl) viewEl.classList.add('active');
+        const legend = document.getElementById('legend');
+        legend.style.display = view === 'graph' ? 'block' : 'none';
+
+        if (view === 'map' && !mapInstance) initMap();
+        if (view === 'traditions' && !document.getElementById('traditionsGrid').innerHTML) buildTraditions();
+        if (view === 'ideas' && !document.getElementById('ideasContainer').innerHTML) buildIdeas();
     }
-    function buildLegend() {
-      const eras = [
-        { key: 'second-temple', he: 'בית שני', color: '#8e44ad' },
-        { key: 'tannaim', he: 'תנאים', color: '#e74c3c' },
-        { key: 'amoraim', he: 'אמוראים', color: '#e67e22' },
-        { key: 'geonim', he: 'גאונים', color: '#f1c40f' },
-        { key: 'rishonim', he: 'ראשונים', color: '#27ae60' },
-        { key: 'acharonim', he: 'אחרונים', color: '#2980b9' },
-        { key: 'modern', he: 'עת חדשה', color: '#1abc9c' }
-      ];
-      const legendDiv = document.getElementById('legendItems');
-      legendDiv.innerHTML = '';
-      eras.forEach(era => {
-        const item = document.createElement('div');
-        item.className = 'legend-item';
-        item.innerHTML = `<div class="legend-color" style="background-color: ${era.color}"></div><span>${era.he}</span>`;
-        legendDiv.appendChild(item);
-      });
-      document.getElementById('nodeStat').textContent = window.graphData.nodes.length;
-      document.getElementById('linkStat').textContent = window.graphData.links.length;
+
+    function resetZoom() {
+        if (window.sageNetwork && window.sageNetwork.svg) {
+            const svg = window.sageNetwork.svg;
+            const width = svg.node().clientWidth;
+            const height = svg.node().clientHeight;
+            const zoom = d3.zoom().on('zoom', () => {});
+            svg.transition()
+                .duration(750)
+                .call(zoom.transform, d3.zoomIdentity
+                    .translate(width / 2, height / 2)
+                    .scale(0.8)
+                    .translate(-width / 2, -height / 2)
+                );
+        }
     }
-    function buildRegionFilter() {
-      const regions = new Set(window.graphData.nodes.map(n => n.location || n.region).filter(r => r));
-      const select = document.getElementById('regionFilter');
-      Array.from(regions).sort().forEach(region => {
-        const option = document.createElement('option');
-        option.value = region;
-        option.textContent = region;
-        select.appendChild(option);
-      });
-    }
-    function loadTableData() {
-      const tbody = document.getElementById('tableBody');
-      tbody.innerHTML = '';
-      window.graphData.nodes.forEach(node => {
-        const tr = document.createElement('tr');
-        tr.innerHTML = `<td><strong>${node.label || node.name_he || ''}</strong></td><td>${node.name_en || ''}</td><td>${node.era || ''}</td><td>${node.location || node.region || ''}</td><td>${node.field || node.primary_field || ''}</td>`;
-        tr.style.cursor = 'pointer';
-        tr.addEventListener('click', () => showNodeInSidebar(node));
-        tbody.appendChild(tr);
-      });
-    }
-    function buildGraph() {
-      const svg = d3.select('#graph');
-      const width = svg.node().clientWidth;
-      const height = svg.node().clientHeight;
-      const colorMap = {
-        'second-temple': '#8e44ad', 'tannaim': '#e74c3c', 'amoraim': '#e67e22',
-        'geonim': '#f1c40f', 'rishonim': '#27ae60', 'acharonim': '#2980b9', 'modern': '#1abc9c'
-      };
-      const simulation = d3.forceSimulation(window.graphData.nodes)
-        .force('link', d3.forceLink(window.graphData.links).id(d => d.id).distance(100))
-        .force('charge', d3.forceManyBody().strength(-600))
-        .force('center', d3.forceCenter(width / 2, height / 2))
-        .force('collision', d3.forceCollide(25));
-      const container = svg.append('g');
-      const link = container.append('g')
-        .selectAll('line')
-        .data(window.graphData.links)
-        .enter()
-        .append('line')
-        .attr('stroke', '#ddd')
-        .attr('stroke-width', 1.5);
-      const node = container.append('g')
-        .selectAll('circle')
-        .data(window.graphData.nodes)
-        .enter()
-        .append('circle')
-        .attr('r', 20)
-        .attr('fill', d => colorMap[d.era_key] || colorMap[d.group] || '#999')
-        .attr('stroke', 'white')
-        .attr('stroke-width', 2)
-        .on('click', (e, d) => {
-          e.stopPropagation();
-          showNodeInSidebar(d);
+
+    // FIX BUG 4: Geography view with colored markers
+    async function initMap() {
+        try {
+            mapInstance = L.map('map').setView([31.5, 35.2], 4);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap', maxZoom: 18
+            }).addTo(mapInstance);
+
+        // Add legend
+        const legend = L.control({ position: 'bottomleft' });
+        legend.onAdd = function() {
+            const div = L.DomUtil.create('div', 'legend-map');
+            div.innerHTML = `<div style="background: white; padding: 10px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                <h4 style="margin: 0 0 10px 0; font-size: 12px; font-weight: bold;">תקופות</h4>
+                <div style="display: flex; flex-direction: column; gap: 5px; font-size: 11px;">
+                    <div><span style="display: inline-block; width: 12px; height: 12px; background: #ff7f0e; border-radius: 50%; margin-right: 5px;"></span>Second Temple</div>
+                    <div><span style="display: inline-block; width: 12px; height: 12px; background: #2ca02c; border-radius: 50%; margin-right: 5px;"></span>Tannaim</div>
+                    <div><span style="display: inline-block; width: 12px; height: 12px; background: #d62728; border-radius: 50%; margin-right: 5px;"></span>Amoraim</div>
+                    <div><span style="display: inline-block; width: 12px; height: 12px; background: #9467bd; border-radius: 50%; margin-right: 5px;"></span>Rishonim</div>
+                    <div><span style="display: inline-block; width: 12px; height: 12px; background: #8c564b; border-radius: 50%; margin-right: 5px;"></span>Acharonim</div>
+                    <div><span style="display: inline-block; width: 12px; height: 12px; background: #e377c2; border-radius: 50%; margin-right: 5px;"></span>Modern</div>
+                </div>
+            </div>`;
+            return div;
+        };
+        legend.addTo(mapInstance);
+
+        // Wait for data if not ready
+        let retries = 20;
+        while (!window.graphData || !window.graphData.nodes) {
+            await new Promise(r => setTimeout(r, 100));
+            retries--;
+            if (retries < 0) {
+                console.error('Map: Data timeout');
+                return;
+            }
+        }
+
+        // Add colored markers for sages from Supabase coordinates
+        let markersAdded = 0;
+        const eraColors = {
+            'second-temple': '#ff7f0e',
+            'tannaim': '#2ca02c',
+            'amoraim': '#d62728',
+            'rishonim': '#9467bd',
+            'acharonim': '#8c564b',
+            'modern': '#e377c2',
+            'unknown': '#999'
+        };
+
+        window.graphData.nodes.forEach(node => {
+            // Check for Supabase coordinates (JSONB)
+            if (node.coordinates && typeof node.coordinates === 'object') {
+                const lat = node.coordinates.lat || node.coordinates.latitude;
+                const lng = node.coordinates.lng || node.coordinates.longitude;
+
+                if (lat && lng) {
+                    const color = eraColors[node.era_key] || '#999';
+
+                    const marker = L.circleMarker([lat, lng], {
+                        radius: 10,
+                        fillColor: color,
+                        color: 'white',
+                        weight: 2.5,
+                        opacity: 1,
+                        fillOpacity: 0.85
+                    })
+                    .bindPopup(`
+                      <div style="padding: 1rem; min-width: 250px;">
+                        <div style="border-bottom: 2px solid ${color}; padding-bottom: 0.75rem; margin-bottom: 0.75rem;">
+                          <h4 style="margin: 0 0 0.25rem 0; color: #1a1a1a;">${node.label}</h4>
+                          <div style="font-size: 0.85rem; color: #666;">
+                            <div><strong>תקופה:</strong> ${node.era}</div>
+                            <div><strong>אזור:</strong> ${node.region || 'Unknown'}</div>
+                            <div><strong>תחום:</strong> ${node.primary_field || 'Other'}</div>
+                          </div>
+                        </div>
+                        <div style="font-size: 0.85rem; color: #555; margin-bottom: 0.75rem;">
+                          <p style="margin: 0; line-height: 1.4;">${(node.summary || 'אין תיאור זמין').substring(0, 150)}...</p>
+                        </div>
+                        ${node.connection_count ? `<div style="font-size: 0.8rem; color: #888; margin-bottom: 0.5rem;">🔗 ${node.connection_count} קשרים</div>` : ''}
+                        <button onclick="window.sageNetwork && window.sageNetwork.selectNode(window.graphData.nodes.find(n => n.id === '${node.id}'))"
+                          style="width: 100%; padding: 0.5rem; background: #4a86e8; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 0.9rem; font-weight: 600;">
+                          📖 ראה פרופיל מלא
+                        </button>
+                      </div>
+                    `, { maxWidth: 300 })
+                    .addTo(mapInstance);
+                    markersAdded++;
+                }
+            }
         });
-      simulation.on('tick', () => {
-        link.attr('x1', d => d.source.x).attr('y1', d => d.source.y).attr('x2', d => d.target.x).attr('y2', d => d.target.y);
-        node.attr('cx', d => d.x).attr('cy', d => d.y);
-      });
-      window.sageNetwork = { simulation, node };
+            console.log(`✓ Map: Added ${markersAdded} markers`);
+
+            setTimeout(() => mapInstance.invalidateSize(), 300);
+        } catch (error) {
+            console.error('❌ initMap error:', error);
+            const mapEl = document.getElementById('map');
+            if (mapEl) {
+                mapEl.innerHTML = '<p style="padding: 2rem; color: red;">Error loading map</p>';
+            }
+        }
     }
-    function showNodeInSidebar(node) {
-      const colorMap = {
-        'second-temple': '#8e44ad', 'tannaim': '#e74c3c', 'amoraim': '#e67e22',
-        'geonim': '#f1c40f', 'rishonim': '#27ae60', 'acharonim': '#2980b9', 'modern': '#1abc9c'
-      };
-      const eraColor = colorMap[node.era_key] || colorMap[node.group] || '#999';
-      const sageName = node.label || node.name_he || 'לא ידוע';
-      document.getElementById('sidebarHeader').innerHTML = `
-        <button class="sidebar-minimize" id="sidebarMinimizeBtn" title="כווץ/הרחב" onclick="toggleSidebarMinimize(); return false;">⌄</button>
-        <h2 style="color: ${eraColor}; font-family: 'Frank Ruhl Libre', serif; font-size: 1.8rem; margin-bottom: 0.5rem;">${sageName}</h2>
-        <p style="color: #888; margin-bottom: 1rem;"><em>${node.name_en || ''}</em></p>
-        <span class="era-badge" style="display: inline-block; background-color: ${eraColor}; color: white; padding: 6px 12px; border-radius: 15px; font-size: 0.8rem; font-weight: 600;">${node.era || 'Unknown'}</span>
-      `;
-      let html = ``;
-      if (node.location) html += `<div class="sidebar-section"><h3>📍 אזור</h3><p>${node.location || node.region}</p></div>`;
-      if (node.field) html += `<div class="sidebar-section"><h3>🎓 תחום</h3><p>${node.field}</p></div>`;
-      if (node.bio) html += `<div class="sidebar-section" style="background: #f8f9fa; padding: 1rem; border-radius: 6px; margin: 1rem 0;"><h3>📖 תיאור</h3><p style="line-height: 1.6; color: #555;">${node.bio}</p></div>`;
-      if (node.core_concept) html += `<div class="sidebar-section" style="background: #fff3cd; padding: 1rem; border-radius: 4px; margin: 1rem 0;"><strong>💡 רעיון מרכזי:</strong><p style="color: #333; margin-top: 0.5rem;">${node.core_concept}</p></div>`;
-      document.getElementById('sidebarContent').innerHTML = html;
+
+    function buildTraditions() {
+        try {
+            if (!window.graphData || !window.graphData.nodes || window.graphData.nodes.length === 0) {
+                console.warn('⚠️  No valid graph data for traditions');
+                document.getElementById('traditionsGrid').innerHTML = '<p style="padding: 2rem; color: #999;">Loading...</p>';
+                return;
+            }
+
+            const traditions = {};
+            window.graphData.nodes.forEach(node => {
+                if (!node || !node.primary_field) return;
+                const t = node.primary_field || 'Other';
+                if (!traditions[t]) traditions[t] = [];
+                traditions[t].push(node);
+            });
+
+            let html = '';
+            Object.keys(traditions).sort().forEach(tradition => {
+                const sages = traditions[tradition];
+                if (!sages || sages.length === 0) return;
+                const eraColors = {
+                    'second-temple': '#ff7f0e',
+                    'tannaim': '#2ca02c',
+                    'amoraim': '#d62728',
+                    'rishonim': '#9467bd',
+                    'acharonim': '#8c564b',
+                    'modern': '#e377c2'
+                };
+                html += `<div class="tradition-card" style="border-left: 4px solid #4a86e8; padding: 1.5rem; margin-bottom: 1rem; background: #f9f9f9; border-radius: 8px;">
+                    <h3 style="margin: 0 0 0.5rem 0; color: #1a1a1a;">${tradition}</h3>
+                    <p style="margin: 0 0 1rem 0; color: #666; font-size: 0.9rem;"><strong>${sages.length}</strong> חכמים בתחום זה</p>
+                    <div class="tradition-sages" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 0.75rem;">
+                        ${sages.map(s => `
+                            <div onclick="window.sageNetwork && window.sageNetwork.selectNode(window.graphData.nodes.find(n => n.id === '${s.id}'))"
+                              style="padding: 0.75rem; background: white; border-left: 3px solid ${eraColors[s.era_key] || '#999'}; border-radius: 4px; cursor: pointer; transition: all 0.2s; font-size: 0.9rem; line-height: 1.3;"
+                              onmouseover="this.style.boxShadow='0 2px 8px rgba(0,0,0,0.1)'"
+                              onmouseout="this.style.boxShadow='none'">
+                                <div style="font-weight: 600; color: #1a1a1a;">${s.label || 'Unknown'}</div>
+                                <div style="color: #888; font-size: 0.85rem;">${s.era}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>`;
+            });
+            document.getElementById('traditionsGrid').innerHTML = html || '<p>No traditions found</p>';
+        } catch (error) {
+            console.error('❌ buildTraditions error:', error);
+            document.getElementById('traditionsGrid').innerHTML = '<p style="color: red;">Error loading traditions</p>';
+        }
     }
-    function switchTab(viewName) {
-      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.view === viewName));
-      document.querySelectorAll('.view').forEach(view => view.classList.remove('active'));
-      document.getElementById(`${viewName}-view`).classList.add('active');
+
+    function buildIdeas() {
+        try {
+            if (!window.graphData || !window.graphData.nodes || window.graphData.nodes.length === 0) {
+                console.warn('⚠️  No valid graph data for ideas');
+                document.getElementById('ideasContainer').innerHTML = '<p style="padding: 2rem; color: #999;">Loading...</p>';
+                return;
+            }
+
+            const ideas = {};
+            window.graphData.nodes.forEach(node => {
+                if (!node || !node.primary_field) return;
+                const idea = node.primary_field || 'Other';
+                if (!ideas[idea]) ideas[idea] = [];
+                ideas[idea].push(node);
+            });
+
+            let html = '';
+            Object.keys(ideas).sort().forEach(idea => {
+                const sages = ideas[idea];
+                if (!sages || sages.length === 0) return;
+                const eraColors = {
+                    'second-temple': '#ff7f0e',
+                    'tannaim': '#2ca02c',
+                    'amoraim': '#d62728',
+                    'rishonim': '#9467bd',
+                    'acharonim': '#8c564b',
+                    'modern': '#e377c2'
+                };
+                html += `<div class="idea-group">
+                    <h3>${idea}</h3>
+                    <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap;">
+                        ${sages.slice(0, 5).map(s => {
+                            const color = eraColors[s.era_key] || '#999';
+                            return `<span style="display: inline-block; padding: 4px 10px; background: ${color}; color: white; border-radius: 12px; font-size: 0.8rem; font-weight: 500;">${s.era}</span>`;
+                        }).join('')}
+                    </div>
+                    <div class="idea-sages" style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                        ${sages.map(s => `<span class="sage-tag" onclick="window.sageNetwork?.selectNode({id: '${s.id}'})">${s.name_he}</span>`).join('')}
+                    </div>
+                </div>`;
+            });
+            document.getElementById('ideasContainer').innerHTML = html || '<p>No ideas found</p>';
+        } catch (error) {
+            console.error('❌ buildIdeas error:', error);
+            document.getElementById('ideasContainer').innerHTML = '<p style="color: red;">Error loading ideas</p>';
+        }
     }
-    window.toggleSidebarMinimize = function() {
-      const sidebar = document.getElementById('sidebar');
-      sidebar.classList.toggle('minimized');
-    };
-    document.addEventListener('DOMContentLoaded', loadData);
-  </script>
+
+    // ========================================================================
+    // SEMANTIC SEARCH (Cross-Tab)
+    // ========================================================================
+    document.addEventListener('DOMContentLoaded', () => {
+        const searchInput = document.getElementById('searchInput');
+        if (searchInput) {
+            searchInput.addEventListener('input', async (e) => {
+                const query = e.target.value.trim();
+
+                // Import semantic search
+                const { semanticSearch } = await import('./supabase-client.js');
+                const results = await semanticSearch(query);
+
+                if (!query) {
+                    // Reset all views
+                    if (window.sageNetwork) {
+                        window.sageNetwork.resetFilter();
+                    }
+                    return;
+                }
+
+                console.log(`🔍 Search: "${query}" → ${results.sages.length} sages`);
+
+                // Update graph view
+                if (window.sageNetwork) {
+                    window.sageNetwork.filterBySages(results.sages);
+                }
+
+                // Highlight results in other tabs
+                const resultIds = new Set(results.sages.map(s => s.id));
+
+                // Update traditions view
+                const traditionsGrid = document.getElementById('traditionsGrid');
+                if (traditionsGrid && traditionsGrid.innerHTML) {
+                    document.querySelectorAll('.sage-tag').forEach(tag => {
+                        const sageText = tag.textContent;
+                        const isMember = Array.from(results.sages).some(s => s.name_he === sageText);
+                        tag.style.opacity = isMember ? '1' : '0.3';
+                    });
+                }
+
+                // Update ideas view
+                const ideasContainer = document.getElementById('ideasContainer');
+                if (ideasContainer && ideasContainer.innerHTML) {
+                    document.querySelectorAll('.sage-tag').forEach(tag => {
+                        const sageText = tag.textContent;
+                        const isMember = Array.from(results.sages).some(s => s.name_he === sageText);
+                        tag.style.opacity = isMember ? '1' : '0.3';
+                    });
+                }
+
+                // Zoom map to results
+                if (mapInstance && results.sages.length > 0) {
+                    const coords = results.sages
+                        .filter(s => s.coordinates)
+                        .map(s => [s.coordinates.lat, s.coordinates.lng]);
+
+                    if (coords.length > 0) {
+                        const bounds = L.latLngBounds(coords);
+                        mapInstance.fitBounds(bounds, { padding: [50, 50] });
+                    }
+                }
+            });
+        }
+    });
+
+    // ✅ Supabase data loading handled by supabase-client.js module
+
+    // Data is loaded by supabase-client.js module
+    console.log('[index.html] Waiting for Supabase data...');
+
+    // Listen for Supabase ready event to initialize views
+    document.addEventListener('supabaseReady', (e) => {
+        console.log(`[index.html] ✅ Supabase ready: ${e.detail.nodes} nodes + ${e.detail.links} edges`);
+        // Views initialize lazily when tabs are clicked
+    });
+</script>
+
+<script src="location-coords.js"></script>
+<script src="location-mapping.js"></script>
+<script src="auth-supabase.js"></script>
+<script src="graph.js"></script>
+
 </body>
 </html>
