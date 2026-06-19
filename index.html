@@ -1062,6 +1062,60 @@
     }
 
     @media (max-width: 768px) {
+      /* MOBILE GRAPH OPTIMIZATION */
+      #graph-filters {
+        display: none !important;
+      }
+
+      #toggle-filters-btn {
+        display: inline-block !important;
+        min-height: 44px;
+        padding: 0.5rem 0.75rem;
+        background: #2980b9;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 0.8rem;
+      }
+
+      #toggle-filters-btn.active {
+        background: #1f618d;
+      }
+
+      #graph-filters.show {
+        display: flex !important;
+      }
+
+      .graph-container {
+        height: auto;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .graph-toolbar {
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 0.5rem;
+      }
+
+      .graph-search {
+        display: flex;
+        gap: 0.5rem;
+      }
+
+      #searchInput {
+        flex: 1;
+        min-height: 44px;
+      }
+
+      .graph-wrapper {
+        flex: 1;
+        height: 100%;
+        min-height: 400px;
+      }
+
       /* HEADER OPTIMIZATION */
       .header {
         padding: 0.5rem 0.75rem;
@@ -1422,8 +1476,9 @@
           <div class="graph-toolbar">
             <div class="graph-search">
               <input type="text" id="searchInput" placeholder="חיפוש חכם...">
+              <button id="toggle-filters-btn" class="toggle-filters-btn" style="display: none;" title="הצג/הסתר מסננים">⚙️ מסננים</button>
             </div>
-            <div class="graph-filters">
+            <div class="graph-filters" id="graph-filters">
               <div class="connection-filters">
                 <button id="priorConnectionsBtn" class="filter-btn" title="הראה חכמים קדומים">
                   <i class="fas fa-arrow-left"></i> קדומים
@@ -1702,6 +1757,16 @@
           sageNetwork.node.style('opacity', 1);
         }
       });
+
+      // Mobile: Toggle filters button
+      const toggleFiltersBtn = document.getElementById('toggle-filters-btn');
+      const graphFilters = document.getElementById('graph-filters');
+      if (toggleFiltersBtn && graphFilters) {
+        toggleFiltersBtn.addEventListener('click', () => {
+          graphFilters.classList.toggle('show');
+          toggleFiltersBtn.classList.toggle('active');
+        });
+      }
 
       // Export
       document.getElementById('exportBtn').addEventListener('click', () => {
