@@ -920,22 +920,51 @@ class SageNetwork {
 
     // Simulation tick - optimized for smooth rendering
     let tickCount = 0;
+    let lastTickTime = 0;
+    const minTickInterval = 16; // Cap at 60fps
+
     this.simulation.on('tick', () => {
+      const now = performance.now();
       tickCount++;
 
-      // Update link lines
+      // Performance optimization: skip some frames on lower-end devices
+      if (now - lastTickTime < minTickInterval) return;
+      lastTickTime = now;
+
+      // VIEWPORT CULLING: Only update visible nodes/links
+      const padding = 100;
+      const viewport = {
+        x: -padding, y: -padding,
+        width: self.width + padding * 2,
+        height: self.height + padding * 2
+      };
+
+      // Update link lines (with culling)
       linkGroup.select('line')
         .attr('x1', d => d.source.x)
         .attr('y1', d => d.source.y)
         .attr('x2', d => d.target.x)
-        .attr('y2', d => d.target.y);
+        .attr('y2', d => d.target.y)
+        .style('display', d => {
+          // Hide links outside viewport
+          const midX = (d.source.x + d.target.x) / 2;
+          const midY = (d.source.y + d.target.y) / 2;
+          return (midX >= viewport.x && midX <= viewport.x + viewport.width &&
+                  midY >= viewport.y && midY <= viewport.y + viewport.height) ? 'block' : 'none';
+        });
 
-      // Update link labels (connection type) positions
+      // Update link labels (connection type) positions - only for visible links
       linkGroup.select('text.link-label')
         .attr('x', d => (d.source.x + d.target.x) / 2)
-        .attr('y', d => (d.source.y + d.target.y) / 2);
+        .attr('y', d => (d.source.y + d.target.y) / 2)
+        .style('display', d => {
+          const midX = (d.source.x + d.target.x) / 2;
+          const midY = (d.source.y + d.target.y) / 2;
+          return (midX >= viewport.x && midX <= viewport.x + viewport.width &&
+                  midY >= viewport.y && midY <= viewport.y + viewport.height) ? 'block' : 'none';
+        });
 
-      // Update node positions with bounds checking
+      // Update node positions with bounds checking (render all nodes for simplicity)
       self.node.attr('cx', d => Math.max(35, Math.min(self.width - 35, d.x)))
         .attr('cy', d => Math.max(35, Math.min(self.height - 35, d.y)));
 
@@ -943,7 +972,6 @@ class SageNetwork {
       g.select('text.sage-tooltip')
         .attr('x', function() {
           const text = d3.select(this).text();
-          // Find the node with this text
           const node = self.data.nodes.find(n => n.label === text);
           return node ? node.x : 0;
         })
