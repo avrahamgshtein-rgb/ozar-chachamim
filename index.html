@@ -643,6 +643,189 @@
       height: 100%;
     }
 
+    /* COMPARATOR VIEW */
+    .comparator-view {
+      flex-direction: column;
+      overflow-y: auto;
+      padding: 1.5rem;
+      background: #f9f9f9;
+    }
+
+    .comparator-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .comparator-search {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      flex-wrap: wrap;
+    }
+
+    .search-box {
+      flex: 1;
+      min-width: 250px;
+      position: relative;
+    }
+
+    .sage-search-input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      font-size: 0.95rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-family: 'Frank Ruhl Libre', serif;
+    }
+
+    .sage-search-input:focus {
+      outline: none;
+      border-color: #2980b9;
+      box-shadow: 0 0 0 3px rgba(41, 128, 185, 0.1);
+    }
+
+    .suggestions-list {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      left: 0;
+      background: white;
+      border: 1px solid #ddd;
+      border-top: none;
+      border-radius: 0 0 4px 4px;
+      max-height: 300px;
+      overflow-y: auto;
+      display: none;
+      z-index: 100;
+    }
+
+    .suggestions-list.active {
+      display: block;
+    }
+
+    .suggestion-item {
+      padding: 0.75rem 1rem;
+      cursor: pointer;
+      border-bottom: 1px solid #f0f0f0;
+      font-size: 0.9rem;
+      transition: background 0.2s;
+    }
+
+    .suggestion-item:hover {
+      background: #f5f5f5;
+    }
+
+    .vs-label {
+      align-self: center;
+      font-weight: 600;
+      color: #666;
+      font-size: 0.9rem;
+      white-space: nowrap;
+    }
+
+    .comparator-results {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .sage-card {
+      background: white;
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      border-right: 4px solid #2980b9;
+    }
+
+    .sage-card.card-1 {
+      border-right-color: #e74c3c;
+    }
+
+    .sage-card.card-2 {
+      border-right-color: #27ae60;
+    }
+
+    .sage-card.card-3 {
+      border-right-color: #f39c12;
+    }
+
+    .sage-card-header {
+      margin-bottom: 1rem;
+      border-bottom: 2px solid #f0f0f0;
+      padding-bottom: 1rem;
+    }
+
+    .sage-card-title {
+      font-family: 'Frank Ruhl Libre', serif;
+      font-size: 1.3rem;
+      color: #1a1a1a;
+      margin-bottom: 0.25rem;
+    }
+
+    .sage-card-subtitle {
+      font-size: 0.85rem;
+      color: #999;
+    }
+
+    .sage-card-section {
+      margin-bottom: 1rem;
+    }
+
+    .sage-card-section-title {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: #333;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .sage-card-section-content {
+      font-size: 0.85rem;
+      line-height: 1.5;
+      color: #666;
+    }
+
+    .sage-tag {
+      display: inline-block;
+      background: #e8f4f8;
+      color: #2980b9;
+      padding: 0.25rem 0.75rem;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      margin-right: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .mutual-connection {
+      background: #f0fdf4;
+      color: #16a34a;
+      padding: 0.25rem 0.75rem;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      margin: 0.25rem 0;
+    }
+
+    .comparison-empty {
+      text-align: center;
+      padding: 3rem 1rem;
+      color: #999;
+      grid-column: 1 / -1;
+    }
+
+    .comparison-empty-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      opacity: 0.5;
+    }
+
     /* ABOUT VIEW */
     .about-view {
       align-items: center;
@@ -860,6 +1043,10 @@
           <i class="fas fa-map"></i>
           מפה
         </button>
+        <button class="tab-btn" data-view="comparator">
+          <i class="fas fa-columns"></i>
+          🔍 השוואה
+        </button>
         <button class="tab-btn" data-view="about">
           <i class="fas fa-info-circle"></i>
           אודות
@@ -1030,6 +1217,28 @@
         <div id="map"></div>
       </section>
 
+      <!-- COMPARATOR VIEW -->
+      <section class="view comparator-view" id="comparator-view">
+        <div class="comparator-container">
+          <div class="comparator-search">
+            <div class="search-box">
+              <input type="text" id="sage1-search" placeholder="חכם ראשון..." class="sage-search-input">
+              <div id="sage1-suggestions" class="suggestions-list"></div>
+            </div>
+            <div class="vs-label">vs</div>
+            <div class="search-box">
+              <input type="text" id="sage2-search" placeholder="חכם שני..." class="sage-search-input">
+              <div id="sage2-suggestions" class="suggestions-list"></div>
+            </div>
+            <button id="add-sage3-btn" class="btn" style="margin-left: 10px;">+ חכם שלישי</button>
+          </div>
+
+          <div class="comparator-results" id="comparator-results">
+            <!-- Comparison cards will be populated here -->
+          </div>
+        </div>
+      </section>
+
       <!-- ABOUT VIEW -->
       <section class="view about-view" id="about-view">
         <div class="about-content">
@@ -1159,6 +1368,9 @@
         a.download = `ozar-chachamim-${Date.now()}.json`;
         a.click();
       });
+
+      // Comparator
+      setupComparator();
     }
 
     function switchTab(viewName) {
@@ -1343,6 +1555,200 @@
       // sageNetwork.selectNode already handles sidebar display
       // No wrapper needed - selectNode in graph.js opens sidebar directly
     });
+
+    // COMPARATOR FUNCTIONALITY
+    let selectedSages = [];
+    let comparatorThirdSageMode = false;
+
+    function setupComparator() {
+      const sage1Input = document.getElementById('sage1-search');
+      const sage2Input = document.getElementById('sage2-search');
+      const addSage3Btn = document.getElementById('add-sage3-btn');
+
+      sage1Input.addEventListener('input', (e) => searchSages(e.target.value, 'sage1'));
+      sage2Input.addEventListener('input', (e) => searchSages(e.target.value, 'sage2'));
+      addSage3Btn.addEventListener('click', () => {
+        const sage3Input = document.getElementById('sage3-search');
+        if (!sage3Input) {
+          const searchBox = document.createElement('div');
+          searchBox.className = 'search-box';
+          searchBox.innerHTML = `
+            <input type="text" id="sage3-search" placeholder="חכם שלישי..." class="sage-search-input">
+            <div id="sage3-suggestions" class="suggestions-list"></div>
+          `;
+          document.querySelector('.comparator-search').insertBefore(
+            searchBox,
+            addSage3Btn
+          );
+          document.getElementById('sage3-search').addEventListener('input', (e) => searchSages(e.target.value, 'sage3'));
+          comparatorThirdSageMode = true;
+        }
+      });
+    }
+
+    function searchSages(query, field) {
+      if (!window.graphData) return;
+
+      const container = document.getElementById(`${field}-suggestions`);
+      if (!query.trim()) {
+        container.classList.remove('active');
+        return;
+      }
+
+      const results = window.graphData.nodes.filter(sage => {
+        const label = (sage.label || '').toLowerCase();
+        const nameEn = (sage.name_en || '').toLowerCase();
+        const nameHe = (sage.name_he || '').toLowerCase();
+        return label.includes(query.toLowerCase()) ||
+               nameEn.includes(query.toLowerCase()) ||
+               nameHe.includes(query.toLowerCase());
+      }).slice(0, 5);
+
+      container.innerHTML = '';
+      results.forEach(sage => {
+        const div = document.createElement('div');
+        div.className = 'suggestion-item';
+        div.textContent = `${sage.label} (${sage.era || 'לא ידוע'})`;
+        div.addEventListener('click', () => selectComparatorSage(sage, field));
+        container.appendChild(div);
+      });
+
+      container.classList.add('active');
+    }
+
+    function selectComparatorSage(sage, field) {
+      const input = document.getElementById(`${field}-search`);
+      input.value = sage.label;
+      document.getElementById(`${field}-suggestions`).classList.remove('active');
+
+      const index = parseInt(field[4]) - 1;
+      selectedSages[index] = sage;
+
+      updateComparison();
+    }
+
+    function updateComparison() {
+      const resultsDiv = document.getElementById('comparator-results');
+
+      if (selectedSages.length === 0 || !selectedSages[0]) {
+        resultsDiv.innerHTML = `
+          <div class="comparison-empty">
+            <div class="comparison-empty-icon">🔍</div>
+            <p>בחר חכמים כדי להשוות ביניהם</p>
+          </div>
+        `;
+        return;
+      }
+
+      resultsDiv.innerHTML = '';
+      selectedSages.forEach((sage, idx) => {
+        if (!sage) return;
+        const card = createSageCard(sage, idx);
+        resultsDiv.appendChild(card);
+      });
+
+      // Show mutual connections if 2+ sages
+      if (selectedSages.length >= 2 && selectedSages[0] && selectedSages[1]) {
+        showMutualConnections(resultsDiv);
+      }
+    }
+
+    function createSageCard(sage, idx) {
+      const card = document.createElement('div');
+      card.className = `sage-card card-${idx + 1}`;
+
+      const eraColors = {
+        'second-temple': '#8e44ad', 'tannaim': '#e74c3c', 'amoraim': '#e67e22',
+        'geonim': '#f1c40f', 'rishonim': '#27ae60', 'acharonim': '#2980b9', 'modern': '#1abc9c'
+      };
+      const eraColor = eraColors[sage.era_key] || '#999';
+
+      card.innerHTML = `
+        <div class="sage-card-header">
+          <div class="sage-card-title">${sage.label || 'לא ידוע'}</div>
+          <div class="sage-card-subtitle">${sage.era || 'לא ידוע'}</div>
+        </div>
+
+        ${sage.dates ? `<div class="sage-card-section">
+          <div class="sage-card-section-title">📅 תאריכים</div>
+          <div class="sage-card-section-content">${sage.dates}</div>
+        </div>` : ''}
+
+        <div class="sage-card-section">
+          <div class="sage-card-section-title">📍 אזור</div>
+          <div class="sage-card-section-content">${sage.region || sage.location || 'לא ידוע'}</div>
+        </div>
+
+        <div class="sage-card-section">
+          <div class="sage-card-section-title">🎓 תחום</div>
+          <div class="sage-card-section-content">${sage.field || sage.primary_field || 'לא ידוע'}</div>
+        </div>
+
+        ${sage.bio ? `<div class="sage-card-section">
+          <div class="sage-card-section-title">📖 תיאור</div>
+          <div class="sage-card-section-content">${sage.bio.substring(0, 150)}...</div>
+        </div>` : ''}
+
+        ${sage.core_concept ? `<div class="sage-card-section">
+          <div class="sage-card-section-title">💡 רעיון מרכזי</div>
+          <div class="sage-card-section-content">${sage.core_concept}</div>
+        </div>` : ''}
+
+        <div class="sage-card-section">
+          <div class="sage-card-section-title">🏷️ תגיות</div>
+          <div class="sage-card-section-content">
+            <span class="sage-tag">${sage.era || 'לא ידוע'}</span>
+            ${sage.field ? `<span class="sage-tag">${sage.field}</span>` : ''}
+          </div>
+        </div>
+      `;
+
+      return card;
+    }
+
+    function showMutualConnections(container) {
+      const sage1 = selectedSages[0];
+      const sage2 = selectedSages[1];
+      if (!sage1 || !sage2) return;
+
+      // Find common connections
+      const sage1Teachers = window.graphData.links
+        .filter(l => String(l.target) === String(sage1.id))
+        .map(l => l.source);
+      const sage1Students = window.graphData.links
+        .filter(l => String(l.source) === String(sage1.id))
+        .map(l => l.target);
+
+      const sage2Teachers = window.graphData.links
+        .filter(l => String(l.target) === String(sage2.id))
+        .map(l => l.source);
+      const sage2Students = window.graphData.links
+        .filter(l => String(l.source) === String(sage2.id))
+        .map(l => l.target);
+
+      const commonTeachers = sage1Teachers.filter(t => sage2Teachers.includes(t));
+      const commonStudents = sage1Students.filter(s => sage2Students.includes(s));
+
+      if (commonTeachers.length > 0 || commonStudents.length > 0) {
+        const connectionDiv = document.createElement('div');
+        connectionDiv.style.gridColumn = '1 / -1';
+        connectionDiv.style.marginTop = '1rem';
+        connectionDiv.innerHTML = '<div class="sage-card-section-title" style="padding: 0 1.5rem;">🔗 קשרים משותפים</div>';
+
+        if (commonTeachers.length > 0) {
+          connectionDiv.innerHTML += `<div class="mutual-connection" style="margin: 0.5rem 1.5rem;">
+            👨‍🏫 מורים משותפים: ${commonTeachers.length}
+          </div>`;
+        }
+        if (commonStudents.length > 0) {
+          connectionDiv.innerHTML += `<div class="mutual-connection" style="margin: 0.5rem 1.5rem;">
+            👨‍🎓 תלמידים משותפים: ${commonStudents.length}
+          </div>`;
+        }
+
+        container.appendChild(connectionDiv);
+      }
+    }
   </script>
 
   <!-- HOVER TOOLTIP -->
