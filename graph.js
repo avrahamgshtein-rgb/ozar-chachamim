@@ -148,8 +148,15 @@ class SageNetwork {
       return sourceId === String(nodeId) || targetId === String(nodeId);
     }).length;
 
-    // Base radius 24, +2 per connection (max 40)
-    return Math.min(24 + Math.min(connectionCount, 8) * 2, 40);
+    // Mobile: smaller nodes (base 12-14), Desktop: larger nodes (base 24)
+    const isMobile = window.innerWidth < 768;
+    if (isMobile) {
+      // Mobile: base 12, +1 per connection, max 22
+      return Math.min(12 + Math.min(connectionCount, 10), 22);
+    } else {
+      // Desktop: base 24, +2 per connection, max 40
+      return Math.min(24 + Math.min(connectionCount, 8) * 2, 40);
+    }
   }
 
   // Get connections by type (prior = incoming, derivative = outgoing)
@@ -591,26 +598,34 @@ class SageNetwork {
     });
 
     // Enhanced simulation with better parameters for 323 nodes
+    // Mobile vs Desktop optimizations
+    const isMobile = window.innerWidth < 768;
+
     this.simulation = d3.forceSimulation(this.data.nodes)
       .force('link', d3.forceLink(this.data.links || [])
         .id(d => String(d.id))
         .distance(d => {
-          // Stronger connections pull closer
-          return d.type === 'student' ? 80 : d.type === 'teacher' ? 90 : 120;
+          // Mobile: shorter distances to fit in smaller viewport
+          if (isMobile) {
+            return d.type === 'student' ? 50 : d.type === 'teacher' ? 60 : 80;
+          } else {
+            return d.type === 'student' ? 80 : d.type === 'teacher' ? 90 : 120;
+          }
         })
         .strength(d => {
           // Stronger forces for important connections
           return d.type === 'student' ? 0.4 : d.type === 'teacher' ? 0.35 : 0.2;
         }))
       .force('charge', d3.forceManyBody()
-        .strength(-800)
-        .distanceMax(300))
+        .strength(isMobile ? -400 : -800)  // Reduced repulsion on mobile
+        .distanceMax(isMobile ? 200 : 300))
       .force('center', d3.forceCenter(this.width / 2, this.height / 2).strength(0.15))
       .force('collision', d3.forceCollide(d => {
-        // Size by connection importance (degree + type bonus)
-        // Increased collision radius for better spacing
-        const baseSize = 35 + (Math.sqrt(nodeDegree[d.id] || 0) * 4);
-        return Math.min(baseSize, 55);
+        // Smaller collision radius on mobile
+        const baseSize = isMobile
+          ? 20 + (Math.sqrt(nodeDegree[d.id] || 0) * 2)
+          : 35 + (Math.sqrt(nodeDegree[d.id] || 0) * 4);
+        return Math.min(baseSize, isMobile ? 35 : 55);
       }))
       .velocityDecay(0.5)
       .alphaDecay(0.015);
