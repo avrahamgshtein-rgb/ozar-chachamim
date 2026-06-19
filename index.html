@@ -1062,9 +1062,10 @@
     }
 
     @media (max-width: 768px) {
+      /* HEADER OPTIMIZATION */
       .header {
-        padding: 0.75rem 1rem;
-        gap: 1rem;
+        padding: 0.5rem 0.75rem;
+        gap: 0.75rem;
         flex-wrap: wrap;
       }
 
@@ -1073,99 +1074,215 @@
       }
 
       .logo h1 {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
       }
 
       .logo p {
         display: none;
       }
 
+      /* TABS - horizontal scroll with larger touch targets */
       .tabs {
-        gap: 1rem;
+        gap: 0.5rem;
         order: 3;
         width: 100%;
         padding: 0.5rem 0;
         border-top: 1px solid #e0e0e0;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
       }
 
       .tab-btn {
-        font-size: 0.8rem;
-        padding: 0.6rem 0.75rem;
+        font-size: 0.75rem;
+        padding: 0.5rem 0.6rem;
+        min-height: 44px;
+        min-width: 60px;
+        white-space: nowrap;
       }
 
+      /* BUTTONS - bigger for touch */
       .header-actions {
         gap: 0.5rem;
+        width: 100%;
       }
 
       .btn {
+        min-height: 44px;
         padding: 0.5rem 0.75rem;
         font-size: 0.8rem;
+        flex: 1;
       }
 
+      /* LAYOUT */
       .main {
         flex-direction: column;
       }
 
       .graph-container {
-        height: 60vh;
-        min-height: 300px;
+        height: 55vh;
+        min-height: 250px;
       }
 
       .view {
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
+        padding: 0.75rem;
       }
 
+      /* TABLE */
       .table-container {
-        padding: 1rem;
+        padding: 0.75rem;
+      }
+
+      .sages-table {
+        font-size: 0.75rem;
       }
 
       .sages-table th, .sages-table td {
-        padding: 0.75rem;
-        font-size: 0.85rem;
+        padding: 0.5rem;
       }
 
+      /* MAP */
       .map-legend {
         bottom: 10px;
         left: 10px;
         right: 10px;
         max-width: none;
-        font-size: 0.8rem;
-        padding: 1rem;
+        font-size: 0.75rem;
+        padding: 0.75rem;
       }
 
       .legend-item {
-        margin: 0.35rem 0;
+        margin: 0.25rem 0;
+        font-size: 0.75rem;
+      }
+
+      .legend-color {
+        width: 10px;
+        height: 10px;
       }
 
       .legend { display: none; }
 
-      /* Mobile: Compact card sidebar */
+      /* COMPARATOR - stack vertically */
+      .comparator-search {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .search-box {
+        min-width: 100%;
+      }
+
+      .vs-label {
+        display: none;
+      }
+
+      .comparator-results {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+
+      .sage-card {
+        padding: 0.75rem;
+      }
+
+      .sage-card-header {
+        margin-bottom: 0.5rem;
+        padding-bottom: 0.5rem;
+      }
+
+      .sage-card-title {
+        font-size: 1rem;
+      }
+
+      .sage-card-section {
+        margin-bottom: 0.5rem;
+      }
+
+      .sage-card-section-title {
+        font-size: 0.8rem;
+        margin-bottom: 0.25rem;
+      }
+
+      /* RESEARCH - single column */
+      .research-header {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .research-search-input,
+      .research-filter-select {
+        width: 100%;
+        min-width: 100%;
+        min-height: 44px;
+      }
+
+      .research-list {
+        grid-template-columns: 1fr;
+        padding: 0.5rem;
+        gap: 0.5rem;
+      }
+
+      .research-item {
+        padding: 0.75rem;
+      }
+
+      .research-item-title {
+        font-size: 1rem;
+      }
+
+      .research-item-summary {
+        font-size: 0.8rem;
+      }
+
+      /* SIDEBAR - mobile card */
       .sidebar {
         position: fixed;
-        bottom: 20px;
-        right: 20px;
+        bottom: 15px;
+        right: 15px;
         width: 90vw;
         max-width: 340px;
         height: auto;
-        max-height: 55vh;
+        max-height: 50vh;
         z-index: 999;
-        border-right: 2px solid #e74c3c;
+        border-right: 3px solid #e74c3c;
         border-radius: 12px;
         display: flex !important;
         flex-direction: column;
-        overflow: auto;
+        overflow-y: auto;
         -webkit-overflow-scrolling: touch;
         animation: slideUp 0.3s ease-out;
         pointer-events: auto;
         background: white;
-        box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        padding: 1rem;
+      }
+
+      #sidebarHeader {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+      }
+
+      #sidebarHeader h2 {
+        font-size: 1rem;
+        margin-bottom: 0.25rem;
+      }
+
+      .sidebar-section {
+        margin-bottom: 0.75rem;
+        font-size: 0.8rem;
+      }
+
+      .sidebar-section h3 {
+        font-size: 0.85rem;
+        margin-bottom: 0.5rem;
       }
 
       .sidebar-section[style*="background: #f8f9fa"],
       .sidebar-section[style*="background: #fff3cd"],
       .sidebar-section[style*="background: #e8f4f8"] {
-        padding: 0.75rem !important;
+        padding: 0.5rem !important;
         margin: 0.5rem 0 !important;
       }
 
@@ -1184,14 +1301,51 @@
           transform: translateY(0);
         }
       }
+    }
 
-      .main {
-        flex-direction: column;
+    @media (max-width: 480px) {
+      /* Ultra-small phones (iPhone SE, etc.) */
+      .header {
+        padding: 0.4rem 0.5rem;
       }
 
-      .graph-container {
-        height: 50vh;
-        min-height: 300px;
+      .logo h1 {
+        font-size: 1rem;
+      }
+
+      .tab-btn {
+        font-size: 0.65rem;
+        padding: 0.4rem 0.5rem;
+        min-width: 50px;
+      }
+
+      .btn {
+        min-height: 40px;
+        padding: 0.4rem 0.5rem;
+        font-size: 0.75rem;
+      }
+
+      .view {
+        padding: 0.5rem;
+      }
+
+      .sage-card,
+      .research-item {
+        padding: 0.5rem;
+      }
+
+      .sage-card-title {
+        font-size: 0.95rem;
+      }
+
+      .sidebar {
+        max-width: 95vw;
+        padding: 0.75rem;
+      }
+
+      #path-finder-modal {
+        width: 95vw;
+        max-width: 100%;
       }
     }
   </style>
