@@ -10,6 +10,63 @@ function escapeHtml(text) {
   return div.innerHTML;
 }
 
+// Connection metadata tooltip functions
+function showConnectionMetadataTooltip(event, connection) {
+  let tooltip = document.getElementById('connection-metadata-tooltip');
+  if (!tooltip) {
+    tooltip = document.createElement('div');
+    tooltip.id = 'connection-metadata-tooltip';
+    tooltip.style.cssText = `
+      position: fixed;
+      background: rgba(26, 26, 26, 0.95);
+      color: white;
+      border: 2px solid #2980b9;
+      border-radius: 8px;
+      padding: 1rem;
+      font-size: 0.9rem;
+      max-width: 280px;
+      z-index: 2000;
+      pointer-events: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      font-family: 'Frank Ruhl Libre', serif;
+      direction: rtl;
+      text-align: right;
+    `;
+    document.body.appendChild(tooltip);
+  }
+
+  const strengthBar = '★'.repeat(connection.strength || 0) + '☆'.repeat(5 - (connection.strength || 0));
+  const contextText = connection.context_he || 'קשר בלתי מוגדר';
+  const evidenceText = connection.evidence_source || 'מסורת';
+  const periodText = connection.period || 'לא ידוע';
+
+  tooltip.innerHTML = `
+    <div style="margin-bottom: 0.5rem; font-weight: 600; color: #f39c12;">
+      💪 עוצמה: ${strengthBar}
+    </div>
+    <div style="margin-bottom: 0.5rem;">
+      <strong>📅 תקופה:</strong> ${periodText}
+    </div>
+    <div style="margin-bottom: 0.5rem;">
+      <strong>📝 הקשר:</strong> ${contextText}
+    </div>
+    <div style="font-size: 0.8rem; color: #bdc3c7;">
+      <strong>📚 מקור:</strong> ${evidenceText}
+    </div>
+  `;
+
+  tooltip.style.display = 'block';
+  tooltip.style.left = (event.pageX + 10) + 'px';
+  tooltip.style.top = (event.pageY + 10) + 'px';
+}
+
+function hideConnectionMetadataTooltip() {
+  const tooltip = document.getElementById('connection-metadata-tooltip');
+  if (tooltip) {
+    tooltip.style.display = 'none';
+  }
+}
+
 // Mapping of sage IDs to lesson plan folders
 const LESSON_PLAN_MAP = {
   '45': 'rabbi-yosef-bechor-shor',      // ID 45 (Rishonim)
@@ -623,6 +680,9 @@ class SageNetwork {
           .transition().duration(100)
           .attr('opacity', 1)
           .attr('font-size', '14px');
+
+        // Show connection metadata tooltip
+        showConnectionMetadataTooltip(event, d);
       })
       .on('mouseout', function(event, d) {
         d3.select(this).transition().duration(100)
@@ -633,6 +693,9 @@ class SageNetwork {
           .transition().duration(100)
           .attr('opacity', 0.6)
           .attr('font-size', '12px');
+
+        // Hide connection metadata tooltip
+        hideConnectionMetadataTooltip();
       });
 
     // Add connection type labels on edges (show on hover)

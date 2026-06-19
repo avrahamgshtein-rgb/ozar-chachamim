@@ -1711,41 +1711,71 @@
       const sage2 = selectedSages[1];
       if (!sage1 || !sage2) return;
 
-      // Find common connections
+      // Find common connections with metadata
+      const sageMap = {};
+      window.graphData.nodes.forEach(n => { sageMap[n.id] = n; });
+
       const sage1Teachers = window.graphData.links
         .filter(l => String(l.target) === String(sage1.id))
-        .map(l => l.source);
+        .map(l => ({ id: l.source, link: l }));
       const sage1Students = window.graphData.links
         .filter(l => String(l.source) === String(sage1.id))
-        .map(l => l.target);
+        .map(l => ({ id: l.target, link: l }));
 
       const sage2Teachers = window.graphData.links
         .filter(l => String(l.target) === String(sage2.id))
-        .map(l => l.source);
+        .map(l => ({ id: l.source, link: l }));
       const sage2Students = window.graphData.links
         .filter(l => String(l.source) === String(sage2.id))
-        .map(l => l.target);
+        .map(l => ({ id: l.target, link: l }));
 
-      const commonTeachers = sage1Teachers.filter(t => sage2Teachers.includes(t));
-      const commonStudents = sage1Students.filter(s => sage2Students.includes(s));
+      const commonTeachers = sage1Teachers.filter(t => sage2Teachers.some(t2 => t2.id === t.id));
+      const commonStudents = sage1Students.filter(s => sage2Students.some(s2 => s2.id === s.id));
 
       if (commonTeachers.length > 0 || commonStudents.length > 0) {
         const connectionDiv = document.createElement('div');
         connectionDiv.style.gridColumn = '1 / -1';
-        connectionDiv.style.marginTop = '1rem';
-        connectionDiv.innerHTML = '<div class="sage-card-section-title" style="padding: 0 1.5rem;">🔗 קשרים משותפים</div>';
+        connectionDiv.style.marginTop = '1.5rem';
+        connectionDiv.style.padding = '1.5rem';
+        connectionDiv.style.background = '#f0f8ff';
+        connectionDiv.style.borderRadius = '8px';
+        connectionDiv.style.borderRight = '4px solid #2980b9';
+
+        let html = '<div class="sage-card-section-title" style="padding: 0 0 1rem 0;">🔗 קשרים משותפים</div>';
 
         if (commonTeachers.length > 0) {
-          connectionDiv.innerHTML += `<div class="mutual-connection" style="margin: 0.5rem 1.5rem;">
-            👨‍🏫 מורים משותפים: ${commonTeachers.length}
-          </div>`;
-        }
-        if (commonStudents.length > 0) {
-          connectionDiv.innerHTML += `<div class="mutual-connection" style="margin: 0.5rem 1.5rem;">
-            👨‍🎓 תלמידים משותפים: ${commonStudents.length}
-          </div>`;
+          html += '<div style="margin-bottom: 1rem;">';
+          html += '<strong style="color: #2980b9; display: block; margin-bottom: 0.5rem;">👨‍🏫 מורים משותפים:</strong>';
+          commonTeachers.forEach(t => {
+            const sage = sageMap[t.id];
+            const strength = t.link.strength || 0;
+            const stars = '★'.repeat(strength) + '☆'.repeat(5 - strength);
+            html += `<div style="font-size: 0.85rem; color: #333; margin-bottom: 0.5rem; padding: 0.5rem; background: white; border-radius: 4px;">
+              <strong>${sage.label}</strong><br>
+              <span style="color: #666;">${t.link.context_he || 'קשר משותף'}</span><br>
+              <span style="color: #f39c12;">${stars}</span>
+            </div>`;
+          });
+          html += '</div>';
         }
 
+        if (commonStudents.length > 0) {
+          html += '<div>';
+          html += '<strong style="color: #27ae60; display: block; margin-bottom: 0.5rem;">👨‍🎓 תלמידים משותפים:</strong>';
+          commonStudents.forEach(s => {
+            const sage = sageMap[s.id];
+            const strength = s.link.strength || 0;
+            const stars = '★'.repeat(strength) + '☆'.repeat(5 - strength);
+            html += `<div style="font-size: 0.85rem; color: #333; margin-bottom: 0.5rem; padding: 0.5rem; background: white; border-radius: 4px;">
+              <strong>${sage.label}</strong><br>
+              <span style="color: #666;">${s.link.context_he || 'קשר משותף'}</span><br>
+              <span style="color: #f39c12;">${stars}</span>
+            </div>`;
+          });
+          html += '</div>';
+        }
+
+        connectionDiv.innerHTML = html;
         container.appendChild(connectionDiv);
       }
     }

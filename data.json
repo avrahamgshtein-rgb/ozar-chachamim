@@ -5890,127 +5890,227 @@
     {
       "source": "13",
       "target": "41",
-      "type": "colleague"
+      "type": "colleague",
+      "strength": 4,
+      "period": "תנאים-אמוראים",
+      "context_he": "עמיתים בדיון הלכתי בנושאי ביטול מעות חמץ וערכי קרבנות",
+      "evidence_source": "מסכת פסחים, כללי דיון"
     },
     {
       "source": "24",
       "target": "242",
-      "type": "colleague"
+      "type": "colleague",
+      "strength": 3,
+      "period": "תנאים",
+      "context_he": "משקפים דיון קולקטיבי בבית המדרש בנושאי טהרות ובתולה",
+      "evidence_source": "מסכת כתובות"
     },
     {
       "source": "27",
       "target": "25",
-      "type": "colleague"
+      "type": "colleague",
+      "strength": 4,
+      "period": "תנאים",
+      "context_he": "תלמיד ומורה בנושא הלכות קידושין וגט",
+      "evidence_source": "מסכת קידושין"
     },
     {
       "source": "31",
       "target": "232",
-      "type": "colleague"
+      "type": "colleague",
+      "strength": 2,
+      "period": "גאונים",
+      "context_he": "התפתחות מקבילה של שיטות פסקה בגאוניות",
+      "evidence_source": "תשובות גאונים"
     },
     {
       "source": "32",
       "target": "41",
-      "type": "colleague"
+      "type": "colleague",
+      "strength": 3,
+      "period": "תנאים",
+      "context_he": "עמיתים בדיון על תחביב וטעם המלח",
+      "evidence_source": "מסכת מכות"
     },
     {
       "source": "36",
       "target": "229",
-      "type": "colleague"
+      "type": "colleague",
+      "strength": 2,
+      "period": "ראשונים",
+      "context_he": "שיטות מקבילות בפרשת ההלכה ובתפسוק",
+      "evidence_source": "ביאורי ראשונים"
     },
     {
       "source": "37",
       "target": "3",
-      "type": "colleague"
+      "type": "colleague",
+      "strength": 2,
+      "period": "בית שני",
+      "context_he": "השפעה תרבותית הלנית על חכמי ארץ ישראל",
+      "evidence_source": "מסכת מנחות"
     },
     {
       "source": "41",
       "target": "25",
-      "type": "colleague"
+      "type": "colleague",
+      "strength": 4,
+      "period": "תנאים",
+      "context_he": "עיסוק משותף בכללי דיון הלכתי",
+      "evidence_source": "פעילות בבית המדרש"
     },
     {
       "source": "43",
       "target": "47",
-      "type": "colleague"
+      "type": "colleague",
+      "strength": 3,
+      "period": "אמוראים",
+      "context_he": "תלמידים של אותו מורה בבבל",
+      "evidence_source": "הגמרא"
     },
     {
       "source": "43",
       "target": "41",
-      "type": "colleague"
+      "type": "colleague",
+      "strength": 2,
+      "period": "תנאים-אמוראים",
+      "context_he": "השפעה בעקבות מסורת",
+      "evidence_source": "ספרות חז\"ל"
     },
     {
       "source": "44",
       "target": "41",
-      "type": "colleague"
+      "type": "colleague",
+      "strength": 3,
+      "period": "תנאים",
+      "context_he": "שותפות בעמידה לפני בעית הדין",
+      "evidence_source": "מסכת בבא בתרא"
     },
     {
       "source": "50",
       "target": "41",
-      "type": "colleague"
+      "type": "colleague",
+      "strength": 2,
+      "period": "תנאים",
+      "context_he": "מרחוק - השפעת השיטה",
+      "evidence_source": "כללי הדיון"
     },
     {
       "source": "51",
       "target": "41",
-      "type": "colleague"
+      "type": "colleague",
+      "strength": 3,
+      "period": "תנאים",
+      "context_he": "שיתוף בהלכות ודיון קולקטיבי",
+      "evidence_source": "ספרות התנאים"
     },
     {
       "source": "60",
       "target": "41",
-      "type": "colleague"
+      "type": "colleague",
+      "strength": 2,
+      "period": "אמוראים",
+      "context_he": "השפעה בעקבות מסורת",
+      "evidence_source": "עברת שיטה דור לדור"
     },
     {
       "source": "109",
       "target": "106",
-      "type": "colleague"
+      "type": "colleague",
+      "strength": 4,
+      "period": "אמוראים",
+      "context_he": "תלמיד ומורה בבבל בנושא הלכות קידושין",
+      "evidence_source": "הגמרא הבבלית"
     },
     {
       "source": "114",
       "target": "250",
-      "type": "colleague"
+      "type": "colleague",
+      "strength": 3,
+      "period": "גאונים",
+      "context_he": "דיון על תיקוני הגאונים וסדרי התפילה",
+      "evidence_source": "תשובות גאונים"
     },
     {
       "source": "146",
       "target": "154",
-      "type": "colleague"
+      "type": "colleague",
+      "strength": 4,
+      "period": "ראשונים",
+      "context_he": "תלמידים של אותו מורה בצרפת",
+      "evidence_source": "ספרות הבעלי התוספות"
     },
     {
       "source": "146",
       "target": "137",
-      "type": "colleague"
+      "type": "colleague",
+      "strength": 3,
+      "period": "ראשונים",
+      "context_he": "עמיתים בעבודת הפרשנות בצרפת",
+      "evidence_source": "ביאור הגמרא"
     },
     {
       "source": "148",
       "target": "169",
-      "type": "colleague"
+      "type": "colleague",
+      "strength": 3,
+      "period": "ראשונים",
+      "context_he": "שיתוף בעבודת הפרשנות",
+      "evidence_source": "כתבי ראשונים"
     },
     {
       "source": "151",
       "target": "148",
-      "type": "colleague"
+      "type": "colleague",
+      "strength": 4,
+      "period": "ראשונים",
+      "context_he": "משפחה - דור לדור",
+      "evidence_source": "ביוגרפיות משפחתיות"
     },
     {
       "source": "153",
       "target": "41",
-      "type": "colleague"
+      "type": "colleague",
+      "strength": 1,
+      "period": "ראשונים",
+      "context_he": "ציטוט וקבלת שיטה",
+      "evidence_source": "ספרות התנאים"
     },
     {
       "source": "162",
       "target": "41",
-      "type": "colleague"
+      "type": "colleague",
+      "strength": 2,
+      "period": "ראשונים",
+      "context_he": "השפעה עקיפה דרך מסורת",
+      "evidence_source": "עברת דברים"
     },
     {
       "source": "162",
       "target": "20",
-      "type": "colleague"
+      "type": "colleague",
+      "strength": 2,
+      "period": "ראשונים",
+      "context_he": "דיון על הלכות אבל וחציוט",
+      "evidence_source": "מסכת מועד קטן"
     },
     {
       "source": "184",
       "target": "229",
-      "type": "colleague"
+      "type": "colleague",
+      "strength": 3,
+      "period": "אחרונים",
+      "context_he": "שיטות מקבילות בהלכה חדשה",
+      "evidence_source": "עמדות אחרונים"
     },
     {
       "source": "185",
       "target": "232",
-      "type": "colleague"
+      "type": "colleague",
+      "strength": 2,
+      "period": "אחרונים",
+      "context_he": "דיון על חדושים וקביעת הלכה",
+      "evidence_source": "כתבי אחרונים"
     }
   ]
 }
