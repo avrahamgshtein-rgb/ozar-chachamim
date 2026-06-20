@@ -1583,6 +1583,19 @@
               <button id="toggle-filters-btn" class="toggle-filters-btn" style="display: none;" title="הצג/הסתר מסננים">⚙️ מסננים</button>
             </div>
             <div class="graph-filters" id="graph-filters">
+              <div style="margin-bottom: 0.75rem; padding-bottom: 0.75rem; border-bottom: 1px solid #ddd;">
+                <label style="font-size: 0.75rem; font-weight: 600; display: block; margin-bottom: 0.4rem;">📌 טעונים מראש:</label>
+                <select id="presetsDropdown" style="width: 100%; padding: 0.4rem; font-size: 0.75rem; border-radius: 4px; border: 1px solid #ddd;">
+                  <option value="">-- בחר טעינה מראש --</option>
+                  <option value="rishonim-halacha">ראשונים בהלכה</option>
+                  <option value="high-connections">חכמים מרכזיים (5+ קשרים)</option>
+                  <option value="strong-links">קשרים חזקים (4+)</option>
+                </select>
+                <div style="display: flex; gap: 0.3rem; margin-top: 0.4rem;">
+                  <button id="savePresetBtn" class="btn" style="flex: 1; padding: 0.3rem; font-size: 0.65rem;">💾 שמור</button>
+                  <button id="clearPresetBtn" class="btn" style="flex: 1; padding: 0.3rem; font-size: 0.65rem;">🗑️ נקה</button>
+                </div>
+              </div>
               <div class="connection-filters">
                 <button id="priorConnectionsBtn" class="filter-btn" title="הראה חכמים קדומים">
                   <i class="fas fa-arrow-left"></i> קדומים
@@ -1624,6 +1637,20 @@
                   <option value="exegesis">פרשנות</option>
                   <option value="commentary">ביאור</option>
                   <option value="leadership">הנהגה</option>
+                </select>
+              </div>
+              <div class="filter-group" style="margin-top: 0.75rem;">
+                <label>קשרים מינימום:</label>
+                <input type="range" id="minConnectionsFilter" min="0" max="10" value="0" style="width: 100%; cursor: pointer;">
+                <span id="connectionCountLabel" style="font-size: 0.75rem; color: #666;">0+</span>
+              </div>
+              <div class="filter-group">
+                <label>עוצמת קשר:</label>
+                <select id="connectionStrengthFilter">
+                  <option value="">הכל</option>
+                  <option value="4">חזק (4-5)</option>
+                  <option value="3">בינוני (3-5)</option>
+                  <option value="2">חלש (2-5)</option>
                 </select>
               </div>
               <div class="zoom-controls">
@@ -1723,6 +1750,15 @@
               <div id="sage2-suggestions" class="suggestions-list"></div>
             </div>
             <button id="add-sage3-btn" class="btn" style="margin-left: 10px;">+ חכם שלישי</button>
+          </div>
+
+          <div style="display: flex; gap: 0.75rem; margin-bottom: 1.5rem; padding-top: 1rem; border-top: 1px solid #e0e0e0;">
+            <button id="export-comparison-btn" class="btn btn-primary" style="display: none; gap: 0.5rem;" onclick="exportComparisonPDF()">
+              📥 הורד השוואה כ-PDF
+            </button>
+            <button id="print-comparison-btn" class="btn" style="display: none;" onclick="window.print()">
+              🖨️ הדפס
+            </button>
           </div>
 
           <div class="comparator-results" id="comparator-results">
@@ -1849,6 +1885,39 @@
         filterByRegion(e.target.value);
       });
 
+      // New filters: Connection count + strength
+      const minConnFilter = document.getElementById('minConnectionsFilter');
+      if (minConnFilter) {
+        minConnFilter.addEventListener('input', (e) => {
+          document.getElementById('connectionCountLabel').textContent = e.target.value + '+';
+          filterByMinimumConnections(parseInt(e.target.value));
+        });
+      }
+
+      const strengthFilter = document.getElementById('connectionStrengthFilter');
+      if (strengthFilter) {
+        strengthFilter.addEventListener('change', (e) => {
+          filterByConnectionStrength(e.target.value);
+        });
+      }
+
+      // Preset dropdown
+      const presetsDropdown = document.getElementById('presetsDropdown');
+      if (presetsDropdown) {
+        presetsDropdown.addEventListener('change', (e) => {
+          if (e.target.value) {
+            applyFilterPreset(e.target.value);
+            e.target.value = ''; // Reset dropdown
+          }
+        });
+      }
+
+      // Save preset button
+      const savePresetBtn = document.getElementById('savePresetBtn');
+      if (savePresetBtn) {
+        savePresetBtn.addEventListener('click', saveCurrentAsPreset);
+      }
+
       // Reset
       document.getElementById('resetBtn').addEventListener('click', () => {
         if (sageNetwork && sageNetwork.simulation) {
@@ -1857,6 +1926,9 @@
         document.getElementById('searchInput').value = '';
         document.getElementById('eraFilter').value = '';
         document.getElementById('regionFilter').value = '';
+        document.getElementById('minConnectionsFilter').value = 0;
+        document.getElementById('connectionCountLabel').textContent = '0+';
+        document.getElementById('connectionStrengthFilter').value = '';
         if (sageNetwork && sageNetwork.node) {
           sageNetwork.node.style('opacity', 1);
         }
@@ -1983,6 +2055,108 @@
     function filterByRegion(region) {
       if (!sageNetwork || !sageNetwork.node) return;
       sageNetwork.node.style('opacity', d => d.region === region || region === '' ? 1 : 0.15);
+    }
+
+    function filterByMinimumConnections(minConnections) {
+      if (!sageNetwork || !sageNetwork.node || !window.graphData) return;
+
+      // Calculate degree for each node
+      const nodeDegree = {};
+      window.graphData.nodes.forEach(n => nodeDegree[n.id] = 0);
+      window.graphData.links.forEach(l => {
+        nodeDegree[l.source.id || l.source]++;
+        nodeDegree[l.target.id || l.target]++;
+      });
+
+      sageNetwork.node.style('opacity', d => {
+        const degree = nodeDegree[d.id] || 0;
+        return degree >= minConnections ? 1 : 0.15;
+      });
+
+      // Update label to show connection range
+      const maxConnections = Math.max(...Object.values(nodeDegree));
+      console.log(`📊 Filtered nodes with ${minConnections}+ connections (max: ${maxConnections})`);
+    }
+
+    function filterByConnectionStrength(minStrength) {
+      if (!sageNetwork || !sageNetwork.node || !window.graphData) return;
+
+      if (minStrength === '') {
+        // Show all
+        sageNetwork.node.style('opacity', 1);
+        return;
+      }
+
+      const strengthThreshold = parseInt(minStrength);
+      const nodeHasStrongConnection = {};
+      window.graphData.nodes.forEach(n => nodeHasStrongConnection[n.id] = false);
+
+      // Find nodes with strong connections
+      window.graphData.links.forEach(l => {
+        const strength = l.strength || 0;
+        const sourceId = l.source.id || l.source;
+        const targetId = l.target.id || l.target;
+        if (strength >= strengthThreshold) {
+          nodeHasStrongConnection[sourceId] = true;
+          nodeHasStrongConnection[targetId] = true;
+        }
+      });
+
+      sageNetwork.node.style('opacity', d => nodeHasStrongConnection[d.id] ? 1 : 0.15);
+      console.log(`🔗 Filtered nodes with connection strength ${minStrength}+`);
+    }
+
+    // FILTER PRESETS MANAGEMENT
+    const BUILTIN_PRESETS = {
+      'rishonim-halacha': { era: 'rishonim', field: 'halacha', minConnections: 0, strength: '' },
+      'high-connections': { era: '', region: '', field: '', minConnections: 5, strength: '' },
+      'strong-links': { era: '', region: '', field: '', minConnections: 0, strength: '4' }
+    };
+
+    function getCurrentFilterState() {
+      return {
+        era: document.getElementById('eraFilter').value,
+        region: document.getElementById('regionFilter').value,
+        field: document.getElementById('fieldFilter').value,
+        minConnections: parseInt(document.getElementById('minConnectionsFilter').value),
+        strength: document.getElementById('connectionStrengthFilter').value,
+        search: document.getElementById('searchInput').value
+      };
+    }
+
+    function applyFilterPreset(presetName) {
+      const preset = BUILTIN_PRESETS[presetName];
+      if (!preset) return;
+
+      // Apply all filters
+      document.getElementById('eraFilter').value = preset.era;
+      document.getElementById('regionFilter').value = preset.region;
+      document.getElementById('fieldFilter').value = preset.field;
+      document.getElementById('minConnectionsFilter').value = preset.minConnections;
+      document.getElementById('connectionCountLabel').textContent = preset.minConnections + '+';
+      document.getElementById('connectionStrengthFilter').value = preset.strength;
+      document.getElementById('searchInput').value = preset.search || '';
+
+      // Trigger filter updates
+      filterByEra(preset.era);
+      filterByRegion(preset.region);
+      filterByMinimumConnections(preset.minConnections);
+      filterByConnectionStrength(preset.strength);
+
+      console.log(`📌 Preset loaded: ${presetName}`);
+    }
+
+    function saveCurrentAsPreset() {
+      const name = prompt('שם הטעינה המראש החדשה:');
+      if (!name) return;
+
+      const state = getCurrentFilterState();
+      const customPresets = JSON.parse(localStorage.getItem('customPresets') || '{}');
+      customPresets[name] = state;
+      localStorage.setItem('customPresets', JSON.stringify(customPresets));
+
+      alert(`✅ הטעינה המראש "${name}" נשמרה`);
+      console.log(`💾 Preset saved: ${name}`, state);
     }
 
     function showNodeInSidebar(node) {
@@ -2161,6 +2335,8 @@
 
     function updateComparison() {
       const resultsDiv = document.getElementById('comparator-results');
+      const exportBtn = document.getElementById('export-comparison-btn');
+      const printBtn = document.getElementById('print-comparison-btn');
 
       if (selectedSages.length === 0 || !selectedSages[0]) {
         resultsDiv.innerHTML = `
@@ -2169,6 +2345,8 @@
             <p>בחר חכמים כדי להשוות ביניהם</p>
           </div>
         `;
+        exportBtn.style.display = 'none';
+        printBtn.style.display = 'none';
         return;
       }
 
@@ -2183,6 +2361,10 @@
       if (selectedSages.length >= 2 && selectedSages[0] && selectedSages[1]) {
         showMutualConnections(resultsDiv);
       }
+
+      // Show export buttons when comparison is ready
+      exportBtn.style.display = 'flex';
+      printBtn.style.display = 'inline-block';
     }
 
     function createSageCard(sage, idx) {
@@ -2430,6 +2612,241 @@
       displayResearchList(query, sageFiltId);
     }
 
+    // EXPORT COMPARISON AS PDF
+    function exportComparisonPDF() {
+      const sages = selectedSages.filter(s => s);
+      if (sages.length === 0) {
+        alert('אנא בחר חכמים להשוואה');
+        return;
+      }
+
+      const eraColors = {
+        'second-temple': '#8e44ad', 'tannaim': '#e74c3c', 'amoraim': '#e67e22',
+        'geonim': '#f1c40f', 'rishonim': '#27ae60', 'acharonim': '#2980b9', 'modern': '#1abc9c'
+      };
+
+      let html = `
+        <html dir="rtl" lang="he">
+        <head>
+          <meta charset="UTF-8">
+          <title>השוואת חכמים</title>
+          <style>
+            * { margin: 0; padding: 0; box-sizing: border-box; }
+            body {
+              font-family: 'Frank Ruhl Libre', serif;
+              direction: rtl;
+              text-align: right;
+              color: #333;
+              background: white;
+              padding: 20px;
+            }
+            .header {
+              text-align: center;
+              margin-bottom: 30px;
+              border-bottom: 3px solid #2980b9;
+              padding-bottom: 20px;
+            }
+            .header h1 {
+              font-size: 28px;
+              margin-bottom: 10px;
+              color: #1a1a1a;
+            }
+            .header p {
+              color: #666;
+              font-size: 14px;
+            }
+            .sage-grid {
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+              gap: 20px;
+              margin-bottom: 30px;
+            }
+            .sage-card {
+              border: 1px solid #ddd;
+              border-right: 4px solid #2980b9;
+              padding: 20px;
+              border-radius: 8px;
+              page-break-inside: avoid;
+            }
+            .sage-title {
+              font-size: 20px;
+              font-weight: bold;
+              margin-bottom: 10px;
+              color: #1a1a1a;
+            }
+            .sage-era {
+              display: inline-block;
+              padding: 4px 12px;
+              border-radius: 12px;
+              color: white;
+              font-size: 12px;
+              font-weight: bold;
+              margin-bottom: 15px;
+            }
+            .sage-section {
+              margin-bottom: 15px;
+            }
+            .sage-section-title {
+              font-weight: bold;
+              color: #2980b9;
+              margin-bottom: 5px;
+              font-size: 13px;
+            }
+            .sage-section-content {
+              color: #555;
+              font-size: 13px;
+              line-height: 1.6;
+            }
+            .connections {
+              margin-top: 30px;
+              padding: 20px;
+              background: #f0f8ff;
+              border-radius: 8px;
+              page-break-inside: avoid;
+            }
+            .connections h2 {
+              color: #2980b9;
+              font-size: 18px;
+              margin-bottom: 15px;
+            }
+            .connection-item {
+              margin-bottom: 10px;
+              padding: 8px;
+              background: white;
+              border-radius: 4px;
+              font-size: 12px;
+            }
+            .footer {
+              margin-top: 30px;
+              padding-top: 20px;
+              border-top: 1px solid #ddd;
+              color: #999;
+              font-size: 12px;
+              text-align: center;
+            }
+            @media print {
+              body { padding: 0; }
+              .sage-card { page-break-inside: avoid; }
+            }
+          </style>
+        </head>
+        <body>
+          <div class="header">
+            <h1>השוואת חכמים</h1>
+            <p>אוצר חכמים - רשת חכמי ישראל לדורותיהם</p>
+            <p style="font-size: 12px; margin-top: 10px;">${new Date().toLocaleDateString('he-IL')}</p>
+          </div>
+
+          <div class="sage-grid">
+      `;
+
+      // Add sage cards
+      sages.forEach((sage, idx) => {
+        const eraColor = eraColors[sage.era_key] || '#999';
+        html += `
+          <div class="sage-card">
+            <div class="sage-title">${sage.label}</div>
+            <div class="sage-era" style="background-color: ${eraColor};">${sage.era}</div>
+            ${sage.dates ? `
+              <div class="sage-section">
+                <div class="sage-section-title">📅 תאריכים</div>
+                <div class="sage-section-content">${sage.dates}</div>
+              </div>
+            ` : ''}
+            <div class="sage-section">
+              <div class="sage-section-title">📍 אזור</div>
+              <div class="sage-section-content">${sage.region || sage.location || 'לא ידוע'}</div>
+            </div>
+            <div class="sage-section">
+              <div class="sage-section-title">🎓 תחום</div>
+              <div class="sage-section-content">${sage.field || 'לא ידוע'}</div>
+            </div>
+            ${sage.bio ? `
+              <div class="sage-section">
+                <div class="sage-section-title">📖 תיאור</div>
+                <div class="sage-section-content">${sage.bio.substring(0, 200)}...</div>
+              </div>
+            ` : ''}
+            ${sage.core_concept ? `
+              <div class="sage-section">
+                <div class="sage-section-title">💡 רעיון מרכזי</div>
+                <div class="sage-section-content">${sage.core_concept}</div>
+              </div>
+            ` : ''}
+          </div>
+        `;
+      });
+
+      html += '</div>';
+
+      // Add connections if 2+ sages
+      if (sages.length >= 2 && sages[0] && sages[1]) {
+        const sage1 = sages[0];
+        const sage2 = sages[1];
+        const sageMap = {};
+        window.graphData.nodes.forEach(n => { sageMap[n.id] = n; });
+
+        const sage1Teachers = window.graphData.links
+          .filter(l => String(l.target) === String(sage1.id))
+          .map(l => ({ id: l.source, link: l }));
+
+        const sage2Teachers = window.graphData.links
+          .filter(l => String(l.target) === String(sage2.id))
+          .map(l => ({ id: l.source, link: l }));
+
+        const commonTeachers = sage1Teachers.filter(t => sage2Teachers.some(t2 => t2.id === t.id));
+
+        if (commonTeachers.length > 0) {
+          html += `
+            <div class="connections">
+              <h2>🔗 קשרים משותפים</h2>
+          `;
+
+          commonTeachers.forEach(t => {
+            const sage = sageMap[t.id];
+            const strength = t.link.strength || 0;
+            const stars = '★'.repeat(strength) + '☆'.repeat(5 - strength);
+            html += `
+              <div class="connection-item">
+                <strong>${sage.label}</strong><br>
+                <span>${t.link.context_he || 'קשר משותף'}</span><br>
+                <span>עוצמה: ${stars}</span>
+              </div>
+            `;
+          });
+
+          html += '</div>';
+        }
+      }
+
+      html += `
+          <div class="footer">
+            <p>מסמך זה יוצר ממערכת אוצר חכמים</p>
+            <p>${new Date().toLocaleString('he-IL')}</p>
+          </div>
+        </body>
+        </html>
+      `;
+
+      // Open in new window and print
+      const pdfWindow = window.open('', '', 'width=900,height=1200');
+      pdfWindow.document.write(html);
+      pdfWindow.document.close();
+
+      // Auto-print after slight delay
+      setTimeout(() => {
+        pdfWindow.focus();
+        pdfWindow.print();
+      }, 500);
+    }
+
+    function highlightSearchTerm(text, searchTerm) {
+      if (!searchTerm || searchTerm.length < 2) return text;
+
+      const regex = new RegExp(`(${searchTerm})`, 'gi');
+      return text.replace(regex, '<mark style="background-color: #ffeb3b; color: #000; padding: 2px 4px; border-radius: 2px;">$1</mark>');
+    }
+
     function displayResearchDocument(key, doc) {
       const viewer = document.getElementById('research-viewer');
       viewer.classList.add('active');
@@ -2472,9 +2889,13 @@
               </div>
               <button onclick="document.getElementById('research-viewer').classList.remove('active'); document.getElementById('research-list').style.display = 'grid'; document.getElementById('research-search').focus();" style="background: #e74c3c; color: white; border: none; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; font-weight: 600;">✕ סגור</button>
             </div>
+            <div style="margin-top: 1rem;">
+              <input type="text" id="doc-search-input" placeholder="🔍 חפש במסמך..." style="width: 100%; padding: 0.6rem; border: 1px solid #ddd; border-radius: 6px; font-size: 0.9rem; direction: rtl;">
+              <div id="doc-search-stats" style="margin-top: 0.4rem; font-size: 0.8rem; color: #666; text-align: right;"></div>
+            </div>
           </div>
 
-          <div style="padding: 1.5rem; overflow-y: auto; height: calc(100% - 120px);">
+          <div style="padding: 1.5rem; overflow-y: auto; height: calc(100% - 160px);">
             ${doc.summary ? `
               <div style="background: #f0f8ff; padding: 1rem; border-radius: 8px; border-right: 3px solid #2980b9; margin-bottom: 1.5rem;">
                 <strong style="color: #2980b9; display: block; margin-bottom: 0.5rem;">📋 תקציר</strong>
@@ -2482,7 +2903,7 @@
               </div>
             ` : ''}
 
-            <div style="color: #333; line-height: 1.8; font-size: 0.95rem; max-width: 900px; margin-bottom: 2rem;">
+            <div id="doc-content" style="color: #333; line-height: 1.8; font-size: 0.95rem; max-width: 900px; margin-bottom: 2rem;">
               ${contentText.split('\n').map(para =>
                 para.trim() ? `<p style="margin: 0 0 1rem 0; text-align: justify;">${para}</p>` : ''
               ).join('')}
@@ -2520,6 +2941,40 @@
           tag.style.transform = 'translateX(0)';
         });
       });
+
+      // Add search highlighting functionality
+      const searchInput = viewer.querySelector('#doc-search-input');
+      const docContent = viewer.querySelector('#doc-content');
+      const searchStats = viewer.querySelector('#doc-search-stats');
+
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          const searchTerm = e.target.value.trim();
+
+          // Restore original content and re-apply highlighting
+          if (docContent) {
+            let displayHtml = contentText.split('\n').map(para =>
+              para.trim() ? `<p style="margin: 0 0 1rem 0; text-align: justify;">${para}</p>` : ''
+            ).join('');
+
+            if (searchTerm.length >= 2) {
+              const regex = new RegExp(`(${searchTerm})`, 'gi');
+              let matchCount = 0;
+              displayHtml = displayHtml.replace(regex, () => {
+                matchCount++;
+                return `<mark style="background-color: #ffeb3b; color: #000; padding: 2px 4px; border-radius: 2px; font-weight: 600;">${searchTerm}</mark>`;
+              });
+              searchStats.textContent = `✅ ${matchCount} התאמות נמצאו`;
+            } else if (searchTerm.length > 0) {
+              searchStats.textContent = '⏳ הקלד לפחות 2 תווים לחיפוש';
+            } else {
+              searchStats.textContent = '';
+            }
+
+            docContent.innerHTML = displayHtml;
+          }
+        });
+      }
     }
   </script>
 
