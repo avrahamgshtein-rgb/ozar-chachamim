@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+  <title>Test Research Fetch</title>
+  <style>
+    body { font-family: Arial; padding: 20px; direction: rtl; }
+    .test { margin: 20px 0; padding: 10px; border: 1px solid #ccc; }
+    .ok { background: #d4edda; color: #155724; }
+    .err { background: #f8d7da; color: #721c24; }
+  </style>
+</head>
+<body>
+  <h1>בדיקת טעינת מחקרים</h1>
+  <div id="results"></div>
+
+  <script>
+    const resultsDiv = document.getElementById('results');
+
+    async function test() {
+      // Test 1: research_summaries.json
+      try {
+        const r1 = await fetch('research_summaries.json');
+        const data1 = await r1.json();
+        const status1 = Array.isArray(data1) ? '✅' : '❌';
+        resultsDiv.innerHTML += `<div class="test ok">${status1} research_summaries.json: ${data1.length || '?'} entries (is array: ${Array.isArray(data1)})</div>`;
+      } catch (e) {
+        resultsDiv.innerHTML += `<div class="test err">❌ research_summaries.json failed: ${e.message}</div>`;
+      }
+
+      // Test 2: research.json
+      try {
+        const r2 = await fetch('research.json');
+        const data2 = await r2.json();
+        const status2 = Array.isArray(data2) ? '✅' : '❌';
+        resultsDiv.innerHTML += `<div class="test ok">${status2} research.json: ${data2.length || '?'} documents (is array: ${Array.isArray(data2)})</div>`;
+      } catch (e) {
+        resultsDiv.innerHTML += `<div class="test err">❌ research.json failed: ${e.message}</div>`;
+      }
+
+      // Test 3: research_by_sage.json
+      try {
+        const r3 = await fetch('research_by_sage.json');
+        const data3 = await r3.json();
+        const status3 = typeof data3 === 'object' ? '✅' : '❌';
+        resultsDiv.innerHTML += `<div class="test ok">${status3} research_by_sage.json: ${Object.keys(data3).length || '?'} sages (is object: ${typeof data3 === 'object'})</div>`;
+      } catch (e) {
+        resultsDiv.innerHTML += `<div class="test err">❌ research_by_sage.json failed: ${e.message}</div>`;
+      }
+
+      // Test 4: Simulate what displayResearchList does
+      try {
+        const summaries = await (await fetch('research_summaries.json')).json();
+        if (Array.isArray(summaries) && summaries.length > 0) {
+          const first = summaries[0];
+          resultsDiv.innerHTML += `<div class="test ok">✅ First document: ${first.title}</div>`;
+          resultsDiv.innerHTML += `<div class="test">   File: ${first.file}</div>`;
+          resultsDiv.innerHTML += `<div class="test">   Sage ID: ${first.sage_id}</div>`;
+        } else {
+          resultsDiv.innerHTML += `<div class="test err">❌ summaries is not array or empty</div>`;
+        }
+      } catch (e) {
+        resultsDiv.innerHTML += `<div class="test err">❌ Simulation failed: ${e.message}</div>`;
+      }
+    }
+
+    test();
+  </script>
+</body>
+</html>

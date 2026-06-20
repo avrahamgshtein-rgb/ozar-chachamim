@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+  <title>Debug Research Type</title>
+  <style>
+    body { font-family: monospace; padding: 20px; direction: rtl; white-space: pre-wrap; word-wrap: break-word; }
+    pre { background: #f5f5f5; padding: 10px; border: 1px solid #ccc; overflow: auto; }
+  </style>
+</head>
+<body>
+  <h1>Debug: What is research_summaries.json?</h1>
+  <pre id="output"></pre>
+
+  <script>
+    const output = document.getElementById('output');
+
+    async function test() {
+      try {
+        const response = await fetch('research_summaries.json');
+        output.textContent += `Fetch status: ${response.status}\n`;
+        output.textContent += `Content-Type: ${response.headers.get('content-type')}\n\n`;
+
+        const data = await response.json();
+        output.textContent += `typeof data: ${typeof data}\n`;
+        output.textContent += `Array.isArray(data): ${Array.isArray(data)}\n`;
+        output.textContent += `data.length: ${data.length}\n`;
+        output.textContent += `data.constructor.name: ${data.constructor.name}\n`;
+        output.textContent += `Object.keys(data).length: ${Object.keys(data).length}\n\n`;
+
+        if (Array.isArray(data)) {
+          output.textContent += `✅ It IS an array with ${data.length} items\n`;
+          output.textContent += `First item keys: ${Object.keys(data[0]).join(', ')}\n`;
+        } else {
+          output.textContent += `❌ It is NOT an array!\n`;
+          output.textContent += `Top-level keys: ${Object.keys(data).join(', ')}\n`;
+          output.textContent += `First 500 chars: ${JSON.stringify(data).substring(0, 500)}\n`;
+        }
+      } catch (e) {
+        output.textContent += `ERROR: ${e.message}\n${e.stack}`;
+      }
+    }
+
+    test();
+  </script>
+</body>
+</html>

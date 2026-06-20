@@ -268,18 +268,32 @@ Examples:
 
 ## 🎬 Current Phase
 
-- ✅ **Phase 1–5:** Core features complete (sages, connections, visualization, search, PDF export, mobile)
-- ✅ **Phase 6:** Network graph redesigned (Connected Papers style + tooltips + connection labels)
+- ✅ **Phase 1–6:** Core features complete (sages, connections, visualization, search, PDF export, mobile)
+- ✅ **Phase 7:** Power features implemented (comparator, connection metadata, research viewer)
+- ✅ **Phase 8:** Enhanced UX with tooltips, metadata, and 7-tab interface
 - 📦 **Deployment:** Website live on Vercel + working locally on port 8080
 
-### Latest Session Status (June 2026)
-- **Current working version:** Commit 18afa2a (`feat: redesign network graph to match Connected Papers + add tooltips and connection labels`)
-- **Vercel deployment:** ✅ Operational (auto-deploys on `git push origin main`)
+### Latest Session Status (June 19, 2026 — Continued)
+- **Current working version:** Commit 47994ec (`feat: research viewer + connection metadata`)
+- **Vercel deployment:** ✅ Live (auto-deploys on `git push origin main`)
 - **Localhost:** ✅ Running on port 8080 via `python -m http.server 8080`
 - **GitHub:** Synced with Vercel; both versions identical
-- **Frontend:** All 5 tabs functional (graph, map, traditions, ideas, timeline)
-- **Data:** 323 sages + 25 validated connections loaded from Supabase or fallback data.json
-- **Issue resolved:** Vercel config error fixed (removed invalid `"public": true` from vercel.json)
+- **Frontend:** All 7 tabs functional:
+  - 1️⃣ רשת קשרים (Graph - D3.js force-directed network)
+  - 2️⃣ טבלה (Table view)
+  - 3️⃣ מפה (Leaflet.js interactive map)
+  - 4️⃣ 🔍 השוואה (NEW: Sage Comparator - 2-3 side-by-side comparison)
+  - 5️⃣ 📚 מחקר (NEW: Research Document Viewer - 128 documents searchable)
+  - 6️⃣ אודות (About)
+- **Data:** 364 sages + 25 connections with rich metadata (strength 1-5, period, context_he, evidence_source)
+- **Research:** 128 document summaries indexed, linked to 24 sages
+- **Lesson Plans:** 5 sages with detailed 45-min lesson plans integrated
+- **New features this session:**
+  - Connection metadata tooltips on graph edge hover
+  - Sage Comparator with mutual connection detection
+  - Research Document Viewer with search/filter by sage
+  - Enhanced comparator showing connection strength ratings
+  - All metadata integrated into UI
 
 ---
 

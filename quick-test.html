@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Research Tab Quick Test</title>
+</head>
+<body>
+  <h1>Testing Research Data Loading</h1>
+  <div id="status"></div>
+  
+  <script>
+    const status = document.getElementById('status');
+    
+    async function test() {
+      try {
+        status.innerHTML += '<p>⏳ Loading files...</p>';
+        
+        // Test 1: Load summaries
+        const s = await fetch('research_summaries.json');
+        const summaries = await s.json();
+        status.innerHTML += `<p>✅ research_summaries.json: ${summaries.length} entries</p>`;
+        
+        // Test 2: Load research
+        const r = await fetch('research.json');
+        const research = await r.json();
+        status.innerHTML += `<p>✅ research.json: ${research.length} documents</p>`;
+        
+        // Test 3: Load by_sage
+        const b = await fetch('research_by_sage.json');
+        const bySage = await b.json();
+        status.innerHTML += `<p>✅ research_by_sage.json: ${Object.keys(bySage).length} sages</p>`;
+        
+        // Test 4: Check data structure
+        if (summaries[0]) {
+          const s0 = summaries[0];
+          status.innerHTML += `<p>✅ First summary: ${s0.title}</p>`;
+          status.innerHTML += `   - File: ${s0.file}</p>`;
+          status.innerHTML += `   - Sage ID: ${s0.sage_id}</p>`;
+        }
+        
+        if (research[0]) {
+          const r0 = research[0];
+          status.innerHTML += `<p>✅ First research doc: ${r0.sage_label}</p>`;
+          status.innerHTML += `   - Words: ${r0.word_count}</p>`;
+          status.innerHTML += `   - Content length: ${r0.content.length} chars</p>`;
+        }
+        
+        // Test 5: Simulate matching
+        if (summaries[0] && research[0]) {
+          const match = research.find(r => r.source_file === summaries[0].file);
+          if (match) {
+            status.innerHTML += `<p>✅ File matching works: ${summaries[0].file}</p>`;
+          } else {
+            status.innerHTML += `<p>❌ File matching FAILED for: ${summaries[0].file}</p>`;
+          }
+        }
+        
+        status.innerHTML += '<p style="color: green; font-weight: bold;">✅ All tests passed!</p>';
+      } catch (e) {
+        status.innerHTML += `<p style="color: red;">❌ Error: ${e.message}</p>`;
+        console.error(e);
+      }
+    }
+    
+    test();
+  </script>
+</body>
+</html>

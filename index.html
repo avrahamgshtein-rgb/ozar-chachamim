@@ -2516,28 +2516,40 @@
     }
 
     // RESEARCH VIEWER FUNCTIONALITY
-    let researchSummaries = {};
+    let researchSummaries = [];  // Array of summary objects
     let researchBySage = {};
-    let researchContent = [];
+    let researchContent = [];  // Array of full documents
     let researchViewerSetupDone = false;
 
     async function setupResearchViewer() {
       // Avoid duplicate setup
       if (researchViewerSetupDone) return;
 
-      // Load research data
+      // Load research data (lazy-loaded only when Tab 5 opens)
       try {
         const [summariesRes, bySageRes, contentRes] = await Promise.all([
           fetch('research_summaries.json'),
           fetch('research_by_sage.json'),
           fetch('research.json')
         ]);
-        researchSummaries = await summariesRes.json();
-        researchBySage = await bySageRes.json();
-        researchContent = await contentRes.json();
-        console.log(`✅ 📚 Loaded ${Object.keys(researchSummaries).length} summaries + ${researchContent.length} full documents`);
+
+        // Parse JSON responses
+        const summariesData = await summariesRes.json();
+        const bySageData = await bySageRes.json();
+        const contentData = await contentRes.json();
+
+        // Ensure they're in the right format (arrays/objects)
+        researchSummaries = Array.isArray(summariesData) ? summariesData : [];
+        researchBySage = typeof bySageData === 'object' && !Array.isArray(bySageData) ? bySageData : {};
+        researchContent = Array.isArray(contentData) ? contentData : [];
+
+        const matchedDocs = researchContent.filter(d => d && d.sage_id).length;
+        console.log(`✅ 📚 Loaded ${researchSummaries.length} summaries + ${researchContent.length} full documents (${matchedDocs} matched to sages)`);
       } catch (e) {
-        console.warn('Could not load research data:', e);
+        console.warn('❌ Could not load research data:', e);
+        researchSummaries = [];
+        researchBySage = {};
+        researchContent = [];
         return;
       }
 
@@ -2546,66 +2558,108 @@
       const filterSelect = document.getElementById('research-filter-sage');
       const researchList = document.getElementById('research-list');
 
-      // Populate sage filter
-      Object.keys(researchBySage).forEach(sageId => {
-        const sage = window.graphData.nodes.find(n => String(n.id) === sageId);
-        if (sage) {
+      // Populate sage filter (from research_by_sage.json keys)
+      // Wait for graph data if not ready yet
+      if (window.graphData && window.graphData.nodes) {
+        Object.keys(researchBySage).sort().forEach(sageId => {
+          const sage = window.graphData.nodes.find(n => String(n.id) === sageId);
+          if (sage) {
+            const option = document.createElement('option');
+            option.value = sageId;
+            option.textContent = `${sage.label} (${researchBySage[sageId].length} מסמכים)`;
+            filterSelect.appendChild(option);
+          }
+        });
+        console.log(`✅ 🔍 Research filter populated with ${Object.keys(researchBySage).length} sages`);
+      } else {
+        console.warn('⚠️ Graph data not ready yet, skipping sage filter population');
+        // Still populate with sage IDs only (no labels)
+        Object.keys(researchBySage).sort().forEach(sageId => {
           const option = document.createElement('option');
           option.value = sageId;
-          option.textContent = sage.label;
+          option.textContent = `Sage ${sageId}`;
           filterSelect.appendChild(option);
-        }
-      });
+        });
+      }
 
       // Display all research documents
       displayResearchList();
 
-      // Event listeners
-      searchInput.addEventListener('input', (e) => filterResearchDocuments(e.target.value, filterSelect.value));
-      filterSelect.addEventListener('change', (e) => filterResearchDocuments(searchInput.value, e.target.value));
+      // Event listeners (check if elements exist)
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => filterResearchDocuments(e.target.value, filterSelect?.value || ''));
+      }
+      if (filterSelect) {
+        filterSelect.addEventListener('change', (e) => filterResearchDocuments(searchInput?.value || '', e.target.value));
+      }
 
       researchViewerSetupDone = true;
+      console.log('✅ 📚 Research viewer setup complete');
     }
 
     function displayResearchList(query = '', sageFiltId = '') {
       const researchList = document.getElementById('research-list');
+      if (!researchList) return;
+
       researchList.innerHTML = '';
 
-      let filtered = Object.entries(researchSummaries);
+      // Ensure researchSummaries is an array
+      if (!Array.isArray(researchSummaries)) {
+        console.warn('⚠️ researchSummaries is not an array:', typeof researchSummaries);
+        researchList.innerHTML = '<div style="grid-column: 1/-1; text-align: center; color: #999; padding: 3rem;">שגיאה בטעינת מסמכים</div>';
+        return;
+      }
 
-      // Filter by search query
+      // Filter summaries based on query and sage
+      let filtered = researchSummaries.slice();  // Work with a copy of array
+
+      // Filter by search query (case-insensitive)
       if (query) {
-        filtered = filtered.filter(([key, doc]) => {
-          const title = (doc.title || '').toLowerCase();
-          const summary = (doc.summary || '').toLowerCase();
-          return title.includes(query.toLowerCase()) || summary.includes(query.toLowerCase());
+        const q = query.toLowerCase();
+        filtered = filtered.filter(doc => {
+          const title = (doc && doc.title || '').toLowerCase();
+          const summary = (doc && doc.summary || '').toLowerCase();
+          const file = (doc && doc.file || '').toLowerCase();
+          return title.includes(q) || summary.includes(q) || file.includes(q);
         });
       }
 
-      // Filter by sage
+      // Filter by sage (if selected)
       if (sageFiltId) {
         const sageDocs = researchBySage[sageFiltId] || [];
-        const filenames = sageDocs.map(d => d.file);
-        filtered = filtered.filter(([key, doc]) => filenames.includes(doc.file));
+        const filenames = sageDocs.map(d => d && d.file).filter(f => f);
+        filtered = filtered.filter(doc => doc && filenames.includes(doc.file));
       }
 
-      filtered.slice(0, 50).forEach(([key, doc]) => {
+      // Display filtered results
+      if (filtered.length === 0) {
+        researchList.innerHTML = '<div style="grid-column: 1/-1; text-align: center; color: #999; padding: 3rem;">לא נמצאו מסמכים</div>';
+        return;
+      }
+
+      filtered.slice(0, 100).forEach(doc => {
+        if (!doc) return;
+
         const item = document.createElement('div');
         item.className = 'research-item';
+
+        // Show full text indicator if document has full text in research.json
+        const hasFullText = researchContent.find(r => r && r.source_file === doc.file && r.content);
+        const icon = hasFullText ? '📖' : '📋';
+
         item.innerHTML = `
-          <div class="research-item-title">${doc.title}</div>
+          <div class="research-item-title">${icon} ${doc.title || 'ללא כותרת'}</div>
           <div class="research-item-summary">${doc.summary || 'אין תקציר זמין'}</div>
           <div class="research-item-meta">
-            <span>📄 ${doc.para_count || '?'} פסקאות</span>
+            <span>📄 ${doc.word_count || '?'} מילים</span>
+            ${doc.sage_id ? `<span>👤 סג ${doc.sage_id}</span>` : '<span style="color: #999;">⚠️ לא מצויד</span>'}
           </div>
         `;
-        item.addEventListener('click', () => displayResearchDocument(key, doc));
+        item.addEventListener('click', () => displayResearchDocument(doc.file, doc));
         researchList.appendChild(item);
       });
 
-      if (filtered.length === 0) {
-        researchList.innerHTML = '<div style="grid-column: 1/-1; text-align: center; color: #999; padding: 3rem;">לא נמצאו מסמכים</div>';
-      }
+      console.log(`✅ 📋 Displayed ${Math.min(filtered.length, 100)} of ${filtered.length} documents`);
     }
 
     function filterResearchDocuments(query, sageFiltId) {
@@ -2847,16 +2901,14 @@
       return text.replace(regex, '<mark style="background-color: #ffeb3b; color: #000; padding: 2px 4px; border-radius: 2px;">$1</mark>');
     }
 
-    function displayResearchDocument(key, doc) {
+    function displayResearchDocument(filename, doc) {
       const viewer = document.getElementById('research-viewer');
       viewer.classList.add('active');
       const list = document.getElementById('research-list');
       list.style.display = 'none';
 
-      // Find full content from research.json by sage_id only (file names don't match)
-      const fullContent = researchContent.find(r =>
-        String(r.sage_id) === String(doc.sage_id)
-      );
+      // Find full content from research.json by exact file name match
+      const fullContent = researchContent.find(r => r.source_file === filename);
 
       // Extract related sages from content
       let relatedSages = [];
