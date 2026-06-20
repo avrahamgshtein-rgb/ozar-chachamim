@@ -2853,9 +2853,9 @@
       const list = document.getElementById('research-list');
       list.style.display = 'none';
 
-      // Find full content from research.json
+      // Find full content from research.json by sage_id only (file names don't match)
       const fullContent = researchContent.find(r =>
-        r.sage_id === doc.sage_id && r.source_file === doc.file
+        String(r.sage_id) === String(doc.sage_id)
       );
 
       // Extract related sages from content
