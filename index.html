@@ -2872,8 +2872,9 @@
         });
       }
 
-      const contentText = fullContent ? fullContent.content : 'טקסט מלא אינו זמין';
-      const wordCount = fullContent ? fullContent.word_count : doc.para_count;
+      // Use full content if available, otherwise use expanded summary
+      const contentText = fullContent ? fullContent.content : (doc.summary || 'לא זמין תקציר או טקסט מלא');
+      const wordCount = fullContent ? fullContent.word_count : (doc.para_count || '?');
 
       viewer.innerHTML = `
         <div class="research-document" style="padding: 0;">
