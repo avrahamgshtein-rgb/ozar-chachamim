@@ -98,6 +98,41 @@
       border-radius: 10px;
     }
 
+    /* ============================================================================
+       LANGUAGE SWITCHER
+       ============================================================================ */
+
+    .language-switcher {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-right: auto;
+    }
+
+    .language-switcher button {
+      background: transparent;
+      border: 1px solid #ddd;
+      padding: 0.4rem 0.8rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #666;
+      transition: all 0.2s;
+    }
+
+    .language-switcher button:hover {
+      border-color: #2980b9;
+      color: #2980b9;
+      background: #f0f8ff;
+    }
+
+    .language-switcher button.active {
+      background: #2980b9;
+      color: white;
+      border-color: #2980b9;
+    }
+
     .tab-btn {
       background: none;
       border: none;
@@ -1534,7 +1569,7 @@
           <i class="fas fa-columns"></i>
           🔍 השוואה
         </button>
-        <button class="tab-btn" data-view="research">
+        <button class="tab-btn" data-view="research" data-i18n="research">
           <i class="fas fa-book"></i>
           📚 מחקר
         </button>
@@ -1543,6 +1578,13 @@
           אודות
         </button>
       </nav>
+
+      <!-- LANGUAGE SWITCHER -->
+      <div class="language-switcher">
+        <button class="lang-btn active" data-lang="he" onclick="switchLanguage('he')">עברית</button>
+        <button class="lang-btn" data-lang="en" onclick="switchLanguage('en')">English</button>
+        <button class="lang-btn" data-lang="ru" onclick="switchLanguage('ru')">Русский</button>
+      </div>
 
       <div class="header-actions">
         <button class="btn" id="pathFinderBtn" onclick="window.sageNetwork.openPathFinder()" title="חפש קשר בין חכמים">
@@ -1823,6 +1865,358 @@
     import { initializeApp } from './supabase-client.js';
     import { SageNetwork } from './graph.js';
     import { SageMap } from './map.js';
+
+    // ============================================================================
+    // MULTILINGUAL SUPPORT
+    // ============================================================================
+
+    const translations = {
+      he: {
+        // Header & Navigation
+        title: 'אוצר חכמים',
+        subtitle: 'רשת חכמי ישראל',
+        graph: '🌐 רשת קשרים',
+        table: 'טבלה',
+        map: '🗺️ גיאוגרפיה',
+        compare: '📊 השוואה',
+        research: '📚 מחקר',
+        timeline: '⏳ שלשלת הקבלה',
+        about: 'אודות',
+
+        // Search & Filter
+        search: '🔍 חפש חכמים',
+        search_placeholder: 'חפש לפי שם, תקופה, או תחום...',
+        filter_era: 'סנן לפי תקופה',
+        filter_region: 'סנן לפי אזור',
+        filter_field: 'סנן לפי תחום',
+        all_eras: 'כל התקופות',
+        all_regions: 'כל האזורים',
+        all_fields: 'כל התחומים',
+
+        // Buttons & Actions
+        path_finder: '🔍 חפש קשר',
+        export: '🖨️ הדפס',
+        close: '✕ סגור',
+        print: '🖨️ הדפס',
+        export_pdf: '📄 ייצא כ-PDF',
+        add_sage: '➕ הוסף חכם',
+        compare: 'השוואה',
+        clear: 'נקה',
+
+        // Research Tab
+        no_documents: 'לא נמצאו מסמכים',
+        search_research: 'חפש במסמכי מחקר...',
+        filter_sage: 'סנן לפי חכם',
+        all_sages: 'כל החכמים',
+        full_text: '📖 טקסט מלא',
+        summary: '📋 תקציר',
+        words: 'מילים',
+        paragraphs: 'פסקאות',
+        related_sages: '🔗 חכמים קשורים',
+        document_not_found: 'מסמך לא נמצא',
+
+        // Timeline
+        chronological_view: 'תצוגה כרונולוגית',
+        era: 'תקופה',
+
+        // About
+        about_title: 'אודות אוצר חכמים',
+        about_description: 'בסיס ידע מובנה על חכמי ישראל לדורותיהם עם ויזואליזציה דינמית של קשרים בין חכמים.',
+        features: 'תכונות:',
+        interactive_network: 'רשת חכמים אינטראקטיבית',
+        teacher_student: 'קשרי תלמיד-מורה והשפעות',
+        geographic_temporal: 'ארגון מרחבי וזמני',
+        advanced_search: 'חיפוש וסינון מתקדם',
+        data_export: 'ייצוא נתונים',
+        interactive_map: 'מפה אינטראקטיבית',
+        comprehensive_table: 'טבלה מקיפה',
+
+        // Comparator
+        select_sages: 'בחר חכמים להשוואה',
+        sage_1: 'חכם 1',
+        sage_2: 'חכם 2',
+        sage_3: 'חכם 3',
+        compare_selected: 'השווה חכמים שנבחרו',
+
+        // Messages
+        loading: 'טוען...',
+        error: 'שגיאה',
+        success: 'הצליח',
+        no_data: 'אין נתונים',
+        no_results: 'אין תוצאות'
+      },
+      en: {
+        // Header & Navigation
+        title: 'Ozar Chachamim',
+        subtitle: 'Network of Jewish Sages',
+        graph: '🌐 Network',
+        table: 'Table',
+        map: '🗺️ Geography',
+        compare: '📊 Compare',
+        research: '📚 Research',
+        timeline: '⏳ Timeline',
+        about: 'About',
+
+        // Search & Filter
+        search: '🔍 Search Sages',
+        search_placeholder: 'Search by name, era, or field...',
+        filter_era: 'Filter by Era',
+        filter_region: 'Filter by Region',
+        filter_field: 'Filter by Field',
+        all_eras: 'All Eras',
+        all_regions: 'All Regions',
+        all_fields: 'All Fields',
+
+        // Buttons & Actions
+        path_finder: '🔍 Find Path',
+        export: '🖨️ Print',
+        close: '✕ Close',
+        print: '🖨️ Print',
+        export_pdf: '📄 Export PDF',
+        add_sage: '➕ Add Sage',
+        compare: 'Compare',
+        clear: 'Clear',
+
+        // Research Tab
+        no_documents: 'No documents found',
+        search_research: 'Search research documents...',
+        filter_sage: 'Filter by Sage',
+        all_sages: 'All Sages',
+        full_text: '📖 Full Text',
+        summary: '📋 Summary',
+        words: 'Words',
+        paragraphs: 'Paragraphs',
+        related_sages: '🔗 Related Sages',
+        document_not_found: 'Document not found',
+
+        // Timeline
+        chronological_view: 'Chronological View',
+        era: 'Era',
+
+        // About
+        about_title: 'About Ozar Chachamim',
+        about_description: 'A structured knowledge base about Jewish sages throughout the generations with dynamic visualization of connections between sages.',
+        features: 'Features:',
+        interactive_network: 'Interactive sage network',
+        teacher_student: 'Teacher-student relationships and influences',
+        geographic_temporal: 'Geographic and temporal organization',
+        advanced_search: 'Advanced search and filtering',
+        data_export: 'Data export',
+        interactive_map: 'Interactive map',
+        comprehensive_table: 'Comprehensive table',
+
+        // Comparator
+        select_sages: 'Select sages to compare',
+        sage_1: 'Sage 1',
+        sage_2: 'Sage 2',
+        sage_3: 'Sage 3',
+        compare_selected: 'Compare selected sages',
+
+        // Messages
+        loading: 'Loading...',
+        error: 'Error',
+        success: 'Success',
+        no_data: 'No data',
+        no_results: 'No results'
+      },
+      ru: {
+        // Header & Navigation
+        title: 'Озар Чачамим',
+        subtitle: 'Сеть еврейских мудрецов',
+        graph: '🌐 Сеть',
+        table: 'Таблица',
+        map: '🗺️ География',
+        compare: '📊 Сравнить',
+        research: '📚 Исследования',
+        timeline: '⏳ Временная шкала',
+        about: 'О проекте',
+
+        // Search & Filter
+        search: '🔍 Поиск мудрецов',
+        search_placeholder: 'Поиск по имени, эпохе или области...',
+        filter_era: 'Фильтр по эпохе',
+        filter_region: 'Фильтр по региону',
+        filter_field: 'Фильтр по области',
+        all_eras: 'Все эпохи',
+        all_regions: 'Все регионы',
+        all_fields: 'Все области',
+
+        // Buttons & Actions
+        path_finder: '🔍 Найти путь',
+        export: '🖨️ Печать',
+        close: '✕ Закрыть',
+        print: '🖨️ Печать',
+        export_pdf: '📄 Экспорт в PDF',
+        add_sage: '➕ Добавить мудреца',
+        compare: 'Сравнить',
+        clear: 'Очистить',
+
+        // Research Tab
+        no_documents: 'Документы не найдены',
+        search_research: 'Поиск исследовательских документов...',
+        filter_sage: 'Фильтр по мудрецу',
+        all_sages: 'Все мудрецы',
+        full_text: '📖 Полный текст',
+        summary: '📋 Резюме',
+        words: 'Слова',
+        paragraphs: 'Абзацы',
+        related_sages: '🔗 Связанные мудрецы',
+        document_not_found: 'Документ не найден',
+
+        // Timeline
+        chronological_view: 'Хронологический вид',
+        era: 'Эпоха',
+
+        // About
+        about_title: 'Об Озар Чачамим',
+        about_description: 'Структурированная база знаний о еврейских мудрецах на протяжении поколений с динамической визуализацией связей между мудрецами.',
+        features: 'Возможности:',
+        interactive_network: 'Интерактивная сеть мудрецов',
+        teacher_student: 'Отношения учитель-ученик и влияния',
+        geographic_temporal: 'Географическая и временная организация',
+        advanced_search: 'Расширенный поиск и фильтрация',
+        data_export: 'Экспорт данных',
+        interactive_map: 'Интерактивная карта',
+        comprehensive_table: 'Полная таблица',
+
+        // Comparator
+        select_sages: 'Выберите мудрецов для сравнения',
+        sage_1: 'Мудрец 1',
+        sage_2: 'Мудрец 2',
+        sage_3: 'Мудрец 3',
+        compare_selected: 'Сравнить выбранных мудрецов',
+
+        // Messages
+        loading: 'Загрузка...',
+        error: 'Ошибка',
+        success: 'Успех',
+        no_data: 'Нет данных',
+        no_results: 'Результаты не найдены'
+      }
+    };
+
+    let currentLanguage = localStorage.getItem('language') || 'he';
+
+    // Make globally accessible for onclick handlers
+    window.switchLanguage = function(lang) {
+      currentLanguage = lang;
+      localStorage.setItem('language', lang);
+
+      // Update button styles
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      document.querySelector(`[data-lang="${lang}"]`).classList.add('active');
+
+      // Update page direction
+      const html = document.documentElement;
+      if (lang === 'he' || lang === 'ru') {
+        html.dir = 'rtl';
+        html.lang = lang;
+      } else {
+        html.dir = 'ltr';
+        html.lang = 'en';
+      }
+
+      // Update UI text
+      updateUIText(lang);
+
+      console.log(`🌐 Language switched to: ${lang}`);
+    };
+
+    window.t = function(key) {
+      return translations[currentLanguage]?.[key] || translations['he'][key] || key;
+    };
+
+    function updateUIText(lang) {
+      // Update all elements with data-i18n attribute
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.dataset.i18n;
+        const attr = el.dataset.i18nAttr || 'textContent';
+
+        if (attr === 'textContent') {
+          el.textContent = t(key);
+        } else if (attr === 'placeholder') {
+          el.placeholder = t(key);
+        } else if (attr === 'title') {
+          el.title = t(key);
+        }
+      });
+
+      // Update specific UI elements
+      const titleEl = document.querySelector('.logo h1');
+      if (titleEl) titleEl.textContent = t('title');
+
+      const subtitleEl = document.querySelector('.logo p');
+      if (subtitleEl) subtitleEl.textContent = t('subtitle');
+
+      // Update all tab buttons
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        const view = btn.dataset.view;
+        const keyMap = {
+          'graph': 'graph',
+          'table': 'table',
+          'map': 'map',
+          'comparator': 'compare',
+          'research': 'research',
+          'timeline': 'timeline',
+          'about': 'about'
+        };
+        if (keyMap[view]) {
+          // Keep the emoji and update text
+          const text = btn.textContent;
+          const emoji = text.match(/^[🌐📚🗺️📊⏳ℹ️]+/)?.[0] || '';
+          btn.textContent = emoji + ' ' + t(keyMap[view]);
+        }
+      });
+
+      // Update search inputs
+      const searchInput = document.getElementById('searchInput');
+      if (searchInput) searchInput.placeholder = t('search_placeholder');
+
+      const researchSearch = document.getElementById('research-search');
+      if (researchSearch) researchSearch.placeholder = t('search_research');
+
+      // Update filter labels
+      const eraFilterLabel = document.querySelector('label[for="eraFilter"]');
+      if (eraFilterLabel) eraFilterLabel.textContent = t('filter_era');
+
+      const regionFilterLabel = document.querySelector('label[for="regionFilter"]');
+      if (regionFilterLabel) regionFilterLabel.textContent = t('filter_region');
+
+      // Update select options
+      document.querySelectorAll('select').forEach(select => {
+        const options = select.querySelectorAll('option');
+        options.forEach(opt => {
+          if (opt.value === '') {
+            const selectId = select.id;
+            if (selectId === 'eraFilter') opt.textContent = t('all_eras');
+            else if (selectId === 'regionFilter') opt.textContent = t('all_regions');
+            else if (selectId === 'research-filter-sage') opt.textContent = t('all_sages');
+          }
+        });
+      });
+
+      // Update buttons with specific IDs
+      const buttons = {
+        'pathFinderBtn': t('path_finder'),
+        'exportBtn': t('export'),
+        'printBtn': t('print')
+      };
+
+      Object.entries(buttons).forEach(([id, text]) => {
+        const btn = document.getElementById(id);
+        if (btn) {
+          const emoji = btn.textContent.match(/^[🔍🖨️📄]+/)?.[0] || '';
+          btn.textContent = emoji + ' ' + text;
+        }
+      });
+
+      console.log(`✅ 🌐 UI updated to ${lang}`);
+    }
+
+    // Initialize language
+    switchLanguage(currentLanguage);
 
     let sageNetwork = null;
     let sageMap = null;
