@@ -2884,7 +2884,7 @@
                 <div class="research-document-title" style="margin: 0 0 0.5rem 0;">${doc.title}</div>
                 <div class="research-document-meta" style="display: flex; gap: 1rem; font-size: 0.85rem;">
                   <span>📄 ${wordCount} מילים</span>
-                  <span>📅 מסמך מחקרי</span>
+                  <span>${fullContent ? '📖 טקסט מלא' : '📋 תקציר'}</span>
                   ${doc.sage_id ? `<span>👤 סג מספר ${doc.sage_id}</span>` : ''}
                 </div>
               </div>
