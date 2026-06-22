@@ -688,7 +688,18 @@ class SageNetwork {
       .velocityDecay(0.5)
       .alphaDecay(0.015);
 
-    // Connection type styling (color + stroke pattern) - Enhanced colors for clarity
+    // 🎨 ERA COLOR MAP - by Hebrew period names
+    const eraColors = {
+      'בית שני': '#8e44ad',      // Purple
+      'תנאים': '#e74c3c',         // Red
+      'אמוראים': '#e67e22',       // Orange
+      'גאונים': '#f1c40f',        // Gold/Yellow
+      'ראשונים': '#27ae60',       // Green
+      'אחרונים': '#2980b9',       // Blue
+      'עת חדשה': '#1abc9c'        // Cyan
+    };
+
+    // Connection type styling (color + stroke pattern) - DEFINED FIRST for use below
     // Each connection type has distinct color and pattern
     const connectionTypeColors = {
       'student': '#0066cc',      // Blue (تلمید - learning from)
@@ -699,6 +710,22 @@ class SageNetwork {
       'predecessor': '#ffaa00',  // Gold (קדמון - predecessor)
       'contemporary': '#00cccc', // Cyan (בן זמן - contemporary)
       'family': '#ff0066'        // Hot pink (משפחה - family)
+    };
+
+    // Store era colors for use in filtering functions
+    this.eraColors = eraColors;
+
+    // Store connection styling for use in filtering
+    this.connectionColors = connectionTypeColors;
+    this.connectionWidths = {
+      'student': 3.2,
+      'teacher': 3.2,
+      'colleague': 2.5,
+      'influence': 2.5,
+      'oppose': 2.5,
+      'predecessor': 2.5,
+      'contemporary': 2.5,
+      'family': 2.5
     };
 
     const connectionTypeStrokes = {
@@ -842,11 +869,11 @@ class SageNetwork {
         const maxSize = 20;   // Smaller max size
         return Math.min(baseSize + (Math.sqrt(degree) * 2.5), maxSize);
       })
-      .attr('fill', d => self.colorMap[d.group] || '#999')
+      .attr('fill', d => eraColors[d.era] || '#999999')
       .attr('stroke', d => {
-        // VISUAL IMPROVEMENT #1: Colored borders by period (was white)
-        // Uses period color for visual hierarchy
-        return self.colorMap[d.group] || '#999';
+        // VISUAL IMPROVEMENT #1: Colored borders by era
+        // Uses era color for visual hierarchy
+        return eraColors[d.era] || '#999999';
       })
       .attr('stroke-width', 3)  // Increased from 2.5 to 3 for visibility
       .attr('opacity', 0.9)
@@ -854,6 +881,37 @@ class SageNetwork {
       .style('filter', 'url(#node-shadow)')
       .on('click', (event, d) => {
         event.stopPropagation();
+
+        // Check if filtering is active
+        const eraFilter = document.getElementById('eraFilter')?.value || '';
+        const regionFilter = document.getElementById('regionFilter')?.value || '';
+        const fieldFilter = document.getElementById('fieldFilter')?.value || '';
+        const hasFilter = eraFilter || regionFilter || fieldFilter;
+
+        // Determine if this sage is in the filtered set
+        let isInFiltered = true;
+        if (hasFilter) {
+          isInFiltered = true;
+          if (eraFilter && d.era !== eraFilter) isInFiltered = false;
+          if (regionFilter && !(d.location && d.location.includes(regionFilter))) isInFiltered = false;
+          if (fieldFilter && d.field !== fieldFilter) isInFiltered = false;
+        }
+
+        // If filtering is active and sage is NOT in filtered set, need 2 clicks
+        if (hasFilter && !isInFiltered) {
+          // First click - mark as waiting for second click
+          if (!d._clickWaiting) {
+            d._clickWaiting = true;
+            console.log(`⏳ Dimmed sage - need second click to select: ${d.label}`);
+            // Reset after 1 second if no second click
+            setTimeout(() => { d._clickWaiting = false; }, 1000);
+            return;
+          }
+          // Second click - proceed
+          d._clickWaiting = false;
+        }
+
+        // Open sidebar/details
         self.selectNode(d);
       })
       .on('mouseover', function(event, d) {
@@ -898,8 +956,14 @@ class SageNetwork {
           }
         });
 
+        // Check if filtering is active to apply different hover behavior
+        const eraFilter = document.getElementById('eraFilter')?.value || '';
+        const regionFilter = document.getElementById('regionFilter')?.value || '';
+        const fieldFilter = document.getElementById('fieldFilter')?.value || '';
+        const hasFilter = eraFilter || regionFilter || fieldFilter;
+
         // VISUAL IMPROVEMENT #3: Enhanced hover effect (Six Degrees style)
-        // Hovered node: bright + glow, Connected: highlighted, Others: faded
+        // But only for selected sages when filtering is active
         self.node.transition().duration(150)
           .attr('opacity', n => {
             if (String(n.id) === String(hoveredNodeId)) return 1;
@@ -907,21 +971,30 @@ class SageNetwork {
             return 0.15;  // Fade non-connected to 15% (more dramatic)
           })
           .attr('r', n => {
-            if (String(n.id) === String(hoveredNodeId)) {
-              // Hovered node: significantly larger with glow
+            // Only enlarge if hovered node is selected (when filtering)
+            const isHoveredSelected = hasFilter && !self._isNodeDimmed(n, eraFilter, regionFilter, fieldFilter);
+
+            if (String(n.id) === String(hoveredNodeId) && (!hasFilter || isHoveredSelected)) {
+              // Hovered node: significantly larger with glow (only if selected or no filter)
               return Math.min((nodeDegree[n.id] || 0) + 45, 52);
             }
-            if (connectedNodeIds.has(String(n.id))) {
-              // Connected nodes: slightly larger
+            if (connectedNodeIds.has(String(n.id)) && (!hasFilter || isHoveredSelected)) {
+              // Connected nodes: slightly larger (only if hovered is selected)
               return Math.min((nodeDegree[n.id] || 0) + 32, 50);
             }
             return Math.min(24 + (Math.sqrt(nodeDegree[n.id] || 0) * 4), 42);
           })
           .attr('stroke-width', n => {
-            // VISUAL IMPROVEMENT: Thicker borders on hover
-            if (String(n.id) === String(hoveredNodeId)) return 4.5;
-            if (connectedNodeIds.has(String(n.id))) return 3.5;
-            return 3;
+            // Only thicken borders if hovered node is selected (when filtering)
+            const isHoveredSelected = hasFilter && !self._isNodeDimmed(n, eraFilter, regionFilter, fieldFilter);
+
+            if (String(n.id) === String(hoveredNodeId) && (!hasFilter || isHoveredSelected)) {
+              return 4.5;  // Thicker for hovered
+            }
+            if (connectedNodeIds.has(String(n.id)) && (!hasFilter || isHoveredSelected)) {
+              return 3.5;  // Thicker for connected
+            }
+            return 3;  // Normal
           });
 
         // Highlight connected edges with stronger effect
@@ -2464,59 +2537,151 @@ class SageNetwork {
       if (matches) filtered.add(String(sage.id));
     });
 
-    // Apply opacity + highlight filtered nodes
+    // Get era color function - use the eraColors defined in renderGraph
+    const getEraColor = (d) => {
+      if (!d.era) return '#999999';
+      // eraColors mapping by Hebrew era names
+      const eraColorMap = {
+        'בית שני': '#8e44ad',
+        'תנאים': '#e74c3c',
+        'אמוראים': '#e67e22',
+        'גאונים': '#f1c40f',
+        'ראשונים': '#27ae60',
+        'אחרונים': '#2980b9',
+        'עת חדשה': '#1abc9c'
+      };
+      return eraColorMap[d.era] || '#999999';
+    };
+
+    // Apply opacity + highlight filtered nodes with strong visual emphasis
+    // Include fill color in the same chain
     this.node
-      .style('opacity', d => filtered.has(String(d.id)) ? 1 : 0.1)
+      .style('fill', d => getEraColor(d)) // 🎨 ALWAYS COLOR BY ERA
+      .style('opacity', d => {
+        if (filtered.size === 0 || filtered.size === this.data.nodes.length) {
+          return 0.8; // Normal state
+        }
+        // Strong contrast: selected bright, others very dim
+        return filtered.has(String(d.id)) ? 1 : 0.08; // 0.08 = very dimmed
+      })
+      .style('fill-opacity', d => {
+        if (filtered.size === 0 || filtered.size === this.data.nodes.length) {
+          return 0.85;
+        }
+        // Selected: full saturation | Dimmed: reduced
+        return filtered.has(String(d.id)) ? 0.95 : 0.3;
+      })
       .style('stroke', d => {
         if (filtered.size === 0 || filtered.size === this.data.nodes.length) {
           return 'none'; // No filter active
         }
-        return filtered.has(String(d.id)) ? '#FFD700' : 'none'; // Gold highlight for matches
+        // Gold highlight only for selected
+        return filtered.has(String(d.id)) ? '#FFD700' : '#eee'; // Light gray border for dimmed
       })
       .style('stroke-width', d => {
         if (filtered.size === 0 || filtered.size === this.data.nodes.length) {
           return '0';
         }
-        return filtered.has(String(d.id)) ? '3px' : '0'; // Thick stroke for matches
+        // Selected: thick | Dimmed: very thin
+        return filtered.has(String(d.id)) ? '5px' : '0.5px';
       })
       .style('filter', d => {
         if (filtered.size === 0 || filtered.size === this.data.nodes.length) {
           return 'none';
         }
-        return filtered.has(String(d.id)) ? 'drop-shadow(0 0 6px rgba(255, 215, 0, 0.8))' : 'none'; // Glow
+        // Glow only for selected nodes
+        return filtered.has(String(d.id))
+          ? 'drop-shadow(0 0 12px rgba(255, 215, 0, 1)) drop-shadow(0 0 6px rgba(255, 235, 100, 0.8))'
+          : 'none';
       });
 
-    if (this.link) {
-      this.link.style('opacity', d => {
-        const srcMatch = filtered.has(String(d.source.id || d.source));
-        const tgtMatch = filtered.has(String(d.target.id || d.target));
-        return (srcMatch && tgtMatch) ? 1 : 0.05;
-      });
+    if (filtered.size > 0) {
+      console.log(`✨ FILTERED: ${filtered.size}/${this.data.nodes.length} sages`);
+      console.log(`   ✓ Selected sages: 100% opacity + era colors (bright)`);
+      console.log(`   ✓ Dimmed sages: 8% opacity + era colors (pale ghost)`);
+      console.log(`   ✓ Relevant connections: 100% opacity + colors`);
+      console.log(`   ✓ Irrelevant connections: 2% opacity (nearly invisible)`);
+    } else {
+      console.log(`✅ No filter: All ${this.data.nodes.length} sages visible with era colors`);
     }
 
-    // 🎯 NEW: Focus-based clustering - move filtered nodes toward center
+    if (this.link) {
+      this.link
+        .style('opacity', d => {
+          if (filtered.size === 0 || filtered.size === this.data.nodes.length) {
+            return 0.6; // Normal link opacity
+          }
+          const srcMatch = filtered.has(String(d.source.id || d.source));
+          const tgtMatch = filtered.has(String(d.target.id || d.target));
+          // Relevant: bright | Not relevant: invisible
+          return (srcMatch && tgtMatch) ? 1 : 0.02; // 0.02 = extremely faint
+        })
+        .style('stroke-width', d => {
+          if (filtered.size === 0 || filtered.size === this.data.nodes.length) {
+            return this.connectionWidths[d.type] || 2;
+          }
+          const srcMatch = filtered.has(String(d.source.id || d.source));
+          const tgtMatch = filtered.has(String(d.target.id || d.target));
+          // Relevant: bold | Not relevant: thin
+          return (srcMatch && tgtMatch) ? (this.connectionWidths[d.type] + 2) : 0.3;
+        })
+        .style('stroke', d => {
+          if (filtered.size === 0 || filtered.size === this.data.nodes.length) {
+            // Normal state - use connection type color
+            return this.connectionColors[d.type] || '#999';
+          }
+          const srcMatch = filtered.has(String(d.source.id || d.source));
+          const tgtMatch = filtered.has(String(d.target.id || d.target));
+          // Relevant: keep color | Not relevant: very dim gray
+          if (srcMatch && tgtMatch) {
+            return this.connectionColors[d.type] || '#999';
+          } else {
+            return '#ddd'; // Very light gray for irrelevant connections
+          }
+        });
+    }
+
+    // 🎯 ENHANCED: Focus-based clustering - strong pull to center with visual emphasis
     if (this.simulation && filtered.size > 0 && filtered.size < this.data.nodes.length) {
       const centerX = this.width / 2;
       const centerY = this.height / 2;
 
-      // Add centering force for filtered nodes
+      // Add STRONG centering force for filtered nodes - pulls them toward center
       this.simulation.force('centerFiltered', d3.forceX(d => {
         return filtered.has(String(d.id)) ? centerX : d.x;
-      }).strength(0.3))
+      }).strength(0.6)) // Increased from 0.3 to 0.6 for stronger pull
       .force('centerFilteredY', d3.forceY(d => {
         return filtered.has(String(d.id)) ? centerY : d.y;
-      }).strength(0.3));
+      }).strength(0.6)); // Increased from 0.3 to 0.6
 
-      // Restart simulation with focus
-      this.simulation.alpha(0.5).restart();
+      // Also add collision avoidance for filtered nodes
+      this.simulation.force('collideFiltered', d3.forceCollide(d => {
+        return filtered.has(String(d.id)) ? 35 : 25; // Larger radius for filtered nodes
+      }).strength(0.8));
+
+      // Restart simulation with aggressive focus
+      this.simulation.alpha(0.8).restart(); // Increased alpha (0.5 → 0.8) for more dramatic effect
+
+      console.log(`✨ STRONG FOCUS: ${filtered.size} sages clustering to center with enhanced highlighting!`);
     } else if (this.simulation && filtered.size === this.data.nodes.length) {
       // All nodes visible - reset to normal layout
       this.simulation.force('centerFiltered', null)
         .force('centerFilteredY', null)
+        .force('collideFiltered', d3.forceCollide(d => 25).strength(0.5))
         .alpha(0.3).restart();
-    }
 
-    console.log(`✅ Filtered: ${filtered.size}/${this.data.nodes.length} sages match criteria - 🎯 Focus enabled!`);
+      console.log(`🔄 Filter reset: All ${this.data.nodes.length} sages visible`);
+    }
+  }
+
+  /**
+   * Helper: Check if a node is dimmed by filters
+   */
+  _isNodeDimmed(node, eraFilter, regionFilter, fieldFilter) {
+    if (eraFilter && node.era !== eraFilter) return true;
+    if (regionFilter && !(node.location && node.location.includes(regionFilter))) return true;
+    if (fieldFilter && node.field !== fieldFilter) return true;
+    return false;
   }
 
   /**

@@ -14,18 +14,21 @@ class SageMap {
     this.selectedSage = null;  // Track selected individual sage
 
     // Era colors & names (consistent across all visualizations)
+    // Using Hebrew keys to match data.json
     this.eraColors = {
-      'second-temple': '#8e44ad',
-      'tannaim': '#e74c3c',
-      'amoraim': '#e67e22',
-      'geonim': '#f1c40f',
-      'rishonim': '#27ae60',
-      'acharonim': '#2980b9',
-      'modern': '#1abc9c',
-      'unknown': '#999999'
+      'בית שני': '#8e44ad',
+      'תנאים': '#e74c3c',
+      'אמוראים': '#e67e22',
+      'גאונים': '#f1c40f',
+      'ראשונים': '#27ae60',
+      'אחרונים': '#2980b9',
+      'עת חדשה': '#1abc9c',
+      'Unknown': '#999999',
+      'לא ידוע': '#999999'
     };
 
-    this.eraNames = {
+    // Fallback English names (for backward compatibility)
+    this.eraNamesFallback = {
       'second-temple': 'בית שני',
       'tannaim': 'תנאים',
       'amoraim': 'אמוראים',
@@ -34,6 +37,19 @@ class SageMap {
       'acharonim': 'אחרונים',
       'modern': 'עת חדשה',
       'unknown': 'לא ידוע'
+    };
+
+    // Hebrew era names for legend
+    this.eraNames = {
+      'בית שני': 'בית שני',
+      'תנאים': 'תנאים',
+      'אמוראים': 'אמוראים',
+      'גאונים': 'גאונים',
+      'ראשונים': 'ראשונים',
+      'אחרונים': 'אחרונים',
+      'עת חדשה': 'עת חדשה',
+      'Unknown': 'לא ידוע',
+      'לא ידוע': 'לא ידוע'
     };
 
     // Location coordinates - comprehensive list
@@ -145,6 +161,26 @@ class SageMap {
       // Other
       'הודו': { lat: 20.5937, lng: 78.9629, name: 'India' },
       'תימן': { lat: 15.3694, lng: 48.5165, name: 'Yemen' },
+
+      // Additional locations from sage data
+      'ישראל': { lat: 31.95, lng: 35.23, name: 'Israel' },
+      'ארה"ב': { lat: 37.09, lng: -95.71, name: 'USA' },
+      'נרבונה': { lat: 43.1872, lng: 3.0674, name: 'Narbonne' },
+      'צפון אפריקה': { lat: 33.0, lng: 2.0, name: 'North Africa' },
+      'קלעת חמאד': { lat: 35.0, lng: 0.0, name: 'Qal\'at Hamad' },
+      'אלג\'יר': { lat: 36.737, lng: 3.087, name: 'Algiers' },
+      'האימפריה העות\'מאנית': { lat: 39.0, lng: 35.0, name: 'Ottoman Empire' },
+      'אירופה': { lat: 50.0, lng: 10.0, name: 'Europe' },
+      'יהודה': { lat: 31.93, lng: 35.2, name: 'Judea' },
+      'דמפייר': { lat: 43.3, lng: -0.2, name: 'Dampiere' },
+      'ליטא': { lat: 55.2, lng: 23.9, name: 'Lithuania' },
+      'רוסיה': { lat: 55.7, lng: 37.6, name: 'Russia' },
+      'אוסטריה': { lat: 47.5, lng: 14.5, name: 'Austria' },
+      'פולין': { lat: 51.9, lng: 19.1, name: 'Poland' },
+      'גרמניה': { lat: 51.1, lng: 10.4, name: 'Germany' },
+      'צרפת': { lat: 46.2, lng: 2.2, name: 'France' },
+      'אשכנז': { lat: 50.0, lng: 10.0, name: 'Ashkenaz' },
+      'מרוקו': { lat: 31.791, lng: -4.002, name: 'Morocco' },
     };
   }
 
@@ -280,7 +316,7 @@ class SageMap {
 
     this.data.nodes.forEach(sage => {
       // Extract all locations (split by ; or , or and)
-      const rawLocation = sage.location || 'Unknown';
+      const rawLocation = sage.location || '';
       const locationParts = rawLocation
         .split(/[;,]|and|וגם|ו/)
         .map(loc => loc.trim())
@@ -315,36 +351,79 @@ class SageMap {
       locationsUsed++;
 
       // Get dominant era for this location
-      const eras = sages.map(s => s.era_key || 'unknown');
+      const eras = sages.map(s => s.era || 'unknown');
       const dominantEra = this.getMostCommon(eras);
       const color = this.eraColors[dominantEra] || '#999';
 
+      // Count sages by era at this location
+      const sagesByEra = {};
+      sages.forEach(s => {
+        const era = s.era || 'לא ידוע';
+        sagesByEra[era] = (sagesByEra[era] || 0) + 1;
+      });
+
+      // Create era breakdown string
+      const eraBreakdown = Object.entries(sagesByEra)
+        .map(([era, count]) => `${era}: ${count}`)
+        .join(' | ');
+
       // Create circle marker for each sage at this location
+      // Scatter them around the same point so you can see multiple sages
       sages.forEach((sage, idx) => {
-        const marker = L.circleMarker([coords.lat, coords.lng], {
-          radius: Math.min(20, 8 + idx * 0.5),
-          fillColor: this.eraColors[sage.era_key] || color,
+        // Scatter positions around the location
+        // Create a small radius around the main point (0.02 degrees ≈ 2km)
+        const radius = 0.02; // degrees
+        const angle = (idx / sages.length) * Math.PI * 2; // Distribute evenly in circle
+        const distance = (idx % 5) * 0.004 + 0.003; // Different distances for layering
+
+        const scatteredLat = coords.lat + Math.cos(angle) * distance;
+        const scatteredLng = coords.lng + Math.sin(angle) * distance;
+
+        const marker = L.circleMarker([scatteredLat, scatteredLng], {
+          radius: 10, // Fixed size (not overlapping)
+          fillColor: this.eraColors[sage.era] || color,
           color: '#fff',
           weight: 2,
-          opacity: 0.8,
-          fillOpacity: 0.7
+          opacity: 0.85,
+          fillOpacity: 0.85
         })
           .bindPopup(`
-            <div style="text-align: right; direction: rtl; font-family: 'Frank Ruhl Libre', serif;">
-              <strong style="color: ${this.eraColors[sage.era_key]}; font-size: 1.1rem;">${sage.label}</strong>
-              <hr style="margin: 5px 0; border: none; border-top: 1px solid #ddd;">
-              <p style="margin: 3px 0; font-size: 0.9rem;">
-                <span style="color: ${this.eraColors[sage.era_key]}; font-weight: 600;">●</span>
-                ${this.eraNames[sage.era_key]}
+            <div style="text-align: right; direction: rtl; font-family: 'Frank Ruhl Libre', serif; color: #333; min-width: 250px;">
+              <!-- Header with Era Color -->
+              <strong style="color: ${this.eraColors[sage.era]}; font-size: 1.1rem; display: block; margin-bottom: 6px;">
+                ${sage.label}
+              </strong>
+
+              <!-- Core Info -->
+              <div style="background: #f9f9f9; padding: 6px; border-radius: 3px; margin-bottom: 6px; font-size: 0.85rem; border-right: 4px solid ${this.eraColors[sage.era]};">
+                <p style="margin: 2px 0;">
+                  <span style="font-weight: 600;">תקופה:</span> ${sage.era || 'לא ידוע'}
+                </p>
+                <p style="margin: 2px 0;">
+                  <span style="font-weight: 600;">מקום:</span> ${coords.name}
+                </p>
+                ${sage.dates ? `<p style="margin: 2px 0;"><span style="font-weight: 600;">שנים:</span> ${sage.dates}</p>` : ''}
+              </div>
+
+              <!-- Brief Bio -->
+              ${sage.bio ? `
+              <p style="margin: 4px 0; font-size: 0.82rem; color: #555; line-height: 1.3;">
+                ${sage.bio.substring(0, 120)}${sage.bio.length > 120 ? '...' : ''}
               </p>
-              <p style="margin: 3px 0; font-size: 0.9rem;">📍 ${coords.name}</p>
-              ${sage.dates ? `<p style="margin: 3px 0; font-size: 0.9rem;">📅 ${sage.dates}</p>` : ''}
-              ${sage.core_concept ? `<p style="margin: 3px 0; font-size: 0.85rem; font-style: italic; color: #666;">💡 ${sage.core_concept.substring(0, 50)}...</p>` : ''}
+              ` : ''}
+
+              <!-- Field & Concept -->
+              ${sage.field ? `<p style="margin: 3px 0; font-size: 0.8rem;"><span style="font-weight: 600;">תחום:</span> ${sage.field}</p>` : ''}
+              ${sage.core_concept ? `<p style="margin: 3px 0; font-size: 0.8rem; font-style: italic; color: #666;">💡 ${sage.core_concept.substring(0, 70)}...</p>` : ''}
+
+              <!-- Link -->
+              ${sage.wikipedia ? `<p style="margin: 4px 0;"><a href="${sage.wikipedia}" target="_blank" style="color: #0066cc; font-size: 0.85rem;">🔗 Wikipedia</a></p>` : ''}
             </div>
           `)
-          .bindTooltip(`<strong style="direction: rtl; font-family: 'Frank Ruhl Libre', serif;">${sage.label}</strong>`, {
+          .bindTooltip(this.createTooltipContent(sage), {
             permanent: false,
-            direction: 'top'
+            direction: 'top',
+            className: 'sage-tooltip-rich'
           })
           .on('mouseover', function() {
             this.setRadius(25);
@@ -361,6 +440,11 @@ class SageMap {
             this.filterBySage(sage, marker);
           })
           .addTo(this.map);
+
+        // Store location info for later
+        marker.locationName = locationName;
+        marker.sageCount = sages.length;
+        marker.eraBreakdown = sagesByEra;
 
         marker.sage = sage;
         sage.marker = marker;
@@ -384,6 +468,72 @@ class SageMap {
     }
 
     return common;
+  }
+
+  // Create rich tooltip content with dates, locations, and links
+  createTooltipContent(sage) {
+    let content = `<div style="direction: rtl; font-family: 'Frank Ruhl Libre', serif; white-space: nowrap;">`;
+
+    // Sage name (bold and colored by era)
+    content += `<strong style="color: ${this.eraColors[sage.era] || '#333'}; display: block; margin-bottom: 3px;">
+      ${sage.label}
+    </strong>`;
+
+    // Era
+    if (sage.era) {
+      content += `<span style="font-size: 0.85rem; color: #666;">
+        <span style="font-weight: 600;">תקופה:</span> ${sage.era}
+      </span><br/>`;
+    }
+
+    // Birth date and death date (if available)
+    if (sage.birth_year || sage.death_year) {
+      let dateStr = '';
+      if (sage.birth_year && sage.death_year) {
+        dateStr = `${sage.birth_year}-${sage.death_year}`;
+      } else if (sage.birth_year) {
+        dateStr = `נולד ${sage.birth_year}`;
+      } else if (sage.death_year) {
+        dateStr = `מת ${sage.death_year}`;
+      }
+      content += `<span style="font-size: 0.85rem; color: #666;">
+        📅 ${dateStr}
+      </span><br/>`;
+    }
+
+    // Birthplace
+    if (sage.birthplace) {
+      content += `<span style="font-size: 0.85rem; color: #666;">
+        <span style="font-weight: 600;">נולד ב:</span> ${sage.birthplace}
+      </span><br/>`;
+    }
+
+    // Migration locations
+    if (sage.location) {
+      const locations = sage.location.split(/[;,]/i).map(l => l.trim()).filter(l => l);
+      if (locations.length > 0) {
+        content += `<span style="font-size: 0.85rem; color: #666;">
+          <span style="font-weight: 600;">מקומות:</span> ${locations.slice(0, 2).join(', ')}
+        </span><br/>`;
+      }
+    }
+
+    // Spotify link
+    if (sage.spotify) {
+      content += `<a href="${sage.spotify}" target="_blank" style="color: #1DB954; font-size: 0.85rem; text-decoration: none;">
+        🎵 Spotify
+      </a><br/>`;
+    }
+
+    // Wikipedia link
+    if (sage.wikipedia) {
+      content += `<a href="${sage.wikipedia}" target="_blank" style="color: #0066cc; font-size: 0.85rem; text-decoration: none;">
+        🔗 Wikipedia
+      </a>`;
+    }
+
+    content += `</div>`;
+    return content;
   }
 
   // Create interactive legend
@@ -427,7 +577,7 @@ class SageMap {
       const migrationsByEra = {};
 
       this.data.nodes.forEach(s => {
-        const era = s.era_key || 'unknown';
+        const era = s.era || 'unknown';
         countByEra[era] = (countByEra[era] || 0) + 1;
 
         // Count migrations for this era
@@ -533,18 +683,38 @@ class SageMap {
     console.log('✓ Legend created');
   }
 
-  // Filter by era
+  // Filter by era - dimmed non-selected, highlighted selected
   filterByEra(eraKey) {
     this.selectedEra = eraKey;
     this.markers.forEach(m => {
-      const showMarker = !m.sage || m.sage.era_key === eraKey;
-      m.setStyle({ opacity: showMarker ? 0.8 : 0.1 });
+      if (m.sage && m.sage.era === eraKey) {
+        // Selected era - full opacity and highlight
+        m.setStyle({
+          opacity: 1.0,
+          weight: 3,
+          fillOpacity: 0.95
+        });
+        m.setRadius(15); // Slightly larger for emphasis
+      } else {
+        // Other eras - dimmed
+        m.setStyle({
+          opacity: 0.15,
+          weight: 1,
+          fillOpacity: 0.15
+        });
+        m.setRadius(10); // Back to normal size
+      }
     });
     this.lines.forEach(l => {
-      const showLine = !l.sage || l.sage.era_key === eraKey;
-      l.setStyle({ opacity: showLine ? 0.6 : 0.05 });
+      if (l.sage && l.sage.era === eraKey) {
+        // Selected era - visible
+        l.setStyle({ opacity: 0.8, weight: 3 });
+      } else {
+        // Other eras - very dim
+        l.setStyle({ opacity: 0.05, weight: 1 });
+      }
     });
-    console.log(`🔍 Filtering: ${eraKey}`);
+    console.log(`✨ Filtering by era: ${eraKey}`);
   }
 
   // Filter by era AND zoom to bounds
@@ -552,7 +722,7 @@ class SageMap {
     this.filterByEra(eraKey);
 
     // Find bounds of sages in this era
-    const sagesInEra = this.data.nodes.filter(s => s.era_key === eraKey);
+    const sagesInEra = this.data.nodes.filter(s => s.era === eraKey);
     const bounds = L.latLngBounds();
 
     sagesInEra.forEach(sage => {
@@ -632,27 +802,46 @@ class SageMap {
     console.log(`👤 Filtering by sage: ${sage.label} (URL: ?sage=${sage.id})`);
   }
 
-  // Reset all filters
+  // Reset all filters - show all sages with full brightness
   resetFilter() {
     this.selectedEra = null;
     this.selectedSage = null;
 
     this.data.nodes.forEach(s => s.isSelected = false);
 
+    // Reset all markers to full visibility
     this.markers.forEach(m => {
-      m.setRadius(Math.min(20, 8));
-      m.setStyle({ weight: 2, opacity: 0.8 });
+      m.setRadius(10);  // Normal size
+      m.setStyle({
+        weight: 2,
+        opacity: 0.85,
+        fillOpacity: 0.85
+      });
     });
 
-    this.lines.forEach(l => l.setStyle({ opacity: 0.6, weight: 3, dashArray: '8, 4' }));
+    // Reset all lines to normal visibility
+    this.lines.forEach(l => l.setStyle({
+      opacity: 0.5,
+      weight: 2,
+      dashArray: '8, 4'
+    }));
+
+    // Reset map view
     this.map.setView([25, 15], 3);
+
+    // Update legend buttons styling
+    document.querySelectorAll('.era-btn').forEach(btn => {
+      btn.style.background = 'white';
+      btn.style.color = this.eraColors[btn.eraKey];
+      btn.style.borderColor = this.eraColors[btn.eraKey];
+    });
 
     // Clear URL parameter
     const url = new URL(window.location);
     url.searchParams.delete('sage');
     window.history.pushState({}, '', url);
 
-    console.log('🔄 All sages visible');
+    console.log('✨ All sages visible - filter reset');
   }
 
   // Draw migration paths as arrows
@@ -717,7 +906,7 @@ class SageMap {
       // Draw polyline if we have at least 2 valid coordinates
       if (coords.length >= 2) {
         const latLngs = coords.map(c => [c.lat, c.lng]);
-        const color = this.eraColors[sage.era_key] || '#999';
+        const color = this.eraColors[sage.era] || '#999';
 
         const line = L.polyline(latLngs, {
           color: color,

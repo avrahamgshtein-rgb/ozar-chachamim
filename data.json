@@ -16,6 +16,9 @@
       "field": "מוסר",
       "location": "ירושלים",
       "bio": "מנהיג אמיץ שפעל לצדק חברתי ולשלטון החוק. עמד מול המלך ינאי והציל את התורה שבעל־פה.",
+      "birthplace": "ירושלים",
+      "birth_year": "150 לפנה״ס",
+      "death_year": "60 לפנה״ס",
       "era_key": "second-temple"
     },
     {
@@ -25,6 +28,10 @@
       "field": "פילוסופיה",
       "location": "אלכסנדריה (מצרים הרומית); אלכסנדריה; ירושלים; בבל",
       "bio": "הוגה יהודי-הלניסטי שפיתח קריאה אלגורית שיטתית במקרא וסינתזה עם הפילוסופיה היוונית; השפעתו זכתה לפריח",
+      "birthplace": "אלכסנדריה",
+      "birth_year": "20 לפנה״ס",
+      "death_year": "50 לסה״נ",
+      "spotify": "https://open.spotify.com/artist/search?q=philo",
       "era_key": "second-temple"
     },
     {
@@ -34,6 +41,10 @@
       "field": "קבלה",
       "location": "ארץ ישראל",
       "bio": "מגדולי התנאים, עיצב את עולם התורה שבעל פה לאחר החורבן. הנהיג דור שבור מתוך אהבת ישראל ומסירות.",
+      "birthplace": "לוד",
+      "birth_year": "50 לסה״נ",
+      "death_year": "135 לסה״נ",
+      "spotify": "https://open.spotify.com/artist/search?q=akiva",
       "era_key": "tannaim"
     },
     {
@@ -3493,6 +3504,816 @@
       "period": "אחרונים",
       "context_he": "אישה ובעלה",
       "evidence_source": "תיעוד"
+    },
+    {
+      "source": "2",
+      "target": "17",
+      "type": "teacher"
+    },
+    {
+      "source": "2",
+      "target": "41",
+      "type": "colleague"
+    },
+    {
+      "source": "2",
+      "target": "290",
+      "type": "teacher"
+    },
+    {
+      "source": "2",
+      "target": "389",
+      "type": "teacher"
+    },
+    {
+      "source": "182",
+      "target": "41",
+      "type": "colleague"
+    },
+    {
+      "source": "182",
+      "target": "47",
+      "type": "student"
+    },
+    {
+      "source": "182",
+      "target": "300",
+      "type": "student"
+    },
+    {
+      "source": "16",
+      "target": "41",
+      "type": "colleague"
+    },
+    {
+      "source": "16",
+      "target": "172",
+      "type": "student"
+    },
+    {
+      "source": "16",
+      "target": "334",
+      "type": "teacher"
+    },
+    {
+      "source": "16",
+      "target": "335",
+      "type": "teacher"
+    },
+    {
+      "source": "8",
+      "target": "41",
+      "type": "colleague"
+    },
+    {
+      "source": "8",
+      "target": "113",
+      "type": "student"
+    },
+    {
+      "source": "8",
+      "target": "115",
+      "type": "teacher"
+    },
+    {
+      "source": "8",
+      "target": "145",
+      "type": "teacher"
+    },
+    {
+      "source": "8",
+      "target": "196",
+      "type": "teacher"
+    },
+    {
+      "source": "4",
+      "target": "41",
+      "type": "teacher"
+    },
+    {
+      "source": "4",
+      "target": "371",
+      "type": "teacher"
+    },
+    {
+      "source": "4",
+      "target": "389",
+      "type": "student"
+    },
+    {
+      "source": "29",
+      "target": "176",
+      "type": "teacher"
+    },
+    {
+      "source": "29",
+      "target": "177",
+      "type": "teacher"
+    },
+    {
+      "source": "29",
+      "target": "196",
+      "type": "teacher"
+    },
+    {
+      "source": "29",
+      "target": "339",
+      "type": "teacher"
+    },
+    {
+      "source": "29",
+      "target": "41",
+      "type": "teacher"
+    },
+    {
+      "source": "29",
+      "target": "168",
+      "type": "teacher"
+    },
+    {
+      "source": "29",
+      "target": "335",
+      "type": "teacher"
+    },
+    {
+      "source": "29",
+      "target": "411",
+      "type": "student"
+    },
+    {
+      "source": "29",
+      "target": "413",
+      "type": "teacher"
+    },
+    {
+      "source": "29",
+      "target": "9",
+      "type": "family"
+    },
+    {
+      "source": "29",
+      "target": "192",
+      "type": "family"
+    },
+    {
+      "source": "29",
+      "target": "12",
+      "type": "teacher"
+    },
+    {
+      "source": "29",
+      "target": "62",
+      "type": "teacher"
+    },
+    {
+      "source": "29",
+      "target": "389",
+      "type": "teacher"
+    },
+    {
+      "source": "29",
+      "target": "164",
+      "type": "teacher"
+    },
+    {
+      "source": "23",
+      "target": "334",
+      "type": "student"
+    },
+    {
+      "source": "29",
+      "target": "74",
+      "type": "teacher"
+    },
+    {
+      "source": "29",
+      "target": "115",
+      "type": "teacher"
+    },
+    {
+      "source": "29",
+      "target": "418",
+      "type": "teacher"
+    },
+    {
+      "source": "29",
+      "target": "41",
+      "type": "colleague"
+    },
+    {
+      "source": "29",
+      "target": "334",
+      "type": "teacher"
+    },
+    {
+      "source": "29",
+      "target": "414",
+      "type": "teacher"
+    },
+    {
+      "source": "182",
+      "target": "41",
+      "type": "teacher"
+    },
+    {
+      "source": "182",
+      "target": "162",
+      "type": "teacher"
+    },
+    {
+      "source": "182",
+      "target": "294",
+      "type": "student"
+    },
+    {
+      "source": "182",
+      "target": "296",
+      "type": "teacher"
+    },
+    {
+      "source": "182",
+      "target": "379",
+      "type": "teacher"
+    },
+    {
+      "source": "182",
+      "target": "389",
+      "type": "student"
+    },
+    {
+      "source": "183",
+      "target": "384",
+      "type": "teacher"
+    },
+    {
+      "source": "5",
+      "target": "223",
+      "type": "family"
+    },
+    {
+      "source": "4",
+      "target": "17",
+      "type": "teacher"
+    },
+    {
+      "source": "4",
+      "target": "324",
+      "type": "teacher"
+    },
+    {
+      "source": "4",
+      "target": "389",
+      "type": "teacher"
+    },
+    {
+      "source": "4",
+      "target": "47",
+      "type": "student"
+    },
+    {
+      "source": "4",
+      "target": "229",
+      "type": "teacher"
+    },
+    {
+      "source": "4",
+      "target": "314",
+      "type": "teacher"
+    },
+    {
+      "source": "4",
+      "target": "395",
+      "type": "teacher"
+    },
+    {
+      "source": "67",
+      "target": "128",
+      "type": "student"
+    },
+    {
+      "source": "29",
+      "target": "154",
+      "type": "teacher"
+    },
+    {
+      "source": "4",
+      "target": "47",
+      "type": "teacher"
+    },
+    {
+      "source": "4",
+      "target": "391",
+      "type": "teacher"
+    },
+    {
+      "source": "4",
+      "target": "25",
+      "type": "teacher"
+    },
+    {
+      "source": "4",
+      "target": "373",
+      "type": "teacher"
+    },
+    {
+      "source": "4",
+      "target": "174",
+      "type": "teacher"
+    },
+    {
+      "source": "4",
+      "target": "375",
+      "type": "teacher"
+    },
+    {
+      "source": "4",
+      "target": "49",
+      "type": "teacher"
+    },
+    {
+      "source": "4",
+      "target": "374",
+      "type": "teacher"
+    },
+    {
+      "source": "29",
+      "target": "181",
+      "type": "family"
+    },
+    {
+      "source": "24",
+      "target": "41",
+      "type": "family"
+    },
+    {
+      "source": "24",
+      "target": "192",
+      "type": "teacher"
+    },
+    {
+      "source": "81",
+      "target": "20",
+      "type": "student"
+    },
+    {
+      "source": "81",
+      "target": "28",
+      "type": "teacher"
+    },
+    {
+      "source": "81",
+      "target": "229",
+      "type": "family"
+    },
+    {
+      "source": "190",
+      "target": "223",
+      "type": "teacher"
+    },
+    {
+      "source": "383",
+      "target": "7",
+      "type": "teacher"
+    },
+    {
+      "source": "384",
+      "target": "383",
+      "type": "teacher"
+    },
+    {
+      "source": "4",
+      "target": "413",
+      "type": "student"
+    },
+    {
+      "source": "4",
+      "target": "113",
+      "type": "teacher"
+    },
+    {
+      "source": "4",
+      "target": "74",
+      "type": "teacher"
+    },
+    {
+      "source": "4",
+      "target": "181",
+      "type": "colleague"
+    },
+    {
+      "source": "4",
+      "target": "192",
+      "type": "teacher"
+    },
+    {
+      "source": "4",
+      "target": "181",
+      "type": "teacher"
+    },
+    {
+      "source": "4",
+      "target": "388",
+      "type": "teacher"
+    },
+    {
+      "source": "4",
+      "target": "41",
+      "type": "family"
+    },
+    {
+      "source": "4",
+      "target": "381",
+      "type": "teacher"
+    },
+    {
+      "source": "4",
+      "target": "334",
+      "type": "teacher"
+    },
+    {
+      "source": "4",
+      "target": "335",
+      "type": "teacher"
+    },
+    {
+      "source": "4",
+      "target": "41",
+      "type": "colleague"
+    },
+    {
+      "source": "4",
+      "target": "223",
+      "type": "family"
+    },
+    {
+      "source": "4",
+      "target": "44",
+      "type": "teacher"
+    },
+    {
+      "source": "4",
+      "target": "151",
+      "type": "teacher"
+    },
+    {
+      "source": "4",
+      "target": "296",
+      "type": "teacher"
+    },
+    {
+      "source": "4",
+      "target": "295",
+      "type": "student"
+    },
+    {
+      "source": "4",
+      "target": "310",
+      "type": "teacher"
+    },
+    {
+      "source": "4",
+      "target": "316",
+      "type": "student"
+    },
+    {
+      "source": "4",
+      "target": "410",
+      "type": "student"
+    },
+    {
+      "source": "2",
+      "target": "41",
+      "type": "student"
+    },
+    {
+      "source": "2",
+      "target": "338",
+      "type": "teacher"
+    },
+    {
+      "source": "4",
+      "target": "50",
+      "type": "student"
+    },
+    {
+      "source": "4",
+      "target": "333",
+      "type": "teacher"
+    },
+    {
+      "source": "4",
+      "target": "417",
+      "type": "teacher"
+    },
+    {
+      "source": "4",
+      "target": "328",
+      "type": "colleague"
+    },
+    {
+      "source": "4",
+      "target": "189",
+      "type": "teacher"
+    },
+    {
+      "source": "4",
+      "target": "339",
+      "type": "teacher"
+    },
+    {
+      "source": "4",
+      "target": "63",
+      "type": "student"
+    },
+    {
+      "source": "4",
+      "target": "64",
+      "type": "teacher"
+    },
+    {
+      "source": "4",
+      "target": "70",
+      "type": "student"
+    },
+    {
+      "source": "4",
+      "target": "76",
+      "type": "teacher"
+    },
+    {
+      "source": "4",
+      "target": "399",
+      "type": "teacher"
+    },
+    {
+      "source": "4",
+      "target": "403",
+      "type": "teacher"
+    },
+    {
+      "source": "4",
+      "target": "404",
+      "type": "student"
+    },
+    {
+      "source": "4",
+      "target": "55",
+      "type": "colleague"
+    },
+    {
+      "source": "4",
+      "target": "295",
+      "type": "teacher"
+    },
+    {
+      "source": "4",
+      "target": "403",
+      "type": "student"
+    },
+    {
+      "source": "4",
+      "target": "398",
+      "type": "teacher"
+    },
+    {
+      "source": "4",
+      "target": "47",
+      "type": "colleague"
+    },
+    {
+      "source": "4",
+      "target": "20",
+      "type": "student"
+    },
+    {
+      "source": "4",
+      "target": "229",
+      "type": "student"
+    },
+    {
+      "source": "4",
+      "target": "306",
+      "type": "teacher"
+    },
+    {
+      "source": "4",
+      "target": "70",
+      "type": "teacher"
+    },
+    {
+      "source": "4",
+      "target": "413",
+      "type": "teacher"
+    },
+    {
+      "source": "4",
+      "target": "368",
+      "type": "teacher"
+    },
+    {
+      "source": "4",
+      "target": "395",
+      "type": "student"
+    },
+    {
+      "source": "4",
+      "target": "215",
+      "type": "teacher"
+    },
+    {
+      "source": "4",
+      "target": "305",
+      "type": "teacher"
+    },
+    {
+      "source": "4",
+      "target": "20",
+      "type": "teacher"
+    },
+    {
+      "source": "4",
+      "target": "51",
+      "type": "student"
+    },
+    {
+      "source": "4",
+      "target": "312",
+      "type": "teacher"
+    },
+    {
+      "source": "4",
+      "target": "329",
+      "type": "teacher"
+    },
+    {
+      "source": "4",
+      "target": "3",
+      "type": "colleague"
+    },
+    {
+      "source": "4",
+      "target": "41",
+      "type": "student"
+    },
+    {
+      "source": "4",
+      "target": "44",
+      "type": "student"
+    },
+    {
+      "source": "4",
+      "target": "46",
+      "type": "teacher"
+    },
+    {
+      "source": "4",
+      "target": "51",
+      "type": "teacher"
+    },
+    {
+      "source": "4",
+      "target": "235",
+      "type": "student"
+    },
+    {
+      "source": "4",
+      "target": "296",
+      "type": "student"
+    },
+    {
+      "source": "4",
+      "target": "297",
+      "type": "teacher"
+    },
+    {
+      "source": "4",
+      "target": "294",
+      "type": "student"
+    },
+    {
+      "source": "4",
+      "target": "415",
+      "type": "teacher"
+    },
+    {
+      "source": "4",
+      "target": "382",
+      "type": "teacher"
+    },
+    {
+      "source": "4",
+      "target": "404",
+      "type": "teacher"
+    },
+    {
+      "source": "4",
+      "target": "293",
+      "type": "teacher"
+    },
+    {
+      "source": "4",
+      "target": "316",
+      "type": "teacher"
+    },
+    {
+      "source": "4",
+      "target": "333",
+      "type": "family"
+    },
+    {
+      "source": "4",
+      "target": "317",
+      "type": "teacher"
+    },
+    {
+      "source": "4",
+      "target": "12",
+      "type": "teacher"
+    },
+    {
+      "source": "4",
+      "target": "41",
+      "type": "oppose"
+    },
+    {
+      "source": "4",
+      "target": "406",
+      "type": "teacher"
+    },
+    {
+      "source": "12",
+      "target": "20",
+      "type": "teacher"
+    },
+    {
+      "source": "12",
+      "target": "41",
+      "type": "teacher"
+    },
+    {
+      "source": "12",
+      "target": "113",
+      "type": "teacher"
+    },
+    {
+      "source": "12",
+      "target": "334",
+      "type": "teacher"
+    },
+    {
+      "source": "12",
+      "target": "22",
+      "type": "teacher"
+    },
+    {
+      "source": "12",
+      "target": "79",
+      "type": "teacher"
+    },
+    {
+      "source": "12",
+      "target": "389",
+      "type": "teacher"
+    },
+    {
+      "source": "12",
+      "target": "41",
+      "type": "colleague"
+    },
+    {
+      "source": "12",
+      "target": "17",
+      "type": "teacher"
+    },
+    {
+      "source": "12",
+      "target": "41",
+      "type": "student"
+    },
+    {
+      "source": "12",
+      "target": "379",
+      "type": "teacher"
+    },
+    {
+      "source": "401",
+      "target": "41",
+      "type": "colleague"
+    },
+    {
+      "source": "394",
+      "target": "224",
+      "type": "teacher"
+    },
+    {
+      "source": "394",
+      "target": "339",
+      "type": "teacher"
+    },
+    {
+      "source": "3",
+      "target": "9",
+      "type": "family"
     }
   ]
 }

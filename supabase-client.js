@@ -275,8 +275,13 @@ async function initializeApp() {
     const links = validConnections.map(c => ({
       source: String(c.source).replace(/\.0+$/, ''),  // Remove decimal points
       target: String(c.target).replace(/\.0+$/, ''),  // Remove decimal points
-      type: c.type || 'student'
+      type: c.type || 'student',
+      strength: c.strength || 3,
+      period: c.period || '',
+      context_he: c.context_he || '',
+      evidence_source: c.evidence_source || ''
     }))
+    console.log(`🔗 [Links] Mapped ${links.length} connections with metadata:`, links.slice(0, 3))
 
     // SINGLE SOURCE OF TRUTH
     window.graphData = {
