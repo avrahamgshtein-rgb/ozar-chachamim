@@ -1667,6 +1667,430 @@
     .sage-tooltip-rich a:hover {
       opacity: 0.8 !important;
     }
+
+    /* ═══════════════════════════════════════════════════════════════
+       MOBILE & TABLET OPTIMIZATION - Professional UX Design
+       ═══════════════════════════════════════════════════════════════ */
+
+    /* ──────────────────────────────────────────────────────────────
+       TABLET (768px and below) - Primary Mobile Breakpoint
+       ────────────────────────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      /* HEADER - Compress and optimize */
+      .header {
+        flex-wrap: wrap;
+        padding: 0.5rem 0.5rem;
+        gap: 0.5rem;
+      }
+
+      .logo {
+        order: 1;
+        min-width: auto;
+      }
+
+      .logo h1 {
+        font-size: 1rem;
+        margin: 0;
+      }
+
+      .logo p {
+        display: none;
+      }
+
+      .tabs {
+        order: 3;
+        width: 100%;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        gap: 0.3rem;
+      }
+
+      .tab-btn {
+        font-size: 0.65rem;
+        padding: 0.35rem 0.4rem;
+        min-width: 45px;
+        flex: 1 1 auto;
+        min-height: 36px;
+      }
+
+      .language-switcher {
+        order: 2;
+        gap: 0.2rem;
+      }
+
+      .lang-btn {
+        font-size: 0.65rem;
+        padding: 0.3rem 0.4rem;
+        min-height: 32px;
+      }
+
+      .header-actions {
+        order: 4;
+        width: 100%;
+        gap: 0.3rem;
+      }
+
+      /* GRAPH CONTAINER */
+      .graph-container {
+        min-height: 300px;
+        padding: 0;
+      }
+
+      #network-graph {
+        width: 100% !important;
+        height: 100% !important;
+      }
+
+      /* FILTERS - 2 columns instead of 4 */
+      #graph-filters {
+        flex-wrap: wrap;
+        gap: 0.25rem;
+        padding: 0.4rem;
+        justify-content: space-between;
+      }
+
+      .filter-group {
+        flex: 1 1 calc(50% - 0.125rem);
+        min-width: 130px;
+      }
+
+      .filter-group label {
+        font-size: 0.65rem;
+      }
+
+      .filter-group select {
+        font-size: 0.7rem;
+        padding: 0.4rem 0.3rem;
+        min-height: 36px;
+      }
+
+      /* SIDEBAR - Limit height */
+      .sidebar {
+        max-height: 45vh;
+        overflow-y: auto;
+        padding: 0.6rem;
+      }
+
+      .sidebar-section {
+        margin-bottom: 0.4rem;
+        font-size: 0.7rem;
+      }
+
+      .sidebar-section h3 {
+        font-size: 0.75rem;
+        margin-bottom: 0.25rem;
+      }
+
+      .sidebar-section p {
+        margin: 0.15rem 0;
+        line-height: 1.3;
+      }
+
+      /* POPUPS & TOOLTIPS */
+      .sage-tooltip-rich {
+        max-width: 85vw;
+        max-height: 50vh;
+        font-size: 0.75rem;
+        padding: 0.5rem;
+        overflow-y: auto;
+      }
+
+      #connection-metadata-tooltip {
+        max-width: 90vw;
+        max-height: 50vh;
+        font-size: 0.75rem;
+        overflow-y: auto;
+      }
+
+      /* MAP LEGEND - Reposition to bottom-left */
+      .map-legend {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        right: auto;
+        max-width: calc(100% - 20px);
+        max-height: 35vh;
+        font-size: 0.7rem;
+        padding: 0.6rem;
+        overflow-y: auto;
+      }
+
+      .legend-item {
+        font-size: 0.7rem;
+        padding: 0.25rem 0.3rem;
+        margin: 0.15rem 0;
+      }
+
+      .legend-color {
+        width: 12px;
+        height: 12px;
+      }
+
+      /* BUTTONS - Touch-friendly (min 44px) */
+      button, [role="button"], .tab-btn, .era-btn, .era-legend-btn {
+        min-height: 44px;
+        min-width: 44px;
+      }
+
+      /* TABLES */
+      .sages-table {
+        font-size: 0.7rem;
+      }
+
+      .sages-table th,
+      .sages-table td {
+        padding: 0.35rem 0.25rem;
+      }
+
+      /* COMPARATOR */
+      .comparator-results {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+      }
+
+      .sage-card {
+        padding: 0.75rem;
+      }
+
+      .sage-card-title {
+        font-size: 0.95rem;
+      }
+
+      /* SEARCH BARS */
+      .search-box input {
+        font-size: 0.8rem;
+        padding: 0.5rem;
+        min-height: 40px;
+      }
+
+      /* RESEARCH TAB */
+      .research-header {
+        flex-direction: column;
+        gap: 0.4rem;
+      }
+
+      .research-search-input,
+      .research-filter-select {
+        font-size: 0.8rem;
+        min-height: 40px;
+      }
+
+      .research-list {
+        grid-template-columns: 1fr;
+        padding: 0.4rem;
+        gap: 0.4rem;
+      }
+
+      .research-item {
+        padding: 0.6rem;
+      }
+
+      .research-item-title {
+        font-size: 0.95rem;
+      }
+    }
+
+    /* ──────────────────────────────────────────────────────────────
+       SMALL PHONES (480px and below)
+       ────────────────────────────────────────────────────────────── */
+    @media (max-width: 480px) {
+      /* Header ultra-compact */
+      .header {
+        padding: 0.4rem 0.3rem;
+        gap: 0.3rem;
+      }
+
+      .tabs {
+        gap: 0.2rem;
+      }
+
+      .tab-btn {
+        font-size: 0.55rem;
+        padding: 0.3rem 0.3rem;
+        min-width: 40px;
+        min-height: 36px;
+      }
+
+      /* Filters stack vertically */
+      .filter-group {
+        flex: 1 1 100%;
+      }
+
+      /* Sidebar much smaller */
+      .sidebar {
+        max-height: 40vh;
+        padding: 0.5rem;
+      }
+
+      .sidebar-section {
+        margin-bottom: 0.3rem;
+        font-size: 0.65rem;
+      }
+
+      /* Hide non-essential UI */
+      .language-switcher {
+        gap: 0.15rem;
+      }
+
+      .lang-btn {
+        font-size: 0.55rem;
+        padding: 0.25rem 0.3rem;
+      }
+
+      /* Extremely compact legend */
+      .map-legend {
+        max-height: 30vh;
+        font-size: 0.65rem;
+        padding: 0.5rem;
+      }
+
+      /* Hide table columns 4+ */
+      .sages-table th:nth-child(n+4),
+      .sages-table td:nth-child(n+4) {
+        display: none;
+      }
+
+      .sages-table th,
+      .sages-table td {
+        padding: 0.25rem 0.15rem;
+      }
+
+      /* Compact comparator */
+      .comparator-results {
+        gap: 0.5rem;
+      }
+
+      .sage-card {
+        padding: 0.5rem;
+      }
+
+      .sage-card-title {
+        font-size: 0.85rem;
+      }
+    }
+
+    /* ──────────────────────────────────────────────────────────────
+       TINY PHONES (360px and below)
+       ────────────────────────────────────────────────────────────── */
+    @media (max-width: 360px) {
+      .header {
+        padding: 0.3rem;
+      }
+
+      .logo h1 {
+        font-size: 0.9rem;
+      }
+
+      .tab-btn {
+        font-size: 0.5rem;
+        padding: 0.25rem 0.25rem;
+        min-height: 32px;
+      }
+
+      .sidebar {
+        max-height: 35vh;
+        padding: 0.4rem;
+      }
+
+      .sidebar-section {
+        font-size: 0.6rem;
+        margin-bottom: 0.25rem;
+      }
+
+      .map-legend {
+        font-size: 0.6rem;
+        padding: 0.4rem;
+        max-height: 25vh;
+      }
+    }
+
+    /* ──────────────────────────────────────────────────────────────
+       LANDSCAPE ORIENTATION - Optimize for wider but shorter viewport
+       ────────────────────────────────────────────────────────────── */
+    @media (max-width: 1024px) and (orientation: landscape) {
+      .header {
+        padding: 0.3rem 0.5rem;
+      }
+
+      .tab-btn {
+        font-size: 0.65rem;
+        padding: 0.3rem 0.4rem;
+        min-height: 32px;
+      }
+
+      .graph-container {
+        min-height: 250px;
+      }
+
+      .sidebar {
+        max-height: 60vh;
+      }
+
+      #graph-filters {
+        padding: 0.3rem;
+        gap: 0.2rem;
+      }
+    }
+
+    /* ──────────────────────────────────────────────────────────────
+       TOUCH DEVICES - Optimize for touch interaction
+       ────────────────────────────────────────────────────────────── */
+    @media (hover: none) and (pointer: coarse) {
+      /* Disable hover effects, use active states instead */
+      .node:hover {
+        opacity: inherit;
+      }
+
+      .node:active {
+        opacity: 1;
+        stroke-width: 4px;
+      }
+
+      /* Larger tap targets */
+      button {
+        min-height: 48px;
+        min-width: 48px;
+      }
+
+      select {
+        min-height: 48px;
+      }
+
+      /* Reduce 300ms tap delay */
+      button, [role="button"], input, select, textarea {
+        touch-action: manipulation;
+      }
+    }
+
+    /* ──────────────────────────────────────────────────────────────
+       ACCESSIBILITY - High contrast & dark mode support
+       ────────────────────────────────────────────────────────────── */
+    @media (prefers-contrast: more) {
+      .sidebar {
+        border: 2px solid #000;
+      }
+
+      button {
+        outline: 2px solid #000;
+      }
+
+      .tab-btn {
+        border: 1px solid #000;
+      }
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .map-legend {
+        background: #2a2a2a;
+        color: #fff;
+      }
+
+      .sage-tooltip-rich {
+        background: #2a2a2a !important;
+        color: #fff !important;
+      }
+    }
   </style>
 </head>
 <body>
