@@ -388,22 +388,24 @@
       flex-direction: column;
       background: #ffffff;
       box-shadow: inset 0 0 0 1px rgba(0,0,0,0.03);
+      min-height: 0;
     }
 
     .graph-toolbar {
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      padding: 1rem 1.5rem;
+      display: flex !important;
+      flex-direction: column;
+      padding: 0.75rem 1.5rem;
       border-bottom: 1px solid #e0e0e0;
-      gap: 1rem;
-      flex-wrap: wrap;
+      gap: 0.75rem;
       background: white;
+      max-height: 180px;
+      overflow-y: auto;
     }
 
     .graph-search {
-      flex: 0 1 350px;
+      flex: 1;
       min-width: 250px;
+      width: 100%;
     }
 
     .graph-search input {
@@ -430,28 +432,60 @@
       background: #ffffff;
     }
 
-    .graph-filters {
+    /* Search Suggestions Styling */
+    #searchSuggestions {
+      max-height: 350px;
+    }
+
+    #searchSuggestions div {
+      padding: 0.7rem 1rem;
+      border-bottom: 1px solid #f0f0f0;
+      cursor: pointer;
       display: flex;
-      gap: 1rem;
+      justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
+      font-size: 0.9rem;
+      transition: background 0.15s;
+    }
+
+    #searchSuggestions div:hover {
+      background: #f5f5f5;
+    }
+
+    #searchSuggestions div:last-child {
+      border-bottom: none;
+    }
+
+    #searchSuggestions .suggestion-era {
+      font-size: 0.75rem;
+      color: #999;
+      font-weight: 500;
+    }
+
+    .graph-filters {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 0.5rem;
+      align-items: start;
+      width: 100%;
     }
 
     .filter-group {
       display: flex;
-      align-items: center;
-      gap: 0.5rem;
+      flex-direction: column;
+      gap: 0.25rem;
     }
 
     .filter-group label {
-      font-size: 0.85rem;
+      font-size: 0.7rem;
       font-weight: 600;
       color: #666;
     }
 
     .filter-group select {
-      padding: 0.6rem 0.85rem;
+      padding: 0.35rem 0.5rem;
       border: 1px solid #d0d0d0;
+      font-size: 0.75rem;
       border-radius: 6px;
       font-size: 0.85rem;
       background: white;
@@ -463,6 +497,59 @@
 
     .filter-group select:hover {
       border-color: #1a1a1a;
+    }
+
+    .connection-filters {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+    }
+
+    .filter-btn {
+      padding: 0.4rem 0.6rem;
+      font-size: 0.7rem;
+      border: 1px solid #ddd;
+      background: white;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: all 0.2s;
+      color: #666;
+      font-weight: 500;
+    }
+
+    .filter-btn:hover {
+      border-color: #1a1a1a;
+      background: #f9f9f9;
+    }
+
+    .filter-btn.active {
+      background: #1a1a1a;
+      color: white;
+      border-color: #1a1a1a;
+    }
+
+    .zoom-controls {
+      display: flex;
+      gap: 0.3rem;
+      grid-column: 1 / -1;
+    }
+
+    .zoom-btn {
+      flex: 1;
+      padding: 0.3rem 0.5rem;
+      font-size: 0.7rem;
+      border: 1px solid #ddd;
+      background: white;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: all 0.2s;
+      color: #666;
+    }
+
+    .zoom-btn:hover {
+      border-color: #1a1a1a;
+      background: #f9f9f9;
     }
 
     .filter-group select:focus {
@@ -504,8 +591,8 @@
     }
 
     #graph {
-      width: 100%;
-      height: 100%;
+      width: 100% !important;
+      height: 100% !important;
       display: block;
     }
 
@@ -1620,11 +1707,17 @@
         <!-- Center Graph -->
         <div class="graph-container">
           <div class="graph-toolbar">
-            <div class="graph-search">
-              <input type="text" id="searchInput" placeholder="חיפוש חכם...">
+            <div class="graph-search" style="position: relative;">
+              <input type="text" id="searchInput" placeholder="🔍 חפש חכם בשם, תקופה, או תחום..." style="padding-right: 2.5rem;">
+              <button id="searchClearBtn" class="btn" style="position: absolute; left: 0.5rem; top: 50%; transform: translateY(-50%); padding: 0.4rem 0.6rem; font-size: 0.8rem; display: none;">✕</button>
               <button id="toggle-filters-btn" class="toggle-filters-btn" style="display: none;" title="הצג/הסתר מסננים">⚙️ מסננים</button>
+              <div id="searchSuggestions" style="position: absolute; top: 100%; left: 0; right: 0; background: white; border: 1px solid #ddd; border-top: none; border-radius: 0 0 6px 6px; max-height: 300px; overflow-y: auto; display: none; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"></div>
             </div>
             <div class="graph-filters" id="graph-filters">
+              <div style="margin-bottom: 0.75rem; padding-bottom: 0.75rem; border-bottom: 1px solid #ddd;">
+                <label style="font-size: 0.75rem; font-weight: 600; display: block; margin-bottom: 0.4rem;">🔎 חפש חכם:</label>
+                <input type="text" id="graphNameSearch" placeholder="שם בעברית או אנגלית..." style="width: 100%; padding: 0.4rem; font-size: 0.75rem; border: 1px solid #ddd; border-radius: 4px; direction: rtl; font-family: 'Frank Ruhl Libre', serif; margin-bottom: 0.5rem;">
+              </div>
               <div style="margin-bottom: 0.75rem; padding-bottom: 0.75rem; border-bottom: 1px solid #ddd;">
                 <label style="font-size: 0.75rem; font-weight: 600; display: block; margin-bottom: 0.4rem;">📌 טעונים מראש:</label>
                 <select id="presetsDropdown" style="width: 100%; padding: 0.4rem; font-size: 0.75rem; border-radius: 4px; border: 1px solid #ddd;">
@@ -1653,13 +1746,13 @@
                 <label>תקופה:</label>
                 <select id="eraFilter">
                   <option value="">הכל</option>
-                  <option value="second-temple">בית שני</option>
-                  <option value="tannaim">תנאים</option>
-                  <option value="amoraim">אמוראים</option>
-                  <option value="geonim">גאונים</option>
-                  <option value="rishonim">ראשונים</option>
-                  <option value="acharonim">אחרונים</option>
-                  <option value="modern">עת חדשה</option>
+                  <option value="בית שני">בית שני</option>
+                  <option value="תנאים">תנאים</option>
+                  <option value="אמוראים">אמוראים</option>
+                  <option value="גאונים">גאונים</option>
+                  <option value="ראשונים">ראשונים</option>
+                  <option value="אחרונים">אחרונים</option>
+                  <option value="עת חדשה">עת חדשה</option>
                 </select>
               </div>
               <div class="filter-group">
@@ -1672,13 +1765,15 @@
                 <label>תחום:</label>
                 <select id="fieldFilter">
                   <option value="">הכל</option>
-                  <option value="halacha">הלכה</option>
-                  <option value="kabbalah">קבלה</option>
-                  <option value="ethics">מוסר</option>
-                  <option value="philosophy">פילוסופיה</option>
-                  <option value="exegesis">פרשנות</option>
-                  <option value="commentary">ביאור</option>
-                  <option value="leadership">הנהגה</option>
+                  <option value="הלכה">הלכה</option>
+                  <option value="קבלה">קבלה</option>
+                  <option value="הנהגה">הנהגה</option>
+                  <option value="מוסר">מוסר</option>
+                  <option value="הגות">הגות</option>
+                  <option value="פרשנות">פרשנות</option>
+                  <option value="פילוסופיה">פילוסופיה</option>
+                  <option value="חינוך">חינוך</option>
+                  <option value="היסטוריה">היסטוריה</option>
                 </select>
               </div>
               <div class="filter-group" style="margin-top: 0.75rem;">
@@ -1723,26 +1818,38 @@
           <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid #f0f0f0;">
             <h3 style="font-size: 1rem; margin-bottom: 0.75rem;">סוגי קשרים</h3>
             <div class="legend-section">
-              <div style="font-size: 0.8rem;">
-                <div style="display: flex; align-items: center; gap: 0.5rem; margin: 0.4rem 0;">
-                  <div style="width: 12px; height: 3px; background: #4ecdc4;"></div>
+              <div style="font-size: 0.75rem;">
+                <div style="display: flex; align-items: center; gap: 0.5rem; margin: 0.35rem 0;">
+                  <div style="width: 12px; height: 2px; background: #0066cc;"></div>
                   <span>תלמיד</span>
                 </div>
-                <div style="display: flex; align-items: center; gap: 0.5rem; margin: 0.4rem 0;">
-                  <div style="width: 12px; height: 3px; background: #2980b9;"></div>
-                  <span>מורה</span>
+                <div style="display: flex; align-items: center; gap: 0.5rem; margin: 0.35rem 0;">
+                  <div style="width: 12px; height: 2px; background: #cc0000;"></div>
+                  <span>מורה/רב</span>
                 </div>
-                <div style="display: flex; align-items: center; gap: 0.5rem; margin: 0.4rem 0;">
-                  <div style="width: 12px; height: 3px; background: #8b7965;"></div>
+                <div style="display: flex; align-items: center; gap: 0.5rem; margin: 0.35rem 0;">
+                  <div style="width: 12px; height: 2px; background: #00aa66;"></div>
                   <span>השפעה</span>
                 </div>
-                <div style="display: flex; align-items: center; gap: 0.5rem; margin: 0.4rem 0;">
-                  <div style="width: 12px; height: 3px; background: #ff6b6b;"></div>
+                <div style="display: flex; align-items: center; gap: 0.5rem; margin: 0.35rem 0;">
+                  <div style="width: 12px; height: 2px; background: #ff6600;"></div>
                   <span>התנגדות</span>
                 </div>
-                <div style="display: flex; align-items: center; gap: 0.5rem; margin: 0.4rem 0;">
-                  <div style="width: 12px; height: 3px; background: #95e1d3;"></div>
+                <div style="display: flex; align-items: center; gap: 0.5rem; margin: 0.35rem 0;">
+                  <div style="width: 12px; height: 2px; background: #9966ff;"></div>
                   <span>עמית</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.5rem; margin: 0.35rem 0;">
+                  <div style="width: 12px; height: 2px; background: #ffaa00;"></div>
+                  <span>קדמון</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.5rem; margin: 0.35rem 0;">
+                  <div style="width: 12px; height: 2px; background: #00cccc;"></div>
+                  <span>בן זמן</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.5rem; margin: 0.35rem 0;">
+                  <div style="width: 12px; height: 2px; background: #ff0066;"></div>
+                  <span>משפחה</span>
                 </div>
               </div>
             </div>
@@ -2258,17 +2365,33 @@
         });
       });
 
-      // Search
-      document.getElementById('searchInput').addEventListener('input', (e) => {
-        const query = e.target.value.toLowerCase();
-        if (sageNetwork && sageNetwork.node) {
-          sageNetwork.node.style('opacity', d => {
-            const match = (d.name_he && d.name_he.includes(e.target.value)) ||
-                         (d.name_en && d.name_en.toLowerCase().includes(query));
-            return match ? 1 : 0.15;
-          });
-        }
-      });
+      // Graph Name Search (new unified search)
+      const graphNameSearch = document.getElementById('graphNameSearch');
+      if (graphNameSearch) {
+        graphNameSearch.addEventListener('input', (e) => {
+          const query = e.target.value.toLowerCase().trim();
+          if (sageNetwork && sageNetwork.searchQuery !== undefined) {
+            sageNetwork.searchQuery = query;
+            sageNetwork.updateNodeVisibility();
+            sageNetwork.updateSearchSuggestions(query);
+          }
+        });
+      }
+
+      // Original search input (fallback for other views)
+      const searchInput = document.getElementById('searchInput');
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          const query = e.target.value.toLowerCase();
+          if (sageNetwork && sageNetwork.node) {
+            sageNetwork.node.style('opacity', d => {
+              const match = (d.name_he && d.name_he.includes(e.target.value)) ||
+                           (d.name_en && d.name_en.toLowerCase().includes(query));
+              return match ? 1 : 0.15;
+            });
+          }
+        });
+      }
 
       // Filters
       document.getElementById('eraFilter').addEventListener('change', (e) => {
@@ -2277,6 +2400,10 @@
 
       document.getElementById('regionFilter').addEventListener('change', (e) => {
         filterByRegion(e.target.value);
+      });
+
+      document.getElementById('fieldFilter').addEventListener('change', (e) => {
+        filterByField(e.target.value);
       });
 
       // New filters: Connection count + strength
@@ -2324,7 +2451,13 @@
         document.getElementById('connectionCountLabel').textContent = '0+';
         document.getElementById('connectionStrengthFilter').value = '';
         if (sageNetwork && sageNetwork.node) {
-          sageNetwork.node.style('opacity', 1);
+          sageNetwork.node
+            .style('opacity', 1)
+            .style('stroke', 'none')
+            .style('stroke-width', '0')
+            .style('filter', 'none');
+          // Trigger filter reapplication to clear highlighting
+          sageNetwork.applyFilters();
         }
       });
 
@@ -2386,13 +2519,13 @@
 
     function buildLegend() {
       const eras = [
-        { key: 'second-temple', he: 'בית שני', color: '#8e44ad' },
-        { key: 'tannaim', he: 'תנאים', color: '#e74c3c' },
-        { key: 'amoraim', he: 'אמוראים', color: '#e67e22' },
-        { key: 'geonim', he: 'גאונים', color: '#f1c40f' },
-        { key: 'rishonim', he: 'ראשונים', color: '#27ae60' },
-        { key: 'acharonim', he: 'אחרונים', color: '#2980b9' },
-        { key: 'modern', he: 'עת חדשה', color: '#1abc9c' }
+        { key: 'בית שני', he: 'בית שני', color: '#8e44ad' },
+        { key: 'תנאים', he: 'תנאים', color: '#e74c3c' },
+        { key: 'אמוראים', he: 'אמוראים', color: '#e67e22' },
+        { key: 'גאונים', he: 'גאונים', color: '#f1c40f' },
+        { key: 'ראשונים', he: 'ראשונים', color: '#27ae60' },
+        { key: 'אחרונים', he: 'אחרונים', color: '#2980b9' },
+        { key: 'עת חדשה', he: 'עת חדשה', color: '#1abc9c' }
       ];
 
       const legendDiv = document.getElementById('legendItems');
@@ -2442,13 +2575,21 @@
     }
 
     function filterByEra(era) {
-      if (!sageNetwork || !sageNetwork.node) return;
-      sageNetwork.node.style('opacity', d => d.era_key === era || era === '' ? 1 : 0.15);
+      if (!sageNetwork) return;
+      // Call applyFilters() to trigger highlighting + clustering
+      sageNetwork.applyFilters();
     }
 
     function filterByRegion(region) {
-      if (!sageNetwork || !sageNetwork.node) return;
-      sageNetwork.node.style('opacity', d => d.region === region || region === '' ? 1 : 0.15);
+      if (!sageNetwork) return;
+      // Call applyFilters() to trigger highlighting + clustering
+      sageNetwork.applyFilters();
+    }
+
+    function filterByField(field) {
+      if (!sageNetwork) return;
+      // Call applyFilters() to trigger highlighting + clustering
+      sageNetwork.applyFilters();
     }
 
     function filterByMinimumConnections(minConnections) {
@@ -2502,7 +2643,7 @@
 
     // FILTER PRESETS MANAGEMENT
     const BUILTIN_PRESETS = {
-      'rishonim-halacha': { era: 'rishonim', field: 'halacha', minConnections: 0, strength: '' },
+      'rishonim-halacha': { era: 'ראשונים', field: 'הלכה', minConnections: 0, strength: '' },
       'high-connections': { era: '', region: '', field: '', minConnections: 5, strength: '' },
       'strong-links': { era: '', region: '', field: '', minConnections: 0, strength: '4' }
     };
@@ -2555,8 +2696,8 @@
 
     function showNodeInSidebar(node) {
       const eraColors = {
-        'second-temple': '#8e44ad', 'tannaim': '#e74c3c', 'amoraim': '#e67e22',
-        'geonim': '#f1c40f', 'rishonim': '#27ae60', 'acharonim': '#2980b9', 'modern': '#1abc9c'
+        'בית שני': '#8e44ad', 'תנאים': '#e74c3c', 'אמוראים': '#e67e22',
+        'גאונים': '#f1c40f', 'ראשונים': '#27ae60', 'אחרונים': '#2980b9', 'עת חדשה': '#1abc9c'
       };
 
       const eraColor = eraColors[node.era_key] || '#999';
@@ -2766,8 +2907,8 @@
       card.className = `sage-card card-${idx + 1}`;
 
       const eraColors = {
-        'second-temple': '#8e44ad', 'tannaim': '#e74c3c', 'amoraim': '#e67e22',
-        'geonim': '#f1c40f', 'rishonim': '#27ae60', 'acharonim': '#2980b9', 'modern': '#1abc9c'
+        'בית שני': '#8e44ad', 'תנאים': '#e74c3c', 'אמוראים': '#e67e22',
+        'גאונים': '#f1c40f', 'ראשונים': '#27ae60', 'אחרונים': '#2980b9', 'עת חדשה': '#1abc9c'
       };
       const eraColor = eraColors[sage.era_key] || '#999';
 
@@ -3069,8 +3210,8 @@
       }
 
       const eraColors = {
-        'second-temple': '#8e44ad', 'tannaim': '#e74c3c', 'amoraim': '#e67e22',
-        'geonim': '#f1c40f', 'rishonim': '#27ae60', 'acharonim': '#2980b9', 'modern': '#1abc9c'
+        'בית שני': '#8e44ad', 'תנאים': '#e74c3c', 'אמוראים': '#e67e22',
+        'גאונים': '#f1c40f', 'ראשונים': '#27ae60', 'אחרונים': '#2980b9', 'עת חדשה': '#1abc9c'
       };
 
       let html = `

@@ -298,11 +298,26 @@ class SageNetwork {
 
     // Original search input (fallback)
     const searchInput = document.querySelector(this.searchSelector);
+    const searchClearBtn = document.querySelector('#searchClearBtn');
+
     if (searchInput) {
-      // FIX BUG 5: Proper search event listener
+      // FIX BUG 5: Proper search event listener with enhanced UX + AUTOCOMPLETE
       searchInput.addEventListener('input', (e) => {
-        this.searchQuery = e.target.value.toLowerCase();
+        this.searchQuery = e.target.value.toLowerCase().trim();
+
+        // 🎯 ENHANCEMENT #1: Show/hide clear button
+        if (searchClearBtn) {
+          if (this.searchQuery.length > 0) {
+            searchClearBtn.style.display = 'block';
+          } else {
+            searchClearBtn.style.display = 'none';
+          }
+        }
+
         console.log('🔍 Search:', this.searchQuery);
+
+        // 🎯 ENHANCEMENT #2: Show autocomplete suggestions
+        this.updateSearchSuggestions(this.searchQuery);
         this.updateNodeVisibility();
 
         // Jump to matching sage on Enter or single match
@@ -326,9 +341,35 @@ class SageNetwork {
           );
           if (matches.length > 0) {
             this.selectNode(matches[0]);
+            document.getElementById('searchSuggestions').style.display = 'none';
           }
         }
+        // Escape key hides suggestions
+        if (e.key === 'Escape') {
+          document.getElementById('searchSuggestions').style.display = 'none';
+        }
       });
+
+      // Hide suggestions when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!e.target.closest('.graph-search') && !e.target.closest('#searchSuggestions')) {
+          const suggestionsBox = document.getElementById('searchSuggestions');
+          if (suggestionsBox) suggestionsBox.style.display = 'none';
+        }
+      });
+
+      // 🎯 ENHANCEMENT #1: Clear button handler
+      if (searchClearBtn) {
+        searchClearBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          searchInput.value = '';
+          this.searchQuery = '';
+          searchClearBtn.classList.remove('active');
+          this.updateNodeVisibility();
+          searchInput.focus();
+          console.log('🔍 Search cleared');
+        });
+      }
     }
 
     // Sidebar close button
@@ -538,14 +579,29 @@ class SageNetwork {
 
     this.width = svgNode.clientWidth;
     this.height = svgNode.clientHeight;
+    console.log(`📏 SVG clientWidth=${this.width}, clientHeight=${this.height}`);
 
-    // Fallback to window dimensions if SVG hasn't been laid out yet
+    // Fallback to container dimensions if SVG hasn't been laid out yet
     if (this.width === 0 || this.height === 0) {
-      // Mobile: use full width (sidebar is overlay); Desktop: account for sidebar
-      const isMobile = window.innerWidth < 768;
-      this.width = isMobile ? window.innerWidth : window.innerWidth - 300;
-      this.height = window.innerHeight - 120;  // Account for header + search
-      console.warn(`⚠️ SVG not laid out yet, using fallback: ${this.width}x${this.height} (${isMobile ? 'mobile' : 'desktop'})`);
+      // Try to get actual container dimensions
+      const wrapper = document.querySelector('.graph-wrapper');
+      const container = document.querySelector('.graph-container');
+
+      if (wrapper && wrapper.clientWidth > 0 && wrapper.clientHeight > 0) {
+        this.width = wrapper.clientWidth;
+        this.height = wrapper.clientHeight;
+        console.log(`✅ SVG using graph-wrapper: ${this.width}x${this.height}`);
+      } else if (container && container.clientWidth > 0 && container.clientHeight > 0) {
+        this.width = container.clientWidth;
+        this.height = container.clientHeight;
+        console.log(`✅ SVG using graph-container: ${this.width}x${this.height}`);
+      } else {
+        // Last resort: fallback calculation (sidebars 200px each = 400px total)
+        const isMobile = window.innerWidth < 768;
+        this.width = isMobile ? window.innerWidth : window.innerWidth - 400;
+        this.height = window.innerHeight - 160;
+        console.warn(`⚠️ SVG fallback: ${this.width}x${this.height} (${isMobile ? 'mobile' : 'desktop'})`);
+      }
     }
 
     svg.selectAll('*').remove();
@@ -632,27 +688,28 @@ class SageNetwork {
       .velocityDecay(0.5)
       .alphaDecay(0.015);
 
-    // Connection type styling (color + stroke pattern) - Connected Papers style
+    // Connection type styling (color + stroke pattern) - Enhanced colors for clarity
+    // Each connection type has distinct color and pattern
     const connectionTypeColors = {
-      'student': '#4ecdc4',      // Bright teal (learning)
-      'teacher': '#2980b9',      // Deep blue (guidance)
-      'influence': '#e74c3c',    // Bright red (influence)
-      'oppose': '#c0392b',       // Dark red (opposition)
-      'colleague': '#27ae60',    // Green (peer)
-      'predecessor': '#9b59b6',  // Purple (legacy)
-      'contemporary': '#f39c12', // Orange (same era)
-      'family': '#e67e22'        // Dark orange (family)
+      'student': '#0066cc',      // Blue (تلمید - learning from)
+      'teacher': '#cc0000',      // Red (רב - teaching to)
+      'influence': '#00aa66',    // Green (השפעה - influence)
+      'oppose': '#ff6600',       // Orange (התנגדות - opposition)
+      'colleague': '#9966ff',    // Purple (עמית - peer/colleague)
+      'predecessor': '#ffaa00',  // Gold (קדמון - predecessor)
+      'contemporary': '#00cccc', // Cyan (בן זמן - contemporary)
+      'family': '#ff0066'        // Hot pink (משפחה - family)
     };
 
     const connectionTypeStrokes = {
       'student': 'solid',
       'teacher': 'solid',
-      'influence': '4,3',      // Dashed for weaker connections
-      'oppose': '6,4',         // Dashed for opposition
+      'influence': '4,4',      // Dashed for weaker connections
+      'oppose': '6,3',         // Dashed for opposition
       'colleague': 'solid',
-      'predecessor': '2,4',    // Dotted
-      'contemporary': 'solid',
-      'family': 'solid'
+      'predecessor': '2,3',    // Dotted
+      'contemporary': '5,2',   // Custom dash
+      'family': '8,3'          // Longer dash
     };
 
     // Draw links as groups (line + label)
@@ -662,13 +719,18 @@ class SageNetwork {
       .append('g')
       .attr('class', 'link-group');
 
+    console.log(`🔗 [Graph] Rendering ${this.data.links?.length || 0} links as link-groups:`, linkGroup.size(), 'groups created');
+
     // Add lines to each group - with connection type styling
     const linkLines = linkGroup.append('line')
       .attr('class', d => `link link-${d.type}`)
       .attr('stroke', d => connectionTypeColors[d.type] || '#999')
       .attr('stroke-width', d => {
-        // Thicker for primary relationships
-        return (d.type === 'student' || d.type === 'teacher') ? 2.8 : 2.2;
+        // 🎯 ENHANCED: Larger strokes for better visibility
+        const baseWidth = (d.type === 'student' || d.type === 'teacher') ? 3.2 : 2.5; // Increased from 2.8/2.2
+        const strength = d.strength || 3;
+        const strengthBoost = (strength - 1) * 0.5; // Increased from 0.4
+        return Math.max(2.0, baseWidth + strengthBoost); // Min 2.0 instead of 1.5
       })
       .attr('stroke-dasharray', d => {
         // Different patterns for different types
@@ -684,9 +746,13 @@ class SageNetwork {
         };
         return patterns[d.type] || null;
       })
-      .attr('opacity', 0.5)
+      .attr('opacity', d => {
+        // 🎯 ENHANCED: Higher opacity for better visibility
+        const strength = d.strength || 3;
+        return Math.min(1.0, 0.6 + (strength / 5) * 0.4); // 0.6-1.0 instead of 0.3-0.7
+      })
       .attr('stroke-linecap', 'round')
-      .attr('stroke-dasharray', d => connectionTypeStrokes[d.type] !== 'solid' ? connectionTypeStrokes[d.type] : 'none')
+      .attr('stroke-dasharray', d => connectionTypeStrokes[d.type] !== 'solid' ? connectionTypeStrokes[d.type] : null)
       .style('cursor', 'pointer')
       .on('mouseover', function(event, d) {
         d3.select(this).transition().duration(100)
@@ -702,9 +768,15 @@ class SageNetwork {
         showConnectionMetadataTooltip(event, d);
       })
       .on('mouseout', function(event, d) {
+        // 🎯 ENHANCED: Restore strength-based styling on mouseout
+        const baseWidth = (d.type === 'student' || d.type === 'teacher') ? 3.2 : 2.5; // Match new values
+        const strength = d.strength || 3;
+        const strengthBoost = (strength - 1) * 0.5; // Match new values
+        const restoredOpacity = Math.min(1.0, 0.6 + (strength / 5) * 0.4); // Match new range
+
         d3.select(this).transition().duration(100)
-          .attr('stroke-width', (d.type === 'student' || d.type === 'teacher') ? 2.5 : 2)
-          .attr('opacity', 0.45);
+          .attr('stroke-width', Math.max(2.0, baseWidth + strengthBoost)) // Updated min width
+          .attr('opacity', restoredOpacity);
         // Return label to normal visibility
         d3.select(this.parentNode).select('text.link-label')
           .transition().duration(100)
@@ -729,13 +801,13 @@ class SageNetwork {
 
     linkGroup.append('text')
       .attr('class', 'link-label')
-      .attr('font-size', '12px')
+      .attr('font-size', '11px')
       .attr('font-weight', 'bold')
       .attr('font-family', "'Frank Ruhl Libre', serif")
-      .attr('fill', d => connectionTypeColors[d.type] || '#999')
+      .attr('fill', d => connectionTypeColors[d.type] || '#333')
       .attr('text-anchor', 'middle')
-      .attr('dy', '-6px')
-      .attr('opacity', 0.6)  // Visible by default at 60% opacity
+      .attr('dy', '-5px')
+      .attr('opacity', 1.0)  // Always fully visible
       .text(d => {
         // Hebrew labels for connection types
         const labels = {
@@ -750,11 +822,13 @@ class SageNetwork {
         };
         return labels[d.type] || d.type;
       })
+      .attr('x', d => (d.source.x + d.target.x) / 2)
+      .attr('y', d => (d.source.y + d.target.y) / 2)
       .style('pointer-events', 'none')
-      .style('text-shadow', '0 0 3px white, 0 0 6px rgba(255,255,255,0.8)')
+      .style('text-shadow', '0 0 3px white, 0 0 6px rgba(255,255,255,0.95)')
       .style('transition', 'opacity 0.2s ease');
 
-    // Draw nodes - Connected Papers style with size by degree + shadows
+    // Draw nodes - Six Degrees Reference Style with size by degree + colored borders
     const self = this;
     this.node = g.selectAll('.node')
       .data(this.data.nodes, d => d.id)
@@ -762,15 +836,19 @@ class SageNetwork {
       .append('circle')
       .attr('class', d => `node node-${d.group}`)
       .attr('r', d => {
-        // Size based on connection count (degree centrality)
+        // Size based on connection count (degree centrality) - REDUCED
         const degree = nodeDegree[d.id] || 0;
-        const baseSize = 26;  // Slightly larger base size
-        const maxSize = 44;   // Slightly larger max
-        return Math.min(baseSize + (Math.sqrt(degree) * 4), maxSize);
+        const baseSize = 10;  // Smaller base size
+        const maxSize = 20;   // Smaller max size
+        return Math.min(baseSize + (Math.sqrt(degree) * 2.5), maxSize);
       })
       .attr('fill', d => self.colorMap[d.group] || '#999')
-      .attr('stroke', '#ffffff')
-      .attr('stroke-width', 2.5)
+      .attr('stroke', d => {
+        // VISUAL IMPROVEMENT #1: Colored borders by period (was white)
+        // Uses period color for visual hierarchy
+        return self.colorMap[d.group] || '#999';
+      })
+      .attr('stroke-width', 3)  // Increased from 2.5 to 3 for visibility
       .attr('opacity', 0.9)
       .style('cursor', 'pointer')
       .style('filter', 'url(#node-shadow)')
@@ -781,6 +859,11 @@ class SageNetwork {
       .on('mouseover', function(event, d) {
         event.stopPropagation();
         const hoveredNodeId = d.id;
+
+        // VISUAL IMPROVEMENT #3: Apply glow filter to hovered node
+        d3.select(this)
+          .transition().duration(100)
+          .attr('filter', 'url(#node-glow)');
 
         // Show sage name tooltip
         let tooltip = g.select('text.sage-tooltip');
@@ -815,21 +898,30 @@ class SageNetwork {
           }
         });
 
-        // Enhanced hover effect: Connected Papers style (bright + fade to 20%)
+        // VISUAL IMPROVEMENT #3: Enhanced hover effect (Six Degrees style)
+        // Hovered node: bright + glow, Connected: highlighted, Others: faded
         self.node.transition().duration(150)
           .attr('opacity', n => {
             if (String(n.id) === String(hoveredNodeId)) return 1;
             if (connectedNodeIds.has(String(n.id))) return 0.95;
-            return 0.2;  // Fade non-connected to 20%
+            return 0.15;  // Fade non-connected to 15% (more dramatic)
           })
           .attr('r', n => {
             if (String(n.id) === String(hoveredNodeId)) {
-              return Math.min((nodeDegree[n.id] || 0) + 40, 50);
+              // Hovered node: significantly larger with glow
+              return Math.min((nodeDegree[n.id] || 0) + 45, 52);
             }
             if (connectedNodeIds.has(String(n.id))) {
-              return Math.min((nodeDegree[n.id] || 0) + 30, 48);
+              // Connected nodes: slightly larger
+              return Math.min((nodeDegree[n.id] || 0) + 32, 50);
             }
             return Math.min(24 + (Math.sqrt(nodeDegree[n.id] || 0) * 4), 42);
+          })
+          .attr('stroke-width', n => {
+            // VISUAL IMPROVEMENT: Thicker borders on hover
+            if (String(n.id) === String(hoveredNodeId)) return 4.5;
+            if (connectedNodeIds.has(String(n.id))) return 3.5;
+            return 3;
           });
 
         // Highlight connected edges with stronger effect
@@ -861,11 +953,28 @@ class SageNetwork {
             return (sourceId === String(hoveredNodeId) || targetId === String(hoveredNodeId)) ? '14px' : '12px';
           });
 
-        // Apply glow to hovered node
-        d3.select(this)
+        // 🎯 ENHANCEMENT #3: Enhanced glow with pulse animation on hovered node
+        const hoveredNode = d3.select(this);
+        hoveredNode
           .transition().duration(120)
           .attr('filter', 'url(#node-glow)')
           .attr('stroke-width', 3);
+
+        // Add subtle pulse animation to hovered node
+        hoveredNode.style('animation', 'none').style('animation', 'pulse-node 1.5s ease-in-out infinite');
+
+        // Create pulse animation if not exists
+        if (!document.querySelector('style[data-pulse-animation]')) {
+          const style = document.createElement('style');
+          style.setAttribute('data-pulse-animation', 'true');
+          style.textContent = `
+            @keyframes pulse-node {
+              0%, 100% { opacity: 1; }
+              50% { opacity: 0.75; }
+            }
+          `;
+          document.head.appendChild(style);
+        }
 
         // Show connection info
         const connectedTypes = [];
@@ -887,17 +996,32 @@ class SageNetwork {
         // Hide sage name tooltip
         g.select('text.sage-tooltip').transition().duration(100).attr('opacity', 0);
 
+        // VISUAL IMPROVEMENT #3: Remove glow filter on mouseout
+        d3.select(this)
+          .transition().duration(100)
+          .attr('filter', 'url(#node-shadow)');
+
         // Restore all nodes smoothly
         self.node.transition().duration(150)
           .attr('opacity', 0.9)
           .attr('r', n => Math.min(26 + (Math.sqrt(nodeDegree[n.id] || 0) * 4), 44))
-          .attr('stroke-width', 2.5)
+          .attr('stroke-width', 3)  // Updated from 2.5 to match new border width
           .attr('filter', 'url(#node-shadow)');
 
         // Restore all edges
         linkLines.transition().duration(150)
-          .attr('opacity', 0.45)
-          .attr('stroke-width', l => (l.type === 'student' || l.type === 'teacher') ? 2.5 : 2);
+          .attr('opacity', d => {
+            // 🎯 ENHANCEMENT #2: Restore opacity by strength
+            const strength = d.strength || 3;
+            return Math.min(0.7, 0.3 + (strength / 5) * 0.4);
+          })
+          .attr('stroke-width', l => {
+            // 🎯 ENHANCEMENT #2: Restore width by strength
+            const baseWidth = (l.type === 'student' || l.type === 'teacher') ? 2.8 : 2.2;
+            const strength = l.strength || 3;
+            const strengthBoost = (strength - 1) * 0.4;
+            return Math.max(1.5, baseWidth + strengthBoost);
+          });
 
         // Restore edge labels
         linkGroup.select('text.link-label').transition().duration(150)
@@ -1643,7 +1767,7 @@ class SageNetwork {
         .attr('stroke-width', 2.5);
 
       if (this.node) {
-        d3.selectAll('.link').transition().duration(300).style('opacity', 0.45);
+        d3.selectAll('.link').transition().duration(300).style('opacity', 0.65); // Increased from 0.45
       }
       return;
     }
@@ -1713,6 +1837,41 @@ class SageNetwork {
           return 0.05;
         });
     }
+  }
+
+  /**
+   * ENHANCEMENT #2: Show autocomplete suggestions for search
+   */
+  updateSearchSuggestions(query) {
+    const suggestionsBox = document.getElementById('searchSuggestions');
+    if (!suggestionsBox) return;
+
+    if (query.length === 0) {
+      suggestionsBox.style.display = 'none';
+      return;
+    }
+
+    // Find matching sages
+    const matches = (window.graphData?.nodes || [])
+      .filter(n => n.label.toLowerCase().includes(query))
+      .slice(0, 8); // Limit to 8 results
+
+    if (matches.length === 0) {
+      suggestionsBox.innerHTML = '<div style="padding: 1rem; text-align: center; color: #999;">אין חכמים תואמים</div>';
+      suggestionsBox.style.display = 'block';
+      return;
+    }
+
+    // Build suggestions HTML
+    const html = matches.map(sage => `
+      <div onclick="window.graphNetwork && window.graphNetwork.selectNode({id: '${sage.id}', label: '${sage.label}'})">
+        <span>${sage.label}</span>
+        <span class="suggestion-era">${sage.era || sage.group || ''}</span>
+      </div>
+    `).join('');
+
+    suggestionsBox.innerHTML = html;
+    suggestionsBox.style.display = 'block';
   }
 
   /**
@@ -2300,13 +2459,33 @@ class SageNetwork {
 
       if (eraFilter && sage.era !== eraFilter) matches = false;
       if (regionFilter && !(sage.location && sage.location.includes(regionFilter))) matches = false;
-      if (fieldFilter && !(sage.field && sage.field.toLowerCase().includes(fieldFilter))) matches = false;
+      if (fieldFilter && sage.field !== fieldFilter) matches = false;
 
       if (matches) filtered.add(String(sage.id));
     });
 
-    // Apply opacity
-    this.node.style('opacity', d => filtered.has(String(d.id)) ? 1 : 0.1);
+    // Apply opacity + highlight filtered nodes
+    this.node
+      .style('opacity', d => filtered.has(String(d.id)) ? 1 : 0.1)
+      .style('stroke', d => {
+        if (filtered.size === 0 || filtered.size === this.data.nodes.length) {
+          return 'none'; // No filter active
+        }
+        return filtered.has(String(d.id)) ? '#FFD700' : 'none'; // Gold highlight for matches
+      })
+      .style('stroke-width', d => {
+        if (filtered.size === 0 || filtered.size === this.data.nodes.length) {
+          return '0';
+        }
+        return filtered.has(String(d.id)) ? '3px' : '0'; // Thick stroke for matches
+      })
+      .style('filter', d => {
+        if (filtered.size === 0 || filtered.size === this.data.nodes.length) {
+          return 'none';
+        }
+        return filtered.has(String(d.id)) ? 'drop-shadow(0 0 6px rgba(255, 215, 0, 0.8))' : 'none'; // Glow
+      });
+
     if (this.link) {
       this.link.style('opacity', d => {
         const srcMatch = filtered.has(String(d.source.id || d.source));
@@ -2315,7 +2494,29 @@ class SageNetwork {
       });
     }
 
-    console.log(`✅ Filtered: ${filtered.size}/${this.data.nodes.length} sages match criteria`);
+    // 🎯 NEW: Focus-based clustering - move filtered nodes toward center
+    if (this.simulation && filtered.size > 0 && filtered.size < this.data.nodes.length) {
+      const centerX = this.width / 2;
+      const centerY = this.height / 2;
+
+      // Add centering force for filtered nodes
+      this.simulation.force('centerFiltered', d3.forceX(d => {
+        return filtered.has(String(d.id)) ? centerX : d.x;
+      }).strength(0.3))
+      .force('centerFilteredY', d3.forceY(d => {
+        return filtered.has(String(d.id)) ? centerY : d.y;
+      }).strength(0.3));
+
+      // Restart simulation with focus
+      this.simulation.alpha(0.5).restart();
+    } else if (this.simulation && filtered.size === this.data.nodes.length) {
+      // All nodes visible - reset to normal layout
+      this.simulation.force('centerFiltered', null)
+        .force('centerFilteredY', null)
+        .alpha(0.3).restart();
+    }
+
+    console.log(`✅ Filtered: ${filtered.size}/${this.data.nodes.length} sages match criteria - 🎯 Focus enabled!`);
   }
 
   /**
