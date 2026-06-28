@@ -148,14 +148,21 @@ class SageNetwork {
       return sourceId === String(nodeId) || targetId === String(nodeId);
     }).length;
 
-    // Mobile: smaller nodes (base 12-14), Desktop: larger nodes (base 24)
+    // 🎯 OPTIMIZED for 561+ nodes: better size distribution
     const isMobile = window.innerWidth < 768;
     if (isMobile) {
-      // Mobile: base 12, +1 per connection, max 22
-      return Math.min(12 + Math.min(connectionCount, 10), 22);
+      // Mobile optimization
+      if (connectionCount === 0) return 6;      // Isolated nodes: tiny
+      if (connectionCount < 3) return 10;       // Low degree: small
+      if (connectionCount < 10) return 14;      // Medium degree
+      return Math.min(18 + (connectionCount - 10), 22); // Hub nodes
     } else {
-      // Desktop: base 24, +2 per connection, max 40
-      return Math.min(24 + Math.min(connectionCount, 8) * 2, 40);
+      // Desktop optimization - better visual hierarchy
+      if (connectionCount === 0) return 12;     // Isolated: still visible but small
+      if (connectionCount < 3) return 16;       // Low degree
+      if (connectionCount < 10) return 24;      // Medium degree
+      if (connectionCount < 30) return 28 + (connectionCount - 10) * 0.5; // High degree
+      return 38; // Hub nodes (30+ connections)
     }
   }
 
@@ -1198,11 +1205,40 @@ class SageNetwork {
 
     this.node.call(drag);
 
+    // 🎯 NETWORK STATS for large graphs (561+ nodes)
+    const degree = {};
+    this.data.nodes.forEach(n => degree[n.id] = 0);
+    this.data.links.forEach(link => {
+      const sourceId = String(link.source?.id || link.source);
+      const targetId = String(link.target?.id || link.target);
+      if (degree[sourceId] !== undefined) degree[sourceId]++;
+      if (degree[targetId] !== undefined) degree[targetId]++;
+    });
+
+    const isolated = Object.keys(degree).filter(id => degree[id] === 0).length;
+    const connected = this.data.nodes.length - isolated;
+    const avgDegree = Object.values(degree).reduce((a, b) => a + b, 0) / this.data.nodes.length;
+    const hubs = Object.entries(degree)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 3)
+      .map(([id, deg]) => {
+        const node = this.data.nodes.find(n => String(n.id) === id);
+        return `${node?.label} (${deg})`;
+      });
+
     console.log('✅ Force network rendered with Connected Papers enhancements:');
     console.log('   ✓ Node sizing by degree centrality');
     console.log('   ✓ Connection type styling (solid/dashed)');
     console.log('   ✓ Enhanced force simulation parameters');
     console.log('   ✓ Improved hover effects with glow');
+    console.log('');
+    console.log('📊 Network Statistics:');
+    console.log(`   • Nodes: ${this.data.nodes.length} total`);
+    console.log(`   • Edges: ${this.data.links.length} total`);
+    console.log(`   • Connected: ${connected} (${Math.round(100 * connected / this.data.nodes.length)}%)`);
+    console.log(`   • Isolated: ${isolated} (${Math.round(100 * isolated / this.data.nodes.length)}%)`);
+    console.log(`   • Avg degree: ${avgDegree.toFixed(1)}`);
+    console.log(`   • Top hubs: ${hubs.join(', ')}`);
   }
 
   /**
@@ -2391,100 +2427,25 @@ class SageNetwork {
   }
 
   /**
-   * Highlight connected nodes and links with colors by connection type
+   * Highlight connected nodes and links
    */
   highlightConnections(node, related) {
     if (!this.link) return;
 
     const relatedIds = new Set(related.map(n => n.id));
 
-    // Connection type colors
-    const connectionColors = {
-      'student': '#e74c3c',      // Red - incoming (source → this node)
-      'teacher': '#27ae60',      // Green - outgoing (this node → target)
-      'influence': '#3498db',    // Blue
-      'colleague': '#f39c12',    // Orange
-      'predecessor': '#9b59b6',  // Purple
-      'contemporary': '#16a085', // Teal
-      'oppose': '#c0392b'        // Dark red
-    };
-
-    // Helper: Get connection type for a link
-    const getConnectionType = (link) => {
-      if (link.type) return link.type;
-      // Infer from direction: if source → target is this node
-      if (link.source.id === node.id) return 'teacher';
-      if (link.target.id === node.id) return 'student';
-      return 'colleague';
-    };
-
-    // Enhance links with smooth transitions
     this.link
       .classed('active', d => d.source.id === node.id || d.target.id === node.id)
-      .transition()
-      .duration(300)
-      .style('opacity', d => d.source.id === node.id || d.target.id === node.id ? 0.85 : 0.15)
-      .style('stroke-width', d => d.source.id === node.id || d.target.id === node.id ? 3 : 1)
-      .style('stroke', d => {
-        if (d.source.id === node.id || d.target.id === node.id) {
-          const type = getConnectionType(d);
-          return connectionColors[type] || '#999';
-        }
-        return '#bbb';
-      });
+      .style('opacity', d => d.source.id === node.id || d.target.id === node.id ? 0.8 : 0.2)
+      .style('stroke-width', d => d.source.id === node.id || d.target.id === node.id ? 2.5 : 1.5);
 
-    // Enhanced node styling
     this.node
       .classed('related', d => relatedIds.has(d.id))
-      .transition()
-      .duration(300)
       .style('opacity', d => {
         if (d.id === node.id) return 1;
-        if (relatedIds.has(d.id)) return 0.95;
-        return 0.25;
-      })
-      .style('filter', d => {
-        if (d.id === node.id) return 'drop-shadow(0 0 8px rgba(41, 128, 185, 0.6))';
-        if (relatedIds.has(d.id)) return 'drop-shadow(0 0 4px rgba(41, 128, 185, 0.3))';
-        return 'none';
+        if (relatedIds.has(d.id)) return 1;
+        return 0.3;
       });
-
-    // Add hover tooltips on edges showing connection type
-    this.link.on('mouseover', (event, d) => {
-      if (d.source.id !== node.id && d.target.id !== node.id) return;
-
-      const type = getConnectionType(d);
-      const tooltip = document.createElement('div');
-      tooltip.style.cssText = `
-        position: fixed;
-        background: rgba(0, 0, 0, 0.9);
-        color: white;
-        padding: 0.5rem 0.75rem;
-        border-radius: 4px;
-        font-size: 0.8rem;
-        pointer-events: none;
-        z-index: 1000;
-        font-family: 'Frank Ruhl Libre', serif;
-      `;
-      tooltip.textContent = `סוג קשר: ${type}`;
-      tooltip.style.left = (event.pageX + 10) + 'px';
-      tooltip.style.top = (event.pageY + 10) + 'px';
-      document.body.appendChild(tooltip);
-
-      const cleanup = () => {
-        tooltip.remove();
-        this.link.on('mousemove', null);
-      };
-
-      this.link.on('mousemove', (moveEvent) => {
-        tooltip.style.left = (moveEvent.pageX + 10) + 'px';
-        tooltip.style.top = (moveEvent.pageY + 10) + 'px';
-      });
-
-      this.link.on('mouseout', cleanup);
-    });
-
-    console.log(`🔗 Highlighted connections for ${node.label} | Connected: ${relatedIds.size} sages`);
   }
 
   /**
@@ -2503,30 +2464,18 @@ class SageNetwork {
       sidebar.classList.remove('active');
     }
 
-    // Smooth transition back to default state
     if (this.node) {
       this.node.classed('selected', false).classed('related', false).classed('era-highlight', false);
-      this.node.transition()
-        .duration(300)
-        .style('opacity', 0.9)
-        .style('filter', 'none');
+      this.node.style('opacity', 0.9);
     }
 
     if (this.link) {
       this.link.classed('active', false)
-        .transition()
-        .duration(300)
         .style('opacity', 0.5)
-        .style('stroke-width', 1.5)
-        .style('stroke', '#bbb');
-
-      // Remove hover listeners
-      this.link.on('mouseover', null).on('mousemove', null).on('mouseout', null);
+        .style('stroke-width', 2);
     }
 
     this.selectedNode = null;
-
-    console.log('🔄 Deselected node - connections reset');
 
     // Notify mobile handler if available
     if (window.mobileHandler && window.mobileHandler.isCurrentlyMobile()) {

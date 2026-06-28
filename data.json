@@ -5515,15 +5515,6 @@
       "evidence_source": "מחקר"
     },
     {
-      "source": "180",
-      "target": "185",
-      "type": "influence",
-      "strength": 3,
-      "period": "עת חדשה",
-      "context_he": "השפיע על דור",
-      "evidence_source": "תיעוד"
-    },
-    {
       "source": "60",
       "target": "65",
       "type": "oppose",
@@ -5567,15 +5558,6 @@
       "period": "אחרונים",
       "context_he": "עמיתים בדור",
       "evidence_source": "ספרים"
-    },
-    {
-      "source": "220",
-      "target": "225",
-      "type": "colleague",
-      "strength": 3,
-      "period": "עת חדשה",
-      "context_he": "עמיתים בעבודה",
-      "evidence_source": "תיעוד"
     },
     {
       "source": "10",
