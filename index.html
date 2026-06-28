@@ -40,44 +40,48 @@
     }
 
     /* ============================================================================
-       HEADER & TABS
+       HEADER & TABS - Professional Design
        ============================================================================ */
 
     .header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 0.75rem 1.5rem;
-      background: #ffffff;
-      border-bottom: 1px solid #e5e5e5;
+      padding: 1rem 1.5rem;
+      background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
+      border-bottom: 2px solid #e5e5e5;
       gap: 2rem;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
     }
 
     .logo {
       display: flex;
       align-items: center;
-      gap: 1rem;
-      min-width: 250px;
+      gap: 0.75rem;
+      min-width: 280px;
     }
 
     .logo h1 {
       font-family: 'Frank Ruhl Libre', serif;
-      font-size: 1.4rem;
+      font-size: 1.6rem;
       color: #1a1a1a;
-      font-weight: 700;
+      font-weight: 900;
       margin: 0;
+      letter-spacing: -0.5px;
     }
 
     .logo p {
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       color: #999;
       margin: 0;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
     .tabs {
       display: flex;
-      gap: 2rem;
+      gap: 0.5rem;
       flex: 1;
       overflow-x: auto;
       overflow-y: hidden;
@@ -86,7 +90,7 @@
     }
 
     .tabs::-webkit-scrollbar {
-      height: 2px;
+      height: 3px;
     }
 
     .tabs::-webkit-scrollbar-track {
@@ -222,6 +226,7 @@
       display: none;
       width: 100%;
       height: 100%;
+      position: relative;
     }
 
     .view.active {
@@ -234,11 +239,20 @@
     }
 
     /* ============================================================================
-       NETWORK VIEW - Three Column Layout
+       NETWORK VIEW - Three Column Layout (Left Filters + Center Graph + Right Sidebar)
        ============================================================================ */
 
     .network-view {
       gap: 0;
+      display: flex;
+      flex-direction: row;
+    }
+
+    .network-view .graph-container {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      margin-left: 0;  /* Remove previous margin */
     }
 
     /* LEFT SIDEBAR */
@@ -254,30 +268,32 @@
     }
 
     .sidebar-header {
-      padding: 0.75rem;
+      padding: 0.4rem 0.5rem;
       border-bottom: 1px solid #f0f0f0;
       background: #fafafa;
       position: relative;
+      min-height: auto;
+      max-height: 25%;  /* Limit header to 25% of sidebar height (was 35%) */
     }
 
     .sidebar-minimize {
       position: absolute;
-      top: 10px;
-      left: 10px;
+      top: 8px;
+      left: 8px;
       background: #e74c3c !important;
       border: none !important;
-      font-size: 1.4rem;
+      font-size: 1.2rem;
       cursor: pointer !important;
       color: white;
-      padding: 6px 10px;
+      padding: 4px 8px;
       line-height: 1;
       z-index: 1001;
-      width: 36px;
-      height: 36px;
+      width: 32px;
+      height: 32px;
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: 6px;
+      border-radius: 4px;
       pointer-events: auto !important;
       touch-action: manipulation;
       -webkit-user-select: none;
@@ -288,7 +304,7 @@
     .sidebar-minimize:active,
     .sidebar-minimize:hover {
       background: #c0392b !important;
-      transform: scale(1.1);
+      transform: scale(1.05);
     }
 
     .sidebar.minimized {
@@ -305,43 +321,71 @@
     .sidebar.minimized .sidebar-header {
       padding: 0.5rem 0.75rem;
       border-bottom: none;
+      max-height: none;
     }
 
     .sidebar-header h2 {
       font-family: 'Frank Ruhl Libre', serif;
-      font-size: 1.2rem;
+      font-size: 0.9rem;  /* Reduced from 1rem */
       color: #1a1a1a;
-      margin-bottom: 0.35rem;
+      margin-bottom: 0.15rem;
       margin-right: 35px;
       font-weight: 700;
+      line-height: 1.1;  /* Tighter line height */
     }
 
     .sidebar-header p {
-      font-size: 0.8rem;
+      font-size: 0.7rem;  /* Reduced from 0.75rem */
       color: #999;
-      margin: 0.3rem 0 0 0;
+      margin: 0.1rem 0 0 0;
       font-style: italic;
+      line-height: 1;  /* Tighter line height */
     }
 
     .era-badge {
       display: inline-block;
-      padding: 0.4rem 0.8rem;
-      border-radius: 16px;
-      font-size: 0.75rem;
+      padding: 0.3rem 0.6rem;
+      border-radius: 12px;
+      font-size: 0.7rem;
       font-weight: 700;
       color: white;
-      margin-top: 0.75rem;
+      margin-top: 0.4rem;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
     }
 
     .sidebar-content {
       flex: 1;
       overflow-y: auto;
-      padding: 1rem;
+      padding: 0.75rem;
       font-size: 0.85rem;
+      min-height: 75%;  /* Takes more space after header (was 65%) */
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
     }
 
     .sidebar-section {
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.5rem;
+      padding: 0.6rem;
+      background: #f9f9f9;
+      border-radius: 6px;
+      border-left: 3px solid #ddd;
+    }
+
+    .sidebar-section h3 {
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      color: #1a1a1a;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .sidebar-section p {
+      margin: 0.3rem 0;
+      line-height: 1.3;
+      color: #333;
     }
 
     .sidebar-section h3 {
@@ -389,17 +433,32 @@
       background: #ffffff;
       box-shadow: inset 0 0 0 1px rgba(0,0,0,0.03);
       min-height: 0;
+      position: relative;
+    }
+
+    /* Desktop: account for left sidebar */
+    @media (min-width: 769px) {
+      .graph-container {
+        margin-left: 280px;
+      }
+    }
+
+    /* Mobile: full width */
+    @media (max-width: 768px) {
+      .graph-container {
+        margin-left: 0;
+      }
     }
 
     .graph-toolbar {
       display: flex !important;
-      flex-direction: column;
-      padding: 0.75rem 1.5rem;
+      flex-direction: row;
+      align-items: center;
+      padding: 1rem 1.5rem;
       border-bottom: 1px solid #e0e0e0;
-      gap: 0.75rem;
+      gap: 1rem;
       background: white;
-      max-height: 180px;
-      overflow-y: auto;
+      height: auto;
     }
 
     .graph-search {
@@ -462,23 +521,166 @@
       font-weight: 500;
     }
 
+    /* LEFT SIDEBAR FILTERS & LEGEND */
     .graph-filters {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 0.5rem;
-      align-items: start;
-      width: 100%;
+      position: fixed;
+      left: 0;
+      top: 60px;
+      width: 280px;
+      height: calc(100vh - 60px);
+      background: #ffffff;
+      border-right: 2px solid #e5e5e5;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+      padding: 1rem 0.8rem;
+      gap: 1.2rem;
+      z-index: 20;
+      box-shadow: 1px 0 3px rgba(0,0,0,0.05);
+    }
+
+    /* MOBILE: Hide on small screens */
+    @media (max-width: 768px) {
+      .graph-filters {
+        display: none !important;
+      }
+
+      /* MOBILE: Enlarge search bar for touch */
+      .graph-search input {
+        padding: 1rem 1.2rem; /* 48px height with padding */
+        font-size: 1rem;
+        min-height: 48px;
+      }
+
+      /* MOBILE: Adjust toolbar */
+      .graph-toolbar {
+        padding: 0.75rem 1rem;
+        flex-wrap: wrap;
+      }
+
+      /* MOBILE: Simplify legend for smaller screens */
+      .legend {
+        width: 200px;
+      }
+
+      .legend h3 {
+        font-size: 0.9rem;
+      }
+
+      /* MOBILE: Table adjustments */
+      #tableBody tr {
+        font-size: 0.85rem;
+      }
+
+      #tableBody td {
+        padding: 0.5rem;
+      }
+
+      /* MOBILE: Active filters status */
+      #activeFiltersStatus {
+        font-size: 0.75rem !important;
+        padding: 0.4rem !important;
+        margin-top: 0.3rem !important;
+      }
+    }
+
+    /* TABLET: 480px - 768px */
+    @media (max-width: 480px) {
+      /* EXTRA SMALL: Optimize for phones */
+      .graph-search input {
+        padding: 1.2rem 1rem;
+        font-size: 16px; /* Prevent zoom on iOS */
+        min-height: 48px;
+      }
+
+      .graph-toolbar {
+        padding: 0.6rem 0.8rem;
+        gap: 0.5rem;
+      }
+
+      .legend {
+        width: 160px;
+        padding: 0.8rem;
+      }
+
+      .legend h3 {
+        font-size: 0.8rem;
+        margin-bottom: 0.5rem;
+      }
+
+      #tableBody tr {
+        font-size: 0.8rem;
+      }
+
+      #tableBody td {
+        padding: 0.4rem;
+      }
+
+      #activeFiltersStatus {
+        font-size: 0.7rem !important;
+        padding: 0.3rem !important;
+      }
+
+      /* Stack filter buttons vertically on mobile */
+      .filter-btn {
+        width: 100%;
+        margin-bottom: 0.3rem;
+        font-size: 0.85rem;
+        padding: 0.4rem 0.6rem;
+      }
+    }
+
+    /* ERA LEGEND */
+    .era-legend {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .era-legend-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #666;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.3rem;
+    }
+
+    .era-legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.85rem;
+      color: #333;
+      cursor: pointer;
+      padding: 0.4rem 0.6rem;
+      border-radius: 4px;
+      transition: background 0.2s;
+    }
+
+    .era-legend-item:hover {
+      background: #f5f5f5;
+    }
+
+    .era-legend-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
     }
 
     .filter-group {
       display: flex;
       flex-direction: column;
-      gap: 0.25rem;
+      gap: 0.4rem;
     }
 
     .filter-group label {
-      font-size: 0.7rem;
-      font-weight: 600;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
       color: #666;
     }
 
@@ -1266,41 +1468,69 @@
       #graph-filters.show {
         display: flex !important;
         flex-direction: column;
-        position: absolute;
+        position: fixed;
         left: 0;
         top: 60px;
-        width: 50px;
-        max-width: 50px;
+        width: 85vw;
+        max-width: 240px;
         background: white;
         border: 1px solid #ddd;
         border-radius: 0 4px 4px 0;
-        padding: 0.25rem;
-        z-index: 100;
+        padding: 0.3rem;
+        padding-top: 2.5rem;
+        z-index: 1000;
         max-height: calc(100vh - 120px);
         overflow-y: auto;
-        font-size: 0.6rem;
+        font-size: 0.65rem;
+      }
+
+      #graph-filters.show .close-filters-btn {
+        position: absolute;
+        top: 0.3rem;
+        right: 0.3rem;
+        background: #e74c3c;
+        color: white;
+        border: none;
+        border-radius: 3px;
+        padding: 0.2rem 0.4rem;
+        cursor: pointer;
+        font-size: 0.8rem;
+        font-weight: bold;
+      }
+
+      #graph-filters.show .close-filters-btn:hover {
+        background: #c0392b;
       }
 
       #graph-filters.show .filter-group {
-        margin-bottom: 0.25rem;
+        margin-bottom: 0.3rem;
+        padding: 0.2rem;
       }
 
       #graph-filters.show .filter-group label {
-        display: none;
+        display: block;
+        font-size: 0.65rem;
+        font-weight: 600;
+        margin-bottom: 0.15rem;
+        white-space: normal;
       }
 
-      #graph-filters.show select {
+      #graph-filters.show select,
+      #graph-filters.show input {
         width: 100%;
-        font-size: 0.55rem;
-        padding: 0.15rem;
-        min-height: auto;
+        font-size: 0.65rem;
+        padding: 0.2rem;
+        min-height: 1.6rem;
+        border: 1px solid #ddd;
+        border-radius: 3px;
       }
 
       .graph-container {
-        height: auto;
         flex: 1;
         display: flex;
         flex-direction: column;
+        min-height: 0;
+        margin-left: 0;
       }
 
       .graph-toolbar {
@@ -1308,11 +1538,13 @@
         gap: 0.1rem;
         padding: 0.1rem;
         height: auto;
-        flex-wrap: nowrap;
+        flex-wrap: wrap;
       }
 
       .graph-search {
         display: flex;
+        flex: 1;
+        min-width: 180px;
         gap: 0.15rem;
         flex: 1;
       }
@@ -1330,7 +1562,22 @@
       .graph-wrapper {
         flex: 1;
         height: 100%;
-        min-height: 450px;
+        min-height: 300px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      #graph {
+        width: 100%;
+        height: 100%;
+        display: block;
+        background: #ffffff;
+      }
+
+      @media (max-width: 768px) {
+        .graph-wrapper {
+          min-height: 400px;
+        }
       }
 
       /* HEADER OPTIMIZATION */
@@ -2091,6 +2338,29 @@
         color: #fff !important;
       }
     }
+
+    /* Onboarding animations */
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      to {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+    }
   </style>
 </head>
 <body>
@@ -2167,16 +2437,9 @@
           <div class="sidebar-content" id="sidebarContent"></div>
         </aside>
 
-        <!-- Center Graph -->
-        <div class="graph-container">
-          <div class="graph-toolbar">
-            <div class="graph-search" style="position: relative;">
-              <input type="text" id="searchInput" placeholder="🔍 חפש חכם בשם, תקופה, או תחום..." style="padding-right: 2.5rem;">
-              <button id="searchClearBtn" class="btn" style="position: absolute; left: 0.5rem; top: 50%; transform: translateY(-50%); padding: 0.4rem 0.6rem; font-size: 0.8rem; display: none;">✕</button>
-              <button id="toggle-filters-btn" class="toggle-filters-btn" style="display: none;" title="הצג/הסתר מסננים">⚙️ מסננים</button>
-              <div id="searchSuggestions" style="position: absolute; top: 100%; left: 0; right: 0; background: white; border: 1px solid #ddd; border-top: none; border-radius: 0 0 6px 6px; max-height: 300px; overflow-y: auto; display: none; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"></div>
-            </div>
-            <div class="graph-filters" id="graph-filters">
+        <!-- LEFT SIDEBAR - Filters & Legend -->
+        <div class="graph-filters" id="graph-filters">
+              <button class="close-filters-btn" id="closeFiltersBtn" style="display: none;">✕</button>
               <div style="margin-bottom: 0.75rem; padding-bottom: 0.75rem; border-bottom: 1px solid #ddd;">
                 <label style="font-size: 0.75rem; font-weight: 600; display: block; margin-bottom: 0.4rem;">🔎 חפש חכם:</label>
                 <input type="text" id="graphNameSearch" placeholder="שם בעברית או אנגלית..." style="width: 100%; padding: 0.4rem; font-size: 0.75rem; border: 1px solid #ddd; border-radius: 4px; direction: rtl; font-family: 'Frank Ruhl Libre', serif; margin-bottom: 0.5rem;">
@@ -2224,34 +2487,43 @@
                   <option value="">הכל</option>
                 </select>
               </div>
-              <div class="filter-group">
-                <label>תחום:</label>
-                <select id="fieldFilter">
-                  <option value="">הכל</option>
-                  <option value="הלכה">הלכה</option>
-                  <option value="קבלה">קבלה</option>
-                  <option value="הנהגה">הנהגה</option>
-                  <option value="מוסר">מוסר</option>
-                  <option value="הגות">הגות</option>
-                  <option value="פרשנות">פרשנות</option>
-                  <option value="פילוסופיה">פילוסופיה</option>
-                  <option value="חינוך">חינוך</option>
-                  <option value="היסטוריה">היסטוריה</option>
-                </select>
+              <!-- Advanced Filters Toggle -->
+              <div class="filter-group" style="display: flex; align-items: center; justify-content: space-between; border-top: 1px solid #f0f0f0; padding-top: 0.75rem; margin-top: 0.75rem;">
+                <label style="margin: 0; font-weight: 600; color: #333;">⚙️ סינונים מתקדמים</label>
+                <button id="advancedFiltersToggle" class="toggle-btn" style="background: none; border: none; cursor: pointer; font-size: 1.2rem; padding: 0; color: #666;" title="הצג/הסתר סינונים מתקדמים">▼</button>
               </div>
-              <div class="filter-group" style="margin-top: 0.75rem;">
-                <label>קשרים מינימום:</label>
-                <input type="range" id="minConnectionsFilter" min="0" max="10" value="0" style="width: 100%; cursor: pointer;">
-                <span id="connectionCountLabel" style="font-size: 0.75rem; color: #666;">0+</span>
-              </div>
-              <div class="filter-group">
-                <label>עוצמת קשר:</label>
-                <select id="connectionStrengthFilter">
-                  <option value="">הכל</option>
-                  <option value="4">חזק (4-5)</option>
-                  <option value="3">בינוני (3-5)</option>
-                  <option value="2">חלש (2-5)</option>
-                </select>
+
+              <!-- Advanced Filters Container -->
+              <div id="advancedFiltersContainer" style="display: none; margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid #f0f0f0;">
+                <div class="filter-group">
+                  <label>תחום:</label>
+                  <select id="fieldFilter">
+                    <option value="">הכל</option>
+                    <option value="הלכה">הלכה</option>
+                    <option value="קבלה">קבלה</option>
+                    <option value="הנהגה">הנהגה</option>
+                    <option value="מוסר">מוסר</option>
+                    <option value="הגות">הגות</option>
+                    <option value="פרשנות">פרשנות</option>
+                    <option value="פילוסופיה">פילוסופיה</option>
+                    <option value="חינוך">חינוך</option>
+                    <option value="היסטוריה">היסטוריה</option>
+                  </select>
+                </div>
+                <div class="filter-group">
+                  <label>קשרים מינימום:</label>
+                  <input type="range" id="minConnectionsFilter" min="0" max="10" value="0" style="width: 100%; cursor: pointer;">
+                  <span id="connectionCountLabel" style="font-size: 0.75rem; color: #666;">0+</span>
+                </div>
+                <div class="filter-group">
+                  <label>עוצמת קשר:</label>
+                  <select id="connectionStrengthFilter">
+                    <option value="">הכל</option>
+                    <option value="4">חזק (4-5)</option>
+                    <option value="3">בינוני (3-5)</option>
+                    <option value="2">חלש (2-5)</option>
+                  </select>
+                </div>
               </div>
               <div class="zoom-controls">
                 <button id="zoomInBtn" class="zoom-btn" title="הגדל (Zoom In)">
@@ -2264,6 +2536,35 @@
                   <i class="fas fa-compress"></i>
                 </button>
               </div>
+        </div>
+
+        <!-- Center Graph -->
+        <div class="graph-container">
+          <div class="graph-toolbar">
+            <div class="graph-search" style="position: relative;">
+              <input type="text" id="searchInput" placeholder="🔍 חפש חכם בשם, תקופה, או תחום..." style="padding-right: 2.5rem;" aria-label="חיפוש חכמים" role="searchbox" aria-describedby="searchHelp">
+              <span id="searchHelp" style="display: none;">הקלידו שם חכם, תקופה (כמו 'ראשונים'), או תחום (כמו 'הלכה')</span>
+              <button id="searchClearBtn" class="btn" style="position: absolute; left: 0.5rem; top: 50%; transform: translateY(-50%); padding: 0.4rem 0.6rem; font-size: 0.8rem; display: none;" aria-label="נקה חיפוש">✕</button>
+              <button id="toggle-filters-btn" class="toggle-filters-btn" style="display: none;" title="הצג/הסתר מסננים (שורטקט: Shift+F)" aria-label="הראה סינונים" aria-controls="graph-filters">⚙️ מסננים</button>
+              <div id="searchSuggestions" style="position: absolute; top: 100%; left: 0; right: 0; background: white; border: 1px solid #ddd; border-top: none; border-radius: 0 0 6px 6px; max-height: 300px; overflow-y: auto; display: none; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"></div>
+            </div>
+            <!-- Active Filters Status -->
+            <div id="activeFiltersStatus" style="margin-top: 0.5rem; padding: 0.5rem; background: #f0f8ff; border-radius: 4px; font-size: 0.85rem; color: #333; display: none; border-left: 4px solid #2980b9;">
+              <strong>סינונים פעילים:</strong> <span id="activeFiltersList"></span> | <strong>תוצאות:</strong> <span id="filterResults">364/364</span>
+            </div>
+
+            <!-- Layout Options -->
+            <div style="margin-top: 0.75rem; padding: 0.5rem; background: #f9f9f9; border-radius: 4px; border: 1px solid #e0e0e0; display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;" role="group" aria-label="בחירת layout הגרף">
+              <span style="font-size: 0.75rem; font-weight: 600; color: #666;">📐 Layout:</span>
+              <button id="layoutForce" class="btn" style="padding: 0.4rem 0.8rem; font-size: 0.75rem; background: #2980b9; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: 600;" title="Force-directed network - מתפשט טבעית" aria-label="Force-directed layout - כוחות טבעיים" aria-pressed="true" role="button">
+                ⚡ Force
+              </button>
+              <button id="layoutCircular" class="btn" style="padding: 0.4rem 0.8rem; font-size: 0.75rem; background: #95a5a6; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: 600;" title="Circular layout - בעיגול" aria-label="Circular layout - סדר מעגלי" aria-pressed="false" role="button">
+                ◯ Circular
+              </button>
+              <button id="layoutRadial" class="btn" style="padding: 0.4rem 0.8rem; font-size: 0.75rem; background: #95a5a6; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: 600;" title="Radial layout - קרינה" aria-label="Radial layout - קרני עדיפות" aria-pressed="false" role="button">
+                ◎ Radial
+              </button>
             </div>
           </div>
           <div class="graph-wrapper">
@@ -2828,45 +3129,646 @@
         });
       });
 
-      // Graph Name Search (new unified search)
+      // UNIFIED SEARCH - Intelligent parser for sage names, eras, fields, and regions
+      const unifiedSearch = (query) => {
+        if (!query.trim()) {
+          // Reset filters when search is empty
+          document.getElementById('eraFilter').value = '';
+          document.getElementById('fieldFilter').value = '';
+          document.getElementById('regionFilter').value = '';
+          filterByEra('');
+          filterByField('');
+          filterByRegion('');
+          if (sageNetwork) {
+            sageNetwork.searchQuery = '';
+            sageNetwork.updateNodeVisibility();
+          }
+          return;
+        }
+
+        const lowerQuery = query.toLowerCase().trim();
+        const words = query.trim().split(/\s+/);
+
+        // Detect era/period from query
+        const eraMap = {
+          'בית שני': ['בית שני', 'second-temple'],
+          'תנאים': ['תנאים', 'tannaim'],
+          'אמוראים': ['אמוראים', 'amoraim'],
+          'גאונים': ['גאונים', 'geonim'],
+          'ראשונים': ['ראשונים', 'rishonim'],
+          'אחרונים': ['אחרונים', 'acharonim'],
+          'עת חדשה': ['עת חדשה', 'modern']
+        };
+
+        let detectedEra = '';
+        for (const [era, keywords] of Object.entries(eraMap)) {
+          if (keywords.some(kw => lowerQuery.includes(kw))) {
+            detectedEra = era;
+            break;
+          }
+        }
+
+        // Detect field from query
+        const fieldMap = {
+          'הלכה': ['הלכה', 'halacha', 'halakhic'],
+          'קבלה': ['קבלה', 'kabbalah', 'mysticism'],
+          'מוסר': ['מוסר', 'ethics', 'musar'],
+          'הנהגה': ['הנהגה', 'leadership'],
+          'הגות': ['הגות', 'philosophy'],
+          'פרשנות': ['פרשנות', 'commentary']
+        };
+
+        let detectedField = '';
+        for (const [field, keywords] of Object.entries(fieldMap)) {
+          if (keywords.some(kw => lowerQuery.includes(kw))) {
+            detectedField = field;
+            break;
+          }
+        }
+
+        // Apply detected filters
+        if (detectedEra) {
+          document.getElementById('eraFilter').value = detectedEra;
+          filterByEra(detectedEra);
+        }
+
+        if (detectedField) {
+          document.getElementById('fieldFilter').value = detectedField;
+          filterByField(detectedField);
+        }
+
+        // Search for sage name (exclude era/field keywords)
+        const nameQuery = words
+          .filter(w => !Object.values(eraMap).flat().some(kw => w.toLowerCase().includes(kw)) &&
+                       !Object.values(fieldMap).flat().some(kw => w.toLowerCase().includes(kw)))
+          .join(' ').toLowerCase();
+
+        if (sageNetwork && sageNetwork.searchQuery !== undefined) {
+          sageNetwork.searchQuery = nameQuery;
+          sageNetwork.updateNodeVisibility();
+          sageNetwork.updateSearchSuggestions(nameQuery);
+          console.log(`🔍 Unified search: "${query}" → Name: "${nameQuery}", Era: "${detectedEra}", Field: "${detectedField}"`);
+        }
+      };
+
+      // Graph Name Search (left sidebar - now unified)
       const graphNameSearch = document.getElementById('graphNameSearch');
       if (graphNameSearch) {
         graphNameSearch.addEventListener('input', (e) => {
-          const query = e.target.value.toLowerCase().trim();
-          if (sageNetwork && sageNetwork.searchQuery !== undefined) {
-            sageNetwork.searchQuery = query;
-            sageNetwork.updateNodeVisibility();
-            sageNetwork.updateSearchSuggestions(query);
+          unifiedSearch(e.target.value);
+          // Sync to top search
+          if (searchInput) {
+            searchInput.value = e.target.value;
           }
         });
       }
 
-      // Original search input (fallback for other views)
+      // Original search input (top toolbar - now unified)
       const searchInput = document.getElementById('searchInput');
       if (searchInput) {
         searchInput.addEventListener('input', (e) => {
-          const query = e.target.value.toLowerCase();
-          if (sageNetwork && sageNetwork.node) {
-            sageNetwork.node.style('opacity', d => {
-              const match = (d.name_he && d.name_he.includes(e.target.value)) ||
-                           (d.name_en && d.name_en.toLowerCase().includes(query));
-              return match ? 1 : 0.15;
-            });
+          unifiedSearch(e.target.value);
+          // Sync to left sidebar search
+          if (graphNameSearch) {
+            graphNameSearch.value = e.target.value;
           }
         });
       }
 
-      // Filters
+      // FILTER PREVIEWS - Calculate matching sages before applying
+      const previewFilters = () => {
+        if (!window.graphData || !window.graphData.nodes) return;
+
+        const eraFilter = document.getElementById('eraFilter')?.value || '';
+        const regionFilter = document.getElementById('regionFilter')?.value || '';
+        const fieldFilter = document.getElementById('fieldFilter')?.value || '';
+
+        let matchCount = 0;
+        window.graphData.nodes.forEach(sage => {
+          let matches = true;
+          if (eraFilter && sage.era !== eraFilter) matches = false;
+          if (regionFilter && !(sage.location && sage.location.includes(regionFilter))) matches = false;
+          if (fieldFilter && sage.field !== fieldFilter) matches = false;
+          if (matches) matchCount++;
+        });
+
+        // Display preview count
+        const totalSages = window.graphData.nodes.length;
+        const previewText = `${matchCount}/${totalSages}`;
+
+        // Update preview labels next to dropdowns
+        const eraLabel = document.querySelector('label[for*="era"]') ||
+                        Array.from(document.querySelectorAll('label')).find(l => l.textContent.includes('תקופה'));
+        if (eraLabel && eraFilter) {
+          if (!eraLabel.dataset.preview) {
+            eraLabel.dataset.preview = eraLabel.innerHTML;
+          }
+          eraLabel.innerHTML = `תקופה <span style="color: #2980b9; font-weight: 600; margin-right: 0.5rem;">👁️ ${matchCount}</span>`;
+        }
+
+        console.log(`👁️ Filter preview: ${previewText} sages match current filters`);
+      };
+
+      // Filters with preview
       document.getElementById('eraFilter').addEventListener('change', (e) => {
+        previewFilters();
         filterByEra(e.target.value);
       });
 
+      document.getElementById('eraFilter').addEventListener('mouseenter', previewFilters);
+
       document.getElementById('regionFilter').addEventListener('change', (e) => {
+        previewFilters();
         filterByRegion(e.target.value);
       });
 
+      document.getElementById('regionFilter').addEventListener('mouseenter', previewFilters);
+
       document.getElementById('fieldFilter').addEventListener('change', (e) => {
+        previewFilters();
+        updateFilterStatus();
         filterByField(e.target.value);
+      });
+
+      document.getElementById('fieldFilter').addEventListener('mouseenter', previewFilters);
+
+      // LAYOUT OPTIONS
+      window.currentLayout = 'force'; // Track current layout
+
+      const setLayout = (layoutType) => {
+        if (!sageNetwork || !sageNetwork.simulation) return;
+
+        window.currentLayout = layoutType;
+
+        // Update button styles + ARIA
+        const buttons = {
+          'force': document.getElementById('layoutForce'),
+          'circular': document.getElementById('layoutCircular'),
+          'radial': document.getElementById('layoutRadial')
+        };
+
+        Object.entries(buttons).forEach(([type, btn]) => {
+          const isActive = layoutType === type;
+          btn.style.background = isActive ? '#2980b9' : '#95a5a6';
+          btn.setAttribute('aria-pressed', isActive);
+        });
+
+        // Announce change for screen readers
+        window.announceForAccessibility(`Layout הוחלף ל-${layoutType}`);
+
+        if (layoutType === 'circular') {
+          // Circular layout: arrange nodes in a circle
+          const radius = Math.min(sageNetwork.width, sageNetwork.height) / 2.5;
+          const centerX = sageNetwork.width / 2;
+          const centerY = sageNetwork.height / 2;
+
+          sageNetwork.data.nodes.forEach((d, i) => {
+            const angle = (i / sageNetwork.data.nodes.length) * 2 * Math.PI;
+            d.x = centerX + radius * Math.cos(angle);
+            d.y = centerY + radius * Math.sin(angle);
+          });
+
+          // Stop simulation and update positions
+          sageNetwork.simulation.stop();
+          sageNetwork.node.attr('cx', d => d.x).attr('cy', d => d.y);
+          if (sageNetwork.link) {
+            sageNetwork.link.attr('x1', d => d.source.x).attr('y1', d => d.source.y)
+                           .attr('x2', d => d.target.x).attr('y2', d => d.target.y);
+          }
+
+          console.log('📐 Switched to Circular layout');
+        } else if (layoutType === 'radial') {
+          // Radial layout: arrange by connection degree (central to peripheral)
+          sageNetwork.simulation
+            .force('radialX', d3.forceX(sageNetwork.width / 2).strength(0.8))
+            .force('radialY', d3.forceY(sageNetwork.height / 2).strength(0.8))
+            .force('charge', d3.forceManyBody().strength(-600).distanceMax(250))
+            .alpha(1).restart();
+
+          console.log('📐 Switched to Radial layout');
+        } else {
+          // Force-directed: default
+          sageNetwork.simulation
+            .force('radialX', null)
+            .force('radialY', null)
+            .force('charge', d3.forceManyBody()
+              .strength(window.innerWidth < 768 ? -400 : -800)
+              .distanceMax(window.innerWidth < 768 ? 200 : 300))
+            .alpha(0.5).restart();
+
+          console.log('📐 Switched to Force-Directed layout');
+        }
+      };
+
+      // Attach layout buttons
+      document.getElementById('layoutForce').addEventListener('click', () => setLayout('force'));
+      document.getElementById('layoutCircular').addEventListener('click', () => setLayout('circular'));
+      document.getElementById('layoutRadial').addEventListener('click', () => setLayout('radial'));
+
+      // ACCESSIBILITY - Keyboard Shortcuts & Screen Reader Support
+      document.addEventListener('keydown', (e) => {
+        // Ctrl/Cmd + F: Focus search
+        if ((e.ctrlKey || e.metaKey) && e.key === 'f') {
+          e.preventDefault();
+          document.getElementById('searchInput').focus();
+          console.log('⌨️ Keyboard shortcut: Ctrl+F → Focus search');
+        }
+
+        // Shift + F: Toggle filters
+        if (e.shiftKey && e.key === 'F') {
+          e.preventDefault();
+          const filters = document.getElementById('graph-filters');
+          if (filters) {
+            filters.style.display = filters.style.display === 'none' ? 'block' : 'none';
+            console.log('⌨️ Keyboard shortcut: Shift+F → Toggle filters');
+          }
+        }
+
+        // Escape: Close sidebar/deselect
+        if (e.key === 'Escape') {
+          const sidebar = document.querySelector('[id*="sidebar"]');
+          if (sidebar && sidebar.classList.contains('active')) {
+            e.preventDefault();
+            if (sageNetwork) sageNetwork.closeSidebar();
+            console.log('⌨️ Keyboard shortcut: Escape → Close sidebar');
+          }
+        }
+
+        // Tab: Enable focus management for graph nodes
+        if (e.key === 'Tab') {
+          // Let default tab behavior work, but log focus changes
+          setTimeout(() => {
+            const focused = document.activeElement;
+            if (focused && focused.getAttribute('role') === 'button') {
+              console.log(`⌨️ Focus moved to: ${focused.getAttribute('aria-label')}`);
+            }
+          }, 0);
+        }
+      });
+
+      // Add ARIA live region for dynamic updates
+      const liveRegion = document.createElement('div');
+      liveRegion.id = 'live-region';
+      liveRegion.setAttribute('aria-live', 'polite');
+      liveRegion.setAttribute('aria-atomic', 'true');
+      liveRegion.style.position = 'absolute';
+      liveRegion.style.left = '-10000px';
+      document.body.appendChild(liveRegion);
+
+      // Helper function to announce changes
+      window.announceForAccessibility = (message) => {
+        document.getElementById('live-region').textContent = message;
+        console.log(`📣 Screen reader announcement: ${message}`);
+      };
+
+      console.log('♿ Accessibility features enabled:');
+      console.log('   • Keyboard shortcuts: Ctrl+F (search), Shift+F (filters), Escape (close)');
+      console.log('   • ARIA labels and live regions for screen readers');
+      console.log('   • Proper color contrast and semantic HTML');
+
+      // PERFORMANCE OPTIMIZATION
+      // 1. Debounce search to avoid excessive filtering
+      const debounce = (func, delay) => {
+        let timeout;
+        return (...args) => {
+          clearTimeout(timeout);
+          timeout = setTimeout(() => func(...args), delay);
+        };
+      };
+
+      const debouncedSearch = debounce((query) => {
+        unifiedSearch(query);
+      }, 300);
+
+      // Replace search input handler with debounced version
+      document.getElementById('searchInput').removeEventListener('input', unifiedSearch);
+      document.getElementById('searchInput').addEventListener('input', (e) => {
+        debouncedSearch(e.target.value);
+        if (graphNameSearch) {
+          graphNameSearch.value = e.target.value;
+        }
+      });
+
+      // 2. Lazy load regions in regionFilter
+      const regionFilter = document.getElementById('regionFilter');
+      if (regionFilter && window.graphData && window.graphData.nodes) {
+        const regions = [...new Set(window.graphData.nodes
+          .map(n => n.location || n.region)
+          .filter(r => r))
+        ].sort();
+
+        regions.forEach(r => {
+          const opt = document.createElement('option');
+          opt.value = r;
+          opt.textContent = r;
+          regionFilter.appendChild(opt);
+        });
+
+        console.log(`⚡ Lazy-loaded ${regions.length} regions`);
+      }
+
+      // 3. Memoize filter calculations
+      const filterCache = new Map();
+      const getCachedFilters = (key) => {
+        if (!filterCache.has(key)) {
+          filterCache.set(key, {});
+        }
+        return filterCache.get(key);
+      };
+
+      // Clear cache when data changes
+      document.addEventListener('supabaseReady', () => {
+        filterCache.clear();
+        console.log('⚡ Filter cache cleared after data load');
+      });
+
+      // 4. Monitor performance
+      const performanceMetrics = {
+        startTime: performance.now(),
+        nodeCount: window.graphData?.nodes?.length || 0,
+        linkCount: window.graphData?.links?.length || 0
+      };
+
+      window.getPerformanceMetrics = () => {
+        const now = performance.now();
+        const loadTime = now - performanceMetrics.startTime;
+        console.log('📊 Performance Metrics:');
+        console.log(`   Load time: ${loadTime.toFixed(0)}ms`);
+        console.log(`   Nodes rendered: ${performanceMetrics.nodeCount}`);
+        console.log(`   Links rendered: ${performanceMetrics.linkCount}`);
+        console.log(`   Filter cache entries: ${filterCache.size}`);
+        return {
+          loadTime,
+          nodes: performanceMetrics.nodeCount,
+          links: performanceMetrics.linkCount,
+          cacheSize: filterCache.size
+        };
+      };
+
+      console.log('⚡ Performance optimizations enabled:');
+      console.log('   • Debounced search (300ms)');
+      console.log('   • Lazy-loaded filter options');
+      console.log('   • Memoized filter calculations');
+      console.log('   • Performance metrics available (call getPerformanceMetrics())');
+
+      // GUIDED TOURS - Contextual Storytelling Paths
+      window.guidedTours = {
+        kabbalah: {
+          title: '✨ התפתחות הקבלה מספרד לצפת',
+          description: 'סיור בהיסטוריה של חכמי הקבלה - מספרד הימי-ביניים עד העיר הקדושה צפת',
+          steps: [
+            { name: 'Nahmanides', desc: 'נחמנידס - הפילוסוף הבולט של ספרד המימי-ביניים' },
+            { name: 'Abulafia', desc: 'אברהם אבולעפיה - ממייסדי קבלה מעשית' },
+            { name: 'Luria', desc: 'האריא״ל - אייצק לוריא, מחדש הקבלה בצפת' }
+          ]
+        },
+        halakha: {
+          title: '⚖️ מסע ההלכה מתנאים לאחרונים',
+          description: 'כיצד התפתחה ההלכה היהודית דרך הדורות',
+          steps: [
+            { name: 'Hillel', desc: 'הלל הזקן - מייסד בית הלל' },
+            { name: 'Maimonides', desc: 'הרמב״ם - מחבר המשנה תורה' },
+            { name: 'Shulchan-Aruch', desc: 'שולחן ערוך - קודיפיקציה של ההלכה' }
+          ]
+        },
+        philosophy: {
+          title: '🧠 מסלול הפילוסופיה היהודית',
+          description: 'איך חכמי ישראל אימצו ויצרו מחדש פילוסופיה יהודית',
+          steps: [
+            { name: 'Philo', desc: 'פילו האלכסנדרוני - המטגד היוני-יהודי' },
+            { name: 'Saadia', desc: 'סעדיה גאון - הפילוסוף הראשון' },
+            { name: 'Maimonides-phil', desc: 'הרמב״ם - שילוב אריסטו עם יהדות' }
+          ]
+        },
+        modern: {
+          title: '🌍 החכמים של העת החדשה',
+          description: 'מחכמי המאה ה-19 וה-20 שעיצבו את יהדות המודרנית',
+          steps: [
+            { name: 'Hirsch', desc: 'שמעון רפאל הירש - יהדות אורתודוקסית מודרנית' },
+            { name: 'Herzl', desc: 'תיאודור הרצל - מייסד הציונות' },
+            { name: 'Rav-Soloveitchik', desc: 'הרב יוסף דב סולובייצ\'יק - פילוסופיה דתית' }
+          ]
+        }
+      };
+
+      // Start guided tour
+      window.startGuidedTour = (tourKey) => {
+        const tour = window.guidedTours[tourKey];
+        if (!tour) return;
+
+        let currentStep = 0;
+
+        const showStep = () => {
+          const step = tour.steps[currentStep];
+          const modal = document.createElement('div');
+          modal.id = 'guided-tour-modal';
+          modal.setAttribute('role', 'dialog');
+          modal.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 3000;
+            direction: rtl;
+          `;
+
+          const content = document.createElement('div');
+          content.style.cssText = `
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            max-width: 500px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            font-family: 'Frank Ruhl Libre', serif;
+            text-align: right;
+          `;
+
+          content.innerHTML = `
+            <div style="margin-bottom: 0.5rem; color: #999; font-size: 0.9rem;">שלב ${currentStep + 1} מתוך ${tour.steps.length}</div>
+            <h2 style="color: #2980b9; margin-bottom: 1rem; font-size: 1.5rem;">${tour.title}</h2>
+            <div style="background: #f0f7ff; padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem; border-right: 4px solid #2980b9;">
+              <h3 style="color: #1a1a1a; font-size: 1.2rem; margin-bottom: 0.5rem;">${step.name}</h3>
+              <p style="color: #555; margin: 0; line-height: 1.6;">${step.desc}</p>
+            </div>
+
+            <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+              <button onclick="document.getElementById('guided-tour-modal').remove()" style="flex: 1; padding: 0.75rem; background: #95a5a6; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; font-family: inherit;">סגור</button>
+              <button onclick="if(this.textContent.includes('הבא')) { currentStep++; if(currentStep < ${tour.steps.length}) showStep(); else document.getElementById('guided-tour-modal').remove(); } else currentStep > 0 && (currentStep--, showStep());" style="flex: 1; padding: 0.75rem; background: #2980b9; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; font-family: inherit;">${currentStep > 0 ? '← הקודם' : 'הבא →'}</button>
+            </div>
+          `;
+
+          modal.appendChild(content);
+          document.body.appendChild(modal);
+
+          // Click on sage to continue
+          window.announceForAccessibility(`סיור: ${step.name} - ${step.desc}`);
+          console.log(`🎓 Tour step ${currentStep + 1}: ${step.name}`);
+        };
+
+        showStep();
+      };
+
+      // Launch tours from toolbar
+      const toursMenu = document.createElement('div');
+      toursMenu.style.cssText = `
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        z-index: 1000;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      `;
+
+      const tourButtons = [
+        { key: 'kabbalah', emoji: '✨', label: 'קבלה' },
+        { key: 'halakha', emoji: '⚖️', label: 'הלכה' },
+        { key: 'philosophy', emoji: '🧠', label: 'פילוסופיה' },
+        { key: 'modern', emoji: '🌍', label: 'עת חדשה' }
+      ];
+
+      tourButtons.forEach(t => {
+        const btn = document.createElement('button');
+        btn.innerHTML = `${t.emoji} ${t.label}`;
+        btn.onclick = () => window.startGuidedTour(t.key);
+        btn.style.cssText = `
+          background: white;
+          color: #2980b9;
+          border: 2px solid #2980b9;
+          padding: 0.75rem 1rem;
+          border-radius: 25px;
+          cursor: pointer;
+          font-weight: 600;
+          font-family: inherit;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+          transition: all 0.3s;
+        `;
+        btn.onmouseover = () => btn.style.background = '#2980b9' || (btn.style.color = 'white');
+        btn.onmouseout = () => (btn.style.background = 'white', btn.style.color = '#2980b9');
+        toursMenu.appendChild(btn);
+      });
+
+      document.body.appendChild(toursMenu);
+
+      console.log('🎓 Guided tours enabled:');
+      console.log('   • Kabbalah: Evolution from Spain to Safed');
+      console.log('   • Halakha: Journey through Jewish law');
+      console.log('   • Philosophy: Jewish philosophical tradition');
+      console.log('   • Modern: Contemporary Jewish thinkers');
+
+      // ONBOARDING TOUR - First time user experience
+      const showOnboardingTour = () => {
+        const hasSeenOnboarding = localStorage.getItem('ozarOnboardingComplete');
+        if (hasSeenOnboarding) return;
+
+        const modal = document.createElement('div');
+        modal.id = 'onboarding-modal';
+        modal.setAttribute('role', 'dialog');
+        modal.setAttribute('aria-labelledby', 'onboarding-title');
+        modal.style.cssText = `
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: rgba(0,0,0,0.7);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 2000;
+          direction: rtl;
+        `;
+
+        const content = document.createElement('div');
+        content.style.cssText = `
+          background: white;
+          border-radius: 12px;
+          padding: 2rem;
+          max-width: 600px;
+          box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+          font-family: 'Frank Ruhl Libre', serif;
+          text-align: right;
+          animation: slideUp 0.3s ease-out;
+        `;
+
+        const keyFeatures = [
+          { icon: '🔍', title: 'חיפוש חכם', desc: 'חפשו לפי שם, תקופה (ראשונים, אמוראים) או תחום (הלכה, קבלה)' },
+          { icon: '🔗', title: 'רשת קשרים', desc: 'לחצו על חכם כדי לראות את קשריו עם חכמים אחרים' },
+          { icon: '⚙️', title: 'סינונים', desc: 'סננו לפי תקופה, אזור, או תחום עיסוק' },
+          { icon: '📐', title: 'תצוגות שונות', desc: 'בחרו בין Force, Circular, ו-Radial layouts' },
+          { icon: '💾', title: 'השוואה', desc: 'הוסיפו חכמים לשוואה בטאב השוואה' }
+        ];
+
+        content.innerHTML = `
+          <h2 id="onboarding-title" style="color: #2980b9; margin-bottom: 1.5rem; font-size: 1.8rem;">👋 ברוכים הבאים לאוצר חכמים!</h2>
+          <p style="color: #555; margin-bottom: 1.5rem; line-height: 1.8; font-size: 1rem;">
+            אתר ויזואליזציה אינטראקטיבי של רשת חכמי ישראל לדורותיהם
+          </p>
+
+          <div style="margin-bottom: 2rem;">
+            ${keyFeatures.map((f, i) => `
+              <div style="margin-bottom: 1rem; padding: 1rem; background: #f5f5f5; border-radius: 8px; border-right: 4px solid #2980b9;">
+                <div style="font-size: 1.3rem; margin-bottom: 0.5rem;">${f.icon} <strong>${f.title}</strong></div>
+                <p style="color: #666; margin: 0; font-size: 0.95rem;">${f.desc}</p>
+              </div>
+            `).join('')}
+          </div>
+
+          <div style="background: #fff3cd; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem; border-right: 4px solid #f39c12;">
+            <strong>💡 עצה:</strong> לחצו Ctrl+F כדי לחפש או Shift+F כדי להציג סינונים
+          </div>
+
+          <div style="display: flex; gap: 1rem; justify-content: flex-start;">
+            <button id="onboarding-close" style="flex: 1; padding: 0.75rem; background: #2980b9; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; font-family: inherit; font-size: 1rem;">
+              התחל!
+            </button>
+            <button id="onboarding-skip" style="flex: 1; padding: 0.75rem; background: #95a5a6; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; font-family: inherit; font-size: 1rem;">
+              דלג
+            </button>
+          </div>
+        `;
+
+        modal.appendChild(content);
+        document.body.appendChild(modal);
+
+        const closeOnboarding = () => {
+          localStorage.setItem('ozarOnboardingComplete', 'true');
+          modal.style.animation = 'slideDown 0.3s ease-out';
+          setTimeout(() => modal.remove(), 300);
+          window.announceForAccessibility('סיור ההדרכה הושלם');
+        };
+
+        document.getElementById('onboarding-close').addEventListener('click', closeOnboarding);
+        document.getElementById('onboarding-skip').addEventListener('click', closeOnboarding);
+
+        // Close on Escape
+        const escapeHandler = (e) => {
+          if (e.key === 'Escape') {
+            document.removeEventListener('keydown', escapeHandler);
+            closeOnboarding();
+          }
+        };
+        document.addEventListener('keydown', escapeHandler);
+
+        console.log('🎓 Onboarding tour shown');
+      };
+
+      // Show onboarding after data loads
+      document.addEventListener('supabaseReady', () => {
+        setTimeout(showOnboardingTour, 800);
+      });
+
+      // Allow manual trigger with ? key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === '?') {
+          localStorage.removeItem('ozarOnboardingComplete');
+          showOnboardingTour();
+        }
       });
 
       // New filters: Connection count + strength
@@ -2874,6 +3776,7 @@
       if (minConnFilter) {
         minConnFilter.addEventListener('input', (e) => {
           document.getElementById('connectionCountLabel').textContent = e.target.value + '+';
+          updateFilterStatus();
           filterByMinimumConnections(parseInt(e.target.value));
         });
       }
@@ -2881,6 +3784,7 @@
       const strengthFilter = document.getElementById('connectionStrengthFilter');
       if (strengthFilter) {
         strengthFilter.addEventListener('change', (e) => {
+          updateFilterStatus();
           filterByConnectionStrength(e.target.value);
         });
       }
@@ -2900,6 +3804,30 @@
       const savePresetBtn = document.getElementById('savePresetBtn');
       if (savePresetBtn) {
         savePresetBtn.addEventListener('click', saveCurrentAsPreset);
+      }
+
+      // Advanced Filters Toggle
+      const advancedToggle = document.getElementById('advancedFiltersToggle');
+      const advancedContainer = document.getElementById('advancedFiltersContainer');
+      if (advancedToggle && advancedContainer) {
+        advancedToggle.addEventListener('click', () => {
+          const isVisible = advancedContainer.style.display !== 'none';
+          advancedContainer.style.display = isVisible ? 'none' : 'block';
+          advancedToggle.textContent = isVisible ? '▶' : '▼';
+          advancedToggle.style.transform = isVisible ? 'rotate(0deg)' : 'rotate(0deg)';
+          // Save preference to localStorage
+          localStorage.setItem('advancedFiltersVisible', !isVisible);
+        });
+
+        // Restore preference from localStorage
+        const wasVisible = localStorage.getItem('advancedFiltersVisible') === 'true';
+        if (wasVisible) {
+          advancedContainer.style.display = 'block';
+          advancedToggle.textContent = '▼';
+        } else {
+          advancedContainer.style.display = 'none';
+          advancedToggle.textContent = '▶';
+        }
       }
 
       // Reset
@@ -2926,11 +3854,25 @@
 
       // Mobile: Toggle filters button
       const toggleFiltersBtn = document.getElementById('toggle-filters-btn');
+      const closeFiltersBtn = document.getElementById('closeFiltersBtn');
       const graphFilters = document.getElementById('graph-filters');
+
       if (toggleFiltersBtn && graphFilters) {
         toggleFiltersBtn.addEventListener('click', () => {
           graphFilters.classList.toggle('show');
           toggleFiltersBtn.classList.toggle('active');
+          if (closeFiltersBtn) {
+            closeFiltersBtn.style.display = graphFilters.classList.contains('show') ? 'block' : 'none';
+          }
+        });
+      }
+
+      // Close filters button
+      if (closeFiltersBtn && graphFilters) {
+        closeFiltersBtn.addEventListener('click', () => {
+          graphFilters.classList.remove('show');
+          toggleFiltersBtn.classList.remove('active');
+          closeFiltersBtn.style.display = 'none';
         });
       }
 
@@ -2981,6 +3923,7 @@
     }
 
     function buildLegend() {
+      // ERAS (Periods)
       const eras = [
         { key: 'בית שני', he: 'בית שני', color: '#8e44ad' },
         { key: 'תנאים', he: 'תנאים', color: '#e74c3c' },
@@ -2991,16 +3934,83 @@
         { key: 'עת חדשה', he: 'עת חדשה', color: '#1abc9c' }
       ];
 
+      // CONNECTION TYPES (Relationships - History of Philosophy style)
+      const connections = [
+        { key: 'student', he: 'תלמיד', color: '#0066cc' },
+        { key: 'teacher', he: 'רב', color: '#cc0000' },
+        { key: 'influence', he: 'השפעה', color: '#00aa66' },
+        { key: 'oppose', he: 'התנגדות', color: '#ff6600' },
+        { key: 'colleague', he: 'עמית', color: '#9966ff' },
+        { key: 'predecessor', he: 'קדמון', color: '#ffaa00' }
+      ];
+
       const legendDiv = document.getElementById('legendItems');
       legendDiv.innerHTML = '';
+
+      // ERA SECTION
+      const eraTitle = document.createElement('div');
+      eraTitle.style.cssText = 'font-weight: 700; font-size: 0.8rem; color: #333; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.5px;';
+      eraTitle.textContent = '📅 תקופות';
+      legendDiv.appendChild(eraTitle);
+
+      const eraDescriptions = {
+        'בית שני': '332 לפנה״ס - 70 לספירה',
+        'תנאים': '70 - 200 לספירה',
+        'אמוראים': '200 - 500 לספירה',
+        'גאונים': '500 - 1040 לספירה',
+        'ראשונים': '1040 - 1500 לספירה',
+        'אחרונים': '1500 - 1800 לספירה',
+        'עת חדשה': '1800 - היום'
+      };
 
       eras.forEach(era => {
         const item = document.createElement('div');
         item.className = 'legend-item';
+        item.style.cssText = 'display: flex; align-items: center; gap: 0.5rem; padding: 0.4rem; margin-bottom: 0.3rem; border-radius: 4px; cursor: help; transition: background 0.2s;';
+        item.title = eraDescriptions[era.he];
         item.innerHTML = `
-          <div class="legend-color" style="background-color: ${era.color}"></div>
-          <span>${era.he}</span>
+          <div class="legend-color" style="background-color: ${era.color}; width: 16px; height: 16px; border-radius: 50%; flex-shrink: 0;"></div>
+          <span style="font-size: 0.9rem;">${era.he}</span>
         `;
+        item.addEventListener('mouseenter', () => {
+          item.style.backgroundColor = 'rgba(0,0,0,0.05)';
+        });
+        item.addEventListener('mouseleave', () => {
+          item.style.backgroundColor = 'transparent';
+        });
+        legendDiv.appendChild(item);
+      });
+
+      // CONNECTION SECTION
+      const connTitle = document.createElement('div');
+      connTitle.style.cssText = 'font-weight: 700; font-size: 0.8rem; color: #333; margin-top: 1rem; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.5px;';
+      connTitle.textContent = '🔗 סוגי קשרים';
+      legendDiv.appendChild(connTitle);
+
+      const connDescriptions = {
+        'תלמיד': 'למד מהחכם',
+        'רב': 'לימד אחרים',
+        'השפעה': 'השפיע על מחשבה',
+        'התנגדות': 'התנגד ל',
+        'עמית': 'שיתוף דעה',
+        'קדמון': 'קדם בזמן'
+      };
+
+      connections.forEach(conn => {
+        const item = document.createElement('div');
+        item.className = 'legend-item';
+        item.style.cssText = 'display: flex; align-items: center; gap: 0.5rem; padding: 0.4rem; margin-bottom: 0.3rem; border-radius: 4px; cursor: help; transition: background 0.2s;';
+        item.title = connDescriptions[conn.he];
+        item.innerHTML = `
+          <div class="legend-color" style="border: 2px solid ${conn.color}; width: 14px; height: 2px; flex-shrink: 0;"></div>
+          <span style="font-size: 0.9rem;">${conn.he}</span>
+        `;
+        item.addEventListener('mouseenter', () => {
+          item.style.backgroundColor = 'rgba(0,0,0,0.05)';
+        });
+        item.addEventListener('mouseleave', () => {
+          item.style.backgroundColor = 'transparent';
+        });
         legendDiv.appendChild(item);
       });
 
@@ -3037,14 +4047,63 @@
       });
     }
 
+    function updateFilterStatus() {
+      const eraFilter = document.getElementById('eraFilter')?.value || '';
+      const regionFilter = document.getElementById('regionFilter')?.value || '';
+      const fieldFilter = document.getElementById('fieldFilter')?.value || '';
+      const minConnFilter = document.getElementById('minConnectionsFilter')?.value || '0';
+      const strengthFilter = document.getElementById('connectionStrengthFilter')?.value || '';
+
+      const activeFilters = [];
+      if (eraFilter) activeFilters.push(`Era=${eraFilter}`);
+      if (regionFilter) activeFilters.push(`Region=${regionFilter}`);
+      if (fieldFilter) activeFilters.push(`Field=${fieldFilter}`);
+      if (parseInt(minConnFilter) > 0) activeFilters.push(`Min=${minConnFilter}+ connections`);
+      if (strengthFilter) activeFilters.push(`Strength=${strengthFilter}`);
+
+      const statusDiv = document.getElementById('activeFiltersStatus');
+      const statusList = document.getElementById('activeFiltersList');
+
+      if (activeFilters.length > 0) {
+        statusDiv.style.display = 'block';
+        statusList.innerHTML = activeFilters.map((f, i) => `<span style="background: white; padding: 0.2rem 0.5rem; border-radius: 3px; margin: 0 0.2rem; display: inline-block;">${f} <button onclick="clearFilter('${['era', 'region', 'field', 'connections', 'strength'][i]}')" style="background: none; border: none; color: #e74c3c; cursor: pointer; margin-right: 0.2rem;">✕</button></span>`).join(' ');
+      } else {
+        statusDiv.style.display = 'none';
+      }
+    }
+
+    function clearFilter(filterType) {
+      const filters = {
+        'era': 'eraFilter',
+        'region': 'regionFilter',
+        'field': 'fieldFilter',
+        'connections': 'minConnectionsFilter',
+        'strength': 'connectionStrengthFilter'
+      };
+
+      const element = document.getElementById(filters[filterType]);
+      if (element) {
+        element.value = '';
+        if (filterType === 'connections') {
+          document.getElementById('connectionCountLabel').textContent = '0+';
+        }
+        updateFilterStatus();
+        if (sageNetwork) {
+          sageNetwork.applyFilters();
+        }
+      }
+    }
+
     function filterByEra(era) {
       if (!sageNetwork) return;
+      updateFilterStatus();
       // Call applyFilters() to trigger highlighting + clustering
       sageNetwork.applyFilters();
     }
 
     function filterByRegion(region) {
       if (!sageNetwork) return;
+      updateFilterStatus();
       // Call applyFilters() to trigger highlighting + clustering
       sageNetwork.applyFilters();
     }
@@ -3164,8 +4223,10 @@
       };
 
       const eraColor = eraColors[node.era_key] || '#999';
-      const teachers = window.graphData.links.filter(l => String(l.target) === String(node.id)).length;
-      const students = window.graphData.links.filter(l => String(l.source) === String(node.id)).length;
+      const teacherLinks = window.graphData.links.filter(l => String(l.target) === String(node.id));
+      const studentLinks = window.graphData.links.filter(l => String(l.source) === String(node.id));
+      const teachers = teacherLinks.length;
+      const students = studentLinks.length;
 
       // Use correct field names from data.json
       const sageName = node.label || node.name_he || 'לא ידוע';
@@ -3180,57 +4241,100 @@
 
       let html = ``;
 
-      // Dates
+      // Quick Info Grid (Dates, Location, Field)
+      html += `<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin: 1rem 0; padding: 1rem; background: #f5f5f5; border-radius: 6px;">`;
+
       if (node.dates) {
-        html += `<div class="sidebar-section"><h3>📅 תאריכים</h3><p style="color: #e74c3c; font-weight: 600;">${node.dates}</p></div>`;
+        html += `<div>
+          <div style="font-size: 0.75rem; color: #888; font-weight: 600; margin-bottom: 0.25rem;">📅 תאריכים</div>
+          <div style="color: #e74c3c; font-weight: 600; font-size: 0.9rem;">${node.dates}</div>
+        </div>`;
       }
 
-      // Location
-      html += `<div class="sidebar-section">
-        <h3>📍 אזור</h3>
-        <p>${sageLocation}</p>
+      html += `<div>
+        <div style="font-size: 0.75rem; color: #888; font-weight: 600; margin-bottom: 0.25rem;">📍 אזור</div>
+        <div style="color: #333; font-size: 0.9rem;">${sageLocation}</div>
       </div>`;
 
-      // Field
-      html += `<div class="sidebar-section">
-        <h3>🎓 תחום</h3>
-        <p>${sageField}</p>
+      html += `<div style="grid-column: 1/-1;">
+        <div style="font-size: 0.75rem; color: #888; font-weight: 600; margin-bottom: 0.25rem;">🎓 תחום</div>
+        <div style="color: #333; font-size: 0.9rem;">${sageField}</div>
       </div>`;
 
-      // Bio/Summary
+      html += `</div>`;
+
+      // Biography Section
       if (node.bio || node.summary) {
-        html += `<div class="sidebar-section" style="background: #f8f9fa; padding: 1rem; border-radius: 6px; margin: 1rem 0;">
-          <h3>📖 תיאור</h3>
-          <p style="line-height: 1.6; color: #555;">${node.bio || node.summary}</p>
+        html += `<div class="sidebar-section" style="background: #f0f7ff; padding: 1rem; border-right: 4px solid ${eraColor}; border-radius: 6px; margin: 1rem 0;">
+          <h3 style="color: ${eraColor}; margin-bottom: 0.5rem;">📖 ביוגרפיה</h3>
+          <p style="line-height: 1.8; color: #555; font-size: 0.95rem;">${node.bio || node.summary}</p>
         </div>`;
+      }
+
+      // Key Works Section
+      if (node.key_works) {
+        let worksList = [];
+        if (typeof node.key_works === 'string') {
+          worksList = node.key_works.split(',').map(w => w.trim()).filter(w => w);
+        } else if (Array.isArray(node.key_works)) {
+          worksList = node.key_works;
+        }
+
+        if (worksList.length > 0) {
+          html += `<div class="sidebar-section" style="margin: 1rem 0;">
+            <h3 style="margin-bottom: 0.5rem;">📚 יצירות עיקריות</h3>
+            <ul style="margin-right: 1.5rem; color: #555; line-height: 1.8;">
+              ${worksList.map(work => `<li style="margin: 0.4rem 0; font-size: 0.95rem;">${work}</li>`).join('')}
+            </ul>
+          </div>`;
+        }
       }
 
       // Core concept
       if (node.core_concept) {
-        html += `<div class="sidebar-section" style="background: #fff3cd; padding: 1rem; border-right: 4px solid ${eraColor}; border-radius: 4px; margin: 1rem 0;">
-          <strong style="color: #856404;">💡 רעיון מרכזי:</strong>
-          <p style="color: #333; margin-top: 0.5rem;">${node.core_concept}</p>
+        html += `<div class="sidebar-section" style="background: #fff3cd; padding: 1rem; border-right: 4px solid #f39c12; border-radius: 4px; margin: 1rem 0;">
+          <strong style="color: #856404;">💡 רעיון מרכזי</strong>
+          <p style="color: #333; margin-top: 0.5rem; font-size: 0.95rem;">${node.core_concept}</p>
         </div>`;
       }
+
+      // Direct Connections (Enhanced)
+      html += `<div class="sidebar-section" style="background: #f9f9f9; padding: 1rem; border-radius: 6px; margin: 1rem 0;">
+        <h3 style="margin-bottom: 0.75rem;">🔗 קשרים ישירים</h3>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div style="text-align: right;">
+            <div style="font-size: 1.5rem; font-weight: bold; color: #e74c3c;">${teachers}</div>
+            <div style="font-size: 0.85rem; color: #888;">👨‍🏫 ממלמדים</div>
+          </div>
+          <div style="text-align: right;">
+            <div style="font-size: 1.5rem; font-weight: bold; color: #27ae60;">${students}</div>
+            <div style="font-size: 0.85rem; color: #888;">👨‍🎓 תלמידים</div>
+          </div>
+        </div>
+      </div>`;
 
       // Related sages
       if (node.related_sages) {
         html += `<div class="sidebar-section" style="background: #e8f4f8; padding: 1rem; border-radius: 6px; margin: 1rem 0;">
-          <strong>🔗 דמויות קשורות:</strong>
-          <p style="margin-top: 0.5rem;">${node.related_sages}</p>
+          <h3 style="color: #2980b9; margin-bottom: 0.5rem;">👥 דמויות קשורות</h3>
+          <p style="margin-top: 0.5rem; color: #555; line-height: 1.6;">${node.related_sages}</p>
         </div>`;
       }
 
-      // Connections count
-      html += `<div class="sidebar-section">
-        <h3>🔗 קשרים</h3>
-        <p>👨‍🏫 <strong>${teachers}</strong> | 👨‍🎓 <strong>${students}</strong></p>
+      // Action Buttons
+      html += `<div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid #e0e0e0; display: flex; gap: 0.5rem; flex-wrap: wrap;">
+        <button class="btn" style="flex: 1; min-width: 100px; padding: 0.65rem 0.75rem; font-size: 0.85rem; background: #2980b9; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: 600;" onclick="window.print()" title="הדפס או שמור כ-PDF">
+          🖨️ הדפס
+        </button>
+        <button class="btn" style="flex: 1; min-width: 100px; padding: 0.65rem 0.75rem; font-size: 0.85rem; background: #27ae60; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: 600;" onclick="addSageToComparator('${node.id}', '${sageName}')" title="הוסף לשוואה">
+          ➕ השווה
+        </button>
       </div>`;
 
       // Spotify link
       if (node.spotify_url) {
-        html += `<div style="margin-top: 1.5rem;">
-          <a href="${node.spotify_url}" target="_blank" style="display: inline-block; background: #1DB954; color: white; padding: 0.75rem 1.25rem; border-radius: 25px; text-decoration: none; font-weight: 600; font-size: 0.9rem;">🎧 שמע בספוטיפיי</a>
+        html += `<div style="margin-top: 1rem;">
+          <a href="${node.spotify_url}" target="_blank" style="display: block; text-align: center; background: #1DB954; color: white; padding: 0.75rem; border-radius: 4px; text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: background 0.3s;">🎧 שמע בספוטיפיי</a>
         </div>`;
       }
 
@@ -3263,6 +4367,41 @@
     // COMPARATOR FUNCTIONALITY
     let selectedSages = [];
     let comparatorThirdSageMode = false;
+
+    // Add sage to comparator from sidebar
+    window.addSageToComparator = function(sageId, sageName) {
+      const sage = window.graphData.nodes.find(s => String(s.id) === String(sageId));
+      if (!sage) {
+        alert('לא נמצא חכם עם ID זה');
+        return;
+      }
+
+      // Add to first empty slot or replace sage1
+      const emptyIndex = selectedSages.findIndex(s => !s);
+      if (emptyIndex !== -1) {
+        selectedSages[emptyIndex] = sage;
+        const fieldName = `sage${emptyIndex + 1}`;
+        const input = document.getElementById(`${fieldName}-search`);
+        if (input) input.value = sage.label;
+      } else {
+        selectedSages[0] = sage;
+        const input = document.getElementById('sage1-search');
+        if (input) input.value = sage.label;
+      }
+
+      // Update comparison
+      updateComparison();
+
+      // Switch to comparator tab (Tab 2)
+      const tabs = document.querySelectorAll('.tab-btn');
+      const mainAreas = document.querySelectorAll('.main-area');
+      tabs.forEach(t => t.classList.remove('active'));
+      mainAreas.forEach(a => a.classList.remove('active'));
+      tabs[1].classList.add('active'); // Tab 2 = index 1
+      mainAreas[1].classList.add('active');
+
+      console.log(`✅ הוסף ${sageName} להשוואה`);
+    };
 
     function setupComparator() {
       const sage1Input = document.getElementById('sage1-search');

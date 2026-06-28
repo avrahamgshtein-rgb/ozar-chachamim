@@ -2391,25 +2391,100 @@ class SageNetwork {
   }
 
   /**
-   * Highlight connected nodes and links
+   * Highlight connected nodes and links with colors by connection type
    */
   highlightConnections(node, related) {
     if (!this.link) return;
 
     const relatedIds = new Set(related.map(n => n.id));
 
+    // Connection type colors
+    const connectionColors = {
+      'student': '#e74c3c',      // Red - incoming (source → this node)
+      'teacher': '#27ae60',      // Green - outgoing (this node → target)
+      'influence': '#3498db',    // Blue
+      'colleague': '#f39c12',    // Orange
+      'predecessor': '#9b59b6',  // Purple
+      'contemporary': '#16a085', // Teal
+      'oppose': '#c0392b'        // Dark red
+    };
+
+    // Helper: Get connection type for a link
+    const getConnectionType = (link) => {
+      if (link.type) return link.type;
+      // Infer from direction: if source → target is this node
+      if (link.source.id === node.id) return 'teacher';
+      if (link.target.id === node.id) return 'student';
+      return 'colleague';
+    };
+
+    // Enhance links with smooth transitions
     this.link
       .classed('active', d => d.source.id === node.id || d.target.id === node.id)
-      .style('opacity', d => d.source.id === node.id || d.target.id === node.id ? 0.8 : 0.2)
-      .style('stroke-width', d => d.source.id === node.id || d.target.id === node.id ? 2.5 : 1.5);
+      .transition()
+      .duration(300)
+      .style('opacity', d => d.source.id === node.id || d.target.id === node.id ? 0.85 : 0.15)
+      .style('stroke-width', d => d.source.id === node.id || d.target.id === node.id ? 3 : 1)
+      .style('stroke', d => {
+        if (d.source.id === node.id || d.target.id === node.id) {
+          const type = getConnectionType(d);
+          return connectionColors[type] || '#999';
+        }
+        return '#bbb';
+      });
 
+    // Enhanced node styling
     this.node
       .classed('related', d => relatedIds.has(d.id))
+      .transition()
+      .duration(300)
       .style('opacity', d => {
         if (d.id === node.id) return 1;
-        if (relatedIds.has(d.id)) return 1;
-        return 0.3;
+        if (relatedIds.has(d.id)) return 0.95;
+        return 0.25;
+      })
+      .style('filter', d => {
+        if (d.id === node.id) return 'drop-shadow(0 0 8px rgba(41, 128, 185, 0.6))';
+        if (relatedIds.has(d.id)) return 'drop-shadow(0 0 4px rgba(41, 128, 185, 0.3))';
+        return 'none';
       });
+
+    // Add hover tooltips on edges showing connection type
+    this.link.on('mouseover', (event, d) => {
+      if (d.source.id !== node.id && d.target.id !== node.id) return;
+
+      const type = getConnectionType(d);
+      const tooltip = document.createElement('div');
+      tooltip.style.cssText = `
+        position: fixed;
+        background: rgba(0, 0, 0, 0.9);
+        color: white;
+        padding: 0.5rem 0.75rem;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        pointer-events: none;
+        z-index: 1000;
+        font-family: 'Frank Ruhl Libre', serif;
+      `;
+      tooltip.textContent = `סוג קשר: ${type}`;
+      tooltip.style.left = (event.pageX + 10) + 'px';
+      tooltip.style.top = (event.pageY + 10) + 'px';
+      document.body.appendChild(tooltip);
+
+      const cleanup = () => {
+        tooltip.remove();
+        this.link.on('mousemove', null);
+      };
+
+      this.link.on('mousemove', (moveEvent) => {
+        tooltip.style.left = (moveEvent.pageX + 10) + 'px';
+        tooltip.style.top = (moveEvent.pageY + 10) + 'px';
+      });
+
+      this.link.on('mouseout', cleanup);
+    });
+
+    console.log(`🔗 Highlighted connections for ${node.label} | Connected: ${relatedIds.size} sages`);
   }
 
   /**
@@ -2428,18 +2503,30 @@ class SageNetwork {
       sidebar.classList.remove('active');
     }
 
+    // Smooth transition back to default state
     if (this.node) {
       this.node.classed('selected', false).classed('related', false).classed('era-highlight', false);
-      this.node.style('opacity', 0.9);
+      this.node.transition()
+        .duration(300)
+        .style('opacity', 0.9)
+        .style('filter', 'none');
     }
 
     if (this.link) {
       this.link.classed('active', false)
+        .transition()
+        .duration(300)
         .style('opacity', 0.5)
-        .style('stroke-width', 2);
+        .style('stroke-width', 1.5)
+        .style('stroke', '#bbb');
+
+      // Remove hover listeners
+      this.link.on('mouseover', null).on('mousemove', null).on('mouseout', null);
     }
 
     this.selectedNode = null;
+
+    console.log('🔄 Deselected node - connections reset');
 
     // Notify mobile handler if available
     if (window.mobileHandler && window.mobileHandler.isCurrentlyMobile()) {
