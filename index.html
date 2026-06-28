@@ -2824,7 +2824,10 @@
     // On Supabase Ready
     document.addEventListener('supabaseReady', () => {
       console.log('🎨 Building network...');
-      sageNetwork = new SageNetwork({ svgSelector: '#graph' });
+      sageNetwork = new SageNetwork({
+        svgSelector: '#graph',
+        sidebarSelector: '#sidebar'
+      });
       window.sageNetwork = sageNetwork;
       sageNetwork.init();
 

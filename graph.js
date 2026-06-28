@@ -2120,6 +2120,8 @@ class SageNetwork {
       return;
     }
 
+    console.log('✅ selectNode called:', { id: node.id, label: node.label });
+
     this.selectedNode = node;
     const nodeId = String(node.id);
     const nodeEra = node.group || node.era_key;
