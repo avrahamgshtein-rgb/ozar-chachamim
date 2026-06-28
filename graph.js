@@ -992,30 +992,7 @@ class SageNetwork {
         const fieldFilter = document.getElementById('fieldFilter')?.value || '';
         const hasFilter = eraFilter || regionFilter || fieldFilter;
 
-        // Determine if this sage is in the filtered set
-        let isInFiltered = true;
-        if (hasFilter) {
-          isInFiltered = true;
-          if (eraFilter && d.era !== eraFilter) isInFiltered = false;
-          if (regionFilter && !(d.location && d.location.includes(regionFilter))) isInFiltered = false;
-          if (fieldFilter && d.field !== fieldFilter) isInFiltered = false;
-        }
-
-        // If filtering is active and sage is NOT in filtered set, need 2 clicks
-        if (hasFilter && !isInFiltered) {
-          // First click - mark as waiting for second click
-          if (!d._clickWaiting) {
-            d._clickWaiting = true;
-            console.log(`⏳ Dimmed sage - need second click to select: ${d.label}`);
-            // Reset after 1 second if no second click
-            setTimeout(() => { d._clickWaiting = false; }, 1000);
-            return;
-          }
-          // Second click - proceed
-          d._clickWaiting = false;
-        }
-
-        // Open sidebar/details
+        // Open sidebar/details on any click (even filtered nodes)
         self.selectNode(d);
       })
       .on('mouseover', function(event, d) {
