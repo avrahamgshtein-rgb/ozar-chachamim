@@ -789,8 +789,8 @@ class SageNetwork {
           : 35 + (Math.sqrt(nodeDegree[d.id] || 0) * 4);
         return Math.min(baseSize, isMobile ? 35 : 55);
       }))
-      .velocityDecay(0.5)
-      .alphaDecay(0.015);
+      .velocityDecay(0.6)  // Increased from 0.5 for faster settling
+      .alphaDecay(0.025);  // Increased from 0.015 for faster energy decay
 
     // 🎨 ERA COLOR MAP - by Hebrew period names
     const eraColors = {
@@ -1295,7 +1295,13 @@ class SageNetwork {
         d.fy = event.y;
       })
       .on('end', (event, d) => {
-        if (!event.active) self.simulation.alphaTarget(0);
+        if (!event.active) {
+          self.simulation.alphaTarget(0).restart();  // Quickly settle
+          // Force stability after 500ms
+          setTimeout(() => {
+            self.simulation.alpha(0.001).restart();
+          }, 500);
+        }
         d.fx = null;
         d.fy = null;
       });
