@@ -1218,6 +1218,10 @@ class SageNetwork {
     const isolated = Object.keys(degree).filter(id => degree[id] === 0).length;
     const connected = this.data.nodes.length - isolated;
     const avgDegree = Object.values(degree).reduce((a, b) => a + b, 0) / this.data.nodes.length;
+
+    // Spotify coverage
+    const withSpotify = this.data.nodes.filter(n => n.spotify_url).length;
+
     const hubs = Object.entries(degree)
       .sort((a, b) => b[1] - a[1])
       .slice(0, 3)
@@ -1237,6 +1241,7 @@ class SageNetwork {
     console.log(`   • Edges: ${this.data.links.length} total`);
     console.log(`   • Connected: ${connected} (${Math.round(100 * connected / this.data.nodes.length)}%)`);
     console.log(`   • Isolated: ${isolated} (${Math.round(100 * isolated / this.data.nodes.length)}%)`);
+    console.log(`   • Spotify URLs: ${withSpotify} (${Math.round(100 * withSpotify / this.data.nodes.length)}%)`);
     console.log(`   • Avg degree: ${avgDegree.toFixed(1)}`);
     console.log(`   • Top hubs: ${hubs.join(', ')}`);
   }
