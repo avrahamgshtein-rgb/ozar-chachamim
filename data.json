@@ -7,7 +7,8 @@
       "field": "מוסר",
       "location": "ירושלים; מצרים (תרגום/תוספות הנכד)",
       "bio": "A sage from Second Temple",
-      "era_key": "second-temple"
+      "era_key": "second-temple",
+      "spotify_url": "https://open.spotify.com/episode/3u5udRWI84FVJ3OsOBBbPF?si=ek7V_WzPS7OadSPOZSU-VA&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
     },
     {
       "id": "2",
@@ -19,7 +20,8 @@
       "birthplace": "ירושלים",
       "birth_year": "150 לפנה״ס",
       "death_year": "60 לפנה״ס",
-      "era_key": "second-temple"
+      "era_key": "second-temple",
+      "spotify_url": "https://open.spotify.com/episode/68uAirBRMlyOGWWqbi1MTr"
     },
     {
       "id": "3",
@@ -32,7 +34,8 @@
       "birth_year": "20 לפנה״ס",
       "death_year": "50 לסה״נ",
       "spotify": "https://open.spotify.com/artist/search?q=philo",
-      "era_key": "second-temple"
+      "era_key": "second-temple",
+      "spotify_url": "https://open.spotify.com/episode/2fMVi1amabmKmdSX6B0EFd"
     },
     {
       "id": "4",
@@ -45,7 +48,8 @@
       "birth_year": "50 לסה״נ",
       "death_year": "135 לסה״נ",
       "spotify": "https://open.spotify.com/artist/search?q=akiva",
-      "era_key": "tannaim"
+      "era_key": "tannaim",
+      "spotify_url": "https://open.spotify.com/episode/0uanJ3YCjtfh1LxDbnbiPK"
     },
     {
       "id": "5",
@@ -54,7 +58,8 @@
       "field": "מוסר",
       "location": "",
       "bio": "תנא שפיתח מודל מידות מוסרי־חינוכי ומודל גילי חיים יהודי. עוסק בעזות דקדושה ובבושה ככוחות מנוגדים־משל",
-      "era_key": "tannaim"
+      "era_key": "tannaim",
+      "spotify_url": "https://open.spotify.com/episode/7jdJSWd1gl6zbEReRA5lGR"
     },
     {
       "id": "6",
@@ -63,7 +68,8 @@
       "field": "פרשנות",
       "location": "האימפריה הרומית; ארץ ישראל; ירושלים",
       "bio": "עקילס מפונטוס יצר תרגום מילולי קיצוני למקרא כדי לשמר נאמנות למקור העברי ולאפשר דרש של תורה שבעל-פה. ",
-      "era_key": "second-temple"
+      "era_key": "second-temple",
+      "spotify_url": "https://open.spotify.com/episode/71nqAiPfV8HB7EWCckohvG?si=WbQiatqrSYaFpMpTf0PUBw&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
     },
     {
       "id": "7",
@@ -72,7 +78,8 @@
       "field": "חינוך",
       "location": "בבל, טבריה",
       "bio": "הציל את התורה משכחה בפעולה מעשית כוללת. שילב עמל גשמי ורוחני כדי להעביר מסורת.",
-      "era_key": "tannaim"
+      "era_key": "tannaim",
+      "spotify_url": "https://open.spotify.com/episode/4MI4LUL2FI4WeVtEdPZS5F"
     },
     {
       "id": "8",
@@ -81,7 +88,8 @@
       "field": "אגדה",
       "location": "בבל, ארץ ישראל",
       "bio": "אגדותיו הפנטסטיות הן כתב סוד של גלות וגאולה, משלים על עומק ההיסטוריה והאמונה.",
-      "era_key": "amoraim"
+      "era_key": "amoraim",
+      "spotify_url": "https://open.spotify.com/episode/7kYTSzyLvPI8HKdt7bdgf5"
     },
     {
       "id": "9",
@@ -90,7 +98,8 @@
       "field": "מקרא",
       "location": "אלכסנדריה, מצרים",
       "bio": "אירוע מכונן שבו התורה תורגמה לראשונה ליוונית. עורר מחלוקות דתיות ותרבותיות בין היהדות לנצרות ולתרבות",
-      "era_key": "second-temple"
+      "era_key": "second-temple",
+      "spotify_url": "https://open.spotify.com/episode/0KlkCaGEiFapr5FKt6Vt9u"
     },
     {
       "id": "10",
@@ -99,7 +108,8 @@
       "field": "פרשנות",
       "location": "ארץ ישראל, בבל",
       "bio": "קורפוס אגדי עצום שנערך לאורך מאות שנים, ומשקף דרכי דרשנות וחיים יהודיים ברובד הציבורי.",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/0iVxn1iT9qqWMkwdQ3ANqu"
     },
     {
       "id": "11",
@@ -108,7 +118,8 @@
       "field": "מוסר",
       "location": "גרמניה (אשכנז)",
       "bio": "ממנהיגי חסידות אשכנז שהעמיד את טהרת הלב מעל חריפות השכל ושילב מוסר עם תפילה כתיקון עולמות; השפיע גם ",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/70SOBeANLpCEBeEplD3eOw"
     },
     {
       "id": "12",
@@ -117,7 +128,8 @@
       "field": "קבלה",
       "location": "ספרד",
       "bio": "פרשן חדשני שהנגיש קבלה, מוסר ודרש בלשון בהירה לכלל ישראל, מפתח גישת הפרד\"ס.",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/3TickrNhU6vSQBo54LXxGf"
     },
     {
       "id": "13",
@@ -126,7 +138,8 @@
       "field": "הגות",
       "location": "ספרד, קטלוניה",
       "bio": "פוסק ומנהיג בעידן משבר, שילב רציונליות והגות תורנית מקורית, מייסד תפיסת משפט כפולה.",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/2LuetW1C27UfICNkPhakAr"
     },
     {
       "id": "14",
@@ -135,7 +148,8 @@
       "field": "קבלה",
       "location": "טריפולי (לוב)",
       "bio": "מקובל, רופא ומשורר שפעל לבניין יהדות טריפולי; חיבר פירוש עמוק על הזוהר ופיוטים מרכזיים שהשתרשו בכלל ",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/09sbxccxPcM8mqxUj6yDR4"
     },
     {
       "id": "15",
@@ -144,7 +158,8 @@
       "field": "פילוסופיה",
       "location": "ארץ ישראל (כנראה טבריה וסביבתה)",
       "bio": "A sage from Second Temple",
-      "era_key": "second-temple"
+      "era_key": "second-temple",
+      "spotify_url": "https://open.spotify.com/episode/32xvqy7PMQACaWnJsbqMlG?si=FWNMNn1aTqi2Q30dGOdW6w&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
     },
     {
       "id": "16",
@@ -153,7 +168,8 @@
       "field": "מוסר",
       "location": "ספרד; אשכנז; קרקוב",
       "bio": "דרמה אינטלקטואלית על מטרת לימוד התורה: הרמב\"ם מציב את ההשגה המטאפיזית כפסגה, וחכמי ספרד מדגישים את מ",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/4NKKrtI7AcK5wwQ0ejB7h1?si=jKMxNYqPRq6LQQm_5UMAbw&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
     },
     {
       "id": "17",
@@ -162,7 +178,8 @@
       "field": "פילוסופיה",
       "location": "ספרד",
       "bio": "תלמיד קרשקש ונציג בוויכוח טורטוסה. זיקק את יסודות האמונה לשלושה עיקרים ובנה מבנה של שורשים וענפים.",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/3H710rBuEItb7at39hVzLn"
     },
     {
       "id": "18",
@@ -171,7 +188,8 @@
       "field": "פרשנות",
       "location": "איטליה → ירושלים",
       "bio": "עלה לארץ במסע מפרך והנהיג את קהילת ירושלים הענייה תחת הממלוכים. ייסד מוסדות צדקה והחיה את היישוב היה",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/2OEMGQeVLEIKytDCVSLS4c"
     },
     {
       "id": "19",
@@ -180,7 +198,8 @@
       "field": "פרשנות",
       "location": "ליסבון, פורטוגל",
       "bio": "מנהיג קהילת ליסבון ומורו של האברבנאל. פיתח פתרון לשאלת 'דברים מפי עצמו' ועיקרון שאין כפל עניין בתנ״ך",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/5J3m8GmCr0dbgQl0IyUyW6"
     },
     {
       "id": "20",
@@ -189,7 +208,8 @@
       "field": "הלכה",
       "location": "פומבדיתא, בבל",
       "bio": "ראש ישיבת סורא, לוחם בקראות, מחבר 'אמונות ודעות', מתרגם התורה לערבית (התפסיר), מייסד התיאולוגיה והפי",
-      "era_key": "geonim"
+      "era_key": "geonim",
+      "spotify_url": "https://open.spotify.com/episode/0Xx2IgT8rAGI5bDBi7qIZJ"
     },
     {
       "id": "21",
@@ -198,7 +218,8 @@
       "field": "היסטוריה",
       "location": "בבל (פומבדיתא) / קירואן",
       "bio": "מסמך מכונן המסדר לראשונה רצף כרונולוגי של התורה שבעל-פה מן התנאים ועד הגאונים. מבהיר עריכת המשנה, חת",
-      "era_key": "geonim"
+      "era_key": "geonim",
+      "spotify_url": "https://open.spotify.com/episode/7f2XqM3393CxSX04yH8mpv?si=ix4nH6_sTRSmylMvrlQjMw&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
     },
     {
       "id": "22",
@@ -207,7 +228,8 @@
       "field": "הלכה",
       "location": "אשכנז (מגנצא); ירושלים; בבל; אשכנז",
       "bio": "מנהיג יהדות אשכנז, מחוקק חברתי ופייטן. הנהיג תקנות נועזות והקים מרכז תורני עצמאי באירופה.",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/6rxAHJOCR3W7MJnFSV86xT"
     },
     {
       "id": "23",
@@ -216,7 +238,8 @@
       "field": "לשון",
       "location": "ספרד המוסלמית (אל-אנדלוס)",
       "bio": "מנחם בן סרוק כחלוץ הדקדוק העברי: חיבור 'מחברת', עיצוב שיטת השורשים והמשקלים, והוויכוח עם דונש בן לבר",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://spotifycreators-web.app.link/e/Y25n3OL4yQb"
     },
     {
       "id": "24",
@@ -225,7 +248,8 @@
       "field": "הנהגה",
       "location": "קורדובה, ספרד",
       "bio": "יהודי מבריק שפעל בצמרת החצר המוסלמית בקורדובה. בנה עתיד רוחני ליהדות ספרד.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/36w5041jUrEn5oPKATSVn1"
     },
     {
       "id": "25",
@@ -234,7 +258,8 @@
       "field": "הלכה",
       "location": "פומבדיתא, בבל",
       "bio": "פוסק-על שאליו נשלחו שאלות מכל תפוצות ישראל. חיבר מאות תשובות, מונוגרפיות הלכתיות, מילון עברי-ארמי ופ",
-      "era_key": "geonim"
+      "era_key": "geonim",
+      "spotify_url": "https://open.spotify.com/episode/1crQJTeUeTRzuNWrBy5Xnw"
     },
     {
       "id": "26",
@@ -243,7 +268,8 @@
       "field": "לשון",
       "location": "קורדובה, סרגוסה",
       "bio": "בנה את תשתית הדקדוק העברי. פליט שהפך לבלשן מוביל ומורה לעברית כתורה.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/2ZySwZSy0mmYVgrpGXmiAa"
     },
     {
       "id": "27",
@@ -252,7 +278,8 @@
       "field": "הלכה",
       "location": "בבל",
       "bio": "מגדולי גאוני בבל. חיבר עשרות ספרים הלכתיים סדורים והדגיש שהאגדה הדרכה רעיונית אך אינה בסיס לפסיקה.",
-      "era_key": "geonim"
+      "era_key": "geonim",
+      "spotify_url": "https://open.spotify.com/episode/5WkWoNLiebM2a8oFJMR0Ww"
     },
     {
       "id": "28",
@@ -261,7 +288,8 @@
       "field": "הלכה",
       "location": "שפיירא, אשכנז",
       "bio": "תלמידו וחתנו של ר' אליקים, מראשי ישיבת שפיירא, מחולל שיטת בעלי התוספות, שילב מסורת צרפתית-גרמנית, עס",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/0Mz2W0BVeqiMBdoN55MrM3?si=uEjaFbiKS7WFOI5-FolDRg&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
     },
     {
       "id": "29",
@@ -270,7 +298,8 @@
       "field": "הלכה",
       "location": "צפון אפריקה, קלעת חמאד",
       "bio": "תלמיד חבר של הרי\"ף, משפיע ע\"י הערות שנבלעו בטקסטים הלכתיים, ראשון ליישם דקדוק ככלי פסיקתי.",
-      "era_key": "geonim"
+      "era_key": "geonim",
+      "spotify_url": "https://open.spotify.com/episode/5teJp1U9ghLdy4CXNAusRN"
     },
     {
       "id": "30",
@@ -279,7 +308,8 @@
       "field": "הלכה",
       "location": "קלעת חמאד, אלג'יר",
       "bio": "פוסק ובלשן שחלק מהגהותיו שולבו בטקסט של הרי\"ף עצמו. יישם דקדוק עברי כמכשיר הלכתי.",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/5teJp1U9ghLdy4CXNAusRN"
     },
     {
       "id": "31",
@@ -288,7 +318,8 @@
       "field": "הלכה",
       "location": "אשכנז, רמרו",
       "bio": "חתנו של רש\"י ומורה דור בעלי התוספות. ייסד את הדיאלקטיקה התלמודית המערכתית בצפון צרפת.",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/3112BV2vntKp6ZDRAWMYIe"
     },
     {
       "id": "32",
@@ -297,7 +328,8 @@
       "field": "הלכה",
       "location": "ספרד",
       "bio": "תלמיד הרי\"ף וראש ישיבת לוסנה. הציב את התלמוד כסמכות עליונה, הניח יסוד לעיונו ההלכתי של הרמב\"ם.",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/4rAsgRTzQIOx4TeBSEabWs"
     },
     {
       "id": "33",
@@ -306,7 +338,8 @@
       "field": "הלכה",
       "location": "צרפת (אשכנז)",
       "bio": "נכדו של רש״י שבנה את שיטת בעלי התוספות: לא מוותרים על סתירות – מחברים סוגיות וגשרים. במקביל היה מנהי",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/5u9zxyAssijvwzZnbKM7OQ?si=o5kksAmaQNiRkBHxN8CVpQ&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
     },
     {
       "id": "34",
@@ -315,7 +348,8 @@
       "field": "הגות",
       "location": "ספרד → טולדו",
       "bio": "A sage from Rishonim",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/7w1L1hQYnLtvaAWjCSIoud?si=dEz9V-NmSAiXCrVvP2TVEw&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
     },
     {
       "id": "35",
@@ -324,7 +358,8 @@
       "field": "פרשנות",
       "location": "קירואן (צפון אפריקה)",
       "bio": "גדול פוסקי קירואן והראשון שכתב פירוש שיטתי לתלמוד הבבלי. סיכם סוגיות בהירות והכשיר קרקע לרי״ף והרמב״",
-      "era_key": "geonim"
+      "era_key": "geonim",
+      "spotify_url": "https://open.spotify.com/episode/580Us9ygui6IR3ypcVlNrx"
     },
     {
       "id": "37",
@@ -333,7 +368,8 @@
       "field": "מוסר",
       "location": "ספרד",
       "bio": "מחבר 'חובות הלבבות', חיבור מוסרי-תיאולוגי קלאסי שעסק בכוונה, אמונה, בטחון ותיקון מידות.",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/4i5VEmckhRP0N4Q1QGp5eC"
     },
     {
       "id": "38",
@@ -342,7 +378,8 @@
       "field": "היסטוריה",
       "location": "פרובנס; נרבון; דרום צרפת",
       "bio": "פרובנס מתוארת כמרחב מפגש בין הלכה ספרדית שיטתית לדיאלקטיקה אשכנזית-צרפתית, וכמוקד מדיני-תורני סביב נ",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/28wg8VCd8QFBLQiEa8y15f?si=ai8T1gHuSUulzXa6z02hwA&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
     },
     {
       "id": "39",
@@ -351,7 +388,8 @@
       "field": "מוסר",
       "location": "ספרד המוסלמית; ספרד",
       "bio": "מחבר 'חובות הלבבות' מזהה משבר רוחני: דת של מעשה חיצוני בלי כוונה. מציע שיטה סדורה של עבודת הלב – אמו",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/1qBD3kU3bmTNA8rWq0ezbD?si=bN7eR5kdS5qZ7TCI5dn5NA&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
     },
     {
       "id": "40",
@@ -360,7 +398,8 @@
       "field": "הלכה",
       "location": "פרובנס",
       "bio": "A sage from Rishonim",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/3V6k0TH0ay1RxaO4bKeVXM?si=3apo-XzoRTir-Zx5fbYmQw&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
     },
     {
       "id": "41",
@@ -369,7 +408,8 @@
       "field": "הלכה",
       "location": "ספרד, מצרים",
       "bio": "מהפכן כפול – סידר את ההלכה בבהירות וסיים את עידן התלמוד, ובו זמנית ניסח אמונה רציונלית דרך מורה נבוכ",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/3SyvZ5qZe9Mjieu9Wf6pzA"
     },
     {
       "id": "42",
@@ -378,7 +418,8 @@
       "field": "קבלה",
       "location": "פרובנס",
       "bio": "A sage from Rishonim",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/16NM4luayYQvcaoGO21kWg?si=c9XlKJwYQIelAKtxfRIUeg&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
     },
     {
       "id": "43",
@@ -387,7 +428,8 @@
       "field": "הלכה",
       "location": "אשכנז, אוסטריה",
       "bio": "אחד מהפוסקים הגדולים של אשכנז, שכתב אנציקלופדיה תלמודית ופסיקתית עם שילוב מהפכני של בבלי וירושלמי.",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/7oMEYgzLDDMfqNduDgnyXR"
     },
     {
       "id": "44",
@@ -396,7 +438,8 @@
       "field": "הלכה",
       "location": "ספרד, ארץ ישראל",
       "bio": "פוסק, פרשן ומקובל ששילב את כל רבדי התורה, חידש את יישוב ירושלים ועמד באומץ מול הכנסייה.",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/3ZjAqfQEp21lw1GXKibFGq"
     },
     {
       "id": "45",
@@ -405,7 +448,8 @@
       "field": "פרשנות",
       "location": "אורליאן, צרפת",
       "bio": "תלמיד רבנו תם. פירוש לתורה בפשט מדויק ומתנגד לאלגוריה. שילב קריאה אנושית-פסיכולוגית ופולמוס עם הנצרו",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/6gxbZoolueHckeaIeU0qC4"
     },
     {
       "id": "46",
@@ -414,7 +458,8 @@
       "field": "הלכה",
       "location": "פרובנס/גירונה",
       "bio": "מחבר 'ספר המאור' שחידש דיון עצמאי בסוגיות הרי\"ף והעמיד דגם של יושר תורני וביקורת טקסטואלית; עורר פול",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/1Oey4Q7UY5P9TmSReEIy5e"
     },
     {
       "id": "47",
@@ -423,7 +468,8 @@
       "field": "הלכה",
       "location": "אשכנז",
       "bio": "פוסק עליון וראש קהילות אשכנז, שוויתר על חייו כדי לא לסכן את הציבור. פסיקתו עיצבה דורות של הלכה אשכנז",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/2KEK5HHxNXY0mD1HV36wrn"
     },
     {
       "id": "48",
@@ -432,7 +478,8 @@
       "field": "היסטוריה",
       "location": "ספרד; ביזנטיון; בבל; ארץ ישראל; צפון אפריקה",
       "bio": "בנימין מטודלה תיעד במסעו קהילות יהודיות, מספרים ומעמד חברתי-מדיני, ובכך שרטט מפת גלות נדירה. תיאוריו",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/6uPNMCDmtJeamUc81SVz8X?si=hq1vgxJiTtWawhKuv44zAQ&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
     },
     {
       "id": "49",
@@ -441,7 +488,8 @@
       "field": "הלכה",
       "location": "אשכנז",
       "bio": "איש שהביא גישה דיאלקטית למסורת האשכנזית, שילב חריפות עם שמירה על המנהג, וכתב את 'אבי העזרי'.",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/0oglKv7NMszH0VEiXz5kUO"
     },
     {
       "id": "50",
@@ -450,7 +498,8 @@
       "field": "קבלה",
       "location": "ספרד, איטליה",
       "bio": "מקובל רדיקלי שפיתח דרך להשגת נבואה דרך צירופי אותיות ותרגולים, נתקל בהתנגדות חריפה.",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/7msZQUuF40gc7MzEt8TGBP"
     },
     {
       "id": "51",
@@ -459,7 +508,8 @@
       "field": "הלכה",
       "location": "פרובנס",
       "bio": "הוגה מבריק מפרובנס, מחבר 'בית הבחירה'. שילב פילוסופיה רציונלית ולמדנות מסודרת, ודגל בגישה מוסרית־אונ",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/0sf3x7eQhEBrOAR6VxdNkT"
     },
     {
       "id": "52",
@@ -468,7 +518,8 @@
       "field": "הלכה",
       "location": "ספרד",
       "bio": "מגדולי חכמי ספרד ומחבר חידושים יסודיים. ב'ספר הזיכרון' מציג הגנה מורכבת על הרמב\"ם לצד נאמנות לקבלה.",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/4Ao8OV05AacTbZqu6NBgea?si=W5Amlrl8SweLMAZfibe8Ew"
     },
     {
       "id": "53",
@@ -477,7 +528,8 @@
       "field": "הלכה",
       "location": "אשכנז",
       "bio": "פוסק מרכזי שאסף עולם שלם של הלכה אשכנזית רגע לפני שחרב. ספרו שימר את מסורת התוספות והשפיע על הרמ\"א.",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/4TIzbEP8cp0XnScsOSVYcj"
     },
     {
       "id": "54",
@@ -486,7 +538,8 @@
       "field": "הלכה",
       "location": "פריז",
       "bio": "עמד במשפט פריז (1240) נגד האשמות על התלמוד. למרות טיעוניו נשרפו 24 עגלות כתבי יד; נחשב סמל לאומץ ציב",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/46MHn4vu6ORF3S4hyf9rN9"
     },
     {
       "id": "55",
@@ -495,7 +548,8 @@
       "field": "מדרש",
       "location": "אשכנז",
       "bio": "אנתולוגיה מדרשית עצומה לפי סדר פסוקי התנ״ך, המשמרת מדרשים שאבדו. מיוחסת לרבי שמעון הדרשן.",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/7tKvMKCTFSZebvK2vj0U5b"
     },
     {
       "id": "56",
@@ -504,7 +558,8 @@
       "field": "הלכה",
       "location": "ספרד → אלג׳יר",
       "bio": "תלמיד הר״ן ופוסק עליון. ברח כפליט קשיש לאלג׳יר והנהיג אלפי פליטים; שו״ת כ'יומן אנושי' של שיקום קהילה",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/59OpwWz4UjKqH3FjomFj2o"
     },
     {
       "id": "57",
@@ -513,7 +568,8 @@
       "field": "הלכה",
       "location": "אראגון, ספרד",
       "bio": "מנהיג יהודי אראגון בפרעות 1391 ופילוסוף מהפכני. העמיד את האהבה במרכז ושבר יסודות אריסטוטליים.",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/2zU0Aketj3W85PjNE1z3Vb"
     },
     {
       "id": "58",
@@ -522,7 +578,8 @@
       "field": "הגות",
       "location": "תלמסאן (אלג'יריה) / ספרד–צפון אפריקה",
       "bio": "פליט גזירות קנ\"א שהפך לרב העיר תלמסאן, רופא ופייטן. סביבו נקשר סיפור האריה, ובכתביו דיון על ניסים, ט",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/7q3U1w91U94YzhWhEWkgSB?si=_S7R53NtShWFrJK8OKNZiA"
     },
     {
       "id": "59",
@@ -540,7 +597,8 @@
       "field": "הלכה",
       "location": "",
       "bio": "מחבר ספר 'אבודרהם' – פירוש לתפילה ולברכות שנועד לחבר מחדש את הציבור למשמעות התפילה. סינתזה בין נוסחי",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/1sYlXFDONZ0TURq4d0e2RP"
     },
     {
       "id": "61",
@@ -549,7 +607,8 @@
       "field": "מוסר",
       "location": "טולדו (ספרד)",
       "bio": "מחבר 'מנורת המאור' מתוך כאב הדור והפיזור הרוחני. אסף מדרשים, אגדה וזוהר למסילת מוסר חיה ונגישה.",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/7ong9XinXN1Na6aWhTzXME"
     },
     {
       "id": "62",
@@ -558,7 +617,8 @@
       "field": "מוסר",
       "location": "ספרד; ספרד; יוון; צפת",
       "bio": "מחבר 'מנורת המאור' כספר מוסר לעם כולו – נשים, ילדים ובעלי מלאכה. שילב חז״ל, אגדה והלכה לתמונה חינוכי",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/2ajjVlwvLyK2uIK53Hfeav"
     },
     {
       "id": "63",
@@ -567,7 +627,8 @@
       "field": "הלכה",
       "location": "אשכנז (ברין, רגנסבורג)",
       "bio": "רב אשכנזי שנרדף, נאסר ואף הואשם ברצח, אך הפך לדמות מכוננת בפסיקת הרמ\"א.",
-      "era_key": "acharonim"
+      "era_key": "acharonim",
+      "spotify_url": "https://open.spotify.com/episode/675qg10QyWmdYgW9TyQyUB?si=0tKIc58TT-CFGBpIu5BVSw&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
     },
     {
       "id": "64",
@@ -576,7 +637,8 @@
       "field": "הלכה",
       "location": "גרמניה, איטליה (פדובה)",
       "bio": "רב באיטליה בתקופת הרנסנס, שילב מסורת הלכתית עם מציאות תרבותית מורכבת.",
-      "era_key": "acharonim"
+      "era_key": "acharonim",
+      "spotify_url": "https://open.spotify.com/episode/2UFLK856gB3r5MDYUiO2mV"
     },
     {
       "id": "65",
@@ -585,7 +647,8 @@
       "field": "הגות",
       "location": "ספרד (אראגון) → דור הגירוש",
       "bio": "A sage from Rishonim",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/569PKgJ66rKNm3LAxtU8Hv?si=2Q7hPpMnQ2G0K4g7BVxLQw&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
     },
     {
       "id": "66",
@@ -594,7 +657,8 @@
       "field": "הנהגה",
       "location": "האימפריה העות'מאנית, קושטא",
       "bio": "פירושו ההגיוני והעמוק לרש\"י הפך לבסיס להבנת פרשנותו, מנהיג רוחני של יהדות קושטא.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/3prGOsLsSDsg5gSp4qNFVk"
     },
     {
       "id": "67",
@@ -603,7 +667,8 @@
       "field": "הנהגה",
       "location": "פורטוגל/ספרד/איטליה",
       "bio": "מדינאי ופרשן תנ\"ך מרכזי; כתב פירושים מקיפים וספרים פילוסופיים־משיחיים מתוך חוויית גירוש ונדודים.",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/5TcOFBOg5ZWpmJzEWAE1ef?si=KE21EdSuTNuD9N_tr8puSQ"
     },
     {
       "id": "68",
@@ -612,7 +677,8 @@
       "field": "קבלה",
       "location": "סלוניקי (האימפריה העות'מאנית)",
       "bio": "ראש ישיבה ומקובל מגולי ספרד; מחבר/מקבל ה'משיב' וחוליה מרכזית בדור צפת–סלוניקי. שילב סיגוף, תודעת קץ ",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/2wytNryqHZzLbnhrdOWa5R?si=re_LmFw7Sj-hECTSLe4PWQ"
     },
     {
       "id": "69",
@@ -621,7 +687,8 @@
       "field": "הלכה",
       "location": "ספרד/פורטוגל; מצרים; ארץ ישראל",
       "bio": "הרדב\"ז כפוסק-על ומנהיג: נדודים מספרד למצרים ולא\"י, פסיקה מעשית בסוגיות קשות, והשפעה עצומה דרך שו\"ת ה",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://spotifycreators-web.app.link/e/ZwNpVDI4yQb"
     },
     {
       "id": "70",
@@ -630,7 +697,8 @@
       "field": "הלכה",
       "location": "פולין, ליטא",
       "bio": "פוסק ומהפכן בלימוד, התנגד ל\"פלפול\" ודגל בדיוק ובחזרה למקורות. עמד מול הרמ\"א במחלוקת רעיונית.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/77qmOPOAQ6RIlbvk9VtmFb"
     },
     {
       "id": "71",
@@ -639,7 +707,8 @@
       "field": "קבלה",
       "location": "צפת, ארץ ישראל",
       "bio": "מהגדולים שבמקובלי צפת, שסידר את הקבלה למערכת תיאולוגית סדורה ובנה גישה מוסרית לחיקוי האל.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/6eeW3Kknuudy4VEELZmcof?si=up4JT39ST3aTrBpDZlfigw"
     },
     {
       "id": "72",
@@ -648,7 +717,8 @@
       "field": "חינוך",
       "location": "פראג (בוהמיה) / מרכז אירופה",
       "bio": "הוגה מרכזי שבנה שיטה כוללת על ניגודים, אחדות והבנת מדרש כעולם רעיוני. השפעתו ניכרת בחסידות ובמתנגדים",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/37eDPuFbb4oSjIRx8U8B88?si=Ism8P_AOQp-KDPtkwNHrsw"
     },
     {
       "id": "73",
@@ -657,7 +727,8 @@
       "field": "הלכה",
       "location": "פולין",
       "bio": "פוסק ומנהיג ששימש בראש ועד ארבע הארצות והוביל תקנות לאומיות. חיבר את 'הלבושים' – קודקס הלכתי מאוזן ב",
-      "era_key": "modern"
+      "era_key": "modern",
+      "spotify_url": "https://open.spotify.com/episode/30117xL4w5HtBLLFICQuvM?si=dg_NJOGfSsS8H6-dQOMsSw"
     },
     {
       "id": "74",
@@ -666,7 +737,8 @@
       "field": "קבלה",
       "location": "צפת; צפת; בבל; אשכנז",
       "bio": "מקובל וחבר חוגי צפת, ייסד חבורה לתשובה ודבקות וחיבר את 'ספר חרדים'; פיוטו 'ידיד נפש' נעשה תפילת-לב ל",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/1z1ZTOGvJvtWOoXPHrXEJZ"
     },
     {
       "id": "75",
@@ -675,7 +747,8 @@
       "field": "הנהגה",
       "location": "פולין",
       "bio": "פרשן תלמודי ומנהיג חברתי, שעמד בראש ועד ארבע ארצות וחידש גישה המשלבת לימוד עיוני ואחריות מוסרית.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/1W9x8xBNjO6o82fNd87LFb"
     },
     {
       "id": "76",
@@ -684,7 +757,8 @@
       "field": "הלכה",
       "location": "פולין",
       "bio": "בעל 'בית חדש', פוסק אמיץ ועמוק, שהתעקש על לימוד הלכה מהמקורות. שילב בין דרש, למדנות ומנהג, הנהיג את ",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/2owg9vip33cnirUkUc97Gw"
     },
     {
       "id": "77",
@@ -693,7 +767,8 @@
       "field": "קבלה",
       "location": "פאס; חברון; ירושלים; גזר",
       "bio": "אזולאי עלה לארץ ישראל ובנה שיטה קבלית סדורה הנשענת על האר\"י והרמ\"ק. ב\"חסד לאברהם\" הוא משרטט מפת מציא",
-      "era_key": "modern"
+      "era_key": "modern",
+      "spotify_url": "https://open.spotify.com/episode/7oZMpwJNWpTibhB6EvhJ6R?si=TkNI-nIPRbi7HQAUkAhk-Q&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
     },
     {
       "id": "78",
@@ -702,7 +777,8 @@
       "field": "מוסר",
       "location": "ונציה; איטליה",
       "bio": "רבי יהודה אריה מודנה היה רב, דרשן ופולמוסן בגטו ונציה, בעל גאונות לשונית וכתיבה עשירה. לצד מפעל רוחנ",
-      "era_key": "modern"
+      "era_key": "modern",
+      "spotify_url": "https://open.spotify.com/episode/7dCBE5OnROaK58y5cK5tiO?si=4Cr1F3_iTIu6UQbPYdZuyg&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
     },
     {
       "id": "79",
@@ -711,7 +787,8 @@
       "field": "הנהגה",
       "location": "פולין ולבוב",
       "bio": "פוסק חשוב שכתב את טורי זהב, חי חיי נדודים וסבל, עיצב את ההלכה האשכנזית, ונותר דמות נערצת במסורת ובחס",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/0xSD9i70yODc67pyeQVP67"
     },
     {
       "id": "80",
@@ -720,7 +797,8 @@
       "field": "פילוסופיה",
       "location": "תימן (תעיז, צנעא); גלות מוזע",
       "bio": "רבי שלום שבזי היה פייטן ומקובל תימני שפעל בדור של גזרות, עוני וגלות. הוא הוביל את קהילתו גם בשעת משב",
-      "era_key": "modern"
+      "era_key": "modern",
+      "spotify_url": "https://open.spotify.com/episode/0esvJn3mSqW2Pa26wtwS9Q?si=NHUNxeLRSfak0mYUsSE7Lg&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
     },
     {
       "id": "81",
@@ -729,7 +807,8 @@
       "field": "הגות",
       "location": "פורטוגל/הולנד; קהילות אנוסים וספרדים",
       "bio": "יצחק נוניש בילמונטי: אנוס-לשעבר בעולם ההולנדי, מאבק זהות וחיפוש דרך תוך עיסוק בפילוסופיה וברפואה.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://spotifycreators-web.app.link/e/W2WXvR24yQb"
     },
     {
       "id": "82",
@@ -738,7 +817,8 @@
       "field": "הנהגה",
       "location": "צפון אפריקה, אירופה המערבית (אמסטרדם, לונדון, המבורג, ליבורנו)",
       "bio": "Prominent sage from the Unknown era, specializing in הנהגה.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/09JfLsbxRNjLhC969SxOPd?si=zTKhNkZ7T8qiI1akCdsAvg&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
     },
     {
       "id": "83",
@@ -747,7 +827,8 @@
       "field": "הלכה",
       "location": "פולין",
       "bio": "פוסק גאון שדרש פתיחה מחודשת של ההלכה, עימת את המקובל, חידש בעיון, וספריו הפכו יסוד ללימוד ולפסיקה עד",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/0zeTxQVV4ZhQFYYST2sO12"
     },
     {
       "id": "84",
@@ -756,7 +837,8 @@
       "field": "קבלה",
       "location": "פולין",
       "bio": "פוסק חשוב שפרשנותו לשולחן ערוך אורח חיים התקבלה להלכה. שילב קבלה בפסיקה, וזמני היום ההלכתיים נמדדים ",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/5fzAXAiCnkg42WFvOV2dci"
     },
     {
       "id": "85",
@@ -765,7 +847,8 @@
       "field": "הלכה",
       "location": "קושטא (האימפריה העות'מאנית)",
       "bio": "ר' יהודה רוזאניס, בעל 'משנה למלך': בניית מהלכים לוגיים על הרמב\"ם, בירור שיטות הראשונים והשפעה עמוקה ",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://spotifycreators-web.app.link/e/1mcxPFf4yQb"
     },
     {
       "id": "86",
@@ -774,7 +857,8 @@
       "field": "הנהגה",
       "location": "ירושלים; איטליה; אמסטרדם; אירופה",
       "bio": "חגיז פעל לאחר טראומת השבתאות כקנאי-אחראי להצבת גבולות מול מה שראה כהתפוררות המסורת. משבר אישי הוביל ",
-      "era_key": "modern"
+      "era_key": "modern",
+      "spotify_url": "https://open.spotify.com/episode/2kCpBIWS1B2NtObhJemSdG?si=CHbvRGp1RkW_Lj5w4HGnsQ&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
     },
     {
       "id": "87",
@@ -783,7 +867,8 @@
       "field": "הלכה",
       "location": "איזמיר/קושטא",
       "bio": "הרב אפרים נבון, בעל 'מחנה אפרים': סידור עקרונות בדיני קניינים וממונות, בירור שיטות ראשונים והעמדת מע",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://spotifycreators-web.app.link/e/9p64oc54yQb"
     },
     {
       "id": "88",
@@ -792,7 +877,8 @@
       "field": "הלכה",
       "location": "איזמיר / ירושלים",
       "bio": "ראש ישיבת בית אל ומנהיג ירושלים; חיבר עשרות ספרים ושילב אחריות ציבורית עם עומק קבלי.",
-      "era_key": "acharonim"
+      "era_key": "acharonim",
+      "spotify_url": "https://open.spotify.com/episode/3CL54iYhfjNTz1KREt1aJk?si=gqAxPt4HTiW3pe6a4HVETQ"
     },
     {
       "id": "89",
@@ -801,7 +887,8 @@
       "field": "הלכה",
       "location": "גרמניה/אשכנז",
       "bio": "Prominent sage from the Unknown era, specializing in הלכה.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/1beLl51NE2qBVK8f7hj2Qm?si=wTuZj6lgSkqYtfguLluJ2Q&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
     },
     {
       "id": "90",
@@ -810,7 +897,8 @@
       "field": "קבלה",
       "location": "פדובה, איטליה",
       "bio": "רופא מוסמך וחבר קרוב של הרמח״ל. פיתח שיטת פרשנות: הפשט עצמו רומז לסוד בכל שינוי דקדוקי/לשוני.",
-      "era_key": "modern"
+      "era_key": "modern",
+      "spotify_url": "https://open.spotify.com/episode/6Sc3CiYpTfV68Ke8SueReD"
     },
     {
       "id": "91",
@@ -819,7 +907,8 @@
       "field": "הלכה",
       "location": "מזרח אירופה / מץ (צרפת)",
       "bio": "גאון תלמודי ופוסק עצמאי שחי בעוני ונדודים, התנגש בממסד ולא פחד לחלוק. ספרו 'שאגת אריה' נעשה אבן יסוד",
-      "era_key": "modern"
+      "era_key": "modern",
+      "spotify_url": "https://open.spotify.com/episode/4tSyrs2SrcNd1WsVBoHZuh?si=fQD3_QT6TqqaEDMyoYR9bw"
     },
     {
       "id": "92",
@@ -828,7 +917,8 @@
       "field": "קבלה",
       "location": "אוקראינה/פולין; ארץ ישראל (ירושלים)",
       "bio": "ר' אברהם גרשון מקיטוב, גיס הבעש\"ט: עלייה לארץ ישראל, שליחות רוחנית וקשרי מכתבים שמאירים את ראשית החס",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://spotifycreators-web.app.link/e/HXK4lf94yQb"
     },
     {
       "id": "93",
@@ -837,7 +927,8 @@
       "field": "קבלה",
       "location": "פדובה → אמסטרדם → עכו",
       "bio": "גאון צעיר שעמד במחלוקות וחרמות. 'מסילת ישרים' הפך לספר יסוד במוסר; כתב שיטה היסטוריוסופית קבלית-פילו",
-      "era_key": "modern"
+      "era_key": "modern",
+      "spotify_url": "https://open.spotify.com/episode/1lgKTjkSyrd7SAntCbBGTt"
     },
     {
       "id": "94",
@@ -846,7 +937,8 @@
       "field": "הנהגה",
       "location": "פראג (בוהמיה)",
       "bio": "גדול פוסקי פראג שניצב מול שבתאות, השכלה וחסידות. הכריע באומץ בסוגיות עקרוניות, הנהיג בקור רוח בזמן מ",
-      "era_key": "modern"
+      "era_key": "modern",
+      "spotify_url": "https://open.spotify.com/episode/4EJ2FNYaB1FdSuKMRkfonR?si=123rhSTsT6Wga_7NA8Xp_A&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
     },
     {
       "id": "95",
@@ -855,7 +947,8 @@
       "field": "הלכה",
       "location": "פראג",
       "bio": "פוסק מרכזי במזרח אירופה, מחבר 'נודע ביהודה'. עמד מול אתגרי ההשכלה תוך שימור מסורת הלכתית מחודדת.",
-      "era_key": "modern"
+      "era_key": "modern",
+      "spotify_url": "https://open.spotify.com/episode/4OtzHMEeQArEy5BgF3t52P"
     },
     {
       "id": "96",
@@ -873,7 +966,8 @@
       "field": "הלכה",
       "location": "גליציה",
       "bio": "בעל 'קצות החושן' כמחדש לומדות: דיוק מושגים בדיני ממונות, טיעון חד והשפעה עצומה על עולם הישיבות.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://spotifycreators-web.app.link/e/sGxO35n4yQb"
     },
     {
       "id": "98",
@@ -882,7 +976,8 @@
       "field": "הלכה",
       "location": "וילנה",
       "bio": "פוסק ומחבר 'חיי אדם' ו'חכמת אדם'. חיבר מדריכים ברורים ומעשיים להלכה עבור בעלי בתים, מתוך ניסיון אישי",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/182iEVeFAwTuBZxYCYbdIX"
     },
     {
       "id": "99",
@@ -891,7 +986,8 @@
       "field": "מוסר",
       "location": "וולוז'ין (ליטא)",
       "bio": "תלמיד הגר\"א ומייסד ישיבת וולוז'ין. ב'נפש החיים' מציג תיאולוגיה של תורה כמנוע קוסמי וכמודל דבקות.",
-      "era_key": "acharonim"
+      "era_key": "acharonim",
+      "spotify_url": "https://open.spotify.com/episode/4doQLfwiMgf2moAjnxiX0V?si=dVrHxoWnRwuydUMeaUTJIg"
     },
     {
       "id": "100",
@@ -900,7 +996,8 @@
       "field": "מוסר",
       "location": "גליציה/פודוליה (מזרח אירופה)",
       "bio": "משכיל-רב שגיבש שיטה מעשית לתיקון מידות דרך יומן מוסרי יומי, והשפיע עמוקות על תנועת המוסר דרך מהדורת ",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/7rCLKRa5bSuYAhNFZpUjV5"
     },
     {
       "id": "101",
@@ -909,7 +1006,8 @@
       "field": "הלכה",
       "location": "פוזנא; מרכז אירופה",
       "bio": "רבי עקיבא איגר ביסס את שיטת ההערות הדקות והעיון האנליטי ששינה את פני עולם הישיבות.",
-      "era_key": "modern"
+      "era_key": "modern",
+      "spotify_url": "https://open.spotify.com/episode/6u60Ab2ZLOPQjjIcY4kwBC?si=kZNrKNSbQW6E2fT4fOqDcw&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
     },
     {
       "id": "102",
@@ -918,7 +1016,8 @@
       "field": "הנהגה",
       "location": "פרשבורג",
       "bio": "אבי האורתודוקסיה המודרנית, התנגד לרפורמה בחריפות. קבע את עקרון 'חדש אסור מן התורה' כאידאולוגיה כוללת",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/5XBxxBUWyu9fKUK69gjQgx"
     },
     {
       "id": "103",
@@ -927,7 +1026,8 @@
       "field": "הלכה",
       "location": "איזמיר (האימפריה העות'מאנית)",
       "bio": "פוסק ומנהיג שהקים מוסדות צדקה וחינוך, תיקן תקנות קהילתיות, והותיר מפעל כתיבה עצום למרות אובדן כתבי י",
-      "era_key": "acharonim"
+      "era_key": "acharonim",
+      "spotify_url": "https://open.spotify.com/episode/2ugZ7lWueXQOsEw2z6Va03"
     },
     {
       "id": "104",
@@ -936,7 +1036,8 @@
       "field": "הנהגה",
       "location": "גיברלטר/קורפו → ארץ ישראל (חברון)",
       "bio": "רב והוגה שקידם גאולה במעשה ידי אדם, הושפע מרוח הלאומיות של זמנו וקרא להתעוררות לאומית-מדינית; השפיע ",
-      "era_key": "acharonim"
+      "era_key": "acharonim",
+      "spotify_url": "https://open.spotify.com/episode/2DXKB6Zr62zP0VwCytZznO"
     },
     {
       "id": "105",
@@ -945,7 +1046,8 @@
       "field": "הלכה",
       "location": "פרוסיה / ארץ ישראל (חזון)",
       "bio": "פוסק שמרן שניסח תוכנית מעשית לגאולה: עלייה, חקלאות ובניין הארץ “מעט מעט”. הציע מהלכים הלכתיים נועזים",
-      "era_key": "modern"
+      "era_key": "modern",
+      "spotify_url": "https://open.spotify.com/episode/7CWcx0r0X5jRyzuRCBPBDh?si=gf7x1W04SsWqd3iA4wjpMQ"
     },
     {
       "id": "106",
@@ -954,7 +1056,8 @@
       "field": "היסטוריה",
       "location": "גרמניה, פולין",
       "bio": "מהוגי הציונות הדתית המוקדמת, קרא ליישוב הארץ והקרבת קורבנות טרם ביאת המשיח.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/0T5EizLF2mu1tavkZ9WUSX"
     },
     {
       "id": "107",
@@ -963,7 +1066,8 @@
       "field": "הגות",
       "location": "גריידיץ (אירופה) → השפעה על ארץ ישראל",
       "bio": "A sage from Modern",
-      "era_key": "modern"
+      "era_key": "modern",
+      "spotify_url": "https://open.spotify.com/episode/3iEFTRWSwf4AJJ7lCw5SHe?si=W7kQzorhSIiFfwM6khgvjQ&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
     },
     {
       "id": "108",
@@ -972,7 +1076,8 @@
       "field": "הגות",
       "location": "הבלקן",
       "bio": "הוגה ציוני-דתי מוקדם שמפרש 'תשובה' כתהליך לאומי: שיבה לארץ היא עצמה הגאולה. מציע תכנית פעולה: חברות ",
-      "era_key": "modern"
+      "era_key": "modern",
+      "spotify_url": "https://open.spotify.com/episode/6GD0RxzoBaG17nmaGA9pe9?si=qeIXN4iwRIWsOjztQ5cWoQ"
     },
     {
       "id": "109",
@@ -981,7 +1086,8 @@
       "field": "קבלה",
       "location": "סרביה, ירושלים",
       "bio": "מראשוני ההוגים שראו בתנועה הציונית אתחלתא דגאולה. חיבר ספרים שקראו לעלייה ולתחייה רוחנית.",
-      "era_key": "modern"
+      "era_key": "modern",
+      "spotify_url": "https://open.spotify.com/episode/4vNN4NEB3pFnQkALkPPq1v"
     },
     {
       "id": "110",
@@ -990,7 +1096,8 @@
       "field": "פרשנות",
       "location": "פאדובה; איטליה",
       "bio": "שד\"ל טען שהיהדות האותנטית היא דת של חמלה ואמונה ולא של שכל קר, ובנה מפעל מדעי (לשון, מקרא, ביקורת טק",
-      "era_key": "modern"
+      "era_key": "modern",
+      "spotify_url": "https://open.spotify.com/episode/03tAgaC9jfaMhMJ2rvW4uF?si=cgIj0F37SiKtDyDT85ZqKA&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
     },
     {
       "id": "111",
@@ -999,7 +1106,8 @@
       "field": "אחר",
       "location": "גליציה",
       "bio": "גדול תורה בגליציה שניסה לגשר בין מחקר זהיר לבין נאמנות מוחלטת לתורה שבעל פה, ובנה שפה של הגנה אינטלק",
-      "era_key": "acharonim"
+      "era_key": "acharonim",
+      "spotify_url": "https://open.spotify.com/episode/7qsdQhzQdtrX80wVbwkfmZ"
     },
     {
       "id": "112",
@@ -1008,7 +1116,8 @@
       "field": "הלכה",
       "location": "מרוקו",
       "bio": "מקובל ופוסק בולט ממרוקו, מנהיג רוחני שנודע בפרישותו ובגדלותו בתורה. השפעתו ניכרת עד היום בשושלת אבוח",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/2Er963loo0uKztvzqzvPlA"
     },
     {
       "id": "113",
@@ -1017,7 +1126,8 @@
       "field": "מוסר",
       "location": "ליטא",
       "bio": "מייסד תנועת המוסר, הציב את העבודה הפנימית בלב החיים התורניים, ראה במידות יסוד התשובה.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/6SEbHVgsFhOJsCIvwTInSY"
     },
     {
       "id": "114",
@@ -1026,7 +1136,8 @@
       "field": "קבלה",
       "location": "גרמניה",
       "bio": "משכיל גרמני שביקש להנגיש את תורת הקבלה כתיאולוגיה פילוסופית עמוקה – לא מיסטיקה נחותה.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/3tiM1FAhaIv7zvVuY5FkBE"
     },
     {
       "id": "115",
@@ -1035,7 +1146,8 @@
       "field": "הלכה",
       "location": "פולין",
       "bio": "רבה האשכנזי של ירושלים, מהדמויות המרכזיות בבניית היישוב הישן וירושלים החדשה. הנהיג את הקהילה כמעט שב",
-      "era_key": "acharonim"
+      "era_key": "acharonim",
+      "spotify_url": "https://open.spotify.com/episode/6IZbp5APF1EvHCXfsHDjsf"
     },
     {
       "id": "116",
@@ -1044,7 +1156,8 @@
       "field": "הלכה",
       "location": "ליטא, ירושלים",
       "bio": "מייסד דגם ההנהגה החרדית בירושלים, מתנגד חריף להשכלה, פעל להקמת מוסדות תורה וחברה.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/6Bp9QqhUSS3A8y5iZkBU55"
     },
     {
       "id": "117",
@@ -1053,7 +1166,8 @@
       "field": "הגות",
       "location": "ליטא / לובלין",
       "bio": "עילוי ליטאי שנהפך לחסיד בעקבות מפגש עם ר׳ מרדכי יוסף מאיז׳ביצא. מציע תיאולוגיה שבה תורה שבעל‑פה היא ",
-      "era_key": "modern"
+      "era_key": "modern",
+      "spotify_url": "https://open.spotify.com/episode/6DLhfveOXBJupYoYqgceWx?si=zrPEwB1LQjua2OW_BkVXPw&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
     },
     {
       "id": "118",
@@ -1062,7 +1176,8 @@
       "field": "מוסר",
       "location": "ליבורנו; איטליה",
       "bio": "בן אמוזג הציג את הקבלה כלב היהדות וכמערכת שמסוגלת לפרש ולבקר את המודרנה (משפינוזה ועד קאנט ודרווין).",
-      "era_key": "modern"
+      "era_key": "modern",
+      "spotify_url": "https://open.spotify.com/episode/66ocgEWzF0dAp3RmcvYSAn?si=kkTXOdjtTHi39U7Ohf1yTg&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
     },
     {
       "id": "119",
@@ -1071,7 +1186,8 @@
       "field": "קבלה",
       "location": "פולין",
       "bio": "מההוגים המקוריים בחסידות, חיבר את 'צדקת הצדיק' וחיבורים נוספים המשלבים עומק רעיוני עם חיפוש אישי.",
-      "era_key": "modern"
+      "era_key": "modern",
+      "spotify_url": "https://open.spotify.com/episode/6XLsSvlI1KwSYKZXDhyaTD"
     },
     {
       "id": "120",
@@ -1080,7 +1196,8 @@
       "field": "הנהגה",
       "location": "מזרח אירופה / ארץ ישראל (מפעל היישוב)",
       "bio": "מנהיג חיבת ציון שהבין שהשיבה לארץ היא משימה מעשית. יצר גשר בין דתיים לחילונים, פעל עם רוטשילד להקמת ",
-      "era_key": "modern"
+      "era_key": "modern",
+      "spotify_url": "https://open.spotify.com/episode/5T2FtQnfoEkvsFnCYyFBcQ?si=B9g6mdr7TtqbzlQnC1gTMA"
     },
     {
       "id": "121",
@@ -1089,7 +1206,8 @@
       "field": "הנהגה",
       "location": "פולין",
       "bio": "מרבני תנועת חובבי ציון, חיפש דרך לשלב מסורת עם תחייה לאומית. עודד התיישבות יהודית בארץ.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/2z6Y3bfXsFTNHPvI0HsiJq"
     },
     {
       "id": "122",
@@ -1098,7 +1216,8 @@
       "field": "הלכה",
       "location": "נובהרדוק (מזרח אירופה)",
       "bio": "רב קהילה שפסק מתוך 'מבט מן החלון': להבין קודם את חיי האנשים ואז לחזור למקורות. כותב קודקס בהיר ושיטת",
-      "era_key": "modern"
+      "era_key": "modern",
+      "spotify_url": "https://open.spotify.com/episode/1reKfnLOTfoSzBHRhzGMbe?si=g78LXL5_Q12g6IpvjyRTMQ&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
     },
     {
       "id": "123",
@@ -1107,7 +1226,8 @@
       "field": "הלכה",
       "location": "נובהרודוק, רוסיה",
       "bio": "מחבר סדרת ספרי ההלכה 'ערוך השולחן' שפרשו את כל השולחן ערוך בגישה חדשנית ומסכמת.",
-      "era_key": "modern"
+      "era_key": "modern",
+      "spotify_url": "https://open.spotify.com/episode/3zRwIpWZs0YUrRrpGcndte"
     },
     {
       "id": "124",
@@ -1116,7 +1236,8 @@
       "field": "הלכה",
       "location": "",
       "bio": "מחבר ה'שדי חמד' – אנציקלופדיה הלכתית בת 18 כרכים. פעל בקהילות ספרדיות ואשכנזיות, איחד מסורות הלכתיות",
-      "era_key": "acharonim"
+      "era_key": "acharonim",
+      "spotify_url": "https://open.spotify.com/episode/7G1e30kwtU62b50Mao1pdn"
     },
     {
       "id": "125",
@@ -1125,7 +1246,8 @@
       "field": "הלכה",
       "location": "בגדאד",
       "bio": "דמות רב-פנים: מגדולי פוסקי המזרח וגם הוגה חברתי. לאחר משבר אישי וכלכלי פיתח שפה שמחברת תורה למציאות ",
-      "era_key": "modern"
+      "era_key": "modern",
+      "spotify_url": "https://open.spotify.com/episode/5mA6IjVV5SbxfT0OfQ22Ad?si=-IWNH499SoGWQ6XF5UUQbg&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
     },
     {
       "id": "126",
@@ -1134,7 +1256,8 @@
       "field": "קבלה",
       "location": "בגדד",
       "bio": "פוסק גדול, מקובל ודרשן נודע מהעולם הספרדי בבגדד, שחיבר את 'בן איש חי' – שילוב של הלכה, אגדה וקבלה.",
-      "era_key": "modern"
+      "era_key": "modern",
+      "spotify_url": "https://open.spotify.com/episode/1O45L1iFmr5oeXWvm6fCr6"
     },
     {
       "id": "127",
@@ -1143,7 +1266,8 @@
       "field": "הלכה",
       "location": "ראדין, ליטא",
       "bio": "מחבר 'משנה ברורה' ו'חפץ חיים'. שילב בין פסיקה מעשית למוסר הלכתי, והפך לדמות מוסרית מכוננת בעידן מודר",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/4xzoaG2b7YdsCB3rb0aPPf"
     },
     {
       "id": "128",
@@ -1152,7 +1276,8 @@
       "field": "הלכה",
       "location": "דווינסק (לטביה/ליטא)",
       "bio": "מחבר 'אור שמח' ו'משך חכמה'. גשר בין שכל לאמונה ובין גלות לתחייה; ניתוח חריף של היסטוריה יהודית וקדוש",
-      "era_key": "modern"
+      "era_key": "modern",
+      "spotify_url": "https://open.spotify.com/episode/5M242GRqncgReaYVplhjBU"
     },
     {
       "id": "129",
@@ -1161,7 +1286,8 @@
       "field": "הגות",
       "location": "גור (פולין)",
       "bio": "אדמו\"ר גור ומגדולי הוגי החסידות. יצר שפה מיסטית־קיומית על גלות כהסתר וגאולה כגילוי.",
-      "era_key": "acharonim"
+      "era_key": "acharonim",
+      "spotify_url": "https://open.spotify.com/episode/2rV5jFlhaSLJasVNdd0rMf?si=WT92_boJSQK5yW0aO6dfLQ"
     },
     {
       "id": "130",
@@ -1170,7 +1296,8 @@
       "field": "מוסר",
       "location": "נובהרדוק (ליטא/רוסיה)",
       "bio": "תלמיד ר' ישראל סלנטר ומייסד רשת ישיבות 'בית יוסף'. פיתח שיטה חינוכית רדיקלית של תיקון מידות ותלות מו",
-      "era_key": "acharonim"
+      "era_key": "acharonim",
+      "spotify_url": "https://open.spotify.com/episode/7gMcU9ypTl2wkJLtZmnT6S?si=vpTwypCqRkGf8W0l2TnEtg"
     },
     {
       "id": "131",
@@ -1179,7 +1306,8 @@
       "field": "הגות",
       "location": "סוכטשוב (פולין)",
       "bio": "אדמו\"ר והוגה חסידי מרכזי; דרשותיו משלבות סוד, פסיכולוגיה רוחנית ותיקון המידות.",
-      "era_key": "acharonim"
+      "era_key": "acharonim",
+      "spotify_url": "https://open.spotify.com/episode/5dTIktS4k7pzb2kSQbqtXB?si=bXYmRr7AQhaDStRXLBq8rg"
     },
     {
       "id": "132",
@@ -1188,7 +1316,8 @@
       "field": "הלכה",
       "location": "רוגצ'וב/דווינסק",
       "bio": "חד בדרא' שחי עם ש\"ס ורמב\"ם, קרא את הרמב\"ם כמקשה אחת, וחיבר כלים פילוסופיים להבנת הלכה; כתבי היד ניצל",
-      "era_key": "acharonim"
+      "era_key": "acharonim",
+      "spotify_url": "https://open.spotify.com/episode/4aUeMLx5QyMsdp0moTBcDu"
     },
     {
       "id": "133",
@@ -1197,7 +1326,8 @@
       "field": "קבלה",
       "location": "בגדד → ירושלים",
       "bio": "תלמיד מסורת בבל שהנגיש את שיטת האר\"י בביאור בהיר וכתב חיבורים מרכזיים; נודע גם במסורות תיקון נשמות ו",
-      "era_key": "acharonim"
+      "era_key": "acharonim",
+      "spotify_url": "https://open.spotify.com/episode/7GkxO9MSNQCoBw1qdYuJVI"
     },
     {
       "id": "134",
@@ -1206,7 +1336,8 @@
       "field": "הלכה",
       "location": "ארץ ישראל",
       "bio": "הראי\"ה קוק ראה במודרנה תהליך אלוהי ובציונות החילונית תנועת תשובה עמוקה. חיפש אחדות בין ניגודים, דיבר",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/19vVkCaNfYWm6AlvbjbkRe?si=Y2-7mNX9QnCXzxz32MKpgA"
     },
     {
       "id": "135",
@@ -1215,7 +1346,8 @@
       "field": "הגות",
       "location": "פולין; מזרח אירופה",
       "bio": "הלל צייטלין: פילוסוף יהודי בין ניטשה לחסידות, מבקר תרבות שחוזר לעומק רוחני; נרצח בשואה.",
-      "era_key": "modern"
+      "era_key": "modern",
+      "spotify_url": "https://spotifycreators-web.app.link/e/VKh6sMX4yQb"
     },
     {
       "id": "136",
@@ -1224,7 +1356,8 @@
       "field": "הלכה",
       "location": "ג'רבא (תוניסיה)",
       "bio": "הרב כלפון משה הכהן כרב ג'רבא: כתיבה הלכתית ענפה, אחריות ציבורית, וחיבור בין מסורת מקומית לתודעה לאומ",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://spotifycreators-web.app.link/e/JLk74X14yQb"
     },
     {
       "id": "137",
@@ -1233,7 +1366,8 @@
       "field": "קבלה",
       "location": "חלב, ירושלים",
       "bio": "מקובל ירושלמי שפעל בשקט אדיר. הנהיג את תענית הדיבור כתיקון רוחני עמוק לזמננו.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/0K70gzGHWICiSDkIOQKFip"
     },
     {
       "id": "138",
@@ -1242,7 +1376,8 @@
       "field": "הלכה",
       "location": "יפו/תל אביב → הרבנות הראשית",
       "bio": "ראשון לציון ופוסק רואה-למרחוק שפעל באחדות היישוב והמדינה, פיתח הלכה ציבורית ריאלית, ושיתף פעולה היסט",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/19Z8t6pZZjaOTG652Clx9c"
     },
     {
       "id": "139",
@@ -1251,7 +1386,8 @@
       "field": "קבלה",
       "location": "ירושלים",
       "bio": "הרב חרל\"פ כתלמיד-חבר של הרב קוק: שפה של תשובה וגאולה, חיבור בין קבלה לעשייה לאומית, והשפעה בירושלים.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://spotifycreators-web.app.link/e/N6AFf684yQb"
     },
     {
       "id": "140",
@@ -1260,7 +1396,8 @@
       "field": "מוסר",
       "location": "ירושלים",
       "bio": "דמות מוסרית יוצאת דופן בירושלים, הרב של האסירים, מסמל ענווה וקדושה מעשית.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/3DpekO1U2gizKVNXJlWwha"
     },
     {
       "id": "141",
@@ -1269,7 +1406,8 @@
       "field": "פילוסופיה",
       "location": "גרמניה",
       "bio": "ב'כוכב הגאולה' מפרק את ה'כוליות' ומציע מבנה של אלוהים-אדם-עולם דרך בריאה/התגלות/גאולה. הקים Lehrhaus",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/7EpaIjYgIJVmSWDAsXDI7g?si=u6IC097XQ-KpBRfRRIGqcg&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
     },
     {
       "id": "142",
@@ -1278,7 +1416,8 @@
       "field": "הגות",
       "location": "גרמניה",
       "bio": "הוגה גרמני יהודי שהתלבט בין התנצרות לבין חזרה ליהדות. חיבר את 'כוכב הגאולה' – יצירה פילוסופית-תיאולו",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/0zMxkbnZJMF8Z3DKVqEnV9"
     },
     {
       "id": "143",
@@ -1296,7 +1435,8 @@
       "field": "קבלה",
       "location": "ירושלים",
       "bio": "פוסק ומקובל שזיהה את קום המדינה כמעשה אלוקי. תמך בציונות לא כפשרה, אלא כהתגלות גאולית.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/7mpAfEie4L4nvzNmMg7hji"
     },
     {
       "id": "145",
@@ -1305,7 +1445,8 @@
       "field": "הנהגה",
       "location": "ירושלים, ארץ ישראל",
       "bio": "Prominent sage from the Unknown era, specializing in הנהגה.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/33CjfygeixWek05uscU4qM?si=zHwL0eT7QtWwuw1PHxvNJg&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
     },
     {
       "id": "146",
@@ -1314,7 +1455,8 @@
       "field": "הלכה",
       "location": "טורקיה, ירושלים",
       "bio": "צדיק נסתר שפעל כפחח פשוט ביום ומקובל בלילה. כתב את ספר 'אהבת חיים' והשפיע על קהילות רבות במסירות וענ",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/12xZKv1fqjzLtuftGEYqvf"
     },
     {
       "id": "147",
@@ -1323,7 +1465,8 @@
       "field": "הלכה",
       "location": "מקנס (מרוקו) → חיפה",
       "bio": "איש אשכולות שראה במציאות כלי להבנת ההלכה, פסק באומץ מתוך חמלה ורוח הזמן, וחיזק את אחדות ישראל בין גו",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/2bY5WI2sxqsa1csNcbHXoG"
     },
     {
       "id": "148",
@@ -1332,7 +1475,8 @@
       "field": "פילוסופיה",
       "location": "גלותי, בינלאומי",
       "bio": "דמות חידתית וגאון בלתי נתפס. פירק ודחף לחשיבה עצמאית בלי להותיר שיטה סדורה.",
-      "era_key": "modern"
+      "era_key": "modern",
+      "spotify_url": "https://open.spotify.com/episode/0Kpu3qt4CJeGGkKLHxBgQA"
     },
     {
       "id": "149",
@@ -1341,7 +1485,8 @@
       "field": "הלכה",
       "location": "בגדד / ישראל",
       "bio": "ראשון לציון והרב הראשי לישראל; הנהיג קו ממלכתי־עצמאי, פעל לקרב רחוקים וקבע עמדות ציבוריות תקיפות.",
-      "era_key": "modern"
+      "era_key": "modern",
+      "spotify_url": "https://open.spotify.com/episode/6M7GqxrkmSgbLaowvUoIbM?si=YsGIvc_wSLu215jfLClMtg"
     },
     {
       "id": "150",
@@ -1350,7 +1495,8 @@
       "field": "קבלה",
       "location": "בגדאד, ירושלים",
       "bio": "זקן המקובלים שחי בענווה עצומה, והשפיע עמוקות במסורת סוד, קבלה מעשית ורוחניות ציבורית.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/3qeCTbEVgPEv319klxLDco"
     },
     {
       "id": "151",
@@ -1359,7 +1505,8 @@
       "field": "פילוסופיה",
       "location": "ליטא, צרפת",
       "bio": "פילוסוף יהודי שהציב את האחריות כלפי הזולת לפני ההבנה. שינה את יסודות החשיבה האתית המודרנית.",
-      "era_key": "modern"
+      "era_key": "modern",
+      "spotify_url": "https://open.spotify.com/episode/3k9m3MfSjWyswqVmHrlM5S"
     },
     {
       "id": "152",
@@ -1368,7 +1515,8 @@
       "field": "הגות",
       "location": "פולין / ארה\"ב",
       "bio": "הוגה שחיבר חסידות ופילוסופיה עם אתיקה ציבורית. כתב 'השבת' ו'הנביאים', פעל בזכויות האזרח, וצעד לצד מר",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/63Q7RdapehdnH3FCLVMrBy?si=DujHYLYPTUmSckrnlOofCQ&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
     },
     {
       "id": "153",
@@ -1377,7 +1525,8 @@
       "field": "מוסר",
       "location": "פולין, ארה\"ב",
       "bio": "הוגה חרדי שהפך לפעיל חברתי בארה\"ב. כתב על האל כמשתוקק לאדם, ונאבק למען זכויות שחורים ושלום.",
-      "era_key": "modern"
+      "era_key": "modern",
+      "spotify_url": "https://open.spotify.com/episode/1D1oj2aS5igAQ53qO03FWq"
     },
     {
       "id": "154",
@@ -1386,7 +1535,8 @@
       "field": "קבלה",
       "location": "תימן → ירושלים; ירושלים; אשכנז; מצרים",
       "bio": "מקובל ומנהיג שהקים את ישיבת 'נהר שלום' לשימור מסורת הכוונות לאחר חורבן בית-אל, חי בפשטות והקרין אהבת",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/71fwTzDzMkD8JtOgm8g2kj"
     },
     {
       "id": "155",
@@ -1395,7 +1545,8 @@
       "field": "הלכה",
       "location": "ארץ ישראל; כפר הרא\"ה; מרכז הרב; בית הדין הגדול",
       "bio": "הרב שאול ישראלי חידש שפה הלכתית לשאלות ריבונות: מדינה, צבא, משפט ומוסר, תוך עיון מעמיק ונכונות לחדש.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/0l6TX6iKGkqyzbt4707yeN?si=_9QHZ6S9SEi2he0xCsln0Q&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
     },
     {
       "id": "156",
@@ -1404,7 +1555,8 @@
       "field": "חינוך",
       "location": "ישראל (תל אביב)",
       "bio": "מחבר 'משניות קהתי' – פירוש בהיר ופדגוגי שנכתב מתוך שליחות חינוכית לציבור הרחב.",
-      "era_key": "modern"
+      "era_key": "modern",
+      "spotify_url": "https://open.spotify.com/episode/5YJhfgmjz6YbKNEP0QBzUE?si=_C2UJ6u1TOmkWYGmREvXCw"
     },
     {
       "id": "157",
@@ -1413,7 +1565,8 @@
       "field": "הלכה",
       "location": "ירושלים",
       "bio": "פוסק הדור בצניעות מזהירה. חקר את המציאות המודרנית ופסיקתו שינתה תחומי חיים שלמים.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/2HlLtLodPvUVPUArvlAmEC"
     },
     {
       "id": "158",
@@ -1422,7 +1575,8 @@
       "field": "מוסר",
       "location": "ירושלים (חסידות סלונים)",
       "bio": "אדמו\"ר ומחנך שבנה מחדש עולם חסידי אחרי השואה, ופיתח שפה רוחנית נגישה על אמונה, אווירה וחינוך.",
-      "era_key": "modern"
+      "era_key": "modern",
+      "spotify_url": "https://open.spotify.com/episode/2smxXVp67eOBQxkbFpnBEh?si=Bq_5p1TeQnqzLA2FzxpjQg"
     },
     {
       "id": "159",
@@ -1431,7 +1585,8 @@
       "field": "חינוך",
       "location": "ארץ ישראל; כפר הרא\"ה; בני עקיבא; מרכז הרב",
       "bio": "נריה, תלמיד הראי\"ה קוק, ייסד את ישיבת כפר הרא\"ה והיה ממנהיגי בני עקיבא, ובנה את התשתית לחינוך הציוני",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/43IiFgqfBCu9lLZIR07if7?si=ZAnRvMcXQPCAbEyH-BWhOA&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
     },
     {
       "id": "160",
@@ -1440,7 +1595,8 @@
       "field": "הלכה",
       "location": "וינה, בני ברק",
       "bio": "מחבר שו\"ת 'שבט הלוי' וראש ישיבת חכמי לובלין. הוביל קהילה ופסק בנחרצות בעידן של שינוי טכנולוגי.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/283XmaljmcMZNoMgipa2cv"
     },
     {
       "id": "161",
@@ -1449,7 +1605,8 @@
       "field": "מחשבת ישראל",
       "location": "צרפת",
       "bio": "הוגה יהודי־צרפתי שעסק במשמעות היהדות לאחר השואה. ראה בשתיקת האל קריאה לאחריות אנושית.",
-      "era_key": "modern"
+      "era_key": "modern",
+      "spotify_url": "https://open.spotify.com/episode/4zJ21QTx6e8QgoBRSCWqiG"
     },
     {
       "id": "162",
@@ -1458,7 +1615,8 @@
       "field": "הלכה",
       "location": "תימן, ישראל",
       "bio": "דיין, חוקר ומתורגמן, שהחזיר את תורת הרמב\"ם לדיוקה המקורי ועמד על שמירת מסורת תימן.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/1rA2UmPl4BccGHQljls8Ij"
     },
     {
       "id": "163",
@@ -1467,7 +1625,8 @@
       "field": "מחשבת ישראל",
       "location": "צרפת",
       "bio": "הוגה עמוקה שחיברה בין מקרא, פילוסופיה ופסיכואנליזה. ראתה באברהם דמות קיומית של אחריות והיסטוריה.",
-      "era_key": "modern"
+      "era_key": "modern",
+      "spotify_url": "https://open.spotify.com/episode/7DJX0cnVGFtntXiLnNdbpj"
     },
     {
       "id": "164",
@@ -1476,7 +1635,8 @@
       "field": "קבלה",
       "location": "מרקש → ירושלים; ירושלים; מצרים; ארץ ישראל",
       "bio": "מקובל וסופר סת״ם. מיוחסות לו אזהרות וניבויים (ששת הימים/יום כיפור). הדגיש גאולה אקטיבית: תפילה, אחדו",
-      "era_key": "modern"
+      "era_key": "modern",
+      "spotify_url": "https://open.spotify.com/episode/2EnV8jysY70VrqWS5EYzEU"
     },
     {
       "id": "165",
@@ -1485,7 +1645,8 @@
       "field": "הנהגה",
       "location": "אלג׳יריה → פריז → ירושלים",
       "bio": "רב קהילות באלג׳יריה, רב צבאי, ובצרפת החיה בית כנסת והנחיל זהות ליוורנואית-ציונית. עלה לישראל בגיל 85",
-      "era_key": "modern"
+      "era_key": "modern",
+      "spotify_url": "https://open.spotify.com/episode/0hEDzOsuXWV4gBqUTv3KqW"
     },
     {
       "id": "166",
@@ -1494,7 +1655,8 @@
       "field": "קבלה",
       "location": "אלג'יריה → צרפת → ישראל",
       "bio": "הוגה וקבליסט שחיבר בין מסורת צפון אפריקה, שיח אינטלקטואלי צרפתי ותורת ארץ ישראל; ניסח תורת זהויות וה",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/6vCbxdldNDpdncGxSjvAyD"
     },
     {
       "id": "167",
@@ -1503,7 +1665,8 @@
       "field": "קבלה",
       "location": "ירושלים – הכותל המערבי",
       "bio": "רב הכותל וראש ישיבת 'בית אל' (מקובלים); שילב עבודת נסתר עם ניהול מעשי ורגישות לכלל ישראל.",
-      "era_key": "modern"
+      "era_key": "modern",
+      "spotify_url": "https://open.spotify.com/episode/1d2iYDGxvwEW6fWxghPHEK?si=UC3yD71cRfeiVk8RgdLLVg"
     },
     {
       "id": "168",
@@ -1512,7 +1675,8 @@
       "field": "הלכה",
       "location": "ישראל (ירושלים; תל אביב)",
       "bio": "Prominent sage from the Unknown era, specializing in הלכה.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/0bYyPcQtkqoVwWyC5OWfpn?si=PiHiW-RXR8GyZWwiGjID0g"
     },
     {
       "id": "169",
@@ -1521,7 +1685,8 @@
       "field": "מוסר",
       "location": "אירופה, ארה\"ב",
       "bio": "ניצול שואה וסופר דגול. חיבר את השבר לאמונה ואת הזיכרון לקריאה מוסרית.",
-      "era_key": "modern"
+      "era_key": "modern",
+      "spotify_url": "https://open.spotify.com/episode/3CyodWcIZlT5rUhlIbpWqm"
     },
     {
       "id": "170",
@@ -1530,7 +1695,8 @@
       "field": "הלכה",
       "location": "בני ברק",
       "bio": "הרב חיים קניבסקי כמודל של שקידה ופסיקה: ספרות ענפה, השפעה ציבורית רחבה ומעמד ייחודי בציבור הליטאי.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://spotifycreators-web.app.link/e/y6u1ZKx4yQb"
     },
     {
       "id": "171",
@@ -1539,7 +1705,8 @@
       "field": "הגות",
       "location": "ארה\"ב → ישראל",
       "bio": "Prominent sage from the Unknown era, specializing in הגות.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/7aTrR9GQVvo3kwZrfhAuIj?si=_hnfvF-wT06Aqi3ZB0hU9w&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
     },
     {
       "id": "172",
@@ -1548,7 +1715,8 @@
       "field": "חינוך",
       "location": "פולין, ישראל",
       "bio": "מהמנהיגים המרכזיים של הציונות הדתית בישראל. עמד בראש מוסדות חינוכיים והשפיע על דור שלם של תלמידים ומ",
-      "era_key": "modern"
+      "era_key": "modern",
+      "spotify_url": "https://open.spotify.com/episode/2IpU2q7Mhxhe2el4hf2psE"
     },
     {
       "id": "173",
@@ -1557,7 +1725,8 @@
       "field": "חינוך",
       "location": "ישראל",
       "bio": "ניצול שואה שהפך למנהיג מרכזי בציונות הדתית: ראש מוסדות אור עציון, מנהיג בני עקיבא ונשיא ישיבות ההסדר",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/1j4SgDhb3vWdY3gvTjv3oq?si=67O0wVDkTsa2b7zRpBFQmQ&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv&t=128"
     },
     {
       "id": "174",
@@ -1566,7 +1735,8 @@
       "field": "קבלה",
       "location": "טבריה → ירושלים; ירושלים; טבריה; צרפת",
       "bio": "תלמיד סלונים שעבר מהנהגת ישיבה לעומק הסוד לאחר משבר רפואי; פיתח רעיונות מקוריים על צמצום הקדושה, קדו",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/0VCagjZmbRPm2I6ZwrWMgu"
     },
     {
       "id": "175",
@@ -1575,7 +1745,8 @@
       "field": "קבלה",
       "location": "ירושלים / ישראל",
       "bio": "לוחם ומפקד בסיירות לצד חיי קבלה ותפילה. דמות שמחברת גבורה, אחריות לאומית ותודעת גאולה.",
-      "era_key": "modern"
+      "era_key": "modern",
+      "spotify_url": "https://open.spotify.com/episode/7AzhR0GwdztLO5WPLBXPI2?si=lEcNqxliRzezANtCirOiWA"
     },
     {
       "id": "176",
@@ -1584,7 +1755,8 @@
       "field": "הנהגה",
       "location": "ישראל (צה\"ל; השומרון)",
       "bio": "Prominent sage from the Unknown era, specializing in הנהגה.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/3GVwabzRl1ToA2p0d17erP?si=FJUdB6whRjKYI9c51iFewg"
     },
     {
       "id": "177",
@@ -1593,7 +1765,8 @@
       "field": "חינוך",
       "location": "ישראל; ירושלים; ארץ ישראל",
       "bio": "מחנך ומנהיג שטח שחיבר קהילות וזרמים, הדגיש בין אדם לחברו כמדד דתי ראשון במעלה, והעמיד שפה של עין טוב",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/5kmvc0W7chgl4NeshSU6kX"
     },
     {
       "id": "178",
@@ -1602,7 +1775,8 @@
       "field": "קבלה",
       "location": "צרפת / מסורת קבלה (ימי הביניים–צפת)",
       "bio": "סקירת התפתחות הקבלה ממסורות קדומות עד הזוהר והאר\"י, והצגת המהלך האקדמי של אדולף פראנק שראה בקבלה מער",
-      "era_key": "modern"
+      "era_key": "modern",
+      "spotify_url": "https://open.spotify.com/episode/5qiFDQTROpb7v21w4imqIE?si=N2J3HnklTRW2Gm-BmT4SFA&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
     },
     {
       "id": "179",
@@ -1611,7 +1785,8 @@
       "field": "קבלה",
       "location": "מרוקו, ארץ ישראל",
       "bio": "שושלת מקובלים שהובילה רוחנית את יהדות מרוקו. שילוב בין קדושה, ענווה ופיוט נשגב.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/4zNV0OTiJsa1CUIm4xsy4e"
     },
     {
       "id": "180",
@@ -1620,7 +1795,8 @@
       "field": "קבלה",
       "location": "ירושלים (נחלאות)",
       "bio": "Prominent sage from the Unknown era, specializing in קבלה.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/54WDzXvPJL2lSljQw8ppji?si=axqFQefgQLCRM9oCzjRzxw&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
     },
     {
       "id": "181",
@@ -1629,7 +1805,8 @@
       "field": "היסטוריה",
       "location": "ספרד, פזורה",
       "bio": "אירוע טראומטי שהוליד פזורה יהודית עשירה, קהילות בסלוניקי, אמסטרדם, מרוקו וארץ ישראל.",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/4BIlH6TQgXb88bidzSeuen"
     },
     {
       "id": "182",
@@ -1638,7 +1815,8 @@
       "field": "אחר",
       "location": "ליטא/רוסיה; עולם הישיבות; האקדמיה",
       "bio": "דיון על שיטת בריסק מול גישות אקדמיות-היסטוריות ללימוד: איפה המתח, ומה ניתן להרוויח בלי לטשטש גבולות.",
-      "era_key": "modern"
+      "era_key": "modern",
+      "spotify_url": "https://spotifycreators-web.app.link/e/NH0Pkku4yQb"
     },
     {
       "id": "183",
@@ -1647,7 +1825,8 @@
       "field": "קבלה",
       "location": "ארץ ישראל/ספרד; עולם הקבלה",
       "bio": "מחלוקת הייחוס של הזוהר לרשב\"י מול טענות למחבר מאוחר, והשלכות השאלה על סמכות הקבלה ועל קריאת הטקסט.",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://spotifycreators-web.app.link/e/HxZF2iS4yQb"
     },
     {
       "id": "187",
@@ -1656,7 +1835,8 @@
       "field": "הנהגה",
       "location": "מיינץ – פדובה",
       "bio": "פוסק אשכנזי שהנהיג באיטליה בתקופת הרנסנס. שמר על סמכות ההלכה תוך התאמה למציאות התרבותית.",
-      "era_key": "acharonim"
+      "era_key": "acharonim",
+      "spotify_url": "https://open.spotify.com/episode/2UFLK856gB3r5MDYUiO2mV?si=GMJjiZMzQjK1asCeXsrPzg&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
     },
     {
       "id": "189",
@@ -1665,7 +1845,8 @@
       "field": "הלכה",
       "location": "אשכנז, טולדו; בבל; אשכנז; צרפת",
       "bio": "בעל הטורים, מחבר ספר 'ארבעה טורים', שסידר את ההלכה למבנה מארגן עם ארבעה תחומים מרכזיים.",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/1ascElHzBKieDVSWk8wZBw"
     },
     {
       "id": "190",
@@ -1674,7 +1855,8 @@
       "field": "פילוסופיה",
       "location": "ברצלונה",
       "bio": "היהודי הראשון שכתב מדע בעברית והשפיע על תרגום חכמת המזרח לאירופה.",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/3FAGqYdzyMQbyPbon3KYoC"
     },
     {
       "id": "191",
@@ -1683,7 +1865,8 @@
       "field": "הנהגה",
       "location": "רוסיה, טבריה",
       "bio": "ממנהיגי החסידות שעלו לארץ והקימו קהילה בטבריה תוך חזון וחיבור רוחני.",
-      "era_key": "acharonim"
+      "era_key": "acharonim",
+      "spotify_url": "https://open.spotify.com/episode/17SN59z9ioFY7rUaYLDrY3"
     },
     {
       "id": "192",
@@ -1692,7 +1875,8 @@
       "field": "פרשנות",
       "location": "ספרד",
       "bio": "פרשן רציונליסטי ומדען אשר שילב פרשנות פשטית עם עומק קבלי וידע מדעי.",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/4qxJVPlseRPaiWngzoMerl"
     },
     {
       "id": "193",
@@ -1701,7 +1885,8 @@
       "field": "אחר",
       "location": "ארץ ישראל; רומא; ראשית הנצרות",
       "bio": "הפרק מציג את הפער בין המסורת הנוצרית על פטרוס לבין מסורות יהודיות המציירות את שמעון כיפא כשליח נסתר ",
-      "era_key": "second-temple"
+      "era_key": "second-temple",
+      "spotify_url": "https://open.spotify.com/episode/4tu43oeL4qVdXGKzX2025J?si=G3-56Xu3TxKoDiSCHX9gEA&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
     },
     {
       "id": "195",
@@ -1710,7 +1895,8 @@
       "field": "הלכה",
       "location": "פרובאנס",
       "bio": "פוסק מרכזי ומחבר ההשגות על משנה תורה; מדמויות המפתח שמהן צמחה הקבלה הפרובנסלית.",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/3V6k0TH0ay1RxaO4bKeVXM?si=3apo-XzoRTir-Zx5fbYmQw&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
     },
     {
       "id": "196",
@@ -1719,7 +1905,8 @@
       "field": "הגות",
       "location": "ירושלים",
       "bio": "ממשיך דרכו של הראי\"ה קוק ומנהיג דור התחייה של הציונות הדתית.",
-      "era_key": "modern"
+      "era_key": "modern",
+      "spotify_url": "https://open.spotify.com/episode/33CjfygeixWek05uscU4qM?si=zHwL0eT7QtWwuw1PHxvNJg&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
     },
     {
       "id": "197",
@@ -1728,7 +1915,8 @@
       "field": "הגות",
       "location": "ארה\"ב וישראל",
       "bio": "רב, אידיאולוג ואקטיביסט שהעמיד במרכז את שאלת זהותה היהודית של המדינה.",
-      "era_key": "modern"
+      "era_key": "modern",
+      "spotify_url": "https://open.spotify.com/episode/7aTrR9GQVvo3kwZrfhAuIj?si=_hnfvF-wT06Aqi3ZB0hU9w&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
     },
     {
       "id": "198",
@@ -1737,7 +1925,8 @@
       "field": "שירה",
       "location": "מרוקו וספרד",
       "bio": "המשורר והבלשן שחולל מהפכה בשירה העברית והכניס אליה את המשקל הערבי.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/2XJ8USkWLQA8Z2lJC3Miew?si=oH_tAHkZRzaombbADtUZgg&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
     },
     {
       "id": "199",
@@ -1746,7 +1935,8 @@
       "field": "קבלה",
       "location": "איטליה וירושלים",
       "bio": "מקובל, פייטן ופרשן משנה, מן הדמויות הבולטות בקבלת איטליה.",
-      "era_key": "acharonim"
+      "era_key": "acharonim",
+      "spotify_url": "https://open.spotify.com/episode/3Foy6VcyWU352VPpw1z1cp?si=jaoMkKODSduL9jAf58zdww"
     },
     {
       "id": "200",
@@ -1755,7 +1945,8 @@
       "field": "הנהגה",
       "location": "איטליה וירושלים",
       "bio": "פרשן המשנה ומחדש התורה בירושלים ערב גירוש ספרד.",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/2OEMGQeVLEIKytDCVSLS4c?si=chKodDJITYOZaqhqfu641A&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
     },
     {
       "id": "204",
@@ -1764,7 +1955,8 @@
       "field": "חינוך",
       "location": "פולין",
       "bio": "אדמו\"ר שחשף את עומק הנשמה גם בתוך אימי השואה.",
-      "era_key": "modern"
+      "era_key": "modern",
+      "spotify_url": "https://open.spotify.com/episode/462p60k0hrJUeoi1OiEtfD?si=fGjrjZNLSu6BZj6EPEL5iQ&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
     },
     {
       "id": "205",
@@ -1773,7 +1965,8 @@
       "field": "מוסר",
       "location": "יבנה / אמאוס",
       "bio": "מגדולי תלמידי רבן יוחנן בן זכאי, שסיפורו מדגיש את כוח החבורה בלימוד.",
-      "era_key": "tannaim"
+      "era_key": "tannaim",
+      "spotify_url": "https://open.spotify.com/episode/2XG7fux56GqLM8WnM0QRjs"
     },
     {
       "id": "206",
@@ -1782,7 +1975,8 @@
       "field": "מדעים",
       "location": "פרוסיה ופריז",
       "bio": "החוקר שהשיב את מקומה של היהדות בלב ההיסטוריה של הרוח האירופית.",
-      "era_key": "modern"
+      "era_key": "modern",
+      "spotify_url": "https://open.spotify.com/episode/0fBwsgpkyNbo7MJnjhEgeH"
     },
     {
       "id": "207",
@@ -1791,7 +1985,8 @@
       "field": "מדרש",
       "location": "נרבונה",
       "bio": "החכם שעיצב את עולם המדרש באירופה והשפיע עמוקות על רש\"י.",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/1PpzvwnJnR9ssTIwkuP4Lj?si=6Muo4ngpS_yzlOrCWj4iKw&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
     },
     {
       "id": "208",
@@ -1800,7 +1995,8 @@
       "field": "הלכה",
       "location": "ונציה, הבלקן וירושלים",
       "bio": "החכם שהחזיר את התוספתא לחיים.",
-      "era_key": "acharonim"
+      "era_key": "acharonim",
+      "spotify_url": "https://open.spotify.com/episode/0gNG3pg6tSS0rP12co2dsU"
     },
     {
       "id": "209",
@@ -1809,7 +2005,8 @@
       "field": "הנהגה",
       "location": "ארץ ישראל, צור, דמשק",
       "bio": "הגאון האחרון שנאבק על כבודה של ארץ ישראל.",
-      "era_key": "geonim"
+      "era_key": "geonim",
+      "spotify_url": "https://open.spotify.com/episode/32gThCfsqISZIYKhU1lXHx"
     },
     {
       "id": "210",
@@ -1818,7 +2015,8 @@
       "field": "לשון",
       "location": "רומא",
       "bio": "החכם שפענח את שפת התלמוד ושימר את תורת הגאונים.",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/2KCKjcc8V8h7lzmGQjwBoh?si=RWN7a6FIQVqo2M8_LANwVQ&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
     },
     {
       "id": "211",
@@ -1827,7 +2025,8 @@
       "field": "הלכה",
       "location": "לוסינה, ספרד",
       "bio": "האיש שחיבר בין בבל לספרד והניח יסודות לתור הזהב הספרדי.",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/46NRbx8KdsxCK30BzV4tyN"
     },
     {
       "id": "212",
@@ -1836,7 +2035,8 @@
       "field": "הלכה",
       "location": "מגנצא",
       "bio": "האיש שעיצב את ה-DNA של יהדות אשכנז.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/4tFSo5qQFWExTxQDDj1a8Q"
     },
     {
       "id": "213",
@@ -1845,7 +2045,8 @@
       "field": "הלכה",
       "location": "וורמייזא",
       "bio": "הרב שעיצב את רש\"י ואת יהדות אשכנז.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/4mph8tbv9qfvaXuaEBr9Ci"
     },
     {
       "id": "214",
@@ -1854,7 +2055,8 @@
       "field": "פרשנות",
       "location": "טרואה",
       "bio": "החוליה המחברת בין רש\"י לבעלי התוספות.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/1hZbLF24hEHNSungFw9wDI?si=m9RN_vjjQJ6HY2USgVzMGQ&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
     },
     {
       "id": "215",
@@ -1863,7 +2065,8 @@
       "field": "הלכה",
       "location": "צרפת",
       "bio": "הספר שהפך את התפילה לבית מדרש.",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/6xiWssuJyV4GypDbnlCpl0"
     },
     {
       "id": "221",
@@ -1872,7 +2075,8 @@
       "field": "הלכה",
       "location": "שפירא",
       "bio": "מחלוצי התוספות שעיצבו את אשכנז.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/30fXDBvnqGwwpGM9TOLv4b"
     },
     {
       "id": "222",
@@ -1881,7 +2085,8 @@
       "field": "הלכה",
       "location": "ברצלונה",
       "bio": "הגשר ששמר על התורה שבעל פה במעבר מן הגאונים לספרד.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/0uroeWWeUqiYdTgvlJT7eo"
     },
     {
       "id": "223",
@@ -1890,7 +2095,8 @@
       "field": "הגות",
       "location": "ספרד",
       "bio": "הספר שהחזיר את האמונה אל ההיסטוריה.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/0E55prQ6VaFsIXKSiCpDe3"
     },
     {
       "id": "224",
@@ -1899,7 +2105,8 @@
       "field": "הנהגה",
       "location": "שושן",
       "bio": "המנהיגה שפעלה מתוך הסתר וניצחה אימפריה.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/4WssFuGXzvEgr2GstxIHfx"
     },
     {
       "id": "225",
@@ -1908,7 +2115,8 @@
       "field": "אחר",
       "location": "חדייב וירושלים",
       "bio": "מלכה שבחרה בירושלים והפכה לאחת הדמויות האהובות בה.",
-      "era_key": "second-temple"
+      "era_key": "second-temple",
+      "spotify_url": "https://open.spotify.com/episode/5M7imLXlORpy1YE9QyPA25"
     },
     {
       "id": "226",
@@ -1917,7 +2125,8 @@
       "field": "אחר",
       "location": "ירושלים",
       "bio": "הנביאה שאישרה את ספר התורה שנמצא במקדש.",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/6NbBfNFBopFpH9DywPQzS1"
     },
     {
       "id": "227",
@@ -1926,7 +2135,8 @@
       "field": "הלכה",
       "location": "צרפת ואשכנז",
       "bio": "הפוסק שראה במצוות דרך לעיצוב האדם.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/6J1axbvjzcVZFeEI2lU1IV?si=wAeaI5T6TDSElvMR_MhZ1w&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
     },
     {
       "id": "228",
@@ -1935,7 +2145,8 @@
       "field": "הלכה",
       "location": "פראג",
       "bio": "התוספיסט שבנה גשר בין צרפת לאשכנז.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/5evpNS9R4Cq5EESziQyspA"
     },
     {
       "id": "229",
@@ -1944,7 +2155,8 @@
       "field": "הלכה",
       "location": "מגנצא",
       "bio": "החכם שתיעד את החורבן ובנה מחדש את יהדות אשכנז.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/5QGbbhxhb2hremjTS5I9E8?si=wQyrfYb9SgeVnHb998KX6w&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
     },
     {
       "id": "230",
@@ -1953,7 +2165,8 @@
       "field": "מוסר",
       "location": "כרמל, יהודה",
       "bio": "האישה שהצילה את דוד המלך מחטא.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/685JbRdiP4dZzM9Mxg4VSd"
     },
     {
       "id": "231",
@@ -1962,7 +2175,8 @@
       "field": "הנהגה",
       "location": "דמפייר",
       "bio": "האיש שהפך את התלמוד למערכת חיה.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/6eSJxUuvK7zTeZR5ODaTfi?si=aqBw9SKaR5ys4TN1JpT5IA&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
     },
     {
       "id": "232",
@@ -1971,7 +2185,8 @@
       "field": "פרשנות",
       "location": "צרפת",
       "bio": "הפרשן שהאיר פנים חדשות בפשוטו של מקרא.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/5BCGheSFuMCKwGBnlNLHSz?si=zEjQ73uoR1e_eTUEg9XwNA&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
     },
     {
       "id": "233",
@@ -1980,7 +2195,8 @@
       "field": "הלכה",
       "location": "תלמסאן",
       "bio": "הרב שחיבר בין תורה למתמטיקה.",
-      "era_key": "acharonim"
+      "era_key": "acharonim",
+      "spotify_url": "https://open.spotify.com/episode/6NTm83GThq84iPCuaL50gA"
     },
     {
       "id": "234",
@@ -1989,7 +2205,8 @@
       "field": "הלכה",
       "location": "לוניל ועכו",
       "bio": "המאור הגדול מלוניל שהביא את הרמב\"ם לאירופה.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/2PHGW9Z6HiOIHqumtWFHNl"
     },
     {
       "id": "235",
@@ -1998,7 +2215,8 @@
       "field": "הלכה",
       "location": "צרפת",
       "bio": "בעל התוספות ששילב חריפות תלמודית עם חזיונות שמימיים.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/0fIS5dc7OCTq1C6amM82LT?si=tqcgKwdFQPuRVDKuMbTmkQ&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
     },
     {
       "id": "236",
@@ -2007,7 +2225,8 @@
       "field": "הלכה",
       "location": "וורמייזא",
       "bio": "המקובל שכתב את סודות התפילה מתוך שבר.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/1xnTTOc3bgPDd10LUBerVb"
     },
     {
       "id": "237",
@@ -2016,7 +2235,8 @@
       "field": "הנהגה",
       "location": "יהודה",
       "bio": "האישה שהצילה ממלכה שלמה בלי להניף דגל מלחמה.",
-      "era_key": "second-temple"
+      "era_key": "second-temple",
+      "spotify_url": "https://open.spotify.com/episode/1K7M9BQXbRu0lrv4M2gtNu"
     },
     {
       "id": "238",
@@ -2025,7 +2245,8 @@
       "field": "תפילה",
       "location": "שילה",
       "bio": "האישה שלימדה את עם ישראל איך להתפלל.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/2olkESl0VSSrcsibuXGG6I"
     },
     {
       "id": "273",
@@ -2034,7 +2255,8 @@
       "field": "הלכה",
       "location": "מגנצא, אשכנז",
       "bio": "מעמודי התווך של יהדות אשכנז במאה ה־12, שחווה בילדותו את זוועות מסעי הצלב והפך גם לפוסק חשוב וגם למתע",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/5QGbbhxhb2hremjTS5I9E8?si=wQyrfYb9SgeVnHb998KX6w&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
     },
     {
       "id": "275",
@@ -2043,7 +2265,8 @@
       "field": "הנהגה",
       "location": "דמפייר, צרפת",
       "bio": "מגדולי בעלי התוספות ומנהיג מרכזי לאחר רבנו תם. בישיבתו בדמפייר יצר מודל לימוד קולקטיבי, שבו כל הש״ס ",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/6eSJxUuvK7zTeZR5ODaTfi"
     },
     {
       "id": "276",
@@ -2052,7 +2275,8 @@
       "field": "פרשנות",
       "location": "צרפת",
       "bio": "נכדו הבכור של רש״י ומגדולי בעלי התוספות, שהדגיש בפירושו לתורה את פשוטו של מקרא ואת ההקשר הלשוני והסי",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/5BCGheSFuMCKwGBnlNLHSz"
     },
     {
       "id": "279",
@@ -2061,7 +2285,8 @@
       "field": "הלכה",
       "location": "צרפת",
       "bio": "מן הדמויות המרכזיות בדור שלאחר רבנו תם בעולם התוספות. שילב עצמאות למדנית ושימוש רחב בירושלמי עם מוני",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/0fIS5dc7OCTq1C6amM82LT"
     },
     {
       "id": "283",
@@ -2070,7 +2295,8 @@
       "field": "הלכה",
       "location": "בדרש / בזייה, פרובאנס",
       "bio": "מגדולי חכמי פרובאנס ומחבר 'ספר ההשלמה', שביקש להשלים ולעדכן את הרי״ף. הגן על הרמב״ם אך נאבק בחיבורים",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/5LmJs1gNXoe2H539PdAfrl"
     },
     {
       "id": "284",
@@ -2079,7 +2305,8 @@
       "field": "הלכה",
       "location": "פרובאנס",
       "bio": "מחכמי פרובאנס שיצר פירוש רחב על הלכות הרי״ף. שיטתו שילבה פשט, ביקורת על הרי״ף, מסורת גאונים והשוואה ",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/647NStP3Z8X3LRqObcCXUZ"
     },
     {
       "id": "285",
@@ -2088,7 +2315,8 @@
       "field": "הלכה",
       "location": "נרבונה ולוניל, פרובאנס",
       "bio": "מן המפרשים החשובים על משנה תורה לרמב״ם. בספרו 'ספר המנוחה' ביקש ליישב את פסקי הרמב״ם עם התלמוד, הירו",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/5ZEbOOmd6ZsVbEz1crhtgC"
     },
     {
       "id": "286",
@@ -2097,7 +2325,8 @@
       "field": "הלכה",
       "location": "נרבון, פרובאנס",
       "bio": "חכם ופילוסוף פרובנסלי שפעל בצומת שבין בעלי התוספות, הרמב״ם והמסורת ההלכתית של הראב״ד. חיבורו 'ספר הת",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/6Rb28PgOQeeq58bX2clspL"
     },
     {
       "id": "287",
@@ -2106,7 +2335,8 @@
       "field": "הלכה",
       "location": "טרינקטיי / ארל, פרובאנס",
       "bio": "מחכמי פרובאנס הגדולים, שחיבר בין הדיאלקטיקה של בעלי התוספות, השיטתיות הפרובנסלית וסמכות הרי״ף והראב״",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/46wLVmOtDctapvhIXVcT8T"
     },
     {
       "id": "288",
@@ -2115,7 +2345,8 @@
       "field": "הלכה",
       "location": "מצרים",
       "bio": "מחכמי מצרים הבולטים בדור שלאחר הרמב״ם, שכתב פירושים להלכות הרי״ף ועמד בחזית ההגנה על תורת הרמב״ם מול",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/3AjzdU1SkSoQHf4tQAoeJr"
     },
     {
       "id": "289",
@@ -2124,7 +2355,8 @@
       "field": "פרשנות",
       "location": "נרבונה, פרובאנס",
       "bio": "מגדולי פרשני המקרא והמדקדקים, שנודע כ'ראש המדקדקים'. הפך את תורת הדקדוק הספרדית המורכבת לשיטה בהירה ",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/7t7Mwzw5zr9XQ4uPrDcKcz?si=Et0n7kpzSJqnYmQuaWnlWQ&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
     },
     {
       "id": "290",
@@ -2133,7 +2365,8 @@
       "field": "פילוסופיה",
       "location": "פרובאנס",
       "bio": "מן ההוגים הנועזים בימי הביניים: פילוסוף, פרשן, מתמטיקאי ואסטרונום. ביקש להבין את התורה דרך השכל ואת ",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/0m3vCYb6YqsaSJvD0cZfXy?si=SnX5flLQTAqOUou12h90fw&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
     },
     {
       "id": "291",
@@ -2142,7 +2375,8 @@
       "field": "הלכה",
       "location": "ברצלונה, ספרד",
       "bio": "מגדולי חכמי ספרד במאה ה־13 ואחד ממעצבי המשפט העברי. חיבורו 'ספר התרומות' סידר לראשונה באופן שיטתי תח",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/5Cdc9RvxyriLFWPFMRfciK?si=P9JIX4Q4TCCtqmGdnswLcA&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
     },
     {
       "id": "292",
@@ -2151,7 +2385,8 @@
       "field": "הלכה",
       "location": "קורדובה, מרוקו, ארץ ישראל ומצרים",
       "bio": "דיין ומנהיג שהיה החוליה המקשרת בין תור הזהב של ספרד לבין מהפכת הרמב״ם. הנהיג קהילות נרדפות, חיזק אנו",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/0N9JxxpJynDDTur8c5c0fd?si=H3uqUkfiSRSw3pYMwoKbnA&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
     },
     {
       "id": "293",
@@ -2160,7 +2395,8 @@
       "field": "הלכה",
       "location": "טולדו, ספרד",
       "bio": "פוסק, ראש ישיבה ונשיא בעל סמכות ציבורית בטולדו. עסק בפסיקה, בהנהגה, בפולמוס אמוני ובדיוק נוסח ספר הת",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/3DlGOty8LZ8KGhLiLcyqjs?si=qUZCJQNiTvi_JSDfbNgPTQ&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
     },
     {
       "id": "294",
@@ -2169,7 +2405,8 @@
       "field": "הלכה",
       "location": "ברצלונה, טולדו ומונטפלייר",
       "bio": "תלמיד הרמב״ן ומעמודי השיטה הקטלונית, ששילבה עומק תוספתי עם בהירות ספרדית. בחיבורו 'בדק הבית' בחן מחד",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/1VCc2NTp4Fx2MnomLuC2YQ?si=bWARJNFER7uSYu75cFYiWw&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
     },
     {
       "id": "295",
@@ -2178,7 +2415,8 @@
       "field": "הלכה",
       "location": "ברצלונה, ספרד",
       "bio": "מגדולי הפוסקים והמנהיגים בתולדות התורה. עמד בראש קהילת ברצלונה, הנהיג ציבור, עיצב דיני קהילה וכתב אל",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/3fFSccuIPUhBryOySLd1mz?si=vVleiPsHQNK-DYsKMhH7LQ&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
     },
     {
       "id": "296",
@@ -2187,7 +2425,8 @@
       "field": "הלכה",
       "location": "גירונה, ברצלונה וירושלים",
       "bio": "פוסק, מקובל, פרשן ומנהיג שעמד בחזית פולמוסים גדולים, ניצח בוויכוח ברצלונה ולבסוף עלה לירושלים החרבה ",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/7tV3u16Il2EgLXbVNFs42V?si=Qu6b3mmHTPufiL5nrRRIyQ&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
     },
     {
       "id": "297",
@@ -2196,7 +2435,8 @@
       "field": "הלכה",
       "location": "טרינקטיי / פרובאנס",
       "bio": "חכם מרכזי מפרובאנס שחיבר בין מסורות הלימוד של צפון צרפת וספרד. תורתו בדיני תפיסה וספקות בממונות השפי",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/7ACSP0m0DZ6PtZJIPWd5SG?si=xmChzx9KQnGA-HASx_s75g&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
     },
     {
       "id": "298",
@@ -2205,7 +2445,8 @@
       "field": "הלכה",
       "location": "רומא, איטליה",
       "bio": "חכם איטלקי ששילב תורה, רפואה, פילוסופיה ודקדוק טקסטואלי. מיוחסת לו תרומה מכרעת לשימור מסורת הירושלמי",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/1tRAsJRFk47EvwWKBYsRZc?si=wIR3RR1RT0qdwsZfGHbvvg&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
     },
     {
       "id": "299",
@@ -2214,7 +2455,8 @@
       "field": "הלכה",
       "location": "רומא, איטליה",
       "bio": "פוסק איטלקי בן משפחת הענווים, שחיבר בין מסורת אשכנזית, פסיקה איטלקית וידע רפואי. ספרו 'שיבולי הלקט' ",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/0zmmVvmiG4Wzj6H3D3wwK7?si=E-xKUsSxTN-1W54Q2wJ2wA&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
     },
     {
       "id": "300",
@@ -2223,7 +2465,8 @@
       "field": "הלכה",
       "location": "אשכנז (שפיירא)",
       "bio": "פוסק ומנהיג שבנה מחדש את יהדות אשכנז לאחר מסעי הצלב. שילב הלכה עם בניין חברתי ועמד מאחורי תקנות קהיל",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/6k54FCiujHgHTF3lHSwe0U"
     },
     {
       "id": "301",
@@ -2232,7 +2475,8 @@
       "field": "הלכה",
       "location": "איטליה",
       "bio": "פוסק ייחודי שיצר הפרדה בין פסק להוכחה, והתנגד להפיכת הפילוסופיה לבסיס האמונה.",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/5mtDbjislFZkbFTuxrfRWN"
     },
     {
       "id": "302",
@@ -2241,7 +2485,8 @@
       "field": "הלכה",
       "location": "ארץ ישראל",
       "bio": "חוקר שהלך את הארץ בפועל כדי להבין הלכה, ויצר מיפוי ראשון של ארץ ישראל מבחינה הלכתית.",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/1aefmtAuxfRcdhiH7R2urg"
     },
     {
       "id": "303",
@@ -2250,7 +2495,8 @@
       "field": "הלכה",
       "location": "צרפת",
       "bio": "מחבר ספר מצוות נגיש שהפך את ההלכה למדריך חיים יומיומי לכל יהודי.",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/6UrTGXdvwzHksRdb2MK3Nd"
     },
     {
       "id": "304",
@@ -2259,7 +2505,8 @@
       "field": "הלכה",
       "location": "צרפת",
       "bio": "עורך-על של עולם התוספות, שסידר ושימר את המסורת התלמודית בתקופת חורבן.",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/5Iri3H2JcF1NuSrVD3Pnpu"
     },
     {
       "id": "305",
@@ -2268,7 +2515,8 @@
       "field": "הלכה",
       "location": "אשכנז",
       "bio": "שילב בין שיטת הרמב\"ם למסורת אשכנזית באמצעות הערות ביקורתיות ושימור מנהגים.",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/26lw9FnAGUvrdpyiczTl58"
     },
     {
       "id": "306",
@@ -2277,7 +2525,8 @@
       "field": "הלכה",
       "location": "צרפת/אשכנז",
       "bio": "העורך שעיצב את נוסח התוספות בדפוס הש\"ס והפך אותו לסטנדרט לדורות.",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/04Hkb5vYxReuIGq0cTG2fh"
     },
     {
       "id": "307",
@@ -2286,7 +2535,8 @@
       "field": "הלכה",
       "location": "איטליה (רומא)",
       "bio": "חכם מרכזי ביהדות איטליה שביסס מסורת הלכתית עצמאית ושימר את מנהגי רומא תוך שילוב עומק תלמודי ודיוק פר",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/1ANs8CZ7mIUXhJFOSBrC3u"
     },
     {
       "id": "308",
@@ -2295,7 +2545,8 @@
       "field": "הלכה",
       "location": "איטליה",
       "bio": "יצר שיטת לימוד חדשה המתמקדת בהבנת כל סוגיה בפני עצמה, גם במחיר השארת סתירות פתוחות.",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/1RhrrkBapQNDsL3Nc92rS3"
     },
     {
       "id": "309",
@@ -2304,7 +2555,8 @@
       "field": "הלכה",
       "location": "איטליה, גרמניה, אוסטריה",
       "bio": "מנהיג שחיבר בין מסורות איטליה, אשכנז וצרפת והפך את וינה למרכז תורני משמעותי.",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/0Gbt6DvaXHHA3NQUKn6gAe"
     },
     {
       "id": "310",
@@ -2313,7 +2565,8 @@
       "field": "הלכה",
       "location": "ספרד (נבארה, טולדו)",
       "bio": "פוסק שכתב את \"צדה לדרך\" – מדריך הלכתי ברור ונגיש לאנשים עסוקים החיים תחת לחץ תרבותי.",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/1EzJwt2utRl4bZDfogQTk3"
     },
     {
       "id": "311",
@@ -2322,7 +2575,8 @@
       "field": "הלכה",
       "location": "אשכנז וספרד (טולדו)",
       "bio": "מנהיג יהדות ספרד לאחר הרא״ש, ששילב בין שיטות אשכנז וספרד ויצר סמכות הלכתית רחבה.",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/2m1fncs0HVkTUF3QjJSqrD"
     },
     {
       "id": "312",
@@ -2331,7 +2585,8 @@
       "field": "הלכה",
       "location": "צרפת (נורמנדי)",
       "bio": "מחכמי התוספות שפיתח תפיסה מהפכנית: הספרים עצמם הם מקור הסמכות, והלומד שותף פעיל בפירוש.",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/09Ok3NEhEHqYG6U2fRRb2J"
     },
     {
       "id": "313",
@@ -2340,7 +2595,8 @@
       "field": "קבלה",
       "location": "אירופה, ישראל",
       "bio": "ניצול שואה שהפך את זיכרון האסון לשליחות של אמונה, תורה והפצת קריאת \"שמע ישראל\".",
-      "era_key": "modern"
+      "era_key": "modern",
+      "spotify_url": "https://open.spotify.com/episode/2RfVxXD6TIynHVoCEcKPJn"
     },
     {
       "id": "314",
@@ -2349,7 +2605,8 @@
       "field": "הלכה",
       "location": "אשכנז (גרמניה)",
       "bio": "מחבר \"שערי דורא\" – ספר יסוד בהלכות איסור והיתר שעיצב את חיי הבית והמטבח היהודי לדורות.",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/2JtdoVxOBakR7TWV6cxppI"
     },
     {
       "id": "315",
@@ -2358,7 +2615,8 @@
       "field": "פילוסופיה",
       "location": "אירופה (גליציה)",
       "bio": "הוגה שהפך את ההיסטוריה לכלי להבנת נצח ישראל ולחיבור בין אמונה לביקורת מודרנית.",
-      "era_key": "modern"
+      "era_key": "modern",
+      "spotify_url": "https://open.spotify.com/episode/0ex690joNUDbh2ClkDxF8w"
     },
     {
       "id": "316",
@@ -2367,7 +2625,8 @@
       "field": "הלכה",
       "location": "ספרד, ארץ ישראל (צפת)",
       "bio": "חכם ששילב הלכה, קבלה ואמנות כתיבת התורה, וראה במצוות פעולה קוסמית.",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/4WLBwaZKgmiVJPIACa5dJR"
     },
     {
       "id": "317",
@@ -2376,7 +2635,8 @@
       "field": "הלכה",
       "location": "אשכנז",
       "bio": "תלמיד המהר\"ם מרוטנבורג שתיעד את חיי רבו בכלא והפך הנהגה חיה למקור הלכתי.",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/5icFLQJoUIWSCfgYau1reF"
     },
     {
       "id": "318",
@@ -2385,7 +2645,8 @@
       "field": "הלכה",
       "location": "פרובאנס, מיורקה",
       "bio": "מחבר \"ארחות חיים\" – יצירה המשלבת הלכה, מוסר וסוד, תוך שימור עולם תורני מתפורר.",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/1hCgDwZ2J6pMMMANMx4cc1"
     },
     {
       "id": "319",
@@ -2394,7 +2655,8 @@
       "field": "הלכה",
       "location": "אשכנז (ארפורט)",
       "bio": "מחבר \"ספר האגודה\" – סיכום שיטתי של הש״ס שנועד לייצב את ההלכה לאחר משברים.",
-      "era_key": "rishonim"
+      "era_key": "rishonim",
+      "spotify_url": "https://open.spotify.com/episode/03IxTZw4qg4XD0zBCuyEOT"
     },
     {
       "id": "320",
@@ -2403,7 +2665,8 @@
       "field": "מוסר",
       "location": "ישראל",
       "bio": "קצין צה\"ל שמסר נפשו להצלת חייליו והפך לסמל של גבורה הנובעת מחיים של ערכים.",
-      "era_key": "modern"
+      "era_key": "modern",
+      "spotify_url": "https://open.spotify.com/episode/6oOKCpQo5tEf5hcdghAQIC"
     },
     {
       "id": "321",
@@ -2412,7 +2675,8 @@
       "field": "הלכה",
       "location": "ליטא (וילנה)",
       "bio": "עורך ש״ס וילנה שתמך בהרצל וראה בציונות התחלת גאולה.",
-      "era_key": "acharonim"
+      "era_key": "acharonim",
+      "spotify_url": "https://open.spotify.com/episode/5yWz2GFXuVSZR9a7kMjeyT"
     },
     {
       "id": "322",
@@ -2421,7 +2685,8 @@
       "field": "הלכה",
       "location": "פולין",
       "bio": "פוסק גדול שתמך בהתיישבות וב\"היתר מכירה\" מתוך ראיית הגאולה המעשית.",
-      "era_key": "acharonim"
+      "era_key": "acharonim",
+      "spotify_url": "https://open.spotify.com/episode/5CjFGW61SRKSx3ScmazcV1"
     },
     {
       "id": "323",
@@ -2430,7 +2695,8 @@
       "field": "קבלה",
       "location": "ישראל (מצפה רמון)",
       "bio": "מקובל מודרני שבחר בחיי פרישות במדבר, ושילב למדנות ליטאית, מוסר נובהרדוקאי וקבלה מעשית-נבואית. ביקש ל",
-      "era_key": "modern"
+      "era_key": "modern",
+      "spotify_url": "https://open.spotify.com/episode/6T3X5jyANKwDXe6qS8gM4I"
     },
     {
       "id": "324",
@@ -2439,7 +2705,8 @@
       "field": "הלכה",
       "location": "ארץ ישראל — טבריה",
       "bio": "תנא מהדור הרביעי המאה השנייה לספירה. תרומתו המכרעת: סתם משנה — כל הלכה ללא שם מחברה במשנה היא משנתו.",
-      "era_key": "tannaim"
+      "era_key": "tannaim",
+      "spotify_url": "https://open.spotify.com/episode/0TMD6S3lT5s5CLq4cU2s95"
     },
     {
       "id": "325",
@@ -2457,7 +2724,8 @@
       "field": "מוסר",
       "location": "ליטא, סלבודקה, חברון",
       "bio": "מייסד אסכולת סלבודקה ומעצב תפיסת 'גדלות האדם'. העמיד דור מנהיגים מרכזי בעולם הישיבות.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/4iRZ0WdzCGhxJrGTmkAzUf"
     },
     {
       "id": "327",
@@ -2466,7 +2734,8 @@
       "field": "הלכה",
       "location": "ירושלים, אירופה וצפון אפריקה",
       "bio": "פוסק, מקובל והיסטוריון שיצר את 'שם הגדולים' והפך לדמות מפתח בזיכרון התרבותי היהודי.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/2MiUUx51sCblnVdS9i61Xq"
     },
     {
       "id": "328",
@@ -2475,7 +2744,8 @@
       "field": "קבלה",
       "location": "פורטוגל, איטליה, האימפריה העות'מאנית",
       "bio": "מקובל ומשיחי נועז שעבר מאנוס פורטוגלי לדמות מרכזית בתנועות הגאולה של המאה ה-16.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/3FgDgymcQOnmJoDgKQHJMU"
     },
     {
       "id": "329",
@@ -2484,7 +2754,8 @@
       "field": "קבלה",
       "location": "סלוניקי וצפת",
       "bio": "מגדולי מקובלי צפת ומחבר הפיוט 'לכה דודי', שעיצב את חוויית קבלת השבת לדורות.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/25yj7KlJBpuYyoAu8YZrDW"
     },
     {
       "id": "330",
@@ -2493,7 +2764,8 @@
       "field": "הלכה",
       "location": "פראג, קרקוב",
       "bio": "פרשן המשנה הגדול ומנהיג קהילות בתקופת משברים ורדיפות באירופה.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/3nwItn9PGKFfIopZY2AUMZ"
     },
     {
       "id": "331",
@@ -2502,7 +2774,8 @@
       "field": "הנהגה",
       "location": "פולין",
       "bio": "מגדולי פרשני התלמוד והאגדה, מנהיג ציבורי וחבר ועד ארבע ארצות. עיצב את דרך הלימוד הישיבתית ושילב אחרי",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/1W9x8xBNjO6o82fNd87LFb"
     },
     {
       "id": "332",
@@ -2511,7 +2784,8 @@
       "field": "הלכה",
       "location": "פולין וליטא",
       "bio": "מגדולי פוסקי אשכנז ופרשני התלמוד. נאבק בפלפול מופרז והדגיש דיוק, ביקורת נוסח ויושר למדני.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/77qmOPOAQ6RIlbvk9VtmFb"
     },
     {
       "id": "333",
@@ -2520,7 +2794,8 @@
       "field": "קבלה",
       "location": "ספרד, איטליה, סיציליה",
       "bio": "מייסד הקבלה הנבואית שפיתח שיטות להשגת נבואה באמצעות צירופי אותיות, נשימה וריכוז.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/7msZQUuF40gc7MzEt8TGBP"
     },
     {
       "id": "334",
@@ -2529,7 +2804,8 @@
       "field": "הנהגה",
       "location": "רוסיה, ארה\"ב",
       "bio": "מנהיגה השביעי של חסידות חב\"ד שהקים רשת שליחות עולמית והפך את האחריות לכל יהודי לחזון אוניברסלי.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/01M5utyXbX5Zwzf2skxRIE"
     },
     {
       "id": "335",
@@ -2538,7 +2814,8 @@
       "field": "הלכה",
       "location": "ישראל",
       "bio": "מגדולי פוסקי ההלכה בדור האחרון ומנהיגה הרוחני של יהדות ספרד. החזיר את מרכזיות הפסיקה הספרדית והקים ת",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/6EwCSxth06Ypc8hwKpUZIn"
     },
     {
       "id": "336",
@@ -2547,7 +2824,8 @@
       "field": "קבלה",
       "location": "ליטא וירושלים",
       "bio": "מגדולי המקובלים הליטאיים בעת החדשה, מחבר שיטה סדורה להבנת הקבלה על פי האר\"י והגר\"א.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/4hfLDSOuomsBnjabb72CNT"
     },
     {
       "id": "337",
@@ -2556,7 +2834,8 @@
       "field": "הלכה",
       "location": "בבל (עיראק)",
       "bio": "גדול חכמי בבל במאה ה־19 ומחנכו של הבן איש חי. הקים מחדש את מרכז התורה בבגדאד.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/4kzWbxQdGlwBkdJD30aYZk"
     },
     {
       "id": "338",
@@ -2565,7 +2844,8 @@
       "field": "פילוסופיה",
       "location": "מרוקו, מצרים, סוריה",
       "bio": "תלמידו המובהק של הרמב\"ם והנמען של ספר מורה נבוכים. רופא, פילוסוף ומנהיג קהילתי.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/1ViQ7DcT0EfyWtdilDH4oL"
     },
     {
       "id": "339",
@@ -2574,7 +2854,8 @@
       "field": "הלכה",
       "location": "ישראל",
       "bio": "הראשון לציון והרב הראשי לישראל. שילב פסיקה הלכתית עם מסורת הקבלה והאר\"י.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/3Us8uX5ozH1clJM6Nkh131"
     },
     {
       "id": "340",
@@ -2583,7 +2864,8 @@
       "field": "פרשנות",
       "location": "נרבונה, צרפת",
       "bio": "ראש ישיבה ומעצב עולם המדרש באירופה, שמסורותיו השפיעו עמוקות על פירוש רש\"י.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/1PpzvwnJnR9ssTIwkuP4Lj"
     },
     {
       "id": "341",
@@ -2592,7 +2874,8 @@
       "field": "הלכה",
       "location": "איטליה (רומא)",
       "bio": "מחבר המילון התלמודי הראשון והמקיף 'ספר הערוך', ששימר את מורשת הגאונים והנגיש את שפת התלמוד.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/2KCKjcc8V8h7lzmGQjwBoh"
     },
     {
       "id": "342",
@@ -2601,7 +2884,8 @@
       "field": "פרשנות",
       "location": "צרפת",
       "bio": "חתנו של רש\"י וממשיך דרכו, ששימש חוליית מעבר מרכזית בין פירושי רש\"י לבעלי התוספות.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/1hZbLF24hEHNSungFw9wDI"
     },
     {
       "id": "343",
@@ -2610,7 +2894,8 @@
       "field": "הלכה",
       "location": "אשכנז",
       "bio": "מראשי חכמי אשכנז ומייסדי שיטת בעלי התוספות, שפיתח את הלימוד הדיאלקטי וההשוואתי.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/0Mz2W0BVeqiMBdoN55MrM3"
     },
     {
       "id": "344",
@@ -2619,7 +2904,8 @@
       "field": "הלכה",
       "location": "גרמניה ואיטליה",
       "bio": "מגדולי פוסקי איטליה בתקופת הרנסנס, ששילב שמרנות הלכתית עם התמודדות מעשית עם אתגרי התקופה.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/2UFLK856gB3r5MDYUiO2mV"
     },
     {
       "id": "345",
@@ -2628,7 +2914,8 @@
       "field": "הלכה",
       "location": "מוראביה וגרמניה",
       "bio": "מגדולי פוסקי אשכנז במאה ה־15, שסמכותו השפיעה ישירות על פסיקת הרמ״א.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/675qg10QyWmdYgW9TyQyUB"
     },
     {
       "id": "346",
@@ -2637,7 +2924,8 @@
       "field": "הלכה",
       "location": "צרפת ואשכנז",
       "bio": "מגדולי בעלי התוספות ומחבר ספר יראים, שראה במצוות דרך לעיצוב אישיות האדם.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/6J1axbvjzcVZFeEI2lU1IV"
     },
     {
       "id": "347",
@@ -2646,7 +2934,8 @@
       "field": "הלכה",
       "location": "גרמניה",
       "bio": "מגדולי חכמי אשכנז, פוסק והיסטוריון שתיעד את מסעי הצלב ובנה מחדש את חיי התורה.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/5QGbbhxhb2hremjTS5I9E8"
     },
     {
       "id": "348",
@@ -2655,7 +2944,8 @@
       "field": "הלכה",
       "location": "מצרים",
       "bio": "ראש הדיינים בפוסטאט וממנהיגי יהדות מצרים לאחר הרמב״ם.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/1iaphVyYGkqHZhmhCfl9jE"
     },
     {
       "id": "349",
@@ -2664,7 +2954,8 @@
       "field": "מקרא",
       "location": "פרובאנס",
       "bio": "מגדולי פרשני המקרא והמדקדקים, ממעצבי דרך הפשט בלימוד התנ״ך.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/7t7Mwzw5zr9XQ4uPrDcKcz"
     },
     {
       "id": "350",
@@ -2673,7 +2964,8 @@
       "field": "פילוסופיה",
       "location": "פרובאנס",
       "bio": "פילוסוף, פרשן, מתמטיקאי ואסטרונום מן ההוגים המקוריים ביהדות ימי הביניים.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/0m3vCYb6YqsaSJvD0cZfXy"
     },
     {
       "id": "351",
@@ -2682,7 +2974,8 @@
       "field": "הנהגה",
       "location": "ארץ ישראל",
       "bio": "נביאה ושופטת שהובילה את ישראל לניצחון על סיסרא ואיחדה את השבטים.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/1tw5HjBDOm7m0U5rHWSIqm"
     },
     {
       "id": "352",
@@ -2691,7 +2984,8 @@
       "field": "הלכה",
       "location": "ספרד",
       "bio": "מגדולי חכמי ספרד ומחבר ספר התרומות, מאבני היסוד של המשפט העברי.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/5Cdc9RvxyriLFWPFMRfciK"
     },
     {
       "id": "353",
@@ -2700,7 +2994,8 @@
       "field": "הלכה",
       "location": "ספרד, מרוקו ומצרים",
       "bio": "אביו של הרמב״ם, דיין ומנהיג קהילה שעיצב את דרכו הרוחנית והאינטלקטואלית.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/0N9JxxpJynDDTur8c5c0fd"
     },
     {
       "id": "354",
@@ -2709,7 +3004,8 @@
       "field": "הלכה",
       "location": "ספרד",
       "bio": "מגדולי חכמי ספרד, פוסק, ראש ישיבה ובעל מסורת סייג לתורה.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/3DlGOty8LZ8KGhLiLcyqjs"
     },
     {
       "id": "355",
@@ -2718,7 +3014,8 @@
       "field": "הלכה",
       "location": "פרובאנס",
       "bio": "פוסק והוגה שפעל בנרבונה והגן על עקרון אחדות ה׳ ועל מורשת הרמב״ם.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/2LqX1m0yUTIjrytoK1ZOD1"
     },
     {
       "id": "356",
@@ -2727,7 +3024,8 @@
       "field": "הלכה",
       "location": "ספרד",
       "bio": "מתלמידי הרמב״ן ומגדולי חכמי קטלוניה, מבקרו ההלכתי המרכזי של הרשב״א.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/1VCc2NTp4Fx2MnomLuC2YQ"
     },
     {
       "id": "357",
@@ -2736,7 +3034,8 @@
       "field": "הלכה",
       "location": "ספרד",
       "bio": "מגדולי פוסקי ישראל וממנהיגי יהדות ספרד, מאבני היסוד של הפסיקה לדורות.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/3fFSccuIPUhBryOySLd1mz"
     },
     {
       "id": "358",
@@ -2745,7 +3044,8 @@
       "field": "הלכה",
       "location": "ספרד וארץ ישראל",
       "bio": "מגדולי חכמי ישראל, פרשן, פוסק ומנהיג שעלה לירושלים וחידש בה את היישוב היהודי.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/7tV3u16Il2EgLXbVNFs42V"
     },
     {
       "id": "359",
@@ -2754,7 +3054,8 @@
       "field": "הלכה",
       "location": "איטליה",
       "bio": "חכם ורופא איטלקי שהציל את נוסח הירושלמי השלם וכתב מספרי המוסר החשובים בימי הביניים.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/1tRAsJRFk47EvwWKBYsRZc"
     },
     {
       "id": "360",
@@ -2763,7 +3064,8 @@
       "field": "הלכה",
       "location": "איטליה",
       "bio": "מגדולי חכמי איטליה, מחבר שיבולי הלקט ומגשר בין מסורות אשכנז ואיטליה.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/0zmmVvmiG4Wzj6H3D3wwK7"
     },
     {
       "id": "361",
@@ -2772,7 +3074,8 @@
       "field": "הלכה",
       "location": "איטליה",
       "bio": "מגדולי חכמי רומא וממעצבי המסורת ההלכתית האיטלקית.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/1ANs8CZ7mIUXhJFOSBrC3u"
     },
     {
       "id": "362",
@@ -2781,7 +3084,8 @@
       "field": "הלכה",
       "location": "איטליה",
       "bio": "מגדולי חכמי איטליה, בעל שיטה עצמאית בלימוד התלמוד ובהכרעת הלכה.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/1RhrrkBapQNDsL3Nc92rS3"
     },
     {
       "id": "363",
@@ -2790,7 +3094,8 @@
       "field": "הלכה",
       "location": "איטליה, גרמניה ואוסטריה",
       "bio": "ממנהיגי יהדות אוסטריה ומחבר בין מסורות איטליה, אשכנז וצרפת.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/0Gbt6DvaXHHA3NQUKn6gAe"
     },
     {
       "id": "364",
@@ -2799,7 +3104,8 @@
       "field": "הלכה",
       "location": "איטליה",
       "bio": "נכדו של הרי״ד הזקן, פוסק עצמאי שהתנגד לתלות האמונה בפילוסופיה והדגיש את כוח המסורת.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/5mtDbjislFZkbFTuxrfRWN"
     },
     {
       "id": "365",
@@ -2808,7 +3114,8 @@
       "field": "הלכה",
       "location": "צרפת",
       "bio": "מחבר הסמ״ק, שהנגיש את ההלכה לציבור הרחב במבנה חינוכי ומעשי.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/6UrTGXdvwzHksRdb2MK3Nd"
     },
     {
       "id": "366",
@@ -2817,7 +3124,8 @@
       "field": "הלכה",
       "location": "הונגריה וישראל",
       "bio": "ניצול שואה ומנהיג חסידי שהקדיש את חייו להנצחת הנספים ולהפצת תורה ואמונה.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/2RfVxXD6TIynHVoCEcKPJn"
     },
     {
       "id": "367",
@@ -2826,7 +3134,8 @@
       "field": "קבלה",
       "location": "ירושלים",
       "bio": "הוגה שניסה ליצור סינתזה בין קבלה, מדע מודרני ופילוסופיה.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/12f9H8UgJMaWzeIBegbaMu"
     },
     {
       "id": "368",
@@ -2835,7 +3144,8 @@
       "field": "הלכה",
       "location": "גרמניה",
       "bio": "מגדולי חכמי אשכנז ומחבר סיכום שיטתי של התלמוד שהשפיע על פסיקת הרמ״א.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/03IxTZw4qg4XD0zBCuyEOT"
     },
     {
       "id": "369",
@@ -2844,7 +3154,8 @@
       "field": "הנהגה",
       "location": "ישראל",
       "bio": "קצין צה״ל שעוטר בעיטור העוז לאחר שנפל תוך הצלת חייליו בקרב בבינת ג'בייל.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/6oOKCpQo5tEf5hcdghAQIC"
     },
     {
       "id": "370",
@@ -2853,7 +3164,8 @@
       "field": "הלכה",
       "location": "פולין",
       "bio": "מגדולי פוסקי פולין ותומך מרכזי ביישוב הארץ ובהיתר המכירה בראשית ההתיישבות.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/5CjFGW61SRKSx3ScmazcV1"
     },
     {
       "id": "371",
@@ -2862,7 +3174,8 @@
       "field": "הלכה",
       "location": "צרפת וספרד",
       "bio": "מפרשו המרכזי של הרמב״ם, שחשף את מקורותיו ושיטתו של משנה תורה.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/3bAJkTvZUqAhdXCQty6A3B"
     },
     {
       "id": "372",
@@ -2871,7 +3184,8 @@
       "field": "הלכה",
       "location": "אשכנז ואוסטריה",
       "bio": "ממנהיגי יהדות אשכנז לאחר המשברים הגדולים, ממעצבי מוסד הסמיכה האשכנזי.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/51kAKVyQ9chRuXJM5J66so"
     },
     {
       "id": "373",
@@ -2880,7 +3194,8 @@
       "field": "הלכה",
       "location": "גרמניה וארץ ישראל",
       "bio": "מגדולי חכמי הסת״ם שעיצב את מסורת צורת האותיות והתגים בכתיבת ספרי קודש.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/0xHQG8l47thPFLrmtWggIG"
     },
     {
       "id": "374",
@@ -2889,7 +3204,8 @@
       "field": "הלכה",
       "location": "אוסטריה וגרמניה",
       "bio": "פוסק ומנהיג ששימר את מסורת אשכנז באמצעות הגהותיו לפסקי הרא״ש.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/3m0Cho5M29aVZp15Pd8poe"
     },
     {
       "id": "375",
@@ -2898,7 +3214,8 @@
       "field": "היסטוריה",
       "location": "פראג",
       "bio": "היסטוריון ואסטרונום יהודי שחיבר בין עולם התורה למהפכה המדעית של הרנסנס.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/2k24kwgPp3f98lo0KLeybp"
     },
     {
       "id": "376",
@@ -2907,7 +3224,8 @@
       "field": "הלכה",
       "location": "איטליה",
       "bio": "מקובל, פוסק ומחזאי עברי שהפיץ את קבלת האר״י באירופה.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/7ApVpshXFmnerqdZj67q7L"
     },
     {
       "id": "377",
@@ -2916,7 +3234,8 @@
       "field": "הלכה",
       "location": "ארץ ישראל",
       "bio": "מן התנאים המרכזיים שעיצבו את התורה שבעל פה לאחר מרד בר כוכבא.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/2oyMTbV94Hphr9dGIMMrWs"
     },
     {
       "id": "378",
@@ -2925,7 +3244,8 @@
       "field": "קבלה",
       "location": "פורטוגל והולנד",
       "bio": "מקובל והוגה דעות שיצר גשר בין קבלת האר״י לפילוסופיה האירופית.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/2484MUIhpWjmTxP5KxDWOB"
     },
     {
       "id": "379",
@@ -2934,7 +3254,8 @@
       "field": "הלכה",
       "location": "ספרד",
       "bio": "מחבר הנימוקי יוסף, מסכם ומנגיש מרכזי של תורת חכמי ספרד המאוחרים.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/1EPfEDDABhFrIaVyXmn4UY"
     },
     {
       "id": "380",
@@ -2943,7 +3264,8 @@
       "field": "הלכה",
       "location": "ספרד ואלג'יר",
       "bio": "מגדולי פוסקי צפון אפריקה ומנהיגה הרוחני לאחר גזירות קנ״א.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/2H66qv8Pu1ovFslG0esMSO"
     },
     {
       "id": "381",
@@ -2952,7 +3274,8 @@
       "field": "הלכה",
       "location": "ארץ ישראל",
       "bio": "מתלמידי רבי עקיבא ומגדולי התנאים, מזוהה עם גילוי תורת הסוד.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/5jiWdUYsdMQTSRAghuCtHo"
     },
     {
       "id": "382",
@@ -2961,7 +3284,8 @@
       "field": "הלכה",
       "location": "מרוקו ואנגליה",
       "bio": "מקובל ודיין, מחבר הפירוש השיטתי המרכזי על ספר הזוהר.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/1cdKyl2ZxmH4MV8HxWn5a8"
     },
     {
       "id": "383",
@@ -2970,7 +3294,8 @@
       "field": "הנהגה",
       "location": "בבל",
       "bio": "מגדולי אמוראי בבל וראש ישיבת פומבדיתא, שנודע בבקיאותו העצומה ובשימור המסורת התלמודית.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/7hxuVRnwNLVCSZTDgYaRYf"
     },
     {
       "id": "384",
@@ -2979,7 +3304,8 @@
       "field": "הלכה",
       "location": "בבל",
       "bio": "חכם עשיר ובעל השפעה ממחוזא, אביו של רבא וממעצבי האליטה התורנית של בבל.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/1eP3a8IxlJL1jjrarhy929"
     },
     {
       "id": "385",
@@ -2988,7 +3314,8 @@
       "field": "קבלה",
       "location": "איטליה",
       "bio": "מגדולי המקובלים באיטליה ומגשר בין קבלת הרמ״ק לקבלת האר״י.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/1T5zGLHEk5d5uLbDzh0vs4"
     },
     {
       "id": "386",
@@ -2997,7 +3324,8 @@
       "field": "הלכה",
       "location": "אלג'יר",
       "bio": "מגדולי חכמי צפון אפריקה וממשיך דרכו של הרשב״ץ בהנהגת יהדות המגרב.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/3RNUR7nCj9IMQMgkP8UzrS"
     },
     {
       "id": "387",
@@ -3006,7 +3334,8 @@
       "field": "הלכה",
       "location": "ספרד, מצרים וירושלים",
       "bio": "מפרש מרכזי של משנה תורה לרמב״ם ומבוני התשתית ההלכתית לתחיית היישוב בארץ ישראל.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/318qI4uBEs6NKIcOW2bnsG"
     },
     {
       "id": "388",
@@ -3015,7 +3344,8 @@
       "field": "הלכה",
       "location": "מצרים וירושלים",
       "bio": "מחבר השיטה מקובצת ומציל מרכזי של ספרות הראשונים באמצעות איסוף ועריכת כתבי יד נדירים.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/7kuqHDuRlbICUtT61hWdfH"
     },
     {
       "id": "389",
@@ -3024,7 +3354,8 @@
       "field": "הלכה",
       "location": "ספרד, האימפריה העות'מאנית וצפת",
       "bio": "מחבר השולחן ערוך ומגדולי פוסקי ישראל, שעיצב את ההלכה היהודית לאחר גירוש ספרד.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/0dqB9uZCfNqapz7AN12H0I"
     },
     {
       "id": "390",
@@ -3033,7 +3364,8 @@
       "field": "הלכה",
       "location": "גרמניה",
       "bio": "אבי מנהגי אשכנז וממעצבי הזהות ההלכתית והליטורגית של יהדות אשכנז.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/4JIgpuKHuW2KrBRlo94aZx"
     },
     {
       "id": "391",
@@ -3042,7 +3374,8 @@
       "field": "הלכה",
       "location": "אוסטריה",
       "bio": "מגדולי חכמי אוסטריה ומעצב מרכזי של מסורת ומנהגי אשכנז לאחר משברי המאה ה־14.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/0UBQxy7MVsKgQG9FPKNaOg"
     },
     {
       "id": "392",
@@ -3051,7 +3384,8 @@
       "field": "הלכה",
       "location": "אוסטריה",
       "bio": "ממנהיגי יהדות אוסטריה שנרצח בגזירות וינה ושימר את מסורת אשכנז לדורות.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/7jqAc8vwpfd04zF5HdhtVG"
     },
     {
       "id": "393",
@@ -3060,7 +3394,8 @@
       "field": "הלכה",
       "location": "אוסטריה",
       "bio": "מחבר ספר המנהגים שהפך לאחד היסודות המרכזיים של אורח החיים האשכנזי.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/7nFjZxQJCnOnTXIXlmoWYY"
     },
     {
       "id": "394",
@@ -3069,7 +3404,8 @@
       "field": "הנהגה",
       "location": "ארץ כנען",
       "bio": "אם האומה הישראלית, נביאה ומעצבת הזהות הרוחנית של בית אברהם.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/2XYXmPscJIo8gLmJov6AFc"
     },
     {
       "id": "395",
@@ -3078,7 +3414,8 @@
       "field": "הלכה",
       "location": "אוסטריה",
       "bio": "מגדולי פוסקי אשכנז ומעצב מרכזי של מסורת הפסיקה והמנהג האשכנזיים.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/7gv0dndMrYgU3b2qGxFpzW"
     },
     {
       "id": "396",
@@ -3087,7 +3424,8 @@
       "field": "הלכה",
       "location": "גרמניה",
       "bio": "מגדולי חכמי אשכנז ותלמיד המהרי״ל, ממעצבי ההלכה האשכנזית לאחר משברי ימי הביניים.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/0Rnc7P2J3304nWXui892rt"
     },
     {
       "id": "397",
@@ -3096,7 +3434,8 @@
       "field": "הלכה",
       "location": "גרמניה",
       "bio": "מתלמידי רבי יהודה החסיד וממשיכי מסורת חסידות אשכנז, ששילב הנהגה מוסרית עם פסיקה קהילתית.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/3AeKh8nYVsTUmTjaI89Y3i"
     },
     {
       "id": "398",
@@ -3105,7 +3444,8 @@
       "field": "הלכה",
       "location": "אשכנז ואיטליה",
       "bio": "מחבר ספר האגור ומחלוצי המעבר של המסורת ההלכתית לעידן הדפוס.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/0yb35S3e2aa4oFxvWAECuJ"
     },
     {
       "id": "399",
@@ -3114,7 +3454,8 @@
       "field": "הלכה",
       "location": "גרמניה",
       "bio": "פוסק ומנהיג ציבורי ממעצבי דיני הגירושין והחליצה באשכנז המאוחרת.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/2kJuUDKrdyK64FhvumpaJj"
     },
     {
       "id": "400",
@@ -3123,7 +3464,8 @@
       "field": "הלכה",
       "location": "גרמניה ופולין",
       "bio": "מגדולי חכמי אשכנז ששימר והעביר את מסורות מגנצא לדורות הבאים.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/75RPO7QyMxuZh7fl9EQzre"
     },
     {
       "id": "401",
@@ -3132,7 +3474,8 @@
       "field": "היסטוריה",
       "location": "מואב וארץ ישראל",
       "bio": "אם מלכות בית דוד וסמל לחסד, נאמנות וקבלת התורה מתוך בחירה.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/2quAJp7CJMUhUg6u5gafmY"
     },
     {
       "id": "402",
@@ -3141,7 +3484,8 @@
       "field": "פילוסופיה",
       "location": "צרפת וישראל",
       "bio": "הוגה דעות ומתגייר שראה בשיבת ציון מענה רוחני למשבר התרבות המערבית.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/4Cgva97eqlxFZqxabMWiLM"
     },
     {
       "id": "403",
@@ -3150,7 +3494,8 @@
       "field": "הלכה",
       "location": "גרמניה ופולין",
       "bio": "ממעבירי מרכז התורה לפולין וממפתחי שיטת הפלפול הישיבתית.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/0iCRRqPsHHQlOtKAA6y0JC"
     },
     {
       "id": "404",
@@ -3159,7 +3504,8 @@
       "field": "הלכה",
       "location": "פולין",
       "bio": "ראש ישיבה מרכזי בפולין ומורו של הרמ״א, ממעצבי עולם הישיבות הפולני.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/4aXaSFHWDx4VYnv5gINNBf"
     },
     {
       "id": "405",
@@ -3168,7 +3514,8 @@
       "field": "הלכה",
       "location": "צרפת ואיטליה",
       "bio": "מגדולי הפוסקים שהעניקו למנהג הקהילתי מעמד מרכזי בפסיקה.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/5V8efc6gWfwrgHLR6E1AQZ"
     },
     {
       "id": "406",
@@ -3177,7 +3524,8 @@
       "field": "הלכה",
       "location": "ספרד",
       "bio": "מתלמידי הרמב״ן ומגדולי המעמיקים בבית מדרש קטלוניה.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/3mgyFdCQJRAQWlTMAC3Ntt"
     },
     {
       "id": "407",
@@ -3186,7 +3534,8 @@
       "field": "הלכה",
       "location": "גרמניה ואיטליה",
       "bio": "פוסק מרכזי באיטליה שעמד בצומת שבין מסורת אשכנז למהפכת הדפוס.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/3nkaOJuTuUrJBmHUmfUX8i"
     },
     {
       "id": "408",
@@ -3195,7 +3544,8 @@
       "field": "קבלה",
       "location": "ירושלים, מצרים וצפת",
       "bio": "מחדש הקבלה הלוריאנית ומעצב מרכזי של מושגי הצמצום, השבירה והתיקון.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/4oDKjvoyolPFMcbYCtO5Zt"
     },
     {
       "id": "409",
@@ -3204,7 +3554,8 @@
       "field": "הלכה",
       "location": "פולין",
       "bio": "מגדולי פוסקי אשכנז שהוסיף את הגהותיו לשולחן ערוך והפך אותו לספר ההלכה המאחד של כלל ישראל.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/6GkFVCDreWYr2LmbN3L91b"
     },
     {
       "id": "410",
@@ -3213,7 +3564,8 @@
       "field": "קבלה",
       "location": "ספרד",
       "bio": "מתלמידי הרשב״א ומגדולי הדרשנים בספרד, שהנגיש רעיונות עמוקים לציבור הרחב.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/0SXUcjCBFArZF4cHVpUd0W"
     },
     {
       "id": "411",
@@ -3222,7 +3574,8 @@
       "field": "קבלה",
       "location": "מרוקו וצפת",
       "bio": "מתלמידי האר״י ששימר והפיץ מסורת עצמאית של הקבלה הלוריאנית.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/47ATwhBfywYAPzHptQjjic"
     },
     {
       "id": "412",
@@ -3231,7 +3584,8 @@
       "field": "הלכה",
       "location": "ספרד",
       "bio": "מתלמידי הרשב״א שהדגיש את קדושת הארץ וחידוש החיים הלאומיים בארץ ישראל.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/0QDA50K2sCFRYcR3kLXrpM"
     },
     {
       "id": "413",
@@ -3240,7 +3594,8 @@
       "field": "קבלה",
       "location": "איטליה ואירופה",
       "bio": "ממפיצי קבלת האר״י באירופה ומפתח זרם מרכזי בקבלה הלוריאנית.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/0qevAfcXSrvElyw0v6rmd4"
     },
     {
       "id": "414",
@@ -3249,7 +3604,8 @@
       "field": "הלכה",
       "location": "רוסיה וישראל",
       "bio": "רב, סופר ועורך מפעל האנציקלופדיה התלמודית, שחיבר בין למדנות, חסידות וכתיבה מודרנית.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/51WVPh2bMIsk9wHI1sMe3i"
     },
     {
       "id": "415",
@@ -3258,7 +3614,8 @@
       "field": "הלכה",
       "location": "ספרד ופרובאנס",
       "bio": "מתלמידי הרשב״א והרא״ה, שנודע כמפשר מרכזי בפולמוס הפילוסופיה ביהדות ספרד.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/3IdyRVwc1dlzf9R2fYok1q"
     },
     {
       "id": "416",
@@ -3267,7 +3624,8 @@
       "field": "הלכה",
       "location": "ליטא וירושלים",
       "bio": "רבה של פוניבז', מיר וירושלים, ומחותנו של הראי״ה קוק.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/7zHC1A3dQMNYpbYXahsYQd"
     },
     {
       "id": "417",
@@ -3276,7 +3634,8 @@
       "field": "קבלה",
       "location": "ספרד",
       "bio": "מגדולי מקובלי ספרד ומסדר שיטת הספירות ושמות הקודש.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/4HMEfax0JRi5AhwtdObjpn"
     },
     {
       "id": "418",
@@ -3285,7 +3644,8 @@
       "field": "הלכה",
       "location": "ליטא וישראל",
       "bio": "רבה הראשי של ירושלים ומגדולי פוסקי ארץ ישראל בתקופת התחייה והקמת המדינה.",
-      "era_key": "unknown"
+      "era_key": "unknown",
+      "spotify_url": "https://open.spotify.com/episode/6ONQBYcz8cRuTuz4ULWE6l"
     },
     {
       "id": "419",
@@ -5515,6 +5875,15 @@
       "evidence_source": "מחקר"
     },
     {
+      "source": "180",
+      "target": "185",
+      "type": "influence",
+      "strength": 3,
+      "period": "עת חדשה",
+      "context_he": "השפיע על דור",
+      "evidence_source": "תיעוד"
+    },
+    {
       "source": "60",
       "target": "65",
       "type": "oppose",
@@ -5558,6 +5927,15 @@
       "period": "אחרונים",
       "context_he": "עמיתים בדור",
       "evidence_source": "ספרים"
+    },
+    {
+      "source": "220",
+      "target": "225",
+      "type": "colleague",
+      "strength": 3,
+      "period": "עת חדשה",
+      "context_he": "עמיתים בעבודה",
+      "evidence_source": "תיעוד"
     },
     {
       "source": "10",
