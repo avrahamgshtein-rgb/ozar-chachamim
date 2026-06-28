@@ -180,6 +180,56 @@ class SageNetwork {
   }
 
   /**
+   * 🎯 PERFORMANCE: Filter data by URL parameters
+   */
+  _applyURLFilters(data) {
+    const params = new URLSearchParams(window.location.search);
+    const era = params.get('era');
+    const search = params.get('search');
+    const region = params.get('region');
+
+    console.log('🔗 URL Parameters:');
+    console.log(`   era=${era || 'none'}`);
+    console.log(`   search=${search || 'none'}`);
+    console.log(`   region=${region || 'none'}`);
+
+    let nodes = data.nodes || [];
+    let links = data.links || [];
+
+    if (era) {
+      console.log(`🎯 Filtering by era: ${era}`);
+      nodes = nodes.filter(n => n.group === era || n.era_key === era);
+    }
+
+    if (search) {
+      console.log(`🔍 Filtering by search: ${search}`);
+      const q = search.toLowerCase();
+      nodes = nodes.filter(n =>
+        n.label.toLowerCase().includes(q) ||
+        (n.bio && n.bio.toLowerCase().includes(q))
+      );
+    }
+
+    if (region) {
+      console.log(`🗺️ Filtering by region: ${region}`);
+      nodes = nodes.filter(n =>
+        n.location && n.location.includes(region)
+      );
+    }
+
+    // Filter links to only include nodes that are in filtered list
+    const nodeIds = new Set(nodes.map(n => String(n.id)));
+    links = links.filter(l => {
+      const src = String(l.source?.id || l.source);
+      const tgt = String(l.target?.id || l.target);
+      return nodeIds.has(src) && nodeIds.has(tgt);
+    });
+
+    console.log(`📊 After filters: ${nodes.length} nodes, ${links.length} links`);
+    return { nodes, links };
+  }
+
+  /**
    * Load data from global window.graphData (set by supabase-client.js)
    */
   async init() {
@@ -188,6 +238,10 @@ class SageNetwork {
       if (window.graphData && window.graphData.nodes && window.graphData.nodes.length > 0) {
         this.data = window.graphData;
         console.log('✓ Graph.js found data in window.graphData');
+
+        // 🎯 PERFORMANCE: Apply URL filters
+        this.data = this._applyURLFilters(this.data);
+
         this._initializeGraph();
         return;
       }
@@ -197,6 +251,10 @@ class SageNetwork {
       document.addEventListener('supabaseReady', () => {
         console.log('📦 [Graph] Data arrived from Supabase');
         this.data = window.graphData;
+
+        // 🎯 PERFORMANCE: Apply URL filters
+        this.data = this._applyURLFilters(this.data);
+
         this._initializeGraph();
       }, { once: true });
 
