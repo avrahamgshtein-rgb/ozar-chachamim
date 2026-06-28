@@ -2187,6 +2187,21 @@
                 </div>
               </div>
               <div style="margin-bottom: 0.75rem; padding-bottom: 0.75rem; border-bottom: 1px solid #ddd;">
+                <label style="font-size: 0.75rem; font-weight: 600; display: block; margin-bottom: 0.4rem;">🎯 עדכון חכם:</label>
+                <input type="text" id="focusNodeSearch" placeholder="שם חכם לעדכון..." style="width: 100%; padding: 0.4rem; font-size: 0.75rem; border: 1px solid #ddd; border-radius: 4px; direction: rtl; font-family: 'Frank Ruhl Libre', serif; margin-bottom: 0.5rem;" autocomplete="off">
+                <div id="focusNodeSuggestions" style="position: absolute; background: white; border: 1px solid #ddd; border-radius: 4px; max-height: 200px; overflow-y: auto; width: 95%; display: none; z-index: 1000; box-shadow: 0 2px 8px rgba(0,0,0,0.1);"></div>
+                <button id="removeFocusBtn" class="btn" style="width: 100%; padding: 0.4rem; font-size: 0.65rem; margin-top: 0.3rem; display: none;">✕ ביטול עדכון</button>
+              </div>
+              <div style="margin-bottom: 0.75rem; padding-bottom: 0.75rem; border-bottom: 1px solid #ddd;">
+                <label style="font-size: 0.75rem; font-weight: 600; display: block; margin-bottom: 0.4rem;">💪 עוצמת קשרים:</label>
+                <input type="range" id="strengthFilter" min="0" max="5" value="0" style="width: 100%; cursor: pointer;">
+                <div style="display: flex; justify-content: space-between; font-size: 0.65rem; color: #666; margin-top: 0.2rem;">
+                  <span>הכל</span>
+                  <span id="strengthValue">0</span>
+                  <span>חזק</span>
+                </div>
+              </div>
+              <div style="margin-bottom: 0.75rem; padding-bottom: 0.75rem; border-bottom: 1px solid #ddd;">
                 <label style="font-size: 0.75rem; font-weight: 600; display: block; margin-bottom: 0.4rem;">🔎 חפש חכם:</label>
                 <input type="text" id="graphNameSearch" placeholder="שם בעברית או אנגלית..." style="width: 100%; padding: 0.4rem; font-size: 0.75rem; border: 1px solid #ddd; border-radius: 4px; direction: rtl; font-family: 'Frank Ruhl Libre', serif; margin-bottom: 0.5rem;">
               </div>
@@ -2836,6 +2851,92 @@
           }
         });
       });
+
+      // Focus Node Search (Phase 1: Click node to focus on it)
+      const focusNodeSearch = document.getElementById('focusNodeSearch');
+      const focusNodeSuggestions = document.getElementById('focusNodeSuggestions');
+      const removeFocusBtn = document.getElementById('removeFocusBtn');
+
+      if (focusNodeSearch && focusNodeSuggestions) {
+        focusNodeSearch.addEventListener('input', (e) => {
+          const query = e.target.value.toLowerCase().trim();
+          if (!query) {
+            focusNodeSuggestions.style.display = 'none';
+            return;
+          }
+
+          // Filter nodes by name
+          const matches = window.graphData.nodes
+            .filter(node =>
+              node.label?.toLowerCase().includes(query) ||
+              node.label_he?.toLowerCase().includes(query)
+            )
+            .slice(0, 10);
+
+          if (matches.length === 0) {
+            focusNodeSuggestions.innerHTML = '<div style="padding: 0.5rem; color: #999; font-size: 0.7rem;">לא נמצא</div>';
+            focusNodeSuggestions.style.display = 'block';
+            return;
+          }
+
+          focusNodeSuggestions.innerHTML = matches
+            .map(node => `
+              <div style="padding: 0.5rem 0.75rem; border-bottom: 1px solid #f0f0f0; cursor: pointer; font-size: 0.75rem; transition: background 0.15s;" onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background='white'">
+                ${node.label}
+                <span style="color: #999; font-size: 0.65rem;"> (${node.era_key || node.group})</span>
+              </div>
+            `)
+            .join('');
+
+          focusNodeSuggestions.style.display = 'block';
+
+          // Add click handlers
+          focusNodeSuggestions.querySelectorAll('div').forEach((div, idx) => {
+            div.addEventListener('click', () => {
+              const selectedNode = matches[idx];
+              window.location.search = `?id=${selectedNode.id}`;
+            });
+          });
+        });
+
+        // Close suggestions on focus out
+        focusNodeSearch.addEventListener('blur', () => {
+          setTimeout(() => focusNodeSuggestions.style.display = 'none', 200);
+        });
+      }
+
+      // Remove Focus button
+      if (removeFocusBtn) {
+        const currentParams = new URLSearchParams(window.location.search);
+        if (currentParams.has('id')) {
+          removeFocusBtn.style.display = 'block';
+          focusNodeSearch.value = '';
+        }
+        removeFocusBtn.addEventListener('click', () => {
+          window.location.search = '';
+        });
+      }
+
+      // Strength Filter Slider
+      const strengthFilter = document.getElementById('strengthFilter');
+      const strengthValue = document.getElementById('strengthValue');
+      if (strengthFilter) {
+        // Update label on input
+        strengthFilter.addEventListener('input', (e) => {
+          strengthValue.textContent = e.target.value;
+        });
+
+        // Update URL on change
+        strengthFilter.addEventListener('change', (e) => {
+          const params = new URLSearchParams(window.location.search);
+          if (e.target.value > 0) {
+            params.set('min_strength', e.target.value);
+          } else {
+            params.delete('min_strength');
+          }
+          window.location.search = params.toString();
+        });
+      }
 
       // Graph Name Search (new unified search)
       const graphNameSearch = document.getElementById('graphNameSearch');

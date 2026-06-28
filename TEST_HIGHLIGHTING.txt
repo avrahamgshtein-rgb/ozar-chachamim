@@ -1,0 +1,145 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║                   ✨ FILTER HIGHLIGHTING TEST GUIDE                         ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+🎯 TEST 1: ERA FILTER (תקופה)
+┌────────────────────────────────────────────────────────────────────────────┐
+│ BEFORE:  364 circles spread across graph                                   │
+│ ACTION:  Select "בית שני" from תקופה dropdown                              │
+│ AFTER:                                                                     │
+│   ✨ 9 circles with GOLD STROKE (3px #FFD700)                             │
+│   ✨ GLOW EFFECT around them (yellow halo)                                │
+│   😴 355 circles fade to 10% opacity (ghosted)                            │
+│   🎯 9 circles CLUSTER in the CENTER                                      │
+│   🔗 Edges only show between the 9 (bright opacity)                       │
+│                                                                            │
+│ RESULT: Beautiful golden cluster in the middle!                           │
+└────────────────────────────────────────────────────────────────────────────┘
+
+🎯 TEST 2: FIELD FILTER (תחום)
+┌────────────────────────────────────────────────────────────────────────────┐
+│ BEFORE:  Current state (maybe some era filter still active)               │
+│ ACTION:  Select "הלכה" from תחום dropdown                                 │
+│ AFTER:                                                                     │
+│   ✨ 186 circles with GOLD STROKE (3px #FFD700)                           │
+│   ✨ GLOW EFFECT around them                                              │
+│   😴 178 circles fade to 10% opacity                                      │
+│   🎯 186 circles CLUSTER in CENTER                                        │
+│   🔗 Only edges between Halakha scholars show                             │
+│                                                                            │
+│ RESULT: Large golden cluster in the middle!                               │
+└────────────────────────────────────────────────────────────────────────────┘
+
+🎯 TEST 3: REGION FILTER (אזור)
+┌────────────────────────────────────────────────────────────────────────────┐
+│ BEFORE:  Any state                                                        │
+│ ACTION:  Select "ירושלים" from אזור dropdown                              │
+│ AFTER:                                                                     │
+│   ✨ All Jerusalem scholars get GOLD STROKE                               │
+│   😴 Everyone else fades                                                  │
+│   🎯 Jerusalem scholars cluster in CENTER                                 │
+│                                                                            │
+│ RESULT: Region-focused visualization!                                     │
+└────────────────────────────────────────────────────────────────────────────┘
+
+🎯 TEST 4: RESET BUTTON
+┌────────────────────────────────────────────────────────────────────────────┐
+│ BEFORE:  Nodes highlighted + faded + clustered                            │
+│ ACTION:  Click "🔄 reset" button                                          │
+│ AFTER:                                                                     │
+│   ✨ All GOLD STROKES disappear                                           │
+│   😴 All nodes return to FULL OPACITY (1.0)                               │
+│   🎯 Clustering forces REMOVED                                            │
+│   📊 Graph spreads back out to NATURAL FORCE-DIRECTED LAYOUT              │
+│                                                                            │
+│ RESULT: Back to original network view!                                    │
+└────────────────────────────────────────────────────────────────────────────┘
+
+🎯 TEST 5: COMBINED FILTERS
+┌────────────────────────────────────────────────────────────────────────────┐
+│ SCENARIO: Select both era AND field filter                                │
+│                                                                            │
+│ BEFORE:  Graph showing all 364 sages                                      │
+│ ACTION:  Select "ראשונים" + "הלכה"                                       │
+│ AFTER:                                                                     │
+│   ✨ ONLY sages who are BOTH Rishonim AND Halakha scholars get gold      │
+│   😴 Everyone else fades                                                  │
+│   🎯 That subset clusters in center                                       │
+│                                                                            │
+│ EXPECTED: Maybe 50-80 matching sages with gold highlighting               │
+└────────────────────────────────────────────────────────────────────────────┘
+
+╔════════════════════════════════════════════════════════════════════════════╗
+║                            ⚙️ HOW TO RUN TEST                              ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+1. Open Browser:
+   http://localhost:8080
+
+2. Wait for graph to load
+   Console should show: ✅ [AppInit] Single Source Ready: 364 nodes...
+
+3. Click "⚙️ מסננים" to expand filter panel on the left
+
+4. Run tests in order (1→2→3→4→5)
+
+5. For each test:
+   ✓ Watch the highlighting appear
+   ✓ Watch the clustering happen
+   ✓ Verify gold stroke + glow are visible
+   ✓ Verify non-matching nodes fade
+   ✓ Verify edges show/hide correctly
+
+╔════════════════════════════════════════════════════════════════════════════╗
+║                        🎨 VISUAL FEATURES CHECK                           ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+☑ Gold stroke (#FFD700) appears on matching nodes
+☑ Glow effect (yellow halo) visible around matching nodes
+☑ Non-matching nodes fade to very low opacity
+☑ Matching nodes cluster smoothly toward center
+☑ Edges between matches stay bright
+☑ Edges from matches to non-matches fade
+☑ Reset button clears all highlighting
+☑ Graph returns to spread-out layout after reset
+☑ Smooth transitions (no jumping)
+☑ Console shows: "✅ Filtered: X/364 sages match criteria"
+
+╔════════════════════════════════════════════════════════════════════════════╗
+║                         📊 EXPECTED NUMBERS                               ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+תקופה (Era):
+  • בית שני (Second Temple) → ~9 sages
+  • תנאים (Tannaim) → ~7 sages
+  • אמוראים (Amoraim) → ~3 sages
+  • גאונים (Geonim) → ~7 sages
+  • ראשונים (Rishonim) → ~151 sages
+  • אחרונים (Acharonim) → ~49 sages
+  • עת חדשה (Modern) → ~52 sages
+
+תחום (Field):
+  • הלכה (Halakha) → ~186 sages
+  • קבלה (Kabbalah) → ~48 sages
+  • הנהגה (Leadership) → ~29 sages
+  • מוסר (Ethics) → ~23 sages
+  • הגות (Philosophy) → ~17 sages
+  • פרשנות (Commentary) → ~14 sages
+  • פילוסופיה (Philosophy) → ~13 sages
+  • חינוך (Education) → ~9 sages
+
+If numbers are different, check data.json era/field values!
+
+╔════════════════════════════════════════════════════════════════════════════╗
+║                    ✅ WHEN TEST PASSES                                    ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+You should see:
+1. Gold-rimmed circles appear instantly when you select a filter
+2. Circles move smoothly to the center (force animation)
+3. Non-matching circles fade to ghost effect
+4. All highlighting disappears when you click Reset
+5. No console errors (F12 → Console tab)
+6. Graph is responsive and smooth
+
+Ready to test? Open http://localhost:8080 and enjoy! 🚀

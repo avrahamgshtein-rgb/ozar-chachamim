@@ -1,0 +1,62 @@
+{
+  "name": "אוצר חכמים - Ozar Chachamim",
+  "short_name": "אוצר חכמים",
+  "description": "רשת חכמי ישראל לדורותיהם - Network of Jewish Sages",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#2980b9",
+  "background_color": "#ffffff",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect fill='%232980b9' width='192' height='192'/><text x='96' y='144' font-size='120' font-family='Frank Ruhl Libre' font-weight='bold' fill='white' text-anchor='middle'>א</text></svg>",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect fill='%232980b9' width='192' height='192' rx='45'/><text x='96' y='144' font-size='120' font-family='Frank Ruhl Libre' font-weight='bold' fill='white' text-anchor='middle'>א</text></svg>",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ],
+  "categories": ["education", "reference"],
+  "screenshots": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 540 720'><rect fill='%23fafafa' width='540' height='720'/><text x='270' y='360' font-size='48' font-family='Frank Ruhl Libre' font-weight='bold' fill='%232980b9' text-anchor='middle'>אוצר חכמים</text></svg>",
+      "sizes": "540x720",
+      "type": "image/svg+xml",
+      "form_factor": "narrow"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "חיפוש חכם",
+      "short_name": "חיפוש",
+      "description": "חפש חכם בשם או תקופה",
+      "url": "/?search=true",
+      "icons": [
+        {
+          "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'><circle cx='48' cy='48' r='45' fill='%232980b9'/><text x='48' y='60' font-size='50' text-anchor='middle' fill='white'>🔍</text></svg>",
+          "sizes": "96x96",
+          "type": "image/svg+xml"
+        }
+      ]
+    },
+    {
+      "name": "סיורים",
+      "short_name": "סיורים",
+      "description": "סיורים מובנים בהיסטוריה",
+      "url": "/?tour=true",
+      "icons": [
+        {
+          "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'><circle cx='48' cy='48' r='45' fill='%2327ae60'/><text x='48' y='60' font-size='50' text-anchor='middle' fill='white'>🎓</text></svg>",
+          "sizes": "96x96",
+          "type": "image/svg+xml"
+        }
+      ]
+    }
+  ]
+}

@@ -98,7 +98,10 @@
       "Bash(pkill -f \"http.server 8080\")",
       "Bash(cd C:\\\\\\\\Users\\\\\\\\User\\\\\\\\Desktop\\\\\\\\ozar-chachamim)",
       "Bash(python3 -m http.server 9999)",
-      "PowerShell($csvPath = \"C:\\\\Users\\\\User\\\\Desktop\\\\ozar-chachamim\\\\data\\\\חכמי ישראל.csv\"; $lineCount = @\\(Get-Content $csvPath\\).Count; Write-Host \"Total lines: $lineCount\"; Write-Host \"Total sages \\(excluding header\\): $\\($lineCount - 1\\)\")"
+      "PowerShell($csvPath = \"C:\\\\Users\\\\User\\\\Desktop\\\\ozar-chachamim\\\\data\\\\חכמי ישראל.csv\"; $lineCount = @\\(Get-Content $csvPath\\).Count; Write-Host \"Total lines: $lineCount\"; Write-Host \"Total sages \\(excluding header\\): $\\($lineCount - 1\\)\")",
+      "WebFetch(domain:www.denizcemonduygu.com)",
+      "Bash(cp data_new.json data_original.json)",
+      "Bash(iconv -f UTF-8 -t UTF-8 data_new.json)"
     ]
   }
 }

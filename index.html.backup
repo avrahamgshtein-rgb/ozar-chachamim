@@ -1,0 +1,2326 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="אוצר חכמים - רשת חכמי ישראל לדורותיהם">
+  <title>אוצר חכמים — Network of Jewish Sages</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75' font-family='Frank Ruhl Libre'>א</text></svg>">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Leaflet.js for Interactive Maps -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+
+  <style>
+    /* ============================================================================
+       OZAR CHACHAMIM - Six Degrees Style with Tabs
+       ============================================================================ */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #fafafa;
+      color: #1a1a1a;
+      overflow: hidden;
+    }
+
+    /* ============================================================================
+       HEADER & TABS
+       ============================================================================ */
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 1.5rem;
+      background: #ffffff;
+      border-bottom: 1px solid #e5e5e5;
+      gap: 2rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      min-width: 250px;
+    }
+
+    .logo h1 {
+      font-family: 'Frank Ruhl Libre', serif;
+      font-size: 1.4rem;
+      color: #1a1a1a;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    .logo p {
+      font-size: 0.75rem;
+      color: #999;
+      margin: 0;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 2rem;
+      flex: 1;
+      overflow-x: auto;
+      overflow-y: hidden;
+      -webkit-overflow-scrolling: touch;
+      scroll-behavior: smooth;
+    }
+
+    .tabs::-webkit-scrollbar {
+      height: 2px;
+    }
+
+    .tabs::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .tabs::-webkit-scrollbar-thumb {
+      background: #ddd;
+      border-radius: 10px;
+    }
+
+    /* ============================================================================
+       LANGUAGE SWITCHER
+       ============================================================================ */
+
+    .language-switcher {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-right: auto;
+    }
+
+    .language-switcher button {
+      background: transparent;
+      border: 1px solid #ddd;
+      padding: 0.4rem 0.8rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #666;
+      transition: all 0.2s;
+    }
+
+    .language-switcher button:hover {
+      border-color: #2980b9;
+      color: #2980b9;
+      background: #f0f8ff;
+    }
+
+    .language-switcher button.active {
+      background: #2980b9;
+      color: white;
+      border-color: #2980b9;
+    }
+
+    /* ============================================================================
+       OPTIONS PANEL (Accessibility Features)
+       ============================================================================ */
+
+    .options-panel {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 0.5rem 1rem;
+      background: #f9f9f9;
+      border-bottom: 1px solid #e5e5e5;
+      flex-wrap: wrap;
+    }
+
+    .options-group {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .options-group label {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #666;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .toggle-switch {
+      width: 40px;
+      height: 24px;
+      background: #ddd;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      position: relative;
+      transition: background 0.3s;
+    }
+
+    .toggle-switch.active {
+      background: #27ae60;
+    }
+
+    .toggle-switch::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: white;
+      border-radius: 50%;
+      top: 2px;
+      left: 2px;
+      transition: left 0.3s;
+    }
+
+    .toggle-switch.active::after {
+      left: 18px;
+    }
+
+    .filter-dropdown {
+      padding: 0.4rem 0.8rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      background: white;
+      cursor: pointer;
+      font-size: 0.85rem;
+      color: #666;
+    }
+
+    .filter-dropdown:hover {
+      border-color: #2980b9;
+      color: #2980b9;
+    }
+
+    /* Dark Mode Styles */
+    body.dark-mode {
+      background: #1a1a1a;
+      color: #e0e0e0;
+    }
+
+    body.dark-mode .header {
+      background: #2a2a2a;
+      border-bottom-color: #444;
+    }
+
+    body.dark-mode .options-panel {
+      background: #252525;
+      border-bottom-color: #444;
+    }
+
+    body.dark-mode .tab-btn {
+      color: #b0b0b0;
+    }
+
+    body.dark-mode .tab-btn:hover,
+    body.dark-mode .tab-btn.active {
+      color: #2980b9;
+    }
+
+    body.dark-mode .main-container {
+      background: #1a1a1a;
+    }
+
+    body.dark-mode svg {
+      background: #1a1a1a;
+    }
+
+    .tab-btn {
+      background: none;
+      border: none;
+      padding: 0.75rem 0.5rem;
+      font-size: 0.9rem;
+      color: #666;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      white-space: nowrap;
+      min-width: fit-content;
+    }
+
+    .tab-btn:hover {
+      color: #333;
+      border-bottom-color: #ddd;
+    }
+
+    .tab-btn.active {
+      color: #1a1a1a;
+      border-bottom-color: #333;
+      font-weight: 600;
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .btn {
+      padding: 0.65rem 1.2rem;
+      border: 1px solid #d0d0d0;
+      background: white;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 500;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+
+    .btn:hover {
+      background: #f9f9f9;
+      border-color: #1a1a1a;
+    }
+
+    .btn:active {
+      transform: scale(0.98);
+    }
+
+    .btn-primary {
+      background: #1a1a1a;
+      color: white;
+      border-color: #1a1a1a;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .btn-primary:hover {
+      background: #0d0d0d;
+      border-color: #0d0d0d;
+    }
+
+    /* ============================================================================
+       MAIN CONTAINER
+       ============================================================================ */
+
+    #app {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 100vh;
+    }
+
+    .main {
+      flex: 1;
+      display: flex;
+      overflow: hidden;
+    }
+
+    .view {
+      display: none;
+      width: 100%;
+      height: 100%;
+    }
+
+    .view.active {
+      display: flex;
+    }
+
+    .view.active.map-view {
+      display: block !important;  /* Map MUST be block, not flex */
+      flex: none !important;
+    }
+
+    /* ============================================================================
+       NETWORK VIEW - Three Column Layout
+       ============================================================================ */
+
+    .network-view {
+      gap: 0;
+    }
+
+    /* LEFT SIDEBAR */
+    .sidebar {
+      width: 300px;
+      background: #ffffff;
+      border-right: 1px solid #e5e5e5;
+      overflow-y: auto;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      box-shadow: inset -1px 0 0 rgba(0,0,0,0.03);
+    }
+
+    .sidebar-header {
+      padding: 0.75rem;
+      border-bottom: 1px solid #f0f0f0;
+      background: #fafafa;
+      position: relative;
+    }
+
+    .sidebar-minimize {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: #e74c3c !important;
+      border: none !important;
+      font-size: 1.4rem;
+      cursor: pointer !important;
+      color: white;
+      padding: 6px 10px;
+      line-height: 1;
+      z-index: 1001;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px;
+      pointer-events: auto !important;
+      touch-action: manipulation;
+      -webkit-user-select: none;
+      user-select: none;
+      transition: all 0.3s ease;
+    }
+
+    .sidebar-minimize:active,
+    .sidebar-minimize:hover {
+      background: #c0392b !important;
+      transform: scale(1.1);
+    }
+
+    .sidebar.minimized {
+      max-height: 60px;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+
+    .sidebar.minimized .sidebar-content,
+    .sidebar.minimized .sidebar-placeholder {
+      display: none;
+    }
+
+    .sidebar.minimized .sidebar-header {
+      padding: 0.5rem 0.75rem;
+      border-bottom: none;
+    }
+
+    .sidebar-header h2 {
+      font-family: 'Frank Ruhl Libre', serif;
+      font-size: 1.2rem;
+      color: #1a1a1a;
+      margin-bottom: 0.35rem;
+      margin-right: 35px;
+      font-weight: 700;
+    }
+
+    .sidebar-header p {
+      font-size: 0.8rem;
+      color: #999;
+      margin: 0.3rem 0 0 0;
+      font-style: italic;
+    }
+
+    .era-badge {
+      display: inline-block;
+      padding: 0.4rem 0.8rem;
+      border-radius: 16px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: white;
+      margin-top: 0.75rem;
+    }
+
+    .sidebar-content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1rem;
+      font-size: 0.85rem;
+    }
+
+    .sidebar-section {
+      margin-bottom: 0.75rem;
+    }
+
+    .sidebar-section h3 {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #888;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.5px;
+    }
+
+    .sidebar-section p, .sidebar-section li {
+      font-size: 0.85rem;
+      line-height: 1.5;
+      color: #333;
+    }
+
+    .sidebar-section ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .sidebar-section li {
+      padding: 0.2rem 0;
+      color: #2980b9;
+      cursor: pointer;
+      font-size: 0.8rem;
+    }
+
+    .sidebar-section li:hover {
+      text-decoration: underline;
+    }
+
+    .sidebar-placeholder {
+      text-align: center;
+      color: #999;
+      padding: 2rem 0;
+    }
+
+    /* CENTER - GRAPH */
+    .graph-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      background: #ffffff;
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,0.03);
+    }
+
+    .graph-toolbar {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid #e0e0e0;
+      gap: 1rem;
+      flex-wrap: wrap;
+      background: white;
+    }
+
+    .graph-search {
+      flex: 0 1 420px;
+      min-width: 300px;
+      position: relative;
+    }
+
+    .graph-search input {
+      width: 100%;
+      padding: 0.9rem 1.2rem 0.9rem 3.2rem;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      direction: rtl;
+      background: #ffffff;
+      font-family: 'Inter', sans-serif;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    .graph-search input::placeholder {
+      color: #999;
+      font-weight: 500;
+    }
+
+    .graph-search input:focus {
+      outline: none;
+      border-color: #2980b9;
+      box-shadow: 0 4px 16px rgba(41, 128, 185, 0.25);
+      background: #ffffff;
+    }
+
+    .search-icon {
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #2980b9;
+      font-size: 1rem;
+      pointer-events: none;
+      opacity: 0.7;
+    }
+
+    .search-clear-btn {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: #999;
+      cursor: pointer;
+      font-size: 1.1rem;
+      padding: 0.4rem 0.6rem;
+      transition: all 0.2s;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .search-clear-btn:hover {
+      color: #e74c3c;
+      transform: translateY(-50%) scale(1.2);
+    }
+
+    .search-clear-btn.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .graph-filters {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .filter-group {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .filter-group label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #666;
+    }
+
+    .filter-group select {
+      padding: 0.6rem 0.85rem;
+      border: 1px solid #d0d0d0;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      background: white;
+      cursor: pointer;
+      direction: rtl;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      transition: all 0.2s ease;
+    }
+
+    .filter-group select:hover {
+      border-color: #1a1a1a;
+    }
+
+    .filter-group select:focus {
+      outline: none;
+      border-color: #1a1a1a;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .zoom-btn {
+      width: 36px;
+      height: 36px;
+      padding: 0;
+      border: 1px solid #d0d0d0;
+      background: white;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      color: #1a1a1a;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+
+    .zoom-btn:hover {
+      background: #f5f5f5;
+      border-color: #1a1a1a;
+    }
+
+    .zoom-btn:active {
+      transform: scale(0.95);
+    }
+
+    .graph-wrapper {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #graph {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    /* RIGHT SIDEBAR - LEGEND */
+    .legend {
+      width: 260px;
+      background: #ffffff;
+      border-left: 1px solid #e5e5e5;
+      overflow-y: auto;
+      padding: 1.5rem;
+      box-shadow: inset 1px 0 0 rgba(0,0,0,0.03);
+    }
+
+    .legend h3 {
+      font-family: 'Frank Ruhl Libre', serif;
+      font-size: 1rem;
+      margin-bottom: 0.75rem;
+      color: #1a1a1a;
+      font-weight: 700;
+    }
+
+    .legend-section {
+      margin-bottom: 1.5rem;
+    }
+
+    .legend-section-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 0.75rem;
+    }
+
+    .legend-items {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.85rem;
+      color: #555;
+      padding: 0.4rem 0.6rem;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .legend-item:hover {
+      background: #f5f5f5;
+    }
+
+    .legend-color {
+      width: 14px;
+      height: 14px;
+      border-radius: 2px;
+      flex-shrink: 0;
+      border: 1px solid rgba(0,0,0,0.1);
+    }
+
+    /* TABLE VIEW */
+    .table-view {
+      flex-direction: column;
+    }
+
+    .table-container {
+      flex: 1;
+      overflow: auto;
+      padding: 2rem;
+    }
+
+    .sages-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border: 1px solid #e5e5e5;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .sages-table thead {
+      background: #fafafa;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .sages-table th, .sages-table td {
+      padding: 1rem 1.2rem;
+      text-align: right;
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    .sages-table th {
+      color: #666;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      letter-spacing: 0.5px;
+    }
+
+    .sages-table tbody tr {
+      transition: background 0.15s ease;
+    }
+
+    .sages-table tbody tr:hover {
+      background: #f9f9f9;
+      cursor: pointer;
+    }
+
+    .sages-table td strong {
+      font-weight: 600;
+      color: #1a1a1a;
+    }
+
+    /* MAP VIEW */
+    .map-view {
+      background: white;
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      margin: 0;
+      display: block !important;  /* Override .view display: none */
+      position: relative;
+    }
+
+    #map {
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    /* Map legend */
+    .map-legend {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      z-index: 1000;
+      font-size: 0.9rem;
+      max-width: 250px;
+      direction: rtl;
+      text-align: right;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin: 0.5rem 0;
+    }
+
+    .legend-color {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 2px solid white;
+    }
+
+    #map {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* COMPARATOR VIEW */
+    .comparator-view {
+      flex-direction: column;
+      overflow-y: auto;
+      padding: 1.5rem;
+      background: #f9f9f9;
+    }
+
+    .comparator-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .comparator-search {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      flex-wrap: wrap;
+    }
+
+    .search-box {
+      flex: 1;
+      min-width: 250px;
+      position: relative;
+    }
+
+    .sage-search-input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      font-size: 0.95rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-family: 'Frank Ruhl Libre', serif;
+    }
+
+    .sage-search-input:focus {
+      outline: none;
+      border-color: #2980b9;
+      box-shadow: 0 0 0 3px rgba(41, 128, 185, 0.1);
+    }
+
+    .suggestions-list {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      left: 0;
+      background: white;
+      border: 1px solid #ddd;
+      border-top: none;
+      border-radius: 0 0 4px 4px;
+      max-height: 300px;
+      overflow-y: auto;
+      display: none;
+      z-index: 100;
+    }
+
+    .suggestions-list.active {
+      display: block;
+    }
+
+    .suggestion-item {
+      padding: 0.75rem 1rem;
+      cursor: pointer;
+      border-bottom: 1px solid #f0f0f0;
+      font-size: 0.9rem;
+      transition: background 0.2s;
+    }
+
+    .suggestion-item:hover {
+      background: #f5f5f5;
+    }
+
+    .vs-label {
+      align-self: center;
+      font-weight: 600;
+      color: #666;
+      font-size: 0.9rem;
+      white-space: nowrap;
+    }
+
+    .comparator-results {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .sage-card {
+      background: white;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      border-right: 4px solid #2980b9;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .sage-card:hover {
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+      transform: translateY(-4px);
+    }
+
+    .sage-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--card-color), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .sage-card:hover::before {
+      opacity: 1;
+    }
+
+    .sage-card.card-1 {
+      border-right-color: #e74c3c;
+      --card-color: #e74c3c;
+    }
+
+    .sage-card.card-2 {
+      border-right-color: #27ae60;
+      --card-color: #27ae60;
+    }
+
+    .sage-card.card-3 {
+      border-right-color: #f39c12;
+      --card-color: #f39c12;
+    }
+
+    .sage-card-action-btn {
+      display: inline-block;
+      padding: 0.6rem 1.2rem;
+      background: #2980b9;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: all 0.2s ease;
+      margin-top: 0.5rem;
+      margin-left: 0.5rem;
+    }
+
+    .sage-card-action-btn:hover {
+      background: #1f618d;
+      transform: scale(1.05);
+    }
+
+    .sage-card-actions {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid #f0f0f0;
+    }
+
+    .sage-card-header {
+      margin-bottom: 1rem;
+      border-bottom: 2px solid #f0f0f0;
+      padding-bottom: 1rem;
+    }
+
+    .sage-card-title {
+      font-family: 'Frank Ruhl Libre', serif;
+      font-size: 1.3rem;
+      color: #1a1a1a;
+      margin-bottom: 0.25rem;
+    }
+
+    .sage-card-subtitle {
+      font-size: 0.85rem;
+      color: #999;
+    }
+
+    .sage-card-section {
+      margin-bottom: 1rem;
+    }
+
+    .sage-card-section-title {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: #333;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .sage-card-section-content {
+      font-size: 0.85rem;
+      line-height: 1.5;
+      color: #666;
+    }
+
+    .sage-tag {
+      display: inline-block;
+      background: #e8f4f8;
+      color: #2980b9;
+      padding: 0.25rem 0.75rem;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      margin-right: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .mutual-connection {
+      background: #f0fdf4;
+      color: #16a34a;
+      padding: 0.25rem 0.75rem;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      margin: 0.25rem 0;
+    }
+
+    .comparison-empty {
+      text-align: center;
+      padding: 3rem 1rem;
+      color: #999;
+      grid-column: 1 / -1;
+    }
+
+    .comparison-empty-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      opacity: 0.5;
+    }
+
+    /* RESEARCH VIEW */
+    .research-view {
+      flex-direction: column;
+      overflow: hidden;
+      background: #f9f9f9;
+    }
+
+    .research-container {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      width: 100%;
+    }
+
+    .research-header {
+      display: flex;
+      gap: 1rem;
+      padding: 1.5rem;
+      background: white;
+      border-bottom: 1px solid #e5e5e5;
+      flex-wrap: wrap;
+    }
+
+    .research-search-input {
+      flex: 1;
+      min-width: 200px;
+      padding: 0.75rem 1rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      font-family: 'Frank Ruhl Libre', serif;
+    }
+
+    .research-search-input:focus {
+      outline: none;
+      border-color: #2980b9;
+      box-shadow: 0 0 0 3px rgba(41, 128, 185, 0.1);
+    }
+
+    .research-filter-select {
+      padding: 0.75rem 1rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      background: white;
+      cursor: pointer;
+      min-width: 150px;
+    }
+
+    .research-filter-select:focus {
+      outline: none;
+      border-color: #2980b9;
+    }
+
+    .research-list {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+
+    .research-item {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 1.25rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    .research-item:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      border-color: #2980b9;
+      transform: translateY(-2px);
+    }
+
+    .research-item-title {
+      font-family: 'Frank Ruhl Libre', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+
+    .research-item-summary {
+      font-size: 0.85rem;
+      color: #666;
+      line-height: 1.4;
+      margin-bottom: 0.75rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .research-item-meta {
+      font-size: 0.75rem;
+      color: #999;
+      display: flex;
+      gap: 1rem;
+    }
+
+    .research-viewer {
+      flex: 1;
+      overflow-y: auto;
+      padding: 2rem;
+      background: white;
+      display: none;
+    }
+
+    .research-viewer.active {
+      display: block;
+    }
+
+    .research-document {
+      max-width: 800px;
+      margin: 0 auto;
+      font-family: 'Frank Ruhl Libre', serif;
+      direction: rtl;
+      text-align: right;
+    }
+
+    .research-document-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 0.5rem;
+      border-bottom: 2px solid #2980b9;
+      padding-bottom: 1rem;
+    }
+
+    .research-document-meta {
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 1.5rem;
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .research-document-content {
+      line-height: 1.8;
+      color: #333;
+      font-size: 0.95rem;
+    }
+
+    .research-document-content p {
+      margin-bottom: 1rem;
+    }
+
+    .research-document-back {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid #ddd;
+    }
+
+    .research-document-back button {
+      background: #2980b9;
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-family: 'Frank Ruhl Libre', serif;
+    }
+
+    .research-document-back button:hover {
+      background: #1f618d;
+    }
+
+    /* ABOUT VIEW */
+    .about-view {
+      align-items: center;
+      justify-content: center;
+    }
+
+    .about-content {
+      max-width: 700px;
+      background: white;
+      padding: 3rem 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .about-content h2 {
+      font-family: 'Frank Ruhl Libre', serif;
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .about-content h3 {
+      font-size: 1.2rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .about-content ul {
+      list-style-position: inside;
+      margin-left: 1rem;
+    }
+
+    .about-content li {
+      margin-bottom: 0.5rem;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #ccc;
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #999;
+    }
+
+    /* MOBILE RESPONSIVE */
+    @media (max-width: 900px) {
+      /* Keep sidebar visible on tablet */
+      .sidebar { display: flex; width: 250px; }
+      .legend { width: 180px; }
+    }
+
+    @media (max-width: 768px) {
+      /* MOBILE GRAPH OPTIMIZATION */
+      #graph-filters {
+        display: none !important;
+      }
+
+      #toggle-filters-btn {
+        display: inline-block !important;
+        height: 16px;
+        min-height: 16px;
+        padding: 0 0.2rem;
+        background: #2980b9;
+        color: white;
+        border: none;
+        border-radius: 2px;
+        cursor: pointer;
+        font-size: 0.6rem;
+        white-space: nowrap;
+        line-height: 16px;
+      }
+
+      #toggle-filters-btn.active {
+        background: #1f618d;
+      }
+
+      #graph-filters.show {
+        display: flex !important;
+        flex-direction: column;
+        position: absolute;
+        left: 0;
+        top: 60px;
+        width: 50px;
+        max-width: 50px;
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 0 4px 4px 0;
+        padding: 0.25rem;
+        z-index: 100;
+        max-height: calc(100vh - 120px);
+        overflow-y: auto;
+        font-size: 0.6rem;
+      }
+
+      #graph-filters.show .filter-group {
+        margin-bottom: 0.25rem;
+      }
+
+      #graph-filters.show .filter-group label {
+        display: none;
+      }
+
+      #graph-filters.show select {
+        width: 100%;
+        font-size: 0.55rem;
+        padding: 0.15rem;
+        min-height: auto;
+      }
+
+      .graph-container {
+        height: auto;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .graph-toolbar {
+        flex-direction: row;
+        gap: 0.1rem;
+        padding: 0.1rem;
+        height: auto;
+        flex-wrap: nowrap;
+      }
+
+      .graph-search {
+        display: flex;
+        gap: 0.15rem;
+        flex: 1;
+      }
+
+      #searchInput {
+        flex: 1;
+        height: 16px;
+        min-height: 16px;
+        padding: 0.1rem 0.25rem;
+        font-size: 0.65rem;
+        line-height: 1;
+        border: 1px solid #ddd;
+      }
+
+      .graph-wrapper {
+        flex: 1;
+        height: 100%;
+        min-height: 450px;
+      }
+
+      /* HEADER OPTIMIZATION */
+      .header {
+        padding: 0.5rem 0.75rem;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+      }
+
+      .logo {
+        min-width: auto;
+      }
+
+      .logo h1 {
+        font-size: 1.1rem;
+      }
+
+      .logo p {
+        display: none;
+      }
+
+      /* TABS - horizontal scroll with larger touch targets */
+      .tabs {
+        gap: 0.5rem;
+        order: 3;
+        width: 100%;
+        padding: 0.5rem 0;
+        border-top: 1px solid #e0e0e0;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .tab-btn {
+        font-size: 0.75rem;
+        padding: 0.5rem 0.6rem;
+        min-height: 44px;
+        min-width: 60px;
+        white-space: nowrap;
+      }
+
+      /* BUTTONS - bigger for touch */
+      .header-actions {
+        gap: 0.5rem;
+        width: 100%;
+      }
+
+      .btn {
+        min-height: 44px;
+        padding: 0.5rem 0.75rem;
+        font-size: 0.8rem;
+        flex: 1;
+      }
+
+      /* LAYOUT */
+      .main {
+        flex-direction: column;
+      }
+
+      .graph-container {
+        height: 55vh;
+        min-height: 250px;
+      }
+
+      .view {
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        padding: 0.75rem;
+      }
+
+      /* TABLE */
+      .table-container {
+        padding: 0.75rem;
+      }
+
+      .sages-table {
+        font-size: 0.7rem;
+      }
+
+      .sages-table th, .sages-table td {
+        padding: 0.35rem 0.25rem;
+      }
+
+      .sages-table tr:hover {
+        background: #f9f9f9;
+      }
+
+      /* MAP */
+      .map-legend {
+        bottom: 10px;
+        left: 10px;
+        right: 10px;
+        max-width: none;
+        font-size: 0.75rem;
+        padding: 0.75rem;
+      }
+
+      .legend-item {
+        margin: 0.25rem 0;
+        font-size: 0.75rem;
+      }
+
+      .legend-color {
+        width: 10px;
+        height: 10px;
+      }
+
+      .legend { display: none; }
+
+      /* COMPARATOR - stack vertically */
+      .comparator-search {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .search-box {
+        min-width: 100%;
+      }
+
+      .vs-label {
+        display: none;
+      }
+
+      .comparator-results {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+
+      .sage-card {
+        padding: 0.75rem;
+      }
+
+      .sage-card-header {
+        margin-bottom: 0.5rem;
+        padding-bottom: 0.5rem;
+      }
+
+      .sage-card-title {
+        font-size: 1rem;
+      }
+
+      .sage-card-section {
+        margin-bottom: 0.5rem;
+      }
+
+      .sage-card-section-title {
+        font-size: 0.8rem;
+        margin-bottom: 0.25rem;
+      }
+
+      /* RESEARCH - single column */
+      .research-header {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .research-search-input,
+      .research-filter-select {
+        width: 100%;
+        min-width: 100%;
+        min-height: 44px;
+      }
+
+      .research-list {
+        grid-template-columns: 1fr;
+        padding: 0.5rem;
+        gap: 0.5rem;
+      }
+
+      .research-item {
+        padding: 0.75rem;
+      }
+
+      .research-item-title {
+        font-size: 1rem;
+      }
+
+      .research-item-summary {
+        font-size: 0.8rem;
+      }
+
+      /* SIDEBAR - mobile card */
+      .sidebar {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        width: 100%;
+        height: auto;
+        max-height: 50vh;
+        z-index: 999;
+        border-top: 3px solid #e74c3c;
+        border-radius: 12px 12px 0 0;
+        display: flex !important;
+        flex-direction: column;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        animation: slideUp 0.3s ease-out;
+        pointer-events: auto;
+        background: white;
+        box-shadow: 0 -8px 24px rgba(0,0,0,0.15);
+        padding: 0.6rem;
+      }
+
+      #sidebarHeader {
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+      }
+
+      #sidebarHeader h2 {
+        font-size: 0.85rem;
+        margin-bottom: 0.15rem;
+      }
+
+      .sidebar-section {
+        margin-bottom: 0.4rem;
+        font-size: 0.7rem;
+        line-height: 1.3;
+      }
+
+      .sidebar-section h3 {
+        font-size: 0.75rem;
+        margin-bottom: 0.25rem;
+      }
+
+      .sidebar-section p {
+        margin: 0.2rem 0;
+      }
+
+      .sidebar-section[style*="background: #f8f9fa"],
+      .sidebar-section[style*="background: #fff3cd"],
+      .sidebar-section[style*="background: #e8f4f8"] {
+        padding: 0.5rem !important;
+        margin: 0.5rem 0 !important;
+      }
+
+      .sidebar-section[style*="background"] p,
+      .sidebar-section[style*="background"] strong {
+        font-size: 0.75rem !important;
+      }
+
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    }
+
+    @media (max-width: 480px) {
+      /* Ultra-small phones (iPhone SE, etc.) */
+      .header {
+        padding: 0.4rem 0.5rem;
+      }
+
+      .logo h1 {
+        font-size: 1rem;
+      }
+
+      .tab-btn {
+        font-size: 0.65rem;
+        padding: 0.4rem 0.5rem;
+        min-width: 50px;
+      }
+
+      .btn {
+        min-height: 40px;
+        padding: 0.4rem 0.5rem;
+        font-size: 0.75rem;
+      }
+
+      .view {
+        padding: 0.5rem;
+      }
+
+      .sage-card,
+      .research-item {
+        padding: 0.5rem;
+      }
+
+      .sage-card-title {
+        font-size: 0.95rem;
+      }
+
+      .sidebar {
+        max-width: 95vw;
+        padding: 0.75rem;
+      }
+
+      #path-finder-modal {
+        width: 95vw;
+        max-width: 100%;
+      }
+    }
+
+    /* ============================================================================
+       NEW CONTROLS - SLIDERS & DENSITY/LAYOUT BUTTONS
+       ============================================================================ */
+
+    /* Range Slider Styling */
+    input[type="range"] {
+      width: 150px;
+      height: 6px;
+      border-radius: 3px;
+      background: linear-gradient(to right, #ddd 0%, #ddd 100%);
+      outline: none;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #2980b9;
+      cursor: pointer;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      transition: all 0.2s;
+    }
+
+    input[type="range"]::-webkit-slider-thumb:hover {
+      background: #1e5a96;
+      transform: scale(1.2);
+    }
+
+    input[type="range"]::-moz-range-thumb {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #2980b9;
+      cursor: pointer;
+      border: none;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      transition: all 0.2s;
+    }
+
+    input[type="range"]::-moz-range-thumb:hover {
+      background: #1e5a96;
+      transform: scale(1.2);
+    }
+
+    /* Density Buttons */
+    .density-btn, .layout-btn {
+      padding: 0.4rem 0.8rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      background: white;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #666;
+      transition: all 0.2s;
+      min-width: 50px;
+    }
+
+    .density-btn:hover, .layout-btn:hover {
+      border-color: #2980b9;
+      color: #2980b9;
+      background: #f0f8ff;
+    }
+
+    .density-btn.active, .layout-btn.active {
+      background: #2980b9;
+      color: white;
+      border-color: #2980b9;
+    }
+
+    /* Dark Mode Enhancements */
+    body.dark-mode .options-panel {
+      background: #1a1a1a;
+      border-bottom-color: #333;
+    }
+
+    body.dark-mode .options-group label {
+      color: #bbb;
+    }
+
+    body.dark-mode .filter-dropdown {
+      background: #2a2a2a;
+      color: #eee;
+      border-color: #444;
+    }
+
+    body.dark-mode .density-btn,
+    body.dark-mode .layout-btn {
+      background: #2a2a2a;
+      color: #bbb;
+      border-color: #444;
+    }
+
+    body.dark-mode .density-btn.active,
+    body.dark-mode .layout-btn.active {
+      background: #1e5a96;
+      color: white;
+      border-color: #2980b9;
+    }
+
+    body.dark-mode input[type="range"] {
+      background: linear-gradient(to right, #444 0%, #444 100%);
+    }
+
+    body.dark-mode input[type="range"]::-webkit-slider-thumb {
+      background: #2980b9;
+    }
+
+    body.dark-mode input[type="range"]::-moz-range-thumb {
+      background: #2980b9;
+    }
+
+    /* ============================================================================
+       PHASE 2: LAYOUT REORGANIZATION - 3-Column Layout (Six Degrees Style)
+       ============================================================================ */
+
+    /* Hide options panel from top - will reorganize in CSS */
+    .options-panel {
+      display: none !important;
+    }
+
+    /* PHASE 2: Reorganize network view - SIMPLE 3-PART LAYOUT */
+    .network-view {
+      display: flex !important;
+      flex-direction: row;
+      width: 100%;
+      height: 100% !important;
+      overflow: visible;
+      gap: 0;
+      box-sizing: border-box;
+    }
+
+    /* Left sidebar - Sage details panel */
+    .network-view .sidebar {
+      flex: 0 0 auto;
+      width: 200px;  /* Fixed width */
+      height: 100%;
+      border-right: 1px solid #e5e5e5;
+      box-shadow: inset -2px 0 4px rgba(0,0,0,0.02);
+      background: white;
+      overflow-y: auto;
+      overflow-x: hidden;
+      padding: 0.5rem;
+      box-sizing: border-box;
+      z-index: 10;
+      order: 1;
+      font-size: 0.85rem;
+    }
+
+    /* Center - Graph canvas - GETS ALL REMAINING SPACE */
+    .network-view .graph-container {
+      flex: 1 1 auto;  /* Grows to fill all remaining space */
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      background: #fafafa;
+      position: relative;
+      order: 2;
+      box-sizing: border-box;
+    }
+
+    /* Graph toolbar - hidden completely */
+    .network-view .graph-toolbar {
+      display: none !important;
+      height: 0 !important;
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+
+    /* Graph wrapper - fill entire container */
+    .network-view .graph-wrapper {
+      flex: 1;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      position: relative;
+      box-sizing: border-box;
+    }
+
+    /* SVG - must render at full size */
+    .network-view #graph {
+      width: 100% !important;
+      height: 100% !important;
+      display: block !important;
+    }
+
+    /* Right sidebar - Filters */
+    .network-view .graph-filters {
+      flex: 0 0 auto;
+      width: 200px;  /* Fixed width */
+      height: 100%;
+      background: #f9f9f9;
+      border-left: 1px solid #e5e5e5;
+      overflow-y: auto;
+      overflow-x: hidden;
+      padding: 0.5rem;
+      box-sizing: border-box;
+      display: flex !important;
+      flex-direction: column;
+      gap: 0.75rem;
+      z-index: 9;
+      order: 3;
+      font-size: 0.85rem;
+    }
+
+    /* Legend - COMPLETELY HIDDEN */
+    .network-view .legend {
+      display: none !important;
+      width: 0 !important;
+      height: 0 !important;
+      flex: 0 !important;
+    }
+
+    /* Right sidebar styling - filter sections */
+    .network-view .graph-filters h3 {
+      font-size: 13px;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Filter group styling */
+    .network-view .filter-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    .network-view .filter-group:last-child {
+      border-bottom: none;
+    }
+
+    .network-view .filter-group label {
+      font-size: 12px;
+      font-weight: 600;
+      color: #333;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .network-view .filter-group select,
+    .network-view .filter-group input[type="range"] {
+      width: 100%;
+      padding: 0.4rem;
+      font-size: 0.85rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      background: white;
+      color: #333;
+    }
+
+    /* Connection filters - horizontal button group */
+    .network-view .connection-filters {
+      display: flex;
+      gap: 0.3rem;
+      flex-wrap: wrap;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    .network-view .filter-btn {
+      flex: 1;
+      padding: 0.4rem 0.6rem;
+      font-size: 0.8rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      background: white;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .network-view .filter-btn:hover {
+      border-color: #2980b9;
+      color: #2980b9;
+    }
+
+    .network-view .filter-btn.active {
+      background: #2980b9;
+      color: white;
+      border-color: #2980b9;
+    }
+
+    /* Zoom controls */
+    .network-view .zoom-controls {
+      display: flex;
+      gap: 0.3rem;
+      padding-top: 1rem;
+      border-top: 1px solid #e5e5e5;
+    }
+
+    .network-view .zoom-btn {
+      flex: 1;
+      padding: 0.5rem;
+      font-size: 0.9rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      background: white;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .network-view .zoom-btn:hover {
+      border-color: #2980b9;
+      background: #f0f8ff;
+      color: #2980b9;
+    }
+
+    /* Dark mode for sidebars */
+    body.dark-mode .network-view .sidebar {
+      background: #2a2a2a;
+      border-color: #333;
+      color: #e0e0e0;
+    }
+
+    body.dark-mode .network-view .graph-filters {
+      background: #1a1a1a;
+      border-color: #333;
+    }
+
+    body.dark-mode .network-view .filter-group {
+      border-color: #333;
+    }
+
+    /* Responsive: Desktop (1000px+) */
+    @media (min-width: 1000px) {
+      .network-view .sidebar {
+        width: 220px;
+        padding: 1rem;
+        font-size: 0.9rem;
+      }
+
+      .network-view .graph-filters {
+        width: 220px;
+        padding: 1rem;
+        gap: 1rem;
+        font-size: 0.9rem;
+      }
+    }
+
+    /* Responsive: Tablet (800px - 999px) */
+    @media (max-width: 999px) and (min-width: 800px) {
+      .network-view .sidebar {
+        width: 180px;
+        padding: 0.75rem;
+        font-size: 0.85rem;
+      }
+
+      .network-view .graph-filters {
+        width: 180px;
+        padding: 0.75rem;
+        gap: 0.75rem;
+        font-size: 0.85rem;
+      }
+    }
+
+    /* Responsive: Small screens (600px - 799px) */
+    @media (max-width: 799px) and (min-width: 600px) {
+      .network-view .sidebar {
+        width: 160px;
+        padding: 0.5rem;
+        font-size: 0.8rem;
+      }
+
+      .network-view .graph-filters {
+        width: 160px;
+        padding: 0.5rem;
+        gap: 0.5rem;
+        font-size: 0.8rem;
+      }
+    }
+
+    /* Responsive: Mobile view (< 600px) - Stack */
+    @media (max-width: 599px) {
+      .network-view {
+        flex-direction: column;
+        height: auto;
+      }
+
+      .network-view .sidebar {
+        flex: 0 0 auto;
+        width: 100%;
+        height: 40vh;
+        border-right: none;
+        border-bottom: 1px solid #e5e5e5;
+        display: none;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        padding: 0.5rem;
+      }
+
+      .network-view .sidebar.active {
+        display: block !important;
+      }
+
+      .network-view .graph-container {
+        flex: 1;
+        width: 100%;
+        height: 60vh;
+        order: 2;
+      }
+
+      .network-view .graph-filters {
+        flex: 0 0 auto;
+        width: 100%;
+        height: auto;
+        border-left: none;
+        border-bottom: 1px solid #e5e5e5;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        max-height: 40vh;
+        display: none;
+        z-index: 99;
+        order: 3;
+        padding: 0.5rem;
+      }
+
+      .network-view .graph-filters.active {
+        display: flex !important;
+      }
+    }
+
+    /* Improve scrollbar styling for sidebars */
+    .network-view .sidebar::-webkit-scrollbar,
+    .network-view .graph-filters::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .network-view .sidebar::-webkit-scrollbar-track,
+    .network-view .graph-filters::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .network-view .sidebar::-webkit-scrollbar-thumb,
+    .network-view .graph-filters::-webkit-scrollbar-thumb {
+      background: #ddd;
+      border-radius: 3px;
+    }
+
+    .network-view .sidebar::-webkit-scrollbar-thumb:hover,
+    .network-view .graph-filters::-webkit-scrollbar-thumb:hover {
+      background: #999;
+    }
+
+    body.dark-mode .network-view .sidebar::-webkit-scrollbar-thumb,
+    body.dark-mode .network-view .graph-filters::-webkit-scrollbar-thumb {
+      background: #444;
+    }
+
+    /* Hide graph search from toolbar (will be in filters) */
+    .network-view .graph-toolbar {
+      display: none;
+    }
+
+    /* Add visual labels to sidebar sections */
+    .network-view .sidebar-header {
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    body.dark-mode .network-view .sidebar-header {
+      border-color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <!-- HEADER -->
+    <header class="header">
+      <div class="logo">
+        <h1>אוצר חכמים</h1>
+        <p>רשת חכמי ישראל</p>
+      </div>
+
+      <nav class="tabs">
+        <button class="tab-btn active" data-view="network">
+          <i class="fas fa-project-sageNetwork"></i>
+          רשת קשרים
+        </button>
+        <button class="tab-btn" data-view="table">
+          <i class="fas fa-table"></i>
+          טבלה
+        </button>
+        <button class="tab-btn" data-view="map">
+          <i class="fas fa-map"></i>
+          מפה
+        </button>
+        <button class="tab-btn" data-view="comparator">
+          <i class="fas fa-columns"></i>
+          🔍 השוואה
+        </button>
+        <button class="tab-btn" data-view="research" data-i18n="research">
+          <i class="fas fa-book"></i>
+          📚 מחקר
+        </button>
+        <button class="tab-btn" data-view="about">
+          <i class="fas fa-info-circle"></i>
+          אודות
+        </button>
+      </nav>
+
+      <!-- LANGUAGE SWITCHER -->
+      <div class="language-switcher" style="margin-right: 1rem;">
+        <button class="lang-btn active" data-lang="he" onclick="switchLanguage('he')">עברית</button>
+        <button class="lang-btn" data-lang="en" onclick="switchLanguage('en')">English</button>
+        <button class="lang-btn" data-lang="ru" onclick="switchLanguage('ru')">Русский</button>
+      </div>
+
+      <div class="header-actions">
+        <button class="btn" id="pathFinderBtn" onclick="window.sageNetwork.openPathFinder()" title="חפש קשר בין חכמים">
+          <i class="fas fa-sitemap"></i>
+          🔍 חפש קשר
+        </button>
+        <button class="btn" id="resetBtn" title="אתחל">
+          <i class="fas fa-redo"></i>
+        </button>
+        <button class="btn btn-primary" id="exportBtn">
+          <i class="fas fa-download"></i>
+          ייצוא
+        </button>
+      </div>
+    </header>
+
+    <!-- OPTIONS PANEL (Complete Redesign - Six Degrees + Philosophy Site) -->
+    <div class="options-panel" id="options-panel" style="flex-wrap: wrap; padding: 1rem;">
+
+      <!-- Row 1: Basic Controls -->
+      <div style="display: flex; gap: 2rem; flex-wrap: wrap; width: 100%; border-bottom: 1px solid #ddd; padding-bottom: 1rem; margin-bottom: 1rem;">
+        <div class="options-group">
+          <label for="basics-toggle">📚 Basics Mode</label>
+          <button class="toggle-switch" id="basics-toggle" onclick="window.toggleBasicsMode()"></button>
+        </div>
+        <div class="options-group">
+          <label for="field-filter">🏷️ Field:</label>
+          <select class="filter-dropdown" id="field-filter" onchange="window.filterByField(this.value)">
+            <option value="">All Fields</option>
+            <option value="ethics">Ethics</option>
+            <option value="logic">Logic</option>
+            <option value="metaphysics">Metaphysics</option>
+            <option value="kabbalah">Kabbalah</option>
+          </select>
+        </div>
+        <div class="options-group" style="margin-left: auto;">
+          <label for="dark-mode-toggle">🌙 Dark Mode</label>
+          <button class="toggle-switch" id="dark-mode-toggle" onclick="window.toggleDarkMode()"></button>
+        </div>
+      </div>
+
+      <!-- Row 2: Advanced Filters -->
+      <div style="display: flex; gap: 2rem; flex-wrap: wrap; width: 100%; border-bottom: 1px solid #ddd; padding-bottom: 1rem; margin-bottom: 1rem;">
+
+        <!-- Connection Strength Slider -->
+        <div class="options-group" style="flex: 1; min-width: 200px;">
+          <label for="strength-slider">🔗 Connection Strength:</label>
+          <div style="display: flex; gap: 0.5rem; align-items: center;">
+            <input type="range" id="strength-slider" min="0" max="100" value="0" onchange="window.filterByStrength(this.value)" style="flex: 1;">
+            <span id="strength-value" style="font-size: 0.8rem; color: #666; min-width: 30px;">0%</span>
+          </div>
+        </div>
+
+        <!-- Visual Density -->
+        <div class="options-group">
+          <label>🎨 Density:</label>
+          <div style="display: flex; gap: 0.3rem;">
+            <button class="density-btn active" data-density="1" onclick="window.setDensity(1)" style="padding: 0.3rem 0.6rem; font-size: 0.8rem;">Sparse</button>
+            <button class="density-btn" data-density="2" onclick="window.setDensity(2)" style="padding: 0.3rem 0.6rem; font-size: 0.8rem;">Normal</button>
+            <button class="density-btn" data-density="3" onclick="window.setDensity(3)" style="padding: 0.3rem 0.6rem; font-size: 0.8rem;">Dense</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 3: Layout & Display -->
+      <div style="display: flex; gap: 2rem; flex-wrap: wrap; width: 100%;">
+
+        <!-- Layout Options -->
+        <div class="options-group">
+          <label>📐 Layout:</label>
+          <div style="display: flex; gap: 0.3rem;">
+            <button class="layout-btn active" data-layout="force" onclick="window.setLayout('force')" style="padding: 0.3rem 0.6rem; font-size: 0.8rem;">Force</button>
+            <button class="layout-btn" data-layout="concentric" onclick="window.setLayout('concentric')" style="padding: 0.3rem 0.6rem; font-size: 0.8rem;">Concentric</button>
+            <button class="layout-btn" data-layout="circular" onclick="window.setLayout('circular')" style="padding: 0.3rem 0.6rem; font-size: 0.8rem;">Circular</button>
+          </div>
+        </div>
+
+        <!-- Display Options -->
+        <div class="options-group">
+          <label>👁️ Display:</label>
+          <div style="display: flex; gap: 0.5rem;">
+            <button class="toggle-switch active" id="show-labels" onclick="window.toggleLabels()" style="width: 30px; height: 20px;"></button>
+            <span style="font-size: 0.85rem; color: #666;">Labels</span>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="options-group" style="margin-left: auto;">
+          <button class="filter-dropdown" onclick="window.openIndexView()" style="cursor: pointer;">📑 INDEX</button>
+          <button class="filter-dropdown" onclick="window.clearAllFilters()" style="cursor: pointer; background: #ffe0e0;">🔄 Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main">
+      <!-- NETWORK VIEW -->
+      <section class="view network-view active" id="network-view">
+        <!-- Left Sidebar -->
+        <aside class="sidebar" id="sidebar">
+          <div class="sidebar-header" id="sidebarHeader">
+            <button class="sidebar-minimize" id="sidebarMinimizeBtn" title="כווץ/הרחב" onclick="toggleSidebarMinimize(); return false;">⌄</button>
+            <div class="sidebar-placeholder">
+              <i class="fas fa-mouse-pointer"></i>
+              <p>בחר חכם מהרשת</p>
+            </div>
+          </div>
+          <div class="sidebar-content" id="sidebarContent"></div>
+        </aside>
+
+        <!-- Center Graph -->
+        <div class="graph-container">
+          <div class="graph-toolbar">
+            <div class="graph-search">
+              <i class="fas fa-search search-icon

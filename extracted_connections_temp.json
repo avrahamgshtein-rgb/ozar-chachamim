@@ -1,0 +1,67 @@
+[
+  {
+    "source": "371",
+    "target": "41",
+    "type": "teacher"
+  },
+  {
+    "source": "371",
+    "target": "41",
+    "type": "colleague"
+  },
+  {
+    "source": "371",
+    "target": "41",
+    "type": "student"
+  },
+  {
+    "source": "371",
+    "target": "389",
+    "type": "teacher"
+  },
+  {
+    "source": "177",
+    "target": "196",
+    "type": "teacher"
+  },
+  {
+    "source": "177",
+    "target": "339",
+    "type": "teacher"
+  },
+  {
+    "source": "168",
+    "target": "335",
+    "type": "teacher"
+  },
+  {
+    "source": "168",
+    "target": "41",
+    "type": "teacher"
+  },
+  {
+    "source": "168",
+    "target": "41",
+    "type": "colleague"
+  },
+  {
+    "source": "62",
+    "target": "12",
+    "type": "teacher"
+  },
+  {
+    "source": "62",
+    "target": "389",
+    "type": "teacher"
+  },
+  {
+    "source": "414",
+    "target": "334",
+    "type": "teacher"
+  },
+  {
+    "source": "414",
+    "target": "41",
+    "type": "colleague"
+  }
+]

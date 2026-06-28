@@ -148,21 +148,14 @@ class SageNetwork {
       return sourceId === String(nodeId) || targetId === String(nodeId);
     }).length;
 
-    // 🎯 OPTIMIZED for 561+ nodes: better size distribution
+    // Mobile: smaller nodes (base 12-14), Desktop: larger nodes (base 24)
     const isMobile = window.innerWidth < 768;
     if (isMobile) {
-      // Mobile optimization
-      if (connectionCount === 0) return 6;      // Isolated nodes: tiny
-      if (connectionCount < 3) return 10;       // Low degree: small
-      if (connectionCount < 10) return 14;      // Medium degree
-      return Math.min(18 + (connectionCount - 10), 22); // Hub nodes
+      // Mobile: base 12, +1 per connection, max 22
+      return Math.min(12 + Math.min(connectionCount, 10), 22);
     } else {
-      // Desktop optimization - better visual hierarchy
-      if (connectionCount === 0) return 12;     // Isolated: still visible but small
-      if (connectionCount < 3) return 16;       // Low degree
-      if (connectionCount < 10) return 24;      // Medium degree
-      if (connectionCount < 30) return 28 + (connectionCount - 10) * 0.5; // High degree
-      return 38; // Hub nodes (30+ connections)
+      // Desktop: base 24, +2 per connection, max 40
+      return Math.min(24 + Math.min(connectionCount, 8) * 2, 40);
     }
   }
 
@@ -180,95 +173,6 @@ class SageNetwork {
   }
 
   /**
-   * 🎯 PERFORMANCE: Filter data by URL parameters
-   */
-  _applyURLFilters(data) {
-    const params = new URLSearchParams(window.location.search);
-    const id = params.get('id');
-    const era = params.get('era');
-    const search = params.get('search');
-    const region = params.get('region');
-    const minStrength = parseInt(params.get('min_strength') || '0');
-
-    console.log('🔗 URL Parameters:');
-    console.log(`   id=${id || 'none'}`);
-    console.log(`   era=${era || 'none'}`);
-    console.log(`   search=${search || 'none'}`);
-    console.log(`   region=${region || 'none'}`);
-    console.log(`   min_strength=${minStrength}`);
-
-    let nodes = data.nodes || [];
-    let links = data.links || [];
-
-    // PHASE 1: Focus view - if ?id=<node_id>, show only that node + direct connections
-    if (id) {
-      console.log(`🎯 Focus mode: loading node ${id} + direct connections`);
-      const targetNode = nodes.find(n => String(n.id) === String(id));
-      if (targetNode) {
-        // Get all directly connected nodes
-        const connectedNodeIds = new Set([String(id)]);
-        links.forEach(link => {
-          const src = String(link.source?.id || link.source);
-          const tgt = String(link.target?.id || link.target);
-          if (src === String(id)) connectedNodeIds.add(tgt);
-          if (tgt === String(id)) connectedNodeIds.add(src);
-        });
-
-        // Filter nodes to target + connected
-        nodes = nodes.filter(n => connectedNodeIds.has(String(n.id)));
-
-        // Re-filter links to only include connected nodes
-        const nodeIds = new Set(nodes.map(n => String(n.id)));
-        links = links.filter(l => {
-          const src = String(l.source?.id || l.source);
-          const tgt = String(l.target?.id || l.target);
-          return nodeIds.has(src) && nodeIds.has(tgt);
-        });
-
-        console.log(`   ↳ Found ${nodes.length} nodes, ${links.length} connections`);
-      }
-    }
-
-    if (era) {
-      console.log(`🎯 Filtering by era: ${era}`);
-      nodes = nodes.filter(n => n.group === era || n.era_key === era);
-    }
-
-    if (search) {
-      console.log(`🔍 Filtering by search: ${search}`);
-      const q = search.toLowerCase();
-      nodes = nodes.filter(n =>
-        n.label.toLowerCase().includes(q) ||
-        (n.bio && n.bio.toLowerCase().includes(q))
-      );
-    }
-
-    if (region) {
-      console.log(`🗺️ Filtering by region: ${region}`);
-      nodes = nodes.filter(n =>
-        n.location && n.location.includes(region)
-      );
-    }
-
-    // PHASE 2: Filter by connection strength
-    if (minStrength > 0) {
-      console.log(`💪 Filtering by min_strength: ${minStrength}`);
-      links = links.filter(l => (l.strength || 0) >= minStrength);
-    }
-
-    // Re-filter links to only include nodes that are in filtered list
-    const nodeIds = new Set(nodes.map(n => String(n.id)));
-    links = links.filter(l => {
-      const src = String(l.source?.id || l.source);
-      const tgt = String(l.target?.id || l.target);
-      return nodeIds.has(src) && nodeIds.has(tgt);
-    });
-
-    console.log(`📊 After all filters: ${nodes.length} nodes, ${links.length} links`);
-    return { nodes, links };
-  }
-
-  /**
    * Load data from global window.graphData (set by supabase-client.js)
    */
   async init() {
@@ -277,10 +181,6 @@ class SageNetwork {
       if (window.graphData && window.graphData.nodes && window.graphData.nodes.length > 0) {
         this.data = window.graphData;
         console.log('✓ Graph.js found data in window.graphData');
-
-        // 🎯 PERFORMANCE: Apply URL filters
-        this.data = this._applyURLFilters(this.data);
-
         this._initializeGraph();
         return;
       }
@@ -290,10 +190,6 @@ class SageNetwork {
       document.addEventListener('supabaseReady', () => {
         console.log('📦 [Graph] Data arrived from Supabase');
         this.data = window.graphData;
-
-        // 🎯 PERFORMANCE: Apply URL filters
-        this.data = this._applyURLFilters(this.data);
-
         this._initializeGraph();
       }, { once: true });
 
@@ -1302,45 +1198,11 @@ class SageNetwork {
 
     this.node.call(drag);
 
-    // 🎯 NETWORK STATS for large graphs (561+ nodes)
-    const degree = {};
-    this.data.nodes.forEach(n => degree[n.id] = 0);
-    this.data.links.forEach(link => {
-      const sourceId = String(link.source?.id || link.source);
-      const targetId = String(link.target?.id || link.target);
-      if (degree[sourceId] !== undefined) degree[sourceId]++;
-      if (degree[targetId] !== undefined) degree[targetId]++;
-    });
-
-    const isolated = Object.keys(degree).filter(id => degree[id] === 0).length;
-    const connected = this.data.nodes.length - isolated;
-    const avgDegree = Object.values(degree).reduce((a, b) => a + b, 0) / this.data.nodes.length;
-
-    // Spotify coverage
-    const withSpotify = this.data.nodes.filter(n => n.spotify_url).length;
-
-    const hubs = Object.entries(degree)
-      .sort((a, b) => b[1] - a[1])
-      .slice(0, 3)
-      .map(([id, deg]) => {
-        const node = this.data.nodes.find(n => String(n.id) === id);
-        return `${node?.label} (${deg})`;
-      });
-
     console.log('✅ Force network rendered with Connected Papers enhancements:');
     console.log('   ✓ Node sizing by degree centrality');
     console.log('   ✓ Connection type styling (solid/dashed)');
     console.log('   ✓ Enhanced force simulation parameters');
     console.log('   ✓ Improved hover effects with glow');
-    console.log('');
-    console.log('📊 Network Statistics:');
-    console.log(`   • Nodes: ${this.data.nodes.length} total`);
-    console.log(`   • Edges: ${this.data.links.length} total`);
-    console.log(`   • Connected: ${connected} (${Math.round(100 * connected / this.data.nodes.length)}%)`);
-    console.log(`   • Isolated: ${isolated} (${Math.round(100 * isolated / this.data.nodes.length)}%)`);
-    console.log(`   • Spotify URLs: ${withSpotify} (${Math.round(100 * withSpotify / this.data.nodes.length)}%)`);
-    console.log(`   • Avg degree: ${avgDegree.toFixed(1)}`);
-    console.log(`   • Top hubs: ${hubs.join(', ')}`);
   }
 
   /**
@@ -1588,8 +1450,6 @@ class SageNetwork {
 
     // Draw nodes - LARGER CIRCLES FOR BETTER VISIBILITY
     const self = this;  // Preserve context for click handler
-    const focusId = new URLSearchParams(window.location.search).get('id');
-
     this.node = g.selectAll('.node')
       .data(this.data.nodes)
       .enter()
@@ -1602,26 +1462,9 @@ class SageNetwork {
       .attr('cx', d => d.x || 0)
       .attr('cy', d => d.y || 0)
       .attr('r', 12)
-      .attr('fill', d => {
-        // If in focus mode and this is the central node, highlight in red
-        if (focusId && String(d.id) === focusId) {
-          return '#e74c3c';
-        }
-        return self.colorMap[d.group] || '#999';
-      })
-      .attr('stroke', d => {
-        // Thicker stroke for central node
-        if (focusId && String(d.id) === focusId) {
-          return '#fff';
-        }
-        return 'white';
-      })
-      .attr('stroke-width', d => {
-        if (focusId && String(d.id) === focusId) {
-          return 3;
-        }
-        return 1.5;
-      })
+      .attr('fill', d => self.colorMap[d.group] || '#999')
+      .attr('stroke', 'white')
+      .attr('stroke-width', 1.5)
       .attr('opacity', 0.85)
       .style('cursor', 'pointer');
 
@@ -2237,25 +2080,6 @@ class SageNetwork {
         .map(l => l.type);
     };
 
-    // Get connection strength for related sages
-    const getConnectionStrength = (sageId, connectedId) => {
-      const link = (this.data.links || [])
-        .find(l => {
-          const sourceId = String(l.source?.id || l.source || '');
-          const targetId = String(l.target?.id || l.target || '');
-          return (sourceId === sageId && targetId === connectedId) ||
-                 (sourceId === connectedId && targetId === sageId);
-        });
-      return link?.strength || 0;
-    };
-
-    // Helper to render strength stars
-    const renderStrengthStars = (strength) => {
-      const filled = '★'.repeat(strength);
-      const empty = '☆'.repeat(5 - strength);
-      return `<span style="color: #f39c12; font-size: 0.9rem;">${filled}${empty}</span>`;
-    };
-
     // Get era color for the profile
     const eraColor = this.colorMap[profile.era_key] || this.colorMap['unknown'];
 
@@ -2486,7 +2310,6 @@ class SageNetwork {
             ${related.length > 0
               ? related.map(n => {
                   const types = getConnectionTypes(nodeId, String(n.id));
-                  const strength = getConnectionStrength(nodeId, String(n.id));
                   const typeEmojis = {
                     'student': '👨‍🎓',
                     'teacher': '👨‍🏫',
@@ -2521,11 +2344,8 @@ class SageNetwork {
                          "
                          onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 16px rgba(0,0,0,0.1)'; this.style.borderColor='${eraColor}';"
                          onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.borderColor='${eraColor}40';">
-                      <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.5rem;">
-                        <div style="font-weight: 700; color: #1a1a1a; font-size: 1.05rem; flex: 1;">
-                          ${n.label}
-                        </div>
-                        ${strength > 0 ? `<div style="margin-right: 0.5rem; color: #f39c12; font-size: 0.85rem;">★${strength}</div>` : ''}
+                      <div style="font-weight: 700; color: #1a1a1a; font-size: 1.05rem; margin-bottom: 0.5rem;">
+                        ${n.label}
                       </div>
                       <div style="font-size: 0.9rem; color: ${eraColor}; font-weight: 600;">
                         ${typeString}

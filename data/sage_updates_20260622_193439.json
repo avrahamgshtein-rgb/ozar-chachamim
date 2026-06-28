@@ -1,0 +1,112 @@
+{
+  "timestamp": "20260622_193439",
+  "statistics": {
+    "word_files_scanned": 128,
+    "documents_processed": 30,
+    "matched_to_csv": 22,
+    "relationships_found": 33,
+    "match_rate": "73%"
+  },
+  "relationships": [
+    {
+      "source": "הרשב״ץ (רבי שמעון בן צמח דוראן)",
+      "type": "student",
+      "confidence": 0.7
+    },
+    {
+      "source": "הרשב״ץ (רבי שמעון בן צמח דוראן)",
+      "type": "influence",
+      "confidence": 0.6
+    },
+    {
+      "source": "הריצב\"א",
+      "type": "student",
+      "confidence": 0.7
+    },
+    {
+      "source": "הריצב\"א",
+      "type": "influence",
+      "confidence": 0.6
+    },
+    {
+      "source": "הלני המלכה",
+      "type": "student",
+      "confidence": 0.7
+    },
+    {
+      "source": "הרב אביחי רונצקי",
+      "type": "student",
+      "confidence": 0.7
+    },
+    {
+      "source": "הרב אביחי רונצקי",
+      "type": "influence",
+      "confidence": 0.6
+    },
+    {
+      "source": "הרב אלישע וישליצקי",
+      "type": "student",
+      "confidence": 0.7
+    },
+    {
+      "source": "הרב אלישע וישליצקי",
+      "type": "influence",
+      "confidence": 0.6
+    },
+    {
+      "source": "הרב חיים דוד הלוי",
+      "type": "student",
+      "confidence": 0.7
+    },
+    {
+      "source": "רבי יוסף אבן טבול",
+      "type": "student",
+      "confidence": 0.7
+    },
+    {
+      "source": "רבי יוסף אבן טבול",
+      "type": "influence",
+      "confidence": 0.6
+    },
+    {
+      "source": "רבי יוסף אבן טבול",
+      "type": "student",
+      "confidence": 0.7
+    },
+    {
+      "source": "רבי יוסף אבן טבול",
+      "type": "influence",
+      "confidence": 0.6
+    },
+    {
+      "source": "רבי יוסף בכור שור",
+      "type": "student",
+      "confidence": 0.7
+    },
+    {
+      "source": "רבי יוסף בכור שור",
+      "type": "influence",
+      "confidence": 0.6
+    },
+    {
+      "source": "הרב לוי סעדיה נחמני",
+      "type": "student",
+      "confidence": 0.7
+    },
+    {
+      "source": "הרב עובדיה יוסף",
+      "type": "student",
+      "confidence": 0.7
+    },
+    {
+      "source": "הרב עובדיה יוסף",
+      "type": "influence",
+      "confidence": 0.6
+    },
+    {
+      "source": "מנחם מנדל לפין (מסאטנוב)",
+      "type": "student",
+      "confidence": 0.7
+    }
+  ]
+}
