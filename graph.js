@@ -1595,7 +1595,8 @@ class SageNetwork {
         return 1.5;
       })
       .attr('opacity', 0.85)
-      .style('cursor', 'pointer');
+      .style('cursor', 'pointer')
+      .style('pointer-events', 'auto');
 
     // Add SVG title for native tooltip
     this.node.append('title')
