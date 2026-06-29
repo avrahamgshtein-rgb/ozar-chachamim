@@ -2088,13 +2088,14 @@ class SageNetwork {
    * FIX BUG 1: Select node and show sidebar with spotify_url
    */
   async selectNode(node) {
+    console.log('🔥 selectNode CALLED!', node);
     // DEFENSIVE: Validate node
     if (!node || !node.id || !node.label) {
       console.error('❌ selectNode: Invalid node', node);
       return;
     }
 
-    console.log('✅ selectNode called:', { id: node.id, label: node.label });
+    console.log('✅ selectNode VALID:', { id: node.id, label: node.label });
 
     this.selectedNode = node;
     const nodeId = String(node.id);
