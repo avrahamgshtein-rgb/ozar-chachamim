@@ -983,18 +983,6 @@ class SageNetwork {
       .attr('opacity', 0.9)
       .style('cursor', 'pointer')
       .style('filter', 'url(#node-shadow)')
-      .on('click', (event, d) => {
-        event.stopPropagation();
-
-        // Check if filtering is active
-        const eraFilter = document.getElementById('eraFilter')?.value || '';
-        const regionFilter = document.getElementById('regionFilter')?.value || '';
-        const fieldFilter = document.getElementById('fieldFilter')?.value || '';
-        const hasFilter = eraFilter || regionFilter || fieldFilter;
-
-        // Open sidebar/details on any click (even filtered nodes)
-        self.selectNode(d);
-      })
       .on('mouseover', function(event, d) {
         event.stopPropagation();
         const hoveredNodeId = d.id;
@@ -1577,7 +1565,8 @@ class SageNetwork {
       .data(this.data.nodes)
       .enter()
       .append('g')
-      .attr('class', 'node-group');
+      .attr('class', 'node-group')
+      .style('pointer-events', 'auto')  // 🎯 ENSURE GROUP IS CLICKABLE
 
     // Add circles
     this.node.append('circle')
@@ -1670,20 +1659,12 @@ class SageNetwork {
     // Add event handlers
     this.node.on('click', function(event, d) {
         event.stopPropagation();
+        console.log('🖱️ Clicked node:', d.label);
         // Hide tooltip on click
         tooltip.style.display = 'none';
 
-        // Store clicked node for next click
-        self.lastClickedNode = d;
-        self.clickCount = (self.clickCount || 0) + 1;
-
-        // Double-click or second click on same node: open sidebar
-        setTimeout(() => {
-          if (self.clickCount === 2 && self.lastClickedNode === d) {
-            self.selectNode(d);
-            self.clickCount = 0;
-          }
-        }, 300);
+        // Open sidebar on single click
+        self.selectNode(d);
       })
       .on('mouseover', function(event, d) {
         console.log('🔍 Hover on:', d.label);
@@ -2758,7 +2739,8 @@ class SageNetwork {
         return filtered.has(String(d.id))
           ? 'drop-shadow(0 0 12px rgba(255, 215, 0, 1)) drop-shadow(0 0 6px rgba(255, 235, 100, 0.8))'
           : 'none';
-      });
+      })
+      .style('pointer-events', 'auto');  // 🎯 ENSURE ALL NODES ARE CLICKABLE
 
     if (filtered.size > 0) {
       console.log(`✨ FILTERED: ${filtered.size}/${this.data.nodes.length} sages`);
