@@ -718,6 +718,18 @@ class SageNetwork {
       .attr('fill', '#ffffff')
       .on('click', () => this.deselectNode());
 
+    // 🎯 GLOBAL SVG CLICK HANDLER - FALLBACK
+    console.log('📍 Adding global SVG click handler');
+    const self = this;
+    svg.on('click', function(event) {
+      console.log('🌍 SVG click captured at:', event.target.tagName, event.target.className);
+      const node = d3.select(event.target).datum();
+      if (node && node.label) {
+        console.log('🎯 CAUGHT NODE:', node.label);
+        self.selectNode(node);
+      }
+    });
+
     // Add defs for gradients and filters
     const defs = svg.append('defs');
 
@@ -1571,6 +1583,7 @@ class SageNetwork {
     // Add circles
     this.node.append('circle')
       .attr('class', d => `node node-${d.group}`)
+      .datum(function(d) { return d; })  // 🎯 Ensure data is attached to circle
       .attr('cx', d => d.x || 0)
       .attr('cy', d => d.y || 0)
       .attr('r', 12)
