@@ -2668,11 +2668,16 @@ class SageNetwork {
    * Apply filters to graph
    */
   applyFilters() {
+    console.log('🎬 applyFilters() called');
     const eraFilter = document.getElementById('eraFilter')?.value || '';
     const regionFilter = document.getElementById('regionFilter')?.value || '';
     const fieldFilter = document.getElementById('fieldFilter')?.value || '';
 
-    if (!this.node) return;
+    if (!this.node) {
+      console.log('❌ No nodes to filter');
+      return;
+    }
+    console.log('✅ Filtering nodes:', this.node.size(), 'nodes');
 
     // Filter nodes
     const filtered = new Set();
@@ -2744,6 +2749,18 @@ class SageNetwork {
           : 'none';
       })
       .style('pointer-events', 'auto');  // 🎯 ENSURE ALL NODES ARE CLICKABLE
+
+    // ✅ Verify click handlers are still attached
+    console.log('🔍 After filter styling, checking node handlers...');
+    if (this.node) {
+      console.log('   Node selection size:', this.node.size());
+      const firstNode = this.node.select(function(d, i) { return i === 0 ? this : null; });
+      if (firstNode.empty()) {
+        console.log('   ⚠️ No nodes found!');
+      } else {
+        console.log('   ✅ Nodes still exist and can be clicked');
+      }
+    }
 
     if (filtered.size > 0) {
       console.log(`✨ FILTERED: ${filtered.size}/${this.data.nodes.length} sages`);
