@@ -1657,13 +1657,15 @@ class SageNetwork {
     console.log('✓ Nodes created with hover handlers:', this.node.size(), 'nodes');
 
     // Add event handlers
+    console.log('📍 Adding click handlers to nodes...');
     this.node.on('click', function(event, d) {
+        console.log('🖱️ NODE CLICKED!', d.label, d.id);
         event.stopPropagation();
-        console.log('🖱️ Clicked node:', d.label);
         // Hide tooltip on click
         tooltip.style.display = 'none';
 
         // Open sidebar on single click
+        console.log('📂 Opening selectNode for:', d.label);
         self.selectNode(d);
       })
       .on('mouseover', function(event, d) {
