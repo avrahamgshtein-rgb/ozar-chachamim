@@ -2176,6 +2176,14 @@
               <button id="toggle-filters-btn" class="toggle-filters-btn" style="display: none;" title="הצג/הסתר מסננים">⚙️ מסננים</button>
               <div id="searchSuggestions" style="position: absolute; top: 100%; left: 0; right: 0; background: white; border: 1px solid #ddd; border-top: none; border-radius: 0 0 6px 6px; max-height: 300px; overflow-y: auto; display: none; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"></div>
             </div>
+
+            <!-- ZOOM CONTROLS -->
+            <div style="display: flex; gap: 0.5rem; align-items: center;">
+              <button id="zoomInBtn" class="btn" title="התקרב" style="padding: 0.5rem 0.8rem; font-size: 0.9rem;">🔍+ הגדל</button>
+              <button id="zoomResetBtn" class="btn" title="איפוס zoom" style="padding: 0.5rem 0.8rem; font-size: 0.9rem;">🔄 ריסט</button>
+              <button id="zoomOutBtn" class="btn" title="התרחק" style="padding: 0.5rem 0.8rem; font-size: 0.9rem;">🔍− הקטן</button>
+            </div>
+
             <div class="graph-filters" id="graph-filters">
               <div style="margin-bottom: 0.75rem; padding-bottom: 0.75rem; border-bottom: 1px solid #ddd;">
                 <label style="font-size: 0.75rem; font-weight: 600; display: block; margin-bottom: 0.4rem;">⚡ טעינה מהירה:</label>
@@ -2231,15 +2239,15 @@
               </div>
               <div class="filter-group">
                 <label>תקופה:</label>
-                <select id="eraFilter">
+                <select id="eraFilter" onchange="window.filterByEra(this.value || 'all')">
                   <option value="">הכל</option>
-                  <option value="בית שני">בית שני</option>
-                  <option value="תנאים">תנאים</option>
-                  <option value="אמוראים">אמוראים</option>
-                  <option value="גאונים">גאונים</option>
-                  <option value="ראשונים">ראשונים</option>
-                  <option value="אחרונים">אחרונים</option>
-                  <option value="עת חדשה">עת חדשה</option>
+                  <option value="second-temple">בית שני</option>
+                  <option value="tannaim">תנאים</option>
+                  <option value="amoraim">אמוראים</option>
+                  <option value="geonim">גאונים</option>
+                  <option value="rishonim">ראשונים</option>
+                  <option value="acharonim">אחרונים</option>
+                  <option value="modern">עת חדשה</option>
                 </select>
               </div>
               <div class="filter-group">
@@ -2250,17 +2258,27 @@
               </div>
               <div class="filter-group">
                 <label>תחום:</label>
-                <select id="fieldFilter">
+                <select id="fieldFilter" onchange="window.filterByField(this.value || '')">
                   <option value="">הכל</option>
+                  <option value="תורה">תורה</option>
                   <option value="הלכה">הלכה</option>
                   <option value="קבלה">קבלה</option>
-                  <option value="הנהגה">הנהגה</option>
-                  <option value="מוסר">מוסר</option>
-                  <option value="הגות">הגות</option>
-                  <option value="פרשנות">פרשנות</option>
                   <option value="פילוסופיה">פילוסופיה</option>
-                  <option value="חינוך">חינוך</option>
+                  <option value="מוסר">מוסר</option>
+                  <option value="פרשנות">פרשנות</option>
+                  <option value="הגות">הגות</option>
+                  <option value="מדרש">מדרש</option>
+                  <option value="מקרא">מקרא</option>
                   <option value="היסטוריה">היסטוריה</option>
+                  <option value="חינוך">חינוך</option>
+                  <option value="לשון">לשון</option>
+                  <option value="מדעים">מדעים</option>
+                  <option value="שירה">שירה</option>
+                  <option value="תפילה">תפילה</option>
+                  <option value="הנהגה">הנהגה</option>
+                  <option value="אגדה">אגדה</option>
+                  <option value="מחשבת ישראל">מחשבת ישראל</option>
+                  <option value="אחר">אחר</option>
                 </select>
               </div>
               <div class="filter-group" style="margin-top: 0.75rem;">
@@ -2276,17 +2294,6 @@
                   <option value="3">בינוני (3-5)</option>
                   <option value="2">חלש (2-5)</option>
                 </select>
-              </div>
-              <div class="zoom-controls">
-                <button id="zoomInBtn" class="zoom-btn" title="הגדל (Zoom In)">
-                  <i class="fas fa-plus"></i>
-                </button>
-                <button id="zoomOutBtn" class="zoom-btn" title="הקטן (Zoom Out)">
-                  <i class="fas fa-minus"></i>
-                </button>
-                <button id="resetViewBtn" class="zoom-btn" title="איפוס תצוגה (Reset View)">
-                  <i class="fas fa-compress"></i>
-                </button>
               </div>
             </div>
           </div>
@@ -3022,11 +3029,9 @@
         if (sageNetwork && sageNetwork.node) {
           sageNetwork.node
             .style('opacity', 1)
-            .style('stroke', 'none')
-            .style('stroke-width', '0')
+            .style('stroke', '#fff')
+            .style('stroke-width', '2')
             .style('filter', 'none');
-          // Trigger filter reapplication to clear highlighting
-          sageNetwork.applyFilters();
         }
       });
 
@@ -3065,6 +3070,27 @@
     }
 
     function switchTab(viewName) {
+      // Map aliases to actual view IDs
+      const viewMap = {
+        'graph': 'network',
+        'network': 'network',
+        'table': 'table',
+        'map': 'map',
+        'compare': 'comparator',
+        'comparator': 'comparator',
+        'research': 'research',
+        'about': 'about'
+      };
+
+      const actualViewName = viewMap[viewName] || viewName;
+      const viewElement = document.getElementById(`${actualViewName}-view`);
+
+      // Safety check
+      if (!viewElement) {
+        console.warn(`⚠️ View ${actualViewName}-view not found`);
+        return;
+      }
+
       // Update buttons
       document.querySelectorAll('.tab-btn').forEach(btn => {
         btn.classList.toggle('active', btn.dataset.view === viewName);
@@ -3074,7 +3100,7 @@
       document.querySelectorAll('.view').forEach(view => {
         view.classList.remove('active');
       });
-      document.getElementById(`${viewName}-view`).classList.add('active');
+      viewElement.classList.add('active');
 
       // Lazy-load research viewer on first tab open (saves ~728KB initial load)
       if (viewName === 'research' && !window.researchViewerInitialized) {
@@ -3086,15 +3112,259 @@
       }
     }
 
+    // SELECT NODE AND SHOW DETAILS IN SIDEBAR
+    window.selectNodeById = function(sageId) {
+      const sage = window.graphData?.nodes?.find(n => n.id === sageId);
+      if (!sage) {
+        console.error(`❌ Sage ${sageId} not found`);
+        return;
+      }
+
+      console.log(`✅ Displaying details for: ${sage.label}`);
+
+      // Build detailed sidebar content
+      const sidebarContent = document.getElementById('sidebarContent');
+      if (!sidebarContent) return;
+
+      // Get related sages (connections)
+      const relatedSageIds = new Set();
+      window.graphData?.links?.forEach(link => {
+        if (link.source === sageId) relatedSageIds.add(link.target);
+        if (link.target === sageId) relatedSageIds.add(link.source);
+      });
+
+      const relatedSages = Array.from(relatedSageIds)
+        .map(id => window.graphData?.nodes?.find(n => n.id === id))
+        .filter(s => s);
+
+      sidebarContent.innerHTML = `
+        <div style="padding: 1rem; direction: rtl; text-align: right;">
+          <h2 style="margin: 0 0 1rem 0; font-size: 1.3rem; color: #1a1a1a;">
+            ${sage.label}
+          </h2>
+
+          ${sage.era ? `<div style="color: #666; font-size: 0.9rem; margin-bottom: 0.5rem;">📅 ${sage.era}</div>` : ''}
+          ${sage.field ? `<div style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">📚 ${sage.field}</div>` : ''}
+
+          ${sage.bio ? `
+            <div style="margin: 1.5rem 0; padding: 1rem; background: #f9f9f9; border-right: 3px solid #2980b9; border-radius: 4px;">
+              <h3 style="margin: 0 0 0.5rem 0; font-size: 0.95rem; color: #2980b9;">תיאור</h3>
+              <p style="margin: 0; font-size: 0.9rem; line-height: 1.6; color: #555;">
+                ${sage.bio}
+              </p>
+            </div>
+          ` : ''}
+
+          ${sage.location ? `
+            <div style="margin: 1rem 0; padding: 1rem; background: #f0f8ff; border-right: 3px solid #27ae60; border-radius: 4px;">
+              <h3 style="margin: 0 0 0.5rem 0; font-size: 0.95rem; color: #27ae60;">📍 מקום</h3>
+              <p style="margin: 0; font-size: 0.9rem; color: #333;">${sage.location}</p>
+            </div>
+          ` : ''}
+
+          ${sage.birth_year || sage.death_year ? `
+            <div style="margin: 1rem 0; padding: 1rem; background: #fff5f0; border-right: 3px solid #e67e22; border-radius: 4px;">
+              <h3 style="margin: 0 0 0.5rem 0; font-size: 0.95rem; color: #e67e22;">📆 תקופה</h3>
+              <p style="margin: 0; font-size: 0.9rem; color: #333;">
+                ${sage.birth_year ? `נולד: ${sage.birth_year}` : ''}
+                ${sage.death_year ? `${sage.birth_year ? ' | ' : ''}נפטר: ${sage.death_year}` : ''}
+              </p>
+            </div>
+          ` : ''}
+
+          ${relatedSages.length > 0 ? `
+            <div style="margin: 1.5rem 0; padding: 1rem; background: #f5f9ff; border-right: 3px solid #27ae60; border-radius: 4px;">
+              <h3 style="margin: 0 0 0.75rem 0; font-size: 0.95rem; color: #27ae60;">🔗 חכמים קשורים (${relatedSages.length})</h3>
+              <div style="display: grid; gap: 0.5rem;">
+                ${relatedSages.map(s => `
+                  <div style="padding: 0.75rem; background: white; border-radius: 4px; cursor: pointer; border-right: 3px solid #27ae60; transition: all 0.2s;"
+                       onmouseover="this.style.background='#f0f8ff'; this.style.paddingRight='1rem';"
+                       onmouseout="this.style.background='white'; this.style.paddingRight='0.75rem';"
+                       onclick="selectNodeById('${s.id}')">
+                    <div style="font-weight: 600; font-size: 0.9rem;">${s.label}</div>
+                    <div style="font-size: 0.8rem; color: #999;">${s.era || 'לא ידוע'}</div>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+          ` : ''}
+        </div>
+      `;
+
+      // Switch to network tab
+      switchTab('network');
+
+      // Show sidebar (make sure it's visible)
+      const sidebar = document.querySelector('.sidebar');
+      if (sidebar) {
+        sidebar.classList.remove('minimized');
+      }
+
+      // Note: Do NOT call window.sageNetwork.selectNode() here - it creates infinite loop!
+      // The graph.js selectNode() already calls this function back.
+      // Just apply focus clustering
+      applyFocusCluster(sageId);
+    };
+
+    // FOCUS-BASED CLUSTERING: Pull relevant nodes to center
+    window.applyFocusCluster = function(focusSageId) {
+      if (!window.sageNetwork?.node) return;
+
+      const focusedSages = new Set([focusSageId]);
+
+      // Get all connected sages
+      window.graphData?.links?.forEach(link => {
+        if (link.source === focusSageId) focusedSages.add(link.target);
+        if (link.target === focusSageId) focusedSages.add(link.source);
+      });
+
+      // Apply centering force with animation
+      const centerX = window.sageNetwork.width / 2;
+      const centerY = window.sageNetwork.height / 2;
+
+      if (window.sageNetwork.g) {
+        window.sageNetwork.node
+          .transition()
+          .duration(800)
+          .attr('cx', d => {
+            if (focusedSages.has(d.id)) {
+              return centerX + (Math.random() - 0.5) * 150;
+            }
+            return d.x;
+          })
+          .attr('cy', d => {
+            if (focusedSages.has(d.id)) {
+              return centerY + (Math.random() - 0.5) * 150;
+            }
+            return d.y;
+          });
+      }
+
+      console.log(`✨ Focus cluster: ${focusedSages.size} sages clustered to center`);
+    };
+
+    // FILTER BY ERA AND CLUSTER TO CENTER
+    window.filterByEra = function(eraKey) {
+      console.log(`🔍 Filtering by era: ${eraKey}`);
+      console.log('📍 Debug: window.sageNetwork =', window.sageNetwork ? 'exists' : 'NOT FOUND');
+      console.log('📍 Debug: window.graphData nodes =', window.graphData?.nodes?.length || 0);
+
+      if (!window.sageNetwork) {
+        console.error('❌ SageNetwork not found! Did network init?');
+        return;
+      }
+
+      if (!window.sageNetwork.node) {
+        console.error('❌ Network.node not found! Network not initialized.');
+        return;
+      }
+
+      // Update filter state
+      if (eraKey === 'all') {
+        window.filterState.selectedEra = null;
+        window.filterState.selectedField = null;
+      } else {
+        window.filterState.selectedEra = eraKey;
+        window.filterState.selectedField = null;  // Reset field filter when era changes
+      }
+
+      const filteredSages = new Set();
+      if (eraKey !== 'all') {
+        window.graphData?.nodes?.forEach(n => {
+          if (n.era_key === eraKey) filteredSages.add(n.id);
+        });
+      } else {
+        window.graphData?.nodes?.forEach(n => filteredSages.add(n.id));
+      }
+
+      window.filterState.filteredSages = filteredSages;
+
+      const centerX = window.sageNetwork.width / 2;
+      const centerY = window.sageNetwork.height / 2;
+
+      // Animate nodes to center if filtered
+      if (eraKey !== 'all') {
+        console.log(`🔄 Animating ${filteredSages.size} nodes to center...`);
+
+        window.sageNetwork.node
+          .transition()
+          .duration(800)
+          .attr('cx', d => {
+            if (filteredSages.has(d.id)) {
+              const newX = centerX + (Math.random() - 0.5) * 250;
+              d.x = newX;  // Update data
+              return newX;
+            }
+            return d._x || d.x;  // Use stored original position
+          })
+          .attr('cy', d => {
+            if (filteredSages.has(d.id)) {
+              const newY = centerY + (Math.random() - 0.5) * 250;
+              d.y = newY;  // Update data
+              return newY;
+            }
+            return d._y || d.y;  // Use stored original position
+          });
+
+          // Dim non-filtered nodes
+        window.sageNetwork.node.style('opacity', d =>
+          filteredSages.has(d.id) ? 1 : 0.15
+        );
+
+        // Update link visibility using ALL original connections (not just displayed 400)
+        if (window.sageNetwork.link && window.graphData?.links) {
+          // Add new links for filtered sages
+          window.sageNetwork.addLinksForFilteredSages(Array.from(filteredSages), window.graphData.links);
+
+          // First, update displayed links
+          window.sageNetwork.link.style('opacity', d => {
+            const sourceIn = filteredSages.has(d.source);
+            const targetIn = filteredSages.has(d.target);
+            return (sourceIn && targetIn) ? 0.4 : 0.05;
+          });
+
+          // Count connections between filtered sages from ALL available connections
+          let visibleCount = 0;
+          window.graphData.links.forEach(link => {
+            const sourceIn = filteredSages.has(link.source);
+            const targetIn = filteredSages.has(link.target);
+            if (sourceIn && targetIn) visibleCount++;
+          });
+          if (visibleCount > 0) {
+          console.log(`✅ ${visibleCount} connections visible between filtered sages`);
+        } else {
+          console.log(`⚠️ No connections found between these ${filteredSages.size} sages (they may not be connected in the dataset)`);
+        }
+        }
+      } else {
+        // Reset to original positions
+        console.log('🔄 Resetting nodes to original positions...');
+
+        window.sageNetwork.node
+          .transition()
+          .duration(800)
+          .attr('cx', d => d._x || d.x)
+          .attr('cy', d => d._y || d.y)
+          .style('opacity', 1);
+
+        // Reset link opacity
+        if (window.sageNetwork.link) {
+          window.sageNetwork.link.style('opacity', 0.25);
+        }
+      }
+
+      console.log(`✨ Filtered: ${filteredSages.size} sages clustered to center`);
+    };
+
     function buildLegend() {
       const eras = [
-        { key: 'בית שני', he: 'בית שני', color: '#8e44ad' },
-        { key: 'תנאים', he: 'תנאים', color: '#e74c3c' },
-        { key: 'אמוראים', he: 'אמוראים', color: '#e67e22' },
-        { key: 'גאונים', he: 'גאונים', color: '#f1c40f' },
-        { key: 'ראשונים', he: 'ראשונים', color: '#27ae60' },
-        { key: 'אחרונים', he: 'אחרונים', color: '#2980b9' },
-        { key: 'עת חדשה', he: 'עת חדשה', color: '#1abc9c' }
+        { he: 'בית שני', eraKey: 'second-temple', color: '#8e44ad' },
+        { he: 'תנאים', eraKey: 'tannaim', color: '#e74c3c' },
+        { he: 'אמוראים', eraKey: 'amoraim', color: '#e67e22' },
+        { he: 'גאונים', eraKey: 'geonim', color: '#f1c40f' },
+        { he: 'ראשונים', eraKey: 'rishonim', color: '#27ae60' },
+        { he: 'אחרונים', eraKey: 'acharonim', color: '#2980b9' },
+        { he: 'עת חדשה', eraKey: 'modern', color: '#1abc9c' }
       ];
 
       const legendDiv = document.getElementById('legendItems');
@@ -3103,12 +3373,32 @@
       eras.forEach(era => {
         const item = document.createElement('div');
         item.className = 'legend-item';
+        item.style.cursor = 'pointer';
+        item.style.transition = 'all 0.2s';
         item.innerHTML = `
-          <div class="legend-color" style="background-color: ${era.color}"></div>
+          <div class="legend-color" style="background-color: ${era.color}; width: 12px; height: 12px; border-radius: 50%; display: inline-block; margin-left: 8px;"></div>
           <span>${era.he}</span>
         `;
+        item.onclick = () => {
+          console.log(`🔍 Clicked era: ${era.he}`);
+          window.filterByEra(era.eraKey);
+        };
+        item.onmouseover = () => item.style.opacity = '0.7';
+        item.onmouseout = () => item.style.opacity = '1';
         legendDiv.appendChild(item);
       });
+
+      // Add "Show All" button
+      const resetBtn = document.createElement('div');
+      resetBtn.className = 'legend-item';
+      resetBtn.style.cursor = 'pointer';
+      resetBtn.style.marginTop = '0.75rem';
+      resetBtn.style.fontWeight = 'bold';
+      resetBtn.innerHTML = '🔄 הצג הכל';
+      resetBtn.onclick = () => window.filterByEra('all');
+      resetBtn.onmouseover = () => resetBtn.style.opacity = '0.7';
+      resetBtn.onmouseout = () => resetBtn.style.opacity = '1';
+      legendDiv.appendChild(resetBtn);
 
       document.getElementById('nodeStat').textContent = window.graphData.nodes.length;
       document.getElementById('linkStat').textContent = window.graphData.links.length;
@@ -3143,23 +3433,233 @@
       });
     }
 
-    function filterByEra(era) {
-      if (!sageNetwork) return;
-      // Call applyFilters() to trigger highlighting + clustering
-      sageNetwork.applyFilters();
+    // ==================== COMPLETE FILTERING SYSTEM ====================
+
+    // DEBUG: Print available fields
+    setTimeout(() => {
+      if (window.graphData?.nodes) {
+        const fields = new Set(window.graphData.nodes.map(n => n.field).filter(f => f));
+        const fieldArray = Array.from(fields).sort();
+
+        console.log('📊 AVAILABLE FIELDS IN DATA:');
+        fieldArray.forEach(f => console.log(`   - ${f}`));
+
+        // Count sages by era and field
+        const rishonim = window.graphData.nodes.filter(n => n.era_key === 'rishonim');
+        console.log(`\n📊 RISHONIM (${rishonim.length} total) by field:`);
+        const rishinimFields = {};
+        rishonim.forEach(n => {
+          const field = n.field || 'unknown';
+          rishinimFields[field] = (rishinimFields[field] || 0) + 1;
+        });
+        Object.keys(rishinimFields).sort().forEach(f => {
+          console.log(`   - ${f}: ${rishinimFields[f]}`);
+        });
+      }
+    }, 1000);
+
+    // GLOBAL FILTER STATE
+    window.filterState = {
+      selectedEra: null,
+      selectedField: null,
+      filteredSages: new Set()
+    };
+
+    // FILTER BY REGION
+    window.filterByRegion = function(region) {
+      if (!region || region === 'all') {
+        console.log('🌍 Region filter reset');
+        return;
+      }
+      console.log(`🌍 Filtering by region: ${region}`);
+      // Region-based filtering can be added here if needed
+    };
+
+    // FILTER BY FIELD - CASCADING from current era
+    window.filterByField = function(field) {
+      if (!field) {
+        // Reset field filter, but keep era filter
+        console.log('🔬 Field filter reset');
+        window.filterState.selectedField = null;
+        // Just reset to show all sages again
+        if (window.sageNetwork?.node) {
+          window.sageNetwork.node.style('opacity', 1);
+        }
+        if (window.sageNetwork?.link) {
+          window.sageNetwork.link.style('opacity', 0.25);
+        }
+        return;
+      }
+
+      console.log(`🔬 Filtering by field: ${field}`);
+
+      if (!window.sageNetwork?.node) {
+        console.error('❌ Network nodes not found');
+        return;
+      }
+
+      // Get sages that match BOTH era (if selected) AND field
+      const filteredSages = new Set();
+      const eraFilter = window.filterState.selectedEra;
+
+      window.graphData?.nodes?.forEach(n => {
+        // Must match era (if selected)
+        const matchEra = !eraFilter || n.era_key === eraFilter;
+        // Must match field exactly
+        const matchField = n.field === field;
+
+        if (matchEra && matchField) {
+          filteredSages.add(n.id);
+        }
+      });
+
+      window.filterState.selectedField = field;
+      window.filterState.filteredSages = filteredSages;
+
+      const centerX = window.sageNetwork.width / 2;
+      const centerY = window.sageNetwork.height / 2;
+
+      console.log(`🔄 Animating ${filteredSages.size} matching nodes to center...`);
+
+      // Animate matching nodes to center
+      window.sageNetwork.node
+        .transition()
+        .duration(800)
+        .attr('cx', d => {
+          if (filteredSages.has(d.id)) {
+            const newX = centerX + (Math.random() - 0.5) * 200;
+            d.x = newX;  // Update data
+            return newX;
+          }
+          return d._x || d.x;
+        })
+        .attr('cy', d => {
+          if (filteredSages.has(d.id)) {
+            const newY = centerY + (Math.random() - 0.5) * 200;
+            d.y = newY;  // Update data
+            return newY;
+          }
+          return d._y || d.y;
+        });
+
+      // Dim non-matching nodes
+      window.sageNetwork.node.style('opacity', d =>
+        filteredSages.has(d.id) ? 1 : 0.15
+      );
+
+      // Update link visibility using ALL original connections (not just displayed 400)
+      if (window.sageNetwork?.link && window.graphData?.links) {
+        // Add new links for filtered sages
+        window.sageNetwork.addLinksForFilteredSages(Array.from(filteredSages), window.graphData.links);
+
+        // First, update displayed links
+        window.sageNetwork.link.style('opacity', d => {
+          const sourceIn = filteredSages.has(d.source);
+          const targetIn = filteredSages.has(d.target);
+          return (sourceIn && targetIn) ? 0.4 : 0.05;
+        });
+
+        // Count connections between filtered sages from ALL available connections
+        let visibleCount = 0;
+        window.graphData.links.forEach(link => {
+          const sourceIn = filteredSages.has(link.source);
+          const targetIn = filteredSages.has(link.target);
+          if (sourceIn && targetIn) visibleCount++;
+        });
+        if (visibleCount > 0) {
+          console.log(`✅ ${visibleCount} connections visible between filtered sages`);
+        } else {
+          console.log(`⚠️ No connections found between these ${filteredSages.size} sages (they may not be connected in the dataset)`);
+        }
+      } else if (!window.sageNetwork?.link) {
+        console.warn('⚠️ window.sageNetwork.link is null/undefined!');
+      }
+
+      console.log(`✨ Field filtered: ${filteredSages.size} sages (era: ${eraFilter || 'all'}, field: ${field})`);
+    };
+
+    // ==================== ZOOM CONTROLS ====================
+    // Note: D3 zoom is already set up in graph.js
+    // These buttons just trigger zoom programmatically
+
+    function setupZoomButtons() {
+      if (!window.sageNetwork || !window.sageNetwork.svg) {
+        console.warn('⚠️ SVG not ready for zoom buttons');
+        return;
+      }
+
+      const svg = window.sageNetwork.svg; // D3 selection
+      const g = window.sageNetwork.g;
+
+      const zoomInBtn = document.getElementById('zoomInBtn');
+      const zoomOutBtn = document.getElementById('zoomOutBtn');
+      const zoomResetBtn = document.getElementById('zoomResetBtn');
+
+      if (!zoomInBtn || !zoomOutBtn || !zoomResetBtn) {
+        console.warn('⚠️ Zoom buttons not found');
+        return;
+      }
+
+      // Get current zoom transform
+      const getSvgNode = () => svg.node();
+
+      zoomInBtn.onclick = (e) => {
+        e.preventDefault();
+        const svgNode = getSvgNode();
+        const currentTransform = d3.zoomTransform(svgNode);
+        const newScale = Math.min(currentTransform.k * 1.3, 3);
+        const newTransform = currentTransform.scale(newScale / currentTransform.k);
+
+        // Use the existing zoom behavior on the SVG
+        const zoom = d3.zoom()
+          .scaleExtent([0.5, 3])
+          .on('zoom', (event) => {
+            g.attr('transform', event.transform);
+          });
+
+        svg.call(zoom).transition().duration(300).call(zoom.transform, newTransform);
+        console.log('🔍+ Zoom in to', newScale.toFixed(2) + 'x');
+      };
+
+      zoomOutBtn.onclick = (e) => {
+        e.preventDefault();
+        const svgNode = getSvgNode();
+        const currentTransform = d3.zoomTransform(svgNode);
+        const newScale = Math.max(currentTransform.k / 1.3, 0.5);
+        const newTransform = currentTransform.scale(newScale / currentTransform.k);
+
+        // Use the existing zoom behavior on the SVG
+        const zoom = d3.zoom()
+          .scaleExtent([0.5, 3])
+          .on('zoom', (event) => {
+            g.attr('transform', event.transform);
+          });
+
+        svg.call(zoom).transition().duration(300).call(zoom.transform, newTransform);
+        console.log('🔍− Zoom out to', newScale.toFixed(2) + 'x');
+      };
+
+      zoomResetBtn.onclick = (e) => {
+        e.preventDefault();
+
+        // Use the existing zoom behavior on the SVG
+        const zoom = d3.zoom()
+          .scaleExtent([0.5, 3])
+          .on('zoom', (event) => {
+            g.attr('transform', event.transform);
+          });
+
+        svg.call(zoom).transition().duration(300).call(zoom.transform, d3.zoomIdentity);
+        console.log('🔄 Zoom reset to 1x');
+      };
+
+      console.log('✅ Zoom buttons ready');
     }
 
-    function filterByRegion(region) {
-      if (!sageNetwork) return;
-      // Call applyFilters() to trigger highlighting + clustering
-      sageNetwork.applyFilters();
-    }
-
-    function filterByField(field) {
-      if (!sageNetwork) return;
-      // Call applyFilters() to trigger highlighting + clustering
-      sageNetwork.applyFilters();
-    }
+    // Setup zoom buttons after network is ready
+    document.addEventListener('supabaseReady', () => {
+      setTimeout(setupZoomButtons, 300);
+    });
 
     function filterByMinimumConnections(minConnections) {
       if (!sageNetwork || !sageNetwork.node || !window.graphData) return;
