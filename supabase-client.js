@@ -629,4 +629,8 @@ export {
   signInWithEmail,
   signOut,
   getCurrentUser,
-  
+  bookmarkSage,
+  getUserBookmarks,
+  logSageView,
+  getUserHistory
+}
