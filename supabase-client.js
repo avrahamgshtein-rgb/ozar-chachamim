@@ -369,10 +369,10 @@ function createSearchIndex(sages) {
     }
 
     // Era (historical period)
-    if (sage.era) {
+    if (sage.era && typeof sage.era === 'string') {
       tokens.add(sage.era.toLowerCase())
     }
-    if (sage.era_key) {
+    if (sage.era_key && typeof sage.era_key === 'string') {
       tokens.add(sage.era_key.toLowerCase())
     }
 
@@ -629,8 +629,4 @@ export {
   signInWithEmail,
   signOut,
   getCurrentUser,
-  bookmarkSage,
-  getUserBookmarks,
-  logSageView,
-  getUserHistory
-}
+  
