@@ -504,6 +504,54 @@ Before running `git push origin main`:
 | Extract migration | #3 | 30 min | ✅ Yes (before Supabase update) |
 | Create connection | #4 | 15 min | ✅ Yes (before INSERT) |
 | Update cross-refs | #5 | 30 min | ✅ Yes (before commit) |
+| Rebuild data from CSV | #6 | 10 min | ✅ Yes (before overwrite) |
+| Re-extract research | #7 | 10 min | No (read-only source) |
+
+---
+
+## 🔄 Workflow 6: Rebuild data.json from the Master CSV
+
+**When to use:** `data/חכמי ישראל.csv` was updated (new sages, fixed eras, new related-figures).
+
+**Constraints:**
+- The CSV is the single master source. Do NOT rebuild from `sages.json` (known-broken: empty rows + duplicates).
+- Always back up `data.json` first (the script does this automatically → `data.json.backup_pre_rebuild`).
+- `חכמי ישראל.xlsx` is corrupt — use only the CSV.
+
+### Steps
+1. Run: `python rebuild_data_from_csv.py`
+2. Script dedupes rows by normalized name, normalizes `era_key` to the 7 canonical keys, builds links from the "דמויות/השפעות קשורות" column + recovers curated links, and re-directs influence links chronologically.
+3. Verify in browser console: `✅ [AppInit] Single Source Ready: N nodes + M validated edges` (expect ~343 / ~463).
+
+**Definition of done:** 0 nodes without label, 0 links with missing endpoints, era distribution has no meaningful 'unknown' bucket.
+
+---
+
+## 🔄 Workflow 7: Re-extract Full Research Texts
+
+**When to use:** New research .docx files added to `data/`.
+
+**Constraints:** Full text stays in the local repo (research.json) — never email/export it externally (Privacy First).
+
+### Steps
+1. Run: `python extract_full_research.py`
+2. Outputs: `research.json` (full texts), `research_summaries.json`, `research_by_sage.json` (keyed by current data.json node ids).
+3. Verify: research tab → open a document → shows "📖 טקסט מלא" with full word count.
+
+---
+
+## 🖥️ Local Development Server
+
+- **Always start from the project folder** — double-click `start-server.bat` (starts server in the right directory + opens the browser). Starting `python -m http.server` from the home directory exposes ALL personal files and breaks the site paths.
+- **Browser caching bites on localhost:** after editing JS/JSON, verify with a hard refresh (Ctrl+Shift+R). To check which version a page runs: compare `someFunction.toString()` in console vs the served file.
+
+---
+
+## 📦 Commit Conventions (used July 2026)
+
+- One feature per commit; prefix: `feat:` / `fix:` / `data:` / `research:` / `docs:`
+- Never commit: `config.js`, `*.backup*`, `.claude/settings.local.json`
+- `git push origin main` triggers Vercel auto-deploy — push only after local verification of all 5 tabs.
 
 ---
 
