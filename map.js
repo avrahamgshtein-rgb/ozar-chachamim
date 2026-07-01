@@ -14,8 +14,9 @@ class SageMap {
     this.selectedSage = null;  // Track selected individual sage
 
     // Era colors & names (consistent across all visualizations)
-    // Using Hebrew keys to match data.json
-    this.eraColors = {
+    // Unified source: window.ERA_COLORS (from CSS variables in
+    // styles-graph.css); Hebrew-keyed fallback keeps class standalone.
+    this.eraColors = Object.assign({
       'בית שני': '#8e44ad',
       'תנאים': '#e74c3c',
       'אמוראים': '#e67e22',
@@ -25,7 +26,7 @@ class SageMap {
       'עת חדשה': '#1abc9c',
       'Unknown': '#999999',
       'לא ידוע': '#999999'
-    };
+    }, window.ERA_COLORS || {});
 
     // Fallback English names (for backward compatibility)
     this.eraNamesFallback = {
@@ -56,6 +57,15 @@ class SageMap {
     this.locationCoords = {
       // Israel & Ancient Lands
       'ירושלים': { lat: 31.768, lng: 35.214, name: 'Jerusalem' },
+      'פרובאנס': { lat: 43.83, lng: 5.78, name: 'Provence' },
+      'בגדאד': { lat: 33.313, lng: 44.361, name: 'Baghdad' },
+      "וולוז'ין": { lat: 54.09, lng: 26.53, name: 'Volozhin' },
+      'נובהרדוק': { lat: 53.6, lng: 25.83, name: 'Novardok' },
+      'פוזנא': { lat: 52.41, lng: 16.93, name: 'Poznan' },
+      'פרשבורג': { lat: 48.15, lng: 17.11, name: 'Pressburg (Bratislava)' },
+      'טריפולי': { lat: 32.89, lng: 13.19, name: 'Tripoli' },
+      'גור': { lat: 52.05, lng: 21.0, name: 'Góra Kalwaria' },
+      'גריידיץ': { lat: 52.23, lng: 16.35, name: 'Grätz (Grodzisk)' },
       'צפן': { lat: 33.0, lng: 35.5, name: 'North Israel' },
       'דרום': { lat: 31.0, lng: 34.8, name: 'South Israel' },
       'יריחו': { lat: 31.861, lng: 35.447, name: 'Jericho' },
@@ -315,21 +325,36 @@ class SageMap {
     let locationsUsed = 0;
 
     this.data.nodes.forEach(sage => {
-      // Extract all locations (split by ; or , or and)
+      // Extract all locations (split by ; , / | or "וגם" — NOT a bare 'ו',
+      // which used to split every word containing a vav, e.g. ירושלים)
       const rawLocation = sage.location || '';
       const locationParts = rawLocation
-        .split(/[;,]|and|וגם|ו/)
-        .map(loc => loc.trim())
-        .filter(loc => loc.length > 0);
+        .split(/[;,·/|]|\band\b|וגם/)
+        .map(loc => loc.split('(')[0].trim())
+        .filter(loc => loc.length > 1);
 
       // Use primary location (first one), or first matching one
       let primaryLocation = locationParts[0];
 
-      // Try to find a matching location in our coords
+      // Exact match against known coordinates first
+      let matched = false;
       for (const locPart of locationParts) {
         if (this.locationCoords[locPart]) {
           primaryLocation = locPart;
+          matched = true;
           break;
+        }
+      }
+      // Fallback: containment match (e.g. "מצרים הרומית" → "מצרים")
+      if (!matched) {
+        outer:
+        for (const locPart of locationParts) {
+          for (const key of Object.keys(this.locationCoords)) {
+            if (key.length > 2 && (locPart.includes(key) || key.includes(locPart))) {
+              primaryLocation = key;
+              break outer;
+            }
+          }
         }
       }
 
@@ -350,15 +375,15 @@ class SageMap {
 
       locationsUsed++;
 
-      // Get dominant era for this location
-      const eras = sages.map(s => s.era || 'unknown');
+      // Get dominant era for this location (era_key is the canonical key)
+      const eras = sages.map(s => s.era_key || s.era || 'unknown');
       const dominantEra = this.getMostCommon(eras);
       const color = this.eraColors[dominantEra] || '#999';
 
       // Count sages by era at this location
       const sagesByEra = {};
       sages.forEach(s => {
-        const era = s.era || 'לא ידוע';
+        const era = s.era_label || s.era || 'לא ידוע';
         sagesByEra[era] = (sagesByEra[era] || 0) + 1;
       });
 
@@ -381,7 +406,7 @@ class SageMap {
 
         const marker = L.circleMarker([scatteredLat, scatteredLng], {
           radius: 10, // Fixed size (not overlapping)
-          fillColor: this.eraColors[sage.era] || color,
+          fillColor: (this.eraColors[sage.era_key] || this.eraColors[sage.era] || '#999') || color,
           color: '#fff',
           weight: 2,
           opacity: 0.85,
@@ -390,12 +415,12 @@ class SageMap {
           .bindPopup(`
             <div style="text-align: right; direction: rtl; font-family: 'Frank Ruhl Libre', serif; color: #333; min-width: 250px;">
               <!-- Header with Era Color -->
-              <strong style="color: ${this.eraColors[sage.era]}; font-size: 1.1rem; display: block; margin-bottom: 6px;">
+              <strong style="color: ${(this.eraColors[sage.era_key] || this.eraColors[sage.era] || '#999')}; font-size: 1.1rem; display: block; margin-bottom: 6px;">
                 ${sage.label}
               </strong>
 
               <!-- Core Info -->
-              <div style="background: #f9f9f9; padding: 6px; border-radius: 3px; margin-bottom: 6px; font-size: 0.85rem; border-right: 4px solid ${this.eraColors[sage.era]};">
+              <div style="background: #f9f9f9; padding: 6px; border-radius: 3px; margin-bottom: 6px; font-size: 0.85rem; border-right: 4px solid ${(this.eraColors[sage.era_key] || this.eraColors[sage.era] || '#999')};">
                 <p style="margin: 2px 0;">
                   <span style="font-weight: 600;">תקופה:</span> ${sage.era || 'לא ידוע'}
                 </p>
@@ -475,7 +500,7 @@ class SageMap {
     let content = `<div style="direction: rtl; font-family: 'Frank Ruhl Libre', serif; white-space: nowrap;">`;
 
     // Sage name (bold and colored by era)
-    content += `<strong style="color: ${this.eraColors[sage.era] || '#333'}; display: block; margin-bottom: 3px;">
+    content += `<strong style="color: ${(this.eraColors[sage.era_key] || this.eraColors[sage.era] || '#999') || '#333'}; display: block; margin-bottom: 3px;">
       ${sage.label}
     </strong>`;
 
@@ -906,7 +931,7 @@ class SageMap {
       // Draw polyline if we have at least 2 valid coordinates
       if (coords.length >= 2) {
         const latLngs = coords.map(c => [c.lat, c.lng]);
-        const color = this.eraColors[sage.era] || '#999';
+        const color = (this.eraColors[sage.era_key] || this.eraColors[sage.era] || '#999') || '#999';
 
         const line = L.polyline(latLngs, {
           color: color,

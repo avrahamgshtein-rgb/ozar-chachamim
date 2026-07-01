@@ -20,6 +20,26 @@
   --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
   --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
   --radius: 12px;
+
+  /* === Era colors — single source of truth (see CLAUDE.md palette) === */
+  --era-second-temple: #8e44ad;
+  --era-tannaim: #e74c3c;
+  --era-amoraim: #e67e22;
+  --era-geonim: #f1c40f;
+  --era-rishonim: #27ae60;
+  --era-acharonim: #2980b9;
+  --era-modern: #1abc9c;
+  --era-unknown: #95a5a6;
+
+  /* === Connection-type colors — single source of truth === */
+  --conn-student: #e74c3c;
+  --conn-teacher: #3498db;
+  --conn-influence: #f39c12;
+  --conn-colleague: #27ae60;
+  --conn-oppose: #e67e22;
+  --conn-family: #9b59b6;
+  --conn-contemporary: #1abc9c;
+  --conn-predecessor: #34495e;
 }
 
 * {
@@ -775,7 +795,9 @@ body {
 
 /* === Tablet: 1024px and below === */
 @media (max-width: 1024px) {
-  .sidebar {
+  /* Keep sidebar closed by default on tablets — only .active opens it
+     (previously overrode width:0 and left it permanently open) */
+  .sidebar.active {
     width: 320px;
   }
 

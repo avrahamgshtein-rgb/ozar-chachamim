@@ -2468,6 +2468,55 @@
     import { SageMap } from './map.js';
 
     // ============================================================================
+    // UNIFIED COLOR TOKENS — read once from CSS variables (styles-graph.css)
+    // Single source of truth for era + connection colors across all views.
+    // ============================================================================
+
+    (function initColorTokens() {
+      const css = getComputedStyle(document.documentElement);
+      const v = (name, fallback) => (css.getPropertyValue(name) || '').trim() || fallback;
+
+      const era = {
+        'second-temple': v('--era-second-temple', '#8e44ad'),
+        'tannaim':       v('--era-tannaim', '#e74c3c'),
+        'amoraim':       v('--era-amoraim', '#e67e22'),
+        'geonim':        v('--era-geonim', '#f1c40f'),
+        'rishonim':      v('--era-rishonim', '#27ae60'),
+        'acharonim':     v('--era-acharonim', '#2980b9'),
+        'modern':        v('--era-modern', '#1abc9c'),
+        'unknown':       v('--era-unknown', '#95a5a6')
+      };
+
+      // Hebrew aliases (era_key values in data may be Hebrew)
+      Object.assign(era, {
+        'בית שני': era['second-temple'],
+        'ימי בית שני': era['second-temple'],
+        'תנאים': era['tannaim'],
+        'אמוראים': era['amoraim'],
+        'גאונים': era['geonim'],
+        'ראשונים': era['rishonim'],
+        'אחרונים': era['acharonim'],
+        'עת חדשה': era['modern'],
+        'מודרני': era['modern'],
+        'לא ידוע': era['unknown'],
+        'Unknown': era['unknown']
+      });
+
+      window.ERA_COLORS = era;
+      window.CONNECTION_COLORS = {
+        'student':      v('--conn-student', '#e74c3c'),
+        'teacher':      v('--conn-teacher', '#3498db'),
+        'influence':    v('--conn-influence', '#f39c12'),
+        'colleague':    v('--conn-colleague', '#27ae60'),
+        'oppose':       v('--conn-oppose', '#e67e22'),
+        'family':       v('--conn-family', '#9b59b6'),
+        'contemporary': v('--conn-contemporary', '#1abc9c'),
+        'predecessor':  v('--conn-predecessor', '#34495e')
+      };
+      console.log('🎨 [Colors] Unified era/connection colors loaded from CSS variables');
+    })();
+
+    // ============================================================================
     // MULTILINGUAL SUPPORT
     // ============================================================================
 
@@ -2847,6 +2896,7 @@
       buildLegend();
       buildRegionFilter();
       loadTableData();
+      if (window.buildSageList) window.buildSageList();
     });
 
     function setupUI() {
@@ -3023,16 +3073,19 @@
         document.getElementById('searchInput').value = '';
         document.getElementById('eraFilter').value = '';
         document.getElementById('regionFilter').value = '';
+        const fieldSel = document.getElementById('fieldFilter');
+        if (fieldSel) fieldSel.value = '';
         document.getElementById('minConnectionsFilter').value = 0;
         document.getElementById('connectionCountLabel').textContent = '0+';
         document.getElementById('connectionStrengthFilter').value = '';
         if (sageNetwork && sageNetwork.node) {
           sageNetwork.node
-            .style('opacity', 1)
             .style('stroke', '#fff')
             .style('stroke-width', '2')
             .style('filter', 'none');
         }
+        // Combined engine restores positions, opacity and links
+        if (window.applyCombinedFilters) window.applyCombinedFilters();
       });
 
       // Mobile: Toggle filters button
@@ -3251,117 +3304,155 @@
       console.log(`✨ Focus cluster: ${focusedSages.size} sages clustered to center`);
     };
 
-    // FILTER BY ERA AND CLUSTER TO CENTER
-    window.filterByEra = function(eraKey) {
-      console.log(`🔍 Filtering by era: ${eraKey}`);
-      console.log('📍 Debug: window.sageNetwork =', window.sageNetwork ? 'exists' : 'NOT FOUND');
-      console.log('📍 Debug: window.graphData nodes =', window.graphData?.nodes?.length || 0);
+    // ==================== UNIFIED COMBINED FILTERING ====================
+    // era + region + field — work together AND separately (intersection).
+    // Matched nodes cluster to center with their labels; links between
+    // matched sages are shown (and added on demand), the rest dimmed.
+    window.applyCombinedFilters = function() {
+      const era    = document.getElementById('eraFilter')?.value || '';
+      const region = document.getElementById('regionFilter')?.value || '';
+      const field  = document.getElementById('fieldFilter')?.value || '';
 
-      if (!window.sageNetwork) {
-        console.error('❌ SageNetwork not found! Did network init?');
-        return;
-      }
+      window.filterState.selectedEra    = era || null;
+      window.filterState.selectedRegion = region || null;
+      window.filterState.selectedField  = field || null;
 
-      if (!window.sageNetwork.node) {
-        console.error('❌ Network.node not found! Network not initialized.');
-        return;
-      }
+      const net = window.sageNetwork;
+      if (!net || !net.node) { console.error('❌ Network not ready for filtering'); return; }
 
-      // Update filter state
-      if (eraKey === 'all') {
-        window.filterState.selectedEra = null;
-        window.filterState.selectedField = null;
-      } else {
-        window.filterState.selectedEra = eraKey;
-        window.filterState.selectedField = null;  // Reset field filter when era changes
-      }
+      const active = !!(era || region || field);
+      const matched = new Set();
+      (window.graphData?.nodes || []).forEach(n => {
+        const okEra    = !era    || n.era_key === era;
+        const okRegion = !region || ((n.location || n.region || '').includes(region));
+        const okField  = !field  || ((n.field || '').includes(field));
+        if (okEra && okRegion && okField) matched.add(n.id);
+      });
+      window.filterState.filteredSages = matched;
+      if (window.buildSageList) window.buildSageList(active ? matched : null);
 
-      const filteredSages = new Set();
-      if (eraKey !== 'all') {
-        window.graphData?.nodes?.forEach(n => {
-          if (n.era_key === eraKey) filteredSages.add(n.id);
-        });
-      } else {
-        window.graphData?.nodes?.forEach(n => filteredSages.add(n.id));
-      }
+      const labels = net.g ? net.g.select('g.labels').selectAll('text') : null;
 
-      window.filterState.filteredSages = filteredSages;
-
-      const centerX = window.sageNetwork.width / 2;
-      const centerY = window.sageNetwork.height / 2;
-
-      // Animate nodes to center if filtered
-      if (eraKey !== 'all') {
-        console.log(`🔄 Animating ${filteredSages.size} nodes to center...`);
-
-        window.sageNetwork.node
-          .transition()
-          .duration(800)
-          .attr('cx', d => {
-            if (filteredSages.has(d.id)) {
-              const newX = centerX + (Math.random() - 0.5) * 250;
-              d.x = newX;  // Update data
-              return newX;
-            }
-            return d._x || d.x;  // Use stored original position
-          })
-          .attr('cy', d => {
-            if (filteredSages.has(d.id)) {
-              const newY = centerY + (Math.random() - 0.5) * 250;
-              d.y = newY;  // Update data
-              return newY;
-            }
-            return d._y || d.y;  // Use stored original position
-          });
-
-          // Dim non-filtered nodes
-        window.sageNetwork.node.style('opacity', d =>
-          filteredSages.has(d.id) ? 1 : 0.15
-        );
-
-        // Update link visibility using ALL original connections (not just displayed 400)
-        if (window.sageNetwork.link && window.graphData?.links) {
-          // Add new links for filtered sages
-          window.sageNetwork.addLinksForFilteredSages(Array.from(filteredSages), window.graphData.links);
-
-          // First, update displayed links
-          window.sageNetwork.link.style('opacity', d => {
-            const sourceIn = filteredSages.has(d.source);
-            const targetIn = filteredSages.has(d.target);
-            return (sourceIn && targetIn) ? 0.4 : 0.05;
-          });
-
-          // Count connections between filtered sages from ALL available connections
-          let visibleCount = 0;
-          window.graphData.links.forEach(link => {
-            const sourceIn = filteredSages.has(link.source);
-            const targetIn = filteredSages.has(link.target);
-            if (sourceIn && targetIn) visibleCount++;
-          });
-          if (visibleCount > 0) {
-          console.log(`✅ ${visibleCount} connections visible between filtered sages`);
-        } else {
-          console.log(`⚠️ No connections found between these ${filteredSages.size} sages (they may not be connected in the dataset)`);
-        }
-        }
-      } else {
-        // Reset to original positions
-        console.log('🔄 Resetting nodes to original positions...');
-
-        window.sageNetwork.node
-          .transition()
-          .duration(800)
-          .attr('cx', d => d._x || d.x)
-          .attr('cy', d => d._y || d.y)
+      if (!active) {
+        // Full reset: original positions, full opacity
+        net.node.transition().duration(600)
+          .attr('cx', d => { d.x = (d._x !== undefined ? d._x : d.x); return d.x; })
+          .attr('cy', d => { d.y = (d._y !== undefined ? d._y : d.y); return d.y; })
           .style('opacity', 1);
-
-        // Reset link opacity
-        if (window.sageNetwork.link) {
-          window.sageNetwork.link.style('opacity', 0.25);
+        if (labels) labels.transition().duration(600)
+          .attr('x', d => d.x).attr('y', d => d.y + 24).style('opacity', 0.5);
+        if (net.link) {
+          net.link.transition().duration(600)
+            .attr('d', l => net._getCurvedPath(l))
+            .style('opacity', 0.25);
         }
+        if (net.zoomToFit) net.zoomToFit(null);   // reframe the full network
+        console.log('🔄 [Filter] Reset — showing all sages');
+        return;
       }
 
-      console.log(`✨ Filtered: ${filteredSages.size} sages clustered to center`);
+      // Re-layout the matched subset with a dedicated force simulation:
+      // collision keeps every circle (plus its label) fully visible — no overlaps
+      const cx = net.width / 2, cy = net.height / 2;
+      const matchedNodes = (window.graphData?.nodes || []).filter(n => matched.has(n.id));
+      if (matchedNodes.length > 0) {
+        const matchedLinks = (window.graphData?.links || [])
+          .filter(l => matched.has(l.source) && matched.has(l.target))
+          .map(l => ({ source: l.source, target: l.target }));
+        // Deterministic seed positions around center
+        matchedNodes.forEach(n => {
+          n.x = cx + net._jitter(n.id, 7) * 320;
+          n.y = cy + net._jitter(n.id, 13) * 320;
+        });
+        const sim = d3.forceSimulation(matchedNodes)
+          .force('link', d3.forceLink(matchedLinks).id(d => d.id).distance(75).strength(0.3))
+          .force('charge', d3.forceManyBody().strength(-50))
+          .force('center', d3.forceCenter(cx, cy))
+          .force('collide', d3.forceCollide(d => net._r(d) + 16).strength(1))
+          .alphaDecay(0.05)
+          .stop();
+        for (let i = 0; i < 130; i++) sim.tick();
+        // Don't squeeze into the viewport — zoom-to-fit frames the spread
+        // so circles never overlap regardless of screen size
+        if (net.zoomToFit) net.zoomToFit(matchedNodes);
+      }
+      net.node.transition().duration(800)
+        .attr('cx', d => {
+          if (!matched.has(d.id)) d.x = (d._x !== undefined ? d._x : d.x);
+          return d.x;
+        })
+        .attr('cy', d => {
+          if (!matched.has(d.id)) d.y = (d._y !== undefined ? d._y : d.y);
+          return d.y;
+        })
+        .style('opacity', d => matched.has(d.id) ? 1 : 0.12);
+
+      // Labels follow their nodes; matched labels become readable
+      if (labels) labels.transition().duration(800)
+        .attr('x', d => d.x).attr('y', d => d.y + 24)
+        .style('opacity', d => matched.has(d.id) ? 0.85 : 0.05);
+
+      // Links: ensure all edges between matched sages exist, then re-path + highlight
+      if (window.graphData?.links) {
+        net.addLinksForFilteredSages(Array.from(matched), window.graphData.links);
+      }
+      let visible = 0;
+      if (net.link) {
+        net.link.each(l => { if (matched.has(l.source) && matched.has(l.target)) visible++; });
+        net.link.transition().duration(800)
+          .attr('d', l => net._getCurvedPath(l))
+          .style('opacity', l => (matched.has(l.source) && matched.has(l.target)) ? 0.55 : 0.03);
+      }
+      console.log(`🔍 [Filter] era=${era || 'all'} | region=${region || 'all'} | field=${field || 'all'} → ${matched.size} sages, ${visible} connections`);
+    };
+
+    // ==================== SAGE LIST PANEL (Connected Papers style) ====================
+    // Ranked list of sages beside the graph; syncs with combined filters.
+    // Lives in #sidebarContent — replaced by sage details on selection,
+    // restored on deselect (graph.js deselectNode calls buildSageList).
+    window.buildSageList = function(matchedSet = null) {
+      const holder = document.getElementById('sidebarContent');
+      if (!holder || !window.graphData) return;
+      if (window.sageNetwork && window.sageNetwork.selectedNodeId) return; // don't clobber details view
+
+      let nodes = window.graphData.nodes.slice();
+      if (matchedSet && matchedSet.size && matchedSet.size < nodes.length) {
+        nodes = nodes.filter(n => matchedSet.has(n.id));
+      }
+      nodes.sort((a, b) => (b.degree || 0) - (a.degree || 0));
+      const ec = window.ERA_COLORS || {};
+
+      holder.innerHTML = `
+        <div style="font-weight:700; margin-bottom:.4rem; color:var(--color-primary); font-size:.95rem;">
+          📜 חכמים ברשת (${nodes.length})</div>
+        <div style="font-size:.72rem; color:var(--color-text-secondary); margin-bottom:.5rem;">
+          ממוינים לפי מספר קשרים · לחיצה מציגה את החכם בגרף</div>
+        <div id="sageListItems">
+          ${nodes.slice(0, 400).map(n => `
+            <div class="sage-list-item" onclick="focusSageFromList('${n.id}')"
+                 style="padding:.45rem .4rem; border-bottom:1px solid var(--color-border); cursor:pointer; display:flex; align-items:center; gap:.5rem;"
+                 onmouseover="this.style.background='var(--color-bg-light)'"
+                 onmouseout="this.style.background=''">
+              <span style="width:10px; height:10px; border-radius:50%; flex-shrink:0; background:${ec[n.era_key] || '#999'};"></span>
+              <span style="flex:1; font-size:.84rem; line-height:1.35;">${n.label}</span>
+              <span style="font-size:.7rem; color:var(--color-text-secondary); white-space:nowrap;">🔗 ${n.degree || 0}</span>
+            </div>`).join('')}
+        </div>`;
+    };
+
+    window.focusSageFromList = function(id) {
+      const net = window.sageNetwork;
+      const nd = net && net.data.nodes.find(n => String(n.id) === String(id));
+      if (nd && net) net.selectNode(nd);
+      else if (window.selectNodeById) window.selectNodeById(id);
+    };
+
+    // Back-compat delegates: legend quick-buttons, presets and inline
+    // handlers all funnel into the combined engine (no filter overrides another)
+    window.filterByEra = function(eraKey) {
+      const sel = document.getElementById('eraFilter');
+      if (sel) sel.value = (!eraKey || eraKey === 'all') ? '' : eraKey;
+      window.applyCombinedFilters();
     };
 
     function buildLegend() {
@@ -3413,14 +3504,23 @@
     }
 
     function buildRegionFilter() {
-      const regions = new Set(window.graphData.nodes.map(n => n.region).filter(r => r));
+      // Nodes carry multi-value locations ("ירושלים; מצרים (...)") — split
+      // into clean tokens so each region is individually selectable
+      const tokens = new Set();
+      window.graphData.nodes.forEach(n => {
+        (n.location || n.region || '').split(/[;,|·]/).forEach(t => {
+          t = t.split('(')[0].trim();
+          if (t.length >= 2) tokens.add(t);
+        });
+      });
       const select = document.getElementById('regionFilter');
-      Array.from(regions).sort().forEach(region => {
+      Array.from(tokens).sort((a, b) => a.localeCompare(b, 'he')).forEach(region => {
         const option = document.createElement('option');
         option.value = region;
         option.textContent = region;
         select.appendChild(option);
       });
+      console.log(`🌍 [Regions] Filter built with ${tokens.size} regions`);
     }
 
     function loadTableData() {
@@ -3473,14 +3573,11 @@
       filteredSages: new Set()
     };
 
-    // FILTER BY REGION
+    // FILTER BY REGION — delegates to the combined engine
     window.filterByRegion = function(region) {
-      if (!region || region === 'all') {
-        console.log('🌍 Region filter reset');
-        return;
-      }
-      console.log(`🌍 Filtering by region: ${region}`);
-      // Region-based filtering can be added here if needed
+      const sel = document.getElementById('regionFilter');
+      if (sel) sel.value = (!region || region === 'all') ? '' : region;
+      window.applyCombinedFilters();
     };
 
     // FILTER BY FIELD - CASCADING from current era
@@ -3584,6 +3681,14 @@
       }
 
       console.log(`✨ Field filtered: ${filteredSages.size} sages (era: ${eraFilter || 'all'}, field: ${field})`);
+    };
+
+    // Override: field filter delegates to the combined engine
+    // (defined after the legacy implementation so this assignment wins)
+    window.filterByField = function(field) {
+      const sel = document.getElementById('fieldFilter');
+      if (sel) sel.value = field || '';
+      window.applyCombinedFilters();
     };
 
     // ==================== ZOOM CONTROLS ====================
@@ -3772,10 +3877,7 @@
     }
 
     function showNodeInSidebar(node) {
-      const eraColors = {
-        'בית שני': '#8e44ad', 'תנאים': '#e74c3c', 'אמוראים': '#e67e22',
-        'גאונים': '#f1c40f', 'ראשונים': '#27ae60', 'אחרונים': '#2980b9', 'עת חדשה': '#1abc9c'
-      };
+      const eraColors = window.ERA_COLORS;
 
       const eraColor = eraColors[node.era_key] || '#999';
       const teachers = window.graphData.links.filter(l => String(l.target) === String(node.id)).length;
@@ -3983,10 +4085,7 @@
       const card = document.createElement('div');
       card.className = `sage-card card-${idx + 1}`;
 
-      const eraColors = {
-        'בית שני': '#8e44ad', 'תנאים': '#e74c3c', 'אמוראים': '#e67e22',
-        'גאונים': '#f1c40f', 'ראשונים': '#27ae60', 'אחרונים': '#2980b9', 'עת חדשה': '#1abc9c'
-      };
+      const eraColors = window.ERA_COLORS;
       const eraColor = eraColors[sage.era_key] || '#999';
 
       card.innerHTML = `
@@ -4231,16 +4330,16 @@
         filtered = filtered.filter(doc => {
           const title = (doc && doc.title || '').toLowerCase();
           const summary = (doc && doc.summary || '').toLowerCase();
-          const file = (doc && doc.file || '').toLowerCase();
+          const file = (doc && (doc.filename || doc.file) || '').toLowerCase();
           return title.includes(q) || summary.includes(q) || file.includes(q);
         });
       }
 
-      // Filter by sage (if selected)
+      // Filter by sage (if selected) — researchBySage values are filename strings
       if (sageFiltId) {
         const sageDocs = researchBySage[sageFiltId] || [];
-        const filenames = sageDocs.map(d => d && d.file).filter(f => f);
-        filtered = filtered.filter(doc => doc && filenames.includes(doc.file));
+        const filenames = sageDocs.map(d => typeof d === 'string' ? d : (d && d.file)).filter(f => f);
+        filtered = filtered.filter(doc => doc && filenames.includes(doc.filename || doc.file));
       }
 
       // Display filtered results
@@ -4256,7 +4355,7 @@
         item.className = 'research-item';
 
         // Show full text indicator if document has full text in research.json
-        const hasFullText = researchContent.find(r => r && r.source_file === doc.file && r.content);
+        const hasFullText = researchContent.find(r => r && r.source_file === (doc.filename || doc.file) && r.content);
         const icon = hasFullText ? '📖' : '📋';
 
         item.innerHTML = `
@@ -4267,7 +4366,7 @@
             ${doc.sage_id ? `<span>👤 סג ${doc.sage_id}</span>` : '<span style="color: #999;">⚠️ לא מצויד</span>'}
           </div>
         `;
-        item.addEventListener('click', () => displayResearchDocument(doc.file, doc));
+        item.addEventListener('click', () => displayResearchDocument(doc.filename || doc.file, doc));
         researchList.appendChild(item);
       });
 
@@ -4286,10 +4385,7 @@
         return;
       }
 
-      const eraColors = {
-        'בית שני': '#8e44ad', 'תנאים': '#e74c3c', 'אמוראים': '#e67e22',
-        'גאונים': '#f1c40f', 'ראשונים': '#27ae60', 'אחרונים': '#2980b9', 'עת חדשה': '#1abc9c'
-      };
+      const eraColors = window.ERA_COLORS;
 
       let html = `
         <html dir="rtl" lang="he">
