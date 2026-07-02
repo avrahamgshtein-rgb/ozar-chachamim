@@ -4464,7 +4464,7 @@
         return;
       }
 
-      filtered.slice(0, 100).forEach(doc => {
+      filtered.forEach(doc => {
         if (!doc) return;
 
         const item = document.createElement('div');
@@ -4486,7 +4486,7 @@
         researchList.appendChild(item);
       });
 
-      console.log(`✅ 📋 Displayed ${Math.min(filtered.length, 100)} of ${filtered.length} documents`);
+      console.log(`✅ 📋 Displayed ${filtered.length} of ${filtered.length} documents`);
     }
 
     function filterResearchDocuments(query, sageFiltId) {
