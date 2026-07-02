@@ -462,6 +462,11 @@
       font-weight: 500;
     }
 
+    /* Mobile FABs — hidden on desktop, shown in the ≤768px media block */
+    .mobile-fab {
+      display: none;
+    }
+
     .graph-filters {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -1244,57 +1249,125 @@
         display: none !important;
       }
 
-      #toggle-filters-btn {
-        display: inline-block !important;
-        height: 16px;
-        min-height: 16px;
-        padding: 0 0.2rem;
-        background: #2980b9;
-        color: white;
-        border: none;
-        border-radius: 2px;
-        cursor: pointer;
-        font-size: 0.6rem;
-        white-space: nowrap;
-        line-height: 16px;
+      /* === ELITE MOBILE: graph-first, bottom-sheet filters, 44px+ targets === */
+
+      /* Old tiny toolbar toggle + zoom buttons hidden — FABs + pinch gestures instead */
+      #toggle-filters-btn,
+      #zoomInBtn, #zoomOutBtn, #zoomResetBtn {
+        display: none !important;
       }
 
-      #toggle-filters-btn.active {
-        background: #1f618d;
+      /* The graph is the centerpiece: native pinch-zoom + two-finger pan */
+      .graph-wrapper { min-height: 62vh; }
+      #graph svg { touch-action: none; }
+
+      /* Sidebar = bottom sheet, hidden until requested (📜 FAB / node tap) */
+      .sidebar {
+        position: fixed !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        top: auto !important;
+        width: 100% !important;
+        height: 78vh !important;
+        border-radius: 16px 16px 0 0;
+        transform: translateY(100%) !important;
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        z-index: 1250 !important;
+        display: flex !important;
+        flex-direction: column;
+        overflow: hidden;
+        box-shadow: 0 -6px 24px rgba(0, 0, 0, 0.18);
+        background: #fff;
       }
 
+      .sidebar.active {
+        transform: translateY(0) !important;
+      }
+
+      /* Search stays — full width, thumb-sized */
+      .graph-toolbar input#searchInput {
+        min-height: 44px;
+        font-size: 1rem;
+      }
+
+      /* Filters as a proper bottom sheet */
       #graph-filters.show {
         display: flex !important;
         flex-direction: column;
-        position: absolute;
+        gap: 0.5rem;
+        position: fixed;
         left: 0;
-        top: 60px;
-        width: 50px;
-        max-width: 50px;
-        background: white;
-        border: 1px solid #ddd;
-        border-radius: 0 4px 4px 0;
-        padding: 0.25rem;
-        z-index: 100;
-        max-height: calc(100vh - 120px);
+        right: 0;
+        bottom: 0;
+        top: auto;
+        width: 100%;
+        max-width: 100%;
+        background: #fff;
+        border: none;
+        border-radius: 16px 16px 0 0;
+        box-shadow: 0 -6px 24px rgba(0, 0, 0, 0.18);
+        padding: 0.75rem 1rem calc(1.25rem + env(safe-area-inset-bottom));
+        z-index: 1200;
+        max-height: 65vh;
         overflow-y: auto;
-        font-size: 0.6rem;
+        font-size: 1rem;
+      }
+
+      #graph-filters.show::before {
+        content: '';
+        display: block;
+        width: 44px;
+        height: 5px;
+        background: #ddd;
+        border-radius: 3px;
+        margin: 0 auto 0.6rem;
+        flex-shrink: 0;
       }
 
       #graph-filters.show .filter-group {
-        margin-bottom: 0.25rem;
+        margin-bottom: 0.5rem;
       }
 
       #graph-filters.show .filter-group label {
-        display: none;
+        display: block;
+        font-size: 0.85rem;
+        margin-bottom: 0.3rem;
+        color: #6b6157;
+        font-weight: 600;
       }
 
-      #graph-filters.show select {
+      #graph-filters.show select,
+      #graph-filters.show input[type="text"] {
         width: 100%;
-        font-size: 0.55rem;
-        padding: 0.15rem;
-        min-height: auto;
+        min-height: 44px;
+        font-size: 1rem;
+        padding: 0.5rem 0.75rem;
+        border-radius: 10px;
+        border: 1px solid #ddd;
       }
+
+      /* Floating action buttons: filters (left) + sage list (right) */
+      .mobile-fab {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        bottom: calc(18px + env(safe-area-inset-bottom));
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        border: none;
+        background: var(--color-primary, #3d2817);
+        color: #fff;
+        font-size: 1.5rem;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+        z-index: 1300;
+        cursor: pointer;
+      }
+
+      #fabFilters { left: 16px; }
+      #fabSages { right: 16px; }
 
       .graph-container {
         height: auto;
@@ -2302,6 +2375,10 @@
           <div class="graph-wrapper">
             <svg id="graph"></svg>
           </div>
+
+          <!-- Mobile floating action buttons (elite audit: graph-first mobile) -->
+          <button id="fabFilters" class="mobile-fab" aria-label="פתח סינון" title="סינון">🎛️</button>
+          <button id="fabSages" class="mobile-fab" aria-label="רשימת חכמים" title="רשימת חכמים">📜</button>
         </div>
 
         <!-- Right Legend -->
@@ -3100,6 +3177,39 @@
         });
       }
 
+      // Mobile FABs (elite audit): filters bottom sheet + sage list sheet
+      const fabFilters = document.getElementById('fabFilters');
+      const fabSages = document.getElementById('fabSages');
+      if (fabFilters && graphFilters) {
+        fabFilters.addEventListener('click', () => {
+          document.getElementById('sidebar')?.classList.remove('active');
+          graphFilters.classList.toggle('show');
+        });
+      }
+      if (fabSages) {
+        fabSages.addEventListener('click', () => {
+          graphFilters?.classList.remove('show');
+          const sb = document.getElementById('sidebar');
+          if (!sb) return;
+          const opening = !sb.classList.contains('active');
+          sb.classList.toggle('active');
+          if (opening && window.buildSageList &&
+              !(window.sageNetwork && window.sageNetwork.selectedNodeId)) {
+            const f = window.filterState?.filteredSages;
+            const total = window.graphData?.nodes?.length || 0;
+            window.buildSageList(f && f.size > 0 && f.size < total ? f : null);
+          }
+        });
+      }
+      // Applying a filter from the bottom sheet closes it (see the result immediately)
+      if (graphFilters) {
+        graphFilters.querySelectorAll('select').forEach(sel => {
+          sel.addEventListener('change', () => {
+            if (window.innerWidth <= 768) graphFilters.classList.remove('show');
+          });
+        });
+      }
+
       // Export
       document.getElementById('exportBtn').addEventListener('click', () => {
         if (!window.graphData) return;
@@ -3180,6 +3290,10 @@
       // Build detailed sidebar content
       const sidebarContent = document.getElementById('sidebarContent');
       if (!sidebarContent) return;
+
+      // Open the sidebar (desktop: slide-in panel; mobile: bottom sheet)
+      document.getElementById('sidebar')?.classList.add('active');
+      document.getElementById('graph-filters')?.classList.remove('show');
 
       // Get related sages (connections)
       const relatedSageIds = new Set();
