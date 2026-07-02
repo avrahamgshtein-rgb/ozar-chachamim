@@ -360,6 +360,14 @@ Examples:
 - **Corrupted file:** data/רבי ישראל איסרלן.docx (not a valid docx) — owner should re-save it
 - Verified in browser: 145 sage-filter options, new doc opens with 23K chars full text
 
+### Session — July 3, 2026 (cont. 2): 5 Missing Sages Added + Research Tab Uncapped
+- Owner asked "why no אבן גבירול in search" → added 5 sages to master CSV (ids 477–481, researched-based rows): רבי שלמה אבן גבירול, רבי ישראל אבוחצירא (הבבא סאלי), מהר"ש נוישטט, הרב ראובן מרגליות, רבי יהודה מוסקאטו; ran Workflows 6+7 → **348 nodes, 468 links, 148 sages with research (177/252 docs matched)**
+- **CSV append gotcha:** file had no trailing newline — first appended row merged into last line (row 476 corrupted, גבירול vanished). Fixed by inserting newline; ALWAYS check trailing newline before appending to the CSV
+- BLACKLIST cleared (מרגליות doc now matches his new node)
+- Research tab: removed the `slice(0, 100)` cap — all 252 docs render
+- Verified in browser: גבירול node (rishonim) findable, his doc opens with 16K chars full text
+- Still pending: corrupted data/רבי ישראל איסרלן.docx; production deploy of all July 3 work (deploy.bat)
+
 ### Session — July 3, 2026 (Cowork): Mobile Layout Fixes (Network Tab)
 - **Root cause 1 — header/tabs collapsed into a 283px-tall vertical strip on phones:** base `.tabs{flex:1}` sets `flex-basis:0%`, which made every mobile-breakpoint `.tabs{width:100%}` override silently no-op (percentage `width` is ignored once `flex-basis` isn't `auto`). Result: the 6-tab nav got squeezed onto the same line as the logo/language-switcher (down to ~68px wide) and wrapped its 6 buttons into ~7 stacked rows internally. Fix: added `flex: 0 0 100%` to `.tabs` in the `@media (max-width:768px)` block (index.html) so it always claims its own full-width row → header now 148px tall, tabs a single 53px row, verified at 360/375/768/1280px with no regression.
 - **Root cause 2 — horizontal overflow of the graph toolbar:** `.graph-search{min-width:250px}` (unconditional, no mobile override) + 3 zoom buttons + `flex-wrap:nowrap` forced the toolbar (and its `.graph-container` parent) to ~445px wide on a 375px viewport. Fix: mobile `.graph-toolbar` now `flex-wrap:wrap`, `.graph-search` gets `flex:1 1 100%; min-width:0` (own full row, zoom buttons wrap below). Verified `document.body.scrollWidth === innerWidth` (no clipping/scroll) on all tabs (network/table/map/comparator/research/about) at 360–768px.
