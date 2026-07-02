@@ -340,7 +340,25 @@ Examples:
 - **Verified in browser:** organic cloud layout, list click → highlight + details panel
 - **Gotchas:** a tab froze during verification (CDP timeouts) — new tab fixed it; sandbox mount stale-size issue persists — verify via Read tool or served files via browser fetch
 - **Filter layout (no overlaps):** filtered subset gets its own force layout (link+charge+collide with `_r(d)+16` for label space) and is NOT squeezed into the viewport — `net.zoomToFit(nodes)` (new in graph.js, zoom scaleExtent widened to 0.15) frames the spread. Verified: 139 rishonim, 0 overlapping pairs. Reset re-frames full network
-- **Commits:** owner approved; sandbox git blocked (stale mount content + `.git/index.lock` permission) → created `commit-today.bat` for owner to run on host: 4 feature commits (data / research / feat frontend / docs). NOT pushed — push triggers Vercel deploy. INSTRUCTION.md updated with workflows #6 (CSV rebuild), #7 (research extraction), server + commit conventions
+- **Commits:** owner approved; sandbox git blocked (stale mount content + `.git/index.lock` permission) → created `commit-today.bat` for owner to run on host: 4 feature commits (data / research / feat frontend / docs). NOT pushed — push triggers Vercel deploy. INSTRUCTION.md updated with workflows #6 (CSV rebuild), #7 (research extraction), server + commit conventions. Later: owner said DEPLOY → `deploy.bat` created (commits + push origin main)
+
+### Session — July 3, 2026 (Cowork): Elite Mobile Redesign (per Elite_Standard_Professional_Audit docx)
+- **Diagnosis confirmed audit:** mobile was "squashed desktop" — 16px filter toggle, 50px-wide filter strip w/ 0.55rem fonts, sidebar sheet stuck open (inline CSS overrode styles-graph.css translateY)
+- **New mobile UX (≤768px, all in index.html inline CSS + setupUI):**
+  - Graph-first: only search + graph by default (`.graph-wrapper` min 62vh); `#graph svg { touch-action:none }` → native pinch-zoom/pan via d3; zoom buttons hidden on mobile
+  - Filters = real bottom sheet (`#graph-filters.show`): fixed bottom, rounded top + handle, 65vh scroll, 44px+ selects/inputs, labels visible; picking a filter auto-closes the sheet
+  - Sidebar = bottom sheet (`transform:translateY(100%) !important` + `.active` opens — !important needed, later inline CSS was overriding); opens on node tap (hook in selectNodeById) or 📜 FAB
+  - Two 56px FABs (`.mobile-fab`, z-index 1300): 🎛️ filters (left), 📜 sage list (right); mutually exclusive; FAB toggle also closes
+- **Verified at 390×844:** default = search+graph+FABs only; filter sheet usable; tannaim filter → 6 sages, sheet auto-closed, sage list synced to 6
+- **Not committed yet** — deploy.bat covers index.html via commit 3 if re-run
+
+### Session — July 3, 2026 (cont.): 32 New Research Docs Integrated
+- Ran Workflow 7 on 252 docs (32 new): **174 matched, 144 sages with research** (was 99), 590K words
+- **Matcher upgraded** (extract_full_research.py) after false-match hunting: word-based matching with plene/defective spelling keys (פינחס=פנחס via yod/vav-stripped word_key); single-word matches must be UNIQUE NAME identifiers (first-4-words index, orig length ≥5); quotes not split (keeps הרדב"ז whole; '_' read as both separator and gershayim); extended STOP (common first names, topic words like ההלכה/מדיניות); OVERRIDES (Riaz English file, רדב"ז-vs-רמב"ם title clash) + BLACKLIST (ראובן מרגליות doc — sage not in network)
+- data.json `has_research` flags refreshed: +52/-10 → 144
+- **Missing sages (docs exist, no node in CSV):** רבי ישראל אבוחצירא (הבבא סאלי!), רבי שלמה אבן גבירול, מהר"ש נוישטט, הרב ראובן מרגליות, יהודה מוסקאטו — to fix: add rows to data/חכמי ישראל.csv, run Workflow 6 then 7
+- **Corrupted file:** data/רבי ישראל איסרלן.docx (not a valid docx) — owner should re-save it
+- Verified in browser: 145 sage-filter options, new doc opens with 23K chars full text
 
 ### Session — July 3, 2026 (Cowork): Mobile Layout Fixes (Network Tab)
 - **Root cause 1 — header/tabs collapsed into a 283px-tall vertical strip on phones:** base `.tabs{flex:1}` sets `flex-basis:0%`, which made every mobile-breakpoint `.tabs{width:100%}` override silently no-op (percentage `width` is ignored once `flex-basis` isn't `auto`). Result: the 6-tab nav got squeezed onto the same line as the logo/language-switcher (down to ~68px wide) and wrapped its 6 buttons into ~7 stacked rows internally. Fix: added `flex: 0 0 100%` to `.tabs` in the `@media (max-width:768px)` block (index.html) so it always claims its own full-width row → header now 148px tall, tabs a single 53px row, verified at 360/375/768/1280px with no regression.
