@@ -41,9 +41,7 @@ for _k, _n in byname.items():
                 if _i < 4:
                     NAME_INDEX.setdefault(wk, []).append(_n['id'])
 
-BLACKLIST = {
-    'משנתו התורנית, פועלו המחקרי ותרומתו הביבליוגרפית של הרב ראובן מרגליות.docx',
-}
+BLACKLIST = set()  # (empty — ראובן מרגליות added to the network July 2026)
 
 OVERRIDES = {
     'Rabbi Isaiah ben Elijah di Trani (Riaz).docx': 'הריא״ז (רבי ישעיה בן אליהו דטראני)',
