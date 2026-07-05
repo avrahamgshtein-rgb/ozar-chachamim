@@ -2337,10 +2337,6 @@
                   <button onclick="window.filterByEra('all')" class="btn era-quick-btn" style="padding: 0.3rem 0.5rem; font-size: 0.65rem; flex: 1; min-width: 52px; font-weight: 700;">✕ הכל</button>
                 </div>
               </div>
-              <div style="margin-bottom: 0.75rem; padding-bottom: 0.75rem; border-bottom: 1px solid #ddd;">
-                <label style="font-size: 0.75rem; font-weight: 600; display: block; margin-bottom: 0.4rem;">🎯 עדכון חכם:</label>
-                <input type="text" id="focusNodeSearch" placeholder="שם חכם לעדכון..." style="width: 100%; padding: 0.4rem; font-size: 0.75rem; border: 1px solid #ddd; border-radius: 4px; direction: rtl; font-family: 'Frank Ruhl Libre', serif; margin-bottom: 0.5rem;" autocomplete="off">
-                <div id="focusNodeSuggestions" style="position: absolute; background: white; border: 1px solid #ddd; border-radius: 4px; max-height: 200px; overflow-y: auto; width: 95%; display: none; z-index: 1000; box-shadow: 0 2px 8px rgba(0,0,0,0.1);"></div>
                 <button id="removeFocusBtn" class="btn" style="width: 100%; padding: 0.4rem; font-size: 0.65rem; margin-top: 0.3rem; display: none;">✕ ביטול עדכון</button>
               </div>
               <div style="margin-bottom: 0.75rem; padding-bottom: 0.75rem; border-bottom: 1px solid #ddd;">
@@ -2351,10 +2347,6 @@
                   <span id="strengthValue">0</span>
                   <span>חזק</span>
                 </div>
-              </div>
-              <div style="margin-bottom: 0.75rem; padding-bottom: 0.75rem; border-bottom: 1px solid #ddd;">
-                <label style="font-size: 0.75rem; font-weight: 600; display: block; margin-bottom: 0.4rem;">🔎 חפש חכם:</label>
-                <input type="text" id="graphNameSearch" placeholder="שם בעברית או אנגלית..." style="width: 100%; padding: 0.4rem; font-size: 0.75rem; border: 1px solid #ddd; border-radius: 4px; direction: rtl; font-family: 'Frank Ruhl Libre', serif; margin-bottom: 0.5rem;">
               </div>
               <div style="margin-bottom: 0.75rem; padding-bottom: 0.75rem; border-bottom: 1px solid #ddd;">
                 <label style="font-size: 0.75rem; font-weight: 600; display: block; margin-bottom: 0.4rem;">📌 טעונים מראש:</label>
@@ -3064,69 +3056,7 @@
       });
 
       // Focus Node Search (Phase 1: Click node to focus on it)
-      const focusNodeSearch = document.getElementById('focusNodeSearch');
-      const focusNodeSuggestions = document.getElementById('focusNodeSuggestions');
-      const removeFocusBtn = document.getElementById('removeFocusBtn');
-
-      if (focusNodeSearch && focusNodeSuggestions) {
-        focusNodeSearch.addEventListener('input', (e) => {
-          const query = e.target.value.toLowerCase().trim();
-          if (!query) {
-            focusNodeSuggestions.style.display = 'none';
-            return;
-          }
-
-          // Filter nodes by name
-          const matches = window.graphData.nodes
-            .filter(node =>
-              node.label?.toLowerCase().includes(query) ||
-              node.label_he?.toLowerCase().includes(query)
-            )
-            .slice(0, 10);
-
-          if (matches.length === 0) {
-            focusNodeSuggestions.innerHTML = '<div style="padding: 0.5rem; color: #999; font-size: 0.7rem;">לא נמצא</div>';
-            focusNodeSuggestions.style.display = 'block';
-            return;
-          }
-
-          focusNodeSuggestions.innerHTML = matches
-            .map(node => `
-              <div style="padding: 0.5rem 0.75rem; border-bottom: 1px solid #f0f0f0; cursor: pointer; font-size: 0.75rem; transition: background 0.15s;" onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background='white'">
-                ${node.label}
-                <span style="color: #999; font-size: 0.65rem;"> (${node.era_key || node.group})</span>
-              </div>
-            `)
-            .join('');
-
-          focusNodeSuggestions.style.display = 'block';
-
-          // Add click handlers
-          focusNodeSuggestions.querySelectorAll('div').forEach((div, idx) => {
-            div.addEventListener('click', () => {
-              const selectedNode = matches[idx];
-              window.location.search = `?id=${selectedNode.id}`;
-            });
-          });
-        });
-
-        // Close suggestions on focus out
-        focusNodeSearch.addEventListener('blur', () => {
-          setTimeout(() => focusNodeSuggestions.style.display = 'none', 200);
-        });
-      }
-
-      // Remove Focus button
-      if (removeFocusBtn) {
-        const currentParams = new URLSearchParams(window.location.search);
-        if (currentParams.has('id')) {
-          removeFocusBtn.style.display = 'block';
-          focusNodeSearch.value = '';
-        }
-        removeFocusBtn.addEventListener('click', () => {
-          window.location.search = '';
-        });
-      }
+      // (אוחד) עדכון חכם + חיפוש שם — הוסרו לטובת החיפוש הראשי המאוחד
 
       // Strength Filter Slider
       const strengthFilter = document.getElementById('strengthFilter');
@@ -3149,18 +3079,6 @@
         });
       }
 
-      // Graph Name Search (new unified search)
-      const graphNameSearch = document.getElementById('graphNameSearch');
-      if (graphNameSearch) {
-        graphNameSearch.addEventListener('input', (e) => {
-          const query = e.target.value.toLowerCase().trim();
-          if (sageNetwork && sageNetwork.searchQuery !== undefined) {
-            sageNetwork.searchQuery = query;
-            sageNetwork.updateNodeVisibility();
-            sageNetwork.updateSearchSuggestions(query);
-          }
-        });
-      }
 
       // חיפוש ראשי — שם, תקופה, תחום, תגיות ואזור, עם הצעות חכמות ובחירה ישירה
       const searchInput = document.getElementById('searchInput');
@@ -3469,65 +3387,78 @@
         .map(id => window.graphData?.nodes?.find(n => n.id === id))
         .filter(s => s);
 
+      // כרטיס פרופיל משודרג (Task C): צ'יפים לתקופה/אזורים, רעיון מרכזי,
+      // תגיות, וקשרים מקובצים לפי סוג — תואם למקרא הטבלה
+      const net = window.sageNetwork;
+      const regs = net && net._regionsOf ? net._regionsOf(sage).filter(r => r !== 'other') : [];
+      const regChips = regs.map(r =>
+        `<span style="background:${net.regionColors[r]};color:#fff;padding:0.15rem 0.65rem;border-radius:12px;font-size:0.75rem;font-weight:600">${net.regionLabels[r]}</span>`
+      ).join('<span style="color:#b0a48e;font-size:0.8rem">←</span>');
+      const eraColor = (net && net.eraColors && net.eraColors[sage.era_key]) || '#8a7a66';
+      const typeLabels = { teacher: 'רב←תלמיד', student: 'רב←תלמיד', influence: 'השפעה', family: 'משפחה', oppose: 'פולמוס', colleague: 'עמית', contemporary: 'בן דורו', predecessor: 'קודמו בתפקיד' };
+      const conns = [];
+      window.graphData?.links?.forEach(l => {
+        if (l.source === sageId || l.target === sageId) {
+          const other = window.graphData.nodes.find(n => n.id === (l.source === sageId ? l.target : l.source));
+          if (other) conns.push({ other, type: l.type, color: (net && net.connectionColors[l.type]) || '#999' });
+        }
+      });
+      conns.sort((a, b) => (a.type > b.type ? 1 : -1));
+      const tagChips = (sage.tags || '').split(',').map(t => t.trim()).filter(Boolean).map(t =>
+        `<span style="background:#f3ece0;color:#6d5b3f;padding:0.12rem 0.55rem;border-radius:10px;font-size:0.72rem">${t}</span>`).join(' ');
+
       sidebarContent.innerHTML = `
         <div style="padding: 1rem; direction: rtl; text-align: right;">
-          <h2 style="margin: 0 0 1rem 0; font-size: 1.3rem; color: #1a1a1a;">
+          <h2 style="margin: 0 0 0.5rem 0; font-size: 1.3rem; color: #1a1a1a; font-family: 'Frank Ruhl Libre', serif;">
             ${sage.label}
           </h2>
 
-          ${sage.era ? `<div style="color: #666; font-size: 0.9rem; margin-bottom: 0.5rem;">📅 ${sage.era}</div>` : ''}
-          ${sage.field ? `<div style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">📚 ${sage.field}</div>` : ''}
+          <div style="display:flex;flex-wrap:wrap;gap:0.35rem;align-items:center;margin-bottom:0.75rem;">
+            ${sage.era_label || sage.era ? `<span style="border:1.5px solid ${eraColor};color:${eraColor};padding:0.12rem 0.6rem;border-radius:12px;font-size:0.75rem;font-weight:700">📅 ${sage.era_label || sage.era}</span>` : ''}
+            ${regChips}
+            ${sage.field ? `<span style="background:#fff;border:1px solid #ddd;color:#666;padding:0.12rem 0.6rem;border-radius:12px;font-size:0.75rem">📚 ${sage.field}</span>` : ''}
+          </div>
+          ${regs.length > 1 ? `<div style="font-size:0.75rem;color:#8a7a66;margin:-0.35rem 0 0.75rem;">🧭 נדד בין מרכזים: ${regs.map(r => net.regionLabels[r]).join(' ← ')}</div>` : ''}
+          ${sage.era && sage.era_label !== sage.era ? `<div style="font-size:0.8rem;color:#888;margin-bottom:0.75rem;">${sage.era}${sage.location ? ' · 📍 ' + sage.location : ''}</div>` : (sage.location ? `<div style="font-size:0.8rem;color:#888;margin-bottom:0.75rem;">📍 ${sage.location}</div>` : '')}
 
-          ${sage.spotify_url ? `
-            <div style="margin-bottom: 1rem;">
-              <a href="${sage.spotify_url}" target="_blank" style="display: inline-block; padding: 0.5rem 1rem; background: #1DB954; color: white; border-radius: 20px; text-decoration: none; font-size: 0.9rem; font-weight: 600;">
-                🎵 הקשב בספוטיפיי
-              </a>
+          ${sage.central_idea ? `
+            <div style="margin: 0.75rem 0; padding: 0.85rem 1rem; background: linear-gradient(135deg,#fdf8ee,#f7efdd); border-right: 3px solid #c9a227; border-radius: 6px;">
+              <h3 style="margin: 0 0 0.35rem 0; font-size: 0.9rem; color: #9a7b1c;">⭐ רעיון מרכזי</h3>
+              <p style="margin: 0; font-size: 0.9rem; line-height: 1.55; color: #4a4234; font-weight: 500;">${sage.central_idea}</p>
             </div>
           ` : ''}
 
           ${sage.bio ? `
-            <div style="margin: 1.5rem 0; padding: 1rem; background: #f9f9f9; border-right: 3px solid #2980b9; border-radius: 4px;">
-              <h3 style="margin: 0 0 0.5rem 0; font-size: 0.95rem; color: #2980b9;">תיאור</h3>
-              <p style="margin: 0; font-size: 0.9rem; line-height: 1.6; color: #555;">
-                ${sage.bio}
-              </p>
+            <div style="margin: 0.75rem 0; padding: 0.85rem 1rem; background: #f9f9f9; border-right: 3px solid #2980b9; border-radius: 6px;">
+              <h3 style="margin: 0 0 0.35rem 0; font-size: 0.9rem; color: #2980b9;">תולדות ומשנה</h3>
+              <p style="margin: 0; font-size: 0.9rem; line-height: 1.6; color: #555;">${sage.bio}</p>
             </div>
           ` : ''}
 
-          ${sage.location ? `
-            <div style="margin: 1rem 0; padding: 1rem; background: #f0f8ff; border-right: 3px solid #27ae60; border-radius: 4px;">
-              <h3 style="margin: 0 0 0.5rem 0; font-size: 0.95rem; color: #27ae60;">📍 מקום</h3>
-              <p style="margin: 0; font-size: 0.9rem; color: #333;">${sage.location}</p>
-            </div>
+          ${tagChips ? `<div style="display:flex;flex-wrap:wrap;gap:0.3rem;margin:0.75rem 0;">${tagChips}</div>` : ''}
+
+          ${sage.spotify_url ? `
+            <a href="${sage.spotify_url}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;margin:0.25rem 0 0.75rem;padding:0.45rem 1rem;background:#1DB954;color:#fff;border-radius:20px;text-decoration:none;font-size:0.85rem;font-weight:600;">🎵 האזן לפרק בספוטיפיי</a>
           ` : ''}
 
-          ${sage.birth_year || sage.death_year ? `
-            <div style="margin: 1rem 0; padding: 1rem; background: #fff5f0; border-right: 3px solid #e67e22; border-radius: 4px;">
-              <h3 style="margin: 0 0 0.5rem 0; font-size: 0.95rem; color: #e67e22;">📆 תקופה</h3>
-              <p style="margin: 0; font-size: 0.9rem; color: #333;">
-                ${sage.birth_year ? `נולד: ${sage.birth_year}` : ''}
-                ${sage.death_year ? `${sage.birth_year ? ' | ' : ''}נפטר: ${sage.death_year}` : ''}
-              </p>
-            </div>
-          ` : ''}
-
-          ${relatedSages.length > 0 ? `
-            <div style="margin: 1.5rem 0; padding: 1rem; background: #f5f9ff; border-right: 3px solid #27ae60; border-radius: 4px;">
-              <h3 style="margin: 0 0 0.75rem 0; font-size: 0.95rem; color: #27ae60;">🔗 חכמים קשורים (${relatedSages.length})</h3>
-              <div style="display: grid; gap: 0.5rem;">
-                ${relatedSages.map(s => `
-                  <div style="padding: 0.75rem; background: white; border-radius: 4px; cursor: pointer; border-right: 3px solid #27ae60; transition: all 0.2s;"
-                       onmouseover="this.style.background='#f0f8ff'; this.style.paddingRight='1rem';"
-                       onmouseout="this.style.background='white'; this.style.paddingRight='0.75rem';"
-                       onclick="selectNodeById('${s.id}')">
-                    <div style="font-weight: 600; font-size: 0.9rem;">${s.label}</div>
-                    <div style="font-size: 0.8rem; color: #999;">${s.era || 'לא ידוע'}</div>
+          ${conns.length > 0 ? `
+            <div style="margin: 1rem 0 0;">
+              <h3 style="margin: 0 0 0.6rem 0; font-size: 0.95rem; color: #3d2817;">🔗 קשרים ברשת (${conns.length})</h3>
+              <div style="display: grid; gap: 0.45rem;">
+                ${conns.map(c => `
+                  <div style="display:flex;align-items:center;gap:0.6rem;padding:0.6rem 0.75rem;background:#fff;border-radius:8px;cursor:pointer;border-right:3px solid ${c.color};box-shadow:0 1px 3px rgba(0,0,0,0.06);transition:all 0.15s;"
+                       onmouseover="this.style.background='#faf7f0'" onmouseout="this.style.background='#fff'"
+                       onclick="selectNodeById('${c.other.id}')">
+                    <div style="flex:1;min-width:0;">
+                      <div style="font-weight:600;font-size:0.87rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${c.other.label}</div>
+                      <div style="font-size:0.72rem;color:#999;">${c.other.era_label || c.other.era || ''}</div>
+                    </div>
+                    <span style="background:${c.color}18;color:${c.color};border:1px solid ${c.color}55;padding:0.1rem 0.5rem;border-radius:10px;font-size:0.68rem;font-weight:700;flex:0 0 auto;">${typeLabels[c.type] || c.type}</span>
                   </div>
                 `).join('')}
               </div>
             </div>
-          ` : ''}
+          ` : '<div style="color:#999;font-size:0.85rem;margin-top:0.75rem;">אין עדיין קשרים מתועדים ברשת לחכם זה.</div>'}
         </div>
       `;
 
