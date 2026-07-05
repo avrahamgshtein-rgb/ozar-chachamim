@@ -91,7 +91,7 @@ export default async function SagePage({ params }: PageProps) {
       />
 
       <div
-        className="min-h-dvh bg-ink-900 text-ink-100 font-sans"
+        className="h-dvh overflow-y-auto bg-ink-900 text-ink-100 font-sans"
         dir={dir}
         lang={validLocale === 'he' ? 'he' : 'en'}
       >
@@ -214,7 +214,7 @@ export default async function SagePage({ params }: PageProps) {
                           📖 {doc.title.length > 90 ? doc.title.slice(0, 90) + '…' : doc.title}
                           <span className="text-ink-500 text-xs font-sans"> · {doc.word_count.toLocaleString()} {validLocale === 'he' ? 'מילים' : 'words'}</span>
                         </summary>
-                        <div className="px-4 pb-4 pt-1 text-sm font-sans text-ink-200 leading-loose whitespace-pre-line max-h-[65vh] overflow-y-auto border-t border-ink-700/30">
+                        <div className="px-4 pb-4 pt-1 text-sm font-sans text-ink-200 leading-loose whitespace-pre-line border-t border-ink-700/30">
                           {doc.content}
                         </div>
                       </details>

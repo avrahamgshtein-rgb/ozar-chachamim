@@ -57,6 +57,7 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
   const labelSelRef   = useRef<import('d3').Selection<any, any, any, any> | null>(null)
   const colorModeRef  = useRef<ColorMode>('region')
   const filteredIdsRef = useRef<Set<string> | null>(null)   // hover restores per-filter dim
+  const dimsRef = useRef<{ W: number; H: number }>({ W: 800, H: 600 })
   const tooltipRef    = useRef<HTMLDivElement | null>(null)
 
   const [colorMode, setColorMode] = useState<ColorMode>('region')
@@ -79,6 +80,7 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
       const container = containerRef.current
       const W = container.clientWidth  || 800
       const H = container.clientHeight || 600
+      dimsRef.current = { W, H }
 
       d3.select(container).selectAll('svg').remove()
       simRef.current?.stop()
@@ -449,6 +451,21 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
     filteredIdsRef.current = noFilter ? null : ids
     nodeSelRef.current.transition().duration(250)
       .attr('fill-opacity', (d: any) => noFilter || ids.has(d.id) ? 0.88 : 0.06)
+
+    // ריכוז למרכז (כמו באתר הקלאסי): המסוננים נמשכים לרצועת האמצע,
+    // ציר התקופות (forceX) נשמר — כך הקבוצה מתקבצת אך לא מאבדת כרונולוגיה
+    if (simRef.current) {
+      import('d3').then(d3 => {
+        const sim = simRef.current
+        if (!sim) return
+        const H = dimsRef.current.H
+        sim.force('y', d3.forceY(H / 2).strength((d: any) =>
+          noFilter ? 0.05 : ids.has(d.id) ? 0.28 : 0.02))
+        sim.force('charge', d3.forceManyBody().strength((d: any) =>
+          noFilter ? -120 : ids.has(d.id) ? -160 : -40))
+        sim.alpha(0.45).restart()
+      })
+    }
 
     // Zoom-to-fit when filter narrows down to a manageable subset
     if (!noFilter && filteredSages.length > 0 && filteredSages.length < sages.length * 0.5
