@@ -186,6 +186,7 @@ function CanvasArea({ activeTab, locale }: { activeTab: string; locale: Locale }
       {/* Geo map — lazy-mounted on first visit */}
       <div className={cn('absolute inset-0', activeTab === 'map' ? 'block' : 'hidden')}>
         <GeoMap locale={locale} />
+        <FilterChips locale={locale} />
       </div>
 
       {/* Traditions — era-grouped sage cards */}

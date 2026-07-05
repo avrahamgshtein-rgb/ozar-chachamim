@@ -56,6 +56,7 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
   const linkSelRef    = useRef<import('d3').Selection<any, any, any, any> | null>(null)
   const labelSelRef   = useRef<import('d3').Selection<any, any, any, any> | null>(null)
   const colorModeRef  = useRef<ColorMode>('region')
+  const filteredIdsRef = useRef<Set<string> | null>(null)   // hover restores per-filter dim
   const tooltipRef    = useRef<HTMLDivElement | null>(null)
 
   const [colorMode, setColorMode] = useState<ColorMode>('region')
@@ -332,11 +333,19 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
         if (tooltipRef.current) tooltipRef.current.style.display = 'none'
       }
 
+      // דהיית בסיס לפי הסינון הפעיל — hover לא מאפס את הסינון
+      const baseOpacity = (n: any) =>
+        !filteredIdsRef.current || filteredIdsRef.current.has(n.id) ? 0.88 : 0.06
+
       node
         .on('mouseover', (ev: MouseEvent, d: any) => {
           const nb = adj.get(d.id) || new Set()
           node.transition().duration(150)
-            .attr('fill-opacity', (n: any) => n.id === d.id || nb.has(n.id) ? 1 : 0.08)
+            .attr('fill-opacity', (n: any) => {
+              const inFilter = !filteredIdsRef.current || filteredIdsRef.current.has(n.id)
+              if (n.id === d.id || nb.has(n.id)) return inFilter ? 1 : 0.3
+              return 0.05
+            })
             .attr('r',            (n: any) => n.id === d.id ? r(n) + 3 : r(n))
           link.transition().duration(150)
             .attr('stroke-opacity', (l: any) =>
@@ -352,7 +361,8 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
           tip.style.top  = `${ev.clientY - 10}px`
         })
         .on('mouseout', () => {
-          node.transition().duration(300).attr('fill-opacity', 0.88).attr('r', r)
+          // משחזר את מצב הסינון (לא מאפס ל-0.88 גורף)
+          node.transition().duration(300).attr('fill-opacity', (n: any) => baseOpacity(n)).attr('r', r)
           link.transition().duration(300).attr('stroke-opacity', 0.22)
           label.transition().duration(300).attr('opacity', 0)
           hideTooltip()
@@ -436,6 +446,7 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
     if (!nodeSelRef.current) return
     const ids      = new Set(filteredSages.map(s => s.id))
     const noFilter = ids.size === sages.length
+    filteredIdsRef.current = noFilter ? null : ids
     nodeSelRef.current.transition().duration(250)
       .attr('fill-opacity', (d: any) => noFilter || ids.has(d.id) ? 0.88 : 0.06)
 
