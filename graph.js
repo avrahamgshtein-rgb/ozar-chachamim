@@ -415,7 +415,7 @@ class SageNetwork {
 
     const barsG = this.g.append('g').attr('class', 'event-bars');
     let drawn = 0;
-    this.historicalEvents.forEach((ev, idx) => {
+    this.historicalEvents.forEach((ev) => {
       const era = order.find(k => ev.year >= ranges[k][0] && ev.year < ranges[k][1]);
       if (!era || eraX[era] === undefined) return;
       const i = present.indexOf(era);
@@ -424,15 +424,23 @@ class SageNetwork {
       const f = (ev.year - ranges[era][0]) / (ranges[era][1] - ranges[era][0]);
       const x = left + f * (right - left);
 
+      // תוויות מדורגות ב-4 גבהים + הילה לבנה — בלי חפיפת טקסטים
+      const level = drawn % 4;
+      const ly = 13 + level * 13;
       barsG.append('rect')
-        .attr('x', x - 2).attr('y', 26).attr('width', 4).attr('height', this.height - 52)
+        .attr('x', x - 2).attr('y', 64).attr('width', 4).attr('height', this.height - 90)
         .attr('rx', 2).attr('fill', '#e53935').attr('opacity', 0.18)
         .style('pointer-events', 'none');
+      barsG.append('line')
+        .attr('x1', x).attr('y1', ly + 3).attr('x2', x).attr('y2', 64)
+        .attr('stroke', '#e57373').attr('stroke-width', 1).attr('opacity', 0.55)
+        .style('pointer-events', 'none');
       barsG.append('text')
-        .attr('x', x).attr('y', 14 + (idx % 2) * 12)
+        .attr('x', x).attr('y', ly)
         .attr('text-anchor', 'middle')
-        .attr('font-size', '9px').attr('font-weight', '700')
-        .attr('fill', '#c62828').attr('opacity', 0.9)
+        .attr('font-size', '8.5px').attr('font-weight', '700')
+        .attr('fill', '#c62828').attr('opacity', 0.95)
+        .attr('stroke', '#fafafa').attr('stroke-width', 3).attr('paint-order', 'stroke')
         .style('pointer-events', 'none')
         .text(`${ev.label} · ${ev.year}`);
       drawn++;

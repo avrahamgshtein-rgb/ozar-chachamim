@@ -2261,12 +2261,16 @@
 
             <div class="graph-filters" id="graph-filters">
               <div style="margin-bottom: 0.75rem; padding-bottom: 0.75rem; border-bottom: 1px solid #ddd;">
-                <label style="font-size: 0.75rem; font-weight: 600; display: block; margin-bottom: 0.4rem;">⚡ טעינה מהירה:</label>
+                <label style="font-size: 0.75rem; font-weight: 600; display: block; margin-bottom: 0.4rem;">⚡ סינון מהיר לפי תקופה:</label>
                 <div style="display: flex; gap: 0.25rem; flex-wrap: wrap; margin-bottom: 0.5rem;">
-                  <button onclick="window.location.search='?era=tannaim'" class="btn" style="padding: 0.3rem 0.6rem; font-size: 0.65rem; flex: 1; min-width: 60px;">תנאים</button>
-                  <button onclick="window.location.search='?era=amoraim'" class="btn" style="padding: 0.3rem 0.6rem; font-size: 0.65rem; flex: 1; min-width: 60px;">אמוראים</button>
-                  <button onclick="window.location.search='?era=rishonim'" class="btn" style="padding: 0.3rem 0.6rem; font-size: 0.65rem; flex: 1; min-width: 60px;">ראשונים</button>
-                  <button onclick="window.location.search=''" class="btn" style="padding: 0.3rem 0.6rem; font-size: 0.65rem; flex: 1; min-width: 60px;">הכל</button>
+                  <button onclick="window.filterByEra('second-temple')" class="btn era-quick-btn" style="padding: 0.3rem 0.5rem; font-size: 0.65rem; flex: 1; min-width: 52px;">בית שני</button>
+                  <button onclick="window.filterByEra('tannaim')" class="btn era-quick-btn" style="padding: 0.3rem 0.5rem; font-size: 0.65rem; flex: 1; min-width: 52px;">תנאים</button>
+                  <button onclick="window.filterByEra('amoraim')" class="btn era-quick-btn" style="padding: 0.3rem 0.5rem; font-size: 0.65rem; flex: 1; min-width: 52px;">אמוראים</button>
+                  <button onclick="window.filterByEra('geonim')" class="btn era-quick-btn" style="padding: 0.3rem 0.5rem; font-size: 0.65rem; flex: 1; min-width: 52px;">גאונים</button>
+                  <button onclick="window.filterByEra('rishonim')" class="btn era-quick-btn" style="padding: 0.3rem 0.5rem; font-size: 0.65rem; flex: 1; min-width: 52px;">ראשונים</button>
+                  <button onclick="window.filterByEra('acharonim')" class="btn era-quick-btn" style="padding: 0.3rem 0.5rem; font-size: 0.65rem; flex: 1; min-width: 52px;">אחרונים</button>
+                  <button onclick="window.filterByEra('modern')" class="btn era-quick-btn" style="padding: 0.3rem 0.5rem; font-size: 0.65rem; flex: 1; min-width: 52px;">עת חדשה</button>
+                  <button onclick="window.filterByEra('all')" class="btn era-quick-btn" style="padding: 0.3rem 0.5rem; font-size: 0.65rem; flex: 1; min-width: 52px; font-weight: 700;">✕ הכל</button>
                 </div>
               </div>
               <div style="margin-bottom: 0.75rem; padding-bottom: 0.75rem; border-bottom: 1px solid #ddd;">
@@ -3090,18 +3094,81 @@
         });
       }
 
-      // Original search input (fallback for other views)
+      // חיפוש ראשי — שם, תקופה, תחום, תגיות ואזור, עם הצעות חכמות ובחירה ישירה
       const searchInput = document.getElementById('searchInput');
+      const searchSug = document.getElementById('searchSuggestions');
+      const searchClear = document.getElementById('searchClearBtn');
+      const runGraphSearch = (raw) => {
+        const q = (raw || '').trim().toLowerCase();
+        if (searchClear) searchClear.style.display = q ? 'block' : 'none';
+        const net = window.sageNetwork;
+        if (!net || !net.node) return [];
+        if (!q) {
+          net.node.style('opacity', 1);
+          if (net.link) net.link.style('opacity', 0.3);
+          if (net.g) net.g.select('g.labels').selectAll('text').style('opacity', 0.75);
+          if (searchSug) searchSug.style.display = 'none';
+          return [];
+        }
+        const hay = d => [d.label, d.era, d.era_label, d.field, d.tags, d.location]
+          .filter(Boolean).join(' ').toLowerCase();
+        const matched = new Set();
+        const matches = [];
+        (window.graphData?.nodes || []).forEach(d => {
+          if (hay(d).includes(q)) { matched.add(d.id); matches.push(d); }
+        });
+        net.node.style('opacity', d => matched.has(d.id) ? 1 : 0.08);
+        if (net.link) net.link.style('opacity', l =>
+          (matched.has(l.source) && matched.has(l.target)) ? 0.5 : 0.03);
+        if (net.g) net.g.select('g.labels').selectAll('text')
+          .style('opacity', d => matched.has(d.id) ? 0.95 : 0.05);
+        console.log(`🔍 Search "${q}": ${matched.size} sages`);
+        return matches;
+      };
       if (searchInput) {
         searchInput.addEventListener('input', (e) => {
-          const query = e.target.value.toLowerCase();
-          if (sageNetwork && sageNetwork.node) {
-            sageNetwork.node.style('opacity', d => {
-              const match = (d.name_he && d.name_he.includes(e.target.value)) ||
-                           (d.name_en && d.name_en.toLowerCase().includes(query));
-              return match ? 1 : 0.15;
+          const matches = runGraphSearch(e.target.value);
+          if (!searchSug) return;
+          if (!e.target.value.trim() || matches.length === 0) { searchSug.style.display = 'none'; return; }
+          const net = window.sageNetwork;
+          searchSug.innerHTML = matches.slice(0, 12).map(d => {
+            const regs = net && net._regionsOf ? net._regionsOf(d) : ['other'];
+            const color = net ? (net.regionColors[regs[0]] || '#999') : '#999';
+            const regNames = net ? regs.map(r => net.regionLabels[r]).join(' ← ') : '';
+            return `<div class="search-sug-item" data-id="${d.id}" style="display:flex;align-items:center;gap:8px;padding:0.5rem 0.75rem;border-bottom:1px solid #f0f0f0;cursor:pointer;font-size:0.8rem;direction:rtl">
+              <span style="width:10px;height:10px;border-radius:50%;background:${color};flex:0 0 auto"></span>
+              <span style="flex:1">${d.label}</span>
+              <span style="color:#999;font-size:0.68rem">${d.era_label || d.era || ''}${regNames ? ' · ' + regNames : ''}</span>
+            </div>`;
+          }).join('') + (matches.length > 12
+            ? `<div style="padding:0.4rem 0.75rem;color:#999;font-size:0.7rem;direction:rtl">ועוד ${matches.length - 12} תוצאות — המשך להקליד לצמצום</div>` : '');
+          searchSug.style.display = 'block';
+          searchSug.querySelectorAll('.search-sug-item').forEach(item => {
+            item.addEventListener('mouseover', () => item.style.background = '#f7f4ec');
+            item.addEventListener('mouseout', () => item.style.background = 'white');
+            item.addEventListener('click', () => {
+              const net2 = window.sageNetwork;
+              const nd = net2 && net2.data.nodes.find(n => String(n.id) === String(item.dataset.id));
+              searchSug.style.display = 'none';
+              if (nd) { searchInput.value = nd.label; net2.selectNode(nd); }
             });
+          });
+        });
+        searchInput.addEventListener('blur', () => setTimeout(() => { if (searchSug) searchSug.style.display = 'none'; }, 250));
+        searchInput.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') {
+            const matches = runGraphSearch(searchInput.value);
+            if (matches.length === 1 && window.sageNetwork) window.sageNetwork.selectNode(matches[0]);
+            if (searchSug) searchSug.style.display = 'none';
           }
+          if (e.key === 'Escape') { searchInput.value = ''; runGraphSearch(''); }
+        });
+      }
+      if (searchClear) {
+        searchClear.addEventListener('click', () => {
+          searchInput.value = '';
+          runGraphSearch('');
+          searchInput.focus();
         });
       }
 
@@ -3440,7 +3507,9 @@
       const matched = new Set();
       (window.graphData?.nodes || []).forEach(n => {
         const okEra    = !era    || n.era_key === era;
-        const okRegion = !region || ((n.location || n.region || '').includes(region));
+        const okRegion = !region || (net._regionsOf && net.regionLabels && net.regionLabels[region]
+          ? net._regionsOf(n).includes(region)
+          : ((n.location || n.region || '').includes(region)));
         const okField  = !field  || ((n.field || '').includes(field));
         if (okEra && okRegion && okField) matched.add(n.id);
       });
@@ -3585,6 +3654,11 @@
       const legendDiv = document.getElementById('legendItems');
       legendDiv.innerHTML = '';
 
+      const erasHdr = document.createElement('div');
+      erasHdr.style.cssText = 'font-weight:bold;margin-bottom:0.2rem;font-size:0.8rem';
+      erasHdr.textContent = 'תקופות (לחיצה = סינון)';
+      legendDiv.appendChild(erasHdr);
+
       eras.forEach(era => {
         const item = document.createElement('div');
         item.className = 'legend-item';
@@ -3603,6 +3677,33 @@
         legendDiv.appendChild(item);
       });
 
+      // בתי מדרש ואזורים — תואם לצבעי הצמתים (ברירת המחדל של הגרף)
+      const net = window.sageNetwork;
+      if (net && net.regionLabels) {
+        const hdr = document.createElement('div');
+        hdr.style.cssText = 'font-weight:bold;margin-top:0.7rem;margin-bottom:0.2rem;font-size:0.8rem';
+        hdr.textContent = 'בתי מדרש ואזורים (לחיצה = סינון)';
+        legendDiv.appendChild(hdr);
+        Object.keys(net.regionLabels).forEach(key => {
+          if (key === 'other') return;
+          const item = document.createElement('div');
+          item.className = 'legend-item';
+          item.style.cursor = 'pointer';
+          item.style.transition = 'all 0.2s';
+          item.innerHTML = `
+          <div class="legend-color" style="background-color: ${net.regionColors[key]}; width: 12px; height: 12px; border-radius: 50%; display: inline-block; margin-left: 8px;"></div>
+          <span>${net.regionLabels[key]}</span>
+        `;
+          item.onclick = () => {
+            console.log(`🌍 Clicked region: ${net.regionLabels[key]}`);
+            window.filterByRegion(key);
+          };
+          item.onmouseover = () => item.style.opacity = '0.7';
+          item.onmouseout = () => item.style.opacity = '1';
+          legendDiv.appendChild(item);
+        });
+      }
+
       // Add "Show All" button
       const resetBtn = document.createElement('div');
       resetBtn.className = 'legend-item';
@@ -3620,23 +3721,23 @@
     }
 
     function buildRegionFilter() {
-      // Nodes carry multi-value locations ("ירושלים; מצרים (...)") — split
-      // into clean tokens so each region is individually selectable
-      const tokens = new Set();
-      window.graphData.nodes.forEach(n => {
-        (n.location || n.region || '').split(/[;,|·]/).forEach(t => {
-          t = t.split('(')[0].trim();
-          if (t.length >= 2) tokens.add(t);
-        });
-      });
+      // אזורים קנוניים (בתי מדרש) — תואמים אחד-לאחד לצבעי הצמתים בגרף,
+      // עם ספירת חכמים לכל אזור. חכם שנדד נספר בכל אזוריו.
+      const net = window.sageNetwork;
       const select = document.getElementById('regionFilter');
-      Array.from(tokens).sort((a, b) => a.localeCompare(b, 'he')).forEach(region => {
+      if (!net || !net.regionLabels || !select) return;
+      const counts = {};
+      window.graphData.nodes.forEach(n => {
+        net._regionsOf(n).forEach(r => counts[r] = (counts[r] || 0) + 1);
+      });
+      Object.keys(net.regionLabels).forEach(key => {
+        if (!counts[key]) return;
         const option = document.createElement('option');
-        option.value = region;
-        option.textContent = region;
+        option.value = key;
+        option.textContent = `${net.regionLabels[key]} (${counts[key]})`;
         select.appendChild(option);
       });
-      console.log(`🌍 [Regions] Filter built with ${tokens.size} regions`);
+      console.log(`🌍 [Regions] Filter built with ${Object.keys(counts).length} canonical regions`);
     }
 
     function loadTableData() {
