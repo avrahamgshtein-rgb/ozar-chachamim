@@ -5019,14 +5019,223 @@
    "chapter_type": "דמות",
    "spotify_url": "",
    "has_research": true
+  },
+  {
+   "id": "482",
+   "label": "שמואל (האמורא)",
+   "era": "המאה ה־3 לספירה (בערך 165–257)",
+   "era_key": "amoraim",
+   "era_label": "אמוראים",
+   "field": "הלכה, אסטרונומיה ורפואה",
+   "location": "נהרדעא, בבל",
+   "bio": "מגדולי אמוראי בבל וראש ישיבת נהרדעא, שביסס את עצמאותו של המרכז התורני בבבל מול ארץ ישראל. שילב גדלות הלכתית עם מומחיות באסטרונומיה וברפואה, וקבע את העיקרון \"דינא דמלכותא דינא\" שהסדיר את חיי הגולה.",
+   "central_idea": "מנהיגות ריאליסטית — עיגון הלכתי לקיום יהודי בגולה באמצעות \"דינא דמלכותא דינא\" ושליטה בחכמות העולם.",
+   "tags": "אמוראי בבל, נהרדעא, דינא דמלכותא דינא, לוח השנה, רב ושמואל",
+   "chapter_type": "דמות",
+   "spotify_url": ""
+  },
+  {
+   "id": "483",
+   "label": "שמעון בר כוכבא",
+   "era": "מרד 132–136 לספירה",
+   "era_key": "tannaim",
+   "era_label": "תנאים",
+   "field": "הנהגה מדינית וצבאית",
+   "location": "יהודה",
+   "bio": "מנהיג המרד האחרון ברומא (132–136), שכונן ריבונות יהודית קצרת ימים ביהודה עם מינהל, מטבעות ומערכות מסתור. חז\"ל נחלקו בדמותו — בין משיחיות לאכזבה — ובעת החדשה שב כסמל של גבורה לאומית.",
+   "central_idea": "ריבונות כערך דתי־לאומי — הניסיון הממוסד האחרון לגאולה ארצית בכוח אנושי.",
+   "tags": "מרד בר כוכבא, ביתר, רבי עקיבא, משיחיות, מטבעות המרד",
+   "chapter_type": "דמות",
+   "spotify_url": ""
+  },
+  {
+   "id": "484",
+   "label": "רבי ישראל נג'ארה",
+   "era": "בערך 1555–1625",
+   "era_key": "acharonim",
+   "era_label": "ראשית העת החדשה",
+   "field": "פיוט, הלכה וקבלה",
+   "location": "צפת; דמשק; עזה",
+   "bio": "מגדולי המשוררים שלאחר גירוש ספרד, מחבר \"קה ריבון עלם\". שילב לחנים מהמרחב העות'מאני עם תשוקה דתית עזה, וכיהן בסוף ימיו כרבה של עזה. שירתו הפכה את הפיוט למדיום של קדושה נגישה.",
+   "central_idea": "הקדושה נכנסת דרך הניגון — \"גיור\" לחנים זרים והפיכת השירה לעבודת ה' רגשית ואינטימית.",
+   "tags": "פיוט, קה ריבון עלם, קבלת צפת, שירה עברית, עזה",
+   "chapter_type": "דמות",
+   "spotify_url": ""
+  },
+  {
+   "id": "485",
+   "label": "תודוס איש רומי",
+   "era": "המאה ה־1 לספירה",
+   "era_key": "tannaim",
+   "era_label": "תנאים",
+   "field": "הנהגה קהילתית",
+   "location": "רומא",
+   "bio": "מנהיג קהילת רומא בתקופת התנאים. הנהיג אכילת \"גדי מקולס\" בלילי פסחים ועורר פולמוס עם חכמים, ונודע בדרשתו על מסירות נפשם של חנניה מישאל ועזריה כמופת ליהדות הגולה.",
+   "central_idea": "הנהגה יהודית בתפוצות — שימור זהות וקידוש השם הרחק מהמרכז בארץ ישראל.",
+   "tags": "יהדות רומא, גדי מקולס, קידוש השם, תפוצות וארץ ישראל",
+   "chapter_type": "דמות",
+   "spotify_url": ""
+  },
+  {
+   "id": "486",
+   "label": "רבנו יונה גירונדי",
+   "era": "בערך 1200–1263",
+   "era_key": "rishonim",
+   "era_label": "ראשונים",
+   "field": "מוסר והלכה",
+   "location": "גירונה וברצלונה, ספרד; טולדו",
+   "bio": "מגדולי הראשונים בספרד, מחבר \"שערי תשובה\" ו\"עליות דרבנו יונה\". הפך את התשובה מחסידות ליחידי סגולה לחובה דתית לכלל ישראל, וחיבר בין מסורות הלימוד של צרפת וספרד.",
+   "central_idea": "דמוקרטיזציה של המוסר — התשובה כדרך חיים המחייבת כל אדם.",
+   "tags": "שערי תשובה, מוסר, פולמוס הרמב\"ם, קטלוניה",
+   "chapter_type": "דמות",
+   "spotify_url": ""
+  },
+  {
+   "id": "487",
+   "label": "חכם דוד ניטו",
+   "era": "1654–1728",
+   "era_key": "acharonim",
+   "era_label": "אחרונים",
+   "field": "הגות, הלכה ומדע",
+   "location": "ונציה; ליוורנו; לונדון",
+   "bio": "רבה של הקהילה הספרדית־פורטוגזית בלונדון בראשית המאה ה־18, רופא ואסטרונום. בספרו \"מטה דן\" הגן על סמכות התורה שבעל־פה בכלים רציונליים, ונאבק בזרמי הדאיזם והשבתאות.",
+   "central_idea": "הטבע הוא ההשגחה — זיהוי חוקי הטבע כפעולה אלוהית ישירה, כמענה רציונלי לדאיזם.",
+   "tags": "מטה דן, דאיזם, שבתאות, הקהילה הספרדית בלונדון, תורה שבעל פה",
+   "chapter_type": "דמות",
+   "spotify_url": ""
+  },
+  {
+   "id": "488",
+   "label": "רבי שלמה אפרים מלונטשיץ (כלי יקר)",
+   "era": "בערך 1550–1619",
+   "era_key": "acharonim",
+   "era_label": "אחרונים",
+   "field": "פרשנות ודרשנות",
+   "location": "פולין; פראג",
+   "bio": "בעל פירוש \"כלי יקר\" לתורה, דרשן וראש ישיבה שכיהן ברבנות פראג לצד המהר\"ל וכממשיכו. שילב פרשנות פשט עם ביקורת מוסרית־חברתית חריפה נגד רדיפת ממון, שחיתות מנהיגות ולמדנות מנותקת.",
+   "central_idea": "הפרשנות כתוכחה — פשט המקרא ככלי לתיקון המידות והחברה.",
+   "tags": "כלי יקר, דרשנות, פראג, ביקורת חברתית, תיקון המידות",
+   "chapter_type": "דמות",
+   "spotify_url": ""
+  },
+  {
+   "id": "489",
+   "label": "הרב יצחק יעקב ריינס",
+   "era": "1839–1915",
+   "era_key": "modern",
+   "era_label": "העת החדשה",
+   "field": "הלכה, חינוך וציונות דתית",
+   "location": "לידא, ליטא",
+   "bio": "מייסד תנועת \"המזרחי\" וישיבת לידא ששילבה לימודי קודש וחול. פיתח שיטת לימוד לוגית־מושגית לגמרא, והוביל ציונות מדינית פרגמטית שהעדיפה את הצלת חיי העם על שיקולי גאולה ניסית.",
+   "central_idea": "הפרדה בין צורכי השעה לגאולה — ביסוס הלכתי־רעיוני לציונות מדינית מעשית.",
+   "tags": "המזרחי, ציונות דתית, ישיבת לידא, לוגיקה תלמודית, תוכנית אוגנדה",
+   "chapter_type": "דמות",
+   "spotify_url": ""
+  },
+  {
+   "id": "490",
+   "label": "הרב אברהם יהושע צוקרמן",
+   "era": "המאה ה־20",
+   "era_key": "modern",
+   "era_label": "עכשווי",
+   "field": "חינוך והגות הציונות הדתית",
+   "location": "ירושלים; ישראל",
+   "bio": "מתלמידיו המובהקים של הרצי\"ה קוק ודמות מפתח בציונות הדתית. הקים מוסדות חינוך ותנועות חברתיות כ\"אל עמי\", דגל בעמל כפיים וסירב להתפרנס מהתורה, והנגיש את משנת הראי\"ה קוק לדורו.",
+   "central_idea": "היהדות כ\"טבע החיים\" — אמונה הנבנית מתוך עשייה חלוצית, עמל ועבודת חינוך.",
+   "tags": "ציונות דתית, הרצי\"ה קוק, אל עמי, חינוך, משנת הרב קוק",
+   "chapter_type": "דמות",
+   "spotify_url": ""
+  },
+  {
+   "id": "491",
+   "label": "הרב שלמה גורן",
+   "era": "1917–1994",
+   "era_key": "modern",
+   "era_label": "המאה ה־20",
+   "field": "הלכה צבאית וממלכתית",
+   "location": "ישראל",
+   "bio": "הרב הצבאי הראשי הראשון והרב הראשי האשכנזי לישראל. יצר מסד הלכתי לצבא ולריבונות הישראלית, התיר עגונות חללי צה\"ל, וגיבש משנה סדורה בסוגיות לאומיות — מדיני מלחמה ועד העלייה להר הבית.",
+   "central_idea": "הלכה ממלכתית — התאמת ההלכה למדינה ולצבא מודרני מתוך קידוש חיי אדם ואומץ פסיקתי.",
+   "tags": "הרבנות הצבאית, רב ראשי, הלכות מלחמה, הר הבית, עגונות",
+   "chapter_type": "דמות",
+   "spotify_url": ""
+  },
+  {
+   "id": "492",
+   "label": "הרב יצחק הוטנר",
+   "era": "1906–1980",
+   "era_key": "modern",
+   "era_label": "המאה ה־20",
+   "field": "מחשבה, מוסר וחינוך",
+   "location": "ורשה; סלבודקה; ניו יורק; ירושלים",
+   "bio": "ראש ישיבת \"רבנו חיים ברלין\" בניו יורק ובעל סדרת \"פחד יצחק\". מיזג למדנות ליטאית אנליטית עם עומק חסידי ומוסרי, ופיתח משנה חינוכית הרואה במשברי האדם מצע הכרחי לצמיחתו הרוחנית.",
+   "central_idea": "\"גדלות האדם\" — הנפילה והמשבר כשלבים הכרחיים בבניין האישיות הרוחנית.",
+   "tags": "פחד יצחק, ישיבת רבנו חיים ברלין, למדנות וחסידות, גדלות האדם",
+   "chapter_type": "דמות",
+   "spotify_url": ""
+  },
+  {
+   "id": "493",
+   "label": "הרב יצחק אייזיק חבר",
+   "era": "1789–1852",
+   "era_key": "modern",
+   "era_label": "אחרונים",
+   "field": "הלכה וקבלה",
+   "location": "ליטא (ראזינאי, סובאלק, טיקטין)",
+   "bio": "מגדולי ליטא במאה ה־19 וממשיך מסורת הגר\"א בקבלה. חיבר את שו\"ת \"בניין עולם\" ואת \"מגן וצינה\" להגנת קדמות הזוהר מפני ביקורת המשכילים, ופירש את הקבלה פירוש עיוני המרחיק כל הגשמה.",
+   "central_idea": "קבלה ליטאית שיטתית — הנגשת תורת הנסתר של הגר\"א כמערכת עיונית סדורה מול אתגרי המודרנה.",
+   "tags": "קבלת הגר\"א, בניין עולם, מגן וצינה, נגלה ונסתר",
+   "chapter_type": "דמות",
+   "spotify_url": ""
+  },
+  {
+   "id": "494",
+   "label": "רבנו שמחה מוויטרי",
+   "era": "נפטר בערך 1105",
+   "era_key": "rishonim",
+   "era_label": "ראשונים",
+   "field": "הלכה, ליטורגיה ומנהג",
+   "location": "ויטרי, צפון צרפת",
+   "bio": "מתלמידיו המובהקים של רש\"י ועורך \"מחזור ויטרי\" — קומפנדיום מקיף של הלכה, תפילה ומנהג ששימר את תורת בית מדרשו של רש\"י ועיצב באופן מכריע את נוסח אשכנז ודפוסי הפסיקה באירופה.",
+   "central_idea": "שימור כמהפכה — קיבוע מסורות שבעל־פה לקודקס כתוב שעיצב את התפילה האשכנזית לדורות.",
+   "tags": "מחזור ויטרי, בית מדרשו של רש\"י, נוסח אשכנז, מנהג",
+   "chapter_type": "דמות",
+   "spotify_url": ""
+  },
+  {
+   "id": "238",
+   "label": "חנה הנביאה",
+   "era": "תקופת השופטים",
+   "era_key": "second-temple",
+   "era_label": "ימי השופטים / ראשית המלוכה",
+   "field": "תפילה ונבואה",
+   "location": "שילה",
+   "bio": "האישה שלימדה את עם ישראל איך להתפלל.",
+   "central_idea": "התפילה כעבודת לב פנימית וייסוד המלוכה והמשיח.",
+   "tags": "שמואל, תפילת העמידה",
+   "chapter_type": "דמות מקראית",
+   "spotify_url": "https://open.spotify.com/episode/2olkESl0VSSrcsibuXGG6I?si=iTH3BgW8TM2iBFmMjZ5_RA&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
+  },
+  {
+   "id": "124",
+   "label": "הרב חיים חזקיהו מדיני",
+   "era": "1832–1904",
+   "era_key": "modern",
+   "era_label": "העת החדשה",
+   "field": "הלכה, אנציקלופדיסטיקה תורנית",
+   "location": "",
+   "bio": "מחבר ה'שדי חמד' – אנציקלופדיה הלכתית בת 18 כרכים. פעל בקהילות ספרדיות ואשכנזיות, איחד מסורות הלכתיות שונות ויצר כלים מתודולוגיים חדשניים לעולם הפסיקה.",
+   "central_idea": "סדר ובהירות בעומס הפסיקה. סינתזה של מסורות, עמל מתמשך וראייה מערכתית של התורה.",
+   "tags": "",
+   "chapter_type": "דמות",
+   "spotify_url": "https://open.spotify.com/episode/7G1e30kwtU62b50Mao1pdn"
   }
  ],
  "links": [
   {
-   "source": "435",
-   "target": "4",
-   "type": "influence",
-   "evidence_source": "CSV דמויות קשורות"
+   "source": "4",
+   "target": "435",
+   "type": "teacher"
   },
   {
    "source": "95",
@@ -5053,10 +5262,13 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "41",
-   "target": "13",
-   "type": "influence",
-   "evidence_source": "CSV דמויות קשורות"
+   "source": "13",
+   "target": "41",
+   "type": "student",
+   "strength": 4,
+   "period": "תנאים-אמוראים",
+   "context_he": "תלמיד בדירוג ראשון",
+   "evidence_source": "משנה"
   },
   {
    "source": "443",
@@ -5361,8 +5573,7 @@
   {
    "source": "449",
    "target": "264",
-   "type": "influence",
-   "evidence_source": "CSV דמויות קשורות"
+   "type": "student"
   },
   {
    "source": "463",
@@ -5545,10 +5756,9 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "340",
-   "target": "144",
-   "type": "influence",
-   "evidence_source": "CSV דמויות קשורות"
+   "source": "144",
+   "target": "340",
+   "type": "student"
   },
   {
    "source": "340",
@@ -5563,10 +5773,9 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "137",
-   "target": "146",
-   "type": "influence",
-   "evidence_source": "CSV דמויות קשורות"
+   "source": "146",
+   "target": "137",
+   "type": "student"
   },
   {
    "source": "169",
@@ -5587,10 +5796,9 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "148",
-   "target": "151",
-   "type": "influence",
-   "evidence_source": "CSV דמויות קשורות"
+   "source": "151",
+   "target": "148",
+   "type": "student"
   },
   {
    "source": "41",
@@ -5997,8 +6205,7 @@
   {
    "source": "297",
    "target": "291",
-   "type": "influence",
-   "evidence_source": "CSV דמויות קשורות"
+   "type": "student"
   },
   {
    "source": "41",
@@ -6033,8 +6240,7 @@
   {
    "source": "469",
    "target": "294",
-   "type": "influence",
-   "evidence_source": "CSV דמויות קשורות"
+   "type": "student"
   },
   {
    "source": "44",
@@ -6079,16 +6285,14 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "279",
-   "target": "297",
-   "type": "influence",
-   "evidence_source": "CSV דמויות קשורות"
+   "source": "297",
+   "target": "279",
+   "type": "student"
   },
   {
-   "source": "44",
-   "target": "297",
-   "type": "influence",
-   "evidence_source": "CSV דמויות קשורות"
+   "source": "297",
+   "target": "44",
+   "type": "student"
   },
   {
    "source": "195",
@@ -6241,10 +6445,9 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "443",
-   "target": "319",
-   "type": "influence",
-   "evidence_source": "CSV דמויות קשורות"
+   "source": "319",
+   "target": "443",
+   "type": "oppose"
   },
   {
    "source": "443",
@@ -6265,10 +6468,9 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "41",
-   "target": "339",
-   "type": "influence",
-   "evidence_source": "CSV דמויות קשורות"
+   "source": "339",
+   "target": "41",
+   "type": "student"
   },
   {
    "source": "41",
@@ -6373,10 +6575,9 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "467",
-   "target": "432",
-   "type": "influence",
-   "evidence_source": "CSV דמויות קשורות"
+   "source": "432",
+   "target": "467",
+   "type": "student"
   },
   {
    "source": "44",
@@ -6475,10 +6676,9 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "457",
-   "target": "453",
-   "type": "influence",
-   "evidence_source": "CSV דמויות קשורות"
+   "source": "453",
+   "target": "457",
+   "type": "student"
   },
   {
    "source": "463",
@@ -6607,22 +6807,10 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "13",
-   "target": "41",
-   "type": "student",
-   "strength": 4,
-   "period": "תנאים-אמוראים",
-   "context_he": "תלמיד בדירוג ראשון",
-   "evidence_source": "משנה"
-  },
-  {
    "source": "45",
    "target": "100",
-   "type": "student",
-   "strength": 5,
-   "period": "ראשונים",
-   "context_he": "תלמיד קרוב מאוד",
-   "evidence_source": "ספרים"
+   "type": "influence",
+   "evidence_source": "נוקה 7.2026 (פער תקופות)"
   },
   {
    "source": "18",
@@ -6632,33 +6820,6 @@
    "period": "אמוראים",
    "context_he": "למד לפעמים",
    "evidence_source": "גמרא"
-  },
-  {
-   "source": "41",
-   "target": "13",
-   "type": "teacher",
-   "strength": 5,
-   "period": "תנאים",
-   "context_he": "לימד בבית מדרש",
-   "evidence_source": "תלמודי"
-  },
-  {
-   "source": "100",
-   "target": "45",
-   "type": "teacher",
-   "strength": 4,
-   "period": "ראשונים",
-   "context_he": "היה המורה שלו",
-   "evidence_source": "היסטוריה"
-  },
-  {
-   "source": "50",
-   "target": "18",
-   "type": "teacher",
-   "strength": 4,
-   "period": "אמוראים",
-   "context_he": "הורה בדברים חשובים",
-   "evidence_source": "סוגיות"
   },
   {
    "source": "329",
@@ -6789,92 +6950,110 @@
   {
    "source": "2",
    "target": "17",
-   "type": "teacher"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "2",
    "target": "290",
-   "type": "teacher"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "2",
    "target": "443",
-   "type": "teacher"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
-   "source": "182",
-   "target": "47",
-   "type": "student"
+   "source": "47",
+   "target": "182",
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
-   "source": "182",
-   "target": "300",
-   "type": "student"
+   "source": "300",
+   "target": "182",
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "16",
    "target": "172",
-   "type": "student"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "16",
    "target": "335",
-   "type": "teacher"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "16",
    "target": "336",
-   "type": "teacher"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "8",
    "target": "113",
-   "type": "student"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "8",
    "target": "341",
-   "type": "teacher"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "8",
    "target": "196",
-   "type": "teacher"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "4",
    "target": "41",
-   "type": "teacher"
+   "type": "influence",
+   "evidence_source": "נוקה 7.2026 (פער תקופות)"
   },
   {
    "source": "4",
    "target": "424",
-   "type": "teacher"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "4",
    "target": "443",
-   "type": "student"
+   "type": "influence",
+   "evidence_source": "נוקה 7.2026 (פער תקופות)"
   },
   {
    "source": "262",
    "target": "176",
-   "type": "teacher"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "262",
    "target": "177",
-   "type": "teacher"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "262",
    "target": "196",
-   "type": "teacher"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "262",
    "target": "340",
-   "type": "teacher"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "262",
@@ -6884,12 +7063,14 @@
   {
    "source": "262",
    "target": "168",
-   "type": "teacher"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "262",
    "target": "336",
-   "type": "teacher"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "262",
@@ -6902,9 +7083,10 @@
    "type": "teacher"
   },
   {
-   "source": "262",
-   "target": "9",
-   "type": "family"
+   "source": "9",
+   "target": "262",
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "262",
@@ -6929,12 +7111,14 @@
   {
    "source": "262",
    "target": "164",
-   "type": "teacher"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "23",
    "target": "335",
-   "type": "student"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "262",
@@ -6944,27 +7128,32 @@
   {
    "source": "262",
    "target": "341",
-   "type": "teacher"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "262",
    "target": "472",
-   "type": "teacher"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "262",
    "target": "335",
-   "type": "teacher"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "262",
    "target": "468",
-   "type": "teacher"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
-   "source": "182",
-   "target": "41",
-   "type": "teacher"
+   "source": "41",
+   "target": "182",
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "182",
@@ -6972,19 +7161,22 @@
    "type": "teacher"
   },
   {
-   "source": "182",
-   "target": "294",
-   "type": "student"
+   "source": "294",
+   "target": "182",
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
-   "source": "182",
-   "target": "296",
-   "type": "teacher"
+   "source": "296",
+   "target": "182",
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
-   "source": "182",
-   "target": "433",
-   "type": "teacher"
+   "source": "433",
+   "target": "182",
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "182",
@@ -6992,19 +7184,22 @@
    "type": "student"
   },
   {
-   "source": "183",
-   "target": "438",
-   "type": "teacher"
+   "source": "438",
+   "target": "183",
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "345",
    "target": "267",
-   "type": "family"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "4",
    "target": "17",
-   "type": "teacher"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "4",
@@ -7013,78 +7208,81 @@
   },
   {
    "source": "4",
-   "target": "443",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
    "target": "47",
-   "type": "student"
+   "type": "influence",
+   "evidence_source": "נוקה 7.2026 (פער תקופות)"
   },
   {
    "source": "4",
    "target": "229",
-   "type": "teacher"
+   "type": "influence",
+   "evidence_source": "נוקה 7.2026 (פער תקופות)"
   },
   {
    "source": "4",
    "target": "314",
-   "type": "teacher"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "4",
    "target": "449",
-   "type": "teacher"
+   "type": "influence",
+   "evidence_source": "נוקה 7.2026 (פער תקופות)"
   },
   {
    "source": "67",
    "target": "128",
-   "type": "student"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "262",
    "target": "154",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "47",
-   "type": "teacher"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "4",
    "target": "445",
-   "type": "teacher"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "4",
    "target": "25",
-   "type": "teacher"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "4",
    "target": "426",
-   "type": "teacher"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "4",
    "target": "174",
-   "type": "teacher"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "4",
    "target": "428",
-   "type": "teacher"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "4",
    "target": "49",
-   "type": "teacher"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "4",
    "target": "427",
-   "type": "teacher"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "262",
@@ -7102,9 +7300,10 @@
    "type": "teacher"
   },
   {
-   "source": "81",
-   "target": "344",
-   "type": "student"
+   "source": "344",
+   "target": "81",
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "81",
@@ -7134,352 +7333,307 @@
   {
    "source": "4",
    "target": "467",
-   "type": "student"
+   "type": "influence",
+   "evidence_source": "נוקה 7.2026 (פער תקופות)"
   },
   {
    "source": "4",
    "target": "113",
-   "type": "teacher"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "4",
    "target": "74",
-   "type": "teacher"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "4",
    "target": "192",
-   "type": "teacher"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "4",
    "target": "331",
-   "type": "teacher"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "4",
    "target": "442",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "41",
-   "type": "family"
-  },
-  {
-   "source": "4",
-   "target": "435",
-   "type": "teacher"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "4",
    "target": "335",
-   "type": "teacher"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "4",
    "target": "336",
-   "type": "teacher"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "4",
    "target": "267",
-   "type": "family"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "4",
    "target": "44",
-   "type": "teacher"
+   "type": "influence",
+   "evidence_source": "נוקה 7.2026 (פער תקופות)"
   },
   {
    "source": "4",
    "target": "151",
-   "type": "teacher"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "4",
    "target": "296",
-   "type": "teacher"
+   "type": "influence",
+   "evidence_source": "נוקה 7.2026 (פער תקופות)"
   },
   {
    "source": "4",
    "target": "295",
-   "type": "student"
+   "type": "influence",
+   "evidence_source": "נוקה 7.2026 (פער תקופות)"
   },
   {
    "source": "4",
    "target": "310",
-   "type": "teacher"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "4",
    "target": "415",
-   "type": "student"
+   "type": "influence",
+   "evidence_source": "נוקה 7.2026 (פער תקופות)"
   },
   {
    "source": "4",
    "target": "464",
-   "type": "student"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "2",
    "target": "41",
-   "type": "student"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "2",
    "target": "339",
-   "type": "teacher"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "4",
    "target": "50",
-   "type": "student"
-  },
-  {
-   "source": "4",
-   "target": "50",
-   "type": "teacher"
+   "type": "influence",
+   "evidence_source": "נוקה 7.2026 (פער תקופות)"
   },
   {
    "source": "4",
    "target": "471",
-   "type": "teacher"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "4",
    "target": "189",
-   "type": "teacher"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "4",
    "target": "340",
-   "type": "teacher"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "4",
    "target": "264",
-   "type": "student"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "4",
    "target": "64",
-   "type": "teacher"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "4",
    "target": "70",
-   "type": "student"
+   "type": "influence",
+   "evidence_source": "נוקה 7.2026 (פער תקופות)"
   },
   {
    "source": "4",
    "target": "76",
-   "type": "teacher"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "4",
    "target": "453",
-   "type": "teacher"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "4",
    "target": "457",
-   "type": "teacher"
+   "type": "influence",
+   "evidence_source": "נוקה 7.2026 (פער תקופות)"
   },
   {
    "source": "4",
    "target": "458",
-   "type": "student"
-  },
-  {
-   "source": "4",
-   "target": "295",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "457",
-   "type": "student"
+   "type": "influence",
+   "evidence_source": "נוקה 7.2026 (פער תקופות)"
   },
   {
    "source": "4",
    "target": "452",
-   "type": "teacher"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "4",
    "target": "344",
-   "type": "student"
-  },
-  {
-   "source": "4",
-   "target": "229",
-   "type": "student"
+   "type": "influence",
+   "evidence_source": "נוקה 7.2026 (פער תקופות)"
   },
   {
    "source": "4",
    "target": "408",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "70",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "467",
-   "type": "teacher"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "4",
    "target": "319",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "449",
-   "type": "student"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "4",
    "target": "356",
-   "type": "teacher"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "4",
    "target": "407",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "344",
-   "type": "teacher"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "4",
    "target": "51",
-   "type": "student"
+   "type": "influence",
+   "evidence_source": "נוקה 7.2026 (פער תקופות)"
   },
   {
    "source": "4",
    "target": "312",
-   "type": "teacher"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "4",
    "target": "327",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "41",
-   "type": "student"
-  },
-  {
-   "source": "4",
-   "target": "44",
-   "type": "student"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "4",
    "target": "46",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "51",
-   "type": "teacher"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "4",
    "target": "279",
-   "type": "student"
-  },
-  {
-   "source": "4",
-   "target": "296",
-   "type": "student"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "4",
    "target": "297",
-   "type": "teacher"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "4",
    "target": "294",
-   "type": "student"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "4",
    "target": "469",
-   "type": "teacher"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "4",
    "target": "436",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "458",
-   "type": "teacher"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "4",
    "target": "293",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "415",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "50",
-   "type": "family"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "4",
    "target": "317",
-   "type": "teacher"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "4",
    "target": "12",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "41",
-   "type": "oppose"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "4",
    "target": "460",
-   "type": "teacher"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "12",
    "target": "344",
-   "type": "teacher"
-  },
-  {
-   "source": "12",
-   "target": "41",
    "type": "teacher"
   },
   {
    "source": "12",
    "target": "113",
-   "type": "teacher"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "12",
    "target": "335",
-   "type": "teacher"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "12",
@@ -7503,11 +7657,6 @@
   },
   {
    "source": "12",
-   "target": "41",
-   "type": "student"
-  },
-  {
-   "source": "12",
    "target": "433",
    "type": "teacher"
   },
@@ -7519,17 +7668,13 @@
   {
    "source": "448",
    "target": "340",
-   "type": "teacher"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "3",
    "target": "9",
    "type": "family"
-  },
-  {
-   "source": "449",
-   "target": "264",
-   "type": "student"
   },
   {
    "source": "134",
@@ -7547,11 +7692,6 @@
    "type": "student"
   },
   {
-   "source": "144",
-   "target": "340",
-   "type": "student"
-  },
-  {
    "source": "28",
    "target": "344",
    "type": "student"
@@ -7562,23 +7702,8 @@
    "type": "student"
   },
   {
-   "source": "297",
-   "target": "279",
-   "type": "student"
-  },
-  {
    "source": "24",
    "target": "344",
-   "type": "student"
-  },
-  {
-   "source": "4",
-   "target": "435",
-   "type": "student"
-  },
-  {
-   "source": "151",
-   "target": "148",
    "type": "student"
   },
   {
@@ -7597,11 +7722,6 @@
    "type": "student"
   },
   {
-   "source": "432",
-   "target": "467",
-   "type": "student"
-  },
-  {
    "source": "425",
    "target": "449",
    "type": "student"
@@ -7609,16 +7729,6 @@
   {
    "source": "273",
    "target": "22",
-   "type": "student"
-  },
-  {
-   "source": "146",
-   "target": "137",
-   "type": "student"
-  },
-  {
-   "source": "297",
-   "target": "44",
    "type": "student"
   },
   {
@@ -7632,53 +7742,25 @@
    "type": "student"
   },
   {
-   "source": "469",
-   "target": "294",
-   "type": "student"
-  },
-  {
-   "source": "297",
-   "target": "291",
-   "type": "student"
-  },
-  {
-   "source": "453",
-   "target": "457",
-   "type": "student"
-  },
-  {
-   "source": "339",
-   "target": "41",
-   "type": "student"
-  },
-  {
    "source": "425",
    "target": "319",
    "type": "teacher"
   },
   {
-   "source": "315",
-   "target": "41",
-   "type": "teacher"
+   "source": "41",
+   "target": "315",
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "39",
    "target": "113",
-   "type": "teacher"
-  },
-  {
-   "source": "319",
-   "target": "443",
-   "type": "oppose"
+   "type": "influence",
+   "evidence_source": " (תוקן: פער תקופות)"
   },
   {
    "source": "125",
    "target": "443",
-   "type": "oppose"
-  },
-  {
-   "source": "12",
-   "target": "41",
    "type": "oppose"
   },
   {
@@ -7705,6 +7787,138 @@
    "source": "150",
    "target": "335",
    "type": "influence"
+  },
+  {
+   "source": "4",
+   "target": "483",
+   "type": "contemporary",
+   "evidence_source": "מחקרים 7.2026"
+  },
+  {
+   "source": "462",
+   "target": "484",
+   "type": "influence",
+   "evidence_source": "מחקרים 7.2026"
+  },
+  {
+   "source": "44",
+   "target": "486",
+   "type": "family",
+   "evidence_source": "מחקרים 7.2026"
+  },
+  {
+   "source": "72",
+   "target": "488",
+   "type": "predecessor",
+   "evidence_source": "מחקרים 7.2026"
+  },
+  {
+   "source": "120",
+   "target": "489",
+   "type": "influence",
+   "evidence_source": "מחקרים 7.2026"
+  },
+  {
+   "source": "196",
+   "target": "490",
+   "type": "teacher",
+   "evidence_source": "מחקרים 7.2026"
+  },
+  {
+   "source": "490",
+   "target": "177",
+   "type": "contemporary",
+   "evidence_source": "מחקרים 7.2026"
+  },
+  {
+   "source": "134",
+   "target": "492",
+   "type": "influence",
+   "evidence_source": "מחקרים 7.2026"
+  },
+  {
+   "source": "491",
+   "target": "336",
+   "type": "contemporary",
+   "evidence_source": "מחקרים 7.2026"
+  },
+  {
+   "source": "491",
+   "target": "138",
+   "type": "contemporary",
+   "evidence_source": "מחקרים 7.2026"
+  },
+  {
+   "source": "71",
+   "target": "74",
+   "type": "influence",
+   "evidence_source": "מחקרים 7.2026"
+  },
+  {
+   "source": "72",
+   "target": "93",
+   "type": "influence",
+   "evidence_source": "מחקרים 7.2026"
+  },
+  {
+   "source": "14",
+   "target": "183",
+   "type": "influence",
+   "evidence_source": "מחקרים 7.2026"
+  },
+  {
+   "source": "70",
+   "target": "488",
+   "type": "teacher",
+   "evidence_source": "מחקרים 7.2026"
+  },
+  {
+   "source": "486",
+   "target": "395",
+   "type": "teacher",
+   "evidence_source": "מחקרים 7.2026"
+  },
+  {
+   "source": "324",
+   "target": "492",
+   "type": "teacher",
+   "evidence_source": "מחקרים 7.2026"
+  },
+  {
+   "source": "451",
+   "target": "43",
+   "type": "teacher",
+   "evidence_source": "מחקרים 7.2026"
+  },
+  {
+   "source": "494",
+   "target": "356",
+   "type": "influence",
+   "evidence_source": "מחקרים 7.2026"
+  },
+  {
+   "source": "130",
+   "target": "323",
+   "type": "influence",
+   "evidence_source": "מחקרים 7.2026"
+  },
+  {
+   "source": "325",
+   "target": "103",
+   "type": "influence",
+   "evidence_source": "מחקרים 7.2026"
+  },
+  {
+   "source": "355",
+   "target": "33",
+   "type": "family",
+   "evidence_source": "מחקרים 7.2026"
+  },
+  {
+   "source": "41",
+   "target": "12",
+   "type": "influence",
+   "evidence_source": "נוקה 7.2026 (הרמב״ם קדם לרבנו בחיי)"
   }
  ]
 }
