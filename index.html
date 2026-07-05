@@ -462,6 +462,13 @@
       font-weight: 500;
     }
 
+    /* Drawer chrome (header / apply / backdrop) — mobile-only, hidden on desktop */
+    .drawer-header,
+    .apply-filters-button,
+    #drawerBackdrop {
+      display: none;
+    }
+
     /* Mobile FABs — hidden on desktop, shown in the ≤768px media block */
     .mobile-fab {
       display: none;
@@ -1369,6 +1376,59 @@
       #fabFilters { left: 16px; }
       #fabSages { right: 16px; }
 
+      /* Drawer header: title + close, matches the site's warm palette */
+      #graph-filters.show .drawer-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: -0.2rem 0 0.6rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid #eee2d0;
+      }
+      #graph-filters.show .drawer-header h2 {
+        margin: 0;
+        font-size: 1.05rem;
+        color: var(--color-primary, #3d2817);
+        font-family: 'Frank Ruhl Libre', serif;
+      }
+      #graph-filters.show .drawer-header button {
+        background: none;
+        border: none;
+        font-size: 1.15rem;
+        color: #8a7a66;
+        cursor: pointer;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+      }
+      #graph-filters.show .drawer-header button:active { background: #f3ece0; }
+
+      /* Apply & close CTA */
+      #graph-filters.show .apply-filters-button {
+        display: block;
+        width: 100%;
+        min-height: 48px;
+        margin-top: 0.4rem;
+        background: var(--color-primary, #3d2817);
+        color: #fff;
+        border: none;
+        border-radius: 10px;
+        font-size: 1rem;
+        font-weight: 700;
+        font-family: 'Frank Ruhl Libre', serif;
+        cursor: pointer;
+      }
+
+      /* Backdrop: dims the graph, tap to close */
+      #drawerBackdrop.show {
+        display: block;
+        position: fixed;
+        inset: 0;
+        background: rgba(30, 20, 10, 0.45);
+        z-index: 1150;
+        -webkit-tap-highlight-color: transparent;
+      }
+
       .graph-container {
         height: auto;
         flex: 1;
@@ -2259,7 +2319,11 @@
               <button id="zoomOutBtn" class="btn" title="התרחק" style="padding: 0.5rem 0.8rem; font-size: 0.9rem;">🔍− הקטן</button>
             </div>
 
-            <div class="graph-filters" id="graph-filters">
+            <div class="graph-filters" id="graph-filters" role="dialog" aria-modal="true" aria-label="מסנני הרשת">
+              <div class="drawer-header" id="filtersDrawerHeader">
+                <h2>🎛️ מסננים</h2>
+                <button id="closeFiltersDrawer" aria-label="סגור מסננים">✕</button>
+              </div>
               <div style="margin-bottom: 0.75rem; padding-bottom: 0.75rem; border-bottom: 1px solid #ddd;">
                 <label style="font-size: 0.75rem; font-weight: 600; display: block; margin-bottom: 0.4rem;">⚡ סינון מהיר לפי תקופה:</label>
                 <div style="display: flex; gap: 0.25rem; flex-wrap: wrap; margin-bottom: 0.5rem;">
@@ -2374,14 +2438,18 @@
                   <option value="2">חלש (2-5)</option>
                 </select>
               </div>
+              <button id="applyFiltersBtn" class="apply-filters-button">✓ החל מסננים וסגור</button>
             </div>
           </div>
           <div class="graph-wrapper">
             <svg id="graph"></svg>
           </div>
 
+          <!-- Backdrop for the mobile filter drawer / sage sheet -->
+          <div id="drawerBackdrop" aria-hidden="true"></div>
+
           <!-- Mobile floating action buttons (elite audit: graph-first mobile) -->
-          <button id="fabFilters" class="mobile-fab" aria-label="פתח סינון" title="סינון">🎛️</button>
+          <button id="fabFilters" class="mobile-fab" aria-label="פתח סינון" title="סינון" aria-expanded="false">🎛️</button>
           <button id="fabSages" class="mobile-fab" aria-label="רשימת חכמים" title="רשימת חכמים">📜</button>
         </div>
 
@@ -3244,22 +3312,41 @@
         });
       }
 
-      // Mobile FABs (elite audit): filters bottom sheet + sage list sheet
+      // Mobile FABs: filters drawer + sage list sheet, with shared backdrop,
+      // close button, Escape support and body scroll-lock (drawer & FAB guide)
       const fabFilters = document.getElementById('fabFilters');
       const fabSages = document.getElementById('fabSages');
+      const drawerBackdrop = document.getElementById('drawerBackdrop');
+      const setDrawer = (open) => {
+        if (!graphFilters) return;
+        graphFilters.classList.toggle('show', open);
+        drawerBackdrop?.classList.toggle('show',
+          open || document.getElementById('sidebar')?.classList.contains('active'));
+        fabFilters?.setAttribute('aria-expanded', String(open));
+        document.body.style.overflow = (open && window.innerWidth <= 768) ? 'hidden' : '';
+      };
+      const setSageSheet = (open) => {
+        const sb = document.getElementById('sidebar');
+        if (!sb) return;
+        sb.classList.toggle('active', open);
+        drawerBackdrop?.classList.toggle('show',
+          open || graphFilters?.classList.contains('show'));
+        document.body.style.overflow = (open && window.innerWidth <= 768) ? 'hidden' : '';
+      };
+      window.closeMobileSheets = () => { setDrawer(false); setSageSheet(false); };
       if (fabFilters && graphFilters) {
         fabFilters.addEventListener('click', () => {
-          document.getElementById('sidebar')?.classList.remove('active');
-          graphFilters.classList.toggle('show');
+          setSageSheet(false);
+          setDrawer(!graphFilters.classList.contains('show'));
         });
       }
       if (fabSages) {
         fabSages.addEventListener('click', () => {
-          graphFilters?.classList.remove('show');
+          setDrawer(false);
           const sb = document.getElementById('sidebar');
           if (!sb) return;
           const opening = !sb.classList.contains('active');
-          sb.classList.toggle('active');
+          setSageSheet(opening);
           if (opening && window.buildSageList &&
               !(window.sageNetwork && window.sageNetwork.selectedNodeId)) {
             const f = window.filterState?.filteredSages;
@@ -3268,11 +3355,20 @@
           }
         });
       }
+      document.getElementById('closeFiltersDrawer')?.addEventListener('click', () => setDrawer(false));
+      document.getElementById('applyFiltersBtn')?.addEventListener('click', () => {
+        window.applyCombinedFilters?.();
+        window.closeMobileSheets();
+      });
+      drawerBackdrop?.addEventListener('click', window.closeMobileSheets);
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') window.closeMobileSheets();
+      });
       // Applying a filter from the bottom sheet closes it (see the result immediately)
       if (graphFilters) {
         graphFilters.querySelectorAll('select').forEach(sel => {
           sel.addEventListener('change', () => {
-            if (window.innerWidth <= 768) graphFilters.classList.remove('show');
+            if (window.innerWidth <= 768) setDrawer(false);
           });
         });
       }
