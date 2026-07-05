@@ -17,21 +17,48 @@ export async function fetchSages(): Promise<Sage[]> {
     return []
   }
 
-  return (data ?? []).map((row: Record<string, unknown>) => ({
+  return (data ?? []).map((row: Record<string, unknown>) => mapSageRow(row))
+}
+
+function mapSageRow(row: Record<string, unknown>): Sage {
+  // DB may use either old names (location/field/bio) or new names (region/primary_field/summary)
+  const location = (row.location ?? row.region) as string | undefined
+  const field    = (row.field ?? row.primary_field) as string | undefined
+  const bio      = (row.bio ?? row.summary) as string | undefined
+  const eraRaw   = (row.era ?? row.period ?? row.era_key) as string | undefined
+
+  // Normalise era key to match Period type
+  const ERA_MAP: Record<string, string> = {
+    'Second Temple': 'second-temple', 'Tannaim': 'tannaim', 'Amoraim': 'amoraim',
+    'Geonim': 'geonim', 'Rishonim': 'rishonim', 'Acharonim': 'acharonim', 'Modern': 'modern',
+  }
+  const period = (ERA_MAP[eraRaw ?? ''] ?? eraRaw ?? 'modern') as Sage['period']
+
+  // Tags: may be comma-separated string or array
+  let tags: string[] | undefined
+  if (Array.isArray(row.tags)) {
+    tags = row.tags as string[]
+  } else if (typeof row.tags === 'string' && row.tags) {
+    tags = row.tags.split(',').map(t => t.trim()).filter(Boolean)
+  }
+
+  return {
     id:           String(row.id ?? ''),
     label:        String(row.label ?? row.name_he ?? ''),
     name_en:      row.name_en ? String(row.name_en) : undefined,
-    period:       (row.era ?? row.period) as Sage['period'],
-    location:     row.location ? String(row.location) : undefined,
-    field:        row.field   ? String(row.field)    : undefined,
-    bio:          row.bio     ? String(row.bio)      : undefined,
+    period,
+    location:     location || undefined,
+    region:       (row.region_key ?? row.region) as Sage['region'] | undefined,
+    field:        field || undefined,
+    bio:          bio || undefined,
     core_concept: row.core_concept ? String(row.core_concept) : undefined,
     birth_year:   row.birth_year  ? Number(row.birth_year)   : undefined,
     death_year:   row.death_year  ? Number(row.death_year)   : undefined,
-    tags:         Array.isArray(row.tags) ? (row.tags as string[]) : undefined,
+    tags,
     migration_path: row.migration_path as Sage['migration_path'] ?? undefined,
     coordinates:    row.coordinates as Sage['coordinates'] ?? undefined,
-  }))
+    spotify_url:    row.spotify_url ? String(row.spotify_url) : undefined,
+  }
 }
 
 export async function fetchConnections(): Promise<Connection[]> {
@@ -61,23 +88,7 @@ export async function fetchSageById(id: string): Promise<Sage | null> {
     .single()
 
   if (error || !data) return null
-
-  const row = data as Record<string, unknown>
-  return {
-    id:           String(row.id ?? ''),
-    label:        String(row.label ?? row.name_he ?? ''),
-    name_en:      row.name_en ? String(row.name_en) : undefined,
-    period:       (row.era ?? row.period) as Sage['period'],
-    location:     row.location ? String(row.location) : undefined,
-    field:        row.field    ? String(row.field)    : undefined,
-    bio:          row.bio      ? String(row.bio)      : undefined,
-    core_concept: row.core_concept ? String(row.core_concept) : undefined,
-    birth_year:   row.birth_year  ? Number(row.birth_year)   : undefined,
-    death_year:   row.death_year  ? Number(row.death_year)   : undefined,
-    tags:         Array.isArray(row.tags) ? (row.tags as string[]) : undefined,
-    migration_path: row.migration_path as Sage['migration_path'] ?? undefined,
-    coordinates:    row.coordinates as Sage['coordinates'] ?? undefined,
-  }
+  return mapSageRow(data as Record<string, unknown>)
 }
 
 export async function searchSages(query: string, limit = 10): Promise<Sage[]> {

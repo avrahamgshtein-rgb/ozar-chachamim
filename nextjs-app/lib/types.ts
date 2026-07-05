@@ -54,6 +54,7 @@ export interface Sage {
   tags?: string[]
   migration_path?: MigrationPath
   coordinates?: { lat: number; lng: number }
+  spotify_url?: string
 }
 
 export interface Connection {

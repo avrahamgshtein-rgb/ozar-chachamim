@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { ERA_COLORS } from '@/lib/types'
 import { useAppStore } from '@/store/useAppStore'
 import type { Locale, Sage } from '@/lib/types'
@@ -238,8 +238,9 @@ interface GeoMapProps {
 export function GeoMap({ locale }: GeoMapProps) {
   const mapRef     = useRef<HTMLDivElement>(null)
   const mapObjRef  = useRef<import('leaflet').Map | null>(null)
+  const [showLinks, setShowLinks] = useState(false)
 
-  const { sages, filteredSages, selectedSageId, selectSage } = useAppStore()
+  const { sages, filteredSages, selectedSageId, selectSage, connections } = useAppStore()
 
   useEffect(() => {
     if (!mapRef.current || !sages.length) return
@@ -376,8 +377,17 @@ export function GeoMap({ locale }: GeoMapProps) {
         })
       })
 
-      // ── Store markerRefs on map for filter updates ───────────
+      // ── Build coordsById for connection lines ────────────────
+      const coordsById = new Map<string, { lat: number; lng: number }>()
+      sages.forEach(sage => {
+        const c = resolveCoords(sage)
+        if (c) coordsById.set(sage.id, c)
+      })
+
+      // Store refs for later
       ;(map as any)._sageMarkers = markerRefs
+      ;(map as any)._coordsById  = coordsById
+      ;(map as any)._linkLayer   = null
     })
 
     return () => {
@@ -385,6 +395,45 @@ export function GeoMap({ locale }: GeoMapProps) {
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sages.length])
+
+  // ── Connection lines layer toggle ───────────────────────────
+  useEffect(() => {
+    const map = mapObjRef.current as any
+    if (!map) return
+
+    // Remove existing link layer
+    if (map._linkLayer) {
+      map._linkLayer.remove()
+      map._linkLayer = null
+    }
+    if (!showLinks || !map._coordsById) return
+
+    import('leaflet').then(L => {
+      const sageMap = new Map<string, Sage>(sages.map(s => [s.id, s]))
+      const coordsById: Map<string, { lat: number; lng: number }> = map._coordsById
+      const group = L.layerGroup().addTo(map)
+      map._linkLayer = group
+
+      const drawn = new Set<string>()
+      connections
+        .filter(c => c.type === 'teacher' || c.type === 'student' || c.type === 'colleague')
+        .forEach(conn => {
+          const key = [conn.source, conn.target].sort().join('|')
+          if (drawn.has(key)) return
+          const a = coordsById.get(conn.source)
+          const b = coordsById.get(conn.target)
+          if (!a || !b) return
+          drawn.add(key)
+          const sage = sageMap.get(conn.source)
+          const color = ERA_COLORS[sage?.period ?? 'modern'] ?? '#c9973a'
+          L.polyline(
+            [[a.lat, a.lng], [b.lat, b.lng]],
+            { color, weight: 1.2, opacity: 0.35, dashArray: conn.type === 'colleague' ? '4,4' : undefined }
+          ).addTo(group)
+        })
+    })
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [showLinks, connections.length, sages.length])
 
   // ── Sync filter (dim non-matching markers) ───────────────────
   useEffect(() => {
@@ -424,6 +473,25 @@ export function GeoMap({ locale }: GeoMapProps) {
   return (
     <div className="relative w-full h-full">
       <div ref={mapRef} className="absolute inset-0" />
+
+      {/* Connection lines toggle */}
+      <div className="absolute top-4 end-4 z-20">
+        <button
+          onClick={() => setShowLinks(v => !v)}
+          className={cn(
+            'flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-sans border transition-all shadow-glass',
+            showLinks
+              ? 'bg-gold-500/20 border-gold-500/50 text-gold-300'
+              : 'glass border-ink-700/50 text-ink-400 hover:text-ink-200',
+          )}
+        >
+          <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+              d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+          </svg>
+          {locale === 'he' ? 'קשרים' : 'Connections'}
+        </button>
+      </div>
 
       {!sages.length && (
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
