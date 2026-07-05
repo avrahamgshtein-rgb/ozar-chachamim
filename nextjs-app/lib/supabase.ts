@@ -159,3 +159,38 @@ export async function fetchSageStats(): Promise<{ total: number; lastUpdate: str
     lastUpdate: new Date().toLocaleDateString('he-IL'),
   }
 }
+
+
+// ── Local fallback: /data.json — the canonical curated dataset (363 sages,
+// 450 typed connections). Used when Supabase is missing/behind, so the
+// Next.js graph always matches the classic site and Vercel. ──────────────
+export async function fetchLocalGraphData(): Promise<{ sages: Sage[]; connections: Connection[] }> {
+  try {
+    const res = await fetch('/data.json')
+    if (!res.ok) throw new Error(`HTTP ${res.status}`)
+    const d = await res.json()
+    const sages: Sage[] = (d.nodes ?? []).map((n: Record<string, unknown>) => ({
+      id:           String(n.id ?? ''),
+      label:        String(n.label ?? ''),
+      period:       ((n.era_key as string) || 'modern') as Sage['period'],
+      location:     (n.location as string) || undefined,
+      field:        (n.field as string) || undefined,
+      bio:          (n.bio as string) || undefined,
+      core_concept: (n.central_idea as string) || undefined,
+      tags: typeof n.tags === 'string' && n.tags
+        ? (n.tags as string).split(',').map(t => t.trim()).filter(Boolean)
+        : undefined,
+      spotify_url:  (n.spotify_url as string) || undefined,
+    }))
+    const connections: Connection[] = (d.links ?? []).map((l: Record<string, unknown>) => ({
+      source: String(l.source ?? ''),
+      target: String(l.target ?? ''),
+      type:   ((l.type as string) || 'colleague') as Connection['type'],
+    }))
+    console.log(`[Fallback] ✅ data.json: ${sages.length} sages, ${connections.length} connections`)
+    return { sages, connections }
+  } catch (e) {
+    console.error('[Fallback] data.json failed:', e)
+    return { sages: [], connections: [] }
+  }
+}

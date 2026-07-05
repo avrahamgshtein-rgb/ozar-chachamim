@@ -27,6 +27,7 @@ export type ConnectionType =
   | 'oppose'
   | 'predecessor'
   | 'contemporary'
+  | 'family'
 
 export type Locale = 'he' | 'en'
 
@@ -102,6 +103,7 @@ export const CONNECTION_LABELS: Record<ConnectionType, { he: string; en: string 
   oppose:       { he: 'פולמוס',  en: 'Opponent'       },
   predecessor:  { he: 'קודם',    en: 'Predecessor'    },
   contemporary: { he: 'בן דור',  en: 'Contemporary'   },
+  family:       { he: 'משפחה',   en: 'Family'         },
 }
 
 export const ERA_COLORS: Record<Period, string> = {

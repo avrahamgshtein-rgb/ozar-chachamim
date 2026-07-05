@@ -62,6 +62,24 @@ const LOCATION_REGION_MAP: Array<[string, Region]> = [
   ['פולין',   'east-europe'],  ['ליטא',      'east-europe'],  ['וילנה',  'east-europe'],
   ['קרקוב',   'east-europe'],  ['לובלין',    'east-europe'],  ['רוסיה',  'east-europe'],
   ['Poland',  'east-europe'],  ['Lithuania', 'east-europe'],  ['Vilna',  'east-europe'],
+  // הרחבה — מילות מפתח נוספות (תואם למסווג של האתר הקלאסי)
+  ['אשכנז','ashkenaz'], ['וינה','ashkenaz'], ['פראג','ashkenaz'], ['רגנשבורג','ashkenaz'],
+  ['וורמס','ashkenaz'], ['נוישטט','ashkenaz'], ['מגנצא','ashkenaz'], ['אוסטריה','ashkenaz'], ['בוהמי','ashkenaz'],
+  ['גליציה','east-europe'], ['הונגרי','east-europe'], ['ורשה','east-europe'], ['בריסק','east-europe'],
+  ['נובהרדוק','east-europe'], ['סלבודקה','east-europe'], ['וולוז','east-europe'], ['סוכטשוב','east-europe'], ['סלונים','east-europe'],
+  ['ויטרי','tsarfat'], ['שמפנ','tsarfat'],
+  ['נרבונה','provence'], ['מונפליה','provence'], ['פרובאנס','provence'],
+  ['פורטוגל','sefarad'], ['קטלוני','sefarad'], ['ברצלונה','sefarad'], ['גירונה','sefarad'],
+  ['סרגוסה','sefarad'], ['אנדלוסי','sefarad'], ['ליסבון','sefarad'], ['אליסנה','sefarad'],
+  ['לוסנה','sefarad'], ['גיברלטר','sefarad'], ['קסטילי','sefarad'],
+  ['ונצי','italy'], ['ליוורנו','italy'], ['פדובה','italy'], ['מנטובה','italy'], ['טראני','italy'], ['לונטשיץ','italy'],
+  ['אלג','north-africa'], ['תוניס','north-africa'], ['לוב','north-africa'], ['טריפולי','north-africa'],
+  ['פאס','north-africa'], ['תלמסאן','north-africa'], ['מגרב','north-africa'], ['קירואן','north-africa'], ['אלכסנדרי','north-africa'],
+  ['בגדאד','mizrach'], ['עיראק','mizrach'], ['תימן','mizrach'], ['סוריה','mizrach'], ['דמשק','mizrach'],
+  ['חלב','mizrach'], ['טורקי','mizrach'], ['איזמיר','mizrach'], ['קושטא','mizrach'], ['סלוניקי','mizrach'],
+  ['יוון','mizrach'], ['נהרדעא','mizrach'], ['פומבדית','mizrach'],
+  ['חברון','eretz-israel'], ['עכו','eretz-israel'], ['יבנה','eretz-israel'], ['שילה','eretz-israel'],
+  ['גליל','eretz-israel'], ['נתיבות','eretz-israel'], ['בני ברק','eretz-israel'], ['עזה','eretz-israel'], ['ישראל','eretz-israel'],
 ]
 
 function locationToRegion(loc: string | undefined): Region | null {
@@ -70,6 +88,22 @@ function locationToRegion(loc: string | undefined): Region | null {
     if (loc.includes(kw)) return region
   }
   return null
+}
+
+// Ordered, unique region list from a free-text location
+// ("צפת; מצרים" → ['eretz-israel','north-africa']) — powers two-tone migrants
+function regionsOf(loc: string | undefined): Region[] {
+  if (!loc) return []
+  const hits: Array<{ r: Region; i: number }> = []
+  for (const [kw, region] of LOCATION_REGION_MAP) {
+    const i = loc.indexOf(kw)
+    if (i >= 0) hits.push({ r: region, i })
+  }
+  hits.sort((a, b) => a.i - b.i)
+  const seen = new Set<Region>()
+  const out: Region[] = []
+  for (const h of hits) if (!seen.has(h.r)) { seen.add(h.r); out.push(h.r) }
+  return out
 }
 
 function nodeColor(d: any, mode: ColorMode): string {
@@ -91,10 +125,10 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
   const nodeSelRef    = useRef<import('d3').Selection<any, any, any, any> | null>(null)
   const linkSelRef    = useRef<import('d3').Selection<any, any, any, any> | null>(null)
   const labelSelRef   = useRef<import('d3').Selection<any, any, any, any> | null>(null)
-  const colorModeRef  = useRef<ColorMode>('era')
+  const colorModeRef  = useRef<ColorMode>('region')
   const tooltipRef    = useRef<HTMLDivElement | null>(null)
 
-  const [colorMode, setColorMode] = useState<ColorMode>('era')
+  const [colorMode, setColorMode] = useState<ColorMode>('region')
   const [showPathFinder, setShowPathFinder] = useState(false)
 
   const { sages, connections, selectSage, filteredSages, selectedSageId } = useAppStore()
@@ -147,21 +181,25 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
           .attr('opacity', 0.8)
       })
       sages.forEach(sage => {
-        if (!sage.migration_path) return
-        const fromR = locationToRegion(sage.migration_path.from)
-        const toR   = locationToRegion(sage.migration_path.to)
-        if (!fromR && !toR) return
-        const eraFallback = ERA_COLORS[sage.period as Period] ?? '#7a6550'
-        const c0 = fromR ? REGION_COLORS[fromR] : eraFallback
-        const c1 = toR   ? REGION_COLORS[toR]   : c0
+        // דו-צבעי: migration_path אם קיים, אחרת אזורים מתוך טקסט המיקום
+        let fromR = sage.migration_path ? locationToRegion(sage.migration_path.from) : null
+        let toR   = sage.migration_path ? locationToRegion(sage.migration_path.to)   : null
+        if (!fromR || !toR || fromR === toR) {
+          const regs = regionsOf(sage.location)
+          if (regs.length >= 2) { fromR = regs[0]; toR = regs[regs.length - 1] }
+        }
+        if (!fromR || !toR || fromR === toR) return
+        const c0 = REGION_COLORS[fromR]
+        const c1 = REGION_COLORS[toR]
 
         const grad = defs.append('linearGradient')
           .attr('id', gradId(sage.id))
           .attr('gradientUnits', 'objectBoundingBox')
           .attr('x1', '0').attr('y1', '0')
           .attr('x2', '0').attr('y2', '1')
-        grad.append('stop').attr('offset', '0%').attr('stop-color', c0)
-        grad.append('stop').attr('offset', '100%').attr('stop-color', c1)
+        // 50/50 hard split — מוצא למעלה, יעד למטה (כמו בטבלה המודפסת)
+        grad.append('stop').attr('offset', '50%').attr('stop-color', c0)
+        grad.append('stop').attr('offset', '50%').attr('stop-color', c1)
       })
 
       const g = svg.append('g')
@@ -278,13 +316,17 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
       linkSelRef.current = link
 
       // Color fill helper (reads from colorModeRef so no rebuild needed on toggle)
-      const fillOf = (d: any) => {
-        const mode = colorModeRef.current
-        if (mode === 'region' && d.migration_path) {
+      const isMigrant = (d: any): boolean => {
+        if (d.migration_path) {
           const fromR = locationToRegion(d.migration_path.from)
           const toR   = locationToRegion(d.migration_path.to)
-          if ((fromR || toR) && fromR !== toR) return `url(#${gradId(d.id)})`
+          if (fromR && toR && fromR !== toR) return true
         }
+        return regionsOf(d.location).length >= 2
+      }
+      const fillOf = (d: any) => {
+        const mode = colorModeRef.current
+        if (mode === 'region' && isMigrant(d)) return `url(#${gradId(d.id)})`
         return nodeColor(d, mode)
       }
 
@@ -447,10 +489,13 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
     if (!nodeSelRef.current) return
     nodeSelRef.current.transition().duration(400)
       .attr('fill', (d: any) => {
-        if (colorMode === 'region' && d.migration_path) {
-          const fromR = locationToRegion(d.migration_path.from)
-          const toR   = locationToRegion(d.migration_path.to)
-          if ((fromR || toR) && fromR !== toR) return `url(#${gradId(d.id)})`
+        if (colorMode === 'region') {
+          const mig = d.migration_path
+          const fromR = mig ? locationToRegion(mig.from) : null
+          const toR   = mig ? locationToRegion(mig.to)   : null
+          if ((fromR && toR && fromR !== toR) || regionsOf(d.location).length >= 2) {
+            return `url(#${gradId(d.id)})`
+          }
         }
         return nodeColor(d, colorMode)
       })

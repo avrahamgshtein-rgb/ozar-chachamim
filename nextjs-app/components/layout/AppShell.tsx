@@ -12,7 +12,7 @@ import { SageCard } from '@/components/sages/SageCard'
 import { SageFilters } from '@/components/sages/SageFilters'
 import { Comparator } from '@/components/viz/Comparator'
 import { useAppStore } from '@/store/useAppStore'
-import { fetchSages, fetchConnections } from '@/lib/supabase'
+import { fetchSages, fetchConnections, fetchLocalGraphData } from '@/lib/supabase'
 import type { Locale } from '@/lib/types'
 
 // Dynamic imports — browser-only visualization libraries
@@ -70,10 +70,20 @@ export function AppShell({ locale, initialTotal, initialLastUpdate }: AppShellPr
   useEffect(() => {
     setData([], [], initialTotal, initialLastUpdate)
     ;(async () => {
-      const [sages, connections] = await Promise.all([
+      let [sages, connections] = await Promise.all([
         fetchSages(),
         fetchConnections(),
       ])
+      // Supabase still carries the old sparse connection set — fall back to
+      // the canonical data.json whenever it is richer (keeps parity with Vercel)
+      if (connections.length < 100 || sages.length < 300) {
+        const local = await fetchLocalGraphData()
+        if (local.connections.length > connections.length) {
+          sages = local.sages
+          connections = local.connections
+          console.log('[AppShell] ↪ using data.json fallback (richer dataset)')
+        }
+      }
       setData(sages, connections, sages.length, initialLastUpdate)
       console.log(`[AppShell] ✅ ${sages.length} sages, ${connections.length} connections`)
     })()
