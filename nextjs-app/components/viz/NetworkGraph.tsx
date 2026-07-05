@@ -1,0 +1,711 @@
+'use client'
+
+import { useEffect, useRef, useState } from 'react'
+import { cn } from '@/lib/utils'
+import { ERA_COLORS, ERA_LABELS, REGION_COLORS, REGION_LABELS, CONNECTION_LABELS } from '@/lib/types'
+import { useAppStore } from '@/store/useAppStore'
+import { PathFinder } from '@/components/viz/PathFinder'
+import type { Locale, Period, Region } from '@/lib/types'
+
+type ColorMode = 'era' | 'region'
+
+const CONNECTION_COLORS: Record<string, string> = {
+  student:      '#3b82f6',
+  teacher:      '#3b82f6',
+  influence:    '#f59e0b',
+  colleague:    '#22c55e',
+  oppose:       '#ef4444',
+  family:       '#a855f7',
+  contemporary: '#14b8a6',
+  predecessor:  '#64748b',
+}
+
+const CONNECTION_DASH: Record<string, string | null> = {
+  student:      null,
+  teacher:      null,
+  influence:    '7,4',
+  colleague:    '3,4',
+  oppose:       '3,3',
+  contemporary: '2,4',
+  predecessor:  null,
+}
+
+const ERA_ORDER: Record<string, number> = {
+  'second-temple': 0, tannaim: 1, amoraim: 2, geonim: 3,
+  rishonim: 4, acharonim: 5, modern: 6,
+}
+
+// Keyword → region mapping (first match wins)
+const LOCATION_REGION_MAP: Array<[string, Region]> = [
+  ['ירושלים', 'eretz-israel'], ['צפת',       'eretz-israel'], ['טבריה',  'eretz-israel'],
+  ['ארץ ישראל','eretz-israel'], ['Israel',    'eretz-israel'], ['Jerusalem','eretz-israel'],
+  ['Safed',   'eretz-israel'], ['Tiberias',  'eretz-israel'], ['Acre',   'eretz-israel'],
+  ['בבל',     'mizrach'],      ['בגדד',      'mizrach'],      ['פומבדיתא','mizrach'],
+  ['סורא',    'mizrach'],      ['Babylon',   'mizrach'],      ['Iraq',   'mizrach'],
+  ['פרס',     'mizrach'],      ['Persia',    'mizrach'],      ['Baghdad','mizrach'],
+  ['ספרד',    'sefarad'],      ['קורדובה',   'sefarad'],      ['טולדו',  'sefarad'],
+  ['גרנדה',   'sefarad'],      ['Spain',     'sefarad'],      ['Cordoba','sefarad'],
+  ['Toledo',  'sefarad'],      ['Seville',   'sefarad'],
+  ['גרמניה',  'ashkenaz'],     ['ורמייזא',   'ashkenaz'],     ['מיינץ',  'ashkenaz'],
+  ['שפירא',   'ashkenaz'],     ['Germany',   'ashkenaz'],     ['Worms',  'ashkenaz'],
+  ['Mainz',   'ashkenaz'],     ['Austria',   'ashkenaz'],
+  ['צרפת',    'tsarfat'],      ['פריז',      'tsarfat'],      ['טרואה',  'tsarfat'],
+  ['France',  'tsarfat'],      ['Paris',     'tsarfat'],      ['Troyes', 'tsarfat'],
+  ['פרובנס',  'provence'],     ['לוניל',     'provence'],     ['מרסיי',  'provence'],
+  ['Provence','provence'],     ['Lunel',     'provence'],
+  ['איטליה',  'italy'],        ['רומא',      'italy'],        ['ונציה',  'italy'],
+  ['פדובה',   'italy'],        ['Italy',     'italy'],        ['Rome',   'italy'],
+  ['Venice',  'italy'],        ['Padua',     'italy'],
+  ['מרוקו',   'north-africa'], ['מצרים',     'north-africa'], ['תוניסיה','north-africa'],
+  ['פס',      'north-africa'], ['קהיר',      'north-africa'], ['Egypt',  'north-africa'],
+  ['Morocco', 'north-africa'], ['Cairo',     'north-africa'], ['Fez',    'north-africa'],
+  ['פולין',   'east-europe'],  ['ליטא',      'east-europe'],  ['וילנה',  'east-europe'],
+  ['קרקוב',   'east-europe'],  ['לובלין',    'east-europe'],  ['רוסיה',  'east-europe'],
+  ['Poland',  'east-europe'],  ['Lithuania', 'east-europe'],  ['Vilna',  'east-europe'],
+]
+
+function locationToRegion(loc: string | undefined): Region | null {
+  if (!loc) return null
+  for (const [kw, region] of LOCATION_REGION_MAP) {
+    if (loc.includes(kw)) return region
+  }
+  return null
+}
+
+function nodeColor(d: any, mode: ColorMode): string {
+  const eraColor = ERA_COLORS[d.period as Period] ?? '#7a6550'
+  if (mode === 'era') return eraColor
+  const region: Region | null = d.region ?? locationToRegion(d.location)
+  return (region && REGION_COLORS[region]) ? REGION_COLORS[region] : eraColor
+}
+
+function gradId(id: string) { return `grad-mig-${id}` }
+
+interface NetworkGraphProps { locale: Locale }
+
+export function NetworkGraph({ locale }: NetworkGraphProps) {
+  const containerRef  = useRef<HTMLDivElement>(null)
+  const svgElRef      = useRef<SVGSVGElement | null>(null)
+  const simRef        = useRef<import('d3').Simulation<any, any> | null>(null)
+  const zoomRef       = useRef<import('d3').ZoomBehavior<SVGSVGElement, unknown> | null>(null)
+  const nodeSelRef    = useRef<import('d3').Selection<any, any, any, any> | null>(null)
+  const linkSelRef    = useRef<import('d3').Selection<any, any, any, any> | null>(null)
+  const labelSelRef   = useRef<import('d3').Selection<any, any, any, any> | null>(null)
+  const colorModeRef  = useRef<ColorMode>('era')
+  const tooltipRef    = useRef<HTMLDivElement | null>(null)
+
+  const [colorMode, setColorMode] = useState<ColorMode>('era')
+  const [showPathFinder, setShowPathFinder] = useState(false)
+
+  const { sages, connections, selectSage, filteredSages, selectedSageId } = useAppStore()
+
+  // Mirror state → ref so D3 closures always read the latest value
+  useEffect(() => { colorModeRef.current = colorMode }, [colorMode])
+
+  // ── Build graph ──────────────────────────────────────────────────────────
+  useEffect(() => {
+    if (!sages.length || !containerRef.current) return
+    let mounted = true
+
+    async function build() {
+      const d3 = await import('d3')
+      if (!mounted || !containerRef.current) return
+
+      const container = containerRef.current
+      const W = container.clientWidth  || 800
+      const H = container.clientHeight || 600
+
+      d3.select(container).selectAll('svg').remove()
+      simRef.current?.stop()
+
+      const svg = d3.select(container)
+        .append('svg')
+        .attr('width', '100%')
+        .attr('height', '100%')
+        .style('background', 'transparent')
+
+      svgElRef.current = svg.node()
+
+      // ── SVG defs: arrowheads + gradients ────────────────────────────────
+      const defs = svg.append('defs')
+
+      // Arrowhead marker for directed links (teacher→student, predecessor)
+      const arrowTypes = ['student', 'teacher', 'predecessor'] as const
+      arrowTypes.forEach(type => {
+        const color = CONNECTION_COLORS[type] || '#5a4a38'
+        defs.append('marker')
+          .attr('id',          `arrow-${type}`)
+          .attr('viewBox',     '0 -5 10 10')
+          .attr('refX',        14)
+          .attr('refY',        0)
+          .attr('markerWidth', 6)
+          .attr('markerHeight',6)
+          .attr('orient',      'auto')
+          .append('path')
+          .attr('d',    'M0,-5L10,0L0,5')
+          .attr('fill', color)
+          .attr('opacity', 0.8)
+      })
+      sages.forEach(sage => {
+        if (!sage.migration_path) return
+        const fromR = locationToRegion(sage.migration_path.from)
+        const toR   = locationToRegion(sage.migration_path.to)
+        if (!fromR && !toR) return
+        const eraFallback = ERA_COLORS[sage.period as Period] ?? '#7a6550'
+        const c0 = fromR ? REGION_COLORS[fromR] : eraFallback
+        const c1 = toR   ? REGION_COLORS[toR]   : c0
+
+        const grad = defs.append('linearGradient')
+          .attr('id', gradId(sage.id))
+          .attr('gradientUnits', 'objectBoundingBox')
+          .attr('x1', '0').attr('y1', '0')
+          .attr('x2', '0').attr('y2', '1')
+        grad.append('stop').attr('offset', '0%').attr('stop-color', c0)
+        grad.append('stop').attr('offset', '100%').attr('stop-color', c1)
+      })
+
+      const g = svg.append('g')
+
+      // ── Historical event bars (static, behind links/nodes) ───────────────
+      const ERA_RANGES_EV: Record<string, [number, number]> = {
+        'second-temple': [-350, 70], tannaim: [70, 220], amoraim: [220, 500],
+        geonim: [500, 1038], rishonim: [1038, 1492], acharonim: [1492, 1810], modern: [1810, 2030],
+      }
+      const ERAS_EV = ['second-temple','tannaim','amoraim','geonim','rishonim','acharonim','modern']
+      const HIST_EVENTS = [
+        { year: 70,   label: 'חורבן בית שני' },
+        { year: 1096, label: 'מסעי הצלב' },
+        { year: 1242, label: 'שריפת התלמוד' },
+        { year: 1348, label: 'מגפה שחורה' },
+        { year: 1492, label: 'גירוש ספרד' },
+        { year: 1648, label: 'ת"ח ות"ט' },
+        { year: 1939, label: 'השואה' },
+      ]
+      const eraXOf = (k: string) => (W * 0.05) + (ERA_ORDER[k] ?? 3) * (W * 0.9 / 6)
+      const evBarsG = g.append('g').attr('pointer-events', 'none')
+      HIST_EVENTS.forEach((ev, idx) => {
+        const era = ERAS_EV.find(k => { const [s,e] = ERA_RANGES_EV[k]; return ev.year >= s && ev.year < e })
+        if (!era) return
+        const i  = ERAS_EV.indexOf(era)
+        const [es, ee] = ERA_RANGES_EV[era]
+        const f  = (ev.year - es) / (ee - es)
+        const x0 = eraXOf(era)
+        const x1 = ERAS_EV[i + 1] ? eraXOf(ERAS_EV[i + 1]) : x0 + W * 0.15
+        const x  = x0 + f * (x1 - x0)
+        const row = idx % 4
+        const ly  = 16 + row * 14
+
+        evBarsG.append('rect').attr('x', x - 1.5).attr('y', 0)
+          .attr('width', 3).attr('height', H).attr('rx', 1.5)
+          .attr('fill', '#e53935').attr('opacity', 0.10)
+        evBarsG.append('line')
+          .attr('x1', x).attr('y1', ly + 2).attr('x2', x).attr('y2', 56)
+          .attr('stroke', '#e57373').attr('stroke-width', 1).attr('opacity', 0.4)
+        evBarsG.append('text').attr('x', x).attr('y', ly)
+          .attr('text-anchor', 'middle')
+          .attr('font-family', 'Heebo, sans-serif')
+          .attr('font-size', '8px').attr('font-weight', '700')
+          .attr('fill', '#c62828')
+          .attr('stroke', '#0a0806').attr('stroke-width', 2.5).attr('paint-order', 'stroke')
+          .text(ev.label)
+      })
+
+      const zoom = d3.zoom<SVGSVGElement, unknown>()
+        .scaleExtent([0.05, 4])
+        .on('zoom', ev => g.attr('transform', ev.transform))
+      svg.call(zoom)
+      zoomRef.current = zoom
+
+      // ── Data prep ────────────────────────────────────────────────────────
+      const nodes = sages.map(s => ({ ...s, degree: 0 }))
+      const nodeById = new Map(nodes.map(n => [n.id, n]))
+
+      const sortedLinks = [...connections].sort((a, b) => {
+        const score = (t: string) =>
+          t === 'student' || t === 'teacher' ? 3 :
+          t === 'influence' || t === 'colleague' ? 2 : 1
+        return score(b.type) - score(a.type)
+      }).slice(0, 400)
+
+      sortedLinks.forEach(l => {
+        const s = nodeById.get(l.source); if (s) s.degree++
+        const t = nodeById.get(l.target); if (t) t.degree++
+      })
+
+      const links = sortedLinks
+        .filter(l => nodeById.has(l.source) && nodeById.has(l.target))
+        .map(l => ({ ...l }))
+
+      const adj = new Map<string, Set<string>>()
+      links.forEach(l => {
+        if (!adj.has(l.source)) adj.set(l.source, new Set())
+        if (!adj.has(l.target)) adj.set(l.target, new Set())
+        adj.get(l.source)!.add(l.target)
+        adj.get(l.target)!.add(l.source)
+      })
+
+      const r = (d: any) => Math.min(22, 5 + Math.sqrt(d.degree || 0) * 2.2)
+
+      const eraX = (period: string) => {
+        const idx = ERA_ORDER[period] ?? 3
+        return (W * 0.05) + idx * (W * 0.9 / 6)
+      }
+
+      // ── Force simulation ─────────────────────────────────────────────────
+      const sim = d3.forceSimulation(nodes as any)
+        .force('link', d3.forceLink(links as any).id((d: any) => d.id).distance(75).strength(0.35))
+        .force('charge', d3.forceManyBody().strength(-120))
+        .force('x', d3.forceX((d: any) => eraX(d.period)).strength(0.14))
+        .force('y', d3.forceY(H / 2).strength(0.05))
+        .force('collide', d3.forceCollide((d: any) => r(d) + 5).strength(0.9))
+
+      simRef.current = sim
+
+      // ── Links ────────────────────────────────────────────────────────────
+      const DIRECTED = new Set(['teacher', 'student', 'predecessor'])
+
+      const linkG = g.append('g').attr('class', 'links')
+      const link  = linkG.selectAll('path')
+        .data(links).join('path')
+        .attr('fill', 'none')
+        .attr('stroke', (d: any) => CONNECTION_COLORS[d.type] || '#5a4a38')
+        .attr('stroke-width', 1.2)
+        .attr('stroke-opacity', 0.22)
+        .attr('stroke-dasharray', (d: any) => CONNECTION_DASH[d.type] || null)
+        .attr('marker-end', (d: any) =>
+          DIRECTED.has(d.type) ? `url(#arrow-${d.type})` : null)
+
+      linkSelRef.current = link
+
+      // Color fill helper (reads from colorModeRef so no rebuild needed on toggle)
+      const fillOf = (d: any) => {
+        const mode = colorModeRef.current
+        if (mode === 'region' && d.migration_path) {
+          const fromR = locationToRegion(d.migration_path.from)
+          const toR   = locationToRegion(d.migration_path.to)
+          if ((fromR || toR) && fromR !== toR) return `url(#${gradId(d.id)})`
+        }
+        return nodeColor(d, mode)
+      }
+
+      // ── Nodes ────────────────────────────────────────────────────────────
+      const nodeG = g.append('g').attr('class', 'nodes')
+      const node  = nodeG.selectAll<SVGCircleElement, any>('circle')
+        .data(nodes).join('circle')
+        .attr('r', r)
+        .attr('fill', fillOf)
+        .attr('stroke', '#0a0806')
+        .attr('stroke-width', 1.5)
+        .attr('fill-opacity', 0.88)
+        .style('cursor', 'pointer')
+
+      nodeSelRef.current = node
+
+      // ── Labels ───────────────────────────────────────────────────────────
+      const labelG = g.append('g').attr('class', 'labels')
+      const label  = labelG.selectAll('text')
+        .data(nodes).join('text')
+        .attr('text-anchor', 'middle')
+        .attr('dy', (d: any) => `-${r(d) + 4}px`)
+        .attr('font-family', 'Heebo, sans-serif')
+        .attr('font-size', '10px')
+        .attr('font-weight', '500')
+        .attr('fill', '#e8d5b0')
+        .attr('stroke', '#0a0806')
+        .attr('stroke-width', 2.5)
+        .attr('paint-order', 'stroke')
+        .attr('pointer-events', 'none')
+        .attr('opacity', 0)
+        .text((d: any) => d.label || '')
+
+      labelSelRef.current = label
+
+      // ── Drag ─────────────────────────────────────────────────────────────
+      const drag = d3.drag<SVGCircleElement, any>()
+        .on('start', (ev, d) => { if (!ev.active) sim.alphaTarget(0.3).restart(); d.fx = d.x; d.fy = d.y })
+        .on('drag',  (ev, d) => { d.fx = ev.x; d.fy = ev.y })
+        .on('end',   (ev, d) => { if (!ev.active) sim.alphaTarget(0); d.fx = null; d.fy = null })
+      node.call(drag as any)
+
+      // ── Hover (Connected Papers style) + tooltip ─────────────────────────
+      const showTooltip = (ev: MouseEvent, d: any) => {
+        const tip = tooltipRef.current
+        if (!tip) return
+        const color  = ERA_COLORS[d.period as Period] ?? '#7a6550'
+        const degree = (adj.get(d.id)?.size ?? 0)
+        const years  = [d.birth_year, d.death_year].filter(Boolean)
+        tip.innerHTML = `
+          <div style="font-family:'Frank Ruhl Libre',serif;font-size:15px;font-weight:700;
+               color:#e8d5b0;margin-bottom:3px;">${d.label ?? ''}</div>
+          ${d.name_en ? `<div style="font-size:11px;color:#9a8570;margin-bottom:5px;">${d.name_en}</div>` : ''}
+          <div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:4px;">
+            <span style="font-size:10px;padding:1px 7px;border-radius:9999px;
+              background:${color}22;color:${color};border:1px solid ${color}44;">
+              ${ERA_LABELS[d.period as Period]?.he ?? d.period}
+            </span>
+            ${degree ? `<span style="font-size:10px;padding:1px 7px;border-radius:9999px;
+              background:rgba(201,151,58,0.15);color:#c9973a;border:1px solid rgba(201,151,58,0.3);">
+              ${degree} קשרים</span>` : ''}
+          </div>
+          ${d.location ? `<div style="font-size:10px;color:#7a6550;">📍 ${d.location}</div>` : ''}
+          ${d.field    ? `<div style="font-size:10px;color:#7a6550;">◈ ${d.field}</div>` : ''}
+          ${years.length ? `<div style="font-size:10px;color:#5a4a38;margin-top:2px;">${years.join(' – ')}</div>` : ''}
+        `
+        tip.style.display = 'block'
+        tip.style.left = `${ev.clientX + 14}px`
+        tip.style.top  = `${ev.clientY - 10}px`
+      }
+
+      const hideTooltip = () => {
+        if (tooltipRef.current) tooltipRef.current.style.display = 'none'
+      }
+
+      node
+        .on('mouseover', (ev: MouseEvent, d: any) => {
+          const nb = adj.get(d.id) || new Set()
+          node.transition().duration(150)
+            .attr('fill-opacity', (n: any) => n.id === d.id || nb.has(n.id) ? 1 : 0.08)
+            .attr('r',            (n: any) => n.id === d.id ? r(n) + 3 : r(n))
+          link.transition().duration(150)
+            .attr('stroke-opacity', (l: any) =>
+              l.source.id === d.id || l.target.id === d.id ? 0.85 : 0.02)
+          label.transition().duration(150)
+            .attr('opacity', (n: any) => n.id === d.id || nb.has(n.id) ? 1 : 0)
+          showTooltip(ev, d)
+        })
+        .on('mousemove', (ev: MouseEvent) => {
+          const tip = tooltipRef.current
+          if (!tip) return
+          tip.style.left = `${ev.clientX + 14}px`
+          tip.style.top  = `${ev.clientY - 10}px`
+        })
+        .on('mouseout', () => {
+          node.transition().duration(300).attr('fill-opacity', 0.88).attr('r', r)
+          link.transition().duration(300).attr('stroke-opacity', 0.22)
+          label.transition().duration(300).attr('opacity', 0)
+          hideTooltip()
+        })
+        .on('click', (ev: MouseEvent, d: any) => {
+          ev.stopPropagation()
+          hideTooltip()
+          const sage = sages.find(s => s.id === d.id)
+          if (sage) selectSage(sage)
+        })
+
+      // ── Tick ─────────────────────────────────────────────────────────────
+      sim.on('tick', () => {
+        link.attr('d', (d: any) => {
+          const sx = d.source.x, sy = d.source.y
+          const tx = d.target.x, ty = d.target.y
+          const mx = (sx + tx) / 2, my = (sy + ty) / 2
+          const dx = tx - sx, dy = ty - sy
+          const dist = Math.sqrt(dx * dx + dy * dy) || 1
+          const ox = -dy / dist * 18
+          const oy =  dx / dist * 18
+          return `M${sx},${sy} Q${mx + ox},${my + oy} ${tx},${ty}`
+        })
+        node.attr('cx', (d: any) => d.x).attr('cy', (d: any) => d.y)
+        label.attr('x', (d: any) => d.x).attr('y', (d: any) => d.y)
+      })
+    }
+
+    build()
+
+    // Zoom-to-fit once after simulation settles (~2s)
+    const fitTimer = setTimeout(() => {
+      if (!mounted || !svgElRef.current || !zoomRef.current || !nodeSelRef.current) return
+      import('d3').then(d3 => {
+        if (!svgElRef.current || !zoomRef.current || !nodeSelRef.current) return
+        const cW = svgElRef.current.clientWidth  || 800
+        const cH = svgElRef.current.clientHeight || 600
+        const pts = nodeSelRef.current.data() as any[]
+        const xs  = pts.map(d => d.x as number).filter(isFinite)
+        const ys  = pts.map(d => d.y as number).filter(isFinite)
+        if (xs.length < 2) return
+        const x0 = Math.min(...xs), x1 = Math.max(...xs)
+        const y0 = Math.min(...ys), y1 = Math.max(...ys)
+        const pad = 60
+        const scale = Math.min(
+          (cW - pad * 2) / Math.max(1, x1 - x0),
+          (cH - pad * 2) / Math.max(1, y1 - y0),
+          1.2,
+        )
+        const tx = cW / 2 - scale * (x0 + x1) / 2
+        const ty = cH / 2 - scale * (y0 + y1) / 2
+        d3.select(svgElRef.current)
+          .transition().duration(800)
+          .call(zoomRef.current.transform, d3.zoomIdentity.translate(tx, ty).scale(scale))
+      })
+    }, 2000)
+
+    return () => { mounted = false; simRef.current?.stop(); clearTimeout(fitTimer) }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [sages.length, connections.length])
+
+  // ── Sync color mode (no graph rebuild) ──────────────────────────────────
+  useEffect(() => {
+    if (!nodeSelRef.current) return
+    nodeSelRef.current.transition().duration(400)
+      .attr('fill', (d: any) => {
+        if (colorMode === 'region' && d.migration_path) {
+          const fromR = locationToRegion(d.migration_path.from)
+          const toR   = locationToRegion(d.migration_path.to)
+          if ((fromR || toR) && fromR !== toR) return `url(#${gradId(d.id)})`
+        }
+        return nodeColor(d, colorMode)
+      })
+  }, [colorMode])
+
+  // ── Sync filter dim + zoom-to-fit ────────────────────────────────────────
+  useEffect(() => {
+    if (!nodeSelRef.current) return
+    const ids      = new Set(filteredSages.map(s => s.id))
+    const noFilter = ids.size === sages.length
+    nodeSelRef.current.transition().duration(250)
+      .attr('fill-opacity', (d: any) => noFilter || ids.has(d.id) ? 0.88 : 0.06)
+
+    // Zoom-to-fit when filter narrows down to a manageable subset
+    if (!noFilter && filteredSages.length > 0 && filteredSages.length < sages.length * 0.5
+        && svgElRef.current && zoomRef.current && nodeSelRef.current) {
+      import('d3').then(d3 => {
+        if (!svgElRef.current || !zoomRef.current || !nodeSelRef.current) return
+        const cW = svgElRef.current.clientWidth  || 800
+        const cH = svgElRef.current.clientHeight || 600
+        const visible = (nodeSelRef.current.data() as any[]).filter(d => ids.has(d.id))
+        const xs = visible.map(d => d.x as number).filter(isFinite)
+        const ys = visible.map(d => d.y as number).filter(isFinite)
+        if (xs.length < 2) return
+        const x0 = Math.min(...xs), x1 = Math.max(...xs)
+        const y0 = Math.min(...ys), y1 = Math.max(...ys)
+        const pad = 80
+        const scale = Math.min(
+          (cW - pad * 2) / Math.max(1, x1 - x0),
+          (cH - pad * 2) / Math.max(1, y1 - y0),
+          3,
+        )
+        const tx = cW / 2 - scale * (x0 + x1) / 2
+        const ty = cH / 2 - scale * (y0 + y1) / 2
+        d3.select(svgElRef.current)
+          .transition().duration(700)
+          .call(zoomRef.current.transform, d3.zoomIdentity.translate(tx, ty).scale(scale))
+      })
+    }
+  }, [filteredSages, sages.length])
+
+  // ── Sync selection ring ──────────────────────────────────────────────────
+  useEffect(() => {
+    if (!nodeSelRef.current) return
+    nodeSelRef.current
+      .attr('stroke',       (d: any) => d.id === selectedSageId ? '#c9973a' : '#0a0806')
+      .attr('stroke-width', (d: any) => d.id === selectedSageId ? 3 : 1.5)
+    labelSelRef.current?.attr('opacity', (d: any) => d.id === selectedSageId ? 1 : 0)
+  }, [selectedSageId])
+
+  const zoomBy = (k: number) => {
+    if (!svgElRef.current || !zoomRef.current) return
+    import('d3').then(d3 =>
+      d3.select(svgElRef.current!).transition().duration(300).call(zoomRef.current!.scaleBy, k))
+  }
+  const zoomReset = () => {
+    if (!svgElRef.current || !zoomRef.current) return
+    import('d3').then(d3 =>
+      d3.select(svgElRef.current!).transition().duration(500).call(zoomRef.current!.transform, d3.zoomIdentity))
+  }
+
+  return (
+    <div className="relative w-full h-full">
+      <div ref={containerRef} className="absolute inset-0" />
+
+      {/* Tooltip — positioned by D3 mouse events */}
+      <div
+        ref={tooltipRef}
+        style={{ display: 'none', position: 'fixed', zIndex: 50, pointerEvents: 'none',
+          maxWidth: 220, padding: '8px 12px',
+          background: 'rgba(15,12,8,0.95)', backdropFilter: 'blur(8px)',
+          border: '1px solid rgba(201,151,58,0.2)', borderRadius: 10,
+          boxShadow: '0 8px 32px rgba(0,0,0,0.6)',
+        }}
+      />
+
+      {!sages.length && (
+        <div className="absolute inset-0 flex items-center justify-center">
+          <p className="text-ink-500 font-sans text-sm animate-pulse">
+            {locale === 'he' ? 'טוען רשת...' : 'Loading network...'}
+          </p>
+        </div>
+      )}
+
+      <GraphLegend locale={locale} colorMode={colorMode} setColorMode={setColorMode} />
+
+      {/* PathFinder panel — top-end corner */}
+      {showPathFinder && (
+        <div className="absolute top-4 end-4 z-20 animate-fade-in">
+          <PathFinder locale={locale} onClose={() => setShowPathFinder(false)} />
+        </div>
+      )}
+
+      {/* Zoom + PathFinder toggle cluster */}
+      <div className="absolute bottom-20 end-4 z-10 flex flex-col gap-1.5">
+        <ZoomBtn onClick={() => zoomBy(1.5)} label="+">+</ZoomBtn>
+        <ZoomBtn onClick={zoomReset} label="⊙">
+          <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+              d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+          </svg>
+        </ZoomBtn>
+        <ZoomBtn onClick={() => zoomBy(0.67)} label="−">−</ZoomBtn>
+        <div className="h-px bg-ink-700/50 my-0.5" />
+        <button
+          onClick={() => setShowPathFinder(p => !p)}
+          aria-label={locale === 'he' ? 'מוצא מסלול' : 'Path Finder'}
+          title={locale === 'he' ? 'מוצא מסלול' : 'Path Finder'}
+          className={cn(
+            'w-8 h-8 rounded-lg text-xs font-mono glass border transition-all',
+            'flex items-center justify-center',
+            showPathFinder
+              ? 'bg-gold-500/20 border-gold-500/50 text-gold-300 shadow-gold-glow'
+              : 'border-ink-600/40 text-ink-300 hover:text-gold-300 hover:border-gold-500/30',
+          )}
+        >
+          <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+              d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  )
+}
+
+// ── Sub-components ───────────────────────────────────────────────────────────
+
+function ZoomBtn({ onClick, children, label }: {
+  onClick: () => void; children: React.ReactNode; label: string
+}) {
+  return (
+    <button onClick={onClick} aria-label={label} className={cn(
+      'w-8 h-8 rounded-lg text-sm font-mono glass border border-ink-600/40',
+      'text-ink-300 hover:text-gold-300 hover:border-gold-500/30',
+      'transition-all flex items-center justify-center',
+    )}>
+      {children}
+    </button>
+  )
+}
+
+const ERAS_LIST: Period[] = [
+  'second-temple', 'tannaim', 'amoraim', 'geonim', 'rishonim', 'acharonim', 'modern',
+]
+const REGIONS_LIST: Region[] = [
+  'eretz-israel', 'sefarad', 'ashkenaz', 'east-europe',
+  'tsarfat', 'provence', 'italy', 'north-africa', 'mizrach', 'other',
+]
+
+function GraphLegend({ locale, colorMode, setColorMode }: {
+  locale: Locale; colorMode: ColorMode; setColorMode: (m: ColorMode) => void
+}) {
+  const isHe = locale === 'he'
+  const [collapsed, setCollapsed] = useState(true)
+
+  return (
+    <div className={cn(
+      'absolute top-4 start-4 z-10',
+      'glass rounded-xl overflow-hidden',
+      'flex flex-col min-w-[140px]',
+    )}>
+      {/* Title bar (always visible) */}
+      <button
+        onClick={() => setCollapsed(c => !c)}
+        className="flex items-center justify-between gap-3 px-3 py-2 text-start hover:bg-ink-700/30 transition-colors"
+      >
+        <span className="text-[10px] font-sans font-semibold uppercase tracking-widest text-ink-400">
+          {isHe ? 'מקרא' : 'Legend'}
+        </span>
+        <span className="text-ink-600 text-xs">{collapsed ? '▸' : '▾'}</span>
+      </button>
+
+      {/* Body */}
+      {!collapsed && (
+        <div className="px-3 pb-3 flex flex-col gap-1.5 max-h-[calc(100vh-160px)] overflow-y-auto">
+          {/* Color mode toggle */}
+          <div className="flex gap-1 bg-ink-800/60 rounded-lg p-0.5 mb-0.5">
+            {(['era', 'region'] as ColorMode[]).map(mode => (
+              <button
+                key={mode}
+                onClick={() => setColorMode(mode)}
+                className={cn(
+                  'flex-1 text-[10px] font-sans font-semibold rounded-md px-2 py-1 transition-all',
+                  colorMode === mode
+                    ? 'bg-gold-500/25 text-gold-300 shadow-inner'
+                    : 'text-ink-500 hover:text-ink-200',
+                )}
+              >
+                {mode === 'era' ? (isHe ? 'תקופה' : 'Era') : (isHe ? 'אזור' : 'Region')}
+              </button>
+            ))}
+          </div>
+
+          {/* Era legend */}
+          {colorMode === 'era' && ERAS_LIST.map(era => (
+            <div key={era} className="flex items-center gap-2">
+              <span className="w-2.5 h-2.5 rounded-full flex-shrink-0" style={{ background: ERA_COLORS[era] }} />
+              <span className="text-[10px] font-sans text-ink-300 whitespace-nowrap">{ERA_LABELS[era]?.[locale]}</span>
+            </div>
+          ))}
+
+          {/* Region legend */}
+          {colorMode === 'region' && (
+            <>
+              {REGIONS_LIST.map(region => (
+                <div key={region} className="flex items-center gap-2">
+                  <span className="w-2.5 h-2.5 rounded-full flex-shrink-0" style={{ background: REGION_COLORS[region] }} />
+                  <span className="text-[10px] font-sans text-ink-300 whitespace-nowrap">{REGION_LABELS[region]?.[locale]}</span>
+                </div>
+              ))}
+              <div className="flex items-center gap-2 border-t border-ink-700/40 pt-1.5 mt-0.5">
+                <span className="w-2.5 h-3.5 rounded-sm flex-shrink-0"
+                  style={{ background: 'linear-gradient(to bottom, #1e88e5 0%, #43a047 100%)' }} />
+                <span className="text-[10px] font-sans text-ink-400 leading-tight">{isHe ? 'חכם נודד' : 'Migrating'}</span>
+              </div>
+            </>
+          )}
+
+          {/* Connection types */}
+          <div className="border-t border-ink-700/40 pt-2 mt-1 space-y-1.5">
+            <p className="text-[9px] font-sans font-semibold uppercase tracking-widest text-ink-600 mb-1">
+              {isHe ? 'סוגי קשרים' : 'Links'}
+            </p>
+            {(Object.entries(CONNECTION_COLORS) as [string, string][])
+              .filter(([k]) => k !== 'family')
+              .map(([type, color]) => {
+                const dash = CONNECTION_DASH[type]
+                const directed = type === 'teacher' || type === 'student' || type === 'predecessor'
+                return (
+                  <div key={type} className="flex items-center gap-2">
+                    <svg width="28" height="10" className="flex-shrink-0" style={{ overflow: 'visible' }}>
+                      <line x1="2" y1="5" x2={directed ? 22 : 26} y2="5"
+                        stroke={color} strokeWidth="1.5" opacity="0.75"
+                        strokeDasharray={dash ?? undefined} />
+                      {directed && <polygon points="22,2.5 27,5 22,7.5" fill={color} opacity="0.75" />}
+                    </svg>
+                    <span className="text-[10px] font-sans text-ink-400 whitespace-nowrap">
+                      {CONNECTION_LABELS[type as keyof typeof CONNECTION_LABELS]?.[locale] ?? type}
+                    </span>
+                  </div>
+                )
+              })}
+            {/* Event bar indicator */}
+            <div className="flex items-center gap-2 border-t border-ink-700/40 pt-1.5 mt-0.5">
+              <svg width="28" height="10" className="flex-shrink-0">
+                <rect x="12" y="0" width="3" height="10" rx="1" fill="#e53935" opacity="0.5" />
+              </svg>
+              <span className="text-[10px] font-sans text-ink-400 whitespace-nowrap">
+                {isHe ? 'אירוע היסטורי' : 'Historical event'}
+              </span>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  )
+}

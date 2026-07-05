@@ -1,0 +1,190 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Design tokens ──────────────────────────────────────────── */
+:root {
+  --ink-950: #07050380;
+  --ink-900: #0a0806;
+  --ink-850: #0f0d0a;
+  --ink-800: #1c1812;
+  --ink-700: #2a2318;
+  --ink-600: #3d3226;
+  --ink-500: #5a4a38;
+  --ink-400: #7a6550;
+  --ink-300: #9a8570;
+  --ink-200: #c4a87d;
+  --ink-100: #e8d5b0;
+  --ink-50:  #f5eed8;
+
+  --gold-600: #a07828;
+  --gold-500: #c9973a;
+  --gold-400: #d9aa4a;
+  --gold-300: #e8b84b;
+
+  --radius: 0.5rem;
+  --header-h: 64px;
+  --tabbar-h: 60px;
+  --drawer-w: 420px;
+}
+
+/* ── Base reset ─────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--ink-900);
+  color: var(--ink-100);
+  font-family: 'Heebo', sans-serif;
+  min-height: 100dvh;
+  overflow: hidden;           /* graph canvas fills viewport */
+}
+
+/* ── Grain texture overlay ──────────────────────────────────── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 128px 128px;
+  opacity: 0.6;
+}
+
+/* ── Typography ─────────────────────────────────────────────── */
+.font-display {
+  font-family: 'Frank Ruhl Libre', Georgia, serif;
+}
+
+h1, h2, h3 {
+  font-family: 'Frank Ruhl Libre', Georgia, serif;
+  line-height: 1.3;
+}
+
+/* ── Glass surface ──────────────────────────────────────────── */
+.glass {
+  background: rgba(26, 20, 14, 0.72);
+  backdrop-filter: blur(16px) saturate(1.4);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+  border: 1px solid rgba(201, 151, 58, 0.12);
+}
+
+.glass-light {
+  background: rgba(42, 35, 24, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(201, 151, 58, 0.1);
+}
+
+/* ── Scrollbar ──────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--ink-600);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-500);
+}
+
+/* ── Era dot ────────────────────────────────────────────────── */
+.era-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ── Gold underline link ────────────────────────────────────── */
+.link-gold {
+  color: var(--gold-400);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.15s;
+}
+.link-gold:hover {
+  border-color: var(--gold-400);
+}
+
+/* ── Focus ring ─────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--gold-500);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ── Graph canvas fills full height ────────────────────────── */
+#graph-canvas,
+#map-canvas,
+.viz-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* ── Animations ─────────────────────────────────────────────── */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slideInEnd {
+  from { transform: translateX(100%); }
+  to   { transform: translateX(0);    }
+}
+
+@keyframes slideInUp {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0);    }
+}
+
+@keyframes pulse-gold {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(201, 151, 58, 0); }
+  50%       { box-shadow: 0 0 0 6px rgba(201, 151, 58, 0.15); }
+}
+
+.animate-fade-in       { animation: fadeIn      0.2s ease-out both; }
+.animate-slide-in-end  { animation: slideInEnd  0.32s cubic-bezier(0.32, 0.72, 0, 1) both; }
+.animate-slide-in-up   { animation: slideInUp   0.32s cubic-bezier(0.32, 0.72, 0, 1) both; }
+.animate-pulse-gold    { animation: pulse-gold  2s ease-in-out infinite; }
+
+/* ── RTL overrides ──────────────────────────────────────────── */
+[dir="rtl"] .slide-from-end {
+  animation-name: slideInEnd;
+}
+[dir="ltr"] .slide-from-end {
+  animation-name: slideInStart;
+}
+
+@keyframes slideInStart {
+  from { transform: translateX(-100%); }
+  to   { transform: translateX(0);     }
+}
+
+/* ── Mobile adjustments ─────────────────────────────────────── */
+@media (max-width: 768px) {
+  :root {
+    --drawer-w: 100%;
+    --header-h: 56px;
+  }
+}
