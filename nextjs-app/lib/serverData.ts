@@ -1,21 +1,17 @@
 // Server-only data access — reads the canonical public/data.json (365 sages,
 // 452 typed connections) and the per-sage research files. Used by the full
 // sage page so it always matches the graph, without depending on Supabase.
-import fs from 'fs'
-import path from 'path'
 import type { Sage, Connection } from './types'
+// נתונים סטטיים — נארזים בתוך ה-bundle (עובד גם ב-Vercel serverless,
+// שם אין גישת fs לתיקיית public בזמן ריצה)
+import graphData from '../public/data.json'
 
 interface Db {
   sages: Map<string, Sage>
   links: Connection[]
-  mtime: number
 }
 
 let cache: Db | null = null
-
-function pub(rel: string) {
-  return path.join(process.cwd(), 'public', rel)
-}
 
 function mapNode(n: Record<string, unknown>): Sage {
   return {
@@ -34,10 +30,8 @@ function mapNode(n: Record<string, unknown>): Sage {
 }
 
 function db(): Db {
-  const file = pub('data.json')
-  const mtime = fs.statSync(file).mtimeMs
-  if (cache && cache.mtime === mtime) return cache
-  const d = JSON.parse(fs.readFileSync(file, 'utf-8'))
+  if (cache) return cache
+  const d = graphData as { nodes?: Record<string, unknown>[]; links?: Record<string, unknown>[] }
   const sages = new Map<string, Sage>()
   for (const n of d.nodes ?? []) sages.set(String(n.id), mapNode(n))
   const links: Connection[] = (d.links ?? []).map((l: Record<string, unknown>) => ({
@@ -45,7 +39,7 @@ function db(): Db {
     target: String(l.target ?? ''),
     type:   ((l.type as string) || 'colleague') as Connection['type'],
   }))
-  cache = { sages, links, mtime }
+  cache = { sages, links }
   return cache
 }
 
@@ -72,10 +66,4 @@ export interface ResearchDoc {
   content: string
 }
 
-export function getSageResearch(id: string): ResearchDoc[] {
-  try {
-    return JSON.parse(fs.readFileSync(pub(`research/${id}.json`), 'utf-8'))
-  } catch {
-    return []
-  }
-}
+// המחקר נטען בצד הלקוח מ-/research/<id>.json (ראו ResearchSection)

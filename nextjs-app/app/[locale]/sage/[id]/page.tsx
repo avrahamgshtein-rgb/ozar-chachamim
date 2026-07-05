@@ -1,7 +1,8 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import { getSageById, getSageConnections, getSageResearch } from '@/lib/serverData'
+import { getSageById, getSageConnections } from '@/lib/serverData'
+import { ResearchSection } from '@/components/sages/ResearchSection'
 import { isValidLocale, UI } from '@/lib/i18n'
 import { ERA_LABELS, ERA_COLORS, CONNECTION_LABELS } from '@/lib/types'
 import { formatYearRange } from '@/lib/utils'
@@ -74,7 +75,6 @@ export default async function SagePage({ params }: PageProps) {
 
   const sage        = getSageById(id)
   const connections = getSageConnections(id)
-  const research    = getSageResearch(id)
 
   if (!sage) notFound()
 
@@ -201,27 +201,8 @@ export default async function SagePage({ params }: PageProps) {
                 </Section>
               )}
 
-              {/* Full research documents */}
-              {research.length > 0 && (
-                <Section title={validLocale === 'he'
-                  ? `מחקר מלא (${research.length} ${research.length === 1 ? 'מסמך' : 'מסמכים'})`
-                  : `Full Research (${research.length} ${research.length === 1 ? 'document' : 'documents'})`}>
-                  <div className="space-y-3" dir="rtl">
-                    {research.map((doc, i) => (
-                      <details key={i} open={i === 0}
-                        className="rounded-xl border border-ink-700/40 bg-ink-800/30 overflow-hidden">
-                        <summary className="cursor-pointer select-none px-4 py-3 font-serif text-sm text-gold-300 hover:bg-ink-700/30 transition-colors">
-                          📖 {doc.title.length > 90 ? doc.title.slice(0, 90) + '…' : doc.title}
-                          <span className="text-ink-500 text-xs font-sans"> · {doc.word_count.toLocaleString()} {validLocale === 'he' ? 'מילים' : 'words'}</span>
-                        </summary>
-                        <div className="px-4 pb-4 pt-1 text-sm font-sans text-ink-200 leading-loose whitespace-pre-line border-t border-ink-700/30">
-                          {doc.content}
-                        </div>
-                      </details>
-                    ))}
-                  </div>
-                </Section>
-              )}
+              {/* Full research documents — client-side fetch (Vercel-safe) */}
+              <ResearchSection sageId={sage.id} locale={validLocale} />
 
               {/* Migration path */}
               {sage.migration_path && (
