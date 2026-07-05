@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { ERA_COLORS } from '@/lib/types'
+import { CONNECTION_TYPE_COLORS } from '@/lib/regions'
 import { useAppStore } from '@/store/useAppStore'
 import type { Locale, Sage } from '@/lib/types'
 import { cn } from '@/lib/utils'
@@ -238,13 +239,15 @@ interface GeoMapProps {
 export function GeoMap({ locale }: GeoMapProps) {
   const mapRef     = useRef<HTMLDivElement>(null)
   const mapObjRef  = useRef<import('leaflet').Map | null>(null)
-  const [showLinks, setShowLinks] = useState(false)
+  const [showLinks, setShowLinks] = useState(true)
+  const [mapReady, setMapReady] = useState(false)
 
-  const { sages, filteredSages, selectedSageId, selectSage, connections } = useAppStore()
+  const { sages, filteredSages, selectedSageId, selectSage, connections, activeTab } = useAppStore()
 
   useEffect(() => {
     if (!mapRef.current || !sages.length) return
-    if (mapObjRef.current) return   // already initialized
+    // Rebuild when the dataset is replaced (data.json fallback swaps sage ids)
+    if (mapObjRef.current) { mapObjRef.current.remove(); mapObjRef.current = null; setMapReady(false) }
 
     let mounted = true
 
@@ -276,14 +279,37 @@ export function GeoMap({ locale }: GeoMapProps) {
       })
       mapObjRef.current = map
 
-      // Dark CartoDB tiles
+      // Dark CartoDB tiles — ללא תוויות לועזיות; שמות בעברית נוספים כשכבה משלנו
       L.tileLayer(
-        'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
+        'https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png',
         {
           attribution: '© <a href="https://www.openstreetmap.org/copyright">OSM</a> contributors © <a href="https://carto.com/attributions">CARTO</a>',
           maxZoom: 18,
         }
       ).addTo(map)
+
+      // ── שמות ארצות ואזורים בעברית ─────────────────────────────
+      const HEB_LABELS: Array<[string, number, number, number]> = [
+        ['ארץ ישראל', 31.55, 34.95, 13], ['מצרים', 28.6, 30.6, 12], ['בבל (עיראק)', 32.2, 43.7, 12],
+        ['פרס', 32.4, 54.0, 12], ['תימן', 15.6, 47.5, 11], ['טורקיה', 39.2, 33.5, 12],
+        ['יוון', 39.4, 22.3, 11], ['איטליה', 42.9, 12.4, 12], ['ספרד', 40.0, -3.9, 13],
+        ['פורטוגל', 39.6, -8.3, 11], ['צרפת', 47.2, 2.4, 12], ['פרובנס', 43.7, 5.6, 10],
+        ['אשכנז (גרמניה)', 50.8, 10.2, 12], ['אוסטריה', 47.4, 14.8, 10], ['בוהמיה', 49.8, 15.0, 10],
+        ['פולין', 52.1, 19.4, 12], ['ליטא', 55.3, 24.0, 11], ['רוסיה', 56.5, 38.5, 12],
+        ['אוקראינה', 48.8, 31.4, 11], ['מרוקו', 31.6, -6.8, 11], ['אלג׳יריה', 34.8, 2.8, 11],
+        ['תוניסיה', 34.2, 9.4, 10], ['לוב', 29.8, 17.5, 10], ['ארה״ב', 39.0, -98.0, 12],
+      ]
+      HEB_LABELS.forEach(([name, lat, lng, size]) => {
+        L.marker([lat as number, lng as number], {
+          icon: L.divIcon({
+            className: '',
+            html: `<span style="font-family:'Frank Ruhl Libre',serif;font-size:${size}px;font-weight:700;color:#b9a077;opacity:0.85;text-shadow:0 1px 3px #000, 0 0 6px #000;white-space:nowrap;">${name}</span>`,
+            iconSize: [0, 0],
+          }),
+          interactive: false,
+          keyboard: false,
+        }).addTo(map)
+      })
 
       // Custom zoom controls (top-end corner)
       L.control.zoom({ position: 'bottomright' }).addTo(map)
@@ -338,6 +364,7 @@ export function GeoMap({ locale }: GeoMapProps) {
                color:#e8d5b0;margin:0 0 4px;">${sage.label}</p>
             ${sage.name_en ? `<p style="font-size:11px;color:#9a8570;margin:0 0 6px;">${sage.name_en}</p>` : ''}
             ${sage.location ? `<p style="font-size:11px;color:#7a6550;margin:0;">📍 ${sage.location}</p>` : ''}
+            ${sage.spotify_url ? `<a href="${sage.spotify_url}" target="_blank" rel="noopener" style="display:inline-block;margin-top:6px;padding:3px 10px;background:#1DB954;color:#fff;border-radius:12px;font-size:10px;font-weight:700;text-decoration:none;">🎵 האזן בספוטיפיי</a>` : ''}
           </div>
         `
         marker.bindPopup(popupContent, { maxWidth: 220, className: '' })
@@ -388,6 +415,7 @@ export function GeoMap({ locale }: GeoMapProps) {
       ;(map as any)._sageMarkers = markerRefs
       ;(map as any)._coordsById  = coordsById
       ;(map as any)._linkLayer   = null
+      setMapReady(true)   // triggers the connection-lines layer
     })
 
     return () => {
@@ -415,25 +443,43 @@ export function GeoMap({ locale }: GeoMapProps) {
       map._linkLayer = group
 
       const drawn = new Set<string>()
-      connections
-        .filter(c => c.type === 'teacher' || c.type === 'student' || c.type === 'colleague')
-        .forEach(conn => {
-          const key = [conn.source, conn.target].sort().join('|')
-          if (drawn.has(key)) return
-          const a = coordsById.get(conn.source)
-          const b = coordsById.get(conn.target)
-          if (!a || !b) return
-          drawn.add(key)
-          const sage = sageMap.get(conn.source)
-          const color = ERA_COLORS[sage?.period ?? 'modern'] ?? '#c9973a'
-          L.polyline(
-            [[a.lat, a.lng], [b.lat, b.lng]],
-            { color, weight: 1.2, opacity: 0.35, dashArray: conn.type === 'colleague' ? '4,4' : undefined }
-          ).addTo(group)
-        })
+      connections.forEach(conn => {
+        const key = [conn.source, conn.target].sort().join('|')
+        if (drawn.has(key)) return
+        const a = coordsById.get(conn.source)
+        const b = coordsById.get(conn.target)
+        if (!a || !b) return
+        // same-city pairs draw nothing meaningful on the map
+        if (Math.abs(a.lat - b.lat) < 0.02 && Math.abs(a.lng - b.lng) < 0.02) return
+        drawn.add(key)
+        const color = CONNECTION_TYPE_COLORS[conn.type] ?? '#c9973a'
+        L.polyline(
+          [[a.lat, a.lng], [b.lat, b.lng]],
+          {
+            color, weight: 1.3, opacity: 0.4,
+            dashArray: conn.type === 'influence' ? '6,4'
+              : (conn.type === 'colleague' || conn.type === 'contemporary') ? '2,4' : undefined,
+          }
+        ).addTo(group)
+        // ראש חץ בכיוון הקשר (מקור ← יעד)
+        const t = 0.58
+        const pLat = a.lat + (b.lat - a.lat) * t
+        const pLng = a.lng + (b.lng - a.lng) * t
+        const dx = (b.lng - a.lng) * Math.cos(((a.lat + b.lat) / 2) * Math.PI / 180)
+        const dy = b.lat - a.lat
+        const angle = Math.atan2(-dy, dx) * 180 / Math.PI
+        L.marker([pLat, pLng], {
+          icon: L.divIcon({
+            className: '',
+            html: `<span style="display:inline-block;transform:rotate(${angle}deg);color:${color};font-size:11px;opacity:0.85;text-shadow:0 0 3px #000;">➤</span>`,
+            iconSize: [0, 0],
+          }),
+          interactive: false,
+        }).addTo(group)
+      })
     })
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [showLinks, connections.length, sages.length])
+  }, [showLinks, connections.length, sages.length, mapReady])
 
   // ── Sync filter (dim non-matching markers) ───────────────────
   useEffect(() => {
@@ -451,24 +497,34 @@ export function GeoMap({ locale }: GeoMapProps) {
   }, [filteredSages, sages.length])
 
   // ── Pan to selected sage ─────────────────────────────────────
+  // חשוב: רק כשהטאב גלוי. flyTo על מפה מוסתרת (גודל 0) זורק
+  // "Invalid LatLng (NaN)" ומפיל את כל האפליקציה בעת לחיצה על חכם.
   useEffect(() => {
+    if (activeTab !== 'map') return
     if (!selectedSageId || !mapObjRef.current) return
+    const el = mapRef.current
+    if (!el || el.clientWidth < 50 || el.clientHeight < 50) return
     const map = mapObjRef.current as any
     const marker = map._sageMarkers?.get(selectedSageId)
-    if (marker) {
+    if (!marker) return
+    try {
+      map.invalidateSize()
       const ll = marker.getLatLng()
-      mapObjRef.current.flyTo(ll, Math.max(mapObjRef.current.getZoom(), 6), {
-        duration: 1,
-      })
+      map.flyTo(ll, Math.max(map.getZoom(), 6), { duration: 1 })
       marker.openPopup()
+    } catch {
+      /* hidden/zero-size map — safely ignore */
     }
-  }, [selectedSageId])
+  }, [selectedSageId, activeTab])
 
   // ── Invalidate map size when tab becomes visible ─────────────
   useEffect(() => {
-    const t = setTimeout(() => mapObjRef.current?.invalidateSize(), 100)
+    if (activeTab !== 'map') return
+    const t = setTimeout(() => {
+      try { mapObjRef.current?.invalidateSize() } catch { /* noop */ }
+    }, 120)
     return () => clearTimeout(t)
-  })
+  }, [activeTab])
 
   return (
     <div className="relative w-full h-full">

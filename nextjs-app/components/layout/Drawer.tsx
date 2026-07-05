@@ -67,9 +67,12 @@ export function Drawer({
           'outline-none',
           'transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)]',
           'hidden md:flex flex-col',
-          isOpen ? 'translate-x-0' : 'translate-x-[110%]',
-          // RTL flip
-          locale === 'he' && !isOpen && '-translate-x-0',
+          // Slide out toward the "end" edge: left in RTL (he), right in LTR
+          isOpen
+            ? 'translate-x-0'
+            : locale === 'he' ? '-translate-x-[110%]' : 'translate-x-[110%]',
+          // Closed drawer must never intercept clicks meant for the graph
+          !isOpen && 'pointer-events-none invisible',
         )}
         style={{ width }}
       >
@@ -88,7 +91,7 @@ export function Drawer({
           'transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)]',
           'flex md:hidden flex-col',
           'h-[85dvh]',
-          isOpen ? 'translate-y-0' : 'translate-y-full',
+          isOpen ? 'translate-y-0' : 'translate-y-full pointer-events-none invisible',
         )}
       >
         {/* Drag handle */}

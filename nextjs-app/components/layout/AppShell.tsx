@@ -11,6 +11,7 @@ import { FAB } from '@/components/ui/FAB'
 import { SageCard } from '@/components/sages/SageCard'
 import { SageFilters } from '@/components/sages/SageFilters'
 import { Comparator } from '@/components/viz/Comparator'
+import { FilterChips } from '@/components/viz/FilterChips'
 import { useAppStore } from '@/store/useAppStore'
 import { fetchSages, fetchConnections, fetchLocalGraphData } from '@/lib/supabase'
 import type { Locale } from '@/lib/types'
@@ -179,6 +180,7 @@ function CanvasArea({ activeTab, locale }: { activeTab: string; locale: Locale }
       {/* Network graph — always mounted so simulation lives across tab switches */}
       <div className={cn('absolute inset-0', activeTab === 'graph' ? 'block' : 'hidden')}>
         <NetworkGraph locale={locale} />
+        <FilterChips locale={locale} />
       </div>
 
       {/* Geo map — lazy-mounted on first visit */}

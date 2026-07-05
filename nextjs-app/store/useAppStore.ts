@@ -2,6 +2,7 @@
 
 import { create } from 'zustand'
 import type { Sage, Connection, Tab, Filters, Period, Region } from '@/lib/types'
+import { regionsOf } from '@/lib/regions'
 
 interface AppState {
   // Data
@@ -52,7 +53,10 @@ interface AppState {
 function applyFilters(sages: Sage[], filters: Filters): Sage[] {
   return sages.filter(sage => {
     if (filters.period.length > 0 && !filters.period.includes(sage.period)) return false
-    if (filters.region.length > 0 && (!sage.region || !filters.region.includes(sage.region))) return false
+    if (filters.region.length > 0) {
+      const sageRegions = sage.region ? [sage.region, ...regionsOf(sage.location)] : regionsOf(sage.location)
+      if (!sageRegions.some(r => filters.region.includes(r))) return false
+    }
     if (filters.field.length > 0 && (!sage.field || !filters.field.includes(sage.field))) return false
     if (filters.searchQuery) {
       const q = filters.searchQuery.toLowerCase()
