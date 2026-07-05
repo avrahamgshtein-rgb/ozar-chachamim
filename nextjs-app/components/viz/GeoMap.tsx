@@ -242,7 +242,7 @@ export function GeoMap({ locale }: GeoMapProps) {
   const [showLinks, setShowLinks] = useState(true)
   const [mapReady, setMapReady] = useState(false)
 
-  const { sages, filteredSages, selectedSageId, selectSage, connections, activeTab } = useAppStore()
+  const { sages, filteredSages, selectedSageId, selectSage, connections, activeTab, theme } = useAppStore()
 
   useEffect(() => {
     if (!mapRef.current || !sages.length) return
@@ -279,14 +279,17 @@ export function GeoMap({ locale }: GeoMapProps) {
       })
       mapObjRef.current = map
 
-      // Dark CartoDB tiles — ללא תוויות לועזיות; שמות בעברית נוספים כשכבה משלנו
-      L.tileLayer(
-        'https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png',
+      // CartoDB tiles — ללא תוויות לועזיות; שמות בעברית נוספים כשכבה משלנו.
+      // הכתובת נבחרת לפי ערכת הנושא ומוחלפת חיה במעבר כהה/בהיר.
+      const isLight = document.documentElement.dataset.theme === 'light'
+      const tiles = L.tileLayer(
+        `https://{s}.basemaps.cartocdn.com/${isLight ? 'light_nolabels' : 'dark_nolabels'}/{z}/{x}/{y}{r}.png`,
         {
           attribution: '© <a href="https://www.openstreetmap.org/copyright">OSM</a> contributors © <a href="https://carto.com/attributions">CARTO</a>',
           maxZoom: 18,
         }
       ).addTo(map)
+      ;(map as any)._tileLayer = tiles
 
       // ── שמות ארצות ואזורים בעברית ─────────────────────────────
       const HEB_LABELS: Array<[string, number, number, number]> = [
@@ -303,7 +306,7 @@ export function GeoMap({ locale }: GeoMapProps) {
         L.marker([lat as number, lng as number], {
           icon: L.divIcon({
             className: '',
-            html: `<span style="font-family:'Frank Ruhl Libre',serif;font-size:${size}px;font-weight:700;color:#b9a077;opacity:0.85;text-shadow:0 1px 3px #000, 0 0 6px #000;white-space:nowrap;">${name}</span>`,
+            html: `<span style="font-family:'Frank Ruhl Libre',serif;font-size:${size}px;font-weight:700;color:var(--ink-200);opacity:0.9;text-shadow:0 0 4px var(--ink-900), 0 0 8px var(--ink-900);white-space:nowrap;">${name}</span>`,
             iconSize: [0, 0],
           }),
           interactive: false,
@@ -337,6 +340,17 @@ export function GeoMap({ locale }: GeoMapProps) {
           color: #e8d5b0 !important;
         }
         .leaflet-popup-tip { background: rgba(26,20,14,0.95) !important; }
+        [data-theme='light'] .leaflet-control-zoom a {
+          background: rgba(255,252,244,0.92) !important;
+          border: 1px solid rgba(138,106,30,0.35) !important;
+          color: #6d4f12 !important;
+        }
+        [data-theme='light'] .leaflet-popup-content-wrapper {
+          background: rgba(255,252,244,0.97) !important;
+          border: 1px solid rgba(138,106,30,0.3) !important;
+          color: #241b10 !important;
+        }
+        [data-theme='light'] .leaflet-popup-tip { background: rgba(255,252,244,0.97) !important; }
       `
       document.head.appendChild(style)
 
@@ -471,7 +485,7 @@ export function GeoMap({ locale }: GeoMapProps) {
         L.marker([pLat, pLng], {
           icon: L.divIcon({
             className: '',
-            html: `<span style="display:inline-block;transform:rotate(${angle}deg);color:${color};font-size:11px;opacity:0.85;text-shadow:0 0 3px #000;">➤</span>`,
+            html: `<span style="display:inline-block;transform:rotate(${angle}deg);color:${color};font-size:11px;opacity:0.85;text-shadow:0 0 3px var(--ink-900);">➤</span>`,
             iconSize: [0, 0],
           }),
           interactive: false,
@@ -516,6 +530,14 @@ export function GeoMap({ locale }: GeoMapProps) {
       /* hidden/zero-size map — safely ignore */
     }
   }, [selectedSageId, activeTab])
+
+  // ── Swap tile style when the theme changes ───────────────────
+  useEffect(() => {
+    const map = mapObjRef.current as any
+    if (!map?._tileLayer) return
+    map._tileLayer.setUrl(
+      `https://{s}.basemaps.cartocdn.com/${theme === 'light' ? 'light_nolabels' : 'dark_nolabels'}/{z}/{x}/{y}{r}.png`)
+  }, [theme])
 
   // ── Invalidate map size when tab becomes visible ─────────────
   useEffect(() => {

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import { fetchSageById, fetchSageConnections } from '@/lib/supabase'
+import { getSageById, getSageConnections, getSageResearch } from '@/lib/serverData'
 import { isValidLocale, UI } from '@/lib/i18n'
 import { ERA_LABELS, ERA_COLORS, CONNECTION_LABELS } from '@/lib/types'
 import { formatYearRange } from '@/lib/utils'
@@ -14,7 +14,7 @@ interface PageProps {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale, id } = await params
-  const sage = await fetchSageById(id).catch(() => null)
+  const sage = getSageById(id)
   if (!sage) return {}
 
   const t = UI[(locale as Locale) ?? 'he']
@@ -72,10 +72,9 @@ export default async function SagePage({ params }: PageProps) {
   const validLocale = locale as Locale
   const t = UI[validLocale]
 
-  const [sage, connections] = await Promise.all([
-    fetchSageById(id).catch(() => null),
-    fetchSageConnections(id).catch(() => []),
-  ])
+  const sage        = getSageById(id)
+  const connections = getSageConnections(id)
+  const research    = getSageResearch(id)
 
   if (!sage) notFound()
 
@@ -199,6 +198,28 @@ export default async function SagePage({ params }: PageProps) {
                   <p className="font-sans text-sm text-ink-200 leading-loose whitespace-pre-line">
                     {sage.bio}
                   </p>
+                </Section>
+              )}
+
+              {/* Full research documents */}
+              {research.length > 0 && (
+                <Section title={validLocale === 'he'
+                  ? `מחקר מלא (${research.length} ${research.length === 1 ? 'מסמך' : 'מסמכים'})`
+                  : `Full Research (${research.length} ${research.length === 1 ? 'document' : 'documents'})`}>
+                  <div className="space-y-3" dir="rtl">
+                    {research.map((doc, i) => (
+                      <details key={i} open={i === 0}
+                        className="rounded-xl border border-ink-700/40 bg-ink-800/30 overflow-hidden">
+                        <summary className="cursor-pointer select-none px-4 py-3 font-serif text-sm text-gold-300 hover:bg-ink-700/30 transition-colors">
+                          📖 {doc.title.length > 90 ? doc.title.slice(0, 90) + '…' : doc.title}
+                          <span className="text-ink-500 text-xs font-sans"> · {doc.word_count.toLocaleString()} {validLocale === 'he' ? 'מילים' : 'words'}</span>
+                        </summary>
+                        <div className="px-4 pb-4 pt-1 text-sm font-sans text-ink-200 leading-loose whitespace-pre-line max-h-[65vh] overflow-y-auto border-t border-ink-700/30">
+                          {doc.content}
+                        </div>
+                      </details>
+                    ))}
+                  </div>
                 </Section>
               )}
 

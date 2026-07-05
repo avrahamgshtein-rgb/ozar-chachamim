@@ -22,6 +22,14 @@
   --gold-400: #d9aa4a;
   --gold-300: #e8b84b;
 
+  /* RGB triplets for Tailwind alpha support */
+  --ink-950-rgb: 7 5 3;   --ink-900-rgb: 10 8 6;    --ink-850-rgb: 15 13 10;
+  --ink-800-rgb: 28 24 18; --ink-700-rgb: 42 35 24;  --ink-600-rgb: 61 50 38;
+  --ink-500-rgb: 90 74 56; --ink-400-rgb: 122 101 80; --ink-300-rgb: 154 133 112;
+  --ink-200-rgb: 196 168 125; --ink-100-rgb: 232 213 176; --ink-50-rgb: 245 238 216;
+  --gold-600-rgb: 160 120 40; --gold-500-rgb: 201 151 58; --gold-400-rgb: 217 170 74;
+  --gold-300-rgb: 232 184 75; --gold-200-rgb: 240 204 128; --gold-100-rgb: 247 228 176;
+
   --radius: 0.5rem;
   --header-h: 64px;
   --tabbar-h: 60px;
@@ -187,4 +195,51 @@ h1, h2, h3 {
     --drawer-w: 100%;
     --header-h: 56px;
   }
+}
+
+/* ══ Light theme (כמו האתר הקלאסי) — data-theme="light" ══════════ */
+[data-theme='light'] {
+  --ink-950: #f5eed880;
+  --ink-900: #faf7f0;
+  --ink-850: #f5efe2;
+  --ink-800: #efe6d2;
+  --ink-700: #e3d5ba;
+  --ink-600: #c3ad86;
+  --ink-500: #8a7350;
+  --ink-400: #6b573f;
+  --ink-300: #52422e;
+  --ink-200: #3d2f1f;
+  --ink-100: #241b10;
+  --ink-50:  #140e08;
+
+  --gold-600: #7a5a16;
+  --gold-500: #8a6a1e;
+  --gold-400: #7a5a16;
+  --gold-300: #6d4f12;
+
+  --ink-950-rgb: 245 238 216; --ink-900-rgb: 250 247 240; --ink-850-rgb: 245 239 226;
+  --ink-800-rgb: 239 230 210; --ink-700-rgb: 227 213 186; --ink-600-rgb: 195 173 134;
+  --ink-500-rgb: 138 115 80;  --ink-400-rgb: 107 87 63;   --ink-300-rgb: 82 66 46;
+  --ink-200-rgb: 61 47 31;    --ink-100-rgb: 36 27 16;    --ink-50-rgb: 20 14 8;
+  --gold-600-rgb: 122 90 22;  --gold-500-rgb: 138 106 30; --gold-400-rgb: 122 90 22;
+  --gold-300-rgb: 109 79 18;  --gold-200-rgb: 138 106 30; --gold-100-rgb: 158 126 50;
+}
+
+[data-theme='light'] body::before {
+  opacity: 0.25;
+}
+
+[data-theme='light'] .glass {
+  background: rgba(255, 252, 244, 0.88);
+  border: 1px solid rgba(138, 106, 30, 0.22);
+  box-shadow: 0 2px 12px rgba(61, 40, 23, 0.08);
+}
+
+[data-theme='light'] .glass-light {
+  background: rgba(250, 244, 230, 0.85);
+  border: 1px solid rgba(138, 106, 30, 0.18);
+}
+
+[data-theme='light'] ::-webkit-scrollbar-thumb {
+  background: var(--ink-600);
 }

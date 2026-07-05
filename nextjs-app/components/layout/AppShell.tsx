@@ -12,6 +12,7 @@ import { SageCard } from '@/components/sages/SageCard'
 import { SageFilters } from '@/components/sages/SageFilters'
 import { Comparator } from '@/components/viz/Comparator'
 import { FilterChips } from '@/components/viz/FilterChips'
+import { MapLegend } from '@/components/viz/MapLegend'
 import { useAppStore } from '@/store/useAppStore'
 import { fetchSages, fetchConnections, fetchLocalGraphData } from '@/lib/supabase'
 import type { Locale } from '@/lib/types'
@@ -66,6 +67,9 @@ export function AppShell({ locale, initialTotal, initialLastUpdate }: AppShellPr
     selectSage,
     setData,
   } = useAppStore()
+
+  // Theme bootstrap (persisted)
+  useEffect(() => { useAppStore.getState().initTheme() }, [])
 
   // Bootstrap data
   useEffect(() => {
@@ -187,6 +191,7 @@ function CanvasArea({ activeTab, locale }: { activeTab: string; locale: Locale }
       <div className={cn('absolute inset-0', activeTab === 'map' ? 'block' : 'hidden')}>
         <GeoMap locale={locale} />
         <FilterChips locale={locale} />
+        <MapLegend locale={locale} />
       </div>
 
       {/* Traditions — era-grouped sage cards */}

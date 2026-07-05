@@ -175,7 +175,7 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
           .attr('font-family', 'Heebo, sans-serif')
           .attr('font-size', '8px').attr('font-weight', '700')
           .attr('fill', '#c62828')
-          .attr('stroke', '#0a0806').attr('stroke-width', 2.5).attr('paint-order', 'stroke')
+          .style('stroke', 'var(--ink-900)').attr('stroke-width', 2.5).attr('paint-order', 'stroke')
           .text(ev.label)
       })
 
@@ -267,7 +267,7 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
         .data(nodes).join('circle')
         .attr('r', r)
         .attr('fill', fillOf)
-        .attr('stroke', '#0a0806')
+        .style('stroke', 'var(--ink-900)')
         .attr('stroke-width', 1.5)
         .attr('fill-opacity', 0.88)
         .style('cursor', 'pointer')
@@ -283,8 +283,8 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
         .attr('font-family', 'Heebo, sans-serif')
         .attr('font-size', '10px')
         .attr('font-weight', '500')
-        .attr('fill', '#e8d5b0')
-        .attr('stroke', '#0a0806')
+        .style('fill', 'var(--ink-100)')
+        .style('stroke', 'var(--ink-900)')
         .attr('stroke-width', 2.5)
         .attr('paint-order', 'stroke')
         .attr('pointer-events', 'none')
@@ -309,8 +309,8 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
         const years  = [d.birth_year, d.death_year].filter(Boolean)
         tip.innerHTML = `
           <div style="font-family:'Frank Ruhl Libre',serif;font-size:15px;font-weight:700;
-               color:#e8d5b0;margin-bottom:3px;">${d.label ?? ''}</div>
-          ${d.name_en ? `<div style="font-size:11px;color:#9a8570;margin-bottom:5px;">${d.name_en}</div>` : ''}
+               color:var(--ink-100);margin-bottom:3px;">${d.label ?? ''}</div>
+          ${d.name_en ? `<div style="font-size:11px;color:var(--ink-300);margin-bottom:5px;">${d.name_en}</div>` : ''}
           <div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:4px;">
             <span style="font-size:10px;padding:1px 7px;border-radius:9999px;
               background:${color}22;color:${color};border:1px solid ${color}44;">
@@ -320,9 +320,9 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
               background:rgba(201,151,58,0.15);color:#c9973a;border:1px solid rgba(201,151,58,0.3);">
               ${degree} קשרים</span>` : ''}
           </div>
-          ${d.location ? `<div style="font-size:10px;color:#7a6550;">📍 ${d.location}</div>` : ''}
-          ${d.field    ? `<div style="font-size:10px;color:#7a6550;">◈ ${d.field}</div>` : ''}
-          ${years.length ? `<div style="font-size:10px;color:#5a4a38;margin-top:2px;">${years.join(' – ')}</div>` : ''}
+          ${d.location ? `<div style="font-size:10px;color:var(--ink-400);">📍 ${d.location}</div>` : ''}
+          ${d.field    ? `<div style="font-size:10px;color:var(--ink-400);">◈ ${d.field}</div>` : ''}
+          ${years.length ? `<div style="font-size:10px;color:var(--ink-500);margin-top:2px;">${years.join(' – ')}</div>` : ''}
         `
         tip.style.display = 'block'
         tip.style.left = `${ev.clientX + 14}px`
@@ -482,7 +482,7 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
   useEffect(() => {
     if (!nodeSelRef.current) return
     nodeSelRef.current
-      .attr('stroke',       (d: any) => d.id === selectedSageId ? '#c9973a' : '#0a0806')
+      .style('stroke',      (d: any) => d.id === selectedSageId ? 'var(--gold-500)' : 'var(--ink-900)')
       .attr('stroke-width', (d: any) => d.id === selectedSageId ? 3 : 1.5)
     labelSelRef.current?.attr('opacity', (d: any) => d.id === selectedSageId ? 1 : 0)
   }, [selectedSageId])
@@ -507,7 +507,7 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
         ref={tooltipRef}
         style={{ display: 'none', position: 'fixed', zIndex: 50, pointerEvents: 'none',
           maxWidth: 220, padding: '8px 12px',
-          background: 'rgba(15,12,8,0.95)', backdropFilter: 'blur(8px)',
+          background: 'var(--ink-850)', backdropFilter: 'blur(8px)',
           border: '1px solid rgba(201,151,58,0.2)', borderRadius: 10,
           boxShadow: '0 8px 32px rgba(0,0,0,0.6)',
         }}

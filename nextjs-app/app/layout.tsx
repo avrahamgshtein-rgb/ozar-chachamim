@@ -48,6 +48,9 @@ export default function RootLayout({
 }) {
   return (
     <html suppressHydrationWarning className={`${frankRuhlLibre.variable} ${heebo.variable}`}>
+      {/* ערכת נושא לפני ציור ראשון — מונע הבהוב ותקף גם בדפי חכם */}
+      <script dangerouslySetInnerHTML={{ __html:
+        "try{if(localStorage.getItem('ozar-theme')==='light')document.documentElement.dataset.theme='light'}catch(e){}" }} />
       <body className="font-sans bg-ink-900 text-ink-100 antialiased">
         {children}
       </body>

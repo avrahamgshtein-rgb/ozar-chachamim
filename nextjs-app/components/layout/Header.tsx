@@ -126,6 +126,21 @@ export function Header({ locale, otherLocale }: HeaderProps) {
           <span className="hidden sm:inline">{t.filtersLabel}</span>
         </button>
 
+        {/* Theme toggle — כהה/בהיר */}
+        <button
+          onClick={() => useAppStore.getState().toggleTheme()}
+          className={cn(
+            'px-2.5 py-1.5 rounded-xl text-sm',
+            'glass-light border border-ink-600/40',
+            'text-ink-300 hover:text-ink-100 hover:border-gold-500/30',
+            'transition-all duration-150',
+          )}
+          title={locale === 'he' ? 'מצב כהה / בהיר' : 'Dark / light mode'}
+          aria-label={locale === 'he' ? 'החלף ערכת נושא' : 'Toggle theme'}
+        >
+          <ThemeIcon />
+        </button>
+
         {/* Locale toggle */}
         <Link
           href={`/${otherLocale}`}
@@ -142,4 +157,10 @@ export function Header({ locale, otherLocale }: HeaderProps) {
       </div>
     </header>
   )
+}
+
+
+function ThemeIcon() {
+  const theme = useAppStore(s => s.theme)
+  return <span aria-hidden>{theme === 'dark' ? '☀️' : '🌙'}</span>
 }

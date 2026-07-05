@@ -18,6 +18,7 @@ interface AppState {
   selectedSage: Sage | null
 
   // UI
+  theme: 'dark' | 'light'
   activeTab: Tab
   isDrawerOpen: boolean
   isSearchOpen: boolean
@@ -35,6 +36,8 @@ interface AppState {
   selectSage: (sage: Sage) => void
   clearSelection: () => void
   setActiveTab: (tab: Tab) => void
+  toggleTheme: () => void
+  initTheme: () => void
   openDrawer: () => void
   closeDrawer: () => void
   toggleSearch: () => void
@@ -81,6 +84,7 @@ export const useAppStore = create<AppState>((set, get) => ({
   selectedSageId: null,
   selectedSage: null,
 
+  theme: 'dark',
   activeTab: 'graph',
   isDrawerOpen: false,
   isSearchOpen: false,
@@ -121,6 +125,22 @@ export const useAppStore = create<AppState>((set, get) => ({
   },
 
   setActiveTab: (tab) => set({ activeTab: tab }),
+
+  toggleTheme: () => {
+    const theme = get().theme === 'dark' ? 'light' : 'dark'
+    if (typeof document !== 'undefined') {
+      document.documentElement.dataset.theme = theme
+      try { localStorage.setItem('ozar-theme', theme) } catch { /* noop */ }
+    }
+    set({ theme })
+  },
+  initTheme: () => {
+    if (typeof document === 'undefined') return
+    let theme: 'dark' | 'light' = 'dark'
+    try { if (localStorage.getItem('ozar-theme') === 'light') theme = 'light' } catch { /* noop */ }
+    document.documentElement.dataset.theme = theme
+    set({ theme })
+  },
 
   openDrawer:  () => set({ isDrawerOpen: true }),
   closeDrawer: () => set({ isDrawerOpen: false, selectedSage: null, selectedSageId: null }),
