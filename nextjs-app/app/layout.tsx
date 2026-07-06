@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from 'next'
+import Script from 'next/script'
 import { Frank_Ruhl_Libre, Heebo } from 'next/font/google'
 import './globals.css'
 
@@ -48,10 +49,15 @@ export default function RootLayout({
 }) {
   return (
     <html suppressHydrationWarning className={`${frankRuhlLibre.variable} ${heebo.variable}`}>
-      <head suppressHydrationWarning>
+      <head>
         {/* ערכת נושא לפני ציור ראשון — מונע הבהוב ותקף גם בדפי חכם */}
-        <script suppressHydrationWarning dangerouslySetInnerHTML={{ __html:
-          "try{if(localStorage.getItem('ozar-theme')==='light')document.documentElement.dataset.theme='light'}catch(e){}" }} />
+        <Script
+          id="theme-init"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: "try{if(localStorage.getItem('ozar-theme')==='light')document.documentElement.dataset.theme='light'}catch(e){}"
+          }}
+        />
       </head>
       <body className="font-sans bg-ink-900 text-ink-100 antialiased">
         {children}
