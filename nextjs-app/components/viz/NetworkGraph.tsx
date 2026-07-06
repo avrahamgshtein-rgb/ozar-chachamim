@@ -62,8 +62,10 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
 
   const [colorMode, setColorMode] = useState<ColorMode>('region')
   const [showPathFinder, setShowPathFinder] = useState(false)
+  // Clicked edge → relationship detail card (masterplan §2: clickable edges)
+  const [edgeInfo, setEdgeInfo] = useState<{ sourceId: string; targetId: string; type: string } | null>(null)
 
-  const { sages, connections, selectSage, filteredSages, selectedSageId } = useAppStore()
+  const { sages, connections, selectSage, filteredSages, selectedSageId, sageMap } = useAppStore()
 
   // Mirror state → ref so D3 closures always read the latest value
   useEffect(() => { colorModeRef.current = colorMode }, [colorMode])
@@ -113,7 +115,7 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
           .attr('fill', color)
           .attr('opacity', 0.8)
       })
-      sages.forEach(sage => {
+      filteredSages.forEach(sage => {
         // דו-צבעי: migration_path אם קיים, אחרת אזורים מתוך טקסט המיקום
         let fromR = sage.migration_path ? locationToRegion(sage.migration_path.from) : null
         let toR   = sage.migration_path ? locationToRegion(sage.migration_path.to)   : null
@@ -144,13 +146,13 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
       }
       const ERAS_EV = ['second-temple','tannaim','amoraim','geonim','rishonim','acharonim','modern']
       const HIST_EVENTS = [
-        { year: 70,   label: 'חורבן בית שני' },
-        { year: 1096, label: 'מסעי הצלב' },
-        { year: 1242, label: 'שריפת התלמוד' },
-        { year: 1348, label: 'מגפה שחורה' },
-        { year: 1492, label: 'גירוש ספרד' },
-        { year: 1648, label: 'ת"ח ות"ט' },
-        { year: 1939, label: 'השואה' },
+        { year: 70,   label: locale === 'he' ? 'חורבן בית שני' : 'Temple destroyed' },
+        { year: 1096, label: locale === 'he' ? 'מסעי הצלב' : 'Crusades' },
+        { year: 1242, label: locale === 'he' ? 'שריפת התלמוד' : 'Talmud burned' },
+        { year: 1348, label: locale === 'he' ? 'מגפה שחורה' : 'Black Death' },
+        { year: 1492, label: locale === 'he' ? 'גירוש ספרד' : 'Spain expulsion' },
+        { year: 1648, label: locale === 'he' ? 'ת"ח ות"ט' : '1648 massacres' },
+        { year: 1939, label: locale === 'he' ? 'השואה' : 'Holocaust' },
       ]
       const eraXOf = (k: string) => (W * 0.05) + (ERA_ORDER[k] ?? 3) * (W * 0.9 / 6)
       const evBarsG = g.append('g').attr('pointer-events', 'none')
@@ -188,8 +190,11 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
       zoomRef.current = zoom
 
       // ── Data prep ────────────────────────────────────────────────────────
-      const nodes = sages.map(s => ({ ...s, degree: 0 }))
+      const nodes = filteredSages.map(s => ({ ...s, degree: 0 }))
       const nodeById = new Map(nodes.map(n => [n.id, n]))
+
+      // Store filtered sage IDs for opacity logic during hover
+      filteredIdsRef.current = new Set(filteredSages.map(s => s.id))
 
       const sortedLinks = [...connections].sort((a, b) => {
         const score = (t: string) =>
@@ -247,6 +252,15 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
           DIRECTED.has(d.type) ? `url(#arrow-${d.type})` : null)
 
       linkSelRef.current = link
+
+      // Invisible wide hit-area paths — make edges hoverable & clickable
+      const hitLink = linkG.selectAll<SVGPathElement, any>('path.hit')
+        .data(links).join('path')
+        .attr('class', 'hit')
+        .attr('fill', 'none')
+        .attr('stroke', 'transparent')
+        .attr('stroke-width', 13)
+        .style('cursor', 'pointer')
 
       // Color fill helper (reads from colorModeRef so no rebuild needed on toggle)
       const isMigrant = (d: any): boolean => {
@@ -316,11 +330,11 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
           <div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:4px;">
             <span style="font-size:10px;padding:1px 7px;border-radius:9999px;
               background:${color}22;color:${color};border:1px solid ${color}44;">
-              ${ERA_LABELS[d.period as Period]?.he ?? d.period}
+              ${ERA_LABELS[d.period as Period]?.[locale] ?? d.period}
             </span>
             ${degree ? `<span style="font-size:10px;padding:1px 7px;border-radius:9999px;
               background:rgba(201,151,58,0.15);color:#c9973a;border:1px solid rgba(201,151,58,0.3);">
-              ${degree} קשרים</span>` : ''}
+              ${degree} ${locale === 'he' ? 'קשרים' : 'links'}</span>` : ''}
           </div>
           ${d.location ? `<div style="font-size:10px;color:var(--ink-400);">📍 ${d.location}</div>` : ''}
           ${d.field    ? `<div style="font-size:10px;color:var(--ink-400);">◈ ${d.field}</div>` : ''}
@@ -376,18 +390,49 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
           if (sage) selectSage(sage)
         })
 
-      // ── Tick ─────────────────────────────────────────────────────────────
-      sim.on('tick', () => {
-        link.attr('d', (d: any) => {
-          const sx = d.source.x, sy = d.source.y
-          const tx = d.target.x, ty = d.target.y
-          const mx = (sx + tx) / 2, my = (sy + ty) / 2
-          const dx = tx - sx, dy = ty - sy
-          const dist = Math.sqrt(dx * dx + dy * dy) || 1
-          const ox = -dy / dist * 18
-          const oy =  dx / dist * 18
-          return `M${sx},${sy} Q${mx + ox},${my + oy} ${tx},${ty}`
+      // ── Edge hover + click (relationship details) ────────────────────────
+      hitLink
+        .on('mouseover', (_ev: MouseEvent, d: any) => {
+          link.transition().duration(120)
+            .attr('stroke-opacity', (l: any) => l === d ? 0.95 : 0.04)
+            .attr('stroke-width',   (l: any) => l === d ? 2.6  : 1.2)
+          node.transition().duration(120)
+            .attr('fill-opacity', (n: any) =>
+              n.id === d.source.id || n.id === d.target.id ? 1 : 0.08)
+          label.transition().duration(120)
+            .attr('opacity', (n: any) =>
+              n.id === d.source.id || n.id === d.target.id ? 1 : 0)
         })
+        .on('mouseout', () => {
+          link.transition().duration(250)
+            .attr('stroke-opacity', 0.22).attr('stroke-width', 1.2)
+          node.transition().duration(250)
+            .attr('fill-opacity', (n: any) => baseOpacity(n))
+          label.transition().duration(250).attr('opacity', 0)
+        })
+        .on('click', (ev: MouseEvent, d: any) => {
+          ev.stopPropagation()
+          setEdgeInfo({
+            sourceId: typeof d.source === 'object' ? d.source.id : d.source,
+            targetId: typeof d.target === 'object' ? d.target.id : d.target,
+            type: d.type,
+          })
+        })
+
+      // ── Tick ─────────────────────────────────────────────────────────────
+      const linkPath = (d: any) => {
+        const sx = d.source.x, sy = d.source.y
+        const tx = d.target.x, ty = d.target.y
+        const mx = (sx + tx) / 2, my = (sy + ty) / 2
+        const dx = tx - sx, dy = ty - sy
+        const dist = Math.sqrt(dx * dx + dy * dy) || 1
+        const ox = -dy / dist * 18
+        const oy =  dx / dist * 18
+        return `M${sx},${sy} Q${mx + ox},${my + oy} ${tx},${ty}`
+      }
+      sim.on('tick', () => {
+        link.attr('d', linkPath)
+        hitLink.attr('d', linkPath)
         node.attr('cx', (d: any) => d.x).attr('cy', (d: any) => d.y)
         label.attr('x', (d: any) => d.x).attr('y', (d: any) => d.y)
       })
@@ -540,6 +585,51 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
 
       <GraphLegend locale={locale} colorMode={colorMode} setColorMode={setColorMode} />
 
+      {/* Edge relationship card — opens on edge click */}
+      {edgeInfo && (() => {
+        const src = sageMap.get(edgeInfo.sourceId)
+        const tgt = sageMap.get(edgeInfo.targetId)
+        if (!src || !tgt) return null
+        const typeColor = CONNECTION_COLORS[edgeInfo.type] ?? '#c9973a'
+        const typeLabel = CONNECTION_LABELS[edgeInfo.type as keyof typeof CONNECTION_LABELS]?.[locale] ?? edgeInfo.type
+        return (
+          <div className="absolute bottom-24 left-1/2 -translate-x-1/2 z-20 glass rounded-xl border border-gold-500/25 shadow-glass-lg px-4 py-3 w-[340px] max-w-[calc(100vw-32px)] animate-fade-in">
+            <button
+              onClick={() => setEdgeInfo(null)}
+              className="absolute top-2 end-2 text-ink-500 hover:text-ink-200 transition-colors"
+              aria-label={locale === 'he' ? 'סגור' : 'Close'}
+            >
+              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            <p className="text-[9px] font-sans font-semibold uppercase tracking-widest text-ink-500 mb-2">
+              {locale === 'he' ? 'מהות הקשר' : 'Relationship'}
+            </p>
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => { selectSage(src); setEdgeInfo(null) }}
+                className="flex-1 min-w-0 text-start px-2.5 py-1.5 rounded-lg bg-ink-800/50 hover:bg-ink-700/60 border border-ink-700/40 transition-colors"
+              >
+                <span className="text-sm font-serif text-ink-100 truncate block">{src.label}</span>
+              </button>
+              <span
+                className="flex-shrink-0 text-[10px] font-sans font-semibold px-2 py-1 rounded-full whitespace-nowrap"
+                style={{ background: `${typeColor}20`, color: typeColor, border: `1px solid ${typeColor}55` }}
+              >
+                {typeLabel}
+              </span>
+              <button
+                onClick={() => { selectSage(tgt); setEdgeInfo(null) }}
+                className="flex-1 min-w-0 text-start px-2.5 py-1.5 rounded-lg bg-ink-800/50 hover:bg-ink-700/60 border border-ink-700/40 transition-colors"
+              >
+                <span className="text-sm font-serif text-ink-100 truncate block">{tgt.label}</span>
+              </button>
+            </div>
+          </div>
+        )
+      })()}
+
       {/* PathFinder panel — top-end corner */}
       {showPathFinder && (
         <div className="absolute top-4 end-4 z-20 animate-fade-in">
@@ -611,11 +701,13 @@ function GraphLegend({ locale, colorMode, setColorMode }: {
   const [collapsed, setCollapsed] = useState(true)
 
   return (
-    <div className={cn(
-      'absolute top-4 start-4 z-10',
-      'glass rounded-xl overflow-hidden',
-      'flex flex-col min-w-[140px]',
-    )}>
+    <div
+      data-tour="legend"
+      className={cn(
+        'absolute top-4 start-4 z-10',
+        'glass rounded-xl overflow-hidden',
+        'flex flex-col min-w-[140px]',
+      )}>
       {/* Title bar (always visible) */}
       <button
         onClick={() => setCollapsed(c => !c)}
