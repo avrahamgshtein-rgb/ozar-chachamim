@@ -3,6 +3,7 @@
 import { create } from 'zustand'
 import type { Sage, Connection, Tab, Filters, Period, Region } from '@/lib/types'
 import { regionsOf } from '@/lib/regions'
+import { normalizeHe, fuzzyIncludes } from '@/lib/search'
 
 interface AppState {
   // Data
@@ -60,13 +61,19 @@ function applyFilters(sages: Sage[], filters: Filters): Sage[] {
       const sageRegions = sage.region ? [sage.region, ...regionsOf(sage.location)] : regionsOf(sage.location)
       if (!sageRegions.some(r => filters.region.includes(r))) return false
     }
-    if (filters.field.length > 0 && (!sage.field || !filters.field.includes(sage.field))) return false
+    if (filters.field.length > 0) {
+      if (!sage.field) return false
+      // Handle comma-separated fields: "philosophy, halakha" → ["philosophy", "halakha"]
+      const sageFields = sage.field.split(',').map(f => f.trim())
+      if (!sageFields.some(f => filters.field.includes(f))) return false
+    }
     if (filters.searchQuery) {
-      const q = filters.searchQuery.toLowerCase()
-      const matchLabel   = sage.label?.toLowerCase().includes(q)
-      const matchNameEn  = sage.name_en?.toLowerCase().includes(q)
-      const matchField   = sage.field?.toLowerCase().includes(q)
-      const matchLoc     = sage.location?.toLowerCase().includes(q)
+      // Fuzzy Hebrew matching: "רמבם" ↔ "רמב״ם" (nikud/quotes/finals-insensitive)
+      const q = normalizeHe(filters.searchQuery)
+      const matchLabel   = fuzzyIncludes(sage.label, q)
+      const matchNameEn  = fuzzyIncludes(sage.name_en, q)
+      const matchField   = fuzzyIncludes(sage.field, q)
+      const matchLoc     = fuzzyIncludes(sage.location, q)
       if (!matchLabel && !matchNameEn && !matchField && !matchLoc) return false
     }
     return true
