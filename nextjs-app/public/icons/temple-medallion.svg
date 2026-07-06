@@ -1,0 +1,130 @@
+<svg viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="goldRim" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#FFE55C;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#FFD700;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#DAA520;stop-opacity:1" />
+    </radialGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#DAA520;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="stoneGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#F0E68C;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#DAA520;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Dark background -->
+  <circle cx="250" cy="250" r="250" fill="#0f172a"/>
+
+  <!-- Outer gold rim (thick) -->
+  <circle cx="250" cy="250" r="235" fill="url(#goldRim)" stroke="#8B7500" stroke-width="5"/>
+  <circle cx="250" cy="250" r="228" fill="none" stroke="#FFD700" stroke-width="2" opacity="0.7"/>
+  <circle cx="250" cy="250" r="222" fill="none" stroke="#B8860B" stroke-width="1.5" opacity="0.5"/>
+
+  <!-- Inner light background -->
+  <circle cx="250" cy="250" r="220" fill="#FFFACD" opacity="0.98"/>
+
+  <!-- Light rays -->
+  <g stroke="url(#goldGrad)" stroke-width="3" opacity="0.2">
+    <line x1="250" y1="30" x2="250" y2="70"/>
+    <line x1="360" y1="60" x2="330" y2="95"/>
+    <line x1="440" y1="140" x2="400" y2="170"/>
+    <line x1="460" y1="230" x2="420" y2="250"/>
+    <line x1="140" y1="60" x2="170" y2="95"/>
+    <line x1="60" y1="140" x2="100" y2="170"/>
+    <line x1="40" y1="230" x2="80" y2="250"/>
+  </g>
+
+  <!-- Temple structure -->
+
+  <!-- Foundation base -->
+  <rect x="140" y="370" width="220" height="50" fill="url(#stoneGrad)" opacity="0.85"/>
+  <line x1="140" y1="375" x2="360" y2="375" stroke="url(#goldGrad)" stroke-width="1" opacity="0.4"/>
+  <line x1="140" y1="390" x2="360" y2="390" stroke="url(#goldGrad)" stroke-width="1" opacity="0.3"/>
+
+  <!-- Underground chamber -->
+  <rect x="210" y="390" width="80" height="25" fill="none" stroke="url(#goldGrad)" stroke-width="2" rx="3" opacity="0.6"/>
+
+  <!-- Left outer column -->
+  <rect x="130" y="260" width="22" height="110" fill="url(#stoneGrad)" stroke="url(#goldGrad)" stroke-width="1.5" opacity="0.85"/>
+  <polygon points="130,260 152,260 148,230 134,230" fill="url(#goldGrad)" opacity="0.7"/>
+
+  <!-- Left inner columns pair -->
+  <rect x="165" y="235" width="16" height="135" fill="url(#stoneGrad)" stroke="url(#goldGrad)" stroke-width="1.2" opacity="0.88"/>
+  <polygon points="165,235 181,235 177,195 169,195" fill="url(#goldGrad)" opacity="0.65"/>
+  <ellipse cx="173" cy="235" rx="8" ry="3" fill="url(#goldGrad)" opacity="0.6"/>
+
+  <rect x="195" y="235" width="16" height="135" fill="url(#stoneGrad)" stroke="url(#goldGrad)" stroke-width="1.2" opacity="0.88"/>
+  <polygon points="195,235 211,235 207,195 199,195" fill="url(#goldGrad)" opacity="0.65"/>
+  <ellipse cx="203" cy="235" rx="8" ry="3" fill="url(#goldGrad)" opacity="0.6"/>
+
+  <!-- Central temple main structure -->
+  <rect x="210" y="180" width="80" height="180" fill="url(#stoneGrad)" stroke="url(#goldGrad)" stroke-width="2.5" opacity="0.92"/>
+
+  <!-- Decorative entablature -->
+  <rect x="207" y="173" width="86" height="12" fill="url(#goldGrad)" opacity="0.85"/>
+  <polygon points="207,173 293,173 290,150 210,150" fill="url(#goldGrad)" opacity="0.65"/>
+
+  <!-- Decorative pattern on entablature -->
+  <circle cx="225" cy="179" r="2" fill="url(#stoneGrad)" opacity="0.6"/>
+  <circle cx="250" cy="179" r="2" fill="url(#stoneGrad)" opacity="0.6"/>
+  <circle cx="275" cy="179" r="2" fill="url(#stoneGrad)" opacity="0.6"/>
+
+  <!-- Golden spikes on roof -->
+  <polygon points="223,150 227,120 231,150" fill="url(#goldGrad)" opacity="0.75"/>
+  <polygon points="243,150 247,115 251,150" fill="url(#goldGrad)" opacity="0.75"/>
+  <polygon points="263,150 267,120 271,150" fill="url(#goldGrad)" opacity="0.75"/>
+
+  <!-- Central golden door -->
+  <rect x="232" y="240" width="36" height="70" fill="url(#goldGrad)" stroke="url(#goldGrad)" stroke-width="2" opacity="0.88"/>
+  <rect x="235" y="244" width="30" height="62" fill="url(#goldGrad)" opacity="0.6"/>
+
+  <!-- Door frame detail -->
+  <rect x="230" y="237" width="40" height="76" fill="none" stroke="url(#goldGrad)" stroke-width="2" opacity="0.5" stroke-dasharray="3,2"/>
+
+  <!-- Door vertical division -->
+  <line x1="250" y1="240" x2="250" y2="310" stroke="url(#stoneGrad)" stroke-width="1.2" opacity="0.5"/>
+
+  <!-- Door horizontal details -->
+  <line x1="232" y1="260" x2="268" y2="260" stroke="url(#stoneGrad)" stroke-width="0.8" opacity="0.4"/>
+  <line x1="232" y1="285" x2="268" y2="285" stroke="url(#stoneGrad)" stroke-width="0.8" opacity="0.4"/>
+
+  <!-- Right inner columns pair -->
+  <rect x="289" y="235" width="16" height="135" fill="url(#stoneGrad)" stroke="url(#goldGrad)" stroke-width="1.2" opacity="0.88"/>
+  <polygon points="289,235 305,235 301,195 293,195" fill="url(#goldGrad)" opacity="0.65"/>
+  <ellipse cx="297" cy="235" rx="8" ry="3" fill="url(#goldGrad)" opacity="0.6"/>
+
+  <rect x="319" y="235" width="16" height="135" fill="url(#stoneGrad)" stroke="url(#goldGrad)" stroke-width="1.2" opacity="0.88"/>
+  <polygon points="319,235 335,235 331,195 323,195" fill="url(#goldGrad)" opacity="0.65"/>
+  <ellipse cx="327" cy="235" rx="8" ry="3" fill="url(#goldGrad)" opacity="0.6"/>
+
+  <!-- Right outer column -->
+  <rect x="348" y="260" width="22" height="110" fill="url(#stoneGrad)" stroke="url(#goldGrad)" stroke-width="1.5" opacity="0.85"/>
+  <polygon points="348,260 370,260 366,230 354,230" fill="url(#goldGrad)" opacity="0.7"/>
+
+  <!-- Side columnades (porticos) -->
+  <!-- Left side -->
+  <g opacity="0.65">
+    <rect x="100" y="290" width="8" height="70" fill="url(#stoneGrad)" stroke="url(#goldGrad)" stroke-width="0.8"/>
+    <rect x="115" y="290" width="8" height="70" fill="url(#stoneGrad)" stroke="url(#goldGrad)" stroke-width="0.8"/>
+    <rect x="130" y="290" width="8" height="70" fill="url(#stoneGrad)" stroke="url(#goldGrad)" stroke-width="0.8"/>
+  </g>
+
+  <!-- Right side -->
+  <g opacity="0.65">
+    <rect x="362" y="290" width="8" height="70" fill="url(#stoneGrad)" stroke="url(#goldGrad)" stroke-width="0.8"/>
+    <rect x="377" y="290" width="8" height="70" fill="url(#stoneGrad)" stroke="url(#goldGrad)" stroke-width="0.8"/>
+    <rect x="392" y="290" width="8" height="70" fill="url(#stoneGrad)" stroke="url(#goldGrad)" stroke-width="0.8"/>
+  </g>
+
+  <!-- Outer tower structures -->
+  <!-- Left tower -->
+  <rect x="75" y="310" width="40" height="60" fill="url(#stoneGrad)" opacity="0.6"/>
+  <line x1="75" y1="320" x2="115" y2="320" stroke="url(#goldGrad)" stroke-width="0.8" opacity="0.3"/>
+
+  <!-- Right tower -->
+  <rect x="385" y="310" width="40" height="60" fill="url(#stoneGrad)" opacity="0.6"/>
+  <line x1="385" y1="320" x2="425" y2="320" stroke="url(#goldGrad)" stroke-width="0.8" opacity="0.3"/>
+</svg>
