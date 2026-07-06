@@ -45,6 +45,10 @@ const GenealogyTree = dynamic(
   () => import('@/components/viz/GenealogyTree').then(m => ({ default: m.GenealogyTree })),
   { ssr: false, loading: () => <VizSkeleton /> },
 )
+const AboutContent = dynamic(
+  () => import('@/components/about/AboutContent').then(m => ({ default: m.AboutContent })),
+  { ssr: false, loading: () => <VizSkeleton /> },
+)
 
 interface AppShellProps {
   locale: Locale
@@ -101,7 +105,7 @@ export function AppShell({ locale, initialTotal, initialLastUpdate }: AppShellPr
   useEffect(() => {
     const params = new URLSearchParams(window.location.search)
     const tab = params.get('tab')
-    const VALID: Tab[] = ['graph', 'map', 'traditions', 'ideas', 'timeline', 'genealogy']
+    const VALID: Tab[] = ['graph', 'map', 'traditions', 'ideas', 'timeline', 'genealogy', 'about']
     if (tab && (VALID as string[]).includes(tab)) {
       useAppStore.getState().setActiveTab(tab as Tab)
     }
@@ -243,6 +247,9 @@ function CanvasArea({ activeTab, locale }: { activeTab: string; locale: Locale }
           <GenealogyTree locale={locale} />
         </div>
       )}
+
+      {/* About page */}
+      {activeTab === 'about' && <AboutContent locale={locale} />}
     </div>
   )
 }

@@ -2574,27 +2574,60 @@
       <!-- ABOUT VIEW -->
       <section class="view about-view" id="about-view">
         <div class="about-content">
-          <h2>אוצר חכמים</h2>
-          <p>בסיס ידע מובנה על חכמי ישראל לדורותיהם עם ויזואליזציה דינמית של קשרים בין חכמים.</p>
+          <h2 style="font-size: 2rem; margin-bottom: 1rem;">🏛️ אוצר חכמים</h2>
+          <p style="font-size: 1.1rem; margin-bottom: 1.5rem; line-height: 1.6;">
+            <strong>בסיס ידע מובנה על חכמי ישראל לדורותיהם</strong> — עם ויזואליזציה דינמית של קשרים בין חכמים המיועדת לתלמידי ישיבות ובוגריהן.
+          </p>
 
-          <h3>תכונות:</h3>
+          <h3>📊 הרשת שלנו</h3>
           <ul>
-            <li><strong>רשת חכמים אינטרקטיבית</strong> — 300+ חכמים מלדורות שונות</li>
-            <li><strong>קשרי תלמיד-מורה ושפעות</strong> — מעקב אחר יחסי חיבור ופיתוח</li>
-            <li><strong>ארגון מרחבי וזמני</strong> — חלוקה לפי תקופה, אזור גיאוגרפי</li>
-            <li><strong>חיפוש וסינון מתקדם</strong> — חיפוש לפי שם, תקופה, תחום ידע</li>
-            <li><strong>ייצוא נתונים</strong> — הורדת כל הנתונים כ-JSON</li>
-            <li><strong>מפה אינטראקטיבית</strong> — ראה את המיקומים הגיאוגרפיים של חכמים</li>
-            <li><strong>טבלה מקיפה</strong> — סקירה מלאה של כל החכמים ומאפייניהם</li>
+            <li><strong>365 חכמים</strong> מ-7 תקופות היסטוריות</li>
+            <li><strong>452 קשרים תועדים</strong> (מורה-תלמיד, השפעות, ויכוחים, קשרים משפחתיים)</li>
+            <li><strong>148 חכמים עם מחקר</strong> משלוש אקדמיות וספרים</li>
+            <li><strong>כיסוי גיאוגרפי</strong> מארץ ישראל, בבל, ספרד, צפון אפריקה, צרפת, גרמניה, פולין ועוד</li>
           </ul>
 
-          <h3>על הפרויקט</h3>
-          <p>אתר זה משלב את מתודולוגיית <a href="https://www.connectedpapers.com" target="_blank" style="color: #2980b9; text-decoration: none;">Connected Papers</a> — הצגת רשתות של קשרים דינמיים — כדי להבין את קשרי ההשפעה והמורשת בין חכמי ישראל לדורותיהם.</p>
+          <h3>✨ תכונות ראשיות</h3>
+          <ul>
+            <li><strong>רשת קשרים אינטראקטיבית</strong> — D3.js force-directed network</li>
+            <li><strong>מפה גיאוגרפית</strong> — עקוב אחר מיקומים והגירות של חכמים</li>
+            <li><strong>חיפוש מתקדם</strong> — תמיכה בתרגומים בעברית ותצורות שונות</li>
+            <li><strong>מסמכי מחקר</strong> — 252 מסמכי מחקר סקורים ומיוחסים</li>
+            <li><strong>חומרי הוראה</strong> — תכניות שיעור של 45 דקות ושאלות דיון</li>
+            <li><strong>ממשק דו-לשוני</strong> — עברית (RTL) ואנגלית מלאות</li>
+            <li><strong>responsive לכל מכשיר</strong> — שולחני, טאבלט, סלולרי</li>
+          </ul>
 
-          <h3>מפתחי הרשת</h3>
-          <p style="font-size: 0.95rem; color: #666;">
-            נבנה עם D3.js, Supabase, ו-Leaflet.js<br>
-            עברית RTL מלאה, מובייל responsive
+          <h3>👤 מנהל הפרויקט</h3>
+          <p style="font-weight: 600; color: #2c3e50;">
+            <strong>Avraham Goldshtein</strong><br>
+            <a href="mailto:avraham.gshtein@gmail.com" style="color: #3498db; text-decoration: none;">avraham.gshtein@gmail.com</a>
+          </p>
+
+          <h3>💻 Tech Stack</h3>
+          <p style="font-size: 0.95rem; color: #555;">
+            Frontend: HTML5 + CSS3 + JavaScript (Vanilla)<br>
+            Visualization: D3.js v7, Leaflet.js, Canvas<br>
+            Data: JSON, CSV, Supabase<br>
+            Deployment: Vercel (production), localhost (development)
+          </p>
+
+          <h3>📚 מקורות הנתונים</h3>
+          <ul style="font-size: 0.95rem;">
+            <li>Master dataset: <em>חכמי ישראל</em></li>
+            <li>Research: 252 מסמכי ביוגרפיה מספרים אקדמיים</li>
+            <li>Geographic data: GeoNames, OpenStreetMap</li>
+            <li>Historical timeline: מקורות תלמודיים ואנציקלופדיות</li>
+          </ul>
+
+          <h3>🎓 רוח הפרויקט</h3>
+          <p>
+            אנחנו מאמינים שחכמי ישראל לא צריכים להיות שמות בספר, אלא דמויות חיות המחוברות בדוגמה, בוויכוח ובהשפעה הדדית. פרויקט זה שומר על החוכמה שלהם בזמן שהוא עושה אותה נגישה לדור הבא של חוקרים ותלמידים.
+          </p>
+
+          <p style="text-align: center; margin-top: 2rem; font-size: 0.9rem; color: #999;">
+            <strong>אוצר חכמים</strong> — Preserving the Wisdom of Our Sages<br>
+            עודכן: יולי 2026 | Version 2.0
           </p>
         </div>
       </section>

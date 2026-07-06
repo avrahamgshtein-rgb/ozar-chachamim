@@ -5,7 +5,7 @@ import { useAppStore } from '@/store/useAppStore'
 import { TAB_META } from '@/lib/types'
 import type { Tab, Locale } from '@/lib/types'
 
-const TABS: Tab[] = ['graph', 'map', 'traditions', 'ideas', 'timeline', 'genealogy']
+const TABS: Tab[] = ['graph', 'map', 'traditions', 'ideas', 'timeline', 'genealogy', 'about']
 
 interface TabBarProps {
   locale: Locale
@@ -45,13 +45,25 @@ export function TabBar({ locale }: TabBarProps) {
                 : 'border border-transparent text-ink-400 hover:text-ink-200 hover:bg-ink-700/40',
             )}
           >
-            <span
-              className="text-base leading-none"
-              style={{ fontFamily: 'monospace' }}
-              aria-hidden
-            >
-              {meta.icon}
-            </span>
+            {meta.icon === 'temple' ? (
+              <img
+                src="/icons/temple.svg"
+                alt={label}
+                className={cn(
+                  'w-6 h-6',
+                  active ? '[filter:drop-shadow(0_0_4px_#c99a3a)]' : '',
+                )}
+                aria-hidden
+              />
+            ) : (
+              <span
+                className="text-base leading-none"
+                style={{ fontFamily: 'monospace' }}
+                aria-hidden
+              >
+                {meta.icon}
+              </span>
+            )}
             <span
               className={cn(
                 'text-[10px] font-sans font-medium leading-tight whitespace-nowrap',

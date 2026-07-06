@@ -31,7 +31,7 @@ export type ConnectionType =
 
 export type Locale = 'he' | 'en'
 
-export type Tab = 'graph' | 'map' | 'traditions' | 'ideas' | 'timeline' | 'genealogy'
+export type Tab = 'graph' | 'map' | 'traditions' | 'ideas' | 'timeline' | 'genealogy' | 'about'
 
 export interface MigrationPath {
   from: string
@@ -149,4 +149,5 @@ export const TAB_META: Record<Tab, { labelHe: string; labelEn: string; icon: str
   ideas:      { labelHe: 'טבלה',           labelEn: 'Table',      icon: '≡' },
   timeline:   { labelHe: 'שלשלת הקבלה',  labelEn: 'Timeline',   icon: '▷' },
   genealogy:  { labelHe: 'עץ שושלות',     labelEn: 'Lineage',    icon: '⟁' },
+  about:      { labelHe: 'אודות',          labelEn: 'About',      icon: 'temple' },
 }

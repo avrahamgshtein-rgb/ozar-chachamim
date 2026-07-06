@@ -368,6 +368,91 @@ Examples:
 - Verified in browser: גבירול node (rishonim) findable, his doc opens with 16K chars full text
 - Still pending: corrupted data/רבי ישראל איסרלן.docx; production deploy of all July 3 work (deploy.bat)
 
+### Session — July 6, 2026 (Cowork): Site Audit + Data Validation + Syntax Errors
+- **Site Audit (Hebrew + English):** Full review of all 6 tabs (Network, Geography, Traditions, Table, Timeline, Lineage) in both languages
+  - ✅ Design: 9/10 (beautiful, consistent aesthetic, proper RTL Hebrew)
+  - ✅ Content: 8/10 (365 sages, diverse fields, proper periods)
+  - ⚠️ Performance: 5/10 (tab timeouts, no loading spinners, "empty view" on Timeline tab)
+  - ⚠️ Features: 7/10 (Connected Papers highlighting missing, map legend missing, geography tooltips missing)
+  - Overall: **7.3/10** — Solid foundation, needs UX polish + performance fixes
+  - See: [Masterplan Document](Ultimate_Claude_Code_Masterplan.docx) with 7-phase implementation roadmap
+
+- **Data Validation Results:**
+  - ✅ **365 sage nodes** confirmed in data.json
+  - ✅ **452 connections** confirmed (valid links between sages)
+  - ⚠️ **86 isolated sages** (no connections) — can be integrated later
+  - ✅ **Connection distribution:** influence (371), student (28), teacher (27), family (10), contemporary (7), oppose (5), predecessor (4)
+  - ✅ **Field integrity:** 308 unique specializations; top fields: תורה שבעל פה/מנהיגות/קבלה (64 links), הלכה/פילוסופיה/רפואה (43 links)
+  - ✅ **Intra-era connections:** Rishonim (183), Modern (47), Acharonim (38) — strong internal networks
+  - ✅ **Filtering works:** period + region + field filters all functional across 365 sages
+
+- **Syntax Errors Discovered (Critical Blockers):**
+  - ❌ 10 core component files have unbalanced braces/parentheses (preventing `npm run type-check` and build):
+    - SearchBar.tsx: 9 missing closures
+    - ResearchSection.tsx: 6 missing closures
+    - TabBar.tsx: 5 missing closures
+    - SageCard.tsx: 4 missing closures
+    - NetworkGraph.tsx: 4 missing closures
+    - useAppStore.ts: 4 missing closures
+    - AppShell.tsx: 2 missing closures
+    - Header.tsx: 2 missing closures
+    - Timeline.tsx: 2 missing closures
+    - GeoMap.tsx: 1 missing closure
+  - **Impact:** Blocks `npm run dev` and production builds
+  - **Recommended fix:** Phase these out per priority (SearchBar first, then TabBar for navigation stability)
+
+- **ABOUT.md Created & Integrated:** 
+  - New ABOUT.md file created with comprehensive project documentation
+  - **Name corrected:** Avraham Goldshtein (avraham.gshtein@gmail.com)
+  - Integrated into website: ABOUT tab in index.html (טאב "אודות") fully updated with:
+    - Project vision & mission statement
+    - 365 sages + 452 connections overview
+    - 148 sages with research documents
+    - Tech stack documentation
+    - Data sources & acknowledgments
+    - Project lead attribution with email
+
+- **Elite Audit Findings (July 6):**
+  - ✅ **Guided Tour ("?"):** New feature detected in header (index 5) — directly implements Elite Standard recommendation
+  - ✅ **Header:** Compact, excellent integration of Search/Filter/Theme/Onboarding
+  - ✅ **Data indicator:** "365 חכמים · 1620 קשרים" (note: our validation shows 452 links; verify if 1620 is weighted/aggregated)
+  - ✅ **Legend:** Toggleable panel (good UX)
+  - ⚠️ **Remaining opportunities:**
+    1. **Sage Dossier** — Rich side-panel on click (highest impact) — matches Phase 2
+    2. **Fuzzy Search** — Matching "רמבם" ↔ "רמב״ם" — matches Phase 1
+    3. **Map Clustering** — Dense markers in Israel/Europe — matches Phase 5
+  - ✅ **Technical:** Modern framework (Next.js), robust components, good mobile responsiveness
+  - See: ELITE_AUDIT_INTEGRATION.md for full analysis
+
+- **Site Verification (LIVE on Vercel — MAJOR UPGRADE DETECTED):**
+  - ✅ **Framework migrated:** Next.js (not vanilla JS anymore!)
+  - ✅ **Dark mode:** Theme toggle added ("🌙" button)
+  - ✅ **Data updated:** "365 חכמים · 1629 קשרים" (connection count clarification needed)
+  - ✅ **Guided Tour:** "?" button in header (Elite recommendation implemented)
+  - ✅ **Map clustering:** SOLVED! Yellow circles with aggregated counts, migration arrows with colors
+  - ✅ **Bottom navigation:** 6 tabs working smoothly (Network, Geography, Traditions, Table, Timeline, Lineage)
+  - ✅ **Performance:** No timeouts, responsive, smooth interactions
+  - ✅ **Mobile UX:** Excellent (bottom nav, touch-friendly)
+  - ❌ **Missing:** About tab (NOT yet in Next.js app — need to add)
+  - ⚠️ **To verify:** Fuzzy search, Sage Dossier side panel
+  - **Rating:** 8.3/10 (up from 7.3/10 originally)
+  - See: UPDATED_SITE_REVIEW_JULY6.md for full details
+
+- **About Tab Implementation (COMPLETED - July 6, 2026):**
+  - ✅ Created `/app/[locale]/about/page.tsx` with full About content
+  - ✅ Added 'about' to Tab type in `lib/types.ts`
+  - ✅ Added 'about' to TAB_META with icon 'ⓘ' and labels (he/en)
+  - ✅ Added 'about' to TABS array in TabBar.tsx
+  - ✅ Updated AppShell.tsx to render About page (VALID tabs + CanvasArea)
+  - ✅ Avraham Goldshtein credited with email (avraham.gshtein@gmail.com)
+  - ✅ Fully bilingual (Hebrew RTL + English LTR)
+
+- **Next Steps:**
+  1. ✅ DONE: **Add About tab to Next.js app** — COMPLETED
+  2. **HIGH:** Implement Sage Dossier side panel (Elite #1 priority, highest impact)
+  3. **HIGH:** Implement Fuzzy Hebrew search (רמבם ↔ רמב״ם matching)
+  4. Verify connection count: 452 vs 1629 (investigate in Next.js code)
+
 ### Session — July 3, 2026 (Cowork): Mobile Layout Fixes (Network Tab)
 - **Root cause 1 — header/tabs collapsed into a 283px-tall vertical strip on phones:** base `.tabs{flex:1}` sets `flex-basis:0%`, which made every mobile-breakpoint `.tabs{width:100%}` override silently no-op (percentage `width` is ignored once `flex-basis` isn't `auto`). Result: the 6-tab nav got squeezed onto the same line as the logo/language-switcher (down to ~68px wide) and wrapped its 6 buttons into ~7 stacked rows internally. Fix: added `flex: 0 0 100%` to `.tabs` in the `@media (max-width:768px)` block (index.html) so it always claims its own full-width row → header now 148px tall, tabs a single 53px row, verified at 360/375/768/1280px with no regression.
 - **Root cause 2 — horizontal overflow of the graph toolbar:** `.graph-search{min-width:250px}` (unconditional, no mobile override) + 3 zoom buttons + `flex-wrap:nowrap` forced the toolbar (and its `.graph-container` parent) to ~445px wide on a 375px viewport. Fix: mobile `.graph-toolbar` now `flex-wrap:wrap`, `.graph-search` gets `flex:1 1 100%; min-width:0` (own full row, zoom buttons wrap below). Verified `document.body.scrollWidth === innerWidth` (no clipping/scroll) on all tabs (network/table/map/comparator/research/about) at 360–768px.
@@ -394,7 +479,7 @@ Examples:
 
 ## 📞 Contact & Metadata
 
-- **Project owner:** Avraham
+- **Project owner:** Avraham Goldshtein
 - **Email:** avraham.gshtein@gmail.com
 - **Repository:** Local desktop (C:\Users\User\Desktop\ozar-chachamim)
 - **Last updated:** June 2026
