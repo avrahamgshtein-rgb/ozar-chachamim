@@ -24,6 +24,7 @@ export function TabBar({ locale }: TabBarProps) {
         'max-w-[calc(100vw-2rem)]',
       )}
       aria-label={isHe ? 'ניווט ראשי' : 'Main navigation'}
+      data-tour="tabs"
     >
       {TABS.map(tab => {
         const meta   = TAB_META[tab]
@@ -38,10 +39,10 @@ export function TabBar({ locale }: TabBarProps) {
             title={label}
             className={cn(
               'flex flex-col items-center gap-0.5 px-3 py-2 rounded-xl',
-              'transition-all duration-200 min-w-[64px]',
+              'transition-all duration-200 min-w-[64px] min-h-[44px]',
               active
-                ? 'bg-gold-500/15 text-gold-300'
-                : 'text-ink-400 hover:text-ink-200 hover:bg-ink-700/40',
+                ? 'bg-gold-500/20 text-gold-300 shadow-gold-glow border border-gold-500/40'
+                : 'border border-transparent text-ink-400 hover:text-ink-200 hover:bg-ink-700/40',
             )}
           >
             <span

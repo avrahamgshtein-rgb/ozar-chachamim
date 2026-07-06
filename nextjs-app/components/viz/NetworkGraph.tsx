@@ -653,7 +653,7 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
           aria-label={locale === 'he' ? 'מוצא מסלול' : 'Path Finder'}
           title={locale === 'he' ? 'מוצא מסלול' : 'Path Finder'}
           className={cn(
-            'w-8 h-8 rounded-lg text-xs font-mono glass border transition-all',
+            'w-11 h-11 md:w-8 md:h-8 rounded-lg text-xs font-mono glass border transition-all',
             'flex items-center justify-center',
             showPathFinder
               ? 'bg-gold-500/20 border-gold-500/50 text-gold-300 shadow-gold-glow'
@@ -677,7 +677,7 @@ function ZoomBtn({ onClick, children, label }: {
 }) {
   return (
     <button onClick={onClick} aria-label={label} className={cn(
-      'w-8 h-8 rounded-lg text-sm font-mono glass border border-ink-600/40',
+      'w-11 h-11 md:w-8 md:h-8 rounded-lg text-sm font-mono glass border border-ink-600/40',
       'text-ink-300 hover:text-gold-300 hover:border-gold-500/30',
       'transition-all flex items-center justify-center',
     )}>

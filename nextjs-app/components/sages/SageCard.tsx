@@ -10,6 +10,7 @@ import type { Sage, Connection, Locale } from '@/lib/types'
 import { UI } from '@/lib/i18n'
 import { useAppStore } from '@/store/useAppStore'
 import { fetchResearchContent } from '@/lib/supabase'
+import { ReadingControls, useReadingPrefs, readingStyle } from '@/components/ui/ReadingControls'
 
 interface SageCardProps {
   sage: Sage
@@ -19,9 +20,10 @@ interface SageCardProps {
 
 export function SageCard({ sage, locale, onClose }: SageCardProps) {
   const t = UI[locale]
-  const { connections, sageMap, selectSage, openComparator } = useAppStore()
+  const { connections, sageMap, selectSage, openComparator, setActiveTab, activeTab } = useAppStore()
   const [research, setResearch] = useState<string | null>(null)
   const [researchOpen, setResearchOpen] = useState(false)
+  const [readingPrefs, setReadingPrefs] = useReadingPrefs()
 
   useEffect(() => {
     setResearch(null)
@@ -116,6 +118,22 @@ export function SageCard({ sage, locale, onClose }: SageCardProps) {
             ))}
           </div>
         )}
+
+        {/* Cross-view sync: jump to this sage in other tabs */}
+        <div className="flex flex-wrap gap-1.5 mt-3">
+          {activeTab !== 'graph' && (
+            <CrossViewBtn onClick={() => setActiveTab('graph')} icon="⬡"
+              label={locale === 'he' ? 'הצג ברשת' : 'Show in network'} />
+          )}
+          {activeTab !== 'map' && (
+            <CrossViewBtn onClick={() => setActiveTab('map')} icon="◎"
+              label={locale === 'he' ? 'הצג במפה' : 'Show on map'} />
+          )}
+          {activeTab !== 'timeline' && (
+            <CrossViewBtn onClick={() => setActiveTab('timeline')} icon="▷"
+              label={locale === 'he' ? 'הצג בציר הזמן' : 'Show on timeline'} />
+          )}
+        </div>
       </header>
 
       {/* Scrollable body */}
@@ -147,17 +165,25 @@ export function SageCard({ sage, locale, onClose }: SageCardProps) {
         {/* Research content (lazy-loaded from Supabase) */}
         {research && (
           <section>
-            <button
-              onClick={() => setResearchOpen(o => !o)}
-              className="flex items-center gap-2 w-full text-start group"
-            >
-              <SectionLabel>
-                {locale === 'he' ? 'מחקר מורחב' : 'Research'}
-              </SectionLabel>
-              <span className="text-ink-600 text-xs mb-2">{researchOpen ? '▾' : '▸'}</span>
-            </button>
+            <div className="flex items-center justify-between gap-2 mb-1">
+              <button
+                onClick={() => setResearchOpen(o => !o)}
+                className="flex items-center gap-2 text-start group"
+              >
+                <SectionLabel>
+                  {locale === 'he' ? 'מחקר מורחב' : 'Research'}
+                </SectionLabel>
+                <span className="text-ink-600 text-xs mb-2">{researchOpen ? '▾' : '▸'}</span>
+              </button>
+              {researchOpen && (
+                <ReadingControls prefs={readingPrefs} onChange={setReadingPrefs} locale={locale} />
+              )}
+            </div>
             {researchOpen && (
-              <p className="text-sm font-sans text-ink-300 leading-relaxed whitespace-pre-wrap">
+              <p
+                className="text-sm text-ink-300 whitespace-pre-wrap"
+                style={readingStyle(readingPrefs)}
+              >
                 {research}
               </p>
             )}
@@ -308,6 +334,25 @@ export function SageCard({ sage, locale, onClose }: SageCardProps) {
         </button>
       </footer>
     </article>
+  )
+}
+
+function CrossViewBtn({ onClick, icon, label }: {
+  onClick: () => void; icon: string; label: string
+}) {
+  return (
+    <button
+      onClick={onClick}
+      className={cn(
+        'flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-sans',
+        'bg-ink-800/50 hover:bg-ink-700/60 text-ink-300 hover:text-gold-300',
+        'border border-ink-700/40 hover:border-gold-500/30',
+        'transition-all duration-150',
+      )}
+    >
+      <span className="font-mono text-[11px]" aria-hidden>{icon}</span>
+      {label}
+    </button>
   )
 }
 

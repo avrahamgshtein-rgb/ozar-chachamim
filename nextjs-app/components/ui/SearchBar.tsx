@@ -1,8 +1,9 @@
 'use client'
 
-import { useEffect, useRef, useState, useCallback } from 'react'
+import { useEffect, useRef, useState, useCallback, useMemo } from 'react'
 import { cn } from '@/lib/utils'
 import { searchSages } from '@/lib/supabase'
+import { searchSagesLocal } from '@/lib/search'
 import { useAppStore } from '@/store/useAppStore'
 import { EraChip } from './EraChip'
 import type { Sage, Locale } from '@/lib/types'
@@ -23,15 +24,35 @@ export function SearchBar({ locale, className }: SearchBarProps) {
   const inputRef  = useRef<HTMLInputElement>(null)
   const timerRef  = useRef<ReturnType<typeof setTimeout> | null>(null)
 
-  const { selectSage, setSearchQuery } = useAppStore()
+  const { selectSage, setSearchQuery, sages, connections } = useAppStore()
+
+  // Popular sages (highest connection degree) — suggested on empty focus
+  const popular = useMemo(() => {
+    if (!sages.length) return []
+    const deg = new Map<string, number>()
+    connections.forEach(c => {
+      deg.set(c.source, (deg.get(c.source) ?? 0) + 1)
+      deg.set(c.target, (deg.get(c.target) ?? 0) + 1)
+    })
+    return [...sages]
+      .sort((a, b) => (deg.get(b.id) ?? 0) - (deg.get(a.id) ?? 0))
+      .slice(0, 6)
+  }, [sages, connections])
 
   const runSearch = useCallback(async (q: string) => {
     if (!q.trim()) { setResults([]); return }
+    // Instant fuzzy client-side search once the dataset is loaded
+    // (handles "רמבם" → "רמב״ם" and similar spelling variations)
+    if (sages.length > 0) {
+      setResults(searchSagesLocal(sages, q, 8))
+      return
+    }
+    // Fallback: Supabase ilike while data is still loading
     setLoading(true)
     const found = await searchSages(q, 8)
     setResults(found)
     setLoading(false)
-  }, [])
+  }, [sages])
 
   useEffect(() => {
     if (timerRef.current) clearTimeout(timerRef.current)
@@ -50,16 +71,17 @@ export function SearchBar({ locale, className }: SearchBarProps) {
   }
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (!results.length) return
+    const list = query.trim() ? results : popular
+    if (!list.length) return
     if (e.key === 'ArrowDown') {
       e.preventDefault()
-      setActiveIdx(i => Math.min(i + 1, results.length - 1))
+      setActiveIdx(i => Math.min(i + 1, list.length - 1))
     } else if (e.key === 'ArrowUp') {
       e.preventDefault()
       setActiveIdx(i => Math.max(i - 1, 0))
     } else if (e.key === 'Enter' && activeIdx >= 0) {
       e.preventDefault()
-      handleSelect(results[activeIdx])
+      handleSelect(list[activeIdx])
     } else if (e.key === 'Escape') {
       setQuery('')
       setResults([])
@@ -67,7 +89,9 @@ export function SearchBar({ locale, className }: SearchBarProps) {
     }
   }
 
-  const showDropdown = focused && (results.length > 0 || (loading && query.length > 0))
+  // Suggestions shown: search results while typing, popular sages on empty focus
+  const shown = query.trim() ? results : popular
+  const showDropdown = focused && (shown.length > 0 || (loading && query.length > 0))
 
   return (
     <div className={cn('relative w-full max-w-md', className)}>
@@ -141,8 +165,13 @@ export function SearchBar({ locale, className }: SearchBarProps) {
             'animate-fade-in',
           )}
         >
+          {!query.trim() && shown.length > 0 && (
+            <p className="px-4 pt-3 pb-1 text-[9px] font-sans font-semibold uppercase tracking-widest text-ink-500">
+              {locale === 'he' ? 'חכמים מובילים' : 'Popular sages'}
+            </p>
+          )}
           <ul role="listbox" aria-label={t.searchLabel}>
-            {results.map((sage, idx) => (
+            {shown.map((sage, idx) => (
               <li key={sage.id} role="option" aria-selected={idx === activeIdx}>
                 <button
                   className={cn(

@@ -4,6 +4,7 @@
 // (עובד זהה בלוקאל וב-Vercel; הקבצים סטטיים ב-public/research)
 import { useEffect, useState } from 'react'
 import type { Locale } from '@/lib/types'
+import { ReadingControls, useReadingPrefs, readingStyle } from '@/components/ui/ReadingControls'
 
 interface ResearchDoc {
   title: string
@@ -14,6 +15,7 @@ interface ResearchDoc {
 
 export function ResearchSection({ sageId, locale }: { sageId: string; locale: Locale }) {
   const [docs, setDocs] = useState<ResearchDoc[] | null>(null)
+  const [prefs, setPrefs] = useReadingPrefs()
   const isHe = locale === 'he'
 
   useEffect(() => {
@@ -36,11 +38,14 @@ export function ResearchSection({ sageId, locale }: { sageId: string; locale: Lo
 
   return (
     <section>
-      <h2 className="text-xs font-sans font-semibold uppercase tracking-widest text-ink-500 mb-3">
-        {isHe
-          ? `מחקר מלא (${docs.length} ${docs.length === 1 ? 'מסמך' : 'מסמכים'})`
-          : `Full Research (${docs.length} ${docs.length === 1 ? 'document' : 'documents'})`}
-      </h2>
+      <div className="flex items-center justify-between gap-3 mb-3">
+        <h2 className="text-xs font-sans font-semibold uppercase tracking-widest text-ink-500">
+          {isHe
+            ? `מחקר מלא (${docs.length} ${docs.length === 1 ? 'מסמך' : 'מסמכים'})`
+            : `Full Research (${docs.length} ${docs.length === 1 ? 'document' : 'documents'})`}
+        </h2>
+        <ReadingControls prefs={prefs} onChange={setPrefs} locale={locale} />
+      </div>
       <div className="space-y-3" dir="rtl">
         {docs.map((doc, i) => (
           <details key={i} open={i === 0}
@@ -49,7 +54,10 @@ export function ResearchSection({ sageId, locale }: { sageId: string; locale: Lo
               📖 {doc.title.length > 90 ? doc.title.slice(0, 90) + '…' : doc.title}
               <span className="text-ink-500 text-xs font-sans"> · {doc.word_count.toLocaleString()} {isHe ? 'מילים' : 'words'}</span>
             </summary>
-            <div className="px-4 pb-4 pt-1 text-sm font-sans text-ink-200 leading-loose whitespace-pre-line border-t border-ink-700/30">
+            <div
+              className="px-4 pb-4 pt-1 text-sm text-ink-200 whitespace-pre-line border-t border-ink-700/30"
+              style={readingStyle(prefs)}
+            >
               {doc.content}
             </div>
           </details>

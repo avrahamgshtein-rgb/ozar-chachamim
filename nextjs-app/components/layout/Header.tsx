@@ -51,12 +51,12 @@ export function Header({ locale, otherLocale }: HeaderProps) {
       <div className="w-px h-8 bg-ink-700/60 flex-shrink-0 hidden md:block" aria-hidden />
 
       {/* Search — center */}
-      <div className="flex-1 min-w-0 hidden md:block">
+      <div className="flex-1 min-w-0 hidden md:block" data-tour="search">
         <SearchBar locale={locale} />
       </div>
 
       {/* Right section */}
-      <div className="flex items-center gap-3 ms-auto flex-shrink-0">
+      <div className="flex items-center gap-3 ms-auto flex-shrink-0" data-tour="header-actions">
         {/* Stats badge */}
         <div className="relative hidden lg:block">
           <button
@@ -113,6 +113,7 @@ export function Header({ locale, otherLocale }: HeaderProps) {
           onClick={openFilters}
           className={cn(
             'flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-sans',
+            'min-h-[44px] sm:min-h-0',
             'glass-light border border-ink-600/40',
             'text-ink-300 hover:text-ink-100 hover:border-gold-500/30',
             'transition-all duration-150',
@@ -126,11 +127,11 @@ export function Header({ locale, otherLocale }: HeaderProps) {
           <span className="hidden sm:inline">{t.filtersLabel}</span>
         </button>
 
-        {/* Theme toggle — כהה/בהיר */}
+        {/* Theme toggle — כהה/בהיר (desktop) */}
         <button
           onClick={() => useAppStore.getState().toggleTheme()}
           className={cn(
-            'px-2.5 py-1.5 rounded-xl text-sm',
+            'hidden sm:block px-2.5 py-1.5 rounded-xl text-sm',
             'glass-light border border-ink-600/40',
             'text-ink-300 hover:text-ink-100 hover:border-gold-500/30',
             'transition-all duration-150',
@@ -141,11 +142,26 @@ export function Header({ locale, otherLocale }: HeaderProps) {
           <ThemeIcon />
         </button>
 
-        {/* Locale toggle */}
+        {/* Guided tour re-launch (desktop) */}
+        <button
+          onClick={() => window.dispatchEvent(new Event('ozar-start-tour'))}
+          className={cn(
+            'hidden sm:block px-2.5 py-1.5 rounded-xl text-xs font-sans font-semibold',
+            'glass-light border border-ink-600/40',
+            'text-ink-300 hover:text-ink-100 hover:border-gold-500/30',
+            'transition-all duration-150',
+          )}
+          title={locale === 'he' ? 'סיור מודרך' : 'Guided tour'}
+          aria-label={locale === 'he' ? 'הפעל סיור מודרך' : 'Start guided tour'}
+        >
+          ?
+        </button>
+
+        {/* Locale toggle (desktop) */}
         <Link
           href={`/${otherLocale}`}
           className={cn(
-            'px-3 py-1.5 rounded-xl text-xs font-sans font-medium',
+            'hidden sm:block px-3 py-1.5 rounded-xl text-xs font-sans font-medium',
             'glass-light border border-ink-600/40',
             'text-ink-300 hover:text-ink-100 hover:border-gold-500/30',
             'transition-all duration-150',
@@ -154,8 +170,61 @@ export function Header({ locale, otherLocale }: HeaderProps) {
         >
           {otherLocale === 'he' ? 'עב' : 'EN'}
         </Link>
+
+        {/* Mobile: collapsed actions menu (declutters the top bar) */}
+        <MobileActionsMenu locale={locale} otherLocale={otherLocale} />
       </div>
     </header>
+  )
+}
+
+function MobileActionsMenu({ locale, otherLocale }: { locale: Locale; otherLocale: Locale }) {
+  const [open, setOpen] = useState(false)
+  const isHe = locale === 'he'
+  const theme = useAppStore(s => s.theme)
+
+  const item = cn(
+    'flex items-center gap-3 w-full px-4 py-3 min-h-[44px] text-start text-sm font-sans',
+    'text-ink-200 hover:bg-ink-700/50 transition-colors',
+  )
+
+  return (
+    <div className="relative sm:hidden">
+      <button
+        onClick={() => setOpen(o => !o)}
+        className={cn(
+          'flex items-center justify-center min-w-[44px] min-h-[44px] rounded-xl text-lg',
+          'glass-light border border-ink-600/40',
+          'text-ink-300 hover:text-ink-100 transition-all',
+        )}
+        aria-label={isHe ? 'תפריט פעולות' : 'Actions menu'}
+        aria-expanded={open}
+      >
+        ⋯
+      </button>
+
+      {open && (
+        <>
+          <div className="fixed inset-0 z-40" onClick={() => setOpen(false)} aria-hidden />
+          <div className="absolute top-full end-0 mt-2 w-52 z-50 glass rounded-xl border border-ink-700/50 shadow-glass-lg overflow-hidden animate-fade-in">
+            <button className={item}
+              onClick={() => { useAppStore.getState().toggleTheme(); setOpen(false) }}>
+              <span aria-hidden>{theme === 'dark' ? '☀️' : '🌙'}</span>
+              {isHe ? 'מצב כהה / בהיר' : 'Dark / light mode'}
+            </button>
+            <button className={cn(item, 'border-t border-ink-700/40')}
+              onClick={() => { window.dispatchEvent(new Event('ozar-start-tour')); setOpen(false) }}>
+              <span aria-hidden>❔</span>
+              {isHe ? 'סיור מודרך' : 'Guided tour'}
+            </button>
+            <Link href={`/${otherLocale}`} className={cn(item, 'border-t border-ink-700/40')}>
+              <span aria-hidden>🌐</span>
+              {otherLocale === 'he' ? 'עברית' : 'English'}
+            </Link>
+          </div>
+        </>
+      )}
+    </div>
   )
 }
 

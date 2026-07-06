@@ -9,38 +9,41 @@ import { Drawer } from './Drawer'
 import { SearchBar } from '@/components/ui/SearchBar'
 import { FAB } from '@/components/ui/FAB'
 import { SageCard } from '@/components/sages/SageCard'
+import { VizSkeleton } from '@/components/ui/VizSkeleton'
+import { OnboardingTour } from '@/components/ui/OnboardingTour'
 import { SageFilters } from '@/components/sages/SageFilters'
 import { Comparator } from '@/components/viz/Comparator'
 import { FilterChips } from '@/components/viz/FilterChips'
 import { MapLegend } from '@/components/viz/MapLegend'
 import { useAppStore } from '@/store/useAppStore'
 import { fetchSages, fetchConnections, fetchLocalGraphData } from '@/lib/supabase'
-import type { Locale } from '@/lib/types'
+import type { Locale, Tab } from '@/lib/types'
 
-// Dynamic imports — browser-only visualization libraries
+// Dynamic imports — browser-only visualization libraries.
+// Each tab shows a skeleton screen while its chunk loads.
 const NetworkGraph = dynamic(
   () => import('@/components/viz/NetworkGraph').then(m => ({ default: m.NetworkGraph })),
-  { ssr: false },
+  { ssr: false, loading: () => <VizSkeleton /> },
 )
 const GeoMap = dynamic(
   () => import('@/components/viz/GeoMap').then(m => ({ default: m.GeoMap })),
-  { ssr: false },
+  { ssr: false, loading: () => <VizSkeleton /> },
 )
 const Timeline = dynamic(
   () => import('@/components/viz/Timeline').then(m => ({ default: m.Timeline })),
-  { ssr: false },
+  { ssr: false, loading: () => <VizSkeleton /> },
 )
 const Traditions = dynamic(
   () => import('@/components/viz/Traditions').then(m => ({ default: m.Traditions })),
-  { ssr: false },
+  { ssr: false, loading: () => <VizSkeleton variant="list" /> },
 )
 const SagesTable = dynamic(
   () => import('@/components/viz/SagesTable').then(m => ({ default: m.SagesTable })),
-  { ssr: false },
+  { ssr: false, loading: () => <VizSkeleton variant="list" /> },
 )
 const GenealogyTree = dynamic(
   () => import('@/components/viz/GenealogyTree').then(m => ({ default: m.GenealogyTree })),
-  { ssr: false },
+  { ssr: false, loading: () => <VizSkeleton /> },
 )
 
 interface AppShellProps {
@@ -94,6 +97,17 @@ export function AppShell({ locale, initialTotal, initialLastUpdate }: AppShellPr
     })()
   }, [initialTotal, initialLastUpdate, setData])
 
+  // URL deep-linking: read ?tab= on mount (every view has a shareable URL)
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    const tab = params.get('tab')
+    const VALID: Tab[] = ['graph', 'map', 'traditions', 'ideas', 'timeline', 'genealogy']
+    if (tab && (VALID as string[]).includes(tab)) {
+      useAppStore.getState().setActiveTab(tab as Tab)
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   // URL deep-linking: read ?sage= on data load
   useEffect(() => {
     if (!sageMap.size) return
@@ -106,7 +120,7 @@ export function AppShell({ locale, initialTotal, initialLastUpdate }: AppShellPr
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sageMap.size])
 
-  // URL deep-linking: write ?sage= when selection changes
+  // URL deep-linking: write ?sage= + ?tab= when they change
   useEffect(() => {
     if (typeof window === 'undefined') return
     const url = new URL(window.location.href)
@@ -115,8 +129,13 @@ export function AppShell({ locale, initialTotal, initialLastUpdate }: AppShellPr
     } else {
       url.searchParams.delete('sage')
     }
+    if (activeTab && activeTab !== 'graph') {
+      url.searchParams.set('tab', activeTab)
+    } else {
+      url.searchParams.delete('tab')
+    }
     window.history.replaceState({}, '', url.toString())
-  }, [selectedSageId])
+  }, [selectedSageId, activeTab])
 
   // Keyboard shortcuts
   useEffect(() => {
@@ -172,6 +191,9 @@ export function AppShell({ locale, initialTotal, initialLastUpdate }: AppShellPr
       {isComparatorOpen && (
         <Comparator locale={locale} onClose={closeComparator} />
       )}
+
+      {/* First-visit guided tour */}
+      <OnboardingTour locale={locale} />
     </div>
   )
 }

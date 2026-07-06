@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { ERA_COLORS, ERA_LABELS } from '@/lib/types'
 import { useAppStore } from '@/store/useAppStore'
 import type { Locale, Period, Sage } from '@/lib/types'
@@ -34,18 +34,18 @@ const COL_W    = 90     // bucket width for stagger
 
 interface HistoricalEvent {
   year: number
-  label: string
+  label: { he: string; en: string }
 }
 
 const HISTORICAL_EVENTS: HistoricalEvent[] = [
-  { year:   70, label: 'חורבן בית שני'       },
-  { year: 1096, label: 'מסעי הצלב — תתנ"ו'  },
-  { year: 1242, label: 'שריפת התלמוד'        },
-  { year: 1348, label: 'המגפה השחורה'        },
-  { year: 1391, label: 'גזירות קנ"א'         },
-  { year: 1492, label: 'גירוש ספרד'          },
-  { year: 1648, label: 'גזירות ת"ח ות"ט'    },
-  { year: 1939, label: 'השואה'               },
+  { year:   70, label: { he: 'חורבן בית שני',      en: 'Second Temple destroyed' } },
+  { year: 1096, label: { he: 'מסעי הצלב — תתנ"ו', en: 'First Crusade'            } },
+  { year: 1242, label: { he: 'שריפת התלמוד',       en: 'Burning of the Talmud'    } },
+  { year: 1348, label: { he: 'המגפה השחורה',       en: 'Black Death'              } },
+  { year: 1391, label: { he: 'גזירות קנ"א',        en: '1391 pogroms in Spain'    } },
+  { year: 1492, label: { he: 'גירוש ספרד',         en: 'Expulsion from Spain'     } },
+  { year: 1648, label: { he: 'גזירות ת"ח ות"ט',   en: 'Khmelnytsky massacres'    } },
+  { year: 1939, label: { he: 'השואה',              en: 'The Holocaust'            } },
 ]
 
 interface TimelineProps {
@@ -68,10 +68,12 @@ function yearToX(year: number): number {
 
 export function Timeline({ locale }: TimelineProps) {
   const containerRef = useRef<HTMLDivElement>(null)
+  const scrollRef    = useRef<HTMLDivElement>(null)
   const svgElRef     = useRef<SVGSVGElement | null>(null)
   const zoomRef      = useRef<import('d3').ZoomBehavior<SVGSVGElement, unknown> | null>(null)
+  const [viewport, setViewport] = useState({ start: 0, width: 0.1 }) // minimap indicator (0..1)
 
-  const { sages, filteredSages, selectedSageId, selectSage } = useAppStore()
+  const { sages, filteredSages, selectedSageId, selectSage, connections } = useAppStore()
 
   // Extra 90px: 4-row staggered event labels (4×13px) + year axis (28px) + padding
   const SVG_H = BAND_H * ERAS.length + 90
@@ -191,7 +193,7 @@ export function Timeline({ locale }: TimelineProps) {
           .attr('stroke', '#0a0806')
           .attr('stroke-width', 2.5)
           .attr('paint-order', 'stroke')
-          .text(`${ev.label} · ${ev.year}`)
+          .text(`${ev.label[locale]} · ${ev.year}`)
       })
 
       // ── Year axis ticks ────────────────────────────────────
@@ -224,6 +226,20 @@ export function Timeline({ locale }: TimelineProps) {
 
       const filteredIds = new Set(filteredSages.map(s => s.id))
 
+      // Notable sages (highest connection degree) get always-visible labels —
+      // fixes the "empty view" feel (masterplan §4: data density)
+      const degree = new Map<string, number>()
+      connections.forEach(c => {
+        degree.set(c.source, (degree.get(c.source) ?? 0) + 1)
+        degree.set(c.target, (degree.get(c.target) ?? 0) + 1)
+      })
+      const notableIds = new Set(
+        [...sages]
+          .sort((a, b) => (degree.get(b.id) ?? 0) - (degree.get(a.id) ?? 0))
+          .slice(0, 48)
+          .map(s => s.id),
+      )
+
       const dotData = sages.map(sage => {
         const eraIdx = ERAS.indexOf(sage.period)
         if (eraIdx < 0) return null
@@ -253,6 +269,30 @@ export function Timeline({ locale }: TimelineProps) {
 
       // Labels (hidden until hover)
       const labelsG = g.append('g').attr('class', 'dot-labels').attr('pointer-events', 'none')
+
+      // Always-visible labels + years for notable sages
+      const staticLabelsG = g.append('g').attr('class', 'static-labels').attr('pointer-events', 'none')
+      dotData
+        .filter(d => notableIds.has(d.sage.id))
+        .forEach(d => {
+          const years = [d.sage.birth_year, d.sage.death_year].filter(Boolean).join('–')
+          const yBase = d.cy - DOT_R - 4
+          const bandY = d.eraIdx * BAND_H
+          const flip  = yBase < bandY + 16
+          staticLabelsG.append('text')
+            .attr('x', d.x)
+            .attr('y', flip ? d.cy + DOT_R + 4 : yBase)
+            .attr('text-anchor', 'middle')
+            .attr('dominant-baseline', flip ? 'hanging' : 'auto')
+            .attr('font-family', 'Heebo, sans-serif')
+            .attr('font-size', 9.5)
+            .attr('font-weight', '600')
+            .attr('fill', 'var(--ink-200)')
+            .attr('stroke', 'var(--ink-900)')
+            .attr('stroke-width', 2.5)
+            .attr('paint-order', 'stroke')
+            .text(years ? `${d.sage.label} · ${years}` : d.sage.label)
+        })
 
       dots
         .on('mouseover', (ev, d) => {
@@ -296,6 +336,37 @@ export function Timeline({ locale }: TimelineProps) {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sages.length])
 
+  // Auto-scroll to the densest region on first render — fixes the
+  // "empty view" issue (previously opened on sparse ancient centuries)
+  useEffect(() => {
+    if (!sages.length || !scrollRef.current) return
+    const el = scrollRef.current
+    const years = sages.map(sageYear).sort((a, b) => a - b)
+    const median = years[Math.floor(years.length / 2)] ?? 1200
+    const t = setTimeout(() => {
+      el.scrollLeft = Math.max(0, yearToX(median) - el.clientWidth / 2)
+    }, 60)
+    return () => clearTimeout(t)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [sages.length])
+
+  // Track scroll → minimap viewport indicator
+  const onScroll = () => {
+    const el = scrollRef.current
+    if (!el) return
+    setViewport({
+      start: el.scrollLeft / SVG_W,
+      width: el.clientWidth / SVG_W,
+    })
+  }
+
+  // Minimap click → jump scroll
+  const jumpTo = (ratio: number) => {
+    const el = scrollRef.current
+    if (!el) return
+    el.scrollTo({ left: ratio * SVG_W - el.clientWidth / 2, behavior: 'smooth' })
+  }
+
   // Sync filter dim
   useEffect(() => {
     if (!svgElRef.current) return
@@ -308,7 +379,7 @@ export function Timeline({ locale }: TimelineProps) {
     })
   }, [filteredSages, sages.length])
 
-  // Sync selection ring
+  // Sync selection ring + scroll the selected sage into view
   useEffect(() => {
     if (!svgElRef.current) return
     import('d3').then(d3 => {
@@ -316,6 +387,17 @@ export function Timeline({ locale }: TimelineProps) {
         .attr('stroke',       d => d.sage.id === selectedSageId ? '#c9973a' : '#0a0806')
         .attr('stroke-width', d => d.sage.id === selectedSageId ? 2.5 : 1)
     })
+    if (selectedSageId && scrollRef.current) {
+      const sage = sages.find(s => s.id === selectedSageId)
+      if (sage) {
+        const el = scrollRef.current
+        el.scrollTo({
+          left: Math.max(0, yearToX(sageYear(sage)) - el.clientWidth / 2),
+          behavior: 'smooth',
+        })
+      }
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedSageId])
 
   const zoomBy = (k: number) => {
@@ -326,7 +408,12 @@ export function Timeline({ locale }: TimelineProps) {
   }
 
   return (
-    <div className="relative w-full h-full overflow-auto">
+    <div
+      ref={scrollRef}
+      dir="ltr"
+      onScroll={onScroll}
+      className="relative w-full h-full overflow-auto"
+    >
       {/* Horizontally scrollable SVG container */}
       <div
         ref={containerRef}
@@ -342,6 +429,54 @@ export function Timeline({ locale }: TimelineProps) {
         </div>
       )}
 
+      {/* Minimap navigator — click to jump across centuries */}
+      <div
+        dir="ltr"
+        className="fixed bottom-[76px] left-1/2 -translate-x-1/2 z-20 glass rounded-lg px-1.5 py-1.5 hidden sm:block"
+        style={{ width: 'min(480px, calc(100vw - 140px))' }}
+        role="slider"
+        aria-label={locale === 'he' ? 'ניווט מהיר בציר הזמן' : 'Timeline quick navigation'}
+        aria-valuemin={MIN_YEAR}
+        aria-valuemax={MAX_YEAR}
+        aria-valuenow={Math.round(MIN_YEAR + (viewport.start + viewport.width / 2) * YEAR_SPAN)}
+        tabIndex={0}
+        onClick={e => {
+          const r = (e.currentTarget as HTMLElement).getBoundingClientRect()
+          jumpTo((e.clientX - r.left) / r.width)
+        }}
+        onKeyDown={e => {
+          if (e.key === 'ArrowRight') jumpTo(viewport.start + viewport.width * 1.5)
+          if (e.key === 'ArrowLeft')  jumpTo(Math.max(0, viewport.start - viewport.width * 0.5))
+        }}
+      >
+        <div className="relative h-4 rounded overflow-hidden cursor-pointer">
+          {/* Era segments */}
+          {ERAS.map(era => {
+            const [s, e] = ERA_YEARS[era]
+            const left  = ((yearToX(s) / SVG_W) * 100)
+            const width = (((yearToX(e) - yearToX(s)) / SVG_W) * 100)
+            return (
+              <div
+                key={era}
+                className="absolute top-0 bottom-0"
+                title={ERA_LABELS[era]?.[locale]}
+                style={{ left: `${left}%`, width: `${width}%`, background: ERA_COLORS[era], opacity: 0.45 }}
+              />
+            )
+          })}
+          {/* Viewport indicator */}
+          <div
+            className="absolute top-0 bottom-0 rounded-sm pointer-events-none transition-all duration-150"
+            style={{
+              left:  `${viewport.start * 100}%`,
+              width: `${Math.max(2, viewport.width * 100)}%`,
+              border: '1.5px solid var(--gold-500, #c9973a)',
+              background: 'rgba(201,151,58,0.18)',
+            }}
+          />
+        </div>
+      </div>
+
       {/* Zoom controls */}
       <div className="fixed bottom-20 end-4 z-10 flex flex-col gap-1.5">
         <ZBtn onClick={() => zoomBy(1.5)}>+</ZBtn>
@@ -354,7 +489,7 @@ export function Timeline({ locale }: TimelineProps) {
 function ZBtn({ onClick, children }: { onClick: () => void; children: React.ReactNode }) {
   return (
     <button onClick={onClick} className={cn(
-      'w-8 h-8 rounded-lg text-sm font-mono',
+      'w-11 h-11 md:w-8 md:h-8 rounded-lg text-sm font-mono',
       'glass border border-ink-600/40',
       'text-ink-300 hover:text-gold-300 hover:border-gold-500/30',
       'transition-all flex items-center justify-center',

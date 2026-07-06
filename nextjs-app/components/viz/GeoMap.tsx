@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { ERA_COLORS } from '@/lib/types'
+import { ERA_COLORS, ERA_LABELS } from '@/lib/types'
 import { CONNECTION_TYPE_COLORS } from '@/lib/regions'
 import { useAppStore } from '@/store/useAppStore'
 import type { Locale, Sage } from '@/lib/types'
@@ -291,18 +291,27 @@ export function GeoMap({ locale }: GeoMapProps) {
       ).addTo(map)
       ;(map as any)._tileLayer = tiles
 
-      // ── שמות ארצות ואזורים בעברית ─────────────────────────────
-      const HEB_LABELS: Array<[string, number, number, number]> = [
-        ['ארץ ישראל', 31.55, 34.95, 13], ['מצרים', 28.6, 30.6, 12], ['בבל (עיראק)', 32.2, 43.7, 12],
-        ['פרס', 32.4, 54.0, 12], ['תימן', 15.6, 47.5, 11], ['טורקיה', 39.2, 33.5, 12],
-        ['יוון', 39.4, 22.3, 11], ['איטליה', 42.9, 12.4, 12], ['ספרד', 40.0, -3.9, 13],
-        ['פורטוגל', 39.6, -8.3, 11], ['צרפת', 47.2, 2.4, 12], ['פרובנס', 43.7, 5.6, 10],
-        ['אשכנז (גרמניה)', 50.8, 10.2, 12], ['אוסטריה', 47.4, 14.8, 10], ['בוהמיה', 49.8, 15.0, 10],
-        ['פולין', 52.1, 19.4, 12], ['ליטא', 55.3, 24.0, 11], ['רוסיה', 56.5, 38.5, 12],
-        ['אוקראינה', 48.8, 31.4, 11], ['מרוקו', 31.6, -6.8, 11], ['אלג׳יריה', 34.8, 2.8, 11],
-        ['תוניסיה', 34.2, 9.4, 10], ['לוב', 29.8, 17.5, 10], ['ארה״ב', 39.0, -98.0, 12],
+      // ── שמות ארצות ואזורים — עברית/אנגלית לפי שפת הממשק ──────────
+      const REGION_MAP_LABELS: Array<[string, string, number, number, number]> = [
+        ['ארץ ישראל', 'Eretz Israel', 31.55, 34.95, 13], ['מצרים', 'Egypt', 28.6, 30.6, 12],
+        ['בבל (עיראק)', 'Babylonia (Iraq)', 32.2, 43.7, 12],
+        ['פרס', 'Persia', 32.4, 54.0, 12], ['תימן', 'Yemen', 15.6, 47.5, 11],
+        ['טורקיה', 'Turkey', 39.2, 33.5, 12],
+        ['יוון', 'Greece', 39.4, 22.3, 11], ['איטליה', 'Italy', 42.9, 12.4, 12],
+        ['ספרד', 'Spain', 40.0, -3.9, 13],
+        ['פורטוגל', 'Portugal', 39.6, -8.3, 11], ['צרפת', 'France', 47.2, 2.4, 12],
+        ['פרובנס', 'Provence', 43.7, 5.6, 10],
+        ['אשכנז (גרמניה)', 'Ashkenaz (Germany)', 50.8, 10.2, 12],
+        ['אוסטריה', 'Austria', 47.4, 14.8, 10], ['בוהמיה', 'Bohemia', 49.8, 15.0, 10],
+        ['פולין', 'Poland', 52.1, 19.4, 12], ['ליטא', 'Lithuania', 55.3, 24.0, 11],
+        ['רוסיה', 'Russia', 56.5, 38.5, 12],
+        ['אוקראינה', 'Ukraine', 48.8, 31.4, 11], ['מרוקו', 'Morocco', 31.6, -6.8, 11],
+        ['אלג׳יריה', 'Algeria', 34.8, 2.8, 11],
+        ['תוניסיה', 'Tunisia', 34.2, 9.4, 10], ['לוב', 'Libya', 29.8, 17.5, 10],
+        ['ארה״ב', 'USA', 39.0, -98.0, 12],
       ]
-      HEB_LABELS.forEach(([name, lat, lng, size]) => {
+      REGION_MAP_LABELS.forEach(([he, en, lat, lng, size]) => {
+        const name = locale === 'he' ? he : en
         L.marker([lat as number, lng as number], {
           icon: L.divIcon({
             className: '',
@@ -351,11 +360,27 @@ export function GeoMap({ locale }: GeoMapProps) {
           color: #241b10 !important;
         }
         [data-theme='light'] .leaflet-popup-tip { background: rgba(255,252,244,0.97) !important; }
+        .leaflet-tooltip {
+          background: rgba(26,20,14,0.94) !important;
+          border: 1px solid rgba(201,151,58,0.3) !important;
+          border-radius: 8px !important;
+          color: #e8d5b0 !important;
+          box-shadow: 0 4px 16px rgba(0,0,0,0.5) !important;
+          padding: 5px 9px !important;
+        }
+        .leaflet-tooltip-top:before { border-top-color: rgba(201,151,58,0.3) !important; }
+        [data-theme='light'] .leaflet-tooltip {
+          background: rgba(255,252,244,0.97) !important;
+          border: 1px solid rgba(138,106,30,0.35) !important;
+          color: #241b10 !important;
+        }
+        [data-theme='light'] .leaflet-tooltip-top:before { border-top-color: rgba(138,106,30,0.35) !important; }
       `
       document.head.appendChild(style)
 
       // ── Markers ──────────────────────────────────────────────
       const markerRefs = new Map<string, import('leaflet').CircleMarker>()
+      const markersLayer = L.layerGroup().addTo(map)
 
       sages.forEach(sage => {
         const coords = resolveCoords(sage)
@@ -370,22 +395,108 @@ export function GeoMap({ locale }: GeoMapProps) {
           weight:      1.5,
           opacity:     1,
           fillOpacity: 0.85,
-        }).addTo(map)
+        }).addTo(markersLayer)
+
+        const eraLabel = ERA_LABELS[sage.period]?.[locale] ?? sage.period
+        const years = [sage.birth_year, sage.death_year].filter(Boolean).join(' – ')
 
         const popupContent = `
           <div style="font-family:Heebo,sans-serif;min-width:160px;">
             <p style="font-family:'Frank Ruhl Libre',serif;font-size:15px;font-weight:700;
                color:#e8d5b0;margin:0 0 4px;">${sage.label}</p>
             ${sage.name_en ? `<p style="font-size:11px;color:#9a8570;margin:0 0 6px;">${sage.name_en}</p>` : ''}
+            <p style="margin:0 0 6px;">
+              <span style="font-size:10px;padding:1px 8px;border-radius:9999px;
+                background:${color}22;color:${color};border:1px solid ${color}55;">${eraLabel}</span>
+              ${years ? `<span style="font-size:10px;color:#9a8570;margin-inline-start:6px;">${years}</span>` : ''}
+            </p>
             ${sage.location ? `<p style="font-size:11px;color:#7a6550;margin:0;">📍 ${sage.location}</p>` : ''}
-            ${sage.spotify_url ? `<a href="${sage.spotify_url}" target="_blank" rel="noopener" style="display:inline-block;margin-top:6px;padding:3px 10px;background:#1DB954;color:#fff;border-radius:12px;font-size:10px;font-weight:700;text-decoration:none;">🎵 האזן בספוטיפיי</a>` : ''}
+            ${sage.spotify_url ? `<a href="${sage.spotify_url}" target="_blank" rel="noopener" style="display:inline-block;margin-top:6px;padding:3px 10px;background:#1DB954;color:#fff;border-radius:12px;font-size:10px;font-weight:700;text-decoration:none;">🎵 ${locale === 'he' ? 'האזן בספוטיפיי' : 'Listen on Spotify'}</a>` : ''}
           </div>
         `
         marker.bindPopup(popupContent, { maxWidth: 220, className: '' })
 
+        // Hover mini-card (masterplan §3: enhanced tooltips)
+        marker.bindTooltip(
+          `<div style="font-family:Heebo,sans-serif;text-align:${locale === 'he' ? 'right' : 'left'};" dir="${locale === 'he' ? 'rtl' : 'ltr'}">
+            <span style="font-family:'Frank Ruhl Libre',serif;font-size:13px;font-weight:700;">${sage.label}</span>
+            <span style="font-size:10px;color:${color};margin-inline-start:6px;">${eraLabel}</span>
+            ${years ? `<div style="font-size:10px;opacity:0.7;">${years}</div>` : ''}
+          </div>`,
+          { direction: 'top', opacity: 0.95, offset: [0, -6], sticky: false },
+        )
+
         marker.on('click', () => selectSage(sage))
         markerRefs.set(sage.id, marker)
       })
+
+      // ── Marker clustering at low zoom (dense areas: Israel, Spain…) ──
+      // Grid-based, dependency-free. Above CLUSTER_MAX_ZOOM the individual
+      // markers return; a cluster bubble click zooms into that area.
+      const CLUSTER_MAX_ZOOM = 5
+      const clusterLayer = L.layerGroup().addTo(map)
+      const sageById = new Map(sages.map(s => [s.id, s]))
+
+      const renderClusters = () => {
+        const z = map.getZoom()
+        clusterLayer.clearLayers()
+        if (z > CLUSTER_MAX_ZOOM) {
+          if (!map.hasLayer(markersLayer)) map.addLayer(markersLayer)
+          return
+        }
+        if (map.hasLayer(markersLayer)) map.removeLayer(markersLayer)
+
+        const cell = 360 / Math.pow(2, z + 3)   // grid size in degrees, shrinks with zoom
+        const buckets = new Map<string, { latSum: number; lngSum: number; ids: string[] }>()
+        markerRefs.forEach((m, id) => {
+          const ll = m.getLatLng()
+          const key = `${Math.round(ll.lat / cell)}:${Math.round(ll.lng / cell)}`
+          const b = buckets.get(key) ?? { latSum: 0, lngSum: 0, ids: [] }
+          b.latSum += ll.lat; b.lngSum += ll.lng; b.ids.push(id)
+          buckets.set(key, b)
+        })
+
+        buckets.forEach(b => {
+          const lat = b.latSum / b.ids.length
+          const lng = b.lngSum / b.ids.length
+
+          if (b.ids.length === 1) {
+            // Single sage — draw a regular dot
+            const sage = sageById.get(b.ids[0])
+            if (!sage) return
+            const c = ERA_COLORS[sage.period] ?? '#7a6550'
+            L.circleMarker([lat, lng], {
+              radius: 7, fillColor: c, color: '#0a0806', weight: 1.5, fillOpacity: 0.85,
+            })
+              .on('click', () => selectSage(sage))
+              .bindTooltip(sage.label, { direction: 'top', offset: [0, -6] })
+              .addTo(clusterLayer)
+            return
+          }
+
+          // Cluster bubble with count — click zooms in
+          const size = Math.min(46, 26 + Math.sqrt(b.ids.length) * 3)
+          L.marker([lat, lng], {
+            icon: L.divIcon({
+              className: '',
+              html: `<div style="width:${size}px;height:${size}px;border-radius:9999px;
+                display:flex;align-items:center;justify-content:center;
+                background:rgba(201,151,58,0.85);border:2px solid rgba(255,244,220,0.9);
+                color:#1a140e;font-family:Heebo,sans-serif;font-weight:700;
+                font-size:${b.ids.length > 99 ? 11 : 13}px;
+                box-shadow:0 2px 10px rgba(0,0,0,0.45);cursor:pointer;">
+                ${b.ids.length}</div>`,
+              iconSize: [size, size],
+              iconAnchor: [size / 2, size / 2],
+            }),
+          })
+            .on('click', () => map.setView([lat, lng], Math.min(CLUSTER_MAX_ZOOM + 2, z + 3)))
+            .addTo(clusterLayer)
+        })
+      }
+
+      map.on('zoomend', renderClusters)
+      renderClusters()
 
       // ── Migration paths ──────────────────────────────────────
       sages.forEach(sage => {
@@ -406,14 +517,22 @@ export function GeoMap({ locale }: GeoMapProps) {
           { color, weight: 2, opacity: 0.5, dashArray: '6,4' }
         ).addTo(map)
 
-        // Arrowhead at each segment midpoint
+        // Directional arrowhead at each segment midpoint (origin → destination)
         coordStops.forEach((_, i) => {
           if (i === 0) return
           const prev = coordStops[i - 1]
           const curr = coordStops[i]
           const mid = { lat: (prev.lat + curr.lat) / 2, lng: (prev.lng + curr.lng) / 2 }
-          L.circleMarker([mid.lat, mid.lng], {
-            radius: 3, fillColor: color, color: 'transparent', fillOpacity: 0.7,
+          const dx = (curr.lng - prev.lng) * Math.cos(((prev.lat + curr.lat) / 2) * Math.PI / 180)
+          const dy = curr.lat - prev.lat
+          const angle = Math.atan2(-dy, dx) * 180 / Math.PI
+          L.marker([mid.lat, mid.lng], {
+            icon: L.divIcon({
+              className: '',
+              html: `<span style="display:inline-block;transform:rotate(${angle}deg);color:${color};font-size:12px;opacity:0.9;text-shadow:0 0 3px var(--ink-900);">➤</span>`,
+              iconSize: [0, 0],
+            }),
+            interactive: false,
           }).addTo(map)
         })
       })
@@ -525,7 +644,9 @@ export function GeoMap({ locale }: GeoMapProps) {
       map.invalidateSize()
       const ll = marker.getLatLng()
       map.flyTo(ll, Math.max(map.getZoom(), 6), { duration: 1 })
-      marker.openPopup()
+      // Open after the fly ends — at low zoom the marker may still be
+      // clustered until zoomend re-adds the individual markers layer
+      setTimeout(() => { try { marker.openPopup() } catch { /* noop */ } }, 1100)
     } catch {
       /* hidden/zero-size map — safely ignore */
     }
