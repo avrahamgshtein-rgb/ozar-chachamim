@@ -8176,6 +8176,7014 @@
    "target": "495",
    "type": "influence",
    "evidence_source": "מחקרים 7.2026"
+  },
+  {
+   "source": "104",
+   "target": "147",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "104",
+   "target": "156",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "104",
+   "target": "158",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "104",
+   "target": "160",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "104",
+   "target": "167",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "104",
+   "target": "175",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "104",
+   "target": "179",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "147",
+   "target": "156",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "147",
+   "target": "158",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "147",
+   "target": "160",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "147",
+   "target": "167",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "147",
+   "target": "175",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "147",
+   "target": "179",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "147",
+   "target": "191",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "156",
+   "target": "158",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "156",
+   "target": "160",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "156",
+   "target": "167",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "156",
+   "target": "175",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "156",
+   "target": "179",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "156",
+   "target": "191",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "156",
+   "target": "2",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "158",
+   "target": "160",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "158",
+   "target": "167",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "158",
+   "target": "175",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "158",
+   "target": "179",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "158",
+   "target": "191",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "158",
+   "target": "2",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "158",
+   "target": "24",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "160",
+   "target": "167",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "160",
+   "target": "175",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "160",
+   "target": "179",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "160",
+   "target": "191",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "160",
+   "target": "2",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "160",
+   "target": "24",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "160",
+   "target": "292",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "167",
+   "target": "175",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "167",
+   "target": "179",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "167",
+   "target": "191",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "167",
+   "target": "2",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "167",
+   "target": "24",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "167",
+   "target": "292",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "167",
+   "target": "309",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "175",
+   "target": "179",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "175",
+   "target": "191",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "175",
+   "target": "2",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "175",
+   "target": "24",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "175",
+   "target": "292",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "175",
+   "target": "309",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "175",
+   "target": "310",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "179",
+   "target": "191",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "179",
+   "target": "2",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "179",
+   "target": "24",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "179",
+   "target": "292",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "179",
+   "target": "309",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "179",
+   "target": "310",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "179",
+   "target": "311",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "191",
+   "target": "2",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "191",
+   "target": "24",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "191",
+   "target": "292",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "191",
+   "target": "309",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "191",
+   "target": "310",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "191",
+   "target": "311",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "191",
+   "target": "317",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "2",
+   "target": "24",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "2",
+   "target": "292",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "2",
+   "target": "309",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "2",
+   "target": "310",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "2",
+   "target": "311",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "2",
+   "target": "317",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "2",
+   "target": "335",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "24",
+   "target": "292",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "24",
+   "target": "309",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "24",
+   "target": "310",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "24",
+   "target": "311",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "24",
+   "target": "317",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "24",
+   "target": "335",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "24",
+   "target": "340",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "292",
+   "target": "309",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "292",
+   "target": "310",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "292",
+   "target": "311",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "292",
+   "target": "317",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "292",
+   "target": "335",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "292",
+   "target": "340",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "292",
+   "target": "47",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "309",
+   "target": "310",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "309",
+   "target": "311",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "309",
+   "target": "317",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "309",
+   "target": "335",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "309",
+   "target": "340",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "309",
+   "target": "66",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "310",
+   "target": "311",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "310",
+   "target": "317",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "310",
+   "target": "335",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "310",
+   "target": "340",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "310",
+   "target": "47",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "310",
+   "target": "66",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "310",
+   "target": "67",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "311",
+   "target": "317",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "311",
+   "target": "335",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "311",
+   "target": "340",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "311",
+   "target": "47",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "311",
+   "target": "66",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "311",
+   "target": "67",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "311",
+   "target": "68",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "317",
+   "target": "335",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "317",
+   "target": "340",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "317",
+   "target": "66",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "317",
+   "target": "67",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "317",
+   "target": "68",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "317",
+   "target": "88",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "335",
+   "target": "340",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "335",
+   "target": "47",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "335",
+   "target": "66",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "335",
+   "target": "67",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "335",
+   "target": "68",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "335",
+   "target": "88",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "335",
+   "target": "99",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "340",
+   "target": "47",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "340",
+   "target": "66",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "340",
+   "target": "67",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "340",
+   "target": "68",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "340",
+   "target": "88",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "340",
+   "target": "99",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "47",
+   "target": "66",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "47",
+   "target": "67",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "47",
+   "target": "68",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "47",
+   "target": "88",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "47",
+   "target": "99",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "66",
+   "target": "67",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "66",
+   "target": "68",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "66",
+   "target": "88",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "66",
+   "target": "99",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "67",
+   "target": "68",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "67",
+   "target": "88",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "67",
+   "target": "99",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "68",
+   "target": "88",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "68",
+   "target": "99",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "88",
+   "target": "99",
+   "type": "colleague",
+   "field_connection": "הנהגה"
+  },
+  {
+   "source": "100",
+   "target": "11",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "100",
+   "target": "113",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "100",
+   "target": "12",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "100",
+   "target": "127",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "100",
+   "target": "130",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "100",
+   "target": "137",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "100",
+   "target": "158",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "11",
+   "target": "113",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "11",
+   "target": "12",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "11",
+   "target": "127",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "11",
+   "target": "130",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "11",
+   "target": "137",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "11",
+   "target": "158",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "11",
+   "target": "169",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "113",
+   "target": "127",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "113",
+   "target": "137",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "113",
+   "target": "158",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "113",
+   "target": "169",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "113",
+   "target": "2",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "12",
+   "target": "127",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "12",
+   "target": "130",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "12",
+   "target": "137",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "12",
+   "target": "158",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "12",
+   "target": "169",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "12",
+   "target": "2",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "12",
+   "target": "298",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "127",
+   "target": "130",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "127",
+   "target": "137",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "127",
+   "target": "158",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "127",
+   "target": "169",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "127",
+   "target": "2",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "127",
+   "target": "298",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "127",
+   "target": "318",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "130",
+   "target": "137",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "130",
+   "target": "158",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "130",
+   "target": "169",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "130",
+   "target": "2",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "130",
+   "target": "298",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "130",
+   "target": "318",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "130",
+   "target": "320",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "137",
+   "target": "158",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "137",
+   "target": "169",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "137",
+   "target": "2",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "137",
+   "target": "298",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "137",
+   "target": "318",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "137",
+   "target": "320",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "137",
+   "target": "323",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "158",
+   "target": "169",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "158",
+   "target": "298",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "158",
+   "target": "318",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "158",
+   "target": "320",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "158",
+   "target": "323",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "158",
+   "target": "346",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "169",
+   "target": "2",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "169",
+   "target": "298",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "169",
+   "target": "318",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "169",
+   "target": "320",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "169",
+   "target": "323",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "169",
+   "target": "346",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "169",
+   "target": "37",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "2",
+   "target": "298",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "2",
+   "target": "318",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "2",
+   "target": "320",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "2",
+   "target": "323",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "2",
+   "target": "346",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "2",
+   "target": "37",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "2",
+   "target": "397",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "298",
+   "target": "318",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "298",
+   "target": "320",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "298",
+   "target": "323",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "298",
+   "target": "346",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "298",
+   "target": "37",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "298",
+   "target": "397",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "298",
+   "target": "451",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "318",
+   "target": "320",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "318",
+   "target": "323",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "318",
+   "target": "346",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "318",
+   "target": "37",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "318",
+   "target": "397",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "318",
+   "target": "451",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "318",
+   "target": "74",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "320",
+   "target": "323",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "320",
+   "target": "346",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "320",
+   "target": "37",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "320",
+   "target": "397",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "320",
+   "target": "451",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "320",
+   "target": "74",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "320",
+   "target": "99",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "323",
+   "target": "346",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "323",
+   "target": "37",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "323",
+   "target": "397",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "323",
+   "target": "451",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "323",
+   "target": "74",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "323",
+   "target": "99",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "346",
+   "target": "37",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "346",
+   "target": "397",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "346",
+   "target": "451",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "346",
+   "target": "74",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "346",
+   "target": "99",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "37",
+   "target": "397",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "37",
+   "target": "451",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "37",
+   "target": "74",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "37",
+   "target": "99",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "397",
+   "target": "451",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "397",
+   "target": "74",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "397",
+   "target": "99",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "451",
+   "target": "74",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "451",
+   "target": "99",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "74",
+   "target": "99",
+   "type": "colleague",
+   "field_connection": "מוסר"
+  },
+  {
+   "source": "26",
+   "target": "3",
+   "type": "colleague",
+   "field_connection": "פרשנות מקרא"
+  },
+  {
+   "source": "26",
+   "target": "67",
+   "type": "colleague",
+   "field_connection": "פרשנות מקרא"
+  },
+  {
+   "source": "3",
+   "target": "67",
+   "type": "colleague",
+   "field_connection": "פרשנות מקרא"
+  },
+  {
+   "source": "111",
+   "target": "4",
+   "type": "colleague",
+   "field_connection": "תורה שבעל פה"
+  },
+  {
+   "source": "111",
+   "target": "7",
+   "type": "colleague",
+   "field_connection": "תורה שבעל פה"
+  },
+  {
+   "source": "4",
+   "target": "7",
+   "type": "colleague",
+   "field_connection": "תורה שבעל פה"
+  },
+  {
+   "source": "268",
+   "target": "274",
+   "type": "colleague",
+   "field_connection": "מנהיגות"
+  },
+  {
+   "source": "268",
+   "target": "320",
+   "type": "colleague",
+   "field_connection": "מנהיגות"
+  },
+  {
+   "source": "268",
+   "target": "4",
+   "type": "colleague",
+   "field_connection": "מנהיגות"
+  },
+  {
+   "source": "268",
+   "target": "58",
+   "type": "colleague",
+   "field_connection": "מנהיגות"
+  },
+  {
+   "source": "274",
+   "target": "320",
+   "type": "colleague",
+   "field_connection": "מנהיגות"
+  },
+  {
+   "source": "274",
+   "target": "4",
+   "type": "colleague",
+   "field_connection": "מנהיגות"
+  },
+  {
+   "source": "274",
+   "target": "448",
+   "type": "colleague",
+   "field_connection": "מנהיגות"
+  },
+  {
+   "source": "274",
+   "target": "58",
+   "type": "colleague",
+   "field_connection": "מנהיגות"
+  },
+  {
+   "source": "320",
+   "target": "4",
+   "type": "colleague",
+   "field_connection": "מנהיגות"
+  },
+  {
+   "source": "320",
+   "target": "448",
+   "type": "colleague",
+   "field_connection": "מנהיגות"
+  },
+  {
+   "source": "320",
+   "target": "58",
+   "type": "colleague",
+   "field_connection": "מנהיגות"
+  },
+  {
+   "source": "4",
+   "target": "448",
+   "type": "colleague",
+   "field_connection": "מנהיגות"
+  },
+  {
+   "source": "4",
+   "target": "58",
+   "type": "colleague",
+   "field_connection": "מנהיגות"
+  },
+  {
+   "source": "448",
+   "target": "58",
+   "type": "colleague",
+   "field_connection": "מנהיגות"
+  },
+  {
+   "source": "109",
+   "target": "112",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "109",
+   "target": "114",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "109",
+   "target": "119",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "109",
+   "target": "12",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "109",
+   "target": "126",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "109",
+   "target": "137",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "109",
+   "target": "14",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "112",
+   "target": "114",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "112",
+   "target": "119",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "112",
+   "target": "12",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "112",
+   "target": "126",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "112",
+   "target": "137",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "112",
+   "target": "14",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "112",
+   "target": "144",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "114",
+   "target": "119",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "114",
+   "target": "12",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "114",
+   "target": "126",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "114",
+   "target": "137",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "114",
+   "target": "14",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "114",
+   "target": "144",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "114",
+   "target": "146",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "119",
+   "target": "12",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "119",
+   "target": "126",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "119",
+   "target": "137",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "119",
+   "target": "14",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "119",
+   "target": "144",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "119",
+   "target": "146",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "119",
+   "target": "150",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "12",
+   "target": "126",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "12",
+   "target": "14",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "12",
+   "target": "144",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "12",
+   "target": "146",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "12",
+   "target": "150",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "12",
+   "target": "166",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "126",
+   "target": "137",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "126",
+   "target": "14",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "126",
+   "target": "144",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "126",
+   "target": "146",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "126",
+   "target": "166",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "126",
+   "target": "167",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "137",
+   "target": "14",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "137",
+   "target": "144",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "137",
+   "target": "150",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "137",
+   "target": "166",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "137",
+   "target": "167",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "137",
+   "target": "175",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "14",
+   "target": "144",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "14",
+   "target": "146",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "14",
+   "target": "150",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "14",
+   "target": "166",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "14",
+   "target": "167",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "14",
+   "target": "175",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "14",
+   "target": "179",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "144",
+   "target": "146",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "144",
+   "target": "150",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "144",
+   "target": "166",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "144",
+   "target": "167",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "144",
+   "target": "175",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "144",
+   "target": "179",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "144",
+   "target": "180",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "146",
+   "target": "150",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "146",
+   "target": "166",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "146",
+   "target": "167",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "146",
+   "target": "175",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "146",
+   "target": "179",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "146",
+   "target": "180",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "146",
+   "target": "183",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "150",
+   "target": "166",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "150",
+   "target": "167",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "150",
+   "target": "175",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "150",
+   "target": "179",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "150",
+   "target": "180",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "150",
+   "target": "183",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "150",
+   "target": "318",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "166",
+   "target": "167",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "166",
+   "target": "175",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "166",
+   "target": "179",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "166",
+   "target": "180",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "166",
+   "target": "183",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "166",
+   "target": "318",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "166",
+   "target": "323",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "167",
+   "target": "180",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "167",
+   "target": "183",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "167",
+   "target": "318",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "167",
+   "target": "323",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "167",
+   "target": "337",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "175",
+   "target": "180",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "175",
+   "target": "183",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "175",
+   "target": "318",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "175",
+   "target": "323",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "179",
+   "target": "180",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "179",
+   "target": "183",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "179",
+   "target": "318",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "179",
+   "target": "323",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "179",
+   "target": "337",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "179",
+   "target": "340",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "179",
+   "target": "4",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "180",
+   "target": "183",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "180",
+   "target": "318",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "180",
+   "target": "323",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "180",
+   "target": "337",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "180",
+   "target": "340",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "180",
+   "target": "4",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "180",
+   "target": "416",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "183",
+   "target": "318",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "183",
+   "target": "323",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "183",
+   "target": "337",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "183",
+   "target": "340",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "183",
+   "target": "4",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "183",
+   "target": "416",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "183",
+   "target": "429",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "318",
+   "target": "337",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "318",
+   "target": "340",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "318",
+   "target": "4",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "318",
+   "target": "416",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "318",
+   "target": "429",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "318",
+   "target": "44",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "323",
+   "target": "337",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "323",
+   "target": "340",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "323",
+   "target": "4",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "323",
+   "target": "416",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "323",
+   "target": "429",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "323",
+   "target": "44",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "323",
+   "target": "462",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "337",
+   "target": "340",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "337",
+   "target": "4",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "337",
+   "target": "416",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "337",
+   "target": "429",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "337",
+   "target": "44",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "337",
+   "target": "462",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "337",
+   "target": "465",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "340",
+   "target": "416",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "340",
+   "target": "429",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "340",
+   "target": "44",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "340",
+   "target": "462",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "340",
+   "target": "465",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "340",
+   "target": "467",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "4",
+   "target": "416",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "4",
+   "target": "429",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "4",
+   "target": "462",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "4",
+   "target": "465",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "4",
+   "target": "495",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "416",
+   "target": "429",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "416",
+   "target": "44",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "416",
+   "target": "462",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "416",
+   "target": "465",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "416",
+   "target": "467",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "416",
+   "target": "495",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "416",
+   "target": "68",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "429",
+   "target": "44",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "429",
+   "target": "462",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "429",
+   "target": "465",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "429",
+   "target": "467",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "429",
+   "target": "495",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "429",
+   "target": "68",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "429",
+   "target": "71",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "44",
+   "target": "462",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "44",
+   "target": "465",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "44",
+   "target": "467",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "44",
+   "target": "495",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "44",
+   "target": "68",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "44",
+   "target": "71",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "44",
+   "target": "74",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "462",
+   "target": "465",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "462",
+   "target": "467",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "462",
+   "target": "495",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "462",
+   "target": "68",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "462",
+   "target": "71",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "462",
+   "target": "74",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "462",
+   "target": "84",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "465",
+   "target": "467",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "465",
+   "target": "495",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "465",
+   "target": "68",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "465",
+   "target": "71",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "465",
+   "target": "74",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "465",
+   "target": "84",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "465",
+   "target": "88",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "467",
+   "target": "495",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "467",
+   "target": "68",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "467",
+   "target": "71",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "467",
+   "target": "74",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "467",
+   "target": "84",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "467",
+   "target": "88",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "495",
+   "target": "68",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "495",
+   "target": "71",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "495",
+   "target": "74",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "495",
+   "target": "84",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "495",
+   "target": "88",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "68",
+   "target": "71",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "68",
+   "target": "74",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "68",
+   "target": "84",
+   "type": "colleague",
+   "field_connection": "קבלה"
+  },
+  {
+   "source": "113",
+   "target": "140",
+   "type": "colleague",
+   "field_connection": "חינוך"
+  },
+  {
+   "source": "113",
+   "target": "156",
+   "type": "colleague",
+   "field_connection": "חינוך"
+  },
+  {
+   "source": "113",
+   "target": "172",
+   "type": "colleague",
+   "field_connection": "חינוך"
+  },
+  {
+   "source": "113",
+   "target": "177",
+   "type": "colleague",
+   "field_connection": "חינוך"
+  },
+  {
+   "source": "113",
+   "target": "303",
+   "type": "colleague",
+   "field_connection": "חינוך"
+  },
+  {
+   "source": "113",
+   "target": "7",
+   "type": "colleague",
+   "field_connection": "חינוך"
+  },
+  {
+   "source": "130",
+   "target": "140",
+   "type": "colleague",
+   "field_connection": "חינוך"
+  },
+  {
+   "source": "130",
+   "target": "156",
+   "type": "colleague",
+   "field_connection": "חינוך"
+  },
+  {
+   "source": "130",
+   "target": "172",
+   "type": "colleague",
+   "field_connection": "חינוך"
+  },
+  {
+   "source": "130",
+   "target": "177",
+   "type": "colleague",
+   "field_connection": "חינוך"
+  },
+  {
+   "source": "130",
+   "target": "303",
+   "type": "colleague",
+   "field_connection": "חינוך"
+  },
+  {
+   "source": "130",
+   "target": "7",
+   "type": "colleague",
+   "field_connection": "חינוך"
+  },
+  {
+   "source": "130",
+   "target": "72",
+   "type": "colleague",
+   "field_connection": "חינוך"
+  },
+  {
+   "source": "140",
+   "target": "156",
+   "type": "colleague",
+   "field_connection": "חינוך"
+  },
+  {
+   "source": "140",
+   "target": "172",
+   "type": "colleague",
+   "field_connection": "חינוך"
+  },
+  {
+   "source": "140",
+   "target": "177",
+   "type": "colleague",
+   "field_connection": "חינוך"
+  },
+  {
+   "source": "140",
+   "target": "303",
+   "type": "colleague",
+   "field_connection": "חינוך"
+  },
+  {
+   "source": "140",
+   "target": "7",
+   "type": "colleague",
+   "field_connection": "חינוך"
+  },
+  {
+   "source": "140",
+   "target": "72",
+   "type": "colleague",
+   "field_connection": "חינוך"
+  },
+  {
+   "source": "156",
+   "target": "172",
+   "type": "colleague",
+   "field_connection": "חינוך"
+  },
+  {
+   "source": "156",
+   "target": "177",
+   "type": "colleague",
+   "field_connection": "חינוך"
+  },
+  {
+   "source": "156",
+   "target": "303",
+   "type": "colleague",
+   "field_connection": "חינוך"
+  },
+  {
+   "source": "156",
+   "target": "7",
+   "type": "colleague",
+   "field_connection": "חינוך"
+  },
+  {
+   "source": "156",
+   "target": "72",
+   "type": "colleague",
+   "field_connection": "חינוך"
+  },
+  {
+   "source": "172",
+   "target": "177",
+   "type": "colleague",
+   "field_connection": "חינוך"
+  },
+  {
+   "source": "172",
+   "target": "303",
+   "type": "colleague",
+   "field_connection": "חינוך"
+  },
+  {
+   "source": "172",
+   "target": "7",
+   "type": "colleague",
+   "field_connection": "חינוך"
+  },
+  {
+   "source": "172",
+   "target": "72",
+   "type": "colleague",
+   "field_connection": "חינוך"
+  },
+  {
+   "source": "177",
+   "target": "303",
+   "type": "colleague",
+   "field_connection": "חינוך"
+  },
+  {
+   "source": "177",
+   "target": "7",
+   "type": "colleague",
+   "field_connection": "חינוך"
+  },
+  {
+   "source": "177",
+   "target": "72",
+   "type": "colleague",
+   "field_connection": "חינוך"
+  },
+  {
+   "source": "303",
+   "target": "7",
+   "type": "colleague",
+   "field_connection": "חינוך"
+  },
+  {
+   "source": "303",
+   "target": "72",
+   "type": "colleague",
+   "field_connection": "חינוך"
+  },
+  {
+   "source": "7",
+   "target": "72",
+   "type": "colleague",
+   "field_connection": "חינוך"
+  },
+  {
+   "source": "329",
+   "target": "8",
+   "type": "colleague",
+   "field_connection": "אגדה"
+  },
+  {
+   "source": "12",
+   "target": "156",
+   "type": "colleague",
+   "field_connection": "פרשנות"
+  },
+  {
+   "source": "12",
+   "target": "192",
+   "type": "colleague",
+   "field_connection": "פרשנות"
+  },
+  {
+   "source": "12",
+   "target": "290",
+   "type": "colleague",
+   "field_connection": "פרשנות"
+  },
+  {
+   "source": "12",
+   "target": "296",
+   "type": "colleague",
+   "field_connection": "פרשנות"
+  },
+  {
+   "source": "12",
+   "target": "307",
+   "type": "colleague",
+   "field_connection": "פרשנות"
+  },
+  {
+   "source": "12",
+   "target": "37",
+   "type": "colleague",
+   "field_connection": "פרשנות"
+  },
+  {
+   "source": "156",
+   "target": "192",
+   "type": "colleague",
+   "field_connection": "פרשנות"
+  },
+  {
+   "source": "156",
+   "target": "290",
+   "type": "colleague",
+   "field_connection": "פרשנות"
+  },
+  {
+   "source": "156",
+   "target": "296",
+   "type": "colleague",
+   "field_connection": "פרשנות"
+  },
+  {
+   "source": "156",
+   "target": "307",
+   "type": "colleague",
+   "field_connection": "פרשנות"
+  },
+  {
+   "source": "156",
+   "target": "37",
+   "type": "colleague",
+   "field_connection": "פרשנות"
+  },
+  {
+   "source": "156",
+   "target": "44",
+   "type": "colleague",
+   "field_connection": "פרשנות"
+  },
+  {
+   "source": "156",
+   "target": "66",
+   "type": "colleague",
+   "field_connection": "פרשנות"
+  },
+  {
+   "source": "192",
+   "target": "290",
+   "type": "colleague",
+   "field_connection": "פרשנות"
+  },
+  {
+   "source": "192",
+   "target": "296",
+   "type": "colleague",
+   "field_connection": "פרשנות"
+  },
+  {
+   "source": "192",
+   "target": "307",
+   "type": "colleague",
+   "field_connection": "פרשנות"
+  },
+  {
+   "source": "192",
+   "target": "37",
+   "type": "colleague",
+   "field_connection": "פרשנות"
+  },
+  {
+   "source": "192",
+   "target": "44",
+   "type": "colleague",
+   "field_connection": "פרשנות"
+  },
+  {
+   "source": "192",
+   "target": "66",
+   "type": "colleague",
+   "field_connection": "פרשנות"
+  },
+  {
+   "source": "290",
+   "target": "296",
+   "type": "colleague",
+   "field_connection": "פרשנות"
+  },
+  {
+   "source": "290",
+   "target": "307",
+   "type": "colleague",
+   "field_connection": "פרשנות"
+  },
+  {
+   "source": "290",
+   "target": "37",
+   "type": "colleague",
+   "field_connection": "פרשנות"
+  },
+  {
+   "source": "290",
+   "target": "44",
+   "type": "colleague",
+   "field_connection": "פרשנות"
+  },
+  {
+   "source": "290",
+   "target": "66",
+   "type": "colleague",
+   "field_connection": "פרשנות"
+  },
+  {
+   "source": "296",
+   "target": "307",
+   "type": "colleague",
+   "field_connection": "פרשנות"
+  },
+  {
+   "source": "296",
+   "target": "37",
+   "type": "colleague",
+   "field_connection": "פרשנות"
+  },
+  {
+   "source": "296",
+   "target": "44",
+   "type": "colleague",
+   "field_connection": "פרשנות"
+  },
+  {
+   "source": "296",
+   "target": "66",
+   "type": "colleague",
+   "field_connection": "פרשנות"
+  },
+  {
+   "source": "307",
+   "target": "37",
+   "type": "colleague",
+   "field_connection": "פרשנות"
+  },
+  {
+   "source": "307",
+   "target": "44",
+   "type": "colleague",
+   "field_connection": "פרשנות"
+  },
+  {
+   "source": "307",
+   "target": "66",
+   "type": "colleague",
+   "field_connection": "פרשנות"
+  },
+  {
+   "source": "37",
+   "target": "44",
+   "type": "colleague",
+   "field_connection": "פרשנות"
+  },
+  {
+   "source": "37",
+   "target": "66",
+   "type": "colleague",
+   "field_connection": "פרשנות"
+  },
+  {
+   "source": "102",
+   "target": "123",
+   "type": "colleague",
+   "field_connection": "פסיקה"
+  },
+  {
+   "source": "102",
+   "target": "126",
+   "type": "colleague",
+   "field_connection": "פסיקה"
+  },
+  {
+   "source": "102",
+   "target": "13",
+   "type": "colleague",
+   "field_connection": "פסיקה"
+  },
+  {
+   "source": "102",
+   "target": "144",
+   "type": "colleague",
+   "field_connection": "פסיקה"
+  },
+  {
+   "source": "102",
+   "target": "168",
+   "type": "colleague",
+   "field_connection": "פסיקה"
+  },
+  {
+   "source": "102",
+   "target": "43",
+   "type": "colleague",
+   "field_connection": "פסיקה"
+  },
+  {
+   "source": "102",
+   "target": "47",
+   "type": "colleague",
+   "field_connection": "פסיקה"
+  },
+  {
+   "source": "123",
+   "target": "126",
+   "type": "colleague",
+   "field_connection": "פסיקה"
+  },
+  {
+   "source": "123",
+   "target": "13",
+   "type": "colleague",
+   "field_connection": "פסיקה"
+  },
+  {
+   "source": "123",
+   "target": "144",
+   "type": "colleague",
+   "field_connection": "פסיקה"
+  },
+  {
+   "source": "123",
+   "target": "168",
+   "type": "colleague",
+   "field_connection": "פסיקה"
+  },
+  {
+   "source": "123",
+   "target": "43",
+   "type": "colleague",
+   "field_connection": "פסיקה"
+  },
+  {
+   "source": "123",
+   "target": "47",
+   "type": "colleague",
+   "field_connection": "פסיקה"
+  },
+  {
+   "source": "123",
+   "target": "49",
+   "type": "colleague",
+   "field_connection": "פסיקה"
+  },
+  {
+   "source": "126",
+   "target": "13",
+   "type": "colleague",
+   "field_connection": "פסיקה"
+  },
+  {
+   "source": "126",
+   "target": "168",
+   "type": "colleague",
+   "field_connection": "פסיקה"
+  },
+  {
+   "source": "126",
+   "target": "43",
+   "type": "colleague",
+   "field_connection": "פסיקה"
+  },
+  {
+   "source": "126",
+   "target": "47",
+   "type": "colleague",
+   "field_connection": "פסיקה"
+  },
+  {
+   "source": "126",
+   "target": "49",
+   "type": "colleague",
+   "field_connection": "פסיקה"
+  },
+  {
+   "source": "126",
+   "target": "53",
+   "type": "colleague",
+   "field_connection": "פסיקה"
+  },
+  {
+   "source": "13",
+   "target": "144",
+   "type": "colleague",
+   "field_connection": "פסיקה"
+  },
+  {
+   "source": "13",
+   "target": "168",
+   "type": "colleague",
+   "field_connection": "פסיקה"
+  },
+  {
+   "source": "13",
+   "target": "43",
+   "type": "colleague",
+   "field_connection": "פסיקה"
+  },
+  {
+   "source": "13",
+   "target": "47",
+   "type": "colleague",
+   "field_connection": "פסיקה"
+  },
+  {
+   "source": "13",
+   "target": "49",
+   "type": "colleague",
+   "field_connection": "פסיקה"
+  },
+  {
+   "source": "13",
+   "target": "53",
+   "type": "colleague",
+   "field_connection": "פסיקה"
+  },
+  {
+   "source": "13",
+   "target": "66",
+   "type": "colleague",
+   "field_connection": "פסיקה"
+  },
+  {
+   "source": "144",
+   "target": "168",
+   "type": "colleague",
+   "field_connection": "פסיקה"
+  },
+  {
+   "source": "144",
+   "target": "43",
+   "type": "colleague",
+   "field_connection": "פסיקה"
+  },
+  {
+   "source": "144",
+   "target": "47",
+   "type": "colleague",
+   "field_connection": "פסיקה"
+  },
+  {
+   "source": "144",
+   "target": "49",
+   "type": "colleague",
+   "field_connection": "פסיקה"
+  },
+  {
+   "source": "144",
+   "target": "53",
+   "type": "colleague",
+   "field_connection": "פסיקה"
+  },
+  {
+   "source": "144",
+   "target": "66",
+   "type": "colleague",
+   "field_connection": "פסיקה"
+  },
+  {
+   "source": "144",
+   "target": "79",
+   "type": "colleague",
+   "field_connection": "פסיקה"
+  },
+  {
+   "source": "168",
+   "target": "43",
+   "type": "colleague",
+   "field_connection": "פסיקה"
+  },
+  {
+   "source": "168",
+   "target": "47",
+   "type": "colleague",
+   "field_connection": "פסיקה"
+  },
+  {
+   "source": "168",
+   "target": "49",
+   "type": "colleague",
+   "field_connection": "פסיקה"
+  },
+  {
+   "source": "168",
+   "target": "53",
+   "type": "colleague",
+   "field_connection": "פסיקה"
+  },
+  {
+   "source": "168",
+   "target": "66",
+   "type": "colleague",
+   "field_connection": "פסיקה"
+  },
+  {
+   "source": "168",
+   "target": "79",
+   "type": "colleague",
+   "field_connection": "פסיקה"
+  },
+  {
+   "source": "168",
+   "target": "95",
+   "type": "colleague",
+   "field_connection": "פסיקה"
+  },
+  {
+   "source": "43",
+   "target": "49",
+   "type": "colleague",
+   "field_connection": "פסיקה"
+  },
+  {
+   "source": "43",
+   "target": "53",
+   "type": "colleague",
+   "field_connection": "פסיקה"
+  },
+  {
+   "source": "43",
+   "target": "66",
+   "type": "colleague",
+   "field_connection": "פסיקה"
+  },
+  {
+   "source": "43",
+   "target": "79",
+   "type": "colleague",
+   "field_connection": "פסיקה"
+  },
+  {
+   "source": "43",
+   "target": "95",
+   "type": "colleague",
+   "field_connection": "פסיקה"
+  },
+  {
+   "source": "47",
+   "target": "49",
+   "type": "colleague",
+   "field_connection": "פסיקה"
+  },
+  {
+   "source": "47",
+   "target": "79",
+   "type": "colleague",
+   "field_connection": "פסיקה"
+  },
+  {
+   "source": "47",
+   "target": "95",
+   "type": "colleague",
+   "field_connection": "פסיקה"
+  },
+  {
+   "source": "49",
+   "target": "66",
+   "type": "colleague",
+   "field_connection": "פסיקה"
+  },
+  {
+   "source": "49",
+   "target": "79",
+   "type": "colleague",
+   "field_connection": "פסיקה"
+  },
+  {
+   "source": "49",
+   "target": "95",
+   "type": "colleague",
+   "field_connection": "פסיקה"
+  },
+  {
+   "source": "53",
+   "target": "66",
+   "type": "colleague",
+   "field_connection": "פסיקה"
+  },
+  {
+   "source": "53",
+   "target": "79",
+   "type": "colleague",
+   "field_connection": "פסיקה"
+  },
+  {
+   "source": "53",
+   "target": "95",
+   "type": "colleague",
+   "field_connection": "פסיקה"
+  },
+  {
+   "source": "66",
+   "target": "79",
+   "type": "colleague",
+   "field_connection": "פסיקה"
+  },
+  {
+   "source": "66",
+   "target": "95",
+   "type": "colleague",
+   "field_connection": "פסיקה"
+  },
+  {
+   "source": "79",
+   "target": "95",
+   "type": "colleague",
+   "field_connection": "פסיקה"
+  },
+  {
+   "source": "119",
+   "target": "129",
+   "type": "colleague",
+   "field_connection": "הגות"
+  },
+  {
+   "source": "119",
+   "target": "13",
+   "type": "colleague",
+   "field_connection": "הגות"
+  },
+  {
+   "source": "119",
+   "target": "131",
+   "type": "colleague",
+   "field_connection": "הגות"
+  },
+  {
+   "source": "119",
+   "target": "301",
+   "type": "colleague",
+   "field_connection": "הגות"
+  },
+  {
+   "source": "119",
+   "target": "323",
+   "type": "colleague",
+   "field_connection": "הגות"
+  },
+  {
+   "source": "119",
+   "target": "487",
+   "type": "colleague",
+   "field_connection": "הגות"
+  },
+  {
+   "source": "119",
+   "target": "52",
+   "type": "colleague",
+   "field_connection": "הגות"
+  },
+  {
+   "source": "129",
+   "target": "13",
+   "type": "colleague",
+   "field_connection": "הגות"
+  },
+  {
+   "source": "129",
+   "target": "131",
+   "type": "colleague",
+   "field_connection": "הגות"
+  },
+  {
+   "source": "129",
+   "target": "301",
+   "type": "colleague",
+   "field_connection": "הגות"
+  },
+  {
+   "source": "129",
+   "target": "323",
+   "type": "colleague",
+   "field_connection": "הגות"
+  },
+  {
+   "source": "129",
+   "target": "487",
+   "type": "colleague",
+   "field_connection": "הגות"
+  },
+  {
+   "source": "129",
+   "target": "52",
+   "type": "colleague",
+   "field_connection": "הגות"
+  },
+  {
+   "source": "129",
+   "target": "58",
+   "type": "colleague",
+   "field_connection": "הגות"
+  },
+  {
+   "source": "13",
+   "target": "131",
+   "type": "colleague",
+   "field_connection": "הגות"
+  },
+  {
+   "source": "13",
+   "target": "301",
+   "type": "colleague",
+   "field_connection": "הגות"
+  },
+  {
+   "source": "13",
+   "target": "323",
+   "type": "colleague",
+   "field_connection": "הגות"
+  },
+  {
+   "source": "13",
+   "target": "487",
+   "type": "colleague",
+   "field_connection": "הגות"
+  },
+  {
+   "source": "13",
+   "target": "52",
+   "type": "colleague",
+   "field_connection": "הגות"
+  },
+  {
+   "source": "13",
+   "target": "58",
+   "type": "colleague",
+   "field_connection": "הגות"
+  },
+  {
+   "source": "13",
+   "target": "67",
+   "type": "colleague",
+   "field_connection": "הגות"
+  },
+  {
+   "source": "131",
+   "target": "301",
+   "type": "colleague",
+   "field_connection": "הגות"
+  },
+  {
+   "source": "131",
+   "target": "323",
+   "type": "colleague",
+   "field_connection": "הגות"
+  },
+  {
+   "source": "131",
+   "target": "487",
+   "type": "colleague",
+   "field_connection": "הגות"
+  },
+  {
+   "source": "131",
+   "target": "52",
+   "type": "colleague",
+   "field_connection": "הגות"
+  },
+  {
+   "source": "131",
+   "target": "58",
+   "type": "colleague",
+   "field_connection": "הגות"
+  },
+  {
+   "source": "131",
+   "target": "67",
+   "type": "colleague",
+   "field_connection": "הגות"
+  },
+  {
+   "source": "131",
+   "target": "71",
+   "type": "colleague",
+   "field_connection": "הגות"
+  },
+  {
+   "source": "301",
+   "target": "323",
+   "type": "colleague",
+   "field_connection": "הגות"
+  },
+  {
+   "source": "301",
+   "target": "487",
+   "type": "colleague",
+   "field_connection": "הגות"
+  },
+  {
+   "source": "301",
+   "target": "52",
+   "type": "colleague",
+   "field_connection": "הגות"
+  },
+  {
+   "source": "301",
+   "target": "58",
+   "type": "colleague",
+   "field_connection": "הגות"
+  },
+  {
+   "source": "301",
+   "target": "67",
+   "type": "colleague",
+   "field_connection": "הגות"
+  },
+  {
+   "source": "301",
+   "target": "71",
+   "type": "colleague",
+   "field_connection": "הגות"
+  },
+  {
+   "source": "301",
+   "target": "72",
+   "type": "colleague",
+   "field_connection": "הגות"
+  },
+  {
+   "source": "323",
+   "target": "487",
+   "type": "colleague",
+   "field_connection": "הגות"
+  },
+  {
+   "source": "323",
+   "target": "52",
+   "type": "colleague",
+   "field_connection": "הגות"
+  },
+  {
+   "source": "323",
+   "target": "58",
+   "type": "colleague",
+   "field_connection": "הגות"
+  },
+  {
+   "source": "323",
+   "target": "67",
+   "type": "colleague",
+   "field_connection": "הגות"
+  },
+  {
+   "source": "323",
+   "target": "71",
+   "type": "colleague",
+   "field_connection": "הגות"
+  },
+  {
+   "source": "323",
+   "target": "72",
+   "type": "colleague",
+   "field_connection": "הגות"
+  },
+  {
+   "source": "487",
+   "target": "52",
+   "type": "colleague",
+   "field_connection": "הגות"
+  },
+  {
+   "source": "487",
+   "target": "58",
+   "type": "colleague",
+   "field_connection": "הגות"
+  },
+  {
+   "source": "487",
+   "target": "67",
+   "type": "colleague",
+   "field_connection": "הגות"
+  },
+  {
+   "source": "487",
+   "target": "71",
+   "type": "colleague",
+   "field_connection": "הגות"
+  },
+  {
+   "source": "487",
+   "target": "72",
+   "type": "colleague",
+   "field_connection": "הגות"
+  },
+  {
+   "source": "52",
+   "target": "58",
+   "type": "colleague",
+   "field_connection": "הגות"
+  },
+  {
+   "source": "52",
+   "target": "67",
+   "type": "colleague",
+   "field_connection": "הגות"
+  },
+  {
+   "source": "52",
+   "target": "71",
+   "type": "colleague",
+   "field_connection": "הגות"
+  },
+  {
+   "source": "52",
+   "target": "72",
+   "type": "colleague",
+   "field_connection": "הגות"
+  },
+  {
+   "source": "58",
+   "target": "67",
+   "type": "colleague",
+   "field_connection": "הגות"
+  },
+  {
+   "source": "58",
+   "target": "71",
+   "type": "colleague",
+   "field_connection": "הגות"
+  },
+  {
+   "source": "58",
+   "target": "72",
+   "type": "colleague",
+   "field_connection": "הגות"
+  },
+  {
+   "source": "67",
+   "target": "71",
+   "type": "colleague",
+   "field_connection": "הגות"
+  },
+  {
+   "source": "67",
+   "target": "72",
+   "type": "colleague",
+   "field_connection": "הגות"
+  },
+  {
+   "source": "71",
+   "target": "72",
+   "type": "colleague",
+   "field_connection": "הגות"
+  },
+  {
+   "source": "14",
+   "target": "201",
+   "type": "colleague",
+   "field_connection": "פיוט"
+  },
+  {
+   "source": "14",
+   "target": "22",
+   "type": "colleague",
+   "field_connection": "פיוט"
+  },
+  {
+   "source": "14",
+   "target": "484",
+   "type": "colleague",
+   "field_connection": "פיוט"
+  },
+  {
+   "source": "14",
+   "target": "53",
+   "type": "colleague",
+   "field_connection": "פיוט"
+  },
+  {
+   "source": "14",
+   "target": "58",
+   "type": "colleague",
+   "field_connection": "פיוט"
+  },
+  {
+   "source": "14",
+   "target": "74",
+   "type": "colleague",
+   "field_connection": "פיוט"
+  },
+  {
+   "source": "179",
+   "target": "201",
+   "type": "colleague",
+   "field_connection": "פיוט"
+  },
+  {
+   "source": "179",
+   "target": "22",
+   "type": "colleague",
+   "field_connection": "פיוט"
+  },
+  {
+   "source": "179",
+   "target": "484",
+   "type": "colleague",
+   "field_connection": "פיוט"
+  },
+  {
+   "source": "179",
+   "target": "53",
+   "type": "colleague",
+   "field_connection": "פיוט"
+  },
+  {
+   "source": "179",
+   "target": "58",
+   "type": "colleague",
+   "field_connection": "פיוט"
+  },
+  {
+   "source": "179",
+   "target": "74",
+   "type": "colleague",
+   "field_connection": "פיוט"
+  },
+  {
+   "source": "201",
+   "target": "22",
+   "type": "colleague",
+   "field_connection": "פיוט"
+  },
+  {
+   "source": "201",
+   "target": "484",
+   "type": "colleague",
+   "field_connection": "פיוט"
+  },
+  {
+   "source": "201",
+   "target": "53",
+   "type": "colleague",
+   "field_connection": "פיוט"
+  },
+  {
+   "source": "201",
+   "target": "58",
+   "type": "colleague",
+   "field_connection": "פיוט"
+  },
+  {
+   "source": "201",
+   "target": "74",
+   "type": "colleague",
+   "field_connection": "פיוט"
+  },
+  {
+   "source": "22",
+   "target": "484",
+   "type": "colleague",
+   "field_connection": "פיוט"
+  },
+  {
+   "source": "22",
+   "target": "53",
+   "type": "colleague",
+   "field_connection": "פיוט"
+  },
+  {
+   "source": "22",
+   "target": "58",
+   "type": "colleague",
+   "field_connection": "פיוט"
+  },
+  {
+   "source": "22",
+   "target": "74",
+   "type": "colleague",
+   "field_connection": "פיוט"
+  },
+  {
+   "source": "484",
+   "target": "53",
+   "type": "colleague",
+   "field_connection": "פיוט"
+  },
+  {
+   "source": "484",
+   "target": "58",
+   "type": "colleague",
+   "field_connection": "פיוט"
+  },
+  {
+   "source": "484",
+   "target": "74",
+   "type": "colleague",
+   "field_connection": "פיוט"
+  },
+  {
+   "source": "53",
+   "target": "58",
+   "type": "colleague",
+   "field_connection": "פיוט"
+  },
+  {
+   "source": "53",
+   "target": "74",
+   "type": "colleague",
+   "field_connection": "פיוט"
+  },
+  {
+   "source": "58",
+   "target": "74",
+   "type": "colleague",
+   "field_connection": "פיוט"
+  },
+  {
+   "source": "103",
+   "target": "112",
+   "type": "colleague",
+   "field_connection": "הנהגה קהילתית"
+  },
+  {
+   "source": "103",
+   "target": "14",
+   "type": "colleague",
+   "field_connection": "הנהגה קהילתית"
+  },
+  {
+   "source": "103",
+   "target": "177",
+   "type": "colleague",
+   "field_connection": "הנהגה קהילתית"
+  },
+  {
+   "source": "103",
+   "target": "300",
+   "type": "colleague",
+   "field_connection": "הנהגה קהילתית"
+  },
+  {
+   "source": "103",
+   "target": "485",
+   "type": "colleague",
+   "field_connection": "הנהגה קהילתית"
+  },
+  {
+   "source": "112",
+   "target": "177",
+   "type": "colleague",
+   "field_connection": "הנהגה קהילתית"
+  },
+  {
+   "source": "112",
+   "target": "300",
+   "type": "colleague",
+   "field_connection": "הנהגה קהילתית"
+  },
+  {
+   "source": "112",
+   "target": "485",
+   "type": "colleague",
+   "field_connection": "הנהגה קהילתית"
+  },
+  {
+   "source": "14",
+   "target": "177",
+   "type": "colleague",
+   "field_connection": "הנהגה קהילתית"
+  },
+  {
+   "source": "14",
+   "target": "300",
+   "type": "colleague",
+   "field_connection": "הנהגה קהילתית"
+  },
+  {
+   "source": "14",
+   "target": "485",
+   "type": "colleague",
+   "field_connection": "הנהגה קהילתית"
+  },
+  {
+   "source": "177",
+   "target": "300",
+   "type": "colleague",
+   "field_connection": "הנהגה קהילתית"
+  },
+  {
+   "source": "177",
+   "target": "485",
+   "type": "colleague",
+   "field_connection": "הנהגה קהילתית"
+  },
+  {
+   "source": "300",
+   "target": "485",
+   "type": "colleague",
+   "field_connection": "הנהגה קהילתית"
+  },
+  {
+   "source": "118",
+   "target": "16",
+   "type": "colleague",
+   "field_connection": "מוסר והגות"
+  },
+  {
+   "source": "118",
+   "target": "39",
+   "type": "colleague",
+   "field_connection": "מוסר והגות"
+  },
+  {
+   "source": "118",
+   "target": "78",
+   "type": "colleague",
+   "field_connection": "מוסר והגות"
+  },
+  {
+   "source": "16",
+   "target": "39",
+   "type": "colleague",
+   "field_connection": "מוסר והגות"
+  },
+  {
+   "source": "16",
+   "target": "78",
+   "type": "colleague",
+   "field_connection": "מוסר והגות"
+  },
+  {
+   "source": "39",
+   "target": "78",
+   "type": "colleague",
+   "field_connection": "מוסר והגות"
+  },
+  {
+   "source": "114",
+   "target": "148",
+   "type": "colleague",
+   "field_connection": "פילוסופיה"
+  },
+  {
+   "source": "114",
+   "target": "190",
+   "type": "colleague",
+   "field_connection": "פילוסופיה"
+  },
+  {
+   "source": "114",
+   "target": "290",
+   "type": "colleague",
+   "field_connection": "פילוסופיה"
+  },
+  {
+   "source": "114",
+   "target": "344",
+   "type": "colleague",
+   "field_connection": "פילוסופיה"
+  },
+  {
+   "source": "114",
+   "target": "37",
+   "type": "colleague",
+   "field_connection": "פילוסופיה"
+  },
+  {
+   "source": "114",
+   "target": "388",
+   "type": "colleague",
+   "field_connection": "פילוסופיה"
+  },
+  {
+   "source": "114",
+   "target": "41",
+   "type": "colleague",
+   "field_connection": "פילוסופיה"
+  },
+  {
+   "source": "148",
+   "target": "190",
+   "type": "colleague",
+   "field_connection": "פילוסופיה"
+  },
+  {
+   "source": "148",
+   "target": "290",
+   "type": "colleague",
+   "field_connection": "פילוסופיה"
+  },
+  {
+   "source": "148",
+   "target": "344",
+   "type": "colleague",
+   "field_connection": "פילוסופיה"
+  },
+  {
+   "source": "148",
+   "target": "37",
+   "type": "colleague",
+   "field_connection": "פילוסופיה"
+  },
+  {
+   "source": "148",
+   "target": "388",
+   "type": "colleague",
+   "field_connection": "פילוסופיה"
+  },
+  {
+   "source": "148",
+   "target": "41",
+   "type": "colleague",
+   "field_connection": "פילוסופיה"
+  },
+  {
+   "source": "148",
+   "target": "50",
+   "type": "colleague",
+   "field_connection": "פילוסופיה"
+  },
+  {
+   "source": "190",
+   "target": "290",
+   "type": "colleague",
+   "field_connection": "פילוסופיה"
+  },
+  {
+   "source": "190",
+   "target": "344",
+   "type": "colleague",
+   "field_connection": "פילוסופיה"
+  },
+  {
+   "source": "190",
+   "target": "37",
+   "type": "colleague",
+   "field_connection": "פילוסופיה"
+  },
+  {
+   "source": "190",
+   "target": "388",
+   "type": "colleague",
+   "field_connection": "פילוסופיה"
+  },
+  {
+   "source": "190",
+   "target": "41",
+   "type": "colleague",
+   "field_connection": "פילוסופיה"
+  },
+  {
+   "source": "190",
+   "target": "50",
+   "type": "colleague",
+   "field_connection": "פילוסופיה"
+  },
+  {
+   "source": "290",
+   "target": "344",
+   "type": "colleague",
+   "field_connection": "פילוסופיה"
+  },
+  {
+   "source": "290",
+   "target": "388",
+   "type": "colleague",
+   "field_connection": "פילוסופיה"
+  },
+  {
+   "source": "290",
+   "target": "50",
+   "type": "colleague",
+   "field_connection": "פילוסופיה"
+  },
+  {
+   "source": "344",
+   "target": "37",
+   "type": "colleague",
+   "field_connection": "פילוסופיה"
+  },
+  {
+   "source": "344",
+   "target": "388",
+   "type": "colleague",
+   "field_connection": "פילוסופיה"
+  },
+  {
+   "source": "344",
+   "target": "41",
+   "type": "colleague",
+   "field_connection": "פילוסופיה"
+  },
+  {
+   "source": "344",
+   "target": "50",
+   "type": "colleague",
+   "field_connection": "פילוסופיה"
+  },
+  {
+   "source": "37",
+   "target": "388",
+   "type": "colleague",
+   "field_connection": "פילוסופיה"
+  },
+  {
+   "source": "37",
+   "target": "41",
+   "type": "colleague",
+   "field_connection": "פילוסופיה"
+  },
+  {
+   "source": "37",
+   "target": "50",
+   "type": "colleague",
+   "field_connection": "פילוסופיה"
+  },
+  {
+   "source": "388",
+   "target": "50",
+   "type": "colleague",
+   "field_connection": "פילוסופיה"
+  },
+  {
+   "source": "103",
+   "target": "116",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "103",
+   "target": "124",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "103",
+   "target": "125",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "103",
+   "target": "127",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "103",
+   "target": "146",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "103",
+   "target": "147",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "112",
+   "target": "116",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "112",
+   "target": "124",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "112",
+   "target": "125",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "112",
+   "target": "127",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "112",
+   "target": "146",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "112",
+   "target": "147",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "112",
+   "target": "149",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "116",
+   "target": "124",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "116",
+   "target": "125",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "116",
+   "target": "127",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "116",
+   "target": "146",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "116",
+   "target": "147",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "116",
+   "target": "149",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "116",
+   "target": "157",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "124",
+   "target": "125",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "124",
+   "target": "127",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "124",
+   "target": "146",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "124",
+   "target": "147",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "124",
+   "target": "149",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "124",
+   "target": "157",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "124",
+   "target": "160",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "125",
+   "target": "127",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "125",
+   "target": "146",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "125",
+   "target": "147",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "125",
+   "target": "149",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "125",
+   "target": "157",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "125",
+   "target": "160",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "125",
+   "target": "170",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "127",
+   "target": "146",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "127",
+   "target": "147",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "127",
+   "target": "149",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "127",
+   "target": "157",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "127",
+   "target": "160",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "127",
+   "target": "170",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "127",
+   "target": "189",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "146",
+   "target": "147",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "146",
+   "target": "149",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "146",
+   "target": "157",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "146",
+   "target": "160",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "146",
+   "target": "170",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "146",
+   "target": "189",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "146",
+   "target": "22",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "147",
+   "target": "149",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "147",
+   "target": "157",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "147",
+   "target": "170",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "147",
+   "target": "189",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "147",
+   "target": "22",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "147",
+   "target": "262",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "149",
+   "target": "157",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "149",
+   "target": "160",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "149",
+   "target": "170",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "149",
+   "target": "189",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "149",
+   "target": "22",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "149",
+   "target": "262",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "149",
+   "target": "266",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "157",
+   "target": "160",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "157",
+   "target": "170",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "157",
+   "target": "189",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "157",
+   "target": "22",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "157",
+   "target": "262",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "157",
+   "target": "266",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "157",
+   "target": "271",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "160",
+   "target": "170",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "160",
+   "target": "189",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "160",
+   "target": "22",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "160",
+   "target": "262",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "160",
+   "target": "266",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "160",
+   "target": "271",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "160",
+   "target": "273",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "170",
+   "target": "189",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "170",
+   "target": "22",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "170",
+   "target": "262",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "170",
+   "target": "266",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "170",
+   "target": "271",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "170",
+   "target": "273",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "170",
+   "target": "277",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "189",
+   "target": "22",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "189",
+   "target": "262",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "189",
+   "target": "266",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "189",
+   "target": "271",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "189",
+   "target": "273",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "189",
+   "target": "277",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "189",
+   "target": "278",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "22",
+   "target": "262",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "22",
+   "target": "266",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "22",
+   "target": "271",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "22",
+   "target": "277",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "22",
+   "target": "278",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "22",
+   "target": "280",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "262",
+   "target": "266",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "262",
+   "target": "271",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "262",
+   "target": "273",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "262",
+   "target": "277",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "262",
+   "target": "278",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "262",
+   "target": "280",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "262",
+   "target": "284",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "266",
+   "target": "271",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "266",
+   "target": "273",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "266",
+   "target": "277",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "266",
+   "target": "278",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "266",
+   "target": "280",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "266",
+   "target": "284",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "266",
+   "target": "286",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "271",
+   "target": "273",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "271",
+   "target": "277",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "271",
+   "target": "278",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "271",
+   "target": "284",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "271",
+   "target": "286",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "271",
+   "target": "287",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "273",
+   "target": "277",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "273",
+   "target": "278",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "273",
+   "target": "280",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "273",
+   "target": "284",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "273",
+   "target": "286",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "273",
+   "target": "287",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "273",
+   "target": "288",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "277",
+   "target": "278",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "277",
+   "target": "280",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "277",
+   "target": "284",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "277",
+   "target": "286",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "277",
+   "target": "287",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "277",
+   "target": "288",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "277",
+   "target": "292",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "278",
+   "target": "280",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "278",
+   "target": "284",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "278",
+   "target": "286",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "278",
+   "target": "287",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "278",
+   "target": "288",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "278",
+   "target": "292",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "278",
+   "target": "293",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "280",
+   "target": "284",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "280",
+   "target": "286",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "280",
+   "target": "287",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "280",
+   "target": "288",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "280",
+   "target": "292",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "280",
+   "target": "293",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "280",
+   "target": "294",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "284",
+   "target": "286",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "284",
+   "target": "287",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "284",
+   "target": "288",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "284",
+   "target": "292",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "284",
+   "target": "293",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "284",
+   "target": "294",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "284",
+   "target": "295",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "286",
+   "target": "287",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "286",
+   "target": "288",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "286",
+   "target": "292",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "286",
+   "target": "293",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "286",
+   "target": "294",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "286",
+   "target": "295",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "286",
+   "target": "296",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "287",
+   "target": "288",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "287",
+   "target": "292",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "287",
+   "target": "293",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "287",
+   "target": "294",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "287",
+   "target": "295",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "287",
+   "target": "296",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "287",
+   "target": "297",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "288",
+   "target": "292",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "288",
+   "target": "293",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "288",
+   "target": "294",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "288",
+   "target": "295",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "288",
+   "target": "296",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "288",
+   "target": "297",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "288",
+   "target": "298",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "292",
+   "target": "293",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "292",
+   "target": "294",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "292",
+   "target": "295",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "292",
+   "target": "296",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "292",
+   "target": "297",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "292",
+   "target": "298",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "292",
+   "target": "299",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "293",
+   "target": "294",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "293",
+   "target": "295",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "293",
+   "target": "296",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "293",
+   "target": "297",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "293",
+   "target": "298",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "293",
+   "target": "299",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "293",
+   "target": "300",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "294",
+   "target": "295",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "294",
+   "target": "297",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "294",
+   "target": "298",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "294",
+   "target": "299",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "294",
+   "target": "300",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "294",
+   "target": "301",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "295",
+   "target": "296",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "295",
+   "target": "297",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "295",
+   "target": "298",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "295",
+   "target": "299",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "295",
+   "target": "300",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "295",
+   "target": "301",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "295",
+   "target": "303",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "296",
+   "target": "298",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "296",
+   "target": "299",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "296",
+   "target": "300",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "296",
+   "target": "301",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "296",
+   "target": "303",
+   "type": "colleague",
+   "field_connection": "הלכה"
+  },
+  {
+   "source": "102",
+   "target": "121",
+   "type": "colleague",
+   "field_connection": "הנהגה ציבורית"
+  },
+  {
+   "source": "102",
+   "target": "149",
+   "type": "colleague",
+   "field_connection": "הנהגה ציבורית"
+  },
+  {
+   "source": "102",
+   "target": "172",
+   "type": "colleague",
+   "field_connection": "הנהגה ציבורית"
+  },
+  {
+   "source": "102",
+   "target": "22",
+   "type": "colleague",
+   "field_connection": "הנהגה ציבורית"
+  },
+  {
+   "source": "102",
+   "target": "329",
+   "type": "colleague",
+   "field_connection": "הנהגה ציבורית"
+  },
+  {
+   "source": "102",
+   "target": "336",
+   "type": "colleague",
+   "field_connection": "הנהגה ציבורית"
+  },
+  {
+   "source": "121",
+   "target": "149",
+   "type": "colleague",
+   "field_connection": "הנהגה ציבורית"
+  },
+  {
+   "source": "121",
+   "target": "172",
+   "type": "colleague",
+   "field_connection": "הנהגה ציבורית"
+  },
+  {
+   "source": "121",
+   "target": "22",
+   "type": "colleague",
+   "field_connection": "הנהגה ציבורית"
+  },
+  {
+   "source": "121",
+   "target": "329",
+   "type": "colleague",
+   "field_connection": "הנהגה ציבורית"
+  },
+  {
+   "source": "121",
+   "target": "336",
+   "type": "colleague",
+   "field_connection": "הנהגה ציבורית"
+  },
+  {
+   "source": "149",
+   "target": "172",
+   "type": "colleague",
+   "field_connection": "הנהגה ציבורית"
+  },
+  {
+   "source": "149",
+   "target": "329",
+   "type": "colleague",
+   "field_connection": "הנהגה ציבורית"
+  },
+  {
+   "source": "149",
+   "target": "336",
+   "type": "colleague",
+   "field_connection": "הנהגה ציבורית"
+  },
+  {
+   "source": "172",
+   "target": "22",
+   "type": "colleague",
+   "field_connection": "הנהגה ציבורית"
+  },
+  {
+   "source": "172",
+   "target": "329",
+   "type": "colleague",
+   "field_connection": "הנהגה ציבורית"
+  },
+  {
+   "source": "172",
+   "target": "336",
+   "type": "colleague",
+   "field_connection": "הנהגה ציבורית"
+  },
+  {
+   "source": "22",
+   "target": "329",
+   "type": "colleague",
+   "field_connection": "הנהגה ציבורית"
+  },
+  {
+   "source": "22",
+   "target": "336",
+   "type": "colleague",
+   "field_connection": "הנהגה ציבורית"
+  },
+  {
+   "source": "329",
+   "target": "336",
+   "type": "colleague",
+   "field_connection": "הנהגה ציבורית"
+  },
+  {
+   "source": "24",
+   "target": "58",
+   "type": "colleague",
+   "field_connection": "רפואה"
+  },
+  {
+   "source": "41",
+   "target": "58",
+   "type": "colleague",
+   "field_connection": "רפואה"
+  },
+  {
+   "source": "261",
+   "target": "265",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "261",
+   "target": "272",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "261",
+   "target": "275",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "261",
+   "target": "279",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "261",
+   "target": "28",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "261",
+   "target": "308",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "261",
+   "target": "312",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "265",
+   "target": "272",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "265",
+   "target": "275",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "265",
+   "target": "279",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "265",
+   "target": "28",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "265",
+   "target": "308",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "265",
+   "target": "312",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "265",
+   "target": "32",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "272",
+   "target": "275",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "272",
+   "target": "279",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "272",
+   "target": "28",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "272",
+   "target": "308",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "272",
+   "target": "312",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "272",
+   "target": "32",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "272",
+   "target": "329",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "275",
+   "target": "28",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "275",
+   "target": "308",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "275",
+   "target": "312",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "275",
+   "target": "32",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "275",
+   "target": "329",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "275",
+   "target": "349",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "279",
+   "target": "28",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "279",
+   "target": "308",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "279",
+   "target": "312",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "279",
+   "target": "32",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "279",
+   "target": "329",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "279",
+   "target": "349",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "279",
+   "target": "392",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "28",
+   "target": "308",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "28",
+   "target": "312",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "28",
+   "target": "32",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "28",
+   "target": "329",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "28",
+   "target": "349",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "28",
+   "target": "392",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "28",
+   "target": "421",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "308",
+   "target": "312",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "308",
+   "target": "32",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "308",
+   "target": "329",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "308",
+   "target": "349",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "308",
+   "target": "392",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "308",
+   "target": "421",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "308",
+   "target": "43",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "312",
+   "target": "32",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "312",
+   "target": "329",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "312",
+   "target": "349",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "312",
+   "target": "392",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "312",
+   "target": "421",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "312",
+   "target": "43",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "312",
+   "target": "457",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "32",
+   "target": "329",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "32",
+   "target": "349",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "32",
+   "target": "392",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "32",
+   "target": "421",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "32",
+   "target": "43",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "32",
+   "target": "457",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "32",
+   "target": "49",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "329",
+   "target": "349",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "329",
+   "target": "392",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "329",
+   "target": "421",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "329",
+   "target": "43",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "329",
+   "target": "457",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "329",
+   "target": "49",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "329",
+   "target": "51",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "349",
+   "target": "392",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "349",
+   "target": "421",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "349",
+   "target": "43",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "349",
+   "target": "457",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "349",
+   "target": "49",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "349",
+   "target": "51",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "349",
+   "target": "70",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "392",
+   "target": "421",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "392",
+   "target": "43",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "392",
+   "target": "457",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "392",
+   "target": "49",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "392",
+   "target": "51",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "392",
+   "target": "70",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "421",
+   "target": "43",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "421",
+   "target": "457",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "421",
+   "target": "49",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "421",
+   "target": "51",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "421",
+   "target": "70",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "43",
+   "target": "457",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "43",
+   "target": "51",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "43",
+   "target": "70",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "457",
+   "target": "49",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "457",
+   "target": "51",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "457",
+   "target": "70",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "49",
+   "target": "51",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "49",
+   "target": "70",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "51",
+   "target": "70",
+   "type": "colleague",
+   "field_connection": "תלמוד"
+  },
+  {
+   "source": "38",
+   "target": "48",
+   "type": "colleague",
+   "field_connection": "היסטוריה ותולדות"
+  },
+  {
+   "source": "400",
+   "target": "406",
+   "type": "colleague",
+   "field_connection": "תלמוד והלכה"
+  },
+  {
+   "source": "400",
+   "target": "442",
+   "type": "colleague",
+   "field_connection": "תלמוד והלכה"
+  },
+  {
+   "source": "400",
+   "target": "46",
+   "type": "colleague",
+   "field_connection": "תלמוד והלכה"
+  },
+  {
+   "source": "406",
+   "target": "442",
+   "type": "colleague",
+   "field_connection": "תלמוד והלכה"
+  },
+  {
+   "source": "406",
+   "target": "46",
+   "type": "colleague",
+   "field_connection": "תלמוד והלכה"
+  },
+  {
+   "source": "442",
+   "target": "46",
+   "type": "colleague",
+   "field_connection": "תלמוד והלכה"
+  },
+  {
+   "source": "111",
+   "target": "148",
+   "type": "colleague",
+   "field_connection": "מתודולוגיה"
+  },
+  {
+   "source": "111",
+   "target": "182",
+   "type": "colleague",
+   "field_connection": "מתודולוגיה"
+  },
+  {
+   "source": "111",
+   "target": "46",
+   "type": "colleague",
+   "field_connection": "מתודולוגיה"
+  },
+  {
+   "source": "148",
+   "target": "182",
+   "type": "colleague",
+   "field_connection": "מתודולוגיה"
+  },
+  {
+   "source": "148",
+   "target": "46",
+   "type": "colleague",
+   "field_connection": "מתודולוגיה"
+  },
+  {
+   "source": "182",
+   "target": "46",
+   "type": "colleague",
+   "field_connection": "מתודולוגיה"
+  },
+  {
+   "source": "207",
+   "target": "55",
+   "type": "colleague",
+   "field_connection": "מדרש"
+  },
+  {
+   "source": "150",
+   "target": "154",
+   "type": "colleague",
+   "field_connection": "הנהגה רוחנית"
+  },
+  {
+   "source": "150",
+   "target": "71",
+   "type": "colleague",
+   "field_connection": "הנהגה רוחנית"
+  },
+  {
+   "source": "150",
+   "target": "79",
+   "type": "colleague",
+   "field_connection": "הנהגה רוחנית"
+  },
+  {
+   "source": "154",
+   "target": "71",
+   "type": "colleague",
+   "field_connection": "הנהגה רוחנית"
+  },
+  {
+   "source": "154",
+   "target": "79",
+   "type": "colleague",
+   "field_connection": "הנהגה רוחנית"
+  },
+  {
+   "source": "71",
+   "target": "79",
+   "type": "colleague",
+   "field_connection": "הנהגה רוחנית"
+  },
+  {
+   "source": "151",
+   "target": "315",
+   "type": "colleague",
+   "field_connection": "פילוסופיה יהודית"
+  },
+  {
+   "source": "151",
+   "target": "339",
+   "type": "colleague",
+   "field_connection": "פילוסופיה יהודית"
+  },
+  {
+   "source": "151",
+   "target": "72",
+   "type": "colleague",
+   "field_connection": "פילוסופיה יהודית"
+  },
+  {
+   "source": "315",
+   "target": "339",
+   "type": "colleague",
+   "field_connection": "פילוסופיה יהודית"
+  },
+  {
+   "source": "315",
+   "target": "72",
+   "type": "colleague",
+   "field_connection": "פילוסופיה יהודית"
+  },
+  {
+   "source": "339",
+   "target": "72",
+   "type": "colleague",
+   "field_connection": "פילוסופיה יהודית"
+  },
+  {
+   "source": "341",
+   "target": "422",
+   "type": "colleague",
+   "field_connection": "הלכה והנהגה ציבורית"
+  },
+  {
+   "source": "341",
+   "target": "73",
+   "type": "colleague",
+   "field_connection": "הלכה והנהגה ציבורית"
+  },
+  {
+   "source": "422",
+   "target": "73",
+   "type": "colleague",
+   "field_connection": "הלכה והנהגה ציבורית"
+  },
+  {
+   "source": "178",
+   "target": "77",
+   "type": "colleague",
+   "field_connection": "מחשבת ישראל (קבלה)"
+  },
+  {
+   "source": "178",
+   "target": "96",
+   "type": "colleague",
+   "field_connection": "מחשבת ישראל (קבלה)"
+  },
+  {
+   "source": "77",
+   "target": "96",
+   "type": "colleague",
+   "field_connection": "מחשבת ישראל (קבלה)"
+  },
+  {
+   "source": "84",
+   "target": "98",
+   "type": "colleague",
+   "field_connection": "פסיקה הלכתית"
+  },
+  {
+   "source": "86",
+   "target": "94",
+   "type": "colleague",
+   "field_connection": "פסיקה והנהגה קהילתית"
+  },
+  {
+   "source": "440",
+   "target": "89",
+   "type": "colleague",
+   "field_connection": "הלכה ופולמוס"
+  },
+  {
+   "source": "119",
+   "target": "158",
+   "type": "colleague",
+   "field_connection": "חסידות"
+  },
+  {
+   "source": "119",
+   "target": "191",
+   "type": "colleague",
+   "field_connection": "חסידות"
+  },
+  {
+   "source": "119",
+   "target": "313",
+   "type": "colleague",
+   "field_connection": "חסידות"
+  },
+  {
+   "source": "119",
+   "target": "335",
+   "type": "colleague",
+   "field_connection": "חסידות"
+  },
+  {
+   "source": "119",
+   "target": "412",
+   "type": "colleague",
+   "field_connection": "חסידות"
+  },
+  {
+   "source": "129",
+   "target": "158",
+   "type": "colleague",
+   "field_connection": "חסידות"
+  },
+  {
+   "source": "129",
+   "target": "191",
+   "type": "colleague",
+   "field_connection": "חסידות"
+  },
+  {
+   "source": "129",
+   "target": "313",
+   "type": "colleague",
+   "field_connection": "חסידות"
+  },
+  {
+   "source": "129",
+   "target": "335",
+   "type": "colleague",
+   "field_connection": "חסידות"
+  },
+  {
+   "source": "129",
+   "target": "412",
+   "type": "colleague",
+   "field_connection": "חסידות"
+  },
+  {
+   "source": "129",
+   "target": "92",
+   "type": "colleague",
+   "field_connection": "חסידות"
+  },
+  {
+   "source": "131",
+   "target": "158",
+   "type": "colleague",
+   "field_connection": "חסידות"
+  },
+  {
+   "source": "131",
+   "target": "191",
+   "type": "colleague",
+   "field_connection": "חסידות"
+  },
+  {
+   "source": "131",
+   "target": "313",
+   "type": "colleague",
+   "field_connection": "חסידות"
+  },
+  {
+   "source": "131",
+   "target": "335",
+   "type": "colleague",
+   "field_connection": "חסידות"
+  },
+  {
+   "source": "131",
+   "target": "412",
+   "type": "colleague",
+   "field_connection": "חסידות"
+  },
+  {
+   "source": "131",
+   "target": "92",
+   "type": "colleague",
+   "field_connection": "חסידות"
+  },
+  {
+   "source": "158",
+   "target": "313",
+   "type": "colleague",
+   "field_connection": "חסידות"
+  },
+  {
+   "source": "158",
+   "target": "335",
+   "type": "colleague",
+   "field_connection": "חסידות"
+  },
+  {
+   "source": "158",
+   "target": "412",
+   "type": "colleague",
+   "field_connection": "חסידות"
+  },
+  {
+   "source": "158",
+   "target": "92",
+   "type": "colleague",
+   "field_connection": "חסידות"
+  },
+  {
+   "source": "191",
+   "target": "313",
+   "type": "colleague",
+   "field_connection": "חסידות"
+  },
+  {
+   "source": "191",
+   "target": "335",
+   "type": "colleague",
+   "field_connection": "חסידות"
+  },
+  {
+   "source": "191",
+   "target": "412",
+   "type": "colleague",
+   "field_connection": "חסידות"
+  },
+  {
+   "source": "191",
+   "target": "92",
+   "type": "colleague",
+   "field_connection": "חסידות"
+  },
+  {
+   "source": "313",
+   "target": "335",
+   "type": "colleague",
+   "field_connection": "חסידות"
+  },
+  {
+   "source": "313",
+   "target": "412",
+   "type": "colleague",
+   "field_connection": "חסידות"
+  },
+  {
+   "source": "313",
+   "target": "92",
+   "type": "colleague",
+   "field_connection": "חסידות"
+  },
+  {
+   "source": "335",
+   "target": "412",
+   "type": "colleague",
+   "field_connection": "חסידות"
+  },
+  {
+   "source": "335",
+   "target": "92",
+   "type": "colleague",
+   "field_connection": "חסידות"
+  },
+  {
+   "source": "412",
+   "target": "92",
+   "type": "colleague",
+   "field_connection": "חסידות"
+  },
+  {
+   "source": "132",
+   "target": "312",
+   "type": "colleague",
+   "field_connection": "למדנות"
+  },
+  {
+   "source": "132",
+   "target": "99",
+   "type": "colleague",
+   "field_connection": "למדנות"
+  },
+  {
+   "source": "312",
+   "target": "99",
+   "type": "colleague",
+   "field_connection": "למדנות"
+  },
+  {
+   "source": "105",
+   "target": "134",
+   "type": "colleague",
+   "field_connection": "הגות ציונית-דתית והלכה"
+  },
+  {
+   "source": "108",
+   "target": "196",
+   "type": "colleague",
+   "field_connection": "הגות ציונית-דתית"
+  },
+  {
+   "source": "109",
+   "target": "464",
+   "type": "colleague",
+   "field_connection": "דרשנות"
+  },
+  {
+   "source": "126",
+   "target": "464",
+   "type": "colleague",
+   "field_connection": "דרשנות"
+  },
+  {
+   "source": "121",
+   "target": "144",
+   "type": "colleague",
+   "field_connection": "ציונות דתית"
+  },
+  {
+   "source": "121",
+   "target": "167",
+   "type": "colleague",
+   "field_connection": "ציונות דתית"
+  },
+  {
+   "source": "121",
+   "target": "322",
+   "type": "colleague",
+   "field_connection": "ציונות דתית"
+  },
+  {
+   "source": "144",
+   "target": "172",
+   "type": "colleague",
+   "field_connection": "ציונות דתית"
+  },
+  {
+   "source": "144",
+   "target": "322",
+   "type": "colleague",
+   "field_connection": "ציונות דתית"
+  },
+  {
+   "source": "167",
+   "target": "172",
+   "type": "colleague",
+   "field_connection": "ציונות דתית"
+  },
+  {
+   "source": "167",
+   "target": "322",
+   "type": "colleague",
+   "field_connection": "ציונות דתית"
+  },
+  {
+   "source": "172",
+   "target": "322",
+   "type": "colleague",
+   "field_connection": "ציונות דתית"
+  },
+  {
+   "source": "135",
+   "target": "492",
+   "type": "colleague",
+   "field_connection": "מחשבה"
+  },
+  {
+   "source": "140",
+   "target": "146",
+   "type": "colleague",
+   "field_connection": "חסד"
+  },
+  {
+   "source": "147",
+   "target": "428",
+   "type": "colleague",
+   "field_connection": "היסטוריה"
+  },
+  {
+   "source": "159",
+   "target": "173",
+   "type": "colleague",
+   "field_connection": "מנהיגות וחינוך"
+  },
+  {
+   "source": "161",
+   "target": "163",
+   "type": "colleague",
+   "field_connection": "מחשבת ישראל"
+  },
+  {
+   "source": "163",
+   "target": "166",
+   "type": "colleague",
+   "field_connection": "מחשבת ישראל"
+  },
+  {
+   "source": "161",
+   "target": "9",
+   "type": "colleague",
+   "field_connection": "מקרא"
+  },
+  {
+   "source": "163",
+   "target": "9",
+   "type": "colleague",
+   "field_connection": "מקרא"
+  },
+  {
+   "source": "334",
+   "target": "9",
+   "type": "colleague",
+   "field_connection": "תרגום"
+  },
+  {
+   "source": "263",
+   "target": "446",
+   "type": "colleague",
+   "field_connection": "הלכה והנהגה קהילתית"
+  },
+  {
+   "source": "190",
+   "target": "192",
+   "type": "colleague",
+   "field_connection": "מדע"
+  },
+  {
+   "source": "353",
+   "target": "394",
+   "type": "colleague",
+   "field_connection": "הלכה ותלמוד"
+  },
+  {
+   "source": "353",
+   "target": "433",
+   "type": "colleague",
+   "field_connection": "הלכה ותלמוד"
+  },
+  {
+   "source": "394",
+   "target": "433",
+   "type": "colleague",
+   "field_connection": "הלכה ותלמוד"
+  },
+  {
+   "source": "354",
+   "target": "399",
+   "type": "colleague",
+   "field_connection": "הלכה ופרשנות"
+  },
+  {
+   "source": "354",
+   "target": "424",
+   "type": "colleague",
+   "field_connection": "הלכה ופרשנות"
+  },
+  {
+   "source": "399",
+   "target": "424",
+   "type": "colleague",
+   "field_connection": "הלכה ופרשנות"
+  },
+  {
+   "source": "269",
+   "target": "281",
+   "type": "colleague",
+   "field_connection": "מלוכה"
+  },
+  {
+   "source": "270",
+   "target": "389",
+   "type": "colleague",
+   "field_connection": "נבואה"
+  },
+  {
+   "source": "291",
+   "target": "390",
+   "type": "colleague",
+   "field_connection": "הלכה ודיני ממונות"
+  },
+  {
+   "source": "291",
+   "target": "438",
+   "type": "colleague",
+   "field_connection": "הלכה ודיני ממונות"
+  },
+  {
+   "source": "390",
+   "target": "438",
+   "type": "colleague",
+   "field_connection": "הלכה ודיני ממונות"
+  },
+  {
+   "source": "296",
+   "target": "478",
+   "type": "colleague",
+   "field_connection": "קבלה והנהגה"
+  },
+  {
+   "source": "338",
+   "target": "401",
+   "type": "colleague",
+   "field_connection": "הלכה והנהגה"
+  },
+  {
+   "source": "338",
+   "target": "425",
+   "type": "colleague",
+   "field_connection": "הלכה והנהגה"
+  },
+  {
+   "source": "338",
+   "target": "430",
+   "type": "colleague",
+   "field_connection": "הלכה והנהגה"
+  },
+  {
+   "source": "338",
+   "target": "461",
+   "type": "colleague",
+   "field_connection": "הלכה והנהגה"
+  },
+  {
+   "source": "401",
+   "target": "425",
+   "type": "colleague",
+   "field_connection": "הלכה והנהגה"
+  },
+  {
+   "source": "401",
+   "target": "430",
+   "type": "colleague",
+   "field_connection": "הלכה והנהגה"
+  },
+  {
+   "source": "401",
+   "target": "461",
+   "type": "colleague",
+   "field_connection": "הלכה והנהגה"
+  },
+  {
+   "source": "425",
+   "target": "430",
+   "type": "colleague",
+   "field_connection": "הלכה והנהגה"
+  },
+  {
+   "source": "425",
+   "target": "461",
+   "type": "colleague",
+   "field_connection": "הלכה והנהגה"
+  },
+  {
+   "source": "430",
+   "target": "461",
+   "type": "colleague",
+   "field_connection": "הלכה והנהגה"
+  },
+  {
+   "source": "416",
+   "target": "434",
+   "type": "colleague",
+   "field_connection": "פילוסופיה ומדע"
+  },
+  {
+   "source": "427",
+   "target": "449",
+   "type": "colleague",
+   "field_connection": "הלכה ומנהג"
+  },
+  {
+   "source": "427",
+   "target": "450",
+   "type": "colleague",
+   "field_connection": "הלכה ומנהג"
+  },
+  {
+   "source": "427",
+   "target": "459",
+   "type": "colleague",
+   "field_connection": "הלכה ומנהג"
+  },
+  {
+   "source": "427",
+   "target": "479",
+   "type": "colleague",
+   "field_connection": "הלכה ומנהג"
+  },
+  {
+   "source": "449",
+   "target": "450",
+   "type": "colleague",
+   "field_connection": "הלכה ומנהג"
+  },
+  {
+   "source": "449",
+   "target": "459",
+   "type": "colleague",
+   "field_connection": "הלכה ומנהג"
+  },
+  {
+   "source": "450",
+   "target": "459",
+   "type": "colleague",
+   "field_connection": "הלכה ומנהג"
+  },
+  {
+   "source": "450",
+   "target": "479",
+   "type": "colleague",
+   "field_connection": "הלכה ומנהג"
+  },
+  {
+   "source": "459",
+   "target": "479",
+   "type": "colleague",
+   "field_connection": "הלכה ומנהג"
+  },
+  {
+   "source": "432",
+   "target": "439",
+   "type": "colleague",
+   "field_connection": "קבלה ופילוסופיה"
+  },
+  {
+   "source": "443",
+   "target": "484",
+   "type": "colleague",
+   "field_connection": "הלכה וקבלה"
+  },
+  {
+   "source": "443",
+   "target": "493",
+   "type": "colleague",
+   "field_connection": "הלכה וקבלה"
+  },
+  {
+   "source": "484",
+   "target": "493",
+   "type": "colleague",
+   "field_connection": "הלכה וקבלה"
+  },
+  {
+   "source": "445",
+   "target": "454",
+   "type": "colleague",
+   "field_connection": "הלכה ומנהגים"
   }
  ]
 }
