@@ -17,6 +17,7 @@ import { FilterChips } from '@/components/viz/FilterChips'
 import { MapLegend } from '@/components/viz/MapLegend'
 import { useAppStore } from '@/store/useAppStore'
 import { fetchSages, fetchConnections, fetchLocalGraphData } from '@/lib/supabase'
+import { fetchContentOverlay, applyOverlay } from '@/lib/contentOverlay'
 import type { Locale, Tab } from '@/lib/types'
 
 // Dynamic imports — browser-only visualization libraries.
@@ -96,10 +97,13 @@ export function AppShell({ locale, initialTotal, initialLastUpdate }: AppShellPr
           console.log('[AppShell] ↪ using data.json fallback (richer dataset)')
         }
       }
+      // Content localization: merge per-locale translated fields (Phase 2)
+      const overlay = await fetchContentOverlay(locale)
+      sages = applyOverlay(sages, overlay)
       setData(sages, connections, sages.length, initialLastUpdate)
       console.log(`[AppShell] ✅ ${sages.length} sages, ${connections.length} connections`)
     })()
-  }, [initialTotal, initialLastUpdate, setData])
+  }, [initialTotal, initialLastUpdate, setData, locale])
 
   // URL deep-linking: read ?tab= on mount (every view has a shareable URL)
   useEffect(() => {
