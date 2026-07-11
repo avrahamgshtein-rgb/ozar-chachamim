@@ -11,6 +11,8 @@ import { UI } from '@/lib/i18n'
 import { useAppStore } from '@/store/useAppStore'
 import { fetchResearchContent } from '@/lib/supabase'
 import { ReadingControls, useReadingPrefs, readingStyle } from '@/components/ui/ReadingControls'
+import { SageMiniMap } from '@/components/sages/SageMiniMap'
+import { resolveCoords } from '@/lib/locationCoords'
 
 interface SageCardProps {
   sage: Sage
@@ -187,6 +189,14 @@ export function SageCard({ sage, locale, onClose }: SageCardProps) {
                 {research}
               </p>
             )}
+          </section>
+        )}
+
+        {/* Location mini-map (Sage Dossier) */}
+        {resolveCoords(sage) && (
+          <section>
+            <SectionLabel>{locale === 'he' ? 'מיקום' : locale === 'ru' ? 'Местоположение' : 'Location'}</SectionLabel>
+            <SageMiniMap sage={sage} locale={locale} />
           </section>
         )}
 
