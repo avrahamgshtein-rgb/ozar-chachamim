@@ -7,7 +7,7 @@ import { SearchBar } from '@/components/ui/SearchBar'
 import { useAppStore } from '@/store/useAppStore'
 import { ERA_COLORS, ERA_LABELS } from '@/lib/types'
 import type { Locale, Period } from '@/lib/types'
-import { UI } from '@/lib/i18n'
+import { UI, LOCALES, LOCALE_NAMES, LOCALE_SHORT } from '@/lib/i18n'
 
 interface HeaderProps {
   locale: Locale
@@ -157,24 +157,55 @@ export function Header({ locale, otherLocale }: HeaderProps) {
           ?
         </button>
 
-        {/* Locale toggle (desktop) */}
-        <Link
-          href={`/${otherLocale}`}
-          className={cn(
-            'hidden sm:block px-3 py-1.5 rounded-xl text-xs font-sans font-medium',
-            'glass-light border border-ink-600/40',
-            'text-ink-300 hover:text-ink-100 hover:border-gold-500/30',
-            'transition-all duration-150',
-          )}
-          title={otherLocale === 'he' ? 'עברית' : 'English'}
-        >
-          {otherLocale === 'he' ? 'עב' : 'EN'}
-        </Link>
+        {/* Locale switcher (desktop) */}
+        <LocaleSwitcher locale={locale} />
 
         {/* Mobile: collapsed actions menu (declutters the top bar) */}
         <MobileActionsMenu locale={locale} otherLocale={otherLocale} />
       </div>
     </header>
+  )
+}
+
+function LocaleSwitcher({ locale }: { locale: Locale }) {
+  const [open, setOpen] = useState(false)
+  const others = LOCALES.filter(l => l !== locale)
+
+  return (
+    <div className="relative hidden sm:block">
+      <button
+        onClick={() => setOpen(o => !o)}
+        className={cn(
+          'px-3 py-1.5 rounded-xl text-xs font-sans font-medium',
+          'glass-light border border-ink-600/40',
+          'text-ink-300 hover:text-ink-100 hover:border-gold-500/30',
+          'transition-all duration-150',
+        )}
+        title={LOCALE_NAMES[locale]}
+        aria-haspopup="menu"
+        aria-expanded={open}
+      >
+        {LOCALE_SHORT[locale]} ▾
+      </button>
+      {open && (
+        <>
+          <div className="fixed inset-0 z-40" onClick={() => setOpen(false)} aria-hidden />
+          <div role="menu" className="absolute top-full end-0 mt-2 w-36 z-50 glass rounded-xl border border-ink-700/50 shadow-glass-lg overflow-hidden animate-fade-in">
+            {others.map(l => (
+              <Link
+                key={l}
+                href={`/${l}`}
+                role="menuitem"
+                className="block px-4 py-2.5 text-sm font-sans text-ink-200 hover:bg-ink-700/50 transition-colors"
+                onClick={() => setOpen(false)}
+              >
+                {LOCALE_NAMES[l]}
+              </Link>
+            ))}
+          </div>
+        </>
+      )}
+    </div>
   )
 }
 
@@ -217,10 +248,12 @@ function MobileActionsMenu({ locale, otherLocale }: { locale: Locale; otherLocal
               <span aria-hidden>❔</span>
               {isHe ? 'סיור מודרך' : 'Guided tour'}
             </button>
-            <Link href={`/${otherLocale}`} className={cn(item, 'border-t border-ink-700/40')}>
-              <span aria-hidden>🌐</span>
-              {otherLocale === 'he' ? 'עברית' : 'English'}
-            </Link>
+            {LOCALES.filter(l => l !== locale).map(l => (
+              <Link key={l} href={`/${l}`} className={cn(item, 'border-t border-ink-700/40')}>
+                <span aria-hidden>🌐</span>
+                {LOCALE_NAMES[l]}
+              </Link>
+            ))}
           </div>
         </>
       )}

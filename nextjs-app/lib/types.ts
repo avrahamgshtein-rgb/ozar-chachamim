@@ -29,7 +29,7 @@ export type ConnectionType =
   | 'contemporary'
   | 'family'
 
-export type Locale = 'he' | 'en'
+export type Locale = 'he' | 'en' | 'ru'
 
 export type Tab = 'graph' | 'map' | 'traditions' | 'ideas' | 'timeline' | 'genealogy' | 'about'
 
@@ -85,25 +85,25 @@ export interface Filters {
   searchQuery: string
 }
 
-export const ERA_LABELS: Record<Period, { he: string; en: string }> = {
-  'second-temple': { he: 'בית שני',        en: 'Second Temple'  },
-  tannaim:         { he: 'תנאים',           en: 'Tannaim'        },
-  amoraim:         { he: 'אמוראים',         en: 'Amoraim'        },
-  geonim:          { he: 'גאונים',          en: 'Geonim'         },
-  rishonim:        { he: 'ראשונים',         en: 'Rishonim'       },
-  acharonim:       { he: 'אחרונים',         en: 'Acharonim'      },
-  modern:          { he: 'מודרני',          en: 'Modern'         },
+export const ERA_LABELS: Record<Period, Record<Locale, string>> = {
+  'second-temple': { he: 'בית שני',        en: 'Second Temple', ru: 'Второй Храм'    },
+  tannaim:         { he: 'תנאים',           en: 'Tannaim',       ru: 'Таннаи'         },
+  amoraim:         { he: 'אמוראים',         en: 'Amoraim',       ru: 'Амораи'         },
+  geonim:          { he: 'גאונים',          en: 'Geonim',        ru: 'Гаоны'          },
+  rishonim:        { he: 'ראשונים',         en: 'Rishonim',      ru: 'Ришоним'        },
+  acharonim:       { he: 'אחרונים',         en: 'Acharonim',     ru: 'Ахароним'       },
+  modern:          { he: 'מודרני',          en: 'Modern',        ru: 'Современность'  },
 }
 
-export const CONNECTION_LABELS: Record<ConnectionType, { he: string; en: string }> = {
-  student:      { he: 'תלמיד',   en: 'Student'       },
-  teacher:      { he: 'רב',      en: 'Teacher'        },
-  colleague:    { he: 'חבר',     en: 'Colleague'      },
-  influence:    { he: 'השפעה',   en: 'Influence'      },
-  oppose:       { he: 'פולמוס',  en: 'Opponent'       },
-  predecessor:  { he: 'קודם',    en: 'Predecessor'    },
-  contemporary: { he: 'בן דור',  en: 'Contemporary'   },
-  family:       { he: 'משפחה',   en: 'Family'         },
+export const CONNECTION_LABELS: Record<ConnectionType, Record<Locale, string>> = {
+  student:      { he: 'תלמיד',   en: 'Student',       ru: 'Ученик'          },
+  teacher:      { he: 'רב',      en: 'Teacher',        ru: 'Учитель'         },
+  colleague:    { he: 'חבר',     en: 'Colleague',      ru: 'Коллега'         },
+  influence:    { he: 'השפעה',   en: 'Influence',      ru: 'Влияние'         },
+  oppose:       { he: 'פולמוס',  en: 'Opponent',       ru: 'Оппонент'        },
+  predecessor:  { he: 'קודם',    en: 'Predecessor',    ru: 'Предшественник'  },
+  contemporary: { he: 'בן דור',  en: 'Contemporary',   ru: 'Современник'     },
+  family:       { he: 'משפחה',   en: 'Family',         ru: 'Семья'           },
 }
 
 export const ERA_COLORS: Record<Period, string> = {

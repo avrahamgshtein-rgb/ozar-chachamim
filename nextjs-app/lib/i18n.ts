@@ -1,7 +1,19 @@
 import type { Locale } from './types'
 
-export const LOCALES: Locale[] = ['he', 'en']
+export const LOCALES: Locale[] = ['he', 'en', 'ru']
 export const DEFAULT_LOCALE: Locale = 'he'
+
+export const LOCALE_NAMES: Record<Locale, string> = {
+  he: 'עברית',
+  en: 'English',
+  ru: 'Русский',
+}
+
+export const LOCALE_SHORT: Record<Locale, string> = {
+  he: 'עב',
+  en: 'EN',
+  ru: 'РУ',
+}
 
 export function isValidLocale(locale: string): locale is Locale {
   return LOCALES.includes(locale as Locale)
@@ -12,7 +24,7 @@ export function getDirection(locale: Locale): 'rtl' | 'ltr' {
 }
 
 export function getHtmlLang(locale: Locale): string {
-  return locale === 'he' ? 'he' : 'en'
+  return locale
 }
 
 type UIStrings = {
@@ -94,5 +106,31 @@ export const UI: Record<Locale, UIStrings> = {
     externalLinks:    'External Links',
     exportPDF:        'Export PDF',
     allPeriods:       'All Periods',
+  },
+  ru: {
+    appTitle:         'Оцар Хахамим',
+    appSubtitle:      'Граф знаний еврейских мудрецов',
+    searchPlaceholder:'Поиск мудреца — имя, эпоха, место...',
+    searchLabel:      'Поиск',
+    filtersLabel:     'Фильтр',
+    advancedSearch:   'Расширенный поиск',
+    clearFilters:     'Сбросить фильтры',
+    close:            'Закрыть',
+    loading:          'Загрузка...',
+    noResults:        'Ничего не найдено',
+    sagesLoaded:      'Мудрецы',
+    lastUpdate:       'Последнее обновление',
+    openFilters:      'Открыть фильтры',
+    period:           'Эпоха',
+    region:           'Регион',
+    field:            'Область',
+    connections:      'Связи',
+    biography:        'Биография',
+    coreConcept:      'Основная идея',
+    migrationPath:    'Миграция',
+    relatedSages:     'Связанные мудрецы',
+    externalLinks:    'Внешние ссылки',
+    exportPDF:        'Экспорт PDF',
+    allPeriods:       'Все эпохи',
   },
 }
