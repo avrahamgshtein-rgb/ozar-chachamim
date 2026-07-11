@@ -1,4 +1,8 @@
 export type Period =
+  | 'patriarchs'
+  | 'exodus'
+  | 'judges'
+  | 'kings'
   | 'second-temple'
   | 'tannaim'
   | 'amoraim'
@@ -6,6 +10,13 @@ export type Period =
   | 'rishonim'
   | 'acharonim'
   | 'modern'
+
+/** Canonical chronological order — single source for era lists across views. */
+export const ALL_PERIODS: Period[] = [
+  'patriarchs', 'exodus', 'judges', 'kings',
+  'second-temple', 'tannaim', 'amoraim',
+  'geonim', 'rishonim', 'acharonim', 'modern',
+]
 
 export type Region =
   | 'ashkenaz'
@@ -86,6 +97,10 @@ export interface Filters {
 }
 
 export const ERA_LABELS: Record<Period, Record<Locale, string>> = {
+  patriarchs:      { he: 'האבות',           en: 'Patriarchs',    ru: 'Праотцы'        },
+  exodus:          { he: 'יציאת מצרים',    en: 'Exodus & Sinai', ru: 'Исход и Синай' },
+  judges:          { he: 'השופטים',         en: 'Judges',        ru: 'Судьи'          },
+  kings:           { he: 'המלכים',          en: 'Kings',         ru: 'Цари'           },
   'second-temple': { he: 'בית שני',        en: 'Second Temple', ru: 'Второй Храм'    },
   tannaim:         { he: 'תנאים',           en: 'Tannaim',       ru: 'Таннаи'         },
   amoraim:         { he: 'אמוראים',         en: 'Amoraim',       ru: 'Амораи'         },
@@ -107,6 +122,10 @@ export const CONNECTION_LABELS: Record<ConnectionType, Record<Locale, string>> =
 }
 
 export const ERA_COLORS: Record<Period, string> = {
+  patriarchs:      '#8d6e63',
+  exodus:          '#ad1457',
+  judges:          '#00838f',
+  kings:           '#455a64',
   'second-temple': '#8e44ad',
   tannaim:         '#e74c3c',
   amoraim:         '#e67e22',

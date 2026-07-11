@@ -2,13 +2,11 @@
 
 import { useEffect, useRef } from 'react'
 import { cn } from '@/lib/utils'
-import { ERA_COLORS, ERA_LABELS } from '@/lib/types'
+import { ERA_COLORS, ERA_LABELS, ALL_PERIODS } from '@/lib/types'
 import { useAppStore } from '@/store/useAppStore'
 import type { Locale, Period } from '@/lib/types'
 
-const ERA_ORDER: Period[] = [
-  'second-temple', 'tannaim', 'amoraim', 'geonim', 'rishonim', 'acharonim', 'modern',
-]
+const ERA_ORDER: Period[] = ALL_PERIODS
 
 const BAND_H   = 150   // px per era band
 const LABEL_W  = 90    // left margin for era labels

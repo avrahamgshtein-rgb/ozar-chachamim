@@ -2,7 +2,8 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { cn } from '@/lib/utils'
-import { ERA_COLORS, ERA_LABELS, REGION_COLORS, REGION_LABELS, CONNECTION_LABELS } from '@/lib/types'
+import { ERA_COLORS, ERA_LABELS, REGION_COLORS, REGION_LABELS, CONNECTION_LABELS, ALL_PERIODS } from '@/lib/types'
+import { MILESTONES } from '@/lib/milestones'
 import { useAppStore } from '@/store/useAppStore'
 import { PathFinder } from '@/components/viz/PathFinder'
 import type { Locale, Period, Region } from '@/lib/types'
@@ -32,9 +33,11 @@ const CONNECTION_DASH: Record<string, string | null> = {
 }
 
 const ERA_ORDER: Record<string, number> = {
-  'second-temple': 0, tannaim: 1, amoraim: 2, geonim: 3,
-  rishonim: 4, acharonim: 5, modern: 6,
+  patriarchs: 0, exodus: 1, judges: 2, kings: 3,
+  'second-temple': 4, tannaim: 5, amoraim: 6, geonim: 7,
+  rishonim: 8, acharonim: 9, modern: 10,
 }
+const ERA_COUNT = 11
 
 function nodeColor(d: any, mode: ColorMode): string {
   const eraColor = ERA_COLORS[d.period as Period] ?? '#7a6550'
@@ -139,24 +142,19 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
 
       const g = svg.append('g')
 
-      // ── Historical event bars (static, behind links/nodes) ───────────────
+      // ── Historical milestone bars (static, behind links/nodes) ───────────
+      // Shared MILESTONES (lib/milestones.ts) incl. ancient events; year shown.
       const ERA_RANGES_EV: Record<string, [number, number]> = {
+        patriarchs: [-1850, -1500], exodus: [-1500, -1200],
+        judges: [-1200, -1020], kings: [-1020, -350],
         'second-temple': [-350, 70], tannaim: [70, 220], amoraim: [220, 500],
         geonim: [500, 1038], rishonim: [1038, 1492], acharonim: [1492, 1810], modern: [1810, 2030],
       }
-      const ERAS_EV = ['second-temple','tannaim','amoraim','geonim','rishonim','acharonim','modern']
-      const HIST_EVENTS = [
-        { year: 70,   label: locale === 'he' ? 'חורבן בית שני' : 'Temple destroyed' },
-        { year: 1096, label: locale === 'he' ? 'מסעי הצלב' : 'Crusades' },
-        { year: 1242, label: locale === 'he' ? 'שריפת התלמוד' : 'Talmud burned' },
-        { year: 1348, label: locale === 'he' ? 'מגפה שחורה' : 'Black Death' },
-        { year: 1492, label: locale === 'he' ? 'גירוש ספרד' : 'Spain expulsion' },
-        { year: 1648, label: locale === 'he' ? 'ת"ח ות"ט' : '1648 massacres' },
-        { year: 1939, label: locale === 'he' ? 'השואה' : 'Holocaust' },
-      ]
-      const eraXOf = (k: string) => (W * 0.05) + (ERA_ORDER[k] ?? 3) * (W * 0.9 / 6)
+      const ERAS_EV = ['patriarchs','exodus','judges','kings',
+        'second-temple','tannaim','amoraim','geonim','rishonim','acharonim','modern']
+      const eraXOf = (k: string) => (W * 0.05) + (ERA_ORDER[k] ?? 3) * (W * 0.9 / (ERA_COUNT - 1))
       const evBarsG = g.append('g').attr('pointer-events', 'none')
-      HIST_EVENTS.forEach((ev, idx) => {
+      MILESTONES.forEach((ev, idx) => {
         const era = ERAS_EV.find(k => { const [s,e] = ERA_RANGES_EV[k]; return ev.year >= s && ev.year < e })
         if (!era) return
         const i  = ERAS_EV.indexOf(era)
@@ -167,6 +165,9 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
         const x  = x0 + f * (x1 - x0)
         const row = idx % 4
         const ly  = 16 + row * 14
+        const yearTxt = ev.year < 0
+          ? `${Math.abs(ev.year)}${locale === 'he' ? ' לפנה"ס' : ' BCE'}`
+          : `${ev.year}`
 
         evBarsG.append('rect').attr('x', x - 1.5).attr('y', 0)
           .attr('width', 3).attr('height', H).attr('rx', 1.5)
@@ -180,7 +181,7 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
           .attr('font-size', '8px').attr('font-weight', '700')
           .attr('fill', '#c62828')
           .style('stroke', 'var(--ink-900)').attr('stroke-width', 2.5).attr('paint-order', 'stroke')
-          .text(ev.label)
+          .text(`${ev.label[locale]} · ${yearTxt}`)
       })
 
       const zoom = d3.zoom<SVGSVGElement, unknown>()
@@ -223,8 +224,8 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
       const r = (d: any) => Math.min(22, 5 + Math.sqrt(d.degree || 0) * 2.2)
 
       const eraX = (period: string) => {
-        const idx = ERA_ORDER[period] ?? 3
-        return (W * 0.05) + idx * (W * 0.9 / 6)
+        const idx = ERA_ORDER[period] ?? 5
+        return (W * 0.05) + idx * (W * 0.9 / (ERA_COUNT - 1))
       }
 
       // ── Force simulation ─────────────────────────────────────────────────
@@ -305,7 +306,12 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
         .attr('paint-order', 'stroke')
         .attr('pointer-events', 'none')
         .attr('opacity', 0)
-        .text((d: any) => d.label || '')
+        .text((d: any) => {
+          // שנים לצד השם — "סימון שנים ברשת הקשרים"
+          const y = [d.birth_year, d.death_year].filter(Boolean)
+            .map((v: number) => v < 0 ? `${Math.abs(v)}${locale === 'he' ? ' לפנה"ס' : ' BCE'}` : `${v}`)
+          return y.length ? `${d.label || ''} · ${y.join('–')}` : (d.label || '')
+        })
 
       labelSelRef.current = label
 
@@ -686,9 +692,7 @@ function ZoomBtn({ onClick, children, label }: {
   )
 }
 
-const ERAS_LIST: Period[] = [
-  'second-temple', 'tannaim', 'amoraim', 'geonim', 'rishonim', 'acharonim', 'modern',
-]
+const ERAS_LIST: Period[] = ALL_PERIODS
 const REGIONS_LIST: Region[] = [
   'eretz-israel', 'sefarad', 'ashkenaz', 'east-europe',
   'tsarfat', 'provence', 'italy', 'north-africa', 'mizrach', 'other',

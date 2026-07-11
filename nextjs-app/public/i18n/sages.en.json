@@ -50,5 +50,45 @@
   "276": {
     "label": "The Rashbam",
     "bio": "Rashi's eldest grandson and one of the great Tosafists, whose Torah commentary emphasized the plain meaning of the text and its linguistic and narrative context."
+  },
+  "anc-1": {
+    "label": "Abraham the Patriarch",
+    "bio": "Father of the nation. Left Ur of the Chaldees at the call of 'Lech Lecha', spread faith in one God, and entered the Covenant Between the Parts."
+  },
+  "anc-2": {
+    "label": "Isaac the Patriarch",
+    "bio": "Second of the Patriarchs. Bound upon the altar on Mount Moriah; re-dug his father's wells, continuing the path in the Land."
+  },
+  "anc-3": {
+    "label": "Jacob the Patriarch",
+    "bio": "Chosen of the Patriarchs and father of the twelve tribes. 'A wholesome man dwelling in tents' who went down to Egypt and laid the foundation of the house of Israel."
+  },
+  "anc-4": {
+    "label": "Moses (Moshe Rabbenu)",
+    "bio": "Master of the prophets and receiver of the Torah at Sinai. Led Israel out of Egypt, received the Tablets, and transmitted the Torah to all Israel — head of the chain of transmission."
+  },
+  "anc-5": {
+    "label": "Aaron the High Priest",
+    "bio": "The first High Priest, Moses' brother and spokesman. 'Loving peace and pursuing peace, loving people and drawing them near to the Torah.'"
+  },
+  "anc-6": {
+    "label": "Deborah the Prophetess",
+    "bio": "Prophetess and judge who sat beneath the palm of Deborah. Led Israel in the war against Sisera and sang the song of victory."
+  },
+  "anc-7": {
+    "label": "Samuel the Prophet",
+    "bio": "Last of the judges and the greatest prophet after Moses. Established the monarchy in Israel and anointed Saul and David."
+  },
+  "anc-8": {
+    "label": "King David",
+    "bio": "Founder of the Davidic dynasty and author of the Book of Psalms. Conquered Jerusalem and brought up the Ark — 'the sweet singer of Israel'."
+  },
+  "anc-9": {
+    "label": "King Solomon",
+    "bio": "The wisest of all men and builder of the First Temple. Composed Proverbs, Ecclesiastes and the Song of Songs."
+  },
+  "anc-10": {
+    "label": "Isaiah the Prophet",
+    "bio": "One of the greatest literary prophets. His prophecies of destruction and consolation — 'Comfort, comfort My people' — accompany Israel through the generations."
   }
 }

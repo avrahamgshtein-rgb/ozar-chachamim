@@ -97,6 +97,18 @@ export function AppShell({ locale, initialTotal, initialLastUpdate }: AppShellPr
           console.log('[AppShell] ↪ using data.json fallback (richer dataset)')
         }
       }
+      // Ancient eras: merge biblical figures (Patriarchs → Kings) — kept in a
+      // separate file so canonical data.json stays untouched
+      try {
+        const anc = await fetch('/data-ancient.json').then(r => r.ok ? r.json() : null)
+        if (anc?.nodes?.length) {
+          const existing = new Set(sages.map(s => s.id))
+          sages = [...sages, ...anc.nodes.filter((n: { id: string }) => !existing.has(n.id))]
+          connections = [...connections, ...(anc.links ?? [])]
+          console.log(`[AppShell] 🏛 ancient era: +${anc.nodes.length} figures`)
+        }
+      } catch { /* optional dataset */ }
+
       // Content localization: merge per-locale translated fields (Phase 2)
       const overlay = await fetchContentOverlay(locale)
       sages = applyOverlay(sages, overlay)

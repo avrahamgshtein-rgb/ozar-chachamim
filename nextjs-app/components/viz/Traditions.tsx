@@ -2,16 +2,13 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
-import { ERA_COLORS, ERA_LABELS } from '@/lib/types'
+import { ERA_COLORS, ERA_LABELS, ALL_PERIODS } from '@/lib/types'
 import { useAppStore } from '@/store/useAppStore'
 import { formatYearRange } from '@/lib/utils'
 import type { Locale, Period, Sage } from '@/lib/types'
 import { cn } from '@/lib/utils'
 
-const ERAS: Period[] = [
-  'second-temple', 'tannaim', 'amoraim',
-  'geonim', 'rishonim', 'acharonim', 'modern',
-]
+const ERAS: Period[] = ALL_PERIODS
 
 interface TraditionsProps {
   locale: Locale

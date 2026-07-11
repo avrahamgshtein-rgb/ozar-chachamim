@@ -6,12 +6,15 @@ import { useAppStore } from '@/store/useAppStore'
 import type { Locale, Period, Sage } from '@/lib/types'
 import { cn } from '@/lib/utils'
 
-const ERAS: Period[] = [
-  'second-temple', 'tannaim', 'amoraim',
-  'geonim', 'rishonim', 'acharonim', 'modern',
-]
+import { ALL_PERIODS } from '@/lib/types'
+
+const ERAS: Period[] = ALL_PERIODS
 
 const ERA_YEARS: Record<Period, [number, number]> = {
+  patriarchs:      [-1850,-1500],
+  exodus:          [-1500,-1200],
+  judges:          [-1200,-1020],
+  kings:           [-1020,-586],
   'second-temple': [-516,  70],
   tannaim:         [  10, 220],
   amoraim:         [ 220, 500],
@@ -21,7 +24,7 @@ const ERA_YEARS: Record<Period, [number, number]> = {
   modern:          [1880,2024],
 }
 
-const MIN_YEAR = -600
+const MIN_YEAR = -1900
 const MAX_YEAR =  2024
 const YEAR_SPAN = MAX_YEAR - MIN_YEAR
 
@@ -206,7 +209,7 @@ export function Timeline({ locale }: TimelineProps) {
         .attr('stroke', 'rgba(122,101,80,0.3)')
         .attr('stroke-width', 1)
 
-      for (let yr = -400; yr <= 2000; yr += 200) {
+      for (let yr = -1800; yr <= 2000; yr += 200) {
         const x = yearToX(yr)
         g.append('line')
           .attr('x1', x).attr('x2', x)

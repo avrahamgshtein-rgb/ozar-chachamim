@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { cn } from '@/lib/utils'
 import { SearchBar } from '@/components/ui/SearchBar'
 import { useAppStore } from '@/store/useAppStore'
-import { ERA_COLORS, ERA_LABELS } from '@/lib/types'
+import { ERA_COLORS, ERA_LABELS, ALL_PERIODS } from '@/lib/types'
 import type { Locale, Period } from '@/lib/types'
 import { UI, LOCALES, LOCALE_NAMES, LOCALE_SHORT } from '@/lib/i18n'
 
@@ -14,7 +14,7 @@ interface HeaderProps {
   otherLocale: Locale
 }
 
-const ERA_ORDER: Period[] = ['second-temple','tannaim','amoraim','geonim','rishonim','acharonim','modern']
+const ERA_ORDER: Period[] = ALL_PERIODS
 
 export function Header({ locale, otherLocale }: HeaderProps) {
   const t = UI[locale]

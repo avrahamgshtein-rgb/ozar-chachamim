@@ -31,8 +31,9 @@ export function SagesTable({ locale }: SagesTableProps) {
   }, [connections])
 
   const ERA_ORDER: Record<Period, number> = {
-    'second-temple': 0, tannaim: 1, amoraim: 2, geonim: 3,
-    rishonim: 4, acharonim: 5, modern: 6,
+    patriarchs: 0, exodus: 1, judges: 2, kings: 3,
+    'second-temple': 4, tannaim: 5, amoraim: 6, geonim: 7,
+    rishonim: 8, acharonim: 9, modern: 10,
   }
 
   const sorted = useMemo(() => {

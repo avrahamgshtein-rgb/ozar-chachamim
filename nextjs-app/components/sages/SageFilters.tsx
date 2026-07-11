@@ -2,14 +2,11 @@
 
 import { cn } from '@/lib/utils'
 import { useAppStore } from '@/store/useAppStore'
-import { ERA_LABELS, ERA_COLORS, REGION_LABELS, REGION_COLORS } from '@/lib/types'
+import { ERA_LABELS, ERA_COLORS, REGION_LABELS, REGION_COLORS, ALL_PERIODS } from '@/lib/types'
 import type { Locale, Period, Region } from '@/lib/types'
 import { UI } from '@/lib/i18n'
 
-const PERIODS: Period[] = [
-  'second-temple', 'tannaim', 'amoraim',
-  'geonim', 'rishonim', 'acharonim', 'modern',
-]
+const PERIODS: Period[] = ALL_PERIODS
 
 const REGIONS: Region[] = [
   'eretz-israel', 'sefarad', 'ashkenaz', 'east-europe',
