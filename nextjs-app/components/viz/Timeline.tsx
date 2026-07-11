@@ -32,21 +32,9 @@ const DOT_R    = 5
 const ROWS     = 4      // stagger rows within band to avoid overlap
 const COL_W    = 90     // bucket width for stagger
 
-interface HistoricalEvent {
-  year: number
-  label: { he: string; en: string }
-}
-
-const HISTORICAL_EVENTS: HistoricalEvent[] = [
-  { year:   70, label: { he: 'חורבן בית שני',      en: 'Second Temple destroyed' } },
-  { year: 1096, label: { he: 'מסעי הצלב — תתנ"ו', en: 'First Crusade'            } },
-  { year: 1242, label: { he: 'שריפת התלמוד',       en: 'Burning of the Talmud'    } },
-  { year: 1348, label: { he: 'המגפה השחורה',       en: 'Black Death'              } },
-  { year: 1391, label: { he: 'גזירות קנ"א',        en: '1391 pogroms in Spain'    } },
-  { year: 1492, label: { he: 'גירוש ספרד',         en: 'Expulsion from Spain'     } },
-  { year: 1648, label: { he: 'גזירות ת"ח ות"ט',   en: 'Khmelnytsky massacres'    } },
-  { year: 1939, label: { he: 'השואה',              en: 'The Holocaust'            } },
-]
+// Historical milestones — shared module (lib/milestones.ts), Masterplan §8
+import { MILESTONES } from '@/lib/milestones'
+import type { Milestone } from '@/lib/milestones'
 
 interface TimelineProps {
   locale: Locale
@@ -72,6 +60,7 @@ export function Timeline({ locale }: TimelineProps) {
   const svgElRef     = useRef<SVGSVGElement | null>(null)
   const zoomRef      = useRef<import('d3').ZoomBehavior<SVGSVGElement, unknown> | null>(null)
   const [viewport, setViewport] = useState({ start: 0, width: 0.1 }) // minimap indicator (0..1)
+  const [activeMilestone, setActiveMilestone] = useState<Milestone | null>(null)
 
   const { sages, filteredSages, selectedSageId, selectSage, connections } = useAppStore()
 
@@ -156,11 +145,13 @@ export function Timeline({ locale }: TimelineProps) {
           .text(ERA_LABELS[era]?.[locale] ?? era)
       })
 
-      // ── Historical event bars ──────────────────────────────
+      // ── Historical milestone bars (Masterplan §8) ──────────
+      // Background layer; always visible (independent of sage filters);
+      // clickable → impact summary card.
       const totalH  = BAND_H * ERAS.length
-      const eventsG = g.append('g').attr('class', 'event-bars').attr('pointer-events', 'none')
+      const eventsG = g.append('g').attr('class', 'event-bars')
 
-      HISTORICAL_EVENTS.forEach((ev, idx) => {
+      MILESTONES.forEach((ev, idx) => {
         const x = yearToX(ev.year)
         if (x < LABEL_W) return
 
@@ -174,6 +165,7 @@ export function Timeline({ locale }: TimelineProps) {
           .attr('rx', 2)
           .attr('fill', '#e53935')
           .attr('opacity', 0.15)
+          .attr('pointer-events', 'none')
 
         eventsG.append('line')
           .attr('x1', x).attr('y1', totalH)
@@ -181,6 +173,7 @@ export function Timeline({ locale }: TimelineProps) {
           .attr('stroke', '#e57373')
           .attr('stroke-width', 1)
           .attr('opacity', 0.5)
+          .attr('pointer-events', 'none')
 
         eventsG.append('text')
           .attr('x', x).attr('y', labelY)
@@ -193,7 +186,16 @@ export function Timeline({ locale }: TimelineProps) {
           .attr('stroke', '#0a0806')
           .attr('stroke-width', 2.5)
           .attr('paint-order', 'stroke')
-          .text(`${ev.label[locale]} · ${ev.year}`)
+          .attr('pointer-events', 'none')
+          .text(`${ev.label[locale]} · ${Math.abs(ev.year)}${ev.year < 0 ? (locale === 'he' ? ' לפנה"ס' : ' BCE') : ''}`)
+
+        // Invisible wide hit area — the whole vertical bar is clickable
+        eventsG.append('rect')
+          .attr('x', x - 7).attr('y', 0)
+          .attr('width', 14).attr('height', totalH + 8 + 4 * 13)
+          .attr('fill', 'transparent')
+          .style('cursor', 'pointer')
+          .on('click', () => setActiveMilestone(ev))
       })
 
       // ── Year axis ticks ────────────────────────────────────
@@ -350,6 +352,14 @@ export function Timeline({ locale }: TimelineProps) {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sages.length])
 
+  // Escape dismisses the milestone card
+  useEffect(() => {
+    if (!activeMilestone) return
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setActiveMilestone(null) }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [activeMilestone])
+
   // Track scroll → minimap viewport indicator
   const onScroll = () => {
     const el = scrollRef.current
@@ -425,6 +435,36 @@ export function Timeline({ locale }: TimelineProps) {
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <p className="text-ink-500 font-sans text-sm animate-pulse">
             {locale === 'he' ? 'טוען ציר זמן...' : 'Loading timeline...'}
+          </p>
+        </div>
+      )}
+
+      {/* Milestone impact summary card (Masterplan §8: click → summary) */}
+      {activeMilestone && (
+        <div
+          dir={locale === 'he' ? 'rtl' : 'ltr'}
+          className="fixed bottom-[120px] left-1/2 -translate-x-1/2 z-30 glass rounded-xl border border-red-500/25 px-4 py-3 shadow-glass-lg animate-fade-in"
+          style={{ width: 'min(440px, calc(100vw - 32px))' }}
+          role="dialog"
+          aria-label={activeMilestone.label[locale]}
+        >
+          <div className="flex items-start justify-between gap-3">
+            <p className="font-serif text-sm font-bold text-red-300">
+              {activeMilestone.label[locale]}
+              <span className="font-mono text-xs text-ink-400 font-normal">
+                {' · '}{Math.abs(activeMilestone.year)}{activeMilestone.year < 0 ? (locale === 'he' ? ' לפנה"ס' : ' BCE') : ''}
+              </span>
+            </p>
+            <button
+              onClick={() => setActiveMilestone(null)}
+              className="text-ink-500 hover:text-ink-100 transition-colors flex-shrink-0 -mt-0.5"
+              aria-label={locale === 'he' ? 'סגור' : 'Close'}
+            >
+              ✕
+            </button>
+          </div>
+          <p className="font-sans text-xs text-ink-200 leading-relaxed mt-1.5">
+            {activeMilestone.summary[locale]}
           </p>
         </div>
       )}
