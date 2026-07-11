@@ -7,7 +7,7 @@ import { searchSagesLocal } from '@/lib/search'
 import { useAppStore } from '@/store/useAppStore'
 import { EraChip } from './EraChip'
 import type { Sage, Locale } from '@/lib/types'
-import { UI } from '@/lib/i18n'
+import { UI, tr } from '@/lib/i18n'
 
 interface SearchBarProps {
   locale: Locale
@@ -167,7 +167,7 @@ export function SearchBar({ locale, className }: SearchBarProps) {
         >
           {!query.trim() && shown.length > 0 && (
             <p className="px-4 pt-3 pb-1 text-[9px] font-sans font-semibold uppercase tracking-widest text-ink-500">
-              {locale === 'he' ? 'חכמים מובילים' : 'Popular sages'}
+              {tr(locale, 'חכמים מובילים', 'Popular sages', 'Известные мудрецы')}
             </p>
           )}
           <ul role="listbox" aria-label={t.searchLabel}>

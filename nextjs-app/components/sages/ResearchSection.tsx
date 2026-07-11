@@ -5,6 +5,7 @@
 import { useEffect, useState } from 'react'
 import type { Locale } from '@/lib/types'
 import { ReadingControls, useReadingPrefs, readingStyle } from '@/components/ui/ReadingControls'
+import { tr } from '@/lib/i18n'
 
 interface ResearchDoc {
   title: string
@@ -50,7 +51,7 @@ export function ResearchSection({ sageId, locale }: { sageId: string; locale: Lo
   if (docs === null) {
     return (
       <p className="text-xs font-sans text-ink-500 animate-pulse">
-        {isHe ? 'טוען מחקר…' : 'Loading research…'}
+        {tr(locale, 'טוען מחקר…', 'Loading research…', 'Загрузка исследования…')}
       </p>
     )
   }
@@ -62,7 +63,9 @@ export function ResearchSection({ sageId, locale }: { sageId: string; locale: Lo
         <h2 className="text-xs font-sans font-semibold uppercase tracking-widest text-ink-500">
           {isHe
             ? `מחקר מלא (${docs.length} ${docs.length === 1 ? 'מסמך' : 'מסמכים'})`
-            : `Full Research (${docs.length} ${docs.length === 1 ? 'document' : 'documents'})`}
+            : locale === 'ru'
+              ? `Полное исследование (${docs.length} док.)`
+              : `Full Research (${docs.length} ${docs.length === 1 ? 'document' : 'documents'})`}
         </h2>
         <ReadingControls prefs={prefs} onChange={setPrefs} locale={locale} />
       </div>
@@ -79,7 +82,7 @@ export function ResearchSection({ sageId, locale }: { sageId: string; locale: Lo
             className="rounded-xl border border-ink-700/40 bg-ink-800/30 overflow-hidden">
             <summary className="cursor-pointer select-none px-4 py-3 font-serif text-sm text-gold-300 hover:bg-ink-700/30 transition-colors">
               📖 {doc.title.length > 90 ? doc.title.slice(0, 90) + '…' : doc.title}
-              <span className="text-ink-500 text-xs font-sans"> · {doc.word_count.toLocaleString()} {isHe ? 'מילים' : 'words'}</span>
+              <span className="text-ink-500 text-xs font-sans"> · {doc.word_count.toLocaleString()} {tr(locale, 'מילים', 'words', 'слов')}</span>
             </summary>
             <div
               className="px-4 pb-4 pt-1 text-sm text-ink-200 whitespace-pre-line border-t border-ink-700/30"

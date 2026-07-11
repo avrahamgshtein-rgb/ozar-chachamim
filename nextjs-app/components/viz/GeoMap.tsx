@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 import { ERA_COLORS, ERA_LABELS } from '@/lib/types'
 import { CONNECTION_TYPE_COLORS } from '@/lib/regions'
 import { LOCATION_COORDS, resolveCoords } from '@/lib/locationCoords'
+import { tr } from '@/lib/i18n'
 import { useAppStore } from '@/store/useAppStore'
 import type { Locale, Sage } from '@/lib/types'
 import { cn } from '@/lib/utils'
@@ -191,7 +192,7 @@ export function GeoMap({ locale }: GeoMapProps) {
               ${years ? `<span style="font-size:10px;color:#9a8570;margin-inline-start:6px;">${years}</span>` : ''}
             </p>
             ${sage.location ? `<p style="font-size:11px;color:#7a6550;margin:0;">📍 ${sage.location}</p>` : ''}
-            ${sage.spotify_url ? `<a href="${sage.spotify_url}" target="_blank" rel="noopener" style="display:inline-block;margin-top:6px;padding:3px 10px;background:#1DB954;color:#fff;border-radius:12px;font-size:10px;font-weight:700;text-decoration:none;">🎵 ${locale === 'he' ? 'האזן בספוטיפיי' : 'Listen on Spotify'}</a>` : ''}
+            ${sage.spotify_url ? `<a href="${sage.spotify_url}" target="_blank" rel="noopener" style="display:inline-block;margin-top:6px;padding:3px 10px;background:#1DB954;color:#fff;border-radius:12px;font-size:10px;font-weight:700;text-decoration:none;">🎵 ${tr(locale, 'האזן בספוטיפיי', 'Listen on Spotify', 'Слушать в Spotify')}</a>` : ''}
           </div>
         `
         marker.bindPopup(popupContent, { maxWidth: 220, className: '' })
@@ -468,14 +469,14 @@ export function GeoMap({ locale }: GeoMapProps) {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
               d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
           </svg>
-          {locale === 'he' ? 'קשרים' : 'Connections'}
+          {tr(locale, 'קשרים', 'Connections', 'Связи')}
         </button>
       </div>
 
       {!sages.length && (
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <p className="text-ink-500 font-sans text-sm animate-pulse">
-            {locale === 'he' ? 'טוען מפה...' : 'Loading map...'}
+            {tr(locale, 'טוען מפה...', 'Loading map...', 'Загрузка карты...')}
           </p>
         </div>
       )}

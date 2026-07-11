@@ -7,7 +7,7 @@ import { SearchBar } from '@/components/ui/SearchBar'
 import { useAppStore } from '@/store/useAppStore'
 import { ERA_COLORS, ERA_LABELS, ALL_PERIODS } from '@/lib/types'
 import type { Locale, Period } from '@/lib/types'
-import { UI, LOCALES, LOCALE_NAMES, LOCALE_SHORT } from '@/lib/i18n'
+import { UI, LOCALES, LOCALE_NAMES, LOCALE_SHORT, tr } from '@/lib/i18n'
 
 interface HeaderProps {
   locale: Locale
@@ -68,12 +68,12 @@ export function Header({ locale, otherLocale }: HeaderProps) {
             )}
           >
             <span className="text-gold-400 font-mono font-semibold">{totalSages.toLocaleString()}</span>
-            <span className="text-ink-500">{locale === 'he' ? 'חכמים' : 'sages'}</span>
+            <span className="text-ink-500">{tr(locale, 'חכמים', 'sages', 'мудрецов')}</span>
             {connections.length > 0 && (
               <>
                 <span className="text-ink-700">·</span>
                 <span className="text-ink-400 font-mono">{connections.length}</span>
-                <span className="text-ink-500">{locale === 'he' ? 'קשרים' : 'links'}</span>
+                <span className="text-ink-500">{tr(locale, 'קשרים', 'links', 'связей')}</span>
               </>
             )}
             <span className="text-ink-600 text-[10px]">{showStats ? '▴' : '▾'}</span>
@@ -82,7 +82,7 @@ export function Header({ locale, otherLocale }: HeaderProps) {
           {showStats && eraCounts.length > 0 && (
             <div className="absolute top-full end-0 mt-2 w-60 glass rounded-xl border border-ink-700/50 p-3 z-50 shadow-glass-lg animate-fade-in">
               <p className="text-[9px] font-sans font-semibold uppercase tracking-widest text-ink-600 mb-2">
-                {locale === 'he' ? 'לפי תקופה' : 'By era'}
+                {tr(locale, 'לפי תקופה', 'By era', 'По эпохам')}
               </p>
               {eraCounts.map(({ era, count }) => {
                 const color = ERA_COLORS[era]
@@ -101,7 +101,7 @@ export function Header({ locale, otherLocale }: HeaderProps) {
               })}
               {lastUpdate && (
                 <p className="text-[9px] text-ink-700 mt-2 border-t border-ink-800 pt-1.5">
-                  {locale === 'he' ? 'עדכון: ' : 'Updated: '}{lastUpdate}
+                  {tr(locale, 'עדכון: ', 'Updated: ', 'Обновлено: ')}{lastUpdate}
                 </p>
               )}
             </div>
@@ -136,8 +136,8 @@ export function Header({ locale, otherLocale }: HeaderProps) {
             'text-ink-300 hover:text-ink-100 hover:border-gold-500/30',
             'transition-all duration-150',
           )}
-          title={locale === 'he' ? 'מצב כהה / בהיר' : 'Dark / light mode'}
-          aria-label={locale === 'he' ? 'החלף ערכת נושא' : 'Toggle theme'}
+          title={tr(locale, 'מצב כהה / בהיר', 'Dark / light mode', 'Тёмная / светлая тема')}
+          aria-label={tr(locale, 'החלף ערכת נושא', 'Toggle theme', 'Переключить тему')}
         >
           <ThemeIcon />
         </button>
@@ -151,8 +151,8 @@ export function Header({ locale, otherLocale }: HeaderProps) {
             'text-ink-300 hover:text-ink-100 hover:border-gold-500/30',
             'transition-all duration-150',
           )}
-          title={locale === 'he' ? 'סיור מודרך' : 'Guided tour'}
-          aria-label={locale === 'he' ? 'הפעל סיור מודרך' : 'Start guided tour'}
+          title={tr(locale, 'סיור מודרך', 'Guided tour', 'Обучающий тур')}
+          aria-label={tr(locale, 'הפעל סיור מודרך', 'Start guided tour', 'Начать тур')}
         >
           ?
         </button>

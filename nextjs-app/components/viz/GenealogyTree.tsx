@@ -5,6 +5,7 @@ import { cn } from '@/lib/utils'
 import { ERA_COLORS, ERA_LABELS, ALL_PERIODS } from '@/lib/types'
 import { useAppStore } from '@/store/useAppStore'
 import type { Locale, Period } from '@/lib/types'
+import { tr } from '@/lib/i18n'
 
 const ERA_ORDER: Period[] = ALL_PERIODS
 
@@ -261,7 +262,7 @@ export function GenealogyTree({ locale }: GenealogyTreeProps) {
             : 'Lineage Tree — arrows: teacher → student direction'}
         </span>
         <span className="text-[10px] font-sans text-ink-600">
-          {locale === 'he' ? 'גרור · זום · לחץ לפרופיל' : 'Drag · Zoom · Click for profile'}
+          {tr(locale, 'גרור · זום · לחץ לפרופיל', 'Drag · Zoom · Click for profile', 'Перетаскивание · Зум · Клик — профиль')}
         </span>
       </div>
 
@@ -291,7 +292,7 @@ export function GenealogyTree({ locale }: GenealogyTreeProps) {
             <polygon points="22,1.5 27,4 22,6.5" fill="#3b82f6" opacity="0.75" />
           </svg>
           <span className="text-[10px] font-sans text-ink-500">
-            {locale === 'he' ? 'רב ← תלמיד' : 'teacher → student'}
+            {tr(locale, 'רב ← תלמיד', 'teacher → student', 'учитель → ученик')}
           </span>
         </div>
       </div>

@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 import { cn } from '@/lib/utils'
 import { ERA_COLORS, ERA_LABELS, REGION_COLORS, REGION_LABELS, CONNECTION_LABELS, ALL_PERIODS } from '@/lib/types'
 import { MILESTONES } from '@/lib/milestones'
+import { tr } from '@/lib/i18n'
 import { useAppStore } from '@/store/useAppStore'
 import { PathFinder } from '@/components/viz/PathFinder'
 import type { Locale, Period, Region } from '@/lib/types'
@@ -166,7 +167,7 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
         const row = idx % 4
         const ly  = 16 + row * 14
         const yearTxt = ev.year < 0
-          ? `${Math.abs(ev.year)}${locale === 'he' ? ' לפנה"ס' : ' BCE'}`
+          ? `${Math.abs(ev.year)}${tr(locale, ' לפנה"ס', ' BCE', ' до н.э.')}`
           : `${ev.year}`
 
         evBarsG.append('rect').attr('x', x - 1.5).attr('y', 0)
@@ -309,7 +310,7 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
         .text((d: any) => {
           // שנים לצד השם — "סימון שנים ברשת הקשרים"
           const y = [d.birth_year, d.death_year].filter(Boolean)
-            .map((v: number) => v < 0 ? `${Math.abs(v)}${locale === 'he' ? ' לפנה"ס' : ' BCE'}` : `${v}`)
+            .map((v: number) => v < 0 ? `${Math.abs(v)}${tr(locale, ' לפנה"ס', ' BCE', ' до н.э.')}` : `${v}`)
           return y.length ? `${d.label || ''} · ${y.join('–')}` : (d.label || '')
         })
 
@@ -340,7 +341,7 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
             </span>
             ${degree ? `<span style="font-size:10px;padding:1px 7px;border-radius:9999px;
               background:rgba(201,151,58,0.15);color:#c9973a;border:1px solid rgba(201,151,58,0.3);">
-              ${degree} ${locale === 'he' ? 'קשרים' : 'links'}</span>` : ''}
+              ${degree} ${tr(locale, 'קשרים', 'links', 'связей')}</span>` : ''}
           </div>
           ${d.location ? `<div style="font-size:10px;color:var(--ink-400);">📍 ${d.location}</div>` : ''}
           ${d.field    ? `<div style="font-size:10px;color:var(--ink-400);">◈ ${d.field}</div>` : ''}
@@ -584,7 +585,7 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
       {!sages.length && (
         <div className="absolute inset-0 flex items-center justify-center">
           <p className="text-ink-500 font-sans text-sm animate-pulse">
-            {locale === 'he' ? 'טוען רשת...' : 'Loading network...'}
+            {tr(locale, 'טוען רשת...', 'Loading network...', 'Загрузка сети...')}
           </p>
         </div>
       )}
@@ -603,14 +604,14 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
             <button
               onClick={() => setEdgeInfo(null)}
               className="absolute top-2 end-2 text-ink-500 hover:text-ink-200 transition-colors"
-              aria-label={locale === 'he' ? 'סגור' : 'Close'}
+              aria-label={tr(locale, 'סגור', 'Close', 'Закрыть')}
             >
               <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
             <p className="text-[9px] font-sans font-semibold uppercase tracking-widest text-ink-500 mb-2">
-              {locale === 'he' ? 'מהות הקשר' : 'Relationship'}
+              {tr(locale, 'מהות הקשר', 'Relationship', 'Характер связи')}
             </p>
             <div className="flex items-center gap-2">
               <button
@@ -656,8 +657,8 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
         <div className="h-px bg-ink-700/50 my-0.5" />
         <button
           onClick={() => setShowPathFinder(p => !p)}
-          aria-label={locale === 'he' ? 'מוצא מסלול' : 'Path Finder'}
-          title={locale === 'he' ? 'מוצא מסלול' : 'Path Finder'}
+          aria-label={tr(locale, 'מוצא מסלול', 'Path Finder', 'Поиск пути')}
+          title={tr(locale, 'מוצא מסלול', 'Path Finder', 'Поиск пути')}
           className={cn(
             'w-11 h-11 md:w-8 md:h-8 rounded-lg text-xs font-mono glass border transition-all',
             'flex items-center justify-center',

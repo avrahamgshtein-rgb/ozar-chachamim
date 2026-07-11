@@ -72,13 +72,13 @@ export function SagesTable({ locale }: SagesTableProps) {
     }
   }
 
-  const columns: Array<{ key: SortKey; labelHe: string; labelEn: string; className?: string }> = [
-    { key: 'period',      labelHe: 'תקופה',   labelEn: 'Era',         className: 'w-[120px]' },
-    { key: 'label',       labelHe: 'שם',       labelEn: 'Name',        className: 'min-w-[160px]' },
-    { key: 'location',    labelHe: 'מיקום',    labelEn: 'Location',    className: 'w-[130px] hidden sm:table-cell' },
-    { key: 'field',       labelHe: 'תחום',     labelEn: 'Field',       className: 'w-[130px] hidden md:table-cell' },
-    { key: 'birth_year',  labelHe: 'שנים',     labelEn: 'Years',       className: 'w-[110px] hidden sm:table-cell' },
-    { key: 'connections', labelHe: 'קשרים',    labelEn: 'Links',       className: 'w-[72px] text-center' },
+  const columns: Array<{ key: SortKey; labelHe: string; labelEn: string; labelRu: string; className?: string }> = [
+    { key: 'period',      labelHe: 'תקופה',   labelEn: 'Era',         labelRu: 'Эпоха',   className: 'w-[120px]' },
+    { key: 'label',       labelHe: 'שם',       labelEn: 'Name',        labelRu: 'Имя',     className: 'min-w-[160px]' },
+    { key: 'location',    labelHe: 'מיקום',    labelEn: 'Location',    labelRu: 'Место',   className: 'w-[130px] hidden sm:table-cell' },
+    { key: 'field',       labelHe: 'תחום',     labelEn: 'Field',       labelRu: 'Область', className: 'w-[130px] hidden md:table-cell' },
+    { key: 'birth_year',  labelHe: 'שנים',     labelEn: 'Years',       labelRu: 'Годы',    className: 'w-[110px] hidden sm:table-cell' },
+    { key: 'connections', labelHe: 'קשרים',    labelEn: 'Links',       labelRu: 'Связи',   className: 'w-[72px] text-center' },
   ]
 
   const SortIcon = ({ col }: { col: SortKey }) => {
@@ -119,7 +119,7 @@ export function SagesTable({ locale }: SagesTableProps) {
                     col.className,
                   )}
                 >
-                  {isHe ? col.labelHe : col.labelEn}
+                  {isHe ? col.labelHe : locale === 'ru' ? col.labelRu : col.labelEn}
                   <SortIcon col={col.key} />
                 </th>
               ))}

@@ -7,6 +7,7 @@ import type { Locale, Period, Sage } from '@/lib/types'
 import { cn } from '@/lib/utils'
 
 import { ALL_PERIODS } from '@/lib/types'
+import { tr } from '@/lib/i18n'
 
 const ERAS: Period[] = ALL_PERIODS
 
@@ -190,7 +191,7 @@ export function Timeline({ locale }: TimelineProps) {
           .attr('stroke-width', 2.5)
           .attr('paint-order', 'stroke')
           .attr('pointer-events', 'none')
-          .text(`${ev.label[locale]} · ${Math.abs(ev.year)}${ev.year < 0 ? (locale === 'he' ? ' לפנה"ס' : ' BCE') : ''}`)
+          .text(`${ev.label[locale]} · ${Math.abs(ev.year)}${ev.year < 0 ? tr(locale, ' לפנה"ס', ' BCE', ' до н.э.') : ''}`)
 
         // Invisible wide hit area — the whole vertical bar is clickable
         eventsG.append('rect')
@@ -437,7 +438,7 @@ export function Timeline({ locale }: TimelineProps) {
       {!sages.length && (
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <p className="text-ink-500 font-sans text-sm animate-pulse">
-            {locale === 'he' ? 'טוען ציר זמן...' : 'Loading timeline...'}
+            {tr(locale, 'טוען ציר זמן...', 'Loading timeline...', 'Загрузка хронологии...')}
           </p>
         </div>
       )}
@@ -455,13 +456,13 @@ export function Timeline({ locale }: TimelineProps) {
             <p className="font-serif text-sm font-bold text-red-300">
               {activeMilestone.label[locale]}
               <span className="font-mono text-xs text-ink-400 font-normal">
-                {' · '}{Math.abs(activeMilestone.year)}{activeMilestone.year < 0 ? (locale === 'he' ? ' לפנה"ס' : ' BCE') : ''}
+                {' · '}{Math.abs(activeMilestone.year)}{activeMilestone.year < 0 ? tr(locale, ' לפנה"ס', ' BCE', ' до н.э.') : ''}
               </span>
             </p>
             <button
               onClick={() => setActiveMilestone(null)}
               className="text-ink-500 hover:text-ink-100 transition-colors flex-shrink-0 -mt-0.5"
-              aria-label={locale === 'he' ? 'סגור' : 'Close'}
+              aria-label={tr(locale, 'סגור', 'Close', 'Закрыть')}
             >
               ✕
             </button>
@@ -478,7 +479,7 @@ export function Timeline({ locale }: TimelineProps) {
         className="fixed bottom-[76px] left-1/2 -translate-x-1/2 z-20 glass rounded-lg px-1.5 py-1.5 hidden sm:block"
         style={{ width: 'min(480px, calc(100vw - 140px))' }}
         role="slider"
-        aria-label={locale === 'he' ? 'ניווט מהיר בציר הזמן' : 'Timeline quick navigation'}
+        aria-label={tr(locale, 'ניווט מהיר בציר הזמן', 'Timeline quick navigation', 'Быстрая навигация по хронологии')}
         aria-valuemin={MIN_YEAR}
         aria-valuemax={MAX_YEAR}
         aria-valuenow={Math.round(MIN_YEAR + (viewport.start + viewport.width / 2) * YEAR_SPAN)}
