@@ -20,6 +20,7 @@ export const LOCATION_COORDS: Record<string, { lat: number; lng: number }> = {
   'חברון':      { lat: 31.539,  lng: 35.207  },
   'Hebron':     { lat: 31.539,  lng: 35.207  },
   'יבנה':       { lat: 31.877,  lng: 34.751  },
+  'ציפורי':     { lat: 32.752,  lng: 35.279  },
   'קיסריה':     { lat: 32.879,  lng: 35.086  },
   'לוד':        { lat: 31.948,  lng: 35.144  },
   'יריחו':      { lat: 31.861,  lng: 35.447  },

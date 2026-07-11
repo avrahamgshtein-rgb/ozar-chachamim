@@ -27,6 +27,13 @@ export function getHtmlLang(locale: Locale): string {
   return locale
 }
 
+/** Inline trilingual helper — for view-specific strings outside the UI dictionary. */
+export function tr(locale: Locale, he: string, en: string, ru?: string): string {
+  if (locale === 'he') return he
+  if (locale === 'ru') return ru ?? en
+  return en
+}
+
 type UIStrings = {
   appTitle: string
   appSubtitle: string
@@ -52,6 +59,7 @@ type UIStrings = {
   externalLinks: string
   exportPDF: string
   allPeriods: string
+  works: string
 }
 
 export const UI: Record<Locale, UIStrings> = {
@@ -80,6 +88,7 @@ export const UI: Record<Locale, UIStrings> = {
     externalLinks:    'קישורים חיצוניים',
     exportPDF:        'ייצוא PDF',
     allPeriods:       'כל התקופות',
+    works:            'חיבורים',
   },
   en: {
     appTitle:         'Ozar Chachamim',
@@ -106,6 +115,7 @@ export const UI: Record<Locale, UIStrings> = {
     externalLinks:    'External Links',
     exportPDF:        'Export PDF',
     allPeriods:       'All Periods',
+    works:            'Works',
   },
   ru: {
     appTitle:         'Оцар Хахамим',
@@ -132,5 +142,6 @@ export const UI: Record<Locale, UIStrings> = {
     externalLinks:    'Внешние ссылки',
     exportPDF:        'Экспорт PDF',
     allPeriods:       'Все эпохи',
+    works:            'Сочинения',
   },
 }

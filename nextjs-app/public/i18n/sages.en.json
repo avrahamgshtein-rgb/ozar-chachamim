@@ -90,5 +90,33 @@
   "anc-10": {
     "label": "Isaiah the Prophet",
     "bio": "One of the greatest literary prophets. His prophecies of destruction and consolation — 'Comfort, comfort My people' — accompany Israel through the generations."
+  },
+  "sup-1": {
+    "label": "Hillel the Elder",
+    "bio": "Nasi of Israel and head of Beit Hillel. Came up from Babylonia; placed humility and love at the center: 'What is hateful to you, do not do to your fellow — that is the whole Torah.'"
+  },
+  "sup-2": {
+    "label": "Shammai the Elder",
+    "bio": "Head of the court and of Beit Shammai, Hillel's disputant. Ruled strictly out of an ideal of perfection, and taught: 'Say little and do much.'"
+  },
+  "sup-3": {
+    "label": "Rabban Yohanan ben Zakkai",
+    "bio": "Savior of Torah in the generation of the destruction. Escaped besieged Jerusalem and asked 'Give me Yavneh and its sages' — securing the continuity of the Oral Torah after the Temple fell."
+  },
+  "sup-4": {
+    "label": "Rabbi Yehuda HaNasi",
+    "bio": "Redactor of the Mishnah and closer of the Tannaitic era. United the traditions of the Oral Torah into one authoritative work, combining Torah greatness with wealth and leadership before Rome."
+  },
+  "sup-5": {
+    "label": "Rashi (Rabbi Shlomo Yitzchaki)",
+    "bio": "The foremost commentator of Israel. His commentary on the Torah and Talmud — clear, concise and faithful to the plain meaning — opened the gates of learning for all generations; no page of Talmud is studied without him."
+  },
+  "sup-6": {
+    "label": "The Baal Shem Tov (Rabbi Yisrael Besht)",
+    "bio": "Founder of the Hasidic movement. Taught that no place is empty of God, placing devekut, joy and love of every Jew at the center of divine service — transforming Eastern European Jewry."
+  },
+  "sup-7": {
+    "label": "The Vilna Gaon (the Gra)",
+    "bio": "The Gaon of his generations in Lithuania. Toiled in Torah with extraordinary diligence, mastering revealed and hidden Torah, grammar and mathematics — father of the Lithuanian yeshiva world."
   }
 }

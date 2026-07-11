@@ -97,17 +97,29 @@ export function AppShell({ locale, initialTotal, initialLastUpdate }: AppShellPr
           console.log('[AppShell] ↪ using data.json fallback (richer dataset)')
         }
       }
-      // Ancient eras: merge biblical figures (Patriarchs → Kings) — kept in a
-      // separate file so canonical data.json stays untouched
+      // Supplemental datasets — kept in separate files so canonical data.json
+      // stays untouched: biblical figures (ancient eras) + missing giants
+      // (Rashi, Hillel, Besht, Gra...)
+      for (const src of ['/data-ancient.json', '/data-supplement.json']) {
+        try {
+          const extra = await fetch(src).then(r => r.ok ? r.json() : null)
+          if (extra?.nodes?.length) {
+            const existing = new Set(sages.map(s => s.id))
+            sages = [...sages, ...extra.nodes.filter((n: { id: string }) => !existing.has(n.id))]
+            connections = [...connections, ...(extra.links ?? [])]
+            console.log(`[AppShell] 🏛 ${src}: +${extra.nodes.length} figures`)
+          }
+        } catch { /* optional dataset */ }
+      }
+
+      // Field patches for existing sages (e.g. works lists) — locale-independent
       try {
-        const anc = await fetch('/data-ancient.json').then(r => r.ok ? r.json() : null)
-        if (anc?.nodes?.length) {
-          const existing = new Set(sages.map(s => s.id))
-          sages = [...sages, ...anc.nodes.filter((n: { id: string }) => !existing.has(n.id))]
-          connections = [...connections, ...(anc.links ?? [])]
-          console.log(`[AppShell] 🏛 ancient era: +${anc.nodes.length} figures`)
+        const patch = await fetch('/data-patch.json').then(r => r.ok ? r.json() : null)
+        if (patch) {
+          sages = sages.map(s => patch[s.id] ? { ...s, ...patch[s.id] } : s)
+          console.log(`[AppShell] 🩹 data-patch: ${Object.keys(patch).length} sages patched`)
         }
-      } catch { /* optional dataset */ }
+      } catch { /* optional */ }
 
       // Content localization: merge per-locale translated fields (Phase 2)
       const overlay = await fetchContentOverlay(locale)

@@ -67,6 +67,7 @@ export interface Sage {
   migration_path?: MigrationPath
   coordinates?: { lat: number; lng: number }
   spotify_url?: string
+  works?: string[]
 }
 
 export interface Connection {
@@ -161,12 +162,12 @@ export const REGION_COLORS: Record<Region, string> = {
   'other':       '#90a4ae',
 }
 
-export const TAB_META: Record<Tab, { labelHe: string; labelEn: string; icon: string }> = {
-  graph:      { labelHe: 'רשת קשרים',      labelEn: 'Network',    icon: '⬡' },
-  map:        { labelHe: 'גיאוגרפיה',      labelEn: 'Geography',  icon: '◎' },
-  traditions: { labelHe: 'מסורות',         labelEn: 'Traditions', icon: '◈' },
-  ideas:      { labelHe: 'טבלה',           labelEn: 'Table',      icon: '≡' },
-  timeline:   { labelHe: 'שלשלת הקבלה',  labelEn: 'Timeline',   icon: '▷' },
-  genealogy:  { labelHe: 'עץ שושלות',     labelEn: 'Lineage',    icon: '⟁' },
-  about:      { labelHe: 'אודות',          labelEn: 'About',      icon: 'temple' },
+export const TAB_META: Record<Tab, { labelHe: string; labelEn: string; labelRu: string; icon: string }> = {
+  graph:      { labelHe: 'רשת קשרים',      labelEn: 'Network',    labelRu: 'Сеть связей', icon: '⬡' },
+  map:        { labelHe: 'גיאוגרפיה',      labelEn: 'Geography',  labelRu: 'География',   icon: '◎' },
+  traditions: { labelHe: 'מסורות',         labelEn: 'Traditions', labelRu: 'Традиции',    icon: '◈' },
+  ideas:      { labelHe: 'טבלה',           labelEn: 'Table',      labelRu: 'Таблица',     icon: '≡' },
+  timeline:   { labelHe: 'שלשלת הקבלה',  labelEn: 'Timeline',   labelRu: 'Хронология',  icon: '▷' },
+  genealogy:  { labelHe: 'עץ שושלות',     labelEn: 'Lineage',    labelRu: 'Династии',    icon: '⟁' },
+  about:      { labelHe: 'אודות',          labelEn: 'About',      labelRu: 'О проекте',   icon: 'temple' },
 }
