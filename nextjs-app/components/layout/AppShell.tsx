@@ -100,7 +100,7 @@ export function AppShell({ locale, initialTotal, initialLastUpdate }: AppShellPr
       // Supplemental datasets — kept in separate files so canonical data.json
       // stays untouched: biblical figures (ancient eras) + missing giants
       // (Rashi, Hillel, Besht, Gra...)
-      for (const src of ['/data-ancient.json', '/data-supplement.json', '/data-research-links.json']) {
+      for (const src of ['/data-ancient.json', '/data-supplement.json', '/data-supplement-2.json', '/data-research-links.json']) {
         try {
           const extra = await fetch(src).then(r => r.ok ? r.json() : null)
           if (extra?.nodes?.length || extra?.links?.length) {
