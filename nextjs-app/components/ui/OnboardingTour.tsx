@@ -10,49 +10,54 @@ const STORAGE_KEY = 'ozar-tour-v1'
 interface TourStep {
   /** CSS selector of the element to spotlight; null = centered card */
   target: string | null
-  title: { he: string; en: string }
-  body:  { he: string; en: string }
+  title: Record<Locale, string>
+  body:  Record<Locale, string>
 }
 
 const STEPS: TourStep[] = [
   {
     target: null,
-    title: { he: 'ברוכים הבאים לאוצר חכמים', en: 'Welcome to Ozar Chachamim' },
+    title: { he: 'ברוכים הבאים לאוצר חכמים', en: 'Welcome to Ozar Chachamim', ru: 'Добро пожаловать в Оцар Хахамим' },
     body: {
       he: 'מפת הידע האינטראקטיבית של חכמי ישראל לדורותיהם — רשת קשרים, מפה גיאוגרפית, ציר זמן ועוד. סיור קצר של דקה יראה לכם את העיקר.',
       en: 'The interactive knowledge map of Jewish sages across the generations — a connection network, geographic map, timeline and more. A one-minute tour shows you the essentials.',
+      ru: 'Интерактивная карта знаний еврейских мудрецов всех поколений — сеть связей, географическая карта, хронология и многое другое. Минутный тур покажет главное.',
     },
   },
   {
     target: '[data-tour="search"]',
-    title: { he: 'חיפוש חכם', en: 'Smart search' },
+    title: { he: 'חיפוש חכם', en: 'Smart search', ru: 'Умный поиск' },
     body: {
       he: 'הקלידו שם, תקופה או מקום. החיפוש סלחני לכתיב — "רמבם" ימצא את הרמב״ם. אפשר גם Ctrl+K.',
       en: 'Type a name, era or place. Search is spelling-tolerant — "rambam" finds Maimonides. Ctrl+K works too.',
+      ru: 'Введите имя, эпоху или место. Поиск терпим к написанию — «рамбам» найдёт Маймонида. Работает и Ctrl+K.',
     },
   },
   {
     target: '[data-tour="tabs"]',
-    title: { he: 'שש תצוגות', en: 'Six views' },
+    title: { he: 'שש תצוגות', en: 'Six views', ru: 'Шесть представлений' },
     body: {
       he: 'רשת קשרים, גיאוגרפיה, מסורות, טבלה, שלשלת הקבלה ועץ שושלות. בחירת חכם באחת התצוגות תסומן גם בשאר.',
       en: 'Network, geography, traditions, table, timeline and lineage tree. Selecting a sage in one view highlights it in the others.',
+      ru: 'Сеть, география, традиции, таблица, хронология и древо династий. Выбор мудреца в одном виде подсвечивает его в остальных.',
     },
   },
   {
     target: '[data-tour="legend"]',
-    title: { he: 'מקרא וצבעים', en: 'Legend & colors' },
+    title: { he: 'מקרא וצבעים', en: 'Legend & colors', ru: 'Легенда и цвета' },
     body: {
       he: 'צבעי הצמתים לפי תקופה או אזור, וסוגי הקשרים לפי סגנון הקו. לחיצה על צומת פותחת תיק חכם מלא; לחיצה על קו מציגה את מהות הקשר.',
       en: 'Node colors follow era or region; line styles encode connection types. Click a node for the full sage dossier; click an edge to see the relationship.',
+      ru: 'Цвета узлов — по эпохе или региону; стили линий — типы связей. Клик по узлу открывает досье мудреца; клик по линии — характер связи.',
     },
   },
   {
     target: '[data-tour="header-actions"]',
-    title: { he: 'סינון, ערכת נושא ושפה', en: 'Filters, theme & language' },
+    title: { he: 'סינון, ערכת נושא ושפה', en: 'Filters, theme & language', ru: 'Фильтры, тема и язык' },
     body: {
-      he: 'סינון מתקדם לפי תקופה/אזור/תחום, מעבר בין מצב כהה לבהיר, והחלפת שפה עברית/אנגלית.',
-      en: 'Advanced filtering by era/region/field, dark-light theme toggle, and Hebrew/English switching.',
+      he: 'סינון מתקדם לפי תקופה/אזור/תחום, מעבר בין מצב כהה לבהיר, והחלפת שפה עברית/אנגלית/רוסית.',
+      en: 'Advanced filtering by era/region/field, dark-light theme toggle, and Hebrew/English/Russian switching.',
+      ru: 'Расширенная фильтрация по эпохе/региону/области, переключение тёмной и светлой темы, выбор языка — иврит/английский/русский.',
     },
   },
 ]

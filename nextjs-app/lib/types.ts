@@ -136,17 +136,17 @@ export const ERA_COLORS: Record<Period, string> = {
   modern:          '#1abc9c',
 }
 
-export const REGION_LABELS: Record<Region, { he: string; en: string }> = {
-  'ashkenaz':    { he: 'אשכנז',        en: 'Ashkenaz'      },
-  'east-europe': { he: 'מזרח אירופה',  en: 'Eastern Europe' },
-  'tsarfat':     { he: 'צרפת',         en: 'France'         },
-  'provence':    { he: 'פרובנס',       en: 'Provence'       },
-  'sefarad':     { he: 'ספרד',         en: 'Sepharad'       },
-  'italy':       { he: 'איטליה',       en: 'Italy'          },
-  'north-africa':{ he: 'צפון אפריקה', en: 'North Africa'   },
-  'mizrach':     { he: 'המזרח',        en: 'Middle East'    },
-  'eretz-israel':{ he: 'ארץ ישראל',   en: 'Eretz Israel'   },
-  'other':       { he: 'אחר',          en: 'Other'          },
+export const REGION_LABELS: Record<Region, Record<Locale, string>> = {
+  'ashkenaz':    { he: 'אשכנז',        en: 'Ashkenaz',       ru: 'Ашкеназ'          },
+  'east-europe': { he: 'מזרח אירופה',  en: 'Eastern Europe', ru: 'Восточная Европа' },
+  'tsarfat':     { he: 'צרפת',         en: 'France',         ru: 'Франция'          },
+  'provence':    { he: 'פרובנס',       en: 'Provence',       ru: 'Прованс'          },
+  'sefarad':     { he: 'ספרד',         en: 'Sepharad',       ru: 'Сефарад'          },
+  'italy':       { he: 'איטליה',       en: 'Italy',          ru: 'Италия'           },
+  'north-africa':{ he: 'צפון אפריקה', en: 'North Africa',   ru: 'Северная Африка'  },
+  'mizrach':     { he: 'המזרח',        en: 'Middle East',    ru: 'Ближний Восток'   },
+  'eretz-israel':{ he: 'ארץ ישראל',   en: 'Eretz Israel',   ru: 'Земля Израиля'    },
+  'other':       { he: 'אחר',          en: 'Other',          ru: 'Другое'           },
 }
 
 export const REGION_COLORS: Record<Region, string> = {
