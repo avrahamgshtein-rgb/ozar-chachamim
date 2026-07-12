@@ -163,20 +163,32 @@ export function Timeline({ locale }: TimelineProps) {
         const row    = idx % 4
         const labelY = totalH + 8 + row * 13
 
+        // Prominent full-height dashed line — the event is a visual marker
+        // on the timeline itself, not just a caption below it
         eventsG.append('rect')
-          .attr('x', x - 2).attr('y', 0)
-          .attr('width', 4).attr('height', totalH)
-          .attr('rx', 2)
+          .attr('x', x - 3).attr('y', 0)
+          .attr('width', 6).attr('height', totalH)
+          .attr('rx', 3)
           .attr('fill', '#e53935')
-          .attr('opacity', 0.15)
+          .attr('opacity', 0.10)
           .attr('pointer-events', 'none')
 
         eventsG.append('line')
-          .attr('x1', x).attr('y1', totalH)
+          .attr('x1', x).attr('y1', 0)
           .attr('x2', x).attr('y2', labelY - 2)
-          .attr('stroke', '#e57373')
+          .attr('stroke', '#e53935')
+          .attr('stroke-width', 1.8)
+          .attr('stroke-dasharray', '7 5')
+          .attr('opacity', 0.65)
+          .attr('pointer-events', 'none')
+
+        // Diamond marker at the top of the line
+        eventsG.append('path')
+          .attr('d', `M ${x} 2 l 5 6 l -5 6 l -5 -6 Z`)
+          .attr('fill', '#e53935')
+          .attr('opacity', 0.85)
+          .attr('stroke', '#0a0806')
           .attr('stroke-width', 1)
-          .attr('opacity', 0.5)
           .attr('pointer-events', 'none')
 
         eventsG.append('text')

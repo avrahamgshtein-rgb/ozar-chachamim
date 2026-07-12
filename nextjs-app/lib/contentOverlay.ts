@@ -32,7 +32,11 @@ export function applyOverlay(sages: Sage[], overlay: SageOverlay | null): Sage[]
   let applied = 0
   const merged = sages.map(sage => {
     const entry = overlay[sage.id]
-    if (!entry) return sage
+    if (!entry) {
+      // Fallback: no translation entry yet → at least show the Latin name
+      // instead of Hebrew when one exists
+      return sage.name_en ? { ...sage, label: sage.name_en } : sage
+    }
     applied++
     return { ...sage, ...entry }
   })

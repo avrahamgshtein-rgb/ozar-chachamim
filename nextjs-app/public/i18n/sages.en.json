@@ -118,5 +118,365 @@
   "sup-7": {
     "label": "The Vilna Gaon (the Gra)",
     "bio": "The Gaon of his generations in Lithuania. Toiled in Torah with extraordinary diligence, mastering revealed and hidden Torah, grammar and mathematics — father of the Lithuanian yeshiva world."
+  },
+  "262": {
+    "label": "Rabbi Ephraim of Qal'at Hammad"
+  },
+  "47": {
+    "label": "The Maharam of Rothenburg"
+  },
+  "463": {
+    "label": "The Rema (Rabbi Moshe Isserles)"
+  },
+  "195": {
+    "label": "The Ra'avad of Posquières"
+  },
+  "13": {
+    "label": "The Ran (Rabbenu Nissim of Girona)"
+  },
+  "182": {
+    "label": "The Brisk Method (R. Chaim Soloveitchik) and Academic Study"
+  },
+  "16": {
+    "label": "The Rambam Revolution, the Spanish Response and the Rema's Legacy"
+  },
+  "52": {
+    "label": "The Ritva — the kabbalist who defended the philosopher"
+  },
+  "50": {
+    "label": "Rabbi Abraham Abulafia"
+  },
+  "340": {
+    "label": "Rabbi Mordechai Eliyahu"
+  },
+  "192": {
+    "label": "Abraham ibn Ezra"
+  },
+  "2": {
+    "label": "Shimon ben Shetach"
+  },
+  "285": {
+    "label": "Rabbenu Manoach of Narbonne"
+  },
+  "294": {
+    "label": "Rabbi Aharon HaLevi"
+  },
+  "11": {
+    "label": "Rabbi Yehuda HeChasid (Ashkenazi Pietists)"
+  },
+  "325": {
+    "label": "The Chida (Rabbi Chaim Yosef David Azulai)"
+  },
+  "336": {
+    "label": "Rabbi Ovadia Yosef"
+  },
+  "449": {
+    "label": "Rabbi Israel Isserlein"
+  },
+  "457": {
+    "label": "Rabbi Yaakov Pollak"
+  },
+  "335": {
+    "label": "The Lubavitcher Rebbe"
+  },
+  "266": {
+    "label": "Rabbenu Yehuda ben Barzilai of Barcelona"
+  },
+  "287": {
+    "label": "Rabbi Nathan ben Meir of Trinquetaille"
+  },
+  "295": {
+    "label": "Rabbi Shlomo ben Avraham"
+  },
+  "296": {
+    "label": "Rabbi Moshe ben Nachman"
+  },
+  "341": {
+    "label": "Rabbi Shmuel Salant"
+  },
+  "17": {
+    "label": "Rabbi Yosef Albo"
+  },
+  "23": {
+    "label": "Menachem ben Saruq — the Hebrew language revolution"
+  },
+  "24": {
+    "label": "Hasdai ibn Shaprut"
+  },
+  "43": {
+    "label": "Rabbi Yitzchak of Vienna (Or Zarua)"
+  },
+  "53": {
+    "label": "The Mordechai (Rabbi Mordechai ben Hillel)"
+  },
+  "51": {
+    "label": "Rabbi Menachem HaMeiri"
+  },
+  "394": {
+    "label": "The Ra'ah (Rabbi Aharon HaLevi)"
+  },
+  "151": {
+    "label": "Emmanuel Levinas"
+  },
+  "267": {
+    "label": "The Kuzari"
+  },
+  "279": {
+    "label": "The Ritzba"
+  },
+  "284": {
+    "label": "Rabbi Yehuda ben Berachia"
+  },
+  "286": {
+    "label": "Rabbi Reuven ben Chaim of Narbonne"
+  },
+  "297": {
+    "label": "Nathan ben Meir"
+  },
+  "469": {
+    "label": "Rabbi Crescas Vidal"
+  },
+  "467": {
+    "label": "Rabbi Israel Sarug"
+  },
+  "67": {
+    "label": "Don Isaac Abravanel — statesman, philosopher, exegete"
+  },
+  "198": {
+    "label": "Dunash ben Labrat"
+  },
+  "38": {
+    "label": "The Sages of Provence — Narbonne and early mysticism"
+  },
+  "42": {
+    "label": "Rabbi Isaac the Blind (Sagi Nahor)"
+  },
+  "343": {
+    "label": "Rabbi David Abudarham"
+  },
+  "264": {
+    "label": "Mahari Bruna"
+  },
+  "64": {
+    "label": "Mahari Mintz"
+  },
+  "69": {
+    "label": "The Radbaz (1479–1573)"
+  },
+  "70": {
+    "label": "The Maharshal (Rabbi Shlomo Luria)"
+  },
+  "74": {
+    "label": "Rabbi Elazar Azikri"
+  },
+  "85": {
+    "label": "Rabbi Yehuda Rosanes — Mishneh LaMelech"
+  },
+  "106": {
+    "label": "Rabbi Zvi Hirsch Kalischer"
+  },
+  "113": {
+    "label": "Rabbi Israel Salanter"
+  },
+  "347": {
+    "label": "Solomon Munk"
+  },
+  "146": {
+    "label": "Chacham Menachem Menashe"
+  },
+  "154": {
+    "label": "Rabbi Mordechai Sharabi"
+  },
+  "148": {
+    "label": "Mr. Shoshani"
+  },
+  "166": {
+    "label": "Rabbi Yehuda Léon Askénazi (Manitou)"
+  },
+  "175": {
+    "label": "Chacham Yeshua Ben-Shushan — the kabbalist commando commander"
+  },
+  "351": {
+    "label": "Rabbi Nathan of Rome"
+  },
+  "190": {
+    "label": "Abraham bar Chiya"
+  },
+  "280": {
+    "label": "Rabbi Elazar of Worms (the Rokeach)"
+  },
+  "229": {
+    "label": "The Ra'avan"
+  },
+  "275": {
+    "label": "Ri HaZaken of Dampierre"
+  },
+  "283": {
+    "label": "Rabbi Meshulam of Béziers"
+  },
+  "415": {
+    "label": "Rabbi Shem Tov ibn Gaon"
+  },
+  "424": {
+    "label": "Rabbi Vidal of Tolosa"
+  },
+  "433": {
+    "label": "Rabbi Yosef Chaviva"
+  },
+  "444": {
+    "label": "The Maharil"
+  },
+  "452": {
+    "label": "Rabbi Yaakov Landau"
+  },
+  "458": {
+    "label": "Rabbi Shalom Shachna of Lublin"
+  },
+  "464": {
+    "label": "Rabbi Yehoshua ibn Shu'eib"
+  },
+  "196": {
+    "label": "Rabbi Zvi Yehuda HaKohen Kook"
+  },
+  "8": {
+    "label": "Rabbah bar bar Chana"
+  },
+  "81": {
+    "label": "Isaac Nunes Belmonte (1601–1652)"
+  },
+  "12": {
+    "label": "Rabbenu Bachya ben Asher"
+  },
+  "57": {
+    "label": "Rabbi Hasdai Crescas"
+  },
+  "459": {
+    "label": "The Maharik (Rabbi Yosef Colon)"
+  },
+  "18": {
+    "label": "Rabbi Ovadia of Bartenura"
+  },
+  "19": {
+    "label": "Rabbi Yosef Chayun"
+  },
+  "27": {
+    "label": "Rav Shmuel ben Chofni Gaon"
+  },
+  "35": {
+    "label": "Rabbenu Chananel ben Chushiel"
+  },
+  "46": {
+    "label": "Rabbi Zerachia HaLevi (Baal HaMaor)"
+  },
+  "49": {
+    "label": "The Ra'avia (Rabbi Eliezer ben Yoel HaLevi)"
+  },
+  "54": {
+    "label": "Rabbi Yechiel of Paris"
+  },
+  "56": {
+    "label": "The Rivash (Rabbi Yitzchak bar Sheshet)"
+  },
+  "92": {
+    "label": "Rabbi Avraham Gershon of Kitov (1701–1761)"
+  },
+  "76": {
+    "label": "Rabbi Yoel Sirkis (the Bach)"
+  },
+  "87": {
+    "label": "Rabbi Ephraim Navon (1677–1735) — Machaneh Ephraim"
+  },
+  "202": {
+    "label": "Rabbi Akiva Eger"
+  },
+  "203": {
+    "label": "Rabbi Eliyahu Guttmacher"
+  },
+  "109": {
+    "label": "Rabbi Yehuda Alkalai"
+  },
+  "111": {
+    "label": "Rabbi Zvi Hirsch Chajes (Maharatz Chajes)"
+  },
+  "130": {
+    "label": "The Alter of Novardok — the Mussar revolution"
+  },
+  "338": {
+    "label": "Rabbi Abdallah Somekh"
+  },
+  "126": {
+    "label": "The Ben Ish Chai (Rabbi Yosef Chaim of Baghdad)"
+  },
+  "128": {
+    "label": "Rabbi Meir Simcha of Dvinsk"
+  },
+  "137": {
+    "label": "Rabbi Yitzchak Alfiya"
+  },
+  "169": {
+    "label": "Elie Wiesel"
+  },
+  "150": {
+    "label": "Rabbi Yitzchak Kaduri"
+  },
+  "334": {
+    "label": "Rabbi Yosef Qafih"
+  },
+  "174": {
+    "label": "Rabbi Refael Moshe Luria"
+  },
+  "478": {
+    "label": "Rabbi Israel Abuhatzeira (the Baba Sali)"
+  },
+  "263": {
+    "label": "The Mahari Mintz"
+  },
+  "189": {
+    "label": "Rabbi Yaakov ben Asher (the Tur)"
+  },
+  "271": {
+    "label": "The Re'em of Metz"
+  },
+  "393": {
+    "label": "Rabbi Meir ben Shimon HaMe'ili"
+  },
+  "390": {
+    "label": "Rabbenu Shmuel HaSardi"
+  },
+  "288": {
+    "label": "Rabbenu Perachia ben Nissim"
+  },
+  "386": {
+    "label": "Rabbi Chananel ben Shmuel"
+  },
+  "290": {
+    "label": "Rabbi Levi ben Gershon (Gersonides)"
+  },
+  "291": {
+    "label": "Shmuel ben Yitzchak"
+  },
+  "300": {
+    "label": "Rabbi Simcha of Speyer"
+  },
+  "301": {
+    "label": "The Riaz (Rabbi Isaiah di Trani the Younger)"
+  },
+  "407": {
+    "label": "Rabbi Meir HaKohen of Rothenburg"
+  },
+  "308": {
+    "label": "The Rid (Rabbi Isaiah di Trani the Elder)"
+  },
+  "309": {
+    "label": "Rabbi Avigdor Katz of Vienna"
+  },
+  "310": {
+    "label": "Rabbi Menachem ben Zerach"
+  },
+  "311": {
+    "label": "Rabbi Yehuda ben HaRosh"
+  },
+  "314": {
+    "label": "Rabbi Yitzchak of Düren"
   }
 }
