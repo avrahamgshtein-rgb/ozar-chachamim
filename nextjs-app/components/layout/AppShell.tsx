@@ -100,14 +100,14 @@ export function AppShell({ locale, initialTotal, initialLastUpdate }: AppShellPr
       // Supplemental datasets — kept in separate files so canonical data.json
       // stays untouched: biblical figures (ancient eras) + missing giants
       // (Rashi, Hillel, Besht, Gra...)
-      for (const src of ['/data-ancient.json', '/data-supplement.json']) {
+      for (const src of ['/data-ancient.json', '/data-supplement.json', '/data-research-links.json']) {
         try {
           const extra = await fetch(src).then(r => r.ok ? r.json() : null)
-          if (extra?.nodes?.length) {
+          if (extra?.nodes?.length || extra?.links?.length) {
             const existing = new Set(sages.map(s => s.id))
-            sages = [...sages, ...extra.nodes.filter((n: { id: string }) => !existing.has(n.id))]
+            sages = [...sages, ...(extra.nodes ?? []).filter((n: { id: string }) => !existing.has(n.id))]
             connections = [...connections, ...(extra.links ?? [])]
-            console.log(`[AppShell] 🏛 ${src}: +${extra.nodes.length} figures`)
+            console.log(`[AppShell] 🏛 ${src}: +${extra.nodes?.length ?? 0} figures, +${extra.links?.length ?? 0} links`)
           }
         } catch { /* optional dataset */ }
       }
