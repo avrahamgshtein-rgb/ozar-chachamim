@@ -6,7 +6,6 @@ import { ERA_COLORS, ERA_LABELS, CONNECTION_LABELS, REGION_LABELS } from '@/lib/
 import { useAppStore } from '@/store/useAppStore'
 import { formatYearRange } from '@/lib/utils'
 import type { Locale, Sage } from '@/lib/types'
-import { tr } from '@/lib/i18n'
 
 // ── Minimal BFS to find path between two sages ──────────────────────────────
 function findPath(aId: string, bId: string, connections: { source: string; target: string; type: string }[]): { sage: Sage; connType?: string }[] | null {
@@ -67,7 +66,7 @@ function SagePicker({ label, value, onChange, locale, exclude }: {
           onChange={e => { setQuery(e.target.value); setOpen(true); if (!e.target.value) onChange(null) }}
           onFocus={() => setOpen(true)}
           onBlur={() => setTimeout(() => setOpen(false), 150)}
-          placeholder={tr(locale, 'חפש חכם…', 'Search sage…', 'Поиск мудреца…')}
+          placeholder={locale === 'he' ? 'חפש חכם…' : 'Search sage…'}
           className={cn(
             'w-full text-sm font-sans px-3 py-2 rounded-lg',
             'bg-ink-800/70 border text-ink-100 placeholder-ink-600',
@@ -119,19 +118,19 @@ function SageColumn({ sage, locale, onSelect }: { sage: Sage; locale: Locale; on
       <dl className="text-xs font-sans space-y-1.5">
         {years && (
           <div className="flex justify-between gap-2">
-            <dt className="text-ink-600">{tr(locale, 'שנים', 'Years', 'Годы')}</dt>
+            <dt className="text-ink-600">{locale === 'he' ? 'שנים' : 'Years'}</dt>
             <dd className="text-ink-300 tabular-nums">{years}</dd>
           </div>
         )}
         {sage.location && (
           <div className="flex justify-between gap-2">
-            <dt className="text-ink-600">{tr(locale, 'מקום', 'Location', 'Место')}</dt>
+            <dt className="text-ink-600">{locale === 'he' ? 'מקום' : 'Location'}</dt>
             <dd className="text-ink-300 truncate max-w-[120px]">{sage.location}</dd>
           </div>
         )}
         {sage.field && (
           <div className="flex justify-between gap-2">
-            <dt className="text-ink-600">{tr(locale, 'תחום', 'Field', 'Область')}</dt>
+            <dt className="text-ink-600">{locale === 'he' ? 'תחום' : 'Field'}</dt>
             <dd className="text-ink-300 truncate max-w-[120px]">{sage.field}</dd>
           </div>
         )}
@@ -155,7 +154,7 @@ function SageColumn({ sage, locale, onSelect }: { sage: Sage; locale: Locale; on
         className="mt-auto text-xs font-sans px-3 py-1.5 rounded-lg border transition-all text-center"
         style={{ borderColor: `${color}44`, color, background: `${color}10` }}
       >
-        {tr(locale, 'פתח פרופיל', 'Open Profile', 'Открыть профиль')}
+        {locale === 'he' ? 'פתח פרופיל' : 'Open Profile'}
       </button>
     </div>
   )

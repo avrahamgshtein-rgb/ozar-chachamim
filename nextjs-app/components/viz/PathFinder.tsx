@@ -6,7 +6,6 @@ import { ERA_COLORS, ERA_LABELS, CONNECTION_LABELS } from '@/lib/types'
 import { useAppStore } from '@/store/useAppStore'
 import { formatYearRange } from '@/lib/utils'
 import type { Locale, Sage, Connection } from '@/lib/types'
-import { tr } from '@/lib/i18n'
 
 interface PathStep {
   sage: Sage
@@ -100,7 +99,7 @@ function SagePicker({ label, value, onChange, locale, exclude }: SagePickerProps
           onChange={e => { setQuery(e.target.value); setOpen(true); if (!e.target.value) onChange(null) }}
           onFocus={() => setOpen(true)}
           onBlur={() => setTimeout(() => setOpen(false), 150)}
-          placeholder={tr(locale, 'חפש חכם…', 'Search sage…', 'Поиск мудреца…')}
+          placeholder={locale === 'he' ? 'חפש חכם…' : 'Search sage…'}
           className={cn(
             'w-full text-sm font-sans px-3 py-2 rounded-lg',
             'bg-ink-800/70 border text-ink-100 placeholder-ink-600',

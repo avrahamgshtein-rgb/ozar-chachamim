@@ -10,7 +10,7 @@ interface LocaleLayoutProps {
 }
 
 export async function generateStaticParams() {
-  return [{ locale: 'he' }, { locale: 'en' }, { locale: 'ru' }]
+  return [{ locale: 'he' }, { locale: 'en' }]
 }
 
 export async function generateMetadata({

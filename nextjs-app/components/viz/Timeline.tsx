@@ -6,16 +6,12 @@ import { useAppStore } from '@/store/useAppStore'
 import type { Locale, Period, Sage } from '@/lib/types'
 import { cn } from '@/lib/utils'
 
-import { ALL_PERIODS } from '@/lib/types'
-import { tr } from '@/lib/i18n'
-
-const ERAS: Period[] = ALL_PERIODS
+const ERAS: Period[] = [
+  'second-temple', 'tannaim', 'amoraim',
+  'geonim', 'rishonim', 'acharonim', 'modern',
+]
 
 const ERA_YEARS: Record<Period, [number, number]> = {
-  patriarchs:      [-1850,-1500],
-  exodus:          [-1500,-1200],
-  judges:          [-1200,-1020],
-  kings:           [-1020,-586],
   'second-temple': [-516,  70],
   tannaim:         [  10, 220],
   amoraim:         [ 220, 500],
@@ -25,7 +21,7 @@ const ERA_YEARS: Record<Period, [number, number]> = {
   modern:          [1880,2024],
 }
 
-const MIN_YEAR = -1900
+const MIN_YEAR = -600
 const MAX_YEAR =  2024
 const YEAR_SPAN = MAX_YEAR - MIN_YEAR
 
@@ -36,9 +32,21 @@ const DOT_R    = 5
 const ROWS     = 4      // stagger rows within band to avoid overlap
 const COL_W    = 90     // bucket width for stagger
 
-// Historical milestones — shared module (lib/milestones.ts), Masterplan §8
-import { MILESTONES } from '@/lib/milestones'
-import type { Milestone } from '@/lib/milestones'
+interface HistoricalEvent {
+  year: number
+  label: { he: string; en: string }
+}
+
+const HISTORICAL_EVENTS: HistoricalEvent[] = [
+  { year:   70, label: { he: 'חורבן בית שני',      en: 'Second Temple destroyed' } },
+  { year: 1096, label: { he: 'מסעי הצלב — תתנ"ו', en: 'First Crusade'            } },
+  { year: 1242, label: { he: 'שריפת התלמוד',       en: 'Burning of the Talmud'    } },
+  { year: 1348, label: { he: 'המגפה השחורה',       en: 'Black Death'              } },
+  { year: 1391, label: { he: 'גזירות קנ"א',        en: '1391 pogroms in Spain'    } },
+  { year: 1492, label: { he: 'גירוש ספרד',         en: 'Expulsion from Spain'     } },
+  { year: 1648, label: { he: 'גזירות ת"ח ות"ט',   en: 'Khmelnytsky massacres'    } },
+  { year: 1939, label: { he: 'השואה',              en: 'The Holocaust'            } },
+]
 
 interface TimelineProps {
   locale: Locale
@@ -64,7 +72,6 @@ export function Timeline({ locale }: TimelineProps) {
   const svgElRef     = useRef<SVGSVGElement | null>(null)
   const zoomRef      = useRef<import('d3').ZoomBehavior<SVGSVGElement, unknown> | null>(null)
   const [viewport, setViewport] = useState({ start: 0, width: 0.1 }) // minimap indicator (0..1)
-  const [activeMilestone, setActiveMilestone] = useState<Milestone | null>(null)
 
   const { sages, filteredSages, selectedSageId, selectSage, connections } = useAppStore()
 
@@ -149,13 +156,11 @@ export function Timeline({ locale }: TimelineProps) {
           .text(ERA_LABELS[era]?.[locale] ?? era)
       })
 
-      // ── Historical milestone bars (Masterplan §8) ──────────
-      // Background layer; always visible (independent of sage filters);
-      // clickable → impact summary card.
+      // ── Historical event bars ──────────────────────────────
       const totalH  = BAND_H * ERAS.length
-      const eventsG = g.append('g').attr('class', 'event-bars')
+      const eventsG = g.append('g').attr('class', 'event-bars').attr('pointer-events', 'none')
 
-      MILESTONES.forEach((ev, idx) => {
+      HISTORICAL_EVENTS.forEach((ev, idx) => {
         const x = yearToX(ev.year)
         if (x < LABEL_W) return
 
@@ -169,7 +174,6 @@ export function Timeline({ locale }: TimelineProps) {
           .attr('rx', 2)
           .attr('fill', '#e53935')
           .attr('opacity', 0.15)
-          .attr('pointer-events', 'none')
 
         eventsG.append('line')
           .attr('x1', x).attr('y1', totalH)
@@ -177,7 +181,6 @@ export function Timeline({ locale }: TimelineProps) {
           .attr('stroke', '#e57373')
           .attr('stroke-width', 1)
           .attr('opacity', 0.5)
-          .attr('pointer-events', 'none')
 
         eventsG.append('text')
           .attr('x', x).attr('y', labelY)
@@ -190,16 +193,7 @@ export function Timeline({ locale }: TimelineProps) {
           .attr('stroke', '#0a0806')
           .attr('stroke-width', 2.5)
           .attr('paint-order', 'stroke')
-          .attr('pointer-events', 'none')
-          .text(`${ev.label[locale]} · ${Math.abs(ev.year)}${ev.year < 0 ? tr(locale, ' לפנה"ס', ' BCE', ' до н.э.') : ''}`)
-
-        // Invisible wide hit area — the whole vertical bar is clickable
-        eventsG.append('rect')
-          .attr('x', x - 7).attr('y', 0)
-          .attr('width', 14).attr('height', totalH + 8 + 4 * 13)
-          .attr('fill', 'transparent')
-          .style('cursor', 'pointer')
-          .on('click', () => setActiveMilestone(ev))
+          .text(`${ev.label[locale]} · ${ev.year}`)
       })
 
       // ── Year axis ticks ────────────────────────────────────
@@ -210,7 +204,7 @@ export function Timeline({ locale }: TimelineProps) {
         .attr('stroke', 'rgba(122,101,80,0.3)')
         .attr('stroke-width', 1)
 
-      for (let yr = -1800; yr <= 2000; yr += 200) {
+      for (let yr = -400; yr <= 2000; yr += 200) {
         const x = yearToX(yr)
         g.append('line')
           .attr('x1', x).attr('x2', x)
@@ -356,14 +350,6 @@ export function Timeline({ locale }: TimelineProps) {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sages.length])
 
-  // Escape dismisses the milestone card
-  useEffect(() => {
-    if (!activeMilestone) return
-    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setActiveMilestone(null) }
-    window.addEventListener('keydown', onKey)
-    return () => window.removeEventListener('keydown', onKey)
-  }, [activeMilestone])
-
   // Track scroll → minimap viewport indicator
   const onScroll = () => {
     const el = scrollRef.current
@@ -438,37 +424,7 @@ export function Timeline({ locale }: TimelineProps) {
       {!sages.length && (
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <p className="text-ink-500 font-sans text-sm animate-pulse">
-            {tr(locale, 'טוען ציר זמן...', 'Loading timeline...', 'Загрузка хронологии...')}
-          </p>
-        </div>
-      )}
-
-      {/* Milestone impact summary card (Masterplan §8: click → summary) */}
-      {activeMilestone && (
-        <div
-          dir={locale === 'he' ? 'rtl' : 'ltr'}
-          className="fixed bottom-[120px] left-1/2 -translate-x-1/2 z-30 glass rounded-xl border border-red-500/25 px-4 py-3 shadow-glass-lg animate-fade-in"
-          style={{ width: 'min(440px, calc(100vw - 32px))' }}
-          role="dialog"
-          aria-label={activeMilestone.label[locale]}
-        >
-          <div className="flex items-start justify-between gap-3">
-            <p className="font-serif text-sm font-bold text-red-300">
-              {activeMilestone.label[locale]}
-              <span className="font-mono text-xs text-ink-400 font-normal">
-                {' · '}{Math.abs(activeMilestone.year)}{activeMilestone.year < 0 ? tr(locale, ' לפנה"ס', ' BCE', ' до н.э.') : ''}
-              </span>
-            </p>
-            <button
-              onClick={() => setActiveMilestone(null)}
-              className="text-ink-500 hover:text-ink-100 transition-colors flex-shrink-0 -mt-0.5"
-              aria-label={tr(locale, 'סגור', 'Close', 'Закрыть')}
-            >
-              ✕
-            </button>
-          </div>
-          <p className="font-sans text-xs text-ink-200 leading-relaxed mt-1.5">
-            {activeMilestone.summary[locale]}
+            {locale === 'he' ? 'טוען ציר זמן...' : 'Loading timeline...'}
           </p>
         </div>
       )}
@@ -479,7 +435,7 @@ export function Timeline({ locale }: TimelineProps) {
         className="fixed bottom-[76px] left-1/2 -translate-x-1/2 z-20 glass rounded-lg px-1.5 py-1.5 hidden sm:block"
         style={{ width: 'min(480px, calc(100vw - 140px))' }}
         role="slider"
-        aria-label={tr(locale, 'ניווט מהיר בציר הזמן', 'Timeline quick navigation', 'Быстрая навигация по хронологии')}
+        aria-label={locale === 'he' ? 'ניווט מהיר בציר הזמן' : 'Timeline quick navigation'}
         aria-valuemin={MIN_YEAR}
         aria-valuemax={MAX_YEAR}
         aria-valuenow={Math.round(MIN_YEAR + (viewport.start + viewport.width / 2) * YEAR_SPAN)}

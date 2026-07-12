@@ -2,28 +2,19 @@
 
 import { cn } from '@/lib/utils'
 import { useAppStore } from '@/store/useAppStore'
-import type { Locale } from '@/lib/types'
 
 interface FABProps {
-  locale?: Locale
+  locale?: 'he' | 'en'
   className?: string
 }
 
-const LABELS: Record<Locale, { open: string; close: string }> = {
-  he: { open: 'חיפוש חכמים', close: 'סגור חיפוש' },
-  en: { open: 'Search sages', close: 'Close search' },
-  ru: { open: 'Поиск мудрецов', close: 'Закрыть поиск' },
-}
-
-export function FAB({ locale = 'he', className }: FABProps) {
+export function FAB({ className }: FABProps) {
   const { toggleSearch, isSearchOpen } = useAppStore()
-  const t = LABELS[locale]
 
   return (
     <button
       onClick={toggleSearch}
-      aria-label={isSearchOpen ? t.close : t.open}
-      title={isSearchOpen ? t.close : t.open}
+      aria-label="Search sages"
       className={cn(
         'fixed bottom-20 end-4 z-40',
         'w-14 h-14 rounded-full',

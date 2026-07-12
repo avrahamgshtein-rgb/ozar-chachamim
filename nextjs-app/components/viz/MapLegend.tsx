@@ -2,11 +2,13 @@
 
 import { useState } from 'react'
 import { useAppStore } from '@/store/useAppStore'
-import { ERA_COLORS, ERA_LABELS, REGION_COLORS, REGION_LABELS, ALL_PERIODS } from '@/lib/types'
+import { ERA_COLORS, ERA_LABELS, REGION_COLORS, REGION_LABELS } from '@/lib/types'
 import type { Locale, Period, Region } from '@/lib/types'
 import { cn } from '@/lib/utils'
 
-const ERAS: Period[] = ALL_PERIODS
+const ERAS: Period[] = [
+  'second-temple', 'tannaim', 'amoraim', 'geonim', 'rishonim', 'acharonim', 'modern',
+]
 const REGIONS: Region[] = [
   'eretz-israel', 'sefarad', 'ashkenaz', 'east-europe',
   'tsarfat', 'provence', 'italy', 'north-africa', 'mizrach',

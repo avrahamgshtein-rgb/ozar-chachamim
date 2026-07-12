@@ -2,14 +2,16 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
-import { ERA_COLORS, ERA_LABELS, ALL_PERIODS } from '@/lib/types'
+import { ERA_COLORS, ERA_LABELS } from '@/lib/types'
 import { useAppStore } from '@/store/useAppStore'
 import { formatYearRange } from '@/lib/utils'
 import type { Locale, Period, Sage } from '@/lib/types'
 import { cn } from '@/lib/utils'
-import { tr } from '@/lib/i18n'
 
-const ERAS: Period[] = ALL_PERIODS
+const ERAS: Period[] = [
+  'second-temple', 'tannaim', 'amoraim',
+  'geonim', 'rishonim', 'acharonim', 'modern',
+]
 
 interface TraditionsProps {
   locale: Locale
@@ -87,7 +89,7 @@ export function Traditions({ locale }: TraditionsProps) {
               >
                 {sages.length === 0 ? (
                   <p className="col-span-full text-center text-sm text-ink-600 py-4 font-sans">
-                    {tr(locale, 'אין חכמים בפילטר הנוכחי', 'No sages match current filters', 'Нет мудрецов по текущим фильтрам')}
+                    {locale === 'he' ? 'אין חכמים בפילטר הנוכחי' : 'No sages match current filters'}
                   </p>
                 ) : (
                   sages.map(sage => (
@@ -132,7 +134,7 @@ function SageCard({
           href={`/${locale}/sage/${sage.id}`}
           onClick={e => e.stopPropagation()}
           className="flex-shrink-0 text-ink-600 hover:text-gold-400 transition-colors p-0.5 rounded"
-          title={tr(locale, 'דף מלא', 'Full page', 'Полная страница')}
+          title={locale === 'he' ? 'דף מלא' : 'Full page'}
         >
           <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}

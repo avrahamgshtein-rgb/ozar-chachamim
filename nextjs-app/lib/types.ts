@@ -1,8 +1,4 @@
 export type Period =
-  | 'patriarchs'
-  | 'exodus'
-  | 'judges'
-  | 'kings'
   | 'second-temple'
   | 'tannaim'
   | 'amoraim'
@@ -10,13 +6,6 @@ export type Period =
   | 'rishonim'
   | 'acharonim'
   | 'modern'
-
-/** Canonical chronological order — single source for era lists across views. */
-export const ALL_PERIODS: Period[] = [
-  'patriarchs', 'exodus', 'judges', 'kings',
-  'second-temple', 'tannaim', 'amoraim',
-  'geonim', 'rishonim', 'acharonim', 'modern',
-]
 
 export type Region =
   | 'ashkenaz'
@@ -40,7 +29,7 @@ export type ConnectionType =
   | 'contemporary'
   | 'family'
 
-export type Locale = 'he' | 'en' | 'ru'
+export type Locale = 'he' | 'en'
 
 export type Tab = 'graph' | 'map' | 'traditions' | 'ideas' | 'timeline' | 'genealogy' | 'about'
 
@@ -67,7 +56,6 @@ export interface Sage {
   migration_path?: MigrationPath
   coordinates?: { lat: number; lng: number }
   spotify_url?: string
-  works?: string[]
 }
 
 export interface Connection {
@@ -97,36 +85,28 @@ export interface Filters {
   searchQuery: string
 }
 
-export const ERA_LABELS: Record<Period, Record<Locale, string>> = {
-  patriarchs:      { he: 'האבות',           en: 'Patriarchs',    ru: 'Праотцы'        },
-  exodus:          { he: 'יציאת מצרים',    en: 'Exodus & Sinai', ru: 'Исход и Синай' },
-  judges:          { he: 'השופטים',         en: 'Judges',        ru: 'Судьи'          },
-  kings:           { he: 'המלכים',          en: 'Kings',         ru: 'Цари'           },
-  'second-temple': { he: 'בית שני',        en: 'Second Temple', ru: 'Второй Храм'    },
-  tannaim:         { he: 'תנאים',           en: 'Tannaim',       ru: 'Таннаи'         },
-  amoraim:         { he: 'אמוראים',         en: 'Amoraim',       ru: 'Амораи'         },
-  geonim:          { he: 'גאונים',          en: 'Geonim',        ru: 'Гаоны'          },
-  rishonim:        { he: 'ראשונים',         en: 'Rishonim',      ru: 'Ришоним'        },
-  acharonim:       { he: 'אחרונים',         en: 'Acharonim',     ru: 'Ахароним'       },
-  modern:          { he: 'מודרני',          en: 'Modern',        ru: 'Современность'  },
+export const ERA_LABELS: Record<Period, { he: string; en: string }> = {
+  'second-temple': { he: 'בית שני',        en: 'Second Temple'  },
+  tannaim:         { he: 'תנאים',           en: 'Tannaim'        },
+  amoraim:         { he: 'אמוראים',         en: 'Amoraim'        },
+  geonim:          { he: 'גאונים',          en: 'Geonim'         },
+  rishonim:        { he: 'ראשונים',         en: 'Rishonim'       },
+  acharonim:       { he: 'אחרונים',         en: 'Acharonim'      },
+  modern:          { he: 'מודרני',          en: 'Modern'         },
 }
 
-export const CONNECTION_LABELS: Record<ConnectionType, Record<Locale, string>> = {
-  student:      { he: 'תלמיד',   en: 'Student',       ru: 'Ученик'          },
-  teacher:      { he: 'רב',      en: 'Teacher',        ru: 'Учитель'         },
-  colleague:    { he: 'חבר',     en: 'Colleague',      ru: 'Коллега'         },
-  influence:    { he: 'השפעה',   en: 'Influence',      ru: 'Влияние'         },
-  oppose:       { he: 'פולמוס',  en: 'Opponent',       ru: 'Оппонент'        },
-  predecessor:  { he: 'קודם',    en: 'Predecessor',    ru: 'Предшественник'  },
-  contemporary: { he: 'בן דור',  en: 'Contemporary',   ru: 'Современник'     },
-  family:       { he: 'משפחה',   en: 'Family',         ru: 'Семья'           },
+export const CONNECTION_LABELS: Record<ConnectionType, { he: string; en: string }> = {
+  student:      { he: 'תלמיד',   en: 'Student'       },
+  teacher:      { he: 'רב',      en: 'Teacher'        },
+  colleague:    { he: 'חבר',     en: 'Colleague'      },
+  influence:    { he: 'השפעה',   en: 'Influence'      },
+  oppose:       { he: 'פולמוס',  en: 'Opponent'       },
+  predecessor:  { he: 'קודם',    en: 'Predecessor'    },
+  contemporary: { he: 'בן דור',  en: 'Contemporary'   },
+  family:       { he: 'משפחה',   en: 'Family'         },
 }
 
 export const ERA_COLORS: Record<Period, string> = {
-  patriarchs:      '#8d6e63',
-  exodus:          '#ad1457',
-  judges:          '#00838f',
-  kings:           '#455a64',
   'second-temple': '#8e44ad',
   tannaim:         '#e74c3c',
   amoraim:         '#e67e22',
@@ -162,12 +142,12 @@ export const REGION_COLORS: Record<Region, string> = {
   'other':       '#90a4ae',
 }
 
-export const TAB_META: Record<Tab, { labelHe: string; labelEn: string; labelRu: string; icon: string }> = {
-  graph:      { labelHe: 'רשת קשרים',      labelEn: 'Network',    labelRu: 'Сеть связей', icon: '⬡' },
-  map:        { labelHe: 'גיאוגרפיה',      labelEn: 'Geography',  labelRu: 'География',   icon: '◎' },
-  traditions: { labelHe: 'מסורות',         labelEn: 'Traditions', labelRu: 'Традиции',    icon: '◈' },
-  ideas:      { labelHe: 'טבלה',           labelEn: 'Table',      labelRu: 'Таблица',     icon: '≡' },
-  timeline:   { labelHe: 'שלשלת הקבלה',  labelEn: 'Timeline',   labelRu: 'Хронология',  icon: '▷' },
-  genealogy:  { labelHe: 'עץ שושלות',     labelEn: 'Lineage',    labelRu: 'Династии',    icon: '⟁' },
-  about:      { labelHe: 'אודות',          labelEn: 'About',      labelRu: 'О проекте',   icon: 'temple' },
+export const TAB_META: Record<Tab, { labelHe: string; labelEn: string; icon: string }> = {
+  graph:      { labelHe: 'רשת קשרים',      labelEn: 'Network',    icon: '⬡' },
+  map:        { labelHe: 'גיאוגרפיה',      labelEn: 'Geography',  icon: '◎' },
+  traditions: { labelHe: 'מסורות',         labelEn: 'Traditions', icon: '◈' },
+  ideas:      { labelHe: 'טבלה',           labelEn: 'Table',      icon: '≡' },
+  timeline:   { labelHe: 'שלשלת הקבלה',  labelEn: 'Timeline',   icon: '▷' },
+  genealogy:  { labelHe: 'עץ שושלות',     labelEn: 'Lineage',    icon: '⟁' },
+  about:      { labelHe: 'אודות',          labelEn: 'About',      icon: 'temple' },
 }

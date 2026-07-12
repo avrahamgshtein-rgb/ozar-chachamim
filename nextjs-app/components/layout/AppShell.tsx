@@ -17,7 +17,6 @@ import { FilterChips } from '@/components/viz/FilterChips'
 import { MapLegend } from '@/components/viz/MapLegend'
 import { useAppStore } from '@/store/useAppStore'
 import { fetchSages, fetchConnections, fetchLocalGraphData } from '@/lib/supabase'
-import { fetchContentOverlay, applyOverlay } from '@/lib/contentOverlay'
 import type { Locale, Tab } from '@/lib/types'
 
 // Dynamic imports — browser-only visualization libraries.
@@ -97,37 +96,10 @@ export function AppShell({ locale, initialTotal, initialLastUpdate }: AppShellPr
           console.log('[AppShell] ↪ using data.json fallback (richer dataset)')
         }
       }
-      // Supplemental datasets — kept in separate files so canonical data.json
-      // stays untouched: biblical figures (ancient eras) + missing giants
-      // (Rashi, Hillel, Besht, Gra...)
-      for (const src of ['/data-ancient.json', '/data-supplement.json']) {
-        try {
-          const extra = await fetch(src).then(r => r.ok ? r.json() : null)
-          if (extra?.nodes?.length) {
-            const existing = new Set(sages.map(s => s.id))
-            sages = [...sages, ...extra.nodes.filter((n: { id: string }) => !existing.has(n.id))]
-            connections = [...connections, ...(extra.links ?? [])]
-            console.log(`[AppShell] 🏛 ${src}: +${extra.nodes.length} figures`)
-          }
-        } catch { /* optional dataset */ }
-      }
-
-      // Field patches for existing sages (e.g. works lists) — locale-independent
-      try {
-        const patch = await fetch('/data-patch.json').then(r => r.ok ? r.json() : null)
-        if (patch) {
-          sages = sages.map(s => patch[s.id] ? { ...s, ...patch[s.id] } : s)
-          console.log(`[AppShell] 🩹 data-patch: ${Object.keys(patch).length} sages patched`)
-        }
-      } catch { /* optional */ }
-
-      // Content localization: merge per-locale translated fields (Phase 2)
-      const overlay = await fetchContentOverlay(locale)
-      sages = applyOverlay(sages, overlay)
       setData(sages, connections, sages.length, initialLastUpdate)
       console.log(`[AppShell] ✅ ${sages.length} sages, ${connections.length} connections`)
     })()
-  }, [initialTotal, initialLastUpdate, setData, locale])
+  }, [initialTotal, initialLastUpdate, setData])
 
   // URL deep-linking: read ?tab= on mount (every view has a shareable URL)
   useEffect(() => {
