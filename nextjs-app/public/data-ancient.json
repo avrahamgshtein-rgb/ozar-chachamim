@@ -1,0 +1,118 @@
+{
+ "nodes": [
+  {
+   "id": "anc-1",
+   "label": "אברהם אבינו",
+   "name_en": "Abraham",
+   "period": "patriarchs",
+   "location": "חברון",
+   "field": "אמונה, חסד",
+   "birth_year": -1812,
+   "death_year": -1637,
+   "bio": "אבי האומה. יצא מאור כשדים בקריאת 'לך לך', הפיץ את האמונה בא-ל אחד וכרת את ברית בין הבתרים.",
+   "migration_path": { "from": "בבל", "to": "חברון", "intermediate": ["חלב"] }
+  },
+  {
+   "id": "anc-2",
+   "label": "יצחק אבינו",
+   "name_en": "Isaac",
+   "period": "patriarchs",
+   "location": "חברון",
+   "field": "גבורה, תפילה",
+   "birth_year": -1712,
+   "death_year": -1532,
+   "bio": "השני שבאבות. נעקד על גבי המזבח בהר המוריה, וחפר מחדש את בארות אביו — ממשיך הדרך בארץ."
+  },
+  {
+   "id": "anc-3",
+   "label": "יעקב אבינו",
+   "name_en": "Jacob",
+   "period": "patriarchs",
+   "location": "חברון",
+   "field": "תורה, אמת",
+   "birth_year": -1652,
+   "death_year": -1505,
+   "bio": "בחיר האבות ואבי שנים־עשר השבטים. 'איש תם יושב אוהלים' שירד למצרים והניח את יסוד בית ישראל.",
+   "migration_path": { "from": "חברון", "to": "מצרים" }
+  },
+  {
+   "id": "anc-4",
+   "label": "משה רבנו",
+   "name_en": "Moses",
+   "period": "exodus",
+   "location": "מצרים",
+   "field": "תורה, נבואה, הנהגה",
+   "birth_year": -1391,
+   "death_year": -1271,
+   "bio": "אדון הנביאים ומקבל התורה בסיני. הוציא את ישראל ממצרים, קיבל את הלוחות ומסר תורה לכל ישראל — ראש שלשלת הקבלה.",
+   "core_concept": "משה קיבל תורה מסיני ומסרה ליהושע (אבות א, א)",
+   "migration_path": { "from": "מצרים", "to": "ארץ ישראל" }
+  },
+  {
+   "id": "anc-5",
+   "label": "אהרן הכהן",
+   "name_en": "Aaron",
+   "period": "exodus",
+   "location": "מצרים",
+   "field": "כהונה, שלום",
+   "birth_year": -1394,
+   "death_year": -1272,
+   "bio": "הכהן הגדול הראשון, אחי משה ופה־דוברו. 'אוהב שלום ורודף שלום, אוהב את הבריות ומקרבן לתורה'."
+  },
+  {
+   "id": "anc-7",
+   "label": "שמואל הנביא",
+   "name_en": "Samuel",
+   "period": "judges",
+   "location": "ארץ ישראל",
+   "field": "נבואה, הנהגה",
+   "birth_year": -1120,
+   "death_year": -1012,
+   "bio": "אחרון השופטים וגדול הנביאים אחרי משה. הקים את המלוכה בישראל ומשח את שאול ואת דוד."
+  },
+  {
+   "id": "anc-8",
+   "label": "דוד המלך",
+   "name_en": "King David",
+   "period": "kings",
+   "location": "ירושלים",
+   "field": "מלכות, תהילים",
+   "birth_year": -1040,
+   "death_year": -970,
+   "bio": "מייסד מלכות בית דוד ומחבר ספר תהילים. כבש את ירושלים והעלה אליה את ארון הברית — 'נעים זמירות ישראל'."
+  },
+  {
+   "id": "anc-9",
+   "label": "שלמה המלך",
+   "name_en": "King Solomon",
+   "period": "kings",
+   "location": "ירושלים",
+   "field": "חכמה, מלכות",
+   "birth_year": -1010,
+   "death_year": -931,
+   "bio": "החכם מכל אדם ובונה בית המקדש הראשון. חיבר את משלי, קהלת ושיר השירים."
+  },
+  {
+   "id": "anc-10",
+   "label": "ישעיהו הנביא",
+   "name_en": "Isaiah",
+   "period": "kings",
+   "location": "ירושלים",
+   "field": "נבואה",
+   "birth_year": -765,
+   "death_year": -695,
+   "bio": "מגדולי נביאי הכתב. נבואות החורבן והנחמה שלו — 'נחמו נחמו עמי' — מלוות את ישראל בכל הדורות."
+  }
+ ],
+ "links": [
+  { "source": "anc-1", "target": "anc-2", "type": "family" },
+  { "source": "anc-2", "target": "anc-3", "type": "family" },
+  { "source": "anc-3", "target": "anc-4", "type": "predecessor" },
+  { "source": "anc-4", "target": "anc-5", "type": "family" },
+  { "source": "anc-4", "target": "389", "type": "predecessor" },
+  { "source": "389", "target": "anc-7", "type": "predecessor" },
+  { "source": "anc-7", "target": "anc-8", "type": "teacher" },
+  { "source": "anc-8", "target": "anc-9", "type": "family" },
+  { "source": "anc-9", "target": "anc-10", "type": "predecessor" }
+ ]
+}

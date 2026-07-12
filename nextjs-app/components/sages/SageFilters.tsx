@@ -2,14 +2,11 @@
 
 import { cn } from '@/lib/utils'
 import { useAppStore } from '@/store/useAppStore'
-import { ERA_LABELS, ERA_COLORS, REGION_LABELS, REGION_COLORS } from '@/lib/types'
+import { ERA_LABELS, ERA_COLORS, REGION_LABELS, REGION_COLORS, ALL_PERIODS } from '@/lib/types'
 import type { Locale, Period, Region } from '@/lib/types'
-import { UI } from '@/lib/i18n'
+import { UI, tr } from '@/lib/i18n'
 
-const PERIODS: Period[] = [
-  'second-temple', 'tannaim', 'amoraim',
-  'geonim', 'rishonim', 'acharonim', 'modern',
-]
+const PERIODS: Period[] = ALL_PERIODS
 
 const REGIONS: Region[] = [
   'eretz-israel', 'sefarad', 'ashkenaz', 'east-europe',
@@ -94,7 +91,7 @@ export function SageFilters({ locale, onClose }: SageFiltersProps) {
         {/* Region filter */}
         <div>
           <p className="text-xs font-sans font-semibold uppercase tracking-widest text-ink-400 mb-3">
-            {locale === 'he' ? 'אזור גיאוגרפי' : 'Region'}
+            {tr(locale, 'אזור גיאוגרפי', 'Region', 'Регион')}
           </p>
           <div className="flex flex-wrap gap-2">
             {REGIONS.map(region => {
@@ -132,7 +129,7 @@ export function SageFilters({ locale, onClose }: SageFiltersProps) {
         {availableFields.length > 0 && (
           <div>
             <p className="text-xs font-sans font-semibold uppercase tracking-widest text-ink-400 mb-3">
-              {locale === 'he' ? 'תחום' : 'Field'}
+              {tr(locale, 'תחום', 'Field', 'Область')}
             </p>
             <div className="flex flex-wrap gap-2">
               {availableFields.map(field => {

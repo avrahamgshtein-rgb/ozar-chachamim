@@ -28,7 +28,7 @@ export function TabBar({ locale }: TabBarProps) {
     >
       {TABS.map(tab => {
         const meta   = TAB_META[tab]
-        const label  = isHe ? meta.labelHe : meta.labelEn
+        const label  = isHe ? meta.labelHe : locale === 'ru' ? meta.labelRu : meta.labelEn
         const active = activeTab === tab
 
         return (
