@@ -21,18 +21,18 @@ import { fetchContentOverlay, applyOverlay } from '@/lib/contentOverlay'
 import type { Locale, Tab } from '@/lib/types'
 
 // Dynamic imports — browser-only visualization libraries.
-// Each tab shows a skeleton screen while its chunk loads.
+// Each tab shows a skeleton screen while its chunk loads (phase split + lazy).
 const NetworkGraph = dynamic(
   () => import('@/components/viz/NetworkGraph').then(m => ({ default: m.NetworkGraph })),
-  { ssr: false, loading: () => <VizSkeleton /> },
+  { ssr: false, loading: () => <VizSkeleton variant="graph" /> },
 )
 const GeoMap = dynamic(
   () => import('@/components/viz/GeoMap').then(m => ({ default: m.GeoMap })),
-  { ssr: false, loading: () => <VizSkeleton /> },
+  { ssr: false, loading: () => <VizSkeleton variant="map" /> },
 )
 const Timeline = dynamic(
   () => import('@/components/viz/Timeline').then(m => ({ default: m.Timeline })),
-  { ssr: false, loading: () => <VizSkeleton /> },
+  { ssr: false, loading: () => <VizSkeleton variant="timeline" /> },
 )
 const Traditions = dynamic(
   () => import('@/components/viz/Traditions').then(m => ({ default: m.Traditions })),
@@ -40,15 +40,15 @@ const Traditions = dynamic(
 )
 const SagesTable = dynamic(
   () => import('@/components/viz/SagesTable').then(m => ({ default: m.SagesTable })),
-  { ssr: false, loading: () => <VizSkeleton variant="list" /> },
+  { ssr: false, loading: () => <VizSkeleton variant="table" /> },
 )
 const GenealogyTree = dynamic(
   () => import('@/components/viz/GenealogyTree').then(m => ({ default: m.GenealogyTree })),
-  { ssr: false, loading: () => <VizSkeleton /> },
+  { ssr: false, loading: () => <VizSkeleton variant="graph" /> },
 )
 const AboutContent = dynamic(
   () => import('@/components/about/AboutContent').then(m => ({ default: m.AboutContent })),
-  { ssr: false, loading: () => <VizSkeleton /> },
+  { ssr: false, loading: () => <VizSkeleton variant="list" /> },
 )
 
 interface AppShellProps {
@@ -99,8 +99,8 @@ export function AppShell({ locale, initialTotal, initialLastUpdate }: AppShellPr
       }
       // Supplemental datasets — kept in separate files so canonical data.json
       // stays untouched: biblical figures (ancient eras) + missing giants
-      // (Rashi, Hillel, Besht, Gra...)
-      for (const src of ['/data-ancient.json', '/data-supplement.json', '/data-supplement-2.json', '/data-research-links.json']) {
+      // (Rashi, Hillel, Besht, Gra...) — Phase 1 added data-supplement-3.json
+      for (const src of ['/data-ancient.json', '/data-supplement.json', '/data-supplement-2.json', '/data-supplement-3.json', '/data-research-links.json']) {
         try {
           const extra = await fetch(src).then(r => r.ok ? r.json() : null)
           if (extra?.nodes?.length || extra?.links?.length) {
