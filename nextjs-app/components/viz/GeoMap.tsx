@@ -6,6 +6,7 @@ import { CONNECTION_TYPE_COLORS } from '@/lib/regions'
 import { LOCATION_COORDS, resolveCoords } from '@/lib/locationCoords'
 import { tr } from '@/lib/i18n'
 import { useAppStore } from '@/store/useAppStore'
+import { EmptyState } from '@/components/ui/EmptyState'
 import type { Locale, Sage } from '@/lib/types'
 import { cn } from '@/lib/utils'
 
@@ -478,6 +479,19 @@ function GeoMapComponent({ locale }: GeoMapProps) {
           <p className="text-ink-500 font-sans text-sm animate-pulse">
             {tr(locale, 'טוען מפה...', 'Loading map...', 'Загрузка карты...')}
           </p>
+        </div>
+      )}
+
+      {sages.length > 0 && filteredSages.length === 0 && (
+        <div className="absolute inset-0 flex items-center justify-center z-5">
+          <EmptyState
+            locale={locale}
+            icon="map"
+            action={{
+              label: tr(locale, 'איפוס פילטרים', 'Reset Filters', 'Сбросить фильтры'),
+              onClick: () => useAppStore.getState().resetFilters(),
+            }}
+          />
         </div>
       )}
     </div>

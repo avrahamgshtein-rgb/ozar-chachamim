@@ -7,6 +7,7 @@ import { MILESTONES } from '@/lib/milestones'
 import { tr } from '@/lib/i18n'
 import { useAppStore } from '@/store/useAppStore'
 import { PathFinder } from '@/components/viz/PathFinder'
+import { EmptyState } from '@/components/ui/EmptyState'
 import type { Locale, Period, Region } from '@/lib/types'
 import { locationToRegion, regionsOf } from '@/lib/regions'
 
@@ -617,6 +618,19 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
           <p className="text-ink-500 font-sans text-sm animate-pulse">
             {tr(locale, 'טוען רשת...', 'Loading network...', 'Загрузка сети...')}
           </p>
+        </div>
+      )}
+
+      {sages.length > 0 && filteredSages.length === 0 && (
+        <div className="absolute inset-0 flex items-center justify-center z-5">
+          <EmptyState
+            locale={locale}
+            icon="network"
+            action={{
+              label: tr(locale, 'איפוס פילטרים', 'Reset Filters', 'Сбросить фильтры'),
+              onClick: () => useAppStore.getState().resetFilters(),
+            }}
+          />
         </div>
       )}
 
