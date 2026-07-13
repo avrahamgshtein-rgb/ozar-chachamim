@@ -8,6 +8,7 @@ import { tr } from '@/lib/i18n'
 import { useAppStore } from '@/store/useAppStore'
 import { PathFinder } from '@/components/viz/PathFinder'
 import { EmptyState } from '@/components/ui/EmptyState'
+import { trackSageViewed, trackErrorOccurred } from '@/lib/analytics'
 import type { Locale, Period, Region } from '@/lib/types'
 import { locationToRegion, regionsOf } from '@/lib/regions'
 
@@ -272,6 +273,7 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
         }
       } catch (err) {
         console.error('[NetworkGraph] D3 simulation error:', err)
+        trackErrorOccurred('d3_simulation', 'NetworkGraph', err instanceof Error ? err.message : 'Unknown error')
         // Render static network without animation
         simRef.current = null
       }
@@ -583,6 +585,14 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
       })
     }
   }, [filteredSages, sages.length])
+
+  // ── Track sage selection for analytics ────────────────────────────────────
+  useEffect(() => {
+    if (selectedSageId && sageMap.size > 0) {
+      const sage = sageMap.get(selectedSageId)
+      if (sage) trackSageViewed(sage, locale)
+    }
+  }, [selectedSageId, sageMap, locale])
 
   // ── Sync selection ring ──────────────────────────────────────────────────
   useEffect(() => {

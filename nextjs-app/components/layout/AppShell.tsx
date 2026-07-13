@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import dynamic from 'next/dynamic'
 import { cn } from '@/lib/utils'
 import { Header } from './Header'
@@ -15,6 +15,7 @@ import { SageFilters } from '@/components/sages/SageFilters'
 import { Comparator } from '@/components/viz/Comparator'
 import { FilterChips } from '@/components/viz/FilterChips'
 import { MapLegend } from '@/components/viz/MapLegend'
+import { trackTabSwitched } from '@/lib/analytics'
 import { useAppStore } from '@/store/useAppStore'
 import { fetchSages, fetchConnections, fetchLocalGraphData } from '@/lib/supabase'
 import { fetchContentOverlay, applyOverlay } from '@/lib/contentOverlay'
@@ -59,6 +60,7 @@ interface AppShellProps {
 
 export function AppShell({ locale, initialTotal, initialLastUpdate }: AppShellProps) {
   const otherLocale: Locale = locale === 'he' ? 'en' : 'he'
+  const tabSwitchTimeRef = useRef<number>(Date.now())
 
   const {
     activeTab,
@@ -75,6 +77,16 @@ export function AppShell({ locale, initialTotal, initialLastUpdate }: AppShellPr
     selectSage,
     setData,
   } = useAppStore()
+
+  // Track tab switches for analytics
+  useEffect(() => {
+    const now = Date.now()
+    const duration = now - tabSwitchTimeRef.current
+    if (duration > 100) { // Only track if more than 100ms (ignore initialization)
+      trackTabSwitched(activeTab ?? 'graph', duration)
+    }
+    tabSwitchTimeRef.current = now
+  }, [activeTab])
 
   // Theme bootstrap (persisted)
   useEffect(() => { useAppStore.getState().initTheme() }, [])

@@ -3,6 +3,11 @@ import Script from 'next/script'
 import { Frank_Ruhl_Libre, Heebo } from 'next/font/google'
 import './globals.css'
 
+// Initialize Sentry error tracking
+if (process.env.NEXT_PUBLIC_SENTRY_DSN) {
+  import('./sentry.server.config')
+}
+
 const frankRuhlLibre = Frank_Ruhl_Libre({
   subsets: ['hebrew', 'latin'],
   weight: ['300', '400', '500', '700', '900'],
