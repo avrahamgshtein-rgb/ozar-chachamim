@@ -125,6 +125,8 @@ export function GenealogyTree({ locale }: GenealogyTreeProps) {
         return PAD_TOP + (i >= 0 ? i : 3) * BAND_H + BAND_H / 2
       }
 
+      // Optimized simulation: Run in batches with requestAnimationFrame
+      // Prevents main-thread blocking while maintaining smooth animations
       const sim = d3.forceSimulation(nodeData as any)
         .force('link', d3.forceLink(linkData as any).id((d: any) => d.id).distance(55).strength(0.25))
         .force('charge', d3.forceManyBody().strength(-70))
@@ -136,6 +138,31 @@ export function GenealogyTree({ locale }: GenealogyTreeProps) {
         .force('y', d3.forceY(eraYOf).strength(0.9))   // strong: keeps nodes in their band
         .force('collide', d3.forceCollide((d: any) => r(d) + 5).strength(0.85))
         .alphaDecay(0.025)
+        .stop() // Start paused
+
+      // Warm-up: 20 ticks immediately
+      for (let i = 0; i < 20; i++) {
+        sim.tick()
+      }
+
+      // Run remaining ticks in batches with RAF
+      let tickCount = 20
+      const maxTicks = 200
+      const ticksPerBatch = 5
+
+      const runBatch = () => {
+        for (let i = 0; i < ticksPerBatch && tickCount < maxTicks; i++) {
+          sim.tick()
+          tickCount++
+        }
+        if (tickCount < maxTicks) {
+          requestAnimationFrame(runBatch)
+        }
+      }
+
+      if (tickCount < maxTicks) {
+        requestAnimationFrame(runBatch)
+      }
 
       // ── Pan/zoom ──────────────────────────────────────────────────────
       const g = svg.append('g')
