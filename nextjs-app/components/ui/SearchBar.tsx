@@ -156,6 +156,15 @@ export function SearchBar({ locale, className }: SearchBarProps) {
         )}
       </div>
 
+      {/* Result count announcement for screen readers */}
+      {query.trim() && (
+        <div className="sr-only" role="status" aria-live="polite" aria-atomic="true">
+          {results.length > 0
+            ? `${results.length} sage${results.length !== 1 ? 's' : ''} found`
+            : 'No sages found'}
+        </div>
+      )}
+
       {/* Dropdown */}
       {showDropdown && (
         <div

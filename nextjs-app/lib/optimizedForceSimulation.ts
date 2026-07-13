@@ -18,7 +18,7 @@ export interface OptimizedSimulationOptions {
   onTick?: () => void
 }
 
-export async function createOptimizedForceSimulation<NodeType, LinkType>(
+export async function createOptimizedForceSimulation<NodeType = any, LinkType = any>(
   nodes: NodeType[],
   links: LinkType[],
   options: OptimizedSimulationOptions = {}
@@ -34,13 +34,11 @@ export async function createOptimizedForceSimulation<NodeType, LinkType>(
   } = options
 
   // Create base simulation
-  const sim = d3
-    .forceSimulation<NodeType, LinkType>(nodes)
+  const sim = (d3.forceSimulation as any)(nodes)
     .force(
       'link',
-      d3
-        .forceLink<NodeType, LinkType>(links as d3.SimulationLinkDatum<NodeType>[])
-        .id((d: NodeType) => (d as any).id)
+      (d3.forceLink as any)(links)
+        .id((d: any) => d.id)
         .distance(80)
         .strength(0.5)
     )
@@ -92,7 +90,7 @@ export async function createOptimizedForceSimulation<NodeType, LinkType>(
  * Faster version: Precompute more ticks upfront (useful for static visualization)
  * Trades slightly more main-thread time for faster final result
  */
-export function createFastForceSimulation<NodeType, LinkType>(
+export function createFastForceSimulation<NodeType = any, LinkType = any>(
   nodes: NodeType[],
   links: LinkType[],
   options: OptimizedSimulationOptions = {}
@@ -104,13 +102,11 @@ export function createFastForceSimulation<NodeType, LinkType>(
     onProgress
   } = options
 
-  const sim = d3
-    .forceSimulation<NodeType, LinkType>(nodes)
+  const sim = (d3.forceSimulation as any)(nodes)
     .force(
       'link',
-      d3
-        .forceLink<NodeType, LinkType>(links as d3.SimulationLinkDatum<NodeType>[])
-        .id((d: NodeType) => (d as any).id)
+      (d3.forceLink as any)(links)
+        .id((d: any) => d.id)
         .distance(80)
         .strength(0.5)
     )

@@ -1,0 +1,12 @@
+# Search engine crawling rules
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /.next/
+Disallow: /admin/
+
+# Sitemaps
+Sitemap: https://ozar-chachamim.vercel.app/sitemap.xml
+
+# Crawl delay (respectful crawling)
+Crawl-delay: 1

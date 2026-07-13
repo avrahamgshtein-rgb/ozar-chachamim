@@ -36,6 +36,7 @@ export function TabBar({ locale }: TabBarProps) {
             key={tab}
             onClick={() => setActiveTab(tab)}
             aria-current={active ? 'page' : undefined}
+            aria-label={`${label}${active ? ' (current)' : ''}`}
             title={label}
             className={cn(
               'flex flex-col items-center gap-0.5 px-3 py-2 rounded-xl',

@@ -234,8 +234,9 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
       // ── Force simulation (optimized for 60fps) ──────────────────────────
       // Runs in batches with requestAnimationFrame to prevent main-thread blocking
       // Target: TBT < 50ms, smooth animations during graph layout
+      let sim: any = null
       try {
-        const sim = d3.forceSimulation(nodes as any)
+        sim = d3.forceSimulation(nodes as any)
           .force('link', d3.forceLink(links as any).id((d: any) => d.id).distance(75).strength(0.35))
           .force('charge', d3.forceManyBody().strength(-120))
           .force('x', d3.forceX((d: any) => eraX(d.period)).strength(0.14))
@@ -357,9 +358,9 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
 
       // ── Drag ─────────────────────────────────────────────────────────────
       const drag = d3.drag<SVGCircleElement, any>()
-        .on('start', (ev, d) => { if (!ev.active) sim.alphaTarget(0.3).restart(); d.fx = d.x; d.fy = d.y })
+        .on('start', (ev, d) => { if (!ev.active && simRef.current) simRef.current.alphaTarget(0.3).restart(); d.fx = d.x; d.fy = d.y })
         .on('drag',  (ev, d) => { d.fx = ev.x; d.fy = ev.y })
-        .on('end',   (ev, d) => { if (!ev.active) sim.alphaTarget(0); d.fx = null; d.fy = null })
+        .on('end',   (ev, d) => { if (!ev.active && simRef.current) simRef.current.alphaTarget(0); d.fx = null; d.fy = null })
       node.call(drag as any)
 
       // ── Hover (Connected Papers style) + tooltip ─────────────────────────
@@ -476,12 +477,14 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
         const oy =  dx / dist * 18
         return `M${sx},${sy} Q${mx + ox},${my + oy} ${tx},${ty}`
       }
-      sim.on('tick', () => {
-        link.attr('d', linkPath)
-        hitLink.attr('d', linkPath)
-        node.attr('cx', (d: any) => d.x).attr('cy', (d: any) => d.y)
-        label.attr('x', (d: any) => d.x).attr('y', (d: any) => d.y)
-      })
+      if (sim) {
+        sim.on('tick', () => {
+          link.attr('d', linkPath)
+          hitLink.attr('d', linkPath)
+          node.attr('cx', (d: any) => d.x).attr('cy', (d: any) => d.y)
+          label.attr('x', (d: any) => d.x).attr('y', (d: any) => d.y)
+        })
+      }
     }
 
     build()
@@ -644,7 +647,7 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
             icon="network"
             action={{
               label: tr(locale, 'איפוס פילטרים', 'Reset Filters', 'Сбросить фильтры'),
-              onClick: () => useAppStore.getState().resetFilters(),
+              onClick: () => useAppStore.getState().clearFilters(),
             }}
           />
         </div>

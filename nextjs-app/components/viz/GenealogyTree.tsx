@@ -120,6 +120,7 @@ export function GenealogyTree({ locale }: GenealogyTreeProps) {
       })
 
       // ── Force simulation ──────────────────────────────────────────────
+      let sim: any = null
       try {
         const eraYOf = (d: any) => {
           const i = ERA_ORDER.indexOf(d.period as Period)
@@ -128,7 +129,7 @@ export function GenealogyTree({ locale }: GenealogyTreeProps) {
 
         // Optimized simulation: Run in batches with requestAnimationFrame
         // Prevents main-thread blocking while maintaining smooth animations
-        const sim = d3.forceSimulation(nodeData as any)
+        sim = d3.forceSimulation(nodeData as any)
           .force('link', d3.forceLink(linkData as any).id((d: any) => d.id).distance(55).strength(0.25))
           .force('charge', d3.forceManyBody().strength(-70))
           .force('x', d3.forceX((d: any) => {
@@ -212,9 +213,9 @@ export function GenealogyTree({ locale }: GenealogyTreeProps) {
 
       // ── Drag ──────────────────────────────────────────────────────────
       const drag = d3.drag<SVGCircleElement, any>()
-        .on('start', (ev, d) => { if (!ev.active) sim.alphaTarget(0.3).restart(); d.fx = d.x; d.fy = d.y })
+        .on('start', (ev, d) => { if (!ev.active && sim) sim.alphaTarget(0.3).restart(); d.fx = d.x; d.fy = d.y })
         .on('drag',  (ev, d) => { d.fx = ev.x; d.fy = ev.y })
-        .on('end',   (ev, d) => { if (!ev.active) sim.alphaTarget(0); d.fx = null; d.fy = null })
+        .on('end',   (ev, d) => { if (!ev.active && sim) sim.alphaTarget(0); d.fx = null; d.fy = null })
       node.call(drag as any)
 
       // ── Interactions ──────────────────────────────────────────────────

@@ -112,7 +112,7 @@ function SagesTableComponent({ locale }: SagesTableProps) {
             icon="filter"
             action={{
               label: tr(locale, 'איפוס פילטרים', 'Reset Filters', 'Сбросить фильтры'),
-              onClick: () => useAppStore.getState().resetFilters(),
+              onClick: () => useAppStore.getState().clearFilters(),
             }}
           />
         ) : (

@@ -43,7 +43,7 @@ function TraditionsComponent({ locale }: TraditionsProps) {
           icon="filter"
           action={{
             label: tr(locale, 'איפוס פילטרים', 'Reset Filters', 'Сбросить фильтры'),
-            onClick: () => useAppStore.getState().resetFilters(),
+            onClick: () => useAppStore.getState().clearFilters(),
           }}
         />
       </div>
