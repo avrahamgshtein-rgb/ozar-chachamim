@@ -233,41 +233,47 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
       // ── Force simulation (optimized for 60fps) ──────────────────────────
       // Runs in batches with requestAnimationFrame to prevent main-thread blocking
       // Target: TBT < 50ms, smooth animations during graph layout
-      const sim = d3.forceSimulation(nodes as any)
-        .force('link', d3.forceLink(links as any).id((d: any) => d.id).distance(75).strength(0.35))
-        .force('charge', d3.forceManyBody().strength(-120))
-        .force('x', d3.forceX((d: any) => eraX(d.period)).strength(0.14))
-        .force('y', d3.forceY(H / 2).strength(0.05))
-        .force('collide', d3.forceCollide((d: any) => r(d) + 5).strength(0.9))
-        .stop() // Start paused
+      try {
+        const sim = d3.forceSimulation(nodes as any)
+          .force('link', d3.forceLink(links as any).id((d: any) => d.id).distance(75).strength(0.35))
+          .force('charge', d3.forceManyBody().strength(-120))
+          .force('x', d3.forceX((d: any) => eraX(d.period)).strength(0.14))
+          .force('y', d3.forceY(H / 2).strength(0.05))
+          .force('collide', d3.forceCollide((d: any) => r(d) + 5).strength(0.9))
+          .stop() // Start paused
 
-      // Optimize: Run simulation in small batches with requestAnimationFrame
-      // This yields control back to browser every ~3ms, keeping TBT < 50ms
-      let tickCount = 0
-      const maxTicks = 200
-      const ticksPerBatch = 5
+        // Optimize: Run simulation in small batches with requestAnimationFrame
+        // This yields control back to browser every ~3ms, keeping TBT < 50ms
+        let tickCount = 0
+        const maxTicks = 200
+        const ticksPerBatch = 5
 
-      const runBatch = () => {
-        for (let i = 0; i < ticksPerBatch && tickCount < maxTicks; i++) {
+        const runBatch = () => {
+          for (let i = 0; i < ticksPerBatch && tickCount < maxTicks; i++) {
+            sim.tick()
+            tickCount++
+          }
+          if (tickCount < maxTicks) {
+            requestAnimationFrame(runBatch)
+          }
+        }
+
+        simRef.current = sim
+
+        // Warm-up: 20 ticks immediately for faster initial layout
+        for (let i = 0; i < 20; i++) {
           sim.tick()
           tickCount++
         }
+
+        // Then run remaining ticks in batches
         if (tickCount < maxTicks) {
           requestAnimationFrame(runBatch)
         }
-      }
-
-      simRef.current = sim
-
-      // Warm-up: 20 ticks immediately for faster initial layout
-      for (let i = 0; i < 20; i++) {
-        sim.tick()
-        tickCount++
-      }
-
-      // Then run remaining ticks in batches
-      if (tickCount < maxTicks) {
-        requestAnimationFrame(runBatch)
+      } catch (err) {
+        console.error('[NetworkGraph] D3 simulation error:', err)
+        // Render static network without animation
+        simRef.current = null
       }
 
       // ── Links ────────────────────────────────────────────────────────────

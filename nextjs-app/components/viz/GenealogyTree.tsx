@@ -120,48 +120,52 @@ export function GenealogyTree({ locale }: GenealogyTreeProps) {
       })
 
       // ── Force simulation ──────────────────────────────────────────────
-      const eraYOf = (d: any) => {
-        const i = ERA_ORDER.indexOf(d.period as Period)
-        return PAD_TOP + (i >= 0 ? i : 3) * BAND_H + BAND_H / 2
-      }
-
-      // Optimized simulation: Run in batches with requestAnimationFrame
-      // Prevents main-thread blocking while maintaining smooth animations
-      const sim = d3.forceSimulation(nodeData as any)
-        .force('link', d3.forceLink(linkData as any).id((d: any) => d.id).distance(55).strength(0.25))
-        .force('charge', d3.forceManyBody().strength(-70))
-        .force('x', d3.forceX((d: any) => {
-          // Hub nodes gravitate toward center, sparse ones spread out
-          const deg = (d as any).degree || 0
-          return LABEL_W + (W - LABEL_W * 2) * (0.1 + 0.8 * (deg > 5 ? 0.5 : Math.random()))
-        }).strength(0.04))
-        .force('y', d3.forceY(eraYOf).strength(0.9))   // strong: keeps nodes in their band
-        .force('collide', d3.forceCollide((d: any) => r(d) + 5).strength(0.85))
-        .alphaDecay(0.025)
-        .stop() // Start paused
-
-      // Warm-up: 20 ticks immediately
-      for (let i = 0; i < 20; i++) {
-        sim.tick()
-      }
-
-      // Run remaining ticks in batches with RAF
-      let tickCount = 20
-      const maxTicks = 200
-      const ticksPerBatch = 5
-
-      const runBatch = () => {
-        for (let i = 0; i < ticksPerBatch && tickCount < maxTicks; i++) {
-          sim.tick()
-          tickCount++
+      try {
+        const eraYOf = (d: any) => {
+          const i = ERA_ORDER.indexOf(d.period as Period)
+          return PAD_TOP + (i >= 0 ? i : 3) * BAND_H + BAND_H / 2
         }
+
+        // Optimized simulation: Run in batches with requestAnimationFrame
+        // Prevents main-thread blocking while maintaining smooth animations
+        const sim = d3.forceSimulation(nodeData as any)
+          .force('link', d3.forceLink(linkData as any).id((d: any) => d.id).distance(55).strength(0.25))
+          .force('charge', d3.forceManyBody().strength(-70))
+          .force('x', d3.forceX((d: any) => {
+            // Hub nodes gravitate toward center, sparse ones spread out
+            const deg = (d as any).degree || 0
+            return LABEL_W + (W - LABEL_W * 2) * (0.1 + 0.8 * (deg > 5 ? 0.5 : Math.random()))
+          }).strength(0.04))
+          .force('y', d3.forceY(eraYOf).strength(0.9))   // strong: keeps nodes in their band
+          .force('collide', d3.forceCollide((d: any) => r(d) + 5).strength(0.85))
+          .alphaDecay(0.025)
+          .stop() // Start paused
+
+        // Warm-up: 20 ticks immediately
+        for (let i = 0; i < 20; i++) {
+          sim.tick()
+        }
+
+        // Run remaining ticks in batches with RAF
+        let tickCount = 20
+        const maxTicks = 200
+        const ticksPerBatch = 5
+
+        const runBatch = () => {
+          for (let i = 0; i < ticksPerBatch && tickCount < maxTicks; i++) {
+            sim.tick()
+            tickCount++
+          }
+          if (tickCount < maxTicks) {
+            requestAnimationFrame(runBatch)
+          }
+        }
+
         if (tickCount < maxTicks) {
           requestAnimationFrame(runBatch)
         }
-      }
-
-      if (tickCount < maxTicks) {
-        requestAnimationFrame(runBatch)
+      } catch (err) {
+        console.error('[GenealogyTree] D3 simulation error:', err)
       }
 
       // ── Pan/zoom ──────────────────────────────────────────────────────
