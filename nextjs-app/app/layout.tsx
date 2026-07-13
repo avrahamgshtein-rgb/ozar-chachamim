@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import Script from 'next/script'
 import { Frank_Ruhl_Libre, Heebo } from 'next/font/google'
+import { Analytics } from '@vercel/analytics/react'
 import './globals.css'
 
 const frankRuhlLibre = Frank_Ruhl_Libre({
@@ -61,6 +62,7 @@ export default function RootLayout({
       </head>
       <body className="font-sans bg-ink-900 text-ink-100 antialiased">
         {children}
+        <Analytics />
       </body>
     </html>
   )
