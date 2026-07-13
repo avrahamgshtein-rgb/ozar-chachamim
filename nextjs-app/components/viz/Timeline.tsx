@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, memo } from 'react'
 import { ERA_COLORS, ERA_LABELS } from '@/lib/types'
 import { useAppStore } from '@/store/useAppStore'
 import type { Locale, Period, Sage } from '@/lib/types'
@@ -58,7 +58,7 @@ function yearToX(year: number): number {
   return LABEL_W + ((year - MIN_YEAR) / YEAR_SPAN) * (SVG_W - LABEL_W)
 }
 
-export function Timeline({ locale }: TimelineProps) {
+function TimelineComponent({ locale }: TimelineProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const scrollRef    = useRef<HTMLDivElement>(null)
   const svgElRef     = useRef<SVGSVGElement | null>(null)
@@ -554,3 +554,6 @@ function ZBtn({ onClick, children }: { onClick: () => void; children: React.Reac
     </button>
   )
 }
+
+// Memoize to prevent re-renders when parent state changes but props are same
+export const Timeline = memo(TimelineComponent)

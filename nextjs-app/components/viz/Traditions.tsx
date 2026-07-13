@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { useState } from 'react'
+import { useState, memo } from 'react'
 import { ERA_COLORS, ERA_LABELS, ALL_PERIODS } from '@/lib/types'
 import { useAppStore } from '@/store/useAppStore'
 import { formatYearRange } from '@/lib/utils'
@@ -15,7 +15,7 @@ interface TraditionsProps {
   locale: Locale
 }
 
-export function Traditions({ locale }: TraditionsProps) {
+function TraditionsComponent({ locale }: TraditionsProps) {
   const { filteredSages, selectSage } = useAppStore()
   const [expanded, setExpanded] = useState<Set<Period>>(new Set(ERAS))
 
@@ -161,3 +161,5 @@ function SageCard({
     </div>
   )
 }
+
+export const Traditions = memo(TraditionsComponent)

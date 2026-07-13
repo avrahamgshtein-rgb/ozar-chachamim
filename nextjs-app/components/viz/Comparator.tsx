@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, memo } from 'react'
 import { cn } from '@/lib/utils'
 import { ERA_COLORS, ERA_LABELS, CONNECTION_LABELS, REGION_LABELS } from '@/lib/types'
 import { useAppStore } from '@/store/useAppStore'
@@ -167,7 +167,7 @@ interface ComparatorProps {
   onClose: () => void
 }
 
-export function Comparator({ locale, onClose }: ComparatorProps) {
+function ComparatorComponent({ locale, onClose }: ComparatorProps) {
   const { comparatorSages, setComparatorSage, connections, sageMap, selectSage } = useAppStore()
   const [sageA, sageB] = comparatorSages
   const isHe = locale === 'he'
@@ -313,3 +313,6 @@ export function Comparator({ locale, onClose }: ComparatorProps) {
     </div>
   )
 }
+
+// Memoize to prevent re-renders when parent state changes
+export const Comparator = memo(ComparatorComponent)

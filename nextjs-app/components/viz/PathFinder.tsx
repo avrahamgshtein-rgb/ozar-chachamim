@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useCallback, useRef } from 'react'
+import { useState, useCallback, useRef, memo } from 'react'
 import { cn } from '@/lib/utils'
 import { ERA_COLORS, ERA_LABELS, CONNECTION_LABELS } from '@/lib/types'
 import { useAppStore } from '@/store/useAppStore'
@@ -150,7 +150,7 @@ interface PathFinderProps {
   onClose: () => void
 }
 
-export function PathFinder({ locale, onClose }: PathFinderProps) {
+function PathFinderComponent({ locale, onClose }: PathFinderProps) {
   const { sages, connections, sageMap, selectSage } = useAppStore()
   const isHe = locale === 'he'
 
@@ -299,3 +299,6 @@ export function PathFinder({ locale, onClose }: PathFinderProps) {
     </div>
   )
 }
+
+// Memoize to prevent re-renders when parent state changes
+export const PathFinder = memo(PathFinderComponent)

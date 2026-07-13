@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useMemo } from 'react'
+import { useState, useMemo, memo } from 'react'
 import { ERA_COLORS, ERA_LABELS, CONNECTION_LABELS } from '@/lib/types'
 import { useAppStore } from '@/store/useAppStore'
 import { formatYearRange } from '@/lib/utils'
@@ -12,7 +12,7 @@ type SortDir = 'asc' | 'desc'
 
 interface SagesTableProps { locale: Locale }
 
-export function SagesTable({ locale }: SagesTableProps) {
+function SagesTableComponent({ locale }: SagesTableProps) {
   const { filteredSages, connections, selectSage, sages } = useAppStore()
   const isHe = locale === 'he'
 
@@ -222,3 +222,5 @@ export function SagesTable({ locale }: SagesTableProps) {
     </div>
   )
 }
+
+export const SagesTable = memo(SagesTableComponent)

@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, memo } from 'react'
 import { ERA_COLORS, ERA_LABELS } from '@/lib/types'
 import { CONNECTION_TYPE_COLORS } from '@/lib/regions'
 import { LOCATION_COORDS, resolveCoords } from '@/lib/locationCoords'
@@ -17,7 +17,7 @@ interface GeoMapProps {
   locale: Locale
 }
 
-export function GeoMap({ locale }: GeoMapProps) {
+function GeoMapComponent({ locale }: GeoMapProps) {
   const mapRef     = useRef<HTMLDivElement>(null)
   const mapObjRef  = useRef<import('leaflet').Map | null>(null)
   const [showLinks, setShowLinks] = useState(true)
@@ -483,3 +483,6 @@ export function GeoMap({ locale }: GeoMapProps) {
     </div>
   )
 }
+
+// Memoize to prevent re-renders when parent state changes
+export const GeoMap = memo(GeoMapComponent)
