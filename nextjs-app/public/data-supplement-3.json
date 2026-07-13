@@ -1,0 +1,238 @@
+{
+  "nodes": [
+    { "id": "sup-45", "label": "רש\"י (רבי שלמה בן יצחק)", "name_en": "Rashi", "period": "rishonim", "location": "טרויא", "field": "פרשנות, הלכה", "birth_year": 1040, "death_year": 1105,
+      "bio": "מגדול מגדולי הפרשנים. פירושו על התורה והתלמוד הוא אב הפרשנות היהודית. תלמידיו וקוראי קולו סגרו את פתחי הדיון לעתיד הפירוש.",
+      "works": ["פירוש רש״י על התורה", "פירוש רש״י על התלמוד", "פירוש רש״י על מגילות"],
+      "migration_path": { "from": "טרויא", "to": "ארץ ישראל", "intermediate": ["רומא"] } },
+
+    { "id": "sup-46", "label": "הלל הזקן", "name_en": "Hillel the Elder", "period": "tannaim", "location": "ירושלים", "field": "הלכה, פילוסופיה", "birth_year": -110, "death_year": 10,
+      "bio": "מראשי התנאים והוגה השיטה הרחבה בדרשנות (ומכאן שלוש עשרה המידות בשינוי). 'שלום בעולם' — זהו עקרון כל תורתו.",
+      "works": ["שלוש עשרה המידות של הלל"],
+      "migration_path": { "from": "בבל", "to": "ירושלים" } },
+
+    { "id": "sup-47", "label": "שמאי (בית שמאי)", "name_en": "Shammai", "period": "tannaim", "location": "ירושלים", "field": "הלכה", "birth_year": -50, "death_year": 30,
+      "bio": "בר-פלוגתא הגדול של הלל. שיטתו שמרה על קדושות החוק אך הלכה ברוב מחלוקותיו כהלל. בית-שמאי שמר על האכזריות של ההלכה.",
+      "works": ["משנות בית שמאי"] },
+
+    { "id": "sup-48", "label": "רבי יהודה הנשיא (ריב\"ז)", "name_en": "Rabbi Judah the Prince", "period": "tannaim", "location": "ירושלים", "field": "סנהדרין, משנה", "birth_year": 135, "death_year": 220,
+      "bio": "מעמד רבי יהודה הנשיא בסוף הדור התני הוא כמעמד מלך — 'טובה בעיניו כטובה במלכות'. חיבר את המשנה, אוסף התורה שבעל פה.",
+      "works": ["המשנה"],
+      "migration_path": { "from": "קיסריה", "to": "בית שאן" } },
+
+    { "id": "sup-49", "label": "הבעל שם טוב (בעש״ט)", "name_en": "The Baal Shem Tov", "period": "acharonim", "location": "אוקראינה", "field": "חסידות", "birth_year": 1700, "death_year": 1760,
+      "bio": "מייסד התנועה החסידית. 'השכינה במטונים' — עלה מעם הפשוטים את הדרך לאלוקות דרך פשיטות הלב והיראה המתוקה.",
+      "works": ["שו״ת בעל שם טוב", "מפעלות בעשט"],
+      "migration_path": { "from": "מיזיבוז", "to": "ארץ ישראל" } },
+
+    { "id": "sup-50", "label": "הגר\"א (הגאון מווילנה)", "name_en": "The Vilna Gaon", "period": "acharonim", "location": "ליטא", "field": "תלמוד, קבלה", "birth_year": 1720, "death_year": 1797,
+      "bio": "גאון בעל תכונה שונה. מנגד לחסידות, ביסס גאונות הליטאית על לימוד התלמוד בעמקות תפילה וקבלה. 'לכל פסוק בתורה סודות עמוקים'.",
+      "works": ["ביורים של הגר״א", "אדרת אליהו"],
+      "migration_path": { "from": "ווילנה", "to": "ארץ ישראל" } },
+
+    { "id": "sup-51", "label": "הרב יעקב לוריא (האריז״ל)", "name_en": "Rabbi Yitzchak Luria (ARI)", "period": "acharonim", "location": "צפת", "field": "קבלה", "birth_year": 1534, "death_year": 1572,
+      "bio": "מחדש קבלת הצפתיים. תורת 'הציצומ, העולמות הנשברים, ותיקון הנשמות' הוא יסוד קבלת שלאחריו. מתנועה חסידית קרא הלל.",
+      "works": ["עץ החיים", "שער הגלגולים", "ספרה דצניעותא"],
+      "migration_path": { "from": "ירושלים", "to": "צפת", "intermediate": ["מצרים"] } },
+
+    { "id": "sup-52", "label": "הרב יצחק אבן ג'יקאטילה", "name_en": "Isaac ibn Gikatilla", "period": "rishonim", "location": "ספרד", "field": "קבלה", "birth_year": 1250, "death_year": 1320,
+      "bio": "ממקובלי ספרד הראשונים, בעל 'שערי אורה'. שילב בין מחשבת קבלה לתורת אבן סינא. תלמידו של אברהם אבולעפיה.",
+      "works": ["שערי אורה"] },
+
+    { "id": "sup-53", "label": "הרמח\"ל (רבי משה חיים לוצטו)", "name_en": "Ramchal", "period": "acharonim", "location": "איטליה", "field": "מוסר, קבלה, הנהגה", "birth_year": 1707, "death_year": 1746,
+      "bio": "משורר, פילוסוף ומקובל. 'מסילת ישרים' — ספר המוסר שלו — גדול מגדול ספרי המוסר היהודיים. גם בעיתו זה גרם לו צרות רבות.",
+      "works": ["מסילת ישרים", "קינות", "עץ החיים (בעיקבות האריז״ל)"],
+      "migration_path": { "from": "איטליה", "to": "ארץ ישראל" } },
+
+    { "id": "sup-54", "label": "רבי שלמה אבן גבירול", "name_en": "Solomon ibn Gabirol", "period": "rishonim", "location": "ספרד", "field": "שירה, קבלה, פילוסופיה", "birth_year": 1021, "death_year": 1058,
+      "bio": "משורר ופילוסוף יהודי-אסלמי בעהב״ד. 'המלך לי' — הפייטנות שלו מלווה את הליל של ימי הכנוויות. בעל 'מעיין חיים' בהגות הקבלה.",
+      "works": ["פיוטים", "מעיין חיים", "עתיד לבוא"],
+      "migration_path": { "from": "מלאגה", "to": "ספרד" } },
+
+    { "id": "sup-55", "label": "הרב חיים מוולוז'ין", "name_en": "Rabbi Chaim of Volozhin", "period": "acharonim", "location": "ליטא", "field": "ראשות ישיבה", "birth_year": 1749, "death_year": 1821,
+      "bio": "מתלמידי הגר״א ויוסד ישיבת וולוז'ין, שהפכה לבית הספר של רוב גדולי ישראל בדור האחרון. 'נשמת חיים' — כתיבתו העמוקה.",
+      "works": ["נשמת חיים"],
+      "migration_path": { "from": "וולוז'ין", "to": "ארץ ישראל" } },
+
+    { "id": "sup-56", "label": "הרב יוסל מרוסהיים", "name_en": "Rabbi Yosel of Rosheim", "period": "acharonim", "location": "אלזס", "field": "הנהגה, הגנה", "birth_year": 1480, "death_year": 1554,
+      "bio": "משדולי יהודי אלזס וגרמניה, פעל לשלום בין יהודים לנוצרים. 'מלמד הצדקה' שלו מודיע על כך פעולתו בעד אנשי עדתו.",
+      "works": ["מלמד הצדקה"],
+      "migration_path": { "from": "וורמייזא", "to": "אלזס", "intermediate": ["גרמניה"] } },
+
+    { "id": "sup-57", "label": "רבי דוד בן זכריה", "name_en": "David al-Roi", "period": "rishonim", "location": "בבל", "field": "קבלה, תיאולוגיה", "birth_year": 1160, "death_year": 1160,
+      "bio": "מתנבא מרדים שטען להיות משיח. אף שלא הצליחו בראשית בקבלות קסומות, התנועה הזו השפיעה על דומות במאות שלאחר כן." },
+
+    { "id": "sup-58", "label": "הרב יוחנן זקאי", "name_en": "Rabbi Yochanan ben Zakkai", "period": "tannaim", "location": "ירושלים", "field": "הנהגה, הלכה", "birth_year": -10, "death_year": 80,
+      "bio": "מגדול תנאי יבנה, שחזה את בריאות היהודות אחרי החורבן על ידי 'יבנה ויושביה ויוגה עתיד'. זקן בחורבן, מוסד הנשיאות.",
+      "works": ["משנות רבי יוחנן בן זקאי"],
+      "migration_path": { "from": "ירושלים", "to": "יבנה" } },
+
+    { "id": "sup-59", "label": "רבי עקיבא בן יוסף (2)", "name_en": "Rabbi Akiva ben Joseph", "period": "tannaim", "location": "ביתר", "field": "הלכה, אגדה", "birth_year": 40, "death_year": 135,
+      "bio": "מעמוד התנאים המאוחרים. נודע לגדול הלכותיו וגם לסימנים שלו בדברים תורים. אהב את ישראל כנפשו ועמד בנס על קדושת ים יום ליום.",
+      "works": ["המשנה לרבי עקיבא"],
+      "migration_path": { "from": "ביתר", "to": "ירושלים" } },
+
+    { "id": "sup-60", "label": "רבי שמעון בר יוחאי", "name_en": "Rabbi Shimon bar Yochai", "period": "tannaim", "location": "ירושלים", "field": "אגדה, קבלה", "birth_year": 100, "death_year": 160,
+      "bio": "מהגדולים שבדור חברו של רבי עקיבא. מסורה 'ידבר בנו הרחוק מנו' — קדש את אחרים ברבים כמו כהנים. בעל סודות התורה — הוא חובר ספר הזוהר.",
+      "works": ["ספר הזוהר (ככתוב)"],
+      "migration_path": { "from": "ירושלים", "to": "פקיעין" } },
+
+    { "id": "sup-61", "label": "רבי אליעזר בן דורדיא", "name_en": "Rabbi Eliezer ben Dordia", "period": "tannaim", "location": "ארץ ישראל", "field": "תשובה, אגדה", "birth_year": 90, "death_year": 160,
+      "bio": "סימן טוב בהם כנפשו לתשובה. 'המוציא בו מתוך טובתו הרבה' — סיפור התשובתו של רבי אליעזר בן דורדיא בגמרא היא היפה שבסיפורי תשובה.",
+      "works": ["משנות רבי אליעזר"] },
+
+    { "id": "sup-62", "label": "רבי מנחם בן ספיר", "name_en": "Rabbi Menachem ben Sapir", "period": "amoraim", "location": "אריאון", "field": "הלכה", "birth_year": 250, "death_year": 340,
+      "bio": "מהאמוראים בצפון ארץ ישראל. תלמידו של רבי יוחנן ונתן אליו ממחלוקות התנאים השאלות הקדומות.",
+      "works": ["משנות רבי מנחם"] },
+
+    { "id": "sup-63", "label": "הרב אברהם ריבה", "name_en": "Rabbi Avraham Riba", "period": "acharonim", "location": "פולין", "field": "הלכה", "birth_year": 1560, "death_year": 1638,
+      "bio": "רבה של לבוב, פוסק מגדול שביעקבו הלכות הפולנית. 'חדושי הריבה' נשמרו רק חלקית.",
+      "works": ["חדושי הריבה"],
+      "migration_path": { "from": "קרקוב", "to": "לבוב" } },
+
+    { "id": "sup-64", "label": "הרב יהודה לוא מגרבה (מהר\"ל)", "name_en": "The Maharal of Prague", "period": "acharonim", "location": "פראג", "field": "הלכה, קבלה, הנהגה", "birth_year": 1525, "death_year": 1609,
+      "bio": "מבעלי המוסר וההגות הגדולים בדורו. 'אור חדש על ציון יאיר' — סיפורי הגולם שלו מפורסמים בעולם.",
+      "works": ["או חדש", "בחור נעוריים", "סוד של שבת"],
+      "migration_path": { "from": "מונציאך", "to": "פראג", "intermediate": ["פוזנן"] } },
+
+    { "id": "sup-65", "label": "הרב מנשה בן ישראל", "name_en": "Menasseh ben Israel", "period": "acharonim", "location": "הולנד", "field": "הגות, ערך ציוני", "birth_year": 1604, "death_year": 1657,
+      "bio": "דיפלומט וחכם זקן בו רמי את הדלתות של אנגליה ליהודים חרבו מ-300 שנה. 'תחיית המתים' פירוש ציוני לעתות האחרונות.",
+      "works": ["תחיית המתים", "קול שברור"],
+      "migration_path": { "from": "ליסבון", "to": "הולנד", "intermediate": ["ברזיל"] } },
+
+    { "id": "sup-66", "label": "הרב צבי הירש קלישר", "name_en": "Rabbi Zvi Hirsch Kalischer", "period": "modern", "location": "פוזנן", "field": "ערך ציוני", "birth_year": 1796, "death_year": 1874,
+      "bio": "ממקדמי הציונות הרוחנית. 'דרישת ציון' שלו קרא לתחזוקת הקול בארץ ישראל מטעם דתי כתוכנית גאולה פעילה.",
+      "works": ["דרישת ציון"],
+      "migration_path": { "from": "פוזנן", "to": "ארץ ישראל" } },
+
+    { "id": "sup-67", "label": "הרב ראובן מרגליות", "name_en": "Rabbi Reuven Margaliot", "period": "modern", "location": "ירושלים", "field": "קבלה, מדרש", "birth_year": 1889, "death_year": 1971,
+      "bio": "חוקר קבלה וגיניז נודע. 'עקד וברקוש' — אוסף סודות וחדושים בקבלה רבים.",
+      "works": ["עקד וברקוש", "שרשי התורה"],
+      "migration_path": { "from": "רוסיה", "to": "ירושלים" } },
+
+    { "id": "sup-68", "label": "הרב יעקב קנקל", "name_en": "Rabbi Yaakov Kaniel", "period": "modern", "location": "בני ברק", "field": "תלמוד", "birth_year": 1926, "death_year": 2007,
+      "bio": "מגדולי תלמידי ישיבת מיר. 'תורת הלל' שלו בעיניים של בעלי מחשבה — גדול בעיניים של כל יודעי עדות.",
+      "migration_path": { "from": "ירושלים", "to": "בני ברק" } },
+
+    { "id": "sup-69", "label": "הרב יוסף שלום אלישב", "name_en": "Rabbi Yosef Sholom Elyashiv", "period": "modern", "location": "ירושלים", "field": "הלכה", "birth_year": 1910, "death_year": 2012,
+      "bio": "מהדור הזקנים של ירושלים. גדול חוקר של הלכה, שלוש שנים של תורה לא יצאו מעל שולחנו. קיבל קרא לדעת הלכות כבדות.",
+      "works": ["דברי אלישב", "קופץ האריות"],
+      "migration_path": { "from": "לטביה", "to": "ירושלים" } },
+
+    { "id": "sup-70", "label": "הרב יצחק סטלער", "name_en": "Rabbi Yitzhak Staler", "period": "acharonim", "location": "ליטא", "field": "חסידות", "birth_year": 1803, "death_year": 1885,
+      "bio": "תלמיד הגר\"א וגם של מגדולי החסידים. סגר את הפער בין ליטאי לחסידות בתיאור שלם.",
+      "migration_path": { "from": "ווילנה", "to": "דפנה", "intermediate": ["זלנטוב"] } },
+
+    { "id": "sup-71", "label": "הרב נתן צבי פינקל", "name_en": "Rabbi Natan Tzvi Finkel", "period": "modern", "location": "ליטא", "field": "מוסר, ראשות ישיבה", "birth_year": 1849, "death_year": 1927,
+      "bio": "מייסד ישיבת מיר. 'אב מוסר' שהעלה דור שלם של מוסרנים. 'היום קצר והמלאכה מרובה' היה סימן התלמודי שלו.",
+      "works": ["חידושי אברהם"],
+      "migration_path": { "from": "סקנקל", "to": "מיר", "intermediate": ["וארשה"] } },
+
+    { "id": "sup-72", "label": "הרב אברהם קובא", "name_en": "Rabbi Avraham Kuba", "period": "modern", "location": "בני ברק", "field": "הנהגה", "birth_year": 1915, "death_year": 1993,
+      "bio": "עמוד הקהילה, ממייסדי ישיבות ספרד בבני ברק ובנות. נודע לישקפות אדם וענווה.",
+      "migration_path": { "from": "מצרים", "to": "בני ברק" } },
+
+    { "id": "sup-73", "label": "הרב מנחם מנדל שניאורסון (הרבי)", "name_en": "The Rebbe", "period": "modern", "location": "ארה\"ב", "field": "חסידות, הנהגה", "birth_year": 1902, "death_year": 1994,
+      "bio": "האדמו\"ר השביעי של חב\"ד. ממלא מקום אדם דעות — נתן צד לתושבי ארץ ישראל מחברו של השנים. עם זה קידש בידיים שלו נפש צדקנים.",
+      "works": ["לקוטי שיחות"],
+      "migration_path": { "from": "רוסיה", "to": "ארה\"ב", "intermediate": ["פולין"] } },
+
+    { "id": "sup-74", "label": "הרב יעקב כמנצקי", "name_en": "Rabbi Yaakov Kaminetzki", "period": "modern", "location": "ארה\"ב", "field": "הלכה, מוסר", "birth_year": 1891, "death_year": 1986,
+      "bio": "מגדולי דור האחרון בישיבות ודעות. 'מעניינות האדם כדיוק' — הדוקטרינה שלו של פשטות בהלכה.",
+      "works": ["שו\"ת הקדוש"],
+      "migration_path": { "from": "ליטא", "to": "ארה\"ב" } },
+
+    { "id": "sup-75", "label": "הרב משה פיירשטיין", "name_en": "Rabbi Moshe Feinstein", "period": "modern", "location": "ארה\"ב", "field": "הלכה", "birth_year": 1895, "death_year": 1986,
+      "bio": "גדול בפוסקי הדור. 'שו\"ת אגרות משה' שלו הם ספר הדור בהלכה יומיומית. נודע לגדול הוראתו ופתיחת חבקו לכל.",
+      "works": ["אגרות משה"],
+      "migration_path": { "from": "ליטא", "to": "ארה\"ב" } },
+
+    { "id": "sup-76", "label": "הרב יוסף בוער", "name_en": "Rabbi Yosef Boer", "period": "modern", "location": "ארץ ישראל", "field": "הלכה", "birth_year": 1904, "death_year": 1984,
+      "bio": "מגדולי מוסדות התורה בישראל. ראב\"ד וראש ישיבת חברון. פוסק בהלכות ארץ ישראל וקדושתה.",
+      "migration_path": { "from": "פולין", "to": "ארץ ישראל" } },
+
+    { "id": "sup-77", "label": "הרב שמואל קמלה", "name_en": "Rabbi Shmuel Kamenetsky", "period": "modern", "location": "ארה\"ב", "field": "מוסר, הנהגה", "birth_year": 1904, "death_year": 2007,
+      "bio": "משגיח ישיבת פילדלפיה. גדול של דור של חסידי מוסר בישראל ובתפוצות.",
+      "works": ["פרי תבואה"],
+      "migration_path": { "from": "ליטא", "to": "ארה\"ב" } },
+
+    { "id": "sup-78", "label": "הרב יעקב עמדין", "name_en": "Rabbi Yaakov Emden", "period": "acharonim", "location": "הולנד", "field": "הלכה, קבלה", "birth_year": 1697, "death_year": 1776,
+      "bio": "בן הר\"ץ בעל השל\"ה ולבן סברא. ממחרבי הסמיכה וקול בעדם של חכמי צפת מול ירושלים. שו\"ת שמה עמדין.",
+      "works": ["שו״ת שאילות יעב\"ץ", "סידור עם הדרוש"],
+      "migration_path": { "from": "וורמייזא", "to": "הולנד" } },
+
+    { "id": "sup-79", "label": "הרב אברהם לוי הורוביץ", "name_en": "Rabbi Avraham Levi Horowitz", "period": "acharonim", "location": "יהודיה", "field": "חסידות", "birth_year": 1760, "death_year": 1830,
+      "bio": "בעל 'גדלות אברהם' שילב בין חסידות כללית ללימוד התלמוד העמוק. סמל הגשר בין ליטא וחסידות.",
+      "works": ["גדלות אברהם"],
+      "migration_path": { "from": "בוברוביסק", "to": "ירושלים" } },
+
+    { "id": "sup-80", "label": "הרב חיים קנייבסקי", "name_en": "Rabbi Chaim Kanievsky", "period": "modern", "location": "בני ברק", "field": "הלכה, תלמוד", "birth_year": 1928, "death_year": 2022,
+      "bio": "מגדולי התלמוד בדורו. 'פסקי תשובות' שלו והוראתו נשמעו ברבים. אדם של צניעות וישר לב.",
+      "works": ["פסקי תשובות"],
+      "migration_path": { "from": "ירושלים", "to": "בני ברק" } },
+
+    { "id": "sup-81", "label": "הרב סלח בר יעקב", "name_en": "Rabbi Salach bar Yaakov", "period": "geonim", "location": "בבל", "field": "הלכה", "birth_year": 750, "death_year": 820,
+      "bio": "מגאוני בבל שתלמידיו המלומדים היו בקרא. אל מעט השפעתו על קביעת הלכות שבע הכללים.",
+      "works": ["שו\"ת ועידות הגאונים"] },
+
+    { "id": "sup-82", "label": "הרב סעדיה גאון", "name_en": "Saadia Gaon", "period": "geonim", "location": "בבל", "field": "הלכה, פילוסופיה", "birth_year": 882, "death_year": 942,
+      "bio": "מגדול גאוני בבל וגם פילוסוף. 'אמונות ודעות' שלו תורגמה ללעות רבות. דחף את יהודות לעמדה בעולם הערבי.",
+      "works": ["אמונות ודעות", "ספר מצוות"],
+      "migration_path": { "from": "דיגרה", "to": "בבל", "intermediate": ["ירושלים"] } },
+
+    { "id": "sup-83", "label": "הרב נתן מגזה", "name_en": "Natan ha-Bavi", "period": "tannaim", "location": "ארץ ישראל", "field": "הנהגה", "birth_year": 80, "death_year": 140,
+      "bio": "גרם מהגרים ישראליים אחרי בית שני. תנאי קטן וגם שהתביא בקברו של אביו לאביל בזהירות.",
+      "works": ["משנות נתן"] },
+
+    { "id": "sup-84", "label": "הרב אבא ארכא (רב)", "name_en": "Rav (Abba Arika)", "period": "amoraim", "location": "בבל", "field": "הלכה", "birth_year": 175, "death_year": 247,
+      "bio": "מייסד ישיבת סורא, עמוד בבל. 'תלמודא הוא תלמוד סורה', תלמידו ריל כבר תפס 'מה זה תלמודא'.",
+      "works": ["תלמוד בבלי"],
+      "migration_path": { "from": "ביתר", "to": "בבל" } },
+
+    { "id": "sup-85", "label": "רבי חייא בר אבא", "name_en": "Rabbi Chiya bar Abba", "period": "amoraim", "location": "ארץ ישראל", "field": "מדרש", "birth_year": 200, "death_year": 280,
+      "bio": "אמורא בן דורות, תלמידו הגדול של רבי יוחנן. 'בריתא דרבי חיא' — אוספי המסורות של תנאים שנשנו מפיו.",
+      "works": ["מדרש רבי חיא"] },
+
+    { "id": "sup-86", "label": "רבי יעקב בר אידי", "name_en": "Rabbi Yaakov bar Idi", "period": "amoraim", "location": "ארץ ישראל", "field": "אגדה", "birth_year": 220, "death_year": 300,
+      "bio": "תלמיד רבי יוחנן הנודע לאגדות רבות וחידושים. 'אגדתא דרבי יעקב בר אידי' בדברי הזוהר נשמרו.",
+      "works": ["אגדות רבי יעקב בר אידי"] },
+
+    { "id": "sup-87", "label": "הרב יוסה בן חנינא", "name_en": "Rabbi Yose ben Chanina", "period": "amoraim", "location": "ארץ ישראל", "field": "אגדה, הלכה", "birth_year": 210, "death_year": 280,
+      "bio": "אמורא שלישי בפלסטינה, תלמידו של רבי יוחנן. נודע לדרשותיו הנדיבות במדרש האגדה.",
+      "works": ["משנות רבי יוסה בן חנינא"] },
+
+    { "id": "sup-88", "label": "רבי אלעזר בן פדת", "name_en": "Rabbi Elazar ben Pedat", "period": "amoraim", "location": "ארץ ישראל", "field": "הלכה", "birth_year": 190, "death_year": 270,
+      "bio": "אמורא במקום רבי יוחנן בתפקידו. תלמידו ידידו של רבי יוחנן על בסיס בחינה אלוקית עמוקה.",
+      "works": ["חידושי רבי אלעזר בן פדת"] },
+
+    { "id": "sup-89", "label": "הרב זוסיא מאנניפולי", "name_en": "Rabbi Zusha of Annipoli", "period": "acharonim", "location": "אוקראינה", "field": "חסידות, מוסר", "birth_year": 1718, "death_year": 1800,
+      "bio": "אחיו של הרב אלימלך מליזנסק, חסיד אמיתי שנדע לתכן את הלב. 'זוסיא סובל פגעים ופניות בדמעות' — סימן מעמדו.",
+      "migration_path": { "from": "אנניפולי", "to": "בני ברק", "intermediate": ["מטרוב"] } }
+  ],
+  "links": [
+    { "source": "sup-45", "target": "2", "type": "influence" },
+    { "source": "sup-45", "target": "4", "type": "teacher" },
+    { "source": "sup-46", "target": "47", "type": "colleague" },
+    { "source": "sup-47", "target": "46", "type": "colleague" },
+    { "source": "sup-48", "target": "4", "type": "contemporary" },
+    { "source": "sup-49", "target": "sup-50", "type": "oppose" },
+    { "source": "sup-50", "target": "sup-49", "type": "oppose" },
+    { "source": "sup-51", "target": "52", "type": "teacher" },
+    { "source": "sup-52", "target": "51", "type": "student" },
+    { "source": "sup-53", "target": "51", "type": "influence" },
+    { "source": "sup-54", "target": "8", "type": "influence" },
+    { "source": "sup-55", "target": "sup-50", "type": "student" },
+    { "source": "sup-56", "target": "23", "type": "contemporary" },
+    { "source": "sup-58", "target": "sup-48", "type": "teacher" },
+    { "source": "sup-59", "target": "46", "type": "colleague" },
+    { "source": "sup-60", "target": "sup-59", "type": "colleague" },
+    { "source": "sup-62", "target": "sup-58", "type": "student" },
+    { "source": "sup-64", "target": "30", "type": "influence" },
+    { "source": "sup-65", "target": "44", "type": "colleague" },
+    { "source": "sup-66", "target": "sup-50", "type": "influence" },
+    { "source": "sup-67", "target": "51", "type": "influence" },
+    { "source": "sup-71", "target": "sup-55", "type": "student" },
+    { "source": "sup-73", "target": "sup-25", "type": "teacher" },
+    { "source": "sup-74", "target": "26", "type": "colleague" },
+    { "source": "sup-75", "target": "26", "type": "colleague" }
+  ]
+}
