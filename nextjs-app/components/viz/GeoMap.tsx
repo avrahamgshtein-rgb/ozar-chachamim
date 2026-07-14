@@ -160,17 +160,45 @@ function GeoMapComponent({ locale }: GeoMapProps) {
       `
       document.head.appendChild(style)
 
-      // ── Markers ──────────────────────────────────────────────
+      // ── Markers with scatter logic for same-location clustering ──────
       const markerRefs = new Map<string, import('leaflet').CircleMarker>()
       const markersLayer = L.layerGroup().addTo(map)
 
+      // Group sages by location to detect clustering
+      const locationMap = new Map<string, string[]>()
       sages.forEach(sage => {
         const coords = resolveCoords(sage)
         if (!coords) return
+        const key = `${Math.round(coords.lat * 100)},${Math.round(coords.lng * 100)}`
+        const ids = locationMap.get(key) ?? []
+        ids.push(sage.id)
+        locationMap.set(key, ids)
+      })
+
+      sages.forEach((sage, idx) => {
+        const coords = resolveCoords(sage)
+        if (!coords) return
+
+        // Calculate scatter offset for same-location markers
+        const key = `${Math.round(coords.lat * 100)},${Math.round(coords.lng * 100)}`
+        const sagesAtLocation = locationMap.get(key) ?? []
+        const sageIndexInLocation = sagesAtLocation.indexOf(sage.id)
+        const totalAtLocation = sagesAtLocation.length
+
+        let finalLat = coords.lat
+        let finalLng = coords.lng
+
+        if (totalAtLocation > 1) {
+          // Scatter markers in a small circle around the location
+          const scatterRadius = 0.012 * Math.sqrt(totalAtLocation) // ~1.3km per marker
+          const angle = (sageIndexInLocation / totalAtLocation) * Math.PI * 2
+          finalLat += scatterRadius * Math.sin(angle)
+          finalLng += scatterRadius * Math.cos(angle)
+        }
 
         const color = ERA_COLORS[sage.period] ?? '#7a6550'
 
-        const marker = L.circleMarker([coords.lat, coords.lng], {
+        const marker = L.circleMarker([finalLat, finalLng], {
           radius:      7,
           fillColor:   color,
           color:       '#0a0806',
@@ -354,6 +382,8 @@ function GeoMapComponent({ locale }: GeoMapProps) {
     import('leaflet').then(L => {
       const sageMap = new Map<string, Sage>(sages.map(s => [s.id, s]))
       const coordsById: Map<string, { lat: number; lng: number }> = map._coordsById
+      const filteredIds = new Set(filteredSages.map(s => s.id))
+      const noFilter = filteredIds.size === sages.length
       const group = L.layerGroup().addTo(map)
       map._linkLayer = group
 
@@ -367,11 +397,17 @@ function GeoMapComponent({ locale }: GeoMapProps) {
         // same-city pairs draw nothing meaningful on the map
         if (Math.abs(a.lat - b.lat) < 0.02 && Math.abs(a.lng - b.lng) < 0.02) return
         drawn.add(key)
+
+        // Check if both sages are in filtered set (dim if not)
+        const isFiltered = noFilter || (filteredIds.has(conn.source) && filteredIds.has(conn.target))
+        const lineOpacity = isFiltered ? 0.4 : 0.08
+        const arrowOpacity = isFiltered ? 0.85 : 0.15
+
         const color = CONNECTION_TYPE_COLORS[conn.type] ?? '#c9973a'
         L.polyline(
           [[a.lat, a.lng], [b.lat, b.lng]],
           {
-            color, weight: 1.3, opacity: 0.4,
+            color, weight: 1.3, opacity: lineOpacity,
             dashArray: conn.type === 'influence' ? '6,4'
               : (conn.type === 'colleague' || conn.type === 'contemporary') ? '2,4' : undefined,
           }
@@ -386,7 +422,7 @@ function GeoMapComponent({ locale }: GeoMapProps) {
         L.marker([pLat, pLng], {
           icon: L.divIcon({
             className: '',
-            html: `<span style="display:inline-block;transform:rotate(${angle}deg);color:${color};font-size:11px;opacity:0.85;text-shadow:0 0 3px var(--ink-900);">➤</span>`,
+            html: `<span style="display:inline-block;transform:rotate(${angle}deg);color:${color};font-size:11px;opacity:${arrowOpacity};text-shadow:0 0 3px var(--ink-900);">➤</span>`,
             iconSize: [0, 0],
           }),
           interactive: false,
@@ -394,7 +430,7 @@ function GeoMapComponent({ locale }: GeoMapProps) {
       })
     })
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [showLinks, connections.length, sages.length, mapReady])
+  }, [showLinks, connections.length, sages.length, mapReady, filteredSages])
 
   // ── Sync filter (dim non-matching markers) ───────────────────
   useEffect(() => {
