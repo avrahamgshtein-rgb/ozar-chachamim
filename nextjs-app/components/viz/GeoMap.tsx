@@ -411,17 +411,17 @@ function GeoMapComponent({ locale }: GeoMapProps) {
 
         // Draw line with click handler for details popup
         const linePopupContent = `
-          <div style="font-family:Heebo,sans-serif;min-width:200px;">
-            <p style="font-family:'Frank Ruhl Libre',serif;font-size:12px;font-weight:700;color:#e8d5b0;margin:0 0 8px;">קשר: ${conn.type}</p>
-            <div style="padding:8px;background:rgba(201,151,58,0.1);border-radius:6px;margin-bottom:8px;">
-              <p style="font-size:11px;color:#c4a87d;margin:0 0 4px;"><strong>מ:</strong> ${sourceS.label}</p>
-              ${sourceS.location ? `<p style="font-size:10px;color:#9a8570;margin:0;">📍 ${sourceS.location}</p>` : ''}
-              ${sourceS.birth_year ? `<p style="font-size:10px;color:#7a6550;margin:0;">🎂 נ: ${sourceS.birth_year}</p>` : ''}
+          <div style="font-family:Heebo,sans-serif;min-width:280px;max-height:300px;overflow-y:auto;">
+            <p style="font-family:'Frank Ruhl Libre',serif;font-size:13px;font-weight:700;color:#e8d5b0;margin:0 0 10px;">קשר: ${conn.type}</p>
+            <div style="padding:10px;background:rgba(201,151,58,0.15);border-radius:6px;margin-bottom:10px;">
+              <p style="font-size:12px;color:#c4a87d;margin:0 0 5px;"><strong>מ:</strong> ${sourceS.label}</p>
+              ${sourceS.location ? `<p style="font-size:11px;color:#9a8570;margin:0 0 2px;">📍 ${sourceS.location}</p>` : ''}
+              ${sourceS.birth_year ? `<p style="font-size:11px;color:#7a6550;margin:0;">🎂 נ: ${sourceS.birth_year}</p>` : ''}
             </div>
-            <div style="padding:8px;background:rgba(201,151,58,0.1);border-radius:6px;">
-              <p style="font-size:11px;color:#c4a87d;margin:0 0 4px;"><strong>ל:</strong> ${targetS.label}</p>
-              ${targetS.location ? `<p style="font-size:10px;color:#9a8570;margin:0;">📍 ${targetS.location}</p>` : ''}
-              ${targetS.birth_year ? `<p style="font-size:10px;color:#7a6550;margin:0;">🎂 נ: ${targetS.birth_year}</p>` : ''}
+            <div style="padding:10px;background:rgba(201,151,58,0.15);border-radius:6px;">
+              <p style="font-size:12px;color:#c4a87d;margin:0 0 5px;"><strong>ל:</strong> ${targetS.label}</p>
+              ${targetS.location ? `<p style="font-size:11px;color:#9a8570;margin:0 0 2px;">📍 ${targetS.location}</p>` : ''}
+              ${targetS.birth_year ? `<p style="font-size:11px;color:#7a6550;margin:0;">🎂 נ: ${targetS.birth_year}</p>` : ''}
             </div>
           </div>
         `
@@ -429,11 +429,11 @@ function GeoMapComponent({ locale }: GeoMapProps) {
         const line = L.polyline(
           [[a.lat, a.lng], [b.lat, b.lng]],
           {
-            color, weight: 1.3, opacity: lineOpacity,
+            color, weight: 3.5, opacity: lineOpacity,
             dashArray: conn.type === 'influence' ? '6,4'
               : (conn.type === 'colleague' || conn.type === 'contemporary') ? '2,4' : undefined,
           }
-        ).bindPopup(linePopupContent, { maxWidth: 240, className: '' })
+        ).bindPopup(linePopupContent, { maxWidth: 320, className: 'connection-popup' })
          .addTo(group)
 
         line.on('click', () => line.openPopup())
