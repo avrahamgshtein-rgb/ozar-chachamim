@@ -199,8 +199,7 @@ CREATE INDEX IF NOT EXISTS idx_usage_periods_user
   ON public.usage_periods(user_id);
 
 CREATE INDEX IF NOT EXISTS idx_usage_periods_active
-  ON public.usage_periods(user_id, period_end DESC)
-  WHERE period_end IS NULL OR period_end > NOW();
+  ON public.usage_periods(user_id, period_end DESC);
 
 CREATE INDEX IF NOT EXISTS idx_usage_periods_source
   ON public.usage_periods(source_type);
