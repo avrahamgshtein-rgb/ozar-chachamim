@@ -25,6 +25,11 @@ nextjs-app/public/research/16.*.json
 nextjs-app/public/research/160.*.json
 nextjs-app/public/research/161.*.json
 nextjs-app/public/research/163.*.json
+nextjs-app/public/research/164.*.json
+nextjs-app/public/research/165.*.json
+nextjs-app/public/research/166.*.json
+nextjs-app/public/research/167.*.json
+nextjs-app/public/research/168.*.json
 
 # Worktree directories
 .claude/worktrees/
