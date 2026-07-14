@@ -22,3 +22,9 @@ TRANSLATION_REPORT.json
 
 # Empty placeholder research files
 nextjs-app/public/research/16.*.json
+nextjs-app/public/research/160.*.json
+nextjs-app/public/research/161.*.json
+nextjs-app/public/research/163.*.json
+
+# Worktree directories
+.claude/worktrees/
