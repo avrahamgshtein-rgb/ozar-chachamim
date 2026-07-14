@@ -398,21 +398,69 @@ function GeoMapComponent({ locale }: GeoMapProps) {
         if (Math.abs(a.lat - b.lat) < 0.02 && Math.abs(a.lng - b.lng) < 0.02) return
         drawn.add(key)
 
+        const sourceS = sageMap.get(conn.source)
+        const targetS = sageMap.get(conn.target)
+        if (!sourceS || !targetS) return
+
         // Check if both sages are in filtered set (dim if not)
         const isFiltered = noFilter || (filteredIds.has(conn.source) && filteredIds.has(conn.target))
         const lineOpacity = isFiltered ? 0.4 : 0.08
         const arrowOpacity = isFiltered ? 0.85 : 0.15
 
         const color = CONNECTION_TYPE_COLORS[conn.type] ?? '#c9973a'
-        L.polyline(
+
+        // Draw line with click handler for details popup
+        const linePopupContent = `
+          <div style="font-family:Heebo,sans-serif;min-width:200px;">
+            <p style="font-family:'Frank Ruhl Libre',serif;font-size:12px;font-weight:700;color:#e8d5b0;margin:0 0 8px;">קשר: ${conn.type}</p>
+            <div style="padding:8px;background:rgba(201,151,58,0.1);border-radius:6px;margin-bottom:8px;">
+              <p style="font-size:11px;color:#c4a87d;margin:0 0 4px;"><strong>מ:</strong> ${sourceS.label}</p>
+              ${sourceS.location ? `<p style="font-size:10px;color:#9a8570;margin:0;">📍 ${sourceS.location}</p>` : ''}
+              ${sourceS.birth_year ? `<p style="font-size:10px;color:#7a6550;margin:0;">🎂 נ: ${sourceS.birth_year}</p>` : ''}
+            </div>
+            <div style="padding:8px;background:rgba(201,151,58,0.1);border-radius:6px;">
+              <p style="font-size:11px;color:#c4a87d;margin:0 0 4px;"><strong>ל:</strong> ${targetS.label}</p>
+              ${targetS.location ? `<p style="font-size:10px;color:#9a8570;margin:0;">📍 ${targetS.location}</p>` : ''}
+              ${targetS.birth_year ? `<p style="font-size:10px;color:#7a6550;margin:0;">🎂 נ: ${targetS.birth_year}</p>` : ''}
+            </div>
+          </div>
+        `
+
+        const line = L.polyline(
           [[a.lat, a.lng], [b.lat, b.lng]],
           {
             color, weight: 1.3, opacity: lineOpacity,
             dashArray: conn.type === 'influence' ? '6,4'
               : (conn.type === 'colleague' || conn.type === 'contemporary') ? '2,4' : undefined,
           }
-        ).addTo(group)
-        // ראש חץ בכיוון הקשר (מקור ← יעד)
+        ).bindPopup(linePopupContent, { maxWidth: 240, className: '' })
+         .addTo(group)
+
+        line.on('click', () => line.openPopup())
+
+        // Start marker (origin - square)
+        L.marker([a.lat, a.lng], {
+          icon: L.divIcon({
+            className: '',
+            html: `<div style="width:8px;height:8px;background:${color};border:1.5px solid #0a0806;border-radius:1px;opacity:${isFiltered ? 0.8 : 0.2};box-shadow:0 0 3px ${color}88;"></div>`,
+            iconSize: [8, 8],
+            iconAnchor: [4, 4],
+          }),
+          interactive: false,
+        }).addTo(group)
+
+        // End marker (destination - circle)
+        L.marker([b.lat, b.lng], {
+          icon: L.divIcon({
+            className: '',
+            html: `<div style="width:10px;height:10px;background:${color};border:1.5px solid #0a0806;border-radius:50%;opacity:${isFiltered ? 0.9 : 0.25};box-shadow:0 0 4px ${color}aa;"></div>`,
+            iconSize: [10, 10],
+            iconAnchor: [5, 5],
+          }),
+          interactive: false,
+        }).addTo(group)
+
+        // Middle arrow (direction indicator)
         const t = 0.58
         const pLat = a.lat + (b.lat - a.lat) * t
         const pLng = a.lng + (b.lng - a.lng) * t
