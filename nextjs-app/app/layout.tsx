@@ -38,7 +38,8 @@ export const viewport: Viewport = {
   themeColor: '#0a0806',
   width: 'device-width',
   initialScale: 1,
-  maximumScale: 5,
+  maximumScale: 1,
+  userScalable: false,
 }
 
 // Root layout — locale-specific <html> attributes are set in [locale]/layout.tsx
