@@ -22,3 +22,9 @@ yarn-error.log*
 # TypeScript
 *.tsbuildinfo
 next-env.d.ts
+
+# Test scripts (temporary)
+test-*.js
+
+# Placeholder/empty translation files
+public/research/164.*.json
