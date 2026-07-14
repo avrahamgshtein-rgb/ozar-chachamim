@@ -200,12 +200,13 @@ export function AppShell({ locale, initialTotal, initialLastUpdate }: AppShellPr
 
   return (
     <div
-      className="relative w-full h-dvh overflow-hidden bg-ink-900"
+      className="relative w-full h-screen overflow-hidden bg-ink-900"
+      style={{ height: '100dvh', minHeight: '100vh' }}
       dir={locale === 'he' ? 'rtl' : 'ltr'}
     >
       <Header locale={locale} otherLocale={otherLocale} />
 
-      <main className="absolute inset-0 pt-[var(--header-h,64px)]">
+      <main className="absolute inset-0 top-[var(--header-h,64px)] bottom-0">
         <CanvasArea activeTab={activeTab} locale={locale} />
       </main>
 

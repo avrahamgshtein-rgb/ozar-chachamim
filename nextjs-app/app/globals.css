@@ -322,6 +322,15 @@ button:focus-visible, a:focus-visible, [role="button"]:focus-visible {
   background: var(--ink-600);
 }
 
+/* ── Scrollbar hiding (for tabbar) ─────────────────────────────── */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;      /* Firefox */
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;              /* Chrome, Safari */
+}
+
 /* ── Screen reader only text ──────────────────────────────────── */
 .sr-only {
   position: absolute;

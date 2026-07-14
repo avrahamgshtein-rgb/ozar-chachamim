@@ -21,7 +21,8 @@ export function TabBar({ locale }: TabBarProps) {
         'fixed bottom-4 left-1/2 -translate-x-1/2 z-30',
         'glass rounded-2xl px-2 py-1.5',
         'shadow-glass flex items-center gap-0.5',
-        'max-w-[calc(100vw-2rem)]',
+        'max-w-[calc(100vw-1rem)] overflow-x-auto overflow-y-hidden',
+        'scrollbar-hide scroll-smooth',
       )}
       aria-label={isHe ? 'ניווט ראשי' : 'Main navigation'}
       data-tour="tabs"
