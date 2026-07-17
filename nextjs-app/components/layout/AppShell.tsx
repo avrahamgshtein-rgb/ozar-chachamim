@@ -109,21 +109,6 @@ export function AppShell({ locale, initialTotal, initialLastUpdate }: AppShellPr
           console.log('[AppShell] ↪ using data.json fallback (richer dataset)')
         }
       }
-      // Supplemental datasets — kept in separate files so canonical data.json
-      // stays untouched: biblical figures (ancient eras) + missing giants
-      // (Rashi, Hillel, Besht, Gra...) — Phase 1 added data-supplement-3.json
-      for (const src of ['/data-ancient.json', '/data-supplement.json', '/data-supplement-2.json', '/data-supplement-3.json', '/data-research-links.json']) {
-        try {
-          const extra = await fetch(src).then(r => r.ok ? r.json() : null)
-          if (extra?.nodes?.length || extra?.links?.length) {
-            const existing = new Set(sages.map(s => s.id))
-            sages = [...sages, ...(extra.nodes ?? []).filter((n: { id: string }) => !existing.has(n.id))]
-            connections = [...connections, ...(extra.links ?? [])]
-            console.log(`[AppShell] 🏛 ${src}: +${extra.nodes?.length ?? 0} figures, +${extra.links?.length ?? 0} links`)
-          }
-        } catch { /* optional dataset */ }
-      }
-
       // Field patches for existing sages (e.g. works lists) — locale-independent
       try {
         const patch = await fetch('/data-patch.json').then(r => r.ok ? r.json() : null)
