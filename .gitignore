@@ -15,3 +15,21 @@ node_modules/
 .venv/
 venv/
 claude.exe
+
+# Validation & Documentation (generated, not for commit)
+PERSONAL_AREA_MILESTONE_1_AUDIT_AND_VALIDATION_REPORT.md
+TRANSLATION_REPORT.json
+
+# Empty placeholder research files
+nextjs-app/public/research/16.*.json
+nextjs-app/public/research/160.*.json
+nextjs-app/public/research/161.*.json
+nextjs-app/public/research/163.*.json
+nextjs-app/public/research/164.*.json
+nextjs-app/public/research/165.*.json
+nextjs-app/public/research/166.*.json
+nextjs-app/public/research/167.*.json
+nextjs-app/public/research/168.*.json
+
+# Worktree directories
+.claude/worktrees/
