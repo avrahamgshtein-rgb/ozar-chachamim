@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState, memo } from 'react'
+import 'leaflet/dist/leaflet.css'
 import { ERA_COLORS, ERA_LABELS } from '@/lib/types'
 import { CONNECTION_TYPE_COLORS } from '@/lib/regions'
 import { LOCATION_COORDS, resolveCoords } from '@/lib/locationCoords'
@@ -32,15 +33,6 @@ function GeoMapComponent({ locale }: GeoMapProps) {
     if (mapObjRef.current) { mapObjRef.current.remove(); mapObjRef.current = null; setMapReady(false) }
 
     let mounted = true
-
-    // Inject Leaflet CSS once
-    if (!document.getElementById('leaflet-css')) {
-      const link = document.createElement('link')
-      link.id = 'leaflet-css'
-      link.rel = 'stylesheet'
-      link.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css'
-      document.head.appendChild(link)
-    }
 
     import('leaflet').then(L => {
       if (!mounted || !mapRef.current || mapObjRef.current) return
@@ -429,7 +421,7 @@ function GeoMapComponent({ locale }: GeoMapProps) {
         const line = L.polyline(
           [[a.lat, a.lng], [b.lat, b.lng]],
           {
-            color, weight: 3.5, opacity: lineOpacity,
+            color, weight: 1.2, opacity: lineOpacity,
             dashArray: conn.type === 'influence' ? '6,4'
               : (conn.type === 'colleague' || conn.type === 'contemporary') ? '2,4' : undefined,
           }

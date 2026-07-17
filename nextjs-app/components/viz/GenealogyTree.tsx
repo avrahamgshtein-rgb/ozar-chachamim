@@ -120,54 +120,25 @@ export function GenealogyTree({ locale }: GenealogyTreeProps) {
       })
 
       // ── Force simulation ──────────────────────────────────────────────
-      let sim: any = null
-      try {
-        const eraYOf = (d: any) => {
-          const i = ERA_ORDER.indexOf(d.period as Period)
-          return PAD_TOP + (i >= 0 ? i : 3) * BAND_H + BAND_H / 2
-        }
-
-        // Optimized simulation: Run in batches with requestAnimationFrame
-        // Prevents main-thread blocking while maintaining smooth animations
-        sim = d3.forceSimulation(nodeData as any)
-          .force('link', d3.forceLink(linkData as any).id((d: any) => d.id).distance(55).strength(0.25))
-          .force('charge', d3.forceManyBody().strength(-70))
-          .force('x', d3.forceX((d: any) => {
-            // Hub nodes gravitate toward center, sparse ones spread out
-            const deg = (d as any).degree || 0
-            return LABEL_W + (W - LABEL_W * 2) * (0.1 + 0.8 * (deg > 5 ? 0.5 : Math.random()))
-          }).strength(0.04))
-          .force('y', d3.forceY(eraYOf).strength(0.9))   // strong: keeps nodes in their band
-          .force('collide', d3.forceCollide((d: any) => r(d) + 5).strength(0.85))
-          .alphaDecay(0.025)
-          .stop() // Start paused
-
-        // Warm-up: 20 ticks immediately
-        for (let i = 0; i < 20; i++) {
-          sim.tick()
-        }
-
-        // Run remaining ticks in batches with RAF
-        let tickCount = 20
-        const maxTicks = 200
-        const ticksPerBatch = 5
-
-        const runBatch = () => {
-          for (let i = 0; i < ticksPerBatch && tickCount < maxTicks; i++) {
-            sim.tick()
-            tickCount++
-          }
-          if (tickCount < maxTicks) {
-            requestAnimationFrame(runBatch)
-          }
-        }
-
-        if (tickCount < maxTicks) {
-          requestAnimationFrame(runBatch)
-        }
-      } catch (err) {
-        console.error('[GenealogyTree] D3 simulation error:', err)
+      const eraYOf = (d: any) => {
+        const i = ERA_ORDER.indexOf(d.period as Period)
+        return PAD_TOP + (i >= 0 ? i : 3) * BAND_H + BAND_H / 2
       }
+
+      // Optimized simulation: Run in batches with requestAnimationFrame
+      // Prevents main-thread blocking while maintaining smooth animations
+      const sim: any = d3.forceSimulation(nodeData as any)
+        .force('link', d3.forceLink(linkData as any).id((d: any) => d.id).distance(55).strength(0.25))
+        .force('charge', d3.forceManyBody().strength(-70))
+        .force('x', d3.forceX((d: any) => {
+          // Hub nodes gravitate toward center, sparse ones spread out
+          const deg = (d as any).degree || 0
+          return LABEL_W + (W - LABEL_W * 2) * (0.1 + 0.8 * (deg > 5 ? 0.5 : Math.random()))
+        }).strength(0.04))
+        .force('y', d3.forceY(eraYOf).strength(0.9))   // strong: keeps nodes in their band
+        .force('collide', d3.forceCollide((d: any) => r(d) + 5).strength(0.85))
+        .alphaDecay(0.025)
+        .stop() // Start paused — ticked manually below (driven by RAF, not d3's own timer)
 
       // ── Pan/zoom ──────────────────────────────────────────────────────
       const g = svg.append('g')
@@ -246,7 +217,10 @@ export function GenealogyTree({ locale }: GenealogyTreeProps) {
         })
 
       // ── Tick ──────────────────────────────────────────────────────────
-      sim.on('tick', () => {
+      // sim.stop() means d3 never dispatches its own 'tick' event — the
+      // simulation is driven manually below, so positions must be pushed to
+      // the DOM straight after every sim.tick() call, not via sim.on('tick').
+      const updatePositions = () => {
         // Clamp to era band (hard constraint)
         nodeData.forEach((d: any) => {
           const i = ERA_ORDER.indexOf(d.period as Period)
@@ -269,7 +243,34 @@ export function GenealogyTree({ locale }: GenealogyTreeProps) {
         })
         node.attr('cx', (d: any) => d.x).attr('cy', (d: any) => d.y)
         label.attr('x', (d: any) => d.x).attr('y', (d: any) => d.y)
-      })
+      }
+      // Also wire the 'tick' event: drag start calls sim.restart(), which
+      // reactivates d3's own timer (and *does* dispatch 'tick') until drag end.
+      sim.on('tick', updatePositions)
+
+      // Warm-up: 20 ticks immediately, so nodes are positioned before first paint
+      for (let i = 0; i < 20; i++) sim.tick()
+      updatePositions()
+
+      // Run remaining ticks in batches with RAF (keeps main thread free)
+      let tickCount = 20
+      const maxTicks = 200
+      const ticksPerBatch = 5
+
+      const runBatch = () => {
+        for (let i = 0; i < ticksPerBatch && tickCount < maxTicks; i++) {
+          sim.tick()
+          tickCount++
+        }
+        updatePositions()
+        if (tickCount < maxTicks) {
+          requestAnimationFrame(runBatch)
+        }
+      }
+
+      if (tickCount < maxTicks) {
+        requestAnimationFrame(runBatch)
+      }
     }
 
     build()
