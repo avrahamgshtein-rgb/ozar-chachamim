@@ -109,6 +109,20 @@ export function AppShell({ locale, initialTotal, initialLastUpdate }: AppShellPr
           console.log('[AppShell] ↪ using data.json fallback (richer dataset)')
         }
       }
+      // Supplemental datasets — restored after the sages rebuild: biblical
+      // figures (ancient eras) + giants absent from the master file
+      for (const src of ['/data-ancient.json', '/data-supplement.json', '/data-supplement-2.json', '/data-research-links.json']) {
+        try {
+          const extra = await fetch(src).then(r => r.ok ? r.json() : null)
+          if (extra?.nodes?.length || extra?.links?.length) {
+            const existing = new Set(sages.map(s => s.id))
+            sages = [...sages, ...(extra.nodes ?? []).filter((n: { id: string }) => !existing.has(n.id))]
+            connections = [...connections, ...(extra.links ?? [])]
+            console.log(`[AppShell] 🏛 ${src}: +${extra.nodes?.length ?? 0} figures, +${extra.links?.length ?? 0} links`)
+          }
+        } catch { /* optional dataset */ }
+      }
+
       // Field patches for existing sages (e.g. works lists) — locale-independent
       try {
         const patch = await fetch('/data-patch.json').then(r => r.ok ? r.json() : null)

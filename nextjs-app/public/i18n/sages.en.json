@@ -67,10 +67,6 @@
     "label": "Moses (Moshe Rabbenu)",
     "bio": "Master of the prophets and receiver of the Torah at Sinai. Led Israel out of Egypt, received the Tablets, and transmitted the Torah to all Israel — head of the chain of transmission."
   },
-  "anc-5": {
-    "label": "Aaron the High Priest",
-    "bio": "The first High Priest, Moses' brother and spokesman. 'Loving peace and pursuing peace, loving people and drawing them near to the Torah.'"
-  },
   "389": {
     "label": "Deborah the Prophetess",
     "bio": "Prophetess and judge who sat beneath the palm of Deborah. Led Israel in the war against Sisera and sang the song of victory."
@@ -90,14 +86,6 @@
   "anc-10": {
     "label": "Isaiah the Prophet",
     "bio": "One of the greatest literary prophets. His prophecies of destruction and consolation — 'Comfort, comfort My people' — accompany Israel through the generations."
-  },
-  "sup-1": {
-    "label": "Hillel the Elder",
-    "bio": "Nasi of Israel and head of Beit Hillel. Came up from Babylonia; placed humility and love at the center: 'What is hateful to you, do not do to your fellow — that is the whole Torah.'"
-  },
-  "sup-2": {
-    "label": "Shammai the Elder",
-    "bio": "Head of the court and of Beit Shammai, Hillel's disputant. Ruled strictly out of an ideal of perfection, and taught: 'Say little and do much.'"
   },
   "sup-3": {
     "label": "Rabban Yohanan ben Zakkai",
@@ -658,5 +646,17 @@
   "sup-89": {
     "label": "Rabbi Zusha of Annipoli",
     "bio": "Brother of the Rebbe of Lizhensk, exemplar of Hasidic devotion. Known for his humble spirituality and deep integration of Hasidic teachings into daily life. His disciples transmitted his teachings with reverence."
+  },
+  "521": {
+    "label": "Aaron the High Priest",
+    "bio": "The first High Priest, Moses' brother and spokesman. 'Loving peace and pursuing peace, loving people and drawing them near to the Torah.'"
+  },
+  "505": {
+    "label": "Hillel the Elder",
+    "bio": "Nasi of Israel and head of Beit Hillel. Came up from Babylonia; placed humility and love at the center: 'What is hateful to you, do not do to your fellow — that is the whole Torah.'"
+  },
+  "504": {
+    "label": "Shammai the Elder",
+    "bio": "Head of the court and of Beit Shammai, Hillel's disputant. Ruled strictly out of an ideal of perfection, and taught: 'Say little and do much.'"
   }
 }

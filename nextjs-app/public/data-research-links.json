@@ -1,0 +1,35 @@
+{
+ "nodes": [],
+ "links": [
+  {
+   "source": "sup-7",
+   "target": "99",
+   "type": "teacher",
+   "evidence_source": "מחקר: The Theological and Educational Legacy of Rabbi Chaim of Volozhin — תלמידו המובהק של הגר\"א ומייסד ישיבת וולוז'ין"
+  },
+  {
+   "source": "4",
+   "target": "483",
+   "type": "influence",
+   "evidence_source": "מחקר: The Sovereign of the Wilderness — רבי עקיבא תמך בבר כוכבא וראה בו את המלך המשיח"
+  },
+  {
+   "source": "308",
+   "target": "301",
+   "type": "family",
+   "evidence_source": "מחקר: הרי\"ד הזקן / הריא\"ז — הריא\"ז נכדו של הרי\"ד וממשיך שיטתו"
+  },
+  {
+   "source": "68",
+   "target": "327",
+   "type": "teacher",
+   "evidence_source": "מחקר: Rabbi Joseph Taitazak — רבו של רבי שלמה אלקבץ בסלוניקי"
+  },
+  {
+   "source": "161",
+   "target": "151",
+   "type": "contemporary",
+   "evidence_source": "מחקר: André Neher — בני דור אחד באסכולת פריז של המחשבה היהודית"
+  }
+ ]
+}
