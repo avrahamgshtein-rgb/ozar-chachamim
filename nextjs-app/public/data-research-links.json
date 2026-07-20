@@ -2,12 +2,6 @@
  "nodes": [],
  "links": [
   {
-   "source": "sup-7",
-   "target": "99",
-   "type": "teacher",
-   "evidence_source": "מחקר: The Theological and Educational Legacy of Rabbi Chaim of Volozhin — תלמידו המובהק של הגר\"א ומייסד ישיבת וולוז'ין"
-  },
-  {
    "source": "4",
    "target": "483",
    "type": "influence",
