@@ -2,618 +2,69 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-# אוצר חכמים — Ozar Chachamim
+## Repository layout — read this first
 
-## Project Purpose
+This repo contains **two generations of the same project**. Only one is live:
 
-**English:** A structured knowledge base about Jewish sages — their worlds, thought, historical context, and relationships — with an interactive network visualization website serving yeshiva students and graduates.
+- **`nextjs-app/`** — the active, deployed app (Next.js 15 + React 19). `.github/workflows/deploy.yml` builds and deploys *this* directory to Vercel on every push to `main`. All feature work happens here.
+- **Repo root** (everything outside `nextjs-app/`) — a legacy vanilla-JS/Supabase prototype (`index.html`, `graph.js`, `styles-graph.css`, dozens of one-off `*.md` status reports, migration scripts, scratch JSON exports). It is **not deployed** (its `vercel.json`/`package.json` are stale) and should be treated as historical reference only, not a place to add features.
+- **`data/`** (repo root) — source-of-truth spreadsheet: `חכמי ישראל.csv` / `.xlsx`, plus `sources/**/*.docx` research documents. This is where a human updates sage data; `nextjs-app/public/data.json` is *generated/curated from* this file, not the other way around.
+- **`supabase/`** (repo root) — SQL migrations for a separate "Personal Area" feature (user profiles, quotas). `migrations/` is applied by the Supabase CLI in filename order; `rollbacks/` and `tests/` are kept out of the migrations directory on purpose so the CLI doesn't auto-run them. As of this writing only Milestone 1 (schema + RLS) exists — no API routes or UI consume it yet.
 
-**Hebrew:** בסיס ידע מובנה על חכמי ישראל לדורותיהם — עם אתר ויזואליזציה דינמית של קשרים בין חכמים — המיועד לתלמידי ישיבות ובוגריהן.
+Everything below refers to `nextjs-app/` unless stated otherwise.
 
-## Quick Start: Running the Website (Live Supabase Backend)
+## Commands
 
-**Step 1: Backend Setup (Supabase)**
-```bash
-# 1. Create project: https://app.supabase.com
-# 2. Create tables: Paste supabase-schema-v3.sql in SQL Editor
-# 3. Import data:
-python migrate_to_supabase_v3.py
-```
-
-**Step 2: Frontend Configuration**
-```bash
-# 1. Copy template: cp config.example.js config.js
-# 2. Get credentials from https://app.supabase.com
-#    Settings > API > "Project URL" + "anon public" key
-# 3. Paste into config.js
-```
-
-**Step 3: Run Development Server**
-```bash
-python -m http.server 8080
-# Open http://localhost:8080
-```
-
-**Step 4: Verify Console (F12)**
-```
-✅ 🔌 [Supabase] Connecting to ulluacifirzywhmzkvkr.supabase.co
-✅ 📚 Loading sages from Supabase...
-✅ 🔗 Loading connections from Supabase...
-✅ [AppInit] Single Source Ready: 323 nodes + 25 validated edges
-✅ 🔍 [SearchIndex] Built index with 2,847 unique tokens
-✅ Event: supabaseReady fired
-```
-
-## Project Architecture
-
-### Frontend Stack
-- **UI**: `index.html` - Single-page app with 5 tabs (responsive design, Hebrew RTL)
-  - Tab 1: **רשת קשרים** (Graph) — D3.js force-directed network
-  - Tab 2: **גיאוגרפיה** (Map) — Leaflet.js with sage markers + migration paths
-  - Tab 3: **מסורות** (Traditions) — Sage groupings by era
-  - Tab 4: **רעיונות** (Ideas) — Thematic clustering
-  - Tab 5: **שלשלת הקבלה** (Timeline) — Chronological view by era bands
-- **Visualization**: D3.js v7 (force-directed graph, dashed migration polylines, timeline bands)
-- **Maps**: Leaflet.js (geographic markers by coordinates, multi-point migration paths)
-- **Data**: 323 sages loaded from Supabase + 18 with geographic migration paths
-- **Styling**: `styles-graph.css` + inline CSS in `index.html` + responsive breakpoints (desktop → tablet → mobile with scroll support)
-
-### Data Files
-- **`data.json`** - Master dataset: `nodes[]` (sages) + `links[]` (relationships). Update here for new sages/connections.
-- **`site-data/חכמי ישראל.xlsx`** - Excel source (992 sage candidates). Used to generate `data.json` via `export_excel.py`.
-- **`sages/*.md`** - Markdown profiles for 44 sages (canonical source for bios). Not currently used by website; kept for archival.
-- **`notes/<sage-slug>/`** - Rich structured notes (lesson_plan, questions, related_figures) for 5 sages.
-
-### Backend (Future: Supabase)
-- **`import_to_supabase.py`** (or `import_simple.py`) - Import `data.json` to Supabase REST API
-- **`supabase-schema-v2.sql`** - Database schema (5 tables: sages, research_content, user_history, bookmarks, profiles)
-- See "Supabase Integration" section below.
-
-## Context Budgeting: What Claude Can Access & Do
-
-**This section clarifies exactly what Claude Code can read, write, and act on (from Session 1 of Claude Workshop).**
-
-### Source Budget (What Claude may read)
-
-| Source | Access | Notes |
-|--------|--------|-------|
-| `sages/*.md` | ✅ Full read | All 44 sage profiles |
-| `notes/*/` | ✅ Full read | Lesson plans, questions, posts (5 sages) |
-| `templates/` | ✅ Full read | Sage profile template |
-| `site-data/חכמי ישראל.xlsx` | ✅ Metadata only | Excel headers, column names (not full content) |
-| `sources/**/*.docx` | ⚠️ Excerpts only | Claude may read & summarize, NOT export full text |
-| `CLAUDE.md`, `MEMORY.md`, `INSTRUCTION.md` | ✅ Full read | Project rules & workflows |
-| `.gitignore`, `config.js` | ❌ No read | Security credentials (never expose) |
-
-### Action Budget (What Claude may do)
-
-| Action | Permission | When |
-|--------|------------|------|
-| Create markdown files | ✅ Yes | In `sages/`, `notes/*/` (you approve first) |
-| Update markdown cross-references | ✅ Yes | Adding `[[sage-slug]]` links (you approve) |
-| Query Supabase | ✅ Yes | SELECT only (read-only queries) |
-| Insert sage to Supabase | ⚠️ With approval | Only after you explicitly approve |
-| Update connections in Supabase | ⚠️ With approval | Only after you explicitly approve |
-| Delete files | ❌ No | Never delete without your explicit instruction |
-| Send research documents | ❌ No | Never email/export full research text |
-| Modify config.js | ❌ No | Security risk |
-
-### Output Budget (What Claude must produce)
-
-| Output Type | Required Format | Max Scope | Notes |
-|-------------|-----------------|-----------|-------|
-| Network graph redesign | 3 files: graph.js, index.html, styles-graph.css | 500 lines total new code | Connected Papers style: search bar + connection highlighting + zoom |
-| Search feature | Inline function in graph.js | 80 lines max | Real-time sage filtering by name (Hebrew/English) |
-| Connection highlighting | D3 transition + opacity logic | 120 lines max | On hover: bright connected nodes, 20% opacity non-connected |
-| Zoom controls | 3 buttons (+/- /reset) + d3.zoom | 60 lines max | Smooth zoom with 0.5x-3x bounds |
-| Sidebar left/right | HTML + CSS only | 200 lines total | No JavaScript refactor needed |
-| New sage profile | Markdown | Follow `templates/sage-profile.md` | Must follow `templates/sage-profile.md` |
-| Lesson plan | Markdown + Hebrew | 45 min: 5 intro + 30 main + 10 discussion | 45 min: 5 intro + 30 main + 10 discussion |
-| Migration path | JSON | `{"from": "...", "to": "...", "intermediate": [...]}` | `{"from": "...", "to": "...", "intermediate": [...]}` |
-| Connections | SQL INSERT | With human approval before executing | With human approval before executing |
-| Markdown updates | Diff preview | Show changes before committing | Show changes before committing |
-
-**Network Graph Redesign (Current Priority)**
-- Do NOT refactor entire graph.js engine
-- Add features as isolated, testable functions
-- Each commit = 1 feature (search OR highlighting OR zoom)
-- Test in browser console before commit
-
-### Time/Token Budget (Estimated per task)
-
-- **Add new sage:** 5,000–10,000 tokens (2–3 hours of work)
-- **Generate lesson plan:** 3,000–5,000 tokens (1 hour of work)
-- **Extract migration:** 2,000–3,000 tokens (30 min of work)
-- **Create connection:** 1,000 tokens (15 min of work)
-- **Network graph feature (search/highlight/zoom):** 2,000–4,000 tokens per feature (30 min–1 hr)
-
-If a task exceeds budget, break into smaller steps and use MEMORY.md to resume.
-
-### Definition of Done (Current Network Redesign)
-
-For each feature (search / connection highlighting / zoom controls):
-
-✅ **Code**
-- [ ] Feature added to graph.js in isolated function
-- [ ] No breaking changes to existing force-layout simulation
-- [ ] Console logs show feature state (`🔍 Search filtered: N sages`)
-
-✅ **Testing (in browser)**
-- [ ] F12 console shows no errors
-- [ ] Visual effect visible on screen
-- [ ] Works with RTL text (Hebrew sage names)
-
-✅ **Version control**
-- [ ] Committed to git branch with feature name
-- [ ] Single feature per commit (not "redesign-all-in-one")
-- [ ] Pushed to origin
-
-✅ **User verification**
-- [ ] You tested feature on localhost:8080
-- [ ] Behavior matches Connected Papers reference
-- [ ] Ready for Vercel deploy
-
-⏭️ **Next feature** → Break → Plan new feature → Repeat
-
----
-
-## Current Session Constraints (Network Graph Redesign — Connected Papers Style)
-
-**Goal:** Redesign Tab 1 (רשת קשרים) to match Connected Papers layout + functionality
-
-**Must Read (Context):**
-- `graph.js` — D3.js force-directed network (existing implementation)
-- `index.html` — Tab structure, sidebar HTML (existing)
-- `styles-graph.css` — Responsive CSS, color mappings (existing)
-
-**Must NOT Change:**
-- Core force simulation (d3.forceSimulation, forces)
-- Data loading from Supabase (keep selectNode() intact)
-- PDF export function (exportSagePDF)
-- Other 4 tabs (map, traditions, ideas, timeline)
-
-**Must Implement (in order):**
-1. **Search bar** at top of graph container → real-time sage filter
-2. **Connection highlighting** on hover → bright connected, 20% opacity rest
-3. **Zoom controls** (+/- buttons + reset) → d3.zoom integration
-4. **Improved node styling** → larger nodes (24px), better colors, glow on hover
-5. **Edge colors** by connection type (teacher/student/colleague/etc.)
-
-**Constraints:**
-- Do not refactor entire graph.js
-- Add as isolated, modular functions
-- Test each feature independently
-- Commit after each feature
-- No breaking changes to existing tabs
-
-**Output Format:**
-- Code: Modified graph.js + index.html + styles-graph.css
-- Test: Console logs + visual verification
-- Deploy: Push to git, trigger Vercel rebuild
-
----
-
-## Privacy & Safety Rules (Session 1 Framework)
-
-**Golden rule:** Privacy First — Always.
-
-### The Four Principles
-
-1. **Start read-only**
-   - Before any action, assume you have NO write permissions
-   - Ask: "May I read this file?"
-   - Ask: "May I create this file?"
-
-2. **Limit sources**
-   - Specify exactly which files Claude may access
-   - Don't say "use anything in sources/" — list specific files
-   - For research documents: "Read only the migration section, not biographical details"
-
-3. **Use demo data for practice**
-   - Never load sensitive/personal research for testing
-   - Practice with template files first
-
-4. **Review before acting**
-   - Before sending: Ask permission
-   - Before deleting: Ask permission
-   - Before editing: Ask permission
-   - Before labeling: Ask permission
-   - Before moving files: Ask permission
-   - Before scheduling: Ask permission
-
-### Specific to Research Documents (`sources/**/*.docx`)
-
-**⚠️ Important:** Research files contain biographical research that may include sensitive information.
-
-**Safe practices:**
-- ✅ Claude can: Read, summarize, extract key facts (dates, locations, book titles)
-- ✅ Claude can: Extract migration paths (from → to → intermediate waypoints)
-- ⚠️ Claude should: For modern/living sages, treat personal details as sensitive
-- ❌ Claude cannot: Export full biographical text
-- ❌ Claude cannot: Archive research documents to external services
-- ❌ Claude cannot: Send full text via email/cloud storage
-
-**Before Claude extracts research:**
-- Confirm: "Extract ONLY: dates, locations, major works, migration paths. No personal details or full-text export."
-
-### Specific to Supabase (`sages` table, `connections` table)
-
-**Data integrity rules:**
-- Before INSERT: Validate all FK constraints (referenced sages must exist)
-- Before INSERT: Check for duplicates (is this sage already in database?)
-- Before UPDATE: Confirm the sage ID exists
-- Before DELETE: Ask for explicit human approval
-
-**Valid values (must match these exactly):**
-- `period`: second-temple, tannaim, amoraim, geonim, rishonim, acharonim, modern
-- `connection_type`: student, influence, oppose, colleague, predecessor, teacher, contemporary
-
-### Specific to Hebrew RTL
-
-**Bilingual requirement:**
-- All labels must include Hebrew + English: "Rambam — הרמב״ם"
-- Use proper Hebrew abbreviations: "ר״י" (Rabbi Yitzhak), NOT "RI"
-- Gematria marks (גרשיים) for abbreviations: "ש״ס" (Shas), not "SHS"
-- Never assume English names match Hebrew transliteration
-
----
-
-## MEMORY.md & INSTRUCTION.md (Session 2 Framework)
-
-### MEMORY.md (Claude maintains)
-Used to preserve context across sessions. Stores:
-- **Recurring facts about you** (preferences, workflows, past decisions)
-- **Project-specific context** (what's been tried, what works, blockers)
-- **Decisions made** (why certain architectures were chosen)
-
-### INSTRUCTION.md (You maintain)
-Rules that live longer than a single session. Should include:
-- **Persistent workflows** (how to deploy, test, review)
-- **Team conventions** (coding style, naming, commit patterns)
-- **Escalation paths** (who to ask for which decisions)
-- **Boundaries** (what Claude cannot touch)
-
-### How to Use Both
-1. **CLAUDE.md**: Immediate task constraints (this session's redesign)
-2. **INSTRUCTION.md**: Project-wide rules (all future sessions)
-3. **MEMORY.md**: Session learnings (what worked, blockers, decisions)
-
-**Example INSTRUCTION.md entry:**
-```
-## Deployment Workflow
-1. Test locally: `python -m http.server 8080`
-2. Commit to feature branch: `git checkout -b feature/name`
-3. Verify console (F12): no errors, feature logs present
-4. Push: `git push origin feature/name`
-5. Vercel auto-deploys from main only
-6. Manual trigger: https://vercel.com/ozar-chachamim/settings
-```
-
-**Example MEMORY.md entry:**
-```
-## Session 3 - Network Graph Redesign
-- Found: Hover handlers were unreachable (after return statement)
-- Fixed: Moved event handlers before return, added console logs
-- Learning: Always verify code path with console.log before debugging UI
-- Next: Test zoom controls on mobile
-```
-
----
-
-## Common Development Tasks
-
-### Update Sage Data
-To add or modify a sage in the network:
-
-1. Edit `data.json` directly (add node with `id`, `label`, `group`, `period`, `location`, `field`, `bio`)
-2. Add relationships by extending `links[]` array (source → target + type)
-3. Refresh browser — changes load immediately
-
-Example node:
-```json
-{
-  "id": "45",
-  "label": "רבי דוד דיכובסקי",
-  "group": "modern",
-  "period": "1920-1995",
-  "location": "Eretz Israel",
-  "field": "Ethics",
-  "bio": "20th-century ethicist..."
-}
-```
-
-### Export Data from Excel
-If updating from `site-data/חכמי ישראל.xlsx`:
+Run from `nextjs-app/`:
 
 ```bash
-python export_excel.py
-# Generates updated sages.json (992 rows)
-
-python export_research.py
-# Extracts text from *.docx research files → research.json
+npm run dev          # Next.js dev server (localhost:3000)
+npm run build         # production build — do this before pushing anything touching data.json,
+                      # AppShell.tsx, or the viz components; it catches type errors tsc alone can miss
+npm run start         # serve the production build locally (useful for testing Leaflet/Supabase fallback timing)
+npm run type-check    # tsc --noEmit
 ```
 
-Then manually merge relevant rows into `data.json`.
+There is no test suite or linter wired up (`eslint: { ignoreDuringBuilds: true }` in `next.config.ts`, no jest/vitest/playwright in `package.json`). `npm run build` + `npm run type-check` are the only automated checks — treat a clean build as the bar for "done."
 
-### Update Front End
-- **Layout/Typography**: Edit inline `<style>` in `index.html`
-- **Tab Navigation**: Modify `.tab-btn` section and corresponding `.main-area` divs
-- **Sidebar Details**: Adjust `.sidebar-content` HTML structure in JavaScript `selectNode()` function
+Deployment is automatic: push to `main` → GitHub Action (`.github/workflows/deploy.yml`) builds `nextjs-app/` and deploys to Vercel. There's no staging branch; `main` is production.
 
-## Supabase Integration (LIVE — Full Dynamic Backend)
+## Architecture
 
-### Setup (First Time)
+### Data pipeline: CSV → data.json → app
 
-**Backend Database Setup:**
-```bash
-# 1. Create Supabase project at https://app.supabase.com
-# 2. Go to SQL Editor and run supabase-schema-v3.sql
-# 3. Import 323 sages + 25 connections:
-python migrate_to_supabase_v3.py
-# This validates FK constraints and imports from "חכמי ישראל.xlsx"
-```
+1. **`data/חכמי ישראל.csv`** is the canonical source. Each row has a `מזהה` (id) column — **this id is the stable identity key across the entire system**: it's reused verbatim as the sage's `id` in `data.json`, the filename for research docs (`public/research/<id>.json`), and the key in `data-patch.json`. Never renumber an existing id when regenerating data — that breaks research file links and any external references. The same CSV id can appear on multiple rows (one person can have several "episode" rows with different content angles); dedupe by name, not by id, when rebuilding.
+2. **`public/data.json`** (`{ nodes: Sage[], links: Connection[] }`) is the canonical dataset consumed by the app. Raw node fields (`era`, `era_key`, `era_label`, `central_idea`, `chapter_type`, comma-string `tags`) get remapped to the `Sage` type by `lib/serverData.ts` (server) and `lib/supabase.ts::fetchLocalGraphData` (client) — the two mappers must stay in sync if you add a field.
+3. **`era_key`** must be one of the 11 `Period` values in `lib/types.ts` (`patriarchs…modern`). In practice almost everything pre-rabbinic gets bucketed into `second-temple` — there's no dedicated UI treatment for `patriarchs`/`exodus`/`judges`/`kings` in the main dataset; those only appear via per-id overrides in `data-patch.json` (see below). When mapping a new/free-text era label to a key, check `data.json` first for an existing `era_label → era_key` precedent before guessing.
+4. **`data-patch.json`** applies small field overrides (works lists, more precise `period`/`birth_year`/`death_year` for a handful of biblical figures) *client-side only*, in `AppShell.tsx`. It is **not** applied by `lib/serverData.ts`, so the individual sage page and the graph/map/timeline tabs can show slightly different period classifications for the same person — this is a known asymmetry, not a bug to silently "fix" by cross-wiring the two loaders.
+5. `data-supplement*.json`, `data-ancient.json`, and `data-research-links.json` **do not exist anymore** — they held sages added by hand in past sessions without a source row in the CSV, and were deleted when the dataset was rebuilt from the master file. Do not recreate this pattern; every sage must trace back to a CSV row.
+6. Research documents: `public/research/<id>.json` (Hebrew, canonical) plus optional `<id>.en.json` / `<id>.ru.json` translations, each an array of `{ title, source_file, word_count, content }`. Served two ways: `ResearchSection.tsx` fetches `/research/<id>.<locale>.json` directly (static file, falls back to Hebrew on 404), and `app/api/research/[id]/route.ts` exists as an alternate lazy-loading path with a 1-day cache header. Translations are produced by an offline script against the Claude API (see the `nextjs-app/public/research/` directory) — never invent a translation by hand-editing content, and never delete/gitignore a translation file without explicit approval, since the two locale files are the deliverable of a paid batch job.
 
-**Frontend Configuration:**
-```bash
-# 1. Get your credentials from https://app.supabase.com
-#    → Select your project → Settings > API
-#    → Copy "Project URL" and "anon public" key
+### Client data loading has two independent sources that can disagree
 
-# 2. Set up local config:
-cp config.example.js config.js
+`AppShell.tsx`'s bootstrap effect fetches from **Supabase first** (`sages_with_stats` / `connections_with_names` tables), and only falls back to the static `data.json` when Supabase returns fewer than 300 sages or 100 connections. In practice Supabase has historically lagged behind `data.json` (fewer sages/connections than the file), so the fallback fires and `data.json` wins — this is intentional graceful-degradation, not a race condition to "fix" by removing the Supabase call. If you change the sage/connection count meaningfully in `data.json`, remember Supabase is a *separate, independently-populated* datastore that this logic does not write back to.
 
-# 3. Edit config.js and paste your credentials:
-# export const SUPABASE_CONFIG = {
-#   url: 'https://your-project.supabase.co',
-#   anonKey: 'sb_publishable_...'
-# }
+The individual sage page (`app/[locale]/sage/[id]/page.tsx`) is server-rendered and reads **only** `data.json` via `lib/serverData.ts` (bundled at build time, not fetched over HTTP — `public/` isn't readable via `fs` in Vercel's serverless functions). It never touches Supabase.
 
-# ⚠️ config.js is in .gitignore — never commit it
+### Locale routing
 
-# 4. Start server:
-python -m http.server 8080
+Three locales (`he`/`en`/`ru`), Hebrew is canonical/default. `middleware.ts` redirects bare paths to `/<locale>/...` based on `Accept-Language`, and passes through anything already locale-prefixed. `app/[locale]/layout.tsx` sets `lang`/`dir` and locale-specific metadata. Non-Hebrew content is an **overlay**, not a translation of the dataset: `lib/contentOverlay.ts` fetches `public/i18n/sages.<locale>.json` and merges translated fields (`label`, `bio`, `core_concept`, `field`, `location`) over the Hebrew `Sage` objects at load time; sages without an overlay entry silently keep their Hebrew label unless a `name_en` exists.
 
-# 5. Open browser:
-# http://localhost:8080
-# 
-# Check browser console (F12) for:
-# ✅ 🔌 [Supabase] Connecting to...
-# ✅ 📚 Loading sages from Supabase...
-# ✅ 🔗 Loading connections from Supabase...
-# ✅ [AppInit] Single Source Ready: 323 nodes + 25 validated edges
-```
+### Visualization tabs
 
-### Data Flow (Live Supabase)
-```
-1. Browser loads index.html
-   ↓
-2. index.html imports supabase-client.js
-   - supabase-client.js imports config.js (credentials)
-   - Supabase client initialized with URL + anon key
-   ↓
-3. DOMContentLoaded event fires
-   - Calls initializeApp() from supabase-client.js
-   ↓
-4. initializeApp() executes:
-   ├─ loadSages() → SELECT * FROM sages_with_stats
-   │  └─ Returns 992 sages (if available) with era, period_order, tags, core_concept
-   │
-   ├─ loadConnections() → SELECT * FROM connections_with_names
-   │  └─ Returns all relationships (source_id → target_id)
-   │
-   ├─ Defensive Validation:
-   │  ├─ Build Set<sageId> from loaded sages
-   │  ├─ Filter connections: discard any where source/target not in Set
-   │  └─ Log invalid connections as warnings
-   │
-   ├─ Transform to window.graphData:
-   │  ├─ nodes[] = 323+ sages with all fields
-   │  ├─ links[] = 25+ validated connections
-   │  └─ sageMap = Map<id, sage> for O(1) lookup
-   │
-   └─ Emit 'supabaseReady' event
-      ↓
-5. All 5 tabs listen for 'supabaseReady':
-   ├─ graph.js initializes D3 force graph
-   ├─ initMap() loads Leaflet map with markers
-   ├─ buildTraditions() creates era-based groups
-   ├─ buildIdeas() builds thematic clusters
-   └─ buildTimeline() renders שלשלת הקבלה chronological view
-```
+`AppShell.tsx` orchestrates seven tabs (`Tab` type in `lib/types.ts`): network graph, geography map, traditions, table, timeline, genealogy tree, about. Two different mounting strategies are in play — worth knowing before debugging a "tab shows nothing" report:
+- **Graph and map tabs stay mounted permanently**, just toggled via a `hidden`/`block` CSS class, so their data-loading `useEffect`s fire once on initial app load regardless of which tab is active.
+- **Traditions, timeline, table, genealogy, about are conditionally rendered** (`{activeTab === 'x' && <Component/>}`) — they mount fresh each time the user switches to them.
 
-### Configuration Files
+`GeoMap.tsx` (Leaflet) depends on its container having non-zero size at init; because it's always-mounted it can initialize while `display:none`, so it explicitly calls `map.invalidateSize()` on an `activeTab`-change effect to recover. `GenealogyTree.tsx` and `NetworkGraph.tsx` drive their D3 force simulations manually (`sim.stop()` + explicit `sim.tick()` in an RAF loop, not the automatic timer) for main-thread-friendly batching — if you touch simulation code here, remember `d3-force` only dispatches its `'tick'` event when the simulation runs its own timer, **not** on manual `.tick()` calls, so any per-tick DOM update must be invoked directly, not just registered via `.on('tick', …)`.
 
-**`config.example.js`** (Template)
-- Copy this to `config.js` and fill in your credentials
-- Includes detailed comments about security
-- Shows where to find Supabase credentials
+### State
 
-**`config.js`** (Production — NOT in git)
-- Contains your actual Supabase URL and anon key
-- Added to `.gitignore` to prevent accidental commits
-- Must be created before running the app
+Single Zustand store (`store/useAppStore.ts`): sages/connections/sageMap, selection, active tab, theme (persisted to `localStorage`), and filter state (period/region/field/free-text search via `lib/search.ts`'s Hebrew-aware fuzzy matcher — nikud/gershayim/final-letter insensitive). Filtering is recomputed into `filteredSages` on every filter-setter call rather than derived lazily.
 
-**`.env.example`** (Documentation only)
-- Shows Vite environment variable format for future migration
-- Not used by current plain HTML/JS app
-- Reference if migrating to Vite/Next.js/React
+### Content conventions (data, not code, but frequently touched together)
 
-### Security & RLS
-
-**Anon Key Philosophy:**
-- The anonymous key is intentionally public (meant for browser clients)
-- All access control happens server-side via Row-Level Security (RLS)
-
-**RLS Policies (PostgreSQL):**
-```sql
--- Public: Anyone can read sages + connections
-SELECT on sages, connections, research_content → ✅ Public
-
--- Authenticated only: Bookmarks + history
-INSERT/UPDATE on bookmarks, view_history → ✅ If user_id matches
-
--- Never exposed:
-SELECT on secrets, api_keys, admin_tables → ❌ Forbidden
-```
-
-**Safe to Expose:**
-✅ Anon key in frontend code (read-only via RLS)
-✅ Supabase project URL in frontend code (public info)
-
-**Never Expose:**
-❌ Secret key (admin role) — keep on backend only
-❌ Service role key — never in browser code
-❌ Master password — keep in secure vault only
-
-## Timeline View (שלשלת הקבלה)
-
-The 5th tab shows all 323 sages in 7 horizontal era bands, positioned left=oldest → right=newest.
-
-**Configuration** (in `index.html` `buildTimeline()` function):
-- `LANE_HEIGHT: 130` — vertical space per era band (increased from 110 for better spacing)
-- `STAGGER_ROWS: 3` — max 3 vertical rows per column bucket (prevents overlap)
-- `MIN_SAGE_WIDTH: 3000` — minimum SVG width ensures ~107 columns × 3 rows = 321 slots for 323 sages
-- Era colors match the graph view's color map
-
-**Key features**:
-- Hover reveals Hebrew name label + glow effect
-- Click opens sidebar (same as graph view)
-- Search filters dots by opacity
-- Escape key closes sidebar
-- RTL-aware (scroll starts at left = oldest)
-
-## PDF Export
-
-Clicking "הדפס / Export PDF" in the sidebar opens a new tab with the sage's complete profile formatted for printing.
-
-**PDF includes**:
-- Name, era, region, primary field
-- Full biography + core concept
-- Migration path (from → intermediate waypoints → to)
-- Related sages with connection types (student, influence, colleague, etc.)
-- Research text (if available in research_content table)
-- Embedded print CSS (dark-brown aesthetic, Frank Ruhl Libre serif, Hebrew RTL)
-
-**Implementation**: Uses `window.print()` — no external PDF library. Browser's "Save as PDF" button handles the output.
-
-## Content Conventions
-
-- **Sage slugs**: English snake_case (e.g., `rabbi-meir-tanna`, `rambam`)
-- **Period keys**: `second-temple`, `tannaim`, `amoraim`, `geonim`, `rishonim`, `acharonim`, `modern`
-- **Link types**: `student`, `influence`, `oppose`, `colleague`, `predecessor`, `teacher`, `contemporary`
-- **Hebrew + English**: Site runs in RTL; all labels bilingual where possible
-- **Era colors** (used in graph, map, timeline, and PDF):
-  - second-temple: #8e44ad | tannaim: #e74c3c | amoraim: #e67e22
-  - geonim: #f1c40f | rishonim: #27ae60 | acharonim: #2980b9 | modern: #1abc9c
-
-## Session 2 Framework: MEMORY.md, INSTRUCTION.md & Claude Code
-
-###
-## Session 3 Framework: Skills, Agents & Deployment
-
-### Skills Framework
-**Skills** are reusable workflows packaged for sharing.
-
-**Potential Skills for Ozar Chachamim:**
-- Search & Filter Sage Data
-- Generate Lesson Plans
-- Extract Migration Paths
-- Create Connections Graph
-- Batch Import Sages
-- Export Timeline as Image
-
-### Agents Framework
-**Agents** are autonomous systems that take actions without manual intervention.
-
-**Potential Agents for Ozar Chachamim:**
-- **Research Aggregator** — Auto-summarize source documents, extract dates/locations
-- **Connection Validator** — Check FK constraints, detect invalid relationships
-- **Migration Path Tracer** — Extract location sequences from research documents
-- **Lesson Plan Generator** — Create 45-min study structures with intro/main/discussion
-- **Sage Profile Builder** — Generate markdown files from structured data
-
-**Agent Requirements:**
-- Must preserve Privacy First principle (no exporting sensitive research)
-- Must log all actions (audit trail)
-- Must have human approval before persistent writes
-- Must include error recovery and rollback
-
-### Deployment Strategy
-Three deployment options:
-
-**1. Vercel (Recommended)**
-- Zero-config deployment from Git
-- Auto-builds on `git push main`
-- Free tier supports 100GB bandwidth/month
-- Built-in analytics + error tracking
-
-**2. Custom Server (Full Control)**
-- Node.js + Express or Python Flask
-- Self-hosted PostgreSQL for Supabase
-- Suitable for enterprise deployments
-- Requires DevOps infrastructure
-
-**3. GitHub Pages (Static Only)**
-- Works for data.json + index.html only
-- No Supabase backend
-- Suitable for offline/demo versions
-- Simplest to set up
-
-**Pre-Deployment Checklist:**
-- [ ] Authentication configured (if needed)
-- [ ] Rate limiting enabled
-- [ ] Error tracking set up (Sentry, LogRocket)
-- [ ] Analytics enabled (if desired)
-- [ ] Backup strategy documented
-- [ ] Monitoring + alerts configured
-- [ ] SSL/HTTPS enforced
-- [ ] CORS policy set properly
-- [ ] .env secrets secured (never in git)
-- [ ] Test all 5 tabs on production URL
-a
-
-**Agent Requirements:**
-- Must preserve Privacy First principle (no exporting sensitive research)
-- Must log all actions (audit trail)
-- Must have human approval before persistent writes
-- Must include error recovery and rollback
-
-### Deployment Strategy
-Three deployment options:
-
-**1. Vercel (Recommended)**
-- Zero-config deployment from Git
-- Auto-builds on `git push main`
-- Free tier supports 100GB bandwidth/month
-- Built-in analytics + error tracking
-
-**2. Custom Server (Full Control)**
-- Node.js + Express or Python Flask
-- Self-hosted PostgreSQL for Supabase
-- Suitable for enterprise deployments
-- Requires DevOps infrastructure
-
-**3. GitHub Pages (Static Only)**
-- Works for data.json + index.html only
-- No Supabase backend
-- Suitable for offline/demo versions
-- Simplest to set up
-
-**Pre-Deployment Checklist:**
-- [ ] Authentication configured (if needed)
-- [ ] Rate limiting enabled
-- [ ] Error tracking set up (Sentry, LogRocket)
-- [ ] Analytics enabled (if desired)
-- [ ] Backup strategy documented
-- [ ] Monitoring + alerts configured
-- [ ] SSL/HTTPS enforced
-- [ ] CORS policy set properly
-- [ ] .env secrets secured (never in git)
-- [ ] Test all 5 tabs on production URL
-
----
-
-## Periods Reference
-
-| Period | Hebrew | Approx. Dates |
-|---|---|-
+- **Period keys**: `patriarchs, exodus, judges, kings, second-temple, tannaim, amoraim, geonim, rishonim, acharonim, modern` (`lib/types.ts::ALL_PERIODS`, chronological order — this order drives the timeline and genealogy-tree band layout).
+- **Connection types**: `student, teacher, colleague, influence, oppose, predecessor, contemporary, family`.
+- **Region keys**: `ashkenaz, east-europe, tsarfat, provence, sefarad, italy, north-africa, mizrach, eretz-israel, other` — derived from free-text `location` via `lib/regions.ts::regionsOf` (keyword matching), not stored directly on most sages.
+- Hebrew is written with proper גרשיים (e.g. `רמב״ם`, not `רמבם`), and RTL is the default direction; English/Russian content is LTR overlay only.
