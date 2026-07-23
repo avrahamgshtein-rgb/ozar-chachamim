@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect } from 'react'
 import dynamic from 'next/dynamic'
 import { cn } from '@/lib/utils'
 import { Header } from './Header'
@@ -15,25 +15,24 @@ import { SageFilters } from '@/components/sages/SageFilters'
 import { Comparator } from '@/components/viz/Comparator'
 import { FilterChips } from '@/components/viz/FilterChips'
 import { MapLegend } from '@/components/viz/MapLegend'
-import { trackTabSwitched } from '@/lib/analytics'
 import { useAppStore } from '@/store/useAppStore'
 import { fetchSages, fetchConnections, fetchLocalGraphData } from '@/lib/supabase'
 import { fetchContentOverlay, applyOverlay } from '@/lib/contentOverlay'
 import type { Locale, Tab } from '@/lib/types'
 
 // Dynamic imports — browser-only visualization libraries.
-// Each tab shows a skeleton screen while its chunk loads (phase split + lazy).
+// Each tab shows a skeleton screen while its chunk loads.
 const NetworkGraph = dynamic(
   () => import('@/components/viz/NetworkGraph').then(m => ({ default: m.NetworkGraph })),
-  { ssr: false, loading: () => <VizSkeleton variant="graph" /> },
+  { ssr: false, loading: () => <VizSkeleton /> },
 )
 const GeoMap = dynamic(
   () => import('@/components/viz/GeoMap').then(m => ({ default: m.GeoMap })),
-  { ssr: false, loading: () => <VizSkeleton variant="map" /> },
+  { ssr: false, loading: () => <VizSkeleton /> },
 )
 const Timeline = dynamic(
   () => import('@/components/viz/Timeline').then(m => ({ default: m.Timeline })),
-  { ssr: false, loading: () => <VizSkeleton variant="timeline" /> },
+  { ssr: false, loading: () => <VizSkeleton /> },
 )
 const Traditions = dynamic(
   () => import('@/components/viz/Traditions').then(m => ({ default: m.Traditions })),
@@ -41,15 +40,15 @@ const Traditions = dynamic(
 )
 const SagesTable = dynamic(
   () => import('@/components/viz/SagesTable').then(m => ({ default: m.SagesTable })),
-  { ssr: false, loading: () => <VizSkeleton variant="table" /> },
+  { ssr: false, loading: () => <VizSkeleton variant="list" /> },
 )
 const GenealogyTree = dynamic(
   () => import('@/components/viz/GenealogyTree').then(m => ({ default: m.GenealogyTree })),
-  { ssr: false, loading: () => <VizSkeleton variant="graph" /> },
+  { ssr: false, loading: () => <VizSkeleton /> },
 )
 const AboutContent = dynamic(
   () => import('@/components/about/AboutContent').then(m => ({ default: m.AboutContent })),
-  { ssr: false, loading: () => <VizSkeleton variant="list" /> },
+  { ssr: false, loading: () => <VizSkeleton /> },
 )
 
 interface AppShellProps {
@@ -60,7 +59,6 @@ interface AppShellProps {
 
 export function AppShell({ locale, initialTotal, initialLastUpdate }: AppShellProps) {
   const otherLocale: Locale = locale === 'he' ? 'en' : 'he'
-  const tabSwitchTimeRef = useRef<number>(Date.now())
 
   const {
     activeTab,
@@ -77,16 +75,6 @@ export function AppShell({ locale, initialTotal, initialLastUpdate }: AppShellPr
     selectSage,
     setData,
   } = useAppStore()
-
-  // Track tab switches for analytics
-  useEffect(() => {
-    const now = Date.now()
-    const duration = now - tabSwitchTimeRef.current
-    if (duration > 100) { // Only track if more than 100ms (ignore initialization)
-      trackTabSwitched(activeTab ?? 'graph', duration)
-    }
-    tabSwitchTimeRef.current = now
-  }, [activeTab])
 
   // Theme bootstrap (persisted)
   useEffect(() => { useAppStore.getState().initTheme() }, [])
@@ -109,8 +97,9 @@ export function AppShell({ locale, initialTotal, initialLastUpdate }: AppShellPr
           console.log('[AppShell] ↪ using data.json fallback (richer dataset)')
         }
       }
-      // Supplemental datasets — restored after the sages rebuild: biblical
-      // figures (ancient eras) + giants absent from the master file
+      // Supplemental datasets — kept in separate files so canonical data.json
+      // stays untouched: biblical figures (ancient eras) + missing giants
+      // (Rashi, Hillel, Besht, Gra...)
       for (const src of ['/data-ancient.json', '/data-supplement.json', '/data-supplement-2.json', '/data-research-links.json']) {
         try {
           const extra = await fetch(src).then(r => r.ok ? r.json() : null)
@@ -199,13 +188,12 @@ export function AppShell({ locale, initialTotal, initialLastUpdate }: AppShellPr
 
   return (
     <div
-      className="relative w-full h-screen overflow-hidden bg-ink-900"
-      style={{ height: '100dvh', minHeight: '100vh' }}
+      className="relative w-full h-dvh overflow-hidden bg-ink-900"
       dir={locale === 'he' ? 'rtl' : 'ltr'}
     >
       <Header locale={locale} otherLocale={otherLocale} />
 
-      <main className="absolute inset-0 top-[var(--header-h,64px)] bottom-0">
+      <main className="absolute inset-0 pt-[var(--header-h,64px)]">
         <CanvasArea activeTab={activeTab} locale={locale} />
       </main>
 

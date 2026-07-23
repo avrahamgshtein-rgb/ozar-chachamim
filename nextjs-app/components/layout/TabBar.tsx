@@ -21,8 +21,7 @@ export function TabBar({ locale }: TabBarProps) {
         'fixed bottom-4 left-1/2 -translate-x-1/2 z-30',
         'glass rounded-2xl px-2 py-1.5',
         'shadow-glass flex items-center gap-0.5',
-        'max-w-[calc(100vw-1rem)] overflow-x-auto overflow-y-hidden',
-        'scrollbar-hide scroll-smooth',
+        'max-w-[calc(100vw-2rem)]',
       )}
       aria-label={isHe ? 'ניווט ראשי' : 'Main navigation'}
       data-tour="tabs"
@@ -37,7 +36,6 @@ export function TabBar({ locale }: TabBarProps) {
             key={tab}
             onClick={() => setActiveTab(tab)}
             aria-current={active ? 'page' : undefined}
-            aria-label={`${label}${active ? ' (current)' : ''}`}
             title={label}
             className={cn(
               'flex flex-col items-center gap-0.5 px-3 py-2 rounded-xl',

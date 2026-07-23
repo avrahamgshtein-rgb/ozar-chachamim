@@ -7,8 +7,6 @@ import { MILESTONES } from '@/lib/milestones'
 import { tr } from '@/lib/i18n'
 import { useAppStore } from '@/store/useAppStore'
 import { PathFinder } from '@/components/viz/PathFinder'
-import { EmptyState } from '@/components/ui/EmptyState'
-import { trackSageViewed, trackErrorOccurred } from '@/lib/analytics'
 import type { Locale, Period, Region } from '@/lib/types'
 import { locationToRegion, regionsOf } from '@/lib/regions'
 
@@ -231,53 +229,15 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
         return (W * 0.05) + idx * (W * 0.9 / (ERA_COUNT - 1))
       }
 
-      // ── Force simulation (optimized for 60fps) ──────────────────────────
-      // Runs in batches with requestAnimationFrame to prevent main-thread blocking
-      // Target: TBT < 50ms, smooth animations during graph layout
-      let sim: any = null
-      try {
-        sim = d3.forceSimulation(nodes as any)
-          .force('link', d3.forceLink(links as any).id((d: any) => d.id).distance(75).strength(0.35))
-          .force('charge', d3.forceManyBody().strength(-120))
-          .force('x', d3.forceX((d: any) => eraX(d.period)).strength(0.14))
-          .force('y', d3.forceY(H / 2).strength(0.05))
-          .force('collide', d3.forceCollide((d: any) => r(d) + 5).strength(0.9))
-          .stop() // Start paused
+      // ── Force simulation ─────────────────────────────────────────────────
+      const sim = d3.forceSimulation(nodes as any)
+        .force('link', d3.forceLink(links as any).id((d: any) => d.id).distance(75).strength(0.35))
+        .force('charge', d3.forceManyBody().strength(-120))
+        .force('x', d3.forceX((d: any) => eraX(d.period)).strength(0.14))
+        .force('y', d3.forceY(H / 2).strength(0.05))
+        .force('collide', d3.forceCollide((d: any) => r(d) + 5).strength(0.9))
 
-        // Optimize: Run simulation in small batches with requestAnimationFrame
-        // This yields control back to browser every ~3ms, keeping TBT < 50ms
-        let tickCount = 0
-        const maxTicks = 200
-        const ticksPerBatch = 5
-
-        const runBatch = () => {
-          for (let i = 0; i < ticksPerBatch && tickCount < maxTicks; i++) {
-            sim.tick()
-            tickCount++
-          }
-          if (tickCount < maxTicks) {
-            requestAnimationFrame(runBatch)
-          }
-        }
-
-        simRef.current = sim
-
-        // Warm-up: 20 ticks immediately for faster initial layout
-        for (let i = 0; i < 20; i++) {
-          sim.tick()
-          tickCount++
-        }
-
-        // Then run remaining ticks in batches
-        if (tickCount < maxTicks) {
-          requestAnimationFrame(runBatch)
-        }
-      } catch (err) {
-        console.error('[NetworkGraph] D3 simulation error:', err)
-        trackErrorOccurred('d3_simulation', 'NetworkGraph', err instanceof Error ? err.message : 'Unknown error')
-        // Render static network without animation
-        simRef.current = null
-      }
+      simRef.current = sim
 
       // ── Links ────────────────────────────────────────────────────────────
       const DIRECTED = new Set(['teacher', 'student', 'predecessor'])
@@ -358,9 +318,9 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
 
       // ── Drag ─────────────────────────────────────────────────────────────
       const drag = d3.drag<SVGCircleElement, any>()
-        .on('start', (ev, d) => { if (!ev.active && simRef.current) simRef.current.alphaTarget(0.3).restart(); d.fx = d.x; d.fy = d.y })
+        .on('start', (ev, d) => { if (!ev.active) sim.alphaTarget(0.3).restart(); d.fx = d.x; d.fy = d.y })
         .on('drag',  (ev, d) => { d.fx = ev.x; d.fy = ev.y })
-        .on('end',   (ev, d) => { if (!ev.active && simRef.current) simRef.current.alphaTarget(0); d.fx = null; d.fy = null })
+        .on('end',   (ev, d) => { if (!ev.active) sim.alphaTarget(0); d.fx = null; d.fy = null })
       node.call(drag as any)
 
       // ── Hover (Connected Papers style) + tooltip ─────────────────────────
@@ -477,14 +437,12 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
         const oy =  dx / dist * 18
         return `M${sx},${sy} Q${mx + ox},${my + oy} ${tx},${ty}`
       }
-      if (sim) {
-        sim.on('tick', () => {
-          link.attr('d', linkPath)
-          hitLink.attr('d', linkPath)
-          node.attr('cx', (d: any) => d.x).attr('cy', (d: any) => d.y)
-          label.attr('x', (d: any) => d.x).attr('y', (d: any) => d.y)
-        })
-      }
+      sim.on('tick', () => {
+        link.attr('d', linkPath)
+        hitLink.attr('d', linkPath)
+        node.attr('cx', (d: any) => d.x).attr('cy', (d: any) => d.y)
+        label.attr('x', (d: any) => d.x).attr('y', (d: any) => d.y)
+      })
     }
 
     build()
@@ -589,14 +547,6 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
     }
   }, [filteredSages, sages.length])
 
-  // ── Track sage selection for analytics ────────────────────────────────────
-  useEffect(() => {
-    if (selectedSageId && sageMap.size > 0) {
-      const sage = sageMap.get(selectedSageId)
-      if (sage) trackSageViewed(sage, locale)
-    }
-  }, [selectedSageId, sageMap, locale])
-
   // ── Sync selection ring ──────────────────────────────────────────────────
   useEffect(() => {
     if (!nodeSelRef.current) return
@@ -637,19 +587,6 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
           <p className="text-ink-500 font-sans text-sm animate-pulse">
             {tr(locale, 'טוען רשת...', 'Loading network...', 'Загрузка сети...')}
           </p>
-        </div>
-      )}
-
-      {sages.length > 0 && filteredSages.length === 0 && (
-        <div className="absolute inset-0 flex items-center justify-center z-5">
-          <EmptyState
-            locale={locale}
-            icon="network"
-            action={{
-              label: tr(locale, 'איפוס פילטרים', 'Reset Filters', 'Сбросить фильтры'),
-              onClick: () => useAppStore.getState().clearFilters(),
-            }}
-          />
         </div>
       )}
 

@@ -1,13 +1,11 @@
 'use client'
 
-import { useEffect, useRef, useState, memo } from 'react'
-import 'leaflet/dist/leaflet.css'
+import { useEffect, useRef, useState } from 'react'
 import { ERA_COLORS, ERA_LABELS } from '@/lib/types'
 import { CONNECTION_TYPE_COLORS } from '@/lib/regions'
 import { LOCATION_COORDS, resolveCoords } from '@/lib/locationCoords'
 import { tr } from '@/lib/i18n'
 import { useAppStore } from '@/store/useAppStore'
-import { EmptyState } from '@/components/ui/EmptyState'
 import type { Locale, Sage } from '@/lib/types'
 import { cn } from '@/lib/utils'
 
@@ -19,7 +17,7 @@ interface GeoMapProps {
   locale: Locale
 }
 
-function GeoMapComponent({ locale }: GeoMapProps) {
+export function GeoMap({ locale }: GeoMapProps) {
   const mapRef     = useRef<HTMLDivElement>(null)
   const mapObjRef  = useRef<import('leaflet').Map | null>(null)
   const [showLinks, setShowLinks] = useState(true)
@@ -33,6 +31,15 @@ function GeoMapComponent({ locale }: GeoMapProps) {
     if (mapObjRef.current) { mapObjRef.current.remove(); mapObjRef.current = null; setMapReady(false) }
 
     let mounted = true
+
+    // Inject Leaflet CSS once
+    if (!document.getElementById('leaflet-css')) {
+      const link = document.createElement('link')
+      link.id = 'leaflet-css'
+      link.rel = 'stylesheet'
+      link.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css'
+      document.head.appendChild(link)
+    }
 
     import('leaflet').then(L => {
       if (!mounted || !mapRef.current || mapObjRef.current) return
@@ -152,45 +159,17 @@ function GeoMapComponent({ locale }: GeoMapProps) {
       `
       document.head.appendChild(style)
 
-      // ── Markers with scatter logic for same-location clustering ──────
+      // ── Markers ──────────────────────────────────────────────
       const markerRefs = new Map<string, import('leaflet').CircleMarker>()
       const markersLayer = L.layerGroup().addTo(map)
 
-      // Group sages by location to detect clustering
-      const locationMap = new Map<string, string[]>()
       sages.forEach(sage => {
         const coords = resolveCoords(sage)
         if (!coords) return
-        const key = `${Math.round(coords.lat * 100)},${Math.round(coords.lng * 100)}`
-        const ids = locationMap.get(key) ?? []
-        ids.push(sage.id)
-        locationMap.set(key, ids)
-      })
-
-      sages.forEach((sage, idx) => {
-        const coords = resolveCoords(sage)
-        if (!coords) return
-
-        // Calculate scatter offset for same-location markers
-        const key = `${Math.round(coords.lat * 100)},${Math.round(coords.lng * 100)}`
-        const sagesAtLocation = locationMap.get(key) ?? []
-        const sageIndexInLocation = sagesAtLocation.indexOf(sage.id)
-        const totalAtLocation = sagesAtLocation.length
-
-        let finalLat = coords.lat
-        let finalLng = coords.lng
-
-        if (totalAtLocation > 1) {
-          // Scatter markers in a small circle around the location
-          const scatterRadius = 0.012 * Math.sqrt(totalAtLocation) // ~1.3km per marker
-          const angle = (sageIndexInLocation / totalAtLocation) * Math.PI * 2
-          finalLat += scatterRadius * Math.sin(angle)
-          finalLng += scatterRadius * Math.cos(angle)
-        }
 
         const color = ERA_COLORS[sage.period] ?? '#7a6550'
 
-        const marker = L.circleMarker([finalLat, finalLng], {
+        const marker = L.circleMarker([coords.lat, coords.lng], {
           radius:      7,
           fillColor:   color,
           color:       '#0a0806',
@@ -374,8 +353,6 @@ function GeoMapComponent({ locale }: GeoMapProps) {
     import('leaflet').then(L => {
       const sageMap = new Map<string, Sage>(sages.map(s => [s.id, s]))
       const coordsById: Map<string, { lat: number; lng: number }> = map._coordsById
-      const filteredIds = new Set(filteredSages.map(s => s.id))
-      const noFilter = filteredIds.size === sages.length
       const group = L.layerGroup().addTo(map)
       map._linkLayer = group
 
@@ -389,70 +366,16 @@ function GeoMapComponent({ locale }: GeoMapProps) {
         // same-city pairs draw nothing meaningful on the map
         if (Math.abs(a.lat - b.lat) < 0.02 && Math.abs(a.lng - b.lng) < 0.02) return
         drawn.add(key)
-
-        const sourceS = sageMap.get(conn.source)
-        const targetS = sageMap.get(conn.target)
-        if (!sourceS || !targetS) return
-
-        // Check if both sages are in filtered set (dim if not)
-        const isFiltered = noFilter || (filteredIds.has(conn.source) && filteredIds.has(conn.target))
-        const lineOpacity = isFiltered ? 0.4 : 0.08
-        const arrowOpacity = isFiltered ? 0.85 : 0.15
-
         const color = CONNECTION_TYPE_COLORS[conn.type] ?? '#c9973a'
-
-        // Draw line with click handler for details popup
-        const linePopupContent = `
-          <div style="font-family:Heebo,sans-serif;min-width:280px;max-height:300px;overflow-y:auto;">
-            <p style="font-family:'Frank Ruhl Libre',serif;font-size:13px;font-weight:700;color:#e8d5b0;margin:0 0 10px;">קשר: ${conn.type}</p>
-            <div style="padding:10px;background:rgba(201,151,58,0.15);border-radius:6px;margin-bottom:10px;">
-              <p style="font-size:12px;color:#c4a87d;margin:0 0 5px;"><strong>מ:</strong> ${sourceS.label}</p>
-              ${sourceS.location ? `<p style="font-size:11px;color:#9a8570;margin:0 0 2px;">📍 ${sourceS.location}</p>` : ''}
-              ${sourceS.birth_year ? `<p style="font-size:11px;color:#7a6550;margin:0;">🎂 נ: ${sourceS.birth_year}</p>` : ''}
-            </div>
-            <div style="padding:10px;background:rgba(201,151,58,0.15);border-radius:6px;">
-              <p style="font-size:12px;color:#c4a87d;margin:0 0 5px;"><strong>ל:</strong> ${targetS.label}</p>
-              ${targetS.location ? `<p style="font-size:11px;color:#9a8570;margin:0 0 2px;">📍 ${targetS.location}</p>` : ''}
-              ${targetS.birth_year ? `<p style="font-size:11px;color:#7a6550;margin:0;">🎂 נ: ${targetS.birth_year}</p>` : ''}
-            </div>
-          </div>
-        `
-
-        const line = L.polyline(
+        L.polyline(
           [[a.lat, a.lng], [b.lat, b.lng]],
           {
-            color, weight: 1.2, opacity: lineOpacity,
+            color, weight: 1.3, opacity: 0.4,
             dashArray: conn.type === 'influence' ? '6,4'
               : (conn.type === 'colleague' || conn.type === 'contemporary') ? '2,4' : undefined,
           }
-        ).bindPopup(linePopupContent, { maxWidth: 320, className: 'connection-popup' })
-         .addTo(group)
-
-        line.on('click', () => line.openPopup())
-
-        // Start marker (origin - square)
-        L.marker([a.lat, a.lng], {
-          icon: L.divIcon({
-            className: '',
-            html: `<div style="width:8px;height:8px;background:${color};border:1.5px solid #0a0806;border-radius:1px;opacity:${isFiltered ? 0.8 : 0.2};box-shadow:0 0 3px ${color}88;"></div>`,
-            iconSize: [8, 8],
-            iconAnchor: [4, 4],
-          }),
-          interactive: false,
-        }).addTo(group)
-
-        // End marker (destination - circle)
-        L.marker([b.lat, b.lng], {
-          icon: L.divIcon({
-            className: '',
-            html: `<div style="width:10px;height:10px;background:${color};border:1.5px solid #0a0806;border-radius:50%;opacity:${isFiltered ? 0.9 : 0.25};box-shadow:0 0 4px ${color}aa;"></div>`,
-            iconSize: [10, 10],
-            iconAnchor: [5, 5],
-          }),
-          interactive: false,
-        }).addTo(group)
-
-        // Middle arrow (direction indicator)
+        ).addTo(group)
+        // ראש חץ בכיוון הקשר (מקור ← יעד)
         const t = 0.58
         const pLat = a.lat + (b.lat - a.lat) * t
         const pLng = a.lng + (b.lng - a.lng) * t
@@ -462,7 +385,7 @@ function GeoMapComponent({ locale }: GeoMapProps) {
         L.marker([pLat, pLng], {
           icon: L.divIcon({
             className: '',
-            html: `<span style="display:inline-block;transform:rotate(${angle}deg);color:${color};font-size:11px;opacity:${arrowOpacity};text-shadow:0 0 3px var(--ink-900);">➤</span>`,
+            html: `<span style="display:inline-block;transform:rotate(${angle}deg);color:${color};font-size:11px;opacity:0.85;text-shadow:0 0 3px var(--ink-900);">➤</span>`,
             iconSize: [0, 0],
           }),
           interactive: false,
@@ -470,7 +393,7 @@ function GeoMapComponent({ locale }: GeoMapProps) {
       })
     })
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [showLinks, connections.length, sages.length, mapReady, filteredSages])
+  }, [showLinks, connections.length, sages.length, mapReady])
 
   // ── Sync filter (dim non-matching markers) ───────────────────
   useEffect(() => {
@@ -557,22 +480,6 @@ function GeoMapComponent({ locale }: GeoMapProps) {
           </p>
         </div>
       )}
-
-      {sages.length > 0 && filteredSages.length === 0 && (
-        <div className="absolute inset-0 flex items-center justify-center z-5">
-          <EmptyState
-            locale={locale}
-            icon="map"
-            action={{
-              label: tr(locale, 'איפוס פילטרים', 'Reset Filters', 'Сбросить фильтры'),
-              onClick: () => useAppStore.getState().clearFilters(),
-            }}
-          />
-        </div>
-      )}
     </div>
   )
 }
-
-// Memoize to prevent re-renders when parent state changes
-export const GeoMap = memo(GeoMapComponent)

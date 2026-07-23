@@ -1,9 +1,8 @@
 'use client'
 
-import { useEffect, useRef, useState, memo } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { ERA_COLORS, ERA_LABELS } from '@/lib/types'
 import { useAppStore } from '@/store/useAppStore'
-import { EmptyState } from '@/components/ui/EmptyState'
 import type { Locale, Period, Sage } from '@/lib/types'
 import { cn } from '@/lib/utils'
 
@@ -59,7 +58,7 @@ function yearToX(year: number): number {
   return LABEL_W + ((year - MIN_YEAR) / YEAR_SPAN) * (SVG_W - LABEL_W)
 }
 
-function TimelineComponent({ locale }: TimelineProps) {
+export function Timeline({ locale }: TimelineProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const scrollRef    = useRef<HTMLDivElement>(null)
   const svgElRef     = useRef<SVGSVGElement | null>(null)
@@ -456,19 +455,6 @@ function TimelineComponent({ locale }: TimelineProps) {
         </div>
       )}
 
-      {sages.length > 0 && filteredSages.length === 0 && (
-        <div className="absolute inset-0 flex items-center justify-center z-5">
-          <EmptyState
-            locale={locale}
-            icon="calendar"
-            action={{
-              label: tr(locale, 'איפוס פילטרים', 'Reset Filters', 'Сбросить фильтры'),
-              onClick: () => useAppStore.getState().clearFilters(),
-            }}
-          />
-        </div>
-      )}
-
       {/* Milestone impact summary card (Masterplan §8: click → summary) */}
       {activeMilestone && (
         <div
@@ -568,6 +554,3 @@ function ZBtn({ onClick, children }: { onClick: () => void; children: React.Reac
     </button>
   )
 }
-
-// Memoize to prevent re-renders when parent state changes but props are same
-export const Timeline = memo(TimelineComponent)

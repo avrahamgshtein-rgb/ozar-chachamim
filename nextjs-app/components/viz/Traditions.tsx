@@ -1,10 +1,9 @@
 'use client'
 
 import Link from 'next/link'
-import { useState, memo } from 'react'
+import { useState } from 'react'
 import { ERA_COLORS, ERA_LABELS, ALL_PERIODS } from '@/lib/types'
 import { useAppStore } from '@/store/useAppStore'
-import { EmptyState } from '@/components/ui/EmptyState'
 import { formatYearRange } from '@/lib/utils'
 import type { Locale, Period, Sage } from '@/lib/types'
 import { cn } from '@/lib/utils'
@@ -16,7 +15,7 @@ interface TraditionsProps {
   locale: Locale
 }
 
-function TraditionsComponent({ locale }: TraditionsProps) {
+export function Traditions({ locale }: TraditionsProps) {
   const { filteredSages, selectSage } = useAppStore()
   const [expanded, setExpanded] = useState<Set<Period>>(new Set(ERAS))
 
@@ -34,21 +33,6 @@ function TraditionsComponent({ locale }: TraditionsProps) {
     const bucket = byEra.get(sage.period)
     if (bucket) bucket.push(sage)
   })
-
-  if (filteredSages.length === 0) {
-    return (
-      <div className="h-full flex items-center justify-center">
-        <EmptyState
-          locale={locale}
-          icon="filter"
-          action={{
-            label: tr(locale, 'איפוס פילטרים', 'Reset Filters', 'Сбросить фильтры'),
-            onClick: () => useAppStore.getState().clearFilters(),
-          }}
-        />
-      </div>
-    )
-  }
 
   return (
     <div className="h-full overflow-y-auto px-4 md:px-8 py-6 space-y-4">
@@ -177,5 +161,3 @@ function SageCard({
     </div>
   )
 }
-
-export const Traditions = memo(TraditionsComponent)

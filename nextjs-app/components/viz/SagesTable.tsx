@@ -1,12 +1,10 @@
 'use client'
 
-import { useState, useMemo, memo } from 'react'
+import { useState, useMemo } from 'react'
 import { ERA_COLORS, ERA_LABELS, CONNECTION_LABELS } from '@/lib/types'
 import { useAppStore } from '@/store/useAppStore'
-import { EmptyState } from '@/components/ui/EmptyState'
 import { formatYearRange } from '@/lib/utils'
 import { cn } from '@/lib/utils'
-import { tr } from '@/lib/i18n'
 import type { Locale, Period, Sage } from '@/lib/types'
 
 type SortKey = 'label' | 'period' | 'location' | 'field' | 'birth_year' | 'connections'
@@ -14,7 +12,7 @@ type SortDir = 'asc' | 'desc'
 
 interface SagesTableProps { locale: Locale }
 
-function SagesTableComponent({ locale }: SagesTableProps) {
+export function SagesTable({ locale }: SagesTableProps) {
   const { filteredSages, connections, selectSage, sages } = useAppStore()
   const isHe = locale === 'he'
 
@@ -104,128 +102,123 @@ function SagesTableComponent({ locale }: SagesTableProps) {
         )}
       </div>
 
-      {/* Table or Empty State */}
-      <div className="flex-1 overflow-auto relative">
-        {sorted.length === 0 ? (
-          <EmptyState
-            locale={locale}
-            icon="filter"
-            action={{
-              label: tr(locale, 'איפוס פילטרים', 'Reset Filters', 'Сбросить фильтры'),
-              onClick: () => useAppStore.getState().clearFilters(),
-            }}
-          />
-        ) : (
-          <table className="w-full border-collapse text-sm font-sans" dir={isHe ? 'rtl' : 'ltr'}>
-            <thead className="sticky top-0 z-10 bg-ink-900/95 backdrop-blur-sm">
-              <tr className="border-b border-ink-700/50">
-                {columns.map(col => (
-                  <th
-                    key={col.key}
-                    onClick={() => handleSort(col.key)}
-                    className={cn(
-                      'px-3 py-2.5 text-start select-none cursor-pointer',
-                      'text-[11px] font-semibold uppercase tracking-widest',
-                      'text-ink-400 hover:text-ink-200 transition-colors',
-                      'border-b border-ink-700/40',
-                      col.className,
-                    )}
-                  >
-                    {isHe ? col.labelHe : locale === 'ru' ? col.labelRu : col.labelEn}
-                    <SortIcon col={col.key} />
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {sorted.map((sage, idx) => {
-                const color  = ERA_COLORS[sage.period] ?? '#7a6550'
-                const degree = degreeMap.get(sage.id) ?? 0
-                const years  = formatYearRange(sage.birth_year, sage.death_year)
-                const isHovered = hoveredId === sage.id
+      {/* Table */}
+      <div className="flex-1 overflow-auto">
+        <table className="w-full border-collapse text-sm font-sans" dir={isHe ? 'rtl' : 'ltr'}>
+          <thead className="sticky top-0 z-10 bg-ink-900/95 backdrop-blur-sm">
+            <tr className="border-b border-ink-700/50">
+              {columns.map(col => (
+                <th
+                  key={col.key}
+                  onClick={() => handleSort(col.key)}
+                  className={cn(
+                    'px-3 py-2.5 text-start select-none cursor-pointer',
+                    'text-[11px] font-semibold uppercase tracking-widest',
+                    'text-ink-400 hover:text-ink-200 transition-colors',
+                    'border-b border-ink-700/40',
+                    col.className,
+                  )}
+                >
+                  {isHe ? col.labelHe : locale === 'ru' ? col.labelRu : col.labelEn}
+                  <SortIcon col={col.key} />
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {sorted.map((sage, idx) => {
+              const color  = ERA_COLORS[sage.period] ?? '#7a6550'
+              const degree = degreeMap.get(sage.id) ?? 0
+              const years  = formatYearRange(sage.birth_year, sage.death_year)
+              const isHovered = hoveredId === sage.id
 
-                return (
-                  <tr
-                    key={sage.id}
-                    onClick={() => selectSage(sage)}
-                    onMouseEnter={() => setHoveredId(sage.id)}
-                    onMouseLeave={() => setHoveredId(null)}
-                    className={cn(
-                      'cursor-pointer border-b border-ink-800/60 transition-colors',
-                      isHovered ? 'bg-ink-700/40' : idx % 2 === 0 ? 'bg-transparent' : 'bg-ink-900/30',
-                    )}
-                  >
-                    {/* Era chip */}
-                    <td className="px-3 py-2">
-                      <span
-                        className="inline-flex items-center gap-1.5 text-[10px] font-semibold px-2 py-0.5 rounded-full whitespace-nowrap"
-                        style={{ background: `${color}18`, color, border: `1px solid ${color}33` }}
-                      >
-                        <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: color }} />
-                        {ERA_LABELS[sage.period]?.[locale]}
-                      </span>
-                    </td>
+              return (
+                <tr
+                  key={sage.id}
+                  onClick={() => selectSage(sage)}
+                  onMouseEnter={() => setHoveredId(sage.id)}
+                  onMouseLeave={() => setHoveredId(null)}
+                  className={cn(
+                    'cursor-pointer border-b border-ink-800/60 transition-colors',
+                    isHovered ? 'bg-ink-700/40' : idx % 2 === 0 ? 'bg-transparent' : 'bg-ink-900/30',
+                  )}
+                >
+                  {/* Era chip */}
+                  <td className="px-3 py-2">
+                    <span
+                      className="inline-flex items-center gap-1.5 text-[10px] font-semibold px-2 py-0.5 rounded-full whitespace-nowrap"
+                      style={{ background: `${color}18`, color, border: `1px solid ${color}33` }}
+                    >
+                      <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: color }} />
+                      {ERA_LABELS[sage.period]?.[locale]}
+                    </span>
+                  </td>
 
-                    {/* Name */}
-                    <td className="px-3 py-2">
-                      <p className="font-serif text-sm font-semibold text-ink-100 leading-snug">
-                        {sage.label}
+                  {/* Name */}
+                  <td className="px-3 py-2">
+                    <p className="font-serif text-sm font-semibold text-ink-100 leading-snug">
+                      {sage.label}
+                    </p>
+                    {sage.name_en && (
+                      <p className="text-[11px] text-ink-500 mt-0.5 truncate max-w-[180px]">
+                        {sage.name_en}
                       </p>
-                      {sage.name_en && (
-                        <p className="text-[11px] text-ink-500 mt-0.5 truncate max-w-[180px]">
-                          {sage.name_en}
-                        </p>
-                      )}
-                    </td>
+                    )}
+                  </td>
 
-                    {/* Location */}
-                    <td className="px-3 py-2 hidden sm:table-cell">
-                      {sage.location && (
-                        <span className="text-xs text-ink-400 truncate block max-w-[120px]">
-                          {sage.location}
-                        </span>
-                      )}
-                    </td>
-
-                    {/* Field */}
-                    <td className="px-3 py-2 hidden md:table-cell">
-                      {sage.field && (
-                        <span
-                          className="text-[10px] px-1.5 py-0.5 rounded"
-                          style={{ background: `${color}12`, color }}
-                        >
-                          {sage.field}
-                        </span>
-                      )}
-                    </td>
-
-                    {/* Years */}
-                    <td className="px-3 py-2 hidden sm:table-cell">
-                      <span className="text-[11px] text-ink-500 tabular-nums">
-                        {years ?? '—'}
+                  {/* Location */}
+                  <td className="px-3 py-2 hidden sm:table-cell">
+                    {sage.location && (
+                      <span className="text-xs text-ink-400 truncate block max-w-[120px]">
+                        {sage.location}
                       </span>
-                    </td>
+                    )}
+                  </td>
 
-                    {/* Connection count */}
-                    <td className="px-3 py-2 text-center">
-                      {degree > 0 && (
-                        <span
-                          className="inline-block text-[11px] font-mono font-semibold px-1.5 py-0.5 rounded"
-                          style={{ background: `${color}18`, color }}
-                        >
-                          {degree}
-                        </span>
-                      )}
-                    </td>
-                  </tr>
-                )
-              })}
-            </tbody>
-          </table>
-        )}
+                  {/* Field */}
+                  <td className="px-3 py-2 hidden md:table-cell">
+                    {sage.field && (
+                      <span
+                        className="text-[10px] px-1.5 py-0.5 rounded"
+                        style={{ background: `${color}12`, color }}
+                      >
+                        {sage.field}
+                      </span>
+                    )}
+                  </td>
+
+                  {/* Years */}
+                  <td className="px-3 py-2 hidden sm:table-cell">
+                    <span className="text-[11px] text-ink-500 tabular-nums">
+                      {years ?? '—'}
+                    </span>
+                  </td>
+
+                  {/* Connection count */}
+                  <td className="px-3 py-2 text-center">
+                    {degree > 0 && (
+                      <span
+                        className="inline-block text-[11px] font-mono font-semibold px-1.5 py-0.5 rounded"
+                        style={{ background: `${color}18`, color }}
+                      >
+                        {degree}
+                      </span>
+                    )}
+                  </td>
+                </tr>
+              )
+            })}
+
+            {sorted.length === 0 && (
+              <tr>
+                <td colSpan={6} className="px-4 py-12 text-center text-sm text-ink-600 font-sans">
+                  {isHe ? 'אין חכמים התואמים לפילטר הנוכחי' : 'No sages match current filters'}
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
       </div>
     </div>
   )
 }
-
-export const SagesTable = memo(SagesTableComponent)
