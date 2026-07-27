@@ -22,7 +22,22 @@ export function LoginForm({ locale }: { locale: Locale }) {
     const { error } = await supabase.auth.signInWithPassword({ email, password })
     setLoading(false)
     if (error) {
-      setError(tr(locale, 'אימייל או סיסמה שגויים', 'Incorrect email or password', 'Неверный email или пароль'))
+      // Log the real Supabase error — the code/status distinguish "wrong
+      // password" from "email not confirmed", a misconfigured project URL,
+      // a network/CORS failure, etc., none of which look the same to the user.
+      console.error('[login] signInWithPassword failed:', {
+        message: error.message, status: error.status, code: (error as { code?: string }).code,
+      })
+      if (error.message === 'Email not confirmed') {
+        setError(tr(locale,
+          'האימייל עדיין לא אושר. אשר אותו קודם (בדוא"ל או ידנית ב-Supabase) ואז נסה שוב.',
+          'Email not confirmed yet. Confirm it first (via email or manually in Supabase), then try again.',
+          'Email ещё не подтверждён. Сначала подтвердите его, затем повторите попытку.'))
+      } else if (error.message === 'Invalid login credentials') {
+        setError(tr(locale, 'אימייל או סיסמה שגויים', 'Incorrect email or password', 'Неверный email или пароль'))
+      } else {
+        setError(`${tr(locale, 'שגיאה', 'Error', 'Ошибка')}: ${error.message}`)
+      }
       return
     }
     router.push(`/${locale}`)
