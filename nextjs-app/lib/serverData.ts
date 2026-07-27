@@ -1,10 +1,17 @@
-// Server-only data access — reads the canonical public/data.json (365 sages,
-// 452 typed connections) and the per-sage research files. Used by the full
-// sage page so it always matches the graph, without depending on Supabase.
+// Server-only data access — reads the canonical public/data.json (409 sages)
+// plus the same supplement files AppShell.tsx merges in client-side
+// (data-ancient/data-supplement/data-supplement-2/data-research-links —
+// figures like רש"י, הגר"א and the biblical patriarchs that aren't in the
+// CSV master file), so server-side consumers (the sage page, RAG) see the
+// same full set the client renders instead of a 53-sage-smaller subset.
 import type { Sage, Connection } from './types'
 // נתונים סטטיים — נארזים בתוך ה-bundle (עובד גם ב-Vercel serverless,
 // שם אין גישת fs לתיקיית public בזמן ריצה)
 import graphData from '../public/data.json'
+import dataAncient from '../public/data-ancient.json'
+import dataSupplement from '../public/data-supplement.json'
+import dataSupplement2 from '../public/data-supplement-2.json'
+import dataResearchLinks from '../public/data-research-links.json'
 
 interface Db {
   sages: Map<string, Sage>
@@ -33,18 +40,44 @@ function db(): Db {
   if (cache) return cache
   const d = graphData as { nodes?: Record<string, unknown>[]; links?: Record<string, unknown>[] }
   const sages = new Map<string, Sage>()
+  const links: Connection[] = []
+
   for (const n of d.nodes ?? []) sages.set(String(n.id), mapNode(n))
-  const links: Connection[] = (d.links ?? []).map((l: Record<string, unknown>) => ({
-    source: String(l.source ?? ''),
-    target: String(l.target ?? ''),
-    type:   ((l.type as string) || 'colleague') as Connection['type'],
-  }))
+  for (const l of d.links ?? []) {
+    links.push({
+      source: String((l as Record<string, unknown>).source ?? ''),
+      target: String((l as Record<string, unknown>).target ?? ''),
+      type:   (((l as Record<string, unknown>).type as string) || 'colleague') as Connection['type'],
+    })
+  }
+
+  // Supplement datasets — same precedence rule as AppShell.tsx: only add a
+  // node if its id doesn't already exist in the canonical dataset.
+  for (const extra of [dataAncient, dataSupplement, dataSupplement2, dataResearchLinks]) {
+    const e = extra as { nodes?: Record<string, unknown>[]; links?: Record<string, unknown>[] }
+    for (const n of e.nodes ?? []) {
+      const id = String(n.id ?? '')
+      if (id && !sages.has(id)) sages.set(id, mapNode(n))
+    }
+    for (const l of e.links ?? []) {
+      links.push({
+        source: String((l as Record<string, unknown>).source ?? ''),
+        target: String((l as Record<string, unknown>).target ?? ''),
+        type:   (((l as Record<string, unknown>).type as string) || 'colleague') as Connection['type'],
+      })
+    }
+  }
+
   cache = { sages, links }
   return cache
 }
 
 export function getSageById(id: string): Sage | null {
   return db().sages.get(String(id)) ?? null
+}
+
+export function getAllSages(): Sage[] {
+  return Array.from(db().sages.values())
 }
 
 export function getSageConnections(id: string): Array<{ type: Connection['type']; otherSage: Sage }> {
@@ -66,4 +99,23 @@ export interface ResearchDoc {
   content: string
 }
 
-// המחקר נטען בצד הלקוח מ-/research/<id>.json (ראו ResearchSection)
+// המחקר נטען בצד הלקוח מ-/research/<id>.json (ראו ResearchSection);
+// גם נגיש מהשרת (RAG) דרך getResearchDocs, באותו דפוס fs שבו
+// משתמש app/api/research/[id]/route.ts.
+export async function getResearchDocs(id: string, locale: 'he' | 'en' | 'ru' = 'he'): Promise<ResearchDoc[]> {
+  const { readFile } = await import('fs/promises')
+  const { join } = await import('path')
+
+  if (locale !== 'he') {
+    try {
+      const path = join(process.cwd(), 'public', 'research', `${id}.${locale}.json`)
+      return JSON.parse(await readFile(path, 'utf-8'))
+    } catch { /* fall through to Hebrew */ }
+  }
+  try {
+    const path = join(process.cwd(), 'public', 'research', `${id}.json`)
+    return JSON.parse(await readFile(path, 'utf-8'))
+  } catch {
+    return []
+  }
+}
