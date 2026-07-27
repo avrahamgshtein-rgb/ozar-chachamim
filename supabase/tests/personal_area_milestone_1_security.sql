@@ -40,19 +40,27 @@ BEGIN
   INSERT INTO public.user_profiles (id) VALUES (user1_id) ON CONFLICT DO NOTHING;
   INSERT INTO public.user_profiles (id) VALUES (user2_id) ON CONFLICT DO NOTHING;
 
-  -- Create usage period for user1
+  -- Create usage period for user1 — ON CONFLICT because the profile
+  -- insert above now auto-grants a trial_registered period (Milestone 2's
+  -- grant_initial_trial trigger); this test wants a 10-question period
+  -- regardless of which insert wins, so update the auto-granted one to
+  -- match its previous fixed setup instead of colliding with it.
   INSERT INTO public.usage_periods (
     id, user_id, source_type, period_start, question_limit
   ) VALUES (
     gen_random_uuid(), user1_id, 'trial_registered', NOW(), 10
-  );
+  )
+  ON CONFLICT (user_id) WHERE source_type = 'trial_registered'
+  DO UPDATE SET question_limit = 10;
 
-  -- Create usage period for user2
+  -- Create usage period for user2 (same reasoning)
   INSERT INTO public.usage_periods (
     id, user_id, source_type, period_start, question_limit
   ) VALUES (
     gen_random_uuid(), user2_id, 'trial_registered', NOW(), 10
-  );
+  )
+  ON CONFLICT (user_id) WHERE source_type = 'trial_registered'
+  DO UPDATE SET question_limit = 10;
 END;
 $$;
 
@@ -73,7 +81,7 @@ SET SESSION AUTHORIZATION 'authenticated';
 SET SESSION ROLE 'authenticated';
 
 -- Try to UPDATE questions_used (should be blocked by RLS on usage_periods)
-UPDATE public.usage_periods SET questions_used = 999 LIMIT 1;
+UPDATE public.usage_periods SET questions_used = 999;
 
 -- EXPECTED: Permission denied (RLS policy forbids UPDATE)
 -- RESULT: ✅ PASS (RLS prevents UPDATE)
@@ -88,7 +96,7 @@ SET SESSION AUTHORIZATION 'authenticated';
 SET SESSION ROLE 'authenticated';
 
 -- Try to UPDATE question_limit
-UPDATE public.usage_periods SET question_limit = 999 LIMIT 1;
+UPDATE public.usage_periods SET question_limit = 999;
 
 -- EXPECTED: Permission denied (RLS policy forbids UPDATE)
 -- RESULT: ✅ PASS (RLS prevents UPDATE)
@@ -360,7 +368,7 @@ SET SESSION AUTHORIZATION 'authenticated';
 SET SESSION ROLE 'authenticated';
 
 -- Try to DELETE usage period
-DELETE FROM public.usage_periods LIMIT 1;
+DELETE FROM public.usage_periods;
 
 -- EXPECTED: Permission denied (RLS DELETE policy = false)
 -- RESULT: ✅ PASS (RLS forbids DELETE)
@@ -433,7 +441,7 @@ SET SESSION AUTHORIZATION 'authenticated';
 SET SESSION ROLE 'authenticated';
 
 -- Try to UPDATE email_verified (should fail - not in GRANT list)
-UPDATE public.user_profiles SET email_verified = true LIMIT 1;
+UPDATE public.user_profiles SET email_verified = true;
 
 -- EXPECTED: Permission denied (column not granted)
 -- RESULT: ✅ PASS (Column UPDATE forbidden)
