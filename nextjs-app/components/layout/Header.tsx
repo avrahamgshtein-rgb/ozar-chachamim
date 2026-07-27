@@ -61,8 +61,6 @@ export function Header({ locale, otherLocale }: HeaderProps) {
         <div className="relative hidden lg:block">
           <button
             onClick={() => setShowStats(s => !s)}
-            aria-label={`${totalSages} sages, ${connections.length} connections`}
-            aria-expanded={showStats}
             className={cn(
               'flex items-center gap-2 px-3 py-1.5 rounded-xl text-xs font-sans',
               'glass-light border border-ink-600/40',
@@ -78,11 +76,11 @@ export function Header({ locale, otherLocale }: HeaderProps) {
                 <span className="text-ink-500">{tr(locale, 'קשרים', 'links', 'связей')}</span>
               </>
             )}
-            <span className="text-ink-600 text-[10px]" aria-hidden>{showStats ? '▴' : '▾'}</span>
+            <span className="text-ink-600 text-[10px]">{showStats ? '▴' : '▾'}</span>
           </button>
 
           {showStats && eraCounts.length > 0 && (
-            <div className="absolute top-full end-0 mt-2 w-60 glass rounded-xl border border-ink-700/50 p-3 z-50 shadow-glass-lg animate-fade-in" role="region" aria-label="Sage statistics by era">
+            <div className="absolute top-full end-0 mt-2 w-60 glass rounded-xl border border-ink-700/50 p-3 z-50 shadow-glass-lg animate-fade-in">
               <p className="text-[9px] font-sans font-semibold uppercase tracking-widest text-ink-600 mb-2">
                 {tr(locale, 'לפי תקופה', 'By era', 'По эпохам')}
               </p>
@@ -113,7 +111,6 @@ export function Header({ locale, otherLocale }: HeaderProps) {
         {/* Advanced filter button */}
         <button
           onClick={openFilters}
-          aria-label={t.filtersLabel}
           className={cn(
             'flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-sans',
             'min-h-[44px] sm:min-h-0',

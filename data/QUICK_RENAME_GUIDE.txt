@@ -1,0 +1,138 @@
+================================================================================
+TELEGRAM EXPORT - QUICK FILE RENAMING GUIDE
+================================================================================
+
+LOCATION: voice_messages folder
+
+ACTION REQUIRED: Rename 8 files with generic auto-generated names
+
+
+STEP-BY-STEP RENAMING INSTRUCTIONS
+================================================================================
+
+In your file manager, navigate to: ChatExport_2026-07-11\voice_messages
+
+Rename the following files:
+
+
+1. audio_1@02-06-2016_10-07-44.ogg
+   RENAME TO: הכנסת ספר תורה משפחת שמיר.m4a
+   WHY: Mentioned in message from מעוז מרמלשטיין - Torah Ark dedication event
+
+2. audio_2@02-06-2016_10-07-46.ogg
+   RENAME TO: קול 002.m4a
+   WHY: Generic voice message without specific context in messages
+
+3. audio_3@06-07-2016_23-17-22.ogg
+   RENAME TO: הקלטה 004.m4a
+   WHY: Referenced as "הקלטה 004.m4a" in message from מעוז מרמלשטיין
+
+4. audio_4@14-02-2017_13-13-25.ogg
+   RENAME TO: שמואל ב ו הבאת ארון ה' לירושלים.amr
+   WHY: Referenced in message from אלעד גיפס - Samuel II Chapter 6
+
+5. audio_5@03-07-2017_17-57-54.ogg
+   RENAME TO: אירוע הרב, בלק תשעז.3gp
+   WHY: Rabbi's event, Parashat Balak 5777
+
+6. audio_6@30-01-2018_09-02-17.ogg
+   RENAME TO: ראש הישיבה תנ''ך ישעיהו כז ב.mp3
+   WHY: Head of Yeshiva teaching Torah - Isaiah 27:2
+
+7. audio_7@12-02-2018_10-08-22.ogg
+   RENAME TO: יורה דעה צח-ק.wav
+   WHY: Halachic teaching on Yoreh Deah laws 198-200
+
+8. audio_8@15-03-2018_11-14-45.ogg
+   RENAME TO: הרב_חננאל,_הרב_ידידיה_סוף_זמן_חורף.mp3
+   WHY: Rabbi Hananel & Rabbi Yedidiah - End of Winter Season
+
+
+ALTERNATIVE METHOD - Using Command Line
+================================================================================
+
+If you prefer to use command line (Windows CMD or PowerShell):
+
+cd C:\Users\User\Downloads\Telegram Desktop\ChatExport_2026-07-11\voice_messages
+
+ren "audio_1@02-06-2016_10-07-44.ogg" "הכנסת ספר תורה משפחת שמיר.m4a"
+ren "audio_2@02-06-2016_10-07-46.ogg" "קול 002.m4a"
+ren "audio_3@06-07-2016_23-17-22.ogg" "הקלטה 004.m4a"
+ren "audio_4@14-02-2017_13-13-25.ogg" "שמואל ב ו הבאת ארון ה' לירושלים.amr"
+ren "audio_5@03-07-2017_17-57-54.ogg" "אירוע הרב, בלק תשעז.3gp"
+ren "audio_6@30-01-2018_09-02-17.ogg" "ראש הישיבה תנ''ך ישעיהו כז ב.mp3"
+ren "audio_7@12-02-2018_10-08-22.ogg" "יורה דעה צח-ק.wav"
+ren "audio_8@15-03-2018_11-14-45.ogg" "הרב_חננאל,_הרב_ידידיה_סוף_זמן_חורף.mp3"
+
+
+FILES ALREADY WELL-NAMED (No action needed)
+================================================================================
+
+The remaining 74 files in voice_messages folder are already properly named:
+
+Examples:
+  ✓ אורות מלחמה 2.m4a
+  ✓ בחכמה יבנה בית.zip
+  ✓ דרכה של תורה.m4a
+  ✓ הרב חננאל הכנה לחתונה א.mp3
+  ✓ הרב חננאל אבן העזר סימן כא, כב.mp3
+  ✓ ראש הישיבה אבן שלמה א.mp3
+  ✓ מדרש חקת המשך-הרב ידידיה.m4a
+
+
+FUTURE RECOMMENDATIONS
+================================================================================
+
+After completing the above renaming:
+
+OPTION A - Folder Consolidation (Recommended)
+  Move all files from voice_messages/ into files/ folder
+  This simplifies organization and reduces duplication
+
+OPTION B - Organize by Speaker
+  Create subfolders:
+    files/הרב_חננאל/
+    files/הרב_ידידיה/
+    files/הרב_עזרא/
+  Move files accordingly for better accessibility
+
+OPTION C - Organize by Type + Speaker
+  Create both format and speaker categories:
+    files/הרכות/הרב_חננאל/
+    files/שיעורים/הרב_ידידיה/
+    files/PDFs/
+    files/תמונות/
+
+
+VERIFICATION
+================================================================================
+
+After renaming, check:
+
+1. All 8 audio_X files are renamed with descriptive names
+2. No duplicate filenames exist
+3. All files are still accessible from their original location
+4. File extensions remain correct (.mp3, .m4a, .ogg, etc.)
+
+
+BACKUP RECOMMENDATION
+================================================================================
+
+Before making any changes, create a backup:
+
+1. Copy the entire ChatExport_2026-07-11 folder to another location
+2. Keep the backup for at least 2 weeks
+3. Only delete backup after confirming all changes work correctly
+
+
+NEED HELP?
+================================================================================
+
+If you encounter any issues:
+1. Check FILE_ORGANIZATION_REPORT.md for detailed analysis
+2. Review the rename_generic_files.py script for automated approach
+3. Restore from backup if needed
+
+================================================================================
+Created: 2026-07-12
+================================================================================

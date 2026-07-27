@@ -154,7 +154,10 @@
       "PowerShell(Remove-Item *)",
       "Bash(npm run *)",
       "Bash(./node_modules/.bin/next dev *)",
-      "Bash(git merge *)"
+      "Bash(git merge *)",
+      "Bash(NODE_OPTIONS=\"--max-old-space-size=4096\" npm run dev)",
+      "Bash(rm -rf .next node_modules package-lock.json)",
+      "Bash(npm install *)"
     ]
   }
 }

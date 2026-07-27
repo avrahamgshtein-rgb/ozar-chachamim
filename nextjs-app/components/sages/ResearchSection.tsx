@@ -76,16 +76,16 @@ export function ResearchSection({ sageId, locale }: { sageId: string; locale: Lo
             : 'Research is currently available in Hebrew only.'}
         </p>
       )}
-      <div className="space-y-3 overflow-x-hidden" dir={isFallback || isHe ? 'rtl' : 'ltr'}>
+      <div className="space-y-3" dir={isFallback || isHe ? 'rtl' : 'ltr'}>
         {docs.map((doc, i) => (
           <details key={i} open={i === 0}
             className="rounded-xl border border-ink-700/40 bg-ink-800/30 overflow-hidden">
-            <summary className="cursor-pointer select-none px-4 py-3 font-serif text-sm text-gold-300 hover:bg-ink-700/30 transition-colors break-words">
+            <summary className="cursor-pointer select-none px-4 py-3 font-serif text-sm text-gold-300 hover:bg-ink-700/30 transition-colors">
               📖 {doc.title.length > 90 ? doc.title.slice(0, 90) + '…' : doc.title}
               <span className="text-ink-500 text-xs font-sans"> · {doc.word_count.toLocaleString()} {tr(locale, 'מילים', 'words', 'слов')}</span>
             </summary>
             <div
-              className="px-4 pb-4 pt-1 text-sm text-ink-200 whitespace-pre-line border-t border-ink-700/30 overflow-x-hidden break-words"
+              className="px-4 pb-4 pt-1 text-sm text-ink-200 whitespace-pre-line border-t border-ink-700/30"
               style={readingStyle(prefs)}
             >
               {doc.content}
