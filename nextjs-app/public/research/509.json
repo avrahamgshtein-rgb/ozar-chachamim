@@ -1,8 +1,0 @@
-[
-  {
-    "title": "משנתו, פועלו ומורשתו של רבי חיים בן עטר: אור החיים הקדוש בפרספקטיבה היסטורית ותאולוגית",
-    "source_file": "Google Docs: משנתו, פועלו ומורשתו של רבי חיים בן עטר: אור החיים הקדוש בפרספקטיבה היסטורית ותאולוגית [PENDING AUTHENTICATION]",
-    "word_count": 0,
-    "content": "[PLACEHOLDER CONTENT - REQUIRES GOOGLE DRIVE API]\n\nDocument Title: משנתו, פועלו ומורשתו של רבי חיים בן עטר: אור החיים הקדוש בפרספקטיבה היסטורית ותאולוגית\nSage ID: 509\nSage Label: רבי חיים בן עטר (בעל אור החיים)\n\nGoogle Drive ID: 1ROPu3SJlCzN7IzME4JWVfGi8DkEMuKUn347Tg1hj4xY\nSpotify Episode: https://open.spotify.com/episode/3HwpG5NALcGOQmbs1wwR4N\n\nStatus: This document requires Google Drive API authentication to download.\nThe content will be populated once the following is completed:\n\n1. Set up Google Drive API credentials (see connectors/GOOGLE_DRIVE_CONNECTOR_SETUP.md)\n2. Authenticate with service account\n3. Run Google Drive fetch script to extract document content\n\nDocument Type: Research document from Ozar Chachamim project\nCreation Date: 2026-08-03 (Pending content extraction)\n\nNote: This placeholder ensures the research mapping is preserved until the\nfull document content can be extracted from Google Drive."
-  }
-]

@@ -1,8 +1,0 @@
-[
-  {
-    "title": "הקודיפיקציה האיטלקית ושורשיה בירושלים: משנתו התורנית ופועלו של רבי צדקיה בן אברהם הרופא",
-    "source_file": "Google Docs: הקודיפיקציה האיטלקית ושורשיה בירושלים: משנתו התורנית ופועלו של רבי צדקיה בן אברהם הרופא [PENDING AUTHENTICATION]",
-    "word_count": 0,
-    "content": "[PLACEHOLDER CONTENT - REQUIRES GOOGLE DRIVE API]\n\nDocument Title: הקודיפיקציה האיטלקית ושורשיה בירושלים: משנתו התורנית ופועלו של רבי צדקיה בן אברהם הרופא\nSage ID: 299\nSage Label: צדקיה בן אברהם\n\nGoogle Drive ID: 1wXUrjHgRo4MKcCMP43NVXwXQEYm2fSrl44qYxowW2jY\nSpotify Episode: https://open.spotify.com/episode/0zmmVvmiG4Wzj6H3D3wwK7\n\nStatus: This document requires Google Drive API authentication to download.\nThe content will be populated once the following is completed:\n\n1. Set up Google Drive API credentials (see connectors/GOOGLE_DRIVE_CONNECTOR_SETUP.md)\n2. Authenticate with service account\n3. Run Google Drive fetch script to extract document content\n\nDocument Type: Research document from Ozar Chachamim project\nCreation Date: 2026-08-03 (Pending content extraction)\n\nNote: This placeholder ensures the research mapping is preserved until the\nfull document content can be extracted from Google Drive."
-  }
-]
