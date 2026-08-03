@@ -257,8 +257,84 @@ if __name__ == '__main__':
             f.write(f"{docx}\t{sage_id}\tto_process\n")
     print(f"Worklist written to {WORKLIST_FILE}")
 
-    # Phase 2: Extract & Match (placeholder for now)
+    # Setup: Backup
+    print("\n[Setup] Backing up existing research...")
+    backup_existing_research()
+
+    # Phase 2: Extract & Match
     print(f"\n[Phase 2] Processing {len(missing)} documents...")
-    print("(Implementation in next task)")
+    print("-" * 70)
+
+    stats = {'ok': 0, 'skip': 0, 'uncertain': 0}
+
+    for idx, docx in enumerate(missing, 1):
+        docx_path = DATA_DIR / docx
+        node = match_node(docx)
+
+        status = 'SKIP'
+        sage_id = None
+        reason = ''
+        confidence = 0.0
+        word_count = 0
+
+        if node:
+            sage_id = node['id']
+            confidence = node['confidence']
+
+            # Determine status by confidence
+            if confidence >= 0.9:
+                status = 'OK'
+            elif confidence >= 0.7:
+                status = 'UNCERTAIN'
+            else:
+                status = 'SKIP'
+                reason = f'low confidence ({confidence:.2f})'
+        else:
+            status = 'SKIP'
+            reason = 'no matching sage found'
+
+        # Extract text if we're going to save
+        if status in ('OK', 'UNCERTAIN'):
+            try:
+                text = extract_text(str(docx_path))
+                word_count = len(text.split())
+                save_research_json(sage_id, text, status='ok' if status == 'OK' else 'uncertain')
+                reason = f'extracted {word_count} words'
+            except Exception as e:
+                status = 'SKIP'
+                reason = f'extraction failed: {str(e)[:50]}'
+
+        # Log result
+        log_entry = {
+            'docx_filename': docx,
+            'status': status,
+            'sage_id': sage_id,
+            'sage_label': node['label'] if node else '',
+            'confidence': round(confidence, 2),
+            'reason': reason,
+            'word_count': word_count,
+            'timestamp': datetime.now().isoformat()
+        }
+        log_results.append(log_entry)
+        stats[status.lower()] += 1
+
+        # Progress indicator
+        if idx % 20 == 0 or idx == len(missing):
+            print(f"  [{idx}/{len(missing)}] {status}: {docx[:40]:<40} -> {sage_id or '?':<6} ({confidence:.2f})")
+
+    print("-" * 70)
+    print(f"\nPhase 2 Complete:")
+    print(f"  OK:        {stats['ok']}")
+    print(f"  UNCERTAIN: {stats['uncertain']}")
+    print(f"  SKIP:      {stats['skip']}")
+    print(f"  Total:     {sum(stats.values())}")
+
+    # Phase 3: Write logs
+    print("\n[Phase 3] Writing logs...")
+    flush_log()
 
     print("\n" + "=" * 70)
+    print("PIPELINE COMPLETE")
+    print(f"Total ingested: {stats['ok'] + stats['uncertain']}")
+    print(f"Log file: {LOG_FILE}")
+    print("=" * 70)

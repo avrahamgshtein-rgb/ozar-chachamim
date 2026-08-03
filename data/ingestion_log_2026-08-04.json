@@ -1,0 +1,22 @@
+[
+  {
+    "docx_filename": "פועלו המשפטי, משנתו התורנית ודמותו ההיסטורית של שמאי הזקן.docx",
+    "status": "SKIP",
+    "sage_id": "504",
+    "sage_label": "שמאי הזקן",
+    "confidence": 0.67,
+    "reason": "low confidence (0.67)",
+    "word_count": 0,
+    "timestamp": "2026-08-04T01:35:17.105933"
+  },
+  {
+    "docx_filename": "פועלו, משנתו התורנית והנהגתו הציבורית של רבי יהושע בן חנניה_ ניתוח היסטורי, הלכתי ותיאולוגי.docx",
+    "status": "SKIP",
+    "sage_id": "503",
+    "sage_label": "רבי יהושע בן חנניה",
+    "confidence": 0.67,
+    "reason": "low confidence (0.67)",
+    "word_count": 0,
+    "timestamp": "2026-08-04T01:35:17.110392"
+  }
+]
