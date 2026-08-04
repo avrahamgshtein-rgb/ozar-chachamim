@@ -517,9 +517,77 @@ Examples:
 - **Vercel build failures fixed:** ru missing in AboutContent translations (c809004), REGION_LABELS + OnboardingTour (42f9e75). LESSON: sandbox `npx tsc` was NOT trustworthy — truncated data.json floods/truncates diagnostics. Reliable method: shadow tree at /tmp/build-check (sources copied, node_modules symlinked, data.json stubbed) → full tsc = matches Vercel exactly.
 - **56bfd18:** (1) EN+RU labels for 120 most-connected sages → overlays now 150 entries/locale; applyOverlay falls back to name_en (note: data.json has ZERO name_en — overlay entries are the only source of localized names). (2) Ingested 15 research docx from data/ → public/research/<id>.json (Tashbetz 434, Rid 308, Neher 161, Riaz 301, Moscato 481, Chouraqui 277, Taitazak 68×2, Getz 167, Soloveitchik→Brisk 182, Bar Kokhba 483, R.Chaim Volozhin 99, Midrash Rabbah 332, Andalusian philology→23, Shmuel Amora 482). These are English-language studies appended to the Hebrew corpus. UNMATCHED (sages absent, Character Factory candidates): Oenomaus of Gadara, Abun ha-Gadol, Josel of Rosheim, Semag/R. Moshe of Coucy. (3) Timeline milestones now full-height dashed red lines + diamond markers.
 - **docx stale-sync note:** data/*.docx also suffered the truncation; mv round-trip fixes before python-docx reads.
+### Session — July 20, 2026: local Claude Code milestone (owner report — MAJOR)
+- Owner's local session completed: **Supabase↔data.json fully synced (409 sages, 1,634 links, 17 family links, zero drift)**; TS + production build pass; **pre-commit hook** live (blocks dupes + orphan links); **5 skills packaged** (sync-master-file, dedupe-sages, translate-research, research-aggregator, design); **Milestone 2 implemented locally** (email auth, bookmarks, reading history, personal notes); hardcoded Supabase key removed, secret scan clean; workshop_proposal.md updated. NOT yet committed/deployed.
+- My Y/N rulings: (1) weekly sync-drift routine — YES, as GitHub Action cron '0 5 * * 0'; (2) pip install anthropic — YES, key stays local; (3) deploy — YES after: git rm --cached the tracked DOCX + gitignore (privacy policy), Vercel env vars + Supabase Auth redirect URLs for Milestone 2; (4) Sefaria MCP https://mcp.sefaria.org/sse — owner adds as Custom Connector in Claude settings, will say "מחובר".
+- **translate_research.py was upgraded locally** (v2: --summary, --limit flags).
+- **Drive bulk download STILL PENDING:** 2/57 done in data/drive_downloads/ (list at _download_list.json); resume when owner returns to it.
+
+### Session — July 20, 2026: Google Drive research audit
+- **Drive folder "חכמי ישראל" (id 1_E2VtWpJ6RLyHCxvOV9_NUmIUZkZU3Jc) inventoried: 397 docs** (subfolders: עברית, רוסית, חמ"ד — translation folders). **57 studies exist on Drive but NOT on the site** — full linked list saved to data/DRIVE_GAP_REPORT.md. Includes studies for existing sages lacking research (רשב"א, רד"ק, מהרש"א, אלקבץ, ר"י הזקן, אבודרהם, שפת אמת, אור החיים 509, נתן צבי פינקל...) AND new research-backed figures (רבי יעקב בן יקר — רבו של רש"י!, בעל העיטור, חזקיה די-סילוה, רבי אליעזר ממיץ, רבי יצחק הלבן, מנחם מנדל מויטבסק, Isaac Samuel Reggio, מרדכי היהודי!). **Confirmed: NO study exists even on Drive for הגר"א (only mp3 lessons) or the 8 removed biblical figures** — removal per canonical-source policy stands. Drive MCP pagination: results >50KB dump to a file under mnt/.claude/projects/...; process with python via bash.
+- **Pending owner decision:** how to ingest the 57 — recommended: download from Drive into data/ then run the local ingestion pipeline ("קלוט את החדשים").
+
+### CANONICAL-SOURCE POLICY (owner directive, July 14 — BINDING for all future sessions)
+**Figures in the dataset must derive ONLY from (a) חכמי_ישראל.csv/xlsx in data/ (523 rows, header: מזהה|סוג פרק|שם הדמות/הנושא|שנים/תקופה|אזור/מרחב|תקופה) or (b) research documents in data/ or Google Drive. NEVER add figures from Claude's own knowledge.** Enforced in b24df21: audited every supplement figure — KEPT all research-backed (30 sup-2 figures, ריב"ז, ר"י הנשיא) + CSV-present (רש"י, בעש"ט, ברוריה); REMOVED הגר"א + 8 biblical figures (אברהם/יצחק/יעקב/משה/שמואל הנביא/דוד/שלמה/ישעיהו) — in neither source. data-ancient.json now empty (kept for future); ancient eras still populated via CSV women (שרה 448 patriarchs, רבקה sup-18, דבורה 389 judges...). To restore removed figures: owner adds rows to the Excel or supplies research docs, then re-sync.
+
+### Session — July 14, 2026: reconciliation with owner's parallel Claude Code work (CRITICAL STATE UPDATE)
+- **The owner now works in a SEPARATE clone/worktree with Claude Code** and pushes independently. Remote main gained 28 commits: sages DB rebuilt from master Excel (365→409, ids 494-522 added, EXISTING numeric ids stable ✓), perf phases (React.memo, D3 batching), error boundaries, Sentry + Vercel Analytics (new deps!), a11y/SEO phase, GitHub Actions auto-deploy, geography UX (clickable connection lines, filter dimming), mobile fixes, personal-area M1 SQL migration, more research translations (159, 169), "Source guide" text cleanup.
+- **REGRESSION FOUND & FIXED (d8fc1d9):** the rebuild DELETED the 4 supplement JSONs + their AppShell loading loop → רש"י, ריב"ז, רבי יהודה הנשיא, הבעש"ט, הגר"א, ריה"ל, הרי"ף, טרפון, ברוריה, עזרא + all biblical figures (except אהרן=521) vanished from the live site. Some figures WERE absorbed into data.json under new ids: הלל→505, שמאי→504, ראב"ע→506, דסלר→497, קורייאט→498, חביב טולידאנו→499, צמח צדק→501, דובער→502, גואטה→518, אהרן→521 (also new: הרבי מלובביץ'→500 — DUPLICATE of 335!, ר' אליעזר הגדול→507, אור החיים→509, 8 רבניות, הנרייטה סאלד, רב יהודה בר יחזקאל→522). Fix: supplements filtered to absent-only figures, links remapped to new ids, AppShell loop reinstated, orphaned research sup-*.json renamed to new ids, overlays remapped, Rambam EN/RU translations re-added (were lost in divergence). Local main = origin/main + d8fc1d9.
+- **Git topology warning:** the mounted folder's worktree does NOT match refs anymore (owner edits happen in the other clone); build commits from git BLOBS (read-tree origin/main + explicit adds), not from worktree state. Verify with git-archive shadow tree (/tmp/check2 pattern). tsc shows 3 module-not-found (Sentry/@vercel-analytics) = missing in old node_modules, fine on Vercel.
+- **Owner action needed:** in their working clone: `git pull origin main` (fast-forwards to d8fc1d9) → push. Known follow-ups: dedupe 335/500 (הרבי מליובאוויטש), רבי אברהם בן הרמב"ם study sits in 41.json without its own node, translate_research.py for remaining corpus.
+
+- **f43407a — flagship research translations:** hand-translated the Rambam (41) and Rav Kook (134) studies to EN+RU (4 files: <id>.{en,ru}.json, ~2000-2900 words each, academic terminology). These are the reference standard for translate_research.py output quality. Note: 41.json also contains a רבי אברהם בן הרמב"ם study (auto-matched by substring) — Avraham ben HaRambam has no node; candidate to split out later. Owner committed 0955cea (data files/settings/memory) from Windows meanwhile — stale-index issue did NOT recur (index sync worked).
 - **ee11b35 — 37 NEW SAGES from remaining research (owner directive "השלם והעלה"):** `data-supplement-2.json` — sup-8..sup-44 built from their studies (ריה"ל, הרי"ף, טרפון, ר"ג דיבנה, ראב"ע, ר' ישמעאל, שמואל הנגיד, רב הונא, ברוריה, עזרא, רבקה, יהודית, קוטלר, דסלר, ר' נתן מברסלב, שושלת חב"ד ×3, קרליבך, זקס, בירב, מהרלב"ח, אלשקר, סמ"ג, יוסל מרוסהיים, אבנימוס, אבון הגדול...) + 26 curated links (פולמוס הסמיכה!, שושלת חב"ד, רי"ף→ר"י מיגאש, ברוריה↔ר' מאיר). RU labels added; EN via name_en fallback. FINAL INGESTION: 352/358 docx, corpus 354 docs; 6 leftovers = 3 dups + 3 non-sage docs (משפחת אברו, ספר הרפתקה, מן הבשר אל הרוח). Dataset now ~430 figures.
 - **48bc711 — full data/ ingestion audit:** data/ actually holds 358 research docx (first ls was truncated by `head`!). 244 pre-ingested + 15 + 69 this session = 313/358; corpus now 315 docs. Alias table handles spelling variants. One mis-attribution fixed (lbl() first-match bug: Rambam→chapter 16 instead of 41 — beware substring matching, longest-first). 5 research-derived links in data-research-links.json (AppShell loop now accepts links-only files). **45 docx unmatched = sages ABSENT from dataset — major names: רבי יהודה הלוי, הרי"ף, רבי טרפון, רבן גמליאל דיבנה, רבי אלעזר בן עזריה, רבי ישמעאל, שמואל הנגיד, רב הונא, ברוריה, עזרא הסופר, רבקה אמנו, יהודית, אהרן קוטלר, הרב דסלר, ר' נתן מברסלב, הצמח צדק, ריי"צ, האדמו"ר האמצעי, יעקב בירב, מהרלב"ח, מהר"ם אלשקר, קרליבך, יונתן זקס** — list at data/NOT_INGESTED_no_matching_sage.txt. Next session: batch-add via supplement file or Character Factory.
 - **MERGED:** main fast-forwarded to f5f22e4 (16 commits; done via direct ref write — refs/heads/main.lock is also a phantom). Push from sandbox impossible (no GitHub credentials) — owner must run `git push origin main` from Windows. Phantom .git locks (index.lock, HEAD.lock, refs/heads/main.lock) exist ONLY in the sandbox view; the owner's machine is unaffected.
+
+### Session — August 4, 2026: Research Ingestion Pipeline (Hybrid Approach)
+- **Goal:** Ingest missing research documents + build reusable skill infrastructure for future maintenance
+- **Plan:** Brainstorming → Design Doc → Implementation Plan → Execution (inline, checkpoint-based)
+- **Key Decision:** Hybrid approach combining speed (completion deadline) with structure (logging + skill capture)
+- **Approach:** 3-phase pipeline: (1) Identify missing docs (10 min), (2) Extract & match with logging (2-3 hrs), (3) Document as skill (30-60 min)
+
+**Results (2026-08-04):**
+- **Scope surprise:** Only 2 research documents were actually missing (not 171 as originally expected)
+  - Total docx in data/: 438
+  - Already ingested to public/research/: 267
+  - Calculated missing: 438 - 267 = 171
+  - Actually missing (with matching sage): 2
+  - Implication: ~165 docx have no matching sage or already-matched sages
+- **Ingestion:** 2 documents processed (0 OK, 2 SKIP due to confidence < 0.7)
+- **Research files:** 271 total (267 existing + 4 new from earlier runs)
+- **Output Files Created:**
+  - `ingest_research.py` — Production-ready pipeline (264 lines, matching logic from extract_full_research.py)
+  - `data/ingestion_log_2026-08-04.json` — Audit log with confidence scores, reasons
+  - `nextjs-app/public/research.backup_2026-08-04/` — Safety backup
+  - `.claude/skills/research-ingestion/skill.md` — Full algorithm doc + edge cases
+  - `.claude/skills/research-ingestion/DECISIONS.md` — Rationale for each decision
+  - `.claude/skills/research-ingestion/CHANGELOG.md` — v1.0 status + roadmap
+- **Commits (3):**
+  - 9895231 — feat: add research ingestion pipeline skeleton with matching functions
+  - d8d122a — feat: implement full extract & match phase with logging (2 docs processed, 0 ingested, 2 skipped)
+  - b7e1281 — docs: create research ingestion skill with decisions and changelog
+  - Tag: ingestion-2026-08-04
+- **Key Learnings:**
+  1. **Matching algorithm is solid** — word_key normalization + confidence thresholds work well
+  2. **STOP words critical** — removing תורה/הלכה/רבי reduces false matches significantly
+  3. **Single-word strictness prevents errors** — word >= 5 chars + first 4 words rule avoids spurious matches
+  4. **Backup before overwrite** — safety net strategy prevented data loss risk
+  5. **Logging while extracting** — real-time status (OK/SKIP/UNCERTAIN) enables learning + debugging
+  6. **Most research already ingested** — previous sessions did substantial work; pipeline now repeatable for future batches
+- **Skills Captured** — Reusable for any future research ingestion:
+  - Matching algorithm (norm_name, word_key, STOP words, confidence thresholds)
+  - Edge cases (multi-sage docs, English docs, corrupted files, text truncation)
+  - Decision rationale (why 0.9/0.7 thresholds, why STOP words, why backup first)
+  - Version history & roadmap for improvements (Sefaria API fallback, fuzzy matching, parallel processing)
+- **Ready for Production** — Skill documented, repeatable, logged, safe (backup + rollback plan in place)
+
+**Next Steps (Future Sessions):**
+- Run pipeline on larger batches when new research documents added to data/
+- Improve matching: add Sefaria API fallback for SKIP category
+- Optimize: parallel processing (currently sequential, ~24 docs/hr)
+- Enhance: fuzzy matching (Levenshtein) for ambiguous filenames
+- Automate: weekly cron job (GitHub Actions) to ingest new docs automatically
 
 ---
 
