@@ -4,7 +4,9 @@
  * Skeleton screen shown while a visualization chunk loads
  * (tab transitions / dynamic imports). Pure CSS shimmer — no deps.
  */
-export function VizSkeleton({ variant = 'canvas' }: { variant?: 'canvas' | 'list' }) {
+type VizSkeletonVariant = 'canvas' | 'graph' | 'map' | 'timeline' | 'table' | 'list'
+
+export function VizSkeleton({ variant = 'canvas' }: { variant?: VizSkeletonVariant }) {
   if (variant === 'list') {
     return (
       <div className="absolute inset-0 overflow-hidden px-6 py-6 space-y-3" aria-busy="true" aria-live="polite">

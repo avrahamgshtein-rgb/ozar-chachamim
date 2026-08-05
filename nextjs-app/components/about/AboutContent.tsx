@@ -20,7 +20,7 @@ const translations = {
     feature3: 'חיפוש מתקדם',
     feature3_desc: 'תמיכה בתרגומים בעברית ותצורות שונות של שמות',
     feature4: 'מסמכי מחקר',
-    feature4_desc: '252 מסמכי מחקר סקורים ומיוחסים למקורותיהם',
+    feature4_desc: '423 מסמכי מחקר סקורים ומיוחסים למקורותיהם',
     feature5: 'חומרי הוראה',
     feature5_desc: 'תכניות שיעור של 45 דקות עם שאלות דיון וחומרי השלמה',
     feature6: 'ממשק דו-לשוני',
@@ -33,7 +33,7 @@ const translations = {
     spirit: '🎓 רוח הפרויקט',
     spirit_text: 'אנחנו מאמינים שחכמי ישראל לא צריכים להיות שמות בספר, אלא דמויות חיות המחוברות בדוגמה, בוויכוח ובהשפעה הדדית. פרויקט זה שומר על החוכמה שלהם בזמן שהוא עושה אותה נגישה לדור הבא של חוקרים ותלמידים.',
     footer: 'אוצר חכמים — Preserving the Wisdom of Our Sages',
-    updated: 'עודכן: יולי 2026 | Version 2.0',
+    updated: 'עודכן: אוגוסט 2026 | Version 2.0',
     contact: 'צור קשר',
   },
   en: {
@@ -53,7 +53,7 @@ const translations = {
     feature3: 'Advanced Search',
     feature3_desc: 'Support for Hebrew transliterations and multiple name formats',
     feature4: 'Research Documents',
-    feature4_desc: '252 scholarly summaries reviewed and attributed to sources',
+    feature4_desc: '423 scholarly summaries reviewed and attributed to sources',
     feature5: 'Teaching Materials',
     feature5_desc: '45-minute lesson plans with discussion questions and resources',
     feature6: 'Bilingual Interface',
@@ -66,7 +66,7 @@ const translations = {
     spirit: '🎓 Project Spirit',
     spirit_text: 'We believe Jewish sages should not be names in a book, but living figures connected through example, debate, and mutual influence. This project preserves their wisdom while making it accessible to the next generation of researchers and students.',
     footer: 'Ozar Chachamim — Preserving the Wisdom of Our Sages',
-    updated: 'Updated: July 2026 | Version 2.0',
+    updated: 'Updated: August 2026 | Version 2.0',
     contact: 'Contact',
   },
   ru: {
@@ -86,7 +86,7 @@ const translations = {
     feature3: 'Расширенный поиск',
     feature3_desc: 'Поддержка еврейской транслитерации и разных форм имён',
     feature4: 'Исследовательские документы',
-    feature4_desc: '252 научных резюме, проверенных и атрибутированных источникам',
+    feature4_desc: '423 научных резюме, проверенных и атрибутированных источникам',
     feature5: 'Учебные материалы',
     feature5_desc: 'Планы уроков на 45 минут с вопросами для обсуждения',
     feature6: 'Многоязычный интерфейс',
@@ -99,7 +99,7 @@ const translations = {
     spirit: '🎓 Дух проекта',
     spirit_text: 'Мы верим, что еврейские мудрецы — это не просто имена в книге, а живые фигуры, связанные примером, спором и взаимным влиянием. Этот проект сохраняет их мудрость и делает её доступной следующему поколению исследователей и учеников.',
     footer: 'Оцар Хахамим — сохраняя мудрость наших мудрецов',
-    updated: 'Обновлено: июль 2026 | Версия 2.0',
+    updated: 'Обновлено: август 2026 | Версия 2.0',
     contact: 'Контакт',
   },
 }
@@ -142,19 +142,19 @@ export function AboutContent({ locale }: { locale: Locale }) {
         {/* Network Stats */}
         <div className="mb-16 grid grid-cols-2 gap-4 text-center md:grid-cols-4">
           <div className="rounded-lg border border-gold-500/20 bg-slate-800/50 p-6">
-            <div className="text-4xl font-bold text-gold-400">365</div>
+            <div className="text-4xl font-bold text-gold-400">422</div>
             <div className="text-sm text-slate-400">{t.sages}</div>
           </div>
           <div className="rounded-lg border border-gold-500/20 bg-slate-800/50 p-6">
-            <div className="text-4xl font-bold text-gold-400">1,629</div>
+            <div className="text-4xl font-bold text-gold-400">1,624</div>
             <div className="text-sm text-slate-400">{t.connections}</div>
           </div>
           <div className="rounded-lg border border-gold-500/20 bg-slate-800/50 p-6">
-            <div className="text-4xl font-bold text-gold-400">148</div>
+            <div className="text-4xl font-bold text-gold-400">309</div>
             <div className="text-sm text-slate-400">{t.research}</div>
           </div>
           <div className="rounded-lg border border-gold-500/20 bg-slate-800/50 p-6">
-            <div className="text-4xl font-bold text-gold-400">28</div>
+            <div className="text-4xl font-bold text-gold-400">9</div>
             <div className="text-sm text-slate-400">{t.coverage}</div>
           </div>
         </div>
@@ -210,19 +210,19 @@ export function AboutContent({ locale }: { locale: Locale }) {
           <div className="grid gap-4 text-sm text-slate-400 md:grid-cols-2">
             <div>
               <p className="font-semibold text-gold-300 mb-2">Master Dataset</p>
-              <p>365 Hebrew sages with period, region, field classifications</p>
+              <p>422 Hebrew sages with period, region, field classifications</p>
             </div>
             <div>
               <p className="font-semibold text-gold-300 mb-2">Research Base</p>
-              <p>252 biographical documents (docx) reviewed and summarized</p>
+              <p>423 biographical documents across 309 sages, reviewed and summarized (with Hebrew/English/Russian variants)</p>
             </div>
             <div>
               <p className="font-semibold text-gold-300 mb-2">Geographic Data</p>
-              <p>28 regions mapped with coordinates from GeoNames/OpenStreetMap</p>
+              <p>9 of the site&apos;s 10 geographic regions represented, keyword-matched from sage locations</p>
             </div>
             <div>
               <p className="font-semibold text-gold-300 mb-2">Connections</p>
-              <p>1,629 validated relationships (student, teacher, colleague, etc.)</p>
+              <p>1,624 validated relationships (student, teacher, colleague, etc.)</p>
             </div>
           </div>
         </div>

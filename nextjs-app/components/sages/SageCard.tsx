@@ -13,6 +13,7 @@ import { fetchResearchContent } from '@/lib/supabase'
 import { ReadingControls, useReadingPrefs, readingStyle } from '@/components/ui/ReadingControls'
 import { SageMiniMap } from '@/components/sages/SageMiniMap'
 import { resolveCoords } from '@/lib/locationCoords'
+import { currentUser, loadSageMemory, recordSageView, saveSageNote, setSageBookmark } from '@/lib/personal'
 
 interface SageCardProps {
   sage: Sage
@@ -26,6 +27,10 @@ export function SageCard({ sage, locale, onClose }: SageCardProps) {
   const [research, setResearch] = useState<string | null>(null)
   const [researchOpen, setResearchOpen] = useState(false)
   const [readingPrefs, setReadingPrefs] = useReadingPrefs()
+  const [userId, setUserId] = useState<string | null>(null)
+  const [bookmarked, setBookmarked] = useState(false)
+  const [note, setNote] = useState('')
+  const [memoryMessage, setMemoryMessage] = useState('')
 
   useEffect(() => {
     setResearch(null)
@@ -49,6 +54,34 @@ export function SageCard({ sage, locale, onClose }: SageCardProps) {
     }
     load()
   }, [sage.id, locale])
+
+  useEffect(() => {
+    let active = true
+    currentUser().then(async user => {
+      if (!active || !user) return
+      setUserId(user.id)
+      const memory = await loadSageMemory(user.id, sage.id)
+      if (!active) return
+      setBookmarked(memory.bookmarked)
+      setNote(memory.note)
+      await recordSageView(user.id, sage.id)
+    })
+    return () => { active = false }
+  }, [sage.id])
+
+  async function toggleBookmark() {
+    if (!userId) return
+    const next = !bookmarked
+    const { error } = await setSageBookmark(userId, sage.id, next)
+    if (!error) setBookmarked(next)
+    setMemoryMessage(error ? error.message : tr(locale, 'נשמר', 'Saved', 'Сохранено'))
+  }
+
+  async function persistNote() {
+    if (!userId || !note.trim()) return
+    const { error } = await saveSageNote(userId, sage.id, note)
+    setMemoryMessage(error ? error.message : tr(locale, 'ההערה נשמרה', 'Note saved', 'Заметка сохранена'))
+  }
 
   const sageConnections: Array<Connection & { otherSage: Sage | undefined }> =
     connections
@@ -302,6 +335,35 @@ export function SageCard({ sage, locale, onClose }: SageCardProps) {
                 )
               })}
             </ul>
+          </section>
+        )}
+
+        {/* Personal memory — protected by Supabase RLS */}
+        {userId && (
+          <section>
+            <SectionLabel>{tr(locale, 'הזיכרון שלי', 'My notes', 'Мои заметки')}</SectionLabel>
+            <div className="space-y-2">
+              <button
+                onClick={toggleBookmark}
+                className="rounded-lg border border-gold-500/30 bg-gold-500/10 px-3 py-2 text-xs text-gold-300"
+              >
+                {bookmarked
+                  ? tr(locale, '★ הסר מסימניות', '★ Remove bookmark', '★ Удалить закладку')
+                  : tr(locale, '☆ שמור בסימניות', '☆ Add bookmark', '☆ Добавить закладку')}
+              </button>
+              <textarea
+                value={note}
+                onChange={event => setNote(event.target.value)}
+                placeholder={tr(locale, 'הערה אישית על החכם...', 'A private note about this sage...', 'Личная заметка о мудреце...')}
+                className="min-h-24 w-full resize-y rounded-lg border border-ink-600/50 bg-ink-900/60 p-3 text-sm text-ink-200 outline-none focus:border-gold-500/40"
+              />
+              <div className="flex items-center gap-3">
+                <button onClick={persistNote} className="text-xs text-gold-300 hover:text-gold-200">
+                  {tr(locale, 'שמור הערה', 'Save note', 'Сохранить заметку')}
+                </button>
+                {memoryMessage && <span className="text-xs text-ink-500">{memoryMessage}</span>}
+              </div>
+            </div>
           </section>
         )}
 

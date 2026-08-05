@@ -10,7 +10,13 @@
    "birth_year": -1812,
    "death_year": -1637,
    "bio": "אבי האומה. יצא מאור כשדים בקריאת 'לך לך', הפיץ את האמונה בא-ל אחד וכרת את ברית בין הבתרים.",
-   "migration_path": { "from": "בבל", "to": "חברון", "intermediate": ["חלב"] }
+   "migration_path": {
+    "from": "בבל",
+    "to": "חברון",
+    "intermediate": [
+     "חלב"
+    ]
+   }
   },
   {
    "id": "anc-2",
@@ -33,7 +39,10 @@
    "birth_year": -1652,
    "death_year": -1505,
    "bio": "בחיר האבות ואבי שנים־עשר השבטים. 'איש תם יושב אוהלים' שירד למצרים והניח את יסוד בית ישראל.",
-   "migration_path": { "from": "חברון", "to": "מצרים" }
+   "migration_path": {
+    "from": "חברון",
+    "to": "מצרים"
+   }
   },
   {
    "id": "anc-4",
@@ -46,18 +55,10 @@
    "death_year": -1271,
    "bio": "אדון הנביאים ומקבל התורה בסיני. הוציא את ישראל ממצרים, קיבל את הלוחות ומסר תורה לכל ישראל — ראש שלשלת הקבלה.",
    "core_concept": "משה קיבל תורה מסיני ומסרה ליהושע (אבות א, א)",
-   "migration_path": { "from": "מצרים", "to": "ארץ ישראל" }
-  },
-  {
-   "id": "anc-5",
-   "label": "אהרן הכהן",
-   "name_en": "Aaron",
-   "period": "exodus",
-   "location": "מצרים",
-   "field": "כהונה, שלום",
-   "birth_year": -1394,
-   "death_year": -1272,
-   "bio": "הכהן הגדול הראשון, אחי משה ופה־דוברו. 'אוהב שלום ורודף שלום, אוהב את הבריות ומקרבן לתורה'."
+   "migration_path": {
+    "from": "מצרים",
+    "to": "ארץ ישראל"
+   }
   },
   {
    "id": "anc-7",
@@ -105,14 +106,50 @@
   }
  ],
  "links": [
-  { "source": "anc-1", "target": "anc-2", "type": "family" },
-  { "source": "anc-2", "target": "anc-3", "type": "family" },
-  { "source": "anc-3", "target": "anc-4", "type": "predecessor" },
-  { "source": "anc-4", "target": "anc-5", "type": "family" },
-  { "source": "anc-4", "target": "389", "type": "predecessor" },
-  { "source": "389", "target": "anc-7", "type": "predecessor" },
-  { "source": "anc-7", "target": "anc-8", "type": "teacher" },
-  { "source": "anc-8", "target": "anc-9", "type": "family" },
-  { "source": "anc-9", "target": "anc-10", "type": "predecessor" }
+  {
+   "source": "anc-1",
+   "target": "anc-2",
+   "type": "family"
+  },
+  {
+   "source": "anc-2",
+   "target": "anc-3",
+   "type": "family"
+  },
+  {
+   "source": "anc-3",
+   "target": "anc-4",
+   "type": "predecessor"
+  },
+  {
+   "source": "anc-4",
+   "target": "anc-5",
+   "type": "family"
+  },
+  {
+   "source": "anc-4",
+   "target": "389",
+   "type": "predecessor"
+  },
+  {
+   "source": "389",
+   "target": "anc-7",
+   "type": "predecessor"
+  },
+  {
+   "source": "anc-7",
+   "target": "anc-8",
+   "type": "teacher"
+  },
+  {
+   "source": "anc-8",
+   "target": "anc-9",
+   "type": "family"
+  },
+  {
+   "source": "anc-9",
+   "target": "anc-10",
+   "type": "predecessor"
+  }
  ]
 }

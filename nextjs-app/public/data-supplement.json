@@ -1,31 +1,6 @@
 {
  "nodes": [
   {
-   "id": "sup-1",
-   "label": "הלל הזקן",
-   "name_en": "Hillel the Elder",
-   "period": "second-temple",
-   "location": "ירושלים",
-   "field": "תורה שבעל פה, מוסר",
-   "birth_year": -110,
-   "death_year": 10,
-   "bio": "נשיא ישראל וראש בית הלל. עלה מבבל, העמיד את הענווה והאהבה במרכז: 'מה ששנוא עליך אל תעשה לחברך — זו כל התורה כולה'.",
-   "core_concept": "אם אין אני לי, מי לי; וכשאני לעצמי, מה אני",
-   "migration_path": { "from": "בבל", "to": "ירושלים" },
-   "works": ["תקנת פרוזבול", "שבע מידות שהתורה נדרשת בהן"]
-  },
-  {
-   "id": "sup-2",
-   "label": "שמאי הזקן",
-   "name_en": "Shammai the Elder",
-   "period": "second-temple",
-   "location": "ירושלים",
-   "field": "תורה שבעל פה, הלכה",
-   "birth_year": -50,
-   "death_year": 30,
-   "bio": "אב בית הדין וראש בית שמאי, בר הפלוגתא של הלל. החמיר בהלכה מתוך אידיאל של שלמות, ולימד: 'אמור מעט ועשה הרבה'."
-  },
-  {
    "id": "sup-3",
    "label": "רבן יוחנן בן זכאי",
    "name_en": "Rabban Yohanan ben Zakkai",
@@ -36,8 +11,13 @@
    "death_year": 74,
    "bio": "מציל התורה בדור החורבן. יצא מירושלים הנצורה וביקש 'תן לי יבנה וחכמיה' — ובכך הבטיח את המשך התורה שבעל פה אחרי חורבן הבית.",
    "core_concept": "תן לי יבנה וחכמיה",
-   "migration_path": { "from": "ירושלים", "to": "יבנה" },
-   "works": ["תקנות יבנה"]
+   "migration_path": {
+    "from": "ירושלים",
+    "to": "יבנה"
+   },
+   "works": [
+    "תקנות יבנה"
+   ]
   },
   {
    "id": "sup-4",
@@ -50,7 +30,9 @@
    "death_year": 217,
    "bio": "עורך המשנה וחותם תקופת התנאים. איחד את מסורות התורה שבעל פה לחיבור אחד מוסמך, ושילב גדולה בתורה עם עושר ומנהיגות מול רומא.",
    "core_concept": "עריכת המשנה — חתימת התורה שבעל פה הראשונה",
-   "works": ["המשנה"]
+   "works": [
+    "המשנה"
+   ]
   },
   {
    "id": "sup-5",
@@ -63,7 +45,11 @@
    "death_year": 1105,
    "bio": "גדול פרשני ישראל. פירושו לתורה ולתלמוד — בהיר, תמציתי וצמוד לפשט — פתח את שערי הלימוד לכל הדורות, ובלעדיו אין דף גמרא נלמד.",
    "core_concept": "פשוטו של מקרא — פירוש שכל תלמיד יכול להיכנס בו",
-   "works": ["פירוש רש\"י לתורה", "פירוש רש\"י לתלמוד", "תשובות רש\"י"]
+   "works": [
+    "פירוש רש\"י לתורה",
+    "פירוש רש\"י לתלמוד",
+    "תשובות רש\"י"
+   ]
   },
   {
    "id": "sup-6",
@@ -76,7 +62,10 @@
    "death_year": 1760,
    "bio": "מייסד תנועת החסידות. לימד שאין מקום פנוי ממנו, העמיד את הדבקות, השמחה ואהבת כל יהודי במרכז העבודה — ושינה את פני יהדות מזרח אירופה.",
    "core_concept": "לית אתר פנוי מיניה — עבודת ה' בדבקות ובשמחה",
-   "works": ["כתר שם טוב (ליקוטי תלמידים)", "צוואת הריב\"ש"]
+   "works": [
+    "כתר שם טוב (ליקוטי תלמידים)",
+    "צוואת הריב\"ש"
+   ]
   },
   {
    "id": "sup-7",
@@ -89,21 +78,73 @@
    "death_year": 1797,
    "bio": "גאון הדורות בליטא. שקד על התורה בהתמדה מופלאה, הקיף נגלה ונסתר, דקדוק ומתמטיקה, והעמיד את לימוד התורה בעיון מדויק במרכז — אבי עולם הישיבות הליטאי.",
    "core_concept": "עמל התורה בדיוק ובבקיאות — נגלה ונסתר כאחד",
-   "works": ["ביאור הגר\"א לשולחן ערוך", "אדרת אליהו", "ביאורי הגר\"א לש\"ס"]
+   "works": [
+    "ביאור הגר\"א לשולחן ערוך",
+    "אדרת אליהו",
+    "ביאורי הגר\"א לש\"ס"
+   ]
   }
  ],
  "links": [
-  { "source": "sup-1", "target": "sup-2", "type": "oppose" },
-  { "source": "sup-1", "target": "sup-3", "type": "teacher" },
-  { "source": "sup-3", "target": "4",     "type": "influence" },
-  { "source": "4",     "target": "sup-4", "type": "influence" },
-  { "source": "348",   "target": "sup-5", "type": "influence" },
-  { "source": "22",    "target": "sup-5", "type": "influence" },
-  { "source": "sup-5", "target": "276",   "type": "family" },
-  { "source": "sup-5", "target": "33",    "type": "family" },
-  { "source": "sup-6", "target": "92",    "type": "family" },
-  { "source": "462",   "target": "sup-6", "type": "influence" },
-  { "source": "462",   "target": "sup-7", "type": "influence" },
-  { "source": "sup-7", "target": "sup-6", "type": "oppose" }
+  {
+   "source": "505",
+   "target": "504",
+   "type": "oppose"
+  },
+  {
+   "source": "505",
+   "target": "sup-3",
+   "type": "teacher"
+  },
+  {
+   "source": "sup-3",
+   "target": "4",
+   "type": "influence"
+  },
+  {
+   "source": "4",
+   "target": "sup-4",
+   "type": "influence"
+  },
+  {
+   "source": "348",
+   "target": "sup-5",
+   "type": "influence"
+  },
+  {
+   "source": "22",
+   "target": "sup-5",
+   "type": "influence"
+  },
+  {
+   "source": "sup-5",
+   "target": "276",
+   "type": "family"
+  },
+  {
+   "source": "sup-5",
+   "target": "33",
+   "type": "family"
+  },
+  {
+   "source": "sup-6",
+   "target": "92",
+   "type": "family"
+  },
+  {
+   "source": "462",
+   "target": "sup-6",
+   "type": "influence"
+  },
+  {
+   "source": "462",
+   "target": "sup-7",
+   "type": "influence"
+  },
+  {
+   "source": "sup-7",
+   "target": "sup-6",
+   "type": "oppose"
+  }
  ]
 }
