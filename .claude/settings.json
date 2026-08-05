@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "env": {
+    "RESEARCH_MANIFEST_PATH": "/tmp/claude-0/-home-user/4ee6b46b-17bb-58f3-a062-e7061ae6d87c/scratchpad/approved_46_minus_7.json",
+    "RESEARCH_OUTPUT_DIR": "nextjs-app/public/research"
+  },
+  "permissions": {
+    "allow": [
+      "Read",
+      "Write",
+      "Edit",
+      "Glob",
+      "Grep",
+      "Bash(cd *)",
+      "Bash(ls *)",
+      "Bash(jq *)",
+      "Bash(find *)"
+    ]
+  }
+}

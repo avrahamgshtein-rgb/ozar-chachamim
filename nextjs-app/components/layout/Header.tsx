@@ -8,6 +8,7 @@ import { useAppStore } from '@/store/useAppStore'
 import { ERA_COLORS, ERA_LABELS, ALL_PERIODS } from '@/lib/types'
 import type { Locale, Period } from '@/lib/types'
 import { UI, LOCALES, LOCALE_NAMES, LOCALE_SHORT, tr } from '@/lib/i18n'
+import { AuthStatus } from '@/components/auth/AuthStatus'
 
 interface HeaderProps {
   locale: Locale
@@ -157,6 +158,11 @@ export function Header({ locale, otherLocale }: HeaderProps) {
           ?
         </button>
 
+        {/* Auth status (desktop) */}
+        <div className="hidden sm:block">
+          <AuthStatus locale={locale} />
+        </div>
+
         {/* Locale switcher (desktop) */}
         <LocaleSwitcher locale={locale} />
 
@@ -254,6 +260,9 @@ function MobileActionsMenu({ locale, otherLocale }: { locale: Locale; otherLocal
                 {LOCALE_NAMES[l]}
               </Link>
             ))}
+            <div className="border-t border-ink-700/40 px-4 py-3">
+              <AuthStatus locale={locale} />
+            </div>
           </div>
         </>
       )}
