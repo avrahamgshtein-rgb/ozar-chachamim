@@ -22,6 +22,8 @@ export function TabBar({ locale }: TabBarProps) {
         'glass rounded-2xl px-2 py-1.5',
         'shadow-glass flex items-center gap-0.5',
         'max-w-[calc(100vw-2rem)]',
+        'overflow-x-auto overflow-y-hidden',
+        '[&::-webkit-scrollbar]:h-1 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-ink-500 [&::-webkit-scrollbar-thumb]:rounded-full',
       )}
       aria-label={isHe ? 'ניווט ראשי' : 'Main navigation'}
       data-tour="tabs"
