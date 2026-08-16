@@ -1,482 +1,662 @@
 {
-  "4": {
-    "label": "Rabbi Akiva ben Yosef",
-    "bio": "One of the greatest Tannaim, he shaped the world of the Oral Torah after the destruction of the Temple, leading a broken generation with love of Israel and self-sacrifice."
-  },
-  "41": {
-    "label": "Maimonides (Rambam)",
-    "bio": "A double revolutionary — he codified halakha with clarity, closing the era of the Talmud, while at the same time formulating a rational faith in the Guide for the Perplexed."
-  },
-  "44": {
-    "label": "Nahmanides (Ramban)",
-    "bio": "Halakhic authority, commentator and kabbalist who wove together every layer of Torah, renewed the Jewish settlement of Jerusalem, and stood courageously before the Church."
-  },
-  "33": {
-    "label": "Rabbenu Tam (R. Yaakov ben Meir) — architect of the Tosafist method",
-    "bio": "Rashi's grandson, who built the method of the Tosafists: contradictions are not abandoned — passages are bridged and reconciled. He also led the community through the era of the Crusades and enacted far-reaching social ordinances."
-  },
-  "72": {
-    "label": "The Maharal of Prague — the philosopher who joined intellect and mystery",
-    "bio": "A central thinker who built a comprehensive system upon opposites, unity, and the reading of Midrash as a world of ideas. His influence is evident in Hasidism and among its opponents alike."
-  },
-  "127": {
-    "label": "The Chofetz Chaim (Rabbi Yisrael Meir HaKohen)",
-    "bio": "Author of the Mishnah Berurah and Chofetz Chaim. He fused practical halakhic ruling with halakhic ethics, becoming a formative moral figure of the modern era."
-  },
-  "443": {
-    "label": "Rabbi Yosef Karo",
-    "bio": "Author of the Shulchan Aruch and one of the greatest halakhic codifiers, who shaped Jewish law in the generations after the expulsion from Spain."
-  },
-  "134": {
-    "label": "Rabbi Abraham Isaac HaKohen Kook — the vision that united sacred and secular",
-    "bio": "Rav Kook saw modernity as a divine process and secular Zionism as a profound movement of return. He sought unity between opposites, spoke in terms of development, and exercised halakhic-national leadership with responsibility for the Yishuv."
-  },
-  "344": {
-    "label": "Rav Saadia Gaon",
-    "bio": "One of the greatest of the Geonim, defender of the Oral Torah and founder of systematic Jewish philosophy."
-  },
-  "22": {
-    "label": "Rabbenu Gershom, Light of the Exile",
-    "bio": "Leader of Ashkenazi Jewry, social legislator and liturgical poet. He enacted bold ordinances and established an independent Torah center in Europe."
-  },
-  "25": {
-    "label": "Rav Hai Gaon",
-    "bio": "A supreme halakhic authority to whom questions were sent from every Jewish diaspora. He wrote hundreds of responsa, halakhic monographs, a Hebrew-Aramaic lexicon, and liturgical poems."
-  },
-  "395": {
-    "label": "The Rashba (Rabbi Shlomo ben Aderet)",
-    "bio": "One of the greatest halakhic authorities and leaders of Spanish Jewry, a cornerstone of halakhic ruling for all generations."
-  },
-  "276": {
-    "label": "The Rashbam",
-    "bio": "Rashi's eldest grandson and one of the great Tosafists, whose Torah commentary emphasized the plain meaning of the text and its linguistic and narrative context."
-  },
-  "anc-1": {
-    "label": "Abraham the Patriarch",
-    "bio": "Father of the nation. Left Ur of the Chaldees at the call of 'Lech Lecha', spread faith in one God, and entered the Covenant Between the Parts."
-  },
-  "anc-2": {
-    "label": "Isaac the Patriarch",
-    "bio": "Second of the Patriarchs. Bound upon the altar on Mount Moriah; re-dug his father's wells, continuing the path in the Land."
-  },
-  "anc-3": {
-    "label": "Jacob the Patriarch",
-    "bio": "Chosen of the Patriarchs and father of the twelve tribes. 'A wholesome man dwelling in tents' who went down to Egypt and laid the foundation of the house of Israel."
-  },
-  "anc-4": {
-    "label": "Moses (Moshe Rabbenu)",
-    "bio": "Master of the prophets and receiver of the Torah at Sinai. Led Israel out of Egypt, received the Tablets, and transmitted the Torah to all Israel — head of the chain of transmission."
-  },
-  "anc-5": {
-    "label": "Aaron the High Priest",
-    "bio": "The first High Priest, Moses' brother and spokesman. 'Loving peace and pursuing peace, loving people and drawing them near to the Torah.'"
-  },
-  "389": {
-    "label": "Deborah the Prophetess",
-    "bio": "Prophetess and judge who sat beneath the palm of Deborah. Led Israel in the war against Sisera and sang the song of victory."
-  },
-  "anc-7": {
-    "label": "Samuel the Prophet",
-    "bio": "Last of the judges and the greatest prophet after Moses. Established the monarchy in Israel and anointed Saul and David."
-  },
-  "anc-8": {
-    "label": "King David",
-    "bio": "Founder of the Davidic dynasty and author of the Book of Psalms. Conquered Jerusalem and brought up the Ark — 'the sweet singer of Israel'."
-  },
-  "anc-9": {
-    "label": "King Solomon",
-    "bio": "The wisest of all men and builder of the First Temple. Composed Proverbs, Ecclesiastes and the Song of Songs."
-  },
-  "anc-10": {
-    "label": "Isaiah the Prophet",
-    "bio": "One of the greatest literary prophets. His prophecies of destruction and consolation — 'Comfort, comfort My people' — accompany Israel through the generations."
-  },
-  "sup-1": {
-    "label": "Hillel the Elder",
-    "bio": "Nasi of Israel and head of Beit Hillel. Came up from Babylonia; placed humility and love at the center: 'What is hateful to you, do not do to your fellow — that is the whole Torah.'"
-  },
-  "sup-2": {
-    "label": "Shammai the Elder",
-    "bio": "Head of the court and of Beit Shammai, Hillel's disputant. Ruled strictly out of an ideal of perfection, and taught: 'Say little and do much.'"
-  },
-  "sup-3": {
-    "label": "Rabban Yohanan ben Zakkai",
-    "bio": "Savior of Torah in the generation of the destruction. Escaped besieged Jerusalem and asked 'Give me Yavneh and its sages' — securing the continuity of the Oral Torah after the Temple fell."
-  },
-  "sup-4": {
-    "label": "Rabbi Yehuda HaNasi",
-    "bio": "Redactor of the Mishnah and closer of the Tannaitic era. United the traditions of the Oral Torah into one authoritative work, combining Torah greatness with wealth and leadership before Rome."
-  },
-  "sup-5": {
-    "label": "Rashi (Rabbi Shlomo Yitzchaki)",
-    "bio": "The foremost commentator of Israel. His commentary on the Torah and Talmud — clear, concise and faithful to the plain meaning — opened the gates of learning for all generations; no page of Talmud is studied without him."
-  },
-  "sup-6": {
-    "label": "The Baal Shem Tov (Rabbi Yisrael Besht)",
-    "bio": "Founder of the Hasidic movement. Taught that no place is empty of God, placing devekut, joy and love of every Jew at the center of divine service — transforming Eastern European Jewry."
-  },
-  "sup-7": {
-    "label": "The Vilna Gaon (the Gra)",
-    "bio": "The Gaon of his generations in Lithuania. Toiled in Torah with extraordinary diligence, mastering revealed and hidden Torah, grammar and mathematics — father of the Lithuanian yeshiva world."
-  },
-  "262": {
-    "label": "Rabbi Ephraim of Qal'at Hammad"
-  },
-  "47": {
-    "label": "The Maharam of Rothenburg"
-  },
-  "463": {
-    "label": "The Rema (Rabbi Moshe Isserles)"
-  },
-  "195": {
-    "label": "The Ra'avad of Posquières"
-  },
-  "13": {
-    "label": "The Ran (Rabbenu Nissim of Girona)"
-  },
-  "182": {
-    "label": "The Brisk Method (R. Chaim Soloveitchik) and Academic Study"
-  },
-  "16": {
-    "label": "The Rambam Revolution, the Spanish Response and the Rema's Legacy"
-  },
-  "52": {
-    "label": "The Ritva — the kabbalist who defended the philosopher"
-  },
-  "50": {
-    "label": "Rabbi Abraham Abulafia"
-  },
-  "340": {
-    "label": "Rabbi Mordechai Eliyahu"
-  },
-  "192": {
-    "label": "Abraham ibn Ezra"
-  },
-  "2": {
-    "label": "Shimon ben Shetach"
-  },
-  "285": {
-    "label": "Rabbenu Manoach of Narbonne"
-  },
-  "294": {
-    "label": "Rabbi Aharon HaLevi"
-  },
-  "11": {
-    "label": "Rabbi Yehuda HeChasid (Ashkenazi Pietists)"
-  },
-  "325": {
-    "label": "The Chida (Rabbi Chaim Yosef David Azulai)"
-  },
-  "336": {
-    "label": "Rabbi Ovadia Yosef"
-  },
-  "449": {
-    "label": "Rabbi Israel Isserlein"
-  },
-  "457": {
-    "label": "Rabbi Yaakov Pollak"
-  },
-  "335": {
-    "label": "The Lubavitcher Rebbe"
-  },
-  "266": {
-    "label": "Rabbenu Yehuda ben Barzilai of Barcelona"
-  },
-  "287": {
-    "label": "Rabbi Nathan ben Meir of Trinquetaille"
-  },
-  "295": {
-    "label": "Rabbi Shlomo ben Avraham"
-  },
-  "296": {
-    "label": "Rabbi Moshe ben Nachman"
-  },
-  "341": {
-    "label": "Rabbi Shmuel Salant"
-  },
-  "17": {
-    "label": "Rabbi Yosef Albo"
-  },
-  "23": {
-    "label": "Menachem ben Saruq — the Hebrew language revolution"
-  },
-  "24": {
-    "label": "Hasdai ibn Shaprut"
-  },
-  "43": {
-    "label": "Rabbi Yitzchak of Vienna (Or Zarua)"
-  },
-  "53": {
-    "label": "The Mordechai (Rabbi Mordechai ben Hillel)"
-  },
-  "51": {
-    "label": "Rabbi Menachem HaMeiri"
-  },
-  "394": {
-    "label": "The Ra'ah (Rabbi Aharon HaLevi)"
-  },
-  "151": {
-    "label": "Emmanuel Levinas"
-  },
-  "267": {
-    "label": "The Kuzari"
-  },
-  "279": {
-    "label": "The Ritzba"
-  },
-  "284": {
-    "label": "Rabbi Yehuda ben Berachia"
-  },
-  "286": {
-    "label": "Rabbi Reuven ben Chaim of Narbonne"
-  },
-  "297": {
-    "label": "Nathan ben Meir"
-  },
-  "469": {
-    "label": "Rabbi Crescas Vidal"
-  },
-  "467": {
-    "label": "Rabbi Israel Sarug"
-  },
-  "67": {
-    "label": "Don Isaac Abravanel — statesman, philosopher, exegete"
-  },
-  "198": {
-    "label": "Dunash ben Labrat"
-  },
-  "38": {
-    "label": "The Sages of Provence — Narbonne and early mysticism"
-  },
-  "42": {
-    "label": "Rabbi Isaac the Blind (Sagi Nahor)"
-  },
-  "343": {
-    "label": "Rabbi David Abudarham"
-  },
-  "264": {
-    "label": "Mahari Bruna"
-  },
-  "64": {
-    "label": "Mahari Mintz"
-  },
-  "69": {
-    "label": "The Radbaz (1479–1573)"
-  },
-  "70": {
-    "label": "The Maharshal (Rabbi Shlomo Luria)"
-  },
-  "74": {
-    "label": "Rabbi Elazar Azikri"
-  },
-  "85": {
-    "label": "Rabbi Yehuda Rosanes — Mishneh LaMelech"
-  },
-  "106": {
-    "label": "Rabbi Zvi Hirsch Kalischer"
-  },
-  "113": {
-    "label": "Rabbi Israel Salanter"
-  },
-  "347": {
-    "label": "Solomon Munk"
-  },
-  "146": {
-    "label": "Chacham Menachem Menashe"
-  },
-  "154": {
-    "label": "Rabbi Mordechai Sharabi"
-  },
-  "148": {
-    "label": "Mr. Shoshani"
-  },
-  "166": {
-    "label": "Rabbi Yehuda Léon Askénazi (Manitou)"
-  },
-  "175": {
-    "label": "Chacham Yeshua Ben-Shushan — the kabbalist commando commander"
-  },
-  "351": {
-    "label": "Rabbi Nathan of Rome"
-  },
-  "190": {
-    "label": "Abraham bar Chiya"
-  },
-  "280": {
-    "label": "Rabbi Elazar of Worms (the Rokeach)"
-  },
-  "229": {
-    "label": "The Ra'avan"
-  },
-  "275": {
-    "label": "Ri HaZaken of Dampierre"
-  },
-  "283": {
-    "label": "Rabbi Meshulam of Béziers"
-  },
-  "415": {
-    "label": "Rabbi Shem Tov ibn Gaon"
-  },
-  "424": {
-    "label": "Rabbi Vidal of Tolosa"
-  },
-  "433": {
-    "label": "Rabbi Yosef Chaviva"
-  },
-  "444": {
-    "label": "The Maharil"
-  },
-  "452": {
-    "label": "Rabbi Yaakov Landau"
-  },
-  "458": {
-    "label": "Rabbi Shalom Shachna of Lublin"
-  },
-  "464": {
-    "label": "Rabbi Yehoshua ibn Shu'eib"
-  },
-  "196": {
-    "label": "Rabbi Zvi Yehuda HaKohen Kook"
-  },
-  "8": {
-    "label": "Rabbah bar bar Chana"
-  },
-  "81": {
-    "label": "Isaac Nunes Belmonte (1601–1652)"
-  },
-  "12": {
-    "label": "Rabbenu Bachya ben Asher"
-  },
-  "57": {
-    "label": "Rabbi Hasdai Crescas"
-  },
-  "459": {
-    "label": "The Maharik (Rabbi Yosef Colon)"
-  },
-  "18": {
-    "label": "Rabbi Ovadia of Bartenura"
-  },
-  "19": {
-    "label": "Rabbi Yosef Chayun"
-  },
-  "27": {
-    "label": "Rav Shmuel ben Chofni Gaon"
-  },
-  "35": {
-    "label": "Rabbenu Chananel ben Chushiel"
-  },
-  "46": {
-    "label": "Rabbi Zerachia HaLevi (Baal HaMaor)"
-  },
-  "49": {
-    "label": "The Ra'avia (Rabbi Eliezer ben Yoel HaLevi)"
-  },
-  "54": {
-    "label": "Rabbi Yechiel of Paris"
-  },
-  "56": {
-    "label": "The Rivash (Rabbi Yitzchak bar Sheshet)"
-  },
-  "92": {
-    "label": "Rabbi Avraham Gershon of Kitov (1701–1761)"
-  },
-  "76": {
-    "label": "Rabbi Yoel Sirkis (the Bach)"
-  },
-  "87": {
-    "label": "Rabbi Ephraim Navon (1677–1735) — Machaneh Ephraim"
-  },
-  "202": {
-    "label": "Rabbi Akiva Eger"
-  },
-  "203": {
-    "label": "Rabbi Eliyahu Guttmacher"
-  },
-  "109": {
-    "label": "Rabbi Yehuda Alkalai"
-  },
-  "111": {
-    "label": "Rabbi Zvi Hirsch Chajes (Maharatz Chajes)"
-  },
-  "130": {
-    "label": "The Alter of Novardok — the Mussar revolution"
-  },
-  "338": {
-    "label": "Rabbi Abdallah Somekh"
-  },
-  "126": {
-    "label": "The Ben Ish Chai (Rabbi Yosef Chaim of Baghdad)"
-  },
-  "128": {
-    "label": "Rabbi Meir Simcha of Dvinsk"
-  },
-  "137": {
-    "label": "Rabbi Yitzchak Alfiya"
-  },
-  "169": {
-    "label": "Elie Wiesel"
-  },
-  "150": {
-    "label": "Rabbi Yitzchak Kaduri"
-  },
-  "334": {
-    "label": "Rabbi Yosef Qafih"
-  },
-  "174": {
-    "label": "Rabbi Refael Moshe Luria"
-  },
-  "478": {
-    "label": "Rabbi Israel Abuhatzeira (the Baba Sali)"
-  },
-  "263": {
-    "label": "The Mahari Mintz"
-  },
-  "189": {
-    "label": "Rabbi Yaakov ben Asher (the Tur)"
-  },
-  "271": {
-    "label": "The Re'em of Metz"
-  },
-  "393": {
-    "label": "Rabbi Meir ben Shimon HaMe'ili"
-  },
-  "390": {
-    "label": "Rabbenu Shmuel HaSardi"
-  },
-  "288": {
-    "label": "Rabbenu Perachia ben Nissim"
-  },
-  "386": {
-    "label": "Rabbi Chananel ben Shmuel"
-  },
-  "290": {
-    "label": "Rabbi Levi ben Gershon (Gersonides)"
-  },
-  "291": {
-    "label": "Shmuel ben Yitzchak"
-  },
-  "300": {
-    "label": "Rabbi Simcha of Speyer"
-  },
-  "301": {
-    "label": "The Riaz (Rabbi Isaiah di Trani the Younger)"
-  },
-  "407": {
-    "label": "Rabbi Meir HaKohen of Rothenburg"
-  },
-  "308": {
-    "label": "The Rid (Rabbi Isaiah di Trani the Elder)"
-  },
-  "309": {
-    "label": "Rabbi Avigdor Katz of Vienna"
-  },
-  "310": {
-    "label": "Rabbi Menachem ben Zerach"
-  },
-  "311": {
-    "label": "Rabbi Yehuda ben HaRosh"
-  },
-  "314": {
-    "label": "Rabbi Yitzchak of Düren"
-  }
+ "4": {
+  "label": "Rabbi Akiva ben Yosef",
+  "bio": "One of the greatest Tannaim, he shaped the world of the Oral Torah after the destruction of the Temple, leading a broken generation with love of Israel and self-sacrifice."
+ },
+ "41": {
+  "label": "Maimonides (Rambam)",
+  "bio": "A double revolutionary — he codified halakha with clarity, closing the era of the Talmud, while at the same time formulating a rational faith in the Guide for the Perplexed."
+ },
+ "44": {
+  "label": "Nahmanides (Ramban)",
+  "bio": "Halakhic authority, commentator and kabbalist who wove together every layer of Torah, renewed the Jewish settlement of Jerusalem, and stood courageously before the Church."
+ },
+ "33": {
+  "label": "Rabbenu Tam (R. Yaakov ben Meir) — architect of the Tosafist method",
+  "bio": "Rashi's grandson, who built the method of the Tosafists: contradictions are not abandoned — passages are bridged and reconciled. He also led the community through the era of the Crusades and enacted far-reaching social ordinances."
+ },
+ "72": {
+  "label": "The Maharal of Prague — the philosopher who joined intellect and mystery",
+  "bio": "A central thinker who built a comprehensive system upon opposites, unity, and the reading of Midrash as a world of ideas. His influence is evident in Hasidism and among its opponents alike."
+ },
+ "127": {
+  "label": "The Chofetz Chaim (Rabbi Yisrael Meir HaKohen)",
+  "bio": "Author of the Mishnah Berurah and Chofetz Chaim. He fused practical halakhic ruling with halakhic ethics, becoming a formative moral figure of the modern era."
+ },
+ "443": {
+  "label": "Rabbi Yosef Karo",
+  "bio": "Author of the Shulchan Aruch and one of the greatest halakhic codifiers, who shaped Jewish law in the generations after the expulsion from Spain."
+ },
+ "134": {
+  "label": "Rabbi Abraham Isaac HaKohen Kook — the vision that united sacred and secular",
+  "bio": "Rav Kook saw modernity as a divine process and secular Zionism as a profound movement of return. He sought unity between opposites, spoke in terms of development, and exercised halakhic-national leadership with responsibility for the Yishuv."
+ },
+ "344": {
+  "label": "Rav Saadia Gaon",
+  "bio": "One of the greatest of the Geonim, defender of the Oral Torah and founder of systematic Jewish philosophy."
+ },
+ "22": {
+  "label": "Rabbenu Gershom, Light of the Exile",
+  "bio": "Leader of Ashkenazi Jewry, social legislator and liturgical poet. He enacted bold ordinances and established an independent Torah center in Europe."
+ },
+ "25": {
+  "label": "Rav Hai Gaon",
+  "bio": "A supreme halakhic authority to whom questions were sent from every Jewish diaspora. He wrote hundreds of responsa, halakhic monographs, a Hebrew-Aramaic lexicon, and liturgical poems."
+ },
+ "395": {
+  "label": "The Rashba (Rabbi Shlomo ben Aderet)",
+  "bio": "One of the greatest halakhic authorities and leaders of Spanish Jewry, a cornerstone of halakhic ruling for all generations."
+ },
+ "276": {
+  "label": "The Rashbam",
+  "bio": "Rashi's eldest grandson and one of the great Tosafists, whose Torah commentary emphasized the plain meaning of the text and its linguistic and narrative context."
+ },
+ "389": {
+  "label": "Deborah the Prophetess",
+  "bio": "Prophetess and judge who sat beneath the palm of Deborah. Led Israel in the war against Sisera and sang the song of victory."
+ },
+ "sup-3": {
+  "label": "Rabban Yohanan ben Zakkai",
+  "bio": "Savior of Torah in the generation of the destruction. Escaped besieged Jerusalem and asked 'Give me Yavneh and its sages' — securing the continuity of the Oral Torah after the Temple fell."
+ },
+ "sup-4": {
+  "label": "Rabbi Yehuda HaNasi",
+  "bio": "Redactor of the Mishnah and closer of the Tannaitic era. United the traditions of the Oral Torah into one authoritative work, combining Torah greatness with wealth and leadership before Rome."
+ },
+ "sup-5": {
+  "label": "Rashi (Rabbi Shlomo Yitzchaki)",
+  "bio": "The foremost commentator of Israel. His commentary on the Torah and Talmud — clear, concise and faithful to the plain meaning — opened the gates of learning for all generations; no page of Talmud is studied without him."
+ },
+ "sup-6": {
+  "label": "The Baal Shem Tov (Rabbi Yisrael Besht)",
+  "bio": "Founder of the Hasidic movement. Taught that no place is empty of God, placing devekut, joy and love of every Jew at the center of divine service — transforming Eastern European Jewry."
+ },
+ "262": {
+  "label": "Rabbi Ephraim of Qal'at Hammad"
+ },
+ "47": {
+  "label": "The Maharam of Rothenburg"
+ },
+ "463": {
+  "label": "The Rema (Rabbi Moshe Isserles)"
+ },
+ "195": {
+  "label": "The Ra'avad of Posquières"
+ },
+ "13": {
+  "label": "The Ran (Rabbenu Nissim of Girona)"
+ },
+ "182": {
+  "label": "The Brisk Method (R. Chaim Soloveitchik) and Academic Study"
+ },
+ "16": {
+  "label": "The Rambam Revolution, the Spanish Response and the Rema's Legacy"
+ },
+ "52": {
+  "label": "The Ritva — the kabbalist who defended the philosopher"
+ },
+ "50": {
+  "label": "Rabbi Abraham Abulafia"
+ },
+ "340": {
+  "label": "Rabbi Mordechai Eliyahu"
+ },
+ "192": {
+  "label": "Abraham ibn Ezra"
+ },
+ "2": {
+  "label": "Shimon ben Shetach"
+ },
+ "285": {
+  "label": "Rabbenu Manoach of Narbonne"
+ },
+ "294": {
+  "label": "Rabbi Aharon HaLevi"
+ },
+ "11": {
+  "label": "Rabbi Yehuda HeChasid (Ashkenazi Pietists)"
+ },
+ "325": {
+  "label": "The Chida (Rabbi Chaim Yosef David Azulai)"
+ },
+ "336": {
+  "label": "Rabbi Ovadia Yosef"
+ },
+ "449": {
+  "label": "Rabbi Israel Isserlein"
+ },
+ "457": {
+  "label": "Rabbi Yaakov Pollak"
+ },
+ "335": {
+  "label": "The Lubavitcher Rebbe"
+ },
+ "266": {
+  "label": "Rabbenu Yehuda ben Barzilai of Barcelona"
+ },
+ "287": {
+  "label": "Rabbi Nathan ben Meir of Trinquetaille"
+ },
+ "295": {
+  "label": "Rabbi Shlomo ben Avraham"
+ },
+ "296": {
+  "label": "Rabbi Moshe ben Nachman"
+ },
+ "341": {
+  "label": "Rabbi Shmuel Salant"
+ },
+ "17": {
+  "label": "Rabbi Yosef Albo"
+ },
+ "23": {
+  "label": "Menachem ben Saruq — the Hebrew language revolution"
+ },
+ "24": {
+  "label": "Hasdai ibn Shaprut"
+ },
+ "43": {
+  "label": "Rabbi Yitzchak of Vienna (Or Zarua)"
+ },
+ "53": {
+  "label": "The Mordechai (Rabbi Mordechai ben Hillel)"
+ },
+ "51": {
+  "label": "Rabbi Menachem HaMeiri"
+ },
+ "394": {
+  "label": "The Ra'ah (Rabbi Aharon HaLevi)"
+ },
+ "151": {
+  "label": "Emmanuel Levinas"
+ },
+ "267": {
+  "label": "The Kuzari"
+ },
+ "279": {
+  "label": "The Ritzba"
+ },
+ "284": {
+  "label": "Rabbi Yehuda ben Berachia"
+ },
+ "286": {
+  "label": "Rabbi Reuven ben Chaim of Narbonne"
+ },
+ "297": {
+  "label": "Nathan ben Meir"
+ },
+ "469": {
+  "label": "Rabbi Crescas Vidal"
+ },
+ "467": {
+  "label": "Rabbi Israel Sarug"
+ },
+ "67": {
+  "label": "Don Isaac Abravanel — statesman, philosopher, exegete"
+ },
+ "198": {
+  "label": "Dunash ben Labrat"
+ },
+ "38": {
+  "label": "The Sages of Provence — Narbonne and early mysticism"
+ },
+ "42": {
+  "label": "Rabbi Isaac the Blind (Sagi Nahor)"
+ },
+ "343": {
+  "label": "Rabbi David Abudarham"
+ },
+ "264": {
+  "label": "Mahari Bruna"
+ },
+ "64": {
+  "label": "Mahari Mintz"
+ },
+ "69": {
+  "label": "The Radbaz (1479–1573)"
+ },
+ "70": {
+  "label": "The Maharshal (Rabbi Shlomo Luria)"
+ },
+ "74": {
+  "label": "Rabbi Elazar Azikri"
+ },
+ "85": {
+  "label": "Rabbi Yehuda Rosanes — Mishneh LaMelech"
+ },
+ "106": {
+  "label": "Rabbi Zvi Hirsch Kalischer"
+ },
+ "113": {
+  "label": "Rabbi Israel Salanter"
+ },
+ "347": {
+  "label": "Solomon Munk"
+ },
+ "146": {
+  "label": "Chacham Menachem Menashe"
+ },
+ "154": {
+  "label": "Rabbi Mordechai Sharabi"
+ },
+ "148": {
+  "label": "Mr. Shoshani"
+ },
+ "166": {
+  "label": "Rabbi Yehuda Léon Askénazi (Manitou)"
+ },
+ "175": {
+  "label": "Chacham Yeshua Ben-Shushan — the kabbalist commando commander"
+ },
+ "351": {
+  "label": "Rabbi Nathan of Rome"
+ },
+ "190": {
+  "label": "Abraham bar Chiya"
+ },
+ "280": {
+  "label": "Rabbi Elazar of Worms (the Rokeach)"
+ },
+ "229": {
+  "label": "The Ra'avan"
+ },
+ "275": {
+  "label": "Ri HaZaken of Dampierre"
+ },
+ "283": {
+  "label": "Rabbi Meshulam of Béziers"
+ },
+ "415": {
+  "label": "Rabbi Shem Tov ibn Gaon"
+ },
+ "424": {
+  "label": "Rabbi Vidal of Tolosa"
+ },
+ "433": {
+  "label": "Rabbi Yosef Chaviva"
+ },
+ "444": {
+  "label": "The Maharil"
+ },
+ "452": {
+  "label": "Rabbi Yaakov Landau"
+ },
+ "458": {
+  "label": "Rabbi Shalom Shachna of Lublin"
+ },
+ "464": {
+  "label": "Rabbi Yehoshua ibn Shu'eib"
+ },
+ "196": {
+  "label": "Rabbi Zvi Yehuda HaKohen Kook"
+ },
+ "8": {
+  "label": "Rabbah bar bar Chana"
+ },
+ "81": {
+  "label": "Isaac Nunes Belmonte (1601–1652)"
+ },
+ "12": {
+  "label": "Rabbenu Bachya ben Asher"
+ },
+ "57": {
+  "label": "Rabbi Hasdai Crescas"
+ },
+ "459": {
+  "label": "The Maharik (Rabbi Yosef Colon)"
+ },
+ "18": {
+  "label": "Rabbi Ovadia of Bartenura"
+ },
+ "19": {
+  "label": "Rabbi Yosef Chayun"
+ },
+ "27": {
+  "label": "Rav Shmuel ben Chofni Gaon"
+ },
+ "35": {
+  "label": "Rabbenu Chananel ben Chushiel"
+ },
+ "46": {
+  "label": "Rabbi Zerachia HaLevi (Baal HaMaor)"
+ },
+ "49": {
+  "label": "The Ra'avia (Rabbi Eliezer ben Yoel HaLevi)"
+ },
+ "54": {
+  "label": "Rabbi Yechiel of Paris"
+ },
+ "56": {
+  "label": "The Rivash (Rabbi Yitzchak bar Sheshet)"
+ },
+ "92": {
+  "label": "Rabbi Avraham Gershon of Kitov (1701–1761)"
+ },
+ "76": {
+  "label": "Rabbi Yoel Sirkis (the Bach)"
+ },
+ "87": {
+  "label": "Rabbi Ephraim Navon (1677–1735) — Machaneh Ephraim"
+ },
+ "202": {
+  "label": "Rabbi Akiva Eger"
+ },
+ "203": {
+  "label": "Rabbi Eliyahu Guttmacher"
+ },
+ "109": {
+  "label": "Rabbi Yehuda Alkalai"
+ },
+ "111": {
+  "label": "Rabbi Zvi Hirsch Chajes (Maharatz Chajes)"
+ },
+ "130": {
+  "label": "The Alter of Novardok — the Mussar revolution"
+ },
+ "338": {
+  "label": "Rabbi Abdallah Somekh"
+ },
+ "126": {
+  "label": "The Ben Ish Chai (Rabbi Yosef Chaim of Baghdad)"
+ },
+ "128": {
+  "label": "Rabbi Meir Simcha of Dvinsk"
+ },
+ "137": {
+  "label": "Rabbi Yitzchak Alfiya"
+ },
+ "169": {
+  "label": "Elie Wiesel"
+ },
+ "150": {
+  "label": "Rabbi Yitzchak Kaduri"
+ },
+ "334": {
+  "label": "Rabbi Yosef Qafih"
+ },
+ "174": {
+  "label": "Rabbi Refael Moshe Luria"
+ },
+ "478": {
+  "label": "Rabbi Israel Abuhatzeira (the Baba Sali)"
+ },
+ "263": {
+  "label": "The Mahari Mintz"
+ },
+ "189": {
+  "label": "Rabbi Yaakov ben Asher (the Tur)"
+ },
+ "271": {
+  "label": "The Re'em of Metz"
+ },
+ "393": {
+  "label": "Rabbi Meir ben Shimon HaMe'ili"
+ },
+ "390": {
+  "label": "Rabbenu Shmuel HaSardi"
+ },
+ "288": {
+  "label": "Rabbenu Perachia ben Nissim"
+ },
+ "386": {
+  "label": "Rabbi Chananel ben Shmuel"
+ },
+ "290": {
+  "label": "Rabbi Levi ben Gershon (Gersonides)"
+ },
+ "291": {
+  "label": "Shmuel ben Yitzchak"
+ },
+ "300": {
+  "label": "Rabbi Simcha of Speyer"
+ },
+ "301": {
+  "label": "The Riaz (Rabbi Isaiah di Trani the Younger)"
+ },
+ "407": {
+  "label": "Rabbi Meir HaKohen of Rothenburg"
+ },
+ "308": {
+  "label": "The Rid (Rabbi Isaiah di Trani the Elder)"
+ },
+ "309": {
+  "label": "Rabbi Avigdor Katz of Vienna"
+ },
+ "310": {
+  "label": "Rabbi Menachem ben Zerach"
+ },
+ "311": {
+  "label": "Rabbi Yehuda ben HaRosh"
+ },
+ "314": {
+  "label": "Rabbi Yitzchak of Düren"
+ },
+ "sup-45": {
+  "label": "Rashi (Rabbi Solomon ben Isaac)",
+  "bio": "The greatest of medieval commentators, his interpretations on the Torah and Talmud became the foundation of Jewish biblical exegesis. His commentary towers over all others, and his school of thought shaped Jewish learning."
+ },
+ "sup-46": {
+  "label": "Hillel the Elder",
+  "bio": "A founding sage of the Tannaim and pioneer of broad interpretive methods (the thirteen rules). His principle 'Love peace in the world' became the cornerstone of his entire teaching."
+ },
+ "sup-47": {
+  "label": "Shammai",
+  "bio": "Hillel's great debate partner, representing the stricter interpretation of law. His school preserved the severity and strictness of halakha, though Hillel's rulings prevailed in practice."
+ },
+ "sup-48": {
+  "label": "Rabbi Judah the Prince (Rebbi)",
+  "bio": "End of the Tannaim era; compiler of the Mishnah, the foundational text of the Oral Torah. His editing of the teachings became the basis for all subsequent Jewish law."
+ },
+ "sup-49": {
+  "label": "The Baal Shem Tov (Besht)",
+  "bio": "Founder of Hasidic Judaism, he elevated the common folk to a path of faith through simple-hearted devotion and joy. 'The Divine Presence dwells in all things.'"
+ },
+ "sup-50": {
+  "label": "The Vilna Gaon (Elijah ben Solomon)",
+  "bio": "A supreme Torah genius of unparalleled breadth. Opposed to Hasidism, he established Lithuanian yeshiva learning as the counterweight, emphasizing deep Talmudic study with Kabbalah and prayer."
+ },
+ "sup-51": {
+  "label": "Rabbi Yitzchak Luria (The ARI)",
+  "bio": "Renewed Kabbalah through doctrines of tzimtzum, broken vessels, and tikkun. His teachings became the foundation of all subsequent mystical Judaism and profoundly influenced Hasidic thought."
+ },
+ "sup-52": {
+  "label": "Isaac ibn Gikatilla",
+  "bio": "Early Spanish Kabbalist, author of 'Sha'are Orah' (Gates of Light), who synthesized Kabbalistic thought with Neoplatonic philosophy and Sufi influences."
+ },
+ "sup-53": {
+  "label": "Ramchal (Rabbi Moshe Chaim Luzzatto)",
+  "bio": "Poet, philosopher, and kabbalist; author of the 'Path of the Just,' one of the greatest ethical works in Jewish tradition. His systematic approach to spirituality influenced all following generations."
+ },
+ "sup-54": {
+  "label": "Solomon ibn Gabirol",
+  "bio": "Hebrew poet and Jewish-Islamic philosopher of Spain's Golden Age. His liturgical poetry, especially 'Royal Crown,' remains central to Jewish prayer, and his philosophical work 'Fountain of Life' shaped medieval thought."
+ },
+ "sup-55": {
+  "label": "Rabbi Chaim of Volozhin",
+  "bio": "Student of the Vilna Gaon and founder of the Volozhin Yeshiva, which became the model for all subsequent Ashkenazi yeshiva education. His work 'Soul of Life' presents the philosophical foundations of Lithuanian yeshiva study."
+ },
+ "sup-56": {
+  "label": "Rabbi Yosel of Rosheim",
+  "bio": "Defender of Ashkenazi Jewry, advocate for peaceful relations between Jews and Christians in medieval Germany. His leadership during the Reformation era was crucial for Jewish survival."
+ },
+ "sup-57": {
+  "label": "David al-Roi",
+  "bio": "A messianic pretender of medieval Baghdad whose movement, though short-lived, influenced subsequent messianic movements and kabbalistic thought about redemption."
+ },
+ "sup-58": {
+  "label": "Rabbi Yochanan ben Zakkai",
+  "bio": "Founding leader of the Yavneh Academy after the Temple's destruction. He secured the continuity of Judaism by obtaining Roman permission to establish a center of Jewish learning, saving the tradition during its darkest hour."
+ },
+ "sup-59": {
+  "label": "Rabbi Akiva ben Yosef (continued influence)",
+  "bio": "Greatest of the later Tannaim, known for his expansive interpretive methods and role as a bridge between different halakhic schools. He died a martyr for Jewish faith."
+ },
+ "sup-60": {
+  "label": "Rabbi Shimon bar Yochai",
+  "bio": "Tanna sage famed for both halakhic rulings and mystical teachings. Tradition associates him with the authorship of the Zohar, the central text of Jewish Kabbalah, though scholars debate its dating."
+ },
+ "sup-61": {
+  "label": "Rabbi Eliezer ben Dordia",
+  "bio": "Tanna known for his comprehensive knowledge of Torah and his powerful teshuva (repentance). His story in the Talmud is one of the most moving narratives about spiritual transformation."
+ },
+ "sup-62": {
+  "label": "Rabbi Menachem ben Sapir",
+  "bio": "Amora of northern Israel, student of Rabbi Yochanan, active in transmitting halakhic rulings and Talmudic discussions."
+ },
+ "sup-63": {
+  "label": "Rabbi Avraham Riba",
+  "bio": "Rabbi of Lvov (Poland), major halakhic authority whose rulings influenced Polish and Ukrainian Jewry. His innovations in halakhic reasoning were widely discussed."
+ },
+ "sup-64": {
+  "label": "The Maharal of Prague",
+  "bio": "Preeminent ethical and mystical thinker who synthesized philosophy and Kabbalah. The Golem legends surrounding him became part of Jewish folklore worldwide."
+ },
+ "sup-65": {
+  "label": "Menasseh ben Israel",
+  "bio": "Diplomat and scholar who negotiated the readmission of Jews to England after 300 years of exile. His 'Hope of Israel' argued for messianic restoration tied to the Jewish return to England."
+ },
+ "sup-66": {
+  "label": "Rabbi Zvi Hirsch Kalischer",
+  "bio": "Pioneer of religious Zionism, argued that settlement of Eretz Israel is a religious obligation. His 'Seeking Zion' proposed practical settlement as a path to redemption."
+ },
+ "sup-67": {
+  "label": "Rabbi Reuven Margaliot",
+  "bio": "Modern Kabbalist and scholar of Midrash, discoverer of unknown Talmudic texts in the Cairo Genizah. His works preserved and analyzed vast amounts of Jewish mystical and halakhic literature."
+ },
+ "sup-68": {
+  "label": "Rabbi Yaakov Kaniel",
+  "bio": "Great Lithuanian yeshiva master of the mid-20th century, known for his profound Talmudic insights and ethical teachings."
+ },
+ "sup-69": {
+  "label": "Rabbi Yosef Sholom Elyashiv",
+  "bio": "Foremost halakhic authority of modern Jerusalem. For decades he was consulted on complex legal questions from communities worldwide. His rulings shaped modern Jewish practice."
+ },
+ "sup-70": {
+  "label": "Rabbi Yitzhak Staler",
+  "bio": "Bridge figure between Lithuanian rationalism and Hasidic emotion. Student of both Vilna Gaon's disciples and Hasidic masters, he represented a unified approach to Jewish spirituality."
+ },
+ "sup-71": {
+  "label": "Rabbi Natan Tzvi Finkel",
+  "bio": "Founder of the Mir Yeshiva. Pioneer of the ethical mussar movement, he elevated practical morality as the foundation of Torah study and transformed yeshiva education."
+ },
+ "sup-72": {
+  "label": "Rabbi Avraham Kuba",
+  "bio": "Community leader of mid-20th century Bnei Brak, founder of Sephardic institutions. Known for his humility and dedication to preserving Sephardic tradition."
+ },
+ "sup-73": {
+  "label": "Rabbi Menachem Mendel Schneerson (The Rebbe)",
+  "bio": "Seventh Rebbe of Chabad, led the worldwide Chabad movement for over 40 years. His teachings blend Hasidic thought with modern education and social action."
+ },
+ "sup-74": {
+  "label": "Rabbi Yaakov Kaminetzki",
+  "bio": "Great Lithuanian yeshiva leader known for his incisive halakhic rulings and philosophical approach to Jewish law. His simplicity in approach belied profound depth."
+ },
+ "sup-75": {
+  "label": "Rabbi Moshe Feinstein",
+  "bio": "Supreme halakhic authority of the 20th century. His 'Iggerot Moshe' (Letters of Moshe) addressed modern halakhic questions from thousands of questioners worldwide with clarity and compassion."
+ },
+ "sup-76": {
+  "label": "Rabbi Yosef Boer",
+  "bio": "Great builder of Torah institutions in Israel, leader of Yeshiva Chevron. Authority on halakha of Eretz Israel and its sanctity."
+ },
+ "sup-77": {
+  "label": "Rabbi Shmuel Kamenetsky",
+  "bio": "Dean of Philadelphia Yeshiva, leading figure in ethical education. Known for his integration of moral teaching with Talmudic scholarship."
+ },
+ "sup-78": {
+  "label": "Rabbi Yaakov Emden",
+  "bio": "Son of the Chacham Tzvi, halakhic authority and kabbalist. His responsa addressed major Jewish theological questions of the 18th century and his works on prayer remain influential."
+ },
+ "sup-79": {
+  "label": "Rabbi Avraham Levi Horowitz",
+  "bio": "Author of 'Gedulat Avraham,' he bridged Hasidic fervor with Lithuanian rationalism. Represented the synthesis of these two traditions that characterized certain yeshiva leaders."
+ },
+ "sup-80": {
+  "label": "Rabbi Chaim Kanievsky",
+  "bio": "Preeminent Talmudic scholar of the late 20th century, known for his encyclopedic knowledge and rapid halachic rulings. His 'Piskei Teshuvot' addressed contemporary halakhic dilemmas."
+ },
+ "sup-81": {
+  "label": "Rabbi Salach bar Yaakov",
+  "bio": "Babylonian Gaon whose teachings were preserved by his many students. Influential in establishing principles of Talmudic interpretation."
+ },
+ "sup-82": {
+  "label": "Saadia Gaon",
+  "bio": "Supreme Gaon of Babylonia, founder of medieval Jewish philosophy. His 'Book of Beliefs and Opinions' created a systematic Jewish theology synthesizing Torah with reason."
+ },
+ "sup-83": {
+  "label": "Natan ha-Bavi",
+  "bio": "Tanna of the early second century, transmitter of halakhic traditions and known for his careful transmission of the teachings."
+ },
+ "sup-84": {
+  "label": "Rav (Abba Arika)",
+  "bio": "Founder of Sura Academy in Babylonia, he established the institution that would become the center of Jewish learning for centuries. His rulings formed the basis of Talmudic discussions."
+ },
+ "sup-85": {
+  "label": "Rabbi Chiya bar Abba",
+  "bio": "Student of Rabbi Yochanan, collector of Tannaic traditions. His organized compilations of teachings ('Chiyya's Baraita') preserved much of the Oral Torah."
+ },
+ "sup-86": {
+  "label": "Rabbi Yaakov bar Idi",
+  "bio": "Amoraic sage known for his numerous aggadic teachings and interpretations. His sermons preserved important homiletic traditions."
+ },
+ "sup-87": {
+  "label": "Rabbi Yose ben Chanina",
+  "bio": "Third-generation Amora of Palestine, student of Rabbi Yochanan. Known for his generous interpretations in aggadah and halakhic creativity."
+ },
+ "sup-88": {
+  "label": "Rabbi Elazar ben Pedat",
+  "bio": "Major amoraic authority in Palestine who served as successor to Rabbi Yochanan. His extensive teachings are woven throughout the Talmud and Midrashim."
+ },
+ "sup-89": {
+  "label": "Rabbi Zusha of Annipoli",
+  "bio": "Brother of the Rebbe of Lizhensk, exemplar of Hasidic devotion. Known for his humble spirituality and deep integration of Hasidic teachings into daily life. His disciples transmitted his teachings with reverence."
+ },
+ "521": {
+  "label": "Aaron the High Priest",
+  "bio": "The first High Priest, Moses' brother and spokesman. 'Loving peace and pursuing peace, loving people and drawing them near to the Torah.'"
+ },
+ "505": {
+  "label": "Hillel the Elder",
+  "bio": "Nasi of Israel and head of Beit Hillel. Came up from Babylonia; placed humility and love at the center: 'What is hateful to you, do not do to your fellow — that is the whole Torah.'"
+ },
+ "504": {
+  "label": "Shammai the Elder",
+  "bio": "Head of the court and of Beit Shammai, Hillel's disputant. Ruled strictly out of an ideal of perfection, and taught: 'Say little and do much.'"
+ },
+ "anc-4": {
+  "label": "Moses (Moshe Rabbenu)",
+  "bio": "Master of the prophets and receiver of the Torah at Sinai. Led Israel out of Egypt, received the Tablets, and transmitted the Torah to all Israel — head of the chain of transmission."
+ },
+ "anc-2": {
+  "label": "Isaac the Patriarch",
+  "bio": "Second of the Patriarchs. Bound upon the altar on Mount Moriah; re-dug his father's wells, continuing the path in the Land."
+ },
+ "anc-8": {
+  "label": "King David",
+  "bio": "Founder of the Davidic dynasty and author of the Book of Psalms. Conquered Jerusalem and brought up the Ark — 'the sweet singer of Israel'."
+ },
+ "anc-7": {
+  "label": "Samuel the Prophet",
+  "bio": "Last of the judges and the greatest prophet after Moses. Established the monarchy in Israel and anointed Saul and David."
+ },
+ "anc-1": {
+  "label": "Abraham the Patriarch",
+  "bio": "Father of the nation. Left Ur of the Chaldees at the call of 'Lech Lecha', spread faith in one God, and entered the Covenant Between the Parts."
+ },
+ "anc-10": {
+  "label": "Isaiah the Prophet",
+  "bio": "One of the greatest literary prophets. His prophecies of destruction and consolation — 'Comfort, comfort My people' — accompany Israel through the generations."
+ },
+ "anc-3": {
+  "label": "Jacob the Patriarch",
+  "bio": "Chosen of the Patriarchs and father of the twelve tribes. 'A wholesome man dwelling in tents' who went down to Egypt and laid the foundation of the house of Israel."
+ },
+ "anc-9": {
+  "label": "King Solomon",
+  "bio": "The wisest of all men and builder of the First Temple. Composed Proverbs, Ecclesiastes and the Song of Songs."
+ },
+ "sup-7": {
+  "label": "The Vilna Gaon (the Gra)",
+  "bio": "The Gaon of his generations in Lithuania. Toiled in Torah with extraordinary diligence, mastering revealed and hidden Torah, grammar and mathematics — father of the Lithuanian yeshiva world."
+ }
 }

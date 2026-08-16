@@ -16,7 +16,7 @@ const translations = {
     feature1: 'רשת קשרים אינטראקטיבית — D3.js force-directed network',
     feature2: 'מפה גיאוגרפית — עקוב אחר מיקומים והגירות של חכמים',
     feature3: 'חיפוש מתקדם — תמיכה בתרגומים בעברית ותצורות שונות',
-    feature4: 'מסמכי מחקר — 252 מסמכי מחקר סקורים ומיוחסים',
+    feature4: 'מסמכי מחקר — 423 מסמכי מחקר סקורים ומיוחסים',
     feature5: 'חומרי הוראה — תכניות שיעור של 45 דקות ושאלות דיון',
     feature6: 'ממשק דו-לשוני — עברית (RTL) ואנגלית מלאות',
     feature7: 'responsive לכל מכשיר — שולחני, טאבלט, סלולרי',
@@ -26,7 +26,7 @@ const translations = {
     spirit: '🎓 רוח הפרויקט',
     spirit_text: 'אנחנו מאמינים שחכמי ישראל לא צריכים להיות שמות בספר, אלא דמויות חיות המחוברות בדוגמה, בוויכוח ובהשפעה הדדית. פרויקט זה שומר על החוכמה שלהם בזמן שהוא עושה אותה נגישה לדור הבא של חוקרים ותלמידים.',
     footer: 'אוצר חכמים — Preserving the Wisdom of Our Sages',
-    updated: 'עודכן: יולי 2026 | Version 2.0',
+    updated: 'עודכן: אוגוסט 2026 | Version 2.0',
   },
   en: {
     title: '🏛️ Ozar Chachamim',
@@ -41,7 +41,7 @@ const translations = {
     feature1: 'Interactive Connection Network — D3.js force-directed network',
     feature2: 'Geographic Map — Track sage locations and migration paths',
     feature3: 'Advanced Search — Support for Hebrew transliterations',
-    feature4: 'Research Documents — 252 scholarly summaries',
+    feature4: 'Research Documents — 423 scholarly summaries',
     feature5: 'Teaching Materials — 45-minute lesson plans and discussions',
     feature6: 'Bilingual Interface — Full Hebrew (RTL) and English support',
     feature7: 'Responsive Design — Works on desktop, tablet, mobile',
@@ -51,7 +51,7 @@ const translations = {
     spirit: '🎓 Project Spirit',
     spirit_text: 'We believe Jewish sages should not be names in a book, but living figures connected through example, debate, and mutual influence. This project preserves their wisdom while making it accessible to the next generation of researchers and students.',
     footer: 'Ozar Chachamim — Preserving the Wisdom of Our Sages',
-    updated: 'Updated: July 2026 | Version 2.0',
+    updated: 'Updated: August 2026 | Version 2.0',
   },
   ru: {
     title: '🏛️ Оцар Хахамим',
@@ -66,7 +66,7 @@ const translations = {
     feature1: 'Интерактивная сеть соединений — D3.js force-directed network',
     feature2: 'Географическая карта — отслеживание местоположения и путей миграции',
     feature3: 'Расширенный поиск — поддержка еврейской транслитерации',
-    feature4: 'Исследовательские документы — 252 научных резюме',
+    feature4: 'Исследовательские документы — 423 научных резюме',
     feature5: 'Учебные материалы — планы уроков на 45 минут и обсуждения',
     feature6: 'Двуязычный интерфейс — полная поддержка иврита (RTL) и английского',
     feature7: 'Адаптивный дизайн — работает на настольных компьютерах, планшетах, мобильных',
@@ -76,7 +76,7 @@ const translations = {
     spirit: '🎓 Дух проекта',
     spirit_text: 'Мы верим, что еврейские мудрецы должны быть не просто имена в книге, а живые фигуры, связанные примером, дебатами и взаимным влиянием. Этот проект сохраняет их мудрость, делая её доступной для следующего поколения исследователей и студентов.',
     footer: 'Оцар Хахамим — сохраняя мудрость наших мудрецов',
-    updated: 'Обновлено: июль 2026 | Версия 2.0',
+    updated: 'Обновлено: август 2026 | Версия 2.0',
   },
 }
 
@@ -108,19 +108,19 @@ export default async function AboutPage({ params }: PageProps) {
         {/* Network Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16 text-center">
           <div className="bg-slate-800/50 rounded-lg p-6 border border-gold-500/20">
-            <div className="text-3xl font-bold text-gold-400">365</div>
+            <div className="text-3xl font-bold text-gold-400">422</div>
             <div className="text-sm text-slate-400">{t.sages}</div>
           </div>
           <div className="bg-slate-800/50 rounded-lg p-6 border border-gold-500/20">
-            <div className="text-3xl font-bold text-gold-400">1,629</div>
+            <div className="text-3xl font-bold text-gold-400">1,624</div>
             <div className="text-sm text-slate-400">{t.connections}</div>
           </div>
           <div className="bg-slate-800/50 rounded-lg p-6 border border-gold-500/20">
-            <div className="text-3xl font-bold text-gold-400">148</div>
+            <div className="text-3xl font-bold text-gold-400">309</div>
             <div className="text-sm text-slate-400">{t.research}</div>
           </div>
           <div className="bg-slate-800/50 rounded-lg p-6 border border-gold-500/20">
-            <div className="text-3xl font-bold text-gold-400">28</div>
+            <div className="text-3xl font-bold text-gold-400">9</div>
             <div className="text-sm text-slate-400">{t.coverage}</div>
           </div>
         </div>
@@ -177,7 +177,7 @@ export default async function AboutPage({ params }: PageProps) {
             <p className="text-slate-400 text-sm">
               Master dataset: Hebrew sages database
               <br />
-              Research: 252 biographical documents
+              Research: 423 biographical documents across 309 sages
               <br />
               Geographic data: GeoNames, OpenStreetMap
               <br />

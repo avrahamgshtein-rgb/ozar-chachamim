@@ -8,6 +8,7 @@ import { TabBar } from './TabBar'
 import { Drawer } from './Drawer'
 import { SearchBar } from '@/components/ui/SearchBar'
 import { FAB } from '@/components/ui/FAB'
+import { ChatWidget } from '@/components/chat/ChatWidget'
 import { SageCard } from '@/components/sages/SageCard'
 import { VizSkeleton } from '@/components/ui/VizSkeleton'
 import { OnboardingTour } from '@/components/ui/OnboardingTour'
@@ -206,6 +207,7 @@ export function AppShell({ locale, initialTotal, initialLastUpdate }: AppShellPr
 
       <TabBar locale={locale} />
       <FAB locale={locale} />
+      <ChatWidget locale={locale} />
 
       {/* Sage detail drawer */}
       <Drawer isOpen={isDrawerOpen && !!selectedSage} onClose={closeDrawer} locale={locale}>

@@ -68,3 +68,60 @@ Single Zustand store (`store/useAppStore.ts`): sages/connections/sageMap, select
 - **Connection types**: `student, teacher, colleague, influence, oppose, predecessor, contemporary, family`.
 - **Region keys**: `ashkenaz, east-europe, tsarfat, provence, sefarad, italy, north-africa, mizrach, eretz-israel, other` — derived from free-text `location` via `lib/regions.ts::regionsOf` (keyword matching), not stored directly on most sages.
 - Hebrew is written with proper גרשיים (e.g. `רמב״ם`, not `רמבם`), and RTL is the default direction; English/Russian content is LTR overlay only.
+
+## Research Document Ingestion Workflow
+
+When adding research documents from Google Drive to existing sages:
+
+### Setup
+1. **Manifest file**: Create or update a JSON manifest at `/tmp/claude-0/-home-user/4ee6b46b-17bb-58f3-a062-e7061ae6d87c/scratchpad/approved_46_minus_7.json` with an array of objects:
+   ```json
+   [
+     {
+       "title": "Research title",
+       "sage_id": "123",
+       "sage_label": "Hebrew sage name",
+       "spotify": "https://open.spotify.com/episode/...",
+       "drive_id": "Google Drive document ID"
+     }
+   ]
+   ```
+
+2. **Output format**: Each research document is written to `nextjs-app/public/research/<sage_id>.json` as:
+   ```json
+   [
+     {
+       "title": "Document title",
+       "source_file": "Google Docs: [original title]",
+       "word_count": 12345,
+       "content": "Full text content of the document..."
+     }
+   ]
+   ```
+   If multiple documents exist for the same sage_id, they are appended to the array.
+
+### Process
+1. **Triage**: Categorize documents from Google Drive folder into matching sages vs. new candidates
+2. **Filter**: Remove sages that don't exist in the data.json (validate FK constraints)
+3. **Ingest**: For each approved document:
+   - Download Google Doc via Drive API (requires authentication)
+   - Extract text content
+   - Count words
+   - Write JSON file to output directory
+   - Append to existing files if sage already has research
+4. **Validate**: Verify all JSON files are valid and properly formatted
+
+### Google Drive API Authentication
+- Requires Google Drive connector enabled in Claude Code session
+- Uses service account or OAuth credentials
+- Downloads via `google.drive.files.export` (converts Google Docs to plain text)
+
+### Common Issues
+- **API Timeout**: If processing many documents, batch in groups of 10-15 to avoid timeouts
+- **Missing Sage**: Validate sage_id exists in `nextjs-app/public/data.json` before ingestion
+- **Duplicate Entries**: Check if research already exists for a sage_id; append rather than replace
+- **Word Count**: Use simple split on whitespace; emoji/special chars may inflate count slightly
+
+### Environment Variables (`.claude/settings.json`)
+- `RESEARCH_MANIFEST_PATH`: Path to approved documents manifest
+- `RESEARCH_OUTPUT_DIR`: Target directory for research JSON files (relative to repo root)

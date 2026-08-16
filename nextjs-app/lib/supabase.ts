@@ -1,10 +1,14 @@
 import { createClient } from '@supabase/supabase-js'
 import type { Sage, Connection } from './types'
 
-const supabaseUrl  = process.env.NEXT_PUBLIC_SUPABASE_URL  ?? 'https://ulluacifirzywhmzkvkr.supabase.co'
-const supabaseKey  = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? 'sb_publishable_ObxKLFsDTE41KoAMfMV1dw_Nu38ZI2C'
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 
-export const supabase = createClient(supabaseUrl, supabaseKey)
+export const isSupabaseConfigured = Boolean(supabaseUrl && supabaseKey)
+export const supabase = createClient(
+  supabaseUrl ?? 'https://missing-config.invalid',
+  supabaseKey ?? 'missing-public-anon-key',
+)
 
 export async function fetchSages(): Promise<Sage[]> {
   const { data, error } = await supabase
