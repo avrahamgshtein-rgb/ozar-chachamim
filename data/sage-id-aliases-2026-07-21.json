@@ -1,0 +1,273 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-21T00:00:00+03:00",
+  "policy": "Canonical ids selected by research provenance, graph connectivity, and record richness. Alias files are preserved.",
+  "aliases": {
+    "30": "262",
+    "40": "195",
+    "75": "329",
+    "94": "95",
+    "105": "106",
+    "122": "123",
+    "145": "196",
+    "171": "197",
+    "200": "18",
+    "207": "348",
+    "210": "351",
+    "214": "355",
+    "229": "273",
+    "231": "275",
+    "232": "276",
+    "235": "279",
+    "238": "282",
+    "263": "64",
+    "290": "388",
+    "292": "391",
+    "298": "397",
+    "308": "400",
+    "322": "422",
+    "330": "70",
+    "333": "50",
+    "342": "124",
+    "357": "28",
+    "360": "64",
+    "361": "264",
+    "368": "271",
+    "370": "273",
+    "387": "289",
+    "392": "293",
+    "394": "294",
+    "396": "44",
+    "398": "299",
+    "399": "307",
+    "401": "309",
+    "403": "301",
+    "405": "303",
+    "412": "313",
+    "419": "319",
+    "420": "320",
+    "500": "335"
+  },
+  "decisions": [
+    {
+      "alias_id": "30",
+      "canonical_id": "262",
+      "reason": "Duplicate Ephraim of Qalaat Hammad"
+    },
+    {
+      "alias_id": "40",
+      "canonical_id": "195",
+      "reason": "Duplicate Raavad of Posquieres"
+    },
+    {
+      "alias_id": "75",
+      "canonical_id": "329",
+      "reason": "Duplicate Maharsha"
+    },
+    {
+      "alias_id": "145",
+      "canonical_id": "196",
+      "reason": "Duplicate Rav Tzvi Yehuda Kook"
+    },
+    {
+      "alias_id": "200",
+      "canonical_id": "18",
+      "reason": "Duplicate Bartenura"
+    },
+    {
+      "alias_id": "210",
+      "canonical_id": "351",
+      "reason": "Duplicate Nathan of Rome"
+    },
+    {
+      "alias_id": "214",
+      "canonical_id": "355",
+      "reason": "Duplicate Rivan"
+    },
+    {
+      "alias_id": "231",
+      "canonical_id": "275",
+      "reason": "Duplicate Ri Hazaken"
+    },
+    {
+      "alias_id": "232",
+      "canonical_id": "276",
+      "reason": "Duplicate Rashbam"
+    },
+    {
+      "alias_id": "235",
+      "canonical_id": "279",
+      "reason": "Duplicate Ritzba"
+    },
+    {
+      "alias_id": "330",
+      "canonical_id": "70",
+      "reason": "Duplicate Maharshal"
+    },
+    {
+      "alias_id": "333",
+      "canonical_id": "50",
+      "reason": "Duplicate Abraham Abulafia"
+    },
+    {
+      "alias_id": "357",
+      "canonical_id": "28",
+      "reason": "Duplicate Riva"
+    },
+    {
+      "alias_id": "360",
+      "canonical_id": "64",
+      "reason": "Duplicate Mahari Mintz"
+    },
+    {
+      "alias_id": "361",
+      "canonical_id": "264",
+      "reason": "Duplicate Mahari Bruna"
+    },
+    {
+      "alias_id": "368",
+      "canonical_id": "271",
+      "reason": "Duplicate Raam of Metz"
+    },
+    {
+      "alias_id": "370",
+      "canonical_id": "273",
+      "reason": "Duplicate Raavan"
+    },
+    {
+      "alias_id": "396",
+      "canonical_id": "44",
+      "reason": "Duplicate Ramban"
+    },
+    {
+      "alias_id": "405",
+      "canonical_id": "303",
+      "reason": "Duplicate Semak"
+    },
+    {
+      "alias_id": "419",
+      "canonical_id": "319",
+      "reason": "Duplicate Alexander Suslin"
+    },
+    {
+      "alias_id": "500",
+      "canonical_id": "335",
+      "reason": "Duplicate Lubavitcher Rebbe"
+    },
+    {
+      "alias_id": "401",
+      "canonical_id": "309",
+      "reason": "Duplicate Rabbi Avigdor Katz"
+    },
+    {
+      "alias_id": "290",
+      "canonical_id": "388",
+      "reason": "Duplicate Ralbag"
+    },
+    {
+      "alias_id": "292",
+      "canonical_id": "391",
+      "reason": "Duplicate Rav Maimon the Dayan"
+    },
+    {
+      "alias_id": "398",
+      "canonical_id": "299",
+      "reason": "Duplicate Zedekiah ben Abraham"
+    },
+    {
+      "alias_id": "399",
+      "canonical_id": "307",
+      "reason": "Duplicate Ribban"
+    },
+    {
+      "alias_id": "207",
+      "canonical_id": "348",
+      "reason": "Duplicate Moses HaDarshan"
+    },
+    {
+      "alias_id": "308",
+      "canonical_id": "400",
+      "reason": "Duplicate Rid Hazaken"
+    },
+    {
+      "alias_id": "298",
+      "canonical_id": "397",
+      "reason": "Duplicate Yehiel ben Yekutiel Anav"
+    },
+    {
+      "alias_id": "394",
+      "canonical_id": "294",
+      "reason": "Duplicate Raah"
+    },
+    {
+      "alias_id": "238",
+      "canonical_id": "282",
+      "reason": "Duplicate Hannah the prophetess"
+    },
+    {
+      "alias_id": "412",
+      "canonical_id": "313",
+      "reason": "Duplicate Kaliver Rebbe"
+    },
+    {
+      "alias_id": "263",
+      "canonical_id": "64",
+      "reason": "Duplicate Mahari Mintz"
+    },
+    {
+      "alias_id": "392",
+      "canonical_id": "293",
+      "reason": "Duplicate Ramah (Meir Halevi Abulafia)"
+    },
+    {
+      "alias_id": "322",
+      "canonical_id": "422",
+      "reason": "Duplicate Israel Joshua Trunk"
+    },
+    {
+      "alias_id": "403",
+      "canonical_id": "301",
+      "reason": "Duplicate Riaz"
+    },
+    {
+      "alias_id": "229",
+      "canonical_id": "273",
+      "reason": "Duplicate Raavan"
+    },
+    {
+      "alias_id": "420",
+      "canonical_id": "320",
+      "reason": "Duplicate Roi Klein"
+    },
+    {
+      "alias_id": "171",
+      "canonical_id": "197",
+      "reason": "Duplicate Meir Kahane"
+    },
+    {
+      "alias_id": "342",
+      "canonical_id": "124",
+      "reason": "Duplicate Haim Hezekiah Medini"
+    },
+    {
+      "alias_id": "387",
+      "canonical_id": "289",
+      "reason": "Duplicate Radak"
+    },
+    {
+      "alias_id": "94",
+      "canonical_id": "95",
+      "reason": "Duplicate Noda Biyhudah"
+    },
+    {
+      "alias_id": "105",
+      "canonical_id": "106",
+      "reason": "Duplicate Tzvi Hirsch Kalischer"
+    },
+    {
+      "alias_id": "122",
+      "canonical_id": "123",
+      "reason": "Duplicate Aruch HaShulchan"
+    }
+  ]
+}

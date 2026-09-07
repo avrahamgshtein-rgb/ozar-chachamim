@@ -12,8 +12,9 @@ Usage
   set ANTHROPIC_API_KEY=sk-ant-...
 
   python translate_research.py --list             # show corpus + status
+  python translate_research.py --summary          # compact queue counts
   python translate_research.py --ids 41,44        # translate specific sages
-  python translate_research.py --all              # translate everything missing
+  python translate_research.py --all --limit 5    # translate a bounded batch
   python translate_research.py --all --lang ru    # one language only
 
 Notes
@@ -64,13 +65,32 @@ def corpus():
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--list", action="store_true")
+    ap.add_argument("--summary", action="store_true")
     ap.add_argument("--ids", help="comma-separated sage ids")
     ap.add_argument("--all", action="store_true")
+    ap.add_argument("--limit", type=int, help="maximum base files to process")
     ap.add_argument("--lang", choices=list(LANGS), help="single target language")
     args = ap.parse_args()
 
     files = corpus()
     langs = {args.lang: LANGS[args.lang]} if args.lang else LANGS
+
+    if args.limit is not None and args.limit < 1:
+        ap.error("--limit must be a positive integer")
+
+    if args.summary:
+        summary = {
+            "base": len(files),
+            **{
+                code: sum((RESEARCH_DIR / f"{f.stem}.{code}.json").exists() for f in files)
+                for code in LANGS
+            },
+        }
+        summary["missing_en"] = summary["base"] - summary["en"]
+        summary["missing_ru"] = summary["base"] - summary["ru"]
+        print(json.dumps(summary, ensure_ascii=False))
+        if not (args.ids or args.all):
+            return
 
     if args.list or not (args.ids or args.all):
         print(f"research corpus: {len(files)} files in {RESEARCH_DIR}")
@@ -90,6 +110,8 @@ def main():
 
     wanted = set(args.ids.split(",")) if args.ids else None
     todo = [f for f in files if wanted is None or f.stem in wanted]
+    if args.limit is not None:
+        todo = todo[:args.limit]
     print(f"translating {len(todo)} sage(s) × {list(langs)} with {MODEL}")
 
     for f in todo:

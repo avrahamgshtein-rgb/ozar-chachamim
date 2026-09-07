@@ -15,3 +15,5 @@ node_modules/
 .venv/
 venv/
 claude.exe
+
+.vercel

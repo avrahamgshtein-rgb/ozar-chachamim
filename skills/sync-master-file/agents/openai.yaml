@@ -1,0 +1,4 @@
+interface:
+  display_name: "Sync Master File"
+  short_description: "Synchronize and verify the canonical sages graph"
+  default_prompt: "Use $sync-master-file to synchronize and verify the canonical sages graph."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Research Aggregator"
+  short_description: "Ingest and map newly added research sources"
+  default_prompt: "Use $research-aggregator to inspect and map new research sources without duplicating the corpus."

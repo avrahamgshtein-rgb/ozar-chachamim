@@ -141,7 +141,7 @@ export function AppShell({ locale, initialTotal, initialLastUpdate }: AppShellPr
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  // URL deep-linking: read ?sage= on data load
+  // URL deep-linking: read ?sage= on data load (initialize selection from URL)
   useEffect(() => {
     if (!sageMap.size) return
     const params = new URLSearchParams(window.location.search)
@@ -153,9 +153,13 @@ export function AppShell({ locale, initialTotal, initialLastUpdate }: AppShellPr
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sageMap.size])
 
-  // URL deep-linking: write ?sage= + ?tab= when they change
+  // URL deep-linking: write ?sage= + ?tab= when they change (only after URL init)
+  // Use a separate effect that depends on sageMap.size to ensure we don't write
+  // before we've had a chance to read the URL
   useEffect(() => {
     if (typeof window === 'undefined') return
+    if (!sageMap.size) return  // Don't sync until data is loaded
+
     const url = new URL(window.location.href)
     if (selectedSageId) {
       url.searchParams.set('sage', selectedSageId)
@@ -168,7 +172,7 @@ export function AppShell({ locale, initialTotal, initialLastUpdate }: AppShellPr
       url.searchParams.delete('tab')
     }
     window.history.replaceState({}, '', url.toString())
-  }, [selectedSageId, activeTab])
+  }, [selectedSageId, activeTab, sageMap.size])
 
   // Keyboard shortcuts
   useEffect(() => {

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Dedupe Sages"
+  short_description: "Audit and merge duplicate sage identities safely"
+  default_prompt: "Use $dedupe-sages to audit duplicate sage identities and propose safe mappings."

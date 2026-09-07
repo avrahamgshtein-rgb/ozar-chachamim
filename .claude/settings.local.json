@@ -157,7 +157,13 @@
       "Bash(git merge *)",
       "Bash(NODE_OPTIONS=\"--max-old-space-size=4096\" npm run dev)",
       "Bash(rm -rf .next node_modules package-lock.json)",
-      "Bash(npm install *)"
+      "Bash(npm install *)",
+      "Bash(Get-ChildItem \"C:\\\\Users\\\\User\\\\Desktop\\\\ozar-chachamim\\\\data\" -Filter \"*.docx\")",
+      "Bash(Measure-Object)",
+      "Bash(Select-Object -ExpandProperty Count)",
+      "Bash(git status *)",
+      "Bash(git pull *)",
+      "Bash(xargs grep -l \"reserve_authenticated_question\\\\|confirm_authenticated_question\\\\|reserve_anonymous_question\")"
     ]
   }
 }

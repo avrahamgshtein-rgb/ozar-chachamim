@@ -1,0 +1,42 @@
+{
+  "audit_metadata": {
+    "created_date": "2026-07-17",
+    "total_files": 0,
+    "sources_folder_reference": "sources/ (local backup)",
+    "google_drive_location": "https://drive.google.com/...",
+    "notes": "Research files in Google Drive NOT yet migrated to sources/ folder"
+  },
+  "research_files": [
+    {
+      "id": "TEMPLATE",
+      "sage_name_hebrew": "רבי יוסף קארו",
+      "sage_name_english": "Rabbi Yosef Karo",
+      "missing_research_id": 276,
+      "file_name": "rabbi-yosef-karo-research.pdf",
+      "file_type": "PDF",
+      "drive_link": "https://drive.google.com/file/d/...",
+      "date_modified": "2026-07-15",
+      "has_audio": false,
+      "language": "Hebrew",
+      "priority": "medium",
+      "status": "to_review"
+    }
+  ],
+  "summary": {
+    "total_count": 0,
+    "by_file_type": {
+      "Google Doc": 0,
+      "PDF": 0,
+      "Word": 0,
+      "Audio": 0,
+      "Other": 0
+    },
+    "by_language": {
+      "Hebrew": 0,
+      "English": 0,
+      "Mixed": 0
+    },
+    "audio_files": [],
+    "recent_updates": []
+  }
+}
