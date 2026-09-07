@@ -19,6 +19,7 @@ import { MapLegend } from '@/components/viz/MapLegend'
 import { useAppStore } from '@/store/useAppStore'
 import { fetchSages, fetchConnections, fetchLocalGraphData } from '@/lib/supabase'
 import { fetchContentOverlay, applyOverlay } from '@/lib/contentOverlay'
+import { loadAppShellData } from '@/lib/appShellDataLoader'
 import type { Locale, Tab } from '@/lib/types'
 
 // Dynamic imports — browser-only visualization libraries.
@@ -84,49 +85,29 @@ export function AppShell({ locale, initialTotal, initialLastUpdate }: AppShellPr
   useEffect(() => {
     setData([], [], initialTotal, initialLastUpdate)
     ;(async () => {
-      let [sages, connections] = await Promise.all([
+      // Load initial data: Supabase first, then fallback to data.json if needed
+      const supabaseData = await Promise.all([
         fetchSages(),
         fetchConnections(),
-      ])
-      // Supabase still carries the old sparse connection set — fall back to
-      // the canonical data.json whenever it is richer (keeps parity with Vercel)
-      if (connections.length < 100 || sages.length < 300) {
-        const local = await fetchLocalGraphData()
-        if (local.connections.length > connections.length) {
-          sages = local.sages
-          connections = local.connections
-          console.log('[AppShell] ↪ using data.json fallback (richer dataset)')
-        }
-      }
-      // Supplemental datasets — kept in separate files so canonical data.json
-      // stays untouched: biblical figures (ancient eras) + missing giants
-      // (Rashi, Hillel, Besht, Gra...)
-      for (const src of ['/data-ancient.json', '/data-supplement.json', '/data-supplement-2.json', '/data-research-links.json']) {
-        try {
-          const extra = await fetch(src).then(r => r.ok ? r.json() : null)
-          if (extra?.nodes?.length || extra?.links?.length) {
-            const existing = new Set(sages.map(s => s.id))
-            sages = [...sages, ...(extra.nodes ?? []).filter((n: { id: string }) => !existing.has(n.id))]
-            connections = [...connections, ...(extra.links ?? [])]
-            console.log(`[AppShell] 🏛 ${src}: +${extra.nodes?.length ?? 0} figures, +${extra.links?.length ?? 0} links`)
-          }
-        } catch { /* optional dataset */ }
-      }
+      ]).then(([sages, connections]) => ({ sages, connections }))
 
-      // Field patches for existing sages (e.g. works lists) — locale-independent
-      try {
-        const patch = await fetch('/data-patch.json').then(r => r.ok ? r.json() : null)
-        if (patch) {
-          sages = sages.map(s => patch[s.id] ? { ...s, ...patch[s.id] } : s)
-          console.log(`[AppShell] 🩹 data-patch: ${Object.keys(patch).length} sages patched`)
-        }
-      } catch { /* optional */ }
+      const dataJsonData = await fetchLocalGraphData()
 
-      // Content localization: merge per-locale translated fields (Phase 2)
+      // Merge canonical + supplements, apply patches via unified pipeline
+      const { sages: normalizedSages, connections: normalizedConnections, quality, source } =
+        await loadAppShellData(supabaseData, dataJsonData)
+
+      if (source === 'fallback') {
+        console.log('[AppShell] ↪ using data.json fallback (richer dataset)')
+      }
+      console.log(`[AppShell] 📊 merged: ${quality.canonical_count} canonical + ${quality.supplement_count} supplement = ${quality.total_sages} sages`)
+
+      // Content localization: merge per-locale translated fields
       const overlay = await fetchContentOverlay(locale)
-      sages = applyOverlay(sages, overlay)
-      setData(sages, connections, sages.length, initialLastUpdate)
-      console.log(`[AppShell] ✅ ${sages.length} sages, ${connections.length} connections`)
+      const sages = applyOverlay(normalizedSages, overlay)
+
+      setData(sages, normalizedConnections, sages.length, initialLastUpdate)
+      console.log(`[AppShell] ✅ ${sages.length} sages, ${normalizedConnections.length} connections (deduped: ${quality.total_connections})`)
     })()
   }, [initialTotal, initialLastUpdate, setData, locale])
 

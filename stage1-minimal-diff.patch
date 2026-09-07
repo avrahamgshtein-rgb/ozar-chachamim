@@ -1,0 +1,199 @@
+diff --git a/nextjs-app/app/api/chat/route.ts b/nextjs-app/app/api/chat/route.ts
+index 5a9d1f9..c3df0bb 100644
+--- a/nextjs-app/app/api/chat/route.ts
++++ b/nextjs-app/app/api/chat/route.ts
+@@ -153,8 +153,9 @@ async function handleAuthenticated(
+   try {
+     let sessionId = bodySessionId
+     if (sessionId) {
+-      const { data: existing } = await supabase
++      const { data: existing, error: lookupError } = await supabase
+         .from('chat_sessions').select('id').eq('id', sessionId).eq('user_id', userId).maybeSingle()
++      if (lookupError) throw new Error(`session_lookup_failed: ${lookupError.message}`)
+       if (!existing) sessionId = undefined
+     }
+     if (!sessionId) {
+@@ -164,23 +165,31 @@ async function handleAuthenticated(
+       sessionId = newSession.id
+     }
+ 
+-    await supabase.from('chat_messages').insert({
++    // Insert user message
++    const { error: userMsgError } = await supabase.from('chat_messages').insert({
+       session_id: sessionId, role: 'user', content: message, request_id: requestId,
+     })
++    if (userMsgError) throw new Error(`user_message_insert_failed: ${userMsgError.message}`)
+ 
+-    const { data: historyRows } = await supabase
++    // Retrieve history for context
++    const { data: historyRows, error: historyError } = await supabase
+       .from('chat_messages').select('role, content').eq('session_id', sessionId)
+       .order('created_at', { ascending: false }).limit(MAX_HISTORY_MESSAGES)
++    if (historyError) throw new Error(`history_retrieval_failed: ${historyError.message}`)
++
+     const history: ChatMessage[] = (historyRows ?? []).reverse()
+       .map(r => ({ role: r.role as 'user' | 'assistant', content: r.content }))
+ 
++    // Call LLM with complete history
+     const ragContext = await buildRagContext(message, locale)
+     const systemPrompt = buildSystemPrompt(ragContext, locale)
+     const response = await callClaude(systemPrompt, history)
+ 
+-    await supabase.from('chat_messages').insert({
++    // Insert assistant response
++    const { error: assistantMsgError } = await supabase.from('chat_messages').insert({
+       session_id: sessionId, role: 'assistant', content: response.text, request_id: requestId,
+     })
++    if (assistantMsgError) throw new Error(`assistant_message_insert_failed: ${assistantMsgError.message}`)
+ 
+     // Confirm usage and verify success to ensure quota is properly accounted
+     const { data: confirmResult, error: confirmError } = await supabase
+@@ -195,9 +204,10 @@ async function handleAuthenticated(
+     if (confirmError || !confirmResult || !(confirmResult as any).success) {
+       const errorMsg = String((confirmResult as any)?.error_msg ?? confirmError?.message ?? 'confirm_failed')
+       const safeMsg = errorMsg.slice(0, 300)
+-      console.error('[api/chat] confirm_authenticated_question failed:', errorMsg)
+-      // Attempt to release the reservation
+-      const { error: releaseError } = await supabase
++      console.error('[api/chat] confirm_authenticated_question failed (requestId=%s):', requestId, errorMsg)
++      // Attempt to release reservation; does not distinguish between definite rejection and uncertain outcome
++      // TODO: verify usage_events UNIQUE(request_id) and transaction semantics to implement proper reconciliation
++      const { data: releaseResult, error: releaseError } = await supabase
+         .rpc('release_authenticated_question', {
+           p_request_id: requestId,
+           p_error_code: 'confirm_failed',
+@@ -205,7 +215,10 @@ async function handleAuthenticated(
+         })
+         .single()
+       if (releaseError) {
+-        console.error('[api/chat] also failed to release reservation:', releaseError)
++        console.error('[api/chat] release transport failed (requestId=%s):', requestId, releaseError.message)
++      } else if (!releaseResult || !(releaseResult as any).success) {
++        const releaseMsg = String((releaseResult as any)?.error_msg ?? 'release_returned_false')
++        console.error('[api/chat] release_authenticated_question returned false (requestId=%s):', requestId, releaseMsg)
+       }
+       return NextResponse.json({ error: 'internal_error', detail: 'Failed to confirm usage' }, { status: 500 })
+     }
+@@ -219,19 +232,25 @@ async function handleAuthenticated(
+     })
+   } catch (err) {
+     const isClaudeError = err instanceof ClaudeApiError
+-    const { error: releaseError } = await supabase
++    const errorCode = isClaudeError ? 'llm_error' : 'internal_error'
++    const errorMsg = String(err instanceof Error ? err.message : 'unknown error').slice(0, 300)
++    console.error('[api/chat] authenticated flow failed (requestId=%s, code=%s):', requestId, errorCode, err)
++
++    const { data: releaseResult, error: releaseError } = await supabase
+       .rpc('release_authenticated_question', {
+         p_request_id: requestId,
+-        p_error_code: isClaudeError ? 'llm_error' : 'internal_error',
+-        p_error_message: String(err instanceof Error ? err.message : 'unknown error').slice(0, 300),
++        p_error_code: errorCode,
++        p_error_message: errorMsg,
+       })
+       .single()
+ 
+     if (releaseError) {
+-      console.error('[api/chat] release_authenticated_question also failed:', releaseError)
++      console.error('[api/chat] release transport failed on error path (requestId=%s):', requestId, releaseError.message)
++    } else if (!releaseResult || !(releaseResult as any).success) {
++      const releaseMsg = String((releaseResult as any)?.error_msg ?? 'release_returned_false')
++      console.error('[api/chat] release returned false on error path (requestId=%s):', requestId, releaseMsg)
+     }
+ 
+-    console.error('[api/chat] authenticated flow failed:', err)
+     return NextResponse.json({ error: 'internal_error' }, { status: 500 })
+   }
+ }
+@@ -301,9 +320,10 @@ async function handleAnonymous(request: NextRequest, message: string, locale: Lo
+     if (confirmError || !confirmResult || !(confirmResult as any).success) {
+       const errorMsg = String((confirmResult as any)?.error_msg ?? confirmError?.message ?? 'confirm_failed')
+       const safeMsg = errorMsg.slice(0, 300)
+-      console.error('[api/chat] confirm_anonymous_question failed:', errorMsg)
+-      // Attempt to release the reservation
+-      const { error: releaseError } = await serviceClient
++      console.error('[api/chat] confirm_anonymous_question failed (requestId=%s):', requestId, errorMsg)
++      // Attempt to release reservation; does not distinguish between definite rejection and uncertain outcome
++      // TODO: verify usage_events UNIQUE(request_id) and transaction semantics to implement proper reconciliation
++      const { data: releaseResult, error: releaseError } = await serviceClient
+         .rpc('release_anonymous_question', {
+           p_session_token_hash: tokenHash,
+           p_request_id: requestId,
+@@ -312,7 +332,10 @@ async function handleAnonymous(request: NextRequest, message: string, locale: Lo
+         })
+         .single()
+       if (releaseError) {
+-        console.error('[api/chat] also failed to release reservation:', releaseError)
++        console.error('[api/chat] release transport failed (requestId=%s):', requestId, releaseError.message)
++      } else if (!releaseResult || !(releaseResult as any).success) {
++        const releaseMsg = String((releaseResult as any)?.error_msg ?? 'release_returned_false')
++        console.error('[api/chat] release_anonymous_question returned false (requestId=%s):', requestId, releaseMsg)
+       }
+       const res = NextResponse.json({ error: 'internal_error', detail: 'Failed to confirm usage' }, { status: 500 })
+       setAnonCookie(res, rawToken)
+@@ -330,20 +353,26 @@ async function handleAnonymous(request: NextRequest, message: string, locale: Lo
+     return res
+   } catch (err) {
+     const isClaudeError = err instanceof ClaudeApiError
+-    const { error: releaseError } = await serviceClient
++    const errorCode = isClaudeError ? 'llm_error' : 'internal_error'
++    const errorMsg = String(err instanceof Error ? err.message : 'unknown error').slice(0, 300)
++    console.error('[api/chat] anonymous flow failed (requestId=%s, code=%s):', requestId, errorCode, err)
++
++    const { data: releaseResult, error: releaseError } = await serviceClient
+       .rpc('release_anonymous_question', {
+         p_session_token_hash: tokenHash,
+         p_request_id: requestId,
+-        p_error_code: isClaudeError ? 'llm_error' : 'internal_error',
+-        p_error_message: String(err instanceof Error ? err.message : 'unknown error').slice(0, 300),
++        p_error_code: errorCode,
++        p_error_message: errorMsg,
+       })
+       .single()
+ 
+     if (releaseError) {
+-      console.error('[api/chat] release_anonymous_question also failed:', releaseError)
++      console.error('[api/chat] release transport failed on error path (requestId=%s):', requestId, releaseError.message)
++    } else if (!releaseResult || !(releaseResult as any).success) {
++      const releaseMsg = String((releaseResult as any)?.error_msg ?? 'release_returned_false')
++      console.error('[api/chat] release returned false on error path (requestId=%s):', requestId, releaseMsg)
+     }
+ 
+-    console.error('[api/chat] anonymous flow failed:', err)
+     const res = NextResponse.json({ error: 'internal_error' }, { status: 500 })
+     setAnonCookie(res, rawToken)
+     return res
+diff --git a/nextjs-app/lib/serverData.ts b/nextjs-app/lib/serverData.ts
+index 9732470..a14c4b1 100644
+--- a/nextjs-app/lib/serverData.ts
++++ b/nextjs-app/lib/serverData.ts
+@@ -104,16 +104,26 @@ export interface ResearchDoc {
+ // משתמש app/api/research/[id]/route.ts.
+ export async function getResearchDocs(id: string, locale: 'he' | 'en' | 'ru' = 'he'): Promise<ResearchDoc[]> {
+   const { readFile } = await import('fs/promises')
+-  const { join } = await import('path')
++  const { join, resolve, sep } = await import('path')
++
++  const baseDir = resolve(process.cwd(), 'public', 'research')
++
++  // Validate that resolved path stays within base directory (defense-in-depth)
++  const validatePath = (filePath: string): boolean => {
++    const resolved = resolve(filePath)
++    return resolved.startsWith(baseDir + sep)
++  }
+ 
+   if (locale !== 'he') {
+     try {
+-      const path = join(process.cwd(), 'public', 'research', `${id}.${locale}.json`)
++      const path = resolve(baseDir, `${id}.${locale}.json`)
++      if (!validatePath(path)) return []
+       return JSON.parse(await readFile(path, 'utf-8'))
+     } catch { /* fall through to Hebrew */ }
+   }
+   try {
+-    const path = join(process.cwd(), 'public', 'research', `${id}.json`)
++    const path = resolve(baseDir, `${id}.json`)
++    if (!validatePath(path)) return []
+     return JSON.parse(await readFile(path, 'utf-8'))
+   } catch {
+     return []

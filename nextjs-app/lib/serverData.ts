@@ -1,17 +1,15 @@
-// Server-only data access — reads the canonical public/data.json (409 sages)
-// plus the same supplement files AppShell.tsx merges in client-side
-// (data-ancient/data-supplement/data-supplement-2/data-research-links —
-// figures like רש"י, הגר"א and the biblical patriarchs that aren't in the
-// CSV master file), so server-side consumers (the sage page, RAG) see the
-// same full set the client renders instead of a 53-sage-smaller subset.
+// Server-only data access — unified normalization via dataFoundation pipeline
+// Reads canonical + supplemental datasets, applies patches, ensures server/browser consistency
 import type { Sage, Connection } from './types'
-// נתונים סטטיים — נארזים בתוך ה-bundle (עובד גם ב-Vercel serverless,
-// שם אין גישת fs לתיקיית public בזמן ריצה)
+import { mergeDatasets, applyPatches, type SageRecord } from './dataFoundation'
+
+// Static data bundled at build time (works in Vercel serverless)
 import graphData from '../public/data.json'
 import dataAncient from '../public/data-ancient.json'
 import dataSupplement from '../public/data-supplement.json'
 import dataSupplement2 from '../public/data-supplement-2.json'
 import dataResearchLinks from '../public/data-research-links.json'
+import dataPatch from '../public/data-patch.json'
 
 interface Db {
   sages: Map<string, Sage>
@@ -20,55 +18,48 @@ interface Db {
 
 let cache: Db | null = null
 
-function mapNode(n: Record<string, unknown>): Sage {
-  return {
-    id:           String(n.id ?? ''),
-    label:        String(n.label ?? ''),
-    period:       ((n.era_key as string) || 'modern') as Sage['period'],
-    location:     (n.location as string) || undefined,
-    field:        (n.field as string) || undefined,
-    bio:          (n.bio as string) || undefined,
-    core_concept: (n.central_idea as string) || undefined,
-    tags: typeof n.tags === 'string' && n.tags
-      ? (n.tags as string).split(',').map(t => t.trim()).filter(Boolean)
-      : undefined,
-    spotify_url:  (n.spotify_url as string) || undefined,
-  }
-}
-
 function db(): Db {
   if (cache) return cache
-  const d = graphData as { nodes?: Record<string, unknown>[]; links?: Record<string, unknown>[] }
-  const sages = new Map<string, Sage>()
-  const links: Connection[] = []
 
-  for (const n of d.nodes ?? []) sages.set(String(n.id), mapNode(n))
-  for (const l of d.links ?? []) {
-    links.push({
-      source: String((l as Record<string, unknown>).source ?? ''),
-      target: String((l as Record<string, unknown>).target ?? ''),
-      type:   (((l as Record<string, unknown>).type as string) || 'colleague') as Connection['type'],
+  // Merge canonical + supplements via unified pipeline
+  const datasets = [
+    graphData,
+    dataAncient,
+    dataSupplement,
+    dataSupplement2,
+    dataResearchLinks,
+  ] as Array<{ nodes?: Record<string, unknown>[]; links?: Record<string, unknown>[] }>
+
+  const issues: any[] = []
+  const { sages: recordMap, connections } = mergeDatasets(datasets, issues)
+
+  // Apply patches server-side for consistency with browser
+  applyPatches(recordMap, dataPatch as Record<string, Partial<SageRecord>>)
+
+  // Convert SageRecord → Sage format, preserving all fields
+  const sages = new Map<string, Sage>()
+  for (const [id, record] of recordMap) {
+    sages.set(id, {
+      id: record.id,
+      label: record.label,
+      name_en: record.name_en,
+      period: record.period,
+      region: record.region,
+      location: record.location,
+      field: record.field,
+      bio: record.bio,
+      core_concept: record.core_concept,
+      birth_year: record.birth_year,
+      death_year: record.death_year,
+      tags: record.tags,
+      migration_path: record.migration_path,
+      coordinates: record.coordinates,
+      spotify_url: record.spotify_url,
+      works: record.works,
     })
   }
 
-  // Supplement datasets — same precedence rule as AppShell.tsx: only add a
-  // node if its id doesn't already exist in the canonical dataset.
-  for (const extra of [dataAncient, dataSupplement, dataSupplement2, dataResearchLinks]) {
-    const e = extra as { nodes?: Record<string, unknown>[]; links?: Record<string, unknown>[] }
-    for (const n of e.nodes ?? []) {
-      const id = String(n.id ?? '')
-      if (id && !sages.has(id)) sages.set(id, mapNode(n))
-    }
-    for (const l of e.links ?? []) {
-      links.push({
-        source: String((l as Record<string, unknown>).source ?? ''),
-        target: String((l as Record<string, unknown>).target ?? ''),
-        type:   (((l as Record<string, unknown>).type as string) || 'colleague') as Connection['type'],
-      })
-    }
-  }
-
-  cache = { sages, links }
+  cache = { sages, links: connections }
   return cache
 }
 
@@ -104,16 +95,26 @@ export interface ResearchDoc {
 // משתמש app/api/research/[id]/route.ts.
 export async function getResearchDocs(id: string, locale: 'he' | 'en' | 'ru' = 'he'): Promise<ResearchDoc[]> {
   const { readFile } = await import('fs/promises')
-  const { join } = await import('path')
+  const { join, resolve, sep } = await import('path')
+
+  const baseDir = resolve(process.cwd(), 'public', 'research')
+
+  // Validate that resolved path stays within base directory (defense-in-depth)
+  const validatePath = (filePath: string): boolean => {
+    const resolved = resolve(filePath)
+    return resolved.startsWith(baseDir + sep)
+  }
 
   if (locale !== 'he') {
     try {
-      const path = join(process.cwd(), 'public', 'research', `${id}.${locale}.json`)
+      const path = resolve(baseDir, `${id}.${locale}.json`)
+      if (!validatePath(path)) return []
       return JSON.parse(await readFile(path, 'utf-8'))
     } catch { /* fall through to Hebrew */ }
   }
   try {
-    const path = join(process.cwd(), 'public', 'research', `${id}.json`)
+    const path = resolve(baseDir, `${id}.json`)
+    if (!validatePath(path)) return []
     return JSON.parse(await readFile(path, 'utf-8'))
   } catch {
     return []
