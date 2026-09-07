@@ -104,8 +104,8 @@ export async function POST(request: NextRequest) {
     locale = bodyObj.locale
   }
 
-  // Validate sessionId if provided
-  if (bodyObj.sessionId !== undefined) {
+  // Validate sessionId if explicitly provided (null/undefined means new conversation)
+  if (bodyObj.sessionId !== null && bodyObj.sessionId !== undefined) {
     if (typeof bodyObj.sessionId !== 'string' || !isValidUUID(bodyObj.sessionId)) {
       return NextResponse.json({ error: 'invalid_session_id' }, { status: 400 })
     }
@@ -193,14 +193,15 @@ async function handleAuthenticated(
       .single()
 
     if (confirmError || !confirmResult || !(confirmResult as any).success) {
-      const errorMsg = (confirmResult as any)?.error_msg ?? confirmError?.message ?? 'confirm_failed'
+      const errorMsg = String((confirmResult as any)?.error_msg ?? confirmError?.message ?? 'confirm_failed')
+      const safeMsg = errorMsg.slice(0, 300)
       console.error('[api/chat] confirm_authenticated_question failed:', errorMsg)
       // Attempt to release the reservation
       const { error: releaseError } = await supabase
         .rpc('release_authenticated_question', {
           p_request_id: requestId,
           p_error_code: 'confirm_failed',
-          p_error_message: errorMsg.slice(0, 300),
+          p_error_message: safeMsg,
         })
         .single()
       if (releaseError) {
@@ -222,7 +223,7 @@ async function handleAuthenticated(
       .rpc('release_authenticated_question', {
         p_request_id: requestId,
         p_error_code: isClaudeError ? 'llm_error' : 'internal_error',
-        p_error_message: err instanceof Error ? err.message.slice(0, 300) : 'unknown error',
+        p_error_message: String(err instanceof Error ? err.message : 'unknown error').slice(0, 300),
       })
       .single()
 
@@ -298,7 +299,8 @@ async function handleAnonymous(request: NextRequest, message: string, locale: Lo
       .single()
 
     if (confirmError || !confirmResult || !(confirmResult as any).success) {
-      const errorMsg = (confirmResult as any)?.error_msg ?? confirmError?.message ?? 'confirm_failed'
+      const errorMsg = String((confirmResult as any)?.error_msg ?? confirmError?.message ?? 'confirm_failed')
+      const safeMsg = errorMsg.slice(0, 300)
       console.error('[api/chat] confirm_anonymous_question failed:', errorMsg)
       // Attempt to release the reservation
       const { error: releaseError } = await serviceClient
@@ -306,7 +308,7 @@ async function handleAnonymous(request: NextRequest, message: string, locale: Lo
           p_session_token_hash: tokenHash,
           p_request_id: requestId,
           p_error_code: 'confirm_failed',
-          p_error_message: errorMsg.slice(0, 300),
+          p_error_message: safeMsg,
         })
         .single()
       if (releaseError) {
@@ -333,7 +335,7 @@ async function handleAnonymous(request: NextRequest, message: string, locale: Lo
         p_session_token_hash: tokenHash,
         p_request_id: requestId,
         p_error_code: isClaudeError ? 'llm_error' : 'internal_error',
-        p_error_message: err instanceof Error ? err.message.slice(0, 300) : 'unknown error',
+        p_error_message: String(err instanceof Error ? err.message : 'unknown error').slice(0, 300),
       })
       .single()
 

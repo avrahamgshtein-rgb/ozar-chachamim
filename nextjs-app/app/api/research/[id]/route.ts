@@ -13,17 +13,36 @@ interface ResearchDoc {
 export const runtime = 'nodejs'
 export const revalidate = 86400 // Cache for 24 hours
 
-// Load valid sage IDs from data.json at build time (cached by Next.js)
+// Load valid sage IDs from all data sources (canonical + supplemental)
+// Mirrors the sage loading in AppShell.tsx to ensure consistency
 async function getValidSageIds(): Promise<Set<string>> {
-  try {
-    const dataPath = join(process.cwd(), 'public', 'data.json')
-    const content = await readFile(dataPath, 'utf-8')
-    const data = JSON.parse(content)
-    return new Set((data.nodes ?? []).map((node: { id: string }) => node.id))
-  } catch (error) {
-    console.error('[api/research] Failed to load data.json for validation:', error)
-    return new Set()
+  const allIds = new Set<string>()
+  const sources = [
+    'data.json',
+    'data-ancient.json',
+    'data-supplement.json',
+    'data-supplement-2.json',
+    'data-research-links.json'
+  ]
+
+  for (const src of sources) {
+    try {
+      const dataPath = join(process.cwd(), 'public', src)
+      const content = await readFile(dataPath, 'utf-8')
+      const data = JSON.parse(content)
+      const nodes = data.nodes ?? []
+      nodes.forEach((node: { id: string }) => allIds.add(node.id))
+    } catch {
+      // Optional supplemental file, skip if not found
+      continue
+    }
   }
+
+  if (allIds.size === 0) {
+    console.error('[api/research] Warning: No sages loaded for validation (all data files missing)')
+  }
+
+  return allIds
 }
 
 // Singleton cache (persists across requests in Node runtime)
