@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { randomUUID } from 'crypto'
+import { randomUUID, randomBytes } from 'crypto'
 import { createClient } from '@/lib/supabase-auth/server'
 import { createServiceRoleClient } from '@/lib/supabase-auth/serviceRole'
 import {
@@ -8,17 +8,25 @@ import {
 import { buildRagContext } from '@/lib/rag/buildContext'
 import { buildSystemPrompt } from '@/lib/rag/systemPrompt'
 import { callClaude, estimateCost, ClaudeApiError, type ChatMessage } from '@/lib/rag/claude'
+import { isValidLocale } from '@/lib/i18n'
 import type { Locale } from '@/lib/types'
 
 export const runtime = 'nodejs'
 
 const MAX_HISTORY_MESSAGES = 10
 const ANON_COOKIE_MAX_AGE = 60 * 60 * 24 * 7 // 7 days — matches anonymous_sessions.retention_expires_at
+const MAX_MESSAGE_LENGTH = 10000  // Maximum message length to prevent abuse
+const MIN_MESSAGE_LENGTH = 1
 
 interface ChatRequestBody {
   message: string
   sessionId?: string
   locale?: Locale
+}
+
+// Validate that a value is a valid UUID
+function isValidUUID(value: string): boolean {
+  return /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(value)
 }
 
 // Read-only quota check — lets the chat widget show "X questions left"
@@ -60,25 +68,55 @@ export async function GET(request: NextRequest) {
 }
 
 export async function POST(request: NextRequest) {
-  let body: ChatRequestBody
+  let body: unknown
   try {
     body = await request.json()
   } catch {
     return NextResponse.json({ error: 'invalid_json' }, { status: 400 })
   }
 
-  const message = body.message?.trim()
-  if (!message) {
-    return NextResponse.json({ error: 'empty_message' }, { status: 400 })
+  // Validate request body shape
+  if (!body || typeof body !== 'object') {
+    return NextResponse.json({ error: 'invalid_request_body' }, { status: 400 })
   }
-  const locale: Locale = body.locale ?? 'he'
+
+  const bodyObj = body as Record<string, unknown>
+
+  // Validate message field
+  if (typeof bodyObj.message !== 'string') {
+    return NextResponse.json({ error: 'message_required' }, { status: 400 })
+  }
+
+  const message = bodyObj.message.trim()
+  if (message.length < MIN_MESSAGE_LENGTH || message.length > MAX_MESSAGE_LENGTH) {
+    return NextResponse.json(
+      { error: 'message_length_invalid', detail: `Must be between ${MIN_MESSAGE_LENGTH} and ${MAX_MESSAGE_LENGTH} characters` },
+      { status: 400 }
+    )
+  }
+
+  // Validate and default locale
+  let locale: Locale = 'he'
+  if (bodyObj.locale !== undefined) {
+    if (typeof bodyObj.locale !== 'string' || !isValidLocale(bodyObj.locale)) {
+      return NextResponse.json({ error: 'invalid_locale' }, { status: 400 })
+    }
+    locale = bodyObj.locale
+  }
+
+  // Validate sessionId if explicitly provided (null/undefined means new conversation)
+  if (bodyObj.sessionId !== null && bodyObj.sessionId !== undefined) {
+    if (typeof bodyObj.sessionId !== 'string' || !isValidUUID(bodyObj.sessionId)) {
+      return NextResponse.json({ error: 'invalid_session_id' }, { status: 400 })
+    }
+  }
 
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
 
   try {
     return user
-      ? await handleAuthenticated(supabase, user.id, message, body.sessionId, locale)
+      ? await handleAuthenticated(supabase, user.id, message, bodyObj.sessionId as string | undefined, locale)
       : await handleAnonymous(request, message, locale)
   } catch (err) {
     // Catches failures before either flow's own reservation/release try-catch
@@ -115,8 +153,9 @@ async function handleAuthenticated(
   try {
     let sessionId = bodySessionId
     if (sessionId) {
-      const { data: existing } = await supabase
+      const { data: existing, error: lookupError } = await supabase
         .from('chat_sessions').select('id').eq('id', sessionId).eq('user_id', userId).maybeSingle()
+      if (lookupError) throw new Error(`session_lookup_failed: ${lookupError.message}`)
       if (!existing) sessionId = undefined
     }
     if (!sessionId) {
@@ -126,30 +165,63 @@ async function handleAuthenticated(
       sessionId = newSession.id
     }
 
-    await supabase.from('chat_messages').insert({
+    // Insert user message
+    const { error: userMsgError } = await supabase.from('chat_messages').insert({
       session_id: sessionId, role: 'user', content: message, request_id: requestId,
     })
+    if (userMsgError) throw new Error(`user_message_insert_failed: ${userMsgError.message}`)
 
-    const { data: historyRows } = await supabase
+    // Retrieve history for context
+    const { data: historyRows, error: historyError } = await supabase
       .from('chat_messages').select('role, content').eq('session_id', sessionId)
       .order('created_at', { ascending: false }).limit(MAX_HISTORY_MESSAGES)
+    if (historyError) throw new Error(`history_retrieval_failed: ${historyError.message}`)
+
     const history: ChatMessage[] = (historyRows ?? []).reverse()
       .map(r => ({ role: r.role as 'user' | 'assistant', content: r.content }))
 
+    // Call LLM with complete history
     const ragContext = await buildRagContext(message, locale)
     const systemPrompt = buildSystemPrompt(ragContext, locale)
     const response = await callClaude(systemPrompt, history)
 
-    await supabase.from('chat_messages').insert({
+    // Insert assistant response
+    const { error: assistantMsgError } = await supabase.from('chat_messages').insert({
       session_id: sessionId, role: 'assistant', content: response.text, request_id: requestId,
     })
+    if (assistantMsgError) throw new Error(`assistant_message_insert_failed: ${assistantMsgError.message}`)
 
-    await supabase.rpc('confirm_authenticated_question', {
-      p_request_id: requestId,
-      p_provider: 'anthropic', p_model: response.model,
-      p_input_tokens: response.inputTokens, p_output_tokens: response.outputTokens,
-      p_estimated_cost: estimateCost(response.inputTokens, response.outputTokens),
-    })
+    // Confirm usage and verify success to ensure quota is properly accounted
+    const { data: confirmResult, error: confirmError } = await supabase
+      .rpc('confirm_authenticated_question', {
+        p_request_id: requestId,
+        p_provider: 'anthropic', p_model: response.model,
+        p_input_tokens: response.inputTokens, p_output_tokens: response.outputTokens,
+        p_estimated_cost: estimateCost(response.inputTokens, response.outputTokens),
+      })
+      .single()
+
+    if (confirmError || !confirmResult || !(confirmResult as any).success) {
+      const errorMsg = String((confirmResult as any)?.error_msg ?? confirmError?.message ?? 'confirm_failed')
+      const safeMsg = errorMsg.slice(0, 300)
+      console.error('[api/chat] confirm_authenticated_question failed (requestId=%s):', requestId, errorMsg)
+      // Attempt to release reservation; does not distinguish between definite rejection and uncertain outcome
+      // TODO: verify usage_events UNIQUE(request_id) and transaction semantics to implement proper reconciliation
+      const { data: releaseResult, error: releaseError } = await supabase
+        .rpc('release_authenticated_question', {
+          p_request_id: requestId,
+          p_error_code: 'confirm_failed',
+          p_error_message: safeMsg,
+        })
+        .single()
+      if (releaseError) {
+        console.error('[api/chat] release transport failed (requestId=%s):', requestId, releaseError.message)
+      } else if (!releaseResult || !(releaseResult as any).success) {
+        const releaseMsg = String((releaseResult as any)?.error_msg ?? 'release_returned_false')
+        console.error('[api/chat] release_authenticated_question returned false (requestId=%s):', requestId, releaseMsg)
+      }
+      return NextResponse.json({ error: 'internal_error', detail: 'Failed to confirm usage' }, { status: 500 })
+    }
 
     return NextResponse.json({
       sessionId,
@@ -160,12 +232,25 @@ async function handleAuthenticated(
     })
   } catch (err) {
     const isClaudeError = err instanceof ClaudeApiError
-    await supabase.rpc('release_authenticated_question', {
-      p_request_id: requestId,
-      p_error_code: isClaudeError ? 'llm_error' : 'internal_error',
-      p_error_message: err instanceof Error ? err.message.slice(0, 300) : 'unknown error',
-    })
-    console.error('[api/chat] authenticated flow failed:', err)
+    const errorCode = isClaudeError ? 'llm_error' : 'internal_error'
+    const errorMsg = String(err instanceof Error ? err.message : 'unknown error').slice(0, 300)
+    console.error('[api/chat] authenticated flow failed (requestId=%s, code=%s):', requestId, errorCode, err)
+
+    const { data: releaseResult, error: releaseError } = await supabase
+      .rpc('release_authenticated_question', {
+        p_request_id: requestId,
+        p_error_code: errorCode,
+        p_error_message: errorMsg,
+      })
+      .single()
+
+    if (releaseError) {
+      console.error('[api/chat] release transport failed on error path (requestId=%s):', requestId, releaseError.message)
+    } else if (!releaseResult || !(releaseResult as any).success) {
+      const releaseMsg = String((releaseResult as any)?.error_msg ?? 'release_returned_false')
+      console.error('[api/chat] release returned false on error path (requestId=%s):', requestId, releaseMsg)
+    }
+
     return NextResponse.json({ error: 'internal_error' }, { status: 500 })
   }
 }
@@ -221,13 +306,41 @@ async function handleAnonymous(request: NextRequest, message: string, locale: Lo
     const systemPrompt = buildSystemPrompt(ragContext, locale)
     const response = await callClaude(systemPrompt, [{ role: 'user', content: message }])
 
-    await serviceClient.rpc('confirm_anonymous_question', {
-      p_session_token_hash: tokenHash,
-      p_request_id: requestId,
-      p_provider: 'anthropic', p_model: response.model,
-      p_input_tokens: response.inputTokens, p_output_tokens: response.outputTokens,
-      p_estimated_cost: estimateCost(response.inputTokens, response.outputTokens),
-    })
+    // Confirm usage and verify success to ensure quota is properly accounted
+    const { data: confirmResult, error: confirmError } = await serviceClient
+      .rpc('confirm_anonymous_question', {
+        p_session_token_hash: tokenHash,
+        p_request_id: requestId,
+        p_provider: 'anthropic', p_model: response.model,
+        p_input_tokens: response.inputTokens, p_output_tokens: response.outputTokens,
+        p_estimated_cost: estimateCost(response.inputTokens, response.outputTokens),
+      })
+      .single()
+
+    if (confirmError || !confirmResult || !(confirmResult as any).success) {
+      const errorMsg = String((confirmResult as any)?.error_msg ?? confirmError?.message ?? 'confirm_failed')
+      const safeMsg = errorMsg.slice(0, 300)
+      console.error('[api/chat] confirm_anonymous_question failed (requestId=%s):', requestId, errorMsg)
+      // Attempt to release reservation; does not distinguish between definite rejection and uncertain outcome
+      // TODO: verify usage_events UNIQUE(request_id) and transaction semantics to implement proper reconciliation
+      const { data: releaseResult, error: releaseError } = await serviceClient
+        .rpc('release_anonymous_question', {
+          p_session_token_hash: tokenHash,
+          p_request_id: requestId,
+          p_error_code: 'confirm_failed',
+          p_error_message: safeMsg,
+        })
+        .single()
+      if (releaseError) {
+        console.error('[api/chat] release transport failed (requestId=%s):', requestId, releaseError.message)
+      } else if (!releaseResult || !(releaseResult as any).success) {
+        const releaseMsg = String((releaseResult as any)?.error_msg ?? 'release_returned_false')
+        console.error('[api/chat] release_anonymous_question returned false (requestId=%s):', requestId, releaseMsg)
+      }
+      const res = NextResponse.json({ error: 'internal_error', detail: 'Failed to confirm usage' }, { status: 500 })
+      setAnonCookie(res, rawToken)
+      return res
+    }
 
     const res = NextResponse.json({
       sessionId: null,
@@ -240,13 +353,26 @@ async function handleAnonymous(request: NextRequest, message: string, locale: Lo
     return res
   } catch (err) {
     const isClaudeError = err instanceof ClaudeApiError
-    await serviceClient.rpc('release_anonymous_question', {
-      p_session_token_hash: tokenHash,
-      p_request_id: requestId,
-      p_error_code: isClaudeError ? 'llm_error' : 'internal_error',
-      p_error_message: err instanceof Error ? err.message.slice(0, 300) : 'unknown error',
-    })
-    console.error('[api/chat] anonymous flow failed:', err)
+    const errorCode = isClaudeError ? 'llm_error' : 'internal_error'
+    const errorMsg = String(err instanceof Error ? err.message : 'unknown error').slice(0, 300)
+    console.error('[api/chat] anonymous flow failed (requestId=%s, code=%s):', requestId, errorCode, err)
+
+    const { data: releaseResult, error: releaseError } = await serviceClient
+      .rpc('release_anonymous_question', {
+        p_session_token_hash: tokenHash,
+        p_request_id: requestId,
+        p_error_code: errorCode,
+        p_error_message: errorMsg,
+      })
+      .single()
+
+    if (releaseError) {
+      console.error('[api/chat] release transport failed on error path (requestId=%s):', requestId, releaseError.message)
+    } else if (!releaseResult || !(releaseResult as any).success) {
+      const releaseMsg = String((releaseResult as any)?.error_msg ?? 'release_returned_false')
+      console.error('[api/chat] release returned false on error path (requestId=%s):', requestId, releaseMsg)
+    }
+
     const res = NextResponse.json({ error: 'internal_error' }, { status: 500 })
     setAnonCookie(res, rawToken)
     return res

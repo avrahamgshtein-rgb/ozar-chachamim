@@ -24,7 +24,7 @@ async function refreshSession(request: NextRequest, response: NextResponse) {
 }
 
 export async function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl
+  const { pathname, search } = request.nextUrl
 
   // Skip static assets and Next internals
   if (
@@ -33,6 +33,11 @@ export async function middleware(request: NextRequest) {
     pathname.startsWith('/favicon') ||
     pathname.includes('.')
   ) {
+    return NextResponse.next()
+  }
+
+  // Skip auth routes (they handle their own redirect logic, preserve query params)
+  if (pathname.startsWith('/auth')) {
     return NextResponse.next()
   }
 
@@ -50,7 +55,8 @@ export async function middleware(request: NextRequest) {
     acceptLanguage.toLowerCase().includes(locale)
   ) ?? DEFAULT_LOCALE
 
-  const redirectUrl = new URL(`/${preferredLocale}${pathname}`, request.url)
+  // Preserve query parameters when redirecting
+  const redirectUrl = new URL(`/${preferredLocale}${pathname}${search}`, request.url)
   return NextResponse.redirect(redirectUrl)
 }
 

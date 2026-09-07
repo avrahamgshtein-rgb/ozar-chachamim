@@ -1,0 +1,11 @@
+{
+  "total_sages_with_research": 353,
+  "sages_needing_source_folders": [
+    {
+      "id": "95",
+      "name": "הנודע ביהודה (הרב יחזקאל לנדא)",
+      "slug": "noda-beyehuda",
+      "status": "pending_download"
+    }
+  ]
+}

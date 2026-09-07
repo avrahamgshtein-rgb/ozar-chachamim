@@ -1,0 +1,175 @@
+The Intellectual Architecture of Isaac Samuel Reggio: A Comprehensive Analysis of the YaShaR’s Contributions to Modern Jewish Thought, Education, and Exegesis
+
+Source guide
+
+טקסט זה מנתח את פועלו של יצחק שמואל רג'יו (יש"ר), דמות מפתח ביהדות איטליה שחיבר בין עולם ההשכלה למסורת הרבנית. המקור סוקר את פריצות הדרך המוסדיות שלו, ובראשן הקמת בית המדרש לרבנים בפדובה, לצד עבודתו המדעית וההגותית השואפת לפיוס בין התבונה והמדע לבין האמונה. לאורך הסקירה מודגשת הפיכתו של רג'יו למבקר חריף של הקבלה והסמכות ההלכתית המקובלת, מה שהוביל למתחים אינטלקטואליים ואישיים עזים. בסופו של דבר, החיבור מציג את דמותו כגשר הכרחי להבנת צמיחת היהדות המודרנית והמאבק המתמיד בין שימור המורשת לבין דרישות הקדמה.
+
+**The Intellectual Architecture of Isaac Samuel Reggio: A Comprehensive Analysis of the YaShaR’s Contributions to Modern Jewish Thought, Education, and Exegesis**
+
+The life and work of Isaac Samuel Reggio (1784–1855), widely known by his Hebrew acronym YaShaR (Itsḥak Shemu'el Reggio), represents a critical juncture in the evolution of European Jewish intellectual history.\[1, 2, 3\] Operating within the unique cultural and political laboratory of the Austro-Italian borderlands, Reggio synthesized the rigor of Enlightenment mathematics, the linguistic precision of the Italian Hebrew tradition, and the radical reformist currents of the German Haskalah.\[4, 5, 6\] His legacy is not merely that of a scholar, but of an institutional architect who established the first modern rabbinical seminary, a philosopher who sought a seamless reconciliation between science and revelation, and a polemicist whose later works challenged the very foundations of rabbinic authority and mystical tradition.\[7, 8, 9, 10\]
+
+**Biographical Genesis: Gorizia and the Convergence of Traditions**
+
+Isaac Samuel Reggio was born on August 15, 1784, in Gorizia, a city in the Illyrian provinces of the Austrian Empire.\[3, 4, 6\] This geographic placement was significant; Gorizia served as a linguistic and cultural crossroads where Italian, German, French, and Latin influences permeated the Jewish community.\[3, 4\] Reggio’s father, Abraham Vita Reggio, was a formidable rabbinic authority and later the rabbi of Gorizia, providing Isaac with a rigorous foundation in Hebrew and rabbinics from an early age.\[3, 6, 10\] However, the elder Reggio was also a proponent of broader education, having studied grammar and poetics at the Lampronti yeshiva, which justified his classification as a traditional Maskil—an enlightened scholar who remained within the bounds of orthodoxy while appreciating secular knowledge.\[10\]
+
+Reggio’s education was remarkably diverse. While mastering the intricacies of the Talmud and Hebrew grammar under his father, he also attended the local gymnasium, where he acquired a deep knowledge of secular sciences and European languages.\[3, 6\] His linguistic repertoire eventually included his native Italian, as well as French, German, Latin, and several Semitic languages.\[3, 6\] This polyglot background allowed him to engage directly with the primary texts of the European Enlightenment, providing him with the tools to eventually become the "Mendelssohn of Italy".\[4, 5\]
+
+The early phase of Reggio’s career was defined by his extraordinary mathematical talent. In 1802, at the age of eighteen, he published a solution to a complex mathematical problem in the *Neuwieder Zeitung*, a feat that earned him an immediate reputation as a mathematician.\[3, 4, 6\] He further distinguished himself by discovering a new demonstration of the Pythagorean theorem, which received praise from the renowned French mathematician Augustin-Louis Cauchy.\[3, 4, 6\] The theorem, fundamental to Euclidean geometry, states that in a right-angled triangle, the square of the hypotenuse is equal to the sum of the squares of the other two sides:
+
+*a*
+
+2
+
+\+*b*
+
+2
+
+\=*c*
+
+2
+
+Reggio’s interest in mathematics was not merely an academic diversion; it shaped his entire intellectual methodology. He possessed a phenomenally clear intellect that sought logical proofs and analytical clarity in all subjects, from biblical exegesis to religious philosophy.\[3, 6\] This desire for mathematical certainty would later put him at odds with the mystical and allegorical traditions of Jewish thought, specifically the Kabbalah.\[3\]
+
+**Historical Chronology of Isaac Samuel Reggio**
+
+|  |  |  |
+| :-: | :-: | :-: |
+| \*\*Year\*\* | \*\*Event\*\* | \*\*Historical Significance\*\* |
+| 1784 | Birth in Gorizia | Emergence in a borderland between Austrian and Italian cultures.\\\[3, 4\\\] |
+| 1802 | Publication in \*Neuwieder Zeitung\* | Establishes reputation in the secular scientific community.\\\[3, 6\\\] |
+| 1803 | Move to Trieste | Period of tutoring for the wealthy Cologna family and expansion of social circles.\\\[3, 4\\\] |
+| 1810 | Appointment as Professor | Serves as Professor of Belles-Lettres and Chancellor under French rule.\\\[4, 9\\\] |
+| 1813 | Resignation | Forced departure from public office following the return of Austrian anti-Jewish laws.\\\[4, 9\\\] |
+| 1818 | \*Ma'amar Torah min ha-Shamayim\* | First major theological defense of the divine origin of the Torah.\\\[2, 6\\\] |
+| 1821 | \*Sefer Torat Elohim\* | Publication of the Pentateuch with Italian translation and Hebrew commentary.\\\[2, 3, 6\\\] |
+| 1827 | \*Ha-Torah ve-ha-Filosofyah\* | Core philosophical work reconciling reason and revelation.\\\[2, 3, 6\\\] |
+| 1829 | Founding of Padua Seminary | Establishes the \*Instituto Convitto Rabbinico\*, the first of its kind in Europe.\\\[7, 8\\\] |
+| 1835 | \*Ma'amar ha-Tiglahat\* | Controversial ruling on shaving, sparking a public dispute with his father.\\\[3, 6\\\] |
+| 1846 | Acceptance of Gorizia Rabbinate | Succeeds his father as rabbi, declining the associated salary.\\\[4, 5\\\] |
+| 1850 | Dismissal from Rabbinate | Ousted during community struggles over religious reform and authority.\\\[9, 11\\\] |
+| 1852 | \*Behinat ha-Kabbalah\* | Publication of his most radical critique of rabbinic and mystical traditions.\\\[2, 9\\\] |
+| 1855 | Death in Gorizia | End of a career that spanned mathematics, law, and theology.\\\[2, 3\\\] |
+
+The geopolitical shifts of the early 19th century profoundly impacted Reggio’s professional trajectory. During the Napoleonic occupation, when the Illyrian provinces became a French dependency in 1810, Reggio was appointed by the French governor as a professor of belles-lettres, geography, and history, as well as the chancellor of the lyceum of Gorizia.\[4, 9\] However, this period of integration was short-lived. When Illyria reverted to Austrian control in 1813, the reimposition of restrictive anti-Jewish laws compelled Reggio to resign his state positions.\[4, 9\] This transition marked his definitive pivot toward Jewish scholarship. Residing in Gorizia and supported by his marriage into a wealthy family, he devoted himself exclusively to Jewish literature and the project of modernization, taking Moses Mendelssohn and Naphtali Herz Wessely as his primary guides.\[4, 10\]
+
+**The Philosophical Synthesis: Ha-Torah ve-ha-Filosofyah**
+
+Reggio’s most important contribution to Jewish thought was his effort to reconcile the traditional Jewish religion with the rigorous demands of modern science and philosophy.\[3, 6\] This ambition reached its zenith in his work *Ha-Torah ve-ha-Filosofyah* (Vienna, 1827), a religious-philosophical essay written in four sections, or *ma'amarim*.\[3, 6\] The work was intentionally programmatic, serving as a defensive response to traditionalist rabbis who opposed the establishment of a modern rabbinical seminary in Padua.\[3, 6\]
+
+In Reggio’s nomenclature, "philosophy" was not limited to metaphysical speculation but included all fields of study outside of the strict Talmudic and rabbinic canon, such as history, philology, and the natural sciences.\[3, 6\] He argued that a profound knowledge of the physical world was a prerequisite for a true understanding of the divine law.\[3, 6\] His philosophy rested on the premise that there are two kinds of truths, both of which are equally valid: rational truth, proceeding from the human intellect, and moral truth, formed in the heart through divine revelation.\[5\] He posited that these truths could never be in opposition because they both originate from God, the source of all truth.\[3, 6\]
+
+**The Four Ma'amarim of Ha-Torah ve-ha-Filosofyah**
+
+The structure of *Ha-Torah ve-ha-Filosofyah* reflects Reggio’s systematic approach to theological defense. Although some parts of the work were suppressed by censors, the surviving content and contemporary descriptions outline a comprehensive worldview.\[6\]
+
+1.  **Reconciliation of Faith and Reason:** Reggio argues that the Jewish religion and modern science are indispensable to each other. He rejects the notion that a religious life requires the abandonment of the intellect, suggesting instead that the more one understands the laws of nature, the more one appreciates the wisdom of the Creator.\[3, 6\]
+2.  **The Human Intellect and Divine Law:** This section explores the capacity of human reason to grasp the ethics of the Torah. Reggio emphasizes that the commandments of the Torah are not arbitrary but are designed to lead man toward moral and rational perfection.\[3, 6\]
+3.  **The World and Man (Ha-Olam veha-Adam):** Here, Reggio discusses the place of humanity within the cosmos. One controversial chapter in this section originally addressed whether the Torah was in opposition to the Kabbalah.\[6\] This chapter was so radical that it was stricken out by the censor, though its themes would later be expanded in his final works.\[3, 6\]
+4.  **Academic Training for the Rabbinate:** The final section makes a direct case for the professionalization of the rabbinate. Reggio argues that just as the state requires its functionaries to be educated in the law and humanities, the Jewish community requires leaders who are well-versed in both the Torah and the secular sciences.\[3, 6, 7\]
+
+Reggio’s philosophy was characterized by a rejection of Haggadic interpretations when they contradicted reason and an aversion to the pilpulistic, casuistic study of the Talmud.\[3, 6\] He believed that the Torah should be interpreted according to its literal meaning (*peshat*), and that any interpretation must remain consistent with the fundamental principles of the Jewish religion.\[6, 12\] This stance, while common among the followers of the German Haskalah, was revolutionary in the Italian context, where Reggio sought to modernize the community without leading it toward the radical religious reforms emerging in Germany.\[4, 10\]
+
+**Educational Revolution: The Padua Rabbinical College**
+
+Reggio’s theoretical commitment to a modernized rabbinate found its practical expression in the establishment of the *Collegio Rabbinico Italiano* in Padua.\[2, 7, 8\] The school was born out of a specific political necessity: an 1822 imperial decree from the Austrian government stated that no person could be appointed as a rabbi unless they had graduated in philosophy.\[4, 6, 7\] Rather than viewing this as a threat to tradition, Reggio saw it as an opportunity. He published an appeal in Venice, arguing that if the emperor desired rabbis with philosophical training, the Jewish community must provide an institution where such training was integrated with religious instruction.\[4, 6, 7\]
+
+The Padua Seminary, which opened in 1829, was the first institution of its kind in Europe and served as the direct model for all future rabbinical seminaries, including the Breslau Seminar and the Jewish Theological Seminary in New York.\[7, 8, 13\] Reggio was the primary architect of the college's curriculum and statutes, ensuring that students received a thorough education in both traditional rabbinics and modern academic disciplines.\[4, 10\]
+
+**Curriculum Structure of the Padua Seminary**
+
+The curriculum was designed to produce a "new type" of modern rabbi, capable of speaking the vernacular and engaging with contemporary intellectual culture while maintaining a commitment to Halakhah.\[7, 8\]
+
+|  |  |  |
+| :-: | :-: | :-: |
+| \*\*Subject Area\*\* | \*\*Traditional Component\*\* | \*\*Modern Academic Component\*\* |
+| \*\*Biblical Studies\*\* | Talmudic/Midrashic commentary | Philology, Hebrew grammar, and historical context.\\\[4, 8, 14\\\] |
+| \*\*Law and Ethics\*\* | Traditional Codes (Shulchan Arukh) | Philosophy, ethics, and the history of Jewish law.\\\[4, 10, 14\\\] |
+| \*\*Literature\*\* | Responsa and Piyut | Hebrew poetry, rhetoric, and belles-lettres.\\\[4, 10\\\] |
+| \*\*History\*\* | Sacred chronology | General history, geography, and critical historiography.\\\[7, 14\\\] |
+| \*\*Science\*\* | Practical calendar math | Logic, mathematics, and natural sciences.\\\[3, 6, 7\\\] |
+
+The faculty of the Padua Seminary included some of the most prominent Jewish scholars of the age. Lelio della Torre and Samuel David Luzzatto (Shadal) were the first teachers.\[8, 14, 15\] Shadal, who joined the faculty in 1829, taught Bible, philology, philosophy, and history until his death in 1865.\[14\] The relationship between Reggio and Shadal was one of deep mutual esteem and intellectual collaboration, documented in a collection of their Hebrew correspondence.\[2\] Reggio was instrumental in securing Shadal’s appointment, recognizing that Shadal’s romantic and traditionalist sensibilities would complement his own rationalist approach.\[14, 15\]
+
+**Biblical Exegesis and the Project of Translation**
+
+A cornerstone of Reggio’s mission was the democratization of Jewish knowledge through the translation of the Bible into Italian.\[3, 4, 6\] Influenced by Mendelssohn’s *Bi'ur*, Reggio believed that translating the Pentateuch into the vernacular would not only help the Jewish masses understand the sacred text but would also elevate their mastery of the Hebrew language.\[1, 4, 6\] His monumental work, *Sefer Torat Elohim* (Vienna, 1821), provided a simple yet clear Italian translation alongside a Hebrew commentary focused on the *peshat*, or plain sense of the text.\[1, 2, 3, 12\]
+
+Reggio’s exegetical method was strikingly modern. While he believed that the biblical text had been generally preserved from major corruption, he was a pioneer in admitting the existence of involuntary scribal errors.\[3, 6\] In his *Iggerot Yashar* (1834–1836), he defended the right of the scholar to correct such errors based on grammatical and logical evidence, provided these corrections did not violate the core principles of Jewish faith.\[3, 6\] This position earned him the enmity of conservative German rabbis, such as Meïr Randegger, who viewed any acknowledgment of textual imperfection as a threat to the dogma of divine revelation.\[3, 6\]
+
+His work on the Book of Esther, *Mafteaḥ el Megillat Ester* (1841), was particularly original and provocative.\[3, 6\] Reggio identified the Persian king Ahasuerus as Darius Hystaspes and argued that the primary purpose of the book was to record the establishment of the imperial post.\[3, 6\] More controversially, he offered a critical psychological analysis of the characters. He maintained that Mordecai was an "ordinary Jew" who failed to provide Esther with a religious education and commanded her to deny her faith.\[3, 6\] He argued that Mordecai’s refusal to bow before Haman was unnecessary and violated no Jewish law, yet it placed the entire community in danger.\[3, 6\] He contrasted Mordecai’s seemingly senseless stubbornness with Esther’s piety, noting that it was she who resorted to prayer and fasting.\[3, 6\] These views provoked a fierce protest from Isaac Bär Lewinsohn, yet they demonstrated Reggio’s commitment to applying historical-critical methods to the biblical narrative.\[6\]
+
+**The Polemic of the Beard: Ma'amar ha-Tiglahat**
+
+Reggio’s willingness to challenge long-standing customs was nowhere more evident than in the "beard controversy" of 1835. In his work *Ma'amar ha-Tiglahat*, Reggio issued a halakhic decision permitting the shaving of the beard during the intermediate days of festivals (*Chol HaMoed*).\[3, 6\] This was not merely a matter of personal grooming; in the context of 19th-century Italy, it was an issue of social integration and the aesthetics of the modern Jew.
+
+Reggio’s argument was characteristic of his rationalist approach: he maintained that the original talmudic prohibition was intended to ensure that men entered the festival looking groomed, and that in the modern era, where daily shaving was common among the social elite, the spirit of the law was best served by allowing the practice.\[3, 6\] This ruling caused a major scandal and called forth a protest from Jacob Ezekiel ha-Levi.\[3\] Most painful for Isaac Samuel, however, was the protest issued by his own father, Abraham Vita Reggio, who published a rebuttal titled *Tiglahat ha-Ma'amar* in 1844.\[3, 10\] The public disagreement between father and son underscored the growing divide between the older generation of Italian Maskilim and the more radical reformers like the YaShaR.\[10\]
+
+**The Radical Turn: Behinat ha-Kabbalah and the Modena Controversy**
+
+The final decade of Reggio’s life saw him move toward an even more radical critique of rabbinic tradition. This phase was defined by his preoccupation with the works of Leon de Modena, the colorful 17th-century Venetian rabbi.\[2, 3, 9\] In 1852, Reggio published *Behinat ha-Kabbalah*, an edition of two pamphlets allegedly written by Modena: *Kol Sakal* (A Fool's Voice) and *Sha'agat Aryeh* (The Lion's Roar).\[3, 9\]
+
+*Kol Sakal* was a scathing polemic against the Oral Law and the entire rabbinic tradition, while *Sha'agat Aryeh* was a brief and arguably weak defense of tradition.\[3, 9\] Reggio provided the work with a long preface and one hundred critical notes, which equaled the original text in size.\[3, 9\] His central thesis was explosive: he claimed that Leon de Modena was the true author of the anti-rabbinic *Kol Sakal*, and that the defense in *Sha'agat Aryeh* was merely a "blind" intended to mask Modena’s true antinomian and heretical views.\[3, 9\]
+
+In his notes, Reggio used the persona of Modena to advance his own radical theories. He argued that many talmudic ordinances were never intended to be perpetual laws but were the specific practices of the ancient, rigorous Pharisees.\[3, 6\] He claimed that it was only much later that casuists (*posekim*) established these ordinances as immutable parts of the Law.\[3, 6\] This work drew fire from across the Jewish world. Solomon Judah Leib Rapoport (SHIR), the leader of the Galician Haskalah, who had once been Reggio’s friend, was outraged.\[9\] Rapoport concluded that Reggio had finally "revealed his heretical colors" and was effectively a "Sadducee" who sought to undermine the authority of the Oral Law.\[9\] Rapoport’s vituperative response characterized Reggio as a "hater of Israel" who had spent a lifetime dissimulating his true feelings.\[9\]
+
+**Key Themes in Behinat ha-Kabbalah**
+
+|  |  |  |
+| :-: | :-: | :-: |
+| \*\*Theme\*\* | \*\*Reggio’s Argument\*\* | \*\*Historical Implication\*\* |
+| \*\*Authorship of Kol Sakal\*\* | Leon de Modena was the true author, expressing his authentic skepticism.\\\[9\\\] | Delegitimizes the rabbinic authority of a key historical figure.\\\[9\\\] |
+| \*\*Origin of Talmudic Law\*\* | Laws were local Pharisaic customs, not universally binding Sinaitic revelations.\\\[3, 6\\\] | Challenges the concept of the eternal, unchanging nature of Halakhah.\\\[3\\\] |
+| \*\*Critique of Kabbalah\*\* | Rejects the Zohar and mysticism as illogical and contrary to the Torah.\\\[3, 10\\\] | Aligns with Maimonidean rationalism and Enlightenment values.\\\[16\\\] |
+| \*\*Role of the Posekim\*\* | Later casuists rigidified the law unnecessarily.\\\[3, 6\\\] | Provides a historical basis for religious reform within a traditional framework.\\\[10\\\] |
+
+**The Rabbinate and the Gorizia Community**
+
+Despite his controversial writings, Reggio remained an integral part of the Jewish community of Gorizia. In 1846, following the death of his father, the community insisted that he take over the rabbinate.\[4, 5\] He accepted the position but, in a gesture of financial independence and devotion, declined the salary attached to the office.\[4\] His tenure was marked by the same tensions between tradition and reform that defined his intellectual life. Gorizia was a small community—an 1853 census counted only 330 Jews out of a total population of 13,800—but it was economically significant due to its role in the silk industry.\[9\]
+
+Reggio’s service as rabbi lasted only until 1850. Documents from the state archives of Gorizia reveal that he was ousted from his position during a struggle over religious reform.\[9, 11\] The conflict was not merely over abstract theology but involved the institutional structure of the community and the authority of the "Rabbi Maggiore".\[9\] Reggio’s dismissal reflected deep divisions within the community between those who sought moderate reforms and those who feared the radical implications of his scholarship.\[9, 11\]
+
+**Bibliographic and Journalistic Contributions**
+
+Reggio was an indefatigable contributor to the Jewish press, using periodicals as a primary vehicle for disseminating the ideals of the Haskalah. He was the editor of *Bikkurei ha-Ittim ha-Hadashim* (Vienna, 1845), a successor to the famous *Bikkurei ha-Ittim* (1821–1832) which had served as a central forum for Hebrew literary and scientific annuals.\[6, 17\] Reggio himself had edited volumes 9 and 10 of the original *Bikkurei ha-Ittim* and continued to publish poems, articles, and reviews in most of the Jewish journals of his time.\[6, 17, 18\]
+
+His autobiographical sketch, *Mazkeret Yashar* (Vienna, 1849), published in his sixty-fifth year, provides a fascinating look at the scale of his output.\[2, 3\] In it, he enumerates 103 works, ranging from mathematical proofs and Italian poetry to complex halakhic responsa and biblical commentaries.\[2, 3, 9\] He also left a vast number of unpublished writings, including sermons and poems in both Hebrew and Italian.\[3, 6\]
+
+Reggio’s interest in the material history of the Jewish book was reflected in his extensive manuscript collection.\[4, 19\] He bought many of his manuscripts in Leghorn (Livorno) before 1828, acquiring a collection that included 13th-century Sephardic texts on medicine, astronomy, and philosophy.\[4, 19\] Notable items in his collection included 15th-century copies of Maimonides’ *Guide for the Perplexed* and Abraham ibn Ezra’s *Sefer ha-Ibur*.\[4\] In 1853, the Bodleian Library at Oxford purchased his library *en bloc*, ensuring the preservation of these vital historical documents.\[4, 19\]
+
+**The Correspondence with Samuel David Luzzatto**
+
+One of the most significant aspects of Reggio’s intellectual life was his lifelong relationship with Samuel David Luzzatto (Shadal). Their correspondence, which consists of approximately 400 letters, serves as a primary source for the history of the Italian Haskalah.\[2, 14\] While they were united in their commitment to Jewish scholarship and the Hebrew language, they represented two different poles of thought: Reggio was the consummate rationalist, while Shadal was a romantic who defended the unique, non-rational character of Judaism.\[14, 15, 20\]
+
+Despite their ideological differences, they maintained a relationship of mutual esteem.\[2, 14\] Reggio’s role in securing Shadal’s position at the Padua Seminary was a turning point for both men. It allowed Shadal to dedicate his life to scholarship and provided the seminary with a teacher of world-class stature.\[14, 15\] Their letters cover a vast range of topics, from technical points of Hebrew grammar to the philosophical foundations of faith, reflecting the vibrant intellectual life of the Italian Jewish community in the mid-19th century.\[2, 14, 21\]
+
+**Conclusion: The Legacy of a Rationalist Rabbi**
+
+Isaac Samuel Reggio died in Gorizia on August 29, 1855.\[2, 3, 6\] He left behind a legacy that was as controversial as it was influential. For the Italian Jewish community, he was the primary architect of modernization, creating the institutions and the literary tools necessary for Jews to navigate the world of the Enlightenment without abandoning their heritage.\[4, 5, 10\] His translation of the Torah and his efforts to reform rabbinical education fundamentally changed the professional and intellectual character of the Italian rabbinate.\[6, 7, 8\]
+
+However, Reggio’s late radicalism and his critiques of the Oral Law and the Kabbalah ensure that his place in history remains complex.\[3, 9\] He was a man of the "Middle Way" who eventually found the constraints of tradition increasingly difficult to reconcile with his commitment to logic and reason.\[10, 22, 23\] Whether viewed as a precursor to Modern Orthodoxy, a pioneer of the Conservative movement through his influence on the Jewish Theological Seminary, or a radical reformer in the guise of a traditionalist, the YaShaR remains an essential figure for understanding the intellectual birth of modern Judaism.\[8, 10, 13\] His life’s work stands as a testament to the enduring tension between the pursuit of rational truth and the preservation of sacred tradition.\[10\]
+
+\--------------------------------------------------------------------------------
+
+1.  Isaac Samuel Reggio | Texts from the Sefaria Library, <https://www.sefaria.org/topics/isaac-samuel-reggio>
+2.  Isacco Samuel Reggio - Jewish Virtual Library, <https://jewishvirtuallibrary.org/reggio-isacco-samuel>
+3.  Isaac Samuel Reggio - Wikipedia, <https://en.wikipedia.org/wiki/Isaac_Samuel_Reggio>
+4.  Reggio Collection · Western Sephardic Diaspora Roadmap - DHLAB, <https://projetos.dhlab.fcsh.unl.pt/s/wsdroadmap/item/55762>
+5.  Isaac Samuel Reggio | Posen Library, <https://www.posenlibrary.com/author/isaac-samuel-reggio>
+6.  REGGIO, ISAAC SAMUEL (YaSHaR) - JewishEncyclopedia.com, <https://www.jewishencyclopedia.com/articles/12643-reggio-isaac-samuel-yashar>
+7.  The Jewish Theological Seminary of Breslau and the Rabbinical College of Padua: A Comparison - IRIS, <https://iris.uniroma1.it/retrieve/13bdd732-5cda-445c-8bdf-7d21f624d96d/Kajon_Jewish-theological-seminary_2016.pdf>
+8.  Rabbinical Seminaries - Encyclopedia.com, <https://www.encyclopedia.com/religion/encyclopedias-almanacs-transcripts-and-maps/rabbinical-seminaries>
+9.  New Light on the Career of Isaac Samuel Reggio, <https://benyehuda.org/lexicon/03460-files/03460201.pdf>
+10. (PDF) The Reggios of Gorizia: Modernization in Micro - Academia.edu, <https://www.academia.edu/3851715/The_Reggios_of_Gorizia_Modernization_in_Micro>
+11. New Light on the Life of Isaac Samuel Reggio - Academia.edu, <https://www.academia.edu/3851720/New_Light_on_the_Life_of_Isaac_Samuel_Reggio>
+12. Reggio on Torah | Sefaria Library, <https://www.sefaria.org/Reggio_on_Torah>
+13. Heralds of Duty: The Sephardic Italian Jewish Theological Seminary of Sabato Morais - University of Pennsylvania, <https://repository.upenn.edu/bitstreams/ff8400d0-47df-4b77-b6c9-7b620382edf2/download>
+14. Luzzatto ( Samuel David and Isaia ) papers | The Magnes Collection of Jewish Art and Life, <https://magnes.berkeley.edu/collections/archives/luzzatto-samuel-david-and-isaia-papers-2/>
+15. Explore Jewish Texts by Topic - s | Sefaria Library, <https://www.sefaria.org/topics/all/s>
+16. The Scandal of Kabbalah: Leon Modena, Jewish Mysticism, Early Modern Venice - Yaacob Dweck - Google ספרים, <https://books.google.co.il/books?id=syLY_a-fj6EC>
+17. Bikkurei Ha-Ittim - Jewish Virtual Library, <https://www.jewishvirtuallibrary.org/bikkurei-ha-ittim>
+18. Reggio, Isacco Samuel | Encyclopedia.com, <https://www.encyclopedia.com/religion/encyclopedias-almanacs-transcripts-and-maps/reggio-isacco-samuel>
+19. Hebrew manuscripts of Isaac Samuel Reggio - Archives Hub - Jisc, <https://archiveshub.jisc.ac.uk/data/gb161-mss.reggio1-63>
+20. Samuel David Luzzatto as an Italian and a Zionist Jewish Icon - Brill, <https://brill.com/display/book/9789004508699/BP000001.pdf>
+21. LETTER-WRITING AND LETTER-WRITERS - JewishEncyclopedia.com, <https://www.jewishencyclopedia.com/articles/8062-iggeret>
+22. The Believer and the Modern Study of the Bible - OAPEN Library, <https://library.oapen.org/bitstream/handle/20.500.12657/25322/1004776.pdf?sequence=1>
+23. THE MIDDLE WAY - dokumen.pub, <https://dokumen.pub/download/the-middle-way-the-emergence-of-modern-religious-trends-in-nineteenth-century-judaism-responses-to-modernity-in-the-philosophy-of-z-h-chajes-s-r-hirsch-and-s-d-luzzatto-vol-1.html>

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Translate Research"
+  short_description: "Translate missing research files idempotently"
+  default_prompt: "Use $translate-research to inspect and process the missing research translation queue."

@@ -1,0 +1,99 @@
+{
+  "phase": "3",
+  "date_generated": "2026-07-17",
+  "total_files": 16,
+  "by_sage": {
+    "172": {
+      "name": "הרב חיים דרוקמן",
+      "folder": "rabbi-chayim-druckman",
+      "files": [
+        {
+          "filename": "rabbi-chayim-druckman-research-1.docx",
+          "destination": "sources/rabbi-chayim-druckman/",
+          "status": "pending"
+        },
+        {
+          "filename": "rabbi-chayim-druckman-research-2.docx",
+          "destination": "sources/rabbi-chayim-druckman/",
+          "status": "pending"
+        },
+        {
+          "filename": "rabbi-chayim-druckman-research-3.docx",
+          "destination": "sources/rabbi-chayim-druckman/",
+          "status": "pending"
+        },
+        {
+          "filename": "rabbi-chayim-druckman-research-4.docx",
+          "destination": "sources/rabbi-chayim-druckman/",
+          "status": "pending"
+        },
+        {
+          "filename": "rabbi-chayim-druckman-research-5.docx",
+          "destination": "sources/rabbi-chayim-druckman/",
+          "status": "pending"
+        },
+        {
+          "filename": "rabbi-chayim-druckman-research-6.docx",
+          "destination": "sources/rabbi-chayim-druckman/",
+          "status": "pending"
+        },
+        {
+          "filename": "rabbi-chayim-druckman-research-7.docx",
+          "destination": "sources/rabbi-chayim-druckman/",
+          "status": "pending"
+        },
+        {
+          "filename": "rabbi-chayim-druckman-research-8.docx",
+          "destination": "sources/rabbi-chayim-druckman/",
+          "status": "pending"
+        },
+        {
+          "filename": "rabbi-chayim-druckman-research-9.docx",
+          "destination": "sources/rabbi-chayim-druckman/",
+          "status": "pending"
+        },
+        {
+          "filename": "rabbi-chayim-druckman-research-10.docx",
+          "destination": "sources/rabbi-chayim-druckman/",
+          "status": "pending"
+        },
+        {
+          "filename": "rabbi-chayim-druckman-research-11.docx",
+          "destination": "sources/rabbi-chayim-druckman/",
+          "status": "pending"
+        }
+      ]
+    },
+    "50": {
+      "name": "רבי אברהם אבולעפיה",
+      "folder": "rabbi-abraham-abolafia",
+      "files": [
+        {
+          "filename": "rabbi-abraham-abolafia-research-1.docx",
+          "destination": "sources/rabbi-abraham-abolafia/",
+          "status": "pending"
+        },
+        {
+          "filename": "rabbi-abraham-abolafia-research-2.docx",
+          "destination": "sources/rabbi-abraham-abolafia/",
+          "status": "pending"
+        },
+        {
+          "filename": "rabbi-abraham-abolafia-research-3.docx",
+          "destination": "sources/rabbi-abraham-abolafia/",
+          "status": "pending"
+        },
+        {
+          "filename": "rabbi-abraham-abolafia-research-4.docx",
+          "destination": "sources/rabbi-abraham-abolafia/",
+          "status": "pending"
+        },
+        {
+          "filename": "rabbi-abraham-abolafia-research-5.docx",
+          "destination": "sources/rabbi-abraham-abolafia/",
+          "status": "pending"
+        }
+      ]
+    }
+  }
+}

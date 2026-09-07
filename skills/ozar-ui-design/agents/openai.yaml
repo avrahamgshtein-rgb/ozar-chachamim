@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ozar UI Design"
+  short_description: "Design interfaces in the Ozar visual language"
+  default_prompt: "Use $ozar-ui-design to design a new interface that matches Ozar Chachamim."

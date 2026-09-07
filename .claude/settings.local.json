@@ -157,7 +157,30 @@
       "Bash(git merge *)",
       "Bash(NODE_OPTIONS=\"--max-old-space-size=4096\" npm run dev)",
       "Bash(rm -rf .next node_modules package-lock.json)",
-      "Bash(npm install *)"
+      "Bash(npm install *)",
+      "Bash(Get-ChildItem \"C:\\\\Users\\\\User\\\\Desktop\\\\ozar-chachamim\\\\data\" -Filter \"*.docx\")",
+      "Bash(Measure-Object)",
+      "Bash(Select-Object -ExpandProperty Count)",
+      "Bash(git status *)",
+      "Bash(git pull *)",
+      "Bash(xargs grep -l \"reserve_authenticated_question\\\\|confirm_authenticated_question\\\\|reserve_anonymous_question\")",
+      "Bash(git diff *)",
+      "Read(//tmp/**)",
+      "Bash(cd \"C:\\\\Users\\\\User\\\\Desktop\\\\ozar-chachamim\" && git diff afc76cc..84243be nextjs-app/app/api/chat/route.ts nextjs-app/app/api/research/[id]/route.ts nextjs-app/middleware.ts nextjs-app/components/layout/AppShell.tsx --no-color > /tmp/stage1_cumulative.diff && wc -l /tmp/stage1_cumulative.diff)",
+      "Bash(git show *)",
+      "Bash(node test-containment.js)",
+      "Bash(node test-chat-route.js)",
+      "Bash(node scratchpad/test-production-code.js)",
+      "Bash(node test-production-code.js)",
+      "Bash(node test-chat-fixes.js)",
+      "Bash(cp stage1-minimal-diff.patch /tmp/)",
+      "Bash(cp nextjs-app/app/api/chat/route.ts /tmp/chat-route-corrected.ts)",
+      "Bash(cp nextjs-app/lib/serverData.ts /tmp/serverData-corrected.ts)",
+      "Bash(node test-data-foundation.js)",
+      "Bash(node -e ' *)",
+      "Bash(node test-stage2-integration.js)",
+      "Bash(node ./test-stage2-integration.js)",
+      "Bash(node ../test-stage2-integration.js)"
     ]
   }
 }
