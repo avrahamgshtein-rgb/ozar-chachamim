@@ -530,7 +530,7 @@ export function GeoMap({ locale }: GeoMapProps) {
 
       {/* LEFT PANEL - Map & Layers */}
       {showLayers && (
-        <div className="absolute top-4 start-4 z-20 w-56 glass border border-ink-700/50 rounded-xl p-4 max-h-[500px] overflow-y-auto">
+        <div className="absolute top-4 start-4 z-50 w-56 glass border border-ink-700/50 rounded-xl p-4 max-h-[500px] overflow-y-auto pointer-events-auto">
           <div className="flex justify-between items-center mb-3">
             <h3 className="text-xs font-bold text-gold-300">
               {locale === 'he' ? 'מפה ושכבות' : locale === 'en' ? 'Map & Layers' : 'Карта и слои'}
@@ -564,7 +564,7 @@ export function GeoMap({ locale }: GeoMapProps) {
 
       {/* RIGHT PANEL - Scripture & Filtering */}
       {showFilters && selectedRegion && (
-        <div className="absolute top-4 end-4 z-20 w-64 glass border border-ink-700/50 rounded-xl p-4 max-h-[600px] overflow-y-auto">
+        <div className="absolute top-4 end-4 z-50 w-64 glass border border-ink-700/50 rounded-xl p-4 max-h-[600px] overflow-y-auto pointer-events-auto">
           <div className="flex justify-between items-center mb-3">
             <h3 className="text-xs font-bold text-gold-300">
               {locale === 'he' ? 'מקרא וסינון' : locale === 'en' ? 'Scripture & Filter' : 'Писание и фильтр'}
@@ -607,7 +607,7 @@ export function GeoMap({ locale }: GeoMapProps) {
       )}
 
       {/* TOP CENTER - Toggles */}
-      <div className="absolute top-4 left-1/2 transform -translate-x-1/2 z-20 flex gap-2">
+      <div className="absolute top-4 left-1/2 transform -translate-x-1/2 z-50 flex gap-2 pointer-events-auto">
         <button
           onClick={() => setShowLayers(!showLayers)}
           className={cn(
