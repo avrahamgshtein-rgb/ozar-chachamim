@@ -22,7 +22,7 @@ export function SageFilters({ locale, onClose }: SageFiltersProps) {
   const t = UI[locale]
   const { filters, togglePeriodFilter, toggleRegionFilter, toggleFieldFilter, clearFilters, filteredSages, sages, availableFields } = useAppStore()
 
-  const hasActiveFilters = filters.period.length > 0 || filters.region.length > 0 || filters.field.length > 0
+  const hasActiveFilters = (filters.period !== null && filters.period.length > 0) || filters.region.length > 0 || filters.field.length > 0
 
   return (
     <div className="flex flex-col h-full">
@@ -59,7 +59,7 @@ export function SageFilters({ locale, onClose }: SageFiltersProps) {
             {PERIODS.map(period => {
               const label  = ERA_LABELS[period]?.[locale] ?? period
               const color  = ERA_COLORS[period]
-              const active = filters.period.includes(period)
+              const active = filters.period === null || filters.period.includes(period)
 
               return (
                 <button

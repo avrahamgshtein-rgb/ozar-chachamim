@@ -51,12 +51,17 @@ interface AppState {
   togglePeriodFilter: (period: Period) => void
   toggleRegionFilter: (region: Region) => void
   toggleFieldFilter: (field: string) => void
+  setPeriodFilters: (periods: Period[] | null) => void
+  setRegionFilters: (regions: Region[]) => void
   clearFilters: () => void
+  applyNavigationState: (tab: Tab | null, sage: string | null, regions: Region[], periods: Period[] | null) => void
 }
 
 function applyFilters(sages: Sage[], filters: Filters): Sage[] {
   return sages.filter(sage => {
-    if (filters.period.length > 0 && !filters.period.includes(sage.period)) return false
+    // Period filtering: null = all periods (no filter), [] = no periods (empty set), [...] = selected subset
+    if (filters.period !== null && filters.period.length === 0) return false
+    if (filters.period !== null && filters.period.length > 0 && !filters.period.includes(sage.period)) return false
     if (filters.region.length > 0) {
       const sageRegions = sage.region ? [sage.region, ...regionsOf(sage.location)] : regionsOf(sage.location)
       if (!sageRegions.some(r => filters.region.includes(r))) return false
@@ -100,7 +105,7 @@ export const useAppStore = create<AppState>((set, get) => ({
   comparatorSages: [null, null],
 
   filters: {
-    period: [],
+    period: null,
     region: [],
     field: [],
     searchQuery: '',
@@ -179,10 +184,18 @@ export const useAppStore = create<AppState>((set, get) => ({
 
   togglePeriodFilter: (period) => {
     const { sages, filters } = get()
-    const updated = filters.period.includes(period)
+    const { ALL_PERIODS } = require('@/lib/types')
+
+    const nextPeriods: Period[] = filters.period === null
+      ? ALL_PERIODS.filter((p: Period) => p !== period)
+      : filters.period.includes(period)
       ? filters.period.filter(p => p !== period)
       : [...filters.period, period]
-    const newFilters = { ...filters, period: updated }
+
+    // If result is all periods, revert to null (no filter)
+    const final: Period[] | null = nextPeriods.length === ALL_PERIODS.length ? null : nextPeriods
+
+    const newFilters = { ...filters, period: final }
     set({ filters: newFilters, filteredSages: applyFilters(sages, newFilters) })
   },
 
@@ -204,9 +217,47 @@ export const useAppStore = create<AppState>((set, get) => ({
     set({ filters: newFilters, filteredSages: applyFilters(sages, newFilters) })
   },
 
+  setPeriodFilters: (periods) => {
+    const { sages, filters } = get()
+    const newFilters = { ...filters, period: periods }
+    set({ filters: newFilters, filteredSages: applyFilters(sages, newFilters) })
+  },
+
+  setRegionFilters: (regions) => {
+    const { sages, filters } = get()
+    const newFilters = { ...filters, region: regions }
+    set({ filters: newFilters, filteredSages: applyFilters(sages, newFilters) })
+  },
+
   clearFilters: () => {
     const { sages } = get()
-    const empty: Filters = { period: [], region: [], field: [], searchQuery: '' }
+    const empty: Filters = { period: null, region: [], field: [], searchQuery: '' }
     set({ filters: empty, filteredSages: sages })
+  },
+
+  applyNavigationState: (tab, sage, regions, periods) => {
+    const { sages, sageMap } = get()
+
+    // Resolve sage if data available; clear if stale
+    let selectedSage: Sage | null = null
+    let selectedSageId: string | null = null
+    if (sage && sageMap.size) {
+      const sageObj = sageMap.get(sage)
+      if (sageObj) {
+        selectedSage = sageObj
+        selectedSageId = sageObj.id
+      }
+    }
+
+    // Apply all state atomically in one set() call
+    const newFilters: Filters = { period: periods, region: regions, field: [], searchQuery: '' }
+    set({
+      activeTab: tab || 'graph',
+      selectedSage,
+      selectedSageId,
+      filters: newFilters,
+      filteredSages: applyFilters(sages, newFilters),
+      isDrawerOpen: selectedSage ? true : false,
+    })
   },
 }))

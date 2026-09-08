@@ -24,7 +24,7 @@ export function FilterChips({ locale }: { locale: Locale }) {
   const [showFields, setShowFields] = useState(false)
   const isHe = locale === 'he'
 
-  const activeCount = filters.period.length + filters.region.length + filters.field.length
+  const activeCount = (filters.period?.length ?? 0) + filters.region.length + filters.field.length
   const topFields = useMemo(() => {
     const counts = new Map<string, number>()
     sages.forEach(s => {
@@ -43,7 +43,7 @@ export function FilterChips({ locale }: { locale: Locale }) {
       {/* Row 1: eras + regions */}
       <div className="pointer-events-auto glass rounded-xl px-2 py-1.5 flex gap-1 items-center max-w-full overflow-x-auto no-scrollbar">
         {ERAS.map(era => {
-          const on = filters.period.includes(era)
+          const on = filters.period === null || filters.period.includes(era)
           const c = ERA_COLORS[era]
           return (
             <button key={era} onClick={() => togglePeriodFilter(era)}

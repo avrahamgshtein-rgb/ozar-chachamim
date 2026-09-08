@@ -91,7 +91,7 @@ export interface ResearchContent {
 }
 
 export interface Filters {
-  period: Period[]
+  period: Period[] | null
   region: Region[]
   field: string[]
   searchQuery: string

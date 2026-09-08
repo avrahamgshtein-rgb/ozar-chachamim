@@ -19,7 +19,9 @@ import { FilterChips } from '@/components/viz/FilterChips'
 import { MapLegend } from '@/components/viz/MapLegend'
 import { GeographyPanel } from '@/components/viz/GeographyPanel'
 import { GeographyMobileDrawer } from '@/components/viz/GeographyMobileDrawer'
+import { useRef } from 'react'
 import { useAppStore } from '@/store/useAppStore'
+import { parseURLState, updateURLWithState } from '@/lib/urlState'
 import { fetchSages, fetchConnections, fetchLocalGraphData } from '@/lib/supabase'
 import { fetchContentOverlay, applyOverlay } from '@/lib/contentOverlay'
 import { loadAppShellData } from '@/lib/appShellDataLoader'
@@ -55,6 +57,12 @@ const AboutContent = dynamic(
   () => import('@/components/about/AboutContent').then(m => ({ default: m.AboutContent })),
   { ssr: false, loading: () => <VizSkeleton /> },
 )
+// Stage 4 — 3D time-layer mode. Lazy-loaded so the Geography tab pays nothing
+// for it unless the reader actually switches modes.
+const GeoTimeLayers = dynamic(
+  () => import('@/components/viz/GeoTimeLayers').then(m => ({ default: m.GeoTimeLayers })),
+  { ssr: false, loading: () => <VizSkeleton /> },
+)
 
 interface AppShellProps {
   locale: Locale
@@ -65,6 +73,7 @@ interface AppShellProps {
 export function AppShell({ locale, initialTotal, initialLastUpdate }: AppShellProps) {
   const otherLocale: Locale = locale === 'he' ? 'en' : 'he'
   const [isGeographyDrawerOpen, setIsGeographyDrawerOpen] = useState(false)
+  const urlInitializedRef = useRef(false)
 
   const {
     activeTab,
@@ -116,83 +125,43 @@ export function AppShell({ locale, initialTotal, initialLastUpdate }: AppShellPr
     })()
   }, [initialTotal, initialLastUpdate, setData, locale])
 
-  // URL deep-linking: read ?tab=, ?regions=, ?periods= on mount
+  // URL state: parse and apply on mount and back/forward navigation
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search)
+    if (typeof window === 'undefined') return
 
-    // Read tab
-    const tab = params.get('tab')
-    const VALID: Tab[] = ['graph', 'map', 'traditions', 'ideas', 'timeline', 'genealogy', 'about']
-    if (tab && (VALID as string[]).includes(tab)) {
-      useAppStore.getState().setActiveTab(tab as Tab)
-    }
-
-    // Read regions and periods (Geography filter state)
-    const regionsParam = params.get('regions')
-    const periodsParam = params.get('periods')
-
-    if (regionsParam || periodsParam) {
+    function applyURLState() {
+      const state = parseURLState(window.location.search)
       const store = useAppStore.getState()
-      // Clear existing filters and rebuild from URL
-      store.clearFilters()
-
-      if (regionsParam) {
-        regionsParam.split(',').forEach(r => store.toggleRegionFilter(r as any))
-      }
-      if (periodsParam) {
-        periodsParam.split(',').forEach(p => store.togglePeriodFilter(p as any))
-      }
+      store.applyNavigationState(state.tab, state.sage, state.regions, state.periods)
+      urlInitializedRef.current = true
     }
+
+    // Apply on mount
+    applyURLState()
+
+    // Handle back/forward navigation
+    function onPopState() {
+      applyURLState()
+    }
+    window.addEventListener('popstate', onPopState)
+    return () => window.removeEventListener('popstate', onPopState)
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  // URL deep-linking: read ?sage= on data load (initialize selection from URL)
-  useEffect(() => {
-    if (!sageMap.size) return
-    const params = new URLSearchParams(window.location.search)
-    const sageId = params.get('sage')
-    if (sageId) {
-      const sage = sageMap.get(sageId)
-      if (sage) selectSage(sage)
-    }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [sageMap.size])
-
-  // URL deep-linking: write ?sage= + ?tab= + ?regions= + ?periods= when they change
+  // Write URL when state changes, but not during initialization/restoration
   useEffect(() => {
     if (typeof window === 'undefined') return
-    if (!sageMap.size) return  // Don't sync until data is loaded
+    if (!sageMap.size) return
+    if (!urlInitializedRef.current) return
 
-    const url = new URL(window.location.href)
+    const url = updateURLWithState({
+      tab: activeTab !== 'graph' ? activeTab : null,
+      sage: selectedSageId,
+      regions: filters.region,
+      periods: filters.period,
+    })
 
-    // Sage and tab (existing)
-    if (selectedSageId) {
-      url.searchParams.set('sage', selectedSageId)
-    } else {
-      url.searchParams.delete('sage')
-    }
-    if (activeTab && activeTab !== 'graph') {
-      url.searchParams.set('tab', activeTab)
-    } else {
-      url.searchParams.delete('tab')
-    }
-
-    // Regions (Geography)
-    if (filters.region.length > 0) {
-      url.searchParams.set('regions', filters.region.join(','))
-    } else {
-      url.searchParams.delete('regions')
-    }
-
-    // Periods (Geography) — write only if not all periods (empty means "all")
-    const { ALL_PERIODS } = require('@/lib/types')
-    if (filters.period.length > 0 && filters.period.length < ALL_PERIODS.length) {
-      url.searchParams.set('periods', filters.period.join(','))
-    } else {
-      url.searchParams.delete('periods')
-    }
-
-    window.history.replaceState({}, '', url.toString())
+    window.history.replaceState({}, '', url)
   }, [selectedSageId, activeTab, filters.region, filters.period, sageMap.size])
 
   // Keyboard shortcuts
@@ -275,6 +244,10 @@ function CanvasArea({
   isGeographyDrawerOpen: boolean
   setIsGeographyDrawerOpen: (open: boolean) => void
 }) {
+  // Stage 4 — Geography render mode. Purely presentational: filters and the
+  // selected sage live in the store, so switching modes carries both across.
+  const [geoMode, setGeoMode] = useState<'2d' | '3d'>('2d')
+
   return (
     <div className="relative w-full h-full">
       {/* Network graph — always mounted so simulation lives across tab switches */}
@@ -286,9 +259,52 @@ function CanvasArea({
       {/* Geo map with geography panel — lazy-mounted on first visit */}
       <div className={cn('absolute inset-0 isolate flex flex-row-reverse', activeTab === 'map' ? 'flex' : 'hidden')}>
         <div className="flex-1 relative">
-          <GeoMap locale={locale} />
+          {/* Stage 4: the 2D atlas stays mounted (Leaflet needs a stable container)
+              and is hidden rather than unmounted when the 3D mode is active. */}
+          <div className={cn('absolute inset-0', geoMode === '2d' ? 'block' : 'hidden')}>
+            <GeoMap locale={locale} />
+            <MapLegend locale={locale} />
+          </div>
+
+          {geoMode === '3d' && (
+            <GeoTimeLayers
+              locale={locale}
+              fallback={
+                <div className="absolute inset-0 flex items-center justify-center px-6">
+                  <p className="text-xs font-sans text-ink-400 text-center max-w-xs leading-relaxed">
+                    {tr(locale,
+                      'הדפדפן אינו תומך בתצוגת שכבות תלת-ממדית. השתמש בתצוגת המפה הדו-ממדית.',
+                      '3D layers are not supported by this browser. Use the 2D atlas instead.',
+                      'Трёхмерные слои не поддерживаются этим браузером. Используйте двумерную карту.')}
+                  </p>
+                </div>
+              }
+            />
+          )}
+
           <FilterChips locale={locale} />
-          <MapLegend locale={locale} />
+
+          {/* Stage 4: 2D / 3D mode switch. Filters and selection live in the store,
+              so switching modes preserves both. */}
+          <div className="absolute top-2 end-2 z-30 flex rounded-md overflow-hidden border border-ink-700 bg-ink-900/85">
+            {(['2d', '3d'] as const).map(mode => (
+              <button
+                key={mode}
+                onClick={() => setGeoMode(mode)}
+                aria-pressed={geoMode === mode}
+                className={cn(
+                  'px-2.5 py-1 text-[10px] font-sans font-bold uppercase tracking-wider transition-colors',
+                  geoMode === mode
+                    ? 'bg-gold-500 text-ink-900'
+                    : 'text-ink-400 hover:text-ink-200 hover:bg-ink-800',
+                )}
+              >
+                {mode === '2d'
+                  ? tr(locale, 'מפה', 'Atlas', 'Карта')
+                  : tr(locale, 'שכבות', 'Layers', 'Слои')}
+              </button>
+            ))}
+          </div>
 
           {/* Mobile geography button */}
           <button

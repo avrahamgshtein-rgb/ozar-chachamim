@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 #
 # Pre-commit hook: validate data and graph integrity
-# Runs audit to detect errors (duplicate IDs, orphan connections).
-# Exit status is propagated directly from the audit script.
+# Runs audit with --check to detect errors and data drift.
+# Exit status propagated directly: 0 = valid, 1 = errors or drift detected.
 #
 
 cd "$(git rev-parse --show-toplevel)"
-node scripts/audit-data-sync.mjs
+node scripts/audit-data-sync.mjs --check
 exit $?

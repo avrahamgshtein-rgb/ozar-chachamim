@@ -20,7 +20,7 @@ export function MapLegend({ locale }: { locale: Locale }) {
   const isHe = locale === 'he'
   const [collapsed, setCollapsed] = useState(false)
   const { filters, togglePeriodFilter, toggleRegionFilter, clearFilters, filteredSages, sages } = useAppStore()
-  const active = filters.period.length + filters.region.length + filters.field.length > 0
+  const active = (filters.period?.length ?? 0) + filters.region.length + filters.field.length > 0
 
   const Row = ({ color, label, on, onClick }: {
     color: string; label: string; on: boolean; onClick: () => void
@@ -56,7 +56,7 @@ export function MapLegend({ locale }: { locale: Locale }) {
           </p>
           {ERAS.map(era => (
             <Row key={era} color={ERA_COLORS[era]} label={ERA_LABELS[era]?.[locale] ?? era}
-              on={filters.period.includes(era)} onClick={() => togglePeriodFilter(era)} />
+              on={filters.period === null || filters.period.includes(era)} onClick={() => togglePeriodFilter(era)} />
           ))}
           <p className="text-[9px] font-sans font-semibold uppercase tracking-widest text-ink-600 px-1.5 pt-2 border-t border-ink-700/40 mt-1">
             {isHe ? 'בתי מדרש ואזורים' : 'Regions'}

@@ -46,8 +46,7 @@ interface GeographyPanelProps {
 export function GeographyPanel({ locale, isMobile = false, onClose }: GeographyPanelProps) {
   const { sages, sageMap, connections, selectSage, selectedSageId, filters, toggleRegionFilter, togglePeriodFilter } = useAppStore()
   const selectedRegions = new Set(filters.region)
-  // Empty period array = all periods. Use actual selected periods for filtering, not the display set.
-  const effectivePeriods = filters.period.length > 0 ? filters.period : ALL_PERIODS
+  const effectivePeriods = filters.period ?? ALL_PERIODS
 
   // Sages active in selected regions during selected periods
   const regionalSages = useMemo(() => {
@@ -170,11 +169,11 @@ export function GeographyPanel({ locale, isMobile = false, onClose }: GeographyP
                 className={cn(
                   'w-full text-xs text-left px-2 py-1.5 rounded-md transition-colors font-sans',
                   'flex items-center gap-2',
-                  filters.period.length === 0 || filters.period.includes(period)
+                  filters.period === null || filters.period.includes(period)
                     ? 'bg-opacity-30'
                     : 'bg-ink-800/30 text-ink-400 hover:bg-ink-700/30'
                 )}
-                style={filters.period.length === 0 || filters.period.includes(period) ? {
+                style={filters.period === null || filters.period.includes(period) ? {
                   backgroundColor: ERA_COLORS[period] + '30',
                   color: ERA_COLORS[period],
                   borderColor: ERA_COLORS[period] + '50',
