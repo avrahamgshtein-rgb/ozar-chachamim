@@ -36,8 +36,25 @@ export function GeoMap({ locale }: GeoMapProps) {
   const mapObjRef  = useRef<import('leaflet').Map | null>(null)
   const [showLinks, setShowLinks] = useState(true)
   const [mapReady, setMapReady] = useState(false)
+  const [selectedRegion, setSelectedRegion] = useState<string | null>(null)
+  const [selectedPeriod, setSelectedPeriod] = useState<string | null>(null)
+  const [showLayers, setShowLayers] = useState(true)
+  const [showFilters, setShowFilters] = useState(true)
 
   const { sages, filteredSages, selectedSageId, selectSage, connections, activeTab, theme } = useAppStore()
+
+  // Get all sages in selected region (grouped by period)
+  const sagseInRegion = selectedRegion
+    ? sages.filter(s => {
+        const location = s.location?.toLowerCase() || ''
+        return location.includes(selectedRegion.toLowerCase())
+      }).sort((a, b) => {
+        const periodOrder = ['second-temple', 'tannaim', 'amoraim', 'geonim', 'rishonim', 'acharonim', 'modern']
+        const aIdx = periodOrder.indexOf(a.period)
+        const bIdx = periodOrder.indexOf(b.period)
+        return aIdx - bIdx
+      })
+    : []
 
   useEffect(() => {
     if (!mapRef.current || !sages.length) return
@@ -209,7 +226,12 @@ export function GeoMap({ locale }: GeoMapProps) {
           { direction: 'top', opacity: 0.95, offset: [0, -6], sticky: false },
         )
 
-        marker.on('click', () => selectSage(sage))
+        marker.on('click', () => {
+          selectSage(sage)
+          // Extract region from location
+          const locationParts = sage.location?.split(';')[0].trim()
+          if (locationParts) setSelectedRegion(locationParts)
+        })
         marker.on('dblclick', e => {
           L.DomEvent.stopPropagation(e as unknown as Event)
           map.setView(marker.getLatLng(), Math.min(TILE_MAX_ZOOM, map.getZoom() + 3))
@@ -506,8 +528,116 @@ export function GeoMap({ locale }: GeoMapProps) {
     <div className="relative w-full h-full">
       <div ref={mapRef} className="absolute inset-0" />
 
-      {/* Connection lines toggle */}
-      <div className="absolute top-4 end-4 z-20">
+      {/* LEFT PANEL - Map & Layers */}
+      {showLayers && (
+        <div className="absolute top-4 start-4 z-20 w-56 glass border border-ink-700/50 rounded-xl p-4 max-h-[500px] overflow-y-auto">
+          <div className="flex justify-between items-center mb-3">
+            <h3 className="text-xs font-bold text-gold-300">
+              {locale === 'he' ? 'מפה ושכבות' : locale === 'en' ? 'Map & Layers' : 'Карта и слои'}
+            </h3>
+            <button
+              onClick={() => setShowLayers(false)}
+              className="text-ink-400 hover:text-ink-200 text-xs"
+            >
+              ✕
+            </button>
+          </div>
+
+          <div className="space-y-2">
+            <label className="text-xs text-ink-300 block font-semibold">
+              {locale === 'he' ? 'תקופות' : locale === 'en' ? 'Periods' : 'Периоды'}
+            </label>
+            {['second-temple', 'tannaim', 'amoraim', 'geonim', 'rishonim', 'acharonim', 'modern'].map(period => (
+              <label key={period} className="flex items-center gap-2 text-xs text-ink-300 cursor-pointer hover:text-ink-100">
+                <input
+                  type="checkbox"
+                  checked={selectedPeriod === period || !selectedPeriod}
+                  onChange={() => setSelectedPeriod(selectedPeriod === period ? null : period)}
+                  className="w-3 h-3 rounded"
+                />
+                <span>{String(ERA_LABELS[period as keyof typeof ERA_LABELS])}</span>
+              </label>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* RIGHT PANEL - Scripture & Filtering */}
+      {showFilters && selectedRegion && (
+        <div className="absolute top-4 end-4 z-20 w-64 glass border border-ink-700/50 rounded-xl p-4 max-h-[600px] overflow-y-auto">
+          <div className="flex justify-between items-center mb-3">
+            <h3 className="text-xs font-bold text-gold-300">
+              {locale === 'he' ? 'מקרא וסינון' : locale === 'en' ? 'Scripture & Filter' : 'Писание и фильтр'}
+            </h3>
+            <button
+              onClick={() => setShowFilters(false)}
+              className="text-ink-400 hover:text-ink-200 text-xs"
+            >
+              ✕
+            </button>
+          </div>
+
+          <div className="mb-3 pb-3 border-b border-ink-700/30">
+            <p className="text-xs text-gold-300 font-semibold">{selectedRegion}</p>
+            <p className="text-xs text-ink-400 mt-1">
+              {locale === 'he'
+                ? `${sagseInRegion.length} חכמים`
+                : locale === 'en'
+                ? `${sagseInRegion.length} sages`
+                : `${sagseInRegion.length} мудрецов`}
+            </p>
+          </div>
+
+          <div className="space-y-2">
+            {sagseInRegion.map(sage => (
+              <div
+                key={sage.id}
+                onClick={() => selectSage(sage)}
+                className="p-2 rounded-lg bg-ink-900/50 hover:bg-ink-800 cursor-pointer transition-colors border-l-2"
+                style={{ borderColor: ERA_COLORS[sage.period] ?? '#7a6550' }}
+              >
+                <p className="text-xs font-semibold text-ink-100">{sage.label}</p>
+                <p className="text-xs text-ink-400">
+                  <span>{String(ERA_LABELS[sage.period as keyof typeof ERA_LABELS])}</span>
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* TOP CENTER - Toggles */}
+      <div className="absolute top-4 left-1/2 transform -translate-x-1/2 z-20 flex gap-2">
+        <button
+          onClick={() => setShowLayers(!showLayers)}
+          className={cn(
+            'flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-sans border transition-all shadow-glass',
+            showLayers
+              ? 'bg-blue-500/20 border-blue-500/50 text-blue-300'
+              : 'glass border-ink-700/50 text-ink-400 hover:text-ink-200',
+          )}
+          title={locale === 'he' ? 'מפה ושכבות' : locale === 'en' ? 'Map & Layers' : 'Карта и слои'}
+        >
+          <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
+          </svg>
+        </button>
+
+        <button
+          onClick={() => selectedRegion ? setShowFilters(!showFilters) : null}
+          className={cn(
+            'flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-sans border transition-all shadow-glass',
+            showFilters && selectedRegion
+              ? 'bg-cyan-500/20 border-cyan-500/50 text-cyan-300'
+              : 'glass border-ink-700/50 text-ink-400 hover:text-ink-200',
+          )}
+          title={locale === 'he' ? 'מקרא וסינון' : locale === 'en' ? 'Scripture & Filter' : 'Писание и фильтр'}
+        >
+          <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/>
+          </svg>
+        </button>
+
         <button
           onClick={() => setShowLinks(v => !v)}
           className={cn(
