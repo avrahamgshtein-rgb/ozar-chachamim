@@ -71,7 +71,7 @@ def norm_era(era_text, years_text):
     return 'unknown'
 
 # ---------- Load CSV & dedupe ----------
-with open('data/חכמי ישראל.csv', encoding='utf-8-sig') as f:
+with open('data/חכמי_ישראל.csv', encoding='utf-8-sig') as f:
     rows = [r for r in csv.DictReader(f) if G(r, 'שם הדמות/הנושא')]
 
 def score(r):

@@ -1,0 +1,382 @@
+================================================================================
+EXCEL vs DATA.JSON COMPARISON REPORT
+================================================================================
+
+SUMMARY:
+  Excel file total sages: 405
+  data.json current sages: 389
+  CSV file total sages: 522
+  New sages in Excel (not in data.json): 120
+  New sages NOT in CSV: 0
+  All new sages are in CSV: True
+
+DATA QUALITY CHECKS:
+  New sages without name: 0
+  New sages without period: 0
+  New sages without Spotify URL: 2
+  New sages with all key fields: 118
+  Duplicate names found: 0
+
+
+NEW SAGES LIST (120 total):
+--------------------------------------------------------------------------------
+  1. ID 5   [CSV] [SPOTIFY]: עקילס מפונטוס – הגר שהפך את השפה היוונית לכלי נשק של תורה
+      Years: המאה ה־2 לספירה, Period: עת העתיקה
+      Location: האימפריה הרומית; ארץ ישראל; ירושלים
+  2. ID 10  [CSV] [SPOTIFY]: רבנו בחיי בן אשר
+      Years: המאה ה-13–14, Period: ימי הביניים
+      Location: ספרד
+  3. ID 15  [CSV] [SPOTIFY]: רבי עובדיה מברטנורא (הרע״ב)
+      Years: כ־1445–1515, Period: ימי הביניים המאוחרים/ראשית העת החדשה
+      Location: איטליה → ירושלים
+  4. ID 20  [CSV] [SPOTIFY]: רב האי גאון
+      Years: 939–1038, Period: תקופת הגאונים
+      Location: פומבדיתא, בבל
+  5. ID 29  [CSV] [SPOTIFY]: רבנו בחיי אבן פקודה – חובות הלבבות
+      Years: המאה ה־11 (לא צוין בטקסט), Period: ימי הביניים
+      Location: ספרד המוסלמית
+  6. ID 30  [CSV] [SPOTIFY]: הרמב"ם
+      Years: 1138–1204, Period: ימי הביניים
+      Location: ספרד, מצרים
+  7. ID 31  [CSV] [SPOTIFY]: רבי יצחק סגי נהור
+      Years: 1160–1235, Period: ימי הביניים
+      Location: פרובנס
+  8. ID 36  [CSV] [SPOTIFY]: המהר"ם מרוטנבורג
+      Years: 1220–1293, Period: ימי הביניים
+      Location: אשכנז
+  9. ID 40  [CSV] [SPOTIFY]: רבי מנחם המאירי
+      Years: 1249–1316, Period: ימי הביניים
+      Location: פרובנס
+ 10. ID 60  [CSV] [SPOTIFY]: המהרש"א (רבי שמואל אליעזר הלוי איידלס)
+      Years: 1555–1631, Period: ראשית העת החדשה
+      Location: פולין
+ 11. ID 63  [CSV] [SPOTIFY]: הרב יהודה אריה מודנה – דיוקן של גאונות שנאבקה על עצמה
+      Years: 1571–1648, Period: עת חדשה
+      Location: ונציה; איטליה
+ 12. ID 75  [CSV] [SPOTIFY]: רבי משה דוד ואלי (הרמ״ד ואלי)
+      Years: 1697–1777, Period: עת חדשה מוקדמת
+      Location: פדובה, איטליה
+ 13. ID 101 [CSV] [SPOTIFY]: אליהו בן אמוזג – ההוגה שדחו הדורות, אך רעיונו התגלה כגדול מד
+      Years: 1823–1900, Period: עת חדשה מאוחרת
+      Location: ליבורנו; איטליה
+ 14. ID 107 [CSV] [SPOTIFY]: הרב יוסף חיים מבגדאד – “בן איש חי” (לא מה שחשבתם)
+      Years: 1835–1909, Period: עת חדשה מאוחרת
+      Location: בגדאד
+ 15. ID 115 [CSV] [SPOTIFY]: הרב יהודה משה ישועה פתיה
+      Years: 1859–1942, Period: אחרונים
+      Location: בגדד → ירושלים
+ 16. ID 124 [CSV] [SPOTIFY]: פרנץ רוזנצווייג
+      Years: 1886–1929, Period: מודרנה
+      Location: גרמניה
+ 17. ID 145 [CSV] [SPOTIFY]: הרב לוי סעדיה נחמני
+      Years: 1921–1995, Period: עת חדשה
+      Location: מרקש → ירושלים
+ 18. ID 162 [CSV] [SPOTIFY]: שיטת בריסק (ר' חיים סולובייצ'יק) והלימוד האקדמי – האם לימוד 
+      Years: —, Period: סוף המאה ה-19–ימינו
+      Location: ליטא/רוסיה; עולם הישיבות; האקדמיה
+ 19. ID 181 [CSV] [SPOTIFY]: הרב אליהו גוטמכר
+      Years: 1796–1874, Period: אחרונים
+      Location: גריידיץ
+ 20. ID 184 [CSV] [SPOTIFY]: רבי יצחק אבן גיאת
+      Years: 1038–1089, Period: ראשונים
+      Location: לוסינה, ספרד
+ 21. ID 185 [CSV] [SPOTIFY]: רבי יהודה בן נתן (הריב"ן)
+      Years: המאה ה-11–12, Period: ראשוני צרפת
+      Location: טרואה
+ 22. ID 186 [CSV] [SPOTIFY]: ר' יצחק בן אשר הלוי (ריב"א הראשון)
+      Years: המאה ה-11, Period: בעלי התוספות
+      Location: שפיירא
+ 23. ID 187 [CSV] [SPOTIFY]: רבי מאיר בן שמואל מרמרו
+      Years: 1060–1135, Period: דור המעבר מרש"י לבעלי התוספות
+      Location: צרפת / רמרו
+ 24. ID 188 [CSV] [SPOTIFY]: הרב אפרים מקלעת־חמאד
+      Years: בערך 1050–1150, Period: ראשוני צפון אפריקה
+      Location: קלעת בן חמאד, צפון אפריקה
+ 25. ID 194 [CSV] [SPOTIFY]: אסתר המלכה
+      Years: התקופה הפרסית, Period: מקרא / ראשית בית שני
+      Location: שושן הבירה, פרס
+ 26. ID 200 [CSV] [SPOTIFY]: אביגיל
+      Years: תקופת דוד, Period: ראשית המלוכה בישראל
+      Location: כרמל, יהודה
+ 27. ID 205 [CSV] [SPOTIFY]: הריצב״א
+      Years: המאה ה־12–13, Period: בעלי התוספות
+      Location: צרפת
+ 28. ID 206 [CSV] [SPOTIFY]: רבי אלעזר מגרמייזא (בעל הרוקח)
+      Years: 1160–1238 בקירוב, Period: חסידי אשכנז
+      Location: וורמייזא, אשכנז
+ 29. ID 208 [CSV] [SPOTIFY]: חנה הנביאה
+      Years: תקופת המשכן בשילה, Period: תקופת השופטים
+      Location: שילה
+ 30. ID 209 [CSV] [SPOTIFY]: רבי משולם מבדרש
+      Years: 1160–1238/1250, Period: ראשוני פרובנס
+      Location: בדרש / בזייה, פרובאנס
+ 31. ID 210 [CSV] [SPOTIFY]: רבי יהודה בן ברכיה
+      Years: המאות ה־12–13, Period: ראשוני פרובנס
+      Location: פרובאנס
+ 32. ID 211 [CSV] [SPOTIFY]: רבינו מנוח מנרבונה
+      Years: סוף המאה ה־13–ראשית המאה ה־14, Period: ראשונים מאוחרים בפרובאנס
+      Location: נרבונה ולוניל, פרובאנס
+ 33. ID 212 [CSV] [SPOTIFY]: רבי ראובן בן חיים מנרבון
+      Years: נפטר לפני 1276, Period: המאה ה־13
+      Location: נרבון, פרובאנס
+ 34. ID 213 [CSV] [SPOTIFY]: רבי נתן בן רבי מאיר מטרינקטיי
+      Years: סוף המאה ה־12–ראשית המאה ה־13, Period: ראשוני פרובנס
+      Location: טרינקטיי / ארל, פרובאנס
+ 35. ID 214 [CSV] [SPOTIFY]: רבנו פרחיה בן ניסים
+      Years: המאה ה־13, Period: דור שלאחר הרמב״ם
+      Location: מצרים
+ 36. ID 215 [CSV] [SPOTIFY]: רבי דוד קמחי
+      Years: 1160–1235, Period: ראשונים
+      Location: נרבונה, פרובאנס
+ 37. ID 216 [CSV] [SPOTIFY]: רבי לוי בן גרשון
+      Years: 1288–1344, Period: ראשונים
+      Location: פרובאנס
+ 38. ID 217 [CSV] [SPOTIFY]: שמואל בן יצחק
+      Years: 1190–1256, Period: ראשונים
+      Location: ברצלונה, ספרד
+ 39. ID 218 [CSV] [SPOTIFY]: מימון בן יוסף (אב הרמב״ם)
+      Years: 1110 בקירוב–1165/1170, Period: ראשונים
+      Location: קורדובה, מרוקו, ארץ ישראל ומצרים
+ 40. ID 219 [CSV] [SPOTIFY]: רבי מאיר הלוי אבולעפיה
+      Years: המאה ה־13, Period: ראשונים
+      Location: טולדו, ספרד
+ 41. ID 220 [CSV] [SPOTIFY]: רבי אהרן הלוי
+      Years: 1231–1303, Period: ראשונים
+      Location: ברצלונה, טולדו ומונטפלייר
+ 42. ID 221 [CSV] [SPOTIFY]: רבי שלמה בן אברהם
+      Years: 1235–1310 בקירוב, Period: ראשונים
+      Location: ברצלונה, ספרד
+ 43. ID 222 [CSV] [SPOTIFY]: רבי משה בן נחמן
+      Years: 1194–1270, Period: ראשונים
+      Location: גירונה, ברצלונה וירושלים
+ 44. ID 223 [CSV] [SPOTIFY]: נתן בן מאיר
+      Years: המאה ה־12–13, Period: ראשונים
+      Location: טרינקטיי / פרובאנס
+ 45. ID 224 [CSV] [SPOTIFY]: יחיאל בן יקותיאל
+      Years: המאה ה־13, Period: ראשונים
+      Location: רומא, איטליה
+ 46. ID 225 [CSV] [SPOTIFY]: צדקיה בן אברהם
+      Years: המאה ה־13, Period: ראשונים
+      Location: רומא, איטליה
+ 47. ID 226 [CSV] [SPOTIFY]: רבי שמחה משפיירא
+      Years: המאה ה־12–13, Period: ראשונים
+      Location: אשכנז (שפיירא)
+ 48. ID 227 [CSV] [SPOTIFY]: רבי אשתורי הפרחי
+      Years: המאה ה־14, Period: ראשונים
+      Location: ארץ ישראל
+ 49. ID 228 [CSV] [SPOTIFY]: רבי יצחק מקורביל (הסמ"ק)
+      Years: נפטר 1280, Period: ראשונים
+      Location: צרפת
+ 50. ID 230 [CSV] [SPOTIFY]: רבי מאיר הכהן מרוטנבורג
+      Years: המאה ה־13, Period: ראשונים
+      Location: אשכנז
+ 51. ID 231 [CSV] [SPOTIFY]: רבי אליעזר מטוך
+      Years: המאה ה־13, Period: ראשונים
+      Location: צרפת/אשכנז
+ 52. ID 232 [CSV] [SPOTIFY]: הריבב״ן – רבי יהודה בן בנימין הענו
+      Years: המאה ה־13, Period: ראשונים
+      Location: איטליה (רומא)
+ 53. ID 233 [CSV] [SPOTIFY]: הרי״ד הזקן – רבי ישעיה די טראני
+      Years: המאה ה־13, Period: ראשונים
+      Location: איטליה
+ 54. ID 234 [CSV] [SPOTIFY]: רבי אביגדור כ״ץ מווינה
+      Years: המאה ה־13, Period: ראשונים
+      Location: איטליה, גרמניה, אוסטריה
+ 55. ID 235 [CSV] [SPOTIFY]: רבי מנחם בן זרח
+      Years: 1310–1385, Period: ראשונים
+      Location: ספרד (נבארה, טולדו)
+ 56. ID 236 [CSV] [SPOTIFY]: רבי יהודה בן הרא״ש
+      Years: 1290–1349, Period: ראשונים
+      Location: אשכנז וספרד (טולדו)
+ 57. ID 237 [CSV] [SPOTIFY]: רבי משה מאיוורא
+      Years: המאה ה־13, Period: ראשונים
+      Location: צרפת (נורמנדי)
+ 58. ID 238 [CSV] [SPOTIFY]: האדמו״ר מקאליב – רבי מנחם מנדל טאוב
+      Years: 1923–2019, Period: מודרני
+      Location: אירופה, ישראל
+ 59. ID 239 [CSV] [SPOTIFY]: רבי יצחק מדורא
+      Years: 1220–1300, Period: ראשונים
+      Location: אשכנז (גרמניה)
+ 60. ID 240 [CSV] [SPOTIFY]: רבי נחמן קרוכמל (רנ״ק)
+      Years: 1785–1840, Period: מודרני
+      Location: אירופה (גליציה)
+ 61. ID 241 [CSV] [SPOTIFY]: רבי שמשון בן צדוק
+      Years: המאה ה־13, Period: ראשונים
+      Location: אשכנז
+ 62. ID 242 [CSV] [SPOTIFY]: רבי אהרן הכהן מלוניל
+      Years: 1250–1327, Period: ראשונים
+      Location: פרובאנס, מיורקה
+ 63. ID 243 [CSV] [SPOTIFY]: רבי אלכסנדרי זוסלין הכהן (המהרא״ך)
+      Years: המאה ה־14, Period: ראשונים
+      Location: אשכנז (ארפורט)
+ 64. ID 244 [CSV] [SPOTIFY]: רבי ישראל יהושע טרונק (ישועות מלכו)
+      Years: 1820–1893, Period: אחרונים
+      Location: פולין
+ 65. ID 245 [CSV] [SPOTIFY]: רבי ברוך שפירא
+      Years: המאה ה־20–21, Period: מודרני
+      Location: ישראל (מצפה רמון)
+ 66. ID 246 [CSV] [SPOTIFY]: הרב נתן צבי פינקל (הסבא מסלבודקה)
+      Years: 1849–1927, Period: העת החדשה
+      Location: ליטא, סלבודקה, חברון
+ 67. ID 247 [CSV] [SPOTIFY]: החיד״א (רבי חיים יוסף דוד אזולאי)
+      Years: 1724–1806, Period: העת החדשה המוקדמת
+      Location: ירושלים, אירופה וצפון אפריקה
+ 68. ID 248 [CSV] [SPOTIFY]: שלמה מולכו
+      Years: 1500–1532, Period: ראשית העת החדשה
+      Location: פורטוגל, איטליה, האימפריה העות'מאנית
+ 69. ID 249 [CSV] [SPOTIFY]: רבי שלמה הלוי אלקבץ
+      Years: 1505–1584, Period: ראשית העת החדשה
+      Location: סלוניקי וצפת
+ 70. ID 250 [CSV] [SPOTIFY]: רבי יום־טוב ליפמן הלר
+      Years: 1578–1654, Period: ראשית העת החדשה
+      Location: פראג, קרקוב
+ 71. ID 251 [CSV] [SPOTIFY]: הרבי מליובאוויטש
+      Years: 1902–1994, Period: העת החדשה
+      Location: רוסיה, ארה"ב
+ 72. ID 252 [CSV] [SPOTIFY]: הרב עובדיה יוסף
+      Years: 1920–2013, Period: העת החדשה
+      Location: ישראל
+ 73. ID 253 [CSV] [SPOTIFY]: רבי שלמה אלישיב (בעל הלשם)
+      Years: 1841–1926, Period: העת החדשה
+      Location: ליטא וירושלים
+ 74. ID 254 [CSV] [SPOTIFY]: הרב עבדאללה סומך
+      Years: 1813–1889, Period: העת החדשה
+      Location: בבל (עיראק)
+ 75. ID 255 [CSV] [SPOTIFY]: רבי יוסף בן יהודה אבן שמעון
+      Years: 1160–1226, Period: ימי הביניים
+      Location: מרוקו, מצרים, סוריה
+ 76. ID 256 [CSV] [SPOTIFY]: הרב מרדכי אליהו
+      Years: 1929–2010, Period: העת החדשה
+      Location: ישראל
+ 77. ID 257 [CSV] [SPOTIFY]: הרב שמואל סלנט
+      Years: 1816–1909, Period: העת החדשה
+      Location: ליטא וירושלים
+ 78. ID 258 [CSV] [SPOTIFY]: הרב חיים חזקיהו מדיני
+      Years: 1832–1904, Period: העת החדשה
+      Location: ירושלים, קרים, חברון
+ 79. ID 259 [CSV] [SPOTIFY]: רבי דוד אבודרהם
+      Years: המאה ה־14, Period: ראשונים
+      Location: ספרד
+ 80. ID 260 [CSV] [SPOTIFY]: רב סעדיה גאון
+      Years: 882–942, Period: גאונים
+      Location: מצרים ובבל
+ 81. ID 304 [CSV] [SPOTIFY]: רבי ישראל איסרלן
+      Years: 1390–1460, Period: ראשונים
+      Location: אוסטריה
+ 82. ID 305 [CSV] [SPOTIFY]: מהר״י וייל
+      Years: המאה ה־15, Period: אחרונים
+      Location: גרמניה
+ 83. ID 306 [CSV] [SPOTIFY]: רבי יונה מרגנשבורג
+      Years: המאה ה־13, Period: ראשונים
+      Location: גרמניה
+ 84. ID 316 [CSV] [SPOTIFY]: המהר״ם מפדובה
+      Years: 1473–1565, Period: אחרונים
+      Location: גרמניה ואיטליה
+ 85. ID 321 [CSV] [SPOTIFY]: רבי יעקב בן חננאל סיקילי
+      Years: המאה ה־14, Period: ראשונים
+      Location: ספרד
+ 86. ID 330 [CSV] [NO SPOTIFY]: מהר"ש נוישטט (רבי שלום מנוישטט)
+      Years: נפטר בסביבות 1413, Period: ראשונים מאוחרים
+      Location: וינה ווינר נוישטט, אוסטריה
+ 87. ID 333 [CSV] [NO SPOTIFY]: שמואל (האמורא)
+      Years: המאה ה־3 לספירה (בערך 165–257), Period: אמוראים
+      Location: נהרדעא, בבל
+ 88. ID 357 [CSV] [SPOTIFY]: רבי אלעזר בן עזריה
+      Years: המאה ה־1–2 לספירה, Period: תנאים
+      Location: יבנה, ארץ ישראל
+ 89. ID 358 [CSV] [SPOTIFY]: רבי אליעזר הגדול (רבי אליעזר בן הורקנוס)
+      Years: המאה ה־1–2 לספירה, Period: תנאים
+      Location: לוד; יבנה, ארץ ישראל
+ 90. ID 359 [CSV] [SPOTIFY]: רבי אליהו בן חיים (הראנ"ח)
+      Years: בקירוב 1530–1613, Period: אחרונים
+      Location: אדריאנופול; קושטא, האימפריה העות'מאנית
+ 91. ID 360 [CSV] [SPOTIFY]: רבי חיים בן עטר (בעל אור החיים)
+      Years: 1696–1743, Period: אחרונים
+      Location: סאלי, מרוקו; ליבורנו; ירושלים
+ 92. ID 361 [CSV] [SPOTIFY]: שרה שנירר
+      Years: 1883–1935, Period: המאה ה־20
+      Location: קרקוב, פולין; וינה
+ 93. ID 362 [CSV] [SPOTIFY]: הרבנית ויכנא קפלן
+      Years: 1913–1986, Period: המאה ה־20
+      Location: סלונים; קרקוב; ניו יורק
+ 94. ID 363 [CSV] [SPOTIFY]: הרבנית ד"ר ברוריה דייוויד
+      Years: 1938–2023, Period: המאה ה־20–21
+      Location: ניו יורק; ירושלים
+ 95. ID 364 [CSV] [SPOTIFY]: הרבנית דענה ויינברג
+      Years: 1938–2023, Period: המאה ה־20–21
+      Location: ירושלים
+ 96. ID 365 [CSV] [SPOTIFY]: הרבנית אסתר יונגרייז
+      Years: 1936–2016, Period: המאה ה־20
+      Location: סגד, הונגריה; ברגן־בלזן; ניו יורק
+ 97. ID 366 [CSV] [SPOTIFY]: הרבנית ברכה קאפח
+      Years: 1922–2013, Period: המאה ה־20
+      Location: צנעא, תימן; ירושלים
+ 98. ID 367 [CSV] [SPOTIFY]: הרבנית שרה הרצוג
+      Years: 1896–1979, Period: המאה ה־20
+      Location: לטביה; סקוטלנד; אירלנד; ירושלים
+ 99. ID 368 [CSV] [SPOTIFY]: טובה סנהדראי-גולדרייך
+      Years: 1906–1993, Period: המאה ה־20
+      Location: גליציה; ארץ ישראל
+100. ID 369 [CSV] [SPOTIFY]: הרב עמוס כמוס חיים גואטה
+      Years: 1951–2026, Period: עכשווי
+      Location: לוב; נתניה, ישראל
+101. ID 370 [CSV] [SPOTIFY]: שרה שטרן-קטן
+      Years: 1918–2001, Period: המאה ה־20
+      Location: לודז', פולין; ארץ ישראל
+102. ID 371 [CSV] [SPOTIFY]: הנרייטה סאלד
+      Years: 1860–1945, Period: המאה ה־19–20
+      Location: בולטימור, ארצות הברית; ארץ ישראל
+103. ID 372 [CSV] [SPOTIFY]: אהרן הכהן
+      Years: המאה ה־13 לפנה"ס, Period: עת המקרא
+      Location: מצרים; מדבר סיני
+104. ID 373 [CSV] [SPOTIFY]: רב יהודה בר יחזקאל
+      Years: 220–299 לספירה, Period: אמוראים
+      Location: פומבדיתא, בבל
+105. ID 374 [CSV] [SPOTIFY]: רבן גמליאל דיבנה
+      Years: המאה ה־1–2 לספירה, Period: תנאים
+      Location: יבנה; ארץ ישראל; קהילות התפוצות
+106. ID 375 [CSV] [SPOTIFY]: הרבנית בת שבע אסתר קניבסקי
+      Years: 1932–2011, Period: המאה ה־20–21
+      Location: ירושלים; בני ברק
+107. ID 376 [CSV] [SPOTIFY]: רבן שמעון בן גמליאל הראשון
+      Years: המאה ה־1 לספירה, Period: סוף ימי בית שני
+      Location: ירושלים; יהודה
+108. ID 377 [CSV] [SPOTIFY]: רב חסדא
+      Years: 217–309 לספירה, Period: אמוראים
+      Location: כפרי; סורא, בבל
+109. ID 378 [CSV] [SPOTIFY]: רבי אליהו בן שלמה זלמן – הגאון מווילנה
+      Years: 1720–1797, Period: העת החדשה
+      Location: וילנה, ליטא; ארץ ישראל באמצעות תלמידיו
+110. ID 379 [CSV] [SPOTIFY]: רבי חיים ויטאל
+      Years: 1542–1620, Period: העת החדשה המוקדמת
+      Location: צפת; ירושלים; דמשק
+111. ID 380 [CSV] [SPOTIFY]: הרב רפאל יהודה מנחם לוי – רבי יהודה מרגוזה
+      Years: 1783–1879, Period: העת החדשה
+      Location: סרייבו; ירושלים; קושטא; יפו
+112. ID 381 [CSV] [SPOTIFY]: רבי מאיר הגדול מפרמישלאן
+      Years: 1703–1773, Period: העת החדשה
+      Location: פרמישלאן, גליציה
+113. ID 382 [CSV] [SPOTIFY]: רבי יוסף שלמה דלמדיגו – יש״ר מקנדיה
+      Years: 1591–1655, Period: העת החדשה המוקדמת
+      Location: קנדיה, כרתים; פדובה; המבורג; אמסטרדם; פראג
+114. ID 383 [CSV] [SPOTIFY]: רבי יצחק חזקיה למפרונטי
+      Years: 1679–1756, Period: העת החדשה
+      Location: פרארה, איטליה
+115. ID 384 [CSV] [SPOTIFY]: רבי גדליה נדל
+      Years: 1923–2004, Period: העת החדשה
+      Location: ליטא; בני ברק, ארץ ישראל
+116. ID 385 [CSV] [SPOTIFY]: הרב ד״ר עזריאל הילדסהיימר
+      Years: 1820–1899, Period: העת החדשה
+      Location: הלברשטאדט; אייזנשטט; ברלין; ארץ ישראל
+117. ID 396 [CSV] [SPOTIFY]: רבי אברהם בן יצחק מן ההר
+      Years: 1250–1315, Period: ראשונים
+      Location: מונפלייה; קרפנטרה, פרובאנס
+118. ID 402 [CSV] [SPOTIFY]: רפרם בר פפא
+      Years: המאה ה־4 לספירה, Period: אמוראים
+      Location: בבל; דמשק
+119. ID 404 [CSV] [SPOTIFY]: ילתא
+      Years: המאה ה־3–4 לספירה, Period: אמוראים
+      Location: בבל
+120. ID 405 [CSV] [SPOTIFY]: רמי בר פפא
+      Years: סוף המאה ה־3–ראשית המאה ה־4, Period: אמוראים
+      Location: בבל

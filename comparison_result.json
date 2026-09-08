@@ -1,0 +1,1092 @@
+{
+  "excel_total": 405,
+  "data_json_total": 389,
+  "csv_total": 522,
+  "new_in_excel_count": 120,
+  "new_not_in_csv_count": 0,
+  "new_in_excel": [
+    "232",
+    "257",
+    "101",
+    "5",
+    "211",
+    "363",
+    "369",
+    "251",
+    "223",
+    "231",
+    "250",
+    "360",
+    "60",
+    "107",
+    "181",
+    "234",
+    "402",
+    "240",
+    "205",
+    "306",
+    "220",
+    "216",
+    "224",
+    "212",
+    "357",
+    "238",
+    "188",
+    "321",
+    "210",
+    "222",
+    "377",
+    "209",
+    "31",
+    "244",
+    "396",
+    "184",
+    "233",
+    "379",
+    "40",
+    "187",
+    "368",
+    "380",
+    "371",
+    "228",
+    "215",
+    "405",
+    "367",
+    "30",
+    "304",
+    "316",
+    "385",
+    "230",
+    "384",
+    "249",
+    "252",
+    "404",
+    "382",
+    "63",
+    "217",
+    "305",
+    "330",
+    "194",
+    "186",
+    "358",
+    "374",
+    "162",
+    "256",
+    "246",
+    "372",
+    "241",
+    "376",
+    "361",
+    "239",
+    "145",
+    "359",
+    "206",
+    "115",
+    "258",
+    "383",
+    "245",
+    "29",
+    "254",
+    "213",
+    "248",
+    "20",
+    "260",
+    "214",
+    "226",
+    "124",
+    "185",
+    "235",
+    "243",
+    "362",
+    "370",
+    "253",
+    "237",
+    "227",
+    "36",
+    "236",
+    "365",
+    "221",
+    "366",
+    "255",
+    "219",
+    "225",
+    "208",
+    "259",
+    "378",
+    "200",
+    "381",
+    "373",
+    "364",
+    "247",
+    "242",
+    "375",
+    "218",
+    "75",
+    "10",
+    "15",
+    "333"
+  ],
+  "new_not_in_csv": [],
+  "new_sages_details": [
+    {
+      "id": "5",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "10",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "15",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "20",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "29",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "30",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "31",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "36",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "40",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "60",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "63",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "75",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "101",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "107",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "115",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "124",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "145",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "162",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "181",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "184",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "185",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "186",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "187",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "188",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "194",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "200",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "205",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "206",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "208",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "209",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "210",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "211",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "212",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "213",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "214",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "215",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "216",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "217",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "218",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "219",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "220",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "221",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "222",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "223",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "224",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "225",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "226",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "227",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "228",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "230",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "231",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "232",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "233",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "234",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "235",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "236",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "237",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "238",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "239",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "240",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "241",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "242",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "243",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "244",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "245",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "246",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "247",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "248",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "249",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "250",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "251",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "252",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "253",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "254",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "255",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "256",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "257",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "258",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "259",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "260",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "304",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "305",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "306",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "316",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "321",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "330",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "333",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "357",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "358",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "359",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "360",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "361",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "362",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "363",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "364",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "365",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "366",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "367",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "368",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "369",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "370",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "371",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "372",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "373",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "374",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "375",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "376",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "377",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "378",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "379",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "380",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "381",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "382",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "383",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "384",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "385",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "396",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "402",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "404",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    },
+    {
+      "id": "405",
+      "name_he": "",
+      "name_en": "",
+      "era": "",
+      "description": "",
+      "in_csv": true
+    }
+  ]
+}

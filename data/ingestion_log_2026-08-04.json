@@ -1,22 +1,62 @@
 [
   {
-    "docx_filename": "פועלו המשפטי, משנתו התורנית ודמותו ההיסטורית של שמאי הזקן.docx",
+    "docx_filename": "הרמב_ן_ ניתוח רב-ממדי של הגות, הלכה ומנהיגות במאה ה-13.docx",
     "status": "SKIP",
-    "sage_id": "504",
-    "sage_label": "שמאי הזקן",
-    "confidence": 0.67,
-    "reason": "low confidence (0.67)",
+    "sage_id": "44",
+    "sage_label": "הרמב\"ן (רבי משה בן נחמן)",
+    "confidence": 0.33,
+    "reason": "low confidence (0.33)",
     "word_count": 0,
-    "timestamp": "2026-08-04T01:35:17.105933"
+    "timestamp": "2026-09-08T20:38:08.658872"
   },
   {
-    "docx_filename": "פועלו, משנתו התורנית והנהגתו הציבורית של רבי יהושע בן חנניה_ ניתוח היסטורי, הלכתי ותיאולוגי.docx",
+    "docx_filename": "מכלול הדורות_ משנתו הדקדוקית, הפרשנית וההגותית של רבי דוד קמחי (הרד_ק) בראי התרבות וההיסטוריה.docx",
     "status": "SKIP",
-    "sage_id": "503",
-    "sage_label": "רבי יהושע בן חנניה",
+    "sage_id": "387",
+    "sage_label": "הרד״ק",
+    "confidence": 0.33,
+    "reason": "low confidence (0.33)",
+    "word_count": 0,
+    "timestamp": "2026-09-08T20:38:08.668566"
+  },
+  {
+    "docx_filename": "עמוד ההוראה והחסידות_ משנתו התורנית ופועלו ההלכתי של רבי אליעזר ממיץ (הרא_ם).docx",
+    "status": "SKIP",
+    "sage_id": "271",
+    "sage_label": "הרא\"ם ממיץ",
     "confidence": 0.67,
     "reason": "low confidence (0.67)",
     "word_count": 0,
-    "timestamp": "2026-08-04T01:35:17.110392"
+    "timestamp": "2026-09-08T20:38:08.680310"
+  },
+  {
+    "docx_filename": "פועלו ומשנתו התורנית של הרמב_ן.docx",
+    "status": "SKIP",
+    "sage_id": "44",
+    "sage_label": "הרמב\"ן (רבי משה בן נחמן)",
+    "confidence": 0.33,
+    "reason": "low confidence (0.33)",
+    "word_count": 0,
+    "timestamp": "2026-09-08T20:38:08.692252"
+  },
+  {
+    "docx_filename": "פועלו ומשנתו התורנית של רבי משה חגיז_ שומר חומות המסורת בעידן התמורות.docx",
+    "status": "SKIP",
+    "sage_id": "86",
+    "sage_label": "רבי משה חגיז – הקנאי הירושלמי שניסה להציל את היהדות מן הקריסה הפנימית",
+    "confidence": 0.33,
+    "reason": "low confidence (0.33)",
+    "word_count": 0,
+    "timestamp": "2026-09-08T20:38:08.701254"
+  },
+  {
+    "docx_filename": "רבי אליהו מזרחי (הרא_ם) בראי התקופה.docx",
+    "status": "SKIP",
+    "sage_id": "271",
+    "sage_label": "הרא\"ם ממיץ",
+    "confidence": 0.33,
+    "reason": "low confidence (0.33)",
+    "word_count": 0,
+    "timestamp": "2026-09-08T20:38:08.711403"
   }
 ]

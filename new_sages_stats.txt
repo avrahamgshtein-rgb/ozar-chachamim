@@ -1,0 +1,10 @@
+Excel sages: 405
+New sages not in data.json: 120
+Excel columns: 26
+
+Non-empty field counts for new sages:
+  Empty (0 fields): 0
+  Has data: 120
+
+New sages with data (excluding ID column): 120
+  Examples: ['5', '10', '15', '20', '29', '30', '31', '36', '40', '60']
