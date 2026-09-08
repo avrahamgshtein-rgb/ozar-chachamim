@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation'
 import { isValidLocale, UI } from '@/lib/i18n'
 import type { Locale } from '@/lib/types'
 import { LocaleProvider } from '@/components/providers/LocaleProvider'
+import { SITE_URL } from '@/lib/siteUrl'
 
 interface LocaleLayoutProps {
   children: React.ReactNode
@@ -18,11 +19,31 @@ export async function generateMetadata({
 }: LocaleLayoutProps): Promise<Metadata> {
   const { locale } = await params
   if (!isValidLocale(locale)) return {}
-  const t = UI[locale as Locale]
+  const validLocale = locale as Locale
+  const t = UI[validLocale]
+  const OG_LOCALES: Record<Locale, string> = { he: 'he_IL', en: 'en_US', ru: 'ru_RU' }
+
   return {
+    metadataBase: new URL(SITE_URL),
     title: {
       default: `${t.appTitle} — ${t.appSubtitle}`,
       template: `%s | ${t.appTitle}`,
+    },
+    openGraph: {
+      title: t.appTitle,
+      description: t.appSubtitle,
+      type: 'website',
+      locale: OG_LOCALES[validLocale],
+      url: `${SITE_URL}/${validLocale}`,
+    },
+    alternates: {
+      canonical: `/${validLocale}`,
+      languages: {
+        he: '/he',
+        en: '/en',
+        ru: '/ru',
+        'x-default': '/he',
+      },
     },
   }
 }

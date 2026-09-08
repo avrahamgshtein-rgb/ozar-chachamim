@@ -99,13 +99,16 @@ export function AppShell({ locale, initialTotal, initialLastUpdate }: AppShellPr
   useEffect(() => {
     setData([], [], initialTotal, initialLastUpdate)
     ;(async () => {
-      // Load initial data: Supabase first, then fallback to data.json if needed
-      const supabaseData = await Promise.all([
+      // These three are independent, so they run concurrently rather than in
+      // series. loadAppShellData still decides whether Supabase or the static
+      // file wins; fetching the file early only removes a round trip.
+      const [sages, connections, dataJsonData, overlay] = await Promise.all([
         fetchSages(),
         fetchConnections(),
-      ]).then(([sages, connections]) => ({ sages, connections }))
-
-      const dataJsonData = await fetchLocalGraphData()
+        fetchLocalGraphData(),
+        fetchContentOverlay(locale),
+      ])
+      const supabaseData = { sages, connections }
 
       // Merge canonical + supplements, apply patches via unified pipeline
       const { sages: normalizedSages, connections: normalizedConnections, quality, source } =
@@ -117,11 +120,10 @@ export function AppShell({ locale, initialTotal, initialLastUpdate }: AppShellPr
       console.log(`[AppShell] 📊 merged: ${quality.canonical_count} canonical + ${quality.supplement_count} supplement = ${quality.total_sages} sages`)
 
       // Content localization: merge per-locale translated fields
-      const overlay = await fetchContentOverlay(locale)
-      const sages = applyOverlay(normalizedSages, overlay)
+      const localizedSages = applyOverlay(normalizedSages, overlay)
 
-      setData(sages, normalizedConnections, sages.length, initialLastUpdate)
-      console.log(`[AppShell] ✅ ${sages.length} sages, ${normalizedConnections.length} connections (deduped: ${quality.total_connections})`)
+      setData(localizedSages, normalizedConnections, localizedSages.length, initialLastUpdate)
+      console.log(`[AppShell] ✅ ${localizedSages.length} sages, ${normalizedConnections.length} connections (deduped: ${quality.total_connections})`)
     })()
   }, [initialTotal, initialLastUpdate, setData, locale])
 
@@ -248,6 +250,14 @@ function CanvasArea({
   // selected sage live in the store, so switching modes carries both across.
   const [geoMode, setGeoMode] = useState<'2d' | '3d'>('2d')
 
+  // Stage 5 — Leaflet is expensive and was initialising on every page load even
+  // when Geography was never opened. Mount it on first visit, then keep it
+  // mounted so the map instance survives later tab switches.
+  const [mapEverOpened, setMapEverOpened] = useState(false)
+  useEffect(() => {
+    if (activeTab === 'map') setMapEverOpened(true)
+  }, [activeTab])
+
   return (
     <div className="relative w-full h-full">
       {/* Network graph — always mounted so simulation lives across tab switches */}
@@ -262,8 +272,12 @@ function CanvasArea({
           {/* Stage 4: the 2D atlas stays mounted (Leaflet needs a stable container)
               and is hidden rather than unmounted when the 3D mode is active. */}
           <div className={cn('absolute inset-0', geoMode === '2d' ? 'block' : 'hidden')}>
-            <GeoMap locale={locale} />
-            <MapLegend locale={locale} />
+            {mapEverOpened && (
+              <>
+                <GeoMap locale={locale} />
+                <MapLegend locale={locale} />
+              </>
+            )}
           </div>
 
           {geoMode === '3d' && (

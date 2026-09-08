@@ -1,4 +1,5 @@
 import type { Sage, Period } from '@/lib/types'
+import { SITE_URL } from '@/lib/siteUrl'
 
 /**
  * Generate JSON-LD structured data for SEO
@@ -11,13 +12,13 @@ export function getWebsiteSchema() {
     '@type': 'WebSite',
     name: 'אוצר חכמים — Ozar Chachamim',
     description: 'Interactive knowledge graph of Jewish sages through the ages',
-    url: 'https://ozar-chachamim.vercel.app',
+    url: SITE_URL,
     inLanguage: ['he', 'en', 'ru'],
     potentialAction: {
       '@type': 'SearchAction',
       target: {
         '@type': 'EntryPoint',
-        urlTemplate: 'https://ozar-chachamim.vercel.app/he?search={search_term_string}',
+        urlTemplate: `${SITE_URL}/he?search={search_term_string}`,
       },
       'query-input': 'required name=search_term_string',
     },
@@ -25,7 +26,7 @@ export function getWebsiteSchema() {
 }
 
 export function getSageSchema(sage: Sage, locale: string) {
-  const baseUrl = 'https://ozar-chachamim.vercel.app'
+  const baseUrl = SITE_URL
 
   return {
     '@context': 'https://schema.org',
@@ -51,8 +52,8 @@ export function getOrganizationSchema() {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'אוצר חכמים',
-    url: 'https://ozar-chachamim.vercel.app',
-    logo: 'https://ozar-chachamim.vercel.app/logo.png',
+    url: SITE_URL,
+    logo: `${SITE_URL}/logo.png`,
     description: 'A knowledge graph platform for Jewish sages and their traditions',
     sameAs: [
       // Add social media links if available
@@ -70,7 +71,7 @@ export function getBreadcrumbSchema(locale: string, path: string[]) {
       '@type': 'ListItem',
       position: i + 1,
       name: item,
-      item: `https://ozar-chachamim.vercel.app/${locale}${i === 0 ? '' : '/' + path.slice(0, i + 1).join('/')}`,
+      item: `${SITE_URL}/${locale}${i === 0 ? '' : '/' + path.slice(0, i + 1).join('/')}`,
     })),
   }
 }

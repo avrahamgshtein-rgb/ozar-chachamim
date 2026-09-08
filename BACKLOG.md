@@ -1,0 +1,37 @@
+# Backlog
+
+Deferred, non-blocking. Carried over from Stages 3–4 (frozen 2026-09-08, commit `7b49def`).
+
+## Stage 4 — 3D time layers
+
+- **Period labels clip at narrow widths.** The counter-rotated plate labels are
+  occluded by the Geography panel below ~900 px, and cut off on mobile.
+- **No coastline basemap.** Plates draw a generated graticule. Adding an
+  attributed Natural Earth land outline would give real geographic reference;
+  it needs a licensed asset committed to the repo, not a hand-written one.
+- **No controller-level test.** `popstate` restoration and delayed data loading
+  are covered in `lib/geoLayers.ts` and `lib/urlState.ts` only; nothing drives
+  `AppShell` itself.
+
+## Data
+
+- **8 unresolved locations** in the gazetteer (`lib/locationCoords.ts`):
+  `גריידיץ`, `רוגצ'וב/דווינסק`, `גלותי, בינלאומי`, `תלמסאן, אלג׳יריה`, `שילה`,
+  `ארץ כנען`, `סגד, הונגריה; ברגן־בלזן; ניו יורק`, `בריטניה`.
+  These render as "unplaceable" rather than being given invented coordinates.
+- **Provenance gap in `4c22744`.** That commit added 87 nodes to the root
+  `data.json` while its message describes only four TypeScript files. The CSV
+  covers ids 1–383, so those nodes have no CSV row. 28 of them surfaced as
+  audit drift and were reconciled in `7b49def`; the rest have not been
+  reviewed. Worth a deliberate curation pass — not an automated one.
+
+## Tooling
+
+- **`tsx` is invoked through `npx`.** Should become a devDependency with an
+  `npm test` script so the suites run without a network fetch.
+
+## Resolved
+
+- ~~Sage 563 carried two research documents belonging to other sages~~ —
+  removed in Stage 5; the documents remain at their correct homes
+  (`331.json`, `444.json`).

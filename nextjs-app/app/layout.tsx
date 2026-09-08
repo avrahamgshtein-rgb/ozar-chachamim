@@ -48,7 +48,9 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html suppressHydrationWarning className={`${frankRuhlLibre.variable} ${heebo.variable}`}>
+    // Hebrew is the canonical locale and the default redirect target, so the
+    // document ships as he/rtl. The locale layout corrects en/ru before paint.
+    <html lang="he" dir="rtl" suppressHydrationWarning className={`${frankRuhlLibre.variable} ${heebo.variable}`}>
       <head>
         {/* ערכת נושא לפני ציור ראשון — מונע הבהוב ותקף גם בדפי חכם */}
         <Script

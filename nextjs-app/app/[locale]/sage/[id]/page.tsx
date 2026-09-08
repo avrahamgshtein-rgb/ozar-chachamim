@@ -1,13 +1,14 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import { getSageById, getSageConnections } from '@/lib/serverData'
+import { getSageById, getSageConnections, getResearchDocs, hasLocalisedResearch } from '@/lib/serverData'
 import { ResearchSection } from '@/components/sages/ResearchSection'
 import { isValidLocale, UI } from '@/lib/i18n'
 import { ERA_LABELS, ERA_COLORS, CONNECTION_LABELS } from '@/lib/types'
 import { formatYearRange } from '@/lib/utils'
 import { EraChip } from '@/components/ui/EraChip'
 import type { Locale, Sage } from '@/lib/types'
+import { SITE_URL } from '@/lib/siteUrl'
 
 interface PageProps {
   params: Promise<{ locale: string; id: string }>
@@ -18,7 +19,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const sage = getSageById(id)
   if (!sage) return {}
 
-  const t = UI[(locale as Locale) ?? 'he']
+  const validLocale = (isValidLocale(locale) ? locale : 'he') as Locale
+  const t = UI[validLocale]
   const title = sage.name_en
     ? `${sage.label} — ${sage.name_en}`
     : sage.label
@@ -31,15 +33,25 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       title,
       description,
       type: 'article',
+      locale: OG_LOCALES[validLocale],
+      url: `${SITE_URL}/${validLocale}/sage/${id}`,
     },
     alternates: {
-      canonical: `/${locale}/sage/${id}`,
+      canonical: `/${validLocale}/sage/${id}`,
       languages: {
         he: `/he/sage/${id}`,
         en: `/en/sage/${id}`,
+        ru: `/ru/sage/${id}`,
+        'x-default': `/he/sage/${id}`,
       },
     },
   }
+}
+
+const OG_LOCALES: Record<Locale, string> = {
+  he: 'he_IL',
+  en: 'en_US',
+  ru: 'ru_RU',
 }
 
 function buildJsonLd(sage: Sage, locale: Locale) {
@@ -78,6 +90,14 @@ export default async function SagePage({ params }: PageProps) {
 
   if (!sage) notFound()
 
+  // Resolve research on the server so the text ships in the initial HTML.
+  // getResearchDocs already prefers <id>.<locale>.json and falls back to Hebrew.
+  const researchDocs = await getResearchDocs(sage.id, validLocale)
+  const researchIsFallback =
+    validLocale !== 'he' &&
+    researchDocs.length > 0 &&
+    !(await hasLocalisedResearch(sage.id, validLocale))
+
   const dir        = validLocale === 'he' ? 'rtl' : 'ltr'
   const accentColor = ERA_COLORS[sage.period] ?? '#c9973a'
   const yearRange  = formatYearRange(sage.birth_year, sage.death_year)
@@ -93,7 +113,7 @@ export default async function SagePage({ params }: PageProps) {
       <div
         className="h-dvh overflow-y-auto bg-ink-900 text-ink-100 font-sans"
         dir={dir}
-        lang={validLocale === 'he' ? 'he' : 'en'}
+        lang={validLocale}
       >
         {/* Top nav bar */}
         <nav className="sticky top-0 z-10 glass border-b border-gold-500/10 px-4 md:px-8 h-14 flex items-center justify-between gap-4">
@@ -202,7 +222,12 @@ export default async function SagePage({ params }: PageProps) {
               )}
 
               {/* Full research documents — client-side fetch (Vercel-safe) */}
-              <ResearchSection sageId={sage.id} locale={validLocale} />
+              <ResearchSection
+                sageId={sage.id}
+                locale={validLocale}
+                initialDocs={researchDocs}
+                initialIsFallback={researchIsFallback}
+              />
 
               {/* Migration path */}
               {sage.migration_path && (

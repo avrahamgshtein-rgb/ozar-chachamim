@@ -93,6 +93,20 @@ export interface ResearchDoc {
 // המחקר נטען בצד הלקוח מ-/research/<id>.json (ראו ResearchSection);
 // גם נגיש מהשרת (RAG) דרך getResearchDocs, באותו דפוס fs שבו
 // משתמש app/api/research/[id]/route.ts.
+/**
+ * True when a translated research file exists for this sage and locale.
+ * Lets callers tell "translated" from "fell back to Hebrew" without reparsing.
+ */
+export async function hasLocalisedResearch(id: string, locale: 'he' | 'en' | 'ru'): Promise<boolean> {
+  if (locale === 'he') return true
+  const { access } = await import('fs/promises')
+  const { resolve, sep } = await import('path')
+  const baseDir = resolve(process.cwd(), 'public', 'research')
+  const path = resolve(baseDir, `${id}.${locale}.json`)
+  if (!path.startsWith(baseDir + sep)) return false
+  try { await access(path); return true } catch { return false }
+}
+
 export async function getResearchDocs(id: string, locale: 'he' | 'en' | 'ru' = 'he'): Promise<ResearchDoc[]> {
   const { readFile } = await import('fs/promises')
   const { join, resolve, sep } = await import('path')
