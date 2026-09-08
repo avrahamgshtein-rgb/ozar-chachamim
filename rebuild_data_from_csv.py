@@ -10,6 +10,7 @@ Rebuild data.json from data/חכמי ישראל.csv (master source).
 Creates data.json.backup_pre_rebuild before writing.
 """
 import csv, json, re, shutil
+import openpyxl
 from collections import Counter
 
 G = lambda r, k: (r.get(k) or '').strip()
@@ -112,9 +113,26 @@ def norm_era(era_text, years_text):
     if y is not None: return year_bucket(y)
     return 'unknown'
 
-# ---------- Load CSV & dedupe ----------
-with open('data/חכמי_ישראל.csv', encoding='utf-8-sig') as f:
-    rows = [r for r in csv.DictReader(f) if G(r, 'שם הדמות/הנושא')]
+# ---------- Load master spreadsheet & dedupe ----------
+# The .xlsx is the master the user maintains by hand. The sibling .csv was
+# produced by merging this file's rows into a different sheet's 26-column
+# layout; that merge mangled the data, so the CSV is not a usable source.
+MASTER_XLSX = 'data/חכמי_ישראל.xlsx'
+
+def load_master(path):
+    wb = openpyxl.load_workbook(path, data_only=True)
+    ws = wb.active
+    header = [str(c.value).strip() if c.value is not None else '' for c in ws[1]]
+    out = []
+    for raw in ws.iter_rows(min_row=2, values_only=True):
+        row = {header[i]: ('' if raw[i] is None else str(raw[i]).strip())
+               for i in range(len(header)) if header[i]}
+        if row.get('שם הדמות/הנושא'):
+            out.append(row)
+    wb.close()
+    return out
+
+rows = load_master(MASTER_XLSX)
 
 def score(r):
     s = sum(1 for k in ['שנים/תקופה','אזור/מרחב','תקופה','תחום עיקרי','תגיות','רעיון מרכזי/חידוש','דמויות/השפעות קשורות','קישור ספוטיפיי'] if G(r,k))
@@ -125,7 +143,7 @@ for r in rows:
     key = norm_name(G(r,'שם הדמות/הנושא'))
     if key not in best or score(r) > score(best[key]):
         best[key] = r
-print(f'CSV: {len(rows)} rows -> {len(best)} unique sages')
+print(f'XLSX: {len(rows)} rows -> {len(best)} unique sages')
 
 # ---------- Build nodes ----------
 nodes, era_stats = [], Counter()

@@ -273,7 +273,10 @@
       "Bash(curl -s -m 60 -o /dev/null -w \"chunk=%{http_code}\\\\n\" \"http://localhost:3210/_next/static/chunks/_app-pages-browser_components_viz_GeoMap_tsx.js\")",
       "Bash(curl -s -m 60 -o /dev/null -w \"data=%{http_code}\\\\n\" \"http://localhost:3210/data.json\")",
       "PowerShell(cd \"C:\\\\Users\\\\User\\\\Desktop\\\\ozar-chachamim\\\\nextjs-app\"; npm run type-check 2>&1 | Select-Object -Last 10; \"TYPECHECK_EXIT=$LASTEXITCODE\")",
-      "PowerShell(cd \"C:\\\\Users\\\\User\\\\Desktop\\\\ozar-chachamim\\\\nextjs-app\"; Remove-Item -Recurse -Force \".next\" -ErrorAction SilentlyContinue; npm run build 2>&1 | Select-Object -Last 12; \"BUILD_EXIT=$LASTEXITCODE\")"
+      "PowerShell(cd \"C:\\\\Users\\\\User\\\\Desktop\\\\ozar-chachamim\\\\nextjs-app\"; Remove-Item -Recurse -Force \".next\" -ErrorAction SilentlyContinue; npm run build 2>&1 | Select-Object -Last 12; \"BUILD_EXIT=$LASTEXITCODE\")",
+      "Bash(cp nextjs-app/public/data.json /tmp/data_before_xlsx_rebuild.json)",
+      "Bash(cp nextjs-app/public/data.json data.json.before_xlsx_rebuild)",
+      "Bash(echo \"audit exit: $?\")"
     ]
   }
 }
