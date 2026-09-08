@@ -262,7 +262,8 @@ function CanvasArea({
             📍 {tr(locale, 'גיאוגרפיה', 'Geography', 'География')}
           </button>
         </div>
-        <div className="hidden md:flex md:w-72 lg:w-80 flex-col border-s border-ink-800">
+        {/* Desktop Geography Panel — always mount to avoid CSS-only flash */}
+        <div className="hidden md:flex md:w-72 lg:w-80 flex-col border-s border-ink-800 bg-ink-950">
           <GeographyPanel locale={locale} />
         </div>
       </div>
