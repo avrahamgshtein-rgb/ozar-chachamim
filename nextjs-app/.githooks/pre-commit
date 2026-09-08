@@ -1,53 +1,10 @@
 #!/usr/bin/env bash
 #
 # Pre-commit hook: validate data and graph integrity
-# Runs audit on data file changes. Blocks commits that introduce new errors
-# (duplicate IDs or orphan connections). Pre-existing drift is recorded but
-# does not block commits that don't modify data.
+# Runs audit to detect errors (duplicate IDs, orphan connections).
+# Exit status is propagated directly from the audit script.
 #
 
-# Get list of staged files
-STAGED_FILES=$(git diff --cached --name-only)
-
-# Check if any data files are being modified
-DATA_FILES_MODIFIED=$(echo "$STAGED_FILES" | grep -E "(data\.json|data-.*\.json|public/data.*)" || true)
-
-if [ -z "$DATA_FILES_MODIFIED" ]; then
-  # No data files modified, hook passes — code-only changes are unrestricted
-  exit 0
-fi
-
-# Data files are staged. Run audit and check for blocking errors.
 cd "$(git rev-parse --show-toplevel)"
-
-echo "🔍 Auditing data integrity on staged changes..."
-node scripts/audit-data-sync.mjs > /tmp/audit-hook.json 2>&1
-AUDIT_EXIT=$?
-
-if [ $AUDIT_EXIT -ne 0 ]; then
-  echo "❌ Audit failed with exit code $AUDIT_EXIT"
-  cat /tmp/audit-hook.json
-  exit 1
-fi
-
-# Parse JSON output: check for blocking errors
-HAS_DUPLICATES=$(grep -c '"duplicateIds":\s*\[' /tmp/audit-hook.json 2>/dev/null | grep -v '^0$' || echo 0)
-HAS_ORPHANS=$(grep -c '"orphanLinks":\s*\[' /tmp/audit-hook.json 2>/dev/null | grep -v '^0$' || echo 0)
-
-# Verify duplicateIds is actually non-empty (not just [])
-if grep -q '"duplicateIds":\s*\[\]' /tmp/audit-hook.json; then
-  HAS_DUPLICATES=0
-fi
-# Verify orphanLinks is actually non-empty (not just [])
-if grep -q '"orphanLinks":\s*\[\]' /tmp/audit-hook.json; then
-  HAS_ORPHANS=0
-fi
-
-if [ "$HAS_DUPLICATES" != "0" ] || [ "$HAS_ORPHANS" != "0" ]; then
-  echo "❌ Commit blocked: Data integrity error detected (duplicates or orphans)"
-  cat /tmp/audit-hook.json
-  exit 1
-fi
-
-echo "✅ Data audit passed (no duplicate IDs, no orphan connections)"
-exit 0
+node scripts/audit-data-sync.mjs
+exit $?

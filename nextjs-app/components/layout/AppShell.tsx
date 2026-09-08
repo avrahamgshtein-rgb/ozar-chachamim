@@ -75,6 +75,7 @@ export function AppShell({ locale, initialTotal, initialLastUpdate }: AppShellPr
     selectedSage,
     selectedSageId,
     sageMap,
+    filters,
     closeDrawer,
     closeFilters,
     closeComparator,
@@ -115,13 +116,32 @@ export function AppShell({ locale, initialTotal, initialLastUpdate }: AppShellPr
     })()
   }, [initialTotal, initialLastUpdate, setData, locale])
 
-  // URL deep-linking: read ?tab= on mount (every view has a shareable URL)
+  // URL deep-linking: read ?tab=, ?regions=, ?periods= on mount
   useEffect(() => {
     const params = new URLSearchParams(window.location.search)
+
+    // Read tab
     const tab = params.get('tab')
     const VALID: Tab[] = ['graph', 'map', 'traditions', 'ideas', 'timeline', 'genealogy', 'about']
     if (tab && (VALID as string[]).includes(tab)) {
       useAppStore.getState().setActiveTab(tab as Tab)
+    }
+
+    // Read regions and periods (Geography filter state)
+    const regionsParam = params.get('regions')
+    const periodsParam = params.get('periods')
+
+    if (regionsParam || periodsParam) {
+      const store = useAppStore.getState()
+      // Clear existing filters and rebuild from URL
+      store.clearFilters()
+
+      if (regionsParam) {
+        regionsParam.split(',').forEach(r => store.toggleRegionFilter(r as any))
+      }
+      if (periodsParam) {
+        periodsParam.split(',').forEach(p => store.togglePeriodFilter(p as any))
+      }
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
@@ -138,14 +158,14 @@ export function AppShell({ locale, initialTotal, initialLastUpdate }: AppShellPr
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sageMap.size])
 
-  // URL deep-linking: write ?sage= + ?tab= when they change (only after URL init)
-  // Use a separate effect that depends on sageMap.size to ensure we don't write
-  // before we've had a chance to read the URL
+  // URL deep-linking: write ?sage= + ?tab= + ?regions= + ?periods= when they change
   useEffect(() => {
     if (typeof window === 'undefined') return
     if (!sageMap.size) return  // Don't sync until data is loaded
 
     const url = new URL(window.location.href)
+
+    // Sage and tab (existing)
     if (selectedSageId) {
       url.searchParams.set('sage', selectedSageId)
     } else {
@@ -156,8 +176,24 @@ export function AppShell({ locale, initialTotal, initialLastUpdate }: AppShellPr
     } else {
       url.searchParams.delete('tab')
     }
+
+    // Regions (Geography)
+    if (filters.region.length > 0) {
+      url.searchParams.set('regions', filters.region.join(','))
+    } else {
+      url.searchParams.delete('regions')
+    }
+
+    // Periods (Geography) — write only if not all periods (empty means "all")
+    const { ALL_PERIODS } = require('@/lib/types')
+    if (filters.period.length > 0 && filters.period.length < ALL_PERIODS.length) {
+      url.searchParams.set('periods', filters.period.join(','))
+    } else {
+      url.searchParams.delete('periods')
+    }
+
     window.history.replaceState({}, '', url.toString())
-  }, [selectedSageId, activeTab, sageMap.size])
+  }, [selectedSageId, activeTab, filters.region, filters.period, sageMap.size])
 
   // Keyboard shortcuts
   useEffect(() => {

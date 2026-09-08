@@ -46,7 +46,8 @@ interface GeographyPanelProps {
 export function GeographyPanel({ locale, isMobile = false, onClose }: GeographyPanelProps) {
   const { sages, sageMap, connections, selectSage, selectedSageId, filters, toggleRegionFilter, togglePeriodFilter } = useAppStore()
   const selectedRegions = new Set(filters.region)
-  const selectedPeriods = new Set(filters.period.length > 0 ? filters.period : ALL_PERIODS)
+  // Empty period array = all periods. Use actual selected periods for filtering, not the display set.
+  const effectivePeriods = filters.period.length > 0 ? filters.period : ALL_PERIODS
 
   // Sages active in selected regions during selected periods
   const regionalSages = useMemo(() => {
@@ -55,10 +56,10 @@ export function GeographyPanel({ locale, isMobile = false, onClose }: GeographyP
     return sages.filter(sage => {
       const sageRegions = regionsOf(sage.location)
       const inRegion = [...selectedRegions].some(r => sageRegions.includes(r))
-      const inPeriod = selectedPeriods.has(sage.period)
+      const inPeriod = effectivePeriods.includes(sage.period)
       return inRegion && inPeriod
     })
-  }, [sages, selectedRegions, selectedPeriods])
+  }, [sages, selectedRegions, effectivePeriods])
 
   // Group by period
   const sagesByPeriod = useMemo(() => {
@@ -87,9 +88,9 @@ export function GeographyPanel({ locale, isMobile = false, onClose }: GeographyP
   }, [regionalSages, connections, sageMap])
 
   // Relationships involving the selected sage (including outside-region)
+  // Geography classification is independent of period filtering — use actual regions only.
   const selectedSageRelationships = useMemo(() => {
     if (!selectedSageId || selectedRegions.size === 0) return []
-    const regionalSageIds = new Set(regionalSages.map(s => s.id))
 
     return connections
       .filter(c => c.source === selectedSageId || c.target === selectedSageId)
@@ -98,8 +99,12 @@ export function GeographyPanel({ locale, isMobile = false, onClose }: GeographyP
         const otherSageId = isOutgoing ? c.target : c.source
         const otherSage = sageMap.get(otherSageId)
         const otherRegions = otherSage ? regionsOf(otherSage.location) : []
-        const isInRegion = regionalSageIds.has(otherSageId)
-        const isCrossRegion = !isInRegion && selectedRegions.size > 0
+
+        // Classify geographically: inside, outside, or unknown (no location data)
+        const isGeographicallyInRegion = otherRegions.length > 0 && otherRegions.some(r => selectedRegions.has(r))
+        const isGeographicallyOutside = otherRegions.length > 0 && !otherRegions.some(r => selectedRegions.has(r))
+        const isUnknown = otherRegions.length === 0
+        const isCrossRegion = isGeographicallyOutside
 
         return {
           source: c.source,
@@ -109,11 +114,13 @@ export function GeographyPanel({ locale, isMobile = false, onClose }: GeographyP
           targetLabel: sageMap.get(c.target)?.label || c.target,
           sourceRegions: regionsOf(sageMap.get(c.source)?.location ?? ''),
           targetRegions: regionsOf(sageMap.get(c.target)?.location ?? ''),
-          isInRegion,
+          isGeographicallyInRegion,
+          isGeographicallyOutside,
+          isUnknown,
           isCrossRegion,
         }
       })
-  }, [selectedSageId, selectedRegions, regionalSages, connections, sageMap])
+  }, [selectedSageId, selectedRegions, connections, sageMap])
 
   // Use store actions — state updates sync to URL via AppShell effect
   const handleToggleRegion = (region: Region) => toggleRegionFilter(region)
@@ -163,11 +170,11 @@ export function GeographyPanel({ locale, isMobile = false, onClose }: GeographyP
                 className={cn(
                   'w-full text-xs text-left px-2 py-1.5 rounded-md transition-colors font-sans',
                   'flex items-center gap-2',
-                  selectedPeriods.has(period)
+                  filters.period.length === 0 || filters.period.includes(period)
                     ? 'bg-opacity-30'
                     : 'bg-ink-800/30 text-ink-400 hover:bg-ink-700/30'
                 )}
-                style={selectedPeriods.has(period) ? {
+                style={filters.period.length === 0 || filters.period.includes(period) ? {
                   backgroundColor: ERA_COLORS[period] + '30',
                   color: ERA_COLORS[period],
                   borderColor: ERA_COLORS[period] + '50',
