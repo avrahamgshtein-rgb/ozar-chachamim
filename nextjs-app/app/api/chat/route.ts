@@ -5,7 +5,7 @@ import { createServiceRoleClient } from '@/lib/supabase-auth/serviceRole'
 import {
   ANON_SESSION_COOKIE, generateSessionToken, hashSessionToken, getOrCreateAnonymousSession,
 } from '@/lib/rag/anonymousSession'
-import { buildRagContext } from '@/lib/rag/buildContext'
+import { buildRagContext, sageIdsFromHistory } from '@/lib/rag/buildContext'
 import { buildSystemPrompt } from '@/lib/rag/systemPrompt'
 import { callClaude, estimateCost, ClaudeApiError, type ChatMessage } from '@/lib/rag/claude'
 import { isValidLocale } from '@/lib/i18n'
@@ -180,8 +180,12 @@ async function handleAuthenticated(
     const history: ChatMessage[] = (historyRows ?? []).reverse()
       .map(r => ({ role: r.role as 'user' | 'assistant', content: r.content }))
 
-    // Call LLM with complete history
-    const ragContext = await buildRagContext(message, locale)
+    // Call LLM with complete history. Passing the sages named in earlier user
+    // turns lets a follow-up like "and his students?" stay on the same subject.
+    const ragContext = await buildRagContext(message, {
+      locale,
+      conversationSageIds: sageIdsFromHistory(history),
+    })
     const systemPrompt = buildSystemPrompt(ragContext, locale)
     const response = await callClaude(systemPrompt, history)
 
@@ -227,12 +231,22 @@ async function handleAuthenticated(
       sessionId,
       reply: response.text,
       matchedSages: ragContext.matchedSages.map(s => ({ id: s.sage.id, label: s.sage.label })),
+      citations: ragContext.passages.map(p => ({
+        id: p.citationId, sourceKind: p.sourceKind, sageId: p.sageId, sageLabel: p.sageLabel,
+        docTitle: p.docTitle, charStart: p.charStart, charEnd: p.charEnd, score: p.score,
+      })),
+      insufficientEvidence: ragContext.insufficientEvidence,
+      ambiguous: ragContext.ambiguous,
       noMatch: ragContext.noMatch,
       quota: null, // authenticated quota isn't surfaced turn-by-turn yet — Stage 4 UI follow-up
     })
   } catch (err) {
     const isClaudeError = err instanceof ClaudeApiError
-    const errorCode = isClaudeError ? 'llm_error' : 'internal_error'
+    // The reservation is released below either way; a timeout is reported
+    // distinctly so "provider too slow" is diagnosable from "provider refused".
+    const errorCode = isClaudeError
+      ? ((err as ClaudeApiError).timedOut ? 'llm_timeout' : 'llm_error')
+      : 'internal_error'
     const errorMsg = String(err instanceof Error ? err.message : 'unknown error').slice(0, 300)
     console.error('[api/chat] authenticated flow failed (requestId=%s, code=%s):', requestId, errorCode, err)
 
@@ -302,7 +316,7 @@ async function handleAnonymous(request: NextRequest, message: string, locale: Lo
   try {
     // No conversation history for anonymous visitors — each message is its
     // own grounded turn. Full history starts once they register.
-    const ragContext = await buildRagContext(message, locale)
+    const ragContext = await buildRagContext(message, { locale })
     const systemPrompt = buildSystemPrompt(ragContext, locale)
     const response = await callClaude(systemPrompt, [{ role: 'user', content: message }])
 
@@ -346,6 +360,12 @@ async function handleAnonymous(request: NextRequest, message: string, locale: Lo
       sessionId: null,
       reply: response.text,
       matchedSages: ragContext.matchedSages.map(s => ({ id: s.sage.id, label: s.sage.label })),
+      citations: ragContext.passages.map(p => ({
+        id: p.citationId, sourceKind: p.sourceKind, sageId: p.sageId, sageLabel: p.sageLabel,
+        docTitle: p.docTitle, charStart: p.charStart, charEnd: p.charEnd, score: p.score,
+      })),
+      insufficientEvidence: ragContext.insufficientEvidence,
+      ambiguous: ragContext.ambiguous,
       noMatch: ragContext.noMatch,
       quota: { limit: quota.questionsLimit, remaining: reservation ? (reservation as any).remaining_questions : quota.remaining - 1 },
     })
@@ -353,7 +373,11 @@ async function handleAnonymous(request: NextRequest, message: string, locale: Lo
     return res
   } catch (err) {
     const isClaudeError = err instanceof ClaudeApiError
-    const errorCode = isClaudeError ? 'llm_error' : 'internal_error'
+    // The reservation is released below either way; a timeout is reported
+    // distinctly so "provider too slow" is diagnosable from "provider refused".
+    const errorCode = isClaudeError
+      ? ((err as ClaudeApiError).timedOut ? 'llm_timeout' : 'llm_error')
+      : 'internal_error'
     const errorMsg = String(err instanceof Error ? err.message : 'unknown error').slice(0, 300)
     console.error('[api/chat] anonymous flow failed (requestId=%s, code=%s):', requestId, errorCode, err)
 

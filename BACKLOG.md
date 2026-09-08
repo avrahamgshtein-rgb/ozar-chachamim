@@ -25,6 +25,21 @@ Deferred, non-blocking. Carried over from Stages 3–4 (frozen 2026-09-08, commi
   audit drift and were reconciled in `7b49def`; the rest have not been
   reviewed. Worth a deliberate curation pass — not an automated one.
 
+## Stage 5 — reading and discovery
+
+- **Server-rendered lang/dir is wrong for en/ru.** The document ships
+  `lang="he" dir="rtl"` for every locale; en/ru are corrected before paint by a
+  blocking script, so there is no visible flip, but the pre-JS markup is wrong.
+  The fix is moving `<html>` into `app/[locale]/layout.tsx`, which first needs
+  the non-locale routes (`/`, `_not-found`) given their own shell.
+- **Research-page loading is unmeasured.** `outputFileTracingIncludes` now ships
+  ~12 MB of research into that route's serverless bundle. Production TTFB was
+  0.78 s then 0.37/0.38 s — too few samples to separate cold start from noise.
+  Do not claim a speed improvement until this is measured properly. What is
+  established: round trips to first research text went 2 → 1.
+- **Two decorative chevrons remain below AA** (2.76 against a 3.0 target for
+  non-text UI). All text-level failures are resolved.
+
 ## Tooling
 
 - **`tsx` is invoked through `npx`.** Should become a devDependency with an

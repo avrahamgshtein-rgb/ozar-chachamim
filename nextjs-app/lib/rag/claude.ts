@@ -17,11 +17,18 @@ export interface ClaudeResponse {
 }
 
 export class ClaudeApiError extends Error {
-  constructor(message: string, public status?: number) {
+  constructor(message: string, public status?: number, public timedOut = false) {
     super(message)
     this.name = 'ClaudeApiError'
   }
 }
+
+/**
+ * Wall-clock budget for the provider call. Without this a hung connection
+ * holds the request open until the platform kills it, which leaves the quota
+ * reservation in 'reserved' with nothing left to confirm or release it.
+ */
+const REQUEST_TIMEOUT_MS = Number(process.env.CHAT_TIMEOUT_MS ?? 45_000)
 
 export async function callClaude(
   systemPrompt: string,
@@ -32,20 +39,32 @@ export async function callClaude(
     throw new ClaudeApiError('ANTHROPIC_API_KEY is not configured')
   }
 
-  const res = await fetch(CLAUDE_API_URL, {
-    method: 'POST',
-    headers: {
-      'x-api-key': apiKey,
-      'anthropic-version': ANTHROPIC_VERSION,
-      'content-type': 'application/json',
-    },
-    body: JSON.stringify({
-      model: DEFAULT_MODEL,
-      max_tokens: 1024,
-      system: systemPrompt,
-      messages: history,
-    }),
-  })
+  let res: Response
+  try {
+    res = await fetch(CLAUDE_API_URL, {
+      method: 'POST',
+      headers: {
+        'x-api-key': apiKey,
+        'anthropic-version': ANTHROPIC_VERSION,
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: DEFAULT_MODEL,
+        max_tokens: 1024,
+        system: systemPrompt,
+        messages: history,
+      }),
+      signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
+    })
+  } catch (err) {
+    const isAbort = err instanceof Error && (err.name === 'TimeoutError' || err.name === 'AbortError')
+    if (isAbort) {
+      throw new ClaudeApiError(`Claude API timed out after ${REQUEST_TIMEOUT_MS}ms`, 504, true)
+    }
+    throw new ClaudeApiError(
+      `Claude API request failed: ${err instanceof Error ? err.message : String(err)}`,
+    )
+  }
 
   if (!res.ok) {
     const body = await res.text().catch(() => '')

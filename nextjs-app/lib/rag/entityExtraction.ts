@@ -4,6 +4,11 @@
 import type { Sage } from '@/lib/types'
 import { normalizeHe } from '@/lib/search'
 
+// normalizeHe keeps punctuation, so "יעקב?" would never match the token
+// "יעקב" taken from a sage label. Strip it on both sides of every comparison.
+const PUNCT = /[?!.,;:()[\]{}"'`׳״־–—\-…]/g
+const stripPunct = (t: string) => t.replace(PUNCT, '')
+
 // Generic title/kinship/grammar words that are too common to count as a
 // name match on their own (e.g. "רבי" alone would "match" almost every
 // sage; "בין" is just the word "between", not part of anyone's name).
@@ -72,13 +77,13 @@ export function extractMentionedSages(question: string, allSages: Sage[]): Entit
   const tokenSageCount = new Map<string, number>()
   for (const sage of allSages) {
     const tokens = [...new Set(
-      normalizeHe(sage.label).split(' ').filter(t => t.length >= 3 && !STOPWORDS.has(t)),
+      normalizeHe(sage.label).split(' ').map(stripPunct).filter(t => t.length >= 3 && !STOPWORDS.has(t)),
     )]
     tokensBySageId.set(sage.id, tokens)
     for (const t of tokens) tokenSageCount.set(t, (tokenSageCount.get(t) ?? 0) + 1)
   }
 
-  const qWords = new Set(q.split(' ').filter(Boolean))
+  const qWords = new Set(q.split(' ').map(stripPunct).filter(Boolean))
   for (const sage of allSages) {
     if (matchedIds.has(sage.id)) continue
     const tokens = tokensBySageId.get(sage.id) ?? []
@@ -90,4 +95,59 @@ export function extractMentionedSages(question: string, allSages: Sage[]): Entit
   }
 
   return matches
+}
+
+/** Below this many candidates a name is distinctive enough to resolve directly. */
+const AMBIGUITY_THRESHOLD = 2
+/** Above this, the name is a generic word rather than a real disambiguation question. */
+const AMBIGUITY_MAX_CANDIDATES = 8
+
+export interface AmbiguousMatch {
+  mention: string
+  candidates: Array<{ id: string; label: string }>
+}
+
+/**
+ * Names in the question that point at several sages at once.
+ *
+ * `extractMentionedSages` deliberately ignores non-distinctive tokens so it
+ * does not flag half the corpus. That keeps precision high but means a question
+ * about "רבי יעקב" silently matches nothing. This surfaces those cases so the
+ * caller can ask which person was meant instead of guessing — or, worse,
+ * answering about whichever sage happened to sort first.
+ *
+ * A name already resolved by a full-alias match is not reported: the user was
+ * specific enough.
+ */
+export function findAmbiguousMentions(question: string, allSages: Sage[]): AmbiguousMatch[] {
+  const q = normalizeHe(question)
+  if (!q) return []
+
+  const resolvedIds = new Set(extractMentionedSages(question, allSages).map(m => m.sage.id))
+  const qWords = new Set(q.split(' ').map(stripPunct).filter(t => t.length >= 3 && !STOPWORDS.has(t)))
+  if (qWords.size === 0) return []
+
+  const byToken = new Map<string, Array<{ id: string; label: string }>>()
+  for (const sage of allSages) {
+    const tokens = new Set(
+      normalizeHe(sage.label).split(' ').map(stripPunct).filter(t => t.length >= 3 && !STOPWORDS.has(t)),
+    )
+    for (const t of tokens) {
+      if (!qWords.has(t)) continue
+      const list = byToken.get(t) ?? []
+      list.push({ id: sage.id, label: sage.label })
+      byToken.set(t, list)
+    }
+  }
+
+  const out: AmbiguousMatch[] = []
+  for (const [mention, candidates] of byToken) {
+    if (candidates.length <= AMBIGUITY_THRESHOLD) continue
+    if (candidates.length > AMBIGUITY_MAX_CANDIDATES) continue
+    // If the user already pinned one of these down precisely, it is not ambiguous.
+    if (candidates.some(c => resolvedIds.has(c.id))) continue
+    out.push({ mention, candidates })
+  }
+
+  return out
 }
