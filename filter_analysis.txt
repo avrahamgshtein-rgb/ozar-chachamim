@@ -1,0 +1,42 @@
+FILTERING SYSTEM ANALYSIS
+============================================================
+
+Total unique field categories: 334
+Sages with field assignments: 693
+
+SUGGESTED FILTER TOPICS:
+------------------------------------------------------------
+judges         :   0 sages [MISSING]
+women          :  11 sages [FOUND]
+philosophy     :  41 sages [FOUND]
+kabbalah       :  89 sages [FOUND]
+enlightenment  :   9 sages [FOUND]
+zionism        :  25 sages [FOUND]
+medicine       :  16 sages [FOUND]
+science        :  27 sages [FOUND]
+music          :   0 sages [MISSING]
+astronomy      :   8 sages [FOUND]
+architecture   :   0 sages [MISSING]
+law            :   8 sages [FOUND]
+
+============================================================
+Topics FOUND in system: 9
+Topics MISSING from system: 3
+
+Top 15 existing fields:
+------------------------------------------------------------
+ 92 sages: הלכה
+ 37 sages: קבלה
+ 25 sages: הנהגה
+ 19 sages: תלמוד
+ 18 sages: מוסר
+ 14 sages: פסיקה
+ 13 sages: הגות
+ 12 sages: חינוך
+ 10 sages: פרשנות
+ 10 sages: חסידות
+  9 sages: הלכה והנהגה
+  8 sages: פיוט
+  8 sages: פילוסופיה
+  6 sages: הנהגה קהילתית
+  6 sages: הנהגה ציבורית

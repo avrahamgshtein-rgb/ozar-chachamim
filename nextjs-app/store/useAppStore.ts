@@ -2,6 +2,7 @@
 
 import { create } from 'zustand'
 import type { Sage, Connection, Tab, Filters, Period, Region } from '@/lib/types'
+import { isTagFacet } from '@/lib/types'
 import { regionsOf } from '@/lib/regions'
 import { normalizeHe, fuzzyIncludes } from '@/lib/search'
 
@@ -67,10 +68,14 @@ function applyFilters(sages: Sage[], filters: Filters): Sage[] {
       if (!sageRegions.some(r => filters.region.includes(r))) return false
     }
     if (filters.field.length > 0) {
-      if (!sage.field) return false
       // Handle comma-separated fields: "philosophy, halakha" → ["philosophy", "halakha"]
-      const sageFields = sage.field.split(',').map(f => f.trim())
-      if (!sageFields.some(f => filters.field.includes(f))) return false
+      const sageFields = (sage.field ?? '').split(',').map(f => f.trim()).filter(Boolean)
+      // Curated tag facets (e.g. נשים) ride the same filter dimension — see TAG_FACETS.
+      // Only whitelisted tags participate, so ordinary field chips keep their meaning
+      // even when the same word also appears as a free-text tag on other sages.
+      const sageFacets = (sage.tags ?? []).filter(isTagFacet)
+      const selectable = [...sageFields, ...sageFacets]
+      if (!selectable.some(f => filters.field.includes(f))) return false
     }
     if (filters.searchQuery) {
       // Fuzzy Hebrew matching: "רמבם" ↔ "רמב״ם" (nikud/quotes/finals-insensitive)

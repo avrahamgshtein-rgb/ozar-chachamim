@@ -3255,47 +3255,47 @@
    "has_research": true
   },
   {
-   "id": "229",
+   "id": "406",
    "label": "רבנו פרץ מקורביל",
    "era": "המאה ה־13",
    "era_key": "rishonim",
    "era_label": "ראשונים",
-   "field": "תלמוד, עריכה",
+   "field": "תלמוד והלכה",
    "location": "צרפת",
-   "bio": "עורך-על של עולם התוספות, שסידר ושימר את המסורת התלמודית בתקופת חורבן.",
-   "central_idea": "עריכת המסורת כהצלת התורה לדורות",
-   "tags": "תוספות, סמ\"ק, עריכה",
-   "chapter_type": "חכם",
-   "spotify_url": "https://open.spotify.com/episode/5Iri3H2JcF1NuSrVD3Pnpu?si=L50WmdF7QMu5GJ_bRyWdxA&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
+   "bio": "מראשי בעלי התוספות המאוחרים ועורך מרכזי של מסורות הלימוד וההלכה בצרפת.",
+   "central_idea": "שימור וארגון המסורת התורנית בעת משבר.",
+   "tags": "הגהות סמ״ק, תוספות",
+   "chapter_type": "דמות",
+   "spotify_url": "https://open.spotify.com/episode/5Iri3H2JcF1NuSrVD3Pnpu"
   },
   {
-   "id": "230",
+   "id": "407",
    "label": "רבי מאיר הכהן מרוטנבורג",
-   "era": "המאה ה־13",
+   "era": "סוף המאה ה־13",
    "era_key": "rishonim",
    "era_label": "ראשונים",
    "field": "הלכה",
    "location": "אשכנז",
-   "bio": "שילב בין שיטת הרמב\"ם למסורת אשכנזית באמצעות הערות ביקורתיות ושימור מנהגים.",
-   "central_idea": "יצירת דיאלוג בין קודקס אחיד למסורת חיה",
-   "tags": "הגהות מיימוניות, מנהג",
-   "chapter_type": "חכם",
-   "spotify_url": "https://open.spotify.com/episode/26lw9FnAGUvrdpyiczTl58?si=V8X9zsb2T2-MYW0YIqPJ1g&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "bio": "תלמיד המהר״ם מרוטנבורג ומחבר הגהות מיימוניות, מגשר בין הרמב״ם למסורת אשכנז.",
+   "central_idea": "שימור המנהג והמסורת בתוך הקודקס ההלכתי.",
+   "tags": "הגהות מיימוניות",
+   "chapter_type": "דמות",
+   "spotify_url": "https://open.spotify.com/episode/26lw9FnAGUvrdpyiczTl58",
    "has_research": true
   },
   {
-   "id": "231",
+   "id": "408",
    "label": "רבי אליעזר מטוך",
    "era": "המאה ה־13",
    "era_key": "rishonim",
    "era_label": "ראשונים",
-   "field": "תלמוד",
-   "location": "צרפת/אשכנז",
-   "bio": "העורך שעיצב את נוסח התוספות בדפוס הש\"ס והפך אותו לסטנדרט לדורות.",
-   "central_idea": "כוח העריכה כמעצב דרך הלימוד",
-   "tags": "תוספות טוך, עריכה",
-   "chapter_type": "חכם",
-   "spotify_url": "https://open.spotify.com/episode/04Hkb5vYxReuIGq0cTG2fh?si=7s2SsOxQS0Sk1ir7aO-2cA&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "field": "תלמוד ותוספות",
+   "location": "צרפת",
+   "bio": "עורך נוסח התוספות שהתקבל בדפוסי הש״ס והפך ליסוד לימוד הגמרא לדורות.",
+   "central_idea": "בהירות וסדר כמפתח להעברת המסורת.",
+   "tags": "תוספות טוך",
+   "chapter_type": "דמות",
+   "spotify_url": "https://open.spotify.com/episode/04Hkb5vYxReuIGq0cTG2fh",
    "has_research": true
   },
   {
@@ -4735,7 +4735,7 @@
    "has_research": true
   },
   {
-   "id": "330",
+   "id": "479",
    "label": "מהר\"ש נוישטט (רבי שלום מנוישטט)",
    "era": "נפטר בסביבות 1413",
    "era_key": "rishonim",
@@ -4746,7 +4746,7 @@
    "central_idea": "המנהג כמקור הלכתי מחייב — תיעוד מנהגי הקהילות כבסיס לפסיקה.",
    "tags": "מנהגי אשכנז, פסיקה, אוסטריה, רבו של המהרי\"ל",
    "chapter_type": "דמות",
-   "spotify_url": "",
+   "spotify_url": "https://open.spotify.com/episode/2VMv7A3ajbCJoYjkal4Jff?si=42b27802de2d49a7",
    "has_research": true
   },
   {
@@ -4780,7 +4780,7 @@
    "has_research": true
   },
   {
-   "id": "333",
+   "id": "482",
    "label": "שמואל (האמורא)",
    "era": "המאה ה־3 לספירה (בערך 165–257)",
    "era_key": "amoraim",
@@ -4791,7 +4791,7 @@
    "central_idea": "מנהיגות ריאליסטית — עיגון הלכתי לקיום יהודי בגולה באמצעות \"דינא דמלכותא דינא\" ושליטה בחכמות העולם.",
    "tags": "אמוראי בבל, נהרדעא, דינא דמלכותא דינא, לוח השנה, רב ושמואל",
    "chapter_type": "דמות",
-   "spotify_url": ""
+   "spotify_url": "https://open.spotify.com/episode/5RrrepmekZ3GO4eqGqTHLV?si=e7EqwLNAR5yvbBZ3l4XIag"
   },
   {
    "id": "334",
@@ -4808,7 +4808,7 @@
    "spotify_url": ""
   },
   {
-   "id": "335",
+   "id": "484",
    "label": "רבי ישראל נג'ארה",
    "era": "בערך 1555–1625",
    "era_key": "acharonim",
@@ -4819,10 +4819,10 @@
    "central_idea": "הקדושה נכנסת דרך הניגון — \"גיור\" לחנים זרים והפיכת השירה לעבודת ה' רגשית ואינטימית.",
    "tags": "פיוט, קה ריבון עלם, קבלת צפת, שירה עברית, עזה",
    "chapter_type": "דמות",
-   "spotify_url": ""
+   "spotify_url": "https://open.spotify.com/episode/24xak1cI8TsPSCy1icgwKG?si=xCKeveoJTui_AVKfR48LXQ"
   },
   {
-   "id": "336",
+   "id": "485",
    "label": "תודוס איש רומי",
    "era": "המאה ה־1 לספירה",
    "era_key": "tannaim",
@@ -4833,11 +4833,11 @@
    "central_idea": "הנהגה יהודית בתפוצות — שימור זהות וקידוש השם הרחק מהמרכז בארץ ישראל.",
    "tags": "יהדות רומא, גדי מקולס, קידוש השם, תפוצות וארץ ישראל",
    "chapter_type": "דמות",
-   "spotify_url": "",
+   "spotify_url": "https://open.spotify.com/episode/5FpiW245vsxYv7x3SXzLgq?si=wD-WGas2QdeGAGNs3IAcrg",
    "has_research": true
   },
   {
-   "id": "337",
+   "id": "486",
    "label": "רבנו יונה גירונדי",
    "era": "בערך 1200–1263",
    "era_key": "rishonim",
@@ -4848,7 +4848,7 @@
    "central_idea": "דמוקרטיזציה של המוסר — התשובה כדרך חיים המחייבת כל אדם.",
    "tags": "שערי תשובה, מוסר, פולמוס הרמב\"ם, קטלוניה",
    "chapter_type": "דמות",
-   "spotify_url": "",
+   "spotify_url": "https://open.spotify.com/episode/45W4Jxd89NsF6dPJtlmZIc?si=sosD_UZKRh-YiXoSYOkgVA",
    "has_research": true
   },
   {
@@ -4867,7 +4867,7 @@
    "has_research": true
   },
   {
-   "id": "339",
+   "id": "488",
    "label": "רבי שלמה אפרים מלונטשיץ (כלי יקר)",
    "era": "בערך 1550–1619",
    "era_key": "acharonim",
@@ -4878,7 +4878,7 @@
    "central_idea": "הפרשנות כתוכחה — פשט המקרא ככלי לתיקון המידות והחברה.",
    "tags": "כלי יקר, דרשנות, פראג, ביקורת חברתית, תיקון המידות",
    "chapter_type": "דמות",
-   "spotify_url": "",
+   "spotify_url": "https://open.spotify.com/episode/3nwItn9PGKFfIopZY2AUMZ?si=AheGkq4JTDyY2wyFhSLLbA",
    "has_research": true
   },
   {
@@ -4927,7 +4927,7 @@
    "has_research": true
   },
   {
-   "id": "343",
+   "id": "492",
    "label": "הרב יצחק הוטנר",
    "era": "1906–1980",
    "era_key": "modern",
@@ -4938,7 +4938,7 @@
    "central_idea": "\"גדלות האדם\" — הנפילה והמשבר כשלבים הכרחיים בבניין האישיות הרוחנית.",
    "tags": "פחד יצחק, ישיבת רבנו חיים ברלין, למדנות וחסידות, גדלות האדם",
    "chapter_type": "דמות",
-   "spotify_url": "",
+   "spotify_url": "https://open.spotify.com/episode/2g9LIQuPfN5FbE41OYIPCg?si=xrMc-wONSIyFbmgJaZnlPg",
    "has_research": true
   },
   {
@@ -5818,6 +5818,34 @@
    "tags": "רב יהודה, רב יוסף, יומא, מנחות, עשרת בני רב פפא, הדרן, סיום מסכת",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/4VnklajhWABrqOcpzfKLnK?si=ZLJGM8ThRcGuHSnlcA1RPQ&utm_source=copy-link"
+  },
+  {
+   "id": "412",
+   "label": "האדמו״ר מקאליב (רבי מנחם מנדל טאוב)",
+   "era": "1923–2019",
+   "era_key": "modern",
+   "era_label": "העת החדשה",
+   "field": "חסידות, זיכרון השואה והלכה",
+   "location": "הונגריה וישראל",
+   "bio": "ניצול שואה ומנהיג חסידי שהקדיש את חייו להנצחת הנספים ולהפצת תורה ואמונה.",
+   "central_idea": "הפיכת הזיכרון והכאב לכוח של בניין רוחני.",
+   "tags": "קול מנחם, שמע ישראל",
+   "chapter_type": "דמות",
+   "spotify_url": "https://open.spotify.com/episode/2RfVxXD6TIynHVoCEcKPJn"
+  },
+  {
+   "id": "422",
+   "label": "רבי ישראל יהושע טרונק מקוטנא",
+   "era": "1820–1893",
+   "era_key": "modern",
+   "era_label": "העת החדשה",
+   "field": "הלכה והנהגה ציבורית",
+   "location": "פולין",
+   "bio": "מגדולי פוסקי פולין ותומך מרכזי ביישוב הארץ ובהיתר המכירה בראשית ההתיישבות.",
+   "central_idea": "האחריות הלאומית היא חלק מעולם ההלכה.",
+   "tags": "ישועות מלכו",
+   "chapter_type": "דמות",
+   "spotify_url": "https://open.spotify.com/episode/5CjFGW61SRKSx3ScmazcV1"
   }
  ],
  "links": [
@@ -5954,7 +5982,7 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "333",
+   "source": "482",
    "target": "21",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
@@ -6338,7 +6366,7 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "333",
+   "source": "482",
    "target": "135",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
@@ -6482,7 +6510,7 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "333",
+   "source": "482",
    "target": "184",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
@@ -6596,7 +6624,7 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "333",
+   "source": "482",
    "target": "200",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
@@ -6650,7 +6678,7 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "333",
+   "source": "482",
    "target": "208",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
@@ -6939,31 +6967,25 @@
   },
   {
    "source": "36",
-   "target": "229",
+   "target": "406",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
    "source": "36",
-   "target": "230",
+   "target": "407",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
    "source": "30",
-   "target": "230",
-   "type": "influence",
-   "evidence_source": "CSV דמויות קשורות"
-  },
-  {
-   "source": "318",
-   "target": "230",
+   "target": "407",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
    "source": "201",
-   "target": "231",
+   "target": "408",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -7010,7 +7032,7 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "337",
+   "source": "486",
    "target": "237",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
@@ -7388,7 +7410,7 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "333",
+   "source": "482",
    "target": "328",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
@@ -7401,7 +7423,7 @@
   },
   {
    "source": "304",
-   "target": "330",
+   "target": "479",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -7413,31 +7435,31 @@
   },
   {
    "source": "317",
-   "target": "335",
+   "target": "484",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
    "source": "33",
-   "target": "337",
+   "target": "486",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
    "source": "273",
-   "target": "337",
+   "target": "486",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
    "source": "57",
-   "target": "339",
+   "target": "488",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
    "source": "55",
-   "target": "339",
+   "target": "488",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -7484,7 +7506,7 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "333",
+   "source": "482",
    "target": "352",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
@@ -7556,7 +7578,7 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "343",
+   "source": "492",
    "target": "363",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
@@ -7574,7 +7596,7 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "333",
+   "source": "482",
    "target": "373",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
@@ -7622,7 +7644,7 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "333",
+   "source": "482",
    "target": "379",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
@@ -7748,7 +7770,7 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "333",
+   "source": "482",
    "target": "397",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
@@ -8474,7 +8496,7 @@
   },
   {
    "source": "4",
-   "target": "231",
+   "target": "408",
    "type": "teacher"
   },
   {
@@ -8504,7 +8526,7 @@
   },
   {
    "source": "4",
-   "target": "230",
+   "target": "407",
    "type": "teacher"
   },
   {

@@ -40,6 +40,36 @@ const ERA_ORDER: Record<string, number> = {
 }
 const ERA_COUNT = 11
 
+/**
+ * x של עמודת התקופה על ציר הזמן (שמאל→ימין, כרונולוגי).
+ * מוגדר ברמת המודול כי גם ה-build וגם אפקט הסינון צריכים אותו — הסינון
+ * מחליף את forceX ולכן חייב לחשב את אותן קואורדינטות בדיוק.
+ */
+function eraXAt(period: string, W: number): number {
+  const idx = ERA_ORDER[period] ?? 5
+  return (W * 0.05) + idx * (W * 0.9 / (ERA_COUNT - 1))
+}
+
+/** משיכת ציר-הזמן: רופפת במצב חופשי, חזקה כשיש סינון (עמודות ברורות). */
+const ERA_PULL_IDLE     = 0.14
+const ERA_PULL_FILTERED = 0.9
+const ERA_PULL_DIMMED   = 0.06
+/** כוח הקשתות — מרופף בזמן סינון כדי שהכרונולוגיה תנצח את הקליקות. */
+const LINK_STRENGTH_IDLE     = 0.35
+const LINK_STRENGTH_FILTERED = 0.04
+
+/**
+ * שקיפות בסיס של קשת לפי הסינון הפעיל. בלי זה מאות הקשתות של החכמים
+ * המעומעמים ממשיכות להיצבע ב-0.22 ומכסות על העיגולים שנותרו — ואז לא רואים
+ * שהם מסודרים בעמודות. `ids === null` פירושו "אין סינון".
+ */
+function linkOpacityFor(l: any, ids: Set<string> | null): number {
+  if (!ids) return 0.22
+  const s = typeof l.source === 'object' ? l.source.id : l.source
+  const t = typeof l.target === 'object' ? l.target.id : l.target
+  return ids.has(s) && ids.has(t) ? 0.5 : 0.03
+}
+
 function nodeColor(d: any, mode: ColorMode): string {
   const eraColor = ERA_COLORS[d.period as Period] ?? '#7a6550'
   if (mode === 'era') return eraColor
@@ -62,6 +92,7 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
   const colorModeRef  = useRef<ColorMode>('region')
   const filteredIdsRef = useRef<Set<string> | null>(null)   // hover restores per-filter dim
   const dimsRef = useRef<{ W: number; H: number }>({ W: 800, H: 600 })
+  const eraGuidesRef  = useRef<import('d3').Selection<any, any, any, any> | null>(null)
   const tooltipRef    = useRef<HTMLDivElement | null>(null)
 
   const [colorMode, setColorMode] = useState<ColorMode>('region')
@@ -153,7 +184,7 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
       }
       const ERAS_EV = ['patriarchs','exodus','judges','kings',
         'second-temple','tannaim','amoraim','geonim','rishonim','acharonim','modern']
-      const eraXOf = (k: string) => (W * 0.05) + (ERA_ORDER[k] ?? 3) * (W * 0.9 / (ERA_COUNT - 1))
+      const eraXOf = (k: string) => eraXAt(k, W)
       const evBarsG = g.append('g').attr('pointer-events', 'none')
       MILESTONES.forEach((ev, idx) => {
         const era = ERAS_EV.find(k => { const [s,e] = ERA_RANGES_EV[k]; return ev.year >= s && ev.year < e })
@@ -183,6 +214,25 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
           .attr('fill', '#c62828')
           .style('stroke', 'var(--ink-900)').attr('stroke-width', 2.5).attr('paint-order', 'stroke')
           .text(`${ev.label[locale]} · ${yearTxt}`)
+      })
+
+      // ── Era columns ──────────────────────────────────────────────────────
+      // קווי עזר אנכיים בעמודות התקופות, בצבעי המקרא. מוסתרים כשאין סינון
+      // (אז הרשת אורגנית), ונחשפים ברגע שמסננים — יחד עם forceX המוגבר הם
+      // מראים שהעיגולים מסודרים משמאל לימין לפי סדר הזמן.
+      const eraGuidesG = g.append('g')
+        .attr('class', 'era-guides')
+        .attr('pointer-events', 'none')
+        .style('opacity', 0)
+      eraGuidesRef.current = eraGuidesG
+      ALL_PERIODS.forEach(p => {
+        const x = eraXAt(p, W)
+        eraGuidesG.append('line')
+          .attr('x1', x).attr('y1', -H * 2).attr('x2', x).attr('y2', H * 3)
+          .attr('stroke', ERA_COLORS[p])
+          .attr('stroke-width', 1.5)
+          .attr('stroke-dasharray', '2,8')
+          .attr('opacity', 0.4)
       })
 
       const zoom = d3.zoom<SVGSVGElement, unknown>()
@@ -224,16 +274,13 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
 
       const r = (d: any) => Math.min(22, 5 + Math.sqrt(d.degree || 0) * 2.2)
 
-      const eraX = (period: string) => {
-        const idx = ERA_ORDER[period] ?? 5
-        return (W * 0.05) + idx * (W * 0.9 / (ERA_COUNT - 1))
-      }
+      const eraX = (period: string) => eraXAt(period, W)
 
       // ── Force simulation ─────────────────────────────────────────────────
       const sim = d3.forceSimulation(nodes as any)
-        .force('link', d3.forceLink(links as any).id((d: any) => d.id).distance(75).strength(0.35))
+        .force('link', d3.forceLink(links as any).id((d: any) => d.id).distance(75).strength(LINK_STRENGTH_IDLE))
         .force('charge', d3.forceManyBody().strength(-120))
-        .force('x', d3.forceX((d: any) => eraX(d.period)).strength(0.14))
+        .force('x', d3.forceX((d: any) => eraX(d.period)).strength(ERA_PULL_IDLE))
         .force('y', d3.forceY(H / 2).strength(0.05))
         .force('collide', d3.forceCollide((d: any) => r(d) + 5).strength(0.9))
 
@@ -386,7 +433,8 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
         .on('mouseout', () => {
           // משחזר את מצב הסינון (לא מאפס ל-0.88 גורף)
           node.transition().duration(300).attr('fill-opacity', (n: any) => baseOpacity(n)).attr('r', r)
-          link.transition().duration(300).attr('stroke-opacity', 0.22)
+          link.transition().duration(300)
+            .attr('stroke-opacity', (l: any) => linkOpacityFor(l, filteredIdsRef.current))
           label.transition().duration(300).attr('opacity', 0)
           hideTooltip()
         })
@@ -412,7 +460,8 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
         })
         .on('mouseout', () => {
           link.transition().duration(250)
-            .attr('stroke-opacity', 0.22).attr('stroke-width', 1.2)
+            .attr('stroke-opacity', (l: any) => linkOpacityFor(l, filteredIdsRef.current))
+            .attr('stroke-width', 1.2)
           node.transition().duration(250)
             .attr('fill-opacity', (n: any) => baseOpacity(n))
           label.transition().duration(250).attr('opacity', 0)
@@ -503,25 +552,36 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
     filteredIdsRef.current = noFilter ? null : ids
     nodeSelRef.current.transition().duration(250)
       .attr('fill-opacity', (d: any) => noFilter || ids.has(d.id) ? 0.88 : 0.06)
+    linkSelRef.current?.transition().duration(250)
+      .attr('stroke-opacity', (l: any) => linkOpacityFor(l, filteredIdsRef.current))
+
+    // קווי עזר של התקופות — נחשפים רק כשיש סינון
+    eraGuidesRef.current?.transition().duration(300).style('opacity', noFilter ? 0 : 1)
 
     // ריכוז למרכז (כמו באתר הקלאסי): המסוננים נמשכים לרצועת האמצע,
-    // ציר התקופות (forceX) נשמר — כך הקבוצה מתקבצת אך לא מאבדת כרונולוגיה
+    // ציר התקופות (forceX) נשמר — כך הקבוצה מתקבצת אך לא מאבדת כרונולוגיה.
+    // בזמן סינון המשיכה לציר מתחזקת (0.14 → 0.9) והקשתות מתרופפות, כך
+    // שהעיגולים שנותרו נערכים בעמודות ברורות משמאל לימין לפי סדר התקופות.
     if (simRef.current) {
       import('d3').then(d3 => {
         const sim = simRef.current
         if (!sim) return
-        const H = dimsRef.current.H
+        const { W, H } = dimsRef.current
         sim.force('y', d3.forceY(H / 2).strength((d: any) =>
           noFilter ? 0.05 : ids.has(d.id) ? 0.28 : 0.02))
         sim.force('charge', d3.forceManyBody().strength((d: any) =>
           noFilter ? -120 : ids.has(d.id) ? -160 : -40))
+        sim.force('x', d3.forceX((d: any) => eraXAt(d.period, W)).strength((d: any) =>
+          noFilter ? ERA_PULL_IDLE : ids.has(d.id) ? ERA_PULL_FILTERED : ERA_PULL_DIMMED))
+        // forceLink נבנה ב-build עם מערך הקשתות; כאן רק מכווננים עוצמה
+        const linkForce = sim.force('link') as { strength?: (v: number) => unknown } | undefined
+        linkForce?.strength?.(noFilter ? LINK_STRENGTH_IDLE : LINK_STRENGTH_FILTERED)
         sim.alpha(0.45).restart()
       })
     }
 
     // Zoom-to-fit when filter narrows down to a manageable subset
-    if (!noFilter && filteredSages.length > 0 && filteredSages.length < sages.length * 0.5
-        && svgElRef.current && zoomRef.current && nodeSelRef.current) {
+    const fitToFiltered = (duration: number) => {
       import('d3').then(d3 => {
         if (!svgElRef.current || !zoomRef.current || !nodeSelRef.current) return
         const cW = svgElRef.current.clientWidth  || 800
@@ -541,10 +601,20 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
         const tx = cW / 2 - scale * (x0 + x1) / 2
         const ty = cH / 2 - scale * (y0 + y1) / 2
         d3.select(svgElRef.current)
-          .transition().duration(700)
+          .transition().duration(duration)
           .call(zoomRef.current.transform, d3.zoomIdentity.translate(tx, ty).scale(scale))
       })
     }
+
+    let settleTimer: ReturnType<typeof setTimeout> | undefined
+    if (!noFilter && filteredSages.length > 0 && filteredSages.length < sages.length * 0.5
+        && svgElRef.current && zoomRef.current && nodeSelRef.current) {
+      fitToFiltered(700)
+      // המדידה הראשונה נעשית לפי המיקומים הישנים; אחרי שהסימולציה מסדרת
+      // את העמודות הכרונולוגיות ממסגרים מחדש כדי שכל הטווח ייכנס לתצוגה.
+      settleTimer = setTimeout(() => fitToFiltered(600), 1200)
+    }
+    return () => { if (settleTimer) clearTimeout(settleTimer) }
   }, [filteredSages, sages.length])
 
   // ── Sync selection ring ──────────────────────────────────────────────────

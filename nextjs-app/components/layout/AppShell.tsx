@@ -261,7 +261,7 @@ function CanvasArea({
   return (
     <div className="relative w-full h-full">
       {/* Network graph — always mounted so simulation lives across tab switches */}
-      <div className={cn('absolute inset-0', activeTab === 'graph' ? 'block' : 'hidden')}>
+      <div className={cn('absolute inset-0 isolate', activeTab === 'graph' ? 'block' : 'hidden')}>
         <NetworkGraph locale={locale} />
         <FilterChips locale={locale} />
       </div>
@@ -299,8 +299,12 @@ function CanvasArea({
           <FilterChips locale={locale} />
 
           {/* Stage 4: 2D / 3D mode switch. Filters and selection live in the store,
-              so switching modes preserves both. */}
-          <div className="absolute top-2 end-2 z-30 flex rounded-md overflow-hidden border border-ink-700 bg-ink-900/85">
+              so switching modes preserves both.
+              z-[1001]: Leaflet paints its panes/controls at 200–800 in this same
+              stacking context, so anything below that renders behind the tiles.
+              The enclosing container is `isolate`, so this cannot escape the geo
+              area and cover app chrome. */}
+          <div className="absolute top-2 end-2 z-[1001] flex rounded-md overflow-hidden border border-ink-700 bg-ink-900/85">
             {(['2d', '3d'] as const).map(mode => (
               <button
                 key={mode}

@@ -97,6 +97,26 @@ export interface Filters {
   searchQuery: string
 }
 
+/**
+ * "פאות" — ערכי `tags` נבחרים שנושאים סינון נושאי שחוצה תחומי דעת.
+ *
+ * נשים, למשל, אינן "תחום" (הן מלכות, נביאות, מחנכות, פוסקות…), ולכן הסימון
+ * יושב ב-`tags` שבנתונים ולא ב-`field`. כדי לא להוסיף ממד סינון מקביל,
+ * הפאות רוכבות על `filters.field` הקיים: אותו setter, אותו clear, אותו מונה,
+ * אותו סנכרון URL. `applyFilters` מתאים ערך נבחר מול תגיות רק כשהוא ברשימה
+ * הזו — כך שצ'יפים קיימים ("הלכה", "קבלה"…) שומרים על משמעותם המקורית.
+ */
+export const TAG_FACETS = ['נשים'] as const
+export type TagFacet = (typeof TAG_FACETS)[number]
+
+export const TAG_FACET_LABELS: Record<TagFacet, Record<Locale, string>> = {
+  'נשים': { he: 'נשים', en: 'Women', ru: 'Женщины' },
+}
+
+export function isTagFacet(value: string): value is TagFacet {
+  return (TAG_FACETS as readonly string[]).includes(value)
+}
+
 export const ERA_LABELS: Record<Period, Record<Locale, string>> = {
   patriarchs:      { he: 'האבות',           en: 'Patriarchs',    ru: 'Праотцы'        },
   exodus:          { he: 'יציאת מצרים',    en: 'Exodus & Sinai', ru: 'Исход и Синай' },

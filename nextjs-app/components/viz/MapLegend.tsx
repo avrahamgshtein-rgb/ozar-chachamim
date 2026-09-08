@@ -37,8 +37,11 @@ export function MapLegend({ locale }: { locale: Locale }) {
     </button>
   )
 
+  // z-[1000]: Leaflet gives its own panes/controls z-index 200–800, and this
+  // legend is a SIBLING of the map (same stacking context) in AppShell — so it
+  // must clear 800 or it renders behind the tiles: invisible but still clickable.
   return (
-    <div className="absolute bottom-6 start-4 z-20 glass rounded-xl overflow-hidden min-w-[150px] max-h-[70vh] flex flex-col">
+    <div className="absolute bottom-6 start-4 z-[1000] glass rounded-xl overflow-hidden min-w-[150px] max-h-[70vh] flex flex-col">
       <button
         onClick={() => setCollapsed(c => !c)}
         className="flex items-center justify-between gap-3 px-3 py-2 text-start hover:bg-ink-700/30 transition-colors flex-shrink-0"

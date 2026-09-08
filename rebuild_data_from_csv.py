@@ -31,9 +31,36 @@ RULES = [
     ('geonim',       ['גאון','גאונים','סבורא','פיוט קדום']),
     ('amoraim',      ['אמורא','תלמוד ירושלמי','תלמוד בבלי']),
     ('tannaim',      ['תנא','משנה','חז"ל','מרד','יבנה']),
-    ('second-temple',['בית שני','בית ראשון','מקרא','תנ"ך','שופטים','מלוכה','עת העתיקה','הלניסט','חשמונא','בית המקדש','פרושים','נביא']),
+    ('second-temple',['בית שני','מקרא','תנ"ך','עת העתיקה','הלניסט','חשמונא','בית המקדש','פרושים','נביא']),
 ]
+
+# Pre-rabbinic (biblical) sub-periods. Checked BEFORE `RULES`, against the era label
+# AND the years column joined together, because the CSV often puts the generic label
+# in `תקופה` ("תנ״ך") and the actual sub-period in `שנים/תקופה` ("תקופת השופטים").
+# Order matters: earliest period first, so a row spanning "תקופת האבות עד ימי דוד"
+# lands on its earliest anchor rather than its latest.
+# These keywords are deliberately narrow phrases, never bare personal names — a bare
+# name would misfile later rabbis (רבי דוד קמחי, רבי ישעיה די טראני, אהרן הכהן מלוניל…).
+BIBLICAL_RULES = [
+    ('patriarchs', ['תקופת האבות','ימי האבות','דור האבות','תקופת האימהות','תקופת האמהות','האבות והאימהות','האבות והאמהות']),
+    ('exodus',     ['יציאת מצרים','שעבוד מצרים','דור המדבר','תקופת המדבר','המסע במדבר','המשכן במדבר','מעמד הר סיני']),
+    ('judges',     ['תקופת השופטים','ימי השופטים','שופטים','המשכן בשילה','משכן שילה']),
+    ('kings',      ['ימי בית ראשון','בית ראשון','המקדש הראשון','ראשית המלוכה','תקופת המלוכה','ימי המלוכה','מלוכה',
+                    'תקופת דוד','ימי דוד','דוד המלך','שלמה המלך','ממלכת יהודה','ממלכת ישראל','נביאי בית ראשון']),
+]
+
+# Generic biblical era labels that carry no sub-period of their own. When one of these
+# is the era label and no BIBLICAL_RULES phrase matched, defer to the years column so a
+# dated row (e.g. "המאה ה־13 לפנה״ס") gets bucketed by year instead of falling through
+# to the catch-all 'מקרא'/'תנ"ך' -> second-temple rule.
+VAGUE_BIBLICAL = ['תנ"ך','עת המקרא','תקופת המקרא','ימי המקרא']
+
 def year_bucket(y):
+    # Pre-Common-Era subdivisions (approximate conventional boundaries)
+    if y < -1400: return 'patriarchs'
+    if y < -1200: return 'exodus'
+    if y < -1020: return 'judges'
+    if y < -586:  return 'kings'
     if y < 70: return 'second-temple'
     if y < 220: return 'tannaim'
     if y < 500: return 'amoraim'
@@ -60,6 +87,21 @@ def parse_year(s):
 
 def norm_era(era_text, years_text):
     t = (era_text or '').replace('״','"')
+    yt = (years_text or '').replace('״','"')
+
+    # 1. Explicit biblical sub-period phrase, in either the era label or the years column.
+    both = t + ' | ' + yt
+    for key, kws in BIBLICAL_RULES:
+        for kw in kws:
+            if kw in both:
+                return key
+
+    # 2. Generic biblical label with no sub-period phrase -> let the year decide.
+    if any(v in t for v in VAGUE_BIBLICAL):
+        y = parse_year(yt)
+        if y is None: y = parse_year(t)
+        if y is not None: return year_bucket(y)
+
     for key, kws in RULES:
         for kw in kws:
             if kw in t:

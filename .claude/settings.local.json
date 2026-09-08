@@ -255,7 +255,25 @@
       "Bash(PYTHONIOENCODING=utf-8 python3)",
       "Bash(curl -s http://localhost:3000)",
       "Bash(node -e \"const data = require\\('./public/data.json'\\); console.log\\('Total sages \\(nodes\\):', data.nodes.length\\); console.log\\('Total connections \\(links\\):', data.links.length\\);\")",
-      "Bash(pkill -f \"npm run dev\")"
+      "Bash(pkill -f \"npm run dev\")",
+      "Read(//c/Users/User/AppData/Local/Temp/claude/**)",
+      "Bash(PYTHONIOENCODING=utf-8 python -c ' *)",
+      "Bash(cp data.json \"C:/Users/User/AppData/Local/Temp/claude/C--Users-User-Desktop-ozar-chachamim/787dc323-3bef-47b9-8517-6eff590d4b8a/scratchpad/data.json.before\")",
+      "Bash(PYTHONIOENCODING=utf-8 python rebuild_data_from_csv.py)",
+      "Bash(PYTHONIOENCODING=utf-8 python \"C:\\\\Users\\\\User\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-User-Desktop-ozar-chachamim\\\\787dc323-3bef-47b9-8517-6eff590d4b8a\\\\scratchpad\\\\diff.py\")",
+      "Bash(cp data.json nextjs-app/public/data.json)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3000/he)",
+      "PowerShell(Remove-Item -Recurse -Force \"C:\\\\Users\\\\User\\\\Desktop\\\\ozar-chachamim\\\\nextjs-app\\\\.next\" -ErrorAction SilentlyContinue; cd \"C:\\\\Users\\\\User\\\\Desktop\\\\ozar-chachamim\\\\nextjs-app\"; npm run build 2>&1 | Select-Object -Last 35; \"BUILD_EXIT=$LASTEXITCODE\")",
+      "Bash(node \"C:/Users/User/AppData/Local/Temp/claude/C--Users-User-Desktop-ozar-chachamim/787dc323-3bef-47b9-8517-6eff590d4b8a/scratchpad/verify_merged.js\")",
+      "Bash(npx next *)",
+      "Bash(curl -s -m 60 -o /dev/null -w \"status=%{http_code}\\\\n\" http://localhost:3000/he)",
+      "Bash(rm -rf .next-verify)",
+      "Bash(NEXT_DIST_DIR=.next-verify ./node_modules/.bin/next dev --port 3210)",
+      "Bash(curl -s -m 120 -o /dev/null -w \"he=%{http_code}\\\\n\" \"http://localhost:3210/he?tab=map\")",
+      "Bash(curl -s -m 60 -o /dev/null -w \"chunk=%{http_code}\\\\n\" \"http://localhost:3210/_next/static/chunks/_app-pages-browser_components_viz_GeoMap_tsx.js\")",
+      "Bash(curl -s -m 60 -o /dev/null -w \"data=%{http_code}\\\\n\" \"http://localhost:3210/data.json\")",
+      "PowerShell(cd \"C:\\\\Users\\\\User\\\\Desktop\\\\ozar-chachamim\\\\nextjs-app\"; npm run type-check 2>&1 | Select-Object -Last 10; \"TYPECHECK_EXIT=$LASTEXITCODE\")",
+      "PowerShell(cd \"C:\\\\Users\\\\User\\\\Desktop\\\\ozar-chachamim\\\\nextjs-app\"; Remove-Item -Recurse -Force \".next\" -ErrorAction SilentlyContinue; npm run build 2>&1 | Select-Object -Last 12; \"BUILD_EXIT=$LASTEXITCODE\")"
     ]
   }
 }
