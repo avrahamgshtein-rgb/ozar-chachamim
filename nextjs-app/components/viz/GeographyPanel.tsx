@@ -44,47 +44,9 @@ interface GeographyPanelProps {
 }
 
 export function GeographyPanel({ locale, isMobile = false, onClose }: GeographyPanelProps) {
-  const { sages, sageMap, connections, selectSage, selectedSageId } = useAppStore()
-  const [selectedRegions, setSelectedRegions] = useState<Set<Region>>(new Set())
-  const [selectedPeriods, setSelectedPeriods] = useState<Set<Period>>(new Set(ALL_PERIODS))
-
-  // Load state from URL on mount
-  useEffect(() => {
-    if (typeof window === 'undefined') return
-    const params = new URLSearchParams(window.location.search)
-
-    const regionsParam = params.get('regions')
-    if (regionsParam) {
-      const regions = regionsParam.split(',').filter(r => ALL_REGIONS.includes(r as Region))
-      setSelectedRegions(new Set(regions as Region[]))
-    }
-
-    const periodsParam = params.get('periods')
-    if (periodsParam) {
-      const periods = periodsParam.split(',').filter(p => ALL_PERIODS.includes(p as Period))
-      setSelectedPeriods(new Set(periods as Period[]))
-    }
-  }, [])
-
-  // Sync state to URL
-  useEffect(() => {
-    if (typeof window === 'undefined' || !sageMap.size) return
-    const url = new URL(window.location.href)
-
-    if (selectedRegions.size > 0) {
-      url.searchParams.set('regions', Array.from(selectedRegions).join(','))
-    } else {
-      url.searchParams.delete('regions')
-    }
-
-    if (selectedPeriods.size < ALL_PERIODS.length) {
-      url.searchParams.set('periods', Array.from(selectedPeriods).join(','))
-    } else {
-      url.searchParams.delete('periods')
-    }
-
-    window.history.replaceState({}, '', url.toString())
-  }, [selectedRegions, selectedPeriods, sageMap.size])
+  const { sages, sageMap, connections, selectSage, selectedSageId, filters, toggleRegionFilter, togglePeriodFilter } = useAppStore()
+  const selectedRegions = new Set(filters.region)
+  const selectedPeriods = new Set(filters.period.length > 0 ? filters.period : ALL_PERIODS)
 
   // Sages active in selected regions during selected periods
   const regionalSages = useMemo(() => {
@@ -124,26 +86,38 @@ export function GeographyPanel({ locale, isMobile = false, onClose }: GeographyP
       }))
   }, [regionalSages, connections, sageMap])
 
-  // Relationships involving the selected sage
+  // Relationships involving the selected sage (including outside-region)
   const selectedSageRelationships = useMemo(() => {
-    if (!selectedSageId) return []
-    const sageIds = new Set(regionalSages.map(s => s.id))
-    return regionalConnections.filter(c => (c.source === selectedSageId || c.target === selectedSageId) && sageIds.has(c.source) && sageIds.has(c.target))
-  }, [selectedSageId, regionalConnections, regionalSages])
+    if (!selectedSageId || selectedRegions.size === 0) return []
+    const regionalSageIds = new Set(regionalSages.map(s => s.id))
 
-  const toggleRegion = (region: Region) => {
-    const next = new Set(selectedRegions)
-    if (next.has(region)) next.delete(region)
-    else next.add(region)
-    setSelectedRegions(next)
-  }
+    return connections
+      .filter(c => c.source === selectedSageId || c.target === selectedSageId)
+      .map(c => {
+        const isOutgoing = c.source === selectedSageId
+        const otherSageId = isOutgoing ? c.target : c.source
+        const otherSage = sageMap.get(otherSageId)
+        const otherRegions = otherSage ? regionsOf(otherSage.location) : []
+        const isInRegion = regionalSageIds.has(otherSageId)
+        const isCrossRegion = !isInRegion && selectedRegions.size > 0
 
-  const togglePeriod = (period: Period) => {
-    const next = new Set(selectedPeriods)
-    if (next.has(period)) next.delete(period)
-    else next.add(period)
-    setSelectedPeriods(next)
-  }
+        return {
+          source: c.source,
+          target: c.target,
+          type: c.type,
+          sourceLabel: sageMap.get(c.source)?.label || c.source,
+          targetLabel: sageMap.get(c.target)?.label || c.target,
+          sourceRegions: regionsOf(sageMap.get(c.source)?.location ?? ''),
+          targetRegions: regionsOf(sageMap.get(c.target)?.location ?? ''),
+          isInRegion,
+          isCrossRegion,
+        }
+      })
+  }, [selectedSageId, selectedRegions, regionalSages, connections, sageMap])
+
+  // Use store actions — state updates sync to URL via AppShell effect
+  const handleToggleRegion = (region: Region) => toggleRegionFilter(region)
+  const handleTogglePeriod = (period: Period) => togglePeriodFilter(period)
 
   return (
     <div className="flex flex-col h-full bg-ink-950 border-e border-ink-800">
@@ -162,7 +136,7 @@ export function GeographyPanel({ locale, isMobile = false, onClose }: GeographyP
             {ALL_REGIONS.map(region => (
               <button
                 key={region}
-                onClick={() => toggleRegion(region)}
+                onClick={() => handleToggleRegion(region)}
                 className={cn(
                   'w-full text-xs text-left px-2 py-1.5 rounded-md transition-colors font-sans',
                   selectedRegions.has(region)
@@ -185,7 +159,7 @@ export function GeographyPanel({ locale, isMobile = false, onClose }: GeographyP
             {ALL_PERIODS.map(period => (
               <button
                 key={period}
-                onClick={() => togglePeriod(period)}
+                onClick={() => handleTogglePeriod(period)}
                 className={cn(
                   'w-full text-xs text-left px-2 py-1.5 rounded-md transition-colors font-sans',
                   'flex items-center gap-2',
@@ -233,22 +207,26 @@ export function GeographyPanel({ locale, isMobile = false, onClose }: GeographyP
                     const isOutgoing = rel.source === selectedSageId
                     const otherSage = isOutgoing ? rel.targetLabel : rel.sourceLabel
                     const relType = RELATIONSHIP_LABELS[rel.type]?.[locale] || rel.type
-                    const otherRegions = isOutgoing ? rel.targetRegions : rel.sourceRegions
-                    const crossRegion = !otherRegions.some(r => selectedRegions.has(r))
 
                     return (
                       <div
                         key={`${rel.source}-${rel.target}-${rel.type}-${i}`}
                         className={cn(
-                          'text-[10px] px-2 py-1 rounded-md transition-colors',
-                          crossRegion ? 'bg-ink-800/50 text-ink-400' : 'bg-gold-500/10 text-gold-200'
+                          'text-[10px] px-2 py-1 rounded-md transition-colors cursor-pointer hover:opacity-80',
+                          rel.isCrossRegion ? 'bg-ink-800/50 text-ink-400' : 'bg-gold-500/10 text-gold-200'
                         )}
+                        onClick={() => {
+                          const targetSageId = isOutgoing ? rel.target : rel.source
+                          const targetSage = sageMap.get(targetSageId)
+                          if (targetSage) selectSage(targetSage)
+                        }}
+                        title={rel.isCrossRegion ? tr(locale, 'קשר חיצוני', 'external connection', 'внешняя связь') : ''}
                       >
                         <div className="truncate">
                           {isOutgoing ? '→' : '←'} <strong>{otherSage}</strong>
                         </div>
                         <div className="text-ink-500 truncate">{relType}</div>
-                        {crossRegion && <div className="text-ink-600 text-[9px]">♦ {tr(locale, 'חוץ לאזור', 'outside region', 'внешняя связь')}</div>}
+                        {rel.isCrossRegion && <div className="text-ink-600 text-[9px]">♦ {tr(locale, 'חוץ לאזור', 'outside region', 'внешняя связь')}</div>}
                       </div>
                     )
                   })}
