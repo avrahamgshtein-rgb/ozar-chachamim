@@ -2,13 +2,26 @@
 
 import { useEffect, useRef, useState } from 'react'
 import 'leaflet/dist/leaflet.css'
-import { ERA_COLORS, ERA_LABELS } from '@/lib/types'
+import { ERA_COLORS, ERA_LABELS, CONNECTION_LABELS } from '@/lib/types'
 import { CONNECTION_TYPE_COLORS } from '@/lib/regions'
 import { LOCATION_COORDS, resolveCoords } from '@/lib/locationCoords'
 import { tr } from '@/lib/i18n'
 import { useAppStore } from '@/store/useAppStore'
-import type { Locale, Sage } from '@/lib/types'
+import type { Locale, Sage, Connection } from '@/lib/types'
 import { cn } from '@/lib/utils'
+
+// Esri Canvas basemaps: label-free light/dark, served without an API key.
+// CARTO's basemaps.cartocdn.com endpoints now stamp "API KEY REQUIRED" across
+// every unkeyed tile, so they cannot be used here.
+const TILE_URLS = {
+  light: 'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}',
+  dark:  'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}',
+}
+const TILE_ATTRIBUTION = 'Tiles &copy; <a href="https://www.esri.com">Esri</a> — Esri, HERE, Garmin, &copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> contributors'
+const TILE_MAX_ZOOM = 16
+
+// Zoom level a selected sage is flown to — close enough to read the city around it.
+const SAGE_FOCUS_ZOOM = 8
 
 // Hebrew/English → {lat, lng} gazetteer + resolveCoords:
 // moved verbatim to lib/locationCoords.ts (shared with the Sage Dossier
@@ -52,15 +65,12 @@ export function GeoMap({ locale }: GeoMapProps) {
       })
       mapObjRef.current = map
 
-      // CartoDB tiles — ללא תוויות לועזיות; שמות בעברית נוספים כשכבה משלנו.
+      // אריחים ללא תוויות לועזיות; שמות בעברית נוספים כשכבה משלנו.
       // הכתובת נבחרת לפי ערכת הנושא ומוחלפת חיה במעבר כהה/בהיר.
       const isLight = document.documentElement.dataset.theme === 'light'
       const tiles = L.tileLayer(
-        `https://{s}.basemaps.cartocdn.com/${isLight ? 'light_nolabels' : 'dark_nolabels'}/{z}/{x}/{y}{r}.png`,
-        {
-          attribution: '© <a href="https://www.openstreetmap.org/copyright">OSM</a> contributors © <a href="https://carto.com/attributions">CARTO</a>',
-          maxZoom: 18,
-        }
+        isLight ? TILE_URLS.light : TILE_URLS.dark,
+        { attribution: TILE_ATTRIBUTION, maxZoom: TILE_MAX_ZOOM }
       ).addTo(map)
       ;(map as any)._tileLayer = tiles
 
@@ -200,6 +210,10 @@ export function GeoMap({ locale }: GeoMapProps) {
         )
 
         marker.on('click', () => selectSage(sage))
+        marker.on('dblclick', e => {
+          L.DomEvent.stopPropagation(e as unknown as Event)
+          map.setView(marker.getLatLng(), Math.min(TILE_MAX_ZOOM, map.getZoom() + 3))
+        })
         markerRefs.set(sage.id, marker)
       })
 
@@ -242,6 +256,10 @@ export function GeoMap({ locale }: GeoMapProps) {
               radius: 7, fillColor: c, color: '#0a0806', weight: 1.5, fillOpacity: 0.85,
             })
               .on('click', () => selectSage(sage))
+              .on('dblclick', e => {
+                L.DomEvent.stopPropagation(e as unknown as Event)
+                map.setView([lat, lng], Math.min(TILE_MAX_ZOOM, map.getZoom() + 3))
+              })
               .bindTooltip(sage.label, { direction: 'top', offset: [0, -6] })
               .addTo(clusterLayer)
             return
@@ -348,18 +366,25 @@ export function GeoMap({ locale }: GeoMapProps) {
       const group = L.layerGroup().addTo(map)
       map._linkLayer = group
 
-      const drawn = new Set<string>()
+      // Group by unordered pair so a single line carries every relationship
+      // documented between the two sages.
+      const pairs = new Map<string, Connection[]>()
       connections.forEach(conn => {
         const key = [conn.source, conn.target].sort().join('|')
-        if (drawn.has(key)) return
+        const bucket = pairs.get(key)
+        if (bucket) bucket.push(conn)
+        else pairs.set(key, [conn])
+      })
+
+      pairs.forEach(items => {
+        const conn = items[0]
         const a = coordsById.get(conn.source)
         const b = coordsById.get(conn.target)
         if (!a || !b) return
         // same-city pairs draw nothing meaningful on the map
         if (Math.abs(a.lat - b.lat) < 0.02 && Math.abs(a.lng - b.lng) < 0.02) return
-        drawn.add(key)
         const color = CONNECTION_TYPE_COLORS[conn.type] ?? '#c9973a'
-        L.polyline(
+        const line = L.polyline(
           [[a.lat, a.lng], [b.lat, b.lng]],
           {
             color, weight: 1.3, opacity: 0.4,
@@ -367,6 +392,42 @@ export function GeoMap({ locale }: GeoMapProps) {
               : (conn.type === 'colleague' || conn.type === 'contemporary') ? '2,4' : undefined,
           }
         ).addTo(group)
+
+        // A 1.3px stroke is effectively unclickable, so a transparent wide
+        // line carries the hover/click interaction.
+        const rows = items.map(c => {
+          const from  = sageMap.get(c.source)?.label ?? c.source
+          const to    = sageMap.get(c.target)?.label ?? c.target
+          const label = CONNECTION_LABELS[c.type]?.[locale] ?? c.type
+          const col   = CONNECTION_TYPE_COLORS[c.type] ?? '#c9973a'
+          return `
+            <div style="margin-top:6px;">
+              <span style="font-size:10px;padding:1px 8px;border-radius:9999px;
+                background:${col}22;color:${col};border:1px solid ${col}55;">${label}</span>
+              <div dir="ltr" style="font-family:'Frank Ruhl Libre',serif;font-size:12px;
+                margin-top:3px;display:flex;gap:5px;align-items:center;flex-wrap:wrap;">
+                <span style="unicode-bidi:isolate;">${from}</span>
+                <span style="color:${col};">⟶</span>
+                <span style="unicode-bidi:isolate;">${to}</span>
+              </div>
+            </div>`
+        }).join('')
+
+        L.polyline([[a.lat, a.lng], [b.lat, b.lng]], {
+          color: '#ffffff', weight: 14, opacity: 0, interactive: true,
+        })
+          .addTo(group)
+          .bindPopup(
+            `<div style="font-family:Heebo,sans-serif;min-width:180px;">
+              <p style="font-size:10px;color:#9a8570;margin:0;letter-spacing:0.04em;">
+                ${tr(locale, 'סוג הקשר', 'Relationship', 'Тип связи')}
+                ${items.length > 1 ? ` (${items.length})` : ''}
+              </p>${rows}
+            </div>`,
+            { maxWidth: 260 },
+          )
+          .on('mouseover', () => line.setStyle({ weight: 3.5, opacity: 0.95 }))
+          .on('mouseout',  () => line.setStyle({ weight: 1.3, opacity: 0.4 }))
         // ראש חץ בכיוון הקשר (מקור ← יעד)
         const t = 0.58
         const pLat = a.lat + (b.lat - a.lat) * t
@@ -385,7 +446,7 @@ export function GeoMap({ locale }: GeoMapProps) {
       })
     })
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [showLinks, connections.length, sages.length, mapReady])
+  }, [showLinks, connections.length, sages.length, mapReady, locale])
 
   // ── Sync filter (dim non-matching markers) ───────────────────
   useEffect(() => {
@@ -416,7 +477,7 @@ export function GeoMap({ locale }: GeoMapProps) {
     try {
       map.invalidateSize()
       const ll = marker.getLatLng()
-      map.flyTo(ll, Math.max(map.getZoom(), 6), { duration: 1 })
+      map.flyTo(ll, Math.max(map.getZoom(), SAGE_FOCUS_ZOOM), { duration: 1 })
       // Open after the fly ends — at low zoom the marker may still be
       // clustered until zoomend re-adds the individual markers layer
       setTimeout(() => { try { marker.openPopup() } catch { /* noop */ } }, 1100)
@@ -429,8 +490,7 @@ export function GeoMap({ locale }: GeoMapProps) {
   useEffect(() => {
     const map = mapObjRef.current as any
     if (!map?._tileLayer) return
-    map._tileLayer.setUrl(
-      `https://{s}.basemaps.cartocdn.com/${theme === 'light' ? 'light_nolabels' : 'dark_nolabels'}/{z}/{x}/{y}{r}.png`)
+    map._tileLayer.setUrl(theme === 'light' ? TILE_URLS.light : TILE_URLS.dark)
   }, [theme])
 
   // ── Invalidate map size when tab becomes visible ─────────────
