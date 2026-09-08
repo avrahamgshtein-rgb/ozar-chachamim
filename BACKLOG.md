@@ -40,6 +40,28 @@ Deferred, non-blocking. Carried over from Stages 3–4 (frozen 2026-09-08, commi
 - **Two decorative chevrons remain below AA** (2.76 against a 3.0 target for
   non-text UI). All text-level failures are resolved.
 
+## Stage 6 — assistant
+
+- **Quota concurrency and reconciliation are NOT resolved.** Stage 6 inspected
+  the RPCs and changed no schema. That `confirm_authenticated_question` and
+  `release_authenticated_question` both filter on `state = 'reserved'` makes
+  each transition single-shot; it does not by itself establish safety under
+  concurrent requests, nor does it reconcile reservations abandoned when a
+  process dies between reserve and confirm. Still open:
+  - no sweeper for reservations left in `state = 'reserved'` when a request is
+    killed mid-flight (the new provider timeout narrows this window but does
+    not close it — a platform-level kill still strands the row)
+  - concurrent reserve calls for the same user have not been load-tested
+    against the period accounting
+  - no reconciliation job comparing `usage_reservations` against
+    `usage_periods.questions_reserved`
+  Treat these as open regardless of the Stage 6 timeout work.
+- **`SUPABASE_SERVICE_ROLE_KEY` is not available to the production
+  deployment**, so the chat API returns 500 before any provider call. Confirmed
+  in production: `GET /api/chat` returns 200 without an anon cookie and a bare
+  500 with one, which is the only branch that constructs the service-role
+  client. Fix is an environment variable, not code.
+
 ## Tooling
 
 - **`tsx` is invoked through `npx`.** Should become a devDependency with an
