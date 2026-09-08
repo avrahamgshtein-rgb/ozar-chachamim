@@ -1,8 +1,9 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import dynamic from 'next/dynamic'
 import { cn } from '@/lib/utils'
+import { tr } from '@/lib/i18n'
 import { Header } from './Header'
 import { TabBar } from './TabBar'
 import { Drawer } from './Drawer'
@@ -16,6 +17,8 @@ import { SageFilters } from '@/components/sages/SageFilters'
 import { Comparator } from '@/components/viz/Comparator'
 import { FilterChips } from '@/components/viz/FilterChips'
 import { MapLegend } from '@/components/viz/MapLegend'
+import { GeographyPanel } from '@/components/viz/GeographyPanel'
+import { GeographyMobileDrawer } from '@/components/viz/GeographyMobileDrawer'
 import { useAppStore } from '@/store/useAppStore'
 import { fetchSages, fetchConnections, fetchLocalGraphData } from '@/lib/supabase'
 import { fetchContentOverlay, applyOverlay } from '@/lib/contentOverlay'
@@ -61,6 +64,7 @@ interface AppShellProps {
 
 export function AppShell({ locale, initialTotal, initialLastUpdate }: AppShellProps) {
   const otherLocale: Locale = locale === 'he' ? 'en' : 'he'
+  const [isGeographyDrawerOpen, setIsGeographyDrawerOpen] = useState(false)
 
   const {
     activeTab,
@@ -180,7 +184,12 @@ export function AppShell({ locale, initialTotal, initialLastUpdate }: AppShellPr
       <Header locale={locale} otherLocale={otherLocale} />
 
       <main className="absolute inset-0 pt-[var(--header-h,64px)]">
-        <CanvasArea activeTab={activeTab} locale={locale} />
+        <CanvasArea
+          activeTab={activeTab}
+          locale={locale}
+          isGeographyDrawerOpen={isGeographyDrawerOpen}
+          setIsGeographyDrawerOpen={setIsGeographyDrawerOpen}
+        />
       </main>
 
       {/* Mobile search overlay */}
@@ -219,7 +228,17 @@ export function AppShell({ locale, initialTotal, initialLastUpdate }: AppShellPr
 
 /* ── Canvas area ──────────────────────────────────────────────── */
 
-function CanvasArea({ activeTab, locale }: { activeTab: string; locale: Locale }) {
+function CanvasArea({
+  activeTab,
+  locale,
+  isGeographyDrawerOpen,
+  setIsGeographyDrawerOpen,
+}: {
+  activeTab: string
+  locale: Locale
+  isGeographyDrawerOpen: boolean
+  setIsGeographyDrawerOpen: (open: boolean) => void
+}) {
   return (
     <div className="relative w-full h-full">
       {/* Network graph — always mounted so simulation lives across tab switches */}
@@ -228,12 +247,34 @@ function CanvasArea({ activeTab, locale }: { activeTab: string; locale: Locale }
         <FilterChips locale={locale} />
       </div>
 
-      {/* Geo map — lazy-mounted on first visit */}
-      <div className={cn('absolute inset-0 isolate', activeTab === 'map' ? 'block' : 'hidden')}>
-        <GeoMap locale={locale} />
-        <FilterChips locale={locale} />
-        <MapLegend locale={locale} />
+      {/* Geo map with geography panel — lazy-mounted on first visit */}
+      <div className={cn('absolute inset-0 isolate flex flex-row-reverse', activeTab === 'map' ? 'flex' : 'hidden')}>
+        <div className="flex-1 relative">
+          <GeoMap locale={locale} />
+          <FilterChips locale={locale} />
+          <MapLegend locale={locale} />
+
+          {/* Mobile geography button */}
+          <button
+            onClick={() => setIsGeographyDrawerOpen(true)}
+            className="md:hidden absolute bottom-4 left-4 z-30 px-3 py-2 bg-gold-500/90 hover:bg-gold-400 text-ink-900 font-sans font-bold text-xs rounded-md transition-colors"
+          >
+            📍 {tr(locale, 'גיאוגרפיה', 'Geography', 'География')}
+          </button>
+        </div>
+        <div className="hidden md:flex md:w-72 lg:w-80 flex-col border-s border-ink-800">
+          <GeographyPanel locale={locale} />
+        </div>
       </div>
+
+      {/* Mobile geography drawer */}
+      {activeTab === 'map' && (
+        <GeographyMobileDrawer
+          locale={locale}
+          isOpen={isGeographyDrawerOpen}
+          onClose={() => setIsGeographyDrawerOpen(false)}
+        />
+      )}
 
       {/* Traditions — era-grouped sage cards */}
       {activeTab === 'traditions' && (
