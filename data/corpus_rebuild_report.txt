@@ -1,0 +1,9 @@
+files written: 382
+words: 1032329
+
+UNPLACEABLE (3):
+  The Andalusian Philological Revolution_ A Comparative Analysis of Tenth-Century Hebrew Linguistics, Poetics, and Exegesis.docx — thematic — the tenth-century Andalusian grammatical polemic between מנחם בן סרוק and דונש בן לברט; no single biographical subject
+  השתלשלות המסורת - ספר הרפתקה.docx — no extractable text in the .docx (the file yields no paragraph runs); by filename and by the corpus analysis this is השתלשלות המסורת — ספר הרפתקה, a thematic book on the transmission of tradition, not a biography
+  מן הבשר אל הרוח_ סולם העלייה של האומה והאנושות מתוך משברי ההיסטוריה.docx — thematic — an essay by אברהם גולדשטיין on national and human ascent through historical crisis; no biographical subject
+
+EXTRACTION FAILURES (0):
