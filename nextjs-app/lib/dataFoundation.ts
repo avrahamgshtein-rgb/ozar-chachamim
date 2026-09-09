@@ -106,6 +106,7 @@ export function normalizeSage(raw: Record<string, unknown>, issues: DataValidati
     bio: (raw.bio as string) || undefined,
     core_concept: (raw.central_idea as string) || undefined,
     birth_year: typeof raw.birth_year === 'number' ? raw.birth_year : undefined,
+    date_precision: (raw.date_precision as Sage['date_precision']) || undefined,
     death_year: typeof raw.death_year === 'number' ? raw.death_year : undefined,
     tags: typeof raw.tags === 'string'
       ? raw.tags.split(',').map(t => t.trim()).filter(Boolean)

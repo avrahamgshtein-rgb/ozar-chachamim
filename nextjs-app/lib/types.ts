@@ -63,6 +63,15 @@ export interface Sage {
   core_concept?: string
   birth_year?: number
   death_year?: number
+  /**
+   * How much the year pair can be trusted.
+   *   'exact'   — the source gave real dates, e.g. "1905–1997"
+   *   'century' — only a century is known; birth/death are the bounds of that
+   *               window, NOT a lifespan. Never present these as a specific
+   *               date, and never assert two such sages were contemporaries.
+   * Absent means no usable years were found.
+   */
+  date_precision?: 'exact' | 'century'
   tags?: string[]
   migration_path?: MigrationPath
   coordinates?: { lat: number; lng: number }

@@ -278,7 +278,10 @@
       "Bash(cp nextjs-app/public/data.json data.json.before_xlsx_rebuild)",
       "Bash(echo \"audit exit: $?\")",
       "Bash(curl -s -o /dev/null --max-time 3 http://localhost:3000/he)",
-      "Bash(curl -s -o /dev/null -w \"status=%{http_code}\\\\n\" --max-time 20 http://localhost:3000/he)"
+      "Bash(curl -s -o /dev/null -w \"status=%{http_code}\\\\n\" --max-time 20 http://localhost:3000/he)",
+      "Bash(curl -s -o /dev/null -w \"status=%{http_code} time=%{time_total}s\\\\n\" --max-time 240 http://localhost:3000/he)",
+      "Bash(curl -s -o /dev/null --max-time 60 http://localhost:3000/he)",
+      "Bash(curl -s -o /dev/null -w \"status=%{http_code}\\\\n\" --max-time 60 http://localhost:3000/he)"
     ]
   }
 }

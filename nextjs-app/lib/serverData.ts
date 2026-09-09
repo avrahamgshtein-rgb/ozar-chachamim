@@ -50,6 +50,7 @@ function db(): Db {
       bio: record.bio,
       core_concept: record.core_concept,
       birth_year: record.birth_year,
+      date_precision: record.date_precision,
       death_year: record.death_year,
       tags: record.tags,
       migration_path: record.migration_path,

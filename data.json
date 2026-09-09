@@ -27,6 +27,9 @@
    "tags": "נשיא הסנהדרין, צדוקים, משפט, תיקון חברתי",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/68uAirBRMlyOGWWqbi1MTr",
+   "birth_year": -100,
+   "death_year": 0,
+   "date_precision": "century",
    "has_research": true
   },
   {
@@ -57,6 +60,9 @@
    "tags": "מרד בר כוכבא, קידוש השם, המשנה, ארבעה שנכנסו לפרדס",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/0uanJ3YCjtfh1LxDbnbiPK",
+   "birth_year": 0,
+   "death_year": 100,
+   "date_precision": "century",
    "has_research": true
   },
   {
@@ -72,6 +78,9 @@
    "tags": "עז כנמר, מסכת אבות",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/7jdJSWd1gl6zbEReRA5lGR",
+   "birth_year": 100,
+   "death_year": 200,
+   "date_precision": "century",
    "has_research": true
   },
   {
@@ -86,7 +95,10 @@
    "central_idea": "תרגום כמגן זהות: מילוליות שמייצרת נאמנות עברית ומרחב דרש מול פרשנות נוצרית.",
    "tags": "תרגום המקרא, פולמוס יהדות–נצרות, תרגום עקילס, רבי עקיבא, ביקורת נוסח, שפה וזהות",
    "chapter_type": "אישיות",
-   "spotify_url": "https://open.spotify.com/episode/71nqAiPfV8HB7EWCckohvG?si=WbQiatqrSYaFpMpTf0PUBw&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
+   "spotify_url": "https://open.spotify.com/episode/71nqAiPfV8HB7EWCckohvG?si=WbQiatqrSYaFpMpTf0PUBw&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": 100,
+   "death_year": 200,
+   "date_precision": "century"
   },
   {
    "id": "7",
@@ -100,7 +112,10 @@
    "central_idea": "תורה נשמרת במעשה. אחריות אישית להעברה דורית.",
    "tags": "שכחת התורה, תוספתא, מסירות",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/4MI4LUL2FI4WeVtEdPZS5F"
+   "spotify_url": "https://open.spotify.com/episode/4MI4LUL2FI4WeVtEdPZS5F",
+   "birth_year": 100,
+   "death_year": 200,
+   "date_precision": "century"
   },
   {
    "id": "8",
@@ -115,6 +130,9 @@
    "tags": "אגדות חז\"ל, ים, גלות, תיאולוגיה",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/7kYTSzyLvPI8HKdt7bdgf5",
+   "birth_year": 200,
+   "death_year": 300,
+   "date_precision": "century",
    "has_research": true,
    "migration_path": {
     "from": "בבל",
@@ -137,6 +155,9 @@
    "tags": "מדרש רבה, אגדה, דרשנות",
    "chapter_type": "טקסט יסוד",
    "spotify_url": "https://open.spotify.com/episode/0iVxn1iT9qqWMkwdQ3ANqu",
+   "birth_year": 300,
+   "death_year": 400,
+   "date_precision": "century",
    "has_research": true
   },
   {
@@ -152,6 +173,9 @@
    "tags": "ספר חסידים, חסידות אשכנז, קידוש השם, צוואת ר' יהודה החסיד",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/70SOBeANLpCEBeEplD3eOw",
+   "birth_year": 1100,
+   "death_year": 1200,
+   "date_precision": "century",
    "has_research": true,
    "migration_path": {
     "from": "שפיירא",
@@ -171,6 +195,9 @@
    "tags": "פירוש התורה, כד הקמח, שולחן של ארבע, פרד\"ס",
    "chapter_type": "חכם",
    "spotify_url": "https://open.spotify.com/episode/3TickrNhU6vSQBo54LXxGf",
+   "birth_year": 1200,
+   "death_year": 1300,
+   "date_precision": "century",
    "has_research": true
   },
   {
@@ -185,7 +212,10 @@
    "central_idea": "הבחנה בין משפט התורה האידיאלי לבין משפט המלך הפרגמטי לשמירה על סדר ציבורי.",
    "tags": "דרשות הר\"ן, משפט התורה, משפט המלך, המוות השחור",
    "chapter_type": "חכם",
-   "spotify_url": "https://open.spotify.com/episode/2LuetW1C27UfICNkPhakAr"
+   "spotify_url": "https://open.spotify.com/episode/2LuetW1C27UfICNkPhakAr",
+   "birth_year": 1300,
+   "death_year": 1400,
+   "date_precision": "century"
   },
   {
    "id": "14",
@@ -200,6 +230,9 @@
    "tags": "בר יוחאי, כתם פז, זוהר, לוב, מקובלים",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/09sbxccxPcM8mqxUj6yDR4",
+   "birth_year": 1500,
+   "death_year": 1600,
+   "date_precision": "century",
    "has_research": true,
    "migration_path": {
     "from": "קאסטיליה",
@@ -222,6 +255,9 @@
    "tags": "קלירי, פיוט הטל, יניי",
    "chapter_type": "חכם",
    "spotify_url": "https://open.spotify.com/episode/32xvqy7PMQACaWnJsbqMlG?si=FWNMNn1aTqi2Q30dGOdW6w&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": 500,
+   "death_year": 600,
+   "date_precision": "century",
    "has_research": true
   },
   {
@@ -236,7 +272,10 @@
    "central_idea": "הוויכוח על תכלית התורה: הלכה כתכלית מול פילוסופיה/קבלה כפסגה – ועיצוב עולם הישיבות.",
    "tags": "פילוסופיה, סדרי לימוד, הלכה, מטאפיזיקה, קבלה, עולם הישיבות, סמכות",
    "chapter_type": "נושא/מושג",
-   "spotify_url": "https://open.spotify.com/episode/4NKKrtI7AcK5wwQ0ejB7h1?si=jKMxNYqPRq6LQQm_5UMAbw&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
+   "spotify_url": "https://open.spotify.com/episode/4NKKrtI7AcK5wwQ0ejB7h1?si=jKMxNYqPRq6LQQm_5UMAbw&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": 1500,
+   "death_year": 1600,
+   "date_precision": "century"
   },
   {
    "id": "17",
@@ -250,7 +289,10 @@
    "central_idea": "גמישות תיאולוגית: הבחנה בין טעות לכפירה; אמונה כעמידות מוסרית; דגש על בחירה חופשית מול דטרמיניזם.",
    "tags": "ספר העיקרים, ויכוח טורטוסה, עיקרים ושורשים",
    "chapter_type": "חכמי ישראל - הגות, הנהגה והלכה",
-   "spotify_url": "https://open.spotify.com/episode/3H710rBuEItb7at39hVzLn"
+   "spotify_url": "https://open.spotify.com/episode/3H710rBuEItb7at39hVzLn",
+   "birth_year": 1380,
+   "death_year": 1444,
+   "date_precision": "exact"
   },
   {
    "id": "18",
@@ -265,6 +307,9 @@
    "tags": "פירוש המשנה, עלייה לארץ, שיקום ירושלים, איגרות מסע",
    "chapter_type": "חכמי ישראל - הגות, הנהגה והלכה",
    "spotify_url": "https://open.spotify.com/episode/2OEMGQeVLEIKytDCVSLS4c",
+   "birth_year": 1445,
+   "death_year": 1515,
+   "date_precision": "exact",
    "has_research": true,
    "migration_path": {
     "from": "איטליה",
@@ -303,6 +348,9 @@
    "tags": "אמונות ודעות, אגרון",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/0Xx2IgT8rAGI5bDBi7qIZJ",
+   "birth_year": 882,
+   "death_year": 942,
+   "date_precision": "exact",
    "has_research": true,
    "migration_path": {
     "from": "מצרים",
@@ -325,6 +373,9 @@
    "tags": "תושב\"ע, תנאים/אמוראים/סבוראים/גאונים, סמכות, קראות",
    "chapter_type": "טקסט יסוד",
    "spotify_url": "https://open.spotify.com/episode/7f2XqM3393CxSX04yH8mpv?si=ix4nH6_sTRSmylMvrlQjMw&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": 906,
+   "death_year": 1006,
+   "date_precision": "exact",
    "has_research": true
   },
   {
@@ -340,6 +391,9 @@
    "tags": "חרם דרבנו גרשום, מונוגמיה, פרטיות, פיוט",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/6rxAHJOCR3W7MJnFSV86xT",
+   "birth_year": 960,
+   "death_year": 1040,
+   "date_precision": "exact",
    "has_research": true,
    "migration_path": {
     "from": "מץ",
@@ -358,7 +412,10 @@
    "central_idea": "בירור העברית ככלי זהות וכבסיס להבנת המקרא ולבניית תרבות יהודית בספרד.",
    "tags": "שורשים; מילון עברי; דקדוק; פולמוס לשוני",
    "chapter_type": "אישיות",
-   "spotify_url": "https://spotifycreators-web.app.link/e/Y25n3OL4yQb"
+   "spotify_url": "https://spotifycreators-web.app.link/e/Y25n3OL4yQb",
+   "birth_year": 910,
+   "death_year": 970,
+   "date_precision": "exact"
   },
   {
    "id": "24",
@@ -373,6 +430,9 @@
    "tags": "כוזרים, דיפלומטיה, שירה עברית, תרגום רפואה",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/36w5041jUrEn5oPKATSVn1",
+   "birth_year": 915,
+   "death_year": 970,
+   "date_precision": "exact",
    "has_research": true
   },
   {
@@ -387,7 +447,10 @@
    "central_idea": "העמדת ההלכה כבסיס מחייב לצד אגדה כהשראה; יצירת גשר ספרותי לקראת ימי הראשונים והפיכת הבבלי ל'ספר החוקה'.",
    "tags": "אין למדין מן האגדה, תשובות הגאונים, סיום תקופה",
    "chapter_type": "חכמי ישראל - הגות, הנהגה והלכה",
-   "spotify_url": "https://open.spotify.com/episode/1crQJTeUeTRzuNWrBy5Xnw"
+   "spotify_url": "https://open.spotify.com/episode/1crQJTeUeTRzuNWrBy5Xnw",
+   "birth_year": 939,
+   "death_year": 1038,
+   "date_precision": "exact"
   },
   {
    "id": "26",
@@ -402,6 +465,9 @@
    "tags": "שורשים, דקדוק, מקרא, רפואה",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/2ZySwZSy0mmYVgrpGXmiAa",
+   "birth_year": 990,
+   "death_year": 1055,
+   "date_precision": "exact",
    "migration_path": {
     "from": "קורדובה",
     "to": "סרגוסה"
@@ -420,6 +486,9 @@
    "tags": "אין למדין מן האגדה, כתיבה שיטתית, ערבית-יהודית",
    "chapter_type": "חכמי ישראל - הגות, הנהגה והלכה",
    "spotify_url": "https://open.spotify.com/episode/5WkWoNLiebM2a8oFJMR0Ww",
+   "birth_year": 997,
+   "death_year": 1013,
+   "date_precision": "exact",
    "has_research": true
   },
   {
@@ -435,6 +504,9 @@
    "tags": "בעלי התוספות, ראש ישיבה, דיאלקטיקה, מסחר, קדושה",
    "chapter_type": "",
    "spotify_url": "https://open.spotify.com/episode/0Mz2W0BVeqiMBdoN55MrM3",
+   "birth_year": 1040,
+   "death_year": 1100,
+   "date_precision": "exact",
    "has_research": true
   },
   {
@@ -449,7 +521,10 @@
    "central_idea": "החדרת דיוק לשוני וביקורת נוסח ככלים הלכתיים מהותיים, מתוך נאמנות למסורת ואומץ אינטלקטואלי.",
    "tags": "הרי\"ף, דקדוק עברי, ביקורת נוסח, קירואן",
    "chapter_type": "חכם",
-   "spotify_url": "https://open.spotify.com/episode/5teJp1U9ghLdy4CXNAusRN?si=uqTLoA-PT_yqmv9eyGRw6g&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv&t=88"
+   "spotify_url": "https://open.spotify.com/episode/5teJp1U9ghLdy4CXNAusRN?si=uqTLoA-PT_yqmv9eyGRw6g&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv&t=88",
+   "birth_year": 1050,
+   "death_year": 1150,
+   "date_precision": "exact"
   },
   {
    "id": "261",
@@ -464,6 +539,9 @@
    "tags": "רש\"י, רבנו תם, תוספות, כל נדרי",
    "chapter_type": "חכם",
    "spotify_url": "https://open.spotify.com/episode/3112BV2vntKp6ZDRAWMYIe?si=jXz3QmrrSqiz6B6XSc2hdQ&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": 1060,
+   "death_year": 1135,
+   "date_precision": "exact",
    "has_research": true
   },
   {
@@ -478,7 +556,10 @@
    "central_idea": "ביקורת אינטלקטואלית עצמאית כלפי מסורת; עיון מעמיק והבנה מעל קבלה עיוורת.",
    "tags": "רי\"ף, עיון, סמכות תלמודית, הרמב\"ם",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/4rAsgRTzQIOx4TeBSEabWs"
+   "spotify_url": "https://open.spotify.com/episode/4rAsgRTzQIOx4TeBSEabWs",
+   "birth_year": 1077,
+   "death_year": 1141,
+   "date_precision": "exact"
   },
   {
    "id": "33",
@@ -492,7 +573,10 @@
    "central_idea": "נאמנות קשוחה לנוסח הגמרא (“בספרים אל ימחק”) שמכריחה עומק, דיוק וחילוקים – ומייצרת לימוד יוצר.",
    "tags": "תוספות, שתי שקיעות, תפילין, תקנות, מסעות הצלב",
    "chapter_type": "אישיות",
-   "spotify_url": "https://open.spotify.com/episode/5u9zxyAssijvwzZnbKM7OQ?si=o5kksAmaQNiRkBHxN8CVpQ&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
+   "spotify_url": "https://open.spotify.com/episode/5u9zxyAssijvwzZnbKM7OQ?si=o5kksAmaQNiRkBHxN8CVpQ&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": 1100,
+   "death_year": 1171,
+   "date_precision": "exact"
   },
   {
    "id": "34",
@@ -507,6 +591,9 @@
    "tags": "תורה שבעל פה, פולמוס קראי, פילוסופיה אריסטוטלית, מסירת דורות",
    "chapter_type": "אישיות",
    "spotify_url": "https://open.spotify.com/episode/7w1L1hQYnLtvaAWjCSIoud?si=dEz9V-NmSAiXCrVvP2TVEw&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": 1110,
+   "death_year": 1180,
+   "date_precision": "exact",
    "has_research": true,
    "migration_path": {
     "from": "קורדובה",
@@ -539,7 +626,10 @@
    "central_idea": "הבחנה בין חובות האיברים (מעשים) לחובות הלבבות (כוונה פנימית); מוסר כתשתית לאמונה שלמה.",
    "tags": "חובות הלבבות, מוסר יהודי, פילוסופיה דתית",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/4i5VEmckhRP0N4Q1QGp5eC"
+   "spotify_url": "https://open.spotify.com/episode/4i5VEmckhRP0N4Q1QGp5eC",
+   "birth_year": 1000,
+   "death_year": 1100,
+   "date_precision": "century"
   },
   {
    "id": "38",
@@ -553,7 +643,10 @@
    "central_idea": "מפגש מסורות כמנוע יצירה: סינתזה בין ספרד–אשכנז שמולידה מרכז הלכתי ומיסטי חדש.",
    "tags": "הלכה ותלמוד, מפגש ספרד–אשכנז, נשיאות נרבון, קבלה מוקדמת, חסידות אשכנז, מוסדות",
    "chapter_type": "נושא/מושג",
-   "spotify_url": "https://open.spotify.com/episode/28wg8VCd8QFBLQiEa8y15f?si=ai8T1gHuSUulzXa6z02hwA&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
+   "spotify_url": "https://open.spotify.com/episode/28wg8VCd8QFBLQiEa8y15f?si=ai8T1gHuSUulzXa6z02hwA&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": 1000,
+   "death_year": 1300,
+   "date_precision": "century"
   },
   {
    "id": "39",
@@ -568,6 +661,9 @@
    "tags": "חובות הלב, כוונה, פילוסופיה, אמונה, חסידות/מוסר",
    "chapter_type": "אישיות",
    "spotify_url": "https://open.spotify.com/episode/1qBD3kU3bmTNA8rWq0ezbD?si=bN7eR5kdS5qZ7TCI5dn5NA&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": 1000,
+   "death_year": 1100,
+   "date_precision": "century",
    "has_research": true
   },
   {
@@ -583,6 +679,9 @@
    "tags": "השגות, רמב\"ם, פרובאנס, קבלה",
    "chapter_type": "חכם",
    "spotify_url": "https://open.spotify.com/episode/3V6k0TH0ay1RxaO4bKeVXM?si=3apo-XzoRTir-Zx5fbYmQw&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": 1125,
+   "death_year": 1198,
+   "date_precision": "exact",
    "has_research": true
   },
   {
@@ -598,6 +697,9 @@
    "tags": "משנה תורה, מורה נבוכים, י\"ג עיקרים, השכל",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/3SyvZ5qZe9Mjieu9Wf6pzA",
+   "birth_year": 1138,
+   "death_year": 1204,
+   "date_precision": "exact",
    "migration_path": {
     "from": "קורדובה",
     "to": "מצרים",
@@ -620,6 +722,9 @@
    "tags": "ספר יצירה, ספירות ואותיות, תורת הכוונות, גבולות כתיבת סוד",
    "chapter_type": "אישיות",
    "spotify_url": "https://open.spotify.com/episode/16NM4luayYQvcaoGO21kWg?si=c9XlKJwYQIelAKtxfRIUeg&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": 1160,
+   "death_year": 1235,
+   "date_precision": "exact",
    "has_research": true
   },
   {
@@ -635,6 +740,9 @@
    "tags": "אור זרוע, תלמוד ירושלמי, חסידות אשכנז, טקסטואליות",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/7oMEYgzLDDMfqNduDgnyXR",
+   "birth_year": 1180,
+   "death_year": 1250,
+   "date_precision": "exact",
    "migration_path": {
     "from": "בוהמיה",
     "to": "וינה",
@@ -656,6 +764,9 @@
    "tags": "ויכוח ברצלונה, פרשנות לתורה, תורת הסוד, עלייה לארץ",
    "chapter_type": "חכם",
    "spotify_url": "https://open.spotify.com/episode/3ZjAqfQEp21lw1GXKibFGq",
+   "birth_year": 1194,
+   "death_year": 1270,
+   "date_precision": "exact",
    "migration_path": {
     "from": "גירונה",
     "to": "עכו",
@@ -692,6 +803,9 @@
    "tags": "ספר המאור, הרי\"ף, הראב\"ד, הרמב\"ן, ביקורת נוסח, פיוט",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/1Oey4Q7UY5P9TmSReEIy5e",
+   "birth_year": 1100,
+   "death_year": 1200,
+   "date_precision": "century",
    "has_research": true,
    "migration_path": {
     "from": "גירונה",
@@ -713,7 +827,10 @@
    "central_idea": "אחריות הלכתית שאינה חוששת מהקרבה אישית. פסיקה מתוך עקרונות יסוד, גם במחיר אישי קשה.",
    "tags": "שבויים, פסקי מהר\"ם, רדיפות, אחריות ציבורית",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/2KEK5HHxNXY0mD1HV36wrn"
+   "spotify_url": "https://open.spotify.com/episode/2KEK5HHxNXY0mD1HV36wrn",
+   "birth_year": 1220,
+   "death_year": 1293,
+   "date_precision": "exact"
   },
   {
    "id": "48",
@@ -727,7 +844,10 @@
    "central_idea": "מיפוי הגלות כאתוס: תיעוד קהילות יהודיות כבסיס לזיכרון היסטורי ולתודעת אחדות ישראל.",
    "tags": "ספר המסעות, קהילות, היסטוריה של הגלות, מסחר, ראש הגולה, צלבנים",
    "chapter_type": "אישיות",
-   "spotify_url": "https://open.spotify.com/episode/6uPNMCDmtJeamUc81SVz8X?si=hq1vgxJiTtWawhKuv44zAQ&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
+   "spotify_url": "https://open.spotify.com/episode/6uPNMCDmtJeamUc81SVz8X?si=hq1vgxJiTtWawhKuv44zAQ&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": 1100,
+   "death_year": 1200,
+   "date_precision": "century"
   },
   {
    "id": "49",
@@ -741,7 +861,10 @@
    "central_idea": "אומץ לפסוק הלכה מתוך הבנה של המנהג, שילוב חריפות אינטלקטואלית עם רגישות למציאות.",
    "tags": "אבי העזרי, תוספות, ברכה על נרות, סובלנות הלכתית",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/0oglKv7NMszH0VEiXz5kUO"
+   "spotify_url": "https://open.spotify.com/episode/0oglKv7NMszH0VEiXz5kUO",
+   "birth_year": 1100,
+   "death_year": 1200,
+   "date_precision": "century"
   },
   {
    "id": "50",
@@ -756,6 +879,9 @@
    "tags": "קבלת השמות, נבואה, השגה, האפיפיור, ספר יצירה",
    "chapter_type": "חכם",
    "spotify_url": "https://open.spotify.com/episode/7msZQUuF40gc7MzEt8TGBP",
+   "birth_year": 1240,
+   "death_year": 1291,
+   "date_precision": "exact",
    "has_research": true,
    "migration_path": {
     "from": "סרגוסה",
@@ -778,7 +904,10 @@
    "central_idea": "הבחנה בין עובדי עבודה זרה לעמים מוסריים, שיטתיות בהלכה ורגישות לפרשנות מקראית.",
    "tags": "בית הבחירה, רציונליזם, גויים בימינו, הלכה שיטתית",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/0sf3x7eQhEBrOAR6VxdNkT"
+   "spotify_url": "https://open.spotify.com/episode/0sf3x7eQhEBrOAR6VxdNkT",
+   "birth_year": 1249,
+   "death_year": 1316,
+   "date_precision": "exact"
   },
   {
    "id": "52",
@@ -792,7 +921,10 @@
    "central_idea": "מ\"ט פנים: התורה כוללת ריבוי דעות מראש; מחלוקת כדרך גילוי, לא תקלה.",
    "tags": "ריטב\"א, חידושי הריטב\"א, רמב\"ם, רמב\"ן, מחלוקת לשם אמת",
    "chapter_type": "חכמי ישראל - הגות, הנהגה והלכה",
-   "spotify_url": "https://open.spotify.com/episode/4Ao8OV05AacTbZqu6NBgea?si=W5Amlrl8SweLMAZfibe8Ew"
+   "spotify_url": "https://open.spotify.com/episode/4Ao8OV05AacTbZqu6NBgea?si=W5Amlrl8SweLMAZfibe8Ew",
+   "birth_year": 1250,
+   "death_year": 1320,
+   "date_precision": "exact"
   },
   {
    "id": "53",
@@ -806,7 +938,10 @@
    "central_idea": "שילוב בין עיון למנהג, בין דקדוק לשירה, בין עומק לסדר בתקופה של משבר קיומי.",
    "tags": "ספר המרדכי, תוספות, רמ\"א, פיוט",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/4TIzbEP8cp0XnScsOSVYcj"
+   "spotify_url": "https://open.spotify.com/episode/4TIzbEP8cp0XnScsOSVYcj",
+   "birth_year": 1250,
+   "death_year": 1298,
+   "date_precision": "exact"
   },
   {
    "id": "54",
@@ -821,6 +956,9 @@
    "tags": "משפט פריז, שריפת התלמוד, הגנה ציבורית",
    "chapter_type": "חכמי ישראל - הגות, הנהגה והלכה",
    "spotify_url": "https://open.spotify.com/episode/46MHn4vu6ORF3S4hyf9rN9",
+   "birth_year": 1260,
+   "death_year": 1268,
+   "date_precision": "exact",
    "has_research": true,
    "migration_path": {
     "from": "פריז",
@@ -840,6 +978,9 @@
    "tags": "דרש, אנתולוגיה, מדרשים אבודים, פסוקים, מסורת",
    "chapter_type": "ספר",
    "spotify_url": "https://open.spotify.com/episode/7tKvMKCTFSZebvK2vj0U5b",
+   "birth_year": 1200,
+   "death_year": 1300,
+   "date_precision": "century",
    "has_research": true
   },
   {
@@ -855,6 +996,9 @@
    "tags": "שו״ת הריב״ש, אנוסים, שיקום קהילה, פרעות קנ״א",
    "chapter_type": "חכמי ישראל - הגות, הנהגה והלכה",
    "spotify_url": "https://open.spotify.com/episode/59OpwWz4UjKqH3FjomFj2o",
+   "birth_year": 1326,
+   "death_year": 1408,
+   "date_precision": "exact",
    "has_research": true,
    "migration_path": {
     "from": "ספרד",
@@ -874,6 +1018,9 @@
    "tags": "אור ה׳, אהבת ה׳, ביקורת אריסטו, פרעות קנ״א",
    "chapter_type": "חכמי ישראל - הגות, הנהגה והלכה",
    "spotify_url": "https://open.spotify.com/episode/2zU0Aketj3W85PjNE1z3Vb",
+   "birth_year": 1340,
+   "death_year": 1410,
+   "date_precision": "exact",
    "has_research": true,
    "migration_path": {
     "from": "ברצלונה",
@@ -893,6 +1040,9 @@
    "tags": "גזירות קנ\"א, תלמסאן, ניסים, שער כבוד ה', רמב\"ם, פיוט",
    "chapter_type": "חכמי ישראל - הגות, הנהגה והלכה",
    "spotify_url": "https://open.spotify.com/episode/7q3U1w91U94YzhWhEWkgSB?si=_S7R53NtShWFrJK8OKNZiA",
+   "birth_year": 1354,
+   "death_year": 1442,
+   "date_precision": "exact",
    "migration_path": {
     "from": "טולדו",
     "to": "אלג'יריה",
@@ -913,7 +1063,10 @@
    "central_idea": "",
    "tags": "דרכי התלמוד, גאון מקסטיליה",
    "chapter_type": "אישיות",
-   "spotify_url": "https://open.spotify.com/episode/2xytN0uGuTq03wNYWvusDO?si=GjQi6caQRZGdjDrWc8cX7w"
+   "spotify_url": "https://open.spotify.com/episode/2xytN0uGuTq03wNYWvusDO?si=GjQi6caQRZGdjDrWc8cX7w",
+   "birth_year": 1360,
+   "death_year": 1463,
+   "date_precision": "exact"
   },
   {
    "id": "343",
@@ -928,6 +1081,9 @@
    "tags": "ספר אבודרהם",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/1sYlXFDONZ0TURq4d0e2RP",
+   "birth_year": 1300,
+   "death_year": 1400,
+   "date_precision": "century",
    "has_research": true
   },
   {
@@ -972,6 +1128,9 @@
    "tags": "אשכנז, שו\"ת, רדיפות, הרמ\"א",
    "chapter_type": "חכם",
    "spotify_url": "https://open.spotify.com/episode/675qg10QyWmdYgW9TyQyUB?si=0tKIc58TT-CFGBpIu5BVSw&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": 1400,
+   "death_year": 1480,
+   "date_precision": "exact",
    "has_research": true,
    "migration_path": {
     "from": "בוהמיה",
@@ -993,7 +1152,10 @@
    "central_idea": "שילוב נאמנות להלכה עם פתיחות תרבותית אחראית.",
    "tags": "הרנסנס, סמכות הלכה, פורים, קבלה",
    "chapter_type": "",
-   "spotify_url": "https://open.spotify.com/episode/2UFLK856gB3r5MDYUiO2mV"
+   "spotify_url": "https://open.spotify.com/episode/2UFLK856gB3r5MDYUiO2mV",
+   "birth_year": 1405,
+   "death_year": 1508,
+   "date_precision": "exact"
   },
   {
    "id": "65",
@@ -1008,6 +1170,9 @@
    "tags": "זהות יהודית בסוף ספרד, פילוסופיה וקבלה, דרשות ציבור",
    "chapter_type": "אישיות",
    "spotify_url": "https://open.spotify.com/episode/569PKgJ66rKNm3LAxtU8Hv?si=2Q7hPpMnQ2G0K4g7BVxLQw&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": 1420,
+   "death_year": 1494,
+   "date_precision": "exact",
    "has_research": true
   },
   {
@@ -1023,6 +1188,9 @@
    "tags": "פירוש רש\"י, חכם באשי, ספר המזרחי, קליטת מגורשי ספרד",
    "chapter_type": "חכם",
    "spotify_url": "https://open.spotify.com/episode/3prGOsLsSDsg5gSp4qNFVk",
+   "birth_year": 1435,
+   "death_year": 1526,
+   "date_precision": "exact",
    "has_research": true,
    "migration_path": {
     "from": "קושטא",
@@ -1045,6 +1213,9 @@
    "tags": "גירוש ספרד, רנסאנס, פירושי תנ\"ך, משיחיות, מחשבה פוליטית",
    "chapter_type": "חכמי ישראל - הגות, הנהגה והלכה",
    "spotify_url": "https://open.spotify.com/episode/5TcOFBOg5ZWpmJzEWAE1ef?si=KE21EdSuTNuD9N_tr8puSQ",
+   "birth_year": 1437,
+   "death_year": 1508,
+   "date_precision": "exact",
    "migration_path": {
     "from": "ליסבון",
     "to": "איטליה",
@@ -1066,6 +1237,9 @@
    "tags": "גירוש ספרד, סלוניקי, ספר המשיב, מגיד/התגלות, שיבת ציון",
    "chapter_type": "חכמי ישראל - הגות, הנהגה והלכה",
    "spotify_url": "https://open.spotify.com/episode/2wytNryqHZzLbnhrdOWa5R?si=re_LmFw7Sj-hECTSLe4PWQ",
+   "birth_year": 1465,
+   "death_year": 1546,
+   "date_precision": "exact",
    "migration_path": {
     "from": "ספרד",
     "to": "סלוניקי"
@@ -1084,6 +1258,9 @@
    "tags": "שו\"ת; הנהגה; גירוש ספרד; פסיקה במציאות משתנה",
    "chapter_type": "אישיות",
    "spotify_url": "https://spotifycreators-web.app.link/e/ZwNpVDI4yQb",
+   "birth_year": 1479,
+   "death_year": 1573,
+   "date_precision": "exact",
    "has_research": true
   },
   {
@@ -1099,6 +1276,9 @@
    "tags": "ים של שלמה, חכמת שלמה, רמ\"א, עמל הסוגיה",
    "chapter_type": "חכם",
    "spotify_url": "https://open.spotify.com/episode/77qmOPOAQ6RIlbvk9VtmFb",
+   "birth_year": 1510,
+   "death_year": 1573,
+   "date_precision": "exact",
    "has_research": true,
    "migration_path": {
     "from": "ליטא",
@@ -1121,6 +1301,9 @@
    "tags": "קבלה, פרדס רימונים, תומר דבורה, תיקון האדם, מקובלי צפת",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/6eeW3Kknuudy4VEELZmcof?si=up4JT39ST3aTrBpDZlfigw",
+   "birth_year": 1522,
+   "death_year": 1570,
+   "date_precision": "exact",
    "has_research": true,
    "migration_path": {
     "from": "קורדובה",
@@ -1142,7 +1325,10 @@
    "central_idea": "שפה פילוסופית־מדרשית שמעניקה עומק לאגדה ולתורה, ומחנכת ללימוד מסודר ובהיר.",
    "tags": "מהר\"ל, אגדות חז\"ל, גוף ונשמה, חינוך, גולם (מיתוס)",
    "chapter_type": "חכמי ישראל - הגות, הנהגה והלכה",
-   "spotify_url": "https://open.spotify.com/episode/37eDPuFbb4oSjIRx8U8B88?si=Ism8P_AOQp-KDPtkwNHrsw"
+   "spotify_url": "https://open.spotify.com/episode/37eDPuFbb4oSjIRx8U8B88?si=Ism8P_AOQp-KDPtkwNHrsw",
+   "birth_year": 1522,
+   "death_year": 1609,
+   "date_precision": "exact"
   },
   {
    "id": "73",
@@ -1157,6 +1343,9 @@
    "tags": "הלבושים, ועד ארבע הארצות, פסיקה, מדע, קבלה, הנהגה",
    "chapter_type": "אישיות",
    "spotify_url": "https://open.spotify.com/episode/30117xL4w5HtBLLFICQuvM?si=dg_NJOGfSsS8H6-dQOMsSw",
+   "birth_year": 1530,
+   "death_year": 1612,
+   "date_precision": "exact",
    "migration_path": {
     "from": "פראג",
     "to": "פולין"
@@ -1175,6 +1364,9 @@
    "tags": "ספר חרדים, ידיד נפש, סוכת שלום, הרמ\"ק, האר\"י",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/1z1ZTOGvJvtWOoXPHrXEJZ",
+   "birth_year": 1533,
+   "death_year": 1600,
+   "date_precision": "exact",
    "has_research": true
   },
   {
@@ -1190,6 +1382,9 @@
    "tags": "מהרש\"א, תלמוד, אגדה, ועד ארבע ארצות",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/1W9x8xBNjO6o82fNd87LFb",
+   "birth_year": 1555,
+   "death_year": 1631,
+   "date_precision": "exact",
    "has_research": true
   },
   {
@@ -1205,6 +1400,9 @@
    "tags": "בית חדש, חדש, דקדוק, ראשונים",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/2owg9vip33cnirUkUc97Gw",
+   "birth_year": 1561,
+   "death_year": 1640,
+   "date_precision": "exact",
    "has_research": true,
    "migration_path": {
     "from": "לובלין",
@@ -1224,6 +1422,9 @@
    "tags": "חסד לאברהם, השגחה, גלות שכינה, קליפות, גלגול, עולם הבא, ארץ ישראל מטפיזית, מוסר דיינים",
    "chapter_type": "אישיות",
    "spotify_url": "https://open.spotify.com/episode/7oZMpwJNWpTibhB6EvhJ6R?si=TkNI-nIPRbi7HQAUkAhk-Q&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": 1570,
+   "death_year": 1643,
+   "date_precision": "exact",
    "migration_path": {
     "from": "פאס",
     "to": "חברון"
@@ -1241,7 +1442,10 @@
    "central_idea": "יושר רוחני כמודל הנהגה: גאונות לצד חשיפה כנה של חולשה ומאבק פנימי.",
    "tags": "אוטוביוגרפיה, הימורים, התמכרות, פולמוס קבלה, יהודים–נוצרים, הומניזם, ספרות",
    "chapter_type": "אישיות",
-   "spotify_url": "https://open.spotify.com/episode/7dCBE5OnROaK58y5cK5tiO?si=4Cr1F3_iTIu6UQbPYdZuyg&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
+   "spotify_url": "https://open.spotify.com/episode/7dCBE5OnROaK58y5cK5tiO?si=4Cr1F3_iTIu6UQbPYdZuyg&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": 1571,
+   "death_year": 1648,
+   "date_precision": "exact"
   },
   {
    "id": "79",
@@ -1256,6 +1460,9 @@
    "tags": "טורי זהב, מנהגים, רדיפות, ענווה",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/0xSD9i70yODc67pyeQVP67",
+   "birth_year": 1586,
+   "death_year": 1667,
+   "date_precision": "exact",
    "has_research": true
   },
   {
@@ -1270,7 +1477,10 @@
    "central_idea": "פיוט ככוח הנהגה ותיאולוגיה: שילוב רמב\"ם עם עולם הסוד והפיכת גלות לתקווה.",
    "tags": "פיוט, קבלה, רמב\"ם מול האר\"י, הנהגה, גלות מוזע, תרבות תימן, זהות",
    "chapter_type": "אישיות",
-   "spotify_url": "https://open.spotify.com/episode/0esvJn3mSqW2Pa26wtwS9Q?si=NHUNxeLRSfak0mYUsSE7Lg&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
+   "spotify_url": "https://open.spotify.com/episode/0esvJn3mSqW2Pa26wtwS9Q?si=NHUNxeLRSfak0mYUsSE7Lg&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": 1600,
+   "death_year": 1700,
+   "date_precision": "century"
   },
   {
    "id": "81",
@@ -1284,7 +1494,10 @@
    "central_idea": "זהות כבחירה מודעת: המתח בין מסורת, חירות ומודרניות ניכר במיוחד בסיפורי האנוסים.",
    "tags": "אנוסים; זהות; פילוסופיה; מדע/רפואה",
    "chapter_type": "אישיות",
-   "spotify_url": "https://spotifycreators-web.app.link/e/W2WXvR24yQb"
+   "spotify_url": "https://spotifycreators-web.app.link/e/W2WXvR24yQb",
+   "birth_year": 1601,
+   "death_year": 1652,
+   "date_precision": "exact"
   },
   {
    "id": "82",
@@ -1298,7 +1511,10 @@
    "central_idea": "",
    "tags": "שבתאות, משיחיות שקר, סמכות רבנית, קהילות אירופה",
    "chapter_type": "אישיות",
-   "spotify_url": "https://open.spotify.com/episode/09JfLsbxRNjLhC969SxOPd?si=zTKhNkZ7T8qiI1akCdsAvg&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
+   "spotify_url": "https://open.spotify.com/episode/09JfLsbxRNjLhC969SxOPd?si=zTKhNkZ7T8qiI1akCdsAvg&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": 1610,
+   "death_year": 1698,
+   "date_precision": "exact"
   },
   {
    "id": "83",
@@ -1312,7 +1528,10 @@
    "central_idea": "הלכה כעיון פתוח ולא כקובץ סגור; עקרונות חדשניים בדיני ממונות וספקות.",
    "tags": "שפתי כהן, יורה דעה, תקפו כהן, מחלוקת",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/0zeTxQVV4ZhQFYYST2sO12"
+   "spotify_url": "https://open.spotify.com/episode/0zeTxQVV4ZhQFYYST2sO12",
+   "birth_year": 1622,
+   "death_year": 1663,
+   "date_precision": "exact"
   },
   {
    "id": "84",
@@ -1326,7 +1545,10 @@
    "central_idea": "שילוב עומק קבלי בהלכה פסוקה; פסיקה קצרה וברורה בעלת השפעה לאורך הדורות.",
    "tags": "מגן אברהם, אורח חיים, זמני היום, קבלה בהלכה",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/5fzAXAiCnkg42WFvOV2dci"
+   "spotify_url": "https://open.spotify.com/episode/5fzAXAiCnkg42WFvOV2dci",
+   "birth_year": 1637,
+   "death_year": 1682,
+   "date_precision": "exact"
   },
   {
    "id": "85",
@@ -1341,6 +1563,9 @@
    "tags": "עיון ברמב\"ם; כללים; שיטת לימוד; לוגיקה הלכתית",
    "chapter_type": "אישיות",
    "spotify_url": "https://spotifycreators-web.app.link/e/1mcxPFf4yQb",
+   "birth_year": 1657,
+   "death_year": 1727,
+   "date_precision": "exact",
    "migration_path": {
     "from": "איזמיר",
     "to": "קושטא"
@@ -1358,7 +1583,10 @@
    "central_idea": "קנאות כאחריות: שרטוט גבולות כדי למנוע קריסה רוחנית אחרי שבתאות – במחיר גבוה.",
    "tags": "אחר שבתאות, פולמוס, סמכות חכמים, גבולות קבלה, השכלה, לקט הקמח",
    "chapter_type": "אישיות",
-   "spotify_url": "https://open.spotify.com/episode/2kCpBIWS1B2NtObhJemSdG?si=CHbvRGp1RkW_Lj5w4HGnsQ&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
+   "spotify_url": "https://open.spotify.com/episode/2kCpBIWS1B2NtObhJemSdG?si=CHbvRGp1RkW_Lj5w4HGnsQ&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": 1671,
+   "death_year": 1750,
+   "date_precision": "exact"
   },
   {
    "id": "87",
@@ -1373,6 +1601,9 @@
    "tags": "דיני ממונות; קניינים; כללים; שיטת פסיקה",
    "chapter_type": "אישיות",
    "spotify_url": "https://spotifycreators-web.app.link/e/9p64oc54yQb",
+   "birth_year": 1677,
+   "death_year": 1735,
+   "date_precision": "exact",
    "migration_path": {
     "from": "קושטא",
     "to": "קושטא",
@@ -1394,6 +1625,9 @@
    "tags": "בית אל, ראשון לציון, תקנות קהל, שלמי ציבור, אהבת שלום",
    "chapter_type": "חכמי ישראל - הגות, הנהגה והלכה",
    "spotify_url": "https://open.spotify.com/episode/3CL54iYhfjNTz1KREt1aJk?si=gqAxPt4HTiW3pe6a4HVETQ",
+   "birth_year": 1680,
+   "death_year": 1756,
+   "date_precision": "exact",
    "migration_path": {
     "from": "איזמיר",
     "to": "ירושלים",
@@ -1415,6 +1649,9 @@
    "tags": "מאבק בשבתאות, לשון חריפה, חכמות כלליות, אוטוביוגרפיה",
    "chapter_type": "אישיות",
    "spotify_url": "https://open.spotify.com/episode/1beLl51NE2qBVK8f7hj2Qm?si=wTuZj6lgSkqYtfguLluJ2Q&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": 1697,
+   "death_year": 1776,
+   "date_precision": "exact",
    "has_research": true
   },
   {
@@ -1429,7 +1666,10 @@
    "central_idea": "מיפוי לשון המקרא למבנה הספירות; דחיית חכמות חיצוניות כתחליף; מפעל פירושים עצום שנחשף רק בדורות האחרונים.",
    "tags": "פשוטו מכוון אל סודו, רמח״ל, כתבים גנוזים",
    "chapter_type": "חכמי ישראל - הגות, הנהגה והלכה",
-   "spotify_url": "https://open.spotify.com/episode/6Sc3CiYpTfV68Ke8SueReD"
+   "spotify_url": "https://open.spotify.com/episode/6Sc3CiYpTfV68Ke8SueReD",
+   "birth_year": 1697,
+   "death_year": 1777,
+   "date_precision": "exact"
   },
   {
    "id": "91",
@@ -1444,6 +1684,9 @@
    "tags": "אורח חיים, חריפות, פשט, עצמאות, ביקורת מקרא (תורת הבחינות)",
    "chapter_type": "אישיות",
    "spotify_url": "https://open.spotify.com/episode/4tSyrs2SrcNd1WsVBoHZuh?si=fQD3_QT6TqqaEDMyoYR9bw",
+   "birth_year": 1695,
+   "death_year": 1785,
+   "date_precision": "exact",
    "migration_path": {
     "from": "ליטא",
     "to": "מץ"
@@ -1462,6 +1705,9 @@
    "tags": "חסידות מוקדמת; עלייה לא\"י; קשרי תפוצות-א\"י",
    "chapter_type": "אישיות",
    "spotify_url": "https://spotifycreators-web.app.link/e/HXK4lf94yQb",
+   "birth_year": 1701,
+   "death_year": 1761,
+   "date_precision": "exact",
    "migration_path": {
     "from": "גליציה",
     "to": "ירושלים",
@@ -1484,6 +1730,9 @@
    "tags": "מסילת ישרים, דרך ה׳, דעת תבונות, רדיפות",
    "chapter_type": "חכמי ישראל - הגות, הנהגה והלכה",
    "spotify_url": "https://open.spotify.com/episode/1lgKTjkSyrd7SAntCbBGTt",
+   "birth_year": 1707,
+   "death_year": 1746,
+   "date_precision": "exact",
    "has_research": true
   },
   {
@@ -1498,7 +1747,10 @@
    "central_idea": "מנהיגות הלכתית אסטרטגית: לדעת מתי להילחם בגלוי ומתי לרסן כדי לשמור על אחדות הקהילה.",
    "tags": "שו\"ת, שבתאות, חסידות, השכלה, קבלה (זהירות), הנהגה",
    "chapter_type": "אישיות",
-   "spotify_url": "https://open.spotify.com/episode/4EJ2FNYaB1FdSuKMRkfonR?si=123rhSTsT6Wga_7NA8Xp_A&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
+   "spotify_url": "https://open.spotify.com/episode/4EJ2FNYaB1FdSuKMRkfonR?si=123rhSTsT6Wga_7NA8Xp_A&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": 1713,
+   "death_year": 1793,
+   "date_precision": "exact"
   },
   {
    "id": "95",
@@ -1513,6 +1765,9 @@
    "tags": "שאלות ותשובות, פסיקה אשכנזית, נאורות, ביקורת השכלה",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/4OtzHMEeQArEy5BgF3t52P",
+   "birth_year": 1713,
+   "death_year": 1793,
+   "date_precision": "exact",
    "has_research": true,
    "migration_path": {
     "from": "פולין",
@@ -1531,7 +1786,10 @@
    "central_idea": "",
    "tags": "סידור הרש\"ש, בית אל, כוונות, חסד",
    "chapter_type": "אישיות",
-   "spotify_url": "https://open.spotify.com/episode/5yAibZuXCCCzAlCFiWICRS?si=TTjCoGAwR2i8jrOSJ3N9XA"
+   "spotify_url": "https://open.spotify.com/episode/5yAibZuXCCCzAlCFiWICRS?si=TTjCoGAwR2i8jrOSJ3N9XA",
+   "birth_year": 1720,
+   "death_year": 1777,
+   "date_precision": "exact"
   },
   {
    "id": "97",
@@ -1545,7 +1803,10 @@
    "central_idea": "לוגיקה פנימית של ההלכה: בירור הגדרים יוצר בהירות משפטית ומוסרית גם יחד.",
    "tags": "דיני ממונות; קניינים; סברות; מתודולוגיה למדנית",
    "chapter_type": "אישיות",
-   "spotify_url": "https://spotifycreators-web.app.link/e/sGxO35n4yQb"
+   "spotify_url": "https://spotifycreators-web.app.link/e/sGxO35n4yQb",
+   "birth_year": 1745,
+   "death_year": 1812,
+   "date_precision": "exact"
   },
   {
    "id": "98",
@@ -1560,6 +1821,9 @@
    "tags": "חיי אדם, חכמת אדם, הלכה למעשה, יהדות ליטא",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/182iEVeFAwTuBZxYCYbdIX",
+   "birth_year": 1748,
+   "death_year": 1820,
+   "date_precision": "exact",
    "migration_path": {
     "from": "פולין",
     "to": "וילנה",
@@ -1580,7 +1844,10 @@
    "central_idea": "תלמוד תורה ככוח מחזיק מציאות; דבקות דרך עיון ושיטה מוסדית של ישיבה מודרנית.",
    "tags": "וולוז'ין, נפש החיים, הגר\"א, עולם הישיבות, תלמוד תורה",
    "chapter_type": "חכמי ישראל - הגות, הנהגה והלכה",
-   "spotify_url": "https://open.spotify.com/episode/4doQLfwiMgf2moAjnxiX0V?si=dVrHxoWnRwuydUMeaUTJIg"
+   "spotify_url": "https://open.spotify.com/episode/4doQLfwiMgf2moAjnxiX0V?si=dVrHxoWnRwuydUMeaUTJIg",
+   "birth_year": 1749,
+   "death_year": 1821,
+   "date_precision": "exact"
   },
   {
    "id": "100",
@@ -1595,6 +1862,9 @@
    "tags": "חשבון הנפש, בנג'מין פרנקלין, תנועת המוסר, ישראל סלנטר, רציונליזם",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/7rCLKRa5bSuYAhNFZpUjV5",
+   "birth_year": 1749,
+   "death_year": 1826,
+   "date_precision": "exact",
    "has_research": true
   },
   {
@@ -1610,6 +1880,9 @@
    "tags": "גיליון הש\"ס, פסיקה, למדנות",
    "chapter_type": "חכם",
    "spotify_url": "https://open.spotify.com/episode/6u60Ab2ZLOPQjjIcY4kwBC?si=kZNrKNSbQW6E2fT4fOqDcw&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": 1762,
+   "death_year": 1837,
+   "date_precision": "exact",
    "has_research": true
   },
   {
@@ -1625,6 +1898,9 @@
    "tags": "אורתודוקסיה, נגד רפורמה, חדש אסור, פרשבורג",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/5XBxxBUWyu9fKUK69gjQgx",
+   "birth_year": 1762,
+   "death_year": 1839,
+   "date_precision": "exact",
    "migration_path": {
     "from": "גרמניה",
     "to": "פרשבורג"
@@ -1642,7 +1918,10 @@
    "central_idea": "הלכה כמנהיגות חברתית: מוסר, שלום וחינוך כמערכת ציבורית מחייבת.",
    "tags": "חכם באשי, תקנות חברתיות, חינוך חובה, כף החיים, מועד לכל חי, שלום בית",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/2ugZ7lWueXQOsEw2z6Va03"
+   "spotify_url": "https://open.spotify.com/episode/2ugZ7lWueXQOsEw2z6Va03",
+   "birth_year": 1787,
+   "death_year": 1868,
+   "date_precision": "exact"
   },
   {
    "id": "104",
@@ -1656,7 +1935,10 @@
    "central_idea": "תשובה כ'שיבה פוליטית' – מעבר מציפייה פסיבית לפעולה היסטורית.",
    "tags": "גאולה טבעית, אתערותא דלתתא, חרב ומחרשה, יהודה אלקלעי",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/2DXKB6Zr62zP0VwCytZznO"
+   "spotify_url": "https://open.spotify.com/episode/2DXKB6Zr62zP0VwCytZznO",
+   "birth_year": 1789,
+   "death_year": 1852,
+   "date_precision": "exact"
   },
   {
    "id": "105",
@@ -1670,7 +1952,10 @@
    "central_idea": "גאולה קמעא קמעא: אחריות אנושית כמצווה – יוזמה לאומית ללא ניתוק מן ההלכה.",
    "tags": "גאולה בדרך הטבע, יישוב הארץ, חקלאות, קורבנות בלי בית, מדיניות",
    "chapter_type": "אישיות",
-   "spotify_url": "https://open.spotify.com/episode/7CWcx0r0X5jRyzuRCBPBDh?si=gf7x1W04SsWqd3iA4wjpMQ"
+   "spotify_url": "https://open.spotify.com/episode/7CWcx0r0X5jRyzuRCBPBDh?si=gf7x1W04SsWqd3iA4wjpMQ",
+   "birth_year": 1795,
+   "death_year": 1874,
+   "date_precision": "exact"
   },
   {
    "id": "106",
@@ -1685,6 +1970,9 @@
    "tags": "גאולה טבעית, הקרבת קורבנות, התיישבות בארץ",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/0T5EizLF2mu1tavkZ9WUSX",
+   "birth_year": 1795,
+   "death_year": 1874,
+   "date_precision": "exact",
    "has_research": true
   },
   {
@@ -1700,6 +1988,9 @@
    "tags": "יישוב הארץ, קלישר, משיחיות",
    "chapter_type": "חכם",
    "spotify_url": "https://open.spotify.com/episode/3iEFTRWSwf4AJJ7lCw5SHe?si=W7kQzorhSIiFfwM6khgvjQ&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": 1796,
+   "death_year": 1874,
+   "date_precision": "exact",
    "has_research": true
   },
   {
@@ -1714,7 +2005,10 @@
    "central_idea": "תשובה כללית = שיבה: אחריות היסטורית עוברת מן השמיים לאדם ולציבור.",
    "tags": "תשובה כללית, שיבה לארץ, דיפלומטיה, שפה עברית, אחדות",
    "chapter_type": "אישיות",
-   "spotify_url": "https://open.spotify.com/episode/6GD0RxzoBaG17nmaGA9pe9?si=qeIXN4iwRIWsOjztQ5cWoQ"
+   "spotify_url": "https://open.spotify.com/episode/6GD0RxzoBaG17nmaGA9pe9?si=qeIXN4iwRIWsOjztQ5cWoQ",
+   "birth_year": 1798,
+   "death_year": 1878,
+   "date_precision": "exact"
   },
   {
    "id": "109",
@@ -1728,7 +2022,10 @@
    "central_idea": "מהלך גאולי הדרגתי מלווה בהשתדלות מעשית – קירוב משיח בן יוסף.",
    "tags": "ציונות דתית, גאולה, משיח בן יוסף, יישוב הארץ",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/4vNN4NEB3pFnQkALkPPq1v"
+   "spotify_url": "https://open.spotify.com/episode/4vNN4NEB3pFnQkALkPPq1v",
+   "birth_year": 1798,
+   "death_year": 1878,
+   "date_precision": "exact"
   },
   {
    "id": "110",
@@ -1742,7 +2039,10 @@
    "central_idea": "הגנה על יהדות של חמלה ואמונה מול רציונליזם קר – באמצעות מחקר מקרא ולשון.",
    "tags": "חכמת ישראל, פרשנות מקרא, פילולוגיה, רציונליזם, אמונה, חמלה, ביקורת יוון",
    "chapter_type": "אישיות",
-   "spotify_url": "https://open.spotify.com/episode/03tAgaC9jfaMhMJ2rvW4uF?si=cgIj0F37SiKtDyDT85ZqKA&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
+   "spotify_url": "https://open.spotify.com/episode/03tAgaC9jfaMhMJ2rvW4uF?si=cgIj0F37SiKtDyDT85ZqKA&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": 1800,
+   "death_year": 1865,
+   "date_precision": "exact"
   },
   {
    "id": "111",
@@ -1756,7 +2056,10 @@
    "central_idea": "גשר נאמן: פתיחות דעת המשרתת אמונה – לא מחליפה אותה.",
    "tags": "מנחת קנאות, תורת נביאים, אמנציפציה, גשר מסורת-מחקר",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/7qsdQhzQdtrX80wVbwkfmZ"
+   "spotify_url": "https://open.spotify.com/episode/7qsdQhzQdtrX80wVbwkfmZ",
+   "birth_year": 1805,
+   "death_year": 1855,
+   "date_precision": "exact"
   },
   {
    "id": "112",
@@ -1771,6 +2074,9 @@
    "tags": "אביר יעקב, תאפילאלת, פיוט, מקובל, שושלת אבוחצירא",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/2Er963loo0uKztvzqzvPlA",
+   "birth_year": 1806,
+   "death_year": 1880,
+   "date_precision": "exact",
    "has_research": true,
    "migration_path": {
     "from": "מרוקו",
@@ -1790,6 +2096,9 @@
    "tags": "תנועת המוסר, קלם, סלבודקה, נובהרדוק",
    "chapter_type": "חכם",
    "spotify_url": "https://open.spotify.com/episode/6SEbHVgsFhOJsCIvwTInSY",
+   "birth_year": 1810,
+   "death_year": 1883,
+   "date_precision": "exact",
    "has_research": true,
    "migration_path": {
     "from": "ליטא",
@@ -1811,7 +2120,10 @@
    "central_idea": "הקבלה כצורת חשיבה מטאפיזית שיש לה משמעות אוניברסלית דתית.",
    "tags": "קבלה, פילוסופיה, הדתות, גרמניה, חקר היהדות",
    "chapter_type": "הגות",
-   "spotify_url": "https://open.spotify.com/episode/3tiM1FAhaIv7zvVuY5FkBE"
+   "spotify_url": "https://open.spotify.com/episode/3tiM1FAhaIv7zvVuY5FkBE",
+   "birth_year": 1810,
+   "death_year": 1893,
+   "date_precision": "exact"
   },
   {
    "id": "341",
@@ -1826,6 +2138,9 @@
    "tags": "היישוב הישן, עץ חיים",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/6IZbp5APF1EvHCXfsHDjsf",
+   "birth_year": 1816,
+   "death_year": 1909,
+   "date_precision": "exact",
    "has_research": true,
    "migration_path": {
     "from": "ליטא",
@@ -1848,6 +2163,9 @@
    "tags": "בריסק, בית היתומים דיסקין, פולמוס השמיטה, התבדלות קהילתית",
    "chapter_type": "חכם",
    "spotify_url": "https://open.spotify.com/episode/6Bp9QqhUSS3A8y5iZkBU55",
+   "birth_year": 1818,
+   "death_year": 1898,
+   "date_precision": "exact",
    "has_research": true,
    "migration_path": {
     "from": "ליטא",
@@ -1866,7 +2184,10 @@
    "central_idea": "הנפילה כחלק מהמהלך: חטא ותשובה נקראים לאחור כחלק מרצון ה׳; הסכנה האמיתית היא ייאוש.",
    "tags": "ספק כתנאי לתורה, תשובה, חטא וזכות, תורה שבעל פה, איזביצא",
    "chapter_type": "אישיות",
-   "spotify_url": "https://open.spotify.com/episode/6DLhfveOXBJupYoYqgceWx?si=zrPEwB1LQjua2OW_BkVXPw&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
+   "spotify_url": "https://open.spotify.com/episode/6DLhfveOXBJupYoYqgceWx?si=zrPEwB1LQjua2OW_BkVXPw&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": 1823,
+   "death_year": 1900,
+   "date_precision": "exact"
   },
   {
    "id": "118",
@@ -1880,7 +2201,10 @@
    "central_idea": "קבלה כאוניברסליות יהודית: חיבור מסורת סוד עם פילוסופיה מודרנית וחזון בני נח.",
    "tags": "קבלה, פילוסופיה מודרנית, קאנט, הגל, שפינוזה, דרווין, בני נח, אוניברסליות",
    "chapter_type": "אישיות",
-   "spotify_url": "https://open.spotify.com/episode/66ocgEWzF0dAp3RmcvYSAn?si=kkTXOdjtTHi39U7Ohf1yTg&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
+   "spotify_url": "https://open.spotify.com/episode/66ocgEWzF0dAp3RmcvYSAn?si=kkTXOdjtTHi39U7Ohf1yTg&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": 1823,
+   "death_year": 1900,
+   "date_precision": "exact"
   },
   {
    "id": "119",
@@ -1895,6 +2219,9 @@
    "tags": "חסידות, קבלה, דרוש, תיקון, חדשנות",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/6XLsSvlI1KwSYKZXDhyaTD",
+   "birth_year": 1823,
+   "death_year": 1900,
+   "date_precision": "exact",
    "has_research": true
   },
   {
@@ -1909,7 +2236,10 @@
    "central_idea": "ברית ציבורית רחבה כצורך גאולי: אחדות בין כוחות שונים בעם כדי לבנות מציאות.",
    "tags": "חיבת ציון, אחדות דתיים-חילונים, היתר מכירה, התיישבות",
    "chapter_type": "אישיות",
-   "spotify_url": "https://open.spotify.com/episode/5T2FtQnfoEkvsFnCYyFBcQ?si=B9g6mdr7TtqbzlQnC1gTMA"
+   "spotify_url": "https://open.spotify.com/episode/5T2FtQnfoEkvsFnCYyFBcQ?si=B9g6mdr7TtqbzlQnC1gTMA",
+   "birth_year": 1824,
+   "death_year": 1898,
+   "date_precision": "exact"
   },
   {
    "id": "121",
@@ -1924,6 +2254,9 @@
    "tags": "חובבי ציון, פועלי אגודת ישראל, הנהגה רוחנית",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/2z6Y3bfXsFTNHPvI0HsiJq",
+   "birth_year": 1824,
+   "death_year": 1898,
+   "date_precision": "exact",
    "has_research": true
   },
   {
@@ -1938,7 +2271,10 @@
    "central_idea": "פסיקה מציאותית נאמנה למסורת: דיאלוג אמיץ בין טקסט לחיים במקום חומרות מנותקות.",
    "tags": "הלכה למעשה, מנהג, מודרנה, עוני, אנטישמיות, משנה ברורה",
    "chapter_type": "אישיות",
-   "spotify_url": "https://open.spotify.com/episode/1reKfnLOTfoSzBHRhzGMbe?si=g78LXL5_Q12g6IpvjyRTMQ&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
+   "spotify_url": "https://open.spotify.com/episode/1reKfnLOTfoSzBHRhzGMbe?si=g78LXL5_Q12g6IpvjyRTMQ&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": 1829,
+   "death_year": 1908,
+   "date_precision": "exact"
   },
   {
    "id": "123",
@@ -1953,6 +2289,9 @@
    "tags": "הלכה, ערוך השולחן, שיטתיות, סמכות רבנית",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/3zRwIpWZs0YUrRrpGcndte",
+   "birth_year": 1829,
+   "death_year": 1908,
+   "date_precision": "exact",
    "has_research": true
   },
   {
@@ -1968,6 +2307,9 @@
    "tags": "שדי חמד",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/7G1e30kwtU62b50Mao1pdn",
+   "birth_year": 1832,
+   "death_year": 1904,
+   "date_precision": "exact",
    "has_research": true,
    "migration_path": {
     "from": "ירושלים",
@@ -1990,6 +2332,9 @@
    "tags": "ביקורת חברתית, מעמדות, טנזימאט, פסיקה, פיוט, קבלה",
    "chapter_type": "אישיות",
    "spotify_url": "https://open.spotify.com/episode/5mA6IjVV5SbxfT0OfQ22Ad?si=-IWNH499SoGWQ6XF5UUQbg&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": 1835,
+   "death_year": 1909,
+   "date_precision": "exact",
    "has_research": true
   },
   {
@@ -2004,7 +2349,10 @@
    "central_idea": "שילוב בין קבלה להלכה; כתיבה פופולרית נגישה לקהל הרחב עם נופך מוסרי.",
    "tags": "הלכה, קבלה, דרשות, יהדות מזרח, הבן איש חי",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/1O45L1iFmr5oeXWvm6fCr6"
+   "spotify_url": "https://open.spotify.com/episode/1O45L1iFmr5oeXWvm6fCr6",
+   "birth_year": 1835,
+   "death_year": 1909,
+   "date_precision": "exact"
   },
   {
    "id": "127",
@@ -2019,6 +2367,9 @@
    "tags": "משנה ברורה, שמירת הלשון, אחריות מוסרית, ענווה",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/4xzoaG2b7YdsCB3rb0aPPf",
+   "birth_year": 1839,
+   "death_year": 1933,
+   "date_precision": "exact",
    "has_research": true
   },
   {
@@ -2033,7 +2384,10 @@
    "central_idea": "הגלות כמנגנון זהות; קדושה אינה בחומר אלא ברצון ה׳; ציונות וגאולה בדרך הטבע (בלפור/סן-רמו).",
    "tags": "אור שמח, משך חכמה, גלות וזהות, שבועות",
    "chapter_type": "חכמי ישראל - הגות, הנהגה והלכה",
-   "spotify_url": "https://open.spotify.com/episode/5M242GRqncgReaYVplhjBU"
+   "spotify_url": "https://open.spotify.com/episode/5M242GRqncgReaYVplhjBU",
+   "birth_year": 1843,
+   "death_year": 1926,
+   "date_precision": "exact"
   },
   {
    "id": "129",
@@ -2047,7 +2401,10 @@
    "central_idea": "\"הנקודה הפנימית\" ככלי לעבודת ה' וקריאת המציאות: העלאת אור מתוך חושך.",
    "tags": "שפת אמת, גור, נקודה פנימית, גלות וגאולה, ניצוצות",
    "chapter_type": "חכמי ישראל - הגות, הנהגה והלכה",
-   "spotify_url": "https://open.spotify.com/episode/2rV5jFlhaSLJasVNdd0rMf?si=WT92_boJSQK5yW0aO6dfLQ"
+   "spotify_url": "https://open.spotify.com/episode/2rV5jFlhaSLJasVNdd0rMf?si=WT92_boJSQK5yW0aO6dfLQ",
+   "birth_year": 1847,
+   "death_year": 1905,
+   "date_precision": "exact"
   },
   {
    "id": "130",
@@ -2061,7 +2418,10 @@
    "central_idea": "תרגילי מוסר כמעבדה לנפש: חשיפת מניעים נסתרים ובניית אומץ אמוני מעשי.",
    "tags": "נובהרדוק, תנועת המוסר, שבירת האגו, תורת הנגיעה, ישיבות בית יוסף",
    "chapter_type": "חכמי ישראל - הגות, הנהגה והלכה",
-   "spotify_url": "https://open.spotify.com/episode/7gMcU9ypTl2wkJLtZmnT6S?si=vpTwypCqRkGf8W0l2TnEtg"
+   "spotify_url": "https://open.spotify.com/episode/7gMcU9ypTl2wkJLtZmnT6S?si=vpTwypCqRkGf8W0l2TnEtg",
+   "birth_year": 1850,
+   "death_year": 1919,
+   "date_precision": "exact"
   },
   {
    "id": "131",
@@ -2075,7 +2435,10 @@
    "central_idea": "תפיסת 'מקיפים' והעמקת המבט על רצון פנימי, שגגה ואחדות שאינה מוחקת את הפרט.",
    "tags": "שם משמואל, אבני נזר, קוצק, אורות מקיפים, עבודת הנפש",
    "chapter_type": "חכמי ישראל - הגות, הנהגה והלכה",
-   "spotify_url": "https://open.spotify.com/episode/5dTIktS4k7pzb2kSQbqtXB?si=bXYmRr7AQhaDStRXLBq8rg"
+   "spotify_url": "https://open.spotify.com/episode/5dTIktS4k7pzb2kSQbqtXB?si=bXYmRr7AQhaDStRXLBq8rg",
+   "birth_year": 1855,
+   "death_year": 1926,
+   "date_precision": "exact"
   },
   {
    "id": "132",
@@ -2089,7 +2452,10 @@
    "central_idea": "קריאת הרמב\"ם כ'מערכת-על' המאחדת הלכה, אגדה ועיון מושגי תחת תורה אחת.",
    "tags": "צפנת פענח, רמב\"ם, אחדות התורה, דווינסק, חב\"ד",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/4aUeMLx5QyMsdp0moTBcDu"
+   "spotify_url": "https://open.spotify.com/episode/4aUeMLx5QyMsdp0moTBcDu",
+   "birth_year": 1858,
+   "death_year": 1936,
+   "date_precision": "exact"
   },
   {
    "id": "133",
@@ -2104,6 +2470,9 @@
    "tags": "בן איש חי, עץ חיים, בית לחם יהודה, דיבוקים, תיקון נשמות",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/7GkxO9MSNQCoBw1qdYuJVI",
+   "birth_year": 1859,
+   "death_year": 1942,
+   "date_precision": "exact",
    "migration_path": {
     "from": "בגדאד",
     "to": "ירושלים"
@@ -2122,6 +2491,9 @@
    "tags": "קודש וחול, תשובה היסטורית, ציונות, היתר מכירה, מרכז הרב",
    "chapter_type": "אישיות",
    "spotify_url": "https://open.spotify.com/episode/19vVkCaNfYWm6AlvbjbkRe?si=Y2-7mNX9QnCXzxz32MKpgA",
+   "birth_year": 1865,
+   "death_year": 1935,
+   "date_precision": "exact",
    "has_research": true
   },
   {
@@ -2136,7 +2508,10 @@
    "central_idea": "החיפוש עצמו הוא עבודת ה': להפוך ספק ומודרניות למנוע של תשובה וחידוש רוחני.",
    "tags": "מודרנה יהודית; אקזיסטנציאליזם; חסידות; משבר אמונה",
    "chapter_type": "אישיות",
-   "spotify_url": "https://spotifycreators-web.app.link/e/VKh6sMX4yQb"
+   "spotify_url": "https://spotifycreators-web.app.link/e/VKh6sMX4yQb",
+   "birth_year": 1871,
+   "death_year": 1942,
+   "date_precision": "exact"
   },
   {
    "id": "136",
@@ -2150,7 +2525,10 @@
    "central_idea": "הלכה כמנוע הנהגה: קדושה שמתרגמת לערבות קהילתית ולחזון שיבה לציון.",
    "tags": "פסק ספרדי; חינוך; הנהגה קהילתית; ציונות דתית צפון-אפריקאית",
    "chapter_type": "אישיות",
-   "spotify_url": "https://spotifycreators-web.app.link/e/JLk74X14yQb"
+   "spotify_url": "https://spotifycreators-web.app.link/e/JLk74X14yQb",
+   "birth_year": 1874,
+   "death_year": 1950,
+   "date_precision": "exact"
   },
   {
    "id": "137",
@@ -2165,6 +2543,9 @@
    "tags": "תענית דיבור, בית אל, ענווה, שובבי\"ם",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/0K70gzGHWICiSDkIOQKFip",
+   "birth_year": 1878,
+   "death_year": 1955,
+   "date_precision": "exact",
    "has_research": true,
    "migration_path": {
     "from": "חלב",
@@ -2184,6 +2565,9 @@
    "tags": "אחדות ישראל, הלכה פרגמטית, גיור, עבודה עברית, הרצוג",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/19Z8t6pZZjaOTG652Clx9c",
+   "birth_year": 1880,
+   "death_year": 1953,
+   "date_precision": "exact",
    "has_research": true
   },
   {
@@ -2198,7 +2582,10 @@
    "central_idea": "גאולה כתהליך נפשי-לאומי: תיקון המידות והחברה הוא חלק מן הריבונות.",
    "tags": "תשובה; גאולה; תורת הרב קוק; פנימיות התורה",
    "chapter_type": "אישיות",
-   "spotify_url": "https://spotifycreators-web.app.link/e/N6AFf684yQb"
+   "spotify_url": "https://spotifycreators-web.app.link/e/N6AFf684yQb",
+   "birth_year": 1882,
+   "death_year": 1951,
+   "date_precision": "exact"
   },
   {
    "id": "140",
@@ -2213,6 +2600,9 @@
    "tags": "הצדיק הירושלמי, בתי כלא, חסד, שואה",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/3DpekO1U2gizKVNXJlWwha",
+   "birth_year": 1885,
+   "death_year": 1969,
+   "date_precision": "exact",
    "has_research": true
   },
   {
@@ -2227,7 +2617,10 @@
    "central_idea": "התגלות כדיבור ואהבה שמולידים אחריות; אמת נוצרת במפגש ולא במערכת מופשטת.",
    "tags": "כוכב הגאולה, התגלות, דיאלוג, יהדות ונצרות, תרגום תנ\"ך, ALS",
    "chapter_type": "אישיות",
-   "spotify_url": "https://open.spotify.com/episode/7EpaIjYgIJVmSWDAsXDI7g?si=u6IC097XQ-KpBRfRRIGqcg&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
+   "spotify_url": "https://open.spotify.com/episode/7EpaIjYgIJVmSWDAsXDI7g?si=u6IC097XQ-KpBRfRRIGqcg&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": 1886,
+   "death_year": 1929,
+   "date_precision": "exact"
   },
   {
    "id": "142",
@@ -2242,6 +2635,9 @@
    "tags": "פילוסופיה, תיאולוגיה, גרמניה, לימוד, דיאלוג",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/0zMxkbnZJMF8Z3DKVqEnV9",
+   "birth_year": 1886,
+   "death_year": 1929,
+   "date_precision": "exact",
    "has_research": true
   },
   {
@@ -2256,7 +2652,10 @@
    "central_idea": "קדושה שמסרבת לברוח: עבודת ה' נבנית מתוך אמת פנימית גם כשהמציאות קורסת.",
    "tags": "אמונה בשבר; פסיכולוגיה רוחנית; חינוך; גטו ורשה",
    "chapter_type": "אישיות",
-   "spotify_url": "https://open.spotify.com/episode/462p60k0hrJUeoi1OiEtfD?si=fGjrjZNLSu6BZj6EPEL5iQ"
+   "spotify_url": "https://open.spotify.com/episode/462p60k0hrJUeoi1OiEtfD?si=fGjrjZNLSu6BZj6EPEL5iQ",
+   "birth_year": 1889,
+   "death_year": 1942,
+   "date_precision": "exact"
   },
   {
    "id": "144",
@@ -2271,6 +2670,9 @@
    "tags": "ישכיל עבדי, בית אל, ציונות מיסטית, אתחלתא דגאולה",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/7mpAfEie4L4nvzNmMg7hji",
+   "birth_year": 1889,
+   "death_year": 1969,
+   "date_precision": "exact",
    "has_research": true,
    "migration_path": {
     "from": "חלב",
@@ -2289,7 +2691,10 @@
    "central_idea": "חיבור בין מדינת ישראל, לימוד תורה וגאולה.",
    "tags": "מרכז הרב, אתחלתא דגאולה, התיישבות",
    "chapter_type": "חכם",
-   "spotify_url": "https://open.spotify.com/episode/33CjfygeixWek05uscU4qM?si=zHwL0eT7QtWwuw1PHxvNJg&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
+   "spotify_url": "https://open.spotify.com/episode/33CjfygeixWek05uscU4qM?si=zHwL0eT7QtWwuw1PHxvNJg&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": 1891,
+   "death_year": 1982,
+   "date_precision": "exact"
   },
   {
    "id": "146",
@@ -2304,6 +2709,9 @@
    "tags": "אהבת חיים, צדיק נסתר, ל״ו צדיקים, פחח, צדקה בסתר",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/12xZKv1fqjzLtuftGEYqvf",
+   "birth_year": 1892,
+   "death_year": 1968,
+   "date_precision": "exact",
    "has_research": true,
    "migration_path": {
     "from": "טורקיה",
@@ -2322,7 +2730,10 @@
    "central_idea": "הלכה נצחית שפוגשת זמן: ריאליזם הלכתי כמפתח לשמירת המסורת בחברה משתנה.",
    "tags": "פסיקה ריאלית, רציונליזם, אחדות ישראל, יהדות המגרב, אתחלתא דגאולה",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/2bY5WI2sxqsa1csNcbHXoG"
+   "spotify_url": "https://open.spotify.com/episode/2bY5WI2sxqsa1csNcbHXoG",
+   "birth_year": 1892,
+   "death_year": 1974,
+   "date_precision": "exact"
   },
   {
    "id": "148",
@@ -2336,7 +2747,10 @@
    "central_idea": "הקושיה כפתח לאמת. אין פרשנות סופית לתורה.",
    "tags": "גאונות, סוד, קושיה, אינטלקטואליות",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/0Kpu3qt4CJeGGkKLHxBgQA"
+   "spotify_url": "https://open.spotify.com/episode/0Kpu3qt4CJeGGkKLHxBgQA",
+   "birth_year": 1895,
+   "death_year": 1968,
+   "date_precision": "exact"
   },
   {
    "id": "149",
@@ -2350,7 +2764,10 @@
    "central_idea": "רבנות ממלכתית גאה ועצמאית – שילוב הנהגה, פסיקה ואחריות לאומית.",
    "tags": "ראשון לציון, רבנות ראשית, ממלכתיות, גיור, יחסי דת ומדינה",
    "chapter_type": "חכמי ישראל - הגות, הנהגה והלכה",
-   "spotify_url": "https://open.spotify.com/episode/6M7GqxrkmSgbLaowvUoIbM?si=YsGIvc_wSLu215jfLClMtg"
+   "spotify_url": "https://open.spotify.com/episode/6M7GqxrkmSgbLaowvUoIbM?si=YsGIvc_wSLu215jfLClMtg",
+   "birth_year": 1895,
+   "death_year": 1981,
+   "date_precision": "exact"
   },
   {
    "id": "150",
@@ -2365,6 +2782,9 @@
    "tags": "קמיעות, שתיקה, פתק המשיח, גאולה",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/3qeCTbEVgPEv319klxLDco",
+   "birth_year": 1899,
+   "death_year": 2006,
+   "date_precision": "exact",
    "has_research": true,
    "migration_path": {
     "from": "בגדאד",
@@ -2384,6 +2804,9 @@
    "tags": "אחריות, פנים, חשיבה מוסרית, אלטרנטיבה מערבית",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/3k9m3MfSjWyswqVmHrlM5S",
+   "birth_year": 1905,
+   "death_year": 1995,
+   "date_precision": "exact",
    "has_research": true
   },
   {
@@ -2398,7 +2821,10 @@
    "central_idea": "קדושת הזמן והפליאה כמנוע אמונה; אחריות מוסרית כחלק בלתי נפרד מעבודת ה'.",
    "tags": "השבת ארמון בזמן, נבואה, פליאה, זכויות אזרח, דיאלוג יהודי-נוצרי",
    "chapter_type": "אישיות",
-   "spotify_url": "https://open.spotify.com/episode/63Q7RdapehdnH3FCLVMrBy?si=DujHYLYPTUmSckrnlOofCQ&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
+   "spotify_url": "https://open.spotify.com/episode/63Q7RdapehdnH3FCLVMrBy?si=DujHYLYPTUmSckrnlOofCQ&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": 1907,
+   "death_year": 1972,
+   "date_precision": "exact"
   },
   {
    "id": "153",
@@ -2413,6 +2839,9 @@
    "tags": "פילוסופיה, נבואה, זכויות אדם, יהדות ארה\"ב",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/1D1oj2aS5igAQ53qO03FWq",
+   "birth_year": 1907,
+   "death_year": 1972,
+   "date_precision": "exact",
    "has_research": true
   },
   {
@@ -2428,6 +2857,9 @@
    "tags": "נהר שלום, בית-אל, כוונות הרש\"ש, ענווה, תיקונים",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/71fwTzDzMkD8JtOgm8g2kj",
+   "birth_year": 1908,
+   "death_year": 1983,
+   "date_precision": "exact",
    "has_research": true,
    "migration_path": {
     "from": "תימן",
@@ -2450,6 +2882,9 @@
    "tags": "הלכות מדינה, צבא ומוסר, שמיטה, פדיון שבויים, דמוקרטיה, רפואה והלכה",
    "chapter_type": "אישיות",
    "spotify_url": "https://open.spotify.com/episode/0l6TX6iKGkqyzbt4707yeN?si=_9QHZ6S9SEi2he0xCsln0Q&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": 1909,
+   "death_year": 1995,
+   "date_precision": "exact",
    "migration_path": {
     "from": "מוסקבה",
     "to": "ירושלים",
@@ -2471,6 +2906,9 @@
    "tags": "משניות קהתי, ציונות דתית, הנגשת תורה, לימוד משנה",
    "chapter_type": "חכמי ישראל - הגות, הנהגה והלכה",
    "spotify_url": "https://open.spotify.com/episode/5YJhfgmjz6YbKNEP0QBzUE?si=_C2UJ6u1TOmkWYGmREvXCw",
+   "birth_year": 1910,
+   "death_year": 1976,
+   "date_precision": "exact",
    "migration_path": {
     "from": "פולין",
     "to": "תל אביב"
@@ -2488,7 +2926,10 @@
    "central_idea": "הלכה מתוך אחריות מוסרית, דיאלוג עם המציאות המודרנית ולא נתק ממנה.",
    "tags": "חשמל בשבת, יושר פסיקתי, ענווה, בריחה מכבוד",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/2HlLtLodPvUVPUArvlAmEC"
+   "spotify_url": "https://open.spotify.com/episode/2HlLtLodPvUVPUArvlAmEC",
+   "birth_year": 1910,
+   "death_year": 1995,
+   "date_precision": "exact"
   },
   {
    "id": "158",
@@ -2503,6 +2944,9 @@
    "tags": "נתיבות שלום, סלונים, חינוך, אמונה וביטחון, דור השואה",
    "chapter_type": "חכמי ישראל - הגות, הנהגה והלכה",
    "spotify_url": "https://open.spotify.com/episode/2smxXVp67eOBQxkbFpnBEh?si=Bq_5p1TeQnqzLA2FzxpjQg",
+   "birth_year": 1911,
+   "death_year": 2000,
+   "date_precision": "exact",
    "migration_path": {
     "from": "פולין",
     "to": "ירושלים",
@@ -2524,7 +2968,10 @@
    "central_idea": "בדיעבד כשליחות: מהפכה חינוכית מתוך דוגמה אישית ותחושת אחריות לאומית.",
    "tags": "חינוך, בני עקיבא, כפר הרא\"ה, שליחות, דוגמה אישית, שואה, צה\"ל, ציונות דתית",
    "chapter_type": "אישיות",
-   "spotify_url": "https://open.spotify.com/episode/43IiFgqfBCu9lLZIR07if7?si=ZAnRvMcXQPCAbEyH-BWhOA&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
+   "spotify_url": "https://open.spotify.com/episode/43IiFgqfBCu9lLZIR07if7?si=ZAnRvMcXQPCAbEyH-BWhOA&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": 1913,
+   "death_year": 1995,
+   "date_precision": "exact"
   },
   {
    "id": "160",
@@ -2538,7 +2985,10 @@
    "central_idea": "עמידה יציבה מול מודרנה מתוך מסורת עמוקה ועקביות פסיקתית.",
    "tags": "שבט הלוי, חומרה, פוסק הדור, בית הוראה",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/283XmaljmcMZNoMgipa2cv"
+   "spotify_url": "https://open.spotify.com/episode/283XmaljmcMZNoMgipa2cv",
+   "birth_year": 1913,
+   "death_year": 2015,
+   "date_precision": "exact"
   },
   {
    "id": "161",
@@ -2552,7 +3002,10 @@
    "central_idea": "היהדות כהזמנה ליצור משמעות בעולם שותק; קדושת החולין והמעשה המוסרי.",
    "tags": "שתיקת האל, גלות הדיבור, יוצר משמעות, אושוויץ",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/4zJ21QTx6e8QgoBRSCWqiG"
+   "spotify_url": "https://open.spotify.com/episode/4zJ21QTx6e8QgoBRSCWqiG",
+   "birth_year": 1914,
+   "death_year": 1988,
+   "date_precision": "exact"
   },
   {
    "id": "334",
@@ -2567,6 +3020,9 @@
    "tags": "רמב\"ם, יהדות תימן, דור דעה",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/1rA2UmPl4BccGHQljls8Ij",
+   "birth_year": 1917,
+   "death_year": 2000,
+   "date_precision": "exact",
    "has_research": true,
    "migration_path": {
     "from": "תימן",
@@ -2585,7 +3041,10 @@
    "central_idea": "הישות האברהמית – האדם כנוכחות מוסרית היוצרת היסטוריה דרך אמירה 'הנני'.",
    "tags": "אסכולת פריז, אברהם, הנני, פרשנות קיומית, נשים",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/7DJX0cnVGFtntXiLnNdbpj"
+   "spotify_url": "https://open.spotify.com/episode/7DJX0cnVGFtntXiLnNdbpj",
+   "birth_year": 1919,
+   "death_year": 2006,
+   "date_precision": "exact"
   },
   {
    "id": "164",
@@ -2600,6 +3059,9 @@
    "tags": "נבואות, גאולה אקטיבית, אחדות העם, תשובה",
    "chapter_type": "חכמי ישראל - הגות, הנהגה והלכה",
    "spotify_url": "https://open.spotify.com/episode/2EnV8jysY70VrqWS5EYzEU",
+   "birth_year": 1921,
+   "death_year": 1995,
+   "date_precision": "exact",
    "has_research": true,
    "migration_path": {
     "from": "מרוקו",
@@ -2618,7 +3080,10 @@
    "central_idea": "מנהיגות 'גדול גיבור' המחברת תורה ומעשה; גאולה מתוך מפגש תפילה-עשייה ושימור ניגון מסורת.",
    "tags": "יהדות אלג׳יריה, עוז חיים, תורה וגבורה, עלייה בגיל 85",
    "chapter_type": "חכמי ישראל - הגות, הנהגה והלכה",
-   "spotify_url": "https://open.spotify.com/episode/0hEDzOsuXWV4gBqUTv3KqW"
+   "spotify_url": "https://open.spotify.com/episode/0hEDzOsuXWV4gBqUTv3KqW",
+   "birth_year": 1921,
+   "death_year": 2012,
+   "date_precision": "exact"
   },
   {
    "id": "166",
@@ -2632,7 +3097,10 @@
    "central_idea": "זהות 'עברי' כשלב תודעתי-לאומי שמאחד קודש וחול, משפחה ועם, מוסר והיסטוריה.",
    "tags": "אסכולת פריז, לוינס, שושני, עברי/יהודי, צמצום כמוסר, תחייה",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/6vCbxdldNDpdncGxSjvAyD"
+   "spotify_url": "https://open.spotify.com/episode/6vCbxdldNDpdncGxSjvAyD",
+   "birth_year": 1922,
+   "death_year": 1996,
+   "date_precision": "exact"
   },
   {
    "id": "167",
@@ -2647,6 +3115,9 @@
    "tags": "רב הכותל, מנהרות הכותל, בית אל, מקובל, צה\"ל",
    "chapter_type": "חכמי ישראל - הגות, הנהגה והלכה",
    "spotify_url": "https://open.spotify.com/episode/1d2iYDGxvwEW6fWxghPHEK?si=UC3yD71cRfeiVk8RgdLLVg",
+   "birth_year": 1924,
+   "death_year": 1995,
+   "date_precision": "exact",
    "migration_path": {
     "from": "תוניסיה",
     "to": "ירושלים"
@@ -2665,6 +3136,9 @@
    "tags": "הלכה ומודרנה, רפואה ומדע, הלכה לציבור, אהבת ישראל",
    "chapter_type": "אישיות",
    "spotify_url": "https://open.spotify.com/episode/0bYyPcQtkqoVwWyC5OWfpn?si=PiHiW-RXR8GyZWwiGjID0g",
+   "birth_year": 1924,
+   "death_year": 1998,
+   "date_precision": "exact",
    "has_research": true
   },
   {
@@ -2680,6 +3154,9 @@
    "tags": "שואה, אמונה פצועה, מוסר, עדות",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/3CyodWcIZlT5rUhlIbpWqm",
+   "birth_year": 1928,
+   "death_year": 2016,
+   "date_precision": "exact",
    "has_research": true
   },
   {
@@ -2695,6 +3172,9 @@
    "tags": "שקידה; פסיקה; הנהגה ליטאית; ספרות תורנית",
    "chapter_type": "אישיות",
    "spotify_url": "https://spotifycreators-web.app.link/e/y6u1ZKx4yQb",
+   "birth_year": 1928,
+   "death_year": 2022,
+   "date_precision": "exact",
    "migration_path": {
     "from": "פולין",
     "to": "בני ברק"
@@ -2712,7 +3192,10 @@
    "central_idea": "",
    "tags": "זהות יהודית ומדינה, דמוקרטיה והלכה, ביטחון, גבולות שיח",
    "chapter_type": "אישיות",
-   "spotify_url": "https://open.spotify.com/episode/7aTrR9GQVvo3kwZrfhAuIj?si=_hnfvF-wT06Aqi3ZB0hU9w&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
+   "spotify_url": "https://open.spotify.com/episode/7aTrR9GQVvo3kwZrfhAuIj?si=_hnfvF-wT06Aqi3ZB0hU9w&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": 1932,
+   "death_year": 1990,
+   "date_precision": "exact"
   },
   {
    "id": "172",
@@ -2726,7 +3209,10 @@
    "central_idea": "שילוב של תורה עם דרך ארץ, אחריות ציבורית ומדינית מתוך מחויבות להלכה.",
    "tags": "ציונות דתית, בני עקיבא, ישיבות הסדר, גיור, רבנות",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/2IpU2q7Mhxhe2el4hf2psE"
+   "spotify_url": "https://open.spotify.com/episode/2IpU2q7Mhxhe2el4hf2psE",
+   "birth_year": 1932,
+   "death_year": 2022,
+   "date_precision": "exact"
   },
   {
    "id": "173",
@@ -2740,7 +3226,10 @@
    "central_idea": "הנהגה אחראית שמחזיקה תורה-צבא-מדינה יחד, עם דגש על אחדות ואהבת אדם.",
    "tags": "בני עקיבא, ישיבות הסדר, גיור, הנהגה ציבורית, אחדות",
    "chapter_type": "אישיות",
-   "spotify_url": "https://open.spotify.com/episode/1j4SgDhb3vWdY3gvTjv3oq?si=67O0wVDkTsa2b7zRpBFQmQ&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv&t=128"
+   "spotify_url": "https://open.spotify.com/episode/1j4SgDhb3vWdY3gvTjv3oq?si=67O0wVDkTsa2b7zRpBFQmQ&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv&t=128",
+   "birth_year": 1932,
+   "death_year": 2022,
+   "date_precision": "exact"
   },
   {
    "id": "174",
@@ -2755,6 +3244,9 @@
    "tags": "שער השמים, נתיבות שלום, צמצום הקדושה, בית גנזי, קרבנות",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/0VCagjZmbRPm2I6ZwrWMgu",
+   "birth_year": 1937,
+   "death_year": 2010,
+   "date_precision": "exact",
    "has_research": true,
    "migration_path": {
     "from": "טבריה",
@@ -2773,7 +3265,10 @@
    "central_idea": "שילוב נדיר של עולמות: עבודת ה' מיסטית לצד אתוס לחימה ושליחות ציבורית.",
    "tags": "סיירת שקד, יום כיפור, קבלה ירושלמית, אלון מורה, מחתרת יהודית",
    "chapter_type": "חכמי ישראל - הגות, הנהגה והלכה",
-   "spotify_url": "https://open.spotify.com/episode/7AzhR0GwdztLO5WPLBXPI2?si=lEcNqxliRzezANtCirOiWA"
+   "spotify_url": "https://open.spotify.com/episode/7AzhR0GwdztLO5WPLBXPI2?si=lEcNqxliRzezANtCirOiWA",
+   "birth_year": 1942,
+   "death_year": 2018,
+   "date_precision": "exact"
   },
   {
    "id": "176",
@@ -2788,6 +3283,9 @@
    "tags": "רוח לחימה, רבנות בשטח, ממלכתיות, שירות צבאי",
    "chapter_type": "אישיות",
    "spotify_url": "https://open.spotify.com/episode/3GVwabzRl1ToA2p0d17erP?si=FJUdB6whRjKYI9c51iFewg",
+   "birth_year": 1951,
+   "death_year": 2018,
+   "date_precision": "exact",
    "has_research": true
   },
   {
@@ -2803,6 +3301,9 @@
    "tags": "אהבת ישראל, ענווה, גרעינים תורניים, מרכז הרב, הר המור",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/5kmvc0W7chgl4NeshSU6kX",
+   "birth_year": 1955,
+   "death_year": 2023,
+   "date_precision": "exact",
    "has_research": true
   },
   {
@@ -2817,7 +3318,10 @@
    "central_idea": "הקבלה כמערכת מסבירה-כול: קוסמולוגיה, תיאודיציה ותיקון – וגם כמנוע התפתחות פנימי של מסורת.",
    "tags": "אין־סוף וספירות, רע ותיקון, האר\"י, זוהר, מחקר אקדמי",
    "chapter_type": "נושא/מושג",
-   "spotify_url": "https://open.spotify.com/episode/5qiFDQTROpb7v21w4imqIE?si=N2J3HnklTRW2Gm-BmT4SFA&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
+   "spotify_url": "https://open.spotify.com/episode/5qiFDQTROpb7v21w4imqIE?si=N2J3HnklTRW2Gm-BmT4SFA&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": 1800,
+   "death_year": 1900,
+   "date_precision": "century"
   },
   {
    "id": "179",
@@ -2831,7 +3335,10 @@
    "central_idea": "קדושה פרקטית מול פיוטי הגאולה. הנהגה רוחנית דרך חוויה ומסורת.",
    "tags": "בבא סאלי, אעופה אשכונה, פיוט, גאולה",
    "chapter_type": "דמויות",
-   "spotify_url": "https://open.spotify.com/episode/4zNV0OTiJsa1CUIm4xsy4e"
+   "spotify_url": "https://open.spotify.com/episode/4zNV0OTiJsa1CUIm4xsy4e",
+   "birth_year": 1800,
+   "death_year": 1900,
+   "date_precision": "century"
   },
   {
    "id": "180",
@@ -2874,7 +3381,10 @@
    "central_idea": "הכלי איננו המטרה: השאלה היא תודעת הלומד, יראת שמים ומטרת העיון.",
    "tags": "לומדות; מדעי היהדות; תורה וחול; גבולות החכמה",
    "chapter_type": "נושא/מושג",
-   "spotify_url": "https://spotifycreators-web.app.link/e/NH0Pkku4yQb"
+   "spotify_url": "https://spotifycreators-web.app.link/e/NH0Pkku4yQb",
+   "birth_year": 1800,
+   "death_year": 1900,
+   "date_precision": "century"
   },
   {
    "id": "183",
@@ -2903,6 +3413,9 @@
    "tags": "פדובה, רנסנס, פסיקה אשכנזית, פורים",
    "chapter_type": "חכם",
    "spotify_url": "https://open.spotify.com/episode/2UFLK856gB3r5MDYUiO2mV?si=GMJjiZMzQjK1asCeXsrPzg&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": 1405,
+   "death_year": 1508,
+   "date_precision": "exact",
    "migration_path": {
     "from": "מגנצא",
     "to": "פדובה"
@@ -2921,6 +3434,9 @@
    "tags": "בעל הטורים, ארבעה טורים, הלכה, טולדו, פסיקה",
    "chapter_type": "",
    "spotify_url": "https://open.spotify.com/episode/1ascElHzBKieDVSWk8wZBw",
+   "birth_year": 1269,
+   "death_year": 1343,
+   "date_precision": "exact",
    "has_research": true,
    "migration_path": {
     "from": "גרמניה",
@@ -2942,7 +3458,10 @@
    "central_idea": "שילוב בין תורה, מדע ופילוסופיה; תרגום חכמה כללית לעברית.",
    "tags": "בר חייא, פילוסופיה, מדע יהודי, מתמטיקה",
    "chapter_type": "",
-   "spotify_url": "https://open.spotify.com/episode/3FAGqYdzyMQbyPbon3KYoC"
+   "spotify_url": "https://open.spotify.com/episode/3FAGqYdzyMQbyPbon3KYoC",
+   "birth_year": 1100,
+   "death_year": 1200,
+   "date_precision": "century"
   },
   {
    "id": "191",
@@ -2957,6 +3476,9 @@
    "tags": "חסידות, טבריה, תלמיד המגיד ממזריטש, פרי הארץ",
    "chapter_type": "",
    "spotify_url": "https://open.spotify.com/episode/17SN59z9ioFY7rUaYLDrY3",
+   "birth_year": 1730,
+   "death_year": 1788,
+   "date_precision": "exact",
    "migration_path": {
     "from": "ליטא",
     "to": "טבריה",
@@ -2978,6 +3500,9 @@
    "tags": "פירוש מקרא, דקדוק, אסטרולוגיה, פשט, סוד",
    "chapter_type": "",
    "spotify_url": "https://open.spotify.com/episode/4qxJVPlseRPaiWngzoMerl",
+   "birth_year": 1089,
+   "death_year": 1167,
+   "date_precision": "exact",
    "has_research": true
   },
   {
@@ -2993,6 +3518,9 @@
    "tags": "תרגום התורה, ספטואגינטה, תרבות יוון, חז\"ל",
    "chapter_type": "נושא",
    "spotify_url": "https://open.spotify.com/episode/0KlkCaGEiFapr5FKt6Vt9u",
+   "birth_year": -300,
+   "death_year": -200,
+   "date_precision": "century",
    "has_research": true
   },
   {
@@ -3022,6 +3550,9 @@
    "tags": "כך, JDL, כהניזם",
    "chapter_type": "חכם",
    "spotify_url": "https://open.spotify.com/episode/7aTrR9GQVvo3kwZrfhAuIj?si=_hnfvF-wT06Aqi3ZB0hU9w&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": 1932,
+   "death_year": 1990,
+   "date_precision": "exact",
    "has_research": true
   },
   {
@@ -3037,6 +3568,9 @@
    "tags": "פיוט, משקל ערבי, דקדוק",
    "chapter_type": "חכם",
    "spotify_url": "https://open.spotify.com/episode/2XJ8USkWLQA8Z2lJC3Miew?si=oH_tAHkZRzaombbADtUZgg&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": 920,
+   "death_year": 990,
+   "date_precision": "exact",
    "has_research": true
   },
   {
@@ -3051,7 +3585,10 @@
    "central_idea": "שילוב קבלת האר\"י עם הוראה שיטתית וספרות הלכתית-קבלית.",
    "tags": "משנת חסידים, יושר לבב, קבלת האר\"י",
    "chapter_type": "חכם",
-   "spotify_url": "https://open.spotify.com/episode/3Foy6VcyWU352VPpw1z1cp?si=jaoMkKODSduL9jAf58zdww"
+   "spotify_url": "https://open.spotify.com/episode/3Foy6VcyWU352VPpw1z1cp?si=jaoMkKODSduL9jAf58zdww",
+   "birth_year": 1687,
+   "death_year": 1743,
+   "date_precision": "exact"
   },
   {
    "id": "204",
@@ -3065,7 +3602,10 @@
    "central_idea": "הפיכת המשבר וההסתר למקום של עבודת ה' פנימית.",
    "tags": "אש קודש, חובת התלמידים",
    "chapter_type": "חכם",
-   "spotify_url": "https://open.spotify.com/episode/462p60k0hrJUeoi1OiEtfD?si=fGjrjZNLSu6BZj6EPEL5iQ&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
+   "spotify_url": "https://open.spotify.com/episode/462p60k0hrJUeoi1OiEtfD?si=fGjrjZNLSu6BZj6EPEL5iQ&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": 1889,
+   "death_year": 1943,
+   "date_precision": "exact"
   },
   {
    "id": "346",
@@ -3080,6 +3620,9 @@
    "tags": "מעיין המתגבר, לב טוב",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/2XG7fux56GqLM8WnM0QRjs",
+   "birth_year": 0,
+   "death_year": 100,
+   "date_precision": "century",
    "has_research": true
   },
   {
@@ -3094,7 +3637,10 @@
    "central_idea": "שילוב בין מחקר מדעי לנאמנות למסורת.",
    "tags": "מורה נבוכים, אבן גבירול",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/0fBwsgpkyNbo7MJnjhEgeH"
+   "spotify_url": "https://open.spotify.com/episode/0fBwsgpkyNbo7MJnjhEgeH",
+   "birth_year": 1803,
+   "death_year": 1867,
+   "date_precision": "exact"
   },
   {
    "id": "207",
@@ -3108,7 +3654,10 @@
    "central_idea": "שימור ועיבוד אוצרות מדרש קדומים בתוך פרשנות אירופית.",
    "tags": "ספר יסוד, בראשית רבתי",
    "chapter_type": "חכם",
-   "spotify_url": "https://open.spotify.com/episode/1PpzvwnJnR9ssTIwkuP4Lj?si=6Muo4ngpS_yzlOrCWj4iKw&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
+   "spotify_url": "https://open.spotify.com/episode/1PpzvwnJnR9ssTIwkuP4Lj?si=6Muo4ngpS_yzlOrCWj4iKw&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": 1000,
+   "death_year": 1100,
+   "date_precision": "century"
   },
   {
    "id": "349",
@@ -3122,7 +3671,10 @@
    "central_idea": "דיוק טקסטואלי לצד מחויבות עמוקה למסורת.",
    "tags": "חסדי דוד, תוספתא",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/0gNG3pg6tSS0rP12co2dsU"
+   "spotify_url": "https://open.spotify.com/episode/0gNG3pg6tSS0rP12co2dsU",
+   "birth_year": 1719,
+   "death_year": 1792,
+   "date_precision": "exact"
   },
   {
    "id": "350",
@@ -3137,6 +3689,9 @@
    "tags": "מגילת אביתר, גאון יעקב",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/32gThCfsqISZIYKhU1lXHx",
+   "birth_year": 1040,
+   "death_year": 1112,
+   "date_precision": "exact",
    "has_research": true
   },
   {
@@ -3152,6 +3707,9 @@
    "tags": "ספר הערוך",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/2KCKjcc8V8h7lzmGQjwBoh",
+   "birth_year": 1038,
+   "death_year": 1106,
+   "date_precision": "exact",
    "has_research": true
   },
   {
@@ -3167,6 +3725,9 @@
    "tags": "שערי שמחה, הרי\"ץ גיאת",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/46NRbx8KdsxCK30BzV4tyN",
+   "birth_year": 1038,
+   "death_year": 1089,
+   "date_precision": "exact",
    "has_research": true
   },
   {
@@ -3181,7 +3742,10 @@
    "central_idea": "שילוב בין דיוק טקסטואלי, מנהג ופסיקה.",
    "tags": "מגנצא, רש\"י",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/4tFSo5qQFWExTxQDDj1a8Q"
+   "spotify_url": "https://open.spotify.com/episode/4tFSo5qQFWExTxQDDj1a8Q",
+   "birth_year": 1000,
+   "death_year": 1100,
+   "date_precision": "century"
   },
   {
    "id": "354",
@@ -3195,7 +3759,10 @@
    "central_idea": "הנהגה תורנית המשלבת סמכות, ענווה ודיוק הלכתי.",
    "tags": "סגן לויה",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/4mph8tbv9qfvaXuaEBr9Ci"
+   "spotify_url": "https://open.spotify.com/episode/4mph8tbv9qfvaXuaEBr9Ci",
+   "birth_year": 1000,
+   "death_year": 1070,
+   "date_precision": "exact"
   },
   {
    "id": "355",
@@ -3210,6 +3777,9 @@
    "tags": "הריב\"ן, רש\"י",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/1hZbLF24hEHNSungFw9wDI",
+   "birth_year": 1000,
+   "death_year": 1100,
+   "date_precision": "century",
    "has_research": true
   },
   {
@@ -3239,6 +3809,9 @@
    "tags": "שפירא, תוספות, נוסח הברכות, קינות",
    "chapter_type": "חכם",
    "spotify_url": "https://open.spotify.com/episode/30fXDBvnqGwwpGM9TOLv4b?si=dlQTW54rRr-oKsrYG4ch6w&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": 1100,
+   "death_year": 1200,
+   "date_precision": "century",
    "has_research": true
   },
   {
@@ -3254,6 +3827,9 @@
    "tags": "ספר העתים, ספר יצירה, גאונים, ברצלונה",
    "chapter_type": "חכם",
    "spotify_url": "https://open.spotify.com/episode/0uroeWWeUqiYdTgvlJT7eo?si=lzIsCKg0SzGuNlsXe0c6fA&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": 1000,
+   "death_year": 1100,
+   "date_precision": "century",
    "has_research": true
   },
   {
@@ -3298,6 +3874,9 @@
    "tags": "חדייב, ירושלים, גיור, בית המקדש, נשים",
    "chapter_type": "דמות היסטורית",
    "spotify_url": "https://open.spotify.com/episode/5M7imLXlORpy1YE9QyPA25?si=nmmMsJV3SNmRvD3GN07z_w&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": 0,
+   "death_year": 100,
+   "date_precision": "century",
    "migration_path": {
     "from": "בבל",
     "to": "ירושלים"
@@ -3316,6 +3895,9 @@
    "tags": "יאשיהו, ספר התורה, נביאה, בית המקדש, נשים",
    "chapter_type": "דמות מקראית",
    "spotify_url": "https://open.spotify.com/episode/6NbBfNFBopFpH9DywPQzS1?si=f1UZHurBSPWgKeD5wUd1-w&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": -700,
+   "death_year": -600,
+   "date_precision": "century",
    "has_research": true
   },
   {
@@ -3330,7 +3912,10 @@
    "central_idea": "סידור המצוות כמבנה רוחני־מוסרי כולל, שבו ההלכה נועדה לעצב את נפש האדם ולא רק להכריע בדין.",
    "tags": "ספר יראים, רבנו תם, יראת שמים, מצוות",
    "chapter_type": "חכם",
-   "spotify_url": "https://open.spotify.com/episode/6J1axbvjzcVZFeEI2lU1IV?si=wAeaI5T6TDSElvMR_MhZ1w&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
+   "spotify_url": "https://open.spotify.com/episode/6J1axbvjzcVZFeEI2lU1IV?si=wAeaI5T6TDSElvMR_MhZ1w&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": 1100,
+   "death_year": 1200,
+   "date_precision": "century"
   },
   {
    "id": "272",
@@ -3345,6 +3930,9 @@
    "tags": "רבנו תם, פראג, תוספות ישנים, פיוט",
    "chapter_type": "חכם",
    "spotify_url": "https://open.spotify.com/episode/5evpNS9R4Cq5EESziQyspA?si=nWAdF8wJRRCeg3TWLlZ6qw&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": 1100,
+   "death_year": 1200,
+   "date_precision": "century",
    "migration_path": {
     "from": "בוהמיה",
     "to": "פראג",
@@ -3365,7 +3953,10 @@
    "central_idea": "הפיכת זיכרון החורבן ליסוד של בנייה רוחנית.",
    "tags": "גזרות תתנ\"ו",
    "chapter_type": "חכם",
-   "spotify_url": "https://open.spotify.com/episode/5QGbbhxhb2hremjTS5I9E8?si=wQyrfYb9SgeVnHb998KX6w&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
+   "spotify_url": "https://open.spotify.com/episode/5QGbbhxhb2hremjTS5I9E8?si=wQyrfYb9SgeVnHb998KX6w&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": 1090,
+   "death_year": 1170,
+   "date_precision": "exact"
   },
   {
    "id": "274",
@@ -3394,6 +3985,9 @@
    "tags": "דמפייר, תוספות, רבנו תם, שיטת חילוקים",
    "chapter_type": "חכם",
    "spotify_url": "https://open.spotify.com/episode/6eSJxUuvK7zTeZR5ODaTfi?si=aqBw9SKaR5ys4TN1JpT5IA&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": 1115,
+   "death_year": 1190,
+   "date_precision": "exact",
    "has_research": true
   },
   {
@@ -3409,6 +4003,9 @@
    "tags": "פשוטו של מקרא, רש״י, תוספות, פרשנות",
    "chapter_type": "חכם",
    "spotify_url": "https://open.spotify.com/episode/5BCGheSFuMCKwGBnlNLHSz?si=zEjQ73uoR1e_eTUEg9XwNA&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": 1085,
+   "death_year": 1158,
+   "date_precision": "exact",
    "has_research": true
   },
   {
@@ -3423,7 +4020,10 @@
    "central_idea": "שילוב המדע והמתמטיקה ככלים לעבודת ה׳ ולניהול קהילה, מתוך נאמנות להלכה ולרציונליזם יהודי.",
    "tags": "תלמסאן, מונה מספר, מתמטיקה, שבתאות",
    "chapter_type": "חכם",
-   "spotify_url": "https://open.spotify.com/episode/6NTm83GThq84iPCuaL50gA?si=s-s9uHRwSeaUvLc9qfyY-w&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
+   "spotify_url": "https://open.spotify.com/episode/6NTm83GThq84iPCuaL50gA?si=s-s9uHRwSeaUvLc9qfyY-w&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": 1603,
+   "death_year": 1704,
+   "date_precision": "exact"
   },
   {
    "id": "278",
@@ -3438,6 +4038,9 @@
    "tags": "פרובנס, הרי״ף, הרמב״ם, עליית שלוש מאות הרבנים",
    "chapter_type": "חכם",
    "spotify_url": "https://open.spotify.com/episode/2PHGW9Z6HiOIHqumtWFHNl?si=zCvJSlgZSlSK3n7CHYfwgg&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": 1135,
+   "death_year": 1211,
+   "date_precision": "exact",
    "migration_path": {
     "from": "לוניל",
     "to": "עכו"
@@ -3455,7 +4058,10 @@
    "central_idea": "חיבור נדיר בין חריפות דיאלקטית תלמודית לבין עומק מיסטי, כגשר בין אשכנז, ספרד ועולמות הסוד.",
    "tags": "ר״י הבחור, רבנו תם, ר״י הזקן, מעשה מרכבה",
    "chapter_type": "חכם",
-   "spotify_url": "https://open.spotify.com/episode/0fIS5dc7OCTq1C6amM82LT?si=tqcgKwdFQPuRVDKuMbTmkQ&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
+   "spotify_url": "https://open.spotify.com/episode/0fIS5dc7OCTq1C6amM82LT?si=tqcgKwdFQPuRVDKuMbTmkQ&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": 1100,
+   "death_year": 1200,
+   "date_precision": "century"
   },
   {
    "id": "280",
@@ -3470,6 +4076,9 @@
    "tags": "הרוקח, חסידי אשכנז, תפילה, גימטריה",
    "chapter_type": "חכם",
    "spotify_url": "https://open.spotify.com/episode/1xnTTOc3bgPDd10LUBerVb?si=dXsPDQEQQJuMMb0x15nrlA&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": 1160,
+   "death_year": 1238,
+   "date_precision": "exact",
    "has_research": true,
    "migration_path": {
     "from": "מגנצא",
@@ -3522,6 +4131,9 @@
    "tags": "אבן העזר, גזרות תתנ\"ו, אשכנז, מנהג",
    "chapter_type": "חכם",
    "spotify_url": "https://open.spotify.com/episode/5QGbbhxhb2hremjTS5I9E8?si=wQyrfYb9SgeVnHb998KX6w&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": 1090,
+   "death_year": 1170,
+   "date_precision": "exact",
    "has_research": true,
    "migration_path": {
     "from": "מגנצא",
@@ -3544,7 +4156,10 @@
    "central_idea": "איחוד למדנות עמוקה, נאמנות למסורת ואומץ אינטלקטואלי במאבק על טוהר האמונה ועל דרך ההלכה הפרובנסלית.",
    "tags": "בעל ההשלמה, רמב״ם, ספר הבהיר, פרובאנס",
    "chapter_type": "חכם",
-   "spotify_url": "https://open.spotify.com/episode/5LmJs1gNXoe2H539PdAfrl?si=9YCUMN5BQIyv9Z9dzAYCfA&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
+   "spotify_url": "https://open.spotify.com/episode/5LmJs1gNXoe2H539PdAfrl?si=9YCUMN5BQIyv9Z9dzAYCfA&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": 1160,
+   "death_year": 1238,
+   "date_precision": "exact"
   },
   {
    "id": "284",
@@ -3559,6 +4174,9 @@
    "tags": "שיטת ריב״ב, הרי״ף, גאונים, רמב״ם",
    "chapter_type": "חכם",
    "spotify_url": "https://open.spotify.com/episode/647NStP3Z8X3LRqObcCXUZ?si=KByF2c3MQAKtqw4L_2KQFg&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": 1100,
+   "death_year": 1300,
+   "date_precision": "century",
    "has_research": true
   },
   {
@@ -3574,6 +4192,9 @@
    "tags": "ספר המנוחה, משנה תורה, רמב״ם, ראב״ד",
    "chapter_type": "חכם",
    "spotify_url": "https://open.spotify.com/episode/5ZEbOOmd6ZsVbEz1crhtgC?si=Jo_PSoPnQlab6O6a9Kn3Og&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": 1200,
+   "death_year": 1300,
+   "date_precision": "century",
    "has_research": true
   },
   {
@@ -3589,6 +4210,9 @@
    "tags": "ספר התמיד, תפילה, רמב״ם, מאירי",
    "chapter_type": "חכם",
    "spotify_url": "https://open.spotify.com/episode/6Rb28PgOQeeq58bX2clspL?si=grMTWjtrSuClWSyf68Q-Kg&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": 1200,
+   "death_year": 1300,
+   "date_precision": "century",
    "has_research": true
   },
   {
@@ -3603,7 +4227,10 @@
    "central_idea": "יצירת מתודה למדנית המחברת בין צרפת, פרובאנס וספרד, ומשמשת יסוד לדרכו של הרמב״ן.",
    "tags": "שער התפיסה, רמב״ן, הרי״ף, ראב״ד",
    "chapter_type": "חכם",
-   "spotify_url": "https://open.spotify.com/episode/46wLVmOtDctapvhIXVcT8T?si=hAA8wRPjR4yQkWjgh8MbMw&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
+   "spotify_url": "https://open.spotify.com/episode/46wLVmOtDctapvhIXVcT8T?si=hAA8wRPjR4yQkWjgh8MbMw&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": 1100,
+   "death_year": 1200,
+   "date_precision": "century"
   },
   {
    "id": "288",
@@ -3618,6 +4245,9 @@
    "tags": "רמב״ם, הרי״ף, מצרים, פולמוס מיימוני",
    "chapter_type": "חכם",
    "spotify_url": "https://open.spotify.com/episode/3AjzdU1SkSoQHf4tQAoeJr?si=1jRNjqR6SHyJsGCfZIcKpQ&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": 1200,
+   "death_year": 1300,
+   "date_precision": "century",
    "has_research": true
   },
   {
@@ -3633,6 +4263,9 @@
    "tags": "רד״ק, פשט, דקדוק, ספר השורשים, פולמוס הרמב״ם",
    "chapter_type": "חכם",
    "spotify_url": "https://open.spotify.com/episode/7t7Mwzw5zr9XQ4uPrDcKcz?si=Et0n7kpzSJqnYmQuaWnlWQ&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": 1160,
+   "death_year": 1235,
+   "date_precision": "exact",
    "has_research": true
   },
   {
@@ -3647,7 +4280,10 @@
    "central_idea": "העמדת השכל ככלי מרכזי להשגת האמת, גם במחיר ניסוחים נועזים בסוגיות ידיעת ה׳, בחירה חופשית ונצחיות הנפש.",
    "tags": "רלב״ג, מלחמות ה׳, שכל, בחירה חופשית, מדע",
    "chapter_type": "חכם",
-   "spotify_url": "https://open.spotify.com/episode/0m3vCYb6YqsaSJvD0cZfXy?si=SnX5flLQTAqOUou12h90fw&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
+   "spotify_url": "https://open.spotify.com/episode/0m3vCYb6YqsaSJvD0cZfXy?si=SnX5flLQTAqOUou12h90fw&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": 1288,
+   "death_year": 1344,
+   "date_precision": "exact"
   },
   {
    "id": "291",
@@ -3661,7 +4297,10 @@
    "central_idea": "הפיכת ההלכה המשפטית לשפה חיה, נגישה ושיטתית עבור דיין, סוחר וקהילה כלכלית ממשית.",
    "tags": "רבנו שמואל הסרדי, ספר התרומות, ממונות, משפט עברי",
    "chapter_type": "חכם",
-   "spotify_url": "https://open.spotify.com/episode/5Cdc9RvxyriLFWPFMRfciK?si=P9JIX4Q4TCCtqmGdnswLcA&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
+   "spotify_url": "https://open.spotify.com/episode/5Cdc9RvxyriLFWPFMRfciK?si=P9JIX4Q4TCCtqmGdnswLcA&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": 1190,
+   "death_year": 1256,
+   "date_precision": "exact"
   },
   {
    "id": "292",
@@ -3676,6 +4315,9 @@
    "tags": "רב מימון הדיין, איגרת הנחמה, רמב״ם, אנוסים",
    "chapter_type": "חכם",
    "spotify_url": "https://open.spotify.com/episode/0N9JxxpJynDDTur8c5c0fd?si=H3uqUkfiSRSw3pYMwoKbnA&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": 1110,
+   "death_year": 1165,
+   "date_precision": "exact",
    "migration_path": {
     "from": "קורדובה",
     "to": "מצרים",
@@ -3698,6 +4340,9 @@
    "tags": "הרמ״ה, יד רמה, מסורת סייג לתורה, פולמוס הרמב״ם",
    "chapter_type": "חכם",
    "spotify_url": "https://open.spotify.com/episode/3DlGOty8LZ8KGhLiLcyqjs?si=qUZCJQNiTvi_JSDfbNgPTQ&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": 1200,
+   "death_year": 1300,
+   "date_precision": "century",
    "has_research": true
   },
   {
@@ -3713,6 +4358,9 @@
    "tags": "הרא״ה, בדק הבית, תורת הבית, שיטה קטלונית",
    "chapter_type": "חכם",
    "spotify_url": "https://open.spotify.com/episode/1VCc2NTp4Fx2MnomLuC2YQ?si=bWARJNFER7uSYu75cFYiWw&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": 1231,
+   "death_year": 1303,
+   "date_precision": "exact",
    "has_research": true,
    "migration_path": {
     "from": "גירונה",
@@ -3735,7 +4383,10 @@
    "central_idea": "יצירת מרכז הלכתי מאוזן המחבר עומק תלמודי, אחריות ציבורית, גבולות אמונה והנהגה מעשית.",
    "tags": "רשב״א, תורת הבית, שו״ת, ברצלונה, פולמוס הפילוסופיה",
    "chapter_type": "חכם",
-   "spotify_url": "https://open.spotify.com/episode/3fFSccuIPUhBryOySLd1mz?si=vVleiPsHQNK-DYsKMhH7LQ&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
+   "spotify_url": "https://open.spotify.com/episode/3fFSccuIPUhBryOySLd1mz?si=vVleiPsHQNK-DYsKMhH7LQ&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": 1235,
+   "death_year": 1310,
+   "date_precision": "exact"
   },
   {
    "id": "296",
@@ -3749,7 +4400,10 @@
    "central_idea": "חיבור נגלה ונסתר, תורה וחיים, אמונה ומעשה — עד כדי קביעה שישיבת ארץ ישראל היא מצווה מחייבת בכל דור.",
    "tags": "רמב״ן, פירוש התורה, חידושים, ויכוח ברצלונה, ארץ ישראל",
    "chapter_type": "חכם",
-   "spotify_url": "https://open.spotify.com/episode/7tV3u16Il2EgLXbVNFs42V?si=Qu6b3mmHTPufiL5nrRRIyQ&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
+   "spotify_url": "https://open.spotify.com/episode/7tV3u16Il2EgLXbVNFs42V?si=Qu6b3mmHTPufiL5nrRRIyQ&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": 1194,
+   "death_year": 1270,
+   "date_precision": "exact"
   },
   {
    "id": "297",
@@ -3764,6 +4418,9 @@
    "tags": "רבי נתן מטרינקטיי, שערי תפיסה, ממונות, רמב״ן",
    "chapter_type": "חכם",
    "spotify_url": "https://open.spotify.com/episode/7ACSP0m0DZ6PtZJIPWd5SG?si=xmChzx9KQnGA-HASx_s75g&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": 1100,
+   "death_year": 1200,
+   "date_precision": "century",
    "has_research": true
   },
   {
@@ -3779,6 +4436,9 @@
    "tags": "מעלות המידות, תניא רבתי, ירושלמי, רומא",
    "chapter_type": "חכם",
    "spotify_url": "https://open.spotify.com/episode/1tRAsJRFk47EvwWKBYsRZc?si=wIR3RR1RT0qdwsZfGHbvvg&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": 1200,
+   "death_year": 1300,
+   "date_precision": "century",
    "has_research": true
   },
   {
@@ -3794,6 +4454,9 @@
    "tags": "שיבולי הלקט, איטליה, אשכנז, מנהג, רפואה",
    "chapter_type": "חכם",
    "spotify_url": "https://open.spotify.com/episode/0zmmVvmiG4Wzj6H3D3wwK7?si=E-xKUsSxTN-1W54Q2wJ2wA&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "birth_year": 1200,
+   "death_year": 1300,
+   "date_precision": "century",
    "has_research": true
   },
   {
@@ -3809,6 +4472,9 @@
    "tags": "תקנות שו\"ם, קהילה, חסידי אשכנז",
    "chapter_type": "חכם",
    "spotify_url": "https://open.spotify.com/episode/6k54FCiujHgHTF3lHSwe0U",
+   "birth_year": 1100,
+   "death_year": 1200,
+   "date_precision": "century",
    "has_research": true
   },
   {
@@ -3823,7 +4489,10 @@
    "central_idea": "אמונה נשענת על מסורת – לא על פילוסופיה",
    "tags": "אנטי-פילוסופיה, פשט, מסורת",
    "chapter_type": "חכם",
-   "spotify_url": "https://open.spotify.com/episode/5mtDbjislFZkbFTuxrfRWN"
+   "spotify_url": "https://open.spotify.com/episode/5mtDbjislFZkbFTuxrfRWN",
+   "birth_year": 1200,
+   "death_year": 1300,
+   "date_precision": "century"
   },
   {
    "id": "302",
@@ -3838,6 +4507,9 @@
    "tags": "כפתור ופרח, מצוות התלויות בארץ",
    "chapter_type": "חכם",
    "spotify_url": "https://open.spotify.com/episode/1aefmtAuxfRcdhiH7R2urg",
+   "birth_year": 1300,
+   "death_year": 1400,
+   "date_precision": "century",
    "has_research": true,
    "migration_path": {
     "from": "פרובאנס",
@@ -3876,7 +4548,10 @@
    "central_idea": "שימור וארגון המסורת התורנית בעת משבר.",
    "tags": "הגהות סמ״ק, תוספות",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/5Iri3H2JcF1NuSrVD3Pnpu"
+   "spotify_url": "https://open.spotify.com/episode/5Iri3H2JcF1NuSrVD3Pnpu",
+   "birth_year": 1200,
+   "death_year": 1300,
+   "date_precision": "century"
   },
   {
    "id": "407",
@@ -3891,6 +4566,9 @@
    "tags": "הגהות מיימוניות",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/26lw9FnAGUvrdpyiczTl58",
+   "birth_year": 1200,
+   "death_year": 1300,
+   "date_precision": "century",
    "has_research": true
   },
   {
@@ -3906,6 +4584,9 @@
    "tags": "תוספות טוך",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/04Hkb5vYxReuIGq0cTG2fh",
+   "birth_year": 1200,
+   "death_year": 1300,
+   "date_precision": "century",
    "has_research": true
   },
   {
@@ -3920,7 +4601,10 @@
    "central_idea": "שילוב בין מסורת חיה לפרשנות שיטתית של ההלכה",
    "tags": "מנהגי רומא, הרי״ף, מסורת",
    "chapter_type": "חכם",
-   "spotify_url": "https://open.spotify.com/episode/1ANs8CZ7mIUXhJFOSBrC3u"
+   "spotify_url": "https://open.spotify.com/episode/1ANs8CZ7mIUXhJFOSBrC3u",
+   "birth_year": 1200,
+   "death_year": 1300,
+   "date_precision": "century"
   },
   {
    "id": "308",
@@ -3934,7 +4618,10 @@
    "central_idea": "“ננס על גבי ענק” – המשכיות יצירתית של המסורת",
    "tags": "תוספות, שיטה למדנית",
    "chapter_type": "חכם",
-   "spotify_url": "https://open.spotify.com/episode/1RhrrkBapQNDsL3Nc92rS3"
+   "spotify_url": "https://open.spotify.com/episode/1RhrrkBapQNDsL3Nc92rS3",
+   "birth_year": 1200,
+   "death_year": 1300,
+   "date_precision": "century"
   },
   {
    "id": "309",
@@ -3949,6 +4636,9 @@
    "tags": "מעבר מסורות, פסיקה",
    "chapter_type": "חכם",
    "spotify_url": "https://open.spotify.com/episode/0Gbt6DvaXHHA3NQUKn6gAe",
+   "birth_year": 1200,
+   "death_year": 1300,
+   "date_precision": "century",
    "migration_path": {
     "from": "איטליה",
     "to": "וינה",
@@ -3969,7 +4659,10 @@
    "central_idea": "הלכה עם טעם – שילוב בין בהירות להבנה רעיונית",
    "tags": "ספרי פסיקה, מדריך חיים",
    "chapter_type": "חכם",
-   "spotify_url": "https://open.spotify.com/episode/1EzJwt2utRl4bZDfogQTk3"
+   "spotify_url": "https://open.spotify.com/episode/1EzJwt2utRl4bZDfogQTk3",
+   "birth_year": 1310,
+   "death_year": 1385,
+   "date_precision": "exact"
   },
   {
    "id": "311",
@@ -3984,6 +4677,9 @@
    "tags": "מעבר מרכזי תורה, פסיקה",
    "chapter_type": "חכם",
    "spotify_url": "https://open.spotify.com/episode/2m1fncs0HVkTUF3QjJSqrD",
+   "birth_year": 1290,
+   "death_year": 1349,
+   "date_precision": "exact",
    "has_research": true,
    "migration_path": {
     "from": "גרמניה",
@@ -4003,6 +4699,9 @@
    "tags": "תוספות, שיטה לימודית",
    "chapter_type": "חכם",
    "spotify_url": "https://open.spotify.com/episode/09Ok3NEhEHqYG6U2fRRb2J",
+   "birth_year": 1200,
+   "death_year": 1300,
+   "date_precision": "century",
    "has_research": true
   },
   {
@@ -4018,6 +4717,9 @@
    "tags": "שואה, חינוך, אמונה",
    "chapter_type": "חכם",
    "spotify_url": "https://open.spotify.com/episode/2RfVxXD6TIynHVoCEcKPJn",
+   "birth_year": 1923,
+   "death_year": 2019,
+   "date_precision": "exact",
    "migration_path": {
     "from": "ארה\"ב",
     "to": "ירושלים",
@@ -4038,7 +4740,10 @@
    "central_idea": "הנגשת ההלכה מהישיבה אל הבית",
    "tags": "כשרות, בית יהודי",
    "chapter_type": "חכם",
-   "spotify_url": "https://open.spotify.com/episode/2JtdoVxOBakR7TWV6cxppI"
+   "spotify_url": "https://open.spotify.com/episode/2JtdoVxOBakR7TWV6cxppI",
+   "birth_year": 1220,
+   "death_year": 1300,
+   "date_precision": "exact"
   },
   {
    "id": "315",
@@ -4053,6 +4758,9 @@
    "tags": "היסטוריה, השכלה",
    "chapter_type": "חכם",
    "spotify_url": "https://open.spotify.com/episode/0ex690joNUDbh2ClkDxF8w",
+   "birth_year": 1785,
+   "death_year": 1840,
+   "date_precision": "exact",
    "has_research": true
   },
   {
@@ -4068,6 +4776,9 @@
    "tags": "מגדל עוז, כתר שם טוב",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/4WLBwaZKgmiVJPIACa5dJR",
+   "birth_year": 1283,
+   "death_year": 1330,
+   "date_precision": "exact",
    "migration_path": {
     "from": "קאסטיליה",
     "to": "צפת",
@@ -4089,6 +4800,9 @@
    "tags": "תשב״ץ קטן, מהרא״ם",
    "chapter_type": "חכם",
    "spotify_url": "https://open.spotify.com/episode/5icFLQJoUIWSCfgYau1reF",
+   "birth_year": 1200,
+   "death_year": 1300,
+   "date_precision": "century",
    "has_research": true
   },
   {
@@ -4104,6 +4818,9 @@
    "tags": "ארחות חיים, מסורת פרובאנס",
    "chapter_type": "חכם",
    "spotify_url": "https://open.spotify.com/episode/1hCgDwZ2J6pMMMANMx4cc1",
+   "birth_year": 1250,
+   "death_year": 1327,
+   "date_precision": "exact",
    "has_research": true
   },
   {
@@ -4119,6 +4836,9 @@
    "tags": "ספר האגודה, פסיקה אשכנזית",
    "chapter_type": "חכם",
    "spotify_url": "https://open.spotify.com/episode/03IxTZw4qg4XD0zBCuyEOT",
+   "birth_year": 1300,
+   "death_year": 1400,
+   "date_precision": "century",
    "has_research": true
   },
   {
@@ -4133,7 +4853,10 @@
    "central_idea": "גבורה כרצף חיים – לא רגע חד־פעמי",
    "tags": "גבורה, צה״ל, אמונה",
    "chapter_type": "דמות מודרנית",
-   "spotify_url": "https://open.spotify.com/episode/6oOKCpQo5tEf5hcdghAQIC"
+   "spotify_url": "https://open.spotify.com/episode/6oOKCpQo5tEf5hcdghAQIC",
+   "birth_year": 1975,
+   "death_year": 2006,
+   "date_precision": "exact"
   },
   {
    "id": "421",
@@ -4148,6 +4871,9 @@
    "tags": "חשק שלמה, ש״ס וילנה",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/5yWz2GFXuVSZR9a7kMjeyT",
+   "birth_year": 1828,
+   "death_year": 1905,
+   "date_precision": "exact",
    "has_research": true
   },
   {
@@ -4163,6 +4889,9 @@
    "tags": "היתר מכירה, יישוב הארץ",
    "chapter_type": "חכם",
    "spotify_url": "https://open.spotify.com/episode/5CjFGW61SRKSx3ScmazcV1",
+   "birth_year": 1820,
+   "death_year": 1893,
+   "date_precision": "exact",
    "has_research": true
   },
   {
@@ -4178,6 +4907,9 @@
    "tags": "קבלה נבואית, צירופי אותיות, נובהרדוק",
    "chapter_type": "חכם",
    "spotify_url": "https://open.spotify.com/episode/6T3X5jyANKwDXe6qS8gM4I",
+   "birth_year": 1900,
+   "death_year": 2000,
+   "date_precision": "century",
    "has_research": true
   },
   {
@@ -4193,6 +4925,9 @@
    "tags": "תנועת המוסר, סלבודקה, גדלות האדם",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/4iRZ0WdzCGhxJrGTmkAzUf",
+   "birth_year": 1849,
+   "death_year": 1927,
+   "date_precision": "exact",
    "has_research": true,
    "migration_path": {
     "from": "ליטא",
@@ -4216,6 +4951,9 @@
    "tags": "שד״ר, ביבליוגרפיה, קבלה, פסיקה",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/2MiUUx51sCblnVdS9i61Xq",
+   "birth_year": 1724,
+   "death_year": 1806,
+   "date_precision": "exact",
    "migration_path": {
     "from": "ירושלים",
     "to": "ליבורנו"
@@ -4234,6 +4972,9 @@
    "tags": "אנוסים, גאולה, קבלה",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/3FgDgymcQOnmJoDgKQHJMU",
+   "birth_year": 1500,
+   "death_year": 1532,
+   "date_precision": "exact",
    "has_research": true,
    "migration_path": {
     "from": "ליסבון",
@@ -4257,6 +4998,9 @@
    "tags": "לכה דודי, צפת, קבלה",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/25yj7KlJBpuYyoAu8YZrDW",
+   "birth_year": 1505,
+   "death_year": 1584,
+   "date_precision": "exact",
    "has_research": true,
    "migration_path": {
     "from": "סלוניקי",
@@ -4276,6 +5020,9 @@
    "tags": "תוספות יום טוב, משנה",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/3nwItn9PGKFfIopZY2AUMZ",
+   "birth_year": 1578,
+   "death_year": 1654,
+   "date_precision": "exact",
    "has_research": true,
    "migration_path": {
     "from": "גרמניה",
@@ -4297,7 +5044,10 @@
    "central_idea": "הפיכת העולם ל'דירה בתחתונים' באמצעות שליחות ומעשה.",
    "tags": "חב\"ד, שליחות, גאולה",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/01M5utyXbX5Zwzf2skxRIE"
+   "spotify_url": "https://open.spotify.com/episode/01M5utyXbX5Zwzf2skxRIE",
+   "birth_year": 1902,
+   "death_year": 1994,
+   "date_precision": "exact"
   },
   {
    "id": "336",
@@ -4312,6 +5062,9 @@
    "tags": "ש\"ס, יביע אומר, הראשון לציון",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/6EwCSxth06Ypc8hwKpUZIn",
+   "birth_year": 1920,
+   "death_year": 2013,
+   "date_precision": "exact",
    "has_research": true,
    "migration_path": {
     "from": "בגדד",
@@ -4331,6 +5084,9 @@
    "tags": "לשם שבו ואחלמה, קבלת הגר\"א",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/4hfLDSOuomsBnjabb72CNT",
+   "birth_year": 1841,
+   "death_year": 1926,
+   "date_precision": "exact",
    "has_research": true,
    "migration_path": {
     "from": "ליטא",
@@ -4350,6 +5106,9 @@
    "tags": "מדרש בית זלכה, בן איש חי",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/4kzWbxQdGlwBkdJD30aYZk",
+   "birth_year": 1813,
+   "death_year": 1889,
+   "date_precision": "exact",
    "has_research": true
   },
   {
@@ -4365,6 +5124,9 @@
    "tags": "מורה נבוכים, הרמב\"ם",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/1ViQ7DcT0EfyWtdilDH4oL",
+   "birth_year": 1160,
+   "death_year": 1226,
+   "date_precision": "exact",
    "has_research": true,
    "migration_path": {
     "from": "מרוקו",
@@ -4388,6 +5150,9 @@
    "tags": "ראשון לציון, מאמר מרדכי",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/3Us8uX5ozH1clJM6Nkh131",
+   "birth_year": 1929,
+   "death_year": 2010,
+   "date_precision": "exact",
    "has_research": true
   },
   {
@@ -4403,6 +5168,9 @@
    "tags": "ספר יסוד, בראשית רבתי",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/1PpzvwnJnR9ssTIwkuP4Lj",
+   "birth_year": 1000,
+   "death_year": 1100,
+   "date_precision": "century",
    "has_research": true
   },
   {
@@ -4418,6 +5186,9 @@
    "tags": "פירוש על הרי״ף",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/1iaphVyYGkqHZhmhCfl9jE",
+   "birth_year": 1174,
+   "death_year": 1250,
+   "date_precision": "exact",
    "has_research": true
   },
   {
@@ -4432,7 +5203,10 @@
    "central_idea": "הבנת לשון הקודש כמפתח להבנת התורה.",
    "tags": "ספר השורשים, ספר המכלול",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/7t7Mwzw5zr9XQ4uPrDcKcz"
+   "spotify_url": "https://open.spotify.com/episode/7t7Mwzw5zr9XQ4uPrDcKcz",
+   "birth_year": 1160,
+   "death_year": 1235,
+   "date_precision": "exact"
   },
   {
    "id": "388",
@@ -4446,7 +5220,10 @@
    "central_idea": "השכל האנושי הוא כלי מרכזי להשגת האמת.",
    "tags": "רבי לוי בן גרשון, מלחמות ה׳",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/0m3vCYb6YqsaSJvD0cZfXy"
+   "spotify_url": "https://open.spotify.com/episode/0m3vCYb6YqsaSJvD0cZfXy",
+   "birth_year": 1288,
+   "death_year": 1344,
+   "date_precision": "exact"
   },
   {
    "id": "389",
@@ -4476,6 +5253,9 @@
    "tags": "ספר התרומות",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/5Cdc9RvxyriLFWPFMRfciK",
+   "birth_year": 1190,
+   "death_year": 1256,
+   "date_precision": "exact",
    "has_research": true
   },
   {
@@ -4491,6 +5271,9 @@
    "tags": "איגרת הנחמה",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/0N9JxxpJynDDTur8c5c0fd",
+   "birth_year": 1110,
+   "death_year": 1165,
+   "date_precision": "exact",
    "has_research": true
   },
   {
@@ -4505,7 +5288,10 @@
    "central_idea": "דיוק במסורת לצד הנהגה הלכתית עצמאית.",
    "tags": "רבי מאיר הלוי אבולעפיה, יד רמה",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/3DlGOty8LZ8KGhLiLcyqjs"
+   "spotify_url": "https://open.spotify.com/episode/3DlGOty8LZ8KGhLiLcyqjs",
+   "birth_year": 1170,
+   "death_year": 1244,
+   "date_precision": "exact"
   },
   {
    "id": "393",
@@ -4520,6 +5306,9 @@
    "tags": "ספר המאורות, מלחמת מצווה",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/2LqX1m0yUTIjrytoK1ZOD1",
+   "birth_year": 1200,
+   "death_year": 1300,
+   "date_precision": "century",
    "has_research": true
   },
   {
@@ -4534,7 +5323,10 @@
    "central_idea": "נאמנות למסורת יחד עם ביקורת הלכתית עצמאית.",
    "tags": "בדק הבית",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/1VCc2NTp4Fx2MnomLuC2YQ"
+   "spotify_url": "https://open.spotify.com/episode/1VCc2NTp4Fx2MnomLuC2YQ",
+   "birth_year": 1231,
+   "death_year": 1303,
+   "date_precision": "exact"
   },
   {
    "id": "395",
@@ -4548,7 +5340,10 @@
    "central_idea": "איזון בין מסורת, הנהגה ציבורית ועומק למדני.",
    "tags": "תורת הבית, שו״ת הרשב״א",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/3fFSccuIPUhBryOySLd1mz"
+   "spotify_url": "https://open.spotify.com/episode/3fFSccuIPUhBryOySLd1mz",
+   "birth_year": 1235,
+   "death_year": 1310,
+   "date_precision": "exact"
   },
   {
    "id": "397",
@@ -4562,7 +5357,10 @@
    "central_idea": "תיקון המידות כחלק מתיקון האדם כולו.",
    "tags": "מעלות המידות, תניא רבתי",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/1tRAsJRFk47EvwWKBYsRZc"
+   "spotify_url": "https://open.spotify.com/episode/1tRAsJRFk47EvwWKBYsRZc",
+   "birth_year": 1200,
+   "death_year": 1300,
+   "date_precision": "century"
   },
   {
    "id": "398",
@@ -4576,7 +5374,10 @@
    "central_idea": "סידור ושימור המסורת ההלכתית מתוך ענווה ואחריות.",
    "tags": "שיבולי הלקט",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/0zmmVvmiG4Wzj6H3D3wwK7"
+   "spotify_url": "https://open.spotify.com/episode/0zmmVvmiG4Wzj6H3D3wwK7",
+   "birth_year": 1200,
+   "death_year": 1300,
+   "date_precision": "century"
   },
   {
    "id": "399",
@@ -4590,7 +5391,10 @@
    "central_idea": "המסורת חיה בתוך הקהילה והמנהג.",
    "tags": "פירוש על הרי״ף",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/1ANs8CZ7mIUXhJFOSBrC3u"
+   "spotify_url": "https://open.spotify.com/episode/1ANs8CZ7mIUXhJFOSBrC3u",
+   "birth_year": 1200,
+   "death_year": 1300,
+   "date_precision": "century"
   },
   {
    "id": "400",
@@ -4604,7 +5408,10 @@
    "central_idea": "עצמאות מחשבתית מתוך נאמנות למסורת.",
    "tags": "ספר המכריע, פסקי רי״ד",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/1RhrrkBapQNDsL3Nc92rS3"
+   "spotify_url": "https://open.spotify.com/episode/1RhrrkBapQNDsL3Nc92rS3",
+   "birth_year": 1180,
+   "death_year": 1250,
+   "date_precision": "exact"
   },
   {
    "id": "401",
@@ -4618,7 +5425,10 @@
    "central_idea": "בניית רצף מסורת באמצעות תלמידים וקהילות.",
    "tags": "חידושי תוספות",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/0Gbt6DvaXHHA3NQUKn6gAe"
+   "spotify_url": "https://open.spotify.com/episode/0Gbt6DvaXHHA3NQUKn6gAe",
+   "birth_year": 1200,
+   "death_year": 1300,
+   "date_precision": "century"
   },
   {
    "id": "403",
@@ -4632,7 +5442,10 @@
    "central_idea": "נאמנות למסורת לצד עצמאות מחשבתית.",
    "tags": "פסקי הריא״ז",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/5mtDbjislFZkbFTuxrfRWN"
+   "spotify_url": "https://open.spotify.com/episode/5mtDbjislFZkbFTuxrfRWN",
+   "birth_year": 1200,
+   "death_year": 1300,
+   "date_precision": "century"
   },
   {
    "id": "412",
@@ -4646,7 +5459,10 @@
    "central_idea": "הפיכת הזיכרון והכאב לכוח של בניין רוחני.",
    "tags": "קול מנחם, שמע ישראל",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/2RfVxXD6TIynHVoCEcKPJn"
+   "spotify_url": "https://open.spotify.com/episode/2RfVxXD6TIynHVoCEcKPJn",
+   "birth_year": 1923,
+   "death_year": 2019,
+   "date_precision": "exact"
   },
   {
    "id": "416",
@@ -4660,7 +5476,10 @@
    "central_idea": "המדע והתורה מתארים רבדים שונים של אותה מציאות.",
    "tags": "תורת הממדים",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/12f9H8UgJMaWzeIBegbaMu"
+   "spotify_url": "https://open.spotify.com/episode/12f9H8UgJMaWzeIBegbaMu",
+   "birth_year": 1856,
+   "death_year": 1927,
+   "date_precision": "exact"
   },
   {
    "id": "420",
@@ -4674,7 +5493,10 @@
    "central_idea": "גבורה צומחת מחיים של אחריות, אמונה ומסירות.",
    "tags": "מלחמת לבנון השנייה",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/6oOKCpQo5tEf5hcdghAQIC"
+   "spotify_url": "https://open.spotify.com/episode/6oOKCpQo5tEf5hcdghAQIC",
+   "birth_year": 1975,
+   "death_year": 2006,
+   "date_precision": "exact"
   },
   {
    "id": "422",
@@ -4688,7 +5510,10 @@
    "central_idea": "האחריות הלאומית היא חלק מעולם ההלכה.",
    "tags": "ישועות מלכו",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/5CjFGW61SRKSx3ScmazcV1"
+   "spotify_url": "https://open.spotify.com/episode/5CjFGW61SRKSx3ScmazcV1",
+   "birth_year": 1820,
+   "death_year": 1893,
+   "date_precision": "exact"
   },
   {
    "id": "424",
@@ -4703,6 +5528,9 @@
    "tags": "מגיד משנה",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/3bAJkTvZUqAhdXCQty6A3B",
+   "birth_year": 1300,
+   "death_year": 1400,
+   "date_precision": "century",
    "has_research": true,
    "migration_path": {
     "from": "צרפת",
@@ -4722,6 +5550,9 @@
    "tags": "מהר״ם סג״ל, מורנו",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/51kAKVyQ9chRuXJM5J66so",
+   "birth_year": 1300,
+   "death_year": 1400,
+   "date_precision": "century",
    "has_research": true,
    "migration_path": {
     "from": "גרמניה",
@@ -4741,6 +5572,9 @@
    "tags": "ברוך שאמר",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/0xHQG8l47thPFLrmtWggIG",
+   "birth_year": 1300,
+   "death_year": 1400,
+   "date_precision": "century",
    "has_research": true,
    "migration_path": {
     "from": "גרמניה",
@@ -4762,7 +5596,10 @@
    "central_idea": "המנהג הוא מקור סמכות מרכזי בעיצוב ההלכה.",
    "tags": "הגהות אשר״י",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/3m0Cho5M29aVZp15Pd8poe"
+   "spotify_url": "https://open.spotify.com/episode/3m0Cho5M29aVZp15Pd8poe",
+   "birth_year": 1300,
+   "death_year": 1400,
+   "date_precision": "century"
   },
   {
    "id": "428",
@@ -4777,6 +5614,9 @@
    "tags": "צמח דוד",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/2k24kwgPp3f98lo0KLeybp",
+   "birth_year": 1541,
+   "death_year": 1613,
+   "date_precision": "exact",
    "has_research": true,
    "migration_path": {
     "from": "גרמניה",
@@ -4799,6 +5639,9 @@
    "tags": "הרמ״ז, זוהר",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/7ApVpshXFmnerqdZj67q7L",
+   "birth_year": 1625,
+   "death_year": 1697,
+   "date_precision": "exact",
    "has_research": true
   },
   {
@@ -4813,7 +5656,10 @@
    "central_idea": "בניית חברה יציבה מתוך אחריות הלכתית ומוסרית.",
    "tags": "סתם משנה",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/2oyMTbV94Hphr9dGIMMrWs"
+   "spotify_url": "https://open.spotify.com/episode/2oyMTbV94Hphr9dGIMMrWs",
+   "birth_year": 100,
+   "death_year": 200,
+   "date_precision": "century"
   },
   {
    "id": "431",
@@ -4827,7 +5673,10 @@
    "central_idea": "יש לראות את הפנימיות ולא רק את החיצוניות.",
    "tags": "סתם משנה, אלהא דמאיר ענני",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/0TMD6S3lT5s5CLq4cU2s95"
+   "spotify_url": "https://open.spotify.com/episode/0TMD6S3lT5s5CLq4cU2s95",
+   "birth_year": 100,
+   "death_year": 200,
+   "date_precision": "century"
   },
   {
    "id": "432",
@@ -4842,6 +5691,9 @@
    "tags": "שער השמים, בית אלוהים",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/2484MUIhpWjmTxP5KxDWOB",
+   "birth_year": 1570,
+   "death_year": 1635,
+   "date_precision": "exact",
    "has_research": true
   },
   {
@@ -4857,6 +5709,9 @@
    "tags": "נימוקי יוסף",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/1EPfEDDABhFrIaVyXmn4UY",
+   "birth_year": 1300,
+   "death_year": 1400,
+   "date_precision": "century",
    "has_research": true
   },
   {
@@ -4872,6 +5727,9 @@
    "tags": "תשב״ץ, מגן אבות",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/2H66qv8Pu1ovFslG0esMSO",
+   "birth_year": 1361,
+   "death_year": 1444,
+   "date_precision": "exact",
    "migration_path": {
     "from": "ברצלונה",
     "to": "אלג'יר"
@@ -4890,6 +5748,9 @@
    "tags": "הזוהר, ל״ג בעומר",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/5jiWdUYsdMQTSRAghuCtHo",
+   "birth_year": 100,
+   "death_year": 200,
+   "date_precision": "century",
    "has_research": true
   },
   {
@@ -4905,6 +5766,9 @@
    "tags": "מקדש מלך",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/1cdKyl2ZxmH4MV8HxWn5a8",
+   "birth_year": 1700,
+   "death_year": 1780,
+   "date_precision": "exact",
    "has_research": true
   },
   {
@@ -4920,6 +5784,9 @@
    "tags": "סיני, פומבדיתא",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/7hxuVRnwNLVCSZTDgYaRYf",
+   "birth_year": 300,
+   "death_year": 400,
+   "date_precision": "century",
    "has_research": true
   },
   {
@@ -4935,6 +5802,9 @@
    "tags": "מחוזא, רבא",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/1eP3a8IxlJL1jjrarhy929",
+   "birth_year": 300,
+   "death_year": 400,
+   "date_precision": "century",
    "has_research": true
   },
   {
@@ -4949,7 +5819,10 @@
    "central_idea": "אפשר לחבר בין שכל, הלכה ופנימיות התורה.",
    "tags": "עשרה מאמרות, גלגולי נשמות",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/1T5zGLHEk5d5uLbDzh0vs4"
+   "spotify_url": "https://open.spotify.com/episode/1T5zGLHEk5d5uLbDzh0vs4",
+   "birth_year": 1548,
+   "death_year": 1620,
+   "date_precision": "exact"
   },
   {
    "id": "440",
@@ -4963,7 +5836,10 @@
    "central_idea": "נאמנות למסורת לצד אחריות למציאות המשתנה.",
    "tags": "שו״ת הרשב״ש, מלחמת מצווה",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/3RNUR7nCj9IMQMgkP8UzrS"
+   "spotify_url": "https://open.spotify.com/episode/3RNUR7nCj9IMQMgkP8UzrS",
+   "birth_year": 1400,
+   "death_year": 1467,
+   "date_precision": "exact"
   },
   {
    "id": "441",
@@ -4978,6 +5854,9 @@
    "tags": "פירושי הרמב״ם",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/318qI4uBEs6NKIcOW2bnsG",
+   "birth_year": 1490,
+   "death_year": 1540,
+   "date_precision": "exact",
    "migration_path": {
     "from": "ספרד",
     "to": "ירושלים",
@@ -4999,6 +5878,9 @@
    "tags": "שיטה מקובצת",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/7kuqHDuRlbICUtT61hWdfH",
+   "birth_year": 1520,
+   "death_year": 1592,
+   "date_precision": "exact",
    "has_research": true,
    "migration_path": {
     "from": "מצרים",
@@ -5021,6 +5903,9 @@
    "tags": "בית יוסף, שולחן ערוך",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/0dqB9uZCfNqapz7AN12H0I",
+   "birth_year": 1488,
+   "death_year": 1575,
+   "date_precision": "exact",
    "has_research": true,
    "migration_path": {
     "from": "טולדו",
@@ -5045,6 +5930,9 @@
    "tags": "מנהגי מהרי״ל",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/4JIgpuKHuW2KrBRlo94aZx",
+   "birth_year": 1360,
+   "death_year": 1427,
+   "date_precision": "exact",
    "migration_path": {
     "from": "מגנצא",
     "to": "וורמייזא",
@@ -5066,6 +5954,9 @@
    "tags": "ספר המנהגים",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/0UBQxy7MVsKgQG9FPKNaOg",
+   "birth_year": 1341,
+   "death_year": 1408,
+   "date_precision": "exact",
    "has_research": true
   },
   {
@@ -5096,6 +5987,9 @@
    "tags": "ספר המנהגים",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/7nFjZxQJCnOnTXIXlmoWYY",
+   "birth_year": 1400,
+   "death_year": 1500,
+   "date_precision": "century",
    "has_research": true
   },
   {
@@ -5126,6 +6020,9 @@
    "tags": "תרומת הדשן",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/7gv0dndMrYgU3b2qGxFpzW",
+   "birth_year": 1390,
+   "death_year": 1460,
+   "date_precision": "exact",
    "has_research": true,
    "migration_path": {
     "from": "גרמניה",
@@ -5145,6 +6042,9 @@
    "tags": "שו״ת מהר״י וייל, שחיטות ובדיקות",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/0Rnc7P2J3304nWXui892rt",
+   "birth_year": 1400,
+   "death_year": 1500,
+   "date_precision": "century",
    "has_research": true
   },
   {
@@ -5159,7 +6059,10 @@
    "central_idea": "יראת שמים נבחנת גם ביחס לזולת ובאחריות חברתית.",
    "tags": "חסידי אשכנז",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/3AeKh8nYVsTUmTjaI89Y3i"
+   "spotify_url": "https://open.spotify.com/episode/3AeKh8nYVsTUmTjaI89Y3i",
+   "birth_year": 1200,
+   "death_year": 1300,
+   "date_precision": "century"
   },
   {
    "id": "452",
@@ -5174,6 +6077,9 @@
    "tags": "ספר האגור",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/0yb35S3e2aa4oFxvWAECuJ",
+   "birth_year": 1400,
+   "death_year": 1500,
+   "date_precision": "century",
    "has_research": true,
    "migration_path": {
     "from": "גרמניה",
@@ -5208,6 +6114,9 @@
    "tags": "שו״ת מהר״ם מינץ",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/75RPO7QyMxuZh7fl9EQzre",
+   "birth_year": 1415,
+   "death_year": 1480,
+   "date_precision": "exact",
    "has_research": true,
    "migration_path": {
     "from": "אשכנז",
@@ -5245,6 +6154,9 @@
    "tags": "הסוד הישראלי",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/4Cgva97eqlxFZqxabMWiLM",
+   "birth_year": 1925,
+   "death_year": 1986,
+   "date_precision": "exact",
    "has_research": true
   },
   {
@@ -5260,6 +6172,9 @@
    "tags": "שיטת החילוקים",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/0iCRRqPsHHQlOtKAA6y0JC",
+   "birth_year": 1460,
+   "death_year": 1541,
+   "date_precision": "exact",
    "migration_path": {
     "from": "גרמניה",
     "to": "פולין",
@@ -5281,6 +6196,9 @@
    "tags": "ישיבת לובלין",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/4aXaSFHWDx4VYnv5gINNBf",
+   "birth_year": 1495,
+   "death_year": 1558,
+   "date_precision": "exact",
    "has_research": true
   },
   {
@@ -5295,7 +6213,10 @@
    "central_idea": "המנהג הוא חלק מהתורה החיה של עם ישראל.",
    "tags": "שו״ת מהרי״ק",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/5V8efc6gWfwrgHLR6E1AQZ"
+   "spotify_url": "https://open.spotify.com/episode/5V8efc6gWfwrgHLR6E1AQZ",
+   "birth_year": 1420,
+   "death_year": 1480,
+   "date_precision": "exact"
   },
   {
    "id": "460",
@@ -5309,7 +6230,10 @@
    "central_idea": "הבנת המבנה הפנימי של הסוגיה התלמודית.",
    "tags": "חידושי הרד״ב לפסחים",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/3mgyFdCQJRAQWlTMAC3Ntt"
+   "spotify_url": "https://open.spotify.com/episode/3mgyFdCQJRAQWlTMAC3Ntt",
+   "birth_year": 1200,
+   "death_year": 1300,
+   "date_precision": "century"
   },
   {
    "id": "461",
@@ -5324,6 +6248,9 @@
    "tags": "שו״ת מהר״ם מפדובה",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/3nkaOJuTuUrJBmHUmfUX8i",
+   "birth_year": 1473,
+   "death_year": 1565,
+   "date_precision": "exact",
    "has_research": true,
    "migration_path": {
     "from": "גרמניה",
@@ -5346,6 +6273,9 @@
    "tags": "עץ חיים",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/4oDKjvoyolPFMcbYCtO5Zt",
+   "birth_year": 1534,
+   "death_year": 1572,
+   "date_precision": "exact",
    "has_research": true,
    "migration_path": {
     "from": "ירושלים",
@@ -5368,6 +6298,9 @@
    "tags": "המפה, דרכי משה",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/6GkFVCDreWYr2LmbN3L91b",
+   "birth_year": 1530,
+   "death_year": 1572,
+   "date_precision": "exact",
    "has_research": true
   },
   {
@@ -5383,6 +6316,9 @@
    "tags": "דרשות רבי יהושע אבן שועיב",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/0SXUcjCBFArZF4cHVpUd0W",
+   "birth_year": 1280,
+   "death_year": 1340,
+   "date_precision": "exact",
    "has_research": true
   },
   {
@@ -5398,6 +6334,9 @@
    "tags": "דרושי חפצי בה",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/47ATwhBfywYAPzHptQjjic",
+   "birth_year": 1545,
+   "death_year": 1616,
+   "date_precision": "exact",
    "has_research": true,
    "migration_path": {
     "from": "מרוקו",
@@ -5419,7 +6358,10 @@
    "central_idea": "הגאולה דורשת גם יוזמה ומעשה אנושי.",
    "tags": "ילקוט תלמוד תורה, תורת המנחה",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/0QDA50K2sCFRYcR3kLXrpM"
+   "spotify_url": "https://open.spotify.com/episode/0QDA50K2sCFRYcR3kLXrpM",
+   "birth_year": 1300,
+   "death_year": 1400,
+   "date_precision": "century"
   },
   {
    "id": "467",
@@ -5434,6 +6376,9 @@
    "tags": "עמק המלך, תורת המלבוש",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/0qevAfcXSrvElyw0v6rmd4",
+   "birth_year": 1500,
+   "death_year": 1600,
+   "date_precision": "century",
    "has_research": true
   },
   {
@@ -5449,6 +6394,9 @@
    "tags": "האנציקלופדיה התלמודית, המועדים בהלכה",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/51WVPh2bMIsk9wHI1sMe3i",
+   "birth_year": 1886,
+   "death_year": 1978,
+   "date_precision": "exact",
    "has_research": true,
    "migration_path": {
     "from": "רוסיה",
@@ -5468,6 +6416,9 @@
    "tags": "חידושי רבי קרשקש וידאל",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/3IdyRVwc1dlzf9R2fYok1q",
+   "birth_year": 1200,
+   "death_year": 1300,
+   "date_precision": "century",
    "has_research": true
   },
   {
@@ -5482,7 +6433,10 @@
    "central_idea": "גדלות בתורה מחייבת אחריות ציבורית ודוגמה אישית.",
    "tags": "סדר אליהו, נפש דוד",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/7zHC1A3dQMNYpbYXahsYQd"
+   "spotify_url": "https://open.spotify.com/episode/7zHC1A3dQMNYpbYXahsYQd",
+   "birth_year": 1843,
+   "death_year": 1905,
+   "date_precision": "exact"
   },
   {
    "id": "471",
@@ -5496,7 +6450,10 @@
    "central_idea": "הטבע והקדושה הם גילויים שונים של אותה מציאות אלוקית.",
    "tags": "שערי אורה, גינת אגוז",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/4HMEfax0JRi5AhwtdObjpn"
+   "spotify_url": "https://open.spotify.com/episode/4HMEfax0JRi5AhwtdObjpn",
+   "birth_year": 1248,
+   "death_year": 1325,
+   "date_precision": "exact"
   },
   {
    "id": "472",
@@ -5510,7 +6467,10 @@
    "central_idea": "פסיקה הלכתית צריכה לשלב נאמנות למסורת עם אחריות לאומית.",
    "tags": "שו״ת הר צבי, מקראי קודש",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/6ONQBYcz8cRuTuz4ULWE6l"
+   "spotify_url": "https://open.spotify.com/episode/6ONQBYcz8cRuTuz4ULWE6l",
+   "birth_year": 1873,
+   "death_year": 1960,
+   "date_precision": "exact"
   },
   {
    "id": "477",
@@ -5525,6 +6485,9 @@
    "tags": "תור הזהב, פיוט, פילוסופיה ניאופלטונית, כתר מלכות, מקור חיים",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/3n1i3UevwUsbqZszadtNin?si=6Qg0sUUsSZmvv2KeWW12KQ",
+   "birth_year": 1021,
+   "death_year": 1058,
+   "date_precision": "exact",
    "has_research": true
   },
   {
@@ -5540,6 +6503,9 @@
    "tags": "קבלה, צדיקות, מרוקו, נתיבות, שושלת אבוחצירא, ברכות",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/4zNV0OTiJsa1CUIm4xsy4e?si=lD9RIUmYSHyfLAYBk1_jiw",
+   "birth_year": 1889,
+   "death_year": 1984,
+   "date_precision": "exact",
    "has_research": true,
    "migration_path": {
     "from": "מרוקו",
@@ -5577,6 +6543,9 @@
    "tags": "ביבליוגרפיה, מכון הרי פישל, פרס ישראל, שולי הגיליון, מרגליות הים",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/30nPMpyfBOS0oMuIfZlC7M?si=NCG5ucC9R1yITOkUq3hqAg",
+   "birth_year": 1889,
+   "death_year": 1971,
+   "date_precision": "exact",
    "has_research": true
   },
   {
@@ -5592,6 +6561,9 @@
    "tags": "רנסנס איטלקי, דרשנות, נפוצות יהודה, קול יהודה, הכוזרי",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/7n0jYXxrbyEW9fBiNOO0uc?si=WedYH--HRpGr71wfXixalg",
+   "birth_year": 1530,
+   "death_year": 1593,
+   "date_precision": "exact",
    "has_research": true
   },
   {
@@ -5606,7 +6578,10 @@
    "central_idea": "מנהיגות ריאליסטית — עיגון הלכתי לקיום יהודי בגולה באמצעות \"דינא דמלכותא דינא\" ושליטה בחכמות העולם.",
    "tags": "אמוראי בבל, נהרדעא, דינא דמלכותא דינא, לוח השנה, רב ושמואל",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/5RrrepmekZ3GO4eqGqTHLV?si=e7EqwLNAR5yvbBZ3l4XIag"
+   "spotify_url": "https://open.spotify.com/episode/5RrrepmekZ3GO4eqGqTHLV?si=e7EqwLNAR5yvbBZ3l4XIag",
+   "birth_year": 165,
+   "death_year": 257,
+   "date_precision": "exact"
   },
   {
    "id": "483",
@@ -5620,7 +6595,10 @@
    "central_idea": "ריבונות כערך דתי־לאומי — הניסיון הממוסד האחרון לגאולה ארצית בכוח אנושי.",
    "tags": "מרד בר כוכבא, ביתר, רבי עקיבא, משיחיות, מטבעות המרד",
    "chapter_type": "דמות",
-   "spotify_url": ""
+   "spotify_url": "",
+   "birth_year": 132,
+   "death_year": 136,
+   "date_precision": "exact"
   },
   {
    "id": "484",
@@ -5635,6 +6613,9 @@
    "tags": "פיוט, קה ריבון עלם, קבלת צפת, שירה עברית, עזה",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/24xak1cI8TsPSCy1icgwKG?si=xCKeveoJTui_AVKfR48LXQ",
+   "birth_year": 1555,
+   "death_year": 1625,
+   "date_precision": "exact",
    "migration_path": {
     "from": "צפת",
     "to": "צפת",
@@ -5658,6 +6639,9 @@
    "tags": "יהדות רומא, גדי מקולס, קידוש השם, תפוצות וארץ ישראל",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/5FpiW245vsxYv7x3SXzLgq?si=wD-WGas2QdeGAGNs3IAcrg",
+   "birth_year": 0,
+   "death_year": 100,
+   "date_precision": "century",
    "has_research": true
   },
   {
@@ -5673,6 +6657,9 @@
    "tags": "שערי תשובה, מוסר, פולמוס הרמב\"ם, קטלוניה",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/45W4Jxd89NsF6dPJtlmZIc?si=sosD_UZKRh-YiXoSYOkgVA",
+   "birth_year": 1200,
+   "death_year": 1263,
+   "date_precision": "exact",
    "has_research": true,
    "migration_path": {
     "from": "גירונה",
@@ -5695,6 +6682,9 @@
    "tags": "מטה דן, דאיזם, שבתאות, הקהילה הספרדית בלונדון, תורה שבעל פה",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/2wO6vlCjeFe4JEEyWuh8xL?si=0tiGcmOATGiRSnC_Phgi3A",
+   "birth_year": 1654,
+   "death_year": 1728,
+   "date_precision": "exact",
    "has_research": true
   },
   {
@@ -5710,6 +6700,9 @@
    "tags": "כלי יקר, דרשנות, פראג, ביקורת חברתית, תיקון המידות",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/3nwItn9PGKFfIopZY2AUMZ?si=AheGkq4JTDyY2wyFhSLLbA",
+   "birth_year": 1550,
+   "death_year": 1619,
+   "date_precision": "exact",
    "has_research": true,
    "migration_path": {
     "from": "פולין",
@@ -5733,6 +6726,9 @@
    "tags": "המזרחי, ציונות דתית, ישיבת לידא, לוגיקה תלמודית, תוכנית אוגנדה",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/6MKql77q23ERrOc1ACLYvH?si=gbTjXyxMSdC9ky6jPP-Qeg",
+   "birth_year": 1839,
+   "death_year": 1915,
+   "date_precision": "exact",
    "has_research": true
   },
   {
@@ -5748,6 +6744,9 @@
    "tags": "ציונות דתית, הרצי\"ה קוק, אל עמי, חינוך, משנת הרב קוק",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/0GVZh265hNqdgBASfPbYhp?si=TQS8j8rgRPWy0Jri0l_QNg",
+   "birth_year": 1900,
+   "death_year": 2000,
+   "date_precision": "century",
    "has_research": true
   },
   {
@@ -5763,6 +6762,9 @@
    "tags": "הרבנות הצבאית, רב ראשי, הלכות מלחמה, הר הבית, עגונות",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/35CkuI8zlv4vcXlbkd2MN9?si=QQ5il2YhQASBWpNW-j_F2w",
+   "birth_year": 1917,
+   "death_year": 1994,
+   "date_precision": "exact",
    "has_research": true,
    "migration_path": {
     "from": "פולין",
@@ -5782,6 +6784,9 @@
    "tags": "פחד יצחק, ישיבת רבנו חיים ברלין, למדנות וחסידות, גדלות האדם",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/2g9LIQuPfN5FbE41OYIPCg?si=xrMc-wONSIyFbmgJaZnlPg",
+   "birth_year": 1906,
+   "death_year": 1980,
+   "date_precision": "exact",
    "has_research": true,
    "migration_path": {
     "from": "ארה\"ב",
@@ -5801,6 +6806,9 @@
    "tags": "קבלת הגר\"א, בניין עולם, מגן וצינה, נגלה ונסתר",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/5myb4NwaDvGMOOeafcJtXR?si=Ab4IllnCTAqMpuE_vZzhIg",
+   "birth_year": 1789,
+   "death_year": 1852,
+   "date_precision": "exact",
    "has_research": true
   },
   {
@@ -5830,7 +6838,10 @@
    "central_idea": "העמדת ספר הזוהר במרכז ארון הספרים היהודי — הטקסט המכונן של תורת הסוד.",
    "tags": "ספר הזוהר, קבלת קסטיליה, גירונה, ספרות הסוד",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/5hjMOYSZfyk2PpvO1z7y60?si=xvtDucKGTcqSJ5rNgkG76A"
+   "spotify_url": "https://open.spotify.com/episode/5hjMOYSZfyk2PpvO1z7y60?si=xvtDucKGTcqSJ5rNgkG76A",
+   "birth_year": 1240,
+   "death_year": 1305,
+   "date_precision": "exact"
   },
   {
    "id": "496",
@@ -5844,7 +6855,10 @@
    "central_idea": "דמוקרטיזציה של פרשנות המקרא — כל לומד יכול וחייב להשוות פרשנים ולשאול \"מה קשה לרש\"י?\".",
    "tags": "גיליונות, לימוד תנ\"ך, פרשנות, הוראה, פרס ישראל, נשים",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/6EaZkWizKCeYuAEQsTP6dy?si=2e9vYWwFTvS5LFsBXBBg6A"
+   "spotify_url": "https://open.spotify.com/episode/6EaZkWizKCeYuAEQsTP6dy?si=2e9vYWwFTvS5LFsBXBBg6A",
+   "birth_year": 1905,
+   "death_year": 1997,
+   "date_precision": "exact"
   },
   {
    "id": "497",
@@ -5859,6 +6873,9 @@
    "tags": "מכתב מאליהו, ישיבת קלם, נקודת הבחירה, משגיח רוחני פוניבז'",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/59EdZjP2KomK9bh71JzxVm?si=G29DvxBSR6KAIoMMusxssA",
+   "birth_year": 1892,
+   "death_year": 1953,
+   "date_precision": "exact",
    "has_research": true,
    "migration_path": {
     "from": "ליטא",
@@ -5878,6 +6895,9 @@
    "tags": "מאור ושמש, קבלת המגרב, ליבורנו, הסכמת רבי חיים פינטו",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/1nKOHBJ23TLr78cnGNeESU?si=D48u0GKySzW0Abo48o_s6A",
+   "birth_year": 1700,
+   "death_year": 1800,
+   "date_precision": "century",
    "has_research": true,
    "migration_path": {
     "from": "מרוקו",
@@ -5896,7 +6916,10 @@
    "central_idea": "שמירת המסורת כשילוב בין חינוך תורני להנחלת זיכרון היסטורי־משפחתי; בדורות מאוחרים המשיכו צאצאיו בדרך של הנגשה והסברה במקום הסתגרות.",
    "tags": "תרומת הקודש, אילן יוחסין טולידאנו, מכון טולידאנו ירושלים",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/7rk4ockzy5i8MSThnAtJ2b?si=YkCuaUNBRfWHO4U4QqJEZw"
+   "spotify_url": "https://open.spotify.com/episode/7rk4ockzy5i8MSThnAtJ2b?si=YkCuaUNBRfWHO4U4QqJEZw",
+   "birth_year": 1800,
+   "death_year": 1900,
+   "date_precision": "century"
   },
   {
    "id": "500",
@@ -5911,6 +6934,9 @@
    "tags": "חב\"ד־ליובאוויטש, מפעל השלוחים, מבצעים, שלמות ארץ ישראל",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/7fQ0ISYl8xXKqbqQN9DLub?si=9bkwsQotQFeCXu1IUjS5cA",
+   "birth_year": 1902,
+   "death_year": 1994,
+   "date_precision": "exact",
    "migration_path": {
     "from": "אוקראינה",
     "to": "ארה\"ב"
@@ -5928,7 +6954,10 @@
    "central_idea": "חיבור בין חסידות להלכה — עצמאות מחשבתית בפסיקה תוך נאמנות למסורת, לצד עמידה ציבורית איתנה מול לחץ מדיני (וועידת פטרבורג, פרשת הקנטוניסטים).",
    "tags": "שו\"ת צמח צדק, וועידת פטרבורג, קנטוניסטים, דרך מצוותיך",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/42DP4ZMH6a423Kz6EW30Tx?si=FeoyMM7iTB25Xxa1qSqB5w"
+   "spotify_url": "https://open.spotify.com/episode/42DP4ZMH6a423Kz6EW30Tx?si=FeoyMM7iTB25Xxa1qSqB5w",
+   "birth_year": 1789,
+   "death_year": 1866,
+   "date_precision": "exact"
   },
   {
    "id": "502",
@@ -5943,6 +6972,9 @@
    "tags": "רחובות הנהר, מושבות חקלאיות, חברון, חג הגאולה (י' בכסלו)",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/0J2MRPc1AEBI5eLsklGJ7k?si=dG5KDIysR66JS3CHNW3-lw",
+   "birth_year": 1773,
+   "death_year": 1827,
+   "date_precision": "exact",
    "has_research": true
   },
   {
@@ -5957,7 +6989,10 @@
    "central_idea": "\"לא בשמים היא\" — לאחר מתן תורה ההכרעה ההלכתית נתונה לשיקול דעת חכמים ולא לאותות ומופתים משמימיים.",
    "tags": "לא בשמים היא, תנורו של עכנאי, יבנה, נפח",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/4GuQl9XmYIYRZ48ooTWu4Q?si=_HTGr4CjQH6pTzvYmaQK5Q"
+   "spotify_url": "https://open.spotify.com/episode/4GuQl9XmYIYRZ48ooTWu4Q?si=_HTGr4CjQH6pTzvYmaQK5Q",
+   "birth_year": 0,
+   "death_year": 100,
+   "date_precision": "century"
   },
   {
    "id": "504",
@@ -5971,7 +7006,10 @@
    "central_idea": "הצבת אידיאל השלמות כמוקד ההלכה — הבדל עקרוני מבית הלל, שהתמקדו במציאות הקיימת ולא רק בפוטנציאל השאיפה.",
    "tags": "בית שמאי, סנהדרין, אמת הבניין, שמונה עשר דבר",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/65lrqwQXxGTkyqwur7nji0?si=Ay_LuqUuTrqIIJkzNpWaug"
+   "spotify_url": "https://open.spotify.com/episode/65lrqwQXxGTkyqwur7nji0?si=Ay_LuqUuTrqIIJkzNpWaug",
+   "birth_year": -100,
+   "death_year": 0,
+   "date_precision": "century"
   },
   {
    "id": "505",
@@ -5986,6 +7024,9 @@
    "tags": "נשיא הסנהדרין, פרוזבול, שבע מידות, בית הלל",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/65r9B8NufuGizEvQUqbuM5?si=YZ_2WsohSWeQbGuoVC_ang",
+   "birth_year": -100,
+   "death_year": 0,
+   "date_precision": "century",
    "migration_path": {
     "from": "בבל",
     "to": "ארץ ישראל"
@@ -6004,6 +7045,9 @@
    "tags": "נשיא הסנהדרין, הרחבת בית המדרש, יבנה, עשירות ופרנסת תלמידי חכמים",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/581Qie3gJwcdnadi7wnNF2?si=NUWvc9q9QEKZ2_7X-kd36w",
+   "birth_year": 0,
+   "death_year": 100,
+   "date_precision": "century",
    "has_research": true
   },
   {
@@ -6018,7 +7062,10 @@
    "central_idea": "נאמנות מוחלטת למסורת שנמסרה מסיני, אף כשהיא מובילה לעימות עם עמדת הרוב ולמחיר אישי כבד — נידוי ובדידות עד יום מותו.",
    "tags": "תנורו של עכנאי, נידוי, ישיבת לוד, בור סוד שאינו מאבד טיפה",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/1tmf7drUh7Zwm09Ndy0seU?si=Fl_mRgiTRDKJx9UA2iZ_2A"
+   "spotify_url": "https://open.spotify.com/episode/1tmf7drUh7Zwm09Ndy0seU?si=Fl_mRgiTRDKJx9UA2iZ_2A",
+   "birth_year": 0,
+   "death_year": 100,
+   "date_precision": "century"
   },
   {
    "id": "508",
@@ -6033,6 +7080,9 @@
    "tags": "חכם באשי, קושטא, התקבלות השולחן ערוך, כתר ארם צובה",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/0N8Q02IOA6RpiF5hrOfEKn?si=UzuDBm9YQCepHYmkGzcZug",
+   "birth_year": 1530,
+   "death_year": 1613,
+   "date_precision": "exact",
    "has_research": true
   },
   {
@@ -6048,6 +7098,9 @@
    "tags": "אור החיים, מדרש כנסת ישראל, כבה נר המערבי, גאולת אחישנה ובעתה",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/3HwpG5NALcGOQmbs1wwR4N?si=2otS_OCBTYaCbDWu2xZarQ",
+   "birth_year": 1696,
+   "death_year": 1743,
+   "date_precision": "exact",
    "has_research": true,
    "migration_path": {
     "from": "מרוקו",
@@ -6070,6 +7123,9 @@
    "tags": "בית יעקב, חינוך בנות, החפץ חיים, שיטתו של הרש\"ר הירש, נשים",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/74WdM2qTXHDJy1s5uar69w?si=F3NlHmrYRSq0scH13afJjQ",
+   "birth_year": 1883,
+   "death_year": 1935,
+   "date_precision": "exact",
    "migration_path": {
     "from": "קרקוב",
     "to": "קרקוב",
@@ -6090,7 +7146,10 @@
    "central_idea": "התאמת מודל \"בית יעקב\" האירופי למציאות האמריקאית, תוך שילוב דרישות רוחניות גבוהות עם יחס אישי ורגישות חינוכית.",
    "tags": "בית יעקב אמריקה, וויליאמסבורג, תנועת המוסר, רבי אלחנן וסרמן, נשים",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/7gEH0FmW9xyX4je0Jk40A7?si=9VHkgmhURN2trmReuSg2hg"
+   "spotify_url": "https://open.spotify.com/episode/7gEH0FmW9xyX4je0Jk40A7?si=9VHkgmhURN2trmReuSg2hg",
+   "birth_year": 1913,
+   "death_year": 1986,
+   "date_precision": "exact"
   },
   {
    "id": "512",
@@ -6104,7 +7163,10 @@
    "central_idea": "העצמת הלמדנות הנשית ברמה אינטלקטואלית גבוהה מבלי לערער על גבולות המבנה המסורתי של עולם התורה.",
    "tags": "מכון שרה שנירר (BJJ), הרב יצחק הוטנר, פחד יצחק, למדנות נשית, נשים",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/6hBYh8i79O4pCQKeB10QNN?si=IuDV3verTYivgK2SuPnG9w"
+   "spotify_url": "https://open.spotify.com/episode/6hBYh8i79O4pCQKeB10QNN?si=IuDV3verTYivgK2SuPnG9w",
+   "birth_year": 1938,
+   "death_year": 2023,
+   "date_precision": "exact"
   },
   {
    "id": "513",
@@ -6118,7 +7180,10 @@
    "central_idea": "\"לא מספיק להיות טובים - עלינו להיות גדולים\" — לימוד עמוק ותובעני לנשים כדרך להגשמת ייעוד אישי, לא ויתור מתוך ענווה מדומה.",
    "tags": "מדרשת איה\"ת (EYAHT), אש התורה, תשובה, גדלות, נשים",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/4pXB7MODLOE9Od1QA1DC0J?si=4gAFChgSQu2_jY78fu0gmg"
+   "spotify_url": "https://open.spotify.com/episode/4pXB7MODLOE9Od1QA1DC0J?si=4gAFChgSQu2_jY78fu0gmg",
+   "birth_year": 1938,
+   "death_year": 2023,
+   "date_precision": "exact"
   },
   {
    "id": "514",
@@ -6132,7 +7197,10 @@
    "central_idea": "תגובה לחורבן השואה באמצעות בניית דור יהודי חדש המחובר לתורה, ולא רק זכירת האבל — אחריות במקום ייאוש.",
    "tags": "תנועת הנני, ניצולת שואה, השואה הרוחנית, קירוב, נשים",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/39zLdLIz7vxGqmTAJn8oRF?si=ABN88SvdQLiGevbk98julA"
+   "spotify_url": "https://open.spotify.com/episode/39zLdLIz7vxGqmTAJn8oRF?si=ABN88SvdQLiGevbk98julA",
+   "birth_year": 1936,
+   "death_year": 2016,
+   "date_precision": "exact"
   },
   {
    "id": "515",
@@ -6146,7 +7214,10 @@
    "central_idea": "חסד כמערכת מאורגנת ומכובדת ולא כמעשה חד־פעמי — שילוב לב רחב עם סדר וניהול קפדני כדי לשמור על כבוד המקבלים.",
    "tags": "סגולת נעמי, יהדות תימן, פרס ישראל, חסד, נשים",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/78MX2sAT6M6hAi0qCuuhb7?si=-05qETOVSCGChK_7lpJwmA"
+   "spotify_url": "https://open.spotify.com/episode/78MX2sAT6M6hAi0qCuuhb7?si=-05qETOVSCGChK_7lpJwmA",
+   "birth_year": 1922,
+   "death_year": 2013,
+   "date_precision": "exact"
   },
   {
    "id": "516",
@@ -6160,7 +7231,10 @@
    "central_idea": "שילוב נאמנות הלכתית עם מעורבות ציבורית פעילה — האישה תורמת לבניין החברה והאומה ולא רק לבית.",
    "tags": "תנועת אמונה, בית החולים הרצוג, הרב יצחק אייזיק הרצוג, שירות לאומי, נשים",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/5cRN0ef6AcQepyWCQ1IKwv?si=fgo8Tk4GSBORkdMUO9tVuw"
+   "spotify_url": "https://open.spotify.com/episode/5cRN0ef6AcQepyWCQ1IKwv?si=fgo8Tk4GSBORkdMUO9tVuw",
+   "birth_year": 1896,
+   "death_year": 1979,
+   "date_precision": "exact"
   },
   {
    "id": "517",
@@ -6174,7 +7248,10 @@
    "central_idea": "שילוב מחויבות הלכתית עם אחריות ציבורית ופרלמנטרית — הרחבת השתתפות נשים דתיות בבניין המדינה מבלי לוותר על עקרונות.",
    "tags": "תנועת אמונה, המפד\"ל, כנסת, שירות לאומי, נשים",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/0RuE8l4DbgcRxBQWjGBUv3?si=rW9fZeAOTueEFDMOKUR5mQ"
+   "spotify_url": "https://open.spotify.com/episode/0RuE8l4DbgcRxBQWjGBUv3?si=rW9fZeAOTueEFDMOKUR5mQ",
+   "birth_year": 1906,
+   "death_year": 1993,
+   "date_precision": "exact"
   },
   {
    "id": "518",
@@ -6189,6 +7266,9 @@
    "tags": "יהדות לוב, ישיבת רבי יצחק חי טייב, קבלה, פשטות",
    "chapter_type": "דמות",
    "spotify_url": "https://open.spotify.com/episode/2FCDtvLfOdUiMuZappKmKp?si=9UljEh1-Q4C1N7eNrsB3wA",
+   "birth_year": 1951,
+   "death_year": 2026,
+   "date_precision": "exact",
    "has_research": true
   },
   {
@@ -6203,7 +7283,10 @@
    "central_idea": "גמילות חסדים כמערכת מקצועית ולא רק כרצון טוב — חיזוק הרווחה החברתית כביטוי מעשי למצוות התורה ולכבוד האדם.",
    "tags": "תנועת אמונה, פרס ישראל, ניצולת שואה, עבודה סוציאלית, נשים",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/1aD7ZsAgg6SdgWpBfy2orm?si=pCIEOLsfTe23nVNHGQVRCQ"
+   "spotify_url": "https://open.spotify.com/episode/1aD7ZsAgg6SdgWpBfy2orm?si=pCIEOLsfTe23nVNHGQVRCQ",
+   "birth_year": 1918,
+   "death_year": 2001,
+   "date_precision": "exact"
   },
   {
    "id": "520",
@@ -6217,7 +7300,10 @@
    "central_idea": "שילוב מסורת, ציונות וחסד — הצלת ילדים בעליית הנוער כללה שמירה על עולמם הרוחני והתרבותי לצד ההצלה הפיזית.",
    "tags": "הדסה, עליית הנוער, מכתב הקדיש, JPS, נשים",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/0Ck5Kbih9i0wxQG6BVPt02?si=l1zAOAkHSmWVZPUY3txncQ"
+   "spotify_url": "https://open.spotify.com/episode/0Ck5Kbih9i0wxQG6BVPt02?si=l1zAOAkHSmWVZPUY3txncQ",
+   "birth_year": 1860,
+   "death_year": 1945,
+   "date_precision": "exact"
   },
   {
    "id": "521",
@@ -6231,7 +7317,10 @@
    "central_idea": "\"הוי מתלמידיו של אהרן, אוהב שלום ורודף שלום, אוהב את הבריות ומקרבן לתורה\" — קירוב באמצעות אהבה ויחס אישי, לא באמצעות תוכחה ופחד.",
    "tags": "כהן גדול, אוהב שלום ורודף שלום, חטא העגל, ברכת כהנים",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/5IngtmCeOoXdmrTqXfwz2X?si=LGFrsWp1RLacuUdBQKTlcw"
+   "spotify_url": "https://open.spotify.com/episode/5IngtmCeOoXdmrTqXfwz2X?si=LGFrsWp1RLacuUdBQKTlcw",
+   "birth_year": -1300,
+   "death_year": -1200,
+   "date_precision": "century"
   },
   {
    "id": "522",
@@ -6245,7 +7334,10 @@
    "central_idea": "\"הרוצה להיות חסיד יקיים מילי דנזיקין\" — יסוד החסידות האמיתית נמדד ביושר ובזהירות מהיזק לזולת, לא רק בפרישות.",
    "tags": "ישיבת פומבדיתא, מילי דנזיקין, ברכת האילנות, נהרדעא",
    "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/2DC70i2c0rP8sdAlwl9GK7?si=zWejBWg1QiOjY55oNKCJ0w"
+   "spotify_url": "https://open.spotify.com/episode/2DC70i2c0rP8sdAlwl9GK7?si=zWejBWg1QiOjY55oNKCJ0w",
+   "birth_year": 220,
+   "death_year": 299,
+   "date_precision": "exact"
   },
   {
    "id": "523",
@@ -6273,7 +7365,10 @@
    "central_idea": "כוח כלכלי ומדיני הוא אחריות ציבורית: אפשר להפוך הון, קשרים והשפעה לכלי של הצלה, שיקום תרבותי ובניית עתיד יהודי בארץ ישראל.",
    "tags": "אנוסים, משפחת מנדס, תנ״ך פרארה, חרם אנקונה, טבריה, האימפריה העות׳מאנית, הצלה יהודית, נשים",
    "chapter_type": "דמות",
-   "spotify_url": ""
+   "spotify_url": "",
+   "birth_year": 1510,
+   "death_year": 1569,
+   "date_precision": "exact"
   },
   {
    "id": "525",
@@ -6287,7 +7382,10 @@
    "central_idea": "יהודי מודרני אינו צריך לבחור בין אינטלקט לאמונה; אפשר להשתמש בשפה מדעית ופסיכולוגית כדי להעמיק במקורות ולתרגם מסורת עתיקה לעולם מושגים בן זמננו.",
    "tags": "פיזיקה גרעינית, קבלה, מדיטציה יהודית, גיל היקום, The Living Torah, תורה ומדע, קירוב",
    "chapter_type": "דמות",
-   "spotify_url": ""
+   "spotify_url": "",
+   "birth_year": 1934,
+   "death_year": 1983,
+   "date_precision": "exact"
   },
   {
    "id": "526",
@@ -6301,7 +7399,10 @@
    "central_idea": "העולם המודרני והמחקר אינם מחייבים ויתור על המסורת; אפשר להשתמש בכלי האקדמיה מתוך נקודת מוצא תורנית ולבנות מנהיגות יהודית המסוגלת להתמודד עם אתגרי הזמן.",
    "tags": "תורה עם דרך ארץ, בית המדרש לרבנים בברלין, מדעי היהדות, הלכות גדולות, ארץ ישראל, אורתודוקסיה",
    "chapter_type": "דמות",
-   "spotify_url": ""
+   "spotify_url": "",
+   "birth_year": 1820,
+   "death_year": 1899,
+   "date_precision": "exact"
   },
   {
    "id": "527",
@@ -6315,7 +7416,10 @@
    "central_idea": "אמונה איננה המתנה פסיבית אלא כוח המחייב פעולה: כשם שהאדם בונה סוכה כדי ליצור מקום לקדושה, כך בניין הארץ והתחייה הלאומית יכולים להיות מעשה דתי המוציא את כוחות העם מן הכוח אל הפועל.",
    "tags": "וולוז׳ין, רבי חיים מבריסק, חב״ד-קאפוסט, המזרחי, חיבת ציון, בכורי יהודה, ציונות דתית",
    "chapter_type": "דמות",
-   "spotify_url": ""
+   "spotify_url": "",
+   "birth_year": 1869,
+   "death_year": 1941,
+   "date_precision": "exact"
   },
   {
    "id": "528",
@@ -6329,7 +7433,10 @@
    "central_idea": "אפשר להשתמש בכלים אינטלקטואליים מודרניים דווקא כדי להעמיק את המסורת ולהגן עליה; פתיחות לשיטה אינה מחייבת ויתור על מחויבות לתורה.",
    "tags": "הכתב והקבלה, דקדוק, בלשנות, פילולוגיה, רפורמה, תורה שבכתב ותורה שבעל פה, חיבת ציון",
    "chapter_type": "דמות",
-   "spotify_url": ""
+   "spotify_url": "",
+   "birth_year": 1781,
+   "death_year": 1865,
+   "date_precision": "exact"
   },
   {
    "id": "529",
@@ -6343,7 +7450,10 @@
    "central_idea": "אמונה משיחית אינה מחייבת המתנה פסיבית; היא יכולה להניע לפעולה בעולם הממשי באמצעות דפוס, הגות, דיפלומטיה ושיח עם תרבויות ושלטונות.",
    "tags": "אנוסים, אמסטרדם, דפוס עברי, עשרת השבטים, רמברנדט, אוליבר קרומוול, שיבת יהודים לאנגליה",
    "chapter_type": "דמות",
-   "spotify_url": ""
+   "spotify_url": "",
+   "birth_year": 1604,
+   "death_year": 1657,
+   "date_precision": "exact"
   },
   {
    "id": "530",
@@ -6357,7 +7467,10 @@
    "central_idea": "בניין הארץ החומרי והרוחני יכולים להיבנות יחד; שיתוף פעולה לאומי אפשרי גם בין חלקי העם החולקים בהשקפת עולמם, כל עוד נשמרת זהות תורנית ברורה.",
    "tags": "חיבת ציון, שביל הזהב, אורח לחיים, יישוב הארץ, תורה ועבודה, חקלאות, לאומיות",
    "chapter_type": "דמות",
-   "spotify_url": ""
+   "spotify_url": "",
+   "birth_year": 1817,
+   "death_year": 1889,
+   "date_precision": "exact"
   },
   {
    "id": "531",
@@ -6371,7 +7484,10 @@
    "central_idea": "תורה ועבודת האדמה אינן סותרות זו את זו; בניין הארץ, עצמאות כלכלית ויוזמה ציבורית הם חלק מתהליך הגאולה.",
    "tags": "יפו, הפרדס היהודי הראשון, מקוה ישראל, פתח תקווה, ועד העיר, עבודת האדמה",
    "chapter_type": "דמות",
-   "spotify_url": ""
+   "spotify_url": "",
+   "birth_year": 1783,
+   "death_year": 1879,
+   "date_precision": "exact"
   },
   {
    "id": "532",
@@ -6385,7 +7501,10 @@
    "central_idea": "השפעה רוחנית אינה תלויה בתפקיד רשמי: הקשבה אישית, חסד ואמונה פשוטה יכולות להפוך בית פרטי למרכז של תקווה ואהבת ישראל.",
    "tags": "בית רשב״ם, חסד, תפילה, תהילים, עצה וברכה, צניעות, נשים",
    "chapter_type": "דמות",
-   "spotify_url": ""
+   "spotify_url": "",
+   "birth_year": 1932,
+   "death_year": 2011,
+   "date_precision": "exact"
   },
   {
    "id": "533",
@@ -6399,7 +7518,10 @@
    "central_idea": "רוחניות אמיתית אינה מסתגרת מן המציאות אלא מחייבת פעולה; תפילה, אחריות לעם ונכונות למעשה יכולות להשתלב בשליחות מוסרית אחת.",
    "tags": "צנחני היישוב, ציונות, תפילה, הליכה לקיסריה, אלי אלי, שליחות, השואה, גבורה, נשים",
    "chapter_type": "דמות",
-   "spotify_url": ""
+   "spotify_url": "",
+   "birth_year": 1921,
+   "death_year": 1944,
+   "date_precision": "exact"
   },
   {
    "id": "534",
@@ -6413,7 +7535,10 @@
    "central_idea": "עולם ההלכה כולל לא רק איסורים אלא גם מרחב של היתר, עונג וקדושה; ילתא מגלמת עצמאות אינטלקטואלית, מעמד ציבורי ונוכחות נשית פעילה בעולם האמוראי.",
    "tags": "רב נחמן, עולא, רבה בר בר חנה, היתר ואיסור, כוס של ברכה, 400 חביות יין, נשים",
    "chapter_type": "דמות",
-   "spotify_url": ""
+   "spotify_url": "",
+   "birth_year": 200,
+   "death_year": 300,
+   "date_precision": "century"
   },
   {
    "id": "535",
@@ -6441,7 +7566,10 @@
    "central_idea": "שילוב תורה עם עצמאות כלכלית ואחריות חברתית: עושר, למדנות והנהגה מקבלים ערך כאשר הם משרתים יושר, חסד ובניין מוסדות התורה.",
    "tags": "ישיבת סורא, שיכר תמרים, דיני ממונות, הונאה, תפילת הדרך, חלומות",
    "chapter_type": "דמות",
-   "spotify_url": ""
+   "spotify_url": "",
+   "birth_year": 217,
+   "death_year": 309,
+   "date_precision": "exact"
   },
   {
    "id": "537",
@@ -6455,7 +7583,10 @@
    "central_idea": "אפשר להגן על המסורת מתוך שימוש בשכל, במדע ובביקורת; ידיעה מדעית אינה חייבת לערער את האמונה אלא יכולה להתקיים לצדה בתוך עולם תורני שלם.",
    "tags": "אמונת חכמים, הזוהר, אוקלידס, אסטרונומיה, רמח״ל, יהדות איטליה, אינקוויזיציה",
    "chapter_type": "דמות",
-   "spotify_url": ""
+   "spotify_url": "",
+   "birth_year": 1680,
+   "death_year": 1743,
+   "date_precision": "exact"
   },
   {
    "id": "538",
@@ -6469,7 +7600,10 @@
    "central_idea": "גילוי כתבי יד יכול לשנות את תמונת ההיסטוריה התורנית; עיון אמיתי דורש בירור מקורות, נוסחאות ומציאות לצד פסיקה בהירה.",
    "tags": "פרובאנס, רמב״ם, פירוש המשנה, ספר המצוות, כתבי יד, רש״י, המאירי, פילוסופיה",
    "chapter_type": "דמות",
-   "spotify_url": ""
+   "spotify_url": "",
+   "birth_year": 1250,
+   "death_year": 1315,
+   "date_precision": "exact"
   },
   {
    "id": "539",
@@ -6483,7 +7617,10 @@
    "central_idea": "דיוק במקורות וחיבור בין תחומי הדעת הם מפתח להבנת התורה; פרישות אישית יכולה להצמיח מהפכה חינוכית והיסטורית רחבת היקף.",
    "tags": "הגר״א, ביאור הגר״א, פשט, נוסחאות, קבלה, התנגדות לחסידות, מדעי הטבע",
    "chapter_type": "דמות",
-   "spotify_url": ""
+   "spotify_url": "",
+   "birth_year": 1720,
+   "death_year": 1797,
+   "date_precision": "exact"
   },
   {
    "id": "540",
@@ -6497,7 +7634,10 @@
    "central_idea": "ידיעת המדעים אינה עומדת בהכרח מול התורה; היא יכולה להשלים את הבנתה, לסייע בסוגיות הלכתיות ולחזק את כבודם האינטלקטואלי של ישראל.",
    "tags": "הגר״א, אוקלידס, עמודי שמים, דרך ישרה, קנה המידה, מדע עברי, רפואה",
    "chapter_type": "דמות",
-   "spotify_url": ""
+   "spotify_url": "",
+   "birth_year": 1744,
+   "death_year": 1808,
+   "date_precision": "exact"
   },
   {
    "id": "541",
@@ -6511,7 +7651,10 @@
    "central_idea": "אמונה אינה צריכה לחשוש מן האמת; אפשר לשלב נאמנות עמוקה לתורה עם יושר אינטלקטואלי, עיון בטבע והבנת העיקרון הרוחני והמוסרי שמאחורי ההלכה.",
    "tags": "החזון איש, אבולוציה, גיל העולם, טעמי המצוות, רמב״ם, עצמאות כלכלית, אמת",
    "chapter_type": "דמות",
-   "spotify_url": ""
+   "spotify_url": "",
+   "birth_year": 1923,
+   "death_year": 2004,
+   "date_precision": "exact"
   },
   {
    "id": "542",
@@ -6526,6 +7669,9 @@
    "tags": "האר״י, הרמ״ק, עץ חיים, שמונה שערים, אסטרונומיה, אלכימיה, רפואה",
    "chapter_type": "דמות",
    "spotify_url": "",
+   "birth_year": 1542,
+   "death_year": 1620,
+   "date_precision": "exact",
    "migration_path": {
     "from": "צפת",
     "to": "דמשק",
@@ -6547,7 +7693,10 @@
    "central_idea": "התורה אינה רק ידע אלא דרך חיים שלמה: ברכה, צדקה, התמודדות עם היצר ואחריות כלפי הבריאה הופכים את הלימוד לחיים ממש.",
    "tags": "רבי יוחנן, ברכות, צדקה בסתר, יצר הרע, מלאך המוות, תלמודו בידו",
    "chapter_type": "דמות",
-   "spotify_url": ""
+   "spotify_url": "",
+   "birth_year": 200,
+   "death_year": 300,
+   "date_precision": "century"
   },
   {
    "id": "544",
@@ -6561,7 +7710,10 @@
    "central_idea": "ידע מדעי חדש אינו חייב לאיים על המסורת; אפשר להשתמש בו כדי להעמיק בהבנת הבריאה, ההלכה וחכמת התורה.",
    "tags": "גלילאו, קופרניקוס, הליוצנטריות, מתמטיקה, רפואה, קבלה, תורה ומדע",
    "chapter_type": "דמות",
-   "spotify_url": ""
+   "spotify_url": "",
+   "birth_year": 1591,
+   "death_year": 1655,
+   "date_precision": "exact"
   },
   {
    "id": "545",
@@ -6575,7 +7727,10 @@
    "central_idea": "המדע אינו מחליף את התורה אלא מסייע לברר את המציאות שעליה חלה ההלכה; נאמנות לחז״ל יכולה להשתלב בבחינה מחודשת של עובדות טבעיות.",
    "tags": "פחד יצחק, רפואה והלכה, כינה בשבת, מדע וחז״ל, אנציקלופדיה הלכתית",
    "chapter_type": "דמות",
-   "spotify_url": ""
+   "spotify_url": "",
+   "birth_year": 1679,
+   "death_year": 1756,
+   "date_precision": "exact"
   },
   {
    "id": "546",
@@ -6589,7 +7744,10 @@
    "central_idea": "פתיחות למדע אינה מחייבת ויתור על המסורת; אפשר לבחון את ממצאי העולם המודרני ולשלבם בתוך מסגרת אמונית והלכתית איתנה.",
    "tags": "תפארת ישראל, יכין ובועז, מדע, גאולוגיה, מאובנים, חיסונים, גוטנברג, רפורמה",
    "chapter_type": "דמות",
-   "spotify_url": ""
+   "spotify_url": "",
+   "birth_year": 1782,
+   "death_year": 1860,
+   "date_precision": "exact"
   },
   {
    "id": "547",
@@ -6603,7 +7761,10 @@
    "central_idea": "גדלות רוחנית נבחנת בענווה ובנכונות לעסוק ביסודות הפשוטים; אותיות של ילד יכולות לשאת את אותם סודות המצויים בעולמות הקבלה.",
    "tags": "הבעל שם טוב, ראשית החסידות, פרנקיסטים, מלמד תינוקות, יאיר אור",
    "chapter_type": "דמות",
-   "spotify_url": ""
+   "spotify_url": "",
+   "birth_year": 1703,
+   "death_year": 1773,
+   "date_precision": "exact"
   },
   {
    "id": "548",
@@ -6617,7 +7778,10 @@
    "central_idea": "לימוד המדע והכרת הבריאה יכולים להיות שער לעבודת ה׳, אך הידע הוא אמצעי ולא תכלית; המבחן העליון של החכמה הוא הדרך שבה האדם מיטיב עם זולתו.",
    "tags": "ספר הברית השלם, קופרניקוס, אסטרונומיה, רפואה, טכנולוגיה, קבלת האר״י, אהבת רעים",
    "chapter_type": "דמות",
-   "spotify_url": ""
+   "spotify_url": "",
+   "birth_year": 1765,
+   "death_year": 1821,
+   "date_precision": "exact"
   },
   {
    "id": "549",
@@ -6631,7 +7795,10 @@
    "central_idea": "אפשר להיות מעורב במדע, בתרבות ובחברה המודרנית מבלי שהתורה תאבד את מרכזיותה; הפתיחות לעולם דורשת זהות תורנית ברורה וגבולות הלכתיים מוצקים.",
    "tags": "תורה עם דרך ארץ, אורתודוקסיה, השכלה כללית, חינוך, איגרות צפון, חורב, פולמוס הפרישה",
    "chapter_type": "דמות",
-   "spotify_url": ""
+   "spotify_url": "",
+   "birth_year": 1808,
+   "death_year": 1888,
+   "date_precision": "exact"
   },
   {
    "id": "550",
@@ -6645,7 +7812,10 @@
    "central_idea": "״לא המדרש הוא העיקר אלא המעשה״ — הנהגה תורנית נבחנת באחריות ציבורית, ביושר וביכולת לתרגם ערכים לפעולה במציאות משברית.",
    "tags": "נשיא הסנהדרין, המרד הגדול, הנהגה מתונה, עשרת הרוגי מלכות, צדק חברתי",
    "chapter_type": "דמות",
-   "spotify_url": ""
+   "spotify_url": "",
+   "birth_year": 0,
+   "death_year": 100,
+   "date_precision": "century"
   },
   {
    "id": "551",
@@ -6659,7 +7829,10 @@
    "central_idea": "דמותו מחברת בין דיון הלכתי יצירתי לבין מסורת הזיכרון של עולם הישיבות; שמו הפך לחלק מטקס הסיום של לומדי הש״ס לאורך דורות.",
    "tags": "רב יהודה, רב יוסף, יומא, מנחות, עשרת בני רב פפא, הדרן, סיום מסכת",
    "chapter_type": "דמות",
-   "spotify_url": ""
+   "spotify_url": "",
+   "birth_year": 200,
+   "death_year": 300,
+   "date_precision": "century"
   },
   {
    "id": "552",
@@ -6673,7 +7846,10 @@
    "central_idea": "הלכה גדולה נוצרת מן המפגש בין מסורת להבנת המציאות; אצל רפרם, דיוק מעשי והגות קוסמית על המקדש מתקיימים באותו עולם תורני.",
    "tags": "רב חסדא, רב הונא, שעטנז, תענית, בית כנסת בדמשק, חורבן המקדש",
    "chapter_type": "דמות",
-   "spotify_url": ""
+   "spotify_url": "",
+   "birth_year": 300,
+   "death_year": 400,
+   "date_precision": "century"
   },
   {
    "id": "553",

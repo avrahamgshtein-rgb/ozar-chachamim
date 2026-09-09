@@ -86,6 +86,58 @@ def parse_year(s):
     if m and neg: return -int(m.group(1))
     return None
 
+def life_years(years_text, era_text):
+    """
+    Structured life span from the free-text years column.
+
+    Returns (birth, death, precision) where precision is:
+      'exact'  — the source gave two plausible years, e.g. "1798–1866"
+      'century'— only a century is known, e.g. "המאה ה־16"; the pair is the
+                 century window, NOT a lifespan, so consumers must not present
+                 it as a specific date
+      None     — nothing usable; emit no years rather than guess
+
+    A bare pair of numbers is only accepted as birth/death when the span is
+    plausible for a human life. That rejects event years ("גירוש 1492"),
+    century ranges written as digits, and reign dates.
+    """
+    def clean(t):
+        return (t or '').replace('־', '-').replace('–', '-').replace('״', '"')
+
+    yrs, era = clean(years_text), clean(era_text)
+
+    # Explicit years always win over a century label. The spreadsheet routinely
+    # carries "1905-1997" in the years column while the era column says
+    # "המאה ה־20"; checking the century first would throw the real dates away.
+    for src in (yrs, era):
+        if 'לפנה' in src and 'לספירה' in src:
+            continue                      # spans BCE into CE — sign is ambiguous, skip
+        bce = 'לפנה' in src
+        ys = [int(x) for x in re.findall(r'\b(\d{3,4})\b', src)]
+        if len(ys) >= 2:
+            a, b = ys[0], ys[1]
+            if bce: a, b = -a, -b
+            if 0 < b - a <= 120:
+                return a, b, 'exact'
+
+    # Century fallback. Handles both "המאה ה-16" and the plural span form
+    # "המאות ה-12-13", which is a 200-year window rather than a lifespan.
+    for src in (yrs, era):
+        m = re.search(r'המאות ה-?(\d+)-(\d+)', src)
+        if m:
+            c1, c2 = int(m.group(1)), int(m.group(2))
+            start, end = (c1 - 1) * 100, c2 * 100
+            if 'לפנה' in src: start, end = -end, -start
+            return start, end, 'century'
+        m = re.search(r'המאה ה-?(\d+)', src)
+        if m:
+            c = int(m.group(1))
+            start, end = (c - 1) * 100, c * 100
+            if 'לפנה' in src: start, end = -end, -start
+            return start, end, 'century'
+
+    return None, None, None
+
 def norm_era(era_text, years_text):
     t = (era_text or '').replace('״','"')
     yt = (years_text or '').replace('״','"')
@@ -148,9 +200,12 @@ print(f'XLSX: {len(rows)} rows -> {len(best)} unique sages')
 # ---------- Build nodes ----------
 nodes, era_stats = [], Counter()
 byname = {}
+year_stats = Counter()
 for key, r in best.items():
     era_key = norm_era(G(r,'תקופה'), G(r,'שנים/תקופה'))
     era_stats[era_key] += 1
+    birth, death, precision = life_years(G(r,'שנים/תקופה'), G(r,'תקופה'))
+    year_stats[precision or 'none'] += 1
     node = {
         'id': G(r,'מזהה'),
         'label': G(r,'שם הדמות/הנושא'),
@@ -166,6 +221,12 @@ for key, r in best.items():
         'spotify_url': G(r,'קישור ספוטיפיי'),
         'related_raw': G(r,'דמויות/השפעות קשורות'),
     }
+    if precision:
+        node['birth_year'] = birth
+        node['death_year'] = death
+        # Consumers must check this before showing a specific date: 'century'
+        # means the pair is a 100-year window, not a lifespan.
+        node['date_precision'] = precision
     nodes.append(node)
     byname[key] = node
 
@@ -272,3 +333,4 @@ shutil.copy('data.json', 'data.json.backup_pre_rebuild')
 json.dump({'nodes': nodes, 'links': links}, open('data.json','w',encoding='utf-8'), ensure_ascii=False, indent=1)
 print(f'\n=== DONE: {len(nodes)} nodes, {len(links)} links ===')
 print('era distribution:', dict(era_stats.most_common()))
+print('life-year precision:', dict(year_stats.most_common()))

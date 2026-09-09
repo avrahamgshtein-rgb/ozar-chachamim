@@ -57,6 +57,7 @@ export async function loadAppShellData(
       spotify_url: s.spotify_url,
       birth_year: s.birth_year,
       death_year: s.death_year,
+      date_precision: s.date_precision,
       migration_path: s.migration_path,
     })),
     links: primary.connections.map(c => ({
@@ -112,6 +113,7 @@ export async function loadAppShellData(
       core_concept: record.core_concept,
       birth_year: record.birth_year,
       death_year: record.death_year,
+      date_precision: record.date_precision,
       tags: record.tags,
       spotify_url: record.spotify_url,
       // Both mappings above rebuild Sage objects from an explicit field list,

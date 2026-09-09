@@ -129,7 +129,7 @@ export function SagesTable({ locale }: SagesTableProps) {
             {sorted.map((sage, idx) => {
               const color  = ERA_COLORS[sage.period] ?? '#7a6550'
               const degree = degreeMap.get(sage.id) ?? 0
-              const years  = formatYearRange(sage.birth_year, sage.death_year)
+              const years  = formatYearRange(sage.birth_year, sage.death_year, sage.date_precision)
               const isHovered = hoveredId === sage.id
 
               return (

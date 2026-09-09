@@ -94,7 +94,7 @@ export function SageCard({ sage, locale, onClose }: SageCardProps) {
       .slice(0, 12)
 
   const accentColor = ERA_COLORS[sage.period] ?? '#c9973a'
-  const yearRange   = formatYearRange(sage.birth_year, sage.death_year)
+  const yearRange   = formatYearRange(sage.birth_year, sage.death_year, sage.date_precision)
 
   return (
     <article className="flex flex-col h-full overflow-hidden">

@@ -284,8 +284,8 @@ export function PathFinder({ locale, onClose }: PathFinderProps) {
                       </p>
                       <p className="text-[10px] font-sans text-ink-500">
                         {ERA_LABELS[step.sage.period]?.[locale]}
-                        {formatYearRange(step.sage.birth_year, step.sage.death_year)
-                          ? ` · ${formatYearRange(step.sage.birth_year, step.sage.death_year)}`
+                        {formatYearRange(step.sage.birth_year, step.sage.death_year, step.sage.date_precision)
+                          ? ` · ${formatYearRange(step.sage.birth_year, step.sage.death_year, step.sage.date_precision)}`
                           : ''}
                       </p>
                     </div>

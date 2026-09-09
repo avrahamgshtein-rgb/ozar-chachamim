@@ -186,6 +186,9 @@ export async function fetchLocalGraphData(): Promise<{ sages: Sage[]; connection
         : undefined,
       spotify_url:  (n.spotify_url as string) || undefined,
       migration_path: (n.migration_path as Sage['migration_path']) || undefined,
+      birth_year:   typeof n.birth_year === 'number' ? n.birth_year : undefined,
+      death_year:   typeof n.death_year === 'number' ? n.death_year : undefined,
+      date_precision: (n.date_precision as Sage['date_precision']) || undefined,
     }))
     const connections: Connection[] = (d.links ?? []).map((l: Record<string, unknown>) => ({
       source: String(l.source ?? ''),

@@ -100,7 +100,7 @@ function SagePicker({ label, value, onChange, locale, exclude }: {
 // ── Sage column ──────────────────────────────────────────────────────────────
 function SageColumn({ sage, locale, onSelect }: { sage: Sage; locale: Locale; onSelect: () => void }) {
   const color = ERA_COLORS[sage.period] ?? '#c9973a'
-  const years = formatYearRange(sage.birth_year, sage.death_year)
+  const years = formatYearRange(sage.birth_year, sage.death_year, sage.date_precision)
 
   return (
     <div className="flex-1 min-w-0 flex flex-col gap-3 p-4 rounded-xl bg-ink-800/40 border border-ink-700/40">
