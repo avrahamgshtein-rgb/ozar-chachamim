@@ -240,6 +240,33 @@ r1 = recover('data_with_connections.json')
 r2 = recover('data.json.backup_v4', skip_types=('colleague',))
 print(f'recovered links: curated={r1}, backup_v4(non-colleague)={r2}')
 
+# ---------- Migration paths ----------
+# Life journeys (born X -> moved to Y) extracted from the research corpus and
+# kept in data/migration_paths.json, since the spreadsheet has no column for
+# them. Merged here rather than hand-edited into data.json, which a rebuild
+# would wipe — that is exactly how the previously extracted paths were lost.
+# Keyed by sage id, so re-key this file by NAME whenever the id space moves.
+# GeoMap.tsx draws {from, intermediate[], to} as an arrowed polyline; the
+# audit fields (_sage, evidence, confidence) stay in the source file only.
+mig_applied = mig_stale = 0
+try:
+    with open('data/migration_paths.json', encoding='utf-8') as f:
+        mig = json.load(f)
+    by_id = {n['id']: n for n in nodes}
+    for sid, p in mig.items():
+        node = by_id.get(sid)
+        if not node:
+            mig_stale += 1
+            continue
+        path = {'from': p['from'], 'to': p['to']}
+        if p.get('intermediate'):
+            path['intermediate'] = p['intermediate']
+        node['migration_path'] = path
+        mig_applied += 1
+    print(f'migration paths: {mig_applied} applied, {mig_stale} stale (id not in master)')
+except FileNotFoundError:
+    print('migration paths: data/migration_paths.json absent, skipped')
+
 # ---------- Write ----------
 shutil.copy('data.json', 'data.json.backup_pre_rebuild')
 json.dump({'nodes': nodes, 'links': links}, open('data.json','w',encoding='utf-8'), ensure_ascii=False, indent=1)

@@ -57,6 +57,7 @@ export async function loadAppShellData(
       spotify_url: s.spotify_url,
       birth_year: s.birth_year,
       death_year: s.death_year,
+      migration_path: s.migration_path,
     })),
     links: primary.connections.map(c => ({
       source: c.source,
@@ -113,6 +114,11 @@ export async function loadAppShellData(
       death_year: record.death_year,
       tags: record.tags,
       spotify_url: record.spotify_url,
+      // Both mappings above rebuild Sage objects from an explicit field list,
+      // so anything omitted here is dropped silently — no type error, no
+      // console warning, just a feature that renders nothing. GeoMap's
+      // migration-path polylines were dead for exactly this reason.
+      migration_path: record.migration_path,
     })
   }
 

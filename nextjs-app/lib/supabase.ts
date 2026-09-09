@@ -185,6 +185,7 @@ export async function fetchLocalGraphData(): Promise<{ sages: Sage[]; connection
         ? (n.tags as string).split(',').map(t => t.trim()).filter(Boolean)
         : undefined,
       spotify_url:  (n.spotify_url as string) || undefined,
+      migration_path: (n.migration_path as Sage['migration_path']) || undefined,
     }))
     const connections: Connection[] = (d.links ?? []).map((l: Record<string, unknown>) => ({
       source: String(l.source ?? ''),

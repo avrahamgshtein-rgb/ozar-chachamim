@@ -276,7 +276,9 @@
       "PowerShell(cd \"C:\\\\Users\\\\User\\\\Desktop\\\\ozar-chachamim\\\\nextjs-app\"; Remove-Item -Recurse -Force \".next\" -ErrorAction SilentlyContinue; npm run build 2>&1 | Select-Object -Last 12; \"BUILD_EXIT=$LASTEXITCODE\")",
       "Bash(cp nextjs-app/public/data.json /tmp/data_before_xlsx_rebuild.json)",
       "Bash(cp nextjs-app/public/data.json data.json.before_xlsx_rebuild)",
-      "Bash(echo \"audit exit: $?\")"
+      "Bash(echo \"audit exit: $?\")",
+      "Bash(curl -s -o /dev/null --max-time 3 http://localhost:3000/he)",
+      "Bash(curl -s -o /dev/null -w \"status=%{http_code}\\\\n\" --max-time 20 http://localhost:3000/he)"
     ]
   }
 }
