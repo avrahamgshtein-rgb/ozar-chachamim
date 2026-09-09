@@ -54,35 +54,16 @@ def cell(row, name):
         return ''
     return str(row[i]).strip()
 
-# Candidate .docx already sitting in data/, verified against document content
-# by verify_docx_candidates.py. Surfaced here so one file answers both "who is
-# missing research" and "for whom is the material already on disk".
-VERDICT_HE = {
-    'confirmed': 'מאושר',
-    'likely': 'סביר — לבדיקה',
-    'uncertain': 'לא ודאי',
-    'rejected': 'נפסל — מסמך של אדם אחר',
-    'none': '',
-    'no-name-words': '',
-}
+# The candidate columns are gone: every document in data/ that could be
+# attributed to a sage has now been ingested, so no row would carry one. These
+# 64 sages genuinely have no research document anywhere.
 cand_by_id = {}
-try:
-    for r in json.load(io.open(os.path.join(REPO, 'data', 'docx_verified_candidates.json'), encoding='utf-8')):
-        c = r['candidates'][0] if r.get('candidates') else {}
-        cand_by_id[r['id']] = {
-            'verdict': VERDICT_HE.get(r['verdict'], r['verdict']),
-            'file': c.get('file', '') if r['verdict'] in ('confirmed', 'likely', 'uncertain') else '',
-            'opens': c.get('first_line', '') if r['verdict'] in ('confirmed', 'likely', 'uncertain') else '',
-        }
-except FileNotFoundError:
-    pass
 
 records = []
 for sid, n in nodes.items():
     if sid in have:
         continue
     m = master.get(sid)
-    cand = cand_by_id.get(sid, {})
     records.append({
         'id': sid,
         'name': n.get('label', ''),
@@ -96,14 +77,9 @@ for sid, n in nodes.items():
         'idea': cell(m, 'רעיון מרכזי/חידוש'),
         'related': cell(m, 'דמויות/השפעות קשורות'),
         'spotify': n.get('spotify_url', ''),
-        'cand_verdict': cand.get('verdict', ''),
-        'cand_file': cand.get('file', ''),
-        'cand_opens': cand.get('opens', ''),
     })
 
-RANK = {'מאושר': 0, 'סביר — לבדיקה': 1, 'לא ודאי': 2}
-records.sort(key=lambda r: (RANK.get(r['cand_verdict'], 9),
-                            ORDER.index(r['period_key']) if r['period_key'] in ORDER else 99,
+records.sort(key=lambda r: (ORDER.index(r['period_key']) if r['period_key'] in ORDER else 99,
                             r['name']))
 
 out = openpyxl.Workbook()
@@ -123,9 +99,6 @@ COLS = [
     ('רעיון מרכזי', 'idea', 45),
     ('דמויות קשורות', 'related', 30),
     ('קישור ספוטיפיי', 'spotify', 26),
-    ('מסמך בתיקייה?', 'cand_verdict', 20),
-    ('שם הקובץ המועמד', 'cand_file', 55),
-    ('שורת הפתיחה של המסמך', 'cand_opens', 55),
 ]
 
 head_fill = PatternFill('solid', fgColor='1A140E')
@@ -142,7 +115,7 @@ for i, rec in enumerate(records, start=2):
     for j, (_, key, _w) in enumerate(COLS, start=1):
         c = sh.cell(row=i, column=j, value=rec[key])
         c.alignment = Alignment(vertical='top',
-                                wrap_text=(key in ('summary', 'idea', 'tags', 'related', 'cand_file', 'cand_opens')))
+                                wrap_text=(key in ('summary', 'idea', 'tags', 'related')))
         c.border = Border(bottom=thin)
 
 sh.freeze_panes = 'A2'
@@ -155,11 +128,9 @@ by_period = {}
 for r in records:
     by_period[r['period']] = by_period.get(r['period'], 0) + 1
 with_spotify = sum(1 for r in records if r['spotify'])
-with_doc = sum(1 for r in records if r['cand_verdict'] in ('מאושר', 'סביר — לבדיקה', 'לא ודאי'))
 
 print(f'sages without research : {len(records)}')
 print(f'  of those, have a Spotify episode : {with_spotify}')
-print(f'  of those, a document already sits in data/ : {with_doc}')
 print(f'written: {os.path.relpath(OUT, REPO).encode("ascii", "backslashreplace").decode()}')
 io.open(os.path.join(REPO, 'missing_research_summary.txt'), 'w', encoding='utf-8').write(
     f'חכמים ללא מחקר: {len(records)}\nעם פרק ספוטיפיי: {with_spotify}\n\nלפי תקופה:\n'
