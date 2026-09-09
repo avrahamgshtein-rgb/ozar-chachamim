@@ -140,14 +140,48 @@ export function buildLayerModel(sages: Sage[]): LayerModel {
     const placed: PlacedSage[] = []
     const unplaceable: Sage[] = []
 
+    // Coordinates come from a gazetteer keyed by place name, so every sage of
+    // one city projects to the identical point and their dots stack exactly —
+    // a layer labelled "ראשונים · 25" showed about five. Group by point first,
+    // then fan each crowd out around a small ring so all of them are visible
+    // and clickable. Radii are in unit space, so the ring scales with the
+    // plate rather than being fixed in pixels.
+    const atPoint = new Map<string, Sage[]>()
     for (const sage of members) {
       const coords = resolveCoords(sage)
       if (!coords) {
         unplaceable.push(sage)
         continue
       }
-      const { x, y } = projectToUnit(coords.lat, coords.lng, extent)
-      placed.push({ sage, x, y, lat: coords.lat, lng: coords.lng })
+      const key = `${coords.lat.toFixed(4)}:${coords.lng.toFixed(4)}`
+      const bucket = atPoint.get(key)
+      if (bucket) bucket.push(sage)
+      else atPoint.set(key, [sage])
+    }
+
+    for (const group of atPoint.values()) {
+      const coords = resolveCoords(group[0])!
+      const base = projectToUnit(coords.lat, coords.lng, extent)
+      if (group.length === 1) {
+        placed.push({ sage: group[0], x: base.x, y: base.y, lat: coords.lat, lng: coords.lng })
+        continue
+      }
+      const perRing = 10
+      group.forEach((sage, i) => {
+        const ring = Math.floor(i / perRing)
+        const within = i % perRing
+        const count = Math.min(group.length - ring * perRing, perRing)
+        const radius = 0.018 + ring * 0.016
+        const angle = (2 * Math.PI * within) / count
+        placed.push({
+          sage,
+          // clamped so a ring near the plate edge cannot push a dot off it
+          x: Math.min(1, Math.max(0, base.x + radius * Math.cos(angle))),
+          y: Math.min(1, Math.max(0, base.y + radius * Math.sin(angle))),
+          lat: coords.lat,
+          lng: coords.lng,
+        })
+      })
     }
 
     totalPlaced += placed.length
