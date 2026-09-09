@@ -17,3 +17,4 @@ venv/
 claude.exe
 
 .vercel
+data/research_backup_*/

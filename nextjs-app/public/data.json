@@ -118,7 +118,7 @@
    "birth_year": 100,
    "death_year": 200,
    "date_precision": "century",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "8",
@@ -298,7 +298,7 @@
    "birth_year": 1380,
    "death_year": 1444,
    "date_precision": "exact",
-   "has_research": true
+   "has_research": false
   },
   {
    "id": "18",
@@ -423,7 +423,7 @@
    "birth_year": 910,
    "death_year": 970,
    "date_precision": "exact",
-   "has_research": true
+   "has_research": false
   },
   {
    "id": "24",
@@ -459,7 +459,7 @@
    "birth_year": 939,
    "death_year": 1038,
    "date_precision": "exact",
-   "has_research": true
+   "has_research": false
   },
   {
    "id": "26",
@@ -629,24 +629,6 @@
    "has_research": false
   },
   {
-   "id": "37",
-   "label": "רבנו בחיי בן פקודה (רלב\"ח)",
-   "era": "המאה ה-11",
-   "era_key": "rishonim",
-   "era_label": "ימי הביניים",
-   "field": "מוסר, פילוסופיה, פרשנות",
-   "location": "ספרד",
-   "bio": "מחבר 'חובות הלבבות', חיבור מוסרי-תיאולוגי קלאסי שעסק בכוונה, אמונה, בטחון ותיקון מידות.",
-   "central_idea": "הבחנה בין חובות האיברים (מעשים) לחובות הלבבות (כוונה פנימית); מוסר כתשתית לאמונה שלמה.",
-   "tags": "חובות הלבבות, מוסר יהודי, פילוסופיה דתית",
-   "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/4i5VEmckhRP0N4Q1QGp5eC",
-   "birth_year": 1000,
-   "death_year": 1100,
-   "date_precision": "century",
-   "has_research": true
-  },
-  {
    "id": "38",
    "label": "חכמי פרובנס – בין נרבון, בית דוד והמיסטיקה הראשונה: המרכז היהודי ששבר את המפה הרוחנית של ימי הביניים",
    "era": "המאות ה־11–13",
@@ -785,7 +767,7 @@
    "birth_year": 1194,
    "death_year": 1270,
    "date_precision": "exact",
-   "has_research": false,
+   "has_research": true,
    "migration_path": {
     "from": "גירונה",
     "to": "עכו",
@@ -1126,7 +1108,7 @@
    "tags": "מנורת המאור, פרעות קנ״א, כינוס מדרשים",
    "chapter_type": "חכמי ישראל - הגות, הנהגה והלכה",
    "spotify_url": "https://open.spotify.com/episode/7ong9XinXN1Na6aWhTzXME",
-   "has_research": true
+   "has_research": false
   },
   {
    "id": "62",
@@ -1167,6 +1149,24 @@
      "פראג"
     ]
    }
+  },
+  {
+   "id": "64",
+   "label": "מהר\"י מינץ",
+   "era": "1405–1508",
+   "era_key": "acharonim",
+   "era_label": "אחרונים",
+   "field": "הלכה, הנהגה תורנית",
+   "location": "גרמניה, איטליה (פדובה)",
+   "bio": "רב באיטליה בתקופת הרנסנס, שילב מסורת הלכתית עם מציאות תרבותית מורכבת.",
+   "central_idea": "שילוב נאמנות להלכה עם פתיחות תרבותית אחראית.",
+   "tags": "הרנסנס, סמכות הלכה, פורים, קבלה",
+   "chapter_type": "חכם",
+   "spotify_url": "https://open.spotify.com/episode/2UFLK856gB3r5MDYUiO2mV",
+   "birth_year": 1405,
+   "death_year": 1508,
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "65",
@@ -1552,7 +1552,7 @@
    "birth_year": 1622,
    "death_year": 1663,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "84",
@@ -1714,7 +1714,7 @@
    "birth_year": 1695,
    "death_year": 1785,
    "date_precision": "exact",
-   "has_research": false,
+   "has_research": true,
    "migration_path": {
     "from": "ליטא",
     "to": "מץ"
@@ -1765,22 +1765,26 @@
    "has_research": true
   },
   {
-   "id": "94",
-   "label": "הרב יחזקאל לנדא – “הנודע ביהודה”",
+   "id": "95",
+   "label": "הנודע ביהודה (הרב יחזקאל לנדא)",
    "era": "1713–1793",
    "era_key": "modern",
    "era_label": "עת חדשה",
-   "field": "פסיקה והנהגה קהילתית",
-   "location": "פראג (בוהמיה)",
-   "bio": "גדול פוסקי פראג שניצב מול שבתאות, השכלה וחסידות. הכריע באומץ בסוגיות עקרוניות, הנהיג בקור רוח בזמן משברים, ושילב מאבק בכפירה עם אחריות ציבורית.",
-   "central_idea": "מנהיגות הלכתית אסטרטגית: לדעת מתי להילחם בגלוי ומתי לרסן כדי לשמור על אחדות הקהילה.",
-   "tags": "שו\"ת, שבתאות, חסידות, השכלה, קבלה (זהירות), הנהגה",
-   "chapter_type": "אישיות",
-   "spotify_url": "https://open.spotify.com/episode/4EJ2FNYaB1FdSuKMRkfonR?si=123rhSTsT6Wga_7NA8Xp_A&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "field": "פסיקה, מנהיגות קהילתית",
+   "location": "פראג",
+   "bio": "פוסק מרכזי במזרח אירופה, מחבר 'נודע ביהודה'. עמד מול אתגרי ההשכלה תוך שימור מסורת הלכתית מחודדת.",
+   "central_idea": "הקפדה על מסורת ההלכה לצד התמודדות עם אתגרי הזמן מתוך אחריות ציבורית.",
+   "tags": "שאלות ותשובות, פסיקה אשכנזית, נאורות, ביקורת השכלה",
+   "chapter_type": "דמות",
+   "spotify_url": "https://open.spotify.com/episode/4OtzHMEeQArEy5BgF3t52P",
    "birth_year": 1713,
    "death_year": 1793,
    "date_precision": "exact",
-   "has_research": true
+   "has_research": true,
+   "migration_path": {
+    "from": "פולין",
+    "to": "פראג"
+   }
   },
   {
    "id": "96",
@@ -2025,7 +2029,7 @@
    "birth_year": 1800,
    "death_year": 1865,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "111",
@@ -2212,18 +2216,18 @@
    "has_research": true
   },
   {
-   "id": "122",
-   "label": "ר׳ יחיאל מיכל הלוי אפשטיין – “ערוך השולחן”",
+   "id": "123",
+   "label": "ערוך השולחן (הרב יחיאל מיכל אפשטיין)",
    "era": "1829–1908",
    "era_key": "modern",
-   "era_label": "עת חדשה מאוחרת",
-   "field": "פסיקה קהילתית",
-   "location": "נובהרדוק (מזרח אירופה)",
-   "bio": "רב קהילה שפסק מתוך 'מבט מן החלון': להבין קודם את חיי האנשים ואז לחזור למקורות. כותב קודקס בהיר ושיטתי עם נטייה לאשש מנהגים ולהקל כשצריך, מול משברי תקופה.",
-   "central_idea": "פסיקה מציאותית נאמנה למסורת: דיאלוג אמיץ בין טקסט לחיים במקום חומרות מנותקות.",
-   "tags": "הלכה למעשה, מנהג, מודרנה, עוני, אנטישמיות, משנה ברורה",
-   "chapter_type": "אישיות",
-   "spotify_url": "https://open.spotify.com/episode/1reKfnLOTfoSzBHRhzGMbe?si=g78LXL5_Q12g6IpvjyRTMQ&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "era_label": "המאה ה־19",
+   "field": "פסיקה, הלכה מערכתית",
+   "location": "נובהרודוק, רוסיה",
+   "bio": "מחבר סדרת ספרי ההלכה 'ערוך השולחן' שפרשו את כל השולחן ערוך בגישה חדשנית ומסכמת.",
+   "central_idea": "הצגת ההלכה כישות חיה, עכשווית, ובעלת סמכות מתוך שורשיה.",
+   "tags": "הלכה, ערוך השולחן, שיטתיות, סמכות רבנית",
+   "chapter_type": "דמות",
+   "spotify_url": "https://open.spotify.com/episode/3zRwIpWZs0YUrRrpGcndte",
    "birth_year": 1829,
    "death_year": 1908,
    "date_precision": "exact",
@@ -2270,7 +2274,7 @@
    "birth_year": 1835,
    "death_year": 1909,
    "date_precision": "exact",
-   "has_research": true
+   "has_research": false
   },
   {
    "id": "126",
@@ -2968,7 +2972,7 @@
    "birth_year": 1919,
    "death_year": 2006,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "164",
@@ -3302,28 +3306,6 @@
    "has_research": false
   },
   {
-   "id": "263",
-   "label": "המהר\"י מינץ",
-   "era": "1405–1508",
-   "era_key": "acharonim",
-   "era_label": "סוף ימי הביניים והרנסנס",
-   "field": "הלכה והנהגה קהילתית",
-   "location": "גרמניה ואיטליה / פדובה",
-   "bio": "רב, פוסק וזקן הדור שהעביר את מרכז התורה האשכנזי אל איטליה של הרנסנס. הנהיג את יהדות פדובה ושילב נאמנות למסורת עם התמודדות הלכתית יצירתית.",
-   "central_idea": "עיצוב הנהגה הלכתית השומרת על סמכות המסורת בתוך מציאות רנסנסית פתוחה ומשתנה, תוך איזון בין תקיפות לגמישות.",
-   "tags": "פדובה, רנסנס, פסיקה אשכנזית, פורים",
-   "chapter_type": "חכם",
-   "spotify_url": "https://open.spotify.com/episode/2UFLK856gB3r5MDYUiO2mV?si=GMJjiZMzQjK1asCeXsrPzg&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
-   "birth_year": 1405,
-   "death_year": 1508,
-   "date_precision": "exact",
-   "has_research": true,
-   "migration_path": {
-    "from": "מגנצא",
-    "to": "פדובה"
-   }
-  },
-  {
    "id": "189",
    "label": "יעקב בן אשר",
    "era": "1269–1343",
@@ -3548,7 +3530,7 @@
    "birth_year": 1719,
    "death_year": 1792,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "350",
@@ -3638,7 +3620,7 @@
    "birth_year": 1000,
    "death_year": 1070,
    "date_precision": "exact",
-   "has_research": true
+   "has_research": false
   },
   {
    "id": "355",
@@ -3929,7 +3911,7 @@
    "birth_year": 1100,
    "death_year": 1200,
    "date_precision": "century",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "280",
@@ -4139,24 +4121,6 @@
    "has_research": true
   },
   {
-   "id": "290",
-   "label": "רבי לוי בן גרשון",
-   "era": "1288–1344",
-   "era_key": "rishonim",
-   "era_label": "ראשונים",
-   "field": "פילוסופיה, פרשנות, מתמטיקה ואסטרונומיה",
-   "location": "פרובאנס",
-   "bio": "מן ההוגים הנועזים בימי הביניים: פילוסוף, פרשן, מתמטיקאי ואסטרונום. ביקש להבין את התורה דרך השכל ואת השכל דרך התורה.",
-   "central_idea": "העמדת השכל ככלי מרכזי להשגת האמת, גם במחיר ניסוחים נועזים בסוגיות ידיעת ה׳, בחירה חופשית ונצחיות הנפש.",
-   "tags": "רלב״ג, מלחמות ה׳, שכל, בחירה חופשית, מדע",
-   "chapter_type": "חכם",
-   "spotify_url": "https://open.spotify.com/episode/0m3vCYb6YqsaSJvD0cZfXy?si=SnX5flLQTAqOUou12h90fw&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
-   "birth_year": 1288,
-   "death_year": 1344,
-   "date_precision": "exact",
-   "has_research": true
-  },
-  {
    "id": "291",
    "label": "שמואל בן יצחק",
    "era": "1190–1256",
@@ -4173,32 +4137,6 @@
    "death_year": 1256,
    "date_precision": "exact",
    "has_research": false
-  },
-  {
-   "id": "292",
-   "label": "מימון בן יוסף (אב הרמב״ם)",
-   "era": "1110 בקירוב–1165/1170",
-   "era_key": "rishonim",
-   "era_label": "ראשונים",
-   "field": "הלכה, הנהגה, מדע וחינוך",
-   "location": "קורדובה, מרוקו, ארץ ישראל ומצרים",
-   "bio": "דיין ומנהיג שהיה החוליה המקשרת בין תור הזהב של ספרד לבין מהפכת הרמב״ם. הנהיג קהילות נרדפות, חיזק אנוסים ויצר בביתו הרמוניה בין תורה, מדע ושכל.",
-   "central_idea": "הנחת היסודות האנושיים, ההלכתיים והרעיוניים שמהם צמחה שיטת הרמב״ם.",
-   "tags": "רב מימון הדיין, איגרת הנחמה, רמב״ם, אנוסים",
-   "chapter_type": "חכם",
-   "spotify_url": "https://open.spotify.com/episode/0N9JxxpJynDDTur8c5c0fd?si=H3uqUkfiSRSw3pYMwoKbnA&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
-   "birth_year": 1110,
-   "death_year": 1165,
-   "date_precision": "exact",
-   "has_research": true,
-   "migration_path": {
-    "from": "קורדובה",
-    "to": "מצרים",
-    "intermediate": [
-     "פאס",
-     "עכו"
-    ]
-   }
   },
   {
    "id": "293",
@@ -4260,61 +4198,7 @@
    "birth_year": 1235,
    "death_year": 1310,
    "date_precision": "exact",
-   "has_research": true
-  },
-  {
-   "id": "296",
-   "label": "רבי משה בן נחמן",
-   "era": "1194–1270",
-   "era_key": "rishonim",
-   "era_label": "ראשונים",
-   "field": "הלכה, פרשנות, קבלה והנהגה",
-   "location": "גירונה, ברצלונה וירושלים",
-   "bio": "פוסק, מקובל, פרשן ומנהיג שעמד בחזית פולמוסים גדולים, ניצח בוויכוח ברצלונה ולבסוף עלה לירושלים החרבה כדי לבנות בה חיים יהודיים מחדש.",
-   "central_idea": "חיבור נגלה ונסתר, תורה וחיים, אמונה ומעשה — עד כדי קביעה שישיבת ארץ ישראל היא מצווה מחייבת בכל דור.",
-   "tags": "רמב״ן, פירוש התורה, חידושים, ויכוח ברצלונה, ארץ ישראל",
-   "chapter_type": "חכם",
-   "spotify_url": "https://open.spotify.com/episode/7tV3u16Il2EgLXbVNFs42V?si=Qu6b3mmHTPufiL5nrRRIyQ&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
-   "birth_year": 1194,
-   "death_year": 1270,
-   "date_precision": "exact",
-   "has_research": true
-  },
-  {
-   "id": "297",
-   "label": "נתן בן מאיר",
-   "era": "המאה ה־12–13",
-   "era_key": "rishonim",
-   "era_label": "ראשונים",
-   "field": "הלכה, דיני ממונות וסינתזה למדנית",
-   "location": "טרינקטיי / פרובאנס",
-   "bio": "חכם מרכזי מפרובאנס שחיבר בין מסורות הלימוד של צפון צרפת וספרד. תורתו בדיני תפיסה וספקות בממונות השפיעה דרך תלמידיו וחיבוריהם.",
-   "central_idea": "יצירת סינתזה בין דיאלקטיקת בעלי התוספות לבין סדר ובהירות פרובנסלית־ספרדית.",
-   "tags": "רבי נתן מטרינקטיי, שערי תפיסה, ממונות, רמב״ן",
-   "chapter_type": "חכם",
-   "spotify_url": "https://open.spotify.com/episode/7ACSP0m0DZ6PtZJIPWd5SG?si=xmChzx9KQnGA-HASx_s75g&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
-   "birth_year": 1100,
-   "death_year": 1200,
-   "date_precision": "century",
-   "has_research": true
-  },
-  {
-   "id": "298",
-   "label": "יחיאל בן יקותיאל",
-   "era": "המאה ה־13",
-   "era_key": "rishonim",
-   "era_label": "ראשונים",
-   "field": "מוסר, הלכה, רפואה ועריכת טקסטים",
-   "location": "רומא, איטליה",
-   "bio": "חכם איטלקי ששילב תורה, רפואה, פילוסופיה ודקדוק טקסטואלי. מיוחסת לו תרומה מכרעת לשימור מסורת הירושלמי ולבניית ספרות מוסר שיטתית.",
-   "central_idea": "חיבור הלכה, מוסר ודיוק מדעי לתפיסה אחת של תיקון האדם כולו — גוף, נפש ושכל.",
-   "tags": "מעלות המידות, תניא רבתי, ירושלמי, רומא",
-   "chapter_type": "חכם",
-   "spotify_url": "https://open.spotify.com/episode/1tRAsJRFk47EvwWKBYsRZc?si=wIR3RR1RT0qdwsZfGHbvvg&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
-   "birth_year": 1200,
-   "death_year": 1300,
-   "date_precision": "century",
-   "has_research": true
+   "has_research": false
   },
   {
    "id": "299",
@@ -4901,6 +4785,24 @@
    }
   },
   {
+   "id": "335",
+   "label": "הרבי מליובאוויטש",
+   "era": "1902–1994",
+   "era_key": "modern",
+   "era_label": "העת החדשה",
+   "field": "חסידות, הנהגה",
+   "location": "רוסיה, ארה\"ב",
+   "bio": "מנהיגה השביעי של חסידות חב\"ד שהקים רשת שליחות עולמית והפך את האחריות לכל יהודי לחזון אוניברסלי.",
+   "central_idea": "הפיכת העולם ל'דירה בתחתונים' באמצעות שליחות ומעשה.",
+   "tags": "חב\"ד, שליחות, גאולה",
+   "chapter_type": "דמות",
+   "spotify_url": "https://open.spotify.com/episode/01M5utyXbX5Zwzf2skxRIE",
+   "birth_year": 1902,
+   "death_year": 1994,
+   "date_precision": "exact",
+   "has_research": true
+  },
+  {
    "id": "336",
    "label": "הרב עובדיה יוסף",
    "era": "1920–2013",
@@ -5043,6 +4945,24 @@
    "has_research": true
   },
   {
+   "id": "388",
+   "label": "הרלב״ג",
+   "era": "1288–1344",
+   "era_key": "rishonim",
+   "era_label": "ראשונים",
+   "field": "פילוסופיה, מדע ומקרא",
+   "location": "פרובאנס",
+   "bio": "פילוסוף, פרשן, מתמטיקאי ואסטרונום מן ההוגים המקוריים ביהדות ימי הביניים.",
+   "central_idea": "השכל האנושי הוא כלי מרכזי להשגת האמת.",
+   "tags": "רבי לוי בן גרשון, מלחמות ה׳",
+   "chapter_type": "דמות",
+   "spotify_url": "https://open.spotify.com/episode/0m3vCYb6YqsaSJvD0cZfXy",
+   "birth_year": 1288,
+   "death_year": 1344,
+   "date_precision": "exact",
+   "has_research": true
+  },
+  {
    "id": "389",
    "label": "דבורה הנביאה",
    "era": "תקופת השופטים",
@@ -5072,6 +4992,24 @@
    "spotify_url": "https://open.spotify.com/episode/5Cdc9RvxyriLFWPFMRfciK",
    "birth_year": 1190,
    "death_year": 1256,
+   "date_precision": "exact",
+   "has_research": true
+  },
+  {
+   "id": "391",
+   "label": "רב מימון הדיין",
+   "era": "1110–1165/1170",
+   "era_key": "rishonim",
+   "era_label": "ראשונים",
+   "field": "הלכה, הנהגה ומחשבה",
+   "location": "ספרד, מרוקו ומצרים",
+   "bio": "אביו של הרמב״ם, דיין ומנהיג קהילה שעיצב את דרכו הרוחנית והאינטלקטואלית.",
+   "central_idea": "שילוב תורה, מדע ורגישות אנושית.",
+   "tags": "איגרת הנחמה",
+   "chapter_type": "דמות",
+   "spotify_url": "https://open.spotify.com/episode/0N9JxxpJynDDTur8c5c0fd",
+   "birth_year": 1110,
+   "death_year": 1165,
    "date_precision": "exact",
    "has_research": true
   },
@@ -5109,6 +5047,24 @@
    "birth_year": 1235,
    "death_year": 1310,
    "date_precision": "exact",
+   "has_research": true
+  },
+  {
+   "id": "397",
+   "label": "רבי יחיאל בן יקותיאל ענו",
+   "era": "המאה ה־13",
+   "era_key": "rishonim",
+   "era_label": "ראשונים",
+   "field": "מוסר, הלכה ועריכת טקסטים",
+   "location": "איטליה",
+   "bio": "חכם ורופא איטלקי שהציל את נוסח הירושלמי השלם וכתב מספרי המוסר החשובים בימי הביניים.",
+   "central_idea": "תיקון המידות כחלק מתיקון האדם כולו.",
+   "tags": "מעלות המידות, תניא רבתי",
+   "chapter_type": "דמות",
+   "spotify_url": "https://open.spotify.com/episode/1tRAsJRFk47EvwWKBYsRZc",
+   "birth_year": 1200,
+   "death_year": 1300,
+   "date_precision": "century",
    "has_research": true
   },
   {
@@ -5859,7 +5815,7 @@
    "birth_year": 1420,
    "death_year": 1480,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "460",
@@ -6082,7 +6038,7 @@
    "birth_year": 1843,
    "death_year": 1905,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "471",
@@ -6576,28 +6532,6 @@
    "has_research": true
   },
   {
-   "id": "500",
-   "label": "הרבי מלובביץ' (רבי מנחם מנדל שניאורסון)",
-   "era": "1902–1994",
-   "era_key": "modern",
-   "era_label": "המאה ה־20",
-   "field": "חסידות והנהגה עולמית",
-   "location": "ניקולייב; ברלין ופריז; ברוקלין",
-   "bio": "האדמו\"ר השביעי של חב\"ד־ליובאוויטש, שילב למדנות תורנית עם השכלה מדעית רחבה ויצר את מפעל השלוחים העולמי ואת \"המבצעים\" להפצת תורה ומצוות בקרב כלל ישראל.",
-   "central_idea": "אחריות אישית אוניברסלית — לכל יהודי יש שליחות ייחודית, וכל אדם וכל מקום ראויים לגישה ישירה לתורה וזהות יהודית, ללא תלות במרחק ממרכזי התורה.",
-   "tags": "חב\"ד־ליובאוויטש, מפעל השלוחים, מבצעים, שלמות ארץ ישראל",
-   "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/7fQ0ISYl8xXKqbqQN9DLub?si=9bkwsQotQFeCXu1IUjS5cA",
-   "birth_year": 1902,
-   "death_year": 1994,
-   "date_precision": "exact",
-   "has_research": true,
-   "migration_path": {
-    "from": "אוקראינה",
-    "to": "ארה\"ב"
-   }
-  },
-  {
    "id": "501",
    "label": "הצמח צדק (רבי מנחם מנדל שניאורסון)",
    "era": "1789–1866",
@@ -6725,7 +6659,7 @@
    "birth_year": 0,
    "death_year": 100,
    "date_precision": "century",
-   "has_research": true
+   "has_research": false
   },
   {
    "id": "508",
@@ -6811,7 +6745,7 @@
    "birth_year": 1913,
    "death_year": 1986,
    "date_precision": "exact",
-   "has_research": true
+   "has_research": false
   },
   {
    "id": "512",
@@ -6829,7 +6763,7 @@
    "birth_year": 1938,
    "death_year": 2023,
    "date_precision": "exact",
-   "has_research": true
+   "has_research": false
   },
   {
    "id": "513",
@@ -6883,7 +6817,7 @@
    "birth_year": 1922,
    "death_year": 2013,
    "date_precision": "exact",
-   "has_research": true
+   "has_research": false
   },
   {
    "id": "516",
@@ -6901,7 +6835,7 @@
    "birth_year": 1896,
    "death_year": 1979,
    "date_precision": "exact",
-   "has_research": true
+   "has_research": false
   },
   {
    "id": "517",
@@ -6991,7 +6925,7 @@
    "birth_year": -1300,
    "death_year": -1200,
    "date_precision": "century",
-   "has_research": true
+   "has_research": false
   },
   {
    "id": "522",
@@ -7060,7 +6994,7 @@
    "birth_year": 1934,
    "death_year": 1983,
    "date_precision": "exact",
-   "has_research": true
+   "has_research": false
   },
   {
    "id": "526",
@@ -7096,7 +7030,7 @@
    "birth_year": 1869,
    "death_year": 1941,
    "date_precision": "exact",
-   "has_research": true
+   "has_research": false
   },
   {
    "id": "528",
@@ -7186,7 +7120,7 @@
    "birth_year": 1932,
    "death_year": 2011,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "533",
@@ -7222,7 +7156,7 @@
    "birth_year": 200,
    "death_year": 300,
    "date_precision": "century",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "535",
@@ -7237,7 +7171,7 @@
    "tags": "דוד המלך, יואב, אבישי, עשהאל, בני צרויה, הנהגה, גבורה, מלכות, נשים",
    "chapter_type": "דמות",
    "spotify_url": "",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "536",
@@ -7297,8 +7231,8 @@
    "id": "539",
    "label": "רבי אליהו בן שלמה זלמן – הגאון מווילנה",
    "era": "1720–1797",
-   "era_key": "modern",
-   "era_label": "העת החדשה",
+   "era_key": "acharonim",
+   "era_label": "אחרונים",
    "field": "תלמוד, הלכה, קבלה ומדעים",
    "location": "וילנה, ליטא; ארץ ישראל באמצעות תלמידיו",
    "bio": "מגדולי חכמי ישראל בעת החדשה, שהתמסר ללימוד וסירב למשרות ציבוריות. קרא לשוב לפשט הסוגיה ולמקורות חז״ל, שילב נגלה, קבלה ומדעי הטבע, והשפיע על עולם הישיבות ועל עליית תלמידיו לארץ ישראל.",
@@ -7345,7 +7279,7 @@
    "birth_year": 1923,
    "death_year": 2004,
    "date_precision": "exact",
-   "has_research": true
+   "has_research": false
   },
   {
    "id": "542",
@@ -7407,7 +7341,7 @@
    "birth_year": 1591,
    "death_year": 1655,
    "date_precision": "exact",
-   "has_research": true
+   "has_research": false
   },
   {
    "id": "545",
@@ -7461,7 +7395,7 @@
    "birth_year": 1703,
    "death_year": 1773,
    "date_precision": "exact",
-   "has_research": true
+   "has_research": false
   },
   {
    "id": "548",
@@ -7566,7 +7500,7 @@
    "tags": "יעקב, יוסף, משה, פקוד יפקוד, ארון יוסף, אבל בית מעכה, גאולה, נשים",
    "chapter_type": "דמות",
    "spotify_url": "",
-   "has_research": true
+   "has_research": false
   },
   {
    "id": "554",
@@ -7596,7 +7530,7 @@
    "tags": "",
    "chapter_type": "דמות",
    "spotify_url": "",
-   "has_research": true
+   "has_research": false
   },
   {
    "id": "556",
@@ -7632,7 +7566,7 @@
    "birth_year": -1040,
    "death_year": -970,
    "date_precision": "exact",
-   "has_research": true
+   "has_research": false
   },
   {
    "id": "558",
@@ -7650,25 +7584,7 @@
    "birth_year": 1698,
    "death_year": 1760,
    "date_precision": "exact",
-   "has_research": true
-  },
-  {
-   "id": "559",
-   "label": "הגאון מווילנא (הגר\"א)",
-   "era": "1720–1797",
-   "era_key": "acharonim",
-   "era_label": "אחרונים",
-   "field": "תלמוד, הלכה, קבלה, דקדוק",
-   "location": "וילנה",
-   "bio": "גאון הדורות בליטא. שקד על התורה בהתמדה מופלאה, הקיף נגלה ונסתר, דקדוק ומתמטיקה, והעמיד את לימוד התורה בעיון מדויק במרכז — אבי עולם הישיבות הליטאי.",
-   "central_idea": "עמל התורה בדיוק ובבקיאות — נגלה ונסתר כאחד",
-   "tags": "",
-   "chapter_type": "דמות",
-   "spotify_url": "",
-   "birth_year": 1720,
-   "death_year": 1797,
-   "date_precision": "exact",
-   "has_research": true
+   "has_research": false
   },
   {
    "id": "560",
@@ -7686,7 +7602,7 @@
    "birth_year": 1661,
    "death_year": 1729,
    "date_precision": "exact",
-   "has_research": true
+   "has_research": false
   },
   {
    "id": "561",
@@ -7827,7 +7743,7 @@
    "birth_year": -170,
    "death_year": -100,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "569",
@@ -7845,7 +7761,7 @@
    "birth_year": 1476,
    "death_year": 1554,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "570",
@@ -7965,7 +7881,7 @@
    "birth_year": 216,
    "death_year": 296,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "577",
@@ -7983,7 +7899,7 @@
    "birth_year": 900,
    "death_year": 960,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "578",
@@ -7998,7 +7914,7 @@
    "tags": "",
    "chapter_type": "דמות",
    "spotify_url": "",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "579",
@@ -8016,7 +7932,7 @@
    "birth_year": 1075,
    "death_year": 1141,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "580",
@@ -8103,7 +8019,7 @@
    "tags": "",
    "chapter_type": "דמות",
    "spotify_url": "",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "585",
@@ -8175,7 +8091,7 @@
    "birth_year": 1200,
    "death_year": 1260,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "589",
@@ -8193,7 +8109,7 @@
    "birth_year": 1780,
    "death_year": 1844,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "590",
@@ -8256,7 +8172,7 @@
    "tags": "נשים",
    "chapter_type": "דמות",
    "spotify_url": "",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "594",
@@ -8329,6 +8245,255 @@
    "death_year": 1056,
    "date_precision": "exact",
    "has_research": true
+  },
+  {
+   "id": "598",
+   "label": "רבנו אשר בן יחיאל (הרא״ש)",
+   "era": "המאות ה-13–14 (נולד סמוך ל-1250)",
+   "era_key": "rishonim",
+   "era_label": "ראשונים",
+   "field": "הלכה, פסיקה ופרשנות התלמוד",
+   "location": "אשכנז; טולידו שבספרד",
+   "bio": "נולד באשכנז סמוך לשנת 1250, תלמידו המובהק של המהר״ם מרוטנבורג ומנהיג יהדות גרמניה אחרי פטירת רבו בשבי. בעקבות הרדיפות עזב את גרמניה ב-1303, וב-1305 מונה לרב הקהילה ולראש הישיבה בטולידו. שם מיזג את דיאלקטיקת בעלי התוספות עם הפסיקה הספרדית, וחיבר את \"פסקי הרא״ש\", \"תוספות הרא״ש\" ו\"אורחות חיים\".",
+   "central_idea": "העברת מסורת הלימוד האשכנזית אל ספרד ויצירת סינתזה הלכתית, שהפכה אותו לאחד משלושת \"עמודי ההוראה\" שעליהם נשען השולחן ערוך.",
+   "tags": "פסקי הרא״ש, תוספות הרא״ש, אורחות חיים, עמודי ההוראה, הגירה מאשכנז לספרד",
+   "chapter_type": "דמות",
+   "spotify_url": "",
+   "birth_year": 1200,
+   "death_year": 1400,
+   "date_precision": "century",
+   "has_research": true
+  },
+  {
+   "id": "599",
+   "label": "רבי ישעיה הלוי הורוויץ (השל״ה הקדוש)",
+   "era": "1558–1630",
+   "era_key": "acharonim",
+   "era_label": "אחרונים",
+   "field": "הלכה, קבלה, מוסר וחינוך",
+   "location": "פראג ופולין; פרנקפורט; ירושלים, צפת וטבריה",
+   "bio": "נולד בפראג בשנת 1558 וכיהן ברבנות דובנא, אוסטראה, פוזן, קראקא, וינה ופרנקפורט; בגירוש פרנקפורט (1614–1615) יצא לגלות יחד עם קהילתו. בשנת 1621 עלה לארץ ישראל, שימש רבה של הקהילה האשכנזית בירושלים ונאסר בידי המושל אבן פרוך, ונפטר בטבריה בשנת 1630.",
+   "central_idea": "\"שני לוחות הברית\" מאחד הלכה, קבלה ומוסר לאנציקלופדיה תורנית אחת, המארגנת את חיי היהודי סביב קדושה, כוונה וחינוך הדורות הבאים.",
+   "tags": "שני לוחות הברית, שער השמים, עלייה לארץ ישראל, קבלת האר״י, פראג",
+   "chapter_type": "דמות",
+   "spotify_url": "",
+   "birth_year": 1558,
+   "death_year": 1630,
+   "date_precision": "exact",
+   "has_research": true
+  },
+  {
+   "id": "600",
+   "label": "רבי אברהם בן הרמב״ם",
+   "era": "1186–1237",
+   "era_key": "rishonim",
+   "era_label": "ראשונים",
+   "field": "הלכה, הנהגה ומחשבה מיסטית",
+   "location": "פוסטאט, מצרים",
+   "bio": "בנו יחידו של הרמב״ם, נולד בפוסטאט ב-1186 ומונה לנגיד יהודי מצרים, סוריה וארץ ישראל בהיותו בן שמונה עשרה, לאחר פטירת אביו ב-1204. הנהיג את הקהילה שלושים ושלוש שנים, הגן על משנת אביו בפולמוסים, וחיבר את \"המספיק לעובדי השם\" ואת התשובות שנאספו ב\"ברכת אברהם\". נפטר בשנת 1237 בגיל 51.",
+   "central_idea": "\"חסידות רציונלית\": שילוב הפילוסופיה המימונית עם דרכי פרישות, כוונה ודבקות, מתוך עמדה שדקדוק המצוות והדבקות המיסטית משלימים זה את זה.",
+   "tags": "נגידות, המספיק לעובדי השם, חסידי מצרים, ברכת אברהם, מורשת הרמב״ם",
+   "chapter_type": "דמות",
+   "spotify_url": "",
+   "birth_year": 1186,
+   "death_year": 1237,
+   "date_precision": "exact",
+   "has_research": true
+  },
+  {
+   "id": "601",
+   "label": "רבנו חזקיה די סילוה (פרי חדש)",
+   "era": "המאה ה-17 (נולד בליוורנו 1656; נפטר בן 39)",
+   "era_key": "acharonim",
+   "era_label": "אחרונים",
+   "field": "הלכה ופסיקה; בניין מוסדות התורה בירושלים",
+   "location": "ליוורנו; ירושלים; אמסטרדם",
+   "bio": "נולד בליוורנו בשנת 1656 ועלה לירושלים, שם נמנה עם ישיבת \"בית יעקב\" ופעל להקמת ישיבת בית יעקב (פירירא) בסיוע הגביר יעקב פירירא. בשנת 1688 יצא בשליחות דרבנן לאירופה והדפיס את ספרו \"פרי חדש\", שעורר פולמוס חריף וחרם במצרים. נפטר בכ״ח בכסלו והוא בן 39 בלבד.",
+   "central_idea": "תעוזה הלכתית: חזרה לבירור הסוגיה מן המקור וביקורת גלויה על פסקי הקודמים, לצד ביסוס ירושלים כמרכז תורה עולמי.",
+   "tags": "פרי חדש, ישיבת בית יעקב פירירא, שד״רות, פולמוס החרם, ירושלים העות׳מאנית",
+   "chapter_type": "דמות",
+   "spotify_url": "",
+   "birth_year": 1600,
+   "death_year": 1700,
+   "date_precision": "century",
+   "has_research": true
+  },
+  {
+   "id": "602",
+   "label": "רבי יצחק בן אבא מרי (בעל העיטור)",
+   "era": "1122–1193",
+   "era_key": "rishonim",
+   "era_label": "ראשונים",
+   "field": "הלכה, פסיקה וארגון הידע ההלכתי",
+   "location": "מרסיי, פרובנס",
+   "bio": "נולד בשנת 1122 ופעל במרסיי שבפרובנס עד פטירתו בשנת 1193. חיבורו \"ספר העיטור\" מארגן את הידע ההלכתי של דורו במבנה שיטתי וחדשני, ומשלב נאמנות לתורת הגאונים עם כלים פרשניים מקוריים ונועזים.",
+   "central_idea": "ארכיטקטורה הלכתית: ארגון ההלכה כמערכת משפטית שיטתית, המגשרת בין למדנות ספרד המוסלמית לבין ישיבות צפון צרפת ואשכנז.",
+   "tags": "ספר העיטור, פרובנס, תורת הגאונים, דיני שטרות, סינתזה הלכתית",
+   "chapter_type": "דמות",
+   "spotify_url": "",
+   "birth_year": 1122,
+   "death_year": 1193,
+   "date_precision": "exact",
+   "has_research": true
+  },
+  {
+   "id": "603",
+   "label": "רבי יעקב אבן חביב (עין יעקב)",
+   "era": "אמצע המאה ה-15 – 1516",
+   "era_key": "acharonim",
+   "era_label": "אחרונים",
+   "field": "אגדה, הלכה ומנהיגות קהילת המגורשים",
+   "location": "זמורה שבקסטיליה, ספרד; פורטוגל; סלוניקי",
+   "bio": "ראש ישיבה נערץ בקסטיליה שגורש מספרד בשנת 1492, נמלט מפורטוגל אחרי גזירת ההמרה של 1497 והנהיג את קהילת המגורשים בסלוניקי. חיבר את \"עין יעקב\", כינוס אגדות התלמוד עם פירוש, ופירוש ל\"ארבעה טורים\" שעמד לפני רבי יוסף קארו בכתיבת \"בית יוסף\". נפטר בסלוניקי בשנת 1516, ובנו המהרלב״ח השלים את מפעלו.",
+   "central_idea": "שיקום האמונה אחרי החורבן דרך אגדות חז״ל: האגדה כמסד רוחני ומקור תקווה לדור מגורשים שאיבד את עולמו הפיזי.",
+   "tags": "עין יעקב, גירוש ספרד, אגדות התלמוד, סלוניקי, אנוסים",
+   "chapter_type": "דמות",
+   "spotify_url": "",
+   "birth_year": 1400,
+   "death_year": 1500,
+   "date_precision": "century",
+   "has_research": false
+  },
+  {
+   "id": "604",
+   "label": "רבי יעקב בן יקר",
+   "era": "בערך 990–1064",
+   "era_key": "rishonim",
+   "era_label": "ראשונים",
+   "field": "תלמוד, מסורת הנוסח והנהגת ישיבות אשכנז",
+   "location": "מגנצא (מיינץ) וורמייזא, אשכנז",
+   "bio": "תלמידו של רבנו גרשום מאור הגולה וממשיך דרכו בהנהגת הישיבה במגנצא לאחר פטירתו ב-1028, ורבו המובהק של רש״י. נולד בערך בשנת 990 ונפטר בשנת 1064, ונקבר בבית העלמין העתיק של מגנצא.",
+   "central_idea": "העמדת מסורת הלימוד והגהת נוסח התלמוד של אשכנז הקדומה — מלאכה שהגיעה לשיאה אצל תלמידו רש״י.",
+   "tags": "רבו של רש״י, מגנצא, רבנו גרשום, הגהת נוסח התלמוד, ענווה",
+   "chapter_type": "דמות",
+   "spotify_url": "",
+   "birth_year": 990,
+   "death_year": 1064,
+   "date_precision": "exact",
+   "has_research": true
+  },
+  {
+   "id": "605",
+   "label": "רבי יוסי בן חלפתא",
+   "era": "דור רביעי לתנאים; לאחר מרד בר כוכבא (המאה ה-2 לספירה)",
+   "era_key": "tannaim",
+   "era_label": "תנאים",
+   "field": "הלכה, אגדה וכרונולוגיה",
+   "location": "ציפורי והגליל, ארץ ישראל",
+   "bio": "תנא מן הדור הרביעי, נולד בציפורי לבנו של רבי חלפתא ולמד אצל רבו המובהק רבי עקיבא. תלמידו איסי בן יהודה טבע עליו את הכלל \"רבי יוסי – נימוקו עמו\", ופסקיו המנומקים הפכו מכריעים כמעט בכל מחלוקת. חיבר את \"סדר עולם\", הכרוניקה העברית השיטתית הראשונה של הכרונולוגיה המקראית.",
+   "central_idea": "הנמקה כמקור סמכות: פסיקה ברורה ומנומקת ככלי לאיחוי עם מפולג אחרי החורבן, וסדר כרונולוגי כעוגן לזיכרון הלאומי.",
+   "tags": "נימוקו עמו, סדר עולם רבה, ציפורי, דור אושא, עיבוד עורות",
+   "chapter_type": "דמות",
+   "spotify_url": "",
+   "birth_year": 100,
+   "death_year": 200,
+   "date_precision": "century",
+   "has_research": true
+  },
+  {
+   "id": "606",
+   "label": "מרדכי היהודי",
+   "era": "ימי פרס ותחילת בית שני",
+   "era_key": "second-temple",
+   "era_label": "בית שני",
+   "field": "מנהיגות, הלכה וגאולה",
+   "location": "שושן הבירה, פרס; ירושלים",
+   "bio": "מנהיג יהודי פרס בימי אחשוורוש, חבר בסנהדרין ומאנשי כנסת הגדולה, המכונה \"מרדכי בלשן\" על שום שליטתו בלשונות — שבזכותה חשף את מזימת בגתן ותרש. פעל לביצור היישוב היהודי בגולה ובירושלים כאחד, ודמותו נדרשת כגשר בין תקופת הנבואה לבין ראשית עידן ההלכה והנהגת החכמים.",
+   "central_idea": "מנהיגות המשלבת דבקות דתית בלתי מתפשרת עם תחכום מדיני: תרגום רצון ה' לשפות המציאות הפוליטית מבלי לאבד את הגרעין המקודש.",
+   "tags": "מגילת אסתר, כנסת הגדולה, סנהדרין, מרדכי בלשן, שיבת ציון",
+   "chapter_type": "דמות",
+   "spotify_url": "",
+   "has_research": true
+  },
+  {
+   "id": "607",
+   "label": "יצחק שמואל רג׳יו (יש״ר מגוריציה)",
+   "era": "1784–1855",
+   "era_key": "modern",
+   "era_label": "מודרני",
+   "field": "הגות, חינוך רבני ופרשנות המקרא",
+   "location": "גוריציה ופדובה, איטליה והאימפריה האוסטרית",
+   "bio": "נולד בגוריציה בשנת 1784 ולמד תלמוד ודקדוק מאביו לצד מדעים ולשונות אירופה. יזם והקים את בית המדרש לרבנים בפדובה, שנפתח ב-1829 והיה הסמינר הרבני המודרני הראשון באירופה, ובו לימד שד״ל. בספרו \"התורה והפילוסופיה\" ביקש לפייס בין תבונה ומדע לבין אמונה, ובכתביו המאוחרים ביקר את הקבלה ואת הסמכות הרבנית המקובלת.",
+   "central_idea": "פיוס בין תבונה לאמונה: הנהגה רבנית מחייבת גם ידע תורני וגם השכלה כללית, ומכאן הצורך בהכשרה רבנית מודרנית ומוסדית.",
+   "tags": "בית המדרש לרבנים בפדובה, התורה והפילוסופיה, השכלה איטלקית, ביקורת הקבלה, שד״ל",
+   "chapter_type": "דמות",
+   "spotify_url": "",
+   "birth_year": 1784,
+   "death_year": 1855,
+   "date_precision": "exact",
+   "has_research": true
+  },
+  {
+   "id": "608",
+   "label": "רבי יוסף דב הלוי סולובייצ׳יק (הגרי״ד)",
+   "era": "1903–1993",
+   "era_key": "modern",
+   "era_label": "מודרני",
+   "field": "תלמוד בשיטת בריסק, פילוסופיה והנהגת האורתודוקסיה המודרנית",
+   "location": "בריסק וליטא; ברלין; בוסטון וניו יורק",
+   "bio": "נכדו של רבי חיים סולובייצ׳יק וממשיך שיטת בריסק האנליטית, הנקרא על שם זקנו רבי יוסף דב הלוי בעל \"בית הלוי\" (1820–1892). למד בברלין, ובשנת 1932 היגר לארצות הברית; שם הנהיג את הקהילה בבוסטון ועמד בראש ההוראה בישיבה יוניברסיטי במשך למעלה מארבעה עשורים, כארכיטקט הרוחני של האורתודוקסיה המודרנית.",
+   "central_idea": "חיבור בין הדיוק המושגי של שיטת בריסק לבין הפילוסופיה המערבית: התורה כמערכת לוגית אוטונומית שדרך קטגוריותיה נקראת המציאות המודרנית.",
+   "tags": "שיטת בריסק, הגרי״ד, ישיבה יוניברסיטי, אורתודוקסיה מודרנית, בוסטון, גברא וחפצא",
+   "chapter_type": "דמות",
+   "spotify_url": "",
+   "birth_year": 1903,
+   "death_year": 1993,
+   "date_precision": "exact",
+   "has_research": true
+  },
+  {
+   "id": "609",
+   "label": "רבי ירמיהו חחיאשוילי",
+   "era": "המאה ה-20",
+   "era_key": "modern",
+   "era_label": "מודרני",
+   "field": "רבנות, הלכה ומנהיגות קהילתית",
+   "location": "כותאיסי, גאורגיה; אשדוד, ישראל",
+   "bio": "בנו וממשיך דרכו של חכם חיים אליאשווילי (חחיאשוילי), רבה של כותאיסי — \"ירושלים של גאורגיה\" — שהוביל בשנת 1924 את המאבק להחזרת בתי הכנסת מידי השלטון הסובייטי. רבי ירמיהו הנהיג את הקהילה תחת המשטר הקומוניסטי, עלה לישראל והיה למגדלור רוחני ליוצאי גאורגיה באשדוד, תוך שמירה קפדנית על המנהג הגאורגי.",
+   "central_idea": "רבנות אקטיביסטית: הרב כמיופה כוח הציבור, האחראי לא רק להוראה אלא גם למאבק המשפטי והציבורי על מוסדות הקהילה ובתי הכנסת.",
+   "tags": "יהדות גאורגיה, כותאיסי, מסורת גאורגית, שלטון סובייטי, אשדוד",
+   "chapter_type": "דמות",
+   "spotify_url": "",
+   "birth_year": 1900,
+   "death_year": 2000,
+   "date_precision": "century",
+   "has_research": true
+  },
+  {
+   "id": "610",
+   "label": "הרבנית חיה מושקא שניאורסון",
+   "era": "1901–1988",
+   "era_key": "modern",
+   "era_label": "מודרני",
+   "field": "מנהיגות רוחנית, חסד וחינוך",
+   "location": "ליובאוויטש ורוסטוב, רוסיה; ניו יורק",
+   "bio": "בתו של האדמו״ר רבי יוסף יצחק שניאורסון ואשתו של הרבי מליובאוויטש. נולדה בשנת 1901 סמוך לליובאוויטש, נטלה חלק בפעילות המחתרתית לשימור היהדות בברית המועצות ובמאמצים סביב מאסר אביה ב-1927, ונמלטה עם בעלה מאירופה הכבושה עד הגעתם לניו יורק ב-1941. עדותה במשפט הספרים — \"אבי והספרים שייכים לחסידים\" — הכריעה את הדין. הסתלקה בכ״ב בשבט תשמ״ח (1988).",
+   "central_idea": "צניעות קיצונית והסתרה לצד חוסן רוחני ואחריות ציבורית: הצדיק ונכסיו שייכים לכלל החסידים ולא לפרט.",
+   "tags": "חב״ד, ליובאוויטש, משפט הספרים, פעילות מחתרתית, צניעות, כ״ב שבט",
+   "chapter_type": "דמות",
+   "spotify_url": "",
+   "birth_year": 1901,
+   "death_year": 1988,
+   "date_precision": "exact",
+   "has_research": true
+  },
+  {
+   "id": "611",
+   "label": "גאולה כהן",
+   "era": "1925–2019",
+   "era_key": "modern",
+   "era_label": "מודרני",
+   "field": "מנהיגות לאומית, פוליטיקה ומורשת",
+   "location": "תל אביב וירושלים, ארץ ישראל",
+   "bio": "נולדה בתל אביב בשנת 1925 והצטרפה בשלהי 1943 למחתרת לח״י, שבה הייתה \"הקול של הלח״י\" בשידורי המחתרת. כיהנה בכנסת תשע עשרה שנים ברציפות עד 1992, פרשה מהליכוד ב-1978 בעקבות הסכמי קמפ דיוויד, וייסדה עם יובל נאמן את תנועת \"התחיה\". הקימה את המדרשה הלאומית ואת בית מורשת אורי צבי גרינברג, זכתה בפרס ישראל ב-2003 ונפטרה ב-2019.",
+   "central_idea": "הפיכת המילה המשודרת והכתובה לכלי מאבק לאומי, וחיבור בין מורשת המחתרות לבין מפעל ההתיישבות והחינוך הציוני.",
+   "tags": "לח״י, תנועת התחיה, המדרשה הלאומית, בית מורשת אורי צבי גרינברג, פרס ישראל",
+   "chapter_type": "דמות",
+   "spotify_url": "",
+   "birth_year": 1925,
+   "death_year": 2019,
+   "date_precision": "exact",
+   "has_research": true
   }
  ],
  "links": [
@@ -8345,7 +8510,7 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "94",
+   "source": "95",
    "target": "11",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
@@ -8568,7 +8733,7 @@
   },
   {
    "source": "3",
-   "target": "37",
+   "target": "39",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -8742,7 +8907,7 @@
   },
   {
    "source": "457",
-   "target": "263",
+   "target": "64",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -8892,7 +9057,7 @@
   },
   {
    "source": "443",
-   "target": "122",
+   "target": "123",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9041,7 +9206,7 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "500",
+   "source": "335",
    "target": "169",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
@@ -9084,13 +9249,13 @@
   },
   {
    "source": "463",
-   "target": "263",
+   "target": "64",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
    "source": "67",
-   "target": "263",
+   "target": "64",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9211,6 +9376,12 @@
   {
    "source": "41",
    "target": "267",
+   "type": "influence",
+   "evidence_source": "CSV דמויות קשורות"
+  },
+  {
+   "source": "609",
+   "target": "270",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9443,6 +9614,12 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
+   "source": "600",
+   "target": "288",
+   "type": "influence",
+   "evidence_source": "CSV דמויות קשורות"
+  },
+  {
    "source": "386",
    "target": "288",
    "type": "influence",
@@ -9456,7 +9633,7 @@
   },
   {
    "source": "41",
-   "target": "290",
+   "target": "388",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9467,14 +9644,20 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "297",
+   "source": "287",
    "target": "291",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
    "source": "41",
-   "target": "292",
+   "target": "391",
+   "type": "influence",
+   "evidence_source": "CSV דמויות קשורות"
+  },
+  {
+   "source": "600",
+   "target": "391",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9534,49 +9717,31 @@
   },
   {
    "source": "594",
-   "target": "296",
+   "target": "44",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
    "source": "41",
-   "target": "296",
+   "target": "44",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
    "source": "395",
-   "target": "296",
+   "target": "44",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
    "source": "294",
-   "target": "296",
-   "type": "influence",
-   "evidence_source": "CSV דמויות קשורות"
-  },
-  {
-   "source": "279",
-   "target": "297",
-   "type": "influence",
-   "evidence_source": "CSV דמויות קשורות"
-  },
-  {
-   "source": "44",
-   "target": "297",
-   "type": "influence",
-   "evidence_source": "CSV דמויות קשורות"
-  },
-  {
-   "source": "195",
-   "target": "297",
+   "target": "44",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
    "source": "41",
-   "target": "298",
+   "target": "397",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9750,7 +9915,7 @@
   },
   {
    "source": "563",
-   "target": "500",
+   "target": "335",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9761,7 +9926,7 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "41",
+   "source": "600",
    "target": "386",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
@@ -9989,7 +10154,7 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "263",
+   "source": "64",
    "target": "461",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
@@ -10283,7 +10448,7 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "500",
+   "source": "335",
    "target": "514",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
@@ -10577,6 +10742,132 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
+   "source": "47",
+   "target": "598",
+   "type": "influence",
+   "evidence_source": "CSV דמויות קשורות"
+  },
+  {
+   "source": "395",
+   "target": "598",
+   "type": "influence",
+   "evidence_source": "CSV דמויות קשורות"
+  },
+  {
+   "source": "311",
+   "target": "598",
+   "type": "influence",
+   "evidence_source": "CSV דמויות קשורות"
+  },
+  {
+   "source": "443",
+   "target": "598",
+   "type": "influence",
+   "evidence_source": "CSV דמויות קשורות"
+  },
+  {
+   "source": "463",
+   "target": "599",
+   "type": "influence",
+   "evidence_source": "CSV דמויות קשורות"
+  },
+  {
+   "source": "70",
+   "target": "599",
+   "type": "influence",
+   "evidence_source": "CSV דמויות קשורות"
+  },
+  {
+   "source": "72",
+   "target": "599",
+   "type": "influence",
+   "evidence_source": "CSV דמויות קשורות"
+  },
+  {
+   "source": "542",
+   "target": "599",
+   "type": "influence",
+   "evidence_source": "CSV דמויות קשורות"
+  },
+  {
+   "source": "41",
+   "target": "600",
+   "type": "influence",
+   "evidence_source": "CSV דמויות קשורות"
+  },
+  {
+   "source": "482",
+   "target": "601",
+   "type": "influence",
+   "evidence_source": "CSV דמויות קשורות"
+  },
+  {
+   "source": "38",
+   "target": "602",
+   "type": "influence",
+   "evidence_source": "CSV דמויות קשורות"
+  },
+  {
+   "source": "62",
+   "target": "603",
+   "type": "influence",
+   "evidence_source": "CSV דמויות קשורות"
+  },
+  {
+   "source": "443",
+   "target": "603",
+   "type": "influence",
+   "evidence_source": "CSV דמויות קשורות"
+  },
+  {
+   "source": "22",
+   "target": "604",
+   "type": "influence",
+   "evidence_source": "CSV דמויות קשורות"
+  },
+  {
+   "source": "594",
+   "target": "604",
+   "type": "influence",
+   "evidence_source": "CSV דמויות קשורות"
+  },
+  {
+   "source": "507",
+   "target": "604",
+   "type": "influence",
+   "evidence_source": "CSV דמויות קשורות"
+  },
+  {
+   "source": "268",
+   "target": "606",
+   "type": "influence",
+   "evidence_source": "CSV דמויות קשורות"
+  },
+  {
+   "source": "110",
+   "target": "607",
+   "type": "influence",
+   "evidence_source": "CSV דמויות קשורות"
+  },
+  {
+   "source": "99",
+   "target": "608",
+   "type": "influence",
+   "evidence_source": "CSV דמויות קשורות"
+  },
+  {
+   "source": "563",
+   "target": "610",
+   "type": "influence",
+   "evidence_source": "CSV דמויות קשורות"
+  },
+  {
+   "source": "335",
+   "target": "610",
+   "type": "influence",
+   "evidence_source": "CSV דמויות קשורות"
+  },
+  {
    "source": "13",
    "target": "41",
    "type": "student",
@@ -10763,7 +11054,7 @@
   },
   {
    "source": "2",
-   "target": "290",
+   "target": "388",
    "type": "teacher"
   },
   {
@@ -10788,7 +11079,7 @@
   },
   {
    "source": "16",
-   "target": "500",
+   "target": "335",
    "type": "teacher"
   },
   {
@@ -10903,7 +11194,7 @@
   },
   {
    "source": "23",
-   "target": "500",
+   "target": "335",
    "type": "student"
   },
   {
@@ -10923,7 +11214,7 @@
   },
   {
    "source": "262",
-   "target": "500",
+   "target": "335",
    "type": "teacher"
   },
   {
@@ -10948,7 +11239,7 @@
   },
   {
    "source": "182",
-   "target": "296",
+   "target": "44",
    "type": "teacher"
   },
   {
@@ -11143,7 +11434,7 @@
   },
   {
    "source": "4",
-   "target": "500",
+   "target": "335",
    "type": "teacher"
   },
   {
@@ -11164,11 +11455,6 @@
   {
    "source": "4",
    "target": "151",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "296",
    "type": "teacher"
   },
   {
@@ -11233,7 +11519,7 @@
   },
   {
    "source": "4",
-   "target": "263",
+   "target": "64",
    "type": "teacher"
   },
   {
@@ -11368,12 +11654,7 @@
   },
   {
    "source": "4",
-   "target": "296",
-   "type": "student"
-  },
-  {
-   "source": "4",
-   "target": "297",
+   "target": "287",
    "type": "teacher"
   },
   {
@@ -11448,7 +11729,7 @@
   },
   {
    "source": "12",
-   "target": "500",
+   "target": "335",
    "type": "teacher"
   },
   {
@@ -11552,7 +11833,7 @@
    "type": "student"
   },
   {
-   "source": "297",
+   "source": "287",
    "target": "393",
    "type": "student"
   },
@@ -11617,8 +11898,8 @@
    "type": "student"
   },
   {
-   "source": "297",
-   "target": "296",
+   "source": "287",
+   "target": "44",
    "type": "student"
   },
   {
@@ -11652,7 +11933,7 @@
    "type": "student"
   },
   {
-   "source": "297",
+   "source": "287",
    "target": "291",
    "type": "student"
   },
@@ -11743,7 +12024,7 @@
   },
   {
    "source": "579",
-   "target": "263",
+   "target": "64",
    "type": "influence"
   },
   {
@@ -11768,7 +12049,7 @@
   },
   {
    "source": "150",
-   "target": "500",
+   "target": "335",
    "type": "influence"
   }
  ]

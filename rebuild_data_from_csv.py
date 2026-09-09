@@ -339,7 +339,11 @@ try:
         a, b = by_label.get(p['from']), by_label.get(p['to'])
         if not a or not b or a is b:
             continue
-        keep, drop = (a, b) if len(a.get('bio', '')) >= len(b.get('bio', '')) else (b, a)
+        # Honour the manifest's direction: `to` is the row a human chose to
+        # keep. Picking by bio length instead silently discarded the label the
+        # curator meant to survive, and orphaned every research document
+        # attributed to it.
+        keep, drop = b, a
         # carry over anything the kept row happens to lack
         for k, v in drop.items():
             if v and not keep.get(k):
