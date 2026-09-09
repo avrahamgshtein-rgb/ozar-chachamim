@@ -72,6 +72,8 @@ export interface Sage {
    * Absent means no usable years were found.
    */
   date_precision?: 'exact' | 'century'
+  /** A research document exists for this sage. */
+  has_research?: boolean
   tags?: string[]
   migration_path?: MigrationPath
   coordinates?: { lat: number; lng: number }

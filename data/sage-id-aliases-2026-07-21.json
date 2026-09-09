@@ -2,33 +2,7 @@
   "schema_version": 1,
   "generated_at": "2026-07-21T00:00:00+03:00",
   "policy": "Canonical ids selected by research provenance, graph connectivity, and record richness. Alias files are preserved.",
-  "aliases": {
-    "94": "95",
-    "105": "106",
-    "122": "123",
-    "171": "197",
-    "207": "348",
-    "229": "273",
-    "263": "64",
-    "290": "388",
-    "292": "391",
-    "298": "397",
-    "308": "400",
-    "322": "422",
-    "387": "289",
-    "392": "293",
-    "394": "294",
-    "398": "299",
-    "399": "307",
-    "401": "309",
-    "403": "301",
-    "412": "313",
-    "420": "320",
-    "500": "335",
-    "537": "533",
-    "543": "523",
-    "551": "518"
-  },
+  "aliases": {},
   "decisions": [
     {
       "alias_id": "30",
@@ -251,5 +225,5 @@
       "reason": "Duplicate Aruch HaShulchan"
     }
   ],
-  "_note": "Pruned after the id space moved from the derived CSV to the xlsx master. Entries whose source or target id no longer exists were removed: a stale alias silently reactivates when the master grows into a reused id."
+  "_note": "Emptied: duplicate sages are now merged at build time from data/sage-aliases-by-name.json, which is keyed by name and cannot misfire when ids shift."
 }

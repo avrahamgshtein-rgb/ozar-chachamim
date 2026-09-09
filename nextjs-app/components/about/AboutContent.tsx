@@ -1,6 +1,8 @@
 'use client'
 
 import type { Locale } from '@/lib/types'
+import { useAppStore } from '@/store/useAppStore'
+import { regionsOf } from '@/lib/regions'
 
 const translations = {
   he: {
@@ -20,7 +22,7 @@ const translations = {
     feature3: 'חיפוש מתקדם',
     feature3_desc: 'תמיכה בתרגומים בעברית ותצורות שונות של שמות',
     feature4: 'מסמכי מחקר',
-    feature4_desc: '423 מסמכי מחקר סקורים ומיוחסים למקורותיהם',
+    feature4_desc: 'מסמכי מחקר סקורים ומיוחסים למקורותיהם',
     feature5: 'חומרי הוראה',
     feature5_desc: 'תכניות שיעור של 45 דקות עם שאלות דיון וחומרי השלמה',
     feature6: 'ממשק דו-לשוני',
@@ -53,7 +55,7 @@ const translations = {
     feature3: 'Advanced Search',
     feature3_desc: 'Support for Hebrew transliterations and multiple name formats',
     feature4: 'Research Documents',
-    feature4_desc: '423 scholarly summaries reviewed and attributed to sources',
+    feature4_desc: 'Scholarly summaries reviewed and attributed to sources',
     feature5: 'Teaching Materials',
     feature5_desc: '45-minute lesson plans with discussion questions and resources',
     feature6: 'Bilingual Interface',
@@ -86,7 +88,7 @@ const translations = {
     feature3: 'Расширенный поиск',
     feature3_desc: 'Поддержка еврейской транслитерации и разных форм имён',
     feature4: 'Исследовательские документы',
-    feature4_desc: '423 научных резюме, проверенных и атрибутированных источникам',
+    feature4_desc: 'Научные резюме, проверенные и атрибутированные источникам',
     feature5: 'Учебные материалы',
     feature5_desc: 'Планы уроков на 45 минут с вопросами для обсуждения',
     feature6: 'Многоязычный интерфейс',
@@ -105,6 +107,14 @@ const translations = {
 }
 
 export function AboutContent({ locale }: { locale: Locale }) {
+  // Counted from the loaded dataset rather than written in. These numbers
+  // were hardcoded and had drifted badly — the page claimed 1,624 connections
+  // against an actual 597 — so they are derived now and cannot go stale.
+  const sages       = useAppStore(s => s.sages)
+  const connections = useAppStore(s => s.connections)
+  const withResearch = sages.filter(s => s.has_research).length
+  const regionCount  = new Set(sages.flatMap(s => regionsOf(s.location))).size
+
   const isHe = locale === 'he'
   const t = translations[locale]
 
@@ -142,19 +152,19 @@ export function AboutContent({ locale }: { locale: Locale }) {
         {/* Network Stats */}
         <div className="mb-16 grid grid-cols-2 gap-4 text-center md:grid-cols-4">
           <div className="rounded-lg border border-gold-500/20 bg-slate-800/50 p-6">
-            <div className="text-4xl font-bold text-gold-400">422</div>
+            <div className="text-4xl font-bold text-gold-400">{sages.length.toLocaleString()}</div>
             <div className="text-sm text-slate-400">{t.sages}</div>
           </div>
           <div className="rounded-lg border border-gold-500/20 bg-slate-800/50 p-6">
-            <div className="text-4xl font-bold text-gold-400">1,624</div>
+            <div className="text-4xl font-bold text-gold-400">{connections.length.toLocaleString()}</div>
             <div className="text-sm text-slate-400">{t.connections}</div>
           </div>
           <div className="rounded-lg border border-gold-500/20 bg-slate-800/50 p-6">
-            <div className="text-4xl font-bold text-gold-400">309</div>
+            <div className="text-4xl font-bold text-gold-400">{withResearch.toLocaleString()}</div>
             <div className="text-sm text-slate-400">{t.research}</div>
           </div>
           <div className="rounded-lg border border-gold-500/20 bg-slate-800/50 p-6">
-            <div className="text-4xl font-bold text-gold-400">9</div>
+            <div className="text-4xl font-bold text-gold-400">{regionCount}</div>
             <div className="text-sm text-slate-400">{t.coverage}</div>
           </div>
         </div>
@@ -210,19 +220,19 @@ export function AboutContent({ locale }: { locale: Locale }) {
           <div className="grid gap-4 text-sm text-slate-400 md:grid-cols-2">
             <div>
               <p className="font-semibold text-gold-300 mb-2">Master Dataset</p>
-              <p>422 Hebrew sages with period, region, field classifications</p>
+              <p>{sages.length} Hebrew sages with period, region, field classifications</p>
             </div>
             <div>
               <p className="font-semibold text-gold-300 mb-2">Research Base</p>
-              <p>423 biographical documents across 309 sages, reviewed and summarized (with Hebrew/English/Russian variants)</p>
+              <p>Biographical documents across {withResearch} sages, reviewed and summarized (with Hebrew/English/Russian variants)</p>
             </div>
             <div>
               <p className="font-semibold text-gold-300 mb-2">Geographic Data</p>
-              <p>9 of the site&apos;s 10 geographic regions represented, keyword-matched from sage locations</p>
+              <p>{regionCount} of the site&apos;s 10 geographic regions represented, keyword-matched from sage locations</p>
             </div>
             <div>
               <p className="font-semibold text-gold-300 mb-2">Connections</p>
-              <p>1,624 validated relationships (student, teacher, colleague, etc.)</p>
+              <p>{connections.length.toLocaleString()} validated relationships (student, teacher, colleague, etc.)</p>
             </div>
           </div>
         </div>

@@ -1,6 +1,8 @@
 import { notFound } from 'next/navigation'
 import { isValidLocale } from '@/lib/i18n'
 import type { Locale } from '@/lib/types'
+import { getAllSages, getCorpusStats } from '@/lib/serverData'
+import { regionsOf } from '@/lib/regions'
 
 const translations = {
   he: {
@@ -16,7 +18,7 @@ const translations = {
     feature1: 'רשת קשרים אינטראקטיבית — D3.js force-directed network',
     feature2: 'מפה גיאוגרפית — עקוב אחר מיקומים והגירות של חכמים',
     feature3: 'חיפוש מתקדם — תמיכה בתרגומים בעברית ותצורות שונות',
-    feature4: 'מסמכי מחקר — 423 מסמכי מחקר סקורים ומיוחסים',
+    feature4: 'מסמכי מחקר — סקורים ומיוחסים למקורותיהם',
     feature5: 'חומרי הוראה — תכניות שיעור של 45 דקות ושאלות דיון',
     feature6: 'ממשק דו-לשוני — עברית (RTL) ואנגלית מלאות',
     feature7: 'responsive לכל מכשיר — שולחני, טאבלט, סלולרי',
@@ -41,7 +43,7 @@ const translations = {
     feature1: 'Interactive Connection Network — D3.js force-directed network',
     feature2: 'Geographic Map — Track sage locations and migration paths',
     feature3: 'Advanced Search — Support for Hebrew transliterations',
-    feature4: 'Research Documents — 423 scholarly summaries',
+    feature4: 'Research Documents — scholarly summaries',
     feature5: 'Teaching Materials — 45-minute lesson plans and discussions',
     feature6: 'Bilingual Interface — Full Hebrew (RTL) and English support',
     feature7: 'Responsive Design — Works on desktop, tablet, mobile',
@@ -66,7 +68,7 @@ const translations = {
     feature1: 'Интерактивная сеть соединений — D3.js force-directed network',
     feature2: 'Географическая карта — отслеживание местоположения и путей миграции',
     feature3: 'Расширенный поиск — поддержка еврейской транслитерации',
-    feature4: 'Исследовательские документы — 423 научных резюме',
+    feature4: 'Исследовательские документы — научные резюме',
     feature5: 'Учебные материалы — планы уроков на 45 минут и обсуждения',
     feature6: 'Двуязычный интерфейс — полная поддержка иврита (RTL) и английского',
     feature7: 'Адаптивный дизайн — работает на настольных компьютерах, планшетах, мобильных',
@@ -85,6 +87,12 @@ interface PageProps {
 }
 
 export default async function AboutPage({ params }: PageProps) {
+  // Derived from data.json at build time. These were hardcoded and had gone
+  // stale by a wide margin — 1,624 connections claimed against 597 actual.
+  const allSages = getAllSages()
+  const { sages: sageCount, connections: connCount, withResearch: research } = getCorpusStats()
+  const regions = new Set(allSages.flatMap(s => regionsOf(s.location))).size
+
   const { locale } = await params
 
   if (!isValidLocale(locale)) {
@@ -108,19 +116,19 @@ export default async function AboutPage({ params }: PageProps) {
         {/* Network Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16 text-center">
           <div className="bg-slate-800/50 rounded-lg p-6 border border-gold-500/20">
-            <div className="text-3xl font-bold text-gold-400">422</div>
+            <div className="text-3xl font-bold text-gold-400">{sageCount.toLocaleString()}</div>
             <div className="text-sm text-slate-400">{t.sages}</div>
           </div>
           <div className="bg-slate-800/50 rounded-lg p-6 border border-gold-500/20">
-            <div className="text-3xl font-bold text-gold-400">1,624</div>
+            <div className="text-3xl font-bold text-gold-400">{connCount.toLocaleString()}</div>
             <div className="text-sm text-slate-400">{t.connections}</div>
           </div>
           <div className="bg-slate-800/50 rounded-lg p-6 border border-gold-500/20">
-            <div className="text-3xl font-bold text-gold-400">309</div>
+            <div className="text-3xl font-bold text-gold-400">{research.toLocaleString()}</div>
             <div className="text-sm text-slate-400">{t.research}</div>
           </div>
           <div className="bg-slate-800/50 rounded-lg p-6 border border-gold-500/20">
-            <div className="text-3xl font-bold text-gold-400">9</div>
+            <div className="text-3xl font-bold text-gold-400">{regions}</div>
             <div className="text-sm text-slate-400">{t.coverage}</div>
           </div>
         </div>
@@ -177,7 +185,7 @@ export default async function AboutPage({ params }: PageProps) {
             <p className="text-slate-400 text-sm">
               Master dataset: Hebrew sages database
               <br />
-              Research: 423 biographical documents across 309 sages
+              Research: biographical documents across {research} sages
               <br />
               Geographic data: GeoNames, OpenStreetMap
               <br />

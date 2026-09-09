@@ -189,6 +189,7 @@ export async function fetchLocalGraphData(): Promise<{ sages: Sage[]; connection
       birth_year:   typeof n.birth_year === 'number' ? n.birth_year : undefined,
       death_year:   typeof n.death_year === 'number' ? n.death_year : undefined,
       date_precision: (n.date_precision as Sage['date_precision']) || undefined,
+      has_research: Boolean(n.has_research),
     }))
     const connections: Connection[] = (d.links ?? []).map((l: Record<string, unknown>) => ({
       source: String(l.source ?? ''),

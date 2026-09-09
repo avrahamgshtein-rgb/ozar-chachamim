@@ -51,6 +51,7 @@ function db(): Db {
       core_concept: record.core_concept,
       birth_year: record.birth_year,
       date_precision: record.date_precision,
+      has_research: record.has_research,
       death_year: record.death_year,
       tags: record.tags,
       migration_path: record.migration_path,
@@ -70,6 +71,18 @@ export function getSageById(id: string): Sage | null {
 
 export function getAllSages(): Sage[] {
   return Array.from(db().sages.values())
+}
+
+/**
+ * Corpus totals for the About page, computed rather than written in.
+ * These were hardcoded and had drifted a long way — 1,624 connections were
+ * claimed against 597 actual, and 422 sages against 435.
+ */
+export function getCorpusStats(): { sages: number; connections: number; withResearch: number } {
+  const { sages, links } = db()
+  let withResearch = 0
+  for (const s of sages.values()) if (s.has_research) withResearch++
+  return { sages: sages.size, connections: links.length, withResearch }
 }
 
 export function getSageConnections(id: string): Array<{ type: Connection['type']; otherSage: Sage }> {

@@ -17,9 +17,15 @@ G = lambda r, k: (r.get(k) or '').strip()
 
 def norm_name(s):
     if not s: return ''
-    s = s.replace('״', '"').replace('׳', "'").replace('־', '-').replace('–', '-')
+    s = s.replace('״', '"').replace('׳', "'")
+    # Trailing descriptive epithet: "הרב צבי הירש קלישר – ציונות דתית לפני הרצל"
+    # is the same person as the bare "הרב צבי הירש קלישר", and treating them as
+    # two produced a dozen duplicate sages. The separator must be a SPACED dash;
+    # an unspaced one belongs to the name itself (שרה שטרן-קטן, מקלעת־חמאד).
+    s = re.sub(r'\s+[־–—-]\s+.*$', '', s.strip())
+    s = s.replace('־', '-').replace('–', '-')
     s = re.sub(r'\(.*?\)', ' ', s)           # drop parentheses
-    s = re.sub(r'^(רבנו|רבינו|רבי|הרב|רב|ר\'|חכם|האדמו"ר|אדמו"ר|מרן)\s+', '', s.strip())
+    s = re.sub(r'^(רבנו|רבינו|רבי|הרב|רב|ר\'|חכם|האדמו"ר|אדמו"ר|הרבי|מרן)\s+', '', s.strip())
     s = re.sub(r'\s+', ' ', s)
     return s.strip()
 
@@ -300,6 +306,64 @@ def recover(fname, skip_types=()):
 r1 = recover('data_with_connections.json')
 r2 = recover('data.json.backup_v4', skip_types=('colleague',))
 print(f'recovered links: curated={r1}, backup_v4(non-colleague)={r2}')
+
+# ---------- has_research ----------
+# Set from the file actually being on disk, not from a summaries index that
+# drifted: the About page read 241 while 329 sages had a research document.
+import os as _os
+_rdir = _os.path.join('nextjs-app', 'public', 'research')
+_present = set()
+if _os.path.isdir(_rdir):
+    for _f in _os.listdir(_rdir):
+        if _f.endswith('.json') and '.en.' not in _f and '.ru.' not in _f:
+            _present.add(_f[:-5])
+for n in nodes:
+    n['has_research'] = n['id'] in _present
+print(f'has_research set from disk: {sum(1 for n in nodes if n["has_research"])}')
+
+# ---------- Merge same-sage-twice pairs ----------
+# Normalised-name dedup cannot see that "הרד״ק" and "רבי דוד קמחי" are one man,
+# or that "הנודע ביהודה" is how the Rav Yechezkel Landau row is titled. Those
+# pairs are curated in data/sage-aliases-by-name.json and merged here, at the
+# source, so nothing downstream has to carry an alias table. The manifest is
+# keyed by NAME on purpose: an id-keyed one reactivates on whoever later
+# occupies a reused id, which is how רבי חנינא בר פפא came to be merged into
+# בת שבע.
+merged = 0
+try:
+    with open('data/sage-aliases-by-name.json', encoding='utf-8') as f:
+        alias_pairs = json.load(f).get('pairs', [])
+    by_label = {n['label']: n for n in nodes}
+    remap = {}
+    for p in alias_pairs:
+        a, b = by_label.get(p['from']), by_label.get(p['to'])
+        if not a or not b or a is b:
+            continue
+        keep, drop = (a, b) if len(a.get('bio', '')) >= len(b.get('bio', '')) else (b, a)
+        # carry over anything the kept row happens to lack
+        for k, v in drop.items():
+            if v and not keep.get(k):
+                keep[k] = v
+        remap[drop['id']] = keep['id']
+        nodes = [n for n in nodes if n is not drop]
+        merged += 1
+
+    if remap:
+        rewired, seen = [], set()
+        for l in links:
+            s = remap.get(str(l['source']), str(l['source']))
+            t = remap.get(str(l['target']), str(l['target']))
+            if s == t:
+                continue                      # self-link created by the merge
+            k = (s, t, l.get('type'))
+            if k in seen:
+                continue
+            seen.add(k)
+            rewired.append({**l, 'source': s, 'target': t})
+        links = rewired
+    print(f'merged duplicate sages: {merged}')
+except FileNotFoundError:
+    print('alias manifest absent, no merges')
 
 # ---------- Migration paths ----------
 # Life journeys (born X -> moved to Y) extracted from the research corpus and
