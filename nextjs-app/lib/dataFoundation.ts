@@ -73,11 +73,21 @@ export function normalizeSage(raw: Record<string, unknown>, issues: DataValidati
     return null
   }
 
-  const era_key = String(raw.era_key ?? '').trim()
+  // The master dataset names this column `era_key`; the supplement files
+  // (data-ancient, data-supplement*) use `period`. Reading only the former
+  // silently dropped every supplement sage into 'modern' — King David showed
+  // as "מודרני · 1040–970 לפנה״ס" — because an absent key raises no warning.
+  const era_key = String(raw.era_key ?? raw.period ?? '').trim()
   const period: Period = ERA_KEY_MAP[era_key] || 'modern'
 
-  // Warn if period was unknown
-  if (era_key && !ERA_KEY_MAP[era_key]) {
+  if (!era_key) {
+    issues.push({
+      sage_id: id,
+      type: 'missing_period',
+      message: 'No era_key or period on node, defaulting to "modern"',
+      severity: 'warning',
+    })
+  } else if (!ERA_KEY_MAP[era_key]) {
     issues.push({
       sage_id: id,
       type: 'invalid_period',

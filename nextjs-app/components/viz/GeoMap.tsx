@@ -303,10 +303,27 @@ export function GeoMap({ locale }: GeoMapProps) {
 
         const color = ERA_COLORS[sage.period] ?? '#7a6550'
 
-        L.polyline(
+        const line = L.polyline(
           coordStops.map(c => [c.lat, c.lng] as [number, number]),
           { color, weight: 2, opacity: 0.5, dashArray: '6,4' }
         ).addTo(map)
+
+        // Clicking a journey opens its destination's cohort with this sage as
+        // the anchor; the panel then exposes every stop, so one click reaches
+        // the whole route without needing a marker per stop.
+        const resolved = stops.filter(name => LOCATION_COORDS[name])
+        line
+          .bindTooltip(
+            `<span style="font-family:Heebo,sans-serif;font-size:11px;">${sage.label}<br/>${resolved.join(' ← ')}</span>`,
+            { direction: 'top', sticky: true },
+          )
+          .on('click', e => {
+            L.DomEvent.stopPropagation(e as unknown as Event)
+            const dest = resolved[resolved.length - 1]
+            if (dest) useAppStore.getState().setPlaceFocus(dest, sage.id)
+          })
+          .on('mouseover', () => line.setStyle({ weight: 4, opacity: 0.95 }))
+          .on('mouseout',  () => line.setStyle({ weight: 2, opacity: 0.5  }))
 
         // Directional arrowhead at each segment midpoint (origin → destination)
         coordStops.forEach((_, i) => {

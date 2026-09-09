@@ -104,6 +104,13 @@ export interface Filters {
   region: Region[]
   field: string[]
   searchQuery: string
+  /**
+   * A single canonical place from LOCATION_COORDS. When set, the dataset
+   * narrows to everyone recorded there — whether they lived there or passed
+   * through on a migration path. Distinct from `region`, which is a coarse
+   * keyword bucket: this is one named city or land.
+   */
+  place: string | null
 }
 
 /**

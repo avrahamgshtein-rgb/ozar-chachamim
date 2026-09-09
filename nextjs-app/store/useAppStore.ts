@@ -4,6 +4,7 @@ import { create } from 'zustand'
 import type { Sage, Connection, Tab, Filters, Period, Region } from '@/lib/types'
 import { isTagFacet } from '@/lib/types'
 import { regionsOf } from '@/lib/regions'
+import { placesIn } from '@/lib/placeIndex'
 import { normalizeHe, fuzzyIncludes } from '@/lib/search'
 
 interface AppState {
@@ -32,6 +33,8 @@ interface AppState {
   filters: Filters
   filteredSages: Sage[]
   availableFields: string[]
+  /** Sage whose journey the place focus is being read against, if any. */
+  placeAnchorId: string | null
 
   // Actions
   setData: (sages: Sage[], connections: Connection[], total: number, lastUpdate: string) => void
@@ -55,6 +58,8 @@ interface AppState {
   setPeriodFilters: (periods: Period[] | null) => void
   setRegionFilters: (regions: Region[]) => void
   clearFilters: () => void
+  /** Focus one place; `anchorId` marks whose journey prompted it. */
+  setPlaceFocus: (place: string | null, anchorId?: string | null) => void
   applyNavigationState: (tab: Tab | null, sage: string | null, regions: Region[], periods: Period[] | null) => void
 }
 
@@ -76,6 +81,18 @@ function applyFilters(sages: Sage[], filters: Filters): Sage[] {
       const sageFacets = (sage.tags ?? []).filter(isTagFacet)
       const selectable = [...sageFields, ...sageFacets]
       if (!selectable.some(f => filters.field.includes(f))) return false
+    }
+    if (filters.place) {
+      // Presence covers both where a sage was based and any stop on their
+      // migration path, so focusing on Jerusalem surfaces the Ramban, who
+      // arrived there late, alongside those who lived there all along.
+      const stops = sage.migration_path
+        ? [sage.migration_path.from, ...(sage.migration_path.intermediate ?? []), sage.migration_path.to]
+        : []
+      const here =
+        placesIn(sage.location).includes(filters.place) ||
+        stops.some(s => placesIn(s).includes(filters.place!))
+      if (!here) return false
     }
     if (filters.searchQuery) {
       // Fuzzy Hebrew matching: "רמבם" ↔ "רמב״ם" (nikud/quotes/finals-insensitive)
@@ -114,9 +131,11 @@ export const useAppStore = create<AppState>((set, get) => ({
     region: [],
     field: [],
     searchQuery: '',
+    place: null,
   },
   filteredSages: [],
   availableFields: [],
+  placeAnchorId: null,
 
   setData: (sages, connections, total, lastUpdate) => {
     const sageMap = new Map(sages.map(s => [s.id, s]))
@@ -234,10 +253,20 @@ export const useAppStore = create<AppState>((set, get) => ({
     set({ filters: newFilters, filteredSages: applyFilters(sages, newFilters) })
   },
 
+  setPlaceFocus: (place, anchorId = null) => {
+    const { sages, filters } = get()
+    const updated = { ...filters, place }
+    set({
+      filters: updated,
+      filteredSages: applyFilters(sages, updated),
+      placeAnchorId: place ? anchorId : null,
+    })
+  },
+
   clearFilters: () => {
     const { sages } = get()
-    const empty: Filters = { period: null, region: [], field: [], searchQuery: '' }
-    set({ filters: empty, filteredSages: sages })
+    const empty: Filters = { period: null, region: [], field: [], searchQuery: '', place: null }
+    set({ filters: empty, filteredSages: sages, placeAnchorId: null })
   },
 
   applyNavigationState: (tab, sage, regions, periods) => {
@@ -255,7 +284,7 @@ export const useAppStore = create<AppState>((set, get) => ({
     }
 
     // Apply all state atomically in one set() call
-    const newFilters: Filters = { period: periods, region: regions, field: [], searchQuery: '' }
+    const newFilters: Filters = { period: periods, region: regions, field: [], searchQuery: '', place: null }
     set({
       activeTab: tab || 'graph',
       selectedSage,

@@ -17,6 +17,7 @@ import { SageFilters } from '@/components/sages/SageFilters'
 import { Comparator } from '@/components/viz/Comparator'
 import { FilterChips } from '@/components/viz/FilterChips'
 import { MapLegend } from '@/components/viz/MapLegend'
+import { PlaceCohort } from '@/components/viz/PlaceCohort'
 import { GeographyPanel } from '@/components/viz/GeographyPanel'
 import { GeographyMobileDrawer } from '@/components/viz/GeographyMobileDrawer'
 import { useRef } from 'react'
@@ -276,6 +277,7 @@ function CanvasArea({
               <>
                 <GeoMap locale={locale} />
                 <MapLegend locale={locale} />
+                <PlaceCohort locale={locale} />
               </>
             )}
           </div>
