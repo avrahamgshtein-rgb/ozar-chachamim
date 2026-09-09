@@ -82,7 +82,7 @@ export function GeoTimeLayers({ locale, fallback = null }: GeoTimeLayersProps) {
   return (
     <div className="absolute inset-0 overflow-auto bg-ink-900">
       {/* Axis disclosure — the vertical axis is categorical, and says so. */}
-      <div className="absolute top-3 start-3 z-20 glass rounded-lg px-3 py-2 max-w-[15rem]">
+      <div className="absolute top-24 start-3 z-[1000] glass rounded-lg px-3 py-2 max-w-[15rem]">
         <p className="text-[10px] font-sans font-semibold uppercase tracking-widest text-gold-300 mb-1">
           {tr(locale, 'שכבות זמן', 'Time layers', 'Слои времени')}
         </p>
@@ -97,7 +97,7 @@ export function GeoTimeLayers({ locale, fallback = null }: GeoTimeLayersProps) {
       </div>
 
       {/* View controls */}
-      <div className="absolute top-3 end-3 z-20 glass rounded-lg px-3 py-2 flex flex-col gap-2">
+      <div className="absolute top-40 end-3 z-[1000] glass rounded-lg px-3 py-2 flex flex-col gap-2">
         <label className="text-[10px] font-sans text-ink-400 flex items-center gap-2">
           <span className="w-10">{tr(locale, 'הטיה', 'Tilt', 'Наклон')}</span>
           <input
@@ -120,7 +120,7 @@ export function GeoTimeLayers({ locale, fallback = null }: GeoTimeLayersProps) {
 
       {/* Records we cannot place or date — surfaced, never silently dropped. */}
       {(model.totalUnplaceable > 0 || model.undated.length > 0) && (
-        <div className="absolute bottom-3 start-3 z-20 glass rounded-lg px-3 py-2 max-w-[17rem]">
+        <div className="absolute bottom-3 start-3 z-[1000] glass rounded-lg px-3 py-2 max-w-[17rem]">
           <p className="text-[10px] font-sans text-ink-400 leading-relaxed">
             {model.totalUnplaceable > 0 && (
               <span className="block">

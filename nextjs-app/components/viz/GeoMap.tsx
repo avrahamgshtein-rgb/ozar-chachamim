@@ -5,6 +5,7 @@ import 'leaflet/dist/leaflet.css'
 import { ERA_COLORS, ERA_LABELS, CONNECTION_LABELS } from '@/lib/types'
 import { CONNECTION_TYPE_COLORS } from '@/lib/regions'
 import { LOCATION_COORDS, resolveCoords } from '@/lib/locationCoords'
+import { placesIn } from '@/lib/placeIndex'
 import { tr } from '@/lib/i18n'
 import { useAppStore } from '@/store/useAppStore'
 import type { Locale, Sage, Connection } from '@/lib/types'
@@ -165,9 +166,52 @@ export function GeoMap({ locale }: GeoMapProps) {
       const markerRefs = new Map<string, import('leaflet').CircleMarker>()
       const markersLayer = L.layerGroup().addTo(map)
 
+      // Coordinates come from a gazetteer keyed by place name, so every sage
+      // of one city gets the SAME point and their dots stack exactly — 71
+      // sages of Jerusalem rendered as a single visible circle, the rest
+      // hidden underneath and unclickable. Spread co-located sages around a
+      // small ring so each is reachable. The ring grows with the crowd but is
+      // capped, and the true coordinate is still used for connection lines and
+      // migration paths, which should point at the city, not at the ring.
+      const atPoint = new Map<string, Sage[]>()
+      for (const s of sages) {
+        const c = resolveCoords(s)
+        if (!c) continue
+        const k = `${c.lat.toFixed(4)}:${c.lng.toFixed(4)}`
+        const bucket = atPoint.get(k)
+        if (bucket) bucket.push(s)
+        else atPoint.set(k, [s])
+      }
+      const ringIndex = new Map<string, { i: number; n: number }>()
+      atPoint.forEach(group => {
+        if (group.length < 2) return
+        group.forEach((s, i) => ringIndex.set(s.id, { i, n: group.length }))
+      })
+
+      /** Marker position: the city itself, or a slot on its ring when shared. */
+      const spread = (sage: Sage, c: { lat: number; lng: number }) => {
+        const slot = ringIndex.get(sage.id)
+        if (!slot) return c
+        // Rings of at most 12; beyond that a second, wider ring takes over, so
+        // a place like Jerusalem stays legible instead of one dense circle.
+        const perRing = 12
+        const ring = Math.floor(slot.i / perRing)
+        const within = slot.i % perRing
+        const count = Math.min(slot.n - ring * perRing, perRing)
+        const radius = 0.28 + ring * 0.26          // degrees
+        const angle = (2 * Math.PI * within) / count
+        return {
+          lat: c.lat + radius * Math.sin(angle),
+          // longitude degrees shrink toward the poles; correct so the ring
+          // stays visually circular rather than stretched
+          lng: c.lng + (radius * Math.cos(angle)) / Math.cos((c.lat * Math.PI) / 180),
+        }
+      }
+
       sages.forEach(sage => {
-        const coords = resolveCoords(sage)
-        if (!coords) return
+        const trueCoords = resolveCoords(sage)
+        if (!trueCoords) return
+        const coords = spread(sage, trueCoords)
 
         const color = ERA_COLORS[sage.period] ?? '#7a6550'
 
@@ -265,7 +309,17 @@ export function GeoMap({ locale }: GeoMapProps) {
             return
           }
 
-          // Cluster bubble with count — click zooms in
+          // The place most of this bubble's sages share — Turkey, Italy — so a
+          // click can focus the whole region, not just zoom toward it.
+          const tally = new Map<string, number>()
+          for (const id of b.ids) {
+            const s = sageById.get(id)
+            if (!s) continue
+            for (const p of placesIn(s.location)) tally.set(p, (tally.get(p) ?? 0) + 1)
+          }
+          const dominant = [...tally.entries()].sort((x, y) => y[1] - x[1])[0]?.[0] ?? null
+
+          // Cluster bubble with count — click zooms in and focuses the region
           const size = Math.min(46, 26 + Math.sqrt(b.ids.length) * 3)
           L.marker([lat, lng], {
             icon: L.divIcon({
@@ -281,7 +335,19 @@ export function GeoMap({ locale }: GeoMapProps) {
               iconAnchor: [size / 2, size / 2],
             }),
           })
-            .on('click', () => map.setView([lat, lng], Math.min(CLUSTER_MAX_ZOOM + 2, z + 3)))
+            .bindTooltip(
+              dominant
+                ? `<span style="font-family:Heebo,sans-serif;font-size:11px;">${dominant} · ${b.ids.length}</span>`
+                : `${b.ids.length}`,
+              { direction: 'top', offset: [0, -size / 2] },
+            )
+            .on('click', () => {
+              map.setView([lat, lng], Math.min(CLUSTER_MAX_ZOOM + 2, z + 3))
+              // Focusing the place narrows filteredSages, and the 3D layer view
+              // builds its period plates from exactly that — so switching to
+              // שכבות now shows who was in this region, era by era.
+              if (dominant) useAppStore.getState().setPlaceFocus(dominant, null)
+            })
             .addTo(clusterLayer)
         })
       }

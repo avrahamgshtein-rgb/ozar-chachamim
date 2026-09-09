@@ -306,7 +306,7 @@ function CanvasArea({
               stacking context, so anything below that renders behind the tiles.
               The enclosing container is `isolate`, so this cannot escape the geo
               area and cover app chrome. */}
-          <div className="absolute top-2 end-2 z-[1001] flex rounded-md overflow-hidden border border-ink-700 bg-ink-900/85">
+          <div className="absolute top-24 end-2 z-[1001] flex rounded-md overflow-hidden border border-ink-700 bg-ink-900/85">
             {(['2d', '3d'] as const).map(mode => (
               <button
                 key={mode}

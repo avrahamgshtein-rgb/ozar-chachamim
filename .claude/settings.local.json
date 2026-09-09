@@ -285,7 +285,12 @@
       "Bash(sed -n \"/export interface PeriodLayer/,/^}/p\" lib/geoLayers.ts)",
       "Bash(sed -n \"/export function buildLayerModel/,+12p\" lib/geoLayers.ts)",
       "Bash(curl -s -o /dev/null --max-time 90 http://localhost:3000/he)",
-      "Bash(iconv -f utf-8 -t utf-8)"
+      "Bash(iconv -f utf-8 -t utf-8)",
+      "Bash(curl -s --max-time 90 \"https://ozar-chachamim.vercel.app/research/41.json\" -o live41.json)",
+      "Bash(curl -s --max-time 90 \"https://ozar-chachamim.vercel.app/research/529.json\" -o live529.json)",
+      "Bash(rm -f live41.json live529.json probe_ids.txt)",
+      "Bash(curl -s --compressed --max-time 90 \"https://ozar-chachamim.vercel.app/research/41.json\" -o l41.json)",
+      "Bash(curl -s -o /dev/null -w \"%{content_type}\\\\n\" --max-time 60 \"https://ozar-chachamim.vercel.app/research/41.json\")"
     ]
   }
 }
