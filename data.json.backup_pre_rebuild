@@ -12,7 +12,8 @@
    "central_idea": "",
    "tags": "ספרות בית שני, מוסר ודרך ארץ, גבולות קאנון, השפעה חז\"לית",
    "chapter_type": "טקסט יסוד",
-   "spotify_url": "https://open.spotify.com/episode/3u5udRWI84FVJ3OsOBBbPF?si=ek7V_WzPS7OadSPOZSU-VA&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
+   "spotify_url": "https://open.spotify.com/episode/3u5udRWI84FVJ3OsOBBbPF?si=ek7V_WzPS7OadSPOZSU-VA&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "has_research": false
   },
   {
    "id": "2",
@@ -98,7 +99,8 @@
    "spotify_url": "https://open.spotify.com/episode/71nqAiPfV8HB7EWCckohvG?si=WbQiatqrSYaFpMpTf0PUBw&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
    "birth_year": 100,
    "death_year": 200,
-   "date_precision": "century"
+   "date_precision": "century",
+   "has_research": true
   },
   {
    "id": "7",
@@ -115,7 +117,8 @@
    "spotify_url": "https://open.spotify.com/episode/4MI4LUL2FI4WeVtEdPZS5F",
    "birth_year": 100,
    "death_year": 200,
-   "date_precision": "century"
+   "date_precision": "century",
+   "has_research": false
   },
   {
    "id": "8",
@@ -215,7 +218,8 @@
    "spotify_url": "https://open.spotify.com/episode/2LuetW1C27UfICNkPhakAr",
    "birth_year": 1300,
    "death_year": 1400,
-   "date_precision": "century"
+   "date_precision": "century",
+   "has_research": true
   },
   {
    "id": "14",
@@ -275,7 +279,8 @@
    "spotify_url": "https://open.spotify.com/episode/4NKKrtI7AcK5wwQ0ejB7h1?si=jKMxNYqPRq6LQQm_5UMAbw&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
    "birth_year": 1500,
    "death_year": 1600,
-   "date_precision": "century"
+   "date_precision": "century",
+   "has_research": false
   },
   {
    "id": "17",
@@ -292,7 +297,8 @@
    "spotify_url": "https://open.spotify.com/episode/3H710rBuEItb7at39hVzLn",
    "birth_year": 1380,
    "death_year": 1444,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "18",
@@ -333,7 +339,8 @@
    "central_idea": "משה ניסח נאומים, אך ה׳ הכתיב לו מילה במילה בעת כתיבת התורה; כל מילה במקרא ייחודית ואין 'נרדפות' סתמית.",
    "tags": "תורה מן השמים, דיוק לשוני, ספר דברים, פרשנות סמנטית",
    "chapter_type": "חכמי ישראל - הגות, הנהגה והלכה",
-   "spotify_url": "https://open.spotify.com/episode/5J3m8GmCr0dbgQl0IyUyW6"
+   "spotify_url": "https://open.spotify.com/episode/5J3m8GmCr0dbgQl0IyUyW6",
+   "has_research": false
   },
   {
    "id": "344",
@@ -415,7 +422,8 @@
    "spotify_url": "https://spotifycreators-web.app.link/e/Y25n3OL4yQb",
    "birth_year": 910,
    "death_year": 970,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "24",
@@ -450,7 +458,8 @@
    "spotify_url": "https://open.spotify.com/episode/1crQJTeUeTRzuNWrBy5Xnw",
    "birth_year": 939,
    "death_year": 1038,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "26",
@@ -468,6 +477,7 @@
    "birth_year": 990,
    "death_year": 1055,
    "date_precision": "exact",
+   "has_research": true,
    "migration_path": {
     "from": "קורדובה",
     "to": "סרגוסה"
@@ -524,7 +534,8 @@
    "spotify_url": "https://open.spotify.com/episode/5teJp1U9ghLdy4CXNAusRN?si=uqTLoA-PT_yqmv9eyGRw6g&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv&t=88",
    "birth_year": 1050,
    "death_year": 1150,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": false
   },
   {
    "id": "261",
@@ -559,7 +570,8 @@
    "spotify_url": "https://open.spotify.com/episode/4rAsgRTzQIOx4TeBSEabWs",
    "birth_year": 1077,
    "death_year": 1141,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "33",
@@ -576,7 +588,8 @@
    "spotify_url": "https://open.spotify.com/episode/5u9zxyAssijvwzZnbKM7OQ?si=o5kksAmaQNiRkBHxN8CVpQ&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
    "birth_year": 1100,
    "death_year": 1171,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": false
   },
   {
    "id": "34",
@@ -612,7 +625,8 @@
    "central_idea": "מיפוי ים הסוגיות למסילה הלכתית: תמצות, בירור נוסח, ושילוב שיטתי של הירושלמי להכרעה.",
    "tags": "בהירות תלמוד, שיטתיות, שילוב ירושלמי בבבלי",
    "chapter_type": "חכמי ישראל - הגות, הנהגה והלכה",
-   "spotify_url": "https://open.spotify.com/episode/580Us9ygui6IR3ypcVlNrx"
+   "spotify_url": "https://open.spotify.com/episode/580Us9ygui6IR3ypcVlNrx",
+   "has_research": false
   },
   {
    "id": "37",
@@ -629,7 +643,8 @@
    "spotify_url": "https://open.spotify.com/episode/4i5VEmckhRP0N4Q1QGp5eC",
    "birth_year": 1000,
    "death_year": 1100,
-   "date_precision": "century"
+   "date_precision": "century",
+   "has_research": true
   },
   {
    "id": "38",
@@ -647,7 +662,7 @@
    "birth_year": 1000,
    "death_year": 1300,
    "date_precision": "century",
-   "has_research": true
+   "has_research": false
   },
   {
    "id": "39",
@@ -701,6 +716,7 @@
    "birth_year": 1138,
    "death_year": 1204,
    "date_precision": "exact",
+   "has_research": true,
    "migration_path": {
     "from": "קורדובה",
     "to": "מצרים",
@@ -744,6 +760,7 @@
    "birth_year": 1180,
    "death_year": 1250,
    "date_precision": "exact",
+   "has_research": true,
    "migration_path": {
     "from": "בוהמיה",
     "to": "וינה",
@@ -768,6 +785,7 @@
    "birth_year": 1194,
    "death_year": 1270,
    "date_precision": "exact",
+   "has_research": false,
    "migration_path": {
     "from": "גירונה",
     "to": "עכו",
@@ -831,7 +849,8 @@
    "spotify_url": "https://open.spotify.com/episode/2KEK5HHxNXY0mD1HV36wrn",
    "birth_year": 1220,
    "death_year": 1293,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "48",
@@ -866,7 +885,8 @@
    "spotify_url": "https://open.spotify.com/episode/0oglKv7NMszH0VEiXz5kUO",
    "birth_year": 1100,
    "death_year": 1200,
-   "date_precision": "century"
+   "date_precision": "century",
+   "has_research": true
   },
   {
    "id": "50",
@@ -909,7 +929,8 @@
    "spotify_url": "https://open.spotify.com/episode/0sf3x7eQhEBrOAR6VxdNkT",
    "birth_year": 1249,
    "death_year": 1316,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "52",
@@ -944,7 +965,8 @@
    "spotify_url": "https://open.spotify.com/episode/4TIzbEP8cp0XnScsOSVYcj",
    "birth_year": 1250,
    "death_year": 1298,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "54",
@@ -1070,7 +1092,8 @@
    "spotify_url": "https://open.spotify.com/episode/2xytN0uGuTq03wNYWvusDO?si=GjQi6caQRZGdjDrWc8cX7w",
    "birth_year": 1360,
    "death_year": 1463,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": false
   },
   {
    "id": "343",
@@ -1102,7 +1125,8 @@
    "central_idea": "מוסר כ'מנגינה חיה': צדקה כתיקון והצלה; תפילה כעמידה של דלות; הבניית חיים דרך סיפורים ומשלים.",
    "tags": "מנורת המאור, פרעות קנ״א, כינוס מדרשים",
    "chapter_type": "חכמי ישראל - הגות, הנהגה והלכה",
-   "spotify_url": "https://open.spotify.com/episode/7ong9XinXN1Na6aWhTzXME"
+   "spotify_url": "https://open.spotify.com/episode/7ong9XinXN1Na6aWhTzXME",
+   "has_research": true
   },
   {
    "id": "62",
@@ -1228,6 +1252,7 @@
    "birth_year": 1465,
    "death_year": 1546,
    "date_precision": "exact",
+   "has_research": true,
    "migration_path": {
     "from": "ספרד",
     "to": "סלוניקי"
@@ -1436,7 +1461,8 @@
    "spotify_url": "https://open.spotify.com/episode/7dCBE5OnROaK58y5cK5tiO?si=4Cr1F3_iTIu6UQbPYdZuyg&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
    "birth_year": 1571,
    "death_year": 1648,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": false
   },
   {
    "id": "79",
@@ -1507,7 +1533,8 @@
    "spotify_url": "https://open.spotify.com/episode/09JfLsbxRNjLhC969SxOPd?si=zTKhNkZ7T8qiI1akCdsAvg&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
    "birth_year": 1610,
    "death_year": 1698,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": false
   },
   {
    "id": "83",
@@ -1524,7 +1551,8 @@
    "spotify_url": "https://open.spotify.com/episode/0zeTxQVV4ZhQFYYST2sO12",
    "birth_year": 1622,
    "death_year": 1663,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": false
   },
   {
    "id": "84",
@@ -1541,7 +1569,8 @@
    "spotify_url": "https://open.spotify.com/episode/5fzAXAiCnkg42WFvOV2dci",
    "birth_year": 1637,
    "death_year": 1682,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "85",
@@ -1581,7 +1610,7 @@
    "birth_year": 1671,
    "death_year": 1750,
    "date_precision": "exact",
-   "has_research": true
+   "has_research": false
   },
   {
    "id": "87",
@@ -1666,7 +1695,8 @@
    "spotify_url": "https://open.spotify.com/episode/6Sc3CiYpTfV68Ke8SueReD",
    "birth_year": 1697,
    "death_year": 1777,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": false
   },
   {
    "id": "91",
@@ -1684,6 +1714,7 @@
    "birth_year": 1695,
    "death_year": 1785,
    "date_precision": "exact",
+   "has_research": false,
    "migration_path": {
     "from": "ליטא",
     "to": "מץ"
@@ -1766,7 +1797,8 @@
    "spotify_url": "https://open.spotify.com/episode/5yAibZuXCCCzAlCFiWICRS?si=TTjCoGAwR2i8jrOSJ3N9XA",
    "birth_year": 1720,
    "death_year": 1777,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "97",
@@ -1783,7 +1815,8 @@
    "spotify_url": "https://spotifycreators-web.app.link/e/sGxO35n4yQb",
    "birth_year": 1745,
    "death_year": 1812,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "98",
@@ -1801,6 +1834,7 @@
    "birth_year": 1748,
    "death_year": 1820,
    "date_precision": "exact",
+   "has_research": true,
    "migration_path": {
     "from": "פולין",
     "to": "וילנה",
@@ -1824,7 +1858,8 @@
    "spotify_url": "https://open.spotify.com/episode/4doQLfwiMgf2moAjnxiX0V?si=dVrHxoWnRwuydUMeaUTJIg",
    "birth_year": 1749,
    "death_year": 1821,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "100",
@@ -1878,6 +1913,7 @@
    "birth_year": 1762,
    "death_year": 1839,
    "date_precision": "exact",
+   "has_research": true,
    "migration_path": {
     "from": "גרמניה",
     "to": "פרשבורג"
@@ -1898,7 +1934,8 @@
    "spotify_url": "https://open.spotify.com/episode/2ugZ7lWueXQOsEw2z6Va03",
    "birth_year": 1787,
    "death_year": 1868,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "104",
@@ -1915,7 +1952,8 @@
    "spotify_url": "https://open.spotify.com/episode/2DXKB6Zr62zP0VwCytZznO",
    "birth_year": 1789,
    "death_year": 1852,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "105",
@@ -1933,7 +1971,7 @@
    "birth_year": 1795,
    "death_year": 1874,
    "date_precision": "exact",
-   "has_research": true
+   "has_research": false
   },
   {
    "id": "203",
@@ -1968,7 +2006,8 @@
    "spotify_url": "https://open.spotify.com/episode/6GD0RxzoBaG17nmaGA9pe9?si=qeIXN4iwRIWsOjztQ5cWoQ",
    "birth_year": 1798,
    "death_year": 1878,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": false
   },
   {
    "id": "110",
@@ -1985,7 +2024,8 @@
    "spotify_url": "https://open.spotify.com/episode/03tAgaC9jfaMhMJ2rvW4uF?si=cgIj0F37SiKtDyDT85ZqKA&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
    "birth_year": 1800,
    "death_year": 1865,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": false
   },
   {
    "id": "111",
@@ -2002,7 +2042,8 @@
    "spotify_url": "https://open.spotify.com/episode/7qsdQhzQdtrX80wVbwkfmZ",
    "birth_year": 1805,
    "death_year": 1855,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": false
   },
   {
    "id": "112",
@@ -2066,7 +2107,8 @@
    "spotify_url": "https://open.spotify.com/episode/3tiM1FAhaIv7zvVuY5FkBE",
    "birth_year": 1810,
    "death_year": 1893,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "341",
@@ -2131,7 +2173,7 @@
    "birth_year": 1823,
    "death_year": 1900,
    "date_precision": "exact",
-   "has_research": true
+   "has_research": false
   },
   {
    "id": "118",
@@ -2167,7 +2209,7 @@
    "birth_year": 1824,
    "death_year": 1898,
    "date_precision": "exact",
-   "has_research": true
+   "has_research": false
   },
   {
    "id": "122",
@@ -2245,7 +2287,8 @@
    "spotify_url": "https://open.spotify.com/episode/1O45L1iFmr5oeXWvm6fCr6",
    "birth_year": 1835,
    "death_year": 1909,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "127",
@@ -2280,7 +2323,8 @@
    "spotify_url": "https://open.spotify.com/episode/5M242GRqncgReaYVplhjBU",
    "birth_year": 1843,
    "death_year": 1926,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": false
   },
   {
    "id": "129",
@@ -2297,7 +2341,8 @@
    "spotify_url": "https://open.spotify.com/episode/2rV5jFlhaSLJasVNdd0rMf?si=WT92_boJSQK5yW0aO6dfLQ",
    "birth_year": 1847,
    "death_year": 1905,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "130",
@@ -2350,7 +2395,8 @@
    "spotify_url": "https://open.spotify.com/episode/4aUeMLx5QyMsdp0moTBcDu",
    "birth_year": 1858,
    "death_year": 1936,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": false
   },
   {
    "id": "133",
@@ -2368,6 +2414,7 @@
    "birth_year": 1859,
    "death_year": 1942,
    "date_precision": "exact",
+   "has_research": true,
    "migration_path": {
     "from": "בגדאד",
     "to": "ירושלים"
@@ -2389,7 +2436,7 @@
    "birth_year": 1865,
    "death_year": 1935,
    "date_precision": "exact",
-   "has_research": true
+   "has_research": false
   },
   {
    "id": "135",
@@ -2406,7 +2453,8 @@
    "spotify_url": "https://spotifycreators-web.app.link/e/VKh6sMX4yQb",
    "birth_year": 1871,
    "death_year": 1942,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": false
   },
   {
    "id": "136",
@@ -2518,7 +2566,7 @@
    "birth_year": 1886,
    "death_year": 1929,
    "date_precision": "exact",
-   "has_research": true
+   "has_research": false
   },
   {
    "id": "143",
@@ -2535,7 +2583,8 @@
    "spotify_url": "https://open.spotify.com/episode/462p60k0hrJUeoi1OiEtfD?si=fGjrjZNLSu6BZj6EPEL5iQ",
    "birth_year": 1889,
    "death_year": 1942,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": false
   },
   {
    "id": "144",
@@ -2574,7 +2623,8 @@
    "spotify_url": "https://open.spotify.com/episode/33CjfygeixWek05uscU4qM?si=zHwL0eT7QtWwuw1PHxvNJg&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
    "birth_year": 1891,
    "death_year": 1982,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": false
   },
   {
    "id": "146",
@@ -2613,7 +2663,8 @@
    "spotify_url": "https://open.spotify.com/episode/2bY5WI2sxqsa1csNcbHXoG",
    "birth_year": 1892,
    "death_year": 1974,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": false
   },
   {
    "id": "148",
@@ -2630,7 +2681,8 @@
    "spotify_url": "https://open.spotify.com/episode/0Kpu3qt4CJeGGkKLHxBgQA",
    "birth_year": 1895,
    "death_year": 1968,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "149",
@@ -2648,7 +2700,7 @@
    "birth_year": 1895,
    "death_year": 1981,
    "date_precision": "exact",
-   "has_research": true
+   "has_research": false
   },
   {
    "id": "150",
@@ -2706,7 +2758,7 @@
    "birth_year": 1907,
    "death_year": 1972,
    "date_precision": "exact",
-   "has_research": true
+   "has_research": false
   },
   {
    "id": "154",
@@ -2795,7 +2847,8 @@
    "spotify_url": "https://open.spotify.com/episode/2HlLtLodPvUVPUArvlAmEC",
    "birth_year": 1910,
    "death_year": 1995,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "158",
@@ -2838,7 +2891,8 @@
    "spotify_url": "https://open.spotify.com/episode/43IiFgqfBCu9lLZIR07if7?si=ZAnRvMcXQPCAbEyH-BWhOA&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
    "birth_year": 1913,
    "death_year": 1995,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "160",
@@ -2855,7 +2909,8 @@
    "spotify_url": "https://open.spotify.com/episode/283XmaljmcMZNoMgipa2cv",
    "birth_year": 1913,
    "death_year": 2015,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "161",
@@ -2872,7 +2927,8 @@
    "spotify_url": "https://open.spotify.com/episode/4zJ21QTx6e8QgoBRSCWqiG",
    "birth_year": 1914,
    "death_year": 1988,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "334",
@@ -2911,7 +2967,8 @@
    "spotify_url": "https://open.spotify.com/episode/7DJX0cnVGFtntXiLnNdbpj",
    "birth_year": 1919,
    "death_year": 2006,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": false
   },
   {
    "id": "164",
@@ -2950,7 +3007,8 @@
    "spotify_url": "https://open.spotify.com/episode/0hEDzOsuXWV4gBqUTv3KqW",
    "birth_year": 1921,
    "death_year": 2012,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": false
   },
   {
    "id": "166",
@@ -2967,7 +3025,8 @@
    "spotify_url": "https://open.spotify.com/episode/6vCbxdldNDpdncGxSjvAyD",
    "birth_year": 1922,
    "death_year": 1996,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": false
   },
   {
    "id": "167",
@@ -3043,6 +3102,7 @@
    "birth_year": 1928,
    "death_year": 2022,
    "date_precision": "exact",
+   "has_research": true,
    "migration_path": {
     "from": "פולין",
     "to": "בני ברק"
@@ -3063,7 +3123,8 @@
    "spotify_url": "https://open.spotify.com/episode/1j4SgDhb3vWdY3gvTjv3oq?si=67O0wVDkTsa2b7zRpBFQmQ&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv&t=128",
    "birth_year": 1932,
    "death_year": 2022,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": false
   },
   {
    "id": "174",
@@ -3156,7 +3217,8 @@
    "spotify_url": "https://open.spotify.com/episode/5qiFDQTROpb7v21w4imqIE?si=N2J3HnklTRW2Gm-BmT4SFA&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
    "birth_year": 1800,
    "death_year": 1900,
-   "date_precision": "century"
+   "date_precision": "century",
+   "has_research": false
   },
   {
    "id": "179",
@@ -3173,7 +3235,8 @@
    "spotify_url": "https://open.spotify.com/episode/4zNV0OTiJsa1CUIm4xsy4e",
    "birth_year": 1800,
    "death_year": 1900,
-   "date_precision": "century"
+   "date_precision": "century",
+   "has_research": false
   },
   {
    "id": "180",
@@ -3187,7 +3250,8 @@
    "central_idea": "",
    "tags": "כוונות הרש\"ש, תפילה, ענווה והסתרה, אהבת ישראל",
    "chapter_type": "אישיות",
-   "spotify_url": "https://open.spotify.com/episode/54WDzXvPJL2lSljQw8ppji?si=axqFQefgQLCRM9oCzjRzxw&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
+   "spotify_url": "https://open.spotify.com/episode/54WDzXvPJL2lSljQw8ppji?si=axqFQefgQLCRM9oCzjRzxw&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "has_research": false
   },
   {
    "id": "331",
@@ -3219,7 +3283,8 @@
    "spotify_url": "https://spotifycreators-web.app.link/e/NH0Pkku4yQb",
    "birth_year": 1800,
    "death_year": 1900,
-   "date_precision": "century"
+   "date_precision": "century",
+   "has_research": true
   },
   {
    "id": "183",
@@ -3234,7 +3299,7 @@
    "tags": "מסורת וביקורת; סמכות טקסטואלית; היסטוריה של הזוהר",
    "chapter_type": "נושא/מושג",
    "spotify_url": "https://spotifycreators-web.app.link/e/HxZF2iS4yQb",
-   "has_research": true
+   "has_research": false
   },
   {
    "id": "263",
@@ -3252,6 +3317,7 @@
    "birth_year": 1405,
    "death_year": 1508,
    "date_precision": "exact",
+   "has_research": true,
    "migration_path": {
     "from": "מגנצא",
     "to": "פדובה"
@@ -3297,7 +3363,8 @@
    "spotify_url": "https://open.spotify.com/episode/3FAGqYdzyMQbyPbon3KYoC",
    "birth_year": 1100,
    "death_year": 1200,
-   "date_precision": "century"
+   "date_precision": "century",
+   "has_research": false
   },
   {
    "id": "191",
@@ -3315,6 +3382,7 @@
    "birth_year": 1730,
    "death_year": 1788,
    "date_precision": "exact",
+   "has_research": true,
    "migration_path": {
     "from": "ליטא",
     "to": "טבריה",
@@ -3371,7 +3439,8 @@
    "central_idea": "מסורות כמנגנון זהות: סיפור 'שליח נסתר' שמפרש פילוג דתי כצעד הגנתי של הקהילה.",
    "tags": "יהדות–נצרות, מסורות אזוטריות, זהות, פולמוס, ליטורגיה, ט' בטבת",
    "chapter_type": "",
-   "spotify_url": "https://open.spotify.com/episode/4tu43oeL4qVdXGKzX2025J?si=G3-56Xu3TxKoDiSCHX9gEA&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
+   "spotify_url": "https://open.spotify.com/episode/4tu43oeL4qVdXGKzX2025J?si=G3-56Xu3TxKoDiSCHX9gEA&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "has_research": false
   },
   {
    "id": "197",
@@ -3424,7 +3493,8 @@
    "spotify_url": "https://open.spotify.com/episode/3Foy6VcyWU352VPpw1z1cp?si=jaoMkKODSduL9jAf58zdww",
    "birth_year": 1687,
    "death_year": 1743,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": false
   },
   {
    "id": "346",
@@ -3459,7 +3529,8 @@
    "spotify_url": "https://open.spotify.com/episode/0fBwsgpkyNbo7MJnjhEgeH",
    "birth_year": 1803,
    "death_year": 1867,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": false
   },
   {
    "id": "349",
@@ -3476,7 +3547,8 @@
    "spotify_url": "https://open.spotify.com/episode/0gNG3pg6tSS0rP12co2dsU",
    "birth_year": 1719,
    "death_year": 1792,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": false
   },
   {
    "id": "350",
@@ -3547,7 +3619,8 @@
    "spotify_url": "https://open.spotify.com/episode/4tFSo5qQFWExTxQDDj1a8Q",
    "birth_year": 1000,
    "death_year": 1100,
-   "date_precision": "century"
+   "date_precision": "century",
+   "has_research": false
   },
   {
    "id": "354",
@@ -3564,7 +3637,8 @@
    "spotify_url": "https://open.spotify.com/episode/4mph8tbv9qfvaXuaEBr9Ci",
    "birth_year": 1000,
    "death_year": 1070,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "355",
@@ -3596,7 +3670,8 @@
    "central_idea": "חיבור בין תפילה, הלכה, אגדה וחיי קהילה.",
    "tags": "מחזור ויטרי, רבנו שמחה מוויטרי",
    "chapter_type": "טקסט יסוד",
-   "spotify_url": "https://open.spotify.com/episode/6xiWssuJyV4GypDbnlCpl0"
+   "spotify_url": "https://open.spotify.com/episode/6xiWssuJyV4GypDbnlCpl0",
+   "has_research": false
   },
   {
    "id": "265",
@@ -3646,7 +3721,8 @@
    "central_idea": "ביסוס האמונה היהודית על זיכרון היסטורי לאומי והתגלות ציבורית, ולא רק על הוכחה פילוסופית מופשטת.",
    "tags": "רבי יהודה הלוי, אמונה, סיני, ארץ ישראל",
    "chapter_type": "חיבור",
-   "spotify_url": "https://open.spotify.com/episode/0E55prQ6VaFsIXKSiCpDe3?si=XrQKU-Z0TgKEvgDDjH-MFQ&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
+   "spotify_url": "https://open.spotify.com/episode/0E55prQ6VaFsIXKSiCpDe3?si=XrQKU-Z0TgKEvgDDjH-MFQ&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "has_research": false
   },
   {
    "id": "268",
@@ -3679,6 +3755,7 @@
    "birth_year": 0,
    "death_year": 100,
    "date_precision": "century",
+   "has_research": true,
    "migration_path": {
     "from": "בבל",
     "to": "ירושלים"
@@ -3717,7 +3794,8 @@
    "spotify_url": "https://open.spotify.com/episode/6J1axbvjzcVZFeEI2lU1IV?si=wAeaI5T6TDSElvMR_MhZ1w&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
    "birth_year": 1100,
    "death_year": 1200,
-   "date_precision": "century"
+   "date_precision": "century",
+   "has_research": false
   },
   {
    "id": "272",
@@ -3735,6 +3813,7 @@
    "birth_year": 1100,
    "death_year": 1200,
    "date_precision": "century",
+   "has_research": true,
    "migration_path": {
     "from": "בוהמיה",
     "to": "פראג",
@@ -3755,7 +3834,8 @@
    "central_idea": "כוחו של דיבור מוסרי ומפוכח לעצור מנהיג ברגע של סכנה ולהשיבו אל ייעודו ואל אחריותו ההיסטורית.",
    "tags": "דוד, נבל הכרמלי, נביאה, הנהגה נשית, נשים",
    "chapter_type": "דמות מקראית",
-   "spotify_url": "https://open.spotify.com/episode/685JbRdiP4dZzM9Mxg4VSd?si=xaFj3HqLQnenEGLFUzp0ew&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv"
+   "spotify_url": "https://open.spotify.com/episode/685JbRdiP4dZzM9Mxg4VSd?si=xaFj3HqLQnenEGLFUzp0ew&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
+   "has_research": true
   },
   {
    "id": "275",
@@ -3808,7 +3888,8 @@
    "spotify_url": "https://open.spotify.com/episode/6NTm83GThq84iPCuaL50gA?si=s-s9uHRwSeaUvLc9qfyY-w&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
    "birth_year": 1603,
    "death_year": 1704,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "278",
@@ -3826,6 +3907,7 @@
    "birth_year": 1135,
    "death_year": 1211,
    "date_precision": "exact",
+   "has_research": true,
    "migration_path": {
     "from": "לוניל",
     "to": "עכו"
@@ -3846,7 +3928,8 @@
    "spotify_url": "https://open.spotify.com/episode/0fIS5dc7OCTq1C6amM82LT?si=tqcgKwdFQPuRVDKuMbTmkQ&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
    "birth_year": 1100,
    "death_year": 1200,
-   "date_precision": "century"
+   "date_precision": "century",
+   "has_research": false
   },
   {
    "id": "280",
@@ -3944,7 +4027,8 @@
    "spotify_url": "https://open.spotify.com/episode/5LmJs1gNXoe2H539PdAfrl?si=9YCUMN5BQIyv9Z9dzAYCfA&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
    "birth_year": 1160,
    "death_year": 1238,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "284",
@@ -3962,7 +4046,7 @@
    "birth_year": 1100,
    "death_year": 1300,
    "date_precision": "century",
-   "has_research": true
+   "has_research": false
   },
   {
    "id": "285",
@@ -4015,7 +4099,8 @@
    "spotify_url": "https://open.spotify.com/episode/46wLVmOtDctapvhIXVcT8T?si=hAA8wRPjR4yQkWjgh8MbMw&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
    "birth_year": 1100,
    "death_year": 1200,
-   "date_precision": "century"
+   "date_precision": "century",
+   "has_research": true
   },
   {
    "id": "288",
@@ -4068,7 +4153,8 @@
    "spotify_url": "https://open.spotify.com/episode/0m3vCYb6YqsaSJvD0cZfXy?si=SnX5flLQTAqOUou12h90fw&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
    "birth_year": 1288,
    "death_year": 1344,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "291",
@@ -4085,7 +4171,8 @@
    "spotify_url": "https://open.spotify.com/episode/5Cdc9RvxyriLFWPFMRfciK?si=P9JIX4Q4TCCtqmGdnswLcA&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
    "birth_year": 1190,
    "death_year": 1256,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": false
   },
   {
    "id": "292",
@@ -4172,7 +4259,8 @@
    "spotify_url": "https://open.spotify.com/episode/3fFSccuIPUhBryOySLd1mz?si=vVleiPsHQNK-DYsKMhH7LQ&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
    "birth_year": 1235,
    "death_year": 1310,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "296",
@@ -4189,7 +4277,8 @@
    "spotify_url": "https://open.spotify.com/episode/7tV3u16Il2EgLXbVNFs42V?si=Qu6b3mmHTPufiL5nrRRIyQ&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
    "birth_year": 1194,
    "death_year": 1270,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "297",
@@ -4278,7 +4367,8 @@
    "spotify_url": "https://open.spotify.com/episode/5mtDbjislFZkbFTuxrfRWN",
    "birth_year": 1200,
    "death_year": 1300,
-   "date_precision": "century"
+   "date_precision": "century",
+   "has_research": true
   },
   {
    "id": "302",
@@ -4337,7 +4427,8 @@
    "spotify_url": "https://open.spotify.com/episode/5Iri3H2JcF1NuSrVD3Pnpu",
    "birth_year": 1200,
    "death_year": 1300,
-   "date_precision": "century"
+   "date_precision": "century",
+   "has_research": true
   },
   {
    "id": "407",
@@ -4390,7 +4481,8 @@
    "spotify_url": "https://open.spotify.com/episode/1ANs8CZ7mIUXhJFOSBrC3u",
    "birth_year": 1200,
    "death_year": 1300,
-   "date_precision": "century"
+   "date_precision": "century",
+   "has_research": true
   },
   {
    "id": "308",
@@ -4407,7 +4499,8 @@
    "spotify_url": "https://open.spotify.com/episode/1RhrrkBapQNDsL3Nc92rS3",
    "birth_year": 1200,
    "death_year": 1300,
-   "date_precision": "century"
+   "date_precision": "century",
+   "has_research": false
   },
   {
    "id": "309",
@@ -4425,6 +4518,7 @@
    "birth_year": 1200,
    "death_year": 1300,
    "date_precision": "century",
+   "has_research": true,
    "migration_path": {
     "from": "איטליה",
     "to": "וינה",
@@ -4448,7 +4542,8 @@
    "spotify_url": "https://open.spotify.com/episode/1EzJwt2utRl4bZDfogQTk3",
    "birth_year": 1310,
    "death_year": 1385,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "311",
@@ -4506,6 +4601,7 @@
    "birth_year": 1923,
    "death_year": 2019,
    "date_precision": "exact",
+   "has_research": true,
    "migration_path": {
     "from": "ארה\"ב",
     "to": "ירושלים",
@@ -4529,7 +4625,8 @@
    "spotify_url": "https://open.spotify.com/episode/2JtdoVxOBakR7TWV6cxppI",
    "birth_year": 1220,
    "death_year": 1300,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "315",
@@ -4565,6 +4662,7 @@
    "birth_year": 1283,
    "death_year": 1330,
    "date_precision": "exact",
+   "has_research": true,
    "migration_path": {
     "from": "קאסטיליה",
     "to": "צפת",
@@ -4642,7 +4740,8 @@
    "spotify_url": "https://open.spotify.com/episode/6oOKCpQo5tEf5hcdghAQIC",
    "birth_year": 1975,
    "death_year": 2006,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": false
   },
   {
    "id": "421",
@@ -4722,6 +4821,7 @@
    "birth_year": 1724,
    "death_year": 1806,
    "date_precision": "exact",
+   "has_research": true,
    "migration_path": {
     "from": "ירושלים",
     "to": "ליבורנו"
@@ -5008,7 +5108,8 @@
    "spotify_url": "https://open.spotify.com/episode/3fFSccuIPUhBryOySLd1mz",
    "birth_year": 1235,
    "death_year": 1310,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "416",
@@ -5025,7 +5126,8 @@
    "spotify_url": "https://open.spotify.com/episode/12f9H8UgJMaWzeIBegbaMu",
    "birth_year": 1856,
    "death_year": 1927,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": false
   },
   {
    "id": "422",
@@ -5129,7 +5231,8 @@
    "spotify_url": "https://open.spotify.com/episode/3m0Cho5M29aVZp15Pd8poe",
    "birth_year": 1300,
    "death_year": 1400,
-   "date_precision": "century"
+   "date_precision": "century",
+   "has_research": true
   },
   {
    "id": "428",
@@ -5189,7 +5292,8 @@
    "spotify_url": "https://open.spotify.com/episode/2oyMTbV94Hphr9dGIMMrWs",
    "birth_year": 100,
    "death_year": 200,
-   "date_precision": "century"
+   "date_precision": "century",
+   "has_research": true
   },
   {
    "id": "431",
@@ -5206,7 +5310,8 @@
    "spotify_url": "https://open.spotify.com/episode/0TMD6S3lT5s5CLq4cU2s95",
    "birth_year": 100,
    "death_year": 200,
-   "date_precision": "century"
+   "date_precision": "century",
+   "has_research": true
   },
   {
    "id": "432",
@@ -5260,6 +5365,7 @@
    "birth_year": 1361,
    "death_year": 1444,
    "date_precision": "exact",
+   "has_research": true,
    "migration_path": {
     "from": "ברצלונה",
     "to": "אלג'יר"
@@ -5352,7 +5458,8 @@
    "spotify_url": "https://open.spotify.com/episode/1T5zGLHEk5d5uLbDzh0vs4",
    "birth_year": 1548,
    "death_year": 1620,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "440",
@@ -5369,7 +5476,8 @@
    "spotify_url": "https://open.spotify.com/episode/3RNUR7nCj9IMQMgkP8UzrS",
    "birth_year": 1400,
    "death_year": 1467,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "441",
@@ -5387,6 +5495,7 @@
    "birth_year": 1490,
    "death_year": 1540,
    "date_precision": "exact",
+   "has_research": true,
    "migration_path": {
     "from": "ספרד",
     "to": "ירושלים",
@@ -5463,6 +5572,7 @@
    "birth_year": 1360,
    "death_year": 1427,
    "date_precision": "exact",
+   "has_research": true,
    "migration_path": {
     "from": "מגנצא",
     "to": "וורמייזא",
@@ -5592,7 +5702,8 @@
    "spotify_url": "https://open.spotify.com/episode/3AeKh8nYVsTUmTjaI89Y3i",
    "birth_year": 1200,
    "death_year": 1300,
-   "date_precision": "century"
+   "date_precision": "century",
+   "has_research": true
   },
   {
    "id": "452",
@@ -5705,6 +5816,7 @@
    "birth_year": 1460,
    "death_year": 1541,
    "date_precision": "exact",
+   "has_research": true,
    "migration_path": {
     "from": "גרמניה",
     "to": "פולין",
@@ -5746,7 +5858,8 @@
    "spotify_url": "https://open.spotify.com/episode/5V8efc6gWfwrgHLR6E1AQZ",
    "birth_year": 1420,
    "death_year": 1480,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": false
   },
   {
    "id": "460",
@@ -5763,7 +5876,8 @@
    "spotify_url": "https://open.spotify.com/episode/3mgyFdCQJRAQWlTMAC3Ntt",
    "birth_year": 1200,
    "death_year": 1300,
-   "date_precision": "century"
+   "date_precision": "century",
+   "has_research": true
   },
   {
    "id": "461",
@@ -5891,7 +6005,8 @@
    "spotify_url": "https://open.spotify.com/episode/0QDA50K2sCFRYcR3kLXrpM",
    "birth_year": 1300,
    "death_year": 1400,
-   "date_precision": "century"
+   "date_precision": "century",
+   "has_research": true
   },
   {
    "id": "467",
@@ -5966,7 +6081,8 @@
    "spotify_url": "https://open.spotify.com/episode/7zHC1A3dQMNYpbYXahsYQd",
    "birth_year": 1843,
    "death_year": 1905,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": false
   },
   {
    "id": "471",
@@ -5983,7 +6099,8 @@
    "spotify_url": "https://open.spotify.com/episode/4HMEfax0JRi5AhwtdObjpn",
    "birth_year": 1248,
    "death_year": 1325,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "472",
@@ -6000,7 +6117,8 @@
    "spotify_url": "https://open.spotify.com/episode/6ONQBYcz8cRuTuz4ULWE6l",
    "birth_year": 1873,
    "death_year": 1960,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "477",
@@ -6111,7 +6229,8 @@
    "spotify_url": "https://open.spotify.com/episode/5RrrepmekZ3GO4eqGqTHLV?si=e7EqwLNAR5yvbBZ3l4XIag",
    "birth_year": 165,
    "death_year": 257,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "483",
@@ -6128,7 +6247,8 @@
    "spotify_url": "",
    "birth_year": 132,
    "death_year": 136,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "484",
@@ -6146,6 +6266,7 @@
    "birth_year": 1555,
    "death_year": 1625,
    "date_precision": "exact",
+   "has_research": true,
    "migration_path": {
     "from": "צפת",
     "to": "צפת",
@@ -6371,7 +6492,8 @@
    "spotify_url": "https://open.spotify.com/episode/5hjMOYSZfyk2PpvO1z7y60?si=xvtDucKGTcqSJ5rNgkG76A",
    "birth_year": 1240,
    "death_year": 1305,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": false
   },
   {
    "id": "496",
@@ -6388,7 +6510,8 @@
    "spotify_url": "https://open.spotify.com/episode/6EaZkWizKCeYuAEQsTP6dy?si=2e9vYWwFTvS5LFsBXBBg6A",
    "birth_year": 1905,
    "death_year": 1997,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "497",
@@ -6449,7 +6572,8 @@
    "spotify_url": "https://open.spotify.com/episode/7rk4ockzy5i8MSThnAtJ2b?si=YkCuaUNBRfWHO4U4QqJEZw",
    "birth_year": 1800,
    "death_year": 1900,
-   "date_precision": "century"
+   "date_precision": "century",
+   "has_research": true
   },
   {
    "id": "500",
@@ -6488,7 +6612,8 @@
    "spotify_url": "https://open.spotify.com/episode/42DP4ZMH6a423Kz6EW30Tx?si=FeoyMM7iTB25Xxa1qSqB5w",
    "birth_year": 1789,
    "death_year": 1866,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "502",
@@ -6523,7 +6648,8 @@
    "spotify_url": "https://open.spotify.com/episode/4GuQl9XmYIYRZ48ooTWu4Q?si=_HTGr4CjQH6pTzvYmaQK5Q",
    "birth_year": 0,
    "death_year": 100,
-   "date_precision": "century"
+   "date_precision": "century",
+   "has_research": true
   },
   {
    "id": "504",
@@ -6540,7 +6666,8 @@
    "spotify_url": "https://open.spotify.com/episode/65lrqwQXxGTkyqwur7nji0?si=Ay_LuqUuTrqIIJkzNpWaug",
    "birth_year": -100,
    "death_year": 0,
-   "date_precision": "century"
+   "date_precision": "century",
+   "has_research": true
   },
   {
    "id": "505",
@@ -6558,6 +6685,7 @@
    "birth_year": -100,
    "death_year": 0,
    "date_precision": "century",
+   "has_research": true,
    "migration_path": {
     "from": "בבל",
     "to": "ארץ ישראל"
@@ -6596,7 +6724,8 @@
    "spotify_url": "https://open.spotify.com/episode/1tmf7drUh7Zwm09Ndy0seU?si=Fl_mRgiTRDKJx9UA2iZ_2A",
    "birth_year": 0,
    "death_year": 100,
-   "date_precision": "century"
+   "date_precision": "century",
+   "has_research": true
   },
   {
    "id": "508",
@@ -6632,7 +6761,7 @@
    "birth_year": 1696,
    "death_year": 1743,
    "date_precision": "exact",
-   "has_research": true,
+   "has_research": false,
    "migration_path": {
     "from": "מרוקו",
     "to": "ירושלים",
@@ -6657,6 +6786,7 @@
    "birth_year": 1883,
    "death_year": 1935,
    "date_precision": "exact",
+   "has_research": true,
    "migration_path": {
     "from": "קרקוב",
     "to": "קרקוב",
@@ -6680,7 +6810,8 @@
    "spotify_url": "https://open.spotify.com/episode/7gEH0FmW9xyX4je0Jk40A7?si=9VHkgmhURN2trmReuSg2hg",
    "birth_year": 1913,
    "death_year": 1986,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "512",
@@ -6697,7 +6828,8 @@
    "spotify_url": "https://open.spotify.com/episode/6hBYh8i79O4pCQKeB10QNN?si=IuDV3verTYivgK2SuPnG9w",
    "birth_year": 1938,
    "death_year": 2023,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "513",
@@ -6714,7 +6846,8 @@
    "spotify_url": "https://open.spotify.com/episode/4pXB7MODLOE9Od1QA1DC0J?si=4gAFChgSQu2_jY78fu0gmg",
    "birth_year": 1938,
    "death_year": 2023,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "514",
@@ -6731,7 +6864,8 @@
    "spotify_url": "https://open.spotify.com/episode/39zLdLIz7vxGqmTAJn8oRF?si=ABN88SvdQLiGevbk98julA",
    "birth_year": 1936,
    "death_year": 2016,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "515",
@@ -6748,7 +6882,8 @@
    "spotify_url": "https://open.spotify.com/episode/78MX2sAT6M6hAi0qCuuhb7?si=-05qETOVSCGChK_7lpJwmA",
    "birth_year": 1922,
    "death_year": 2013,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "516",
@@ -6765,7 +6900,8 @@
    "spotify_url": "https://open.spotify.com/episode/5cRN0ef6AcQepyWCQ1IKwv?si=fgo8Tk4GSBORkdMUO9tVuw",
    "birth_year": 1896,
    "death_year": 1979,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "517",
@@ -6782,7 +6918,8 @@
    "spotify_url": "https://open.spotify.com/episode/0RuE8l4DbgcRxBQWjGBUv3?si=rW9fZeAOTueEFDMOKUR5mQ",
    "birth_year": 1906,
    "death_year": 1993,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": false
   },
   {
    "id": "518",
@@ -6817,7 +6954,8 @@
    "spotify_url": "https://open.spotify.com/episode/1aD7ZsAgg6SdgWpBfy2orm?si=pCIEOLsfTe23nVNHGQVRCQ",
    "birth_year": 1918,
    "death_year": 2001,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "520",
@@ -6834,7 +6972,8 @@
    "spotify_url": "https://open.spotify.com/episode/0Ck5Kbih9i0wxQG6BVPt02?si=l1zAOAkHSmWVZPUY3txncQ",
    "birth_year": 1860,
    "death_year": 1945,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "521",
@@ -6851,7 +6990,8 @@
    "spotify_url": "https://open.spotify.com/episode/5IngtmCeOoXdmrTqXfwz2X?si=LGFrsWp1RLacuUdBQKTlcw",
    "birth_year": -1300,
    "death_year": -1200,
-   "date_precision": "century"
+   "date_precision": "century",
+   "has_research": true
   },
   {
    "id": "522",
@@ -6868,7 +7008,8 @@
    "spotify_url": "https://open.spotify.com/episode/2DC70i2c0rP8sdAlwl9GK7?si=zWejBWg1QiOjY55oNKCJ0w",
    "birth_year": 220,
    "death_year": 299,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "523",
@@ -6882,7 +7023,8 @@
    "central_idea": "הכתר אינו זכות בלבד אלא אחריות מוסרית; בת שבע מייצגת את הכוח להציב גבולות למלך ולדרוש ממנו צדק, משמעת עצמית ודאגה לחלשים.",
    "tags": "דוד המלך, שלמה המלך, נתן הנביא, אם המלך, אשת חיל, משלי, משפט צדק, נשים",
    "chapter_type": "דמות",
-   "spotify_url": ""
+   "spotify_url": "",
+   "has_research": false
   },
   {
    "id": "524",
@@ -6899,7 +7041,8 @@
    "spotify_url": "",
    "birth_year": 1510,
    "death_year": 1569,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "525",
@@ -6916,7 +7059,8 @@
    "spotify_url": "",
    "birth_year": 1934,
    "death_year": 1983,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "526",
@@ -6933,7 +7077,8 @@
    "spotify_url": "",
    "birth_year": 1820,
    "death_year": 1899,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "527",
@@ -6950,7 +7095,8 @@
    "spotify_url": "",
    "birth_year": 1869,
    "death_year": 1941,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "528",
@@ -6967,7 +7113,8 @@
    "spotify_url": "",
    "birth_year": 1781,
    "death_year": 1865,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "529",
@@ -6984,7 +7131,8 @@
    "spotify_url": "",
    "birth_year": 1604,
    "death_year": 1657,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "530",
@@ -7001,7 +7149,8 @@
    "spotify_url": "",
    "birth_year": 1817,
    "death_year": 1889,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "531",
@@ -7018,7 +7167,8 @@
    "spotify_url": "",
    "birth_year": 1783,
    "death_year": 1879,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": false
   },
   {
    "id": "532",
@@ -7035,7 +7185,8 @@
    "spotify_url": "",
    "birth_year": 1932,
    "death_year": 2011,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": false
   },
   {
    "id": "533",
@@ -7052,7 +7203,8 @@
    "spotify_url": "",
    "birth_year": 1921,
    "death_year": 1944,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": false
   },
   {
    "id": "534",
@@ -7069,7 +7221,8 @@
    "spotify_url": "",
    "birth_year": 200,
    "death_year": 300,
-   "date_precision": "century"
+   "date_precision": "century",
+   "has_research": false
   },
   {
    "id": "535",
@@ -7083,7 +7236,8 @@
    "central_idea": "המתח בין דוד לבין בני צרויה ממחיש את הצורך והסכנה שבחיבור בין חסד לכוח: המלכות זקוקה לעוצמה צבאית, אך גם לריסון מוסרי ולהנהגה רוחנית.",
    "tags": "דוד המלך, יואב, אבישי, עשהאל, בני צרויה, הנהגה, גבורה, מלכות, נשים",
    "chapter_type": "דמות",
-   "spotify_url": ""
+   "spotify_url": "",
+   "has_research": false
   },
   {
    "id": "536",
@@ -7100,7 +7254,8 @@
    "spotify_url": "",
    "birth_year": 217,
    "death_year": 309,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "537",
@@ -7117,7 +7272,8 @@
    "spotify_url": "",
    "birth_year": 1680,
    "death_year": 1743,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "538",
@@ -7134,7 +7290,8 @@
    "spotify_url": "",
    "birth_year": 1250,
    "death_year": 1315,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "539",
@@ -7151,7 +7308,8 @@
    "spotify_url": "",
    "birth_year": 1720,
    "death_year": 1797,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "540",
@@ -7168,7 +7326,8 @@
    "spotify_url": "",
    "birth_year": 1744,
    "death_year": 1808,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "541",
@@ -7185,7 +7344,8 @@
    "spotify_url": "",
    "birth_year": 1923,
    "death_year": 2004,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "542",
@@ -7203,6 +7363,7 @@
    "birth_year": 1542,
    "death_year": 1620,
    "date_precision": "exact",
+   "has_research": true,
    "migration_path": {
     "from": "צפת",
     "to": "דמשק",
@@ -7227,7 +7388,8 @@
    "spotify_url": "",
    "birth_year": 200,
    "death_year": 300,
-   "date_precision": "century"
+   "date_precision": "century",
+   "has_research": true
   },
   {
    "id": "544",
@@ -7244,7 +7406,8 @@
    "spotify_url": "",
    "birth_year": 1591,
    "death_year": 1655,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "545",
@@ -7261,7 +7424,8 @@
    "spotify_url": "",
    "birth_year": 1679,
    "death_year": 1756,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "546",
@@ -7278,7 +7442,8 @@
    "spotify_url": "",
    "birth_year": 1782,
    "death_year": 1860,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "547",
@@ -7295,7 +7460,8 @@
    "spotify_url": "",
    "birth_year": 1703,
    "death_year": 1773,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "548",
@@ -7312,7 +7478,8 @@
    "spotify_url": "",
    "birth_year": 1765,
    "death_year": 1821,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "549",
@@ -7329,7 +7496,8 @@
    "spotify_url": "",
    "birth_year": 1808,
    "death_year": 1888,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": false
   },
   {
    "id": "550",
@@ -7346,7 +7514,8 @@
    "spotify_url": "",
    "birth_year": 0,
    "death_year": 100,
-   "date_precision": "century"
+   "date_precision": "century",
+   "has_research": true
   },
   {
    "id": "551",
@@ -7363,7 +7532,8 @@
    "spotify_url": "",
    "birth_year": 200,
    "death_year": 300,
-   "date_precision": "century"
+   "date_precision": "century",
+   "has_research": true
   },
   {
    "id": "552",
@@ -7380,7 +7550,8 @@
    "spotify_url": "",
    "birth_year": 300,
    "death_year": 400,
-   "date_precision": "century"
+   "date_precision": "century",
+   "has_research": true
   },
   {
    "id": "553",
@@ -7394,7 +7565,8 @@
    "central_idea": "מי ששומר את הזיכרון מסוגל לזהות את הגאולה ולפעול גם למען שלום העם; שרח מגלמת רציפות בין דורות רחוקים והעברת מסורת חיה.",
    "tags": "יעקב, יוסף, משה, פקוד יפקוד, ארון יוסף, אבל בית מעכה, גאולה, נשים",
    "chapter_type": "דמות",
-   "spotify_url": ""
+   "spotify_url": "",
+   "has_research": true
   },
   {
    "id": "554",
@@ -7408,7 +7580,8 @@
    "central_idea": "",
    "tags": "",
    "chapter_type": "דמות",
-   "spotify_url": ""
+   "spotify_url": "",
+   "has_research": true
   },
   {
    "id": "555",
@@ -7422,7 +7595,8 @@
    "central_idea": "",
    "tags": "",
    "chapter_type": "דמות",
-   "spotify_url": ""
+   "spotify_url": "",
+   "has_research": true
   },
   {
    "id": "556",
@@ -7439,7 +7613,8 @@
    "spotify_url": "",
    "birth_year": 110,
    "death_year": 170,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "557",
@@ -7456,7 +7631,8 @@
    "spotify_url": "",
    "birth_year": -1040,
    "death_year": -970,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "558",
@@ -7473,7 +7649,8 @@
    "spotify_url": "",
    "birth_year": 1698,
    "death_year": 1760,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "559",
@@ -7490,7 +7667,8 @@
    "spotify_url": "",
    "birth_year": 1720,
    "death_year": 1797,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "560",
@@ -7507,7 +7685,8 @@
    "spotify_url": "",
    "birth_year": 1661,
    "death_year": 1729,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": true
   },
   {
    "id": "561",
@@ -7558,7 +7737,7 @@
    "birth_year": 1880,
    "death_year": 1950,
    "date_precision": "exact",
-   "has_research": true
+   "has_research": false
   },
   {
    "id": "564",
@@ -7576,7 +7755,7 @@
    "birth_year": 1948,
    "death_year": 2020,
    "date_precision": "exact",
-   "has_research": true
+   "has_research": false
   },
   {
    "id": "565",
@@ -7594,7 +7773,7 @@
    "birth_year": 1883,
    "death_year": 1978,
    "date_precision": "exact",
-   "has_research": true
+   "has_research": false
   },
   {
    "id": "566",
@@ -7612,7 +7791,7 @@
    "birth_year": 1938,
    "death_year": 2023,
    "date_precision": "exact",
-   "has_research": true
+   "has_research": false
   },
   {
    "id": "567",
@@ -7630,7 +7809,7 @@
    "birth_year": 1925,
    "death_year": 1994,
    "date_precision": "exact",
-   "has_research": true
+   "has_research": false
   },
   {
    "id": "568",
@@ -7647,7 +7826,8 @@
    "spotify_url": "",
    "birth_year": -170,
    "death_year": -100,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": false
   },
   {
    "id": "569",
@@ -7664,7 +7844,8 @@
    "spotify_url": "",
    "birth_year": 1476,
    "death_year": 1554,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": false
   },
   {
    "id": "570",
@@ -7678,7 +7859,8 @@
    "central_idea": "",
    "tags": "",
    "chapter_type": "דמות",
-   "spotify_url": ""
+   "spotify_url": "",
+   "has_research": false
   },
   {
    "id": "571",
@@ -7692,7 +7874,8 @@
    "central_idea": "",
    "tags": "",
    "chapter_type": "דמות",
-   "spotify_url": ""
+   "spotify_url": "",
+   "has_research": false
   },
   {
    "id": "572",
@@ -7709,7 +7892,8 @@
    "spotify_url": "",
    "birth_year": -765,
    "death_year": -695,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": false
   },
   {
    "id": "573",
@@ -7727,7 +7911,7 @@
    "birth_year": 1474,
    "death_year": 1546,
    "date_precision": "exact",
-   "has_research": true
+   "has_research": false
   },
   {
    "id": "574",
@@ -7744,7 +7928,8 @@
    "spotify_url": "",
    "birth_year": -1391,
    "death_year": -1271,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": false
   },
   {
    "id": "575",
@@ -7762,7 +7947,7 @@
    "birth_year": -480,
    "death_year": -420,
    "date_precision": "exact",
-   "has_research": true
+   "has_research": false
   },
   {
    "id": "576",
@@ -7779,7 +7964,8 @@
    "spotify_url": "",
    "birth_year": 216,
    "death_year": 296,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": false
   },
   {
    "id": "577",
@@ -7796,7 +7982,8 @@
    "spotify_url": "",
    "birth_year": 900,
    "death_year": 960,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": false
   },
   {
    "id": "578",
@@ -7810,7 +7997,8 @@
    "central_idea": "",
    "tags": "",
    "chapter_type": "דמות",
-   "spotify_url": ""
+   "spotify_url": "",
+   "has_research": false
   },
   {
    "id": "579",
@@ -7828,7 +8016,7 @@
    "birth_year": 1075,
    "death_year": 1141,
    "date_precision": "exact",
-   "has_research": true
+   "has_research": false
   },
   {
    "id": "580",
@@ -7846,7 +8034,7 @@
    "birth_year": 135,
    "death_year": 217,
    "date_precision": "exact",
-   "has_research": true
+   "has_research": false
   },
   {
    "id": "581",
@@ -7864,7 +8052,7 @@
    "birth_year": 1200,
    "death_year": 1270,
    "date_precision": "exact",
-   "has_research": true
+   "has_research": false
   },
   {
    "id": "582",
@@ -7882,7 +8070,7 @@
    "birth_year": 1013,
    "death_year": 1103,
    "date_precision": "exact",
-   "has_research": true
+   "has_research": false
   },
   {
    "id": "583",
@@ -7900,7 +8088,7 @@
    "birth_year": 1000,
    "death_year": 1080,
    "date_precision": "exact",
-   "has_research": true
+   "has_research": false
   },
   {
    "id": "584",
@@ -7914,7 +8102,8 @@
    "central_idea": "",
    "tags": "",
    "chapter_type": "דמות",
-   "spotify_url": ""
+   "spotify_url": "",
+   "has_research": false
   },
   {
    "id": "585",
@@ -7932,7 +8121,7 @@
    "birth_year": 1483,
    "death_year": 1545,
    "date_precision": "exact",
-   "has_research": true
+   "has_research": false
   },
   {
    "id": "586",
@@ -7950,7 +8139,7 @@
    "birth_year": 1466,
    "death_year": 1542,
    "date_precision": "exact",
-   "has_research": true
+   "has_research": false
   },
   {
    "id": "587",
@@ -7968,7 +8157,7 @@
    "birth_year": 1748,
    "death_year": 1800,
    "date_precision": "exact",
-   "has_research": true
+   "has_research": false
   },
   {
    "id": "588",
@@ -7985,7 +8174,8 @@
    "spotify_url": "",
    "birth_year": 1200,
    "death_year": 1260,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": false
   },
   {
    "id": "589",
@@ -8002,7 +8192,8 @@
    "spotify_url": "",
    "birth_year": 1780,
    "death_year": 1844,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": false
   },
   {
    "id": "590",
@@ -8020,7 +8211,7 @@
    "birth_year": 1890,
    "death_year": 1971,
    "date_precision": "exact",
-   "has_research": true
+   "has_research": false
   },
   {
    "id": "591",
@@ -8035,7 +8226,7 @@
    "tags": "",
    "chapter_type": "דמות",
    "spotify_url": "",
-   "has_research": true
+   "has_research": false
   },
   {
    "id": "592",
@@ -8050,7 +8241,7 @@
    "tags": "",
    "chapter_type": "דמות",
    "spotify_url": "",
-   "has_research": true
+   "has_research": false
   },
   {
    "id": "593",
@@ -8065,7 +8256,7 @@
    "tags": "נשים",
    "chapter_type": "דמות",
    "spotify_url": "",
-   "has_research": true
+   "has_research": false
   },
   {
    "id": "594",
@@ -8082,7 +8273,8 @@
    "spotify_url": "",
    "birth_year": 1040,
    "death_year": 1105,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": false
   },
   {
    "id": "595",
@@ -8099,7 +8291,8 @@
    "spotify_url": "",
    "birth_year": -1010,
    "death_year": -931,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": false
   },
   {
    "id": "596",
@@ -8116,7 +8309,8 @@
    "spotify_url": "",
    "birth_year": -1120,
    "death_year": -1012,
-   "date_precision": "exact"
+   "date_precision": "exact",
+   "has_research": false
   },
   {
    "id": "597",
@@ -8134,7 +8328,7 @@
    "birth_year": 993,
    "death_year": 1056,
    "date_precision": "exact",
-   "has_research": true
+   "has_research": false
   }
  ],
  "links": [

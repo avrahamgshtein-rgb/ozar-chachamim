@@ -1,0 +1,462 @@
+AUDIT: ATTRIBUTION OF RESEARCH DOCUMENTS TO SAGES
+Scope: nextjs-app/public/research/<id>.json - 355 base files, 596 documents
+Roster: nextjs-app/public/data.json - 435 nodes
+Read-only audit. No file in the repository was modified.
+
+==============================================================================
+SECTION 1 - ORPHAN (id absent from data.json; the file is invisible to the site)
+==============================================================================
+id 64    NOT ON ROSTER  (1 doc)  content is about: מהר"י מינץ
+id 95    NOT ON ROSTER  (1 doc)  content is about: הנודע ביהודה
+id 106   NOT ON ROSTER  (1 doc)  content is about: הרב צבי הירש קלישר
+id 109   NOT ON ROSTER  (1 doc)  content is about: הרב יהודה אלקלעי
+id 119   NOT ON ROSTER  (1 doc)  content is about: רבי צדוק הכהן מלובלין
+id 121   NOT ON ROSTER  (3 doc)  content is about: הרב שמואל מוהליבר
+id 123   NOT ON ROSTER  (1 doc)  content is about: ערוך השולחן (רבי יחיאל מיכל אפשטיין)
+id 124   NOT ON ROSTER  (1 doc)  content is about: השדי חמד (הרב חיים חזקיהו מדיני)
+id 142   NOT ON ROSTER  (3 doc)  content is about: פרנץ רוזנצווייג
+id 153   NOT ON ROSTER  (2 doc)  content is about: אברהם יהושע השל
+id 172   NOT ON ROSTER  (2 doc)  content is about: הרב חיים מאיר דרוקמן
+id 200   NOT ON ROSTER  (1 doc)  content is about: רבי עובדיה מברטנורא
+id 301   NOT ON ROSTER  (1 doc)  content is about: הריא"ז
+id 330   NOT ON ROSTER  (1 doc)  content is about: המהרש"ל
+id 335   NOT ON ROSTER  (2 doc)  content is about: הרבי מלובביץ + הרבנית חיה מושקא
+id 357   NOT ON ROSTER  (1 doc)  content is about: ריב"א הראשון
+id 361   NOT ON ROSTER  (1 doc)  content is about: מהר"י ברונא
+id 368   NOT ON ROSTER  (2 doc)  content is about: רבי אליעזר ממיץ + רבי אליהו מזרחי
+id 370   NOT ON ROSTER  (2 doc)  content is about: הראב"ן
+id 388   NOT ON ROSTER  (1 doc)  content is about: הרלב"ג
+id 391   NOT ON ROSTER  (1 doc)  content is about: רב מימון הדיין (אבי הרמב"ם)
+id 396   NOT ON ROSTER  (2 doc)  content is about: הרמב"ן
+id 397   NOT ON ROSTER  (2 doc)  content is about: רבי יחיאל בן יקותיאל ענו
+id 399   NOT ON ROSTER  (1 doc)  content is about: הריבב"ן
+id 400   NOT ON ROSTER  (1 doc)  content is about: הרי"ד הזקן
+id 419   NOT ON ROSTER  (1 doc)  content is about: רבי אלכסנדרי זוסלין הכהן
+
+==============================================================================
+SECTION 2 - WRONG (no document in the file is about the sage it is filed under)
+==============================================================================
+
+id 17    filed under: רבי יוסף אלבו
+   doc 1  title: רבי יוסף ג'יקטיליה
+          actually about: רבי יוסף ג'יקטיליה - לא רבי יוסף אלבו
+
+id 25    filed under: רב האי גאון
+   doc 1  title: בשלהי תקופת הגאונים
+          actually about: רב שרירא גאון
+   doc 2  title: רב שרירא גאון
+          actually about: רב שרירא גאון
+
+id 43    filed under: רבי יצחק מווינה (בעל האור זרוע)
+   doc 1  title: עמוד התווך של חסידות אשכנז במאה ה-13
+          actually about: רבי יונה מרגנשבורג - לא רבי יצחק מווינה בעל האור זרוע
+
+id 61    filed under: רבי ישראל אלנקוה
+   doc 1  title: רבי ישראל יעקב אלגזי
+          actually about: רבי ישראל יעקב אלגאזי - לא רבי ישראל אלנקוה
+
+id 290   filed under: רבי לוי בן גרשון
+   doc 1  title: רבי לוי בן חביב (המהרלב"ח)
+          actually about: המהרלב"ח - לא הרלב"ג
+
+id 295   filed under: רבי שלמה בן אברהם
+   doc 1  title: רבי אברהם בן הרמב"ם
+          actually about: רבי אברהם בן הרמב"ם
+
+id 296   filed under: רבי משה בן נחמן
+   doc 1  title: רבנו משה בן מימון
+          actually about: הרמב"ם - לא הרמב"ן
+
+id 354   filed under: רבי יצחק בר אלעזר הלוי
+   doc 1  title: רבי אליעזר בן יואל הלוי (ראבי"ה)
+          actually about: הראבי"ה
+
+id 499   filed under: רבי חביב טולידאנו
+   doc 1  title: רבי אליהו אליעזר דסלר
+          actually about: הרב דסלר
+   doc 2  title: רבי רפאל ברוך טולידאנו
+          actually about: רבי רפאל ברוך טולידאנו מהמאה ה-20 - לא רבי חביב טולידאנו
+
+id 500   filed under: הרבי מלובביץ' (רבי מנחם מנדל שניאורסון)
+   doc 1  title: רבי יהודה קורייאט
+          actually about: רבי יהודה קורייאט
+
+id 503   filed under: רבי יהושע בן חנניה
+   doc 1  title: האדמו"ר הצמח צדק
+          actually about: הצמח צדק
+
+id 504   filed under: שמאי הזקן
+   doc 1  title: רבי דובער שניאורי
+          actually about: האדמו"ר האמצעי
+
+id 505   filed under: הלל הזקן
+   doc 1  title: רבי יהושע בן חנניה
+          actually about: רבי יהושע בן חנניה
+
+id 507   filed under: רבי אליעזר הגדול (רבי אליעזר בן הורקנוס)
+   doc 1  title: הלל הזקן
+          actually about: הלל הזקן
+
+id 508   filed under: רבי אליהו בן חיים (הראנ"ח)
+   doc 1  title: רבי אלעזר בן עזריה
+          actually about: רבי אלעזר בן עזריה
+
+id 511   filed under: הרבנית ויכנא קפלן
+   doc 1  title: רבי חיים בן עטר
+          actually about: האור החיים הקדוש
+
+id 512   filed under: הרבנית ד"ר ברוריה דייוויד
+   doc 1  title: שרה שנירר
+          actually about: שרה שנירר
+
+id 515   filed under: הרבנית ברכה קאפח
+   doc 1  title: הרבנית דענה ויינברג
+          actually about: הרבנית דענה ויינברג
+
+id 516   filed under: הרבנית שרה הרצוג
+   doc 1  title: הרבנית אסתר יונגרייז
+          actually about: הרבנית אסתר יונגרייז
+
+id 521   filed under: אהרן הכהן
+   doc 1  title: שרה שטרן-קטן
+          actually about: שרה שטרן-קטן
+
+id 522   filed under: רב יהודה בר יחזקאל
+   doc 1  title: הנרייטה סאלד
+          actually about: הנרייטה סאלד
+
+id 525   filed under: הרב אריה קפלן
+   doc 1  title: מרדכי היהודי
+          actually about: מרדכי היהודי
+   doc 2  title: רבן גמליאל דיבנה
+          actually about: רבן גמליאל דיבנה
+   doc 3  title: רבן גמליאל דיבנה
+          actually about: רבן גמליאל דיבנה
+
+id 526   filed under: הרב ד״ר עזריאל הילדסהיימר
+   doc 1  title: רבנו חזקיה די-סילוה
+          actually about: בעל הפרי חדש
+   doc 2  title: רבנו חזקיה די-סילוה
+          actually about: בעל הפרי חדש
+   doc 3  title: רבנו חזקיה די-סילוה
+          actually about: בעל הפרי חדש
+
+id 527   filed under: הרב יהודה ליב דון יחיא
+   doc 1  title: רבן שמעון בן גמליאל הראשון
+          actually about: רשב"ג הראשון
+
+id 528   filed under: הרב יעקב צבי מקלנבורג
+   doc 1  title: רב חסדא
+          actually about: רב חסדא
+   doc 2  title: רב הונא
+          actually about: רב הונא
+
+id 529   filed under: הרב מנשה בן ישראל
+   doc 1  title: חכם דוד ניטו
+          actually about: חכם דוד ניטו
+   doc 2  title: השתלשלות המסורת
+          actually about: חיבור כללי, לא ביוגרפיה של סבייקט כלשהו
+   doc 3  title: רבי משה חגיז
+          actually about: רבי משה חגיז
+   doc 4  title: רבי יצחק בן יהודה
+          actually about: רבי יצחק בן יהודה, רבו של רש"י
+
+id 530   filed under: הרב מרדכי אליאשברג
+   doc 1  title: מן הבשר אל הרוח
+          actually about: מסה כללית מאת אברהם גולדשטיין
+   doc 2  title: רבי חיים ויטאל
+          actually about: רבי חיים ויטאל
+
+id 536   filed under: רב חסדא
+   doc 1  title: הרב אברהם מרדכי יצחקי - הרב מפורת
+          actually about: הרב מפורת
+
+id 537   filed under: רבי אביעד שר שלום באזילה
+   doc 1  title: הרב לורד יונתן זקס
+          actually about: הרב יונתן זקס
+
+id 538   filed under: רבי אברהם בן יצחק מן ההר
+   doc 1  title: הרב מרדכי עטיה
+          actually about: הרב מרדכי עטיה
+
+id 539   filed under: רבי אליהו בן שלמה זלמן – הגאון מווילנה
+   doc 1  title: הרב משה צוריאל
+          actually about: הרב משה צוריאל - הגר"א נותר ללא מסמך משלו
+
+id 540   filed under: רבי ברוך שיק משקלוב
+   doc 1  title: הרב שלמה קרליבך
+          actually about: הרב שלמה קרליבך
+
+id 541   filed under: רבי גדליה נדל
+   doc 1  title: רבי יעקב בירב
+          actually about: רבי יעקב בירב
+
+id 542   filed under: רבי חיים ויטאל
+   doc 1  title: רבי טרפון
+          actually about: רבי טרפון
+
+id 543   filed under: רבי חנינא בר פפא
+   doc 1  title: רבן גמליאל דיבנה
+          actually about: רבן גמליאל דיבנה
+
+id 544   filed under: רבי יוסף שלמה דלמדיגו – יש״ר מקנדיה
+   doc 1  title: רבי שמואל הנגיד
+          actually about: רבי שמואל הנגיד
+
+id 545   filed under: רבי יצחק חזקיה למפרונטי
+   doc 1  title: רבי משה חיים אפרים מסדילקוב
+          actually about: בעל דגל מחנה אפרים
+
+id 546   filed under: רבי ישראל ליפשיץ
+   doc 1  title: עזרא הסופר
+          actually about: עזרא הסופר
+
+id 547   filed under: רבי מאיר הגדול מפרמישלאן
+   doc 1  title: רבקה אמנו
+          actually about: רבקה אמנו
+
+id 548   filed under: רבי פנחס אליהו הורביץ – בעל ספר הברית
+   doc 1  title: התנא רבי ישמעאל
+          actually about: רבי ישמעאל
+
+id 550   filed under: רבן שמעון בן גמליאל הראשון
+   doc 1  title: רב הונא
+          actually about: רב הונא
+
+id 551   filed under: רמי בר פפא
+   doc 1  title: הרב עמוס כמוס חיים גואטה
+          actually about: הרב גואטה
+
+id 552   filed under: רפרם בר פפא
+   doc 1  title: רבן יוחנן בן זכאי
+          actually about: רבן יוחנן בן זכאי
+
+id 553   filed under: שרח בת אשר
+   doc 1  title: רבי אהרן קוטלר
+          actually about: רבי אהרן קוטלר
+
+id 554   filed under: אבנימוס הגרדי (אוינומאוס מגדרה)
+   doc 1  title: רבי חביב בן אליעזר טולידאנו
+          actually about: רבי חביב טולידאנו
+
+id 555   filed under: אברהם אבינו
+   doc 1  title: רבי יהודה הלוי
+          actually about: רבי יהודה הלוי
+
+id 556   filed under: ברוריה
+   doc 1  title: רבי יהודה קורייאט
+          actually about: רבי יהודה קורייאט
+
+id 557   filed under: דוד המלך
+   doc 1  title: רבי יוסף יצחק שניאורסון
+          actually about: הריי"צ מליובאוויטש
+
+id 558   filed under: הבעל שם טוב (רבי ישראל בעש"ט)
+   doc 1  title: רבי יצחק אלפסי (הרי"ף)
+          actually about: הרי"ף
+
+id 559   filed under: הגאון מווילנא (הגר"א)
+   doc 1  title: רבי לוי בן חביב
+          actually about: המהרלב"ח
+   doc 2  title: רבי לוי בן חביב
+          actually about: המהרלב"ח
+
+id 560   filed under: הרב אברהם יצחקי (זרע אברהם)
+   doc 1  title: רבי משה אלשקר
+          actually about: מהר"ם אלשקר
+
+id 561   filed under: הרב אברהם מרדכי יצחקי (הרב מפורת)
+   doc 1  title: רבי נתן מנמירוב
+          actually about: רבי נתן מברסלב
+
+id 562   filed under: הרב אהרן קוטלר
+   doc 1  title: רבי רפאל ברוך טולידאנו
+          actually about: רבי רפאל ברוך טולידאנו
+
+==============================================================================
+SECTION 3 - PARTIAL (file mixes correct documents with misfiled ones)
+==============================================================================
+
+id 9     filed under: תרגום השבעים   (3 docs, 1 misfiled)
+   doc 1  title: המורשת התורנית והמדעית של הרב יוסף קאפח
+          actually about: הרב יוסף קאפח
+
+id 22    filed under: רבנו גרשום מאור הגולה   (6 docs, 2 misfiled)
+   doc 1  title: מאור הגולה - דמותו של התנא רבי מאיר
+          actually about: התנא רבי מאיר
+   doc 4  title: מאור הגולה (כפילות)
+          actually about: התנא רבי מאיר
+
+id 41    filed under: הרמב"ם   (12 docs, 11 misfiled)
+   doc 1  title: רבי אברהם בן הרמב"ם
+          actually about: רבי אברהם בן הרמב"ם
+   doc 2  title: ספר מצוות גדול (סמ"ג)
+          actually about: רבי משה מקוצי
+   doc 3  title: רבי יהודה אריה ממודנה
+          actually about: רבי יהודה אריה ממודנה
+   doc 4  title: רבי יהודה רוזאניס, משנה למלך
+          actually about: רבי יהודה רוזאניס
+   doc 5  title: הר"י מיגאש
+          actually about: רבי יוסף אבן מיגאש
+   doc 6  title: הרב אפרים אנקווה
+          actually about: הרב אפרים אנקווה
+   doc 7  title: ראב"ד מפושקייר
+          actually about: הראב"ד מפושקייר
+   doc 8  title: רבי אפרים נבון ומחנה אפרים
+          actually about: רבי אפרים נבון
+   doc 9  title: רבי יהוסף אבן מיגאש
+          actually about: רבי יוסף אבן מיגאש
+   doc 10  title: רבי יצחק אלפסי (הרי"ף)
+          actually about: הרי"ף
+   doc 11  title: רבי שם טוב בן אברהם אבן גאון
+          actually about: רבי שם טוב אבן גאון
+
+id 42    filed under: רבי יצחק סגי נהור   (3 docs, 1 misfiled)
+   doc 2  title: רבי יצחק אלפסי (הרי"ף)
+          actually about: הרי"ף
+
+id 47    filed under: המהר"ם מרוטנבורג   (3 docs, 2 misfiled)
+   doc 1  title: רבי אביגדור בן אליהו כהן צדק מווינה
+          actually about: רבי אביגדור כ"ץ מווינה
+   doc 3  title: רבי יצחק בן משה מווינה, אור זרוע
+          actually about: רבי יצחק מווינה
+
+id 57    filed under: הרב חסדאי קרשקש   (4 docs, 1 misfiled)
+   doc 3  title: רבנו נסים בן ראובן גירונדי (הר"ן)
+          actually about: הר"ן
+
+id 93    filed under: רבי משה חיים לוצאטו (הרמח״ל)   (4 docs, 1 misfiled)
+   doc 1  title: שמואל דוד לוצאטו (שד"ל)
+          actually about: שד"ל - לא הרמח"ל
+
+id 97    filed under: רבי אריה לייב הלר (1745–1812) – קצות החושן: לוגיקה הלכתית ועמקות למדנית   (3 docs, 2 misfiled)
+   doc 1  title: רבי יהודה אריה ממודנה
+          actually about: רבי יהודה אריה ממודנה
+   doc 3  title: רבי אריה לייב גינצבורג
+          actually about: השאגת אריה
+
+id 100   filed under: מנחם מנדל לפין (מסאטנוב)   (2 docs, 1 misfiled)
+   doc 1  title: הרב מנחם מנדל שניאורסון מלובביץ
+          actually about: הרבי מלובביץ
+
+id 112   filed under: רבי יעקב אבוחצירא   (4 docs, 2 misfiled)
+   doc 3  title: רבי יעקב אבן חביב
+          actually about: רבי יעקב אבן חביב
+   doc 4  title: רבי יעקב בירב
+          actually about: רבי יעקב בירב
+
+id 150   filed under: רבי יצחק כדורי   (3 docs, 1 misfiled)
+   doc 3  title: רבי יצחק סגן לויה
+          actually about: רבי יצחק סגן לויה, רבו של רש"י במאה ה-11
+
+id 195   filed under: הראב"ד מפושקייר   (2 docs, 1 misfiled)
+   doc 1  title: רבי אברהם אבן דאוד (הראב"ד הראשון)
+          actually about: הראב"ד הראשון - לא הראב"ד מפושקייר
+
+id 294   filed under: רבי אהרן הלוי   (2 docs, 1 misfiled)
+   doc 2  title: רבי אהרן קוטלר
+          actually about: רבי אהרן קוטלר
+
+id 311   filed under: רבי יהודה בן הרא״ש   (3 docs, 1 misfiled)
+   doc 1  title: הרא"ש
+          actually about: הרא"ש האב - לא רבי יהודה בנו
+
+id 312   filed under: רבי משה מאיוורא   (3 docs, 1 misfiled)
+   doc 3  title: רבי משה סופר
+          actually about: החת"ם סופר
+
+id 323   filed under: רבי ברוך שפירא   (2 docs, 1 misfiled)
+   doc 2  title: רבי קלונימוס קלמיש שפירא מפיאסצנה
+          actually about: האדמו"ר מפיאסצנה
+
+id 331   filed under: גירוש ספרד   (3 docs, 2 misfiled)
+   doc 2  title: הרדב"ז
+          actually about: הרדב"ז
+   doc 3  title: רבי יעקב אבן חביב
+          actually about: רבי יעקב אבן חביב
+
+id 351   filed under: רבי נתן מרומי   (3 docs, 1 misfiled)
+   doc 2  title: רבי נתן מנמירוב
+          actually about: רבי נתן מברסלב - לא רבי נתן מרומי בעל הערוך
+
+id 395   filed under: הרשב״א   (2 docs, 1 misfiled)
+   doc 2  title: רבי יעקב בן חננאל סקילי
+          actually about: רבי יעקב בן חננאל סקילי
+
+id 407   filed under: רבי מאיר הכהן מרוטנבורג   (3 docs, 1 misfiled)
+   doc 2  title: רבי ישראל מאיר הכהן מראדין
+          actually about: החפץ חיים - מראדין, לא מרוטנבורג
+
+id 433   filed under: רבי יוסף חביבא   (3 docs, 1 misfiled)
+   doc 3  title: רבי יוסף חיים מבגדאד
+          actually about: הבן איש חי
+
+id 443   filed under: רבי יוסף קארו   (4 docs, 2 misfiled)
+   doc 2  title: רבי יוסף יצחק שניאורסון
+          actually about: הריי"צ מליובאוויטש
+   doc 4  title: רבי יוסף קורקוס
+          actually about: מהר"י קורקוס
+
+id 452   filed under: רבי יעקב לנדא   (3 docs, 2 misfiled)
+   doc 1  title: טקסט מטא: רשימת מקורות במקום מאמר
+          actually about: מערבב בין רבי יעקב לנדא מהמאה ה-15 לרבה של בני ברק מהמאה ה-20
+   doc 3  title: כפילות של אותו טקסט
+          actually about: כנ"ל
+
+id 462   filed under: האר״י הקדוש   (4 docs, 2 misfiled)
+   doc 2  title: רבי חיים בן עטר
+          actually about: האור החיים הקדוש
+   doc 3  title: של"ה הקדוש
+          actually about: רבי ישעיה הלוי הורוויץ
+
+id 486   filed under: רבנו יונה גירונדי   (3 docs, 1 misfiled)
+   doc 3  title: רבנו נסים בן ראובן גירונדי (הר"ן)
+          actually about: הר"ן - לא רבנו יונה גירונדי
+
+id 497   filed under: הרב אליהו אליעזר דסלר   (3 docs, 1 misfiled)
+   doc 2  title: משנתו והגותו של המהרש"א
+          actually about: המהרש"א
+
+id 498   filed under: רבי יהודה קורייאט   (4 docs, 2 misfiled)
+   doc 2  title: רבי יהודה הלוי
+          actually about: רבי יהודה הלוי
+   doc 3  title: רבי יהודה הנשיא
+          actually about: רבי יהודה הנשיא
+
+id 510   filed under: שרה שנירר   (2 docs, 1 misfiled)
+   doc 1  title: רבי אליהו בן חיים (הראנ"ח)
+          actually about: הראנ"ח
+
+id 520   filed under: הנרייטה סאלד   (2 docs, 1 misfiled)
+   doc 1  title: הרב עמוס כמוס חיים גואטה
+          actually about: הרב גואטה
+
+id 524   filed under: דונה גרציה נשיא   (2 docs, 1 misfiled)
+   doc 1  title: רבי ירמיהו חחיאשוילי
+          actually about: רבי ירמיהו חחיאשוילי
+
+==============================================================================
+TOTALS
+==============================================================================
+clean   : 246 files
+partial :  30 files
+wrong   :  53 files
+orphan  :  26 files
+TOTAL   : 355 files
+
+PATTERN 1: ids 499-562 are almost entirely misfiled, and the errors are
+sequential - each page holds a document belonging to a nearby id. This looks
+like an index/offset shift during ingest, not random filename mismatches.
+
+PATTERN 2: near-collision pairs are a recurring failure mode: mixed-up
+mi-Radin/mi-Rothenburg, Natan mi-Romi/Natan mi-Nemirov, Rabbeinu Yonah
+Gerondi/the Ran of Gerona, Ralbag/Maharalbach, Ramban/Rambam, Raavad I/Raavad III,
+and the several Yehudah documents piled onto Yehudah Coriat.
+
+PATTERN 3: many files contain exact duplicate documents - the same text ingested
+once from a .docx and once as "Google Docs: ...". Not counted as misattribution
+here, but it inflates the corpus and should be deduplicated separately.
+
+SCOPE NOTE: this audit covers the 355 base files present when the snapshot was
+taken. While the audit was running another process added 43 further research
+files, which were NOT examined here: 78, 86, 94, 105, 108, 117, 120, 134, 141, 143, 149, 152, 173, 262, 263, 271, 284, 292, 298, 308, 353, 416, 495, 509, 533, 563, 564, 565, 566, 567, 573, 575, 580, 581, 582, 583, 585, 586, 587, 590, 591, 592, 597
