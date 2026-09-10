@@ -13,7 +13,7 @@
    "tags": "ספרות בית שני, מוסר ודרך ארץ, גבולות קאנון, השפעה חז\"לית",
    "chapter_type": "טקסט יסוד",
    "spotify_url": "https://open.spotify.com/episode/3u5udRWI84FVJ3OsOBBbPF?si=ek7V_WzPS7OadSPOZSU-VA&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "2",
@@ -298,7 +298,7 @@
    "birth_year": 1380,
    "death_year": 1444,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "18",
@@ -423,7 +423,7 @@
    "birth_year": 910,
    "death_year": 970,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "24",
@@ -459,7 +459,7 @@
    "birth_year": 939,
    "death_year": 1038,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "26",
@@ -589,7 +589,7 @@
    "birth_year": 1100,
    "death_year": 1171,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "34",
@@ -1075,7 +1075,7 @@
    "birth_year": 1360,
    "death_year": 1463,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "343",
@@ -1534,7 +1534,7 @@
    "birth_year": 1610,
    "death_year": 1698,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "83",
@@ -1696,7 +1696,7 @@
    "birth_year": 1697,
    "death_year": 1777,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "91",
@@ -2047,7 +2047,7 @@
    "birth_year": 1805,
    "death_year": 1855,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "112",
@@ -2310,7 +2310,7 @@
    "birth_year": 1843,
    "death_year": 1926,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "129",
@@ -2440,7 +2440,7 @@
    "birth_year": 1871,
    "death_year": 1942,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "136",
@@ -2610,7 +2610,7 @@
    "birth_year": 1891,
    "death_year": 1982,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "146",
@@ -2650,7 +2650,7 @@
    "birth_year": 1892,
    "death_year": 1974,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "148",
@@ -2994,7 +2994,7 @@
    "birth_year": 1921,
    "death_year": 2012,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "166",
@@ -3012,7 +3012,7 @@
    "birth_year": 1922,
    "death_year": 1996,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "167",
@@ -3328,7 +3328,7 @@
    "birth_year": 1100,
    "death_year": 1200,
    "date_precision": "century",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "191",
@@ -3458,7 +3458,7 @@
    "birth_year": 1687,
    "death_year": 1743,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "346",
@@ -3494,7 +3494,7 @@
    "birth_year": 1803,
    "death_year": 1867,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "349",
@@ -4553,7 +4553,7 @@
    "birth_year": 1975,
    "death_year": 2006,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "421",
@@ -6587,7 +6587,7 @@
    "birth_year": 0,
    "death_year": 100,
    "date_precision": "century",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "508",
@@ -6673,7 +6673,7 @@
    "birth_year": 1913,
    "death_year": 1986,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "512",
@@ -6691,7 +6691,7 @@
    "birth_year": 1938,
    "death_year": 2023,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "513",
@@ -6745,7 +6745,7 @@
    "birth_year": 1922,
    "death_year": 2013,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "516",
@@ -6763,7 +6763,7 @@
    "birth_year": 1896,
    "death_year": 1979,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "517",
@@ -6781,7 +6781,7 @@
    "birth_year": 1906,
    "death_year": 1993,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "518",
@@ -6853,7 +6853,7 @@
    "birth_year": -1300,
    "death_year": -1200,
    "date_precision": "century",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "522",
@@ -6886,7 +6886,7 @@
    "tags": "דוד המלך, שלמה המלך, נתן הנביא, אם המלך, אשת חיל, משלי, משפט צדק, נשים",
    "chapter_type": "דמות",
    "spotify_url": "",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "524",
@@ -6922,7 +6922,7 @@
    "birth_year": 1934,
    "death_year": 1983,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "526",
@@ -6958,7 +6958,7 @@
    "birth_year": 1869,
    "death_year": 1941,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "528",
@@ -7030,7 +7030,7 @@
    "birth_year": 1783,
    "death_year": 1879,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "532",
@@ -7207,7 +7207,7 @@
    "birth_year": 1923,
    "death_year": 2004,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "542",
@@ -7269,7 +7269,7 @@
    "birth_year": 1591,
    "death_year": 1655,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "545",
@@ -7323,7 +7323,7 @@
    "birth_year": 1703,
    "death_year": 1773,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "548",
@@ -7359,7 +7359,7 @@
    "birth_year": 1808,
    "death_year": 1888,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "550",
@@ -7428,7 +7428,7 @@
    "tags": "יעקב, יוסף, משה, פקוד יפקוד, ארון יוסף, אבל בית מעכה, גאולה, נשים",
    "chapter_type": "דמות",
    "spotify_url": "",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "554",
@@ -7530,7 +7530,7 @@
    "birth_year": 1661,
    "death_year": 1729,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "561",
@@ -8280,7 +8280,7 @@
    "birth_year": 1400,
    "death_year": 1500,
    "date_precision": "century",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "604",
@@ -8421,6 +8421,72 @@
    "birth_year": 1925,
    "death_year": 2019,
    "date_precision": "exact",
+   "has_research": true
+  },
+  {
+   "id": "612",
+   "label": "ר' משה מנדלסון (רמבמ\"ן)",
+   "era": "1729–1786",
+   "era_key": "modern",
+   "era_label": "מודרני",
+   "field": "הגות, פרשנות מקרא ופילוסופיה",
+   "location": "דסאו; ברלין, גרמניה",
+   "bio": "הוגה דעות שניצב על קו התפר בין עולם ההלכה לערכי הנאורות במאה ה־18. חיבר את מפעל \"הביאור\" למקרא כדי לגשר על הפער הלשוני והתרבותי של יהודי זמנו, ובספרו \"ירושלים\" הציע הפרדת דת ומדינה והגדיר את היהדות כדת של מצוות מעשיות ולא של כפייה מחשבתית.",
+   "central_idea": "יהדות כדת המבוססת על מצוות מעשיות ולא על כפיית אמונה — פתיחת צוהר למודרנה שעוררה גם חשש מטמיעה.",
+   "tags": "נאורות, הביאור, ירושלים, הפרדת דת ומדינה, פולמוס",
+   "chapter_type": "דמות",
+   "spotify_url": "",
+   "birth_year": 1729,
+   "death_year": 1786,
+   "date_precision": "exact",
+   "has_research": true
+  },
+  {
+   "id": "613",
+   "label": "לאה אמנו",
+   "era": "תקופת האבות",
+   "era_key": "patriarchs",
+   "era_label": "האבות",
+   "field": "תפילה, הודיה ומחשבה",
+   "location": "ארם נהריים; ארץ כנען",
+   "bio": "הרביעית מבין ארבע האמהות, המייצגת את עולם המחשבה והתפילה אל מול רחל המזוהה עם המעשה וההתגלות. בכוח תפילתה שינתה את גזירתה, וייסדה את מושג ההודיה — ההכרה בהשגחה פרטית החורגת מחוקי הטבע.",
+   "central_idea": "ההודיה ככוח מכונן: היכולת לזהות חסד ומתנת חינם דווקא בתוך קושי ודחייה.",
+   "tags": "ארבע האמהות, הודיה, עלמא דאתכסיא, מערת המכפלה",
+   "chapter_type": "דמות",
+   "spotify_url": "",
+   "has_research": true
+  },
+  {
+   "id": "614",
+   "label": "סוליקא חג'ואל",
+   "era": "המאה ה־19",
+   "era_key": "modern",
+   "era_label": "מודרני",
+   "field": "קידוש השם ומורשת",
+   "location": "טנג'יר; פאס, מרוקו",
+   "bio": "נערה יהודייה ממרוקו שהוצאה להורג במאה ה־19 לאחר שסירבה להתאסלם, והפכה לסמל של קידוש השם. עמדה איתנה על זהותה היהודית עד מותה, וזכרה נשמר עד היום בפיוטים ובתפילות על קברה בבית העלמין בפאס.",
+   "central_idea": "עמידה על הזהות היהודית עד מסירות נפש, והצניעות ככלי של קדושה אל מול פני המוות.",
+   "tags": "קידוש השם, מרוקו, צניעות, פיוטים, קבר בפאס",
+   "chapter_type": "דמות",
+   "spotify_url": "",
+   "birth_year": 1800,
+   "death_year": 1900,
+   "date_precision": "century",
+   "has_research": true
+  },
+  {
+   "id": "615",
+   "label": "רב נחמן בר פפא",
+   "era": "אמוראים",
+   "era_key": "amoraim",
+   "era_label": "אמוראים",
+   "field": "הלכה ותלמוד",
+   "location": "בבל",
+   "bio": "אמורא בבלי שתרם לעיצוב דיני שומרים ואחריותם הנזיקית של בעלי מקצוע. השקפתו הרוחנית גורסת שהטבע מושעה וממתין לתפילת הצדיק, ושמו קבוע בטקס ה\"הדראן\" כסגולה לזיכרון הלימוד.",
+   "central_idea": "הטבע ממתין לתפילת הצדיק — זיקה בין כוח התפילה למעשה בראשית.",
+   "tags": "דיני שומרים, אחריות אומנים, הדראן, מעשה בראשית",
+   "chapter_type": "דמות",
+   "spotify_url": "",
    "has_research": true
   }
  ],
@@ -8930,6 +8996,12 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
+   "source": "612",
+   "target": "100",
+   "type": "influence",
+   "evidence_source": "CSV דמויות קשורות"
+  },
+  {
    "source": "105",
    "target": "202",
    "type": "influence",
@@ -8973,6 +9045,12 @@
   },
   {
    "source": "347",
+   "target": "114",
+   "type": "influence",
+   "evidence_source": "CSV דמויות קשורות"
+  },
+  {
+   "source": "612",
    "target": "114",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
@@ -10424,6 +10502,12 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
+   "source": "612",
+   "target": "528",
+   "type": "influence",
+   "evidence_source": "CSV דמויות קשורות"
+  },
+  {
    "source": "110",
    "target": "528",
    "type": "influence",
@@ -10504,6 +10588,12 @@
   {
    "source": "99",
    "target": "539",
+   "type": "influence",
+   "evidence_source": "CSV דמויות קשורות"
+  },
+  {
+   "source": "612",
+   "target": "540",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -10760,6 +10850,12 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
+   "source": "612",
+   "target": "607",
+   "type": "influence",
+   "evidence_source": "CSV דמויות קשורות"
+  },
+  {
    "source": "110",
    "target": "607",
    "type": "influence",
@@ -10780,6 +10876,12 @@
   {
    "source": "335",
    "target": "610",
+   "type": "influence",
+   "evidence_source": "CSV דמויות קשורות"
+  },
+  {
+   "source": "570",
+   "target": "613",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },

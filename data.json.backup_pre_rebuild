@@ -2259,24 +2259,6 @@
    }
   },
   {
-   "id": "125",
-   "label": "הרב יוסף חיים מבגדאד – “בן איש חי” (לא מה שחשבתם)",
-   "era": "1835–1909",
-   "era_key": "modern",
-   "era_label": "עת חדשה מאוחרת",
-   "field": "הלכה, קבלה והגות חברתית",
-   "location": "בגדאד",
-   "bio": "דמות רב-פנים: מגדולי פוסקי המזרח וגם הוגה חברתי. לאחר משבר אישי וכלכלי פיתח שפה שמחברת תורה למציאות של יחסי כוח, ומעניקה לעניים ידע מוסרי ייחודי.",
-   "central_idea": "תורה כפרשנות חברתית: הפסיקה והדרשה חושפות עוולות ומחייבות אחריות מוסרית – בלי לוותר על עומק הלכתי וקבלי.",
-   "tags": "ביקורת חברתית, מעמדות, טנזימאט, פסיקה, פיוט, קבלה",
-   "chapter_type": "אישיות",
-   "spotify_url": "https://open.spotify.com/episode/5mA6IjVV5SbxfT0OfQ22Ad?si=-IWNH499SoGWQ6XF5UUQbg&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
-   "birth_year": 1835,
-   "death_year": 1909,
-   "date_precision": "exact",
-   "has_research": false
-  },
-  {
    "id": "126",
    "label": "הבן איש חי (רבי יוסף חיים מבגדד)",
    "era": "1835–1909",
@@ -3605,24 +3587,6 @@
    "has_research": true
   },
   {
-   "id": "354",
-   "label": "רבי יצחק בר אלעזר הלוי",
-   "era": "1000–1070 בקירוב",
-   "era_key": "rishonim",
-   "era_label": "ראשונים",
-   "field": "הלכה ופרשנות",
-   "location": "אשכנז",
-   "bio": "ראש ישיבת וורמייזא ומגדולי רבותיו של רש\"י, בעל השפעה מכרעת על יהדות אשכנז.",
-   "central_idea": "הנהגה תורנית המשלבת סמכות, ענווה ודיוק הלכתי.",
-   "tags": "סגן לויה",
-   "chapter_type": "דמות",
-   "spotify_url": "https://open.spotify.com/episode/4mph8tbv9qfvaXuaEBr9Ci",
-   "birth_year": 1000,
-   "death_year": 1070,
-   "date_precision": "exact",
-   "has_research": false
-  },
-  {
    "id": "355",
    "label": "רבי יהודה בן נתן (הריב״ן)",
    "era": "המאה ה־11–12",
@@ -4121,24 +4085,6 @@
    "has_research": true
   },
   {
-   "id": "291",
-   "label": "שמואל בן יצחק",
-   "era": "1190–1256",
-   "era_key": "rishonim",
-   "era_label": "ראשונים",
-   "field": "הלכה ודיני ממונות",
-   "location": "ברצלונה, ספרד",
-   "bio": "מגדולי חכמי ספרד במאה ה־13 ואחד ממעצבי המשפט העברי. חיבורו 'ספר התרומות' סידר לראשונה באופן שיטתי תחום שלם של דיני ממונות.",
-   "central_idea": "הפיכת ההלכה המשפטית לשפה חיה, נגישה ושיטתית עבור דיין, סוחר וקהילה כלכלית ממשית.",
-   "tags": "רבנו שמואל הסרדי, ספר התרומות, ממונות, משפט עברי",
-   "chapter_type": "חכם",
-   "spotify_url": "https://open.spotify.com/episode/5Cdc9RvxyriLFWPFMRfciK?si=P9JIX4Q4TCCtqmGdnswLcA&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
-   "birth_year": 1190,
-   "death_year": 1256,
-   "date_precision": "exact",
-   "has_research": false
-  },
-  {
    "id": "293",
    "label": "רבי מאיר הלוי אבולעפיה",
    "era": "המאה ה־13",
@@ -4181,24 +4127,6 @@
      "טולדו"
     ]
    }
-  },
-  {
-   "id": "295",
-   "label": "רבי שלמה בן אברהם",
-   "era": "1235–1310 בקירוב",
-   "era_key": "rishonim",
-   "era_label": "ראשונים",
-   "field": "הלכה, הנהגה קהילתית ופולמוס אמוני",
-   "location": "ברצלונה, ספרד",
-   "bio": "מגדולי הפוסקים והמנהיגים בתולדות התורה. עמד בראש קהילת ברצלונה, הנהיג ציבור, עיצב דיני קהילה וכתב אלפי תשובות שהשפיעו על כל עולם ההלכה.",
-   "central_idea": "יצירת מרכז הלכתי מאוזן המחבר עומק תלמודי, אחריות ציבורית, גבולות אמונה והנהגה מעשית.",
-   "tags": "רשב״א, תורת הבית, שו״ת, ברצלונה, פולמוס הפילוסופיה",
-   "chapter_type": "חכם",
-   "spotify_url": "https://open.spotify.com/episode/3fFSccuIPUhBryOySLd1mz?si=vVleiPsHQNK-DYsKMhH7LQ&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
-   "birth_year": 1235,
-   "death_year": 1310,
-   "date_precision": "exact",
-   "has_research": false
   },
   {
    "id": "299",
@@ -7997,10 +7925,10 @@
    "field": "תלמוד, פרשנות",
    "location": "וורמייזא",
    "bio": "מראשי ישיבות לותיר ורבותיו המובהקים של רש\"י בוורמייזא. ממעצבי מסורת הלימוד האשכנזית הקדומה.",
-   "central_idea": "",
-   "tags": "",
+   "central_idea": "הנהגה תורנית המשלבת סמכות, ענווה ודיוק הלכתי.",
+   "tags": "סגן לויה",
    "chapter_type": "דמות",
-   "spotify_url": "",
+   "spotify_url": "https://open.spotify.com/episode/4mph8tbv9qfvaXuaEBr9Ci",
    "birth_year": 1000,
    "death_year": 1080,
    "date_precision": "exact",
@@ -8352,7 +8280,7 @@
    "birth_year": 1400,
    "death_year": 1500,
    "date_precision": "century",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "604",
@@ -8494,6 +8422,72 @@
    "death_year": 2019,
    "date_precision": "exact",
    "has_research": true
+  },
+  {
+   "id": "612",
+   "label": "ר' משה מנדלסון (רמבמ\"ן)",
+   "era": "1729–1786",
+   "era_key": "modern",
+   "era_label": "מודרני",
+   "field": "הגות, פרשנות מקרא ופילוסופיה",
+   "location": "דסאו; ברלין, גרמניה",
+   "bio": "הוגה דעות שניצב על קו התפר בין עולם ההלכה לערכי הנאורות במאה ה־18. חיבר את מפעל \"הביאור\" למקרא כדי לגשר על הפער הלשוני והתרבותי של יהודי זמנו, ובספרו \"ירושלים\" הציע הפרדת דת ומדינה והגדיר את היהדות כדת של מצוות מעשיות ולא של כפייה מחשבתית.",
+   "central_idea": "יהדות כדת המבוססת על מצוות מעשיות ולא על כפיית אמונה — פתיחת צוהר למודרנה שעוררה גם חשש מטמיעה.",
+   "tags": "נאורות, הביאור, ירושלים, הפרדת דת ומדינה, פולמוס",
+   "chapter_type": "דמות",
+   "spotify_url": "",
+   "birth_year": 1729,
+   "death_year": 1786,
+   "date_precision": "exact",
+   "has_research": false
+  },
+  {
+   "id": "613",
+   "label": "לאה אמנו",
+   "era": "תקופת האבות",
+   "era_key": "patriarchs",
+   "era_label": "האבות",
+   "field": "תפילה, הודיה ומחשבה",
+   "location": "ארם נהריים; ארץ כנען",
+   "bio": "הרביעית מבין ארבע האמהות, המייצגת את עולם המחשבה והתפילה אל מול רחל המזוהה עם המעשה וההתגלות. בכוח תפילתה שינתה את גזירתה, וייסדה את מושג ההודיה — ההכרה בהשגחה פרטית החורגת מחוקי הטבע.",
+   "central_idea": "ההודיה ככוח מכונן: היכולת לזהות חסד ומתנת חינם דווקא בתוך קושי ודחייה.",
+   "tags": "ארבע האמהות, הודיה, עלמא דאתכסיא, מערת המכפלה",
+   "chapter_type": "דמות",
+   "spotify_url": "",
+   "has_research": false
+  },
+  {
+   "id": "614",
+   "label": "סוליקא חג'ואל",
+   "era": "המאה ה־19",
+   "era_key": "modern",
+   "era_label": "מודרני",
+   "field": "קידוש השם ומורשת",
+   "location": "טנג'יר; פאס, מרוקו",
+   "bio": "נערה יהודייה ממרוקו שהוצאה להורג במאה ה־19 לאחר שסירבה להתאסלם, והפכה לסמל של קידוש השם. עמדה איתנה על זהותה היהודית עד מותה, וזכרה נשמר עד היום בפיוטים ובתפילות על קברה בבית העלמין בפאס.",
+   "central_idea": "עמידה על הזהות היהודית עד מסירות נפש, והצניעות ככלי של קדושה אל מול פני המוות.",
+   "tags": "קידוש השם, מרוקו, צניעות, פיוטים, קבר בפאס",
+   "chapter_type": "דמות",
+   "spotify_url": "",
+   "birth_year": 1800,
+   "death_year": 1900,
+   "date_precision": "century",
+   "has_research": false
+  },
+  {
+   "id": "615",
+   "label": "רב נחמן בר פפא",
+   "era": "אמוראים",
+   "era_key": "amoraim",
+   "era_label": "אמוראים",
+   "field": "הלכה ותלמוד",
+   "location": "בבל",
+   "bio": "אמורא בבלי שתרם לעיצוב דיני שומרים ואחריותם הנזיקית של בעלי מקצוע. השקפתו הרוחנית גורסת שהטבע מושעה וממתין לתפילת הצדיק, ושמו קבוע בטקס ה\"הדראן\" כסגולה לזיכרון הלימוד.",
+   "central_idea": "הטבע ממתין לתפילת הצדיק — זיקה בין כוח התפילה למעשה בראשית.",
+   "tags": "דיני שומרים, אחריות אומנים, הדראן, מעשה בראשית",
+   "chapter_type": "דמות",
+   "spotify_url": "",
+   "has_research": false
   }
  ],
  "links": [
@@ -9002,6 +8996,12 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
+   "source": "612",
+   "target": "100",
+   "type": "influence",
+   "evidence_source": "CSV דמויות קשורות"
+  },
+  {
    "source": "105",
    "target": "202",
    "type": "influence",
@@ -9045,6 +9045,12 @@
   },
   {
    "source": "347",
+   "target": "114",
+   "type": "influence",
+   "evidence_source": "CSV דמויות קשורות"
+  },
+  {
+   "source": "612",
    "target": "114",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
@@ -9315,7 +9321,7 @@
   },
   {
    "source": "594",
-   "target": "354",
+   "target": "583",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9639,13 +9645,13 @@
   },
   {
    "source": "44",
-   "target": "291",
+   "target": "390",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
    "source": "287",
-   "target": "291",
+   "target": "390",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9693,25 +9699,25 @@
   },
   {
    "source": "44",
-   "target": "295",
+   "target": "395",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
    "source": "52",
-   "target": "295",
+   "target": "395",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
    "source": "443",
-   "target": "295",
+   "target": "395",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
    "source": "50",
-   "target": "295",
+   "target": "395",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9933,12 +9939,6 @@
   },
   {
    "source": "44",
-   "target": "390",
-   "type": "influence",
-   "evidence_source": "CSV דמויות קשורות"
-  },
-  {
-   "source": "44",
    "target": "293",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
@@ -9946,12 +9946,6 @@
   {
    "source": "41",
    "target": "393",
-   "type": "influence",
-   "evidence_source": "CSV דמויות קשורות"
-  },
-  {
-   "source": "44",
-   "target": "395",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -10508,6 +10502,12 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
+   "source": "612",
+   "target": "528",
+   "type": "influence",
+   "evidence_source": "CSV דמויות קשורות"
+  },
+  {
    "source": "110",
    "target": "528",
    "type": "influence",
@@ -10588,6 +10588,12 @@
   {
    "source": "99",
    "target": "539",
+   "type": "influence",
+   "evidence_source": "CSV דמויות קשורות"
+  },
+  {
+   "source": "612",
+   "target": "540",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -10844,6 +10850,12 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
+   "source": "612",
+   "target": "607",
+   "type": "influence",
+   "evidence_source": "CSV דמויות קשורות"
+  },
+  {
    "source": "110",
    "target": "607",
    "type": "influence",
@@ -10864,6 +10876,12 @@
   {
    "source": "335",
    "target": "610",
+   "type": "influence",
+   "evidence_source": "CSV דמויות קשורות"
+  },
+  {
+   "source": "570",
+   "target": "613",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -10932,7 +10950,7 @@
   },
   {
    "source": "120",
-   "target": "125",
+   "target": "126",
    "type": "influence",
    "strength": 4,
    "period": "אחרונים",
@@ -11459,7 +11477,7 @@
   },
   {
    "source": "4",
-   "target": "295",
+   "target": "395",
    "type": "student"
   },
   {
@@ -11549,7 +11567,7 @@
   },
   {
    "source": "4",
-   "target": "295",
+   "target": "395",
    "type": "teacher"
   },
   {
@@ -11934,7 +11952,7 @@
   },
   {
    "source": "287",
-   "target": "291",
+   "target": "390",
    "type": "student"
   },
   {
@@ -11968,7 +11986,7 @@
    "type": "teacher"
   },
   {
-   "source": "125",
+   "source": "126",
    "target": "568",
    "type": "teacher"
   },
@@ -11998,7 +12016,7 @@
    "type": "oppose"
   },
   {
-   "source": "125",
+   "source": "126",
    "target": "443",
    "type": "oppose"
   },
