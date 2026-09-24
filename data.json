@@ -340,7 +340,7 @@
    "tags": "תורה מן השמים, דיוק לשוני, ספר דברים, פרשנות סמנטית",
    "chapter_type": "חכמי ישראל - הגות, הנהגה והלכה",
    "spotify_url": "https://open.spotify.com/episode/5J3m8GmCr0dbgQl0IyUyW6",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "344",
@@ -626,7 +626,7 @@
    "tags": "בהירות תלמוד, שיטתיות, שילוב ירושלמי בבבלי",
    "chapter_type": "חכמי ישראל - הגות, הנהגה והלכה",
    "spotify_url": "https://open.spotify.com/episode/580Us9ygui6IR3ypcVlNrx",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "38",
@@ -1108,7 +1108,7 @@
    "tags": "מנורת המאור, פרעות קנ״א, כינוס מדרשים",
    "chapter_type": "חכמי ישראל - הגות, הנהגה והלכה",
    "spotify_url": "https://open.spotify.com/episode/7ong9XinXN1Na6aWhTzXME",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "62",
@@ -2382,7 +2382,7 @@
    "birth_year": 1858,
    "death_year": 1936,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "133",
@@ -3204,7 +3204,7 @@
    "birth_year": 1800,
    "death_year": 1900,
    "date_precision": "century",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "179",
@@ -3222,7 +3222,7 @@
    "birth_year": 1800,
    "death_year": 1900,
    "date_precision": "century",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "180",
@@ -3237,7 +3237,7 @@
    "tags": "כוונות הרש\"ש, תפילה, ענווה והסתרה, אהבת ישראל",
    "chapter_type": "אישיות",
    "spotify_url": "https://open.spotify.com/episode/54WDzXvPJL2lSljQw8ppji?si=axqFQefgQLCRM9oCzjRzxw&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "331",
@@ -7512,7 +7512,7 @@
    "birth_year": 1698,
    "death_year": 1760,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "560",
@@ -8118,7 +8118,7 @@
    "birth_year": 1040,
    "death_year": 1105,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "595",
