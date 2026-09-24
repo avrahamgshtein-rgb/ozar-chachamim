@@ -34,9 +34,21 @@ PARK = os.path.join(REPO, 'data', 'parked_research')
 # every sage page.
 UI_CHROME_LINES = {'Source guide', 'button_magic Source guide',
                    'arrow_drop_up', 'arrow_drop_down'}
+# A few were copied as the whole notebook page: the pane header first, then
+# the paper, then the Chat pane (the owner's prompts and NotebookLM's replies)
+# and the Studio menu. Only the paper belongs on the site. A page flattened to
+# one paragraph shows up instead as a single "NotebookLM Logo ..." line.
+NOTEBOOK_HEADER = {'PRO', 'Sources', 'Select all'}
 
 def strip_ui_chrome(text):
-    lines = [l for l in text.split('\n') if l.strip() not in UI_CHROME_LINES]
+    lines = text.split('\n')
+    while lines and lines[0].strip() in NOTEBOOK_HEADER:
+        lines.pop(0)
+    stripped = [l.strip() for l in lines]
+    if 'Chat' in stripped:
+        lines = lines[:stripped.index('Chat')]
+    lines = [l for l in lines if l.strip() not in UI_CHROME_LINES
+             and not l.startswith('NotebookLM Logo')]
     return '\n'.join(l.replace(' Source guide ', ' ') for l in lines)
 
 def docx_text(path):
