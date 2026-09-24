@@ -249,8 +249,11 @@ try:
                     node = n; break
         if node:
             node['has_research'] = True
-            if not node['bio'] and s.get('summary'):
-                node['bio'] = s['summary'][:600]
+            # summaries were cut from the papers' opening lines, so they start
+            # with NotebookLM's "Source guide" header (see rebuild_research_corpus.py)
+            summary = re.sub(r'^Source guide\s*|\s*Source guide', '', s.get('summary') or '')
+            if not node['bio'] and summary:
+                node['bio'] = summary[:600]
                 enriched += 1
 except Exception as e:
     print('research enrich skipped:', e)

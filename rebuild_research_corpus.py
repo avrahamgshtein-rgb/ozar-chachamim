@@ -28,9 +28,21 @@ ATTR = os.path.join(REPO, 'data', 'research_attribution.json')
 DATA = os.path.join(REPO, 'nextjs-app', 'public', 'data.json')
 PARK = os.path.join(REPO, 'data', 'parked_research')
 
+# Papers copied out of NotebookLM carry its reader-pane chrome into the .docx: a
+# "Source guide" header over the summary, and the icon font's ligature names
+# ("button_magic", "arrow_drop_up") as literal text. Left in, they print on
+# every sage page.
+UI_CHROME_LINES = {'Source guide', 'button_magic Source guide',
+                   'arrow_drop_up', 'arrow_drop_down'}
+
+def strip_ui_chrome(text):
+    lines = [l for l in text.split('\n') if l.strip() not in UI_CHROME_LINES]
+    return '\n'.join(l.replace(' Source guide ', ' ') for l in lines)
+
 def docx_text(path):
     doc = Document(path)
-    return '\n'.join(p.text.strip() for p in doc.paragraphs if p.text.strip())
+    return strip_ui_chrome(
+        '\n'.join(p.text.strip() for p in doc.paragraphs if p.text.strip()))
 
 def main(apply_changes):
     attribution = json.load(io.open(ATTR, encoding='utf-8'))['documents']
