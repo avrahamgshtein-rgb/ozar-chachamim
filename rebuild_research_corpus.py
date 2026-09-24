@@ -31,8 +31,9 @@ PARK = os.path.join(REPO, 'data', 'parked_research')
 # Papers copied out of NotebookLM carry its reader-pane chrome into the .docx: a
 # "Source guide" header over the summary, and the icon font's ligature names
 # ("button_magic", "arrow_drop_up") as literal text. Left in, they print on
-# every sage page.
-UI_CHROME_LINES = {'Source guide', 'button_magic Source guide',
+# every sage page. With the interface set to Hebrew the header reads
+# "מדריך מקורות" instead.
+UI_CHROME_LINES = {'Source guide', 'button_magic Source guide', 'מדריך מקורות',
                    'arrow_drop_up', 'arrow_drop_down'}
 # A few were copied as the whole notebook page: the pane header first, then
 # the paper, then the Chat pane (the owner's prompts and NotebookLM's replies)
