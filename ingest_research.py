@@ -15,7 +15,10 @@ from datetime import datetime
 # Configuration
 DATA_DIR = Path('data')
 RESEARCH_DIR = Path('nextjs-app/public/research')
-BACKUP_DIR = Path('nextjs-app/public/research.backup_2026-08-04')
+# Outside public/ (a backup there is served to anyone) and matched by the
+# data/research_backup_*/ .gitignore rule. The 2026-08-04 backup this used to
+# overwrite now lives, preserved, at data/archive/research.backup_2026-08-04.
+BACKUP_DIR = Path('data/research_backup_ingest')
 LOG_FILE = DATA_DIR / 'ingestion_log_2026-08-04.json'
 WORKLIST_FILE = DATA_DIR / 'missing_research_171.txt'
 
