@@ -106,14 +106,27 @@ const translations = {
   },
 }
 
-export function AboutContent({ locale }: { locale: Locale }) {
+/** Corpus totals computed on the server from the same static dataset. */
+export interface CorpusStats {
+  sages: number
+  connections: number
+  withResearch: number
+  regions: number
+}
+
+export function AboutContent({ locale, initialStats }: { locale: Locale; initialStats?: CorpusStats }) {
   // Counted from the loaded dataset rather than written in. These numbers
   // were hardcoded and had drifted badly — the page claimed 1,624 connections
   // against an actual 597 — so they are derived now and cannot go stale.
+  // Until the client dataset arrives, show the server's counts of the same
+  // corpus instead of "0 0 0 0".
   const sages       = useAppStore(s => s.sages)
   const connections = useAppStore(s => s.connections)
-  const withResearch = sages.filter(s => s.has_research).length
-  const regionCount  = new Set(sages.flatMap(s => regionsOf(s.location))).size
+  const loaded = sages.length > 0 || !initialStats
+  const sageCount       = loaded ? sages.length : initialStats.sages
+  const connectionCount = loaded ? connections.length : initialStats.connections
+  const withResearch = loaded ? sages.filter(s => s.has_research).length : initialStats.withResearch
+  const regionCount  = loaded ? new Set(sages.flatMap(s => regionsOf(s.location))).size : initialStats.regions
 
   const isHe = locale === 'he'
   const t = translations[locale]
@@ -152,11 +165,11 @@ export function AboutContent({ locale }: { locale: Locale }) {
         {/* Network Stats */}
         <div className="mb-16 grid grid-cols-2 gap-4 text-center md:grid-cols-4">
           <div className="rounded-lg border border-gold-500/20 bg-slate-800/50 p-6">
-            <div className="text-4xl font-bold text-gold-400">{sages.length.toLocaleString()}</div>
+            <div className="text-4xl font-bold text-gold-400">{sageCount.toLocaleString()}</div>
             <div className="text-sm text-slate-400">{t.sages}</div>
           </div>
           <div className="rounded-lg border border-gold-500/20 bg-slate-800/50 p-6">
-            <div className="text-4xl font-bold text-gold-400">{connections.length.toLocaleString()}</div>
+            <div className="text-4xl font-bold text-gold-400">{connectionCount.toLocaleString()}</div>
             <div className="text-sm text-slate-400">{t.connections}</div>
           </div>
           <div className="rounded-lg border border-gold-500/20 bg-slate-800/50 p-6">
@@ -220,7 +233,7 @@ export function AboutContent({ locale }: { locale: Locale }) {
           <div className="grid gap-4 text-sm text-slate-400 md:grid-cols-2">
             <div>
               <p className="font-semibold text-gold-300 mb-2">Master Dataset</p>
-              <p>{sages.length} Hebrew sages with period, region, field classifications</p>
+              <p>{sageCount} Hebrew sages with period, region, field classifications</p>
             </div>
             <div>
               <p className="font-semibold text-gold-300 mb-2">Research Base</p>
@@ -232,7 +245,7 @@ export function AboutContent({ locale }: { locale: Locale }) {
             </div>
             <div>
               <p className="font-semibold text-gold-300 mb-2">Connections</p>
-              <p>{connections.length.toLocaleString()} validated relationships (student, teacher, colleague, etc.)</p>
+              <p>{connectionCount.toLocaleString()} validated relationships (student, teacher, colleague, etc.)</p>
             </div>
           </div>
         </div>
