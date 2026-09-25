@@ -79,8 +79,14 @@
    "evidence": "The Sentinel of the Secret Chambers: The Biographical, Mystical, and Geopolitical Legacy of Rabbi Meir Yehuda Getz"
   },
   {
+   "file": "המחשבה ההלכתית והפילוסופית של הרב יוסף דוב הלוי סולובייצ'יק_ סינתזה בין למדנות בריסק, קבלת וולוז'ין והגות מודרנית.docx",
+   "sage_label": "הרב יוסף דוב הלוי סולובייצ׳יק (הגרי״ד)",
+   "confidence": "high",
+   "evidence": "המחשבה ההלכתית והפילוסופית של הרב יוסף דוב הלוי סולובייצ'יק: סינתזה בין למדנות בריסק, קבלת וולוז'ין והגות מודרנית"
+  },
+  {
    "file": "The Soloveitchik Legacy_ A Comprehensive Analysis of the Life, Thought, and Institutional Influence of Rabbi Yosef Dov HaLevi Soloveitchik.docx",
-   "sage_label": "רבי יוסף דב הלוי סולובייצ׳יק (הגרי״ד)",
+   "sage_label": "הרב יוסף דוב הלוי סולובייצ׳יק (הגרי״ד)",
    "confidence": "high",
    "reason": "resolved after the sage was added to the master"
   },
@@ -3074,6 +3080,30 @@
    "sage_label": "תורת הקבלה – מבטו של אדולף פראנק (1843)",
    "confidence": "medium",
    "reason": "same subject as the \"אדולף פראנק – הקבלה כפילוסופיה דתית\" entry, where it is also shown"
+  },
+  {
+   "file": "הנהגה, אתיקה והיסטוריוגרפיה- פועלו, משנתו התורנית ומשמעות חורבנו של גדליהו בן אחיקם.docx",
+   "sage_label": "גדליהו בן אחיקם",
+   "confidence": "high",
+   "evidence": "הנהגה, אתיקה והיסטוריוגרפיה: פועלו, משנתו התורנית ומשמעות חורבנו של גדליהו בן אחיקם"
+  },
+  {
+   "file": "פועלו ומשנתו התורנית של רבי אחאי בר פפא- מחקר ביוגרפי, היסטורי והלכתי.docx",
+   "sage_label": "רבי אחאי בר פפא",
+   "confidence": "high",
+   "evidence": "פועלו ומשנתו התורנית של רבי אחאי בר פפא: מחקר ביוגרפי, היסטורי והלכתי"
+  },
+  {
+   "file": "מנהיגות יוצרת, תורת חיים וסוד ההרכבה- פועלו ומשנתו התורנית של הרב חנן פורת.docx",
+   "sage_label": "הרב חנן פורת",
+   "confidence": "high",
+   "evidence": "מנהיגות יוצרת, תורת חיים וסוד ההרכבה: פועלו ומשנתו התורנית של הרב חנן פורת"
+  },
+  {
+   "file": "פועלו, משנתו התורנית והשפעתו הקבלית וההלכתית של רבי מנחם בן בנימין רקנאטי.docx",
+   "sage_label": "רבי מנחם רקנאטי",
+   "confidence": "high",
+   "evidence": "פועלו, משנתו התורנית והשפעתו הקבלית וההלכתית של רבי מנחם בן בנימין רקנאטי"
   }
  ]
 }
