@@ -249,19 +249,30 @@ try:
                     node = n; break
         if node:
             node['has_research'] = True
-            if not node['bio'] and s.get('summary'):
-                node['bio'] = s['summary'][:600]
+            # summaries were cut from the papers' opening lines, so they start
+            # with NotebookLM's "Source guide" header (see rebuild_research_corpus.py)
+            summary = re.sub(r'^Source guide\s*|\s*Source guide', '', s.get('summary') or '')
+            if not node['bio'] and summary:
+                node['bio'] = summary[:600]
                 enriched += 1
 except Exception as e:
     print('research enrich skipped:', e)
 print(f'bios filled from research: {enriched}')
 
 # ---------- Match helper ----------
+def fathers(s):
+    return set(re.findall(r'\b(?:בן|בר)\s+([\u05d0-\u05ea\'"]+)', (s or '').replace('״', '"')))
+
 def find_node(token):
     k = norm_name(token)
     if not k or len(k) < 3: return None
     if k in byname: return byname[k]
-    cands = [n for key2, n in byname.items() if len(k) > 5 and (k in key2 or key2 in k)]
+    # A substring match joins two people who share a first name, so a named
+    # father that disagrees vetoes it: ישמעאל בן נתניה, Gedaliah's assassin,
+    # is not the tanna רבי ישמעאל (בן אלישע).
+    mine = fathers(token)
+    cands = [n for key2, n in byname.items() if len(k) > 5 and (k in key2 or key2 in k)
+             and not (mine and fathers(n['label']) and not mine & fathers(n['label']))]
     return cands[0] if len(cands) == 1 else None
 
 # ---------- Links from CSV related figures ----------
