@@ -100,7 +100,7 @@ export default async function SagePage({ params }: PageProps) {
 
   const dir        = validLocale === 'he' ? 'rtl' : 'ltr'
   const accentColor = ERA_COLORS[sage.period] ?? '#c9973a'
-  const yearRange  = formatYearRange(sage.birth_year, sage.death_year)
+  const yearRange  = formatYearRange(sage.birth_year, sage.death_year, sage.date_precision)
 
   return (
     <>
@@ -196,9 +196,13 @@ export default async function SagePage({ params }: PageProps) {
           </header>
 
           {/* ── Body grid ─────────────────────────────────────── */}
-          <div className="grid md:grid-cols-3 gap-8">
+          {/* Explicit single column below md, and min-w-0 on both children: a
+              grid item's min width defaults to its content, so the truncated
+              related-sage labels and long research lines otherwise widened
+              the column past the viewport and the page scrolled sideways. */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Left: main content */}
-            <div className="md:col-span-2 space-y-8">
+            <div className="md:col-span-2 space-y-8 min-w-0">
 
               {/* Core concept */}
               {sage.core_concept && (
@@ -262,7 +266,7 @@ export default async function SagePage({ params }: PageProps) {
             </div>
 
             {/* Right: connections sidebar */}
-            <aside className="space-y-6">
+            <aside className="space-y-6 min-w-0">
               {connections.length > 0 && (
                 <Section title={`${t.relatedSages} (${connections.length})`}>
                   <ul className="space-y-2">
