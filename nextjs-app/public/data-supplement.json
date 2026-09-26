@@ -8,57 +8,57 @@
     },
     {
       "source": "505",
-      "target": "sup-3",
+      "target": "592",
       "type": "teacher"
     },
     {
-      "source": "sup-3",
+      "source": "592",
       "target": "4",
       "type": "influence"
     },
     {
       "source": "4",
-      "target": "sup-4",
+      "target": "580",
       "type": "influence"
     },
     {
       "source": "348",
-      "target": "sup-5",
+      "target": "594",
       "type": "influence"
     },
     {
       "source": "22",
-      "target": "sup-5",
+      "target": "594",
       "type": "influence"
     },
     {
-      "source": "sup-5",
+      "source": "594",
       "target": "276",
       "type": "family"
     },
     {
-      "source": "sup-5",
+      "source": "594",
       "target": "33",
       "type": "family"
     },
     {
-      "source": "sup-6",
+      "source": "558",
       "target": "92",
       "type": "family"
     },
     {
       "source": "462",
-      "target": "sup-6",
+      "target": "558",
       "type": "influence"
     },
     {
       "source": "462",
-      "target": "sup-7",
+      "target": "539",
       "type": "influence"
     },
     {
-      "source": "sup-7",
-      "target": "sup-6",
+      "source": "539",
+      "target": "558",
       "type": "oppose"
     }
   ],
