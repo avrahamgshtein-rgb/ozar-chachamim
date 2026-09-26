@@ -1,5 +1,6 @@
-// AppShell-specific data loader: coordinates Supabase/data.json fallback with unified pipeline
-// Browser consumer that uses the shared dataFoundation pipeline
+// AppShell-specific data loader: fetches the static dataset and runs it
+// through the shared dataFoundation pipeline, the same one lib/serverData.ts
+// uses, so the home page and the sage pages always show the same corpus.
 
 import type { Sage, Connection } from './types'
 import {
@@ -7,107 +8,91 @@ import {
   applyPatches,
   type SageRecord,
   type DataQualityReport,
+  type DataValidationIssue,
 } from './dataFoundation'
 
 export interface AppShellDataResult {
   sages: Sage[]
   connections: Connection[]
   quality: DataQualityReport
-  source: 'supabase' | 'fallback' | 'local'
+}
+
+type RawDataset = { nodes?: Record<string, unknown>[]; links?: Record<string, unknown>[] }
+
+// Supplements carry extra links (and occasionally figures); order matters for
+// node precedence, matching the import order in lib/serverData.ts.
+const SUPPLEMENTS = [
+  '/data-ancient.json',
+  '/data-supplement.json',
+  '/data-supplement-2.json',
+  '/data-research-links.json',
+]
+
+async function fetchJson<T>(src: string): Promise<T | null> {
+  try {
+    const response = await fetch(src)
+    return response.ok ? ((await response.json()) as T) : null
+  } catch {
+    return null
+  }
 }
 
 /**
- * Load data for AppShell: coordinate Supabase first, fall back to data.json,
- * then merge supplements and apply patches via unified pipeline.
+ * Load the public graph for AppShell from the static pipeline only:
+ * data.json + supplements, merged, then data-patch.json applied.
  *
- * This preserves the graceful-degradation logic while using dataFoundation
- * for consistent normalization across browser and server.
+ * Supabase is deliberately not consulted. Its sages/connections tables hold an
+ * old snapshot (missing ~100 current sages, e.g. Rashi, and carrying links
+ * deleted since), and preferring it whenever it looked "big enough" meant the
+ * live site showed stale data, and every visitor waited on it before seeing
+ * anything. All files are fetched in parallel, raw, and handed straight to
+ * mergeDatasets — no Sage → raw round trip that could drop fields.
  */
-export async function loadAppShellData(
-  supabaseData: { sages: Sage[]; connections: Connection[] },
-  dataJsonData: { sages: Sage[]; connections: Connection[] },
-): Promise<AppShellDataResult> {
-  // Decide which dataset to use: Supabase or data.json fallback
-  let primary = supabaseData
-  let source: 'supabase' | 'fallback' = 'supabase'
+export async function loadAppShellData(): Promise<AppShellDataResult> {
+  const [canonical, patches, ...supplements] = await Promise.all([
+    fetchJson<RawDataset>('/data.json'),
+    fetchJson<Record<string, Partial<SageRecord>>>('/data-patch.json'),
+    ...SUPPLEMENTS.map(src => fetchJson<RawDataset>(src)),
+  ])
 
-  if (
-    supabaseData.connections.length < 100 ||
-    supabaseData.sages.length < 300
-  ) {
-    // Supabase is sparse, use data.json instead
-    if (dataJsonData.connections.length > supabaseData.connections.length) {
-      primary = dataJsonData
-      source = 'fallback'
-      console.log('[AppShell] ↪ using data.json fallback (richer dataset)')
+  if (!canonical?.nodes?.length) {
+    console.error('[AppShell] data.json failed to load')
+  } else {
+    console.log(`[AppShell] data.json: ${canonical.nodes.length} sages, ${canonical.links?.length ?? 0} links`)
+  }
+
+  const supplementDatasets: RawDataset[] = []
+  supplements.forEach((data, i) => {
+    if (data?.nodes?.length || data?.links?.length) {
+      supplementDatasets.push(data)
+      console.log(
+        `[AppShell] 🏛 ${SUPPLEMENTS[i]}: +${data.nodes?.length ?? 0} figures, +${data.links?.length ?? 0} links`
+      )
     }
+  })
+
+  // Merge all datasets (canonical first, so it wins on id) via unified pipeline
+  const issues: DataValidationIssue[] = []
+  const { sages, connections, quality } = mergeDatasets([canonical ?? {}, ...supplementDatasets], issues)
+
+  if (patches) {
+    applyPatches(sages, patches)
+    console.log(`[AppShell] 🩹 data-patch: ${Object.keys(patches).length} sages patched`)
   }
 
-  // Convert Sage[] to raw nodes for merging
-  const primaryDataset = {
-    nodes: primary.sages.map(s => ({
-      id: s.id,
-      label: s.label,
-      era_key: s.period,
-      location: s.location,
-      field: s.field,
-      bio: s.bio,
-      central_idea: s.core_concept,
-      tags: s.tags?.join(','),
-      spotify_url: s.spotify_url,
-      birth_year: s.birth_year,
-      death_year: s.death_year,
-      date_precision: s.date_precision,
-      has_research: s.has_research,
-      migration_path: s.migration_path,
-    })),
-    links: primary.connections.map(c => ({
-      source: c.source,
-      target: c.target,
-      type: c.type,
-    })),
-  }
-
-  // Fetch supplement datasets
-  const supplementDatasets = []
-  for (const src of ['/data-ancient.json', '/data-supplement.json', '/data-supplement-2.json', '/data-research-links.json']) {
-    try {
-      const response = await fetch(src)
-      if (response.ok) {
-        const data = await response.json()
-        if (data?.nodes?.length || data?.links?.length) {
-          supplementDatasets.push(data)
-          console.log(
-            `[AppShell] 🏛 ${src}: +${data.nodes?.length ?? 0} figures, +${data.links?.length ?? 0} links`
-          )
-        }
-      }
-    } catch { /* optional dataset */ }
-  }
-
-  // Merge all datasets (canonical + supplements) via unified pipeline
-  const issues: any[] = []
-  const allDatasets = [primaryDataset, ...supplementDatasets]
-  const { sages, connections, quality } = mergeDatasets(allDatasets, issues)
-
-  // Fetch and apply patches
-  let patches: Record<string, Partial<SageRecord>> = {}
-  try {
-    const response = await fetch('/data-patch.json')
-    if (response.ok) {
-      patches = await response.json()
-      applyPatches(sages, patches)
-      console.log(`[AppShell] 🩹 data-patch: ${Object.keys(patches).length} sages patched`)
-    }
-  } catch { /* optional */ }
-
-  // Convert back to Sage[] format (without locations array for browser)
+  // Convert back to Sage[] (without the locations array). The field list
+  // mirrors lib/serverData.ts: this is an explicit copy, so anything omitted
+  // here is dropped silently — no type error, no console warning, just a
+  // feature that renders nothing. GeoMap's migration-path polylines, and the
+  // drawer's patched `works`, were both dead for exactly this reason.
   const outputSages: Sage[] = []
   for (const record of sages.values()) {
     outputSages.push({
       id: record.id,
       label: record.label,
+      name_en: record.name_en,
       period: record.period,
+      region: record.region,
       location: record.location,
       field: record.field,
       bio: record.bio,
@@ -117,12 +102,10 @@ export async function loadAppShellData(
       date_precision: record.date_precision,
       has_research: record.has_research,
       tags: record.tags,
-      spotify_url: record.spotify_url,
-      // Both mappings above rebuild Sage objects from an explicit field list,
-      // so anything omitted here is dropped silently — no type error, no
-      // console warning, just a feature that renders nothing. GeoMap's
-      // migration-path polylines were dead for exactly this reason.
       migration_path: record.migration_path,
+      coordinates: record.coordinates,
+      spotify_url: record.spotify_url,
+      works: record.works,
     })
   }
 
@@ -130,6 +113,5 @@ export async function loadAppShellData(
     sages: outputSages,
     connections,
     quality,
-    source,
   }
 }

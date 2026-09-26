@@ -129,9 +129,13 @@ export function GeographyPanel({ locale, isMobile = false, onClose }: GeographyP
     <div className="flex flex-col h-full bg-ink-950 border-e border-ink-800">
       {/* Header */}
       <div className="p-3 border-b border-ink-800">
-        <h3 className="text-sm font-sans font-bold text-gold-300 mb-3">
-          {tr(locale, 'גיאוגרפיה', 'Geography', 'География')}
-        </h3>
+        {/* The mobile drawer carries this title in its own header, beside the
+            close button; repeating it here showed "גיאוגרפיה" twice. */}
+        {!isMobile && (
+          <h3 className="text-sm font-sans font-bold text-gold-300 mb-3">
+            {tr(locale, 'גיאוגרפיה', 'Geography', 'География')}
+          </h3>
+        )}
 
         {/* Region Filter */}
         <div className="mb-4">
@@ -144,7 +148,7 @@ export function GeographyPanel({ locale, isMobile = false, onClose }: GeographyP
                 key={region}
                 onClick={() => handleToggleRegion(region)}
                 className={cn(
-                  'w-full text-xs text-left px-2 py-1.5 rounded-md transition-colors font-sans',
+                  'w-full text-xs text-start px-2 py-1.5 rounded-md transition-colors font-sans',
                   selectedRegions.has(region)
                     ? 'bg-gold-500/30 text-gold-200 border border-gold-500/50'
                     : 'bg-ink-800/30 text-ink-400 hover:bg-ink-700/30'
@@ -167,7 +171,7 @@ export function GeographyPanel({ locale, isMobile = false, onClose }: GeographyP
                 key={period}
                 onClick={() => handleTogglePeriod(period)}
                 className={cn(
-                  'w-full text-xs text-left px-2 py-1.5 rounded-md transition-colors font-sans',
+                  'w-full text-xs text-start px-2 py-1.5 rounded-md transition-colors font-sans',
                   'flex items-center gap-2',
                   filters.period === null || filters.period.includes(period)
                     ? 'bg-opacity-30'
@@ -257,7 +261,7 @@ export function GeographyPanel({ locale, isMobile = false, onClose }: GeographyP
                         key={sage.id}
                         onClick={() => selectSage(sage)}
                         className={cn(
-                          'w-full text-left px-2 py-1 rounded-md transition-colors text-xs',
+                          'w-full text-start px-2 py-1 rounded-md transition-colors text-xs',
                           'text-ink-300 hover:bg-ink-700/40 hover:text-ink-100',
                           selectedSageId === sage.id && 'bg-gold-500/20 text-gold-200 border border-gold-500/40'
                         )}

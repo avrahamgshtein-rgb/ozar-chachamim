@@ -7,6 +7,33 @@ import { regionsOf } from '@/lib/regions'
 import { placesIn } from '@/lib/placeIndex'
 import { normalizeHe, fuzzyIncludes } from '@/lib/search'
 
+/** One selectable field chip: a single trimmed field name and how many sages carry it. */
+export interface FieldOption {
+  name: string
+  count: number
+}
+
+/**
+ * A sage's `field` is a list joined by commas, and sometimes by ";" or "/"
+ * ("הלכה, קבלה", "הלכה/הנהגה"). Chips and matching must both work on the
+ * same split, trimmed parts — building chips from the raw string produced
+ * chips like "הלכה, קבלה" that no single part ever equals.
+ */
+export function splitFields(field: string | null | undefined): string[] {
+  return (field ?? '').split(/[,;/]/).map(f => f.trim()).filter(Boolean)
+}
+
+/** Distinct field names across the dataset, most common first. */
+function buildFieldOptions(sages: Sage[]): FieldOption[] {
+  const counts = new Map<string, number>()
+  sages.forEach(s => {
+    new Set(splitFields(s.field)).forEach(f => counts.set(f, (counts.get(f) ?? 0) + 1))
+  })
+  return [...counts.entries()]
+    .map(([name, count]) => ({ name, count }))
+    .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name, 'he'))
+}
+
 interface AppState {
   // Data
   sages: Sage[]
@@ -32,7 +59,8 @@ interface AppState {
   // Filters
   filters: Filters
   filteredSages: Sage[]
-  availableFields: string[]
+  /** Split, deduped field names with counts, most common first. */
+  availableFields: FieldOption[]
   /** Sage whose journey the place focus is being read against, if any. */
   placeAnchorId: string | null
 
@@ -73,8 +101,8 @@ function applyFilters(sages: Sage[], filters: Filters): Sage[] {
       if (!sageRegions.some(r => filters.region.includes(r))) return false
     }
     if (filters.field.length > 0) {
-      // Handle comma-separated fields: "philosophy, halakha" → ["philosophy", "halakha"]
-      const sageFields = (sage.field ?? '').split(',').map(f => f.trim()).filter(Boolean)
+      // Split the same way the chips are built: "philosophy, halakha" → ["philosophy", "halakha"]
+      const sageFields = splitFields(sage.field)
       // Curated tag facets (e.g. נשים) ride the same filter dimension — see TAG_FACETS.
       // Only whitelisted tags participate, so ordinary field chips keep their meaning
       // even when the same word also appears as a free-text tag on other sages.
@@ -139,7 +167,6 @@ export const useAppStore = create<AppState>((set, get) => ({
 
   setData: (sages, connections, total, lastUpdate) => {
     const sageMap = new Map(sages.map(s => [s.id, s]))
-    const fields = [...new Set(sages.map(s => s.field).filter(Boolean) as string[])].sort()
     set({
       sages,
       connections,
@@ -147,8 +174,10 @@ export const useAppStore = create<AppState>((set, get) => ({
       isLoaded: true,
       totalSages: total,
       lastUpdate,
-      filteredSages: sages,
-      availableFields: fields,
+      // Filters may already be set (from the URL, or before a locale reload),
+      // so the new dataset is narrowed by them rather than shown whole.
+      filteredSages: applyFilters(sages, get().filters),
+      availableFields: buildFieldOptions(sages),
     })
   },
 
@@ -208,16 +237,15 @@ export const useAppStore = create<AppState>((set, get) => ({
 
   togglePeriodFilter: (period) => {
     const { sages, filters } = get()
-    const { ALL_PERIODS } = require('@/lib/types')
 
-    const nextPeriods: Period[] = filters.period === null
-      ? ALL_PERIODS.filter((p: Period) => p !== period)
-      : filters.period.includes(period)
-      ? filters.period.filter(p => p !== period)
-      : [...filters.period, period]
-
-    // If result is all periods, revert to null (no filter)
-    const final: Period[] | null = nextPeriods.length === ALL_PERIODS.length ? null : nextPeriods
+    // Inclusive, like the region chips: from "no filter" a click shows only
+    // that era, further clicks add or remove eras, and removing the last one
+    // returns to null (all eras) rather than to an empty result.
+    const current = filters.period ?? []
+    const next = current.includes(period)
+      ? current.filter(p => p !== period)
+      : [...current, period]
+    const final: Period[] | null = next.length === 0 ? null : next
 
     const newFilters = { ...filters, period: final }
     set({ filters: newFilters, filteredSages: applyFilters(sages, newFilters) })

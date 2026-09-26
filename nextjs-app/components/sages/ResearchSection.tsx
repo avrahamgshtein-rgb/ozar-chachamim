@@ -25,10 +25,12 @@ interface ResearchSectionProps {
   initialDocs?: ResearchDoc[]
   /** True when the server fell back to Hebrew because no translation exists. */
   initialIsFallback?: boolean
+  /** Start with every document closed (the drawer); by default the first is open. */
+  collapsed?: boolean
 }
 
 export function ResearchSection({
-  sageId, locale, initialDocs, initialIsFallback = false,
+  sageId, locale, initialDocs, initialIsFallback = false, collapsed = false,
 }: ResearchSectionProps) {
   const hasServerDocs = Array.isArray(initialDocs)
   const [docs, setDocs] = useState<ResearchDoc[] | null>(hasServerDocs ? initialDocs! : null)
@@ -94,7 +96,7 @@ export function ResearchSection({
       )}
       <div className="space-y-3" dir={isFallback || isHe ? 'rtl' : 'ltr'}>
         {docs.map((doc, i) => (
-          <details key={i} open={i === 0}
+          <details key={i} open={!collapsed && i === 0}
             className="rounded-xl border border-ink-700/40 bg-ink-800/30 overflow-hidden">
             <summary className="cursor-pointer select-none px-4 py-3 font-serif text-sm text-gold-300 hover:bg-ink-700/30 transition-colors">
               📖 {doc.title.length > 90 ? doc.title.slice(0, 90) + '…' : doc.title}

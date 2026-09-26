@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { cn } from '@/lib/utils'
 import { ERA_COLORS, ERA_LABELS, REGION_COLORS, REGION_LABELS, CONNECTION_LABELS, ALL_PERIODS } from '@/lib/types'
-import { MILESTONES } from '@/lib/milestones'
 import { tr } from '@/lib/i18n'
 import { useAppStore } from '@/store/useAppStore'
 import { PathFinder } from '@/components/viz/PathFinder'
@@ -70,6 +69,24 @@ function linkOpacityFor(l: any, ids: Set<string> | null): number {
   return ids.has(s) && ids.has(t) ? 0.5 : 0.03
 }
 
+const DIRECTED = new Set(['teacher', 'student', 'predecessor'])
+
+/**
+ * Arrowhead for a directed edge, or none when the edge is dimmed: an SVG
+ * marker ignores its path's stroke-opacity, so a faded edge would otherwise
+ * keep a full-strength arrowhead — dozens of stray triangles once a filter
+ * zooms in. `ids === null` means no filter.
+ */
+function linkMarkerFor(l: any, ids: Set<string> | null): string | null {
+  if (!DIRECTED.has(l.type)) return null
+  if (ids) {
+    const s = typeof l.source === 'object' ? l.source.id : l.source
+    const t = typeof l.target === 'object' ? l.target.id : l.target
+    if (!ids.has(s) || !ids.has(t)) return null
+  }
+  return `url(#arrow-${l.type})`
+}
+
 function nodeColor(d: any, mode: ColorMode): string {
   const eraColor = ERA_COLORS[d.period as Period] ?? '#7a6550'
   if (mode === 'era') return eraColor
@@ -78,6 +95,18 @@ function nodeColor(d: any, mode: ColorMode): string {
 }
 
 function gradId(id: string) { return `grad-mig-${id}` }
+
+/** Edges per sage, counted over the full (uncapped) edge list. */
+function degreeMap(connections: { source: string; target: string }[]): Map<string, number> {
+  const m = new Map<string, number>()
+  connections.forEach(c => {
+    m.set(c.source, (m.get(c.source) ?? 0) + 1)
+    m.set(c.target, (m.get(c.target) ?? 0) + 1)
+  })
+  return m
+}
+
+interface FitRequest { ids: Set<string> | null; pad: number; maxScale: number }
 
 interface NetworkGraphProps { locale: Locale }
 
@@ -94,16 +123,55 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
   const dimsRef = useRef<{ W: number; H: number }>({ W: 800, H: 600 })
   const eraGuidesRef  = useRef<import('d3').Selection<any, any, any, any> | null>(null)
   const tooltipRef    = useRef<HTMLDivElement | null>(null)
+  const pendingFitRef = useRef<FitRequest | null>(null)
 
   const [colorMode, setColorMode] = useState<ColorMode>('region')
   const [showPathFinder, setShowPathFinder] = useState(false)
   // Clicked edge → relationship detail card (masterplan §2: clickable edges)
   const [edgeInfo, setEdgeInfo] = useState<{ sourceId: string; targetId: string; type: string } | null>(null)
+  // Bumped when an async build finishes, so the filter and selection effects
+  // re-apply to the fresh selections (they may have run before the build did).
+  const [graphVersion, setGraphVersion] = useState(0)
 
-  const { sages, connections, selectSage, filteredSages, selectedSageId, sageMap } = useAppStore()
+  const { sages, connections, selectSage, filteredSages, selectedSageId, sageMap, activeTab } = useAppStore()
 
   // Mirror state → ref so D3 closures always read the latest value
   useEffect(() => { colorModeRef.current = colorMode }, [colorMode])
+
+  /**
+   * Zoom so the given nodes (all when `ids` is null) fill the viewport.
+   * The graph stays mounted but display:none on other tabs, and a d3-zoom
+   * transition on a 0×0 svg interpolates to translate(NaN,NaN) — so while
+   * hidden the request is parked and replayed when the tab is shown again.
+   */
+  const fitTo = (req: FitRequest, duration: number) => {
+    const container = containerRef.current
+    if (!container || !svgElRef.current || !zoomRef.current || !nodeSelRef.current) return
+    if (!container.clientWidth || !container.clientHeight) { pendingFitRef.current = req; return }
+    import('d3').then(d3 => {
+      const svgEl = svgElRef.current, zoom = zoomRef.current, nodeSel = nodeSelRef.current
+      const cW = containerRef.current?.clientWidth ?? 0
+      const cH = containerRef.current?.clientHeight ?? 0
+      if (!svgEl || !zoom || !nodeSel) return
+      if (!cW || !cH) { pendingFitRef.current = req; return }
+      const pts = (nodeSel.data() as any[]).filter(d => !req.ids || req.ids.has(d.id))
+      const xs  = pts.map(d => d.x as number).filter(isFinite)
+      const ys  = pts.map(d => d.y as number).filter(isFinite)
+      if (xs.length < 2) return
+      const x0 = Math.min(...xs), x1 = Math.max(...xs)
+      const y0 = Math.min(...ys), y1 = Math.max(...ys)
+      const scale = Math.min(
+        (cW - req.pad * 2) / Math.max(1, x1 - x0),
+        (cH - req.pad * 2) / Math.max(1, y1 - y0),
+        req.maxScale,
+      )
+      const tx = cW / 2 - scale * (x0 + x1) / 2
+      const ty = cH / 2 - scale * (y0 + y1) / 2
+      d3.select(svgEl)
+        .transition().duration(duration)
+        .call(zoom.transform, d3.zoomIdentity.translate(tx, ty).scale(scale))
+    })
+  }
 
   // ── Build graph ──────────────────────────────────────────────────────────
   useEffect(() => {
@@ -150,7 +218,7 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
           .attr('fill', color)
           .attr('opacity', 0.8)
       })
-      filteredSages.forEach(sage => {
+      sages.forEach(sage => {
         // דו-צבעי: migration_path אם קיים, אחרת אזורים מתוך טקסט המיקום
         let fromR = sage.migration_path ? locationToRegion(sage.migration_path.from) : null
         let toR   = sage.migration_path ? locationToRegion(sage.migration_path.to)   : null
@@ -174,47 +242,9 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
 
       const g = svg.append('g')
 
-      // ── Historical milestone bars (static, behind links/nodes) ───────────
-      // Shared MILESTONES (lib/milestones.ts) incl. ancient events; year shown.
-      const ERA_RANGES_EV: Record<string, [number, number]> = {
-        patriarchs: [-1850, -1500], exodus: [-1500, -1200],
-        judges: [-1200, -1020], kings: [-1020, -350],
-        'second-temple': [-350, 70], tannaim: [70, 220], amoraim: [220, 500],
-        geonim: [500, 1038], rishonim: [1038, 1492], acharonim: [1492, 1810], modern: [1810, 2030],
-      }
-      const ERAS_EV = ['patriarchs','exodus','judges','kings',
-        'second-temple','tannaim','amoraim','geonim','rishonim','acharonim','modern']
-      const eraXOf = (k: string) => eraXAt(k, W)
-      const evBarsG = g.append('g').attr('pointer-events', 'none')
-      MILESTONES.forEach((ev, idx) => {
-        const era = ERAS_EV.find(k => { const [s,e] = ERA_RANGES_EV[k]; return ev.year >= s && ev.year < e })
-        if (!era) return
-        const i  = ERAS_EV.indexOf(era)
-        const [es, ee] = ERA_RANGES_EV[era]
-        const f  = (ev.year - es) / (ee - es)
-        const x0 = eraXOf(era)
-        const x1 = ERAS_EV[i + 1] ? eraXOf(ERAS_EV[i + 1]) : x0 + W * 0.15
-        const x  = x0 + f * (x1 - x0)
-        const row = idx % 4
-        const ly  = 16 + row * 14
-        const yearTxt = ev.year < 0
-          ? `${Math.abs(ev.year)}${tr(locale, ' לפנה"ס', ' BCE', ' до н.э.')}`
-          : `${ev.year}`
-
-        evBarsG.append('rect').attr('x', x - 1.5).attr('y', 0)
-          .attr('width', 3).attr('height', H).attr('rx', 1.5)
-          .attr('fill', '#e53935').attr('opacity', 0.10)
-        evBarsG.append('line')
-          .attr('x1', x).attr('y1', ly + 2).attr('x2', x).attr('y2', 56)
-          .attr('stroke', '#e57373').attr('stroke-width', 1).attr('opacity', 0.4)
-        evBarsG.append('text').attr('x', x).attr('y', ly)
-          .attr('text-anchor', 'middle')
-          .attr('font-family', 'Heebo, sans-serif')
-          .attr('font-size', '8px').attr('font-weight', '700')
-          .attr('fill', '#c62828')
-          .style('stroke', 'var(--ink-900)').attr('stroke-width', 2.5).attr('paint-order', 'stroke')
-          .text(`${ev.label[locale]} · ${yearTxt}`)
-      })
+      // No historical-event bars here: in this free force layout x is not
+      // time, so a dated vertical line only cut through arbitrary nodes. The
+      // timeline tab carries the milestones on a real time axis.
 
       // ── Era columns ──────────────────────────────────────────────────────
       // קווי עזר אנכיים בעמודות התקופות, בצבעי המקרא. מוסתרים כשאין סינון
@@ -242,27 +272,22 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
       zoomRef.current = zoom
 
       // ── Data prep ────────────────────────────────────────────────────────
-      const nodes = filteredSages.map(s => ({ ...s, degree: 0 }))
-      const nodeById = new Map(nodes.map(n => [n.id, n]))
-
-      // Store filtered sage IDs for opacity logic during hover
-      filteredIdsRef.current = new Set(filteredSages.map(s => s.id))
-
-      const sortedLinks = [...connections].sort((a, b) => {
-        const score = (t: string) =>
-          t === 'student' || t === 'teacher' ? 3 :
-          t === 'influence' || t === 'colleague' ? 2 : 1
-        return score(b.type) - score(a.type)
-      }).slice(0, 400)
-
-      sortedLinks.forEach(l => {
-        const s = nodeById.get(l.source); if (s) s.degree++
-        const t = nodeById.get(l.target); if (t) t.degree++
-      })
-
-      const links = sortedLinks
-        .filter(l => nodeById.has(l.source) && nodeById.has(l.target))
+      // Every sage becomes a node and every connection an edge: filters only
+      // dim (see the filter effect), they never remove. An earlier top-400
+      // cut, taken before filtering, dropped 42% of the links — every family,
+      // oppose, colleague, contemporary and predecessor edge — and left half
+      // the nodes unconnected. ~650 edges draw comfortably.
+      const sageIds = new Set(sages.map(s => s.id))
+      // Only edges whose both ends are loaded sages; the degree comes from
+      // this same list so the tooltip matches the drawer's related count.
+      const links = connections
+        .filter(l => sageIds.has(l.source) && sageIds.has(l.target))
         .map(l => ({ ...l }))
+      const degree = degreeMap(links)
+      const nodes = sages.map(s => ({ ...s, degree: degree.get(s.id) ?? 0 }))
+
+      // The filter effect sets the real value once the build has finished
+      filteredIdsRef.current = null
 
       const adj = new Map<string, Set<string>>()
       links.forEach(l => {
@@ -287,8 +312,6 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
       simRef.current = sim
 
       // ── Links ────────────────────────────────────────────────────────────
-      const DIRECTED = new Set(['teacher', 'student', 'predecessor'])
-
       const linkG = g.append('g').attr('class', 'links')
       const link  = linkG.selectAll('path')
         .data(links).join('path')
@@ -297,8 +320,7 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
         .attr('stroke-width', 1.2)
         .attr('stroke-opacity', 0.22)
         .attr('stroke-dasharray', (d: any) => CONNECTION_DASH[d.type] || null)
-        .attr('marker-end', (d: any) =>
-          DIRECTED.has(d.type) ? `url(#arrow-${d.type})` : null)
+        .attr('marker-end', (d: any) => linkMarkerFor(d, null))
 
       linkSelRef.current = link
 
@@ -375,7 +397,7 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
         const tip = tooltipRef.current
         if (!tip) return
         const color  = ERA_COLORS[d.period as Period] ?? '#7a6550'
-        const degree = (adj.get(d.id)?.size ?? 0)
+        const degree = d.degree ?? 0
         const years  = [d.birth_year, d.death_year].filter(Boolean)
         tip.innerHTML = `
           <div style="font-family:'Frank Ruhl Libre',serif;font-size:15px;font-weight:700;
@@ -417,7 +439,10 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
               return 0.05
             })
             .attr('r',            (n: any) => n.id === d.id ? r(n) + 3 : r(n))
-          link.transition().duration(150)
+          link
+            .attr('marker-end', (l: any) =>
+              l.source.id === d.id || l.target.id === d.id ? linkMarkerFor(l, null) : null)
+            .transition().duration(150)
             .attr('stroke-opacity', (l: any) =>
               l.source.id === d.id || l.target.id === d.id ? 0.85 : 0.02)
           label.transition().duration(150)
@@ -433,7 +458,9 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
         .on('mouseout', () => {
           // משחזר את מצב הסינון (לא מאפס ל-0.88 גורף)
           node.transition().duration(300).attr('fill-opacity', (n: any) => baseOpacity(n)).attr('r', r)
-          link.transition().duration(300)
+          link
+            .attr('marker-end', (l: any) => linkMarkerFor(l, filteredIdsRef.current))
+            .transition().duration(300)
             .attr('stroke-opacity', (l: any) => linkOpacityFor(l, filteredIdsRef.current))
           label.transition().duration(300).attr('opacity', 0)
           hideTooltip()
@@ -448,7 +475,9 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
       // ── Edge hover + click (relationship details) ────────────────────────
       hitLink
         .on('mouseover', (_ev: MouseEvent, d: any) => {
-          link.transition().duration(120)
+          link
+            .attr('marker-end', (l: any) => l === d ? linkMarkerFor(l, null) : null)
+            .transition().duration(120)
             .attr('stroke-opacity', (l: any) => l === d ? 0.95 : 0.04)
             .attr('stroke-width',   (l: any) => l === d ? 2.6  : 1.2)
           node.transition().duration(120)
@@ -459,7 +488,9 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
               n.id === d.source.id || n.id === d.target.id ? 1 : 0)
         })
         .on('mouseout', () => {
-          link.transition().duration(250)
+          link
+            .attr('marker-end', (l: any) => linkMarkerFor(l, filteredIdsRef.current))
+            .transition().duration(250)
             .attr('stroke-opacity', (l: any) => linkOpacityFor(l, filteredIdsRef.current))
             .attr('stroke-width', 1.2)
           node.transition().duration(250)
@@ -492,35 +523,20 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
         node.attr('cx', (d: any) => d.x).attr('cy', (d: any) => d.y)
         label.attr('x', (d: any) => d.x).attr('y', (d: any) => d.y)
       })
+
+      if (mounted) setGraphVersion(v => v + 1)
     }
 
     build()
 
-    // Zoom-to-fit once after simulation settles (~2s)
+    // Zoom-to-fit once after simulation settles (~2s) — to the filtered
+    // subset when the app opened with a filter (e.g. from ?periods=)
     const fitTimer = setTimeout(() => {
-      if (!mounted || !svgElRef.current || !zoomRef.current || !nodeSelRef.current) return
-      import('d3').then(d3 => {
-        if (!svgElRef.current || !zoomRef.current || !nodeSelRef.current) return
-        const cW = svgElRef.current.clientWidth  || 800
-        const cH = svgElRef.current.clientHeight || 600
-        const pts = nodeSelRef.current.data() as any[]
-        const xs  = pts.map(d => d.x as number).filter(isFinite)
-        const ys  = pts.map(d => d.y as number).filter(isFinite)
-        if (xs.length < 2) return
-        const x0 = Math.min(...xs), x1 = Math.max(...xs)
-        const y0 = Math.min(...ys), y1 = Math.max(...ys)
-        const pad = 60
-        const scale = Math.min(
-          (cW - pad * 2) / Math.max(1, x1 - x0),
-          (cH - pad * 2) / Math.max(1, y1 - y0),
-          1.2,
-        )
-        const tx = cW / 2 - scale * (x0 + x1) / 2
-        const ty = cH / 2 - scale * (y0 + y1) / 2
-        d3.select(svgElRef.current)
-          .transition().duration(800)
-          .call(zoomRef.current.transform, d3.zoomIdentity.translate(tx, ty).scale(scale))
-      })
+      if (!mounted) return
+      const ids = filteredIdsRef.current
+      fitTo(ids && ids.size > 0
+        ? { ids, pad: 80, maxScale: 3 }
+        : { ids: null, pad: 60, maxScale: 1.2 }, 800)
     }, 2000)
 
     return () => { mounted = false; simRef.current?.stop(); clearTimeout(fitTimer) }
@@ -550,9 +566,14 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
     const ids      = new Set(filteredSages.map(s => s.id))
     const noFilter = ids.size === sages.length
     filteredIdsRef.current = noFilter ? null : ids
+    // A subset fit parked while hidden belongs to the previous filter; fall
+    // back to fitting everything (a narrower fit below replaces this again).
+    if (pendingFitRef.current) pendingFitRef.current = { ids: null, pad: 60, maxScale: 1.2 }
     nodeSelRef.current.transition().duration(250)
       .attr('fill-opacity', (d: any) => noFilter || ids.has(d.id) ? 0.88 : 0.06)
-    linkSelRef.current?.transition().duration(250)
+    linkSelRef.current
+      ?.attr('marker-end', (l: any) => linkMarkerFor(l, filteredIdsRef.current))
+      .transition().duration(250)
       .attr('stroke-opacity', (l: any) => linkOpacityFor(l, filteredIdsRef.current))
 
     // קווי עזר של התקופות — נחשפים רק כשיש סינון
@@ -576,46 +597,32 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
         // forceLink נבנה ב-build עם מערך הקשתות; כאן רק מכווננים עוצמה
         const linkForce = sim.force('link') as { strength?: (v: number) => unknown } | undefined
         linkForce?.strength?.(noFilter ? LINK_STRENGTH_IDLE : LINK_STRENGTH_FILTERED)
-        sim.alpha(0.45).restart()
+        // Never cool a simulation that is still settling (e.g. right after build)
+        sim.alpha(Math.max(sim.alpha(), 0.45)).restart()
       })
     }
 
     // Zoom-to-fit when filter narrows down to a manageable subset
-    const fitToFiltered = (duration: number) => {
-      import('d3').then(d3 => {
-        if (!svgElRef.current || !zoomRef.current || !nodeSelRef.current) return
-        const cW = svgElRef.current.clientWidth  || 800
-        const cH = svgElRef.current.clientHeight || 600
-        const visible = (nodeSelRef.current.data() as any[]).filter(d => ids.has(d.id))
-        const xs = visible.map(d => d.x as number).filter(isFinite)
-        const ys = visible.map(d => d.y as number).filter(isFinite)
-        if (xs.length < 2) return
-        const x0 = Math.min(...xs), x1 = Math.max(...xs)
-        const y0 = Math.min(...ys), y1 = Math.max(...ys)
-        const pad = 80
-        const scale = Math.min(
-          (cW - pad * 2) / Math.max(1, x1 - x0),
-          (cH - pad * 2) / Math.max(1, y1 - y0),
-          3,
-        )
-        const tx = cW / 2 - scale * (x0 + x1) / 2
-        const ty = cH / 2 - scale * (y0 + y1) / 2
-        d3.select(svgElRef.current)
-          .transition().duration(duration)
-          .call(zoomRef.current.transform, d3.zoomIdentity.translate(tx, ty).scale(scale))
-      })
-    }
-
     let settleTimer: ReturnType<typeof setTimeout> | undefined
-    if (!noFilter && filteredSages.length > 0 && filteredSages.length < sages.length * 0.5
-        && svgElRef.current && zoomRef.current && nodeSelRef.current) {
-      fitToFiltered(700)
+    if (!noFilter && filteredSages.length > 0 && filteredSages.length < sages.length * 0.5) {
+      const req: FitRequest = { ids, pad: 80, maxScale: 3 }
+      fitTo(req, 700)
       // המדידה הראשונה נעשית לפי המיקומים הישנים; אחרי שהסימולציה מסדרת
       // את העמודות הכרונולוגיות ממסגרים מחדש כדי שכל הטווח ייכנס לתצוגה.
-      settleTimer = setTimeout(() => fitToFiltered(600), 1200)
+      settleTimer = setTimeout(() => fitTo(req, 600), 1200)
     }
     return () => { if (settleTimer) clearTimeout(settleTimer) }
-  }, [filteredSages, sages.length])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filteredSages, sages.length, graphVersion])
+
+  // ── Replay a fit that was parked while the tab was hidden ────────────────
+  useEffect(() => {
+    if (activeTab !== 'graph' || !pendingFitRef.current) return
+    const req = pendingFitRef.current
+    pendingFitRef.current = null
+    fitTo(req, 600)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeTab])
 
   // ── Sync selection ring ──────────────────────────────────────────────────
   useEffect(() => {
@@ -624,7 +631,7 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
       .style('stroke',      (d: any) => d.id === selectedSageId ? 'var(--gold-500)' : 'var(--ink-900)')
       .attr('stroke-width', (d: any) => d.id === selectedSageId ? 3 : 1.5)
     labelSelRef.current?.attr('opacity', (d: any) => d.id === selectedSageId ? 1 : 0)
-  }, [selectedSageId])
+  }, [selectedSageId, graphVersion])
 
   const zoomBy = (k: number) => {
     if (!svgElRef.current || !zoomRef.current) return
@@ -707,15 +714,17 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
         )
       })()}
 
-      {/* PathFinder panel — top-end corner */}
+      {/* PathFinder panel — top-end corner, below the filter chip bar */}
       {showPathFinder && (
-        <div className="absolute top-4 end-4 z-20 animate-fade-in">
+        <div className="absolute end-4 z-20 animate-fade-in" style={{ top: BELOW_CHIPS }}>
           <PathFinder locale={locale} onClose={() => setShowPathFinder(false)} />
         </div>
       )}
 
-      {/* Zoom + PathFinder toggle cluster */}
-      <div className="absolute bottom-20 end-4 z-10 flex flex-col gap-1.5">
+      {/* Zoom + PathFinder toggle cluster. On mobile the search FAB (FAB.tsx,
+          fixed bottom-20 end-4, 56px) owns this corner, so the cluster starts
+          above it; from md up the FAB is hidden. */}
+      <div className="absolute bottom-[9.5rem] md:bottom-20 end-4 z-10 flex flex-col gap-1.5">
         <ZoomBtn onClick={() => zoomBy(1.5)} label="+">+</ZoomBtn>
         <ZoomBtn onClick={zoomReset} label="⊙">
           <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -769,6 +778,13 @@ const REGIONS_LIST: Region[] = [
   'tsarfat', 'provence', 'italy', 'north-africa', 'mizrach', 'other',
 ]
 
+/**
+ * Top offset for overlays that share the graph's top edge with FilterChips.
+ * The chip bar publishes its bottom edge as --filter-chips-h on the shared
+ * parent (and it grows when the fields row opens), so these never sit under it.
+ */
+const BELOW_CHIPS = 'calc(var(--filter-chips-h, 3rem) + 0.5rem)'
+
 function GraphLegend({ locale, colorMode, setColorMode }: {
   locale: Locale; colorMode: ColorMode; setColorMode: (m: ColorMode) => void
 }) {
@@ -779,10 +795,11 @@ function GraphLegend({ locale, colorMode, setColorMode }: {
     <div
       data-tour="legend"
       className={cn(
-        'absolute top-4 start-4 z-10',
+        'absolute start-4 z-10',
         'glass rounded-xl overflow-hidden',
         'flex flex-col min-w-[140px]',
-      )}>
+      )}
+      style={{ top: BELOW_CHIPS }}>
       {/* Title bar (always visible) */}
       <button
         onClick={() => setCollapsed(c => !c)}
@@ -796,7 +813,8 @@ function GraphLegend({ locale, colorMode, setColorMode }: {
 
       {/* Body */}
       {!collapsed && (
-        <div className="px-3 pb-3 flex flex-col gap-1.5 max-h-[calc(100vh-160px)] overflow-y-auto">
+        <div className="px-3 pb-3 flex flex-col gap-1.5 overflow-y-auto"
+          style={{ maxHeight: 'calc(100dvh - var(--header-h, 64px) - var(--filter-chips-h, 3rem) - 9rem)' }}>
           {/* Color mode toggle */}
           <div className="flex gap-1 bg-ink-800/60 rounded-lg p-0.5 mb-0.5">
             {(['era', 'region'] as ColorMode[]).map(mode => (
@@ -846,7 +864,6 @@ function GraphLegend({ locale, colorMode, setColorMode }: {
               {isHe ? 'סוגי קשרים' : 'Links'}
             </p>
             {(Object.entries(CONNECTION_COLORS) as [string, string][])
-              .filter(([k]) => k !== 'family')
               .map(([type, color]) => {
                 const dash = CONNECTION_DASH[type]
                 const directed = type === 'teacher' || type === 'student' || type === 'predecessor'
@@ -864,15 +881,6 @@ function GraphLegend({ locale, colorMode, setColorMode }: {
                   </div>
                 )
               })}
-            {/* Event bar indicator */}
-            <div className="flex items-center gap-2 border-t border-ink-700/40 pt-1.5 mt-0.5">
-              <svg width="28" height="10" className="flex-shrink-0">
-                <rect x="12" y="0" width="3" height="10" rx="1" fill="#e53935" opacity="0.5" />
-              </svg>
-              <span className="text-[10px] font-sans text-ink-400 whitespace-nowrap">
-                {isHe ? 'אירוע היסטורי' : 'Historical event'}
-              </span>
-            </div>
           </div>
         </div>
       )}

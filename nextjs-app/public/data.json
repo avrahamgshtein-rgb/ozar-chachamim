@@ -11042,908 +11042,8 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "13",
-   "target": "41",
-   "type": "student",
-   "strength": 4,
-   "period": "תנאים-אמוראים",
-   "context_he": "תלמיד בדירוג ראשון",
-   "evidence_source": "משנה"
-  },
-  {
-   "source": "45",
-   "target": "100",
-   "type": "student",
-   "strength": 5,
-   "period": "ראשונים",
-   "context_he": "תלמיד קרוב מאוד",
-   "evidence_source": "ספרים"
-  },
-  {
-   "source": "18",
-   "target": "50",
-   "type": "student",
-   "strength": 4,
-   "period": "אמוראים",
-   "context_he": "למד לפעמים",
-   "evidence_source": "גמרא"
-  },
-  {
-   "source": "41",
-   "target": "13",
-   "type": "teacher",
-   "strength": 5,
-   "period": "תנאים",
-   "context_he": "לימד בבית מדרש",
-   "evidence_source": "תלמודי"
-  },
-  {
-   "source": "100",
-   "target": "45",
-   "type": "teacher",
-   "strength": 4,
-   "period": "ראשונים",
-   "context_he": "היה המורה שלו",
-   "evidence_source": "היסטוריה"
-  },
-  {
-   "source": "50",
-   "target": "18",
-   "type": "teacher",
-   "strength": 4,
-   "period": "אמוראים",
-   "context_he": "הורה בדברים חשובים",
-   "evidence_source": "סוגיות"
-  },
-  {
-   "source": "329",
-   "target": "80",
-   "type": "influence",
-   "strength": 3,
-   "period": "ראשונים",
-   "context_he": "השפיע על שיטתו",
-   "evidence_source": "היסטוריה"
-  },
-  {
-   "source": "120",
-   "target": "126",
-   "type": "influence",
-   "strength": 4,
-   "period": "אחרונים",
-   "context_he": "השפעה משמעותית",
-   "evidence_source": "מחקר"
-  },
-  {
-   "source": "343",
-   "target": "65",
-   "type": "oppose",
-   "strength": 4,
-   "period": "ראשונים",
-   "context_he": "חלוקת דעות חריפה",
-   "evidence_source": "כתבים"
-  },
-  {
-   "source": "150",
-   "target": "155",
-   "type": "oppose",
-   "strength": 3,
-   "period": "אחרונים",
-   "context_he": "מחלוקת הלכתית",
-   "evidence_source": "פולמוס"
-  },
-  {
-   "source": "351",
-   "target": "356",
-   "type": "oppose",
-   "strength": 4,
-   "period": "ראשונים",
-   "context_he": "התנגדות לשיטה",
-   "evidence_source": "ספרים"
-  },
-  {
-   "source": "332",
-   "target": "344",
-   "type": "predecessor",
-   "strength": 3,
-   "period": "תנאים",
-   "context_he": "דור קודם",
-   "evidence_source": "סדר הדורות"
-  },
-  {
-   "source": "110",
-   "target": "341",
-   "type": "predecessor",
-   "strength": 4,
-   "period": "ראשונים",
-   "context_he": "הקדימו בדורות",
-   "evidence_source": "כרונולוגיה"
-  },
-  {
-   "source": "190",
-   "target": "195",
-   "type": "predecessor",
-   "strength": 3,
-   "period": "עת חדשה",
-   "context_he": "קדומים בזמן",
-   "evidence_source": "היסטוריה"
-  },
-  {
-   "source": "262",
-   "target": "35",
-   "type": "contemporary",
-   "strength": 3,
-   "period": "תנאים",
-   "context_he": "חברים בדורם",
-   "evidence_source": "סוגיות"
-  },
-  {
-   "source": "140",
-   "target": "196",
-   "type": "contemporary",
-   "strength": 4,
-   "period": "אחרונים",
-   "context_he": "דור אחד בדיוק",
-   "evidence_source": "ספרים"
-  },
-  {
-   "source": "170",
-   "target": "175",
-   "type": "contemporary",
-   "strength": 3,
-   "period": "ראשונים",
-   "context_he": "בעלי תקופה",
-   "evidence_source": "נתונים"
-  },
-  {
-   "source": "70",
-   "target": "72",
-   "type": "family",
-   "strength": 5,
-   "period": "ראשונים",
-   "context_he": "אב ובן",
-   "evidence_source": "גנאלוגיה"
-  },
-  {
-   "source": "130",
-   "target": "135",
-   "type": "family",
-   "strength": 4,
-   "period": "אחרונים",
-   "context_he": "קרובים משפחה",
-   "evidence_source": "תוכן"
-  },
-  {
-   "source": "160",
-   "target": "165",
-   "type": "family",
-   "strength": 5,
-   "period": "אחרונים",
-   "context_he": "אישה ובעלה",
-   "evidence_source": "תיעוד"
-  },
-  {
-   "source": "2",
-   "target": "17",
-   "type": "teacher"
-  },
-  {
-   "source": "2",
-   "target": "388",
-   "type": "teacher"
-  },
-  {
-   "source": "2",
-   "target": "443",
-   "type": "teacher"
-  },
-  {
-   "source": "182",
-   "target": "47",
-   "type": "student"
-  },
-  {
-   "source": "182",
-   "target": "300",
-   "type": "student"
-  },
-  {
-   "source": "16",
-   "target": "173",
-   "type": "student"
-  },
-  {
-   "source": "16",
-   "target": "335",
-   "type": "teacher"
-  },
-  {
-   "source": "16",
-   "target": "336",
-   "type": "teacher"
-  },
-  {
-   "source": "8",
-   "target": "113",
-   "type": "student"
-  },
-  {
-   "source": "8",
-   "target": "341",
-   "type": "teacher"
-  },
-  {
-   "source": "8",
-   "target": "196",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "41",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "424",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "443",
-   "type": "student"
-  },
-  {
-   "source": "262",
-   "target": "176",
-   "type": "teacher"
-  },
-  {
-   "source": "262",
-   "target": "177",
-   "type": "teacher"
-  },
-  {
-   "source": "262",
-   "target": "196",
-   "type": "teacher"
-  },
-  {
-   "source": "262",
-   "target": "340",
-   "type": "teacher"
-  },
-  {
-   "source": "262",
-   "target": "41",
-   "type": "teacher"
-  },
-  {
-   "source": "262",
-   "target": "168",
-   "type": "teacher"
-  },
-  {
-   "source": "262",
-   "target": "336",
-   "type": "teacher"
-  },
-  {
-   "source": "262",
-   "target": "465",
-   "type": "student"
-  },
-  {
-   "source": "262",
-   "target": "467",
-   "type": "teacher"
-  },
-  {
-   "source": "262",
-   "target": "9",
-   "type": "family"
-  },
-  {
-   "source": "262",
-   "target": "192",
-   "type": "family"
-  },
-  {
-   "source": "262",
-   "target": "12",
-   "type": "teacher"
-  },
-  {
-   "source": "262",
-   "target": "62",
-   "type": "teacher"
-  },
-  {
-   "source": "262",
-   "target": "443",
-   "type": "teacher"
-  },
-  {
-   "source": "262",
-   "target": "164",
-   "type": "teacher"
-  },
-  {
-   "source": "23",
-   "target": "335",
-   "type": "student"
-  },
-  {
-   "source": "262",
-   "target": "74",
-   "type": "teacher"
-  },
-  {
-   "source": "262",
-   "target": "341",
-   "type": "teacher"
-  },
-  {
-   "source": "262",
-   "target": "472",
-   "type": "teacher"
-  },
-  {
-   "source": "262",
-   "target": "335",
-   "type": "teacher"
-  },
-  {
-   "source": "262",
-   "target": "468",
-   "type": "teacher"
-  },
-  {
-   "source": "182",
-   "target": "41",
-   "type": "teacher"
-  },
-  {
-   "source": "182",
-   "target": "334",
-   "type": "teacher"
-  },
-  {
-   "source": "182",
-   "target": "294",
-   "type": "student"
-  },
-  {
-   "source": "182",
-   "target": "44",
-   "type": "teacher"
-  },
-  {
-   "source": "182",
-   "target": "433",
-   "type": "teacher"
-  },
-  {
-   "source": "182",
-   "target": "443",
-   "type": "student"
-  },
-  {
-   "source": "183",
-   "target": "438",
-   "type": "teacher"
-  },
-  {
-   "source": "345",
-   "target": "267",
-   "type": "family"
-  },
-  {
-   "source": "4",
-   "target": "17",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "431",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "443",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "47",
-   "type": "student"
-  },
-  {
-   "source": "4",
-   "target": "273",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "314",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "449",
-   "type": "teacher"
-  },
-  {
-   "source": "67",
-   "target": "128",
-   "type": "student"
-  },
-  {
-   "source": "262",
-   "target": "154",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "47",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "445",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "25",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "426",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "174",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "428",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "49",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "427",
-   "type": "teacher"
-  },
-  {
-   "source": "262",
-   "target": "331",
-   "type": "family"
-  },
-  {
-   "source": "24",
-   "target": "41",
-   "type": "family"
-  },
-  {
-   "source": "24",
-   "target": "192",
-   "type": "teacher"
-  },
-  {
-   "source": "81",
-   "target": "344",
-   "type": "student"
-  },
-  {
-   "source": "81",
-   "target": "28",
-   "type": "teacher"
-  },
-  {
-   "source": "81",
-   "target": "273",
-   "type": "family"
-  },
-  {
-   "source": "190",
-   "target": "267",
-   "type": "teacher"
-  },
-  {
-   "source": "437",
-   "target": "7",
-   "type": "teacher"
-  },
-  {
    "source": "438",
    "target": "437",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "467",
-   "type": "student"
-  },
-  {
-   "source": "4",
-   "target": "113",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "74",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "192",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "331",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "442",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "41",
-   "type": "family"
-  },
-  {
-   "source": "4",
-   "target": "435",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "335",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "336",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "267",
-   "type": "family"
-  },
-  {
-   "source": "4",
-   "target": "44",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "151",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "395",
-   "type": "student"
-  },
-  {
-   "source": "4",
-   "target": "310",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "415",
-   "type": "student"
-  },
-  {
-   "source": "4",
-   "target": "464",
-   "type": "student"
-  },
-  {
-   "source": "2",
-   "target": "41",
-   "type": "student"
-  },
-  {
-   "source": "2",
-   "target": "339",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "50",
-   "type": "student"
-  },
-  {
-   "source": "4",
-   "target": "50",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "471",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "189",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "340",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "264",
-   "type": "student"
-  },
-  {
-   "source": "4",
-   "target": "64",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "70",
-   "type": "student"
-  },
-  {
-   "source": "4",
-   "target": "76",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "453",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "457",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "458",
-   "type": "student"
-  },
-  {
-   "source": "4",
-   "target": "395",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "457",
-   "type": "student"
-  },
-  {
-   "source": "4",
-   "target": "452",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "344",
-   "type": "student"
-  },
-  {
-   "source": "4",
-   "target": "273",
-   "type": "student"
-  },
-  {
-   "source": "4",
-   "target": "408",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "70",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "467",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "319",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "449",
-   "type": "student"
-  },
-  {
-   "source": "4",
-   "target": "356",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "407",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "344",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "51",
-   "type": "student"
-  },
-  {
-   "source": "4",
-   "target": "312",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "327",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "41",
-   "type": "student"
-  },
-  {
-   "source": "4",
-   "target": "44",
-   "type": "student"
-  },
-  {
-   "source": "4",
-   "target": "46",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "51",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "279",
-   "type": "student"
-  },
-  {
-   "source": "4",
-   "target": "287",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "294",
-   "type": "student"
-  },
-  {
-   "source": "4",
-   "target": "469",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "436",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "458",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "293",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "415",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "50",
-   "type": "family"
-  },
-  {
-   "source": "4",
-   "target": "317",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "12",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "41",
-   "type": "oppose"
-  },
-  {
-   "source": "4",
-   "target": "460",
-   "type": "teacher"
-  },
-  {
-   "source": "12",
-   "target": "344",
-   "type": "teacher"
-  },
-  {
-   "source": "12",
-   "target": "41",
-   "type": "teacher"
-  },
-  {
-   "source": "12",
-   "target": "113",
-   "type": "teacher"
-  },
-  {
-   "source": "12",
-   "target": "335",
-   "type": "teacher"
-  },
-  {
-   "source": "12",
-   "target": "22",
-   "type": "teacher"
-  },
-  {
-   "source": "12",
-   "target": "79",
-   "type": "teacher"
-  },
-  {
-   "source": "12",
-   "target": "443",
-   "type": "teacher"
-  },
-  {
-   "source": "12",
-   "target": "17",
-   "type": "teacher"
-  },
-  {
-   "source": "12",
-   "target": "41",
-   "type": "student"
-  },
-  {
-   "source": "12",
-   "target": "433",
-   "type": "teacher"
-  },
-  {
-   "source": "448",
-   "target": "268",
-   "type": "teacher"
-  },
-  {
-   "source": "448",
-   "target": "340",
    "type": "teacher"
   },
   {
@@ -11952,28 +11052,28 @@
    "type": "family"
   },
   {
-   "source": "449",
-   "target": "264",
+   "source": "264",
+   "target": "449",
    "type": "student"
   },
   {
-   "source": "134",
-   "target": "196",
+   "source": "196",
+   "target": "134",
    "type": "student"
   },
   {
-   "source": "28",
-   "target": "273",
+   "source": "273",
+   "target": "28",
    "type": "student"
   },
   {
-   "source": "156",
-   "target": "173",
+   "source": "173",
+   "target": "156",
    "type": "student"
   },
   {
-   "source": "464",
-   "target": "415",
+   "source": "415",
+   "target": "464",
    "type": "student"
   },
   {
@@ -11982,54 +11082,21 @@
    "type": "student"
   },
   {
-   "source": "582",
-   "target": "32",
+   "source": "340",
+   "target": "144",
    "type": "student"
   },
   {
-   "source": "144",
-   "target": "340",
-   "type": "student"
+   "source": "344",
+   "target": "28",
+   "type": "influence",
+   "evidence_source": "הורד מקשר רב–תלמיד: שנות חייהם אינן חופפות; לכל היותר למד מספריו"
   },
   {
-   "source": "28",
-   "target": "344",
-   "type": "student"
-  },
-  {
-   "source": "583",
-   "target": "458",
-   "type": "student"
-  },
-  {
-   "source": "498",
-   "target": "568",
-   "type": "student"
-  },
-  {
-   "source": "287",
-   "target": "393",
-   "type": "student"
-  },
-  {
-   "source": "426",
-   "target": "568",
-   "type": "student"
-  },
-  {
-   "source": "502",
-   "target": "294",
-   "type": "student"
-  },
-  {
-   "source": "583",
-   "target": "70",
-   "type": "student"
-  },
-  {
-   "source": "4",
-   "target": "435",
-   "type": "student"
+   "source": "294",
+   "target": "502",
+   "type": "influence",
+   "evidence_source": "הורד מקשר רב–תלמיד: שנות חייהם אינן חופפות; לכל היותר למד מספריו"
   },
   {
    "source": "151",
@@ -12047,24 +11114,15 @@
    "type": "student"
   },
   {
-   "source": "490",
-   "target": "177",
-   "type": "student"
-  },
-  {
    "source": "432",
    "target": "467",
    "type": "student"
   },
   {
-   "source": "425",
-   "target": "449",
-   "type": "student"
-  },
-  {
-   "source": "273",
-   "target": "22",
-   "type": "student"
+   "source": "22",
+   "target": "273",
+   "type": "influence",
+   "evidence_source": "הורד מקשר רב–תלמיד: שנות חייהם אינן חופפות; לכל היותר למד מספריו"
   },
   {
    "source": "146",
@@ -12072,44 +11130,27 @@
    "type": "student"
   },
   {
-   "source": "287",
-   "target": "44",
+   "source": "336",
+   "target": "154",
    "type": "student"
   },
   {
-   "source": "154",
-   "target": "336",
-   "type": "student"
+   "source": "22",
+   "target": "261",
+   "type": "influence",
+   "evidence_source": "הורד מקשר רב–תלמיד: שנות חייהם אינן חופפות; לכל היותר למד מספריו"
   },
   {
-   "source": "261",
-   "target": "22",
-   "type": "student"
-  },
-  {
-   "source": "565",
-   "target": "192",
-   "type": "student"
-  },
-  {
-   "source": "339",
-   "target": "568",
-   "type": "student"
-  },
-  {
-   "source": "469",
-   "target": "294",
-   "type": "student"
+   "source": "192",
+   "target": "565",
+   "type": "influence",
+   "evidence_source": "הורד מקשר רב–תלמיד: שנות חייהם אינן חופפות; לכל היותר למד מספריו"
   },
   {
    "source": "582",
    "target": "41",
-   "type": "student"
-  },
-  {
-   "source": "287",
-   "target": "390",
-   "type": "student"
+   "type": "influence",
+   "evidence_source": "הורד מקשר רב–תלמיד: שנות חייהם אינן חופפות; לכל היותר למד מספריו"
   },
   {
    "source": "453",
@@ -12122,39 +11163,21 @@
    "type": "student"
   },
   {
-   "source": "585",
-   "target": "331",
-   "type": "teacher"
-  },
-  {
-   "source": "583",
-   "target": "453",
-   "type": "teacher"
-  },
-  {
    "source": "425",
    "target": "319",
    "type": "teacher"
   },
   {
-   "source": "169",
-   "target": "568",
-   "type": "teacher"
-  },
-  {
-   "source": "126",
-   "target": "568",
-   "type": "teacher"
-  },
-  {
-   "source": "315",
-   "target": "41",
-   "type": "teacher"
+   "source": "41",
+   "target": "315",
+   "type": "influence",
+   "evidence_source": "הורד מקשר רב–תלמיד: שנות חייהם אינן חופפות; לכל היותר למד מספריו"
   },
   {
    "source": "39",
    "target": "113",
-   "type": "teacher"
+   "type": "influence",
+   "evidence_source": "הורד מקשר רב–תלמיד: 810 שנים בין לידותיהם; לכל היותר למד מספריו"
   },
   {
    "source": "319",
@@ -12167,39 +11190,14 @@
    "type": "oppose"
   },
   {
-   "source": "579",
-   "target": "66",
-   "type": "oppose"
-  },
-  {
    "source": "126",
    "target": "443",
    "type": "oppose"
   },
   {
    "source": "12",
-   "target": "568",
-   "type": "oppose"
-  },
-  {
-   "source": "93",
-   "target": "568",
-   "type": "oppose"
-  },
-  {
-   "source": "12",
    "target": "41",
    "type": "oppose"
-  },
-  {
-   "source": "424",
-   "target": "568",
-   "type": "influence"
-  },
-  {
-   "source": "579",
-   "target": "64",
-   "type": "influence"
   },
   {
    "source": "39",
@@ -12214,11 +11212,6 @@
   {
    "source": "352",
    "target": "189",
-   "type": "influence"
-  },
-  {
-   "source": "458",
-   "target": "568",
    "type": "influence"
   },
   {

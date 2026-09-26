@@ -2,48 +2,48 @@
   "nodes": [],
   "links": [
     {
-      "source": "anc-1",
-      "target": "anc-2",
+      "source": "555",
+      "target": "571",
       "type": "family"
     },
     {
-      "source": "anc-2",
-      "target": "anc-3",
+      "source": "571",
+      "target": "570",
       "type": "family"
     },
     {
-      "source": "anc-3",
-      "target": "anc-4",
+      "source": "570",
+      "target": "574",
       "type": "predecessor"
     },
     {
-      "source": "anc-4",
+      "source": "574",
       "target": "anc-5",
       "type": "family"
     },
     {
-      "source": "anc-4",
+      "source": "574",
       "target": "389",
       "type": "predecessor"
     },
     {
       "source": "389",
-      "target": "anc-7",
+      "target": "596",
       "type": "predecessor"
     },
     {
-      "source": "anc-7",
-      "target": "anc-8",
+      "source": "596",
+      "target": "557",
       "type": "teacher"
     },
     {
-      "source": "anc-8",
-      "target": "anc-9",
+      "source": "557",
+      "target": "595",
       "type": "family"
     },
     {
-      "source": "anc-9",
-      "target": "anc-10",
+      "source": "595",
+      "target": "572",
       "type": "predecessor"
     }
   ],

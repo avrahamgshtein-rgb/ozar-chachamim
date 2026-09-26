@@ -172,22 +172,25 @@ export function Comparator({ locale, onClose }: ComparatorProps) {
   const [sageA, sageB] = comparatorSages
   const isHe = locale === 'he'
 
-  // Shared connections (sages both A and B are connected to)
-  const neighborsA = new Set(
+  // Shared connections: the intersection of A's and B's neighbour sets.
+  // (Testing each of B's edges for "either end is A's neighbour" was wrong:
+  // when A and B are directly linked, B itself is A's neighbour, so every one
+  // of B's edges passed and all of B's neighbours were reported as shared.)
+  const neighborsOf = (id: string) => new Set(
     connections
-      .filter(c => sageA && (c.source === sageA.id || c.target === sageA.id))
-      .map(c => sageA && c.source === sageA.id ? c.target : c.source)
+      .filter(c => c.source === id || c.target === id)
+      .map(c => c.source === id ? c.target : c.source)
   )
-  const sharedConnections = sageB
-    ? connections.filter(c =>
-        (c.source === sageB.id || c.target === sageB.id) &&
-        (neighborsA.has(c.source) || neighborsA.has(c.target))
-      ).map(c => {
-        const otherId = (c.source === sageB.id ? c.target : c.source)
-        return { sage: sageMap.get(otherId), type: c.type }
-      }).filter(x => x.sage && x.sage.id !== sageA?.id && x.sage.id !== sageB?.id)
-      .slice(0, 6)
+  const sharedConnections: Sage[] = sageA && sageB
+    ? (() => {
+        const neighborsB = neighborsOf(sageB.id)
+        return [...neighborsOf(sageA.id)]
+          .filter(id => neighborsB.has(id) && id !== sageA.id && id !== sageB.id)
+          .map(id => sageMap.get(id))
+          .filter((s): s is Sage => !!s)
+      })()
     : []
+  const SHARED_SHOWN = 12
 
   // Direct path
   const rawPath = (sageA && sageB) ? findPath(sageA.id, sageB.id, connections) : null
@@ -273,12 +276,11 @@ export function Comparator({ locale, onClose }: ComparatorProps) {
               {isHe ? `קשרים משותפים (${sharedConnections.length})` : `Shared connections (${sharedConnections.length})`}
             </p>
             <div className="flex flex-wrap gap-2">
-              {sharedConnections.map(({ sage, type }, i) => {
-                if (!sage) return null
+              {sharedConnections.slice(0, SHARED_SHOWN).map(sage => {
                 const color = ERA_COLORS[sage.period] ?? '#7a6550'
                 return (
                   <button
-                    key={i}
+                    key={sage.id}
                     onClick={() => { selectSage(sage); onClose() }}
                     className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-sans border transition-all hover:border-ink-500/60"
                     style={{ background: `${color}10`, borderColor: `${color}30`, color: 'var(--ink-300)' }}
@@ -288,6 +290,11 @@ export function Comparator({ locale, onClose }: ComparatorProps) {
                   </button>
                 )
               })}
+              {sharedConnections.length > SHARED_SHOWN && (
+                <span className="self-center text-[11px] font-sans text-ink-500">
+                  +{sharedConnections.length - SHARED_SHOWN}
+                </span>
+              )}
             </div>
           </div>
         )}

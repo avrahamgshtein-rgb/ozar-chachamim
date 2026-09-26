@@ -23,10 +23,10 @@ import { GeographyMobileDrawer } from '@/components/viz/GeographyMobileDrawer'
 import { useRef } from 'react'
 import { useAppStore } from '@/store/useAppStore'
 import { parseURLState, updateURLWithState } from '@/lib/urlState'
-import { fetchSages, fetchConnections, fetchLocalGraphData } from '@/lib/supabase'
 import { fetchContentOverlay, applyOverlay } from '@/lib/contentOverlay'
 import { loadAppShellData } from '@/lib/appShellDataLoader'
 import type { Locale, Tab } from '@/lib/types'
+import type { CorpusStats } from '@/components/about/AboutContent'
 
 // Dynamic imports — browser-only visualization libraries.
 // Each tab shows a skeleton screen while its chunk loads.
@@ -69,9 +69,11 @@ interface AppShellProps {
   locale: Locale
   initialTotal: number
   initialLastUpdate: string
+  /** Server-computed corpus totals, shown by the About tab until data loads. */
+  initialStats?: CorpusStats
 }
 
-export function AppShell({ locale, initialTotal, initialLastUpdate }: AppShellProps) {
+export function AppShell({ locale, initialTotal, initialLastUpdate, initialStats }: AppShellProps) {
   const otherLocale: Locale = locale === 'he' ? 'en' : 'he'
   const [isGeographyDrawerOpen, setIsGeographyDrawerOpen] = useState(false)
   const urlInitializedRef = useRef(false)
@@ -100,35 +102,34 @@ export function AppShell({ locale, initialTotal, initialLastUpdate }: AppShellPr
   useEffect(() => {
     setData([], [], initialTotal, initialLastUpdate)
     ;(async () => {
-      // These three are independent, so they run concurrently rather than in
-      // series. loadAppShellData still decides whether Supabase or the static
-      // file wins; fetching the file early only removes a round trip.
-      const [sages, connections, dataJsonData, overlay] = await Promise.all([
-        fetchSages(),
-        fetchConnections(),
-        fetchLocalGraphData(),
-        fetchContentOverlay(locale),
-      ])
-      const supabaseData = { sages, connections }
+      // The public graph comes only from the static pipeline (data.json +
+      // supplements + data-patch.json), the same corpus the sage pages read.
+      // Supabase is not consulted here: its sages/connections tables are an
+      // old snapshot, and waiting on it (no timeout) left "0 חכמים" and an
+      // empty graph on screen for seconds. Supabase stays for auth, chat and
+      // personal features only.
+      const [{ sages: normalizedSages, connections: normalizedConnections, quality }, overlay] =
+        await Promise.all([
+          loadAppShellData(),
+          fetchContentOverlay(locale),
+        ])
 
-      // Merge canonical + supplements, apply patches via unified pipeline
-      const { sages: normalizedSages, connections: normalizedConnections, quality, source } =
-        await loadAppShellData(supabaseData, dataJsonData)
-
-      if (source === 'fallback') {
-        console.log('[AppShell] ↪ using data.json fallback (richer dataset)')
-      }
       console.log(`[AppShell] 📊 merged: ${quality.canonical_count} canonical + ${quality.supplement_count} supplement = ${quality.total_sages} sages`)
 
       // Content localization: merge per-locale translated fields
       const localizedSages = applyOverlay(normalizedSages, overlay)
 
       setData(localizedSages, normalizedConnections, localizedSages.length, initialLastUpdate)
+
       console.log(`[AppShell] ✅ ${localizedSages.length} sages, ${normalizedConnections.length} connections (deduped: ${quality.total_connections})`)
     })()
   }, [initialTotal, initialLastUpdate, setData, locale])
 
-  // URL state: parse and apply on mount and back/forward navigation
+  // URL state: parse and apply on mount and back/forward navigation.
+  // Tab and filters apply at once (setData narrows the dataset by them when it
+  // arrives), but ?sage= can only resolve against loaded data — on mount the
+  // sage list is still empty — so it is parked until the data effect below.
+  const pendingURLSageRef = useRef<string | null>(null)
   useEffect(() => {
     if (typeof window === 'undefined') return
 
@@ -136,7 +137,7 @@ export function AppShell({ locale, initialTotal, initialLastUpdate }: AppShellPr
       const state = parseURLState(window.location.search)
       const store = useAppStore.getState()
       store.applyNavigationState(state.tab, state.sage, state.regions, state.periods)
-      urlInitializedRef.current = true
+      if (!store.sageMap.size) pendingURLSageRef.current = state.sage
     }
 
     // Apply on mount
@@ -151,17 +152,32 @@ export function AppShell({ locale, initialTotal, initialLastUpdate }: AppShellPr
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  // Once data first arrives: open the parked ?sage=, then allow URL writes.
+  // Until then the writer below stays off, so it cannot rewrite the URL from
+  // the not-yet-applied state and drop the sage.
+  useEffect(() => {
+    if (!sageMap.size || urlInitializedRef.current) return
+    const id = pendingURLSageRef.current
+    pendingURLSageRef.current = null
+    const sage = id ? sageMap.get(id) : undefined
+    if (sage && !useAppStore.getState().selectedSageId) selectSage(sage)
+    urlInitializedRef.current = true
+  }, [sageMap, selectSage])
+
   // Write URL when state changes, but not during initialization/restoration
   useEffect(() => {
     if (typeof window === 'undefined') return
     if (!sageMap.size) return
     if (!urlInitializedRef.current) return
 
+    // Read the store directly: in the render where the data effect above
+    // just applied ?sage=, this effect's closure still holds the old values.
+    const s = useAppStore.getState()
     const url = updateURLWithState({
-      tab: activeTab !== 'graph' ? activeTab : null,
-      sage: selectedSageId,
-      regions: filters.region,
-      periods: filters.period,
+      tab: s.activeTab !== 'graph' ? s.activeTab : null,
+      sage: s.selectedSageId,
+      regions: s.filters.region,
+      periods: s.filters.period,
     })
 
     window.history.replaceState({}, '', url)
@@ -197,6 +213,7 @@ export function AppShell({ locale, initialTotal, initialLastUpdate }: AppShellPr
           locale={locale}
           isGeographyDrawerOpen={isGeographyDrawerOpen}
           setIsGeographyDrawerOpen={setIsGeographyDrawerOpen}
+          initialStats={initialStats}
         />
       </main>
 
@@ -241,11 +258,13 @@ function CanvasArea({
   locale,
   isGeographyDrawerOpen,
   setIsGeographyDrawerOpen,
+  initialStats,
 }: {
   activeTab: string
   locale: Locale
   isGeographyDrawerOpen: boolean
   setIsGeographyDrawerOpen: (open: boolean) => void
+  initialStats?: CorpusStats
 }) {
   // Stage 4 — Geography render mode. Purely presentational: filters and the
   // selected sage live in the store, so switching modes carries both across.
@@ -326,10 +345,13 @@ function CanvasArea({
             ))}
           </div>
 
-          {/* Mobile geography button */}
+          {/* Mobile geography button. bottom-[9.25rem]: the fixed tab bar
+              (bottom 1–5rem) and the search/chat buttons (bottom 5–8.5rem)
+              paint above this isolated area, so lower down a tap landed on
+              them instead. z-[1001]: clears Leaflet's panes (200–800). */}
           <button
             onClick={() => setIsGeographyDrawerOpen(true)}
-            className="md:hidden absolute bottom-4 left-4 z-30 px-3 py-2 bg-gold-500/90 hover:bg-gold-400 text-ink-900 font-sans font-bold text-xs rounded-md transition-colors"
+            className="md:hidden absolute bottom-[9.25rem] end-4 z-[1001] px-3 py-2 bg-gold-500/90 hover:bg-gold-400 text-ink-900 font-sans font-bold text-xs rounded-md shadow-glass transition-colors"
           >
             📍 {tr(locale, 'גיאוגרפיה', 'Geography', 'География')}
           </button>
@@ -378,7 +400,7 @@ function CanvasArea({
       )}
 
       {/* About page */}
-      {activeTab === 'about' && <AboutContent locale={locale} />}
+      {activeTab === 'about' && <AboutContent locale={locale} initialStats={initialStats} />}
     </div>
   )
 }
