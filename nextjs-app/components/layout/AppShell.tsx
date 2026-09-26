@@ -132,7 +132,11 @@ export function AppShell({ locale, initialTotal, initialLastUpdate, initialStats
     })()
   }, [initialTotal, initialLastUpdate, setData, locale])
 
-  // URL state: parse and apply on mount and back/forward navigation
+  // URL state: parse and apply on mount and back/forward navigation.
+  // Tab and filters apply at once (setData narrows the dataset by them when it
+  // arrives), but ?sage= can only resolve against loaded data — on mount the
+  // sage list is still empty — so it is parked until the data effect below.
+  const pendingURLSageRef = useRef<string | null>(null)
   useEffect(() => {
     if (typeof window === 'undefined') return
 
@@ -140,7 +144,7 @@ export function AppShell({ locale, initialTotal, initialLastUpdate, initialStats
       const state = parseURLState(window.location.search)
       const store = useAppStore.getState()
       store.applyNavigationState(state.tab, state.sage, state.regions, state.periods)
-      urlInitializedRef.current = true
+      if (!store.sageMap.size) pendingURLSageRef.current = state.sage
     }
 
     // Apply on mount
@@ -155,17 +159,32 @@ export function AppShell({ locale, initialTotal, initialLastUpdate, initialStats
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  // Once data first arrives: open the parked ?sage=, then allow URL writes.
+  // Until then the writer below stays off, so it cannot rewrite the URL from
+  // the not-yet-applied state and drop the sage.
+  useEffect(() => {
+    if (!sageMap.size || urlInitializedRef.current) return
+    const id = pendingURLSageRef.current
+    pendingURLSageRef.current = null
+    const sage = id ? sageMap.get(id) : undefined
+    if (sage && !useAppStore.getState().selectedSageId) selectSage(sage)
+    urlInitializedRef.current = true
+  }, [sageMap, selectSage])
+
   // Write URL when state changes, but not during initialization/restoration
   useEffect(() => {
     if (typeof window === 'undefined') return
     if (!sageMap.size) return
     if (!urlInitializedRef.current) return
 
+    // Read the store directly: in the render where the data effect above
+    // just applied ?sage=, this effect's closure still holds the old values.
+    const s = useAppStore.getState()
     const url = updateURLWithState({
-      tab: activeTab !== 'graph' ? activeTab : null,
-      sage: selectedSageId,
-      regions: filters.region,
-      periods: filters.period,
+      tab: s.activeTab !== 'graph' ? s.activeTab : null,
+      sage: s.selectedSageId,
+      regions: s.filters.region,
+      periods: s.filters.period,
     })
 
     window.history.replaceState({}, '', url)
