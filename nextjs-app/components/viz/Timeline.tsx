@@ -8,6 +8,7 @@ import { ALL_PERIODS, ERA_COLORS, ERA_LABELS } from '@/lib/types'
 import type { Locale, Period, Sage } from '@/lib/types'
 import { useAppStore } from '@/store/useAppStore'
 import { cn, formatYear, formatYearRangeFor } from '@/lib/utils'
+import { displayName } from '@/lib/displayName'
 import { tr } from '@/lib/i18n'
 // Historical milestones — shared module (lib/milestones.ts), Masterplan §8
 import { ALL_MILESTONES } from '@/lib/milestones'
@@ -136,8 +137,7 @@ function dating(sage: Sage): { kind: DateKind; lo: number; mid: number; hi: numb
 /** Display name without the essay-title tail some labels carry
  *  ("הרב חיים דרוקמן – מנהיג ציונות דתית בדורנו" → "הרב חיים דרוקמן"). */
 function shortLabel(label: string): string {
-  let s = label.split(/\s+[–—-]\s+/)[0].trim()
-  s = s.replace(/\s*\([^)]*\d[^)]*\)/g, '').trim()           // "(910–970)"
+  let s = displayName(label)
   if (s.length > 24) s = s.replace(/\s*\([^)]*\)\s*/g, ' ').trim() // long: drop the parenthetical
   return s.length > 26 ? s.slice(0, 25).trimEnd() + '…' : s
 }
