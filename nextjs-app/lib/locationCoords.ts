@@ -28,19 +28,23 @@ export const LOCATION_COORDS: Record<string, { lat: number; lng: number }> = {
   'Bnei Brak':  { lat: 32.097,  lng: 34.821  },
   'חיפה':       { lat: 32.819,  lng: 34.989  },
   'תל אביב':    { lat: 32.085,  lng: 34.782  },
-  'צפון':       { lat: 33.0,    lng: 35.5    },
-  'דרום':       { lat: 31.0,    lng: 34.8    },
+  // Bare 'צפון'/'דרום' used to live here. As substrings they matched inside
+  // "צפון אפריקה" and "דרום צרפת" and pinned North African and French sages
+  // to the Galilee; directions are not places.
 
   // ── בבל / עיראק / פרס ──────────────────────────────────────────────────
-  'בבל':        { lat: 33.313,  lng: 44.361  },
-  'Babylon':    { lat: 33.313,  lng: 44.361  },
+  // בבל is Babylonia of the academies, anchored at the ruins of Babylon near
+  // Sura. It used to sit on Baghdad, a city founded in 762.
+  'בבל':        { lat: 32.542,  lng: 44.421  },
+  'Babylon':    { lat: 32.542,  lng: 44.421  },
   'בגדד':       { lat: 33.313,  lng: 44.361  },
   'בגדאד':      { lat: 33.313,  lng: 44.361  },
   'Baghdad':    { lat: 33.313,  lng: 44.361  },
-  'פומבדיתא':   { lat: 32.6,    lng: 43.8    },
-  'Pumbedita':  { lat: 32.6,    lng: 43.8    },
-  'סורא':       { lat: 32.5,    lng: 44.0    },
-  'Sura':       { lat: 32.5,    lng: 44.0    },
+  // Pumbedita is Fallujah on the Euphrates; Sura lay south, near Hillah.
+  'פומבדיתא':   { lat: 33.35,   lng: 43.78   },
+  'Pumbedita':  { lat: 33.35,   lng: 43.78   },
+  'סורא':       { lat: 32.35,   lng: 44.40   },
+  'Sura':       { lat: 32.35,   lng: 44.40   },
   'שושן':       { lat: 32.167,  lng: 48.267  },
   'פרס':        { lat: 32.427,  lng: 53.688  },
   'Persia':     { lat: 32.427,  lng: 53.688  },
@@ -114,7 +118,9 @@ export const LOCATION_COORDS: Record<string, { lat: number; lng: number }> = {
   'מץ':          { lat: 49.119,  lng: 6.176   },
   'טרואה':       { lat: 48.297,  lng: 4.071   },
   'Troyes':      { lat: 48.297,  lng: 4.071   },
-  'דמפייר':      { lat: 43.3,    lng: -0.2    },
+  // Dampierre of the Tosafists is in Champagne (Aube), near Troyes and
+  // Ramerupt, not in the Pyrenees where this entry used to point.
+  'דמפייר':      { lat: 48.56,   lng: 4.37    },
 
   // ── גרמניה / אשכנז ─────────────────────────────────────────────────────
   'גרמניה':      { lat: 51.166,  lng: 10.452  },
@@ -303,6 +309,7 @@ export const LOCATION_COORDS: Record<string, { lat: number; lng: number }> = {
   'מלאגה':       { lat: 36.72,  lng: -4.42  },
 
   'דמשק':        { lat: 33.51,  lng: 36.29  },
+  'סוריה':       { lat: 34.80,  lng: 38.00  },
   'צור':         { lat: 33.27,  lng: 35.20  },
   'עזה':         { lat: 31.50,  lng: 34.47  },
   'בית שאן':     { lat: 32.50,  lng: 35.50  },
@@ -312,7 +319,8 @@ export const LOCATION_COORDS: Record<string, { lat: number; lng: number }> = {
   'קרים':        { lat: 45.30,  lng: 34.40  },
   'אדריאנופול':  { lat: 41.68,  lng: 26.56  },
   'בורסה':       { lat: 40.19,  lng: 29.06  },
-  'נהרדעא':      { lat: 33.37,  lng: 44.30  },
+  // Nehardea stood on the Euphrates beside Pumbedita, not on the Tigris.
+  'נהרדעא':      { lat: 33.25,  lng: 43.95  },
   'מחוזא':       { lat: 33.10,  lng: 44.50  },
   'צנעא':        { lat: 15.35,  lng: 44.21  },
   'תעיז':        { lat: 13.58,  lng: 44.02  },
@@ -330,20 +338,295 @@ export const LOCATION_COORDS: Record<string, { lat: number; lng: number }> = {
   'קליבלנד':     { lat: 41.50,  lng: -81.69 },
   'בולטימור':    { lat: 39.29,  lng: -76.61 },
   'לייקווד':     { lat: 40.10,  lng: -74.22 },
+
+  // ── תוספת: מקומות שהופיעו ב־location ולא נמצאו במילון ──────────────────
+  // Same standard as the block above: only places identifiable with
+  // confidence. Deliberately absent: 'כרמל' (the "כרמל, יהודה" of 1 Sam 25 is
+  // south of Hebron, not the mountain by Haifa) and 'כפרי' (a village near
+  // Sura with no agreed site).
+  'גרנדה':       { lat: 37.18,  lng: -3.60  },
+  'שילה':        { lat: 32.055, lng: 35.29  },
+  'בית לחם':     { lat: 31.705, lng: 35.20  },
+  'מצפה':        { lat: 31.886, lng: 35.217 },   // biblical Mizpah (Tell en-Nasbeh)
+  'מצפה רמון':   { lat: 30.61,  lng: 34.80  },
+  'גזר':         { lat: 31.859, lng: 34.92  },
+  'כפר עציון':   { lat: 31.652, lng: 35.117 },
+  'כפר הרא"ה':   { lat: 32.39,  lng: 34.92  },
+  'מושב פורת':   { lat: 32.30,  lng: 34.93  },
+  'נתניה':       { lat: 32.33,  lng: 34.86  },
+  'אשדוד':       { lat: 31.80,  lng: 34.65  },
+  'נהלל':        { lat: 32.69,  lng: 35.19  },
+  'שדות ים':     { lat: 32.49,  lng: 34.89  },
+  'גליל':        { lat: 32.85,  lng: 35.40  },
+  'שומרון':      { lat: 32.25,  lng: 35.20  },
+  'השרון':       { lat: 32.30,  lng: 34.90  },
+  'מואב':        { lat: 31.40,  lng: 35.75  },
+  'סיני':        { lat: 29.50,  lng: 33.90  },
+  'חרן':         { lat: 36.865, lng: 39.031 },
+  'פדן ארם':     { lat: 36.865, lng: 39.031 },
+  'חדייב':       { lat: 36.19,  lng: 44.01  },   // Adiabene, around Arbil
+  'פוסטאט':      { lat: 30.006, lng: 31.231 },
+  'לוב':         { lat: 31.0,   lng: 16.0   },   // coastal Tripolitania, where its Jews lived
+  'קלעת בן חמאד': { lat: 35.814, lng: 4.789 },
+  "טנג'יר":      { lat: 35.76,  lng: -5.83  },
+  'תאפיללת':     { lat: 31.30,  lng: -4.25  },
+  'מוזע':        { lat: 13.27,  lng: 43.52  },
+  'גיברלטר':     { lat: 36.14,  lng: -5.35  },
+  'קורפו':       { lat: 39.62,  lng: 19.92  },
+  'כרתים':       { lat: 35.24,  lng: 24.90  },
+  'קנדיה':       { lat: 35.34,  lng: 25.13  },
+  'זמורה':       { lat: 41.50,  lng: -5.75  },
+  'רמרו':        { lat: 48.518, lng: 4.293  },   // Ramerupt, Rabbeinu Tam's town
+  'נורמנדי':     { lat: 49.20,  lng: 0.40   },
+  'צפון צרפת':   { lat: 48.80,  lng: 3.00   },
+  'דרום צרפת':   { lat: 43.60,  lng: 3.90   },
+  'בזייה':       { lat: 43.344, lng: 3.216  },   // Béziers
+  'ארל':         { lat: 43.677, lng: 4.630  },   // Arles
+  'קרפנטרה':     { lat: 44.055, lng: 5.048  },
+  'ניס':         { lat: 43.70,  lng: 7.27   },
+  'אנטוורפן':    { lat: 51.22,  lng: 4.40   },
+  'דסאו':        { lat: 51.835, lng: 12.243 },
+  'הלברשטאדט':   { lat: 51.896, lng: 11.047 },
+  'ברגן-בלזן':   { lat: 52.758, lng: 9.908  },
+  'פרוסיה':      { lat: 53.40,  lng: 17.50  },
+  'דנציג':       { lat: 54.35,  lng: 18.65  },
+  'גריידיץ':     { lat: 52.23,  lng: 16.37  },   // Grätz / Grodzisk
+  'גוריציה':     { lat: 45.94,  lng: 13.62  },
+  'בודפשט':      { lat: 47.498, lng: 19.040 },
+  'סגד':         { lat: 46.253, lng: 20.148 },
+  'סרייבו':      { lat: 43.856, lng: 18.413 },
+  'יוגוסלביה':   { lat: 44.0,   lng: 20.5   },
+  'פודוליה':     { lat: 49.0,   lng: 27.5   },
+  'פרמישלאן':    { lat: 49.67,  lng: 24.56  },
+  'סוכטשוב':     { lat: 52.23,  lng: 20.24  },
+  'סלונים':      { lat: 53.09,  lng: 25.32  },
+  'לידא':        { lat: 53.89,  lng: 25.30  },
+  'טיקטין':      { lat: 53.20,  lng: 22.77  },
+  'סובאלק':      { lat: 54.10,  lng: 22.93  },
+  'ראזינאי':     { lat: 55.38,  lng: 23.12  },
+  'בלארוס':      { lat: 53.70,  lng: 27.90  },
+  'שקלוב':       { lat: 54.21,  lng: 30.29  },
+  'ליאדי':       { lat: 54.60,  lng: 30.92  },
+  "רוגצ'וב":     { lat: 53.09,  lng: 30.05  },
+  "צ'רניגוב":    { lat: 51.49,  lng: 31.29  },
+  'לטביה':       { lat: 56.90,  lng: 24.60  },
+  'ריגה':        { lat: 56.95,  lng: 24.11  },
+  'דווינסק':     { lat: 55.87,  lng: 26.53  },
+  'בויסק':       { lat: 56.41,  lng: 24.19  },
+  'רוסטוב':      { lat: 47.23,  lng: 39.72  },
+  'גאורגיה':     { lat: 42.30,  lng: 43.40  },
+  'כותאיסי':     { lat: 42.27,  lng: 42.70  },
+  'סקוטלנד':     { lat: 56.50,  lng: -4.20  },
+  'אירלנד':      { lat: 53.40,  lng: -8.00  },
+  'ברונקס':      { lat: 40.84,  lng: -73.87 },
+  'בוסטון':      { lat: 42.36,  lng: -71.06 },
+  'מזרח אירופה': { lat: 51.50,  lng: 25.0   },
+  'מרכז אירופה': { lat: 50.0,   lng: 15.0   },
+  'ביזנטיון':    { lat: 41.008, lng: 28.978 },
+  'האימפריה הרומית': { lat: 41.903, lng: 12.496 },
 }
 
-/** Place name → coords (exact match, then substring). */
-export function coordsForName(name: string | undefined | null): { lat: number; lng: number } | null {
-  if (!name) return null
-  if (LOCATION_COORDS[name]) return LOCATION_COORDS[name]
-  for (const [key, coords] of Object.entries(LOCATION_COORDS)) {
-    if (name.includes(key)) return coords
+// ── Aliases ───────────────────────────────────────────────────────────────
+// Spelling variants and English names → the one name the rest of the app
+// shows. The map, the place cohort and the place filter all speak the
+// canonical name, so "פרובאנס" and "פרובנס" are one cohort, not two. An alias
+// needs no coordinates of its own; it borrows its canonical place's.
+const PLACE_ALIASES: Record<string, string> = {
+  'Jerusalem': 'ירושלים', 'Israel': 'ארץ ישראל', 'ישראל': 'ארץ ישראל',
+  'ארץ כנען': 'ארץ ישראל', 'כנען': 'ארץ ישראל',
+  'Tiberias': 'טבריה', 'Safed': 'צפת', 'Acre': 'עכו', 'Hebron': 'חברון',
+  'Bnei Brak': 'בני ברק', 'מדבר סיני': 'סיני',
+  'Babylon': 'בבל', 'עיראק': 'בבל', 'בגדאד': 'בגדד', 'Baghdad': 'בגדד',
+  'Pumbedita': 'פומבדיתא', 'Sura': 'סורא', 'Persia': 'פרס', 'Aleppo': 'חלב',
+  'Egypt': 'מצרים', 'Cairo': 'קהיר', 'Alexandria': 'אלכסנדריה',
+  'Kairouan': 'קירואן', 'Tunis': 'טוניס', 'פס': 'פאס', 'Fez': 'פאס',
+  'Morocco': 'מרוקו', 'Algeria': "אלג'יריה", 'Tripoli': 'טריפולי',
+  "ג'רבא": "ג'רבה",
+  'Spain': 'ספרד', 'קורדובא': 'קורדובה', 'Cordoba': 'קורדובה',
+  'Toledo': 'טולדו', 'טולידו': 'טולדו', 'Barcelona': 'ברצלונה', 'Girona': 'גירונה',
+  'קסטיליה': 'קאסטיליה', 'Lisbon': 'ליסבון', 'מלגה': 'מלאגה',
+  'אל-אנדלוס': 'ספרד המוסלמית', 'אנדלוסיה': 'ספרד המוסלמית',
+  'France': 'צרפת', 'Paris': 'פריז', 'פרובאנס': 'פרובנס', 'Provence': 'פרובנס',
+  'נרבון': 'נרבונה', 'Narbonne': 'נרבונה', 'Montpellier': 'מונטפלייר',
+  'מונפלייה': 'מונטפלייר', 'Lunel': 'לוניל', 'Troyes': 'טרואה',
+  'בדרש': 'בזייה', 'טרינקטיי': 'ארל',
+  'Germany': 'גרמניה', 'Ashkenaz': 'אשכנז', 'Mainz': 'מגנצא', 'מיינץ': 'מגנצא',
+  'Worms': 'וורמייזא', 'Speyer': 'שפיירא', 'שפירא': 'שפיירא',
+  'Regensburg': 'רגנסבורג',
+  'Prague': 'פראג', 'Austria': 'אוסטריה', 'Vienna': 'וינה', 'Bratislava': 'פרשבורג',
+  'Poland': 'פולין', 'Vilna': 'וילנה', 'Vilnius': 'וילנה', 'Lithuania': 'ליטא',
+  'Lublin': 'לובלין', 'Galicia': 'גליציה', 'Volozhin': "וולוז'ין",
+  'Volozhyn': "וולוז'ין", 'Krakow': 'קרקוב', 'נובהרודוק': 'נובהרדוק',
+  'למברג': 'לבוב', 'ברין': 'ברנו',
+  'Russia': 'רוסיה', 'Moscow': 'מוסקבה', 'Ukraine': 'אוקראינה',
+  'Turkey': 'טורקיה', 'Constantinople': 'קושטא', 'Istanbul': 'קושטא',
+  'Salonika': 'סלוניקי', 'Thessaloniki': 'סלוניקי', 'Izmir': 'איזמיר',
+  'Italy': 'איטליה', 'Rome': 'רומא', 'Venice': 'ונציה', 'Padua': 'פדובה',
+  'פאדובה': 'פדובה', 'Livorno': 'ליבורנו', 'ליוורנו': 'ליבורנו',
+  'Greece': 'יוון', 'Athens': 'אתונה', 'Yemen': 'תימן', 'India': 'הודו',
+  'USA': 'ארה"ב', 'ארצות הברית': 'ארה"ב', 'Europe': 'אירופה',
+}
+
+// ── Place kinds ───────────────────────────────────────────────────────────
+// A location string often names a city and the land around it ("צפת, ארץ
+// ישראל", "טולדו (ספרד)"). The most specific place wins, so each canonical
+// name carries a rank. Anything not listed below is a city. 'area' sits under
+// country: continents, empires and macro-regions that span several countries
+// are the least useful thing to put a pin on.
+export type PlaceKind = 'city' | 'region' | 'country' | 'area'
+
+const COUNTRIES = [
+  'ארץ ישראל', 'בבל', 'פרס', 'מצרים', 'תוניסיה', 'מרוקו', "אלג'יריה", 'לוב',
+  'ספרד', 'פורטוגל', 'צרפת', 'גרמניה', 'אשכנז', 'אוסטריה', 'הונגריה', 'פולין',
+  'ליטא', 'לטביה', 'בלארוס', 'רוסיה', 'אוקראינה', 'טורקיה', 'יוון', 'איטליה',
+  'תימן', 'הודו', 'ארה"ב', 'אנגליה', 'הולנד', 'סקוטלנד', 'אירלנד', 'סרביה',
+  'יוגוסלביה', 'גאורגיה', 'סוריה',
+]
+const REGIONS = [
+  'יהודה', 'גליל', 'שומרון', 'השרון', 'מואב', 'סיני', 'פדן ארם', 'חדייב', 'קרים',
+  'ספרד המוסלמית', 'קטלוניה', 'קאסטיליה', 'אראגון', 'נבארה', 'מיורקה',
+  'סיציליה', 'כרתים', 'פרובנס', 'דרום צרפת', 'צפון צרפת', 'נורמנדי', 'סבויה',
+  'בוהמיה', 'מוראביה', 'גליציה', 'פודוליה', 'פרוסיה', 'תאפיללת',
+]
+const AREAS = [
+  'אירופה', 'מזרח אירופה', 'מרכז אירופה', 'צפון אפריקה', 'הבלקן',
+  "האימפריה העות'מאנית", 'האימפריה הרומית', 'ביזנטיון',
+]
+
+const KIND_OF = new Map<string, PlaceKind>([
+  ...COUNTRIES.map(n => [n, 'country'] as const),
+  ...REGIONS.map(n => [n, 'region'] as const),
+  ...AREAS.map(n => [n, 'area'] as const),
+])
+const KIND_RANK: Record<PlaceKind, number> = { city: 0, region: 1, country: 2, area: 3 }
+
+// ── Matching ──────────────────────────────────────────────────────────────
+// Free text is split on list punctuation, then gazetteer names are matched
+// as whole words, never as substrings — the substring matcher this replaces
+// found 'צפון' inside "צפון אפריקה" and 'פס' inside any word containing פס.
+
+/** Geresh/gershayim/maqaf variants → the ASCII forms the gazetteer uses. */
+function normalizePlaceText(s: string): string {
+  return s
+    .replace(/[׳‘’`´]/g, "'")
+    .replace(/[״“”]/g, '"')
+    .replace(/־/g, '-')
+}
+
+/** Separators between places in a location string: , ; / → ( ) – and kin. */
+const SEPARATORS = /\s+-\s+|[,;/→←()[\]–—:|\n]/
+
+/**
+ * One-letter Hebrew prepositions and conjunctions that fuse onto a name:
+ * "ליטא וירושלים", "טולידו שבספרד". Tried only when the bare word is not a
+ * place itself, so 'מיר' stays Mir and is never read as מ + יר.
+ */
+const HEBREW_PREFIXES = ['ו', 'ב', 'ל', 'מ', 'ש', 'ה', 'וב', 'ול', 'ומ', 'וה', 'שב', 'של', 'מה']
+
+interface Entry { words: string[]; name: string }
+
+/** First word → every gazetteer name starting with it, longest first. */
+const BY_FIRST_WORD: Map<string, Entry[]> = (() => {
+  const index = new Map<string, Entry[]>()
+  const add = (surface: string, name: string) => {
+    const words = normalizePlaceText(surface).split(/\s+/)
+    const bucket = index.get(words[0]) ?? []
+    bucket.push({ words, name })
+    index.set(words[0], bucket)
+  }
+  for (const key of Object.keys(LOCATION_COORDS)) add(key, PLACE_ALIASES[key] ?? key)
+  for (const [alias, name] of Object.entries(PLACE_ALIASES)) add(alias, name)
+  index.forEach(bucket => bucket.sort((a, b) => b.words.length - a.words.length))
+  return index
+})()
+
+export interface PlaceHit {
+  /** Canonical gazetteer name. */
+  name: string
+  kind: PlaceKind
+  lat: number
+  lng: number
+}
+
+function hitFor(name: string): PlaceHit | null {
+  const c = LOCATION_COORDS[name]
+  if (!c) return null
+  return { name, kind: KIND_OF.get(name) ?? 'city', lat: c.lat, lng: c.lng }
+}
+
+/** Longest gazetteer name starting at words[i], with or without a prefix. */
+function matchAt(words: string[], i: number): { name: string; length: number } | null {
+  const tryFirst = (first: string) => {
+    for (const e of BY_FIRST_WORD.get(first) ?? []) {
+      if (i + e.words.length > words.length) continue
+      let ok = true
+      for (let k = 1; k < e.words.length; k++) {
+        if (words[i + k] !== e.words[k]) { ok = false; break }
+      }
+      if (ok) return { name: e.name, length: e.words.length }
+    }
+    return null
+  }
+  const exact = tryFirst(words[i])
+  if (exact) return exact
+  for (const p of HEBREW_PREFIXES) {
+    if (words[i].length - p.length < 2 || !words[i].startsWith(p)) continue
+    const m = tryFirst(words[i].slice(p.length))
+    if (m) return m
   }
   return null
+}
+
+/**
+ * Every gazetteer place a free-text location names, in order of mention,
+ * each canonical place once.
+ */
+export function placeHits(text: string | undefined | null): PlaceHit[] {
+  if (!text) return []
+  const out: PlaceHit[] = []
+  const seen = new Set<string>()
+  for (const token of normalizePlaceText(text).split(SEPARATORS)) {
+    const words = token.trim().split(/\s+/).filter(Boolean)
+    for (let i = 0; i < words.length; ) {
+      const m = matchAt(words, i)
+      if (!m) { i++; continue }
+      i += m.length
+      if (seen.has(m.name)) continue
+      const hit = hitFor(m.name)
+      if (hit) { seen.add(m.name); out.push(hit) }
+    }
+  }
+  return out
+}
+
+/** The place to pin: city over region over country over area, then first mentioned. */
+export function primaryPlace(text: string | undefined | null): PlaceHit | null {
+  let best: PlaceHit | null = null
+  for (const h of placeHits(text)) {
+    if (!best || KIND_RANK[h.kind] < KIND_RANK[best.kind]) best = h
+  }
+  return best
+}
+
+/** A single place name (a migration stop, a cohort chip) → its canonical name. */
+export function canonicalPlace(name: string | undefined | null): string | null {
+  return primaryPlace(name)?.name ?? null
+}
+
+/** Place name or free-text location → coords of its primary place. */
+export function coordsForName(name: string | undefined | null): { lat: number; lng: number } | null {
+  const p = primaryPlace(name)
+  return p ? { lat: p.lat, lng: p.lng } : null
 }
 
 /** Sage → primary coords (explicit coordinates win, else resolved location). */
 export function resolveCoords(sage: Sage): { lat: number; lng: number } | null {
   if (sage.coordinates) return sage.coordinates
   return coordsForName(sage.location)
+}
+
+/** Sage → the canonical place its marker stands on, or null when unplaced. */
+export function primaryPlaceOf(sage: Sage): string | null {
+  if (sage.coordinates) return null
+  return primaryPlace(sage.location)?.name ?? null
 }

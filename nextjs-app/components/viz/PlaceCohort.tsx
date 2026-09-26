@@ -11,11 +11,18 @@
  * only as "16th century" must never be presented as a confirmed contemporary
  * of someone with real dates, so century-precision records can never reach
  * 'certain'. See overlapOf in lib/placeIndex.
+ *
+ * The list is drawn from the filtered set, which the place focus has already
+ * narrowed to this place, so its count is the map's "מוצגים X" count. Of
+ * those, the ones whose marker stands here are what a map bubble on this
+ * place counts; the rest lived here too but are pinned elsewhere, or passed
+ * through. The header gives both numbers.
  */
 
 import { useMemo } from 'react'
 import { useAppStore } from '@/store/useAppStore'
 import { buildPlaceIndex, cohortAt, type Overlap } from '@/lib/placeIndex'
+import { canonicalPlace } from '@/lib/locationCoords'
 import { ERA_COLORS, ERA_LABELS, ALL_PERIODS } from '@/lib/types'
 import { formatYearRange, cn } from '@/lib/utils'
 import { tr } from '@/lib/i18n'
@@ -29,16 +36,16 @@ const BADGE: Record<Exclude<Overlap, 'unknown'>, { he: string; en: string; ru: s
 interface Props { locale: Locale }
 
 export function PlaceCohort({ locale }: Props) {
-  const sages        = useAppStore(s => s.sages)
+  const filteredSages = useAppStore(s => s.filteredSages)
   const place        = useAppStore(s => s.filters.place)
   const anchorId     = useAppStore(s => s.placeAnchorId)
   const sageMap      = useAppStore(s => s.sageMap)
   const setPlaceFocus = useAppStore(s => s.setPlaceFocus)
   const selectSage   = useAppStore(s => s.selectSage)
 
-  // Indexing all sages is O(n × gazetteer); memoised on the dataset so it runs
-  // once per load rather than on every focus change.
-  const index  = useMemo(() => buildPlaceIndex(sages), [sages])
+  // Indexing is O(n × words); filteredSages only changes on a filter action,
+  // so this runs once per focus or filter change, not per render.
+  const index  = useMemo(() => buildPlaceIndex(filteredSages), [filteredSages])
   const anchor = anchorId ? sageMap.get(anchorId) ?? null : null
   const cohort = useMemo(
     () => (place ? cohortAt(index, place, anchor, ALL_PERIODS) : null),
@@ -52,17 +59,23 @@ export function PlaceCohort({ locale }: Props) {
     : []
 
   const certainCount = [...cohort.overlap.values()].filter(v => v === 'certain').length
+  const pinnedCount  = cohort.present.filter(p => p.pinned).length
 
   return (
     // z-[1000]: Leaflet paints its own panes at 200–800 in this stacking
     // context, so anything lower renders behind the tiles — invisible but
-    // still clickable.
-    <div className="absolute bottom-6 end-4 z-[1000] w-72 max-h-[70vh] glass border border-ink-700/50 rounded-xl flex flex-col overflow-hidden">
+    // still clickable. On phones the tab bar and the two floating buttons
+    // own the bottom ~9rem, so the panel starts above them; z-[1002] lets it
+    // cover AppShell's mobile geography button there while it is open.
+    <div className="absolute bottom-[9.25rem] md:bottom-6 end-4 z-[1002] w-72 max-w-[calc(100%-2rem)] max-h-[50vh] md:max-h-[70vh] glass border border-ink-700/50 rounded-xl flex flex-col overflow-hidden">
       <div className="flex items-start justify-between gap-2 px-3 py-2 border-b border-ink-700/40">
         <div className="min-w-0">
           <p className="font-display text-sm text-gold-300 truncate">{place}</p>
           <p className="text-[11px] text-ink-400">
             {cohort.present.length} {tr(locale, 'חכמים', 'sages', 'мудрецов')}
+            {pinnedCount < cohort.present.length && (
+              <> · {pinnedCount} {tr(locale, 'מסומנים כאן במפה', 'pinned here on the map', 'отмечены здесь на карте')}</>
+            )}
             {anchor && certainCount > 0 && (
               <> · {certainCount} {tr(locale, 'בני זמנו', 'contemporaries', 'современников')}</>
             )}
@@ -83,22 +96,27 @@ export function PlaceCohort({ locale }: Props) {
             {tr(locale, 'מסעו של', 'Journey of', 'Путь')} {anchor?.label}
           </p>
           <div className="flex flex-wrap items-center gap-1">
-            {stops.map((stop, i) => (
-              <span key={`${stop}-${i}`} className="flex items-center gap-1">
-                {i > 0 && <span className="text-ink-600 text-[10px]">←</span>}
-                <button
-                  onClick={() => setPlaceFocus(stop, anchorId)}
-                  className={cn(
-                    'text-[11px] px-1.5 py-0.5 rounded border transition-colors',
-                    stop === place
-                      ? 'bg-gold-500/20 border-gold-500/50 text-gold-200'
-                      : 'border-ink-700/50 text-ink-300 hover:text-ink-100 hover:border-ink-600',
-                  )}
-                >
-                  {stop}
-                </button>
-              </span>
-            ))}
+            {stops.map((stop, i) => {
+              // Stops are raw text ("פרובאנס"); the focus speaks canonical
+              // names ("פרובנס"), the same ones the place filter matches on.
+              const canonical = canonicalPlace(stop) ?? stop
+              return (
+                <span key={`${stop}-${i}`} className="flex items-center gap-1">
+                  {i > 0 && <span className="text-ink-600 text-[10px]">←</span>}
+                  <button
+                    onClick={() => setPlaceFocus(canonical, anchorId)}
+                    className={cn(
+                      'text-[11px] px-1.5 py-0.5 rounded border transition-colors',
+                      canonical === place
+                        ? 'bg-gold-500/20 border-gold-500/50 text-gold-200'
+                        : 'border-ink-700/50 text-ink-300 hover:text-ink-100 hover:border-ink-600',
+                    )}
+                  >
+                    {stop}
+                  </button>
+                </span>
+              )
+            })}
           </div>
         </div>
       )}
