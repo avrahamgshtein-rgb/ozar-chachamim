@@ -18,7 +18,12 @@ const REGIONS: Region[] = [
  */
 export function MapLegend({ locale }: { locale: Locale }) {
   const isHe = locale === 'he'
-  const [collapsed, setCollapsed] = useState(false)
+  // Collapsed on phones: open, it covered about 60% of a 390px-wide map.
+  // Safe to read the viewport here: the legend mounts client-side only, after
+  // the Geography tab is first opened, so there is no server render to match.
+  const [collapsed, setCollapsed] = useState(
+    () => typeof window !== 'undefined' && window.matchMedia('(max-width: 767px)').matches,
+  )
   const { filters, togglePeriodFilter, toggleRegionFilter, clearFilters, filteredSages, sages } = useAppStore()
   const active = (filters.period?.length ?? 0) + filters.region.length + filters.field.length > 0
 
@@ -40,10 +45,13 @@ export function MapLegend({ locale }: { locale: Locale }) {
   // z-[1000]: Leaflet gives its own panes/controls z-index 200–800, and this
   // legend is a SIBLING of the map (same stacking context) in AppShell — so it
   // must clear 800 or it renders behind the tiles: invisible but still clickable.
+  // bottom-[9.25rem] on phones: the fixed tab bar and the chat/search buttons
+  // own the bottom ~9rem there and paint above this whole stacking context.
   return (
-    <div className="absolute bottom-6 start-4 z-[1000] glass rounded-xl overflow-hidden min-w-[150px] max-h-[70vh] flex flex-col">
+    <div className="absolute bottom-[9.25rem] md:bottom-6 start-4 z-[1000] glass rounded-xl overflow-hidden min-w-[150px] max-h-[50vh] md:max-h-[70vh] flex flex-col">
       <button
         onClick={() => setCollapsed(c => !c)}
+        aria-expanded={!collapsed}
         className="flex items-center justify-between gap-3 px-3 py-2 text-start hover:bg-ink-700/30 transition-colors flex-shrink-0"
       >
         <span className="text-[10px] font-sans font-semibold uppercase tracking-widest text-ink-400">
