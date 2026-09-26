@@ -6,10 +6,11 @@ Rebuild data.json from data/חכמי ישראל.csv (master source).
 - Normalizes era_key to the 7 canonical keys
 - Builds links from the 'דמויות/השפעות קשורות' column
 - Recovers curated links from data_with_connections.json + data.json.backup_v4
+- Validates teacher/student links; see data/link_validation_report.txt
 - Enriches missing bios from research_summaries.json
 Creates data.json.backup_pre_rebuild before writing.
 """
-import csv, json, re, shutil
+import csv, json, os, re, shutil
 import openpyxl
 from collections import Counter
 
@@ -296,7 +297,95 @@ for node in nodes:
 print(f'links from CSV related-figures: {csv_links}')
 
 # ---------- Recover curated links (old id spaces -> label mapping) ----------
-def recover(fname, skip_types=()):
+# Two parts of backup_v4's links are not what they claim to be, and are skipped.
+#
+# 1. Mis-resolved sources. Its links were extracted from the research papers,
+#    and the paper's own sage was looked up by word overlap, falling back to the
+#    first node, in file order, that shares a word with the paper title. So every
+#    "הרב …" paper became id 29 (הרב אפרים מקלעת־חמאד, the first label with
+#    "הרב"), every "רבי …" paper id 4 (רבי עקיבא, the first with "רבי"), every
+#    "רבנו …" paper id 12, and so on. Relabelled faithfully, that had a
+#    12th-century North African "teaching" Rav Tzvi Yehuda Kook and Rabbi Akiva
+#    "teaching" the Lubavitcher Rebbe. The real source of each edge is lost, so
+#    these ids' outgoing links are dropped whole. Each is the first holder of a
+#    common title word (29 הרב, 4 רבי/יוסף, 12 רבנו, 8 בר, 2 שמעון, 16 על,
+#    182 שיטת, 5 יהודה, 23 מנחם, 24 אבן, 67 גשר, 183 ספר, 394 שרה), has
+#    in-degree ~0, and has out-edges spanning Tannaim to today (4: 83, 29: 22,
+#    12: 10, 182: 8, 2: 5 …). Several point at the paper's own subject:
+#    29 -> הרב אביחי רונצקי, 2 -> רבי יוסף בן יהודה אבן שמעון, 81 -> ריב"א
+#    (81's other two edges repeat those of the ריב"א paper, 556). The ids are
+#    backup_v4's own, and that file is a frozen snapshot, so they cannot drift.
+# 2. A synthetic sample batch: the 24 links carrying strength/period/context_he.
+#    Their context is templated ("תלמיד בדירוג ראשון", "עמיתים בדירוג") and
+#    invented: הר"ן a student of the Rambam, מנחם מנדל לפין the teacher of רבי
+#    יוסף בכור שור, הרב שמואל הלוי וואזנר and הרב מאיר זייני "אישה ובעלה".
+V4_MISRESOLVED_SOURCES = {'2', '4', '5', '8', '12', '16', '23', '24', '29', '67', '81', '182', '183', '394'}
+V4_SYNTHETIC_FIELD = 'context_he'
+recovery_skipped = []   # (reason, type, source, target, strict match) as the old matcher linked them
+
+def nicknames(label):
+    """Parenthesised epithets, gershayim-normalised: 'רבי יצחק אלפסי (הרי"ף)' -> {'הרי"ף'}."""
+    out = set()
+    for x in re.findall(r'\(([^()]*)\)', (label or '').replace('״', '"').replace('׳', "'")):
+        x = re.sub(r'(?<=[א-ת])[-_](?=[א-ת])', '"', x).strip()
+        if x and not x.isdigit():
+            out.add(x)
+    return out
+
+def old_label_candidates(label):
+    """
+    Names to try for a node label from an old id space, grouped by title
+    segment, name-bearing segment first. Many old nodes are research papers,
+    titled after their file name: gershayim became "_" (הרי_ף), a colon became
+    "_ " or "- ", duplicates got "(1)", and the name often sits inside a longer
+    title ("משנתו … של חכם מנחם מנשה").
+    """
+    s = re.sub(r'\(\d+\)', ' ', label or '')
+    s = re.sub(r'(?<=[א-ת])_(?=[א-ת])', '"', s)   # הרי_ף -> הרי"ף
+    s = re.sub(r'(?<![א-ת])ר_\s', "ר' ", s)                  # ר_ יצחק -> ר' יצחק
+    s = re.sub(r'\s*זצ"ל', '', s)
+    groups = [[s]]
+    for seg in re.split(r'_\s|_$|(?<=\S)-\s|\s[–—-]\s|:', s):
+        seg = seg.strip(' _')
+        if not seg: continue
+        g = [seg]
+        if ' של ' in seg:
+            g.append(seg.rsplit(' של ', 1)[1])
+        m = re.search(r'(?:^|\s)((?:רבי|הרב|רבנו|רבינו|רב|חכם)\s.*)$', seg)
+        if m:
+            g.append(m.group(1))
+        g.extend(nicknames(seg))
+        groups.append(g)
+    return groups
+
+def find_node_strict(label):
+    """
+    find_node for labels from an OLD id space. Per title segment, in order, an
+    exact normalised name wins; the substring fallback is kept only when the
+    given name agrees and no epithet disagrees. Plain substring matching turned
+    "רבי יעקב בן הרב יצחק הלוי פולק" (1460-1541) into Rashi's teacher רבי יצחק
+    הלוי, "רבי יהודה הלוי מינץ" into ריה"ל, and a stray "היהודית" into יהודית.
+    Segment order matters: "רבי נתן בן מאיר מטרינקטיי_ צומת הדרכים של חכמי
+    פרובנס" is about the man, not the topic node "חכמי פרובנס".
+    """
+    for group in old_label_candidates(label):
+        for c in group:
+            k = norm_name(c)
+            if k and k in byname:
+                return byname[k]
+        for c in group:
+            n = find_node(c)
+            if not n: continue
+            k, nk = norm_name(c), norm_name(n['label'])
+            if not k or k.split()[0] != nk.split()[0]:
+                continue
+            a, b = nicknames(c), nicknames(n['label'])
+            if a and b and not a & b:
+                continue
+            return n
+    return None
+
+def recover(fname, skip_types=(), skip_sources=(), skip_field=None):
     n = 0
     try:
         old = json.load(open(fname, encoding='utf-8'))
@@ -307,15 +396,31 @@ def recover(fname, skip_types=()):
         if l.get('type') in skip_types: continue
         s, t = old_byid.get(str(l['source'])), old_byid.get(str(l['target']))
         if not s or not t: continue
-        sn, tn = find_node(s.get('label','')), find_node(t.get('label',''))
-        if sn and tn:
-            extra = {k: l[k] for k in ('strength','period','context_he','evidence_source') if l.get(k)}
-            if add_link(sn['id'], tn['id'], l.get('type','influence'), **extra):
-                n += 1
+        why = None
+        if str(l['source']) in skip_sources:
+            why = f"source mis-resolved in {fname} (old id {l['source']})"
+        elif skip_field and l.get(skip_field):
+            why = f'synthetic sample link in {fname} ({skip_field}: {l[skip_field]})'
+        sn, tn = find_node_strict(s.get('label','')), find_node_strict(t.get('label',''))
+        # The strict match only vetoes. A link it would newly place (a paper
+        # title the loose matcher could not read) is not added: those links'
+        # direction is as unreliable as the rest of backup_v4's, and nothing
+        # here can vouch for them.
+        ls, lt = find_node(s.get('label','')), find_node(t.get('label',''))
+        if not why and (not (sn and tn) or (sn, tn) != (ls, lt)):
+            why = 'name match rejected (strict matching finds no one, or someone else)'
+        if why:
+            if ls and lt and ls is not lt:      # only what the old matcher would have linked
+                recovery_skipped.append((why, l.get('type','influence'), ls, lt, (sn, tn) if sn and tn else None))
+            continue
+        extra = {k: l[k] for k in ('strength','period','context_he','evidence_source') if l.get(k)}
+        if add_link(sn['id'], tn['id'], l.get('type','influence'), **extra):
+            n += 1
     return n
 
 r1 = recover('data_with_connections.json')
-r2 = recover('data.json.backup_v4', skip_types=('colleague',))
+r2 = recover('data.json.backup_v4', skip_types=('colleague',),
+             skip_sources=V4_MISRESOLVED_SOURCES, skip_field=V4_SYNTHETIC_FIELD)
 print(f'recovered links: curated={r1}, backup_v4(non-colleague)={r2}')
 
 # ---------- has_research ----------
@@ -406,6 +511,201 @@ try:
     print(f'migration paths: {mig_applied} applied, {mig_stale} stale (id not in master)')
 except FileNotFoundError:
     print('migration paths: data/migration_paths.json absent, skipped')
+
+# ---------- Validate teacher/student links ----------
+# Canonical meaning, as GenealogyTree.tsx (the chain-of-transmission view),
+# GeographyPanel.tsx ("Teacher of" / "Student of") and the NetworkGraph edge
+# card all read it: the type names the SOURCE's role towards the target.
+#   teacher: source is the teacher of target
+#   student: source is the student of target
+# Both types are kept rather than folding `student` into `teacher`: the sage
+# page labels each related sage with the edge type regardless of direction, so
+# rewriting a correct `student` edge as `teacher` would change what it shows.
+#
+# The rules work on the (teacher, student) pair, so they apply to both types.
+# "Birth" is birth_year as stored, i.e. the window start when date_precision
+# is 'century'.
+#  0. a book, topic, event or group at either end: dropped.
+#  1. teacher born after student: flipped when both dates are exact, dropped
+#     otherwise (the order is then too uncertain to flip).
+#  2. exact lifetimes that never overlap, or births more than 90 years apart:
+#     downgraded to `influence` from the earlier to the later (who could at
+#     most have learned from the other's books), with evidence_source saying
+#     so; dropped instead when the pair already has an influence link.
+#  3. either end undated: kept.
+#  4. the same pair twice (teacher A->B and student B->A) is kept once; a pair
+#     where each is the other's teacher is removed, as neither can be trusted.
+#     A pair the hand-curated supplement files already state, with their
+#     evidence, is left to them: generated edges agreeing with them would only
+#     list the same person twice, and ones disagreeing with them are wrong.
+# Every change is listed in data/link_validation_report.txt, together with the
+# backup_v4 links the recovery above no longer creates.
+TS = ('teacher', 'student')
+NOT_A_PERSON = {'נושא/מושג', 'נושא', 'ספר', 'חיבור', 'אירוע היסטורי', 'דמויות'}
+SUPPLEMENTS = ['data-ancient.json', 'data-supplement.json', 'data-supplement-2.json', 'data-research-links.json']
+by_id = {n['id']: n for n in nodes}
+
+def merged_into(i):
+    """The id a node was merged into above (recovery ran before the merge)."""
+    return globals().get('remap', {}).get(i, i)
+
+def dated(n):
+    return n.get('birth_year') is not None and n.get('death_year') is not None
+
+def exact(n):
+    # A "lifespan" under 20 years is a tenure or an event misread as one
+    # (רב שמואל בן חפני 997–1013, רבי יחיאל מפריז 1260–1268, בר כוכבא 132–136),
+    # too weak to flip an edge on.
+    return (dated(n) and n.get('date_precision') == 'exact'
+            and n['death_year'] - n['birth_year'] >= 20)
+
+def fmt(n):
+    n = by_id.get(merged_into(n['id']), n)
+    if not dated(n):
+        y = 'ללא שנים'
+    else:
+        y = f"{n['birth_year']}–{n['death_year']}"
+        if n.get('date_precision') != 'exact':
+            y += ' מאה'
+        elif not exact(n):
+            y += ', קצר מכדי להיות תוחלת חיים'
+    return f"{n['label']} [{n['id']}] ({y})"
+
+def pair(l):
+    return (l['source'], l['target']) if l['type'] == 'teacher' else (l['target'], l['source'])
+
+curated = {}
+for f in SUPPLEMENTS:
+    try:
+        with open(os.path.join('nextjs-app', 'public', f), encoding='utf-8') as fh:
+            for l in json.load(fh).get('links', []):
+                if l.get('type') in TS:
+                    curated[frozenset(pair(l))] = (f, pair(l))
+    except FileNotFoundError:
+        pass
+
+changes = {'dropped (already stated by a curated supplement link)': [], 'dropped (not a person)': [],
+           'flipped': [], 'dropped (teacher younger, dates not exact)': [],
+           'downgraded to influence': [], 'dropped (downgrade would duplicate an influence link)': [],
+           'dropped (duplicate)': [], 'dropped (contradictory)': []}
+ts_before = Counter(l['type'] for l in links if l['type'] in TS)
+influence_pairs = {frozenset((l['source'], l['target'])) for l in links if l['type'] == 'influence'}
+validated = []
+for l in links:
+    if l['type'] not in TS:
+        validated.append(l); continue
+    t, s = pair(l)
+    T, S = by_id.get(t), by_id.get(s)
+    if not T or not S:
+        validated.append(l); continue
+    desc = f"{l['type']} {l['source']}->{l['target']}: {fmt(T)} teacher of {fmt(S)}"
+    if frozenset((t, s)) in curated:                         # rule 4, curated pairs
+        f, (ct, cs) = curated[frozenset((t, s))]
+        changes['dropped (already stated by a curated supplement link)'].append(
+            f"{desc}  ({f} has {by_id[ct]['label']} teacher of {by_id[cs]['label']})")
+        continue
+    if T.get('chapter_type') in NOT_A_PERSON or S.get('chapter_type') in NOT_A_PERSON:
+        changes['dropped (not a person)'].append(desc)       # rule 0
+        continue
+    if not dated(T) or not dated(S):
+        validated.append(l); continue                        # rule 3
+    flipped = False
+    if T['birth_year'] > S['birth_year']:                    # rule 1
+        if not (exact(T) and exact(S)):
+            changes['dropped (teacher younger, dates not exact)'].append(desc)
+            continue
+        t, s, T, S = s, t, S, T
+        l = {**l, 'source': l['target'], 'target': l['source']}
+        flipped = True
+    no_overlap = exact(T) and exact(S) and (T['death_year'] < S['birth_year'] or S['death_year'] < T['birth_year'])
+    gap = S['birth_year'] - T['birth_year']
+    if no_overlap or gap > 90:                               # rule 2
+        why = 'lifetimes do not overlap' if no_overlap else f'births {gap} years apart'
+        if frozenset((t, s)) in influence_pairs:
+            changes['dropped (downgrade would duplicate an influence link)'].append(f'{desc}  ({why})')
+            continue
+        ev = ('הורד מקשר רב–תלמיד: ' + ('שנות חייהם אינן חופפות' if no_overlap else f'{gap} שנים בין לידותיהם')
+              + '; לכל היותר למד מספריו')
+        if l.get('evidence_source'):
+            ev += f" | מקור קודם: {l['evidence_source']}"
+        rest = {k: v for k, v in l.items() if k not in ('source', 'target', 'type', 'evidence_source')}
+        validated.append({'source': t, 'target': s, 'type': 'influence', **rest, 'evidence_source': ev})
+        influence_pairs.add(frozenset((t, s)))
+        changes['downgraded to influence'].append(
+            f"{desc}  =>  influence {t}->{s} ({why}{', after flipping' if flipped else ''})")
+        continue
+    if flipped:
+        changes['flipped'].append(f"{desc}  =>  {l['type']} {l['source']}->{l['target']}")
+    validated.append(l)
+
+seen_pairs = {}                                              # rule 4
+for l in validated:
+    if l['type'] in TS:
+        seen_pairs.setdefault(pair(l), []).append(l)
+drop = set()
+for (t, s), ls in seen_pairs.items():
+    if (s, t) in seen_pairs:
+        if t < s:
+            both = ls + seen_pairs[(s, t)]
+            drop.update(id(x) for x in both)
+            changes['dropped (contradictory)'].append(
+                f"{fmt(by_id[t])} <-> {fmt(by_id[s])}: " + ', '.join(f"{x['type']} {x['source']}->{x['target']}" for x in both))
+    elif len(ls) > 1:
+        keep = next((x for x in ls if x.get('evidence_source')), ls[0])
+        for x in ls:
+            if x is not keep:
+                drop.add(id(x))
+                changes['dropped (duplicate)'].append(
+                    f"{x['type']} {x['source']}->{x['target']}: {fmt(by_id[t])} teacher of {fmt(by_id[s])}"
+                    f" (same as {keep['type']} {keep['source']}->{keep['target']})")
+links = [l for l in validated if id(l) not in drop]
+
+ts_after = Counter(l['type'] for l in links if l['type'] in TS)
+print(f'teacher/student validation: {dict(ts_before)} -> {dict(ts_after)}; '
+      + ', '.join(f'{k}={len(v)}' for k, v in changes.items() if v))
+by_reason = {}
+for why, typ, a, b, new in recovery_skipped:
+    line = f"{typ}: {fmt(a)} -> {fmt(b)}"
+    if new:
+        same = merged_into(new[0]['id']) == merged_into(new[1]['id'])
+        line += '  (strict match: ' + ('one person at both ends' if same else f"{fmt(new[0])} -> {fmt(new[1])}") + ')'
+    by_reason.setdefault(why.split(' (')[0] if why.startswith('synthetic') else why, []).append(line)
+with open('data/link_validation_report.txt', 'w', encoding='utf-8') as f:
+    f.write('Teacher/student link report. Written by rebuild_data_from_csv.py on every build; do not edit by hand.\n\n')
+    f.write('Semantics: teacher = source is the teacher of target; student = source is the student of target.\n')
+    f.write('Each node is shown as label [id] (birth–death); "מאה" marks a century window, not a lifespan.\n\n')
+    f.write('Part 1. backup_v4 links the recovery no longer creates.\n')
+    f.write('Shown as the old matcher resolved them. Colleague links were never recovered and are not listed.\n')
+    for why, lines in by_reason.items():
+        f.write(f'\n== {why}: {len(lines)} ==\n')
+        for line in sorted(lines):
+            f.write(f'  {line}\n')
+    f.write('\n\nPart 2. Validation of the teacher/student links that were recovered.\n')
+    f.write(f'Before: {dict(ts_before)}. After: {dict(ts_after)}.\n')
+    for k, v in changes.items():
+        f.write(f'\n== {k}: {len(v)} ==\n')
+        for line in v:
+            f.write(f'  {line}\n')
+    # The supplements are hand-curated and merged at load time; this script
+    # does not rewrite them, only checks them against the same rules.
+    f.write('\n\nPart 3. Teacher/student links in the hand-curated supplement files, checked read-only.\n')
+    for fname, (t, s) in sorted(curated.values()):
+        T, S = by_id.get(t), by_id.get(s)
+        if not T or not S:
+            f.write(f'  {fname}: {t} teacher of {s}: NOT SHOWN, id not in the master\n'); continue
+        if T.get('chapter_type') in NOT_A_PERSON or S.get('chapter_type') in NOT_A_PERSON:
+            verdict = 'PROBLEM: not a person'
+        elif not dated(T) or not dated(S):
+            verdict = 'ok (undated)'
+        elif T['birth_year'] > S['birth_year']:
+            verdict = 'PROBLEM: teacher born after student'
+        elif exact(T) and exact(S) and (T['death_year'] < S['birth_year'] or S['death_year'] < T['birth_year']):
+            verdict = 'PROBLEM: lifetimes do not overlap'
+        elif S['birth_year'] - T['birth_year'] > 90:
+            verdict = f"PROBLEM: births {S['birth_year'] - T['birth_year']} years apart"
+        else:
+            verdict = 'ok'
+        f.write(f'  {fname}: {fmt(T)} teacher of {fmt(S)}: {verdict}\n')
 
 # ---------- Write ----------
 shutil.copy('data.json', 'data.json.backup_pre_rebuild')

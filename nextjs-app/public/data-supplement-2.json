@@ -2,73 +2,73 @@
   "nodes": [],
   "links": [
     {
-      "source": "sup-8",
+      "source": "579",
       "target": "267",
       "type": "influence",
       "evidence_source": "ריה\"ל הוא מחבר ספר הכוזרי"
     },
     {
-      "source": "sup-8",
+      "source": "579",
       "target": "192",
       "type": "colleague",
       "evidence_source": "ידידות נודעת בין ריה\"ל לאבן עזרא"
     },
     {
       "source": "35",
-      "target": "sup-9",
+      "target": "582",
       "type": "influence",
       "evidence_source": "הרי\"ף מתלמידי בית מדרשם של רבנו חננאל ורבנו נסים"
     },
     {
-      "source": "sup-9",
+      "source": "582",
       "target": "32",
       "type": "teacher",
       "evidence_source": "ר\"י מיגאש — תלמידו וממשיכו של הרי\"ף בישיבת אליסאנה"
     },
     {
-      "source": "sup-10",
+      "source": "578",
       "target": "4",
       "type": "colleague",
       "evidence_source": "רבי טרפון ורבי עקיבא — חברים ובני פלוגתא ביבנה"
     },
     {
-      "source": "sup-3",
-      "target": "sup-11",
+      "source": "592",
+      "target": "591",
       "type": "predecessor",
       "evidence_source": "רבן גמליאל ירש את הנהגת יבנה מריב\"ז"
     },
     {
-      "source": "sup-11",
+      "source": "591",
       "target": "506",
       "type": "colleague",
       "evidence_source": "פרשת היום שבו הועבר רבן גמליאל ומינוי ראב\"ע"
     },
     {
-      "source": "sup-13",
+      "source": "584",
       "target": "4",
       "type": "oppose",
       "evidence_source": "מחלוקות רבי ישמעאל ורבי עקיבא בדרכי מדרש ההלכה"
     },
     {
-      "source": "sup-14",
+      "source": "597",
       "target": "477",
       "type": "colleague",
       "evidence_source": "שמואל הנגיד ואבן גבירול — תור הזהב בגרנדה"
     },
     {
       "source": "482",
-      "target": "sup-15",
+      "target": "576",
       "type": "teacher",
       "evidence_source": "רב הונא מתלמידי רב ושמואל בבבל"
     },
     {
-      "source": "sup-16",
+      "source": "556",
       "target": "431",
       "type": "family",
       "evidence_source": "ברוריה — אשת רבי מאיר"
     },
     {
-      "source": "sup-17",
+      "source": "575",
       "target": "505",
       "type": "influence",
       "evidence_source": "מעזרא ועד הלל — שלשלת מוסרי התורה בבית שני"
@@ -80,8 +80,8 @@
       "evidence_source": "הרב דסלר — מתנועת המוסר של רבי ישראל מסלנט (קלם)"
     },
     {
-      "source": "sup-6",
-      "target": "sup-38",
+      "source": "558",
+      "target": "587",
       "type": "family",
       "evidence_source": "בעל דגל מחנה אפרים — נכד הבעל שם טוב"
     },
@@ -93,75 +93,69 @@
     },
     {
       "source": "501",
-      "target": "sup-25",
+      "target": "563",
       "type": "family",
       "evidence_source": "שושלת אדמו\"רי חב\"ד"
     },
     {
-      "source": "sup-25",
+      "source": "563",
       "target": "335",
       "type": "predecessor",
       "evidence_source": "הרבי מליובאוויטש — חתנו וממשיכו של הריי\"צ"
     },
     {
-      "source": "sup-30",
+      "source": "573",
       "target": "443",
       "type": "teacher",
       "evidence_source": "מהר\"י בירב סמך את רבי יוסף קארו"
     },
     {
-      "source": "sup-31",
-      "target": "sup-30",
+      "source": "585",
+      "target": "573",
       "type": "oppose",
       "evidence_source": "פולמוס הסמיכה: המהרלב\"ח נגד מהר\"י בירב"
     },
     {
-      "source": "sup-32",
+      "source": "586",
       "target": "69",
       "type": "contemporary",
       "evidence_source": "מהר\"ם אלשקר והרדב\"ז — פוסקי מצרים בדור הגירוש"
     },
     {
-      "source": "sup-40",
-      "target": "sup-5",
+      "source": "583",
+      "target": "594",
       "type": "teacher",
       "evidence_source": "רבי יצחק הלוי — מרבותיו של רש\"י בוורמייזא"
     },
     {
-      "source": "sup-41",
+      "source": "554",
       "target": "431",
       "type": "colleague",
       "evidence_source": "שיחות אבנימוס הגרדי עם רבי מאיר במדרש"
     },
     {
-      "source": "sup-42",
+      "source": "577",
       "target": "22",
       "type": "influence",
       "evidence_source": "רבי אבון — ממניחי היסוד לאשכנז שלפני רבנו גרשום"
     },
     {
       "source": "275",
-      "target": "sup-44",
+      "target": "588",
       "type": "influence",
       "evidence_source": "הסמ\"ג — מבית מדרשם של בעלי התוספות ממשיכי ר\"י הזקן"
     },
     {
-      "source": "sup-22",
-      "target": "sup-6",
+      "source": "589",
+      "target": "558",
       "type": "influence",
       "evidence_source": "ברסלב — מתורת הבעש\"ט דרך רבי נחמן"
     },
     {
       "source": "sup-24",
-      "target": "sup-23",
+      "target": "501",
       "type": "predecessor",
       "evidence_source": "האדמו\"ר האמצעי קדם לצמח צדק בהנהגת חב\"ד"
-    },
-    {
-      "source": "sup-23",
-      "target": "sup-25",
-      "type": "family",
-      "evidence_source": "שושלת אדמו\"רי חב\"ד"
     }
   ],
   "_note": "These sages were merged into the master spreadsheet (data/חכמי_ישראל.xlsx) so the site count matches the source of truth and nobody is listed twice. Kept as an empty shell rather than deleted, since AppShell fetches these paths at load. Add new sages to the spreadsheet, not here."
