@@ -75,6 +75,7 @@ export function AppShell({ locale, initialTotal, initialLastUpdate }: AppShellPr
   const otherLocale: Locale = locale === 'he' ? 'en' : 'he'
   const [isGeographyDrawerOpen, setIsGeographyDrawerOpen] = useState(false)
   const urlInitializedRef = useRef(false)
+  const deepLinkSageRef = useRef<string | null>(null)
 
   const {
     activeTab,
@@ -136,6 +137,8 @@ export function AppShell({ locale, initialTotal, initialLastUpdate }: AppShellPr
       const state = parseURLState(window.location.search)
       const store = useAppStore.getState()
       store.applyNavigationState(state.tab, state.sage, state.regions, state.periods)
+      // On first load the sage map is still empty, so ?sage= can't resolve yet
+      if (state.sage && !store.sageMap.size) deepLinkSageRef.current = state.sage
       urlInitializedRef.current = true
     }
 
@@ -150,6 +153,16 @@ export function AppShell({ locale, initialTotal, initialLastUpdate }: AppShellPr
     return () => window.removeEventListener('popstate', onPopState)
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  // Resolve a deep-linked ?sage= once the data lands (see applyURLState).
+  // Declared before the URL writer so the selection exists when it next runs.
+  useEffect(() => {
+    const id = deepLinkSageRef.current
+    if (!id || !sageMap.size) return
+    deepLinkSageRef.current = null
+    const sage = sageMap.get(id)
+    if (sage && !useAppStore.getState().selectedSageId) selectSage(sage)
+  }, [sageMap, selectSage])
 
   // Write URL when state changes, but not during initialization/restoration
   useEffect(() => {
