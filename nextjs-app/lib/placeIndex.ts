@@ -6,12 +6,13 @@
  * settled). Both count as presence, but they are labelled separately so the UI
  * can say which it is.
  *
- * Place names come from LOCATION_COORDS, used here as a controlled vocabulary.
- * That keeps this index speaking the same names as the map, and avoids
- * inventing a second gazetteer that would drift from it.
+ * Place names come from lib/locationCoords, read through the same resolver the
+ * map uses to pin markers. There used to be two matchers, one here and one
+ * there, and they disagreed: a map bubble and the cohort it opened could count
+ * the same place differently.
  */
 
-import { LOCATION_COORDS } from './locationCoords'
+import { placeHits, primaryPlaceOf } from './locationCoords'
 import type { Sage } from './types'
 
 export type PresenceKind = 'residence' | 'migration'
@@ -21,28 +22,18 @@ export interface Presence {
   kind: PresenceKind
   /** Position along the migration chain, when kind is 'migration'. */
   stopIndex?: number
+  /** The sage's map marker stands on this place (their primary location). */
+  pinned: boolean
 }
 
-/** Gazetteer keys, longest first so "ארץ ישראל" wins over "ישראל". */
-const PLACE_KEYS = Object.keys(LOCATION_COORDS).sort((a, b) => b.length - a.length)
-
 /**
- * Canonical places named in a free-text location string.
+ * Canonical places named in a free-text location string, in order of mention.
  *
- * Matching is longest-first and consumes the matched span, so "ירושלים; מצרים"
- * yields both, while "ארץ ישראל" yields only that and not a spurious "ישראל".
+ * Whole-word matching, so "ארץ ישראל" yields only that and not a spurious
+ * "ישראל", and "צפון אפריקה" never yields a direction.
  */
 export function placesIn(text: string | undefined | null): string[] {
-  if (!text) return []
-  let rest = text
-  const found: string[] = []
-  for (const key of PLACE_KEYS) {
-    if (rest.includes(key)) {
-      found.push(key)
-      rest = rest.split(key).join(' ')
-    }
-  }
-  return found
+  return placeHits(text).map(h => h.name)
 }
 
 /** place → everyone recorded there, by residence or by migration stop. */
@@ -59,15 +50,16 @@ export function buildPlaceIndex(sages: Sage[]): Map<string, Presence[]> {
   }
 
   for (const sage of sages) {
+    const pin = primaryPlaceOf(sage)
     for (const place of placesIn(sage.location)) {
-      add(place, { sage, kind: 'residence' })
+      add(place, { sage, kind: 'residence', pinned: place === pin })
     }
     const mp = sage.migration_path
     if (mp) {
       const stops = [mp.from, ...(mp.intermediate ?? []), mp.to]
       stops.forEach((stop, i) => {
         for (const place of placesIn(stop)) {
-          add(place, { sage, kind: 'migration', stopIndex: i })
+          add(place, { sage, kind: 'migration', stopIndex: i, pinned: place === pin })
         }
       })
     }
