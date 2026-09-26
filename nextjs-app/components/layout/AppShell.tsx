@@ -121,13 +121,6 @@ export function AppShell({ locale, initialTotal, initialLastUpdate, initialStats
 
       setData(localizedSages, normalizedConnections, localizedSages.length, initialLastUpdate)
 
-      // ?sage= deep links: URL state is applied on mount, before the data
-      // exists, so the sage could not resolve then (and the drawer stayed
-      // shut). Resolve it now that the sageMap is populated.
-      const urlSageId = parseURLState(window.location.search).sage
-      const urlSage = urlSageId ? useAppStore.getState().sageMap.get(urlSageId) : undefined
-      if (urlSage) useAppStore.getState().selectSage(urlSage)
-
       console.log(`[AppShell] ✅ ${localizedSages.length} sages, ${normalizedConnections.length} connections (deduped: ${quality.total_connections})`)
     })()
   }, [initialTotal, initialLastUpdate, setData, locale])
