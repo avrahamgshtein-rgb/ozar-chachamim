@@ -559,7 +559,7 @@ Examples:
 - **Output Files Created:**
   - `ingest_research.py` — Production-ready pipeline (264 lines, matching logic from extract_full_research.py)
   - `data/ingestion_log_2026-08-04.json` — Audit log with confidence scores, reasons
-  - `nextjs-app/public/research.backup_2026-08-04/` — Safety backup
+  - `nextjs-app/public/research.backup_2026-08-04/` — Safety backup (moved 2026-09-25 to `data/archive/research.backup_2026-08-04/` so it is no longer publicly served)
   - `.claude/skills/research-ingestion/skill.md` — Full algorithm doc + edge cases
   - `.claude/skills/research-ingestion/DECISIONS.md` — Rationale for each decision
   - `.claude/skills/research-ingestion/CHANGELOG.md` — v1.0 status + roadmap

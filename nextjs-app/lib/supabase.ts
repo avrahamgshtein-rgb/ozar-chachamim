@@ -4,25 +4,16 @@ import type { Sage, Connection } from './types'
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
 const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 
+// Supabase serves auth, chat and the personal area. The public graph (sages,
+// connections, research) is not loaded from here: its sages/connections/
+// research_content tables are an old snapshot. The home page loads the static
+// pipeline via lib/appShellDataLoader.ts, the sage pages via lib/serverData.ts.
+// (SearchBar still calls searchSages below, only while that data is loading.)
 export const isSupabaseConfigured = Boolean(supabaseUrl && supabaseKey)
 export const supabase = createClient(
   supabaseUrl ?? 'https://missing-config.invalid',
   supabaseKey ?? 'missing-public-anon-key',
 )
-
-export async function fetchSages(): Promise<Sage[]> {
-  const { data, error } = await supabase
-    .from('sages_with_stats')
-    .select('*')
-    .order('period_order', { ascending: true })
-
-  if (error) {
-    console.error('[Supabase] fetchSages error:', error.message)
-    return []
-  }
-
-  return (data ?? []).map((row: Record<string, unknown>) => mapSageRow(row))
-}
 
 function mapSageRow(row: Record<string, unknown>): Sage {
   // DB may use either old names (location/field/bio) or new names (region/primary_field/summary)
@@ -63,25 +54,6 @@ function mapSageRow(row: Record<string, unknown>): Sage {
     coordinates:    row.coordinates as Sage['coordinates'] ?? undefined,
     spotify_url:    row.spotify_url ? String(row.spotify_url) : undefined,
   }
-}
-
-export async function fetchConnections(): Promise<Connection[]> {
-  const { data, error } = await supabase
-    .from('connections_with_names')
-    .select('*')
-
-  if (error) {
-    console.error('[Supabase] fetchConnections error:', error.message)
-    return []
-  }
-
-  return (data ?? []).map((row: Record<string, unknown>) => ({
-    source:      String(row.source_id ?? row.source ?? ''),
-    target:      String(row.target_id ?? row.target ?? ''),
-    type:        (row.connection_type ?? row.type ?? 'colleague') as Connection['type'],
-    source_name: row.source_name ? String(row.source_name) : undefined,
-    target_name: row.target_name ? String(row.target_name) : undefined,
-  }))
 }
 
 export async function fetchSageById(id: string): Promise<Sage | null> {
@@ -138,68 +110,4 @@ export async function fetchSageConnections(
     if (other) results.push({ ...conn, otherSage: other })
   }
   return results
-}
-
-export async function fetchResearchContent(sageId: string): Promise<string | null> {
-  const { data, error } = await supabase
-    .from('research_content')
-    .select('content')
-    .eq('sage_id', sageId)
-    .single()
-
-  if (error || !data) return null
-  const row = data as Record<string, unknown>
-  const content = row.content
-  return typeof content === 'string' && content ? content : null
-}
-
-export async function fetchSageStats(): Promise<{ total: number; lastUpdate: string }> {
-  const { count } = await supabase
-    .from('sages_with_stats')
-    .select('*', { count: 'exact', head: true })
-
-  return {
-    total:      count ?? 0,
-    lastUpdate: new Date().toLocaleDateString('he-IL'),
-  }
-}
-
-
-// ── Local fallback: /data.json — the canonical curated dataset (363 sages,
-// 450 typed connections). Used when Supabase is missing/behind, so the
-// Next.js graph always matches the classic site and Vercel. ──────────────
-export async function fetchLocalGraphData(): Promise<{ sages: Sage[]; connections: Connection[] }> {
-  try {
-    const res = await fetch('/data.json')
-    if (!res.ok) throw new Error(`HTTP ${res.status}`)
-    const d = await res.json()
-    const sages: Sage[] = (d.nodes ?? []).map((n: Record<string, unknown>) => ({
-      id:           String(n.id ?? ''),
-      label:        String(n.label ?? ''),
-      period:       ((n.era_key as string) || 'modern') as Sage['period'],
-      location:     (n.location as string) || undefined,
-      field:        (n.field as string) || undefined,
-      bio:          (n.bio as string) || undefined,
-      core_concept: (n.central_idea as string) || undefined,
-      tags: typeof n.tags === 'string' && n.tags
-        ? (n.tags as string).split(',').map(t => t.trim()).filter(Boolean)
-        : undefined,
-      spotify_url:  (n.spotify_url as string) || undefined,
-      migration_path: (n.migration_path as Sage['migration_path']) || undefined,
-      birth_year:   typeof n.birth_year === 'number' ? n.birth_year : undefined,
-      death_year:   typeof n.death_year === 'number' ? n.death_year : undefined,
-      date_precision: (n.date_precision as Sage['date_precision']) || undefined,
-      has_research: Boolean(n.has_research),
-    }))
-    const connections: Connection[] = (d.links ?? []).map((l: Record<string, unknown>) => ({
-      source: String(l.source ?? ''),
-      target: String(l.target ?? ''),
-      type:   ((l.type as string) || 'colleague') as Connection['type'],
-    }))
-    console.log(`[Fallback] ✅ data.json: ${sages.length} sages, ${connections.length} connections`)
-    return { sages, connections }
-  } catch (e) {
-    console.error('[Fallback] data.json failed:', e)
-    return { sages: [], connections: [] }
-  }
 }
