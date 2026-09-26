@@ -21,7 +21,7 @@ Run from `nextjs-app/`:
 npm run dev          # Next.js dev server (localhost:3000)
 npm run build         # production build — do this before pushing anything touching data.json,
                       # AppShell.tsx, or the viz components; it catches type errors tsc alone can miss
-npm run start         # serve the production build locally (useful for testing Leaflet/Supabase fallback timing)
+npm run start         # serve the production build locally (useful for testing Leaflet init and data-load timing)
 npm run type-check    # tsc --noEmit
 ```
 
@@ -58,7 +58,7 @@ Three locales (`he`/`en`/`ru`), Hebrew is canonical/default. `middleware.ts` red
 - **Graph and map tabs stay mounted permanently**, just toggled via a `hidden`/`block` CSS class, so their data-loading `useEffect`s fire once on initial app load regardless of which tab is active.
 - **Traditions, timeline, table, genealogy, about are conditionally rendered** (`{activeTab === 'x' && <Component/>}`) — they mount fresh each time the user switches to them.
 
-`GeoMap.tsx` (Leaflet) depends on its container having non-zero size at init; because it's always-mounted it can initialize while `display:none`, so it explicitly calls `map.invalidateSize()` on an `activeTab`-change effect to recover. `GenealogyTree.tsx` drives its D3 force simulation manually (`sim.stop()` + explicit `sim.tick()` in an RAF loop) for main-thread-friendly batching. There, remember `d3-force` only dispatches its `'tick'` event when the simulation runs its own timer, **not** on manual `.tick()` calls, so any per-tick DOM update must be invoked directly rather than registered via `.on('tick', …)`. **`NetworkGraph.tsx` does not use that pattern** — it runs d3's internal timer, so its `.on('tick')` handler fires normally. An earlier version of this file attributed the manual pattern to both; verify which you're in before restructuring simulation code.
+`GeoMap.tsx` (Leaflet) depends on its container having non-zero size at init; because it's always-mounted it can initialize while `display:none`, so it explicitly calls `map.invalidateSize()` on an `activeTab`-change effect to recover. Both `GenealogyTree.tsx` and `NetworkGraph.tsx` run d3-force on its own internal timer and render from `sim.on('tick', …)`. An earlier version of this file said GenealogyTree stepped the simulation by hand (`sim.stop()` + `sim.tick()` in an RAF loop); it does not. If you ever do switch a component to manual stepping, remember that d3-force only dispatches `'tick'` when its own timer runs, **not** on manual `.tick()` calls, so the per-tick DOM update must then be called directly.
 
 ### State
 
@@ -68,7 +68,9 @@ Single Zustand store (`store/useAppStore.ts`): sages/connections/sageMap, select
 
 - **Period keys**: `patriarchs, exodus, judges, kings, second-temple, tannaim, amoraim, geonim, rishonim, acharonim, modern` (`lib/types.ts::ALL_PERIODS`, chronological order — this order drives the timeline and genealogy-tree band layout).
 - **Connection types**: `student, teacher, colleague, influence, oppose, predecessor, contemporary, family`.
+  Direction matters for the two lineage types: `teacher` means **source is the teacher of target**, `student` means **source is the student of target**. Any UI that labels a related sage ("רבו" / "תלמידו") must look at which end of the link the current sage is on. `rebuild_data_from_csv.py` validates teacher/student links on every build: it flips a teacher born after the student, downgrades pairs whose lifetimes can't overlap to `influence`, and drops non-person ends and contradictory pairs. The rules are in the comment block above `TS = ('teacher', 'student')`. Every change goes to `data/link_validation_report.txt` for human review; don't edit that report by hand.
 - **Region keys**: `ashkenaz, east-europe, tsarfat, provence, sefarad, italy, north-africa, mizrach, eretz-israel, other` — derived from free-text `location` via `lib/regions.ts::regionsOf` (keyword matching), not stored directly on most sages.
+- **Map coordinates** come from one resolver, `lib/locationCoords.ts` (`resolveCoords` / `primaryPlaceOf`), shared by the map markers and the place cohorts. It uses whole-word matching and prefers city over region over country; when a sage has several places at the same level, it takes the one mentioned first. Explicit `lat`/`lng` on a sage wins. Don't add a second place lookup; extend the gazetteer in that file instead.
 - Hebrew is written with proper גרשיים (e.g. `רמב״ם`, not `רמבם`), and RTL is the default direction; English/Russian content is LTR overlay only.
 
 ## Research Document Ingestion Workflow
