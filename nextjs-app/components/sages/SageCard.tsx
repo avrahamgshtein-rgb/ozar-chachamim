@@ -83,7 +83,7 @@ export function SageCard({ sage, locale, onClose }: SageCardProps) {
     setMemoryMessage(error ? error.message : tr(locale, 'ההערה נשמרה', 'Note saved', 'Заметка сохранена'))
   }
 
-  const sageConnections: Array<Connection & { otherSage: Sage | undefined }> =
+  const allSageConnections: Array<Connection & { otherSage: Sage | undefined }> =
     connections
       .filter(c => c.source === sage.id || c.target === sage.id)
       .map(c => {
@@ -91,7 +91,8 @@ export function SageCard({ sage, locale, onClose }: SageCardProps) {
         return { ...c, otherSage: sageMap.get(otherId) }
       })
       .filter(c => c.otherSage)
-      .slice(0, 12)
+  // The list shows the first 12; the heading counts them all (same as the graph tooltip)
+  const sageConnections = allSageConnections.slice(0, 12)
 
   const accentColor = ERA_COLORS[sage.period] ?? '#c9973a'
   const yearRange   = formatYearRange(sage.birth_year, sage.death_year, sage.date_precision)
@@ -287,7 +288,7 @@ export function SageCard({ sage, locale, onClose }: SageCardProps) {
         {/* Related sages */}
         {sageConnections.length > 0 && (
           <section>
-            <SectionLabel>{t.relatedSages} ({sageConnections.length})</SectionLabel>
+            <SectionLabel>{t.relatedSages} ({allSageConnections.length})</SectionLabel>
             <ul className="space-y-1.5">
               {sageConnections.map((conn, idx) => {
                 const other = conn.otherSage!

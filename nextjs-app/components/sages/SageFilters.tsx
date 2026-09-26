@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react'
 import { cn } from '@/lib/utils'
 import { useAppStore } from '@/store/useAppStore'
 import { ERA_LABELS, ERA_COLORS, REGION_LABELS, REGION_COLORS, ALL_PERIODS } from '@/lib/types'
@@ -7,6 +8,8 @@ import type { Locale, Period, Region } from '@/lib/types'
 import { UI, tr } from '@/lib/i18n'
 
 const PERIODS: Period[] = ALL_PERIODS
+/** Field chips shown before the "more…" control. */
+const TOP_FIELDS = 15
 
 const REGIONS: Region[] = [
   'eretz-israel', 'sefarad', 'ashkenaz', 'east-europe',
@@ -20,9 +23,18 @@ interface SageFiltersProps {
 
 export function SageFilters({ locale, onClose }: SageFiltersProps) {
   const t = UI[locale]
-  const { filters, togglePeriodFilter, toggleRegionFilter, toggleFieldFilter, clearFilters, filteredSages, sages, availableFields } = useAppStore()
+  const { filters, togglePeriodFilter, toggleRegionFilter, toggleFieldFilter, clearFilters, setPlaceFocus, filteredSages, sages, availableFields } = useAppStore()
+  const [allFields, setAllFields] = useState(false)
 
-  const hasActiveFilters = (filters.period !== null && filters.period.length > 0) || filters.region.length > 0 || filters.field.length > 0
+  const hasActiveFilters =
+    (filters.period !== null && filters.period.length > 0) || filters.region.length > 0 ||
+    filters.field.length > 0 || !!filters.place
+
+  // Top fields by frequency, plus any selected one outside the top so it stays visible.
+  const shownFields = allFields
+    ? availableFields
+    : availableFields.filter((f, i) => i < TOP_FIELDS || filters.field.includes(f.name))
+  const hiddenCount = availableFields.length - shownFields.length
 
   return (
     <div className="flex flex-col h-full">
@@ -50,6 +62,23 @@ export function SageFilters({ locale, onClose }: SageFiltersProps) {
           {t.sagesLoaded}
         </div>
 
+        {/* Place focus — set by a map cluster click; shown here so it can be
+            removed from any tab, not only the map */}
+        {filters.place && (
+          <div>
+            <p className="text-xs font-sans font-semibold uppercase tracking-widest text-ink-400 mb-3">
+              {tr(locale, 'מקום', 'Place', 'Место')}
+            </p>
+            <button
+              onClick={() => setPlaceFocus(null)}
+              aria-label={tr(locale, `הסר סינון מקום: ${filters.place}`, `Remove place filter: ${filters.place}`, `Убрать фильтр места: ${filters.place}`)}
+              className="px-3 py-1.5 rounded-full text-xs font-sans transition-all border bg-gold-500/20 border-gold-500/60 text-gold-300 hover:bg-gold-500/30"
+            >
+              📍 {filters.place} ✕
+            </button>
+          </div>
+        )}
+
         {/* Period filter */}
         <div>
           <p className="text-xs font-sans font-semibold uppercase tracking-widest text-ink-400 mb-3">
@@ -59,7 +88,8 @@ export function SageFilters({ locale, onClose }: SageFiltersProps) {
             {PERIODS.map(period => {
               const label  = ERA_LABELS[period]?.[locale] ?? period
               const color  = ERA_COLORS[period]
-              const active = filters.period === null || filters.period.includes(period)
+              // Inclusive like the region chips: nothing is lit until an era is chosen.
+              const active = filters.period?.includes(period) ?? false
 
               return (
                 <button
@@ -132,12 +162,13 @@ export function SageFilters({ locale, onClose }: SageFiltersProps) {
               {tr(locale, 'תחום', 'Field', 'Область')}
             </p>
             <div className="flex flex-wrap gap-2">
-              {availableFields.map(field => {
-                const active = filters.field.includes(field)
+              {shownFields.map(({ name, count }) => {
+                const active = filters.field.includes(name)
                 return (
                   <button
-                    key={field}
-                    onClick={() => toggleFieldFilter(field)}
+                    key={name}
+                    onClick={() => toggleFieldFilter(name)}
+                    aria-pressed={active}
                     className={cn(
                       'px-3 py-1.5 rounded-full text-xs font-sans transition-all border',
                       active
@@ -145,10 +176,20 @@ export function SageFilters({ locale, onClose }: SageFiltersProps) {
                         : 'border-ink-600/40 text-ink-400 hover:text-ink-200 hover:border-ink-500/60',
                     )}
                   >
-                    {field}
+                    {name} <span className="opacity-60 tabular-nums">{count}</span>
                   </button>
                 )
               })}
+              {(hiddenCount > 0 || allFields) && (
+                <button
+                  onClick={() => setAllFields(v => !v)}
+                  className="px-3 py-1.5 rounded-full text-xs font-sans transition-all border border-ink-500/60 text-ink-300 hover:bg-ink-700/60"
+                >
+                  {allFields
+                    ? tr(locale, 'פחות ▴', 'Less ▴', 'Меньше ▴')
+                    : tr(locale, `עוד… (${hiddenCount})`, `More… (${hiddenCount})`, `Ещё… (${hiddenCount})`)}
+                </button>
+              )}
             </div>
           </div>
         )}
