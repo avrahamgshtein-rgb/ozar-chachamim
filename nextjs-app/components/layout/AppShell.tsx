@@ -216,7 +216,7 @@ export function AppShell({ locale, initialTotal, initialLastUpdate, initialStats
 
       <Header locale={locale} otherLocale={otherLocale} initialStats={initialStats} />
 
-      <main id="main" tabIndex={-1} className="absolute inset-0 pt-[var(--header-h,64px)]">
+      <main id="main" className="absolute inset-0 pt-[var(--header-h,64px)]">
         <CanvasArea
           activeTab={activeTab}
           locale={locale}
@@ -389,7 +389,7 @@ function CanvasArea({
         />
       )}
 
-      {/* Traditions — schools and traditions */}
+      {/* Traditions — era-grouped sage cards */}
       {activeTab === 'traditions' && (
         <div {...panel('traditions')} className="absolute inset-0">
           <Traditions locale={locale} />

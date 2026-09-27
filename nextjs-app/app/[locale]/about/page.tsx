@@ -36,7 +36,7 @@ export default async function AboutPage({ params }: PageProps) {
     // The page is its own scroller: body is overflow:hidden for the graph canvas.
     <div className="h-dvh overflow-y-auto bg-ink-900 text-ink-100">
       <SiteTopBar locale={locale} path="/about" />
-      <main id="main" tabIndex={-1}>
+      <main id="main">
         <AboutContent locale={locale} stats={stats} variant="page" />
       </main>
     </div>

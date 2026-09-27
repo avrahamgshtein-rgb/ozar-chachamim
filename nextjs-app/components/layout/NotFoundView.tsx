@@ -65,12 +65,12 @@ export function NotFoundView() {
   return (
     <div className="h-dvh overflow-y-auto bg-ink-900 text-ink-100">
       <SiteTopBar locale={locale} />
-      <main id="main" tabIndex={-1} className="relative">
+      <main id="main" className="relative">
         {/* Soft gold glow behind the heading, as on the home canvas. */}
         <div
           aria-hidden
           className="pointer-events-none absolute inset-x-0 top-0 h-80"
-          style={{ background: 'radial-gradient(ellipse 50% 60% at 50% 0%, rgb(var(--gold-500-rgb) / 0.10), transparent 70%)' }}
+          style={{ background: 'radial-gradient(ellipse 50% 60% at 50% 0%, rgb(var(--gold-500-rgb) / 0.08), transparent 70%)' }}
         />
         <div className="relative mx-auto max-w-2xl px-4 sm:px-6 pt-14 pb-20 text-center animate-fade-in">
           <p aria-hidden className="font-serif text-7xl sm:text-8xl font-bold leading-none text-gold-500/25 select-none">404</p>

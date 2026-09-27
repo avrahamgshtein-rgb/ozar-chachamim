@@ -166,13 +166,14 @@ h1, h2, h3 {
   color: rgb(var(--ink-900-rgb));
   font: 700 0.875rem/1.2 'Heebo', sans-serif;
   text-decoration: none;
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
-  transform: translateY(calc(-100% - 1rem));
+  /* Parked above the viewport with no shadow, so nothing of it shows at rest. */
+  transform: translateY(calc(-100% - 2rem));
   transition: transform 0.15s ease-out;
 }
 .skip-link:focus,
 .skip-link:focus-visible {
   transform: none;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
 }
 :root .skip-link:focus-visible {
   outline-color: rgb(var(--ink-100-rgb));

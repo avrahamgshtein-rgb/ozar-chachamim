@@ -28,13 +28,24 @@ export function TabBar({ locale }: TabBarProps) {
   const t = UI[locale]
   const rtl = locale === 'he'
   const refs = useRef<Array<HTMLButtonElement | null>>([])
+  const barRef = useRef<HTMLElement>(null)
 
   // Keep the selected tab in view where the bar scrolls sideways (phones).
+  // Scrolls the bar itself rather than calling scrollIntoView, which in Chrome
+  // also moves the sequential-focus starting point: the first Tab press then
+  // skipped the skip links and landed after the tab bar.
   useEffect(() => {
+    const bar = barRef.current
     const el = refs.current[TABS.indexOf(activeTab)]
-    if (!el) return
+    if (!bar || !el || bar.scrollWidth <= bar.clientWidth) return
+    const barBox = bar.getBoundingClientRect()
+    const box = el.getBoundingClientRect()
+    let delta = 0
+    if (box.left < barBox.left) delta = box.left - barBox.left - 8
+    else if (box.right > barBox.right) delta = box.right - barBox.right + 8
+    if (!delta) return
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    el.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: reduce ? 'auto' : 'smooth' })
+    bar.scrollBy({ left: delta, behavior: reduce ? 'auto' : 'smooth' })
   }, [activeTab])
 
   function onKeyDown(e: React.KeyboardEvent<HTMLButtonElement>, index: number) {
@@ -53,8 +64,8 @@ export function TabBar({ locale }: TabBarProps) {
 
   return (
     <nav
+      ref={barRef}
       id="tabbar"
-      tabIndex={-1}
       data-focus-region
       className={cn(
         'fixed bottom-4 left-1/2 -translate-x-1/2 z-30',

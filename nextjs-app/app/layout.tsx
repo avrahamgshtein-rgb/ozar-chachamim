@@ -3,13 +3,12 @@ import { SITE_URL } from '@/lib/siteUrl'
 import './globals.css'
 
 // Fallback metadata for documents outside a locale (the root 404). Locale
-// pages get theirs from app/[locale]/layout.tsx.
+// pages get theirs from app/[locale]/layout.tsx. A plain string, not a
+// template: a template here would also wrap the locale layout's default
+// title, giving "Ozar Chachamim — … | אוצר חכמים" on every home page.
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: {
-    default: 'אוצר חכמים — גרף הידע של חכמי ישראל',
-    template: '%s | אוצר חכמים',
-  },
+  title: 'אוצר חכמים — גרף הידע של חכמי ישראל',
 }
 
 export const viewport: Viewport = {
