@@ -1,6 +1,6 @@
 'use client'
 
-import { useMemo, useRef } from 'react'
+import { useEffect, useMemo, useRef } from 'react'
 import type { CSSProperties, ReactNode } from 'react'
 import { ALL_PERIODS, ERA_COLORS, ERA_LABELS } from '@/lib/types'
 import type { Locale, Sage } from '@/lib/types'
@@ -13,7 +13,7 @@ import type { ResolvedStation, SinaiIndex, SinaiStepKind } from '@/lib/sinaiPath
 import { chronoYear } from './lineage'
 import type { LineageIndex, LineageKind } from './lineage'
 import {
-  LEGEND, SINAI_LINE_CSS, SP, genLabel, generationsLabel, inspirationsLabel, leapLabel, linksLabel, receivedFrom, shortName, isGroupStation,
+  LEGEND, SINAI_LINE_CSS, SP, genLabel, generationsLabel, inspirationsLabel, leapLabel, linksLabel, receivedFrom, shortName, isGroupStation, isWoman,
 } from './SinaiPathText'
 
 /*
@@ -48,7 +48,7 @@ interface SinaiPathProps {
 
 type Row =
   | { t: 'summit' }
-  | { t: 'station'; st: ResolvedStation; entry: string | null }
+  | { t: 'station'; st: ResolvedStation; entry: string | null; self?: boolean }
   | { t: 'band' }
   | { t: 'sage'; id: string; above: string | null; kind: LineageKind; reoriented?: boolean; focus: boolean }
 
@@ -59,6 +59,9 @@ export function SinaiPath({ locale, sageId, si, idx, sages, sageMap, onOpen, onP
   const sage = sageId ? sageMap.get(sageId) : undefined
   const path = useMemo(() => (sageId ? sinaiPath(si, sageId) : null), [si, sageId])
   const listRef = useRef<HTMLOListElement>(null)
+  const rootRef = useRef<HTMLDivElement>(null)
+  // Each new road is revealed from Sinai: start at the top.
+  useEffect(() => { rootRef.current?.scrollTo({ top: 0 }) }, [sageId])
 
   const name = (id: string | null | undefined) => (id ? displayName(sageMap.get(id)?.label) : '')
   const yearsOf = (s: Sage | undefined) => (s ? formatYearRangeFor(locale, s.birth_year, s.death_year, s.date_precision) : '')
@@ -71,7 +74,9 @@ export function SinaiPath({ locale, sageId, si, idx, sages, sageMap, onOpen, onP
       steps.forEach((s, i) => {
         if (s.gen) {
           const st = si.chain[s.gen - 1]
-          rows.push({ row: { t: 'station', st, entry: s.gen === path.entry.gen ? path.entry.id : null }, kind: s.kind })
+          const entry = s.gen === path.entry.gen ? path.entry.id : null
+          // A sage on the Rambam's list is the last station of their own road.
+          rows.push({ row: { t: 'station', st, entry, self: !!entry && path.hops === 0 }, kind: s.kind })
           if (s.gen === path.entry.gen && path.hops > 0) rows.push({ row: { t: 'band' }, kind: steps[i + 1].kind })
         } else {
           rows.push({
@@ -107,7 +112,7 @@ export function SinaiPath({ locale, sageId, si, idx, sages, sageMap, onOpen, onP
   const rowProps = { locale, sageMap, name, yearsOf, onOpen }
 
   return (
-    <div className="sp-root sp-lines absolute inset-0 overflow-y-auto" dir={rtl ? 'rtl' : 'ltr'}>
+    <div ref={rootRef} className="sp-root sp-lines absolute inset-0 overflow-y-auto" dir={rtl ? 'rtl' : 'ltr'}>
       <style>{SINAI_LINE_CSS + SINAI_CSS}</style>
       <div className="mx-auto w-full max-w-3xl px-4 md:px-6 pt-5 md:pt-8 pb-44 md:pb-32">
         {path && sage ? (
@@ -234,17 +239,19 @@ function NoPath({ locale, sage, si, idx, sages, sageMap, name, yearsOf, onOpen, 
       'Выберите мудреца, чтобы увидеть его путь к Синаю. А пока — поколения по счёту Рамбама.')
   } else if (beforeSinai(sage)) {
     message = tr(locale,
-      `${n} שייך לתקופת האבות, שקדמה למתן תורה בסיני. שלשלת הקבלה מתחילה במשה רבנו:`,
+      `${n} ${isWoman(sage.tags) ? 'שייכת' : 'שייך'} לתקופת האבות, שקדמה למתן תורה בסיני. שלשלת הקבלה מתחילה במשה רבנו:`,
       `${n} belongs to the age of the patriarchs, before the Torah was given at Sinai. The chain of transmission begins with Moses:`,
       `${n} относится к эпохе праотцов, до дарования Торы на Синае. Цепь передачи начинается с Моисея:`)
   } else if (top) {
     message = tr(locale,
-      `המאגר עדיין לא מתעד דרך רצופה מ${n} אל שלשלת הקבלה. העקבות מגיעים עד ${shortName(top.label)}, ומשם רבותיו עדיין לא תועדו.`,
+      `המאגר עדיין לא מתעד דרך רצופה מ${n} אל שלשלת הקבלה. העקבות מגיעים עד ${shortName(top.label)}, ומשם ${isWoman(top.tags) ? 'רבותיה' : 'רבותיו'} עדיין לא תועדו.`,
       `The archive doesn’t yet record an unbroken route from ${n} to the chain. The trail reaches back to ${shortName(top.label)}, whose own teachers aren’t recorded yet.`,
       `В архиве пока нет непрерывного пути от «${n}» к цепи. След ведёт до «${shortName(top.label)}», чьи учителя ещё не записаны.`)
   } else {
     message = tr(locale,
-      `המאגר עדיין לא מתעד את רבותיו של ${n} או את מי שהשפיע עליו, ולכן עוד אי אפשר לשרטט את דרכו אל סיני.`,
+      isWoman(sage.tags)
+        ? `המאגר עדיין לא מתעד את רבותיה של ${n} או את מי שהשפיע עליה, ולכן עוד אי אפשר לשרטט את דרכה אל סיני.`
+        : `המאגר עדיין לא מתעד את רבותיו של ${n} או את מי שהשפיע עליו, ולכן עוד אי אפשר לשרטט את דרכו אל סיני.`,
       `The archive doesn’t yet record ${n}’s teachers or influences, so their road to Sinai can’t be drawn yet.`,
       `В архиве пока нет учителей и влияний «${n}», поэтому путь к Синаю ещё не построить.`)
   }
@@ -390,7 +397,7 @@ function RowView({ p, delay, dur, locale, sageMap, name, yearsOf, onOpen }: {
   }
 
   if (row.t === 'station') {
-    const { st, entry } = row
+    const { st, entry, self } = row
     const main = st.ids[0] ? sageMap.get(st.ids[0]) : undefined
     // One named person, present in the corpus: the station's name opens them.
     // A station named for several shows its corpus sages as chips, and their
@@ -398,16 +405,17 @@ function RowView({ p, delay, dur, locale, sageMap, name, yearsOf, onOpen }: {
     const single = !isGroupStation(st.station) && st.ids.length === 1
     const compact = !st.ids.length && !st.alongside.some(a => a.ids.length)
     const years = !main ? '' : single ? yearsOf(main) || ERA_LABELS[main.period]?.[locale] : ERA_LABELS[main.period]?.[locale]
-    const cls = cn('sp-row sp-station', compact && 'sp-compact', entry && 'sp-entry')
+    const cls = cn('sp-row sp-station', compact && 'sp-compact', entry && 'sp-entry', self && 'sp-focus')
     return (
-      <li className={cls} style={{ ...style, '--c': main ? ERA_COLORS[main.period] : undefined } as CSSProperties}>
+      <li className={cls} style={{ ...style, '--c': main ? ERA_COLORS[main.period] : undefined } as CSSProperties}
+        aria-current={self ? 'true' : undefined}>
         <div className="sp-river" aria-hidden>
           {segs}
-          <span className={cn('sp-node', !main && 'sp-hollow', entry && 'sp-node-entry')} />
+          <span className={cn('sp-node', !main && 'sp-hollow', entry && (self ? 'sp-node-focus' : 'sp-node-entry'))} />
         </div>
         <div className="sp-main">
           {single ? (
-            <button onClick={() => onOpen(st.ids[0])} className={cn('sp-name', entry === st.ids[0] && 'sp-hit')}>
+            <button onClick={() => onOpen(st.ids[0])} className={cn('sp-name', entry === st.ids[0] && 'sp-hit', self && entry === st.ids[0] && 'sp-name-focus')}>
               {st.station.name[locale]}
             </button>
           ) : (
@@ -436,7 +444,7 @@ function RowView({ p, delay, dur, locale, sageMap, name, yearsOf, onOpen }: {
               </span>
             )
           })}
-          {entry && (
+          {entry && !self && (
             <span className="sp-join">
               <span aria-hidden>↓ </span>{SP.joinsHere[locale]}
               {!(single && entry === st.ids[0]) && <> · {shortName(sageMap.get(entry)?.label)}</>}
@@ -451,7 +459,7 @@ function RowView({ p, delay, dur, locale, sageMap, name, yearsOf, onOpen }: {
   const s = sageMap.get(row.id)
   const above = row.above ? sageMap.get(row.above) : undefined
   const leap = row.above && row.kind !== 'teacher' ? leapCenturies(above, s) : null
-  const fem = !!s?.tags?.includes('נשים')
+  const fem = isWoman(s?.tags)
   return (
     <li
       className={cn('sp-row sp-sage', row.focus && 'sp-focus')}

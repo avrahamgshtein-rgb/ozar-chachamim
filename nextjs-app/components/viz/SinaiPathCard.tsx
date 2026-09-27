@@ -14,7 +14,7 @@ import { beforeSinai, buildSinaiIndex, sinaiPath, sinaiTrail } from '@/lib/sinai
 import type { SinaiIndex, SinaiStep, SinaiStepKind } from '@/lib/sinaiPath'
 import { buildLineageIndex } from './lineage'
 import type { LineageIndex } from './lineage'
-import { SINAI_LINE_CSS, SP, genLabel, inspirationsLabel, isGroupStation, ruPlural, shortName } from './SinaiPathText'
+import { SINAI_LINE_CSS, SP, genLabel, inspirationsLabel, isGroupStation, isWoman, ruPlural, shortName } from './SinaiPathText'
 
 const S = {
   stations: (n: number, l: Locale) =>
@@ -82,7 +82,7 @@ export function SinaiPathCard({ sageId, locale }: { sageId: string; locale: Loca
     const top = trail.length > 1 ? trail[0].id! : null
     const text = beforeSinai(sage)
       ? ({
-          he: `${selfName} שייך לתקופת האבות, שקדמה למתן תורה בסיני, שבו מתחילה שלשלת הקבלה.`,
+          he: `${selfName} ${isWoman(sage.tags) ? 'שייכת' : 'שייך'} לתקופת האבות, שקדמה למתן תורה בסיני, שבו מתחילה שלשלת הקבלה.`,
           en: `${selfName} belongs to the age of the patriarchs, before the Torah was given at Sinai, where the chain of transmission begins.`,
           ru: `${selfName} относится к эпохе праотцов, до дарования Торы на Синае, с которого начинается цепь передачи.`,
         })[locale]
@@ -93,7 +93,9 @@ export function SinaiPathCard({ sageId, locale }: { sageId: string; locale: Loca
             ru: `В архиве пока нет непрерывного пути от «${selfName}» к цепи передачи: след ведёт до «${nameOf(top)}» и обрывается.`,
           })[locale]
         : ({
-            he: `המאגר עדיין לא מתעד את רבותיו של ${selfName}, ולכן עוד אי אפשר לשרטט את דרכו אל סיני.`,
+            he: isWoman(sage.tags)
+              ? `המאגר עדיין לא מתעד את רבותיה של ${selfName}, ולכן עוד אי אפשר לשרטט את דרכה אל סיני.`
+              : `המאגר עדיין לא מתעד את רבותיו של ${selfName}, ולכן עוד אי אפשר לשרטט את דרכו אל סיני.`,
             en: `The archive doesn’t yet record ${selfName}’s teachers, so the road to Sinai can’t be drawn yet.`,
             ru: `В архиве пока нет учителей «${selfName}», поэтому путь к Синаю ещё не построить.`,
           })[locale]
@@ -154,7 +156,7 @@ export function SinaiPathCard({ sageId, locale }: { sageId: string; locale: Loca
     <section aria-labelledby="sinai-title" dir={dir} className="sp-lines spc no-print mt-10 rounded-2xl border border-gold-500/20 p-4 md:p-6"
       style={{ background: `radial-gradient(120% 160% at ${dir === 'rtl' ? '100%' : '0%'} 0%, rgb(var(--gold-500-rgb) / .08) 0%, transparent 60%)` }}>
       <style>{SINAI_LINE_CSS + CARD_CSS}</style>
-      {head(S.stations(steps.length, locale))}
+      {head(steps.length > 1 ? S.stations(steps.length, locale) : undefined)}
       {steps.length === 1 ? (
         <p className="mt-3 font-serif text-base italic text-ink-200">{SP.avot[locale]}</p>
       ) : (

@@ -69,6 +69,11 @@ export function isGroupStation(station: { name: Record<Locale, string> }): boole
   return /,| and /.test(station.name.en)
 }
 
+/** Hebrew agrees in gender: women carry the 'נשים' tag (see TAG_FACETS). */
+export function isWoman(tags: string[] | undefined): boolean {
+  return !!tags?.includes('נשים')
+}
+
 /** "Generation 12" of the Rambam's forty. */
 export function genLabel(gen: number, locale: Locale): string {
   return locale === 'he' ? `דור ${gen}` : locale === 'en' ? `Generation ${gen}` : `${gen}-е поколение`
