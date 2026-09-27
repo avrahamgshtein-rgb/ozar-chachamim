@@ -48,11 +48,11 @@ function isoYear(year: number | undefined): string | undefined {
 export function getSageSchema(
   sage: Sage,
   locale: string,
-  opts: { url?: string; research?: SageSchemaResearch[] } = {},
+  opts: { url?: string; research?: SageSchemaResearch[]; alternateNames?: string[] } = {},
 ) {
   const url = opts.url ?? `${SITE_URL}/${locale}/sage/${sage.id}`
   const parts = labelParts(sage.label)
-  const alternateName = [...new Set([parts.fullName, sage.name_en].filter(
+  const alternateName = [...new Set([parts.fullName, sage.name_en, ...(opts.alternateNames ?? [])].filter(
     (n): n is string => !!n && n.trim() !== '' && n !== parts.name,
   ))]
   const exact = sage.date_precision === 'exact'
