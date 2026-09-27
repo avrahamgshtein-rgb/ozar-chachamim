@@ -264,15 +264,14 @@ export function sinaiTrail(si: SinaiIndex, idx: LineageIndex, sageId: string): S
 }
 
 /**
- * The years a link bridges, rounded to whole centuries, when both ends carry
- * dates and it spans at least one: "a leap of about nine centuries". Used to
- * show an inspiration across ages for what it is.
+ * The centuries a link bridges, rounded, when both ends carry dates and they
+ * are at least a hundred years apart: "a leap of about nine centuries". Shows
+ * an inspiration across the ages for what it is.
  */
 export function leapCenturies(upper: Sage | undefined, lower: Sage | undefined): number | null {
   const a = chronoYear(upper), b = chronoYear(lower)
-  if (a == null || b == null) return null
-  const c = Math.round((b - a) / 100)
-  return c >= 1 ? c : null
+  if (a == null || b == null || b - a < 100) return null
+  return Math.round((b - a) / 100)
 }
 
 /** Lived before the Torah was given: the patriarchs' era. */

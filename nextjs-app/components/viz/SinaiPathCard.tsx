@@ -14,7 +14,7 @@ import { beforeSinai, buildSinaiIndex, sinaiPath, sinaiTrail } from '@/lib/sinai
 import type { SinaiIndex, SinaiStep, SinaiStepKind } from '@/lib/sinaiPath'
 import { buildLineageIndex } from './lineage'
 import type { LineageIndex } from './lineage'
-import { SINAI_LINE_CSS, SP, genLabel, inspirationsLabel, ruPlural, shortName } from './SinaiPathText'
+import { SINAI_LINE_CSS, SP, genLabel, inspirationsLabel, isGroupStation, ruPlural, shortName } from './SinaiPathText'
 
 const S = {
   stations: (n: number, l: Locale) =>
@@ -112,7 +112,7 @@ export function SinaiPathCard({ sageId, locale }: { sageId: string; locale: Loca
   const stationNode = (st: SinaiStep): Node => {
     const station = si.chain[st.gen! - 1]
     // A station the path passes through by one named person shows that person.
-    const personal = st.id && (st.id === path.entry.id ? (path.entry.alongside || station.ids.length > 1) : false)
+    const personal = !!st.id && st.id === path.entry.id && (path.entry.alongside || isGroupStation(station.station))
     return {
       id: st.id,
       name: personal ? nameOf(st.id!) : station.station.name[locale],

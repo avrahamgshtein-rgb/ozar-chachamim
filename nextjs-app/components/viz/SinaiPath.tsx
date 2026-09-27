@@ -13,7 +13,7 @@ import type { ResolvedStation, SinaiIndex, SinaiStepKind } from '@/lib/sinaiPath
 import { chronoYear } from './lineage'
 import type { LineageIndex, LineageKind } from './lineage'
 import {
-  LEGEND, SINAI_LINE_CSS, SP, genLabel, generationsLabel, inspirationsLabel, leapLabel, linksLabel, receivedFrom, shortName,
+  LEGEND, SINAI_LINE_CSS, SP, genLabel, generationsLabel, inspirationsLabel, leapLabel, linksLabel, receivedFrom, shortName, isGroupStation,
 } from './SinaiPathText'
 
 /*
@@ -111,7 +111,7 @@ export function SinaiPath({ locale, sageId, si, idx, sages, sageMap, onOpen, onP
       <style>{SINAI_LINE_CSS + SINAI_CSS}</style>
       <div className="mx-auto w-full max-w-3xl px-4 md:px-6 pt-5 md:pt-8 pb-44 md:pb-32">
         {path && sage ? (
-          <PathHeader locale={locale} sage={sage} path={path} name={name} onJump={placed.length > 10 ? jumpToEnd : undefined} />
+          <PathHeader locale={locale} sage={sage} path={path} onJump={placed.length > 10 ? jumpToEnd : undefined} />
         ) : (
           <NoPath
             locale={locale} sage={sage} si={si} idx={idx} sages={sages} sageMap={sageMap}
@@ -135,7 +135,7 @@ export function SinaiPath({ locale, sageId, si, idx, sages, sageMap, onOpen, onP
           key={sageId ?? 'chain'}
           className="sp-river-list sp-anim mt-5"
           aria-label={path && sage
-            ? tr(locale, `הדרך מסיני עד ${name(sage.id)}`, `The road from Sinai to ${name(sage.id)}`, `Путь от Синая до ${name(sage.id)}`)
+            ? tr(locale, `הדרך מסיני עד ${shortName(sage.label)}`, `The road from Sinai to ${shortName(sage.label)}`, `Путь от Синая до ${shortName(sage.label)}`)
             : SP.chainHeading[locale]}
         >
           {placed.map((p, i) => (
@@ -153,14 +153,13 @@ export function SinaiPath({ locale, sageId, si, idx, sages, sageMap, onOpen, onP
 
 /* ── Header ───────────────────────────────────────────────────────────── */
 
-function PathHeader({ locale, sage, path, name, onJump }: {
+function PathHeader({ locale, sage, path, onJump }: {
   locale: Locale
   sage: Sage
   path: NonNullable<ReturnType<typeof sinaiPath>>
-  name: (id: string | null | undefined) => string
   onJump?: () => void
 }) {
-  const n = name(sage.id)
+  const n = shortName(sage.label)
   const isMoses = path.steps.length === 1
   let summary: string
   if (isMoses) summary = SP.avot[locale]
@@ -224,7 +223,7 @@ function NoPath({ locale, sage, si, idx, sages, sageMap, name, yearsOf, onOpen, 
 }) {
   const trail = useMemo(() => (sage && !beforeSinai(sage) ? sinaiTrail(si, idx, sage.id) : []), [si, idx, sage])
   const nearby = useMemo(() => nearbyReaching(sage, sages, si, idx), [sage, sages, si, idx])
-  const n = sage ? name(sage.id) : ''
+  const n = sage ? shortName(sage.label) : ''
   const top = trail.length > 1 ? sageMap.get(trail[0].id!) : undefined
 
   let message: string
@@ -240,9 +239,9 @@ function NoPath({ locale, sage, si, idx, sages, sageMap, name, yearsOf, onOpen, 
       `${n} относится к эпохе праотцов, до дарования Торы на Синае. Цепь передачи начинается с Моисея:`)
   } else if (top) {
     message = tr(locale,
-      `המאגר עדיין לא מתעד דרך רצופה מ${n} אל שלשלת הקבלה. העקבות מגיעים עד ${name(top.id)}, ומשם רבותיו עדיין לא תועדו.`,
-      `The archive doesn’t yet record an unbroken route from ${n} to the chain. The trail reaches back to ${name(top.id)}, whose own teachers aren’t recorded yet.`,
-      `В архиве пока нет непрерывного пути от «${n}» к цепи. След ведёт до «${name(top.id)}», чьи учителя ещё не записаны.`)
+      `המאגר עדיין לא מתעד דרך רצופה מ${n} אל שלשלת הקבלה. העקבות מגיעים עד ${shortName(top.label)}, ומשם רבותיו עדיין לא תועדו.`,
+      `The archive doesn’t yet record an unbroken route from ${n} to the chain. The trail reaches back to ${shortName(top.label)}, whose own teachers aren’t recorded yet.`,
+      `В архиве пока нет непрерывного пути от «${n}» к цепи. След ведёт до «${shortName(top.label)}», чьи учителя ещё не записаны.`)
   } else {
     message = tr(locale,
       `המאגר עדיין לא מתעד את רבותיו של ${n} או את מי שהשפיע עליו, ולכן עוד אי אפשר לשרטט את דרכו אל סיני.`,
@@ -394,9 +393,11 @@ function RowView({ p, delay, dur, locale, sageMap, name, yearsOf, onOpen }: {
     const { st, entry } = row
     const main = st.ids[0] ? sageMap.get(st.ids[0]) : undefined
     // One named person, present in the corpus: the station's name opens them.
-    const single = st.station.match.length === 1 && st.ids.length === 1
+    // A station named for several shows its corpus sages as chips, and their
+    // era rather than one person's dates.
+    const single = !isGroupStation(st.station) && st.ids.length === 1
     const compact = !st.ids.length && !st.alongside.some(a => a.ids.length)
-    const years = main ? yearsOf(main) || ERA_LABELS[main.period]?.[locale] : ''
+    const years = !main ? '' : single ? yearsOf(main) || ERA_LABELS[main.period]?.[locale] : ERA_LABELS[main.period]?.[locale]
     const cls = cn('sp-row sp-station', compact && 'sp-compact', entry && 'sp-entry')
     return (
       <li className={cls} style={{ ...style, '--c': main ? ERA_COLORS[main.period] : undefined } as CSSProperties}>
@@ -468,7 +469,7 @@ function RowView({ p, delay, dur, locale, sageMap, name, yearsOf, onOpen }: {
         <span className="sp-years">{yearsOf(s) || (s && ERA_LABELS[s.period]?.[locale])}</span>
         {row.above && (
           <span className={cn('sp-rel', `sp-rel-${row.kind}`)}>
-            {receivedFrom(row.kind, name(row.above), locale, fem)}
+            {receivedFrom(row.kind, shortName(above?.label), locale, fem)}
             {leap && <span className="text-ink-500"> · {leapLabel(leap, locale)}</span>}
           </span>
         )}
@@ -489,7 +490,8 @@ const SINAI_CSS = `
 .sp-root .sp-river { grid-area: river; position: relative; align-self: stretch; margin-block: -8px -12px; }
 .sp-root .sp-main { grid-area: main; min-width: 0; }
 .sp-root .sp-meta { grid-area: meta; min-width: 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 8px; margin-top: 2px; }
-.sp-root .sp-compact { --ny: 13px; padding-block: 4px 6px; }
+.sp-root .sp-compact { --ny: 13px; padding-block: 4px 6px; grid-template-columns: 2.75rem auto minmax(0, 1fr); grid-template-areas: "river main meta"; }
+.sp-root .sp-compact .sp-meta { margin-top: 0; padding-top: 1px; }
 .sp-root .sp-compact .sp-river { margin-block: -4px -6px; }
 .sp-root .sp-summit { --ny: 18px; padding-block: 0 14px; }
 .sp-root .sp-summit .sp-river { margin-block: 0 -14px; }

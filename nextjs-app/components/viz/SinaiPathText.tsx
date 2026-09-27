@@ -60,6 +60,15 @@ export function shortName(label: string | undefined): string {
   return /^(.{3,}?)\s*\([^)]*\)$/.exec(n)?.[1] ?? n
 }
 
+/**
+ * A station named for several people ("Hillel and Shammai", "Ezra and his
+ * court"): its name can't stand for the one corpus sage it resolves to, so
+ * that sage is shown by their own name.
+ */
+export function isGroupStation(station: { name: Record<Locale, string> }): boolean {
+  return /,| and /.test(station.name.en)
+}
+
 /** "Generation 12" of the Rambam's forty. */
 export function genLabel(gen: number, locale: Locale): string {
   return locale === 'he' ? `דור ${gen}` : locale === 'en' ? `Generation ${gen}` : `${gen}-е поколение`

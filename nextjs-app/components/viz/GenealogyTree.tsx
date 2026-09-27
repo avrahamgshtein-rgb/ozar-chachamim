@@ -165,13 +165,26 @@ export function GenealogyTree({ locale }: GenealogyTreeProps) {
   }, [])
   // Arriving from a sage page's "road to Sinai" link: ?sage= opens that sage's
   // card, which would cover the road it came to see. Close it once.
-  const arrivalSage = useRef(pane === 'sinai' ? new URLSearchParams(window.location.search).get('sage') : null)
+  const arrivalSage = useRef<string | null | undefined>(undefined)
+  if (arrivalSage.current === undefined) {
+    arrivalSage.current = pane === 'sinai' ? new URLSearchParams(window.location.search).get('sage') : null
+  }
   const isDrawerOpen = useAppStore(s => s.isDrawerOpen)
   useEffect(() => {
     if (!arrivalSage.current || !isDrawerOpen || selectedSageId !== arrivalSage.current) return
     arrivalSage.current = null
     useAppStore.getState().closeDrawer()
   }, [isDrawerOpen, selectedSageId])
+  // With no card open, the selection (and so the URL's ?sage=) follows the
+  // road on screen, so any road can be shared or reloaded. An open card is
+  // left as the reader opened it.
+  useEffect(() => {
+    if (pane !== 'sinai' || !focusId || isDrawerOpen) return
+    const st = useAppStore.getState()
+    if (st.selectedSageId !== focusId && sageMap.has(focusId)) {
+      useAppStore.setState({ selectedSage: sageMap.get(focusId)!, selectedSageId: focusId })
+    }
+  }, [pane, focusId, isDrawerOpen, selectedSageId, sageMap])
 
   const sinai = useMemo(() => (pane === 'sinai' && sages.length ? buildSinaiIndex(sages, idx) : null), [pane, sages, idx])
   const sinaiPresets = useMemo(() => {
