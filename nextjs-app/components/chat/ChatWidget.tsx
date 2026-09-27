@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { displayName } from '@/lib/displayName'
 import type { Locale } from '@/lib/types'
 import {
-  onAskAboutSage, parseAnswer, starterQuestions,
+  onAskAboutSage, parseAnswer, starterQuestions, stripIsolates,
   type AskSubject, type Citation,
 } from './askAbout'
 
@@ -164,7 +164,12 @@ export function ChatWidget({ locale, placement = 'app', initialSubject, pageSage
       const res = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message, sessionId, locale, ...(subject ? { sageId: subject.id } : {}) }),
+        body: JSON.stringify({
+          message: stripIsolates(message),
+          sessionId,
+          locale,
+          ...(subject ? { sageId: subject.id } : {}),
+        }),
       })
       const data = await res.json()
 
@@ -445,7 +450,7 @@ export function ChatWidget({ locale, placement = 'app', initialSubject, pageSage
                 : quotaExhausted
                 ? tr(locale, 'נגמרו השאלות החינמיות', 'Out of free questions', 'Бесплатные вопросы закончились')
                 : subject
-                ? tr(locale, `שאלה על ${subject.name}…`, `A question about ${subject.name}…`, `Вопрос: ${subject.name}…`)
+                ? tr(locale, `שאלה על ${subject.name}…`, `A question about ⁨${subject.name}⁩…`, `Вопрос: ⁨${subject.name}⁩…`)
                 : tr(locale, 'הקלד שאלה…', 'Type a question…', 'Введите вопрос…')}
               className="flex-1 min-w-0 px-3 py-2 rounded-lg bg-ink-800/50 border border-ink-700/50 text-ink-100 text-xs
                          focus:outline-none focus:border-gold-500/60 transition-colors disabled:opacity-50"

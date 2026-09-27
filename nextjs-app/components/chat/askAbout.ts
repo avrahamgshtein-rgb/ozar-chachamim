@@ -48,6 +48,18 @@ function leadField(field: string | undefined): string | null {
   return first && first.length <= 28 ? first : null
 }
 
+const HEBREW = /[֐-׿]/
+// First-strong isolate … pop: a Hebrew name inside an English or Russian
+// question keeps its own direction and does not drag the "?" along with it.
+const FSI = '⁨'
+const PDI = '⁩'
+const isolate = (s: string) => `${FSI}${s}${PDI}`
+
+/** The question as sent: the isolates are display-only and would split name tokens on the server. */
+export function stripIsolates(text: string): string {
+  return text.replace(/[⁦-⁩]/g, '')
+}
+
 /**
  * Three or four starter questions for one sage, built from the data it
  * actually has: a named relation, the core idea, the research, the field or
@@ -56,16 +68,17 @@ function leadField(field: string | undefined): string | null {
  * includes women (שרה, ברוריה, דבורה).
  */
 export function starterQuestions(s: AskSubject, locale: Locale): string[] {
-  const n = s.name
+  const n = isolate(s.name)
   const pick = (he: string, en: string, ru: string) => (locale === 'he' ? he : locale === 'ru' ? ru : en)
   const out: string[] = []
 
   const pair = PAIR_ORDER.map(g => s.related.find(r => r.group === g)).find(Boolean)
   if (pair) {
+    const p = isolate(pair.name)
     out.push(pick(
-      `מה הקשר בין ${n} לבין ${pair.name}?`,
-      `How are ${n} and ${pair.name} connected?`,
-      `${n} и ${pair.name}: что их связывает?`,
+      `מה הקשר בין ${n} לבין ${p}?`,
+      `How are ${n} and ${p} connected?`,
+      `${n} и ${p}: что их связывает?`,
     ))
   }
   if (s.coreConcept) {
@@ -82,7 +95,9 @@ export function starterQuestions(s: AskSubject, locale: Locale): string[] {
       `${n}: что показывает исследование?`,
     ))
   }
-  const field = BIBLICAL.includes(s.period) ? null : leadField(s.field)
+  // An untranslated (Hebrew) field reads badly inside an English or Russian question.
+  const lead = BIBLICAL.includes(s.period) ? null : leadField(s.field)
+  const field = lead && (locale === 'he' || !HEBREW.test(lead)) ? lead : null
   if (field) {
     out.push(pick(
       `מה הייתה התרומה של ${n} ל${field}?`,

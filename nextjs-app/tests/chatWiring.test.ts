@@ -16,6 +16,7 @@ import { buildSystemPrompt } from '../lib/rag/systemPrompt'
 import { citationPayload } from '../lib/rag/citations'
 import { getSageById, getResearchDocs } from '../lib/serverData'
 import { parseResearchDocs } from '../lib/researchParse'
+import { parseAnswer, starterQuestions, stripIsolates } from '../components/chat/askAbout'
 
 // claude.ts reads its timeout budget once, at module load, so it is imported
 // inside main() after a short budget is set — otherwise the hung-provider case
@@ -297,6 +298,35 @@ async function main() {
       const ids = new Set(docs.flatMap((d, i) => [`doc-${i + 1}`, ...d.toc.map(t => t.id)]))
       assert.ok(p.anchor && ids.has(p.anchor), `anchor ${p.anchor} exists on the page`)
     }
+  })
+
+  // ── the widget's pure helpers ────────────────────────────────────────────
+  group('Answer parsing and starter questions')
+
+  await test('handles become numbered sources; unknown handles are dropped', async () => {
+    const cites = [
+      { id: 'R539:0#4', sageId: '539', sageLabel: 'הגר״א', docTitle: 'D', section: 'S', anchor: 's' },
+      { id: 'R99:1#7', sageId: '99', sageLabel: 'ר׳ חיים', docTitle: 'E', section: null, anchor: 'd2-x' },
+    ]
+    const { segments, sources } = parseAnswer('א [R539:0#4]. ב [R99:1#7, R539:0#4] ג [R1:0#0].', cites)
+    assert.deepEqual(sources.map(s => [s.n, s.citation.id]), [[1, 'R539:0#4'], [2, 'R99:1#7']])
+    assert.deepEqual(segments.filter(s => s.kind === 'cite').map(s => (s as { n: number }).n), [1, 2, 1])
+    const text = segments.filter(s => s.kind === 'text').map(s => (s as { text: string }).text).join('|')
+    assert.ok(!text.includes('R1:0#0'), 'the uncited handle is not shown')
+    assert.ok(text.endsWith(' ג.'), 'and leaves no stray space')
+  })
+
+  await test('starter questions come from the sage\'s own data and name it', async () => {
+    const subject = {
+      id: '539', name: 'הגר״א', period: 'acharonim' as const, field: 'תלמוד, הלכה',
+      coreConcept: 'x', hasResearch: true, related: [{ group: 'students' as const, name: 'רבי חיים מוולוז׳ין' }],
+    }
+    const he = starterQuestions(subject, 'he').map(stripIsolates)
+    assert.ok(he.length >= 3 && he.length <= 4)
+    assert.ok(he.every(q => q.includes('הגר״א')), 'every question names the sage')
+    assert.ok(he[0].includes('רבי חיים מוולוז׳ין'), 'a real relation from the data leads')
+    const en = starterQuestions(subject, 'en').map(stripIsolates)
+    assert.ok(!en.some(q => q.includes('תלמוד')), 'no untranslated field inside an English question')
   })
 
   // ── prompt contract ──────────────────────────────────────────────────────
