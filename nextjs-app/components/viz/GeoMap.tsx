@@ -581,11 +581,30 @@ export function GeoMap({ locale }: GeoMapProps) {
   }, [sages, locale])
 
   // ── מסע התורה owns the map while on: the everyday layers step aside ──
+  // Leaving the journey returns the camera to where the reader was before it
+  // (or to the opening view, after a deep link straight into the journey).
+  const viewBeforeJourneyRef = useRef<{ center: LatLng; zoom: number } | null>(null)
+  const journeyWasOnRef = useRef(false)
   useEffect(() => {
-    handlesRef.current?.suspend(journeyOn)
+    const h = handlesRef.current
+    if (!h) return
+    h.suspend(journeyOn)
     // Only the land names are left in the marker pane then; dim them so the
     // journey's own labels read first.
     mapRef.current?.classList.toggle('journey-on', journeyOn)
+    const el = mapRef.current
+    const sized = !!el && el.clientWidth > 50 && el.clientHeight > 50
+    if (journeyOn && !journeyWasOnRef.current) {
+      viewBeforeJourneyRef.current = sized ? { center: h.map.getCenter(), zoom: h.map.getZoom() } : null
+    } else if (!journeyOn && journeyWasOnRef.current && sized) {
+      const v = viewBeforeJourneyRef.current
+      const animate = !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      try {
+        if (v) h.map.setView(v.center, v.zoom, { animate })
+        else h.map.fitBounds(INITIAL_BOUNDS, { animate })
+      } catch { /* hidden map */ }
+    }
+    journeyWasOnRef.current = journeyOn
   }, [journeyOn, mapReady])
 
   // ── Sync filter: markers, bubbles and journeys show the filtered set ──

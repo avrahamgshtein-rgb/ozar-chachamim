@@ -64,6 +64,10 @@ export function JourneyMode({ L, map, locale, sages, filteredSages, connections,
     s.setFollow(false)
   }, [reducedMotion])
 
+  // The tab may have opened a moment ago: let Leaflet re-measure before the
+  // camera frames anything.
+  useEffect(() => { try { map.invalidateSize() } catch { /* hidden map */ } }, [map, visible])
+
   useJourneyURLSync()
   useJourneyKeys(visible, reducedMotion)
   useJourneyStyles()

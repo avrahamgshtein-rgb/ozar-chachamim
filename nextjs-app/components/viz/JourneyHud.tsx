@@ -41,18 +41,21 @@ export function JourneyHud({ locale, compact }: { locale: Locale; compact: boole
       >
         {formatYear(year, locale)}
       </div>
-      <div className={cn('mt-1 flex items-center justify-center gap-1.5 font-sans', compact ? 'text-[10.5px]' : 'text-xs')}>
+      <div className={cn('mt-1 flex items-center justify-center gap-1.5 font-sans whitespace-nowrap', compact ? 'text-[10.5px]' : 'text-xs')}>
         {era && (
           <span className="inline-flex items-center gap-1 font-bold journey-halo" style={{ color: ERA_COLORS[era] }}>
             <span className="w-2 h-2 rounded-full" style={{ background: ERA_COLORS[era] }} />
             {ERA_LABELS[era][locale]}
           </span>
         )}
-        <span className="text-ink-300 journey-halo">
-          {era ? '· ' : ''}
-          {tr(locale, `${active} חכמים`, `${active} sages`, `мудрецов: ${active}`)}
-          {!compact && ` · ${tr(locale, `${centres} מרכזים`, `${centres} centres`, `центров: ${centres}`)}`}
-        </span>
+        {/* On phones the count lives in the side list's pill instead. */}
+        {!compact && (
+          <span className="text-ink-300 journey-halo">
+            {era ? '· ' : ''}
+            {tr(locale, `${active} חכמים`, `${active} sages`, `мудрецов: ${active}`)}
+            {` · ${tr(locale, `${centres} מרכזים`, `${centres} centres`, `центров: ${centres}`)}`}
+          </span>
+        )}
       </div>
       {milestone && (
         <div

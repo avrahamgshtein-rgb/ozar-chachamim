@@ -39,12 +39,10 @@ export function JourneyPanel({ locale, compact, filtered, onFocusCentre }: {
   useEffect(() => { setOpen(!compact) }, [compact])
 
   if (!snapshot) return null
-  const year = Math.round(snapshot.year)
   const focused = focus ? snapshot.centres.find(c => c.key === focus) ?? null : null
   const count = snapshot.active.length
 
   const panelId = 'journey-panel-body'
-  const heading = tr(locale, `פעילים ב־${formatYear(year, locale)}`, `Active in ${formatYear(year, locale)}`, `Активны в ${formatYear(year, locale)}`)
 
   return (
     <div
@@ -63,7 +61,7 @@ export function JourneyPanel({ locale, compact, filtered, onFocusCentre }: {
         className="flex items-center justify-between gap-2 px-3 py-2 text-start hover:bg-ink-700/30 transition-colors flex-shrink-0"
       >
         <span className="text-[11px] font-sans font-bold text-gold-300">
-          {heading}
+          <Heading locale={locale} />
           <span className="ms-1.5 text-ink-400 font-normal">({count})</span>
           {filtered && <span className="ms-1.5 text-ink-500 font-normal">{tr(locale, '· מסונן', '· filtered', '· с фильтром')}</span>}
         </span>
@@ -120,6 +118,12 @@ export function JourneyPanel({ locale, compact, filtered, onFocusCentre }: {
       )}
     </div>
   )
+}
+
+/** "Active in 1200": follows the slider even while the cast is unchanged. */
+function Heading({ locale }: { locale: Locale }) {
+  const y = formatYear(useJourneyStore(s => Math.round(s.year)), locale)
+  return <>{tr(locale, `פעילים ב־${y}`, `Active in ${y}`, `Активны в ${y}`)}</>
 }
 
 function SectionTitle({ children }: { children: ReactNode }) {

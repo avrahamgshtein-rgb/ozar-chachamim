@@ -63,6 +63,8 @@ function phaseOf(key: string): number {
 interface Palette {
   dark: boolean
   era: (p: Period) => RGB
+  /** The halo around a centre: its era colour warmed toward gold. */
+  glow: (p: Period) => RGB
   migration: RGB
   teaching: RGB
   label: string
@@ -86,6 +88,7 @@ function paletteFor(theme: 'dark' | 'light'): Palette {
       }
       return c
     },
+    glow: p => mix(hexRgb(ERA_COLORS[p] ?? '#c9973a'), dark ? [240, 190, 90] : [201, 151, 58], dark ? 0.4 : 0.25),
     migration: dark ? [232, 184, 75] : [138, 98, 20],
     teaching: dark ? [140, 180, 255] : [37, 99, 235],
     label: dark ? '#f5eed8' : '#241b10',
@@ -177,12 +180,16 @@ export function JourneyLayer({ L, map, model, locale, theme, reducedMotion, comp
     }
   }, [map])
 
-  /** Move the camera toward the action around `year`, gently. */
-  const frameTo = (year: number, animate: boolean) => {
+  /**
+   * Move the camera toward the action around `year`, gently. False when the
+   * map has no size yet (the tab is still opening), so the caller retries.
+   */
+  const frameTo = (year: number, animate: boolean): boolean => {
     const { model: m, padding: pad } = live.current
     const b = framingBounds(m, year)
     const size = map.getSize()
-    if (!b || size.x < 50 || size.y < 50) return
+    if (size.x < 50 || size.y < 50) return false
+    if (!b) return true
     // Never let the overlays' padding eat more than 60% of the map.
     const fit = (v: number, total: number, room: number) => (total > room ? (v * room) / total : v)
     const px = pad.topLeft[0] + pad.bottomRight[0]
@@ -201,13 +208,14 @@ export function JourneyLayer({ L, map, model, locale, theme, reducedMotion, comp
     const curZoom = map.getZoom()
     const shift = map.project(centre, curZoom).distanceTo(map.project(cur, curZoom))
     const zoomChange = Math.abs(zoom - curZoom)
-    if (zoomChange < 1 && shift < Math.min(size.x, size.y) * 0.12) return
+    if (zoomChange < 1 && shift < Math.min(size.x, size.y) * 0.12) return true
     programmaticRef.current = true
     if (!animate) map.setView(centre, zoom, { animate: false })
     else if (zoomChange >= 1) map.flyTo(centre, zoom, { duration: 2.2, easeLinearity: 0.2 })
     else map.panTo(centre, { animate: true, duration: 1.6, easeLinearity: 0.2 })
     // A move too small for Leaflet to animate ends without a moveend.
     window.setTimeout(() => { programmaticRef.current = false }, 2600)
+    return true
   }
 
   /* ── Pointer: hover and click on centres ─────────────────────────── */
@@ -271,7 +279,8 @@ export function JourneyLayer({ L, map, model, locale, theme, reducedMotion, comp
     let settledYear = NaN
     let yearChangedAt = 0
     let lastYear = NaN
-    let firstFrame = true
+    let needsFirstFrame = true
+    let followWas = useJourneyStore.getState().follow
     let cssW = 0, cssH = 0, dpr = 1
 
     const resize = () => {
@@ -343,8 +352,11 @@ export function JourneyLayer({ L, map, model, locale, theme, reducedMotion, comp
       // Camera.
       if (Math.round(year) !== lastYear) { lastYear = Math.round(year); yearChangedAt = now }
       if (!reduced && st.follow) {
-        if (firstFrame) {
-          frameTo(year, false)
+        if (needsFirstFrame) {
+          if (frameTo(year, false)) { needsFirstFrame = false; settledYear = Math.round(year) }
+        } else if (!followWas) {
+          // Follow switched back on: catch up at once.
+          frameTo(year, true)
           settledYear = Math.round(year)
         } else if (st.playing) {
           if (now - lastFollow > FOLLOW_EVERY_MS) { lastFollow = now; frameTo(year, true) }
@@ -353,7 +365,7 @@ export function JourneyLayer({ L, map, model, locale, theme, reducedMotion, comp
           frameTo(year, true)
         }
       }
-      firstFrame = false
+      followWas = st.follow
 
       // Ease centres and flows toward their targets.
       const k = reduced ? 1 : 1 - Math.exp(-dt * 7)
@@ -361,7 +373,7 @@ export function JourneyLayer({ L, map, model, locale, theme, reducedMotion, comp
       const seen = new Set<string>()
       for (const c of snap.centres) {
         seen.add(c.key)
-        const target = scale * Math.min(48, 5 + 8.5 * Math.sqrt(c.weight))
+        const target = scale * Math.min(50, 7 + 8.5 * Math.sqrt(c.weight))
         let s = centresRef.current.get(c.key)
         if (!s) {
           s = { key: c.key, pos: c.pos, period: c.period, count: c.count, weight: c.weight,
@@ -481,14 +493,15 @@ export function JourneyLayer({ L, map, model, locale, theme, reducedMotion, comp
         const R = c.r * 2.2
         if (p.x < -R || p.y < -R || p.x > cssW + R || p.y > cssH + R) continue
         const col = pal.era(c.period)
+        const glow = pal.glow(c.period)
         const a = c.alpha
         // Glow: additive on the dark map, so neighbouring centres merge into
         // one warm region; plain alpha on the light one, where adding goes white.
         ctx.globalCompositeOperation = pal.dark ? 'lighter' : 'source-over'
         const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, R)
-        g.addColorStop(0, rgba(col, (pal.dark ? 0.5 : 0.42) * a))
-        g.addColorStop(0.35, rgba(col, (pal.dark ? 0.22 : 0.2) * a))
-        g.addColorStop(1, rgba(col, 0))
+        g.addColorStop(0, rgba(glow, (pal.dark ? 0.55 : 0.5) * a))
+        g.addColorStop(0.35, rgba(glow, (pal.dark ? 0.24 : 0.26) * a))
+        g.addColorStop(1, rgba(glow, 0))
         ctx.fillStyle = g
         ctx.beginPath()
         ctx.arc(p.x, p.y, R, 0, Math.PI * 2)
@@ -545,16 +558,20 @@ export function JourneyLayer({ L, map, model, locale, theme, reducedMotion, comp
       ctx.direction = loc === 'he' ? 'rtl' : 'ltr'
       let labelled = 0
       const want = new Set<string>()
+      // A label near the edge slides inward rather than being cut off.
+      const labelX = (x: number, w: number) => Math.max(w / 2 + 6, Math.min(cssW - w / 2 - 6, x))
       for (const c of ranked) {
         if (labelled >= maxLabels && c.key !== focus) continue
         const size = labelled < 3 ? (small ? 13 : 15) : (small ? 11.5 : 13)
         ctx.font = `700 ${size}px "Frank Ruhl Libre", "David Libre", Georgia, serif`
         const text = `${placeName(c.key, loc)} · ${c.count}`
         const w = ctx.measureText(text).width
-        const x0 = c.x - w / 2 - 3
+        if (c.x < -w / 2 || c.x > cssW + w / 2) continue
+        const lx = labelX(c.x, w)
+        const x0 = lx - w / 2 - 3
         const y0 = c.y + Math.max(6, c.r * 0.45)
         const box: [number, number, number, number] = [x0, y0, x0 + w + 6, y0 + size + 4]
-        if (box[2] < 0 || box[0] > cssW || box[3] < 0 || box[1] > cssH) continue
+        if (box[3] < 0 || box[1] > cssH) continue
         if (boxes.some(b => !(box[2] < b[0] || box[0] > b[2] || box[3] < b[1] || box[1] > b[3]))) continue
         boxes.push(box)
         want.add(c.key)
@@ -567,14 +584,15 @@ export function JourneyLayer({ L, map, model, locale, theme, reducedMotion, comp
         const size = i >= 0 && i < 3 ? (small ? 13 : 15) : (small ? 11.5 : 13)
         ctx.font = `700 ${size}px "Frank Ruhl Libre", "David Libre", Georgia, serif`
         const text = `${placeName(c.key, loc)} · ${c.count}`
+        const lx = labelX(c.x, ctx.measureText(text).width)
         const y0 = c.y + Math.max(6, c.r * 0.45)
         ctx.globalAlpha = Math.min(c.alpha, c.labelAlpha)
         ctx.lineJoin = 'round'
         ctx.lineWidth = 4
         ctx.strokeStyle = pal.halo
-        ctx.strokeText(text, c.x, y0)
+        ctx.strokeText(text, lx, y0)
         ctx.fillStyle = pal.label
-        ctx.fillText(text, c.x, y0)
+        ctx.fillText(text, lx, y0)
         ctx.globalAlpha = 1
       })
     }
