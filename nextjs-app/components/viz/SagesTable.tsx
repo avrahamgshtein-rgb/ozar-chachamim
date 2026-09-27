@@ -2,6 +2,7 @@
 
 import { memo, useCallback, useDeferredValue, useEffect, useMemo, useRef, useState } from 'react'
 import type { KeyboardEvent as ReactKeyboardEvent } from 'react'
+import { flushSync } from 'react-dom'
 import { ALL_PERIODS, ERA_COLORS, ERA_LABELS } from '@/lib/types'
 import type { Locale, Period, Sage } from '@/lib/types'
 import { useAppStore } from '@/store/useAppStore'
@@ -230,14 +231,15 @@ export function SagesTable({ locale }: SagesTableProps) {
   useEffect(() => { setActiveIdx(0) }, [viewKey])
   const focusRow = useCallback((i: number) => {
     const idx = Math.max(0, Math.min(rows.length - 1, i))
-    if (idx >= limit) setLimit(Math.ceil((idx + 1) / PAGE) * PAGE + PAGE)
-    setActiveIdx(idx)
-    // The row may only exist after the next render.
-    requestAnimationFrame(() => {
-      const el = scrollRef.current?.querySelector<HTMLElement>(`[data-row="${idx}"]`)
-      el?.focus()
-      el?.scrollIntoView({ block: 'nearest' })
+    // Commit now and move focus in the same event, so a held arrow key
+    // (auto-repeat) always starts from the row it just reached.
+    flushSync(() => {
+      if (idx >= limit) setLimit(Math.ceil((idx + 1) / PAGE) * PAGE + PAGE)
+      setActiveIdx(idx)
     })
+    const el = scrollRef.current?.querySelector<HTMLElement>(`[data-row="${idx}"]`)
+    el?.focus({ preventScroll: true })
+    el?.scrollIntoView({ block: 'nearest' })
   }, [rows.length, limit])
 
   const open = useCallback((id: string) => {
@@ -683,7 +685,7 @@ const SageCardRow = memo(function SageCardRow({
    theme variables and needs no re-render when the theme flips. */
 const TABLE_CSS = `
 .st-root .st-th { background: rgb(var(--ink-900-rgb) / .96); backdrop-filter: blur(6px); }
-.st-root .st-row { transition: background-color .12s ease; }
+.st-root .st-row { transition: background-color .12s ease; scroll-margin-top: 48px; scroll-margin-bottom: 112px; }
 .st-root .st-row:nth-child(even) { background: rgb(var(--ink-800-rgb) / .22); }
 .st-root .st-row:hover { background: rgb(var(--ink-700-rgb) / .45); }
 .st-root .st-row:focus-visible { outline: 2px solid var(--gold-500); outline-offset: -2px; border-radius: 0; background: rgb(var(--ink-700-rgb) / .45); }
@@ -693,7 +695,7 @@ const TABLE_CSS = `
 .st-root .st-era-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--c); flex-shrink: 0; }
 .st-root .st-degree { position: relative; display: inline-flex; align-items: center; justify-content: center; min-width: 38px; padding: 3px 6px; border-radius: 6px; font-size: 12px; font-weight: 600; color: var(--ink-100); overflow: hidden; background: rgb(var(--ink-700-rgb) / .35); }
 .st-root .st-degree::before { content: ''; position: absolute; inset-block: 0; inset-inline-start: 0; width: var(--w); background: color-mix(in srgb, var(--c) 30%, transparent); }
-.st-root .st-card { background: rgb(var(--ink-800-rgb) / .45); border: 1px solid rgb(var(--ink-700-rgb) / .7); transition: background-color .12s ease, border-color .12s ease; }
+.st-root .st-card { scroll-margin-bottom: 170px; background: rgb(var(--ink-800-rgb) / .45); border: 1px solid rgb(var(--ink-700-rgb) / .7); transition: background-color .12s ease, border-color .12s ease; }
 .st-root .st-card:active { background: rgb(var(--ink-700-rgb) / .6); }
 .st-root .st-card:focus-visible { outline: 2px solid var(--gold-500); outline-offset: 1px; }
 .st-root .st-card.st-row-selected { border-color: rgb(var(--gold-500-rgb) / .5); }
