@@ -792,6 +792,25 @@ links = kept
 print(f'related-figure links oriented earlier -> later: {flipped} flipped, '
       f'{superseded} dropped for a curated teacher link')
 
+# ---------- Namesakes ----------
+# Two different people with the same name, joined because the corpus holds only
+# one of them. Keyed by the two labels the wrong link joins (names, not ids),
+# with who was actually meant. Add a pair only when the source row or old label
+# itself makes the other person clear; an era gap alone is not enough, since
+# "influenced across centuries" is common and true (the Rambam on Krochmal).
+NAMESAKE_LINKS = {
+    frozenset(('רבי יעקב בן יקר', 'רבי אליעזר הגדול (רבי אליעזר בן הורקנוס)')):
+        'his teacher R. Eliezer HaGadol of Mainz (d. c. 1060), not the Tanna',
+    frozenset(('רבי דובער שניאורי (האדמו"ר האמצעי)', 'רבי אהרן הלוי')):
+        'R. Aharon HaLevi of Staroselye, not the 13th-century R. Aharon HaLevi of Barcelona',
+}
+label_of = {n['id']: n['label'] for n in nodes}
+namesakes = [l for l in links if frozenset((label_of.get(l['source']), label_of.get(l['target']))) in NAMESAKE_LINKS]
+links = [l for l in links if l not in namesakes]
+for l in namesakes:
+    print(f"namesake link dropped: {label_of[l['source']]} -> {label_of[l['target']]}: "
+          f"{NAMESAKE_LINKS[frozenset((label_of[l['source']], label_of[l['target']]))]}")
+
 # ---------- Write ----------
 shutil.copy('data.json', 'data.json.backup_pre_rebuild')
 json.dump({'nodes': nodes, 'links': links}, open('data.json','w',encoding='utf-8'), ensure_ascii=False, indent=1)
