@@ -1,12 +1,15 @@
 'use client'
 
 import Link from 'next/link'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { cn } from '@/lib/utils'
-import { formatYearRange } from '@/lib/utils'
+import { formatYearRangeFor } from '@/lib/utils'
 import { EraChip } from '@/components/ui/EraChip'
-import { CONNECTION_LABELS, ERA_COLORS } from '@/lib/types'
-import type { Sage, Connection, Locale } from '@/lib/types'
+import { ERA_COLORS } from '@/lib/types'
+import type { Sage, Locale } from '@/lib/types'
+import { labelParts } from '@/lib/displayName'
+import { RelatedSages, type RelatedPersonView } from '@/components/sages/RelatedSages'
+import { groupRelated } from '@/components/sages/relations'
 import { UI, tr } from '@/lib/i18n'
 import { useAppStore } from '@/store/useAppStore'
 import { ResearchSection } from '@/components/sages/ResearchSection'
@@ -101,19 +104,28 @@ export function SageCard({ sage, locale, onClose }: SageCardProps) {
     setMemoryMessage(error ? error.message : tr(locale, 'ההערה נשמרה', 'Note saved', 'Заметка сохранена'))
   }
 
-  const allSageConnections: Array<Connection & { otherSage: Sage | undefined }> =
-    connections
-      .filter(c => c.source === sage.id || c.target === sage.id)
-      .map(c => {
-        const otherId = c.source === sage.id ? c.target : c.source
-        return { ...c, otherSage: sageMap.get(otherId) }
-      })
-      .filter(c => c.otherSage)
-  // The list shows the first 12; the heading counts them all (same as the graph tooltip)
-  const sageConnections = allSageConnections.slice(0, 12)
+  // Related sages grouped by how they stand to this one: the label depends on
+  // which end of the link this sage is on, not on the link type alone.
+  const related = useMemo(() => {
+    const view = (id: string): RelatedPersonView | undefined => {
+      const other = sageMap.get(id)
+      if (!other) return undefined
+      return {
+        id: other.id,
+        label: other.label,
+        name: labelParts(other.label).name,
+        name_en: locale === 'he' ? other.name_en : undefined,
+        period: other.period,
+        birth_year: other.birth_year,
+      }
+    }
+    return groupRelated(sage.id, connections, view)
+  }, [sage.id, connections, sageMap, locale])
+  const relatedCount = related.reduce((n, g) => n + g.people.length, 0)
 
   const accentColor = ERA_COLORS[sage.period] ?? '#c9973a'
-  const yearRange   = formatYearRange(sage.birth_year, sage.death_year, sage.date_precision)
+  const yearRange   = formatYearRangeFor(locale, sage.birth_year, sage.death_year, sage.date_precision)
+  const { name, tagline, fullName } = labelParts(sage.label)
 
   return (
     <article className="flex flex-col h-full overflow-hidden">
@@ -139,11 +151,15 @@ export function SageCard({ sage, locale, onClose }: SageCardProps) {
         {/* Era chip */}
         <EraChip period={sage.period} locale={locale} className="mb-3" />
 
-        {/* Name */}
+        {/* Name: the label without its essay subtitle, which follows smaller */}
         <h1 className="font-serif text-2xl font-bold text-ink-50 leading-tight">
-          {sage.label}
+          {name}
+          {fullName && <span className="ms-2 text-base font-normal text-ink-300">({fullName})</span>}
         </h1>
-        {sage.name_en && (
+        {tagline && (
+          <p className="mt-1.5 font-serif text-sm italic leading-snug text-ink-300">{tagline}</p>
+        )}
+        {sage.name_en && locale === 'he' && (
           <p className="font-sans text-sm text-ink-300 mt-1">{sage.name_en}</p>
         )}
 
@@ -288,56 +304,11 @@ export function SageCard({ sage, locale, onClose }: SageCardProps) {
         )}
 
         {/* Related sages */}
-        {sageConnections.length > 0 && (
+        {relatedCount > 0 && (
           <section>
-            <SectionLabel>{t.relatedSages} ({allSageConnections.length})</SectionLabel>
-            <ul className="space-y-1.5">
-              {sageConnections.map((conn, idx) => {
-                const other = conn.otherSage!
-                const connType = conn.type
-                const connLabel = CONNECTION_LABELS[connType]?.[locale] ?? connType
-                const isSource = conn.source === sage.id
-                const otherColor = ERA_COLORS[other.period] ?? '#7a6550'
-
-                return (
-                  <li key={idx}>
-                    <button
-                      onClick={() => selectSage(other)}
-                      className={cn(
-                        'w-full flex items-center gap-3 px-3 py-2 rounded-lg text-start',
-                        'bg-ink-800/40 hover:bg-ink-700/50 border border-ink-700/40',
-                        'transition-colors group',
-                      )}
-                    >
-                      <span
-                        className="era-dot flex-shrink-0"
-                        style={{ background: otherColor }}
-                      />
-                      <span className="flex-1 min-w-0">
-                        <span className="text-sm font-serif text-ink-100 group-hover:text-gold-300 transition-colors truncate block">
-                          {other.label}
-                        </span>
-                        {other.name_en && (
-                          <span className="text-xs font-sans text-ink-400 truncate block">
-                            {other.name_en}
-                          </span>
-                        )}
-                      </span>
-                      <span
-                        className="text-xs font-sans px-2 py-0.5 rounded-full flex-shrink-0"
-                        style={{
-                          background: `${accentColor}18`,
-                          color: accentColor,
-                          border: `1px solid ${accentColor}33`,
-                        }}
-                      >
-                        {isSource ? '← ' : ''}{connLabel}{!isSource ? ' →' : ''}
-                      </span>
-                    </button>
-                  </li>
-                )
-              })}
-            </ul>
+            <SectionLabel>{t.relatedSages} ({relatedCount})</SectionLabel>
+            <RelatedSages groups={related} locale={locale} perGroup={4} compact headingLevel={4}
+              onSelect={id => { const other = sageMap.get(id); if (other) selectSage(other) }} />
           </section>
         )}
 

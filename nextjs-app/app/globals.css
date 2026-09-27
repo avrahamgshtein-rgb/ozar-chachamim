@@ -310,3 +310,95 @@ h1, h2, h3 {
     scroll-behavior: auto !important;
   }
 }
+
+/* ══ s2-reader: sage page — research reader and print ═══════════════════
+   Appended by the s2-reader branch. Scoped to .sage-page (the sage page's
+   scroll container) so the app shell is untouched. */
+
+/* A linked-to source entry flashes once, so the eye finds it. */
+.sage-page .reader-bib-entry:target {
+  animation: reader-target 1.6s ease-out 1;
+}
+@keyframes reader-target {
+  from { background-color: rgb(var(--gold-500-rgb) / 0.35); }
+  to   { background-color: rgb(var(--gold-500-rgb) / 0.15); }
+}
+
+@media print {
+  @page { margin: 16mm 15mm 18mm; }
+
+  html, body {
+    height: auto !important;
+    overflow: visible !important;
+    background: #fff !important;
+    color: #111 !important;
+  }
+  body::before { display: none !important; }
+
+  /* The page scrolls inside #sage-scroll on screen; on paper it just flows. */
+  .sage-page {
+    height: auto !important;
+    overflow: visible !important;
+    background: #fff !important;
+    color: #111 !important;
+  }
+
+  /* No chrome: top bar, toasts, buttons, the player, the contents. */
+  .sage-page nav,
+  .sage-page .no-print,
+  .sage-page button,
+  .sage-page iframe { display: none !important; }
+
+  /* Folded lists ("ועוד 5") print in full, without their toggle. */
+  .sage-page details > summary { display: none !important; }
+  .sage-page details::details-content { content-visibility: visible !important; }
+
+  /* No dark surfaces, glows or tinted panels. */
+  .sage-page *,
+  .sage-page *::before,
+  .sage-page *::after {
+    background: transparent !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    color: #111 !important;
+    border-color: #bbb !important;
+  }
+
+  .sage-page .reader-body {
+    font-family: 'Frank Ruhl Libre', 'David Libre', Georgia, 'Times New Roman', serif !important;
+    font-size: 11.5pt !important;
+    line-height: 1.6 !important;
+    max-width: none !important;
+  }
+  .sage-page main { max-width: none !important; padding: 0 !important; }
+  .sage-page .sage-hero { border: 0 !important; padding: 0 0 8pt !important; }
+
+  /* Major headings start a page: the research section, each further paper, its sources. */
+  .sage-page #research,
+  .sage-page .reader-doc + .reader-doc,
+  .sage-page .reader-bib { break-before: page; }
+  .sage-page h1, .sage-page h2, .sage-page h3, .sage-page h4 { break-after: avoid; break-inside: avoid; }
+  .sage-page p, .sage-page li { orphans: 3; widows: 3; }
+  .sage-page blockquote, .sage-page tr, .sage-page .reader-lead { break-inside: avoid; }
+
+  /* Tables print whole, not in a scroll box. */
+  .sage-page .reader-table { overflow: visible !important; border: 1px solid #bbb !important; }
+  .sage-page .reader-table table { min-width: 0 !important; }
+
+  /* Show where links go. The sources list already prints its URLs. */
+  .sage-page a[href^="http"]:not(.reader-url)::after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    font-family: 'Heebo', sans-serif;
+    word-break: break-all;
+    color: #555 !important;
+  }
+  .sage-page .reader-url {
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    word-break: break-all;
+    text-decoration: none !important;
+  }
+  .sage-page sup.cite a { text-decoration: none !important; }
+}
