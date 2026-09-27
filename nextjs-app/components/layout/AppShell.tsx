@@ -363,13 +363,13 @@ function CanvasArea({
             ))}
           </div>
 
-          {/* Mobile geography button. bottom-[9.25rem]: the fixed tab bar
-              (bottom 1–5rem) and the search/chat buttons (bottom 5–8.5rem)
-              paint above this isolated area, so lower down a tap landed on
-              them instead. z-[1001]: clears Leaflet's panes (200–800). */}
+          {/* Mobile geography button. bottom-[9.75rem]: the fixed tab bar
+              (bottom 1–5.4rem) and the search/chat buttons (bottom
+              5.75–9.25rem) paint above this isolated area, so lower down a tap
+              landed on them instead. z-[1001]: clears Leaflet's panes (200–800). */}
           <button
             onClick={() => setIsGeographyDrawerOpen(true)}
-            className="md:hidden absolute bottom-[9.25rem] end-4 z-[1001] px-3 py-2 bg-gold-500/90 hover:bg-gold-400 text-ink-900 font-sans font-bold text-xs rounded-md shadow-glass transition-colors"
+            className="md:hidden absolute bottom-[9.75rem] end-4 z-[1001] px-3 py-2 bg-gold-500/90 hover:bg-gold-400 text-ink-900 font-sans font-bold text-xs rounded-md shadow-glass transition-colors"
           >
             📍 {tr(locale, 'גיאוגרפיה', 'Geography', 'География')}
           </button>
