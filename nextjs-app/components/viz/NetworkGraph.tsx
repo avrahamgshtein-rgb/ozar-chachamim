@@ -305,6 +305,7 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
     if (!sages.length || !containerRef.current) return
     let mounted = true
     let onFontsLoaded: (() => void) | null = null
+    let resizeObs: ResizeObserver | null = null
 
     async function build() {
       const d3 = await import('d3')
@@ -411,7 +412,9 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
       const r = (deg: number) => Math.min(22, 5 + Math.sqrt(deg || 0) * 2.2)
       const nodes = sages.map(s => {
         const deg = degree.get(s.id) ?? 0
-        return { ...s, degree: deg, r: r(deg) }
+        // label texts, worked out once rather than on every relabel
+        return { ...s, degree: deg, r: r(deg),
+          _lbl: displayNameShort(graphLabel(s.label), 24), _lblFull: displayNameShort(s.label, 40) }
       }) as any[]
       const nodeById = new Map<string, any>(nodes.map(n => [n.id, n]))
       // Label candidates, most-connected first; the shorter name wins a tie
@@ -556,8 +559,25 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
         return Math.min(cW / Math.max(1, x1 - x0), cH / Math.max(1, y1 - y0))
       }
 
+      // The box size comes from a ResizeObserver and the filter bar's edge from
+      // the inline custom property FilterChips writes on an ancestor: reading
+      // clientWidth or getComputedStyle here forced a style and layout pass on
+      // every relabel, a few times a second while zooming.
+      let frame = { w: container.clientWidth, h: container.clientHeight }
+      const chipsBottom = () => {
+        for (let el: HTMLElement | null = container; el; el = el.parentElement) {
+          const v = el.style.getPropertyValue('--filter-chips-h')
+          if (v) return parseFloat(v) || 0
+        }
+        return 0
+      }
+      resizeObs = new ResizeObserver(([e]) => {
+        frame = { w: e.contentRect.width, h: e.contentRect.height }
+        if (mounted) relabel()
+      })
+      resizeObs.observe(container)
       const relabel = () => {
-        const cW = container.clientWidth, cH = container.clientHeight
+        const cW = frame.w, cH = frame.h
         if (!cW || !cH) return
         const m = modeRef.current
         const fIds = filteredIdsRef.current
@@ -590,25 +610,43 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
         }
 
         // Labels stay whole and clear of the filter bar
-        const top = (parseFloat(getComputedStyle(container).getPropertyValue('--filter-chips-h')) || 0) + 2
-        const boxes: Array<[number, number, number, number]> = []
+        const top = chipsBottom() + 2
+        // Placed boxes in an 80px grid, so a candidate is tested only against
+        // its neighbours, not against every label already placed
+        type Box = [number, number, number, number]
+        const CELL = 80
+        const grid = new Map<number, Box[]>()
+        const cells = (b: Box) => {
+          const out: number[] = []
+          for (let x = Math.floor(b[0] / CELL); x <= Math.floor(b[2] / CELL); x++)
+            for (let y = Math.floor(b[1] / CELL); y <= Math.floor(b[3] / CELL); y++) out.push(x * 1024 + y)
+          return out
+        }
+        const hits = (b: Box) => cells(b).some(c =>
+          grid.get(c)?.some(o => o[0] < b[2] && b[0] < o[2] && o[1] < b[3] && b[1] < o[3]))
         const spots: LabelSpot[] = []
+        // Idle view: stop looking once a few times the quota has been tried;
+        // the rest are lesser nodes crowded out anyway
+        const maxTries = quota === Infinity ? Infinity : quota * 4 + 20
+        let tries = 0
         for (const { d, primary } of wanted) {
-          if (spots.length >= quota) break
+          if (spots.length >= quota || tries >= maxTries) break
           if (!isFinite(d.x)) continue
           const sx = transform.applyX(d.x), sy = transform.applyY(d.y)
           if (sx < -60 || sx > cW + 60 || sy < -30 || sy > cH + 30) continue
+          tries++
           const kind: LabelSpot['kind'] = primary ? 'primary' : d.degree >= HUB_DEGREE ? 'hub' : 'plain'
           const fs = kind === 'primary' ? LABEL_FONT_PRIMARY : kind === 'hub' ? LABEL_FONT_HUB : LABEL_FONT
-          const text = primary ? displayNameShort(d.label, 40) : displayNameShort(graphLabel(d.label), 24)
+          const text: string = primary ? d._lblFull : d._lbl
           const w = measure(text, fs, kind === 'plain' ? 500 : 700) + 6
           const rr = Math.max(d.r * k, MIN_SCREEN_R)
           for (const side of [-1, 1] as const) {
             const base = side < 0 ? sy - rr - 4 : sy + rr + fs + 1
-            const box: [number, number, number, number] = [sx - w / 2, base - fs - 1, sx + w / 2, base + 3]
+            // glyph box plus the 3px halo: ascenders to descenders is ~1.35×fs
+            const box: Box = [sx - w / 2, base - fs - 2, sx + w / 2, base + fs * 0.35 + 2]
             if (box[0] < 2 || box[2] > cW - 2 || box[1] < top || box[3] > cH - 2) continue
-            if (boxes.some(b => b[0] < box[2] && box[0] < b[2] && b[1] < box[3] && box[1] < b[3])) continue
-            boxes.push(box)
+            if (hits(box)) continue
+            cells(box).forEach(c => { const list = grid.get(c); if (list) list.push(box); else grid.set(c, [box]) })
             spots.push({ d, text, fs, side, kind })
             break
           }
@@ -616,11 +654,19 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
 
         labelLayer.selectAll<SVGTextElement, LabelSpot>('text')
           .data(spots, p => p.d.id)
-          .join(enter => enter.append('text').attr('class', 'ng-label').attr('text-anchor', 'middle'))
-          .text(p => p.text)
-          .attr('font-size', p => p.fs)
-          .attr('font-weight', p => (p.kind === 'plain' ? 500 : 700))
-          .attr('class', p => `ng-label ng-label-${p.kind}`)
+          .join(enter => enter.append('text').attr('text-anchor', 'middle'))
+          // touch text and class only when they change: rewriting them re-lays
+          // out every label, a few times a second while zooming
+          .each(function (p) {
+            const el = this as SVGTextElement & { _t?: string; _k?: string }
+            if (el._t !== p.text) { el.textContent = p.text; el._t = p.text }
+            if (el._k !== p.kind) {
+              el.setAttribute('font-size', String(p.fs))
+              el.setAttribute('font-weight', p.kind === 'plain' ? '500' : '700')
+              el.setAttribute('class', `ng-label ng-label-${p.kind}`)
+              el._k = p.kind
+            }
+          })
           .attr('x', p => transform.applyX(p.d.x))
           .attr('y', labelY)
       }
@@ -631,7 +677,7 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
       let radiusK = 1
       const rOf = (n: any) => Math.max(n.r, MIN_SCREEN_R / radiusK)
       const zoom = d3.zoom<SVGSVGElement, unknown>()
-        .scaleExtent([0.05, 6])
+        .scaleExtent([0.05, 4])
         // a finger never lands perfectly still; a small wobble is still a tap
         .clickDistance(6)
         .on('zoom', ev => {
@@ -643,7 +689,7 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
           g.attr('transform', ev.transform)
           positionLabels()
           const now = performance.now()
-          if (now - lastRelabel > 160) { lastRelabel = now; relabel() }
+          if (now - lastRelabel > 220) { lastRelabel = now; relabel() }
         })
         .on('end', () => {
           svg.classed('ng-zooming', false)
@@ -959,6 +1005,7 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
       clearTimeout(fitTimer)
       apiRef.current = null
       if (onFontsLoaded) document.fonts?.removeEventListener?.('loadingdone', onFontsLoaded)
+      resizeObs?.disconnect()
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sages.length, connections.length])
@@ -1045,18 +1092,19 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeTab])
 
-  // Labels follow the container's size
+  // The path panel folding or growing changes the free room: frame the path again
   useEffect(() => {
-    const el = containerRef.current
-    if (!el || typeof ResizeObserver === 'undefined') return
-    let raf = 0
+    const el = pathPanelRef.current
+    if (!showPathFinder || !el || typeof ResizeObserver === 'undefined') return
+    let t: ReturnType<typeof setTimeout> | undefined
     const ro = new ResizeObserver(() => {
-      cancelAnimationFrame(raf)
-      raf = requestAnimationFrame(() => apiRef.current?.relabel())
+      clearTimeout(t)
+      t = setTimeout(() => { if (modeRef.current.path && !userMovedRef.current) fitCurrent(500) }, 120)
     })
     ro.observe(el)
-    return () => { ro.disconnect(); cancelAnimationFrame(raf) }
-  }, [])
+    return () => { ro.disconnect(); clearTimeout(t) }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [showPathFinder])
 
   // ── Selection → focus ────────────────────────────────────────────────────
   useEffect(() => {
@@ -1156,7 +1204,10 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
       <style>{`
         .ng-root .ng-node { transition: fill-opacity .18s ease, stroke-opacity .18s ease, stroke-width .18s ease; }
         .ng-root .ng-link { transition: stroke-opacity .18s ease, stroke-width .18s ease; }
-        .ng-root.ng-zooming .ng-scene { pointer-events: none; }
+        /* Mid-gesture nothing is hit-tested: the edges' wide invisible hit
+           strokes carry their own pointer-events, and testing ~500 curves on
+           every move cost a zoomed-in pan two thirds of its frames. */
+        .ng-root.ng-zooming .ng-scene, .ng-root.ng-zooming .ng-scene .hit { pointer-events: none; }
         .ng-root .ng-label {
           fill: var(--ink-100); stroke: var(--ink-900); stroke-width: 3px; stroke-linejoin: round;
           paint-order: stroke; font-family: Heebo, sans-serif; animation: fadeIn .2s ease-out both;

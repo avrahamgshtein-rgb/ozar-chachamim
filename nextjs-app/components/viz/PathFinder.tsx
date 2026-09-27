@@ -262,6 +262,8 @@ export function PathFinder({ locale, onClose, onPath, initialFrom = null }: Path
 
   const [sageA, setSageA] = useState<Sage | null>(initialFrom)
   const [sageB, setSageB] = useState<Sage | null>(null)
+  // Folded to one line so the drawn path has the screen (a phone has little)
+  const [collapsed, setCollapsed] = useState(false)
 
   // Search as soon as both ends are chosen — BFS over ~500 links is instant
   const path = useMemo<PathStep[] | null | 'none'>(() => {
@@ -280,6 +282,8 @@ export function PathFinder({ locale, onClose, onPath, initialFrom = null }: Path
   useEffect(() => () => onPathRef.current?.(null), [])
 
   const degrees = Array.isArray(path) ? path.length - 1 : null
+  const stepsWord = (n: number) => tr(locale, 'צעדים', 'steps',
+    n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14) ? 'шага' : 'шагов')
   const years = (s: Sage) => formatYearRangeFor(locale, s.birth_year, s.death_year, s.date_precision)
 
   return (
@@ -295,24 +299,38 @@ export function PathFinder({ locale, onClose, onPath, initialFrom = null }: Path
         'overflow-y-auto overscroll-contain',
       )}>
       {/* Header */}
-      <div className="flex items-center justify-between">
-        <div>
+      <div className="flex items-center justify-between gap-2">
+        <div className="min-w-0">
           <h3 className="font-serif text-sm font-bold text-ink-100">
             {tr(locale, 'מוצא מסלול', 'Path Finder', 'Поиск пути')}
           </h3>
-          <p className="text-[10px] font-sans text-ink-500">
-            {tr(locale, 'מה מחבר בין שני חכמים?', 'What connects two sages?', 'Что связывает двух мудрецов?')}
+          <p className="text-[10px] font-sans text-ink-500 truncate">
+            {collapsed && Array.isArray(path) && sageA && sageB
+              ? `${displayName(sageA.label)} ${locale === 'he' ? '←' : '→'} ${displayName(sageB.label)} · ${degrees} ${stepsWord(degrees ?? 0)}`
+              : tr(locale, 'מה מחבר בין שני חכמים?', 'What connects two sages?', 'Что связывает двух мудрецов?')}
           </p>
         </div>
-        <button onClick={onClose}
-          aria-label={tr(locale, 'סגור', 'Close', 'Закрыть')}
-          className="text-ink-600 hover:text-ink-300 transition-colors p-1.5 rounded-lg hover:bg-ink-700/50">
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
+        <div className="flex items-center flex-shrink-0">
+          <button onClick={() => setCollapsed(c => !c)}
+            aria-expanded={!collapsed}
+            aria-label={collapsed ? tr(locale, 'הרחב', 'Expand', 'Развернуть') : tr(locale, 'קפל', 'Collapse', 'Свернуть')}
+            title={collapsed ? tr(locale, 'הרחב', 'Expand', 'Развернуть') : tr(locale, 'קפל', 'Collapse', 'Свернуть')}
+            className="text-ink-500 hover:text-ink-200 transition-colors p-1.5 rounded-lg hover:bg-ink-700/50">
+            <svg className={cn('w-4 h-4 transition-transform', collapsed && 'rotate-180')} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
+            </svg>
+          </button>
+          <button onClick={onClose}
+            aria-label={tr(locale, 'סגור', 'Close', 'Закрыть')}
+            className="text-ink-600 hover:text-ink-300 transition-colors p-1.5 rounded-lg hover:bg-ink-700/50">
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
       </div>
 
+      {!collapsed && (<>
       {/* Pickers */}
       <div className="space-y-2">
         <SagePicker
@@ -362,7 +380,7 @@ export function PathFinder({ locale, onClose, onPath, initialFrom = null }: Path
             <span className="text-xs font-sans text-ink-400">
               {degrees === 1
                 ? tr(locale, 'קשר ישיר', 'direct link', 'прямая связь')
-                : tr(locale, 'צעדים', 'steps', degrees && degrees % 10 >= 2 && degrees % 10 <= 4 && (degrees % 100 < 12 || degrees % 100 > 14) ? 'шага' : 'шагов')}
+                : stepsWord(degrees ?? 0)}
             </span>
           </div>
 
@@ -410,6 +428,7 @@ export function PathFinder({ locale, onClose, onPath, initialFrom = null }: Path
           </ol>
         </div>
       )}
+      </>)}
     </div>
   )
 }
