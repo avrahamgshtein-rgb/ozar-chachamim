@@ -47,7 +47,7 @@ export function JourneyPanel({ locale, compact, filtered, onFocusCentre }: {
   return (
     <div
       className={cn(
-        'absolute z-[1002] start-3 md:start-4 glass rounded-xl border border-ink-700/50 shadow-glass flex flex-col overflow-hidden',
+        'absolute z-[1002] start-3 md:start-4 journey-glass rounded-xl border border-ink-700/50 shadow-glass flex flex-col overflow-hidden',
         compact
           ? cn('top-[8.75rem] max-h-[calc(100%-8.75rem-20.5rem)]', open ? 'w-[min(15.5rem,calc(100%-1.5rem))]' : 'w-auto')
           : 'top-[8.25rem] w-64 max-h-[calc(100%-8.25rem-12.75rem)]',

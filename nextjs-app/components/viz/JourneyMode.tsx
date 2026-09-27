@@ -204,6 +204,10 @@ function useJourneyStyles() {
       }
       .journey-range:focus-visible::-webkit-slider-thumb { box-shadow: 0 0 0 2px rgb(var(--ink-900-rgb)), 0 0 0 4px rgb(var(--gold-300-rgb)); }
       .journey-range:focus-visible::-moz-range-thumb { box-shadow: 0 0 0 2px rgb(var(--ink-900-rgb)), 0 0 0 4px rgb(var(--gold-300-rgb)); }
+      /* The app's .glass without its backdrop blur: blurring a canvas that
+         repaints every frame halved the frame rate (27 → 57 fps measured). */
+      .journey-glass { background: rgba(20, 15, 10, 0.9); }
+      [data-theme='light'] .journey-glass { background: rgba(255, 252, 244, 0.95); box-shadow: 0 2px 12px rgba(61, 40, 23, 0.08); }
       .journey-year { text-shadow: 0 0 18px rgb(var(--gold-400-rgb) / 0.45), 0 2px 10px rgb(var(--ink-900-rgb)), 0 0 3px rgb(var(--ink-900-rgb)); }
       .journey-halo { text-shadow: 0 0 4px rgb(var(--ink-900-rgb)), 0 0 8px rgb(var(--ink-900-rgb)); }
     `

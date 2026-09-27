@@ -61,7 +61,7 @@ export function JourneyHud({ locale, compact }: { locale: Locale; compact: boole
         <div
           key={milestone.year}
           className={cn(
-            'mx-auto mt-1.5 inline-block rounded-full px-2.5 py-0.5 font-sans font-semibold glass animate-fade-in',
+            'mx-auto mt-1.5 inline-block rounded-full px-2.5 py-0.5 font-sans font-semibold journey-glass animate-fade-in',
             compact ? 'text-[10px]' : 'text-[11px]',
             milestone.kind === 'transmission' ? 'text-gold-300 border border-gold-500/40' : 'text-ink-200 border border-ink-600/50',
           )}

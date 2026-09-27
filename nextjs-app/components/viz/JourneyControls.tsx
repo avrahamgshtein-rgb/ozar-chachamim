@@ -74,7 +74,7 @@ export function JourneyControls({ locale, compact, reducedMotion }: {
   return (
     <div
       className={cn(
-        'absolute z-[1003] inset-x-3 mx-auto glass rounded-2xl border border-ink-700/50 shadow-glass',
+        'absolute z-[1003] inset-x-3 mx-auto journey-glass rounded-2xl border border-ink-700/50 shadow-glass',
         compact ? 'bottom-[12.4rem] px-3 pt-2 pb-2' : 'bottom-[6.25rem] max-w-3xl px-4 pt-2.5 pb-2.5',
       )}
       role="group"
@@ -181,7 +181,7 @@ export function JourneyControls({ locale, compact, reducedMotion }: {
             {(scrubbing || !compact) && (
               <span
                 className={cn('absolute -translate-x-1/2 pointer-events-none font-sans font-bold tabular-nums whitespace-nowrap',
-                  scrubbing ? 'top-[-1.35rem] text-[11px] text-gold-300 glass rounded-md px-1.5 py-0.5' : 'hidden')}
+                  scrubbing ? 'top-[-1.35rem] text-[11px] text-gold-300 journey-glass rounded-md px-1.5 py-0.5' : 'hidden')}
                 style={{ left: `${pct(year)}%` }}
               >
                 {formatYear(year, locale)}
@@ -273,7 +273,7 @@ function JourneyLegend({ locale, onClose }: { locale: Locale; onClose: () => voi
     },
   ]
   return (
-    <div className="absolute bottom-full mb-2 inset-x-0 mx-auto max-w-md glass rounded-xl border border-ink-700/50 shadow-glass p-3 z-10">
+    <div className="absolute bottom-full mb-2 inset-x-0 mx-auto max-w-md journey-glass rounded-xl border border-ink-700/50 shadow-glass p-3 z-10">
       <div className="flex items-center justify-between mb-2">
         <p className="text-xs font-sans font-bold text-gold-300">{tr(locale, 'מה רואים במפה', 'What the map shows', 'Что показывает карта')}</p>
         <button type="button" onClick={onClose} className="text-ink-400 hover:text-ink-100 text-sm px-1"

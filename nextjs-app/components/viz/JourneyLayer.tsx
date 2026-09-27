@@ -618,7 +618,7 @@ export function JourneyLayer({ L, map, model, locale, theme, reducedMotion, comp
       />
       {hover && hovered && (
         <div
-          className="absolute z-[1004] pointer-events-none glass rounded-lg px-2.5 py-1.5 text-[11px] font-sans text-ink-200 shadow-glass max-w-[15rem]"
+          className="absolute z-[1004] pointer-events-none journey-glass border border-ink-700/50 rounded-lg px-2.5 py-1.5 text-[11px] font-sans text-ink-200 shadow-glass max-w-[15rem]"
           style={{ left: hover.x, top: hover.y, transform: 'translate(-50%, calc(-100% - 14px))' }}
         >
           <div className="font-serif font-bold text-[13px] text-ink-100">
