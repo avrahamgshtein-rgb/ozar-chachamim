@@ -169,7 +169,8 @@ export function parseAnswer(text: string, citations: Citation[] = []): ParsedAns
       continue
     }
     pending = ''
-    pushText(before)
+    // The marker sits against its word, like a footnote: "claim¹." not "claim ¹ .".
+    pushText(before.replace(/[ \t]+$/, ''))
     for (const { h, c } of cites) {
       let n = numbers.get(h)
       if (n === undefined) {

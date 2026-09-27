@@ -339,9 +339,9 @@ export function ChatWidget({ locale, placement = 'app', initialSubject, pageSage
                 <p className="text-ink-400">
                   {subject
                     ? tr(locale,
-                      'המחקר, הפרק והקשרים שבדף הזה זמינים כרגיל. נסו לשאול שוב מאוחר יותר.',
-                      'The research, the episode and the connections on this page work as usual. Please try asking again later.',
-                      'Исследование, выпуск и связи на этой странице доступны как обычно. Попробуйте спросить позже.')
+                      'כל השאר בדף זמין כרגיל. נסו לשאול שוב מאוחר יותר.',
+                      'Everything else on this page works as usual. Please try asking again later.',
+                      'Всё остальное на странице работает как обычно. Попробуйте спросить позже.')
                     : tr(locale,
                       'אפשר להמשיך לעיין ברשת, בטבלה ובדפי החכמים. נסו שוב מאוחר יותר.',
                       'You can keep exploring the network, the table and the sage pages. Please try again later.',
