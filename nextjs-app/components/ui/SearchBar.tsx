@@ -191,7 +191,9 @@ export function SearchBar({ locale, className }: SearchBarProps) {
           placeholder={t.searchPlaceholder}
           className={cn(
             'flex-1 bg-transparent text-ink-100 placeholder-ink-400',
-            'text-sm font-sans outline-none border-none',
+            'text-sm font-sans outline-none border-none focus-visible:outline-none',
+            // our own clear button replaces the browser's
+            '[&::-webkit-search-cancel-button]:appearance-none',
             'min-w-0',
           )}
           aria-label={t.searchLabel}
@@ -233,6 +235,8 @@ export function SearchBar({ locale, className }: SearchBarProps) {
             'glass rounded-xl overflow-hidden shadow-glass-lg',
             'animate-fade-in',
           )}
+          // near-opaque: the filter chips sit right under the list
+          style={{ background: 'rgb(var(--ink-850-rgb) / 0.97)' }}
         >
           {!trimmed && shown.length > 0 && (
             <p className="px-4 pt-3 pb-1 text-[9px] font-sans font-semibold uppercase tracking-widest text-ink-500">
