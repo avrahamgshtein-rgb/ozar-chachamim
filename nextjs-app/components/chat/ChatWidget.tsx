@@ -2,14 +2,23 @@
 
 import { Fragment, useCallback, useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
-import { cn } from '@/lib/utils'
-import { tr } from '@/lib/i18n'
 import { displayName } from '@/lib/displayName'
 import type { Locale } from '@/lib/types'
 import {
   onAskAboutSage, parseAnswer, starterQuestions,
   type AskSubject, type Citation,
 } from './askAbout'
+
+// Local stand-ins for lib/utils' cn and lib/i18n's tr: the widget now also
+// ships on every sage page, whose client bundle has neither tailwind-merge
+// nor the UI dictionary. None of the class lists below conflict, so a plain
+// join is enough.
+function cn(...classes: Array<string | false | null | undefined>): string {
+  return classes.filter(Boolean).join(' ')
+}
+function tr(locale: Locale, he: string, en: string, ru: string): string {
+  return locale === 'he' ? he : locale === 'ru' ? ru : en
+}
 
 interface ChatMessageView {
   role: 'user' | 'assistant'
@@ -252,11 +261,11 @@ export function ChatWidget({ locale, placement = 'app', initialSubject, pageSage
           // Open, the chat sits above the sage drawer it may have been opened from.
           isOpen ? 'z-[60]' : 'z-40',
           'w-14 h-14 rounded-full',
-          'glass border border-gold-500/30',
+          'glass border',
           'flex items-center justify-center',
           'shadow-gold-glow transition-all duration-200',
           'hover:border-gold-400/60 hover:scale-105 active:scale-95 motion-reduce:hover:scale-100',
-          isOpen && 'border-gold-400/60 bg-ink-700/80',
+          isOpen ? 'border-gold-400/60 bg-ink-700/80' : 'border-gold-500/30',
         )}
       >
         {isOpen ? (
