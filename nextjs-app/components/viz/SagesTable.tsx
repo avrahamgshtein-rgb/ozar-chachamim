@@ -532,6 +532,18 @@ export function SagesTable({ locale }: SagesTableProps) {
 
 /* ── Pieces ───────────────────────────────────────────────────────────── */
 
+/** Russian plural: 1 связь, 2 связи, 5 связей. */
+function ruPlural(n: number, one: string, few: string, many: string): string {
+  const m10 = n % 10, m100 = n % 100
+  return m10 === 1 && m100 !== 11 ? one : m10 >= 2 && m10 <= 4 && (m100 < 12 || m100 > 14) ? few : many
+}
+
+function linksLabel(n: number, locale: Locale): string {
+  if (locale === 'he') return n === 1 ? 'קשר אחד' : `${n} קשרים`
+  if (locale === 'en') return n === 1 ? '1 link' : `${n} links`
+  return `${n} ${ruPlural(n, 'связь', 'связи', 'связей')}`
+}
+
 function SortArrow({ state }: { state: SortDir | null }) {
   if (!state) return <span aria-hidden className="text-ink-600 text-[10px]">⇅</span>
   return <span aria-hidden className="text-gold-400 text-xs leading-none">{state === 'asc' ? '▲' : '▼'}</span>
@@ -628,7 +640,6 @@ const SageCardRow = memo(function SageCardRow({
 }: RowProps) {
   const { sage } = m
   const color = ERA_COLORS[sage.period] ?? '#7a6550'
-  const linksLabel = tr(locale, 'קשרים', 'links', 'связей')
   return (
     <li>
       <div
@@ -660,7 +671,7 @@ const SageCardRow = memo(function SageCardRow({
               </span>
             )}
             {m.place && <span className="text-ink-400 truncate max-w-[11rem]">{m.place}</span>}
-            {m.degree > 0 && <span className="text-ink-500 tabular-nums">{m.degree} {linksLabel}</span>}
+            {m.degree > 0 && <span className="text-ink-500 tabular-nums">{linksLabel(m.degree, locale)}</span>}
           </div>
         </div>
       </div>

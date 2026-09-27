@@ -232,8 +232,8 @@ export function GenealogyTree({ locale }: GenealogyTreeProps) {
   const view = useMemo<View>(() => ({
     w: size.w, h: size.h,
     bottom: narrow ? 150 : 96,
-    left: !narrow && legendOpen && rtl ? 264 : 0,
-    right: !narrow && legendOpen && !rtl ? 264 : 0,
+    left: !narrow && legendOpen && rtl ? 290 : 0,
+    right: !narrow && legendOpen && !rtl ? 290 : 0,
   }), [size, narrow, legendOpen, rtl])
 
   const zoomBy = (f: number) => {
@@ -275,6 +275,8 @@ export function GenealogyTree({ locale }: GenealogyTreeProps) {
     const svgEl = svgRef.current, vp = viewportRef.current, z = zoomRef.current
     if (!svgEl || !vp || !z) return
     const svg = select(svgEl)
+    // The pointer may rest where a node used to be; no mouseleave will come.
+    clearChain(vp)
     const nodesG = select(vp).select<SVGGElement>('g.lt-nodes')
     const edgesG = select(vp).select<SVGGElement>('g.lt-edges')
 
@@ -404,6 +406,16 @@ export function GenealogyTree({ locale }: GenealogyTreeProps) {
     () => (focus && !hasLineage ? nearbyWithLineage(focus, sages, idx, kinds) : []),
     [focus, hasLineage, sages, idx, kinds])
 
+  const crumbsRef = useRef<HTMLElement>(null)
+  useEffect(() => {
+    const last = crumbsRef.current?.querySelector('[aria-current="true"]')
+    last?.scrollIntoView({ block: 'nearest', inline: 'nearest' })
+  }, [trail, focusId])
+
+  const otherLinks = useMemo(
+    () => !!focusId && connections.some(c => (c.source === focusId && sageMap.has(c.target)) || (c.target === focusId && sageMap.has(c.source))),
+    [connections, focusId, sageMap])
+
   const toggleKind = (k: LineageKind) => setKinds(prev => {
     const next = new Set(prev)
     if (next.has(k)) { if (next.size > 1) next.delete(k) } else next.add(k)
@@ -422,7 +434,7 @@ export function GenealogyTree({ locale }: GenealogyTreeProps) {
             key={d}
             onClick={() => { camera.current = 'keep'; setDepth(d) }}
             aria-pressed={depth === d}
-            aria-label={tr(locale, `${d} דורות`, `${d} generations`, `Поколений: ${d}`)}
+            aria-label={generations(d, locale)}
             className={cn(
               'w-8 h-8 text-xs font-sans font-semibold tabular-nums transition-colors',
               depth === d ? 'bg-gold-500/20 text-gold-300' : 'text-ink-400 hover:text-ink-100 hover:bg-ink-800',
@@ -443,38 +455,61 @@ export function GenealogyTree({ locale }: GenealogyTreeProps) {
     </div>
   )
 
+  const viewSwitch = (
+    <div role="group" aria-label={tr(locale, 'תצוגה', 'View', 'Вид')} className="flex rounded-lg border border-ink-700 overflow-hidden flex-shrink-0">
+      {(['tree', 'outline'] as const).map(m => (
+        <button
+          key={m}
+          onClick={() => setModePref(m)}
+          aria-pressed={mode === m}
+          className={cn(
+            'h-8 px-3 text-xs font-sans font-semibold transition-colors',
+            mode === m ? 'bg-gold-500/20 text-gold-300' : 'text-ink-400 hover:text-ink-100 hover:bg-ink-800',
+          )}
+        >
+          {m === 'tree' ? tr(locale, 'עץ', 'Tree', 'Дерево') : tr(locale, 'רשימה', 'Outline', 'Список')}
+        </button>
+      ))}
+    </div>
+  )
+
   const legend = (
-    <div className="space-y-1.5">
-      <p className="text-[11px] font-sans font-semibold text-ink-300 pe-7">{tr(locale, 'סוגי קשר — לחץ להסתרה', 'Link types — click to hide', 'Типы связей — нажмите, чтобы скрыть')}</p>
-      {LEGEND_ORDER.map(k => {
-        const on = kinds.has(k)
-        return (
-          <button
-            key={k}
-            onClick={() => { camera.current = 'keep'; toggleKind(k) }}
-            aria-pressed={on}
-            className={cn(
-              'w-full flex items-center gap-2.5 rounded-md px-1.5 py-1 text-start transition-colors',
-              on ? 'text-ink-100 hover:bg-ink-800/70' : 'text-ink-500 line-through decoration-ink-600 hover:bg-ink-800/50',
-            )}
-          >
-            <svg width="34" height="10" aria-hidden className={cn('flex-shrink-0', !on && 'opacity-40')}>
-              <line x1="2" y1="5" x2="32" y2="5" className={`lt-edge k-${k}`} />
-            </svg>
-            <span className="text-xs font-sans flex-1">{KIND_LABEL[k][locale]}</span>
-            {on && layout && <span className="text-[10px] font-sans text-ink-500 tabular-nums">{kindCounts[k]}</span>}
-          </button>
-        )
-      })}
-      <div className="flex items-center gap-2.5 px-1.5 py-1 text-ink-300">
-        <span aria-hidden className="w-[34px] text-center text-xs text-ink-400">↺</span>
-        <span className="text-xs font-sans">{tr(locale, 'מופיע כבר בעץ', 'Already in the tree', 'Уже есть в дереве')}</span>
+    <div className="space-y-2">
+      <p className="text-[11px] font-sans font-semibold text-ink-300 pe-7">
+        {tr(locale, 'סוגי קשר', 'Link types', 'Типы связей')}
+        <span className="font-normal text-ink-500"> · {tr(locale, 'לחץ להסתרה', 'click to hide', 'нажмите, чтобы скрыть')}</span>
+      </p>
+      <div className="grid grid-cols-2 gap-1">
+        {LEGEND_ORDER.map(k => {
+          const on = kinds.has(k)
+          return (
+            <button
+              key={k}
+              onClick={() => { camera.current = 'keep'; toggleKind(k) }}
+              aria-pressed={on}
+              className={cn(
+                'flex items-center gap-1.5 rounded-md px-1.5 h-8 text-start transition-colors border',
+                on ? 'text-ink-100 border-ink-700/70 hover:bg-ink-800/70' : 'text-ink-500 border-transparent line-through decoration-ink-600 hover:bg-ink-800/50',
+              )}
+            >
+              <svg width="22" height="10" aria-hidden className={cn('flex-shrink-0', !on && 'opacity-40')}>
+                <line x1="2" y1="5" x2="20" y2="5" className={`lt-edge k-${k}`} />
+              </svg>
+              <span className="text-[11px] font-sans flex-1 truncate">{KIND_LABEL[k][locale]}</span>
+              {on && layout && <span className="text-[10px] font-sans text-ink-500 tabular-nums">{kindCounts[k]}</span>}
+            </button>
+          )
+        })}
       </div>
-      <p className="text-[10.5px] leading-snug font-sans text-ink-400 pt-1 border-t border-ink-700/60">
-        {tr(locale,
-          'למעלה: רבותיו ומי שהשפיע עליו. למטה: תלמידיו ומי שהושפע ממנו.',
-          'Above: teachers and influences. Below: students and the influenced.',
-          'Сверху — учителя и повлиявшие. Снизу — ученики и испытавшие влияние.')}
+      <p className="text-[10.5px] leading-snug font-sans text-ink-400">
+        <span aria-hidden className="text-ink-300">↑ </span>
+        {tr(locale, 'רבותיו ומי שהשפיע עליו', 'teachers and influences', 'учителя и повлиявшие')}
+        <span aria-hidden className="text-ink-600"> · </span>
+        <span aria-hidden className="text-ink-300">↓ </span>
+        {tr(locale, 'תלמידיו ומי שהושפע ממנו', 'students and the influenced', 'ученики и испытавшие влияние')}
+        <span aria-hidden className="text-ink-600"> · </span>
+        <span aria-hidden className="text-ink-300">↺ </span>
+        {tr(locale, 'מופיע כבר בעץ', 'already in the tree', 'уже в дереве')}
       </p>
       <p className="text-[10.5px] leading-snug font-sans text-ink-400">
         {narrow
@@ -487,41 +522,21 @@ export function GenealogyTree({ locale }: GenealogyTreeProps) {
               'Click a sage to refocus, and the focus to open its card. Wheel pans; Ctrl+wheel zooms.',
               'Нажмите на мудреца для фокуса, на центр — чтобы открыть карточку. Колесо прокручивает, Ctrl+колесо — масштаб.')}
       </p>
-      {idx.reoriented > 0 && (
-        <p className="text-[10px] leading-snug font-sans text-ink-500">
-          {tr(locale,
-            `${idx.reoriented} קשרים שכיוונם בנתונים סותר את סדר הזמנים מוצגים לפי הכרונולוגיה.`,
-            `${idx.reoriented} links stored against the chronology are drawn in date order.`,
-            `${idx.reoriented} связей, записанных против хронологии, показаны по датам.`)}
+      {(idx.reoriented > 0 || filteredIds) && (
+        <p className="text-[10px] leading-snug font-sans text-ink-500 pt-1.5 border-t border-ink-700/60">
+          {idx.reoriented > 0 && tr(locale,
+            `${idx.reoriented} קשרים שכיוונם בנתונים סותר את סדר הזמנים מוצגים לפי הכרונולוגיה. `,
+            `${idx.reoriented} links stored against the chronology are drawn in date order. `,
+            `${idx.reoriented} связей, записанных против хронологии, показаны по датам. `)}
+          {filteredIds && tr(locale, 'חכמים מחוץ לסינון הכללי מוצגים בעמעום.', 'Sages outside the global filters are dimmed.', 'Мудрецы вне общих фильтров приглушены.')}
         </p>
       )}
-      {filteredIds && (
-        <p className="text-[10px] leading-snug font-sans text-ink-500">
-          {tr(locale, 'חכמים מחוץ לסינון הכללי מוצגים בעמעום.', 'Sages outside the global filters are dimmed.', 'Мудрецы вне общих фильтров приглушены.')}
-        </p>
-      )}
-      {!narrow && (
-        <div role="group" aria-label={tr(locale, 'תצוגה', 'View', 'Вид')} className="flex gap-1 pt-1.5 border-t border-ink-700/60">
-          {(['tree', 'outline'] as const).map(m => (
-            <button
-              key={m}
-              onClick={() => setModePref(m)}
-              aria-pressed={mode === m}
-              className={cn(
-                'flex-1 h-7 rounded-md text-[11px] font-sans font-semibold transition-colors',
-                mode === m ? 'bg-gold-500/20 text-gold-300' : 'text-ink-400 hover:text-ink-100 hover:bg-ink-800',
-              )}
-            >
-              {m === 'tree' ? tr(locale, 'עץ', 'Tree', 'Дерево') : tr(locale, 'רשימה', 'Outline', 'Список')}
-            </button>
-          ))}
-        </div>
-      )}
+      {narrow && <div className="pt-1.5 border-t border-ink-700/60">{viewSwitch}</div>}
     </div>
   )
 
   const crumbs = (
-    <nav aria-label={tr(locale, 'היסטוריית מיקוד', 'Focus history', 'История фокуса')} className="flex items-center gap-1 min-w-0 overflow-x-auto lt-noscroll">
+    <nav ref={crumbsRef} aria-label={tr(locale, 'היסטוריית מיקוד', 'Focus history', 'История фокуса')} className="flex items-center gap-1 min-w-0 overflow-x-auto lt-noscroll">
       {trail.length > 1 && (
         <button
           onClick={() => refocus(trail[trail.length - 2])}
@@ -615,11 +630,16 @@ export function GenealogyTree({ locale }: GenealogyTreeProps) {
                 className="h-10 rounded-lg bg-ink-800/70 border border-ink-700 text-ink-100 text-sm font-sans px-2 focus:outline-none focus:border-gold-500/60"
               >
                 {DEPTHS.map(d => (
-                  <option key={d} value={d}>{tr(locale, `${d} דורות`, `${d} gen.`, `${d} пок.`)}</option>
+                  <option key={d} value={d}>{generations(d, locale)}</option>
                 ))}
               </select>
             </label>
-          ) : depthControl}
+          ) : (
+            <>
+              {depthControl}
+              {viewSwitch}
+            </>
+          )}
           {narrow && (
             <button
               onClick={() => setLegendOpen(o => !o)}
@@ -640,7 +660,7 @@ export function GenealogyTree({ locale }: GenealogyTreeProps) {
 
         <div className="flex items-center gap-2 min-h-[28px]">
           <div className="flex-1 min-w-0">{narrow && trail.length < 2 ? presetChips : crumbs}</div>
-          {!narrow && counts}
+          {!narrow && hasLineage && counts}
           {!narrow && focus && (
             <button
               onClick={() => openCard(focus.id)}
@@ -675,7 +695,7 @@ export function GenealogyTree({ locale }: GenealogyTreeProps) {
             id="lt-legend"
             className={cn(
               'absolute z-10 glass rounded-xl shadow-glass p-3 animate-fade-in',
-              narrow ? 'top-2 inset-x-3 max-h-[calc(100%-10rem)] overflow-y-auto' : 'top-3 end-3 w-60',
+              narrow ? 'top-2 inset-x-3 max-h-[calc(100%-10rem)] overflow-y-auto' : 'top-3 end-3 w-[17rem]',
             )}
           >
             {!narrow && (
@@ -686,6 +706,12 @@ export function GenealogyTree({ locale }: GenealogyTreeProps) {
               >
                 ×
               </button>
+            )}
+            {narrow && trail.length > 1 && (
+              <div className="mb-3 pb-3 border-b border-ink-700/60">
+                <p className="text-[11px] font-sans font-semibold text-ink-300 mb-1.5">{tr(locale, 'נקודות פתיחה', 'Starting points', 'С чего начать')}</p>
+                <div className="flex flex-wrap gap-1.5 [&>div]:flex-wrap [&>div]:overflow-visible">{presetChips}</div>
+              </div>
             )}
             {legend}
           </div>
@@ -719,6 +745,7 @@ export function GenealogyTree({ locale }: GenealogyTreeProps) {
             onShowAll={() => setKinds(new Set(LINEAGE_KINDS))}
             onPick={refocus}
             onOpenCard={() => openCard(focus.id)}
+            onShowInGraph={otherLinks ? () => { useAppStore.getState().setActiveTab('graph'); openCard(focus.id) } : undefined}
           />
         )}
       </div>
@@ -892,6 +919,24 @@ function describe(
 
 /* ── Pieces ───────────────────────────────────────────────────────────── */
 
+/** Russian plural: 1 связь, 2 связи, 5 связей. */
+function ruPlural(n: number, one: string, few: string, many: string): string {
+  const m10 = n % 10, m100 = n % 100
+  return m10 === 1 && m100 !== 11 ? one : m10 >= 2 && m10 <= 4 && (m100 < 12 || m100 > 14) ? few : many
+}
+
+function linksLabel(n: number, locale: Locale): string {
+  if (locale === 'he') return n === 1 ? 'קשר אחד' : `${n} קשרים`
+  if (locale === 'en') return n === 1 ? '1 link' : `${n} links`
+  return `${n} ${ruPlural(n, 'связь', 'связи', 'связей')}`
+}
+
+function generations(n: number, locale: Locale): string {
+  if (locale === 'he') return n === 1 ? 'דור אחד' : `${n} דורות`
+  if (locale === 'en') return n === 1 ? '1 generation' : `${n} generations`
+  return `${n} ${ruPlural(n, 'поколение', 'поколения', 'поколений')}`
+}
+
 function IconBtn({ label, onClick, children }: { label: string; onClick: () => void; children: ReactNode }) {
   return (
     <button
@@ -1006,7 +1051,7 @@ function SagePicker({ locale, sages, degree, yearsOf, onPick, className }: {
                 </span>
                 <span className={cn('flex-shrink-0 text-[10px] font-sans px-1.5 py-0.5 rounded-full tabular-nums',
                   n ? 'bg-gold-500/15 text-gold-300' : 'text-ink-600')}>
-                  {n ? tr(locale, `${n} קשרים`, `${n} links`, `${n} связ.`) : tr(locale, 'ללא שושלת', 'no lineage', 'нет связей')}
+                  {n ? linksLabel(n, locale) : tr(locale, 'ללא שושלת', 'no lineage', 'нет связей')}
                 </span>
               </li>
             )
@@ -1017,7 +1062,7 @@ function SagePicker({ locale, sages, degree, yearsOf, onPick, className }: {
   )
 }
 
-function EmptyLineage({ locale, focus, years, nearby, hiddenKinds, yearsOf, onShowAll, onPick, onOpenCard }: {
+function EmptyLineage({ locale, focus, years, nearby, hiddenKinds, yearsOf, onShowAll, onPick, onOpenCard, onShowInGraph }: {
   locale: Locale
   focus: Sage
   years: string
@@ -1027,6 +1072,8 @@ function EmptyLineage({ locale, focus, years, nearby, hiddenKinds, yearsOf, onSh
   onShowAll: () => void
   onPick: (id: string) => void
   onOpenCard: () => void
+  /** Set when the sage has non-lineage links (colleagues, opponents) the network tab can show. */
+  onShowInGraph?: () => void
 }) {
   const name = displayName(focus.label)
   const color = ERA_COLORS[focus.period]
@@ -1053,9 +1100,9 @@ function EmptyLineage({ locale, focus, years, nearby, hiddenKinds, yearsOf, onSh
                   `${name} has ${hiddenKinds.map(k => KIND_LABEL[k].en.toLowerCase()).join(', ')} links, but that type is hidden.`,
                   `У «${name}» есть связи типа «${hiddenKinds.map(k => KIND_LABEL[k].ru).join(', ')}», но этот тип скрыт.`)
               : tr(locale,
-                  `עדיין לא תועדו במאגר רבותיו, תלמידיו או מי שהשפיע עליו. אולי תמצאו אותו ברשת הקשרים, או באחד החכמים הסמוכים לו:`,
-                  `The archive doesn't yet record teachers, students or influences for this sage. Try one of these nearby sages:`,
-                  `В архиве пока нет учителей, учеников или влияний этого мудреца. Попробуйте близких к нему:`)}
+                  'עדיין לא תועדו במאגר רבותיו, תלמידיו או מי שהשפיע עליו. אפשר להמשיך מאחד החכמים הסמוכים לו בזמן ובמקום, שיש להם שושלת:',
+                  'The archive doesn’t yet record teachers, students or influences for this sage. Carry on from a sage close to them in time and place:',
+                  'В архиве пока нет учителей, учеников или влияний этого мудреца. Продолжите с близкого к нему по времени и месту:')}
           </p>
           {hiddenKinds.length > 0 && (
             <button onClick={onShowAll} className="mt-3 h-9 px-4 rounded-lg text-sm font-sans font-semibold bg-gold-500/20 text-gold-300 border border-gold-500/40 hover:bg-gold-500/30">
@@ -1080,9 +1127,16 @@ function EmptyLineage({ locale, focus, years, nearby, hiddenKinds, yearsOf, onSh
               ))}
             </ul>
           )}
-          <button onClick={onOpenCard} className="mt-4 text-xs font-sans text-ink-400 hover:text-gold-300 underline underline-offset-4">
-            {tr(locale, `פתח את הכרטיס של ${name}`, `Open ${name}'s card`, `Открыть карточку: ${name}`)}
-          </button>
+          <div className="mt-4 flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
+            <button onClick={onOpenCard} className="text-xs font-sans text-ink-400 hover:text-gold-300 underline underline-offset-4">
+              {tr(locale, `פתח את הכרטיס של ${name}`, `Open ${name}’s card`, `Открыть карточку: ${name}`)}
+            </button>
+            {onShowInGraph && (
+              <button onClick={onShowInGraph} className="text-xs font-sans text-ink-400 hover:text-gold-300 underline underline-offset-4">
+                {tr(locale, 'קשרים אחרים ברשת הקשרים', 'Other links in the network', 'Другие связи в сети')}
+              </button>
+            )}
+          </div>
         </div>
       </div>
     </div>
