@@ -32,7 +32,7 @@ const S = {
     ru: 'Плеер загружается из Spotify только после нажатия.',
   },
   frame: { he: 'נגן Spotify', en: 'Spotify player', ru: 'Плеер Spotify' },
-  mini: { he: 'ממשיכים להאזין', en: 'Keep listening', ru: 'Продолжайте слушать' },
+  mini: { he: 'נגן מוקטן', en: 'Mini player', ru: 'Мини-плеер' },
   playingBelow: {
     he: 'הנגן ממשיך בתחתית המסך בזמן הקריאה',
     en: 'The player stays at the bottom of the screen while you read',
@@ -41,7 +41,8 @@ const S = {
   collapse: { he: 'מזעור הנגן', en: 'Minimize player', ru: 'Свернуть плеер' },
   expand: { he: 'הצגת הנגן', en: 'Show player', ru: 'Показать плеер' },
   close: { he: 'סגירת הנגן (עוצר את ההשמעה)', en: 'Close player (stops playback)', ru: 'Закрыть плеер (остановит воспроизведение)' },
-  listening: { he: 'בהאזנה', en: 'Listening', ru: 'Слушаем' },
+  // Not "now playing": a cross-origin embed does not say whether it plays.
+  pill: { he: 'הנגן', en: 'Player', ru: 'Плеер' },
 } satisfies Record<string, Record<Locale, string>>
 
 /** The sage page's scroll container (the body itself never scrolls). */
@@ -82,7 +83,22 @@ export function SpotifyListen({ url, locale, name }: { url: string; locale: Loca
     return () => { el.style.paddingBottom = prev }
   }, [mini])
 
-  const unload = () => { setLoaded(false); setDocked(true); setCollapsed(false) }
+  // Keyboard focus follows the control that replaces the one just used:
+  // collapse → the pill, expand → the collapse button, close → the card's
+  // load button (without scrolling the reader back up to it).
+  const pillRef = useRef<HTMLButtonElement>(null)
+  const collapseRef = useRef<HTMLButtonElement>(null)
+  const loadRef = useRef<HTMLButtonElement>(null)
+  const focusNext = useRef<'pill' | 'bar' | 'load' | null>(null)
+  useEffect(() => {
+    const want = focusNext.current
+    if (!want) return
+    focusNext.current = null
+    const el = want === 'pill' ? pillRef.current : want === 'bar' ? collapseRef.current : loadRef.current
+    el?.focus({ preventScroll: true })
+  })
+
+  const unload = () => { focusNext.current = 'load'; setLoaded(false); setDocked(true); setCollapsed(false) }
 
   return (
     <section aria-label={title}
@@ -132,7 +148,7 @@ export function SpotifyListen({ url, locale, name }: { url: string; locale: Loca
               />
               {mini && (
                 <div className="flex flex-shrink-0 flex-col justify-center gap-1 pe-1">
-                  <MiniButton label={S.collapse[locale]} onClick={() => setCollapsed(true)}>
+                  <MiniButton ref={collapseRef} label={S.collapse[locale]} onClick={() => { focusNext.current = 'pill'; setCollapsed(true) }}>
                     <path d="M6 9l6 6 6-6" />
                   </MiniButton>
                   <MiniButton label={S.close[locale]} onClick={unload}>
@@ -142,12 +158,12 @@ export function SpotifyListen({ url, locale, name }: { url: string; locale: Loca
               )}
             </div>
             {mini && collapsed && (
-              <button type="button" onClick={() => setCollapsed(false)} aria-label={`${S.expand[locale]} — ${name}`}
+              <button ref={pillRef} type="button" onClick={() => { focusNext.current = 'bar'; setCollapsed(false) }} aria-label={`${S.expand[locale]} — ${name}`}
                 className="fixed bottom-4 end-4 z-30 inline-flex h-11 items-center gap-2 rounded-full border border-[#1DB954]/40 glass ps-2 pe-3.5 text-xs font-sans font-semibold text-ink-100 shadow-glass transition hover:border-[#1DB954]/70 animate-fade-in focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1DB954] md:bottom-6 md:end-6">
                 <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#1DB954] text-black">
                   <SpotifyIcon className="h-4 w-4" />
                 </span>
-                {S.listening[locale]}
+                {S.pill[locale]}
                 <svg className="h-3.5 w-3.5 text-ink-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
                   <path d="M6 15l6-6 6 6" />
                 </svg>
@@ -156,7 +172,7 @@ export function SpotifyListen({ url, locale, name }: { url: string; locale: Loca
           </div>
         ) : (
           <div className="no-print mt-4 flex flex-wrap items-center gap-x-4 gap-y-2">
-            <button type="button" onClick={() => setLoaded(true)}
+            <button ref={loadRef} type="button" onClick={() => setLoaded(true)}
               className="group inline-flex items-center gap-2 rounded-full bg-[#1DB954] px-4 py-2 text-sm font-sans font-semibold text-black shadow-lg shadow-[#1DB954]/20 transition hover:scale-[1.03] hover:bg-[#1ed760] focus-visible:outline-offset-4 motion-reduce:hover:scale-100">
               <PlayIcon />
               {S.load[locale]}
@@ -174,9 +190,11 @@ export function SpotifyListen({ url, locale, name }: { url: string; locale: Loca
   )
 }
 
-function MiniButton({ label, onClick, children }: { label: string; onClick: () => void; children: React.ReactNode }) {
+function MiniButton({ label, onClick, children, ref }: {
+  label: string; onClick: () => void; children: React.ReactNode; ref?: React.Ref<HTMLButtonElement>
+}) {
   return (
-    <button type="button" onClick={onClick} aria-label={label} title={label}
+    <button ref={ref} type="button" onClick={onClick} aria-label={label} title={label}
       className="flex h-8 w-8 items-center justify-center rounded-lg text-ink-400 transition-colors hover:bg-ink-700/60 hover:text-ink-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#1DB954]">
       <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
         {children}
@@ -185,7 +203,7 @@ function MiniButton({ label, onClick, children }: { label: string; onClick: () =
   )
 }
 
-/** Three bars: "playing". Still under reduced motion. */
+/** Three static bars: "the player is below". */
 function EqIcon() {
   return (
     <svg className="h-3.5 w-3.5 flex-shrink-0 text-[#1ed760] [[data-theme=light]_&]:text-[#11773a]" viewBox="0 0 24 24" fill="currentColor" aria-hidden>

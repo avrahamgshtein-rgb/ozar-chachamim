@@ -48,9 +48,14 @@ const S = {
   removeScope: { he: 'הסרת ההקשר', en: 'Remove context', ru: 'Убрать контекст' },
   starters: { he: 'אפשר להתחיל מכאן', en: 'Start with', ru: 'Можно начать с' },
   scopedIntro: {
-    he: 'התשובות מבוססות על המחקר באתר ועל הנתונים, עם הפניה לסעיף במחקר.',
-    en: 'Answers draw on the site’s research and data, and link to the section they cite.',
-    ru: 'Ответы опираются на исследования и данные сайта и ссылаются на нужный раздел.',
+    he: 'התשובות מבוססות על המחקר ועל הנתונים באתר. כשתשובה מצטטת את המחקר, המספר מוביל לסעיף עצמו.',
+    en: 'Answers draw on the site’s research and data. When an answer cites the research, its number takes you to the section.',
+    ru: 'Ответы опираются на исследования и данные сайта. Номер ссылки ведёт прямо к разделу исследования.',
+  },
+  scopedIntroNoResearch: {
+    he: 'התשובות מבוססות על נתוני האתר. עדיין אין באתר מחקר מלא על החכם הזה.',
+    en: 'Answers draw on the site’s data. There is no full research on this sage on the site yet.',
+    ru: 'Ответы опираются на данные сайта. Полного исследования об этом мудреце на сайте пока нет.',
   },
   sources: { he: 'מקורות מהמחקר', en: 'From the research', ru: 'Источники из исследования' },
   source: { he: 'מקור', en: 'Source', ru: 'Источник' },
@@ -379,7 +384,7 @@ export function ChatWidget({ locale, placement = 'app', initialSubject, pageSage
             {messages.length === 0 && !unavailable && (
               <p className="text-xs text-ink-500 leading-relaxed">
                 {subject
-                  ? S.scopedIntro[locale]
+                  ? (subject.hasResearch ? S.scopedIntro : S.scopedIntroNoResearch)[locale]
                   : authenticated
                   ? tr(locale,
                     'שאל כל שאלה על חכמי ישראל, תולדותיהם וקשריהם.',
