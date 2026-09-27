@@ -16,6 +16,9 @@ import {
   layoutTree, lineagePresets, nearbyWithLineage,
 } from './lineage'
 import type { LNode, Layout, LayoutMode, LineageKind, PlacedEdge, PlacedNode } from './lineage'
+import { buildSinaiIndex } from '@/lib/sinaiPath'
+import { SinaiPath } from './SinaiPath'
+import { SP } from './SinaiPathText'
 
 /*
  * עץ שושלות — a lineage explorer centred on one sage.
@@ -63,6 +66,11 @@ const capFor = (gen: number) => (gen === 1 ? 8 : 5)
 
 type CameraIntent = 'fit' | 'recenter' | 'keep'
 
+/** The tab's two panes: the lineage tree/outline, or the road to Sinai (?view=sinai). */
+type Pane = 'lineage' | 'sinai'
+const readURLPane = (): Pane =>
+  typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('view') === 'sinai' ? 'sinai' : 'lineage'
+
 interface GenealogyTreeProps { locale: Locale }
 
 export function GenealogyTree({ locale }: GenealogyTreeProps) {
@@ -93,6 +101,7 @@ export function GenealogyTree({ locale }: GenealogyTreeProps) {
   // Unset: open on wide screens (floating), closed on phones (a drop-down).
   const [legendPref, setLegendOpen] = useState<boolean | null>(null)
   const [fontsReady, setFontsReady] = useState(0)
+  const [pane, setPane] = useState<Pane>(readURLPane)
 
   const focusRef = useRef<string | null>(null)
   focusRef.current = focusId
@@ -124,8 +133,12 @@ export function GenealogyTree({ locale }: GenealogyTreeProps) {
     if (start) refocus(start)
   }, [sageMap, presets, selectedSageId, focusId, refocus])
 
-  // Selecting a sage anywhere (search bar, card links) moves the focus to it.
+  // Selecting a sage anywhere (search bar, card links) moves the focus to it,
+  // except a station opened from the Sinai river: that shows its card and
+  // keeps the road on screen.
+  const keepFocusFor = useRef<string | null>(null)
   useEffect(() => {
+    if (selectedSageId && selectedSageId === keepFocusFor.current) { keepFocusFor.current = null; return }
     if (selectedSageId && focusId && selectedSageId !== focusId) refocus(selectedSageId)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedSageId])
@@ -134,6 +147,49 @@ export function GenealogyTree({ locale }: GenealogyTreeProps) {
     const s = sageMap.get(id)
     if (s) selectSage(s)
   }, [sageMap, selectSage])
+
+  // ── Road to Sinai ────────────────────────────────────────────────────────
+  // The view lives in ?view=sinai next to the app's ?tab=&sage=, so the sage
+  // page can link straight to it; it leaves the URL with the tab.
+  useEffect(() => {
+    const url = new URL(window.location.href)
+    if (pane === 'sinai') url.searchParams.set('view', 'sinai')
+    else url.searchParams.delete('view')
+    if (url.href !== window.location.href) window.history.replaceState(window.history.state, '', url)
+  }, [pane])
+  useEffect(() => () => {
+    const url = new URL(window.location.href)
+    if (!url.searchParams.has('view')) return
+    url.searchParams.delete('view')
+    window.history.replaceState(window.history.state, '', url)
+  }, [])
+  // Arriving from a sage page's "road to Sinai" link: ?sage= opens that sage's
+  // card, which would cover the road it came to see. Close it once.
+  const arrivalSage = useRef(pane === 'sinai' ? new URLSearchParams(window.location.search).get('sage') : null)
+  const isDrawerOpen = useAppStore(s => s.isDrawerOpen)
+  useEffect(() => {
+    if (!arrivalSage.current || !isDrawerOpen || selectedSageId !== arrivalSage.current) return
+    arrivalSage.current = null
+    useAppStore.getState().closeDrawer()
+  }, [isDrawerOpen, selectedSageId])
+
+  const sinai = useMemo(() => (pane === 'sinai' && sages.length ? buildSinaiIndex(sages, idx) : null), [pane, sages, idx])
+  const sinaiPresets = useMemo(() => {
+    if (!sinai) return []
+    return [...sinai.best.keys()]
+      .filter(id => !sinai.onChain.has(id))
+      .sort((a, b) => (idx.degree.get(b) ?? 0) - (idx.degree.get(a) ?? 0))
+      .slice(0, 8)
+  }, [sinai, idx])
+  const openFromRiver = useCallback((id: string) => {
+    if (id !== focusRef.current) keepFocusFor.current = id
+    openCard(id)
+  }, [openCard])
+  const switchPane = (p: Pane) => {
+    if (p === pane) return
+    if (p === 'lineage') camera.current = 'fit'
+    setPane(p)
+  }
 
   // ── Tree + layout ────────────────────────────────────────────────────────
   const tree = useMemo(() => {
@@ -183,7 +239,7 @@ export function GenealogyTree({ locale }: GenealogyTreeProps) {
   }, [fontsReady])
 
   const layout = useMemo<Layout | null>(() => {
-    if (!tree || !hasLineage || !size.w) return null
+    if (!tree || !hasLineage || !size.w || pane === 'sinai') return null
     const family = (wrapRef.current && getComputedStyle(wrapRef.current).fontFamily) || 'Heebo, sans-serif'
     return layoutTree(tree, {
       mode, rtl, width: size.w, measure,
@@ -192,7 +248,7 @@ export function GenealogyTree({ locale }: GenealogyTreeProps) {
         : n.type === 'repeat' ? `↺ ${nameOf(n.id)}` : nameOf(n.id),
       fonts: { name: `600 13px ${family}`, focus: `700 15px ${family}`, stub: `500 12px ${family}` },
     })
-  }, [tree, hasLineage, size.w, mode, rtl, measure, locale, nameOf])
+  }, [tree, hasLineage, size.w, mode, rtl, measure, locale, nameOf, pane])
 
   // Mode switches refit the camera.
   const lastMode = useRef<LayoutMode | null>(null)
@@ -428,6 +484,21 @@ export function GenealogyTree({ locale }: GenealogyTreeProps) {
   const loading = !sages.length
 
   // ── UI ───────────────────────────────────────────────────────────────────
+  // In the Sinai pane the picker ranks, and marks, the sages whose road is recorded.
+  const picker = (className: string) => (
+    <SagePicker
+      locale={locale}
+      sages={sages}
+      degree={sinai ? (id => (sinai.best.has(id) ? 60 : 0) + Math.min(degreeOf(idx, id, kinds), 30)) : (id => degreeOf(idx, id, kinds))}
+      badge={sinai ? (id => sinai.best.has(id)
+        ? { on: true, text: tr(locale, 'דרך לסיני', 'reaches Sinai', 'путь к Синаю') }
+        : { on: false, text: tr(locale, 'ללא דרך מתועדת', 'no recorded road', 'путь не записан') }) : undefined}
+      placeholder={sinai ? tr(locale, 'הדרך לסיני של…', 'The road to Sinai of…', 'Путь к Синаю для…') : undefined}
+      yearsOf={yearsOf}
+      onPick={id => refocus(id)}
+      className={className}
+    />
+  )
   const depthControl = (
     <div role="group" aria-label={tr(locale, 'מספר דורות', 'Generations', 'Поколения')} className="flex items-center gap-1.5 flex-shrink-0">
       <span className="text-[11px] font-sans text-ink-400 hidden lg:inline">{tr(locale, 'דורות', 'Generations', 'Поколения')}</span>
@@ -463,17 +534,48 @@ export function GenealogyTree({ locale }: GenealogyTreeProps) {
       {(['tree', 'outline'] as const).map(m => (
         <button
           key={m}
-          onClick={() => setModePref(m)}
-          aria-pressed={mode === m}
+          onClick={() => { setModePref(m); switchPane('lineage') }}
+          aria-pressed={pane === 'lineage' && mode === m}
           className={cn(
             'h-8 px-3 text-xs font-sans font-semibold transition-colors',
-            mode === m ? 'bg-gold-500/20 text-gold-300' : 'text-ink-400 hover:text-ink-100 hover:bg-ink-800',
+            pane === 'lineage' && mode === m ? 'bg-gold-500/20 text-gold-300' : 'text-ink-400 hover:text-ink-100 hover:bg-ink-800',
           )}
         >
           {m === 'tree' ? tr(locale, 'עץ', 'Tree', 'Дерево') : tr(locale, 'רשימה', 'Outline', 'Список')}
         </button>
       ))}
+      {!narrow && (
+        <button
+          onClick={() => switchPane('sinai')}
+          aria-pressed={pane === 'sinai'}
+          className={cn(
+            'h-8 px-3 flex items-center gap-1.5 text-xs font-sans font-semibold border-s border-ink-700 transition-colors',
+            pane === 'sinai' ? 'bg-gold-500/20 text-gold-300' : 'text-ink-300 hover:text-gold-300 hover:bg-ink-800',
+          )}
+        >
+          <MountainIcon className="w-4 h-4" />
+          {SP.title[locale]}
+        </button>
+      )}
     </div>
+  )
+
+  // Phones: the road to Sinai gets its own toggle in the top row (the tree /
+  // outline switch lives in the legend panel there).
+  const sinaiToggle = (
+    <button
+      onClick={() => switchPane(pane === 'sinai' ? 'lineage' : 'sinai')}
+      aria-pressed={pane === 'sinai'}
+      aria-label={SP.title[locale]}
+      title={SP.title[locale]}
+      className={cn(
+        'flex-shrink-0 h-10 px-2.5 rounded-lg border flex items-center gap-1 text-xs font-sans font-semibold transition-colors',
+        pane === 'sinai' ? 'border-gold-500/60 text-gold-300 bg-gold-500/10' : 'border-ink-700 text-ink-300',
+      )}
+    >
+      <MountainIcon className="w-5 h-5" />
+      <span aria-hidden>{tr(locale, 'סיני', 'Sinai', 'Синай')}</span>
+    </button>
   )
 
   const legend = (
@@ -575,7 +677,7 @@ export function GenealogyTree({ locale }: GenealogyTreeProps) {
   const presetChips = (
     <div className="flex items-center gap-1.5 min-w-0 overflow-x-auto lt-noscroll" role="group"
       aria-label={tr(locale, 'נקודות פתיחה', 'Starting points', 'С чего начать')}>
-      {presets.map(id => (
+      {(pane === 'sinai' ? sinaiPresets : presets).map(id => (
         <button
           key={id}
           onClick={() => refocus(id)}
@@ -608,14 +710,7 @@ export function GenealogyTree({ locale }: GenealogyTreeProps) {
       {/* ── Toolbar ─────────────────────────────────────────────────────── */}
       <div className="relative z-20 flex-shrink-0 border-b border-ink-700/50 bg-ink-900/85 backdrop-blur-sm px-3 md:px-4 py-2 space-y-2">
         <div className="flex items-center gap-2 md:gap-3">
-          <SagePicker
-            locale={locale}
-            sages={sages}
-            degree={id => degreeOf(idx, id, kinds)}
-            yearsOf={yearsOf}
-            onPick={id => refocus(id)}
-            className="flex-1 md:flex-none md:w-72 min-w-0"
-          />
+          {picker('flex-1 md:flex-none md:w-72 min-w-0')}
           {!narrow && (
             <>
               <span className="text-[11px] font-sans text-ink-500 whitespace-nowrap hidden xl:inline">
@@ -624,7 +719,8 @@ export function GenealogyTree({ locale }: GenealogyTreeProps) {
               <div className="flex-1 min-w-0">{presetChips}</div>
             </>
           )}
-          {narrow ? (
+          {narrow && sinaiToggle}
+          {pane === 'sinai' ? (!narrow && viewSwitch) : narrow ? (
             <label className="flex-shrink-0">
               <span className="sr-only">{tr(locale, 'מספר דורות', 'Generations', 'Поколения')}</span>
               <select
@@ -643,7 +739,7 @@ export function GenealogyTree({ locale }: GenealogyTreeProps) {
               {viewSwitch}
             </>
           )}
-          {narrow && (
+          {narrow && pane === 'lineage' && (
             <button
               onClick={() => setLegendOpen(o => !o)}
               aria-expanded={legendOpen}
@@ -663,7 +759,7 @@ export function GenealogyTree({ locale }: GenealogyTreeProps) {
 
         <div className="flex items-center gap-2 min-h-[28px]">
           <div className="flex-1 min-w-0">{narrow && trail.length < 2 ? presetChips : crumbs}</div>
-          {!narrow && hasLineage && counts}
+          {!narrow && hasLineage && pane === 'lineage' && counts}
           {!narrow && focus && (
             <button
               onClick={() => openCard(focus.id)}
@@ -672,7 +768,7 @@ export function GenealogyTree({ locale }: GenealogyTreeProps) {
               {tr(locale, 'פתח כרטיס', 'Open card', 'Открыть карточку')}
             </button>
           )}
-          {narrow && zoomControls(false)}
+          {narrow && pane === 'lineage' && zoomControls(false)}
         </div>
       </div>
 
@@ -680,7 +776,7 @@ export function GenealogyTree({ locale }: GenealogyTreeProps) {
       <div ref={wrapRef} className="relative flex-1 min-h-0 overflow-hidden">
         <svg
           ref={svgRef}
-          className="lt-svg absolute inset-0 w-full h-full"
+          className={cn('lt-svg absolute inset-0 w-full h-full', pane === 'sinai' && 'invisible')}
           role="group"
           aria-label={focus
             ? tr(locale, `עץ השושלת של ${displayName(focus.label)}`, `Lineage of ${displayName(focus.label)}`, `Линия преемственности: ${displayName(focus.label)}`)
@@ -693,7 +789,7 @@ export function GenealogyTree({ locale }: GenealogyTreeProps) {
         </svg>
 
         {/* Legend: floating on wide screens, a drop-down panel on phones */}
-        {legendOpen ? (
+        {pane === 'sinai' ? null : legendOpen ? (
           <div
             id="lt-legend"
             className={cn(
@@ -729,7 +825,21 @@ export function GenealogyTree({ locale }: GenealogyTreeProps) {
           </button>
         )}
 
-        {!narrow && <div className="absolute bottom-6 end-4 z-10">{zoomControls(true)}</div>}
+        {!narrow && pane === 'lineage' && <div className="absolute bottom-6 end-4 z-10">{zoomControls(true)}</div>}
+
+        {pane === 'sinai' && sinai && (
+          <SinaiPath
+            locale={locale}
+            sageId={focusId}
+            si={sinai}
+            idx={idx}
+            sages={sages}
+            sageMap={sageMap}
+            onOpen={openFromRiver}
+            onPick={refocus}
+            picker={picker('w-full')}
+          />
+        )}
 
         {loading && (
           <div className="absolute inset-0 flex items-center justify-center text-sm font-sans text-ink-400">
@@ -737,7 +847,7 @@ export function GenealogyTree({ locale }: GenealogyTreeProps) {
           </div>
         )}
 
-        {focus && !hasLineage && !loading && (
+        {focus && !hasLineage && !loading && pane === 'lineage' && (
           <EmptyLineage
             locale={locale}
             focus={focus}
@@ -940,6 +1050,15 @@ function generations(n: number, locale: Locale): string {
   return `${n} ${ruPlural(n, 'поколение', 'поколения', 'поколений')}`
 }
 
+function MountainIcon({ className }: { className?: string }) {
+  return (
+    <svg aria-hidden className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.7} strokeLinejoin="round" strokeLinecap="round">
+      <path d="M2.5 20 10 8.5l3.2 4.8 2.3-3L21.5 20z" />
+      <path d="M12 3.5v2.2M7.4 5.3l1.1 1.6M16.6 5.3l-1.1 1.6" />
+    </svg>
+  )
+}
+
 function IconBtn({ label, onClick, children }: { label: string; onClick: () => void; children: ReactNode }) {
   return (
     <button
@@ -954,10 +1073,13 @@ function IconBtn({ label, onClick, children }: { label: string; onClick: () => v
 }
 
 /** Combobox over every sage; those with lineage links rank first. */
-function SagePicker({ locale, sages, degree, yearsOf, onPick, className }: {
+function SagePicker({ locale, sages, degree, badge, placeholder, yearsOf, onPick, className }: {
   locale: Locale
   sages: Sage[]
   degree: (id: string) => number
+  /** Replaces the lineage-count badge on each result. */
+  badge?: (id: string) => { text: string; on: boolean }
+  placeholder?: string
   yearsOf: (s: Sage | undefined) => string
   onPick: (id: string) => void
   className?: string
@@ -1017,7 +1139,7 @@ function SagePicker({ locale, sages, degree, yearsOf, onPick, className }: {
         onFocus={() => setOpen(true)}
         onBlur={() => setTimeout(() => setOpen(false), 150)}
         onKeyDown={onKey}
-        placeholder={tr(locale, 'מקד את העץ בחכם…', 'Focus the tree on a sage…', 'Сфокусировать на мудреце…')}
+        placeholder={placeholder ?? tr(locale, 'מקד את העץ בחכם…', 'Focus the tree on a sage…', 'Сфокусировать на мудреце…')}
         className={cn(
           'w-full h-10 rounded-lg ps-9 pe-3 text-sm font-sans',
           'bg-ink-800/70 border border-ink-700 text-ink-100 placeholder:text-ink-500',
@@ -1035,6 +1157,7 @@ function SagePicker({ locale, sages, degree, yearsOf, onPick, className }: {
           )}
           {results.map((s, i) => {
             const n = degree(s.id)
+            const b = badge?.(s.id) ?? { on: n > 0, text: n ? linksLabel(n, locale) : tr(locale, 'ללא שושלת', 'no lineage', 'нет связей') }
             return (
               <li
                 key={s.id}
@@ -1053,8 +1176,8 @@ function SagePicker({ locale, sages, degree, yearsOf, onPick, className }: {
                   </span>
                 </span>
                 <span className={cn('flex-shrink-0 text-[10px] font-sans px-1.5 py-0.5 rounded-full tabular-nums',
-                  n ? 'bg-gold-500/15 text-gold-300' : 'text-ink-600')}>
-                  {n ? linksLabel(n, locale) : tr(locale, 'ללא שושלת', 'no lineage', 'нет связей')}
+                  b.on ? 'bg-gold-500/15 text-gold-300' : 'text-ink-600')}>
+                  {b.text}
                 </span>
               </li>
             )
