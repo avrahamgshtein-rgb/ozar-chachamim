@@ -34,6 +34,7 @@ export function FilterChips({ locale }: { locale: Locale }) {
   const {
     sages, filteredSages, filters, availableFields,
     togglePeriodFilter, toggleRegionFilter, toggleFieldFilter, clearFilters, setPlaceFocus,
+    setGroupFocus,
   } = useAppStore()
   const [showFields, setShowFields] = useState(false)
   const [allFields, setAllFields] = useState(false)
@@ -41,7 +42,8 @@ export function FilterChips({ locale }: { locale: Locale }) {
   const isHe = locale === 'he'
 
   const activeCount =
-    (filters.period?.length ?? 0) + filters.region.length + filters.field.length + (filters.place ? 1 : 0)
+    (filters.period?.length ?? 0) + filters.region.length + filters.field.length + (filters.place ? 1 : 0) +
+    (filters.group ? 1 : 0)
 
   // Facets get their own chip in row 1, so they're left out of the field list.
   const fieldOptions = useMemo(
@@ -96,6 +98,18 @@ export function FilterChips({ locale }: { locale: Locale }) {
               style={chipStyle(true, PLACE_COLOR)}
               aria-label={tr(locale, `הסר סינון מקום: ${filters.place}`, `Remove place filter: ${filters.place}`, `Убрать фильтр места: ${filters.place}`)}>
               📍 {filters.place} ✕
+            </button>
+            <span className="w-px h-4 bg-ink-600/50 mx-0.5 flex-shrink-0" />
+          </>
+        )}
+        {/* A school focused from the Traditions tab ("show on graph"). */}
+        {filters.group && (
+          <>
+            <button onClick={() => setGroupFocus(null)}
+              className={chip}
+              style={chipStyle(true, PLACE_COLOR)}
+              aria-label={tr(locale, `הסר מיקוד: ${filters.group.label.he}`, `Remove focus: ${filters.group.label.en}`, `Убрать фокус: ${filters.group.label.ru}`)}>
+              ◈ {filters.group.label[locale]} ✕
             </button>
             <span className="w-px h-4 bg-ink-600/50 mx-0.5 flex-shrink-0" />
           </>
