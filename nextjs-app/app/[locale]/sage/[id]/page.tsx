@@ -57,7 +57,7 @@ function clip(text: string, max: number): string {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale, id } = await params
   const raw = getSageById(id)
-  if (!raw) return {}
+  if (!raw) notFound()
 
   const loc = (isValidLocale(locale) ? locale : 'he') as Locale
   const sage = localizeSage(raw, loc)
@@ -195,7 +195,7 @@ export default async function SagePage({ params }: PageProps) {
           </div>
         </nav>
 
-        <main className="mx-auto max-w-6xl px-4 pb-16 pt-6 md:px-8 md:pt-10">
+        <main id="main" tabIndex={-1} className="mx-auto max-w-6xl px-4 pb-16 pt-6 outline-none md:px-8 md:pt-10">
           {/* ── Hero ──────────────────────────────────────────── */}
           <header
             className="sage-hero relative overflow-hidden rounded-3xl border p-6 md:p-10"
