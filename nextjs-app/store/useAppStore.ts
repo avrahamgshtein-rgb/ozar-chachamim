@@ -5,7 +5,7 @@ import type { Sage, Connection, Tab, Filters, Period, Region } from '@/lib/types
 import { isTagFacet } from '@/lib/types'
 import { regionsOf } from '@/lib/regions'
 import { placesIn } from '@/lib/placeIndex'
-import { normalizeHe, fuzzyIncludes } from '@/lib/search'
+import { sageQueryMatcher } from '@/lib/search'
 
 /** One selectable field chip: a single trimmed field name and how many sages carry it. */
 export interface FieldOption {
@@ -92,6 +92,10 @@ interface AppState {
 }
 
 function applyFilters(sages: Sage[], filters: Filters): Sage[] {
+  // The same matcher as the search box's suggestions (names, titles dropped,
+  // acronyms, English names, then field/place/tags), so the graph dims to
+  // exactly what the dropdown offers.
+  const matchesQuery = filters.searchQuery ? sageQueryMatcher(filters.searchQuery) : null
   return sages.filter(sage => {
     // Period filtering: null = all periods (no filter), [] = no periods (empty set), [...] = selected subset
     if (filters.period !== null && filters.period.length === 0) return false
@@ -122,15 +126,7 @@ function applyFilters(sages: Sage[], filters: Filters): Sage[] {
         stops.some(s => placesIn(s).includes(filters.place!))
       if (!here) return false
     }
-    if (filters.searchQuery) {
-      // Fuzzy Hebrew matching: "רמבם" ↔ "רמב״ם" (nikud/quotes/finals-insensitive)
-      const q = normalizeHe(filters.searchQuery)
-      const matchLabel   = fuzzyIncludes(sage.label, q)
-      const matchNameEn  = fuzzyIncludes(sage.name_en, q)
-      const matchField   = fuzzyIncludes(sage.field, q)
-      const matchLoc     = fuzzyIncludes(sage.location, q)
-      if (!matchLabel && !matchNameEn && !matchField && !matchLoc) return false
-    }
+    if (matchesQuery && !matchesQuery(sage)) return false
     return true
   })
 }

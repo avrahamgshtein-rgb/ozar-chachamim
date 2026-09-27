@@ -8,7 +8,6 @@ const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 // connections, research) is not loaded from here: its sages/connections/
 // research_content tables are an old snapshot. The home page loads the static
 // pipeline via lib/appShellDataLoader.ts, the sage pages via lib/serverData.ts.
-// (SearchBar still calls searchSages below, only while that data is loading.)
 export const isSupabaseConfigured = Boolean(supabaseUrl && supabaseKey)
 export const supabase = createClient(
   supabaseUrl ?? 'https://missing-config.invalid',
@@ -65,25 +64,6 @@ export async function fetchSageById(id: string): Promise<Sage | null> {
 
   if (error || !data) return null
   return mapSageRow(data as Record<string, unknown>)
-}
-
-export async function searchSages(query: string, limit = 10): Promise<Sage[]> {
-  const { data, error } = await supabase
-    .from('sages_with_stats')
-    .select('id, label, name_en, era, period, field, location')
-    .or(`label.ilike.%${query}%,name_en.ilike.%${query}%`)
-    .limit(limit)
-
-  if (error) return []
-
-  return (data ?? []).map((row: Record<string, unknown>) => ({
-    id:      String(row.id ?? ''),
-    label:   String(row.label ?? ''),
-    name_en: row.name_en ? String(row.name_en) : undefined,
-    period:  (row.era ?? row.period) as Sage['period'],
-    field:   row.field ? String(row.field) : undefined,
-    location: row.location ? String(row.location) : undefined,
-  }))
 }
 
 export async function fetchSageConnections(
