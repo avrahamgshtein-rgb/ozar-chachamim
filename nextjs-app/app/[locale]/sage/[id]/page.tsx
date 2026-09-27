@@ -15,6 +15,7 @@ import { RelatedSages, type RelatedPersonView } from '@/components/sages/Related
 import { groupRelated } from '@/components/sages/relations'
 import { SpotifyListen } from '@/components/sages/SpotifyListen'
 import { AskSageButton } from '@/components/sages/AskSageButton'
+import { SinaiPathCard } from '@/components/viz/SinaiPathCard'
 import { PrintButton, ShareButton, ThemeToggle } from '@/components/sages/PageActions'
 import { Toaster } from '@/components/sages/Toast'
 import { ChatWidget } from '@/components/chat/ChatWidget'
@@ -344,6 +345,8 @@ export default async function SagePage({ params }: PageProps) {
               </aside>
             )}
           </div>
+
+          <SinaiPathCard sageId={raw.id} locale={loc} />
 
           {/* ── Full research ─────────────────────────────────── */}
           {researchDocs.length > 0 && (
