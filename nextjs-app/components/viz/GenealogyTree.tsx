@@ -164,7 +164,9 @@ export function GenealogyTree({ locale }: GenealogyTreeProps) {
     window.history.replaceState(window.history.state, '', url)
   }, [])
   // Arriving from a sage page's "road to Sinai" link: ?sage= opens that sage's
-  // card, which would cover the road it came to see. Close it once.
+  // card, which would cover the road it came to see. Close it once, keeping
+  // the selection (closeDrawer would clear it, and the map, mounted behind,
+  // reacts to every selection change).
   const arrivalSage = useRef<string | null | undefined>(undefined)
   if (arrivalSage.current === undefined) {
     arrivalSage.current = pane === 'sinai' ? new URLSearchParams(window.location.search).get('sage') : null
@@ -173,7 +175,7 @@ export function GenealogyTree({ locale }: GenealogyTreeProps) {
   useEffect(() => {
     if (!arrivalSage.current || !isDrawerOpen || selectedSageId !== arrivalSage.current) return
     arrivalSage.current = null
-    useAppStore.getState().closeDrawer()
+    useAppStore.setState({ isDrawerOpen: false })
   }, [isDrawerOpen, selectedSageId])
   // With no card open, the selection (and so the URL's ?sage=) follows the
   // road on screen, so any road can be shared or reloaded. An open card is

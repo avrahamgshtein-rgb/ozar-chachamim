@@ -150,7 +150,8 @@ export function SinaiPathCard({ sageId, locale }: { sageId: string; locale: Loca
     })
   }
 
-  const badge = path.direct ? SP.direct[locale] : path.byKind.influence ? inspirationsLabel(path.byKind.influence, locale) : null
+  const badge = steps.length === 1 ? null
+    : path.direct ? SP.direct[locale] : path.byKind.influence ? inspirationsLabel(path.byKind.influence, locale) : null
 
   return (
     <section aria-labelledby="sinai-title" dir={dir} className="sp-lines spc no-print mt-10 rounded-2xl border border-gold-500/20 p-4 md:p-6"
