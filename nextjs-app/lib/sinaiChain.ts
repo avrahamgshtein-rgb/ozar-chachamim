@@ -5,6 +5,13 @@
 // house) from Hillel to Rabbeinu HaKadosh; his fuller list also names the
 // students who received alongside them, kept here as `alongside`.
 //
+// After Rav Ashi the chain continues (gen 41–45, `source: 'sherira'`) as Rav
+// Sherira Gaon's epistle to Kairouan (987) traces it: Ravina and the close of
+// the Talmud, the Savoraim, the Geonim of Sura and Pumbedita, then Rav Sherira
+// himself and his son Rav Hai. Without it the archive's links, which rarely
+// reach back past the Geonim, could only join the Rambam's list through thin
+// cross-century leaps. The UI marks where the Rambam's count ends.
+//
 // Stations are in chronological order, Moses first. `match` holds sage LABELS
 // exactly as they appear in the dataset: resolve them against the loaded
 // sages at runtime, never by id (ids drift, names don't). A station whose
@@ -15,8 +22,10 @@ import type { Locale } from './types'
 type T = Record<Locale, string>
 
 export interface ChainStation {
-  /** 1 = Moses … 40 = Rav Ashi. */
+  /** 1 = Moses … 40 = Rav Ashi; 41–45 continue after him. */
   gen: number
+  /** Stations past Rav Ashi follow Iggeret Rav Sherira Gaon, not the Rambam. */
+  source?: 'sherira'
   name: T
   /** Dataset labels of the people at this station. */
   match: string[]
@@ -28,6 +37,12 @@ export const SINAI_CHAIN_SOURCE: T = {
   he: 'הקדמת הרמב״ם למשנה תורה',
   en: "Maimonides, Introduction to the Mishneh Torah",
   ru: 'Маймонид, предисловие к «Мишне Тора»',
+}
+
+export const SHERIRA_SOURCE: T = {
+  he: 'איגרת רב שרירא גאון',
+  en: 'The Epistle of Rav Sherira Gaon',
+  ru: 'Послание Рав Шриры Гаона',
 }
 
 export const SINAI_CHAIN: ChainStation[] = [
@@ -89,4 +104,12 @@ export const SINAI_CHAIN: ChainStation[] = [
   { gen: 38, name: { he: 'רבה', en: 'Rabbah', ru: 'Рабба' }, match: [] },
   { gen: 39, name: { he: 'רבא', en: 'Rava', ru: 'Рава' }, match: [] },
   { gen: 40, name: { he: 'רב אשי', en: 'Rav Ashi', ru: 'Рав Аши' }, match: [] },
+  { gen: 41, source: 'sherira', name: { he: 'רבינא וחתימת התלמוד', en: 'Ravina and the close of the Talmud', ru: 'Равина и завершение Талмуда' }, match: [] },
+  { gen: 42, source: 'sherira', name: { he: 'רבנן סבוראי', en: 'The Savoraim', ru: 'Савораим' }, match: [] },
+  { gen: 43, source: 'sherira', name: { he: 'גאוני סורא ופומבדיתא', en: 'The Geonim of Sura and Pumbedita', ru: 'Гаоны Суры и Пумбедиты' }, match: ['רב סעדיה גאון'] },
+  { gen: 44, source: 'sherira', name: { he: 'רב שרירא גאון', en: 'Rav Sherira Gaon', ru: 'Рав Шрира Гаон' }, match: ['רב שרירא גאון – איגרת רב שרירא גאון'] },
+  {
+    gen: 45, source: 'sherira', name: { he: 'רב האי גאון', en: 'Rav Hai Gaon', ru: 'Рав Хай Гаон' }, match: ['רב האי גאון'],
+    alongside: [{ name: { he: 'רב שמואל בן חפני, גאון סורא', en: 'Rav Shmuel ben Hofni, Gaon of Sura', ru: 'Рав Шмуэль бен Хофни, гаон Суры' }, match: ['רב שמואל בן חפני גאון (רשב״ה)'] }],
+  },
 ]

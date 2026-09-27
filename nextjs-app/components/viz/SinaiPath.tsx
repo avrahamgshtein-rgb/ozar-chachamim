@@ -49,7 +49,7 @@ interface SinaiPathProps {
 type Row =
   | { t: 'summit' }
   | { t: 'station'; st: ResolvedStation; entry: string | null; self?: boolean }
-  | { t: 'band' }
+  | { t: 'band'; text?: 'sherira' }
   | { t: 'sage'; id: string; above: string | null; kind: LineageKind; reoriented?: boolean; focus: boolean }
 
 interface Placed { row: Row; in: SinaiStepKind | null; out: SinaiStepKind | null }
@@ -74,6 +74,8 @@ export function SinaiPath({ locale, sageId, si, idx, sages, sageMap, onOpen, onP
       steps.forEach((s, i) => {
         if (s.gen) {
           const st = si.chain[s.gen - 1]
+          if (st.station.source === 'sherira' && si.chain[s.gen - 2]?.station.source !== 'sherira')
+            rows.push({ row: { t: 'band', text: 'sherira' }, kind: 'chain' })
           const entry = s.gen === path.entry.gen ? path.entry.id : null
           // A sage on the Rambam's list is the last station of their own road.
           rows.push({ row: { t: 'station', st, entry, self: !!entry && path.hops === 0 }, kind: s.kind })
@@ -86,7 +88,11 @@ export function SinaiPath({ locale, sageId, si, idx, sages, sageMap, onOpen, onP
         }
       })
     } else {
-      for (const st of si.chain) rows.push({ row: { t: 'station', st, entry: null }, kind: st.gen === 1 ? 'sinai' : 'chain' })
+      for (const st of si.chain) {
+        if (st.station.source === 'sherira' && si.chain[st.gen - 2]?.station.source !== 'sherira')
+          rows.push({ row: { t: 'band', text: 'sherira' }, kind: 'chain' })
+        rows.push({ row: { t: 'station', st, entry: null }, kind: st.gen === 1 ? 'sinai' : 'chain' })
+      }
     }
     return rows.map((r, i) => ({ row: r.row, in: r.kind, out: rows[i + 1]?.kind ?? null }))
   }, [path, si])
@@ -390,7 +396,7 @@ function RowView({ p, delay, dur, locale, sageMap, name, yearsOf, onOpen }: {
       <li className="sp-row sp-band" style={style}>
         <div className="sp-river" aria-hidden>{p.out && <span className={`sp-seg k-${p.out}`} style={{ top: 0, bottom: 0 }} />}</div>
         <div className="sp-main sp-band-text">
-          <span className="text-[10.5px] font-sans font-semibold tracking-[0.14em] uppercase text-ink-400">{SP.fromArchive[locale]}</span>
+          <span className="text-[10.5px] font-sans font-semibold tracking-[0.14em] uppercase text-ink-400">{row.text === 'sherira' ? SP.sherira[locale] : SP.fromArchive[locale]}</span>
         </div>
       </li>
     )

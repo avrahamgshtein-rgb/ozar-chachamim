@@ -4,6 +4,7 @@
 
 import type { Locale } from '@/lib/types'
 import { displayName } from '@/lib/displayName'
+import { SHERIRA_SOURCE } from '@/lib/sinaiChain'
 import type { LineageKind } from './lineage'
 import type { SinaiStepKind } from '@/lib/sinaiPath'
 
@@ -20,21 +21,22 @@ export const SP = {
   },
   chainHeading: { he: 'שלשלת הדורות לפי הרמב״ם', en: 'The generations, as the Rambam counts them', ru: 'Поколения по счёту Рамбама' },
   fromArchive:  { he: 'מכאן: קשרים מתועדים במאגר', en: 'From here: links recorded in the archive', ru: 'Дальше: связи, записанные в архиве' },
+  sherira:      { he: 'כאן מסתיים מניין הרמב״ם; ההמשך לפי איגרת רב שרירא גאון', en: 'The Rambam’s count ends here; it continues as Rav Sherira Gaon’s epistle traces it', ru: 'Здесь кончается счёт Рамбама; дальше по Посланию Рав Шриры Гаона' },
   joinsHere:    { he: 'כאן מצטרפת הדרך לשלשלת', en: 'The path joins the chain here', ru: 'Здесь путь входит в цепь' },
   alongside:    { he: 'ובאותו דור:', en: 'Alongside:', ru: 'В том же поколении:' },
   fullView:     { he: 'לדרך המלאה', en: 'Open the full path', ru: 'Весь путь' },
   openCard:     { he: 'פתח כרטיס', en: 'Open card', ru: 'Открыть карточку' },
   direct:       { he: 'קבלה ישירה לכל אורך הדרך', en: 'Direct transmission all the way', ru: 'Прямая передача на всём пути' },
   honesty: {
-    he: 'קווים מקווקווים הם השראה ולא קבלה ישירה. שלשלת הדורות מסיני עד רב אשי היא לפי הקדמת הרמב״ם למשנה תורה. מתחתיה, הדרך נבחרה מבין הקשרים המתועדים במאגר, בהעדפה לקשרי רב ותלמיד ולקפיצות קצרות בזמן.',
-    en: 'Dashed lines are inspiration, not direct transmission. The generations from Sinai to Rav Ashi follow the Rambam’s introduction to the Mishneh Torah. Below them, the route is chosen from the links recorded in the archive, preferring teacher and student and the shortest leaps in time.',
-    ru: 'Пунктир означает вдохновение, а не прямую передачу. Поколения от Синая до Рав Аши даны по предисловию Рамбама к «Мишне Тора». Ниже путь выбран из связей, записанных в архиве: предпочтение отдаётся учителям и ученикам и самым коротким разрывам во времени.',
+    he: 'קווים מקווקווים הם השראה ולא קבלה ישירה. שלשלת הדורות מסיני עד רב אשי היא לפי הקדמת הרמב״ם למשנה תורה, וממנו ועד רב האי גאון לפי איגרת רב שרירא גאון. מתחתיה, הדרך נבחרה מבין הקשרים המתועדים במאגר, בהעדפה לקשרי רב ותלמיד ולקפיצות קצרות בזמן.',
+    en: 'Dashed lines are inspiration, not direct transmission. The generations from Sinai to Rav Ashi follow the Rambam’s introduction to the Mishneh Torah, and from him to Rav Hai Gaon the Epistle of Rav Sherira Gaon. Below them, the route is chosen from the links recorded in the archive, preferring teacher and student and the shortest leaps in time.',
+    ru: 'Пунктир означает вдохновение, а не прямую передачу. Поколения от Синая до Рав Аши даны по предисловию Рамбама к «Мишне Тора», а от него до Рав Хая Гаона — по Посланию Рав Шриры Гаона. Ниже путь выбран из связей, записанных в архиве: предпочтение отдаётся учителям и ученикам и самым коротким разрывам во времени.',
   },
 } satisfies Record<string, T>
 
 /** Legend entries: the line style and its plain-language meaning. */
 export const LEGEND: { kind: SinaiStepKind; label: T }[] = [
-  { kind: 'chain',       label: { he: 'שלשלת הקבלה לפי הרמב״ם', en: 'The chain, as the Rambam lists it', ru: 'Цепь передачи по Рамбаму' } },
+  { kind: 'chain',       label: { he: 'שלשלת הקבלה לפי הרמב״ם ואיגרת רב שרירא', en: 'The chain, as the Rambam and Rav Sherira list it', ru: 'Цепь передачи по Рамбаму и Рав Шрире' } },
   { kind: 'teacher',     label: { he: 'רב ותלמיד: קבלה ישירה', en: 'Teacher and student: direct transmission', ru: 'Учитель и ученик: прямая передача' } },
   { kind: 'influence',   label: { he: 'השראה, לא קבלה ישירה', en: 'Inspiration, not direct transmission', ru: 'Вдохновение, не прямая передача' } },
   { kind: 'predecessor', label: { he: 'רצף הנהגה', en: 'Succession in office', ru: 'Преемственность' } },
@@ -76,6 +78,8 @@ export function isWoman(tags: string[] | undefined): boolean {
 
 /** "Generation 12" of the Rambam's forty. */
 export function genLabel(gen: number, locale: Locale): string {
+  // Past Rav Ashi the stations are the epistle's, not the Rambam's count.
+  if (gen > 40) return SHERIRA_SOURCE[locale]
   return locale === 'he' ? `דור ${gen}` : locale === 'en' ? `Generation ${gen}` : `${gen}-е поколение`
 }
 
