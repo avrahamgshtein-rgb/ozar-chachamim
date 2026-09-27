@@ -5,9 +5,11 @@ import { createServiceRoleClient } from '@/lib/supabase-auth/serviceRole'
 import {
   ANON_SESSION_COOKIE, generateSessionToken, hashSessionToken, getOrCreateAnonymousSession,
 } from '@/lib/rag/anonymousSession'
-import { buildRagContext, sageIdsFromHistory } from '@/lib/rag/buildContext'
+import { buildRagContext, sageIdsFromHistory, type RagContext } from '@/lib/rag/buildContext'
 import { buildSystemPrompt } from '@/lib/rag/systemPrompt'
+import { citationPayload } from '@/lib/rag/citations'
 import { callClaude, estimateCost, ClaudeApiError, type ChatMessage } from '@/lib/rag/claude'
+import { getSageById } from '@/lib/serverData'
 import { isValidLocale } from '@/lib/i18n'
 import type { Locale } from '@/lib/types'
 
@@ -22,11 +24,38 @@ interface ChatRequestBody {
   message: string
   sessionId?: string
   locale?: Locale
+  /** The sage the chat was opened about ("שאלו על החכם"). Optional; ignored unless it is a known id. */
+  sageId?: string
 }
 
 // Validate that a value is a valid UUID
 function isValidUUID(value: string): boolean {
   return /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(value)
+}
+
+/**
+ * The optional `sageId` scope. Anything but the id of a sage in the corpus
+ * (getAllSages, via getSageById) is ignored rather than rejected: a stale or
+ * tampered id must never fail the question, only lose the scoping.
+ */
+function subjectSageIdOf(value: unknown): string | undefined {
+  if (typeof value !== 'string') return undefined
+  const id = value.trim()
+  if (!id || id.length > 32) return undefined
+  return getSageById(id) ? id : undefined
+}
+
+/** The fields both flows return about the grounding of an answer. */
+function groundingFields(ragContext: RagContext, subjectSageId: string | undefined) {
+  return {
+    matchedSages: ragContext.matchedSages.map(s => ({ id: s.sage.id, label: s.sage.label })),
+    citations: citationPayload(ragContext.passages),
+    insufficientEvidence: ragContext.insufficientEvidence,
+    ambiguous: ragContext.ambiguous,
+    noMatch: ragContext.noMatch,
+    // Echoes the scope the server actually applied (null when absent or ignored).
+    subjectSageId: subjectSageId ?? null,
+  }
 }
 
 // Read-only quota check — lets the chat widget show "X questions left"
@@ -111,13 +140,15 @@ export async function POST(request: NextRequest) {
     }
   }
 
+  const subjectSageId = subjectSageIdOf(bodyObj.sageId)
+
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
 
   try {
     return user
-      ? await handleAuthenticated(supabase, user.id, message, bodyObj.sessionId as string | undefined, locale)
-      : await handleAnonymous(request, message, locale)
+      ? await handleAuthenticated(supabase, user.id, message, bodyObj.sessionId as string | undefined, locale, subjectSageId)
+      : await handleAnonymous(request, message, locale, subjectSageId)
   } catch (err) {
     // Catches failures before either flow's own reservation/release try-catch
     // takes over (e.g. a missing service-role key, a DB connection error) —
@@ -135,6 +166,7 @@ async function handleAuthenticated(
   message: string,
   bodySessionId: string | undefined,
   locale: Locale,
+  subjectSageId: string | undefined,
 ) {
   const requestId = randomUUID()
   const { data: reservation, error: reserveError } = await supabase
@@ -185,6 +217,7 @@ async function handleAuthenticated(
     const ragContext = await buildRagContext(message, {
       locale,
       conversationSageIds: sageIdsFromHistory(history),
+      subjectSageId,
     })
     const systemPrompt = buildSystemPrompt(ragContext, locale)
     const response = await callClaude(systemPrompt, history)
@@ -230,14 +263,7 @@ async function handleAuthenticated(
     return NextResponse.json({
       sessionId,
       reply: response.text,
-      matchedSages: ragContext.matchedSages.map(s => ({ id: s.sage.id, label: s.sage.label })),
-      citations: ragContext.passages.map(p => ({
-        id: p.citationId, sourceKind: p.sourceKind, sageId: p.sageId, sageLabel: p.sageLabel,
-        docTitle: p.docTitle, charStart: p.charStart, charEnd: p.charEnd, score: p.score,
-      })),
-      insufficientEvidence: ragContext.insufficientEvidence,
-      ambiguous: ragContext.ambiguous,
-      noMatch: ragContext.noMatch,
+      ...groundingFields(ragContext, subjectSageId),
       quota: null, // authenticated quota isn't surfaced turn-by-turn yet — Stage 4 UI follow-up
     })
   } catch (err) {
@@ -273,7 +299,12 @@ async function handleAuthenticated(
 // that table requires a real user_id); quota lives in anonymous_sessions,
 // gated behind the service-role client because its RLS is USING (false)
 // for every operation from the browser. ─────────────────────────────────
-async function handleAnonymous(request: NextRequest, message: string, locale: Locale) {
+async function handleAnonymous(
+  request: NextRequest,
+  message: string,
+  locale: Locale,
+  subjectSageId: string | undefined,
+) {
   const existingToken = request.cookies.get(ANON_SESSION_COOKIE)?.value
   const rawToken = existingToken ?? generateSessionToken()
   const isNewCookie = !existingToken
@@ -315,8 +346,9 @@ async function handleAnonymous(request: NextRequest, message: string, locale: Lo
 
   try {
     // No conversation history for anonymous visitors — each message is its
-    // own grounded turn. Full history starts once they register.
-    const ragContext = await buildRagContext(message, { locale })
+    // own grounded turn. Full history starts once they register. The page's
+    // sage scope is what lets "who were his teachers?" work without history.
+    const ragContext = await buildRagContext(message, { locale, subjectSageId })
     const systemPrompt = buildSystemPrompt(ragContext, locale)
     const response = await callClaude(systemPrompt, [{ role: 'user', content: message }])
 
@@ -359,14 +391,7 @@ async function handleAnonymous(request: NextRequest, message: string, locale: Lo
     const res = NextResponse.json({
       sessionId: null,
       reply: response.text,
-      matchedSages: ragContext.matchedSages.map(s => ({ id: s.sage.id, label: s.sage.label })),
-      citations: ragContext.passages.map(p => ({
-        id: p.citationId, sourceKind: p.sourceKind, sageId: p.sageId, sageLabel: p.sageLabel,
-        docTitle: p.docTitle, charStart: p.charStart, charEnd: p.charEnd, score: p.score,
-      })),
-      insufficientEvidence: ragContext.insufficientEvidence,
-      ambiguous: ragContext.ambiguous,
-      noMatch: ragContext.noMatch,
+      ...groundingFields(ragContext, subjectSageId),
       quota: { limit: quota.questionsLimit, remaining: reservation ? (reservation as any).remaining_questions : quota.remaining - 1 },
     })
     setAnonCookie(res, rawToken)
