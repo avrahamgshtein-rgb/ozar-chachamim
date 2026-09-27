@@ -282,6 +282,7 @@ export function JourneyLayer({ L, map, model, locale, theme, reducedMotion, comp
     let needsFirstFrame = true
     let followWas = useJourneyStore.getState().follow
     let cssW = 0, cssH = 0, dpr = 1
+    let palette: Palette | null = null
     // measureText is not free; label texts repeat frame after frame.
     const widths = new Map<string, number>()
     const textW = (c2d: CanvasRenderingContext2D, font: string, text: string) => {
@@ -326,6 +327,11 @@ export function JourneyLayer({ L, map, model, locale, theme, reducedMotion, comp
       last = now
       const { model: m, reducedMotion: reduced, compact: small, locale: loc, theme: th } = live.current
       const st = useJourneyStore.getState()
+      // The map is hidden (the שכבות mode): nobody is watching, so no playing.
+      if (cssW < 10 || cssH < 10) {
+        if (st.playing) st.setPlaying(false)
+        return
+      }
 
       // Advance the clock.
       let year = st.year
@@ -427,7 +433,8 @@ export function JourneyLayer({ L, map, model, locale, theme, reducedMotion, comp
       if (reduced && !dirtyRef.current && !animating) return
       dirtyRef.current = false
       if (cssW < 10 || cssH < 10) return
-      draw(ctx, now, paletteFor(th), loc, small, reduced, st.focus)
+      if (!palette || palette.dark !== (th === 'dark')) palette = paletteFor(th)
+      draw(ctx, now, palette, loc, small, reduced, st.focus)
     }
 
     const draw = (ctx: CanvasRenderingContext2D, now: number, pal: Palette, loc: Locale, small: boolean, reduced: boolean, focus: string | null) => {

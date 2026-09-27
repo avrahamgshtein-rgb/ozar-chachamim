@@ -56,6 +56,21 @@ export function JourneyMode({ L, map, locale, sages, filteredSages, connections,
     map.panTo([c.pos.lat, c.pos.lng], { animate: !reducedMotion, duration: 0.8 })
   }
 
+  // Opened from the toggle: skip the empty centuries before the first sage in
+  // view (a filter to the Rishonim should not open on 2,500 empty years),
+  // then play unless the reader asked for less motion.
+  useEffect(() => {
+    const s = useJourneyStore.getState()
+    if (!s.autoStart) return
+    s.setAutoStart(false)
+    const first = model.figures.reduce((m, f) => Math.min(m, f.to >= JOURNEY_START ? Math.max(f.from, JOURNEY_START) : m), JOURNEY_END)
+    const start = first >= JOURNEY_END ? JOURNEY_START : Math.max(JOURNEY_START, first - 10)
+    s.setYear(reducedMotion ? Math.floor(start / REDUCED_STEP_YEARS) * REDUCED_STEP_YEARS : start)
+    // Not cleared on re-run: the flag is spent, and the timer checks the mode is still on.
+    if (!reducedMotion) window.setTimeout(() => { if (useJourneyStore.getState().on) useJourneyStore.getState().setPlaying(true) }, 900)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [model])
+
   // Reduced motion: the slider moves in steps, so the year sits on a step.
   useEffect(() => {
     if (!reducedMotion) return
@@ -160,6 +175,8 @@ function useJourneyKeys(visible: boolean, reducedMotion: boolean) {
       const tag = el?.tagName
       if (el?.isContentEditable || tag === 'TEXTAREA' || tag === 'SELECT') return
       if (tag === 'INPUT' && !(el as HTMLInputElement).classList.contains('journey-range')) return
+      // A focused map pans with its own arrow keys.
+      if (e.key.startsWith('Arrow') && el?.closest?.('.leaflet-container')) return
       // A button or link handles its own Space/Enter.
       if ((tag === 'BUTTON' || tag === 'A') && (e.key === ' ' || e.key === 'Enter')) return
       const app = useAppStore.getState()

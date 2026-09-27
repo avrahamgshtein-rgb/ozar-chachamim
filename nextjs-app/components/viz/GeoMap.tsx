@@ -91,11 +91,10 @@ export function GeoMap({ locale }: GeoMapProps) {
     if (s.on) { s.setOn(false); return }
     s.setYear(JOURNEY_START)
     s.setFollow(true)
+    // JourneyMode moves the start to the first year anyone in view is active
+    // and, unless motion is reduced, starts playing.
+    s.setAutoStart(true)
     s.setOn(true)
-    // Start the story unless the reader asked for less motion; they press play.
-    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      window.setTimeout(() => { if (useJourneyStore.getState().on) useJourneyStore.getState().setPlaying(true) }, 900)
-    }
   }
 
   useEffect(() => {

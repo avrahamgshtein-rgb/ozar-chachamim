@@ -23,6 +23,8 @@ interface JourneyState {
   focus: string | null
   /** Latest reading of the model; replaced only when the active set changes. */
   snapshot: JourneySnapshot | null
+  /** Opened by the toggle (not a deep link): begin at the first active year and play. */
+  autoStart: boolean
   setOn: (on: boolean) => void
   setYear: (year: number) => void
   setPlaying: (playing: boolean) => void
@@ -30,6 +32,7 @@ interface JourneyState {
   setFollow: (follow: boolean) => void
   setFocus: (focus: string | null) => void
   setSnapshot: (snapshot: JourneySnapshot) => void
+  setAutoStart: (autoStart: boolean) => void
 }
 
 export const useJourneyStore = create<JourneyState>(set => ({
@@ -40,11 +43,13 @@ export const useJourneyStore = create<JourneyState>(set => ({
   follow: true,
   focus: null,
   snapshot: null,
-  setOn: on => set(on ? { on } : { on, playing: false, focus: null }),
+  autoStart: false,
+  setOn: on => set(on ? { on } : { on, playing: false, focus: null, autoStart: false }),
   setYear: year => set({ year: clampYear(year) }),
   setPlaying: playing => set({ playing }),
   setSpeed: speed => set({ speed }),
   setFollow: follow => set({ follow }),
   setFocus: focus => set({ focus }),
   setSnapshot: snapshot => set({ snapshot }),
+  setAutoStart: autoStart => set({ autoStart }),
 }))
