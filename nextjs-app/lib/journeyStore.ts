@@ -6,7 +6,7 @@
 // should hear about that.
 import { create } from 'zustand'
 import type { JourneySnapshot } from './journey'
-import { JOURNEY_START, clampYear } from './journey'
+import { JOURNEY_START, clampYear } from './journeyRange'
 
 /** Playback speeds offered by the speed control, as multiples of the base pace. */
 export const JOURNEY_SPEEDS = [0.5, 1, 2, 4] as const

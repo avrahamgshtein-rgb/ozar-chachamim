@@ -52,8 +52,7 @@ import type { Connection, Period, Sage } from './types'
 import { ALL_PERIODS } from './types'
 import { canonicalPlace, coordsForName, primaryPlaceOf, resolveCoords } from './locationCoords'
 
-export const JOURNEY_START = -1500
-export const JOURNEY_END = 2025
+export { JOURNEY_START, JOURNEY_END, clampYear } from './journeyRange'
 /** Distance between the two epochs a centre's trend compares. */
 export const EPOCH_YEARS = 50
 /** An arc fades in and out over this many years either side of its window. */
@@ -435,8 +434,4 @@ export function eraAt(year: number): Period | null {
     if (year >= lo && year <= hi) return p
   }
   return null
-}
-
-export function clampYear(y: number): number {
-  return Math.max(JOURNEY_START, Math.min(JOURNEY_END, y))
 }

@@ -11,7 +11,7 @@ import { useAppStore } from '@/store/useAppStore'
 import type { Locale, Sage, Connection } from '@/lib/types'
 import { cn, formatYearRange } from '@/lib/utils'
 import { useJourneyStore } from '@/lib/journeyStore'
-import { JOURNEY_START } from '@/lib/journey'
+import { JOURNEY_START } from '@/lib/journeyRange'
 import { parseJourneyURLState } from '@/lib/urlState'
 
 // מסע התורה — loaded only when the mode is first switched on.
