@@ -49,7 +49,8 @@ export function SinaiPathCard({ sageId, locale }: { sageId: string; locale: Loca
   const sage = sages.get(sageId)
   if (!sage) return null
   const dir = locale === 'he' ? 'rtl' : 'ltr'
-  const href = `/${locale}?tab=genealogy&sage=${encodeURIComponent(sageId)}&view=sinai`
+  // ?focus= rather than ?sage=, which would open the sage's card over the road.
+  const href = `/${locale}?tab=genealogy&view=sinai&focus=${encodeURIComponent(sageId)}`
   const nameOf = (id: string) => shortName(localizeSage(sages.get(id)!, locale).label)
   const yearsOf = (id: string) => {
     const s = sages.get(id)!

@@ -66,10 +66,15 @@ const capFor = (gen: number) => (gen === 1 ? 8 : 5)
 
 type CameraIntent = 'fit' | 'recenter' | 'keep'
 
-/** The tab's two panes: the lineage tree/outline, or the road to Sinai (?view=sinai). */
+/**
+ * The tab's two panes: the lineage tree/outline, or the road to Sinai. The
+ * road lives in the URL as ?view=sinai&focus=<id>, beside the app's
+ * ?tab=&sage=. It uses its own `focus` rather than `sage`, which by the app's
+ * contract opens that sage's card, over the road the reader came to see.
+ */
 type Pane = 'lineage' | 'sinai'
-const readURLPane = (): Pane =>
-  typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('view') === 'sinai' ? 'sinai' : 'lineage'
+const urlParams = () => new URLSearchParams(typeof window !== 'undefined' ? window.location.search : '')
+const readURLPane = (): Pane => (urlParams().get('view') === 'sinai' ? 'sinai' : 'lineage')
 
 interface GenealogyTreeProps { locale: Locale }
 
@@ -102,6 +107,7 @@ export function GenealogyTree({ locale }: GenealogyTreeProps) {
   const [legendPref, setLegendOpen] = useState<boolean | null>(null)
   const [fontsReady, setFontsReady] = useState(0)
   const [pane, setPane] = useState<Pane>(readURLPane)
+  const urlFocus = useRef<string | null>(pane === 'sinai' ? urlParams().get('focus') : null)
 
   const focusRef = useRef<string | null>(null)
   focusRef.current = focusId
@@ -126,10 +132,11 @@ export function GenealogyTree({ locale }: GenealogyTreeProps) {
     if (st.isDrawerOpen && st.selectedSageId !== id) st.selectSage(sageMap.get(id)!)
   }, [sageMap])
 
-  // First focus: the selected sage, else the richest lineage.
+  // First focus: the road's ?focus=, else the selected sage, else the richest lineage.
   useEffect(() => {
     if (focusId || !sageMap.size) return
-    const start = selectedSageId && sageMap.has(selectedSageId) ? selectedSageId : presets[0]
+    const start = [urlFocus.current, selectedSageId].find(id => id && sageMap.has(id)) ?? presets[0]
+    urlFocus.current = null
     if (start) refocus(start)
   }, [sageMap, presets, selectedSageId, focusId, refocus])
 
@@ -149,51 +156,28 @@ export function GenealogyTree({ locale }: GenealogyTreeProps) {
   }, [sageMap, selectSage])
 
   // ── Road to Sinai ────────────────────────────────────────────────────────
-  // The view lives in ?view=sinai next to the app's ?tab=&sage=, so the sage
-  // page can link straight to it; it leaves the URL with the tab.
+  // ?view=sinai&focus=<id> follows the pane and the road on screen, so a road
+  // can be shared or reloaded; both leave the URL with the pane or the tab.
+  // (AppShell's URL writer rewrites only tab/sage/regions/periods.)
   useEffect(() => {
+    if (urlFocus.current) return            // not consumed yet: keep the arrival's
     const url = new URL(window.location.href)
-    if (pane === 'sinai') url.searchParams.set('view', 'sinai')
-    else url.searchParams.delete('view')
+    if (pane === 'sinai') {
+      url.searchParams.set('view', 'sinai')
+      if (focusId) url.searchParams.set('focus', focusId)
+    } else {
+      url.searchParams.delete('view')
+      url.searchParams.delete('focus')
+    }
     if (url.href !== window.location.href) window.history.replaceState(window.history.state, '', url)
-  }, [pane])
+  }, [pane, focusId])
   useEffect(() => () => {
     const url = new URL(window.location.href)
-    if (!url.searchParams.has('view')) return
+    if (!url.searchParams.has('view') && !url.searchParams.has('focus')) return
     url.searchParams.delete('view')
+    url.searchParams.delete('focus')
     window.history.replaceState(window.history.state, '', url)
   }, [])
-  // Arriving from a sage page's "road to Sinai" link: ?sage= would open that
-  // sage's card over the road it came to see. When the data is still loading,
-  // claim the selection by id now: AppShell opens a parked ?sage= card only
-  // when nothing is selected yet. If the data won the race and the card is
-  // already open, close it once, keeping the selection.
-  const arrivalSage = useRef<string | null | undefined>(undefined)
-  if (arrivalSage.current === undefined) {
-    arrivalSage.current = pane === 'sinai' ? new URLSearchParams(window.location.search).get('sage') : null
-  }
-  const isDrawerOpen = useAppStore(s => s.isDrawerOpen)
-  useEffect(() => {
-    const id = arrivalSage.current
-    if (id && !useAppStore.getState().sageMap.size && !useAppStore.getState().selectedSageId) {
-      useAppStore.setState({ selectedSageId: id })
-    }
-  }, [])
-  useEffect(() => {
-    if (!arrivalSage.current || !isDrawerOpen || selectedSageId !== arrivalSage.current) return
-    arrivalSage.current = null
-    useAppStore.setState({ isDrawerOpen: false })
-  }, [isDrawerOpen, selectedSageId])
-  // With no card open, the selection (and so the URL's ?sage=) follows the
-  // road on screen, so any road can be shared or reloaded. An open card is
-  // left as the reader opened it.
-  useEffect(() => {
-    if (pane !== 'sinai' || !focusId || isDrawerOpen || !sageMap.has(focusId)) return
-    const st = useAppStore.getState()
-    if (st.selectedSageId !== focusId || !st.selectedSage) {
-      useAppStore.setState({ selectedSage: sageMap.get(focusId)!, selectedSageId: focusId })
-    }
-  }, [pane, focusId, isDrawerOpen, selectedSageId, sageMap])
 
   const sinai = useMemo(() => (pane === 'sinai' && sages.length ? buildSinaiIndex(sages, idx) : null), [pane, sages, idx])
   const sinaiPresets = useMemo(() => {

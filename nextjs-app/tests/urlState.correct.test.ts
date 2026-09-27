@@ -154,28 +154,30 @@ test('filters invalid periods', () => {
   assert.deepStrictEqual(state.periods, ['rishonim', 'acharonim'])
 })
 
-console.log('\n=== Road-to-Sinai deep link (?view=sinai) ===')
+console.log('\n=== Road-to-Sinai deep link (?view=sinai&focus=) ===')
 
-// The sage page links to /<locale>?tab=genealogy&sage=<id>&view=sinai.
-// urlState owns tab/sage/regions/periods only; `view` belongs to the lineage
-// tab (GenealogyTree), so it must parse cleanly and survive every rewrite.
+// The sage page links to /<locale>?tab=genealogy&view=sinai&focus=<id>.
+// urlState owns tab/sage/regions/periods only; `view` and `focus` belong to
+// the lineage tab (GenealogyTree). The road names its sage with `focus`, not
+// `sage`, because a ?sage= opens that sage's card over the road.
 
-test('deep link parses to the lineage tab and the sage', () => {
-  const state = parseURLState('?tab=genealogy&sage=594&view=sinai')
+test('deep link parses to the lineage tab with no card to open', () => {
+  const state = parseURLState('?tab=genealogy&view=sinai&focus=594')
   assert.strictEqual(state.tab, 'genealogy')
-  assert.strictEqual(state.sage, '594')
+  assert.strictEqual(state.sage, null)
   assert.deepStrictEqual(state.regions, [])
   assert.strictEqual(state.periods, null)
 })
 
-test('rewriting the URL keeps ?view=sinai and updates the sage', () => {
+test('rewriting the URL keeps ?view=sinai&focus= beside a selected sage', () => {
   const g = globalThis as unknown as { window?: unknown }
   const had = 'window' in g, prev = g.window
-  g.window = { location: { href: 'https://example.org/he?tab=genealogy&sage=594&view=sinai' } }
+  g.window = { location: { href: 'https://example.org/he?tab=genealogy&view=sinai&focus=594' } }
   try {
-    const url = new URL(updateURLWithState({ tab: 'genealogy', sage: '41', regions: [], periods: null }))
+    const url = new URL(updateURLWithState({ tab: 'genealogy', sage: '505', regions: [], periods: null }))
     assert.strictEqual(url.searchParams.get('view'), 'sinai')
-    assert.strictEqual(url.searchParams.get('sage'), '41')
+    assert.strictEqual(url.searchParams.get('focus'), '594')
+    assert.strictEqual(url.searchParams.get('sage'), '505')
     assert.strictEqual(url.searchParams.get('tab'), 'genealogy')
   } finally {
     if (had) g.window = prev
