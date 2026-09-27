@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useMemo, useRef, useState } from 'react'
+import dynamic from 'next/dynamic'
 import 'leaflet/dist/leaflet.css'
 import { ERA_COLORS, ERA_LABELS, CONNECTION_LABELS } from '@/lib/types'
 import { CONNECTION_TYPE_COLORS } from '@/lib/regions'
@@ -9,6 +10,12 @@ import { tr } from '@/lib/i18n'
 import { useAppStore } from '@/store/useAppStore'
 import type { Locale, Sage, Connection } from '@/lib/types'
 import { cn, formatYearRange } from '@/lib/utils'
+import { useJourneyStore } from '@/lib/journeyStore'
+import { JOURNEY_START } from '@/lib/journey'
+import { parseJourneyURLState } from '@/lib/urlState'
+
+// מסע התורה — loaded only when the mode is first switched on.
+const JourneyMode = dynamic(() => import('./JourneyMode').then(m => ({ default: m.JourneyMode })), { ssr: false })
 
 // Esri Canvas basemaps: label-free light/dark, served without an API key.
 // CARTO's basemaps.cartocdn.com endpoints now stamp "API KEY REQUIRED" across
@@ -48,6 +55,12 @@ interface MapHandles {
   visible: Set<string>
   /** Redraw markers, bubbles and journeys for exactly these sage ids. */
   show: (ids: Set<string>) => void
+  /**
+   * Take markers, bubbles, journeys and connection lines off the map (true)
+   * or put them back (false), for the מסע התורה mode. Tiles, graticule and
+   * land names stay.
+   */
+  suspend: (on: boolean) => void
 }
 
 interface GeoMapProps {
@@ -62,6 +75,28 @@ export function GeoMap({ locale }: GeoMapProps) {
   const [tilesOffline, setTilesOffline] = useState(false)
 
   const { sages, filteredSages, selectedSageId, selectSage, connections, activeTab, theme } = useAppStore()
+  const journeyOn = useJourneyStore(s => s.on)
+
+  // ?journey=1&year=… opens the map already in מסע התורה mode, paused there.
+  useEffect(() => {
+    const { journey, year } = parseJourneyURLState(window.location.search)
+    if (!journey) return
+    const s = useJourneyStore.getState()
+    s.setYear(year ?? JOURNEY_START)
+    s.setOn(true)
+  }, [])
+
+  const toggleJourney = () => {
+    const s = useJourneyStore.getState()
+    if (s.on) { s.setOn(false); return }
+    s.setYear(JOURNEY_START)
+    s.setFollow(true)
+    s.setOn(true)
+    // Start the story unless the reader asked for less motion; they press play.
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      window.setTimeout(() => { if (useJourneyStore.getState().on) useJourneyStore.getState().setPlaying(true) }, 900)
+    }
+  }
 
   useEffect(() => {
     if (!mapRef.current || !sages.length) return
@@ -163,6 +198,7 @@ export function GeoMap({ locale }: GeoMapProps) {
         style.textContent = `
           .geo-map .leaflet-top { margin-top: 3.25rem; }
           .geo-graticule { stroke: var(--ink-700); stroke-opacity: 0.55; }
+          .geo-map.journey-on .leaflet-marker-pane { opacity: 0.5; }
           .leaflet-control-zoom a {
             background: rgba(26,20,14,0.8) !important;
             backdrop-filter: blur(8px) !important;
@@ -330,8 +366,11 @@ export function GeoMap({ locale }: GeoMapProps) {
       const clusterLayer = L.layerGroup().addTo(map)
       // Declared ahead of `handles` so a zoomend can never read it early.
       let visibleIds = new Set<string>()
+      // True while the journey mode owns the map; zoomend must not re-add markers.
+      let suspended = false
 
       const renderClusters = () => {
+        if (suspended) return
         const z = map.getZoom()
         clusterLayer.clearLayers()
         if (z > CLUSTER_MAX_ZOOM) {
@@ -511,6 +550,19 @@ export function GeoMap({ locale }: GeoMapProps) {
           visible.forEach(id => { const j = journeys.get(id); if (j) migrationLayer.addLayer(j) })
           renderClusters()
         },
+        suspend: on => {
+          if (on === suspended) return
+          suspended = on
+          const layers = [markersLayer, clusterLayer, migrationLayer, handles.linkLayer]
+          if (on) {
+            map.closePopup()
+            layers.forEach(l => { if (map.hasLayer(l)) map.removeLayer(l) })
+          } else {
+            // renderClusters decides between the markers and the bubbles.
+            layers.slice(1).forEach(l => { if (!map.hasLayer(l)) map.addLayer(l) })
+            renderClusters()
+          }
+        },
       }
       handlesRef.current = handles
       setMapReady(true)   // triggers the filter sync and the connection-lines layer
@@ -527,6 +579,14 @@ export function GeoMap({ locale }: GeoMapProps) {
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sages, locale])
+
+  // ── מסע התורה owns the map while on: the everyday layers step aside ──
+  useEffect(() => {
+    handlesRef.current?.suspend(journeyOn)
+    // Only the land names are left in the marker pane then; dim them so the
+    // journey's own labels read first.
+    mapRef.current?.classList.toggle('journey-on', journeyOn)
+  }, [journeyOn, mapReady])
 
   // ── Sync filter: markers, bubbles and journeys show the filtered set ──
   // Bubbles used to be built once from every sage and never rebuilt, so at the
@@ -633,6 +693,8 @@ export function GeoMap({ locale }: GeoMapProps) {
   // "Invalid LatLng (NaN)" ומפיל את כל האפליקציה בעת לחיצה על חכם.
   useEffect(() => {
     if (activeTab !== 'map') return
+    // The journey marks the selected sage's centre itself; no fly, no popup.
+    if (journeyOn) return
     const h = handlesRef.current
     if (!selectedSageId || !h) return
     const el = mapRef.current
@@ -655,6 +717,7 @@ export function GeoMap({ locale }: GeoMapProps) {
     }
   // mapReady: a sage selected before the map existed (a ?sage= deep link)
   // used to be skipped for good; fly once the map is built instead.
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedSageId, activeTab, mapReady])
 
   // ── Swap tile style when the theme changes ───────────────────
@@ -700,7 +763,7 @@ export function GeoMap({ locale }: GeoMapProps) {
           tiles — invisible but still clickable.
           top-12 (not top-4): it shares this corner with AppShell's 2D/3D mode
           switch at top-2, which it would otherwise sit directly on top of. */}
-      <div className="absolute top-12 end-4 z-[1000]">
+      {!journeyOn && <div className="absolute top-12 end-4 z-[1000]">
         <button
           onClick={() => setShowLinks(v => !v)}
           className={cn(
@@ -716,10 +779,47 @@ export function GeoMap({ locale }: GeoMapProps) {
           </svg>
           {tr(locale, 'קשרים', 'Connections', 'Связи')}
         </button>
-      </div>
+      </div>}
 
-      {/* How much of the filtered set is on the map. */}
+      {/* מסע התורה toggle, under AppShell's מפה/שכבות switch (top-24 end-2)
+          on the same edge. z-[1001] clears Leaflet's panes, like the switch. */}
       {sages.length > 0 && (
+        <button
+          type="button"
+          onClick={toggleJourney}
+          aria-pressed={journeyOn}
+          className={cn(
+            'absolute top-[7.6rem] end-2 z-[1001] flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[11px] font-sans font-bold border shadow-glass transition-all',
+            journeyOn
+              ? 'bg-gold-500 text-ink-900 border-gold-400 hover:bg-gold-400'
+              : 'bg-ink-900/85 text-gold-300 border-gold-500/50 hover:bg-gold-500/15',
+          )}
+        >
+          <svg viewBox="0 0 24 24" className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" aria-hidden="true">
+            <path d="M3 17c4-8 10-11 18-11" />
+            <circle cx="5" cy="17" r="2" fill="currentColor" />
+            <circle cx="19" cy="6.5" r="2" fill="currentColor" />
+          </svg>
+          {tr(locale, 'מסע התורה', 'Torah journey', 'Путь Торы')}
+          {journeyOn && <span aria-hidden="true" className="ms-0.5 opacity-70">✕</span>}
+        </button>
+      )}
+
+      {journeyOn && mapReady && handlesRef.current && (
+        <JourneyMode
+          L={handlesRef.current.L}
+          map={handlesRef.current.map}
+          locale={locale}
+          sages={sages}
+          filteredSages={filteredSages}
+          connections={connections}
+          visible={activeTab === 'map'}
+        />
+      )}
+
+      {/* How much of the filtered set is on the map. The journey shows its own
+          year and count in this spot instead. */}
+      {sages.length > 0 && !journeyOn && (
         <div
           className="absolute top-[3.4rem] left-1/2 -translate-x-1/2 z-[1000] pointer-events-auto glass rounded-2xl md:rounded-full px-3 py-1 text-[11px] leading-tight text-center font-sans text-ink-300 whitespace-nowrap shadow-glass"
           title={unplaced > 0

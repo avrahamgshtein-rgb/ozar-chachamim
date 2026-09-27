@@ -203,7 +203,12 @@ function datingOf(sage: Sage): { kind: DatingKind; from: number; to: number } {
   return { kind: 'era', from, to }
 }
 
-export function buildJourney(sages: Sage[], connections: Connection[]): JourneyModel {
+/**
+ * @param sages the sages to place (the filtered set)
+ * @param reference the corpus the typical lifespan L is taken from, so a
+ *   filter never changes how much one sage weighs; defaults to `sages`
+ */
+export function buildJourney(sages: Sage[], connections: Connection[], reference: Sage[] = sages): JourneyModel {
   const degree = new Map<string, number>()
   for (const c of connections) {
     degree.set(c.source, (degree.get(c.source) ?? 0) + 1)
@@ -211,7 +216,7 @@ export function buildJourney(sages: Sage[], connections: Connection[]): JourneyM
   }
 
   const lifespan = median(
-    sages
+    reference
       .filter(s => s.date_precision === 'exact' && s.birth_year != null && s.death_year != null)
       .map(s => (s.death_year as number) - (s.birth_year as number))
       .filter(n => n > 0),
