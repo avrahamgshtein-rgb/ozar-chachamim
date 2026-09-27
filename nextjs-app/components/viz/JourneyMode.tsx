@@ -72,6 +72,16 @@ export function JourneyMode({ L, map, locale, sages, filteredSages, connections,
   useJourneyKeys(visible, reducedMotion)
   useJourneyStyles()
 
+  // While the journey plays on screen, the app's other glass surfaces over
+  // the map (filter chips, tab bar, zoom buttons) drop their backdrop blur:
+  // re-blurring a canvas that repaints every frame is what costs the frames.
+  useEffect(() => {
+    if (!visible) return
+    const root = document.documentElement
+    root.classList.add('journey-live')
+    return () => root.classList.remove('journey-live')
+  }, [visible])
+
   return (
     <>
       <JourneyLayer
@@ -189,10 +199,10 @@ function useJourneyStyles() {
     style.textContent = `
       .journey-range { -webkit-appearance: none; appearance: none; background: transparent; margin: 0; }
       .journey-range:focus { outline: none; }
-      .journey-range::-webkit-slider-runnable-track { height: 28px; background: transparent; }
-      .journey-range::-moz-range-track { height: 28px; background: transparent; }
+      .journey-range::-webkit-slider-runnable-track { height: 22px; background: transparent; }
+      .journey-range::-moz-range-track { height: 22px; background: transparent; }
       .journey-range::-webkit-slider-thumb {
-        -webkit-appearance: none; appearance: none; width: 18px; height: 18px; margin-top: 5px;
+        -webkit-appearance: none; appearance: none; width: 18px; height: 18px; margin-top: 2px;
         border-radius: 9999px; background: rgb(var(--gold-300-rgb));
         border: 3px solid rgb(var(--ink-900-rgb));
         box-shadow: 0 0 0 1.5px rgb(var(--gold-400-rgb)), 0 0 14px rgb(var(--gold-400-rgb) / 0.75);
@@ -208,6 +218,9 @@ function useJourneyStyles() {
          repaints every frame halved the frame rate (27 → 57 fps measured). */
       .journey-glass { background: rgba(20, 15, 10, 0.9); }
       [data-theme='light'] .journey-glass { background: rgba(255, 252, 244, 0.95); box-shadow: 0 2px 12px rgba(61, 40, 23, 0.08); }
+      html.journey-live .glass, html.journey-live .glass-light,
+      html.journey-live .leaflet-control-zoom a { -webkit-backdrop-filter: none !important; backdrop-filter: none !important; }
+      html.journey-live:not([data-theme='light']) .glass { background: rgba(26, 20, 14, 0.9); }
       .journey-year { text-shadow: 0 0 18px rgb(var(--gold-400-rgb) / 0.45), 0 2px 10px rgb(var(--ink-900-rgb)), 0 0 3px rgb(var(--ink-900-rgb)); }
       .journey-halo { text-shadow: 0 0 4px rgb(var(--ink-900-rgb)), 0 0 8px rgb(var(--ink-900-rgb)); }
     `

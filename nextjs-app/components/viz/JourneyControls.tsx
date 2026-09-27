@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { memo, useEffect, useRef, useState } from 'react'
 import type { ReactNode } from 'react'
 import { ALL_PERIODS, ERA_COLORS, ERA_LABELS } from '@/lib/types'
 import type { Locale } from '@/lib/types'
@@ -30,24 +30,11 @@ export function JourneyControls({ locale, compact, reducedMotion }: {
   compact: boolean
   reducedMotion: boolean
 }) {
-  const year = useJourneyStore(s => Math.round(s.year))
   const playing = useJourneyStore(s => s.playing)
   const speed = useJourneyStore(s => s.speed)
   const follow = useJourneyStore(s => s.follow)
   const { setYear, setPlaying, setSpeed, setFollow } = useJourneyStore.getState()
   const [legendOpen, setLegendOpen] = useState(false)
-  const [scrubbing, setScrubbing] = useState(false)
-  const trackRef = useRef<HTMLDivElement>(null)
-  const [trackW, setTrackW] = useState(0)
-
-  useEffect(() => {
-    const el = trackRef.current
-    if (!el) return
-    const ro = new ResizeObserver(() => setTrackW(el.clientWidth))
-    ro.observe(el)
-    setTrackW(el.clientWidth)
-    return () => ro.disconnect()
-  }, [])
 
   const step = reducedMotion ? REDUCED_STEP_YEARS : KEY_STEP
   const stepBy = (d: number) => {
@@ -65,8 +52,6 @@ export function JourneyControls({ locale, compact, reducedMotion }: {
     setSpeed(JOURNEY_SPEEDS[(i + 1) % JOURNEY_SPEEDS.length])
   }
 
-  const era = eraAt(year)
-  const valueText = `${formatYear(year, locale)}${era ? `, ${ERA_LABELS[era][locale]}` : ''}`
   const speedLabel = `${speed === 0.5 ? '½' : speed}×`
 
   const btn = 'flex items-center justify-center rounded-full transition-colors text-ink-300 hover:text-gold-300 hover:bg-ink-700/50'
@@ -111,85 +96,9 @@ export function JourneyControls({ locale, compact, reducedMotion }: {
 
         {/* Track */}
         <div className={cn('relative flex-1 min-w-0', compact && 'order-1 w-full')} dir="ltr">
-          <div ref={trackRef} className="relative h-9">
-            {/* Milestone ticks above the bands */}
-            {ALL_MILESTONES.map(m => (
-              <button
-                key={`${m.year}-${m.label.en}`}
-                type="button"
-                tabIndex={-1}
-                aria-hidden="true"
-                onClick={() => { setPlaying(false); setYear(m.year) }}
-                title={`${m.circa ? '~' : ''}${formatYear(m.year, locale)} · ${m.label[locale]}`}
-                className="absolute top-0 -translate-x-1/2 w-3 h-3.5 flex justify-center group"
-                style={{ left: `${pct(m.year)}%` }}
-              >
-                <span className={cn('block w-[2px] h-2.5 rounded-full transition-all group-hover:h-3.5',
-                  m.kind === 'transmission' ? 'bg-gold-400' : 'bg-ink-400')} />
-              </button>
-            ))}
-            {/* Era bands */}
-            <div className="absolute inset-x-0 top-[15px] h-[7px] rounded-full bg-ink-700/60 overflow-hidden pointer-events-none">
-              {ALL_PERIODS.map(p => {
-                const [lo, hi] = JOURNEY_ERA_WINDOW[p]
-                if (hi <= JOURNEY_START) return null
-                return (
-                  <span key={p} className="absolute inset-y-0 opacity-80"
-                    style={{ left: `${pct(lo)}%`, width: `${pct(hi) - pct(lo)}%`, background: ERA_COLORS[p] }} />
-                )
-              })}
-              <span className="absolute inset-y-0 left-0 bg-ink-100/15" style={{ width: `${pct(year)}%` }} />
-            </div>
-            {/* Era names where there is room */}
-            {!compact && trackW > 0 && ALL_PERIODS.map(p => {
-              const [lo, hi] = JOURNEY_ERA_WINDOW[p]
-              if (hi <= JOURNEY_START) return null
-              const w = ((pct(hi) - pct(lo)) / 100) * trackW
-              const label = ERA_LABELS[p][locale]
-              if (w < label.length * 5.6 + 6) return null
-              return (
-                <span key={p} className="absolute top-[24px] text-[9.5px] font-sans text-ink-400 text-center truncate pointer-events-none"
-                  style={{ left: `${pct(lo)}%`, width: `${pct(hi) - pct(lo)}%` }}
-                  dir={locale === 'he' ? 'rtl' : 'ltr'}>
-                  {label}
-                </span>
-              )
-            })}
-            <input
-              type="range"
-              min={JOURNEY_START}
-              max={JOURNEY_END}
-              step={reducedMotion ? REDUCED_STEP_YEARS : 1}
-              value={year}
-              aria-label={tr(locale, 'שנה', 'Year', 'Год')}
-              aria-valuetext={valueText}
-              onChange={e => { setPlaying(false); setYear(Number(e.target.value)) }}
-              onPointerDown={() => { setPlaying(false); setScrubbing(true) }}
-              onPointerUp={() => setScrubbing(false)}
-              onPointerCancel={() => setScrubbing(false)}
-              onBlur={() => setScrubbing(false)}
-              onKeyDown={e => {
-                // Our own steps, so arrows move the same distance everywhere.
-                const big = e.shiftKey ? KEY_BIG_STEP : step
-                const d = e.key === 'ArrowRight' || e.key === 'ArrowUp' ? big
-                  : e.key === 'ArrowLeft' || e.key === 'ArrowDown' ? -big
-                  : e.key === 'PageUp' ? KEY_BIG_STEP : e.key === 'PageDown' ? -KEY_BIG_STEP : 0
-                if (d) { e.preventDefault(); e.stopPropagation(); stepBy(d) }
-              }}
-              className="journey-range absolute inset-x-0 top-[5px] w-full h-7 cursor-pointer"
-            />
-            {(scrubbing || !compact) && (
-              <span
-                className={cn('absolute -translate-x-1/2 pointer-events-none font-sans font-bold tabular-nums whitespace-nowrap',
-                  scrubbing ? 'top-[-1.35rem] text-[11px] text-gold-300 journey-glass rounded-md px-1.5 py-0.5' : 'hidden')}
-                style={{ left: `${pct(year)}%` }}
-              >
-                {formatYear(year, locale)}
-              </span>
-            )}
-          </div>
+          <YearSlider locale={locale} compact={compact} reducedMotion={reducedMotion} step={step} stepBy={stepBy} />
           <div className="flex justify-between text-[9.5px] font-sans text-ink-500 -mt-0.5 pointer-events-none">
-            <span>{formatYear(JOURNEY_START, locale)}</span>
+            <span dir={locale === 'he' ? 'rtl' : 'ltr'}>{formatYear(JOURNEY_START, locale)}</span>
             <span>{formatYear(JOURNEY_END, locale)}</span>
           </div>
         </div>
@@ -224,6 +133,129 @@ export function JourneyControls({ locale, compact, reducedMotion }: {
     )
   }
 }
+
+/**
+ * The slider proper. Only this re-renders as the year moves; the era bands,
+ * milestone ticks and era names under it are drawn once (TrackDecor).
+ */
+function YearSlider({ locale, compact, reducedMotion, step, stepBy }: {
+  locale: Locale
+  compact: boolean
+  reducedMotion: boolean
+  step: number
+  stepBy: (d: number) => void
+}) {
+  const year = useJourneyStore(s => Math.round(s.year))
+  const { setYear, setPlaying } = useJourneyStore.getState()
+  const [scrubbing, setScrubbing] = useState(false)
+  const era = eraAt(year)
+  const valueText = `${formatYear(year, locale)}${era ? `, ${ERA_LABELS[era][locale]}` : ''}`
+  return (
+    <div className="relative h-9">
+      <TrackDecor locale={locale} compact={compact} />
+      <div className="absolute inset-x-0 top-[15px] h-[7px] rounded-full overflow-hidden pointer-events-none">
+        <span className="absolute inset-y-0 left-0 bg-ink-100/15" style={{ width: `${pct(year)}%` }} />
+      </div>
+      <input
+        type="range"
+        min={JOURNEY_START}
+        max={JOURNEY_END}
+        step={reducedMotion ? REDUCED_STEP_YEARS : 1}
+        value={year}
+        aria-label={tr(locale, 'שנה', 'Year', 'Год')}
+        aria-valuetext={valueText}
+        onChange={e => { setPlaying(false); setYear(Number(e.target.value)) }}
+        onPointerDown={() => { setPlaying(false); setScrubbing(true) }}
+        onPointerUp={() => setScrubbing(false)}
+        onPointerCancel={() => setScrubbing(false)}
+        onBlur={() => setScrubbing(false)}
+        onKeyDown={e => {
+          // Our own steps, so arrows move the same distance everywhere.
+          const big = e.shiftKey ? KEY_BIG_STEP : step
+          const d = e.key === 'ArrowRight' || e.key === 'ArrowUp' ? big
+            : e.key === 'ArrowLeft' || e.key === 'ArrowDown' ? -big
+            : e.key === 'PageUp' ? KEY_BIG_STEP : e.key === 'PageDown' ? -KEY_BIG_STEP : 0
+          if (d) { e.preventDefault(); e.stopPropagation(); stepBy(d) }
+        }}
+        className="journey-range absolute inset-x-0 top-[8px] w-full h-[22px] cursor-pointer"
+      />
+      {scrubbing && (
+        <span
+          className="absolute -translate-x-1/2 top-[-1.35rem] pointer-events-none font-sans font-bold tabular-nums whitespace-nowrap text-[11px] text-gold-300 journey-glass rounded-md px-1.5 py-0.5"
+          style={{ left: `${pct(year)}%` }}
+          dir={locale === 'he' ? 'rtl' : 'ltr'}
+        >
+          {formatYear(year, locale)}
+        </span>
+      )}
+    </div>
+  )
+}
+
+/** Era bands, milestone ticks and era names: static, drawn once per size. */
+const TrackDecor = memo(function TrackDecor({ locale, compact }: { locale: Locale; compact: boolean }) {
+  const ref = useRef<HTMLDivElement>(null)
+  const [trackW, setTrackW] = useState(0)
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const ro = new ResizeObserver(() => setTrackW(el.clientWidth))
+    ro.observe(el)
+    setTrackW(el.clientWidth)
+    return () => ro.disconnect()
+  }, [])
+  const jump = (y: number) => {
+    const s = useJourneyStore.getState()
+    s.setPlaying(false)
+    s.setYear(y)
+  }
+  return (
+    <div ref={ref} className="absolute inset-0">
+      {/* Milestone ticks above the bands */}
+      {ALL_MILESTONES.map(m => (
+        <button
+          key={`${m.year}-${m.label.en}`}
+          type="button"
+          tabIndex={-1}
+          aria-hidden="true"
+          onClick={() => jump(m.year)}
+          title={`${m.circa ? '~' : ''}${formatYear(m.year, locale)} · ${m.label[locale]}`}
+          className="absolute z-10 top-0 -translate-x-1/2 w-3 h-2 flex justify-center group"
+          style={{ left: `${pct(m.year)}%` }}
+        >
+          <span className={cn('block w-[2px] h-2.5 rounded-full transition-all group-hover:bg-gold-300',
+            m.kind === 'transmission' ? 'bg-gold-400' : 'bg-ink-400')} />
+        </button>
+      ))}
+      {/* Era bands, coloured as everywhere else in the app */}
+      <div className="absolute inset-x-0 top-[15px] h-[7px] rounded-full bg-ink-700/60 overflow-hidden pointer-events-none">
+        {ALL_PERIODS.map(p => {
+          const [lo, hi] = JOURNEY_ERA_WINDOW[p]
+          if (hi <= JOURNEY_START) return null
+          return (
+            <span key={p} className="absolute inset-y-0 opacity-80"
+              style={{ left: `${pct(lo)}%`, width: `${pct(hi) - pct(lo)}%`, background: ERA_COLORS[p] }} />
+          )
+        })}
+      </div>
+      {/* Era names where there is room */}
+      {!compact && trackW > 0 && ALL_PERIODS.map(p => {
+        const [lo, hi] = JOURNEY_ERA_WINDOW[p]
+        if (hi <= JOURNEY_START) return null
+        const w = ((pct(hi) - pct(lo)) / 100) * trackW
+        const label = ERA_LABELS[p][locale]
+        if (w < label.length * 5.6 + 6) return null
+        return (
+          <span key={p} className="absolute top-[24px] text-[9.5px] font-sans text-ink-400 text-center truncate pointer-events-none"
+            style={{ left: `${pct(lo)}%`, width: `${pct(hi) - pct(lo)}%` }}
+            dir={locale === 'he' ? 'rtl' : 'ltr'}>
+            {label}
+          </span>
+        )
+      })}
+    </div>
+  )
+})
 
 function Icon({ d }: { d: string }) {
   return (

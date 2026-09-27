@@ -282,6 +282,19 @@ export function JourneyLayer({ L, map, model, locale, theme, reducedMotion, comp
     let needsFirstFrame = true
     let followWas = useJourneyStore.getState().follow
     let cssW = 0, cssH = 0, dpr = 1
+    // measureText is not free; label texts repeat frame after frame.
+    const widths = new Map<string, number>()
+    const textW = (c2d: CanvasRenderingContext2D, font: string, text: string) => {
+      const key = font + '|' + text
+      let w = widths.get(key)
+      if (w == null) {
+        c2d.font = font
+        w = c2d.measureText(text).width
+        if (widths.size > 2000) widths.clear()
+        widths.set(key, w)
+      }
+      return w
+    }
 
     const resize = () => {
       const el = canvas.parentElement
@@ -563,9 +576,9 @@ export function JourneyLayer({ L, map, model, locale, theme, reducedMotion, comp
       for (const c of ranked) {
         if (labelled >= maxLabels && c.key !== focus) continue
         const size = labelled < 3 ? (small ? 13 : 15) : (small ? 11.5 : 13)
-        ctx.font = `700 ${size}px "Frank Ruhl Libre", "David Libre", Georgia, serif`
+        const font = `700 ${size}px "Frank Ruhl Libre", "David Libre", Georgia, serif`
         const text = `${placeName(c.key, loc)} · ${c.count}`
-        const w = ctx.measureText(text).width
+        const w = textW(ctx, font, text)
         if (c.x < -w / 2 || c.x > cssW + w / 2) continue
         const lx = labelX(c.x, w)
         const x0 = lx - w / 2 - 3
@@ -582,9 +595,10 @@ export function JourneyLayer({ L, map, model, locale, theme, reducedMotion, comp
         if (c.labelAlpha < 0.03) return
         const i = ranked.indexOf(c)
         const size = i >= 0 && i < 3 ? (small ? 13 : 15) : (small ? 11.5 : 13)
-        ctx.font = `700 ${size}px "Frank Ruhl Libre", "David Libre", Georgia, serif`
+        const font = `700 ${size}px "Frank Ruhl Libre", "David Libre", Georgia, serif`
         const text = `${placeName(c.key, loc)} · ${c.count}`
-        const lx = labelX(c.x, ctx.measureText(text).width)
+        const lx = labelX(c.x, textW(ctx, font, text))
+        ctx.font = font
         const y0 = c.y + Math.max(6, c.r * 0.45)
         ctx.globalAlpha = Math.min(c.alpha, c.labelAlpha)
         ctx.lineJoin = 'round'
