@@ -12,8 +12,9 @@
 // Pure functions only: no React, no DOM, so it can run on the server (the sage
 // page card), in the browser (the lineage tab) and from a script.
 
-import type { Sage } from './types'
-import type { LineageIndex, LineageKind } from '@/components/viz/lineage'
+import type { Period, Sage } from './types'
+import { chronoYear } from '@/components/viz/lineage'
+import type { LineageIndex, LineageKind, Rel } from '@/components/viz/lineage'
 import { SINAI_CHAIN, type ChainStation } from './sinaiChain'
 
 /** How a step received from the step above it. `sinai` is Moses at the top. */
@@ -62,7 +63,12 @@ export interface SinaiIndex {
   onChain: Map<string, { gen: number; alongside: boolean }>
   /** For each sage that reaches the chain: its next step up the chosen path. */
   best: Map<string, Best>
+  /** Moses's corpus id, when he is in the corpus. */
   moses: string | null
+  /** The weight of one lineage link from `up` down to `r.id`. */
+  weigh: (up: string, r: Rel) => number
+  /** A sortable year for weighing leaps (era middle when undated); never shown. */
+  year: (id: string) => number | null
 }
 
 interface Best {
@@ -79,12 +85,26 @@ interface Best {
 
 /**
  * Link weights. A teacher link is transmission; succession in office and
- * family come next; influence is inspiration across any span of time, so one
- * influence link costs as much as six teacher links. A link the data stored
- * against the chronology costs a little more, being less certain.
+ * family come next; influence is inspiration, not transmission, so even a
+ * short one costs four teacher links. Every link but a teacher link also
+ * costs per century it bridges: of two inspirations, the shorter leap is the
+ * likelier channel. A link the data stored against the chronology costs a
+ * little more, being less certain.
  */
-const WEIGHT: Record<LineageKind, number> = { teacher: 1, predecessor: 2, family: 3, influence: 6 }
+const WEIGHT: Record<LineageKind, number> = { teacher: 1, predecessor: 2, family: 2.5, influence: 4 }
+const PER_CENTURY: Record<LineageKind, number> = { teacher: 0, predecessor: 0.25, family: 0.25, influence: 1 }
 const REORIENTED_PENALTY = 0.5
+/**
+ * Between routes otherwise equal, the one through better-documented sages
+ * (more recorded lineage links) wins: a nudge far below any real weight.
+ */
+const obscurity = (degree: number) => 0.1 / (1 + degree)
+
+/** Only for weighing a leap that involves an undated sage; never shown. The middle of each era, roughly. */
+const ERA_MID: Record<Period, number> = {
+  patriarchs: -1800, exodus: -1300, judges: -1150, kings: -800, 'second-temple': -300,
+  tannaim: 100, amoraim: 350, geonim: 800, rishonim: 1250, acharonim: 1650, modern: 1900,
+}
 
 const zeroKinds = (): Record<LineageKind, number> => ({ teacher: 0, predecessor: 0, family: 0, influence: 0 })
 
@@ -109,10 +129,24 @@ export function resolveChain(sages: Iterable<Sage>): ResolvedStation[] {
  * outward from the chain's people along the links downward (teacher → student),
  * which is the reverse of each sage's walk upward. Paths compare by weight,
  * then by fewer links, then by the later entry into the chain (the Rambam's
- * list then carries more of the way, and the archive's leap is shorter).
+ * list then carries more of the way). A few hundred sages and links: the
+ * whole corpus takes a few milliseconds.
  */
 export function buildSinaiIndex(sages: Iterable<Sage>, idx: LineageIndex): SinaiIndex {
-  const chain = resolveChain(sages)
+  const all = [...sages]
+  const chain = resolveChain(all)
+  const byId = new Map(all.map(s => [s.id, s]))
+  const year = (id: string) => {
+    const s = byId.get(id)
+    return s ? chronoYear(s) ?? ERA_MID[s.period] ?? null : null
+  }
+  const weigh = (up: string, r: Rel) => {
+    const a = year(up), b = year(r.id)
+    const centuries = a == null || b == null ? 0 : Math.max(0, b - a) / 100
+    return WEIGHT[r.kind] + PER_CENTURY[r.kind] * centuries
+      + (r.reoriented ? REORIENTED_PENALTY : 0) + obscurity(idx.degree.get(up) ?? 0)
+  }
+
   const onChain = new Map<string, { gen: number; alongside: boolean }>()
   for (const st of chain) {
     // A person named at two stations belongs to the later one.
@@ -127,25 +161,18 @@ export function buildSinaiIndex(sages: Iterable<Sage>, idx: LineageIndex): Sinai
     !b || a.cost - b.cost < -1e-9 || (Math.abs(a.cost - b.cost) <= 1e-9 && (a.hops - b.hops || b.gen - a.gen) < 0)
   for (const [id, { gen }] of onChain) best.set(id, { cost: 0, hops: 0, gen, up: null, kind: null, reoriented: false })
 
-  // A few hundred sages: a linear scan for the next-closest is plenty.
+  // A linear scan for the next-closest is plenty at this size.
   const open = new Set(best.keys())
   const done = new Set<string>()
   while (open.size) {
-    let u: string | null = null
-    for (const id of open) if (u === null || better(best.get(id)!, best.get(u))) u = id
-    open.delete(u!)
-    done.add(u!)
-    const bu = best.get(u!)!
-    for (const r of idx.down.get(u!) ?? []) {
+    let u = ''
+    for (const id of open) if (!u || better(best.get(id)!, best.get(u))) u = id
+    open.delete(u)
+    done.add(u)
+    const bu = best.get(u)!
+    for (const r of idx.down.get(u) ?? []) {
       if (done.has(r.id)) continue
-      const cand: Best = {
-        cost: bu.cost + WEIGHT[r.kind] + (r.reoriented ? REORIENTED_PENALTY : 0),
-        hops: bu.hops + 1,
-        gen: bu.gen,
-        up: u,
-        kind: r.kind,
-        reoriented: r.reoriented,
-      }
+      const cand: Best = { cost: bu.cost + weigh(u, r), hops: bu.hops + 1, gen: bu.gen, up: u, kind: r.kind, reoriented: r.reoriented }
       if (better(cand, best.get(r.id))) {
         best.set(r.id, cand)
         open.add(r.id)
@@ -153,8 +180,7 @@ export function buildSinaiIndex(sages: Iterable<Sage>, idx: LineageIndex): Sinai
     }
   }
 
-  const moses = chain[0]?.ids[0] ?? null
-  return { chain, onChain, best, moses }
+  return { chain, onChain, best, moses: chain[0]?.ids[0] ?? null, weigh, year }
 }
 
 /** The path from `sageId` to Sinai, or null when the archive holds no route to the chain. */
@@ -165,10 +191,10 @@ export function sinaiPath(si: SinaiIndex, sageId: string): SinaiPath | null {
   const below: SinaiStep[] = []
   const byKind = zeroKinds()
   let cur = sageId
-  for (let guard = 0; guard < 500; guard++) {
+  for (let guard = 0; guard < 1000; guard++) {
     const b = si.best.get(cur)!
     if (b.up === null) break
-    below.push({ kind: b.kind!, id: cur, reoriented: b.reoriented || undefined })
+    below.push({ kind: b.kind!, id: cur, ...(b.reoriented ? { reoriented: true } : {}) })
     byKind[b.kind!]++
     cur = b.up
   }
@@ -194,7 +220,62 @@ export function sinaiPath(si: SinaiIndex, sageId: string): SinaiPath | null {
   }
 }
 
-/** The station a chain step stands at. */
-export function stationOf(si: SinaiIndex, gen: number): ResolvedStation | undefined {
-  return si.chain[gen - 1]?.gen === gen ? si.chain[gen - 1] : si.chain.find(s => s.gen === gen)
+/**
+ * For a sage with no route to the chain: how far back the archive's record
+ * does go. Walks up from the sage with the same weights and returns the best
+ * route to the earliest ancestor reached, top-down (that ancestor first, the
+ * sage last), or just the sage when nobody above is recorded.
+ */
+export function sinaiTrail(si: SinaiIndex, idx: LineageIndex, sageId: string): SinaiStep[] {
+  const dist = new Map<string, number>([[sageId, 0]])
+  const via = new Map<string, { down: string; kind: LineageKind; reoriented: boolean }>()
+  const open = new Set([sageId])
+  const done = new Set<string>()
+  while (open.size) {
+    let u = ''
+    for (const id of open) if (!u || dist.get(id)! < dist.get(u)!) u = id
+    open.delete(u)
+    done.add(u)
+    for (const r of idx.up.get(u) ?? []) {
+      if (done.has(r.id)) continue
+      const d = dist.get(u)! + si.weigh(r.id, { id: u, kind: r.kind, reoriented: r.reoriented })
+      if (d < (dist.get(r.id) ?? Infinity)) {
+        dist.set(r.id, d)
+        via.set(r.id, { down: u, kind: r.kind, reoriented: r.reoriented })
+        open.add(r.id)
+      }
+    }
+  }
+  // The earliest ancestor; on a tie, the cheaper route.
+  let top = sageId
+  for (const id of done) {
+    const y = si.year(id) ?? Infinity, ty = si.year(top) ?? Infinity
+    if (y < ty || (y === ty && dist.get(id)! < dist.get(top)!)) top = id
+  }
+  // Top-down. The top step has no link above it in the archive: its kind is
+  // only a placeholder, and the view draws a gap there.
+  const steps: SinaiStep[] = [{ kind: 'influence', id: top }]
+  for (let cur = top, guard = 0; via.has(cur) && guard < 1000; guard++) {
+    const v = via.get(cur)!
+    steps.push({ kind: v.kind, id: v.down, ...(v.reoriented ? { reoriented: true } : {}) })
+    cur = v.down
+  }
+  return steps
+}
+
+/**
+ * The years a link bridges, rounded to whole centuries, when both ends carry
+ * dates and it spans at least one: "a leap of about nine centuries". Used to
+ * show an inspiration across ages for what it is.
+ */
+export function leapCenturies(upper: Sage | undefined, lower: Sage | undefined): number | null {
+  const a = chronoYear(upper), b = chronoYear(lower)
+  if (a == null || b == null) return null
+  const c = Math.round((b - a) / 100)
+  return c >= 1 ? c : null
+}
+
+/** Lived before the Torah was given: the patriarchs' era. */
+export function beforeSinai(s: Sage | undefined): boolean {
+  return s?.period === 'patriarchs'
 }
