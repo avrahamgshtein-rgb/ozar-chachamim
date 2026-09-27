@@ -107,8 +107,9 @@ function escapeHtml(s: string): string {
  * "everything fits" (`rel` = 1): the hubs only when far out, more with every
  * step in. Collision avoidance decides the rest.
  */
-function labelQuota(rel: number): number {
-  return Math.max(10, Math.round(12 * rel * rel))
+function labelQuota(rel: number, area: number): number {
+  // ...and never more than the screen can hold without a wall of text
+  return Math.max(10, Math.min(Math.round(12 * rel * rel), Math.round(area / 7000)))
 }
 
 /**
@@ -215,13 +216,16 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
    */
   const freeInsets = () => {
     const c = containerRef.current
-    const ins = { top: 56, right: 0, bottom: 96, left: 0 }
+    const desktop = window.innerWidth >= 768
+    // bottom: the tab bar, and on phones the round search/chat buttons above it
+    const ins = { top: 56, right: 0, bottom: desktop ? 96 : 152, left: 0 }
     if (!c) return ins
     const chips = parseFloat(getComputedStyle(c).getPropertyValue('--filter-chips-h'))
     if (chips > 0) ins.top = chips + 8
     const rtl = locale === 'he'
-    const desktop = window.innerWidth >= 768
     const endSide = (w: number) => { if (rtl) ins.left = Math.max(ins.left, w); else ins.right = Math.max(ins.right, w) }
+    // the zoom cluster runs up the end edge
+    endSide(desktop ? 52 : 64)
     if (desktop && useAppStore.getState().isDrawerOpen) endSide(Math.min(420, c.clientWidth * 0.45))
     const panel = pathPanelRef.current?.getBoundingClientRect()
     if (panel && panel.width) {
@@ -573,7 +577,7 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
           wanted = byDegree
             .filter(n => !fIds || fIds.has(n.id))
             .map(d => ({ d, primary: false }))
-          quota = labelQuota(k / fitScale(cW, cH))
+          quota = labelQuota(k / fitScale(cW, cH), cW * cH)
         }
 
         // Labels stay whole and clear of the filter bar
@@ -621,8 +625,11 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
         .scaleExtent([0.05, 6])
         // a finger never lands perfectly still; a small wobble is still a tap
         .clickDistance(6)
-        .on('start', () => svg.classed('ng-zooming', true))
         .on('zoom', ev => {
+          // Hit-testing off only once the view really moves: d3-zoom also
+          // "starts" on the mouse event a tap emulates, and turning targets
+          // off there sent a tapped node's click to the canvas instead.
+          if (ev.sourceEvent) svg.classed('ng-zooming', true)
           transform = ev.transform
           g.attr('transform', ev.transform)
           positionLabels()
@@ -693,11 +700,15 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
           const [op, w, arrow] = linkSt(l)
           this.style.strokeOpacity = String(op)
           this.style.strokeWidth = String(w)
+          // a faded edge can't be clicked: in focus, a tap on "empty" canvas
+          // must clear the focus, not open a card for an edge you can't see
+          l._hit = op >= 0.15 || (pathLinks?.has(linkKey(l)) ?? false)
           // An SVG marker ignores its path's stroke-opacity, so a faded edge
           // must lose its arrowhead or it leaves a full-strength triangle.
           if (arrow && FLOW_TYPES.has(l.type)) this.setAttribute('marker-end', `url(#arrow-${l.type})`)
           else this.removeAttribute('marker-end')
         })
+        hitLink.attr('pointer-events', (l: any) => (l._hit ? 'stroke' : 'none'))
       }
 
       // ── Path overlay ─────────────────────────────────────────────────────
@@ -777,6 +788,10 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
 
       // ── Drag ─────────────────────────────────────────────────────────────
       const drag = d3.drag<SVGCircleElement, any>()
+        // Mouse only. A finger that lands on a node would be taken by the drag
+        // and hidden from d3-zoom, turning a pinch into a pan; on touch, nodes
+        // are for tapping and the canvas for pinching and panning.
+        .filter((ev: any) => !ev.ctrlKey && !ev.button && ev.type !== 'touchstart')
         .clickDistance(6)
         .on('start', (ev, d) => { if (!ev.active) sim.alphaTarget(0.3).restart(); d.fx = d.x; d.fy = d.y })
         .on('drag',  (ev, d) => { d.fx = ev.x; d.fy = ev.y })
@@ -1167,7 +1182,8 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
             'absolute z-20 left-1/2 -translate-x-1/2 animate-fade-in',
             'glass rounded-2xl border border-gold-500/30 shadow-glass-lg',
             'flex flex-col items-stretch gap-1 px-2 py-1.5',
-            'bottom-[5.25rem] max-w-[calc(100vw-11.5rem)]',
+            // centred on the 56px search/chat buttons' row (5.75rem up)
+            'bottom-[6.25rem] max-w-[calc(100vw-10.5rem)]',
             'md:bottom-auto md:top-[var(--ng-chip-top)] md:max-w-[min(34rem,calc(100vw-24rem))]',
           )}
           style={{ ['--ng-chip-top' as string]: BELOW_CHIPS }}
@@ -1276,9 +1292,9 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
       )}
 
       {/* Zoom + PathFinder toggle cluster. On mobile the search FAB (FAB.tsx,
-          fixed bottom-20 end-4, 56px) owns this corner, so the cluster starts
-          above it; from md up the FAB is hidden. */}
-      <div className="absolute bottom-[9.5rem] md:bottom-20 end-4 z-10 flex flex-col gap-1.5">
+          fixed bottom-[5.75rem] end-4, 56px, so up to 9.25rem) owns this
+          corner, so the cluster starts above it; from md up the FAB is hidden. */}
+      <div data-tour="graph-tools" className="absolute bottom-[10rem] md:bottom-20 end-4 z-10 flex flex-col gap-1.5">
         <ZoomBtn onClick={() => zoomBy(1.5)} label={UI_TEXT.zoomIn[locale]}>+</ZoomBtn>
         <ZoomBtn onClick={() => fitCurrent(500)} label={UI_TEXT.fit[locale]}>
           <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden>
