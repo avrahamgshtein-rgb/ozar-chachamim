@@ -34,7 +34,10 @@ export function parseURLState(search: string): NavigationState {
 
   // Tab: validate against known tabs. 'graph' is the default and is never carried
   // in the URL, so it normalises to null here — keeping parse/serialize inverses.
-  const tabParam = params.get('tab')
+  // 'geography' is accepted as a readable alias of 'map' (the tab's label),
+  // so a shared ?tab=geography&journey=1 link opens the map.
+  const rawTab = params.get('tab')
+  const tabParam = rawTab === 'geography' ? 'map' : rawTab
   const VALID_TABS: Tab[] = ['graph', 'map', 'traditions', 'ideas', 'timeline', 'genealogy', 'about']
   const tab: Tab | null =
     tabParam && tabParam !== 'graph' && VALID_TABS.includes(tabParam as any)
@@ -125,5 +128,36 @@ export function updateURLWithState(state: NavigationState): string {
     url.searchParams.set(key, value)
   })
 
+  return url.toString()
+}
+
+/**
+ * מסע התורה deep link: ?journey=1&year=1100 (with ?tab=map or ?tab=geography).
+ * Kept apart from NavigationState: AppShell rewrites only its own four params
+ * and preserves any others, so the journey params ride along untouched.
+ */
+export interface JourneyURLState {
+  journey: boolean
+  /** Integer year, negative for BCE; null when absent or unreadable. */
+  year: number | null
+}
+
+export function parseJourneyURLState(search: string): JourneyURLState {
+  const params = new URLSearchParams(search)
+  const journey = params.get('journey') === '1'
+  const raw = params.get('year')
+  const n = raw != null && raw.trim() !== '' ? Number(raw) : NaN
+  return { journey, year: Number.isFinite(n) ? Math.round(n) : null }
+}
+
+/** `href` with the journey params set (journey on) or removed (off). */
+export function withJourneyURLState(href: string, state: JourneyURLState): string {
+  const url = new URL(href)
+  url.searchParams.delete('journey')
+  url.searchParams.delete('year')
+  if (state.journey) {
+    url.searchParams.set('journey', '1')
+    if (state.year != null) url.searchParams.set('year', String(state.year))
+  }
   return url.toString()
 }
