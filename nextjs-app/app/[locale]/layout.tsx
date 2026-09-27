@@ -1,9 +1,10 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { isValidLocale, UI } from '@/lib/i18n'
+import { isValidLocale, getDirection, getHtmlLang, OG_LOCALES, UI } from '@/lib/i18n'
 import type { Locale } from '@/lib/types'
-import { LocaleProvider } from '@/components/providers/LocaleProvider'
 import { SITE_URL } from '@/lib/siteUrl'
+import { SkipLink } from '@/components/layout/SkipLink'
+import { fontVariables, THEME_INIT_SCRIPT } from '../fonts'
 
 interface LocaleLayoutProps {
   children: React.ReactNode
@@ -14,14 +15,13 @@ export async function generateStaticParams() {
   return [{ locale: 'he' }, { locale: 'en' }, { locale: 'ru' }]
 }
 
-export async function generateMetadata({
-  params,
-}: LocaleLayoutProps): Promise<Metadata> {
+// Site-wide defaults only. Canonical URLs and hreflang alternates are set per
+// page (home, about, sage pages): set here they would be inherited by every
+// child route, pointing the about page's canonical at the home page.
+export async function generateMetadata({ params }: LocaleLayoutProps): Promise<Metadata> {
   const { locale } = await params
   if (!isValidLocale(locale)) return {}
-  const validLocale = locale as Locale
-  const t = UI[validLocale]
-  const OG_LOCALES: Record<Locale, string> = { he: 'he_IL', en: 'en_US', ru: 'ru_RU' }
+  const t = UI[locale]
 
   return {
     metadataBase: new URL(SITE_URL),
@@ -29,25 +29,21 @@ export async function generateMetadata({
       default: `${t.appTitle} — ${t.appSubtitle}`,
       template: `%s | ${t.appTitle}`,
     },
+    description: t.seoDescription,
+    applicationName: t.appTitle,
     openGraph: {
-      title: t.appTitle,
-      description: t.appSubtitle,
+      siteName: t.appTitle,
       type: 'website',
-      locale: OG_LOCALES[validLocale],
-      url: `${SITE_URL}/${validLocale}`,
+      locale: OG_LOCALES[locale],
     },
-    alternates: {
-      canonical: `/${validLocale}`,
-      languages: {
-        he: '/he',
-        en: '/en',
-        ru: '/ru',
-        'x-default': '/he',
-      },
-    },
+    twitter: { card: 'summary' },
   }
 }
 
+// This is the document shell: <html> is rendered here rather than in
+// app/layout.tsx so lang/dir come out right in the server HTML for every
+// locale. The previous shell always shipped he/rtl and patched en/ru from a
+// client script, which ran only after first paint.
 export default async function LocaleLayout({ children, params }: LocaleLayoutProps) {
   const { locale } = await params
 
@@ -58,9 +54,21 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   const validLocale = locale as Locale
 
   return (
-    // LocaleProvider sets html[lang] and html[dir] on the client
-    <LocaleProvider locale={validLocale}>
-      {children}
-    </LocaleProvider>
+    // suppressHydrationWarning: the theme script sets data-theme before React
+    // hydrates, so that one attribute legitimately differs from the server HTML.
+    <html
+      lang={getHtmlLang(validLocale)}
+      dir={getDirection(validLocale)}
+      className={fontVariables}
+      suppressHydrationWarning
+    >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
+      </head>
+      <body className="font-sans bg-ink-900 text-ink-100 antialiased">
+        <SkipLink label={UI[validLocale].skipToContent} />
+        {children}
+      </body>
+    </html>
   )
 }
