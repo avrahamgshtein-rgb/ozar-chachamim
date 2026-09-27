@@ -8618,32 +8618,32 @@
  ],
  "links": [
   {
-   "source": "435",
-   "target": "4",
+   "source": "4",
+   "target": "435",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "580",
-   "target": "7",
+   "source": "7",
+   "target": "580",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "95",
-   "target": "11",
+   "source": "11",
+   "target": "95",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "325",
-   "target": "11",
+   "source": "11",
+   "target": "325",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "336",
-   "target": "11",
+   "source": "11",
+   "target": "336",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -8666,20 +8666,20 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "443",
-   "target": "13",
+   "source": "13",
+   "target": "443",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "594",
-   "target": "201",
+   "source": "201",
+   "target": "594",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "192",
-   "target": "201",
+   "source": "201",
+   "target": "192",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -8702,8 +8702,8 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "463",
-   "target": "16",
+   "source": "16",
+   "target": "463",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -8744,14 +8744,14 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "25",
-   "target": "21",
+   "source": "21",
+   "target": "25",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "594",
-   "target": "22",
+   "source": "22",
+   "target": "594",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -8780,8 +8780,8 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "41",
-   "target": "25",
+   "source": "25",
+   "target": "41",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -8798,8 +8798,8 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "41",
-   "target": "27",
+   "source": "27",
+   "target": "41",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -8810,14 +8810,20 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "195",
-   "target": "262",
+   "source": "28",
+   "target": "33",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "44",
-   "target": "262",
+   "source": "262",
+   "target": "195",
+   "type": "influence",
+   "evidence_source": "CSV דמויות קשורות"
+  },
+  {
+   "source": "262",
+   "target": "44",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -8828,14 +8834,20 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
+   "source": "261",
+   "target": "33",
+   "type": "influence",
+   "evidence_source": "CSV דמויות קשורות"
+  },
+  {
    "source": "276",
    "target": "261",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "41",
-   "target": "32",
+   "source": "32",
+   "target": "41",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -8858,56 +8870,56 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
+   "source": "38",
+   "target": "195",
+   "type": "influence",
+   "evidence_source": "CSV דמויות קשורות"
+  },
+  {
+   "source": "38",
+   "target": "42",
+   "type": "influence",
+   "evidence_source": "CSV דמויות קשורות"
+  },
+  {
+   "source": "41",
+   "target": "195",
+   "type": "influence",
+   "evidence_source": "CSV דמויות קשורות"
+  },
+  {
    "source": "195",
-   "target": "38",
+   "target": "42",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "42",
-   "target": "38",
-   "type": "influence",
-   "evidence_source": "CSV דמויות קשורות"
-  },
-  {
-   "source": "41",
-   "target": "195",
-   "type": "influence",
-   "evidence_source": "CSV דמויות קשורות"
-  },
-  {
-   "source": "42",
-   "target": "195",
-   "type": "influence",
-   "evidence_source": "CSV דמויות קשורות"
-  },
-  {
-   "source": "44",
-   "target": "195",
-   "type": "influence",
-   "evidence_source": "CSV דמויות קשורות"
-  },
-  {
-   "source": "44",
-   "target": "41",
-   "type": "influence",
-   "evidence_source": "CSV דמויות קשורות"
-  },
-  {
-   "source": "47",
-   "target": "43",
-   "type": "influence",
-   "evidence_source": "CSV דמויות קשורות"
-  },
-  {
-   "source": "41",
-   "target": "43",
-   "type": "influence",
-   "evidence_source": "CSV דמויות קשורות"
-  },
-  {
-   "source": "13",
+   "source": "195",
    "target": "44",
+   "type": "influence",
+   "evidence_source": "CSV דמויות קשורות"
+  },
+  {
+   "source": "41",
+   "target": "44",
+   "type": "influence",
+   "evidence_source": "CSV דמויות קשורות"
+  },
+  {
+   "source": "43",
+   "target": "47",
+   "type": "influence",
+   "evidence_source": "CSV דמויות קשורות"
+  },
+  {
+   "source": "41",
+   "target": "43",
+   "type": "influence",
+   "evidence_source": "CSV דמויות קשורות"
+  },
+  {
+   "source": "44",
+   "target": "13",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -8924,20 +8936,20 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "44",
-   "target": "46",
+   "source": "46",
+   "target": "44",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "53",
-   "target": "47",
+   "source": "47",
+   "target": "53",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "53",
-   "target": "49",
+   "source": "49",
+   "target": "53",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -8954,8 +8966,8 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "325",
-   "target": "50",
+   "source": "50",
+   "target": "325",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -8996,8 +9008,8 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "443",
-   "target": "56",
+   "source": "56",
+   "target": "443",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9008,8 +9020,8 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "443",
-   "target": "343",
+   "source": "343",
+   "target": "443",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9020,14 +9032,14 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "463",
-   "target": "264",
+   "source": "264",
+   "target": "463",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "457",
-   "target": "64",
+   "source": "64",
+   "target": "457",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9074,20 +9086,20 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "558",
-   "target": "76",
+   "source": "76",
+   "target": "558",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "325",
-   "target": "77",
+   "source": "77",
+   "target": "325",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "558",
-   "target": "79",
+   "source": "79",
+   "target": "558",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9128,14 +9140,14 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "105",
-   "target": "202",
+   "source": "202",
+   "target": "105",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "203",
-   "target": "202",
+   "source": "202",
+   "target": "203",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9164,8 +9176,8 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "130",
-   "target": "113",
+   "source": "113",
+   "target": "130",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9224,14 +9236,8 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "568",
-   "target": "135",
-   "type": "influence",
-   "evidence_source": "CSV דמויות קשורות"
-  },
-  {
-   "source": "340",
-   "target": "137",
+   "source": "137",
+   "target": "340",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9242,20 +9248,20 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "340",
-   "target": "144",
+   "source": "144",
+   "target": "340",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "620",
-   "target": "196",
+   "source": "196",
+   "target": "620",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "340",
-   "target": "146",
+   "source": "146",
+   "target": "340",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9272,14 +9278,14 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "169",
-   "target": "148",
+   "source": "148",
+   "target": "169",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "340",
-   "target": "149",
+   "source": "149",
+   "target": "340",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9292,12 +9298,6 @@
   {
    "source": "148",
    "target": "151",
-   "type": "influence",
-   "evidence_source": "CSV דמויות קשורות"
-  },
-  {
-   "source": "482",
-   "target": "154",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9374,8 +9374,8 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "478",
-   "target": "179",
+   "source": "179",
+   "target": "478",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9386,20 +9386,20 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "463",
-   "target": "64",
+   "source": "64",
+   "target": "463",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "67",
-   "target": "64",
+   "source": "64",
+   "target": "67",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "443",
-   "target": "189",
+   "source": "189",
+   "target": "443",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9428,14 +9428,14 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "594",
-   "target": "348",
+   "source": "348",
+   "target": "594",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "351",
-   "target": "348",
+   "source": "348",
+   "target": "351",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9446,20 +9446,14 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "594",
-   "target": "353",
+   "source": "353",
+   "target": "594",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "594",
-   "target": "583",
-   "type": "influence",
-   "evidence_source": "CSV דמויות קשורות"
-  },
-  {
-   "source": "594",
-   "target": "355",
+   "source": "355",
+   "target": "594",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9470,38 +9464,44 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "47",
+   "source": "33",
    "target": "265",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "44",
-   "target": "266",
+   "source": "265",
+   "target": "47",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "195",
-   "target": "266",
+   "source": "266",
+   "target": "44",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "395",
-   "target": "266",
+   "source": "266",
+   "target": "195",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "52",
-   "target": "266",
+   "source": "266",
+   "target": "395",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "190",
-   "target": "266",
+   "source": "266",
+   "target": "52",
+   "type": "influence",
+   "evidence_source": "CSV דמויות קשורות"
+  },
+  {
+   "source": "266",
+   "target": "190",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9518,8 +9518,8 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "609",
-   "target": "270",
+   "source": "33",
+   "target": "271",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9530,14 +9530,26 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "280",
-   "target": "271",
+   "source": "271",
+   "target": "280",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "53",
+   "source": "33",
    "target": "272",
+   "type": "influence",
+   "evidence_source": "CSV דמויות קשורות"
+  },
+  {
+   "source": "272",
+   "target": "53",
+   "type": "influence",
+   "evidence_source": "CSV דמויות קשורות"
+  },
+  {
+   "source": "33",
+   "target": "273",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9554,8 +9566,8 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "482",
-   "target": "274",
+   "source": "33",
+   "target": "275",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9572,8 +9584,14 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "275",
+   "source": "33",
    "target": "276",
+   "type": "influence",
+   "evidence_source": "CSV דמויות קשורות"
+  },
+  {
+   "source": "276",
+   "target": "275",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9590,8 +9608,14 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "41",
+   "source": "33",
    "target": "279",
+   "type": "influence",
+   "evidence_source": "CSV דמויות קשורות"
+  },
+  {
+   "source": "279",
+   "target": "41",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9626,14 +9650,14 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "44",
-   "target": "283",
+   "source": "283",
+   "target": "44",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "51",
-   "target": "283",
+   "source": "283",
+   "target": "51",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9644,20 +9668,20 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "41",
-   "target": "284",
+   "source": "284",
+   "target": "41",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "44",
-   "target": "284",
+   "source": "284",
+   "target": "44",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "395",
-   "target": "284",
+   "source": "284",
+   "target": "395",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9686,14 +9710,14 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "443",
-   "target": "285",
+   "source": "285",
+   "target": "443",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "325",
-   "target": "285",
+   "source": "285",
+   "target": "325",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9704,14 +9728,14 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "51",
-   "target": "286",
+   "source": "286",
+   "target": "51",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "343",
-   "target": "286",
+   "source": "286",
+   "target": "343",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9722,14 +9746,14 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "44",
-   "target": "287",
+   "source": "287",
+   "target": "44",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "390",
-   "target": "287",
+   "source": "287",
+   "target": "390",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9740,8 +9764,8 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "42",
-   "target": "287",
+   "source": "287",
+   "target": "42",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9788,14 +9812,14 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "41",
-   "target": "391",
+   "source": "391",
+   "target": "41",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "600",
-   "target": "391",
+   "source": "391",
+   "target": "600",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9842,8 +9866,8 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "443",
-   "target": "395",
+   "source": "395",
+   "target": "443",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9866,14 +9890,14 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "395",
-   "target": "44",
+   "source": "44",
+   "target": "395",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "294",
-   "target": "44",
+   "source": "44",
+   "target": "294",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9884,14 +9908,14 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "443",
-   "target": "299",
+   "source": "299",
+   "target": "443",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "43",
-   "target": "300",
+   "source": "300",
+   "target": "43",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9944,8 +9968,8 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "52",
-   "target": "308",
+   "source": "308",
+   "target": "52",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9956,8 +9980,8 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "53",
-   "target": "309",
+   "source": "309",
+   "target": "53",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9974,8 +9998,8 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "443",
-   "target": "311",
+   "source": "311",
+   "target": "443",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -10016,8 +10040,8 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "443",
-   "target": "318",
+   "source": "318",
+   "target": "443",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -10028,8 +10052,8 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "443",
-   "target": "319",
+   "source": "319",
+   "target": "443",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -10100,8 +10124,8 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "580",
-   "target": "430",
+   "source": "430",
+   "target": "580",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -10148,14 +10172,14 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "463",
-   "target": "443",
+   "source": "443",
+   "target": "463",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "463",
-   "target": "444",
+   "source": "444",
+   "target": "463",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -10172,8 +10196,8 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "463",
-   "target": "447",
+   "source": "447",
+   "target": "463",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -10190,8 +10214,8 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "463",
-   "target": "449",
+   "source": "449",
+   "target": "463",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -10202,8 +10226,8 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "463",
-   "target": "450",
+   "source": "450",
+   "target": "463",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -10214,14 +10238,14 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "443",
-   "target": "452",
+   "source": "452",
+   "target": "443",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "463",
-   "target": "452",
+   "source": "452",
+   "target": "463",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -10232,32 +10256,32 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "557",
-   "target": "455",
+   "source": "455",
+   "target": "557",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "463",
-   "target": "457",
+   "source": "457",
+   "target": "463",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "458",
-   "target": "457",
-   "type": "influence",
-   "evidence_source": "CSV דמויות קשורות"
-  },
-  {
-   "source": "463",
+   "source": "457",
    "target": "458",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "463",
-   "target": "459",
+   "source": "458",
+   "target": "463",
+   "type": "influence",
+   "evidence_source": "CSV דמויות קשורות"
+  },
+  {
+   "source": "459",
+   "target": "463",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -10268,26 +10292,20 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "13",
-   "target": "460",
+   "source": "460",
+   "target": "13",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "463",
-   "target": "461",
+   "source": "461",
+   "target": "463",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
    "source": "64",
    "target": "461",
-   "type": "influence",
-   "evidence_source": "CSV דמויות קשורות"
-  },
-  {
-   "source": "542",
-   "target": "462",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -10316,26 +10334,26 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "439",
-   "target": "467",
+   "source": "467",
+   "target": "439",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "395",
-   "target": "469",
+   "source": "469",
+   "target": "395",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "294",
-   "target": "469",
+   "source": "469",
+   "target": "294",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "13",
-   "target": "469",
+   "source": "469",
+   "target": "13",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -10364,8 +10382,8 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "579",
-   "target": "477",
+   "source": "477",
+   "target": "579",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -10412,8 +10430,8 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "395",
-   "target": "486",
+   "source": "486",
+   "target": "395",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -10436,8 +10454,8 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "177",
-   "target": "490",
+   "source": "490",
+   "target": "177",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -10472,19 +10490,13 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "118",
-   "target": "498",
+   "source": "498",
+   "target": "118",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
    "source": "502",
-   "target": "501",
-   "type": "influence",
-   "evidence_source": "CSV דמויות קשורות"
-  },
-  {
-   "source": "482",
    "target": "501",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
@@ -10538,8 +10550,8 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "202",
-   "target": "508",
+   "source": "508",
+   "target": "202",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -10562,8 +10574,8 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "511",
-   "target": "510",
+   "source": "510",
+   "target": "511",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -10592,12 +10604,6 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "568",
-   "target": "520",
-   "type": "influence",
-   "evidence_source": "CSV דמויות קשורות"
-  },
-  {
    "source": "574",
    "target": "521",
    "type": "influence",
@@ -10618,12 +10624,6 @@
   {
    "source": "595",
    "target": "523",
-   "type": "influence",
-   "evidence_source": "CSV דמויות קשורות"
-  },
-  {
-   "source": "482",
-   "target": "524",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -10718,12 +10718,6 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "99",
-   "target": "539",
-   "type": "influence",
-   "evidence_source": "CSV דמויות קשורות"
-  },
-  {
    "source": "612",
    "target": "540",
    "type": "influence",
@@ -10742,56 +10736,44 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "71",
-   "target": "542",
-   "type": "influence",
-   "evidence_source": "CSV דמויות קשורות"
-  },
-  {
    "source": "443",
    "target": "542",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "482",
-   "target": "542",
+   "source": "544",
+   "target": "89",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "89",
-   "target": "544",
+   "source": "544",
+   "target": "325",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "325",
-   "target": "544",
+   "source": "544",
+   "target": "334",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "334",
-   "target": "544",
+   "source": "545",
+   "target": "325",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "325",
-   "target": "545",
+   "source": "545",
+   "target": "202",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "202",
-   "target": "545",
-   "type": "influence",
-   "evidence_source": "CSV דמויות קשורות"
-  },
-  {
-   "source": "336",
-   "target": "545",
+   "source": "545",
+   "target": "336",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -10814,14 +10796,8 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "33",
-   "target": "548",
-   "type": "influence",
-   "evidence_source": "CSV דמויות קשורות"
-  },
-  {
-   "source": "336",
-   "target": "548",
+   "source": "548",
+   "target": "336",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -10832,20 +10808,20 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "591",
-   "target": "550",
+   "source": "550",
+   "target": "591",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "592",
-   "target": "550",
+   "source": "550",
+   "target": "592",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "25",
-   "target": "551",
+   "source": "551",
+   "target": "25",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -10868,14 +10844,8 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "574",
-   "target": "553",
-   "type": "influence",
-   "evidence_source": "CSV דמויות קשורות"
-  },
-  {
-   "source": "535",
-   "target": "553",
+   "source": "553",
+   "target": "574",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -10886,20 +10856,20 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "395",
-   "target": "598",
+   "source": "598",
+   "target": "395",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "311",
-   "target": "598",
+   "source": "598",
+   "target": "311",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "443",
-   "target": "598",
+   "source": "598",
+   "target": "443",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -10934,12 +10904,6 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "482",
-   "target": "601",
-   "type": "influence",
-   "evidence_source": "CSV דמויות קשורות"
-  },
-  {
    "source": "38",
    "target": "602",
    "type": "influence",
@@ -10952,8 +10916,8 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "443",
-   "target": "603",
+   "source": "603",
+   "target": "443",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -10964,8 +10928,8 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "594",
-   "target": "604",
+   "source": "604",
+   "target": "594",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -11012,8 +10976,8 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "557",
-   "target": "613",
+   "source": "613",
+   "target": "557",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -11024,8 +10988,8 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "25",
-   "target": "619",
+   "source": "619",
+   "target": "25",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -11036,8 +11000,8 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "71",
-   "target": "621",
+   "source": "621",
+   "target": "71",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },

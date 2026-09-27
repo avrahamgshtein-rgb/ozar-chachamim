@@ -1,267 +1,247 @@
-'use client'
+// The one About. Rendered by the About tab (inside AppShell) and by the
+// standalone /[locale]/about page, so the two can no longer drift apart.
+// No hooks and no store: it takes server-computed figures as props and renders
+// the same markup on the server (about page) and in the client (tab).
+import Image from 'next/image'
+import { cn } from '@/lib/utils'
+import { TAB_META } from '@/lib/types'
+import type { Locale, Tab } from '@/lib/types'
+import { UI } from '@/lib/i18n'
+import { SITE_URL } from '@/lib/siteUrl'
+import type { CorpusStats } from '@/lib/siteStats'
+import { ABOUT_COPY, formatAboutDate } from './aboutCopy'
+import { CiteBox } from './CiteBox'
 
-import type { Locale } from '@/lib/types'
-import { useAppStore } from '@/store/useAppStore'
-import { regionsOf } from '@/lib/regions'
+export type { CorpusStats }
 
-const translations = {
-  he: {
-    title: 'אוצר חכמים',
-    subtitle: 'בסיס ידע מובנה על חכמי ישראל לדורותיהם',
-    description: 'עם ויזואליזציה דינמית של קשרים בין חכמים המיועדת לתלמידי ישיבות ובוגריהן.',
-    network: 'הרשת שלנו',
-    sages: 'חכמים',
-    connections: 'קשרים',
-    research: 'חכמים עם מחקר',
-    coverage: 'כיסוי גיאוגרפי',
-    features: '✨ תכונות ראשיות',
-    feature1: 'רשת קשרים אינטראקטיבית',
-    feature1_desc: 'D3.js force-directed network עם חיפוש בזמן אמת והדגשת קשרים',
-    feature2: 'מפה גיאוגרפית',
-    feature2_desc: 'עקוב אחר מיקומים והגירות של חכמים בעברות שונות',
-    feature3: 'חיפוש מתקדם',
-    feature3_desc: 'תמיכה בתרגומים בעברית ותצורות שונות של שמות',
-    feature4: 'מסמכי מחקר',
-    feature4_desc: 'מסמכי מחקר סקורים ומיוחסים למקורותיהם',
-    feature5: 'חומרי הוראה',
-    feature5_desc: 'תכניות שיעור של 45 דקות עם שאלות דיון וחומרי השלמה',
-    feature6: 'ממשק דו-לשוני',
-    feature6_desc: 'עברית (RTL) ואנגלית מלאות עם תמיכה בשינוי שפה',
-    feature7: 'responsive לכל מכשיר',
-    feature7_desc: 'שולחני, טאבלט, סלולרי עם ממשק משודרג',
-    projectLead: '👤 מנהל הפרויקט',
-    techStack: '💻 Tech Stack',
-    dataSources: '📚 מקורות הנתונים',
-    spirit: '🎓 רוח הפרויקט',
-    spirit_text: 'אנחנו מאמינים שחכמי ישראל לא צריכים להיות שמות בספר, אלא דמויות חיות המחוברות בדוגמה, בוויכוח ובהשפעה הדדית. פרויקט זה שומר על החוכמה שלהם בזמן שהוא עושה אותה נגישה לדור הבא של חוקרים ותלמידים.',
-    footer: 'אוצר חכמים — Preserving the Wisdom of Our Sages',
-    updated: 'עודכן: אוגוסט 2026 | Version 2.0',
-    contact: 'צור קשר',
-  },
-  en: {
-    title: 'Ozar Chachamim',
-    subtitle: 'The Knowledge Graph of Jewish Sages',
-    description: 'An interactive knowledge base serving yeshiva students and graduates.',
-    network: 'Our Network',
-    sages: 'Sages',
-    connections: 'Connections',
-    research: 'Sages with Research',
-    coverage: 'Geographic Coverage',
-    features: '✨ Key Features',
-    feature1: 'Interactive Connection Network',
-    feature1_desc: 'D3.js force-directed network with real-time search and connection highlighting',
-    feature2: 'Geographic Map',
-    feature2_desc: 'Track sage locations and migration paths across different periods',
-    feature3: 'Advanced Search',
-    feature3_desc: 'Support for Hebrew transliterations and multiple name formats',
-    feature4: 'Research Documents',
-    feature4_desc: 'Scholarly summaries reviewed and attributed to sources',
-    feature5: 'Teaching Materials',
-    feature5_desc: '45-minute lesson plans with discussion questions and resources',
-    feature6: 'Bilingual Interface',
-    feature6_desc: 'Full Hebrew (RTL) and English support with language switching',
-    feature7: 'Responsive Design',
-    feature7_desc: 'Desktop, tablet, mobile with optimized interface for each',
-    projectLead: '👤 Project Lead',
-    techStack: '💻 Tech Stack',
-    dataSources: '📚 Data Sources',
-    spirit: '🎓 Project Spirit',
-    spirit_text: 'We believe Jewish sages should not be names in a book, but living figures connected through example, debate, and mutual influence. This project preserves their wisdom while making it accessible to the next generation of researchers and students.',
-    footer: 'Ozar Chachamim — Preserving the Wisdom of Our Sages',
-    updated: 'Updated: August 2026 | Version 2.0',
-    contact: 'Contact',
-  },
-  ru: {
-    title: 'Оцар Хахамим',
-    subtitle: 'Граф знаний еврейских мудрецов',
-    description: 'Интерактивная база знаний для студентов и выпускников ешив.',
-    network: 'Наша сеть',
-    sages: 'Мудрецы',
-    connections: 'Связи',
-    research: 'Мудрецы с исследованиями',
-    coverage: 'Географическое покрытие',
-    features: '✨ Основные возможности',
-    feature1: 'Интерактивная сеть связей',
-    feature1_desc: 'D3.js force-directed network с поиском в реальном времени и подсветкой связей',
-    feature2: 'Географическая карта',
-    feature2_desc: 'Отслеживание местоположений мудрецов и путей миграции по эпохам',
-    feature3: 'Расширенный поиск',
-    feature3_desc: 'Поддержка еврейской транслитерации и разных форм имён',
-    feature4: 'Исследовательские документы',
-    feature4_desc: 'Научные резюме, проверенные и атрибутированные источникам',
-    feature5: 'Учебные материалы',
-    feature5_desc: 'Планы уроков на 45 минут с вопросами для обсуждения',
-    feature6: 'Многоязычный интерфейс',
-    feature6_desc: 'Иврит (RTL), английский и русский с переключением языка',
-    feature7: 'Адаптивный дизайн',
-    feature7_desc: 'Настольные компьютеры, планшеты и мобильные устройства',
-    projectLead: '👤 Руководитель проекта',
-    techStack: '💻 Технологический стек',
-    dataSources: '📚 Источники данных',
-    spirit: '🎓 Дух проекта',
-    spirit_text: 'Мы верим, что еврейские мудрецы — это не просто имена в книге, а живые фигуры, связанные примером, спором и взаимным влиянием. Этот проект сохраняет их мудрость и делает её доступной следующему поколению исследователей и учеников.',
-    footer: 'Оцар Хахамим — сохраняя мудрость наших мудрецов',
-    updated: 'Обновлено: август 2026 | Версия 2.0',
-    contact: 'Контакт',
-  },
+const VIEWS: Tab[] = ['graph', 'map', 'traditions', 'timeline', 'genealogy', 'ideas']
+
+const CONTACT_NAME = 'Avraham Goldshtein'
+const CONTACT_EMAIL = 'avraham.gshtein@gmail.com'
+
+interface AboutContentProps {
+  locale: Locale
+  stats: CorpusStats
+  /** 'tab': inside AppShell's canvas (own scroller, clears the tab bar). 'page': the /about route. */
+  variant: 'tab' | 'page'
+  /** Tab variant: switch views in place instead of reloading the home page. */
+  onOpenTab?: (tab: Tab) => void
 }
 
-/** Corpus totals computed on the server from the same static dataset. */
-export interface CorpusStats {
-  sages: number
-  connections: number
-  withResearch: number
-  regions: number
-}
-
-export function AboutContent({ locale, initialStats }: { locale: Locale; initialStats?: CorpusStats }) {
-  // Counted from the loaded dataset rather than written in. These numbers
-  // were hardcoded and had drifted badly — the page claimed 1,624 connections
-  // against an actual 597 — so they are derived now and cannot go stale.
-  // Until the client dataset arrives, show the server's counts of the same
-  // corpus instead of "0 0 0 0".
-  const sages       = useAppStore(s => s.sages)
-  const connections = useAppStore(s => s.connections)
-  const loaded = sages.length > 0 || !initialStats
-  const sageCount       = loaded ? sages.length : initialStats.sages
-  const connectionCount = loaded ? connections.length : initialStats.connections
-  const withResearch = loaded ? sages.filter(s => s.has_research).length : initialStats.withResearch
-  const regionCount  = loaded ? new Set(sages.flatMap(s => regionsOf(s.location))).size : initialStats.regions
-
+export function AboutContent({ locale, stats, variant, onOpenTab }: AboutContentProps) {
+  const c = ABOUT_COPY[locale]
+  const t = UI[locale]
   const isHe = locale === 'he'
-  const t = translations[locale]
+  const fmt = (n: number) => n.toLocaleString(locale === 'he' ? 'he-IL' : locale)
+  const arrow = isHe ? '←' : '→'
 
-  const features = [
-    { title: t.feature1, desc: t.feature1_desc },
-    { title: t.feature2, desc: t.feature2_desc },
-    { title: t.feature3, desc: t.feature3_desc },
-    { title: t.feature4, desc: t.feature4_desc },
-    { title: t.feature5, desc: t.feature5_desc },
-    { title: t.feature6, desc: t.feature6_desc },
-    { title: t.feature7, desc: t.feature7_desc },
+  // The page owns the document's h1; inside the app shell, the header's site
+  // title is the h1, so every level here drops by one.
+  const H1 = variant === 'page' ? 'h1' : 'h2'
+  const H2 = variant === 'page' ? 'h2' : 'h3'
+  const H3 = variant === 'page' ? 'h3' : 'h4'
+
+  const figures = [
+    { value: stats.sages, label: c.stats.sages },
+    { value: stats.withResearch, label: c.stats.research },
+    { value: stats.connections, label: c.stats.connections },
+    { value: stats.episodes, label: c.stats.episodes },
   ]
 
-  return (
-    <div
-      className={`absolute inset-0 overflow-y-auto bg-gradient-to-b from-slate-950 to-slate-900 text-slate-100 ${
-        isHe ? 'rtl' : 'ltr'
-      }`}
-    >
-      <div className="mx-auto max-w-5xl px-6 py-12">
-        {/* Header with medallion image */}
-        <div className="mb-12 text-center">
-          <div className="flex justify-center mb-8">
-            <img
-              src="/images/temple-medallion.png"
-              alt="Ozar Chachamim"
-              className="w-56 h-56 md:w-72 md:h-72 drop-shadow-2xl"
-            />
-          </div>
-          <h1 className="mb-4 text-5xl font-bold font-serif text-gold-400">{t.title}</h1>
-          <p className="mb-2 text-xl text-slate-300">{t.subtitle}</p>
-          <p className="text-slate-400">{t.description}</p>
-        </div>
+  const more = [
+    { title: c.listenTitle, body: c.listenBody(fmt(stats.episodes)), icon: <IconHeadphones /> },
+    { title: c.askTitle, body: c.askBody, icon: <IconChat /> },
+    { title: c.searchTitle, body: c.searchBody, icon: <IconSearch /> },
+    { title: c.langsTitle, body: c.langsBody, icon: <IconGlobe /> },
+  ]
 
-        {/* Network Stats */}
-        <div className="mb-16 grid grid-cols-2 gap-4 text-center md:grid-cols-4">
-          <div className="rounded-lg border border-gold-500/20 bg-slate-800/50 p-6">
-            <div className="text-4xl font-bold text-gold-400">{sageCount.toLocaleString()}</div>
-            <div className="text-sm text-slate-400">{t.sages}</div>
-          </div>
-          <div className="rounded-lg border border-gold-500/20 bg-slate-800/50 p-6">
-            <div className="text-4xl font-bold text-gold-400">{connectionCount.toLocaleString()}</div>
-            <div className="text-sm text-slate-400">{t.connections}</div>
-          </div>
-          <div className="rounded-lg border border-gold-500/20 bg-slate-800/50 p-6">
-            <div className="text-4xl font-bold text-gold-400">{withResearch.toLocaleString()}</div>
-            <div className="text-sm text-slate-400">{t.research}</div>
-          </div>
-          <div className="rounded-lg border border-gold-500/20 bg-slate-800/50 p-6">
-            <div className="text-4xl font-bold text-gold-400">{regionCount}</div>
-            <div className="text-sm text-slate-400">{t.coverage}</div>
-          </div>
-        </div>
+  const sectionTitle = 'font-serif text-2xl md:text-3xl font-bold text-ink-50'
 
-        {/* Features */}
-        <div className="mb-16">
-          <h2 className="mb-8 text-3xl font-bold text-gold-400">{t.features}</h2>
-          <div className="grid gap-6 md:grid-cols-2">
-            {features.map((feature, idx) => (
-              <div key={idx} className="rounded-lg border border-gold-500/10 bg-slate-800/20 p-6">
-                <h3 className="mb-2 flex items-start gap-2 text-lg font-semibold text-gold-300">
-                  <span className="text-gold-400">✓</span>
-                  <span>{feature.title}</span>
-                </h3>
-                <p className="text-sm leading-relaxed text-slate-400">{feature.desc}</p>
+  const body = (
+    <article className={cn('about-content mx-auto max-w-4xl px-4 sm:px-8', variant === 'tab' ? 'pt-10 pb-36' : 'pt-10 md:pt-14 pb-20')}>
+      {/* ── Hero ─────────────────────────────────────────────── */}
+      <header className="text-center animate-fade-in">
+        <Image
+          src="/images/temple-medallion.png"
+          alt=""
+          width={112}
+          height={112}
+          sizes="112px"
+          priority={variant === 'page'}
+          className="mx-auto h-24 w-24 md:h-28 md:w-28 rounded-full ring-1 ring-gold-500/30 shadow-gold-glow"
+        />
+        <p className={cn('mt-6 font-sans text-xs font-semibold text-gold-400', !isHe && 'uppercase tracking-[0.18em]')}>
+          {c.eyebrow}
+        </p>
+        <H1 className="mt-2 font-serif text-4xl sm:text-5xl md:text-6xl font-bold leading-tight text-gold-300">
+          {t.appTitle}
+        </H1>
+        <p className="mt-5 mx-auto max-w-2xl font-serif text-lg md:text-xl leading-relaxed text-ink-100">
+          {c.lede}
+        </p>
+        <p className="mt-4 mx-auto max-w-2xl font-sans text-sm md:text-base leading-relaxed text-ink-300">
+          {c.audience}
+        </p>
+      </header>
+
+      {/* ── Live figures ─────────────────────────────────────── */}
+      <dl className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-px overflow-hidden rounded-2xl border border-gold-500/15 bg-gold-500/10">
+        {figures.map(f => (
+          <div key={f.label} className="flex flex-col-reverse items-center justify-center gap-1 bg-ink-850 px-3 py-5 text-center">
+            <dt className="font-sans text-xs leading-snug text-ink-400">{f.label}</dt>
+            <dd className="font-serif text-3xl md:text-4xl font-bold tabular-nums text-gold-300">{fmt(f.value)}</dd>
+          </div>
+        ))}
+      </dl>
+      <p className="mt-3 text-center font-sans text-xs text-ink-400">
+        {c.asOf}{formatAboutDate(new Date(`${stats.asOf}T12:00:00Z`), locale)}
+      </p>
+
+      {/* ── The research ─────────────────────────────────────── */}
+      <section
+        aria-labelledby="about-research"
+        className="mt-14 rounded-2xl border border-gold-500/20 bg-gradient-to-b from-gold-500/[0.07] to-transparent p-6 md:p-8"
+      >
+        <H2 id="about-research" className={sectionTitle}>{c.researchTitle}</H2>
+        <p className="mt-4 font-sans text-base leading-relaxed text-ink-200">
+          {c.researchBody(fmt(stats.sages), fmt(stats.withResearch))}
+        </p>
+        <p className="mt-3 font-sans text-sm leading-relaxed text-ink-300">{c.researchHow}</p>
+      </section>
+
+      {/* ── Views ────────────────────────────────────────────── */}
+      <section aria-labelledby="about-views" className="mt-14">
+        <H2 id="about-views" className={sectionTitle}>{c.viewsTitle}</H2>
+        <p className="mt-3 font-sans text-base leading-relaxed text-ink-300">{c.viewsIntro}</p>
+        <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {VIEWS.map(tab => {
+            const meta = TAB_META[tab]
+            const label = isHe ? meta.labelHe : locale === 'ru' ? meta.labelRu : meta.labelEn
+            const href = tab === 'graph' ? `/${locale}` : `/${locale}?tab=${tab}`
+            return (
+              <li key={tab}>
+                <a
+                  href={href}
+                  onClick={onOpenTab ? e => {
+                    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return
+                    e.preventDefault()
+                    onOpenTab(tab)
+                  } : undefined}
+                  className={cn(
+                    'group flex h-full flex-col rounded-xl border border-ink-700/60 bg-ink-800/40 p-5',
+                    'transition-colors duration-200 hover:border-gold-500/40 hover:bg-ink-800/80',
+                  )}
+                >
+                  <div className="flex items-center gap-3">
+                    <span
+                      aria-hidden
+                      className="grid h-9 w-9 flex-shrink-0 place-items-center rounded-lg bg-gold-500/10 text-base text-gold-400 font-mono"
+                    >
+                      {meta.icon === 'temple' ? '◆' : meta.icon}
+                    </span>
+                    <H3 className="font-serif text-lg font-bold text-ink-50">{label}</H3>
+                  </div>
+                  <p className="mt-3 flex-1 font-sans text-sm leading-relaxed text-ink-300">{c.views[tab]}</p>
+                  <span className="mt-4 font-sans text-xs font-semibold text-gold-400">
+                    {c.openView} <span aria-hidden className="inline-block transition-transform duration-200 group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5">{arrow}</span>
+                  </span>
+                </a>
+              </li>
+            )
+          })}
+        </ul>
+      </section>
+
+      {/* ── Listen, ask, search, languages ───────────────────── */}
+      <section aria-labelledby="about-more" className="mt-14">
+        <H2 id="about-more" className={sectionTitle}>{c.moreTitle}</H2>
+        <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+          {more.map(item => (
+            <li key={item.title} className="flex gap-4 rounded-xl border border-ink-700/60 p-5">
+              <span aria-hidden className="grid h-9 w-9 flex-shrink-0 place-items-center rounded-lg bg-gold-500/10 text-gold-400">
+                {item.icon}
+              </span>
+              <div>
+                <H3 className="font-serif text-lg font-bold text-ink-50">{item.title}</H3>
+                <p className="mt-1.5 font-sans text-sm leading-relaxed text-ink-300">{item.body}</p>
               </div>
-            ))}
-          </div>
-        </div>
+            </li>
+          ))}
+        </ul>
+      </section>
 
-        {/* Project Lead & Info */}
-        <div className="mb-16 grid gap-8 md:grid-cols-2">
-          {/* Project Lead */}
-          <div className="rounded-lg border border-gold-500/10 bg-slate-800/30 p-8">
-            <h3 className="mb-4 text-xl font-bold text-gold-400">{t.projectLead}</h3>
-            <p className="mb-1 text-lg font-semibold text-slate-200">Avraham Goldshtein</p>
+      {/* ── Citation ─────────────────────────────────────────── */}
+      <section aria-labelledby="about-cite" className="mt-14">
+        <H2 id="about-cite" className={sectionTitle}>{c.citeTitle}</H2>
+        <p className="mt-3 font-sans text-base leading-relaxed text-ink-300">{c.citeIntro}</p>
+        <CiteBox locale={locale} siteUrl={SITE_URL} />
+      </section>
+
+      {/* ── Data and people ──────────────────────────────────── */}
+      <div className="mt-14 grid gap-4 md:grid-cols-[3fr_2fr]">
+        <section aria-labelledby="about-data" className="rounded-2xl border border-ink-700/60 bg-ink-800/30 p-6">
+          <H2 id="about-data" className="font-serif text-xl font-bold text-ink-50">{c.dataTitle}</H2>
+          <p className="mt-3 font-sans text-sm leading-relaxed text-ink-300">{c.dataBody}</p>
+          <p className="mt-2 font-sans text-sm leading-relaxed text-ink-300">{c.dataDates}</p>
+          <p className="mt-4 font-sans text-sm leading-relaxed text-ink-200">
+            {c.dataInvite}{' '}
             <a
-              href="mailto:avraham.gshtein@gmail.com"
-              className="text-sm text-gold-400 hover:text-gold-300 transition-colors"
+              href={`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(c.dataSubject)}`}
+              className="link-gold font-medium"
+              dir="ltr"
             >
-              avraham.gshtein@gmail.com
+              {CONTACT_EMAIL}
             </a>
-            <p className="mt-4 text-sm text-slate-500">
-              {isHe ? 'מנהל הפרויקט, עיצוב מערכת וביצוע' : 'Project Lead, System Design & Implementation'}
-            </p>
-          </div>
+          </p>
+        </section>
 
-          {/* Tech Stack */}
-          <div className="rounded-lg border border-gold-500/10 bg-slate-800/30 p-8">
-            <h3 className="mb-4 text-xl font-bold text-gold-400">{t.techStack}</h3>
-            <div className="space-y-2 text-sm text-slate-400">
-              <p><span className="text-gold-300">Frontend:</span> Next.js 13+, TypeScript, Tailwind CSS</p>
-              <p><span className="text-gold-300">Visualization:</span> D3.js v7, Leaflet.js, Marker Clustering</p>
-              <p><span className="text-gold-300">Backend:</span> Supabase PostgreSQL, REST API</p>
-              <p><span className="text-gold-300">Deployment:</span> Vercel (Edge Network)</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Data Sources */}
-        <div className="mb-16 rounded-lg border border-gold-500/10 bg-slate-800/30 p-8">
-          <h3 className="mb-4 text-xl font-bold text-gold-400">{t.dataSources}</h3>
-          <div className="grid gap-4 text-sm text-slate-400 md:grid-cols-2">
-            <div>
-              <p className="font-semibold text-gold-300 mb-2">Master Dataset</p>
-              <p>{sageCount} Hebrew sages with period, region, field classifications</p>
-            </div>
-            <div>
-              <p className="font-semibold text-gold-300 mb-2">Research Base</p>
-              <p>Biographical documents across {withResearch} sages, reviewed and summarized (with Hebrew/English/Russian variants)</p>
-            </div>
-            <div>
-              <p className="font-semibold text-gold-300 mb-2">Geographic Data</p>
-              <p>{regionCount} of the site&apos;s 10 geographic regions represented, keyword-matched from sage locations</p>
-            </div>
-            <div>
-              <p className="font-semibold text-gold-300 mb-2">Connections</p>
-              <p>{connectionCount.toLocaleString()} validated relationships (student, teacher, colleague, etc.)</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Project Spirit */}
-        <div className="mb-16 rounded-lg border border-gold-500/10 bg-slate-800/30 p-8">
-          <h3 className="mb-4 text-xl font-bold text-gold-400">{t.spirit}</h3>
-          <p className="leading-relaxed text-slate-300">{t.spirit_text}</p>
-        </div>
-
-        {/* Footer */}
-        <div className="border-t border-gold-500/20 pt-8 pb-12 text-center">
-          <p className="mb-2 text-lg font-semibold text-gold-400">{t.footer}</p>
-          <p className="text-sm text-slate-500">{t.updated}</p>
-        </div>
+        <section aria-labelledby="about-credits" className="rounded-2xl border border-ink-700/60 bg-ink-800/30 p-6">
+          <H2 id="about-credits" className="font-serif text-xl font-bold text-ink-50">{c.creditsTitle}</H2>
+          <p className="mt-3 font-serif text-lg font-bold text-ink-100" lang="en" dir="ltr">
+            <bdi>{CONTACT_NAME}</bdi>
+          </p>
+          <p className="mt-1 font-sans text-sm text-ink-300">{c.creditsRole}</p>
+          <a href={`mailto:${CONTACT_EMAIL}`} className="link-gold mt-3 inline-block font-sans text-sm" dir="ltr">
+            {CONTACT_EMAIL}
+          </a>
+        </section>
       </div>
+
+      {/* ── Closing ──────────────────────────────────────────── */}
+      <footer className="mt-16 text-center">
+        <div aria-hidden className="mx-auto mb-6 h-px w-24 bg-gradient-to-r from-transparent via-gold-500/60 to-transparent" />
+        <p className="mx-auto max-w-2xl font-serif text-lg md:text-xl leading-relaxed text-ink-200">{c.spirit}</p>
+        <p className="mt-4 font-serif text-base font-bold text-gold-400">{t.appTitle}</p>
+      </footer>
+    </article>
+  )
+
+  if (variant === 'page') return body
+  return (
+    <div className="absolute inset-0 overflow-y-auto overscroll-contain">
+      {body}
     </div>
   )
+}
+
+/* ── Icons (stroke, currentColor) ──────────────────────────── */
+
+function Svg({ children }: { children: React.ReactNode }) {
+  return (
+    <svg className="h-[18px] w-[18px]" fill="none" stroke="currentColor" strokeWidth={1.75} viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round">
+      {children}
+    </svg>
+  )
+}
+function IconHeadphones() {
+  return <Svg><path d="M3 14v-2a9 9 0 0118 0v2" /><path d="M21 14v3a2 2 0 01-2 2h-1v-6h3M3 14v3a2 2 0 002 2h1v-6H3" /></Svg>
+}
+function IconChat() {
+  return <Svg><path d="M21 12a8 8 0 01-11.6 7.1L4 20l1-4.4A8 8 0 1121 12z" /><path d="M8.5 11h.01M12 11h.01M15.5 11h.01" /></Svg>
+}
+function IconSearch() {
+  return <Svg><circle cx="11" cy="11" r="7" /><path d="M20 20l-3.5-3.5" /></Svg>
+}
+function IconGlobe() {
+  return <Svg><circle cx="12" cy="12" r="9" /><path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18" /></Svg>
 }

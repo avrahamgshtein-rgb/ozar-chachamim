@@ -11,7 +11,7 @@
   --ink-700: #2a2318;
   --ink-600: #665b4f;
   --ink-500: #90806e;
-  --ink-400: #917c67;
+  --ink-400: #968169;
   --ink-300: #9a8570;
   --ink-200: #c4a87d;
   --ink-100: #e8d5b0;
@@ -25,10 +25,16 @@
   /* RGB triplets for Tailwind alpha support */
   --ink-950-rgb: 7 5 3;   --ink-900-rgb: 10 8 6;    --ink-850-rgb: 15 13 10;
   --ink-800-rgb: 28 24 18; --ink-700-rgb: 42 35 24;  --ink-600-rgb: 102 91 79;
-  --ink-500-rgb: 144 128 110; --ink-400-rgb: 145 124 103; --ink-300-rgb: 154 133 112;
+  --ink-500-rgb: 144 128 110; --ink-400-rgb: 150 129 105; --ink-300-rgb: 154 133 112;
   --ink-200-rgb: 196 168 125; --ink-100-rgb: 232 213 176; --ink-50-rgb: 245 238 216;
   --gold-600-rgb: 160 120 40; --gold-500-rgb: 201 151 58; --gold-400-rgb: 217 170 74;
   --gold-300-rgb: 232 184 75; --gold-200-rgb: 240 204 128; --gold-100-rgb: 247 228 176;
+
+  /* ink-600 doubles as a border and surface tone, too dim for text (3:1).
+     Text set in it uses this lifted value instead (see "Muted text" below). */
+  --ink-600-text-rgb: 143 126 108;
+
+  color-scheme: dark;
 
   --radius: 0.5rem;
   --header-h: 64px;
@@ -134,10 +140,55 @@ h1, h2, h3 {
 }
 
 /* ── Focus ring ─────────────────────────────────────────────── */
-:focus-visible {
-  outline: 2px solid var(--gold-500);
+/* One visible ring for every keyboard-focused control. `:root` lifts the
+   specificity above Tailwind's `outline-none` / `focus:outline-none`, which
+   several components set and which left keyboard users with no ring at all.
+   No border-radius here: the outline follows the element's own corners. */
+:root :focus-visible {
+  outline: 2px solid rgb(var(--gold-400-rgb));
   outline-offset: 2px;
-  border-radius: 4px;
+}
+/* Programmatic focus targets (skip-link destinations) are whole regions. */
+:root #main:focus,
+:root [data-focus-region]:focus {
+  outline: none;
+}
+
+/* ── Skip link ──────────────────────────────────────────────── */
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  inset-inline-start: 0.75rem;
+  z-index: 2000;
+  padding: 0.625rem 1rem;
+  border-radius: 0.75rem;
+  background: rgb(var(--gold-500-rgb));
+  color: rgb(var(--ink-900-rgb));
+  font: 700 0.875rem/1.2 'Heebo', sans-serif;
+  text-decoration: none;
+  /* Parked above the viewport with no shadow, so nothing of it shows at rest. */
+  transform: translateY(calc(-100% - 2rem));
+  transition: transform 0.15s ease-out;
+}
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: none;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+}
+:root .skip-link:focus-visible {
+  outline-color: rgb(var(--ink-100-rgb));
+}
+
+/* ── Muted text ─────────────────────────────────────────────── */
+/* Text in ink-600 fell to 3:1 in dark and 2:1 in light, below WCAG AA's
+   4.5:1. Borders and surfaces keep the ink-600 tone; its text utilities
+   read from --ink-600-text-rgb, which clears 4.5:1 on the page, glass and
+   card surfaces in both themes. */
+.text-ink-600 {
+  color: rgb(var(--ink-600-text-rgb) / var(--tw-text-opacity, 1));
+}
+.placeholder-ink-600::placeholder {
+  color: rgb(var(--ink-600-text-rgb) / var(--tw-placeholder-opacity, 1));
 }
 
 /* ── Graph canvas fills full height ────────────────────────── */
@@ -205,7 +256,7 @@ h1, h2, h3 {
   --ink-800: #efe6d2;
   --ink-700: #e3d5ba;
   --ink-600: #c3ad86;
-  --ink-500: #8a7350;
+  --ink-500: #7a6443;
   --ink-400: #6b573f;
   --ink-300: #52422e;
   --ink-200: #3d2f1f;
@@ -213,16 +264,20 @@ h1, h2, h3 {
   --ink-50:  #140e08;
 
   --gold-600: #7a5a16;
-  --gold-500: #8a6a1e;
+  --gold-500: #80621a;
   --gold-400: #7a5a16;
   --gold-300: #6d4f12;
 
   --ink-950-rgb: 245 238 216; --ink-900-rgb: 250 247 240; --ink-850-rgb: 245 239 226;
   --ink-800-rgb: 239 230 210; --ink-700-rgb: 227 213 186; --ink-600-rgb: 195 173 134;
-  --ink-500-rgb: 138 115 80;  --ink-400-rgb: 107 87 63;   --ink-300-rgb: 82 66 46;
+  --ink-500-rgb: 122 100 67;  --ink-400-rgb: 107 87 63;   --ink-300-rgb: 82 66 46;
   --ink-200-rgb: 61 47 31;    --ink-100-rgb: 36 27 16;    --ink-50-rgb: 20 14 8;
-  --gold-600-rgb: 122 90 22;  --gold-500-rgb: 138 106 30; --gold-400-rgb: 122 90 22;
+  --gold-600-rgb: 122 90 22;  --gold-500-rgb: 128 98 26;  --gold-400-rgb: 122 90 22;
   --gold-300-rgb: 109 79 18;  --gold-200-rgb: 138 106 30; --gold-100-rgb: 158 126 50;
+
+  --ink-600-text-rgb: 120 99 74;
+
+  color-scheme: light;
 }
 
 [data-theme='light'] body::before {
@@ -254,4 +309,96 @@ h1, h2, h3 {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* ══ s2-reader: sage page — research reader and print ═══════════════════
+   Appended by the s2-reader branch. Scoped to .sage-page (the sage page's
+   scroll container) so the app shell is untouched. */
+
+/* A linked-to source entry flashes once, so the eye finds it. */
+.sage-page .reader-bib-entry:target {
+  animation: reader-target 1.6s ease-out 1;
+}
+@keyframes reader-target {
+  from { background-color: rgb(var(--gold-500-rgb) / 0.35); }
+  to   { background-color: rgb(var(--gold-500-rgb) / 0.15); }
+}
+
+@media print {
+  @page { margin: 16mm 15mm 18mm; }
+
+  html, body {
+    height: auto !important;
+    overflow: visible !important;
+    background: #fff !important;
+    color: #111 !important;
+  }
+  body::before { display: none !important; }
+
+  /* The page scrolls inside #sage-scroll on screen; on paper it just flows. */
+  .sage-page {
+    height: auto !important;
+    overflow: visible !important;
+    background: #fff !important;
+    color: #111 !important;
+  }
+
+  /* No chrome: top bar, toasts, buttons, the player, the contents. */
+  .sage-page nav,
+  .sage-page .no-print,
+  .sage-page button,
+  .sage-page iframe { display: none !important; }
+
+  /* Folded lists ("ועוד 5") print in full, without their toggle. */
+  .sage-page details > summary { display: none !important; }
+  .sage-page details::details-content { content-visibility: visible !important; }
+
+  /* No dark surfaces, glows or tinted panels. */
+  .sage-page *,
+  .sage-page *::before,
+  .sage-page *::after {
+    background: transparent !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    color: #111 !important;
+    border-color: #bbb !important;
+  }
+
+  .sage-page .reader-body {
+    font-family: 'Frank Ruhl Libre', 'David Libre', Georgia, 'Times New Roman', serif !important;
+    font-size: 11.5pt !important;
+    line-height: 1.6 !important;
+    max-width: none !important;
+  }
+  .sage-page main { max-width: none !important; padding: 0 !important; }
+  .sage-page .sage-hero { border: 0 !important; padding: 0 0 8pt !important; }
+
+  /* Major headings start a page: the research section, each further paper, its sources. */
+  .sage-page #research,
+  .sage-page .reader-doc + .reader-doc,
+  .sage-page .reader-bib { break-before: page; }
+  .sage-page h1, .sage-page h2, .sage-page h3, .sage-page h4 { break-after: avoid; break-inside: avoid; }
+  .sage-page p, .sage-page li { orphans: 3; widows: 3; }
+  .sage-page blockquote, .sage-page tr, .sage-page .reader-lead { break-inside: avoid; }
+
+  /* Tables print whole, not in a scroll box. */
+  .sage-page .reader-table { overflow: visible !important; border: 1px solid #bbb !important; }
+  .sage-page .reader-table table { min-width: 0 !important; }
+
+  /* Show where links go. The sources list already prints its URLs. */
+  .sage-page a[href^="http"]:not(.reader-url)::after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    font-family: 'Heebo', sans-serif;
+    word-break: break-all;
+    color: #555 !important;
+  }
+  .sage-page .reader-url {
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    word-break: break-all;
+    text-decoration: none !important;
+  }
+  .sage-page sup.cite a { text-decoration: none !important; }
 }

@@ -1,12 +1,13 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import dynamic from 'next/dynamic'
 import { cn } from '@/lib/utils'
-import { tr } from '@/lib/i18n'
+import { tr, UI } from '@/lib/i18n'
 import { Header } from './Header'
-import { TabBar } from './TabBar'
+import { TabBar, tabId, panelId } from './TabBar'
 import { Drawer } from './Drawer'
+import { SkipLink } from './SkipLink'
 import { SearchBar } from '@/components/ui/SearchBar'
 import { FAB } from '@/components/ui/FAB'
 import { ChatWidget } from '@/components/chat/ChatWidget'
@@ -20,13 +21,12 @@ import { MapLegend } from '@/components/viz/MapLegend'
 import { PlaceCohort } from '@/components/viz/PlaceCohort'
 import { GeographyPanel } from '@/components/viz/GeographyPanel'
 import { GeographyMobileDrawer } from '@/components/viz/GeographyMobileDrawer'
-import { useRef } from 'react'
 import { useAppStore } from '@/store/useAppStore'
 import { parseURLState, updateURLWithState } from '@/lib/urlState'
 import { fetchContentOverlay, applyOverlay } from '@/lib/contentOverlay'
 import { loadAppShellData } from '@/lib/appShellDataLoader'
 import type { Locale, Tab } from '@/lib/types'
-import type { CorpusStats } from '@/components/about/AboutContent'
+import type { CorpusStats } from '@/lib/siteStats'
 
 // Dynamic imports — browser-only visualization libraries.
 // Each tab shows a skeleton screen while its chunk loads.
@@ -54,9 +54,11 @@ const GenealogyTree = dynamic(
   () => import('@/components/viz/GenealogyTree').then(m => ({ default: m.GenealogyTree })),
   { ssr: false, loading: () => <VizSkeleton /> },
 )
+// The same About component the /about page renders; split out because most
+// visits never open this tab.
 const AboutContent = dynamic(
   () => import('@/components/about/AboutContent').then(m => ({ default: m.AboutContent })),
-  { ssr: false, loading: () => <VizSkeleton /> },
+  { ssr: false, loading: () => <VizSkeleton variant="list" /> },
 )
 // Stage 4 — 3D time-layer mode. Lazy-loaded so the Geography tab pays nothing
 // for it unless the reader actually switches modes.
@@ -69,8 +71,11 @@ interface AppShellProps {
   locale: Locale
   initialTotal: number
   initialLastUpdate: string
-  /** Server-computed corpus totals, shown by the About tab until data loads. */
-  initialStats?: CorpusStats
+  /**
+   * Server-computed corpus totals (lib/siteStats.ts). Seed the header count
+   * before the client dataset loads, and feed the About tab.
+   */
+  initialStats: CorpusStats
 }
 
 export function AppShell({ locale, initialTotal, initialLastUpdate, initialStats }: AppShellProps) {
@@ -205,9 +210,13 @@ export function AppShell({ locale, initialTotal, initialLastUpdate, initialStats
       className="relative w-full h-dvh overflow-hidden bg-ink-900"
       dir={locale === 'he' ? 'rtl' : 'ltr'}
     >
-      <Header locale={locale} otherLocale={otherLocale} />
+      {/* Second skip link (the layout's "skip to content" comes first): the
+          tab bar sits after the canvas in the DOM, so jump straight to it. */}
+      <SkipLink label={UI[locale].skipToTabs} target="tabbar" focus='#tabbar [aria-selected="true"]' />
 
-      <main className="absolute inset-0 pt-[var(--header-h,64px)]">
+      <Header locale={locale} otherLocale={otherLocale} initialStats={initialStats} />
+
+      <main id="main" className="absolute inset-0 pt-[var(--header-h,64px)]">
         <CanvasArea
           activeTab={activeTab}
           locale={locale}
@@ -260,12 +269,21 @@ function CanvasArea({
   setIsGeographyDrawerOpen,
   initialStats,
 }: {
-  activeTab: string
+  activeTab: Tab
   locale: Locale
   isGeographyDrawerOpen: boolean
   setIsGeographyDrawerOpen: (open: boolean) => void
-  initialStats?: CorpusStats
+  initialStats: CorpusStats
 }) {
+  const setActiveTab = useAppStore(s => s.setActiveTab)
+  // Each view is the tabpanel of its TabBar tab. Graph and map stay mounted
+  // (hidden via CSS); the rest mount only while selected.
+  const panel = (tab: Tab) => ({
+    role: 'tabpanel' as const,
+    id: panelId(tab),
+    'aria-labelledby': tabId(tab),
+  })
+
   // Stage 4 — Geography render mode. Purely presentational: filters and the
   // selected sage live in the store, so switching modes carries both across.
   const [geoMode, setGeoMode] = useState<'2d' | '3d'>('2d')
@@ -281,13 +299,13 @@ function CanvasArea({
   return (
     <div className="relative w-full h-full">
       {/* Network graph — always mounted so simulation lives across tab switches */}
-      <div className={cn('absolute inset-0 isolate', activeTab === 'graph' ? 'block' : 'hidden')}>
+      <div {...panel('graph')} className={cn('absolute inset-0 isolate', activeTab === 'graph' ? 'block' : 'hidden')}>
         <NetworkGraph locale={locale} />
         <FilterChips locale={locale} />
       </div>
 
       {/* Geo map with geography panel — lazy-mounted on first visit */}
-      <div className={cn('absolute inset-0 isolate flex flex-row-reverse', activeTab === 'map' ? 'flex' : 'hidden')}>
+      <div {...panel('map')} className={cn('absolute inset-0 isolate flex flex-row-reverse', activeTab === 'map' ? 'flex' : 'hidden')}>
         <div className="flex-1 relative">
           {/* Stage 4: the 2D atlas stays mounted (Leaflet needs a stable container)
               and is hidden rather than unmounted when the 3D mode is active. */}
@@ -345,13 +363,13 @@ function CanvasArea({
             ))}
           </div>
 
-          {/* Mobile geography button. bottom-[9.25rem]: the fixed tab bar
-              (bottom 1–5rem) and the search/chat buttons (bottom 5–8.5rem)
-              paint above this isolated area, so lower down a tap landed on
-              them instead. z-[1001]: clears Leaflet's panes (200–800). */}
+          {/* Mobile geography button. bottom-[9.75rem]: the fixed tab bar
+              (bottom 1–5.4rem) and the search/chat buttons (bottom
+              5.75–9.25rem) paint above this isolated area, so lower down a tap
+              landed on them instead. z-[1001]: clears Leaflet's panes (200–800). */}
           <button
             onClick={() => setIsGeographyDrawerOpen(true)}
-            className="md:hidden absolute bottom-[9.25rem] end-4 z-[1001] px-3 py-2 bg-gold-500/90 hover:bg-gold-400 text-ink-900 font-sans font-bold text-xs rounded-md shadow-glass transition-colors"
+            className="md:hidden absolute bottom-[9.75rem] end-4 z-[1001] px-3 py-2 bg-gold-500/90 hover:bg-gold-400 text-ink-900 font-sans font-bold text-xs rounded-md shadow-glass transition-colors"
           >
             📍 {tr(locale, 'גיאוגרפיה', 'Geography', 'География')}
           </button>
@@ -373,64 +391,38 @@ function CanvasArea({
 
       {/* Traditions — era-grouped sage cards */}
       {activeTab === 'traditions' && (
-        <div className="absolute inset-0">
+        <div {...panel('traditions')} className="absolute inset-0">
           <Traditions locale={locale} />
         </div>
       )}
 
       {/* Timeline — D3 horizontal bands */}
       {activeTab === 'timeline' && (
-        <div className="absolute inset-0">
+        <div {...panel('timeline')} className="absolute inset-0">
           <Timeline locale={locale} />
         </div>
       )}
 
       {/* Sages table */}
       {activeTab === 'ideas' && (
-        <div className="absolute inset-0">
+        <div {...panel('ideas')} className="absolute inset-0">
           <SagesTable locale={locale} />
         </div>
       )}
 
       {/* Genealogy tree */}
       {activeTab === 'genealogy' && (
-        <div className="absolute inset-0">
+        <div {...panel('genealogy')} className="absolute inset-0">
           <GenealogyTree locale={locale} />
         </div>
       )}
 
-      {/* About page */}
-      {activeTab === 'about' && <AboutContent locale={locale} initialStats={initialStats} />}
-    </div>
-  )
-}
-
-function TabPlaceholder({ icon, label, hint }: { icon: string; label: string; hint: string }) {
-  return (
-    <div className="absolute inset-0 flex items-center justify-center select-none">
-      <div
-        className="absolute inset-0 opacity-[0.035]"
-        style={{
-          backgroundImage: `
-            linear-gradient(to right, var(--ink-200) 1px, transparent 1px),
-            linear-gradient(to bottom, var(--ink-200) 1px, transparent 1px)
-          `,
-          backgroundSize: '48px 48px',
-        }}
-        aria-hidden
-      />
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse 60% 40% at 50% 50%, rgba(201,151,58,0.04) 0%, transparent 70%)' }}
-        aria-hidden
-      />
-      <div className="relative z-10 flex flex-col items-center gap-4 text-center px-8">
-        <span className="text-6xl font-mono text-gold-500/20 animate-pulse-gold" aria-hidden>
-          {icon}
-        </span>
-        <h2 className="font-serif text-2xl font-bold text-ink-700">{label}</h2>
-        <p className="font-sans text-xs text-ink-600 max-w-xs leading-relaxed">{hint}</p>
-      </div>
+      {/* About — the same component as the /about page */}
+      {activeTab === 'about' && (
+        <div {...panel('about')} className="absolute inset-0">
+          <AboutContent locale={locale} stats={initialStats} variant="tab" onOpenTab={setActiveTab} />
+        </div>
+      )}
     </div>
   )
 }

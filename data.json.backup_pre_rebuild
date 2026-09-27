@@ -13,7 +13,7 @@
    "tags": "ספרות בית שני, מוסר ודרך ארץ, גבולות קאנון, השפעה חז\"לית",
    "chapter_type": "טקסט יסוד",
    "spotify_url": "https://open.spotify.com/episode/3u5udRWI84FVJ3OsOBBbPF?si=ek7V_WzPS7OadSPOZSU-VA&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "2",
@@ -298,7 +298,7 @@
    "birth_year": 1380,
    "death_year": 1444,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "18",
@@ -340,7 +340,7 @@
    "tags": "תורה מן השמים, דיוק לשוני, ספר דברים, פרשנות סמנטית",
    "chapter_type": "חכמי ישראל - הגות, הנהגה והלכה",
    "spotify_url": "https://open.spotify.com/episode/5J3m8GmCr0dbgQl0IyUyW6",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "344",
@@ -423,7 +423,7 @@
    "birth_year": 910,
    "death_year": 970,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "24",
@@ -459,7 +459,7 @@
    "birth_year": 939,
    "death_year": 1038,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "26",
@@ -589,7 +589,7 @@
    "birth_year": 1100,
    "death_year": 1171,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "34",
@@ -626,7 +626,7 @@
    "tags": "בהירות תלמוד, שיטתיות, שילוב ירושלמי בבבלי",
    "chapter_type": "חכמי ישראל - הגות, הנהגה והלכה",
    "spotify_url": "https://open.spotify.com/episode/580Us9ygui6IR3ypcVlNrx",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "38",
@@ -716,7 +716,7 @@
    "era_label": "ימי הביניים",
    "field": "קבלה מוקדמת",
    "location": "פרובנס",
-   "bio": "Source guide סקירה זו משרטטת את קווים לדמותו של רבי יצחק סגי נהור, המכונה \"אבי הקבלה\", ומנתחת את תרומתו המכרעת לכינון המיסטיקה היהודית בדרום צרפת במאה ה-13. הטקסט מציג כיצד עיוורונו הפיזי הוביל לפיתוח הגות מופשטת המבוססת על הארה פנימית ועל מושג ה**\"אין סוף\", תוך שהוא מגן על תורת הספירות מפני ביקורת ",
+   "bio": "סקירה זו משרטטת את קווים לדמותו של רבי יצחק סגי נהור, המכונה \"אבי הקבלה\", ומנתחת את תרומתו המכרעת לכינון המיסטיקה היהודית בדרום צרפת במאה ה-13. הטקסט מציג כיצד עיוורונו הפיזי הוביל לפיתוח הגות מופשטת המבוססת על הארה פנימית ועל מושג ה**\"אין סוף\", תוך שהוא מגן על תורת הספירות מפני ביקורת ",
    "central_idea": "",
    "tags": "ספר יצירה, ספירות ואותיות, תורת הכוונות, גבולות כתיבת סוד",
    "chapter_type": "אישיות",
@@ -1075,7 +1075,7 @@
    "birth_year": 1360,
    "death_year": 1463,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "343",
@@ -1108,7 +1108,7 @@
    "tags": "מנורת המאור, פרעות קנ״א, כינוס מדרשים",
    "chapter_type": "חכמי ישראל - הגות, הנהגה והלכה",
    "spotify_url": "https://open.spotify.com/episode/7ong9XinXN1Na6aWhTzXME",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "62",
@@ -1534,7 +1534,7 @@
    "birth_year": 1610,
    "death_year": 1698,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "83",
@@ -1670,7 +1670,7 @@
    "era_label": "העת החדשה",
    "field": "הלכה ופולמוס",
    "location": "גרמניה/אשכנז",
-   "bio": "Source guide סקירה זו עוסקת בדמותו המורכבת של רבי יעקב עמדין (היעב\"ץ), מגדולי חכמי אשכנז במאה ה-18, תוך התמקדות בחתירתו הבלתי מתפשרת לאוטונומיה רוחנית ובהתנזרותו ממשרות רבניות רשמיות כדי לשמור על עצמאות מחשבתית. הטקסט מציג את משנתו התורנית הרחבה, המשלבת חדשנות הלכתית אמיצה ושימוש בכישורים פילולוגיים",
+   "bio": "סקירה זו עוסקת בדמותו המורכבת של רבי יעקב עמדין (היעב\"ץ), מגדולי חכמי אשכנז במאה ה-18, תוך התמקדות בחתירתו הבלתי מתפשרת לאוטונומיה רוחנית ובהתנזרותו ממשרות רבניות רשמיות כדי לשמור על עצמאות מחשבתית. הטקסט מציג את משנתו התורנית הרחבה, המשלבת חדשנות הלכתית אמיצה ושימוש בכישורים פילולוגיים",
    "central_idea": "",
    "tags": "מאבק בשבתאות, לשון חריפה, חכמות כלליות, אוטוביוגרפיה",
    "chapter_type": "אישיות",
@@ -1696,7 +1696,7 @@
    "birth_year": 1697,
    "death_year": 1777,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "91",
@@ -2047,7 +2047,7 @@
    "birth_year": 1805,
    "death_year": 1855,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "112",
@@ -2310,7 +2310,7 @@
    "birth_year": 1843,
    "death_year": 1926,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "129",
@@ -2382,7 +2382,7 @@
    "birth_year": 1858,
    "death_year": 1936,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "133",
@@ -2440,7 +2440,7 @@
    "birth_year": 1871,
    "death_year": 1942,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "136",
@@ -2610,7 +2610,7 @@
    "birth_year": 1891,
    "death_year": 1982,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "146",
@@ -2650,7 +2650,7 @@
    "birth_year": 1892,
    "death_year": 1974,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "148",
@@ -2994,7 +2994,7 @@
    "birth_year": 1921,
    "death_year": 2012,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "166",
@@ -3012,7 +3012,7 @@
    "birth_year": 1922,
    "death_year": 1996,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "167",
@@ -3044,7 +3044,7 @@
    "era_label": "עכשווי",
    "field": "פסיקה",
    "location": "ישראל (ירושלים; תל אביב)",
-   "bio": "Source guide Этот текст представляет собой глубокий историко-правовой анализ жизни и наследия раввина Хаима Давида Галеви, одной из самых значимых фигур в религиозной жизни Израиля XX века. Автор раскрывает структуру его мировоззрения, основанного на «сионизме избавления», где создание государства р",
+   "bio": "Этот текст представляет собой глубокий историко-правовой анализ жизни и наследия раввина Хаима Давида Галеви, одной из самых значимых фигур в религиозной жизни Израиля XX века. Автор раскрывает структуру его мировоззрения, основанного на «сионизме избавления», где создание государства р",
    "central_idea": "",
    "tags": "הלכה ומודרנה, רפואה ומדע, הלכה לציבור, אהבת ישראל",
    "chapter_type": "אישיות",
@@ -3204,7 +3204,7 @@
    "birth_year": 1800,
    "death_year": 1900,
    "date_precision": "century",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "179",
@@ -3222,7 +3222,7 @@
    "birth_year": 1800,
    "death_year": 1900,
    "date_precision": "century",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "180",
@@ -3237,7 +3237,7 @@
    "tags": "כוונות הרש\"ש, תפילה, ענווה והסתרה, אהבת ישראל",
    "chapter_type": "אישיות",
    "spotify_url": "https://open.spotify.com/episode/54WDzXvPJL2lSljQw8ppji?si=axqFQefgQLCRM9oCzjRzxw&context=spotify%3Ashow%3A4nrvg1RLAoxg9C0vVYM8qv",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "331",
@@ -3328,7 +3328,7 @@
    "birth_year": 1100,
    "death_year": 1200,
    "date_precision": "century",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "191",
@@ -3458,7 +3458,7 @@
    "birth_year": 1687,
    "death_year": 1743,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "346",
@@ -3494,7 +3494,7 @@
    "birth_year": 1803,
    "death_year": 1867,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "349",
@@ -4553,7 +4553,7 @@
    "birth_year": 1975,
    "death_year": 2006,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "421",
@@ -6587,7 +6587,7 @@
    "birth_year": 0,
    "death_year": 100,
    "date_precision": "century",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "508",
@@ -6673,7 +6673,7 @@
    "birth_year": 1913,
    "death_year": 1986,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "512",
@@ -6691,7 +6691,7 @@
    "birth_year": 1938,
    "death_year": 2023,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "513",
@@ -6745,7 +6745,7 @@
    "birth_year": 1922,
    "death_year": 2013,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "516",
@@ -6763,7 +6763,7 @@
    "birth_year": 1896,
    "death_year": 1979,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "517",
@@ -6781,7 +6781,7 @@
    "birth_year": 1906,
    "death_year": 1993,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "518",
@@ -6853,7 +6853,7 @@
    "birth_year": -1300,
    "death_year": -1200,
    "date_precision": "century",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "522",
@@ -6886,7 +6886,7 @@
    "tags": "דוד המלך, שלמה המלך, נתן הנביא, אם המלך, אשת חיל, משלי, משפט צדק, נשים",
    "chapter_type": "דמות",
    "spotify_url": "",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "524",
@@ -6922,7 +6922,7 @@
    "birth_year": 1934,
    "death_year": 1983,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "526",
@@ -6958,7 +6958,7 @@
    "birth_year": 1869,
    "death_year": 1941,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "528",
@@ -7030,7 +7030,7 @@
    "birth_year": 1783,
    "death_year": 1879,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "532",
@@ -7207,7 +7207,7 @@
    "birth_year": 1923,
    "death_year": 2004,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "542",
@@ -7269,7 +7269,7 @@
    "birth_year": 1591,
    "death_year": 1655,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "545",
@@ -7323,7 +7323,7 @@
    "birth_year": 1703,
    "death_year": 1773,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "548",
@@ -7359,7 +7359,7 @@
    "birth_year": 1808,
    "death_year": 1888,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "550",
@@ -7428,7 +7428,7 @@
    "tags": "יעקב, יוסף, משה, פקוד יפקוד, ארון יוסף, אבל בית מעכה, גאולה, נשים",
    "chapter_type": "דמות",
    "spotify_url": "",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "554",
@@ -7512,7 +7512,7 @@
    "birth_year": 1698,
    "death_year": 1760,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "560",
@@ -7530,7 +7530,7 @@
    "birth_year": 1661,
    "death_year": 1729,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "561",
@@ -8118,7 +8118,7 @@
    "birth_year": 1040,
    "death_year": 1105,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "595",
@@ -8353,17 +8353,17 @@
   },
   {
    "id": "608",
-   "label": "רבי יוסף דב הלוי סולובייצ׳יק (הגרי״ד)",
+   "label": "הרב יוסף דוב הלוי סולובייצ׳יק (הגרי״ד)",
    "era": "1903–1993",
    "era_key": "modern",
-   "era_label": "מודרני",
-   "field": "תלמוד בשיטת בריסק, פילוסופיה והנהגת האורתודוקסיה המודרנית",
-   "location": "בריסק וליטא; ברלין; בוסטון וניו יורק",
-   "bio": "נכדו של רבי חיים סולובייצ׳יק וממשיך שיטת בריסק האנליטית, הנקרא על שם זקנו רבי יוסף דב הלוי בעל \"בית הלוי\" (1820–1892). למד בברלין, ובשנת 1932 היגר לארצות הברית; שם הנהיג את הקהילה בבוסטון ועמד בראש ההוראה בישיבה יוניברסיטי במשך למעלה מארבעה עשורים, כארכיטקט הרוחני של האורתודוקסיה המודרנית.",
-   "central_idea": "חיבור בין הדיוק המושגי של שיטת בריסק לבין הפילוסופיה המערבית: התורה כמערכת לוגית אוטונומית שדרך קטגוריותיה נקראת המציאות המודרנית.",
-   "tags": "שיטת בריסק, הגרי״ד, ישיבה יוניברסיטי, אורתודוקסיה מודרנית, בוסטון, גברא וחפצא",
+   "era_label": "המאה ה־20",
+   "field": "הלכה, פילוסופיה ואורתודוקסיה מודרנית",
+   "location": "מזרח אירופה; ברלין; בוסטון; ניו יורק",
+   "bio": "ממשיך שיטת בריסק, פילוסוף וראש ישיבה שהפך לדמות מרכזית באורתודוקסיה המודרנית בארצות הברית. שילב למדנות הלכתית אנליטית עם פילוסופיה מודרנית ועסק במתח שבין יצירה אנושית, מדע וחברה לבין ברית, תפילה ואמונה.",
+   "central_idea": "אין הכרח לפתור את כל המתח שבין מסורת למודרנה. האדם המאמין יכול לחיות במלוא העוצמה בתוך שני העולמות - לפעול, ליצור ולשלוט במציאות, ובו בזמן לעמוד בענווה, ברית ואחריות לפני האלוהים.",
+   "tags": "בריסק, איש ההלכה, איש האמונה הבודד, קול דודי דופק, גורל וייעוד, תורה ומדע, מודרנה, ישיבה יוניברסיטי, עימות, ציונות",
    "chapter_type": "דמות",
-   "spotify_url": "",
+   "spotify_url": "https://open.spotify.com/episode/4dG8KDTRRjIuVy0J4lXLLo?si=YJVuewruRNSUkDvbpmuIxQ&utm_source=copy-link",
    "birth_year": 1903,
    "death_year": 1993,
    "date_precision": "exact",
@@ -8439,22 +8439,22 @@
    "birth_year": 1729,
    "death_year": 1786,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "613",
    "label": "לאה אמנו",
    "era": "תקופת האבות",
    "era_key": "patriarchs",
-   "era_label": "האבות",
-   "field": "תפילה, הודיה ומחשבה",
-   "location": "ארם נהריים; ארץ כנען",
-   "bio": "הרביעית מבין ארבע האמהות, המייצגת את עולם המחשבה והתפילה אל מול רחל המזוהה עם המעשה וההתגלות. בכוח תפילתה שינתה את גזירתה, וייסדה את מושג ההודיה — ההכרה בהשגחה פרטית החורגת מחוקי הטבע.",
-   "central_idea": "ההודיה ככוח מכונן: היכולת לזהות חסד ומתנת חינם דווקא בתוך קושי ודחייה.",
-   "tags": "ארבע האמהות, הודיה, עלמא דאתכסיא, מערת המכפלה",
+   "era_label": "תקופת המקרא",
+   "field": "אמהות ישראל, תפילה והודיה",
+   "location": "פדן ארם (חרן); ארץ כנען; חברון",
+   "bio": "אשת יעקב ואם שישה משבטי ישראל ודינה. חז״ל קשרו את ״עיניה הרכות״ לבכי ולתפילה על גורלה, ואת לידת יהודה למעבר מן הכמיהה לאהבה אל ההודיה; בתורת הסוד היא מזוהה עם העולם המכוסה והפנימיות.",
+   "central_idea": "תפילה יכולה לשנות את מסלול החיים, והודיה צומחת מן ההכרה שהאדם קיבל מעבר למובן מאליו; לאה מגלמת את הכוח הנסתר שממנו צומחים לוי ויהודה - כהונה ומלכות.",
+   "tags": "יעקב אבינו, רחל אמנו, עשו, שבטי ישראל, יהודה, לוי, תפילה, הודיה, עלמא דאתכסיא, מערת המכפלה",
    "chapter_type": "דמות",
-   "spotify_url": "",
-   "has_research": false
+   "spotify_url": "https://open.spotify.com/episode/5w5U7Y1zeZaiSWtmmA9Ev8?si=FdCNf0rVSuubfS6jQMWEdA&utm_source=copy-link",
+   "has_research": true
   },
   {
    "id": "614",
@@ -8472,52 +8472,178 @@
    "birth_year": 1800,
    "death_year": 1900,
    "date_precision": "century",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "615",
    "label": "רב נחמן בר פפא",
-   "era": "אמוראים",
+   "era": "תקופת האמוראים (הזיהוי הכרונולוגי המדויק שנוי במחלוקת)",
    "era_key": "amoraim",
    "era_label": "אמוראים",
-   "field": "הלכה ותלמוד",
+   "field": "הלכה, תפילה ואגדה",
    "location": "בבל",
-   "bio": "אמורא בבלי שתרם לעיצוב דיני שומרים ואחריותם הנזיקית של בעלי מקצוע. השקפתו הרוחנית גורסת שהטבע מושעה וממתין לתפילת הצדיק, ושמו קבוע בטקס ה\"הדראן\" כסגולה לזיכרון הלימוד.",
-   "central_idea": "הטבע ממתין לתפילת הצדיק — זיקה בין כוח התפילה למעשה בראשית.",
-   "tags": "דיני שומרים, אחריות אומנים, הדראן, מעשה בראשית",
+   "bio": "אמורא בבלי שנזכר בסוגיות הלכתיות ובאגדה על תפילה שהביאה גשם וצמיחת זרעים. מסורת הסיום מונה אותו בין עשרת בני רב פפא, אף שהזיהוי והיוחסין המדויקים מעוררים קושי כרונולוגי.",
+   "central_idea": "המציאות דורשת השתתפות אנושית בשני מישורים: דיוק בזכויות ובחובות שבין אדם לחברו, ותפילה ההופכת את האדם משקיף מן הצד לשותף פעיל בתוך העולם.",
+   "tags": "בבא מציעא, שומר שכר, אומן, חולין, גשם, תפילת צדיקים, רב פפא, עשרת בני רב פפא, הדרן, סיום מסכת",
    "chapter_type": "דמות",
-   "spotify_url": "",
+   "spotify_url": "https://open.spotify.com/episode/3jacnS80DsxAGMO6Si3S41?si=LRSOFUOmQPeIMYbit4Zg2w&utm_source=copy-link",
+   "has_research": true
+  },
+  {
+   "id": "616",
+   "label": "גדליהו בן אחיקם",
+   "era": "המאה ה־6 לפנה״ס; לאחר חורבן בית ראשון",
+   "era_key": "kings",
+   "era_label": "תקופת המקרא - חורבן בית ראשון",
+   "field": "הנהגה לאומית, שיקום ואחריות",
+   "location": "מצפה; יהודה",
+   "bio": "מנהיג שארית יהודה שמונה בידי הבבלים לאחר חורבן ירושלים וניסה לחדש חיים חקלאיים וציבוריים בארץ. רציחתו בידי ישמעאל בן נתניה מוטטה את ניסיון השיקום והובילה לבריחת רבים למצרים.",
+   "central_idea": "מנהיגות אחראית מחייבת להבחין בין קבלת שמועה כאמת לבין נקיטת זהירות מול סכנה ממשית; סיפורו מלמד עד כמה קנאות פנימית יכולה לכבות אפשרות של שיקום לאומי.",
+   "tags": "חורבן בית ראשון, מצפה, שארית יהודה, ירמיהו, ישמעאל בן נתניה, יוחנן בן קרח, צום גדליה, שיקום לאומי, לשון הרע",
+   "chapter_type": "דמות",
+   "spotify_url": "https://open.spotify.com/episode/0mqkIuCxWVRVmUhugvgUWl?si=YXuXnIBiRYOPlo1-zoqLbw&utm_source=copy-link",
+   "birth_year": -600,
+   "death_year": -500,
+   "date_precision": "century",
+   "has_research": true
+  },
+  {
+   "id": "617",
+   "label": "הרב ישראל יצחק בזאנסון זצ״ל",
+   "era": "1944–2026",
+   "era_key": "modern",
+   "era_label": "העת החדשה",
+   "field": "חסידות ברסלב, נפש ואמנות",
+   "location": "ניס; פריז; תל אביב",
+   "bio": "רב, חסיד ברסלב, סופר, צייר ומלחין שחיבר בין עולם האמנות המודרנית לבין עבודת ה׳ ותורת רבי נחמן. הקים בתל אביב את קהילת ״שיר חדש״ ופיתח שפה של התמודדות נפשית, נשימה, יצירה והתבודדות.",
+   "central_idea": "מסורת עמוקה יכולה לדבר אל האדם המודרני גם דרך צבע, צליל ונשימה; יצירה ורגישות נפשית אינן חלופה לעבודת ה׳ אלא יכולות להפוך לכלים של תפילה, צמיחה וחיבור.",
+   "tags": "ברסלב, רבי נחמן, שיר חדש, אומץ, נשמה נשימה, פאר הליקוטים, ציור, ניגון, התבודדות, תל אביב",
+   "chapter_type": "דמות",
+   "spotify_url": "https://open.spotify.com/episode/5qT5Z7oVMNOWfC9CTUkR30?si=rnD76gn3TE2Nv8eV8ygNyA&utm_source=copy-link",
+   "birth_year": 1944,
+   "death_year": 2026,
+   "date_precision": "exact",
+   "has_research": false
+  },
+  {
+   "id": "618",
+   "label": "הרב אליעזר יהודה וולדנברג (הציץ אליעזר)",
+   "era": "1915–2006",
+   "era_key": "modern",
+   "era_label": "המאה ה־20–21",
+   "field": "הלכה, רפואה וביו־אתיקה",
+   "location": "ירושלים; ישראל",
+   "bio": "מגדולי הפוסקים בדור האחרון ומחלוצי הפסיקה הרפואית המודרנית. בשו״ת ״ציץ אליעזר״ בן 22 הכרכים בירר שאלות רפואיות וטכנולוגיות מתוך לימוד המציאות המדעית, וב״הלכות מדינה״ עסק בריבונות, צבא ומערכות ציבוריות במדינה יהודית.",
+   "central_idea": "ההלכה אינה נסוגה מפני מציאות חדשה: כדי לפסוק נכון יש להבין תחילה את העובדות המדעיות והחברתיות, ואז להחיל עליהן את עקרונות התורה מתוך אחריות לחיים, לאדם ולציבור.",
+   "tags": "ציץ אליעזר, רפואה והלכה, ביו־אתיקה, הפלות, הפריה חוץ־גופית, פונדקאות, השתלות, קביעת מוות, חולה הנוטה למות, עישון, הלכות מדינה",
+   "chapter_type": "דמות",
+   "spotify_url": "https://open.spotify.com/episode/10vxjISIbCayZsVsHOxPXS?si=ybUiuUKNQ8eBppEJsXEqHQ&utm_source=copy-link",
+   "birth_year": 1915,
+   "death_year": 2006,
+   "date_precision": "exact",
+   "has_research": false
+  },
+  {
+   "id": "619",
+   "label": "רבי אחאי בר פפא",
+   "era": "המאה ה־3 לספירה בקירוב",
+   "era_key": "amoraim",
+   "era_label": "אמוראים",
+   "field": "הלכה, משפט ומסורת הסיום",
+   "location": "בבל; ארץ ישראל",
+   "bio": "אמורא מן הדור השלישי שפעל בבבל ובארץ ישראל ונזכר בסוגיות הלכתיות הדורשות הבחנות דקות בין מצבים מעשיים. שמו נכלל במסורת ״עשרת בני רב פפא״, אף שהכרונולוגיה מלמדת שחי דורות לפני רב פפא המפורסם.",
+   "central_idea": "ההלכה פועלת בתוך מציאות אנושית מורכבת: דיוק בהגדרות, רגישות לפסיכולוגיה של בעלי הדין והבנת תנאי הזמן הם חלק מן הדין עצמו. דמותו גם ממחישה כיצד מסורת הזיכרון יכולה לאגד חכמים מתקופות שונות.",
+   "tags": "רבי אחא בר פפא, רב אחא אריכא, רב הונא, רבי זירא, רבי אבהו, שבת, רפואה, סדרי דין, תקיעות שופר, עשרת בני רב פפא, הדרן",
+   "chapter_type": "דמות",
+   "spotify_url": "https://open.spotify.com/episode/5UnOSf9p89BTOE0JvSRkNB?si=Au9EzjlKQ5We2PTMTlpXmg&utm_source=copy-link",
+   "birth_year": 200,
+   "death_year": 300,
+   "date_precision": "century",
+   "has_research": true
+  },
+  {
+   "id": "620",
+   "label": "הרב חנן פורת",
+   "era": "1943–2011",
+   "era_key": "modern",
+   "era_label": "המאה ה־20–21",
+   "field": "תורה, חינוך, התיישבות והנהגה ציבורית",
+   "location": "כפר עציון; ירושלים; יהודה ושומרון",
+   "bio": "תלמיד חכם, מחנך, איש התיישבות וחבר כנסת שהיה מן הדמויות הבולטות בציונות הדתית שלאחר מלחמת ששת הימים. פעל לחידוש כפר עציון, להקמת מוסדות תורה ולחיבור בין לימוד התנ״ך, הארץ, החברה והעשייה הציבורית.",
+   "central_idea": "״סוד ההרכבה״ מבקש לחבר בין יוסף ליהודה - בין בניין הארץ, הצבא והחברה לבין תורה, קדושה ורוח. התורה נבחנת ביכולתה להפוך לחיי מעשה של חסד, אחריות לאומית וחיבור בין חלקי העם.",
+   "tags": "כפר עציון, גוש עציון, סוד ההרכבה, עוד יוסף חי, ישיבת הר עציון, תנ״ך שבעל פה, התיישבות, חוק לא תעמוד על דם רעך, חסד",
+   "chapter_type": "דמות",
+   "spotify_url": "https://open.spotify.com/episode/32ZOjZ7ks26vRGCcPdt0pU?si=mS8hI1HuRHSnqwu574B36g&utm_source=copy-link",
+   "birth_year": 1943,
+   "death_year": 2011,
+   "date_precision": "exact",
+   "has_research": true
+  },
+  {
+   "id": "621",
+   "label": "רבי מנחם רקנאטי",
+   "era": "שלהי המאה ה־13–ראשית המאה ה־14",
+   "era_key": "rishonim",
+   "era_label": "ימי הביניים",
+   "field": "קבלה, פרשנות והלכה",
+   "location": "איטליה",
+   "bio": "מגדולי מקובלי איטליה, שחיבר בין קבלת ספרד, מסורות חסידי אשכנז ועולם ההלכה האיטלקי. בכתביו שילב מאות מובאות מן הזוהר עוד לפני הדפסתו, ביאר את לשונו ותרם להפיכתו למקור סמכות מרכזי בעולם הקבלה.",
+   "central_idea": "הלכה וקבלה הן שתי קומות של אותה פעולה: ההלכה מגדירה את המעשה בעולם הנגלה, והקבלה מבארת את משמעותו בעולם הנסתר. תפילה, אותיות ומצוות נעשות לחלק ממערכת רוחנית של תיקון והשפעה.",
+   "tags": "הזוהר, קבלת ספרד, חסידי אשכנז, פירוש התורה, פסקי רקנאטי, ספירות, תפילה, אותיות, קבלה איטלקית, רנסנס",
+   "chapter_type": "דמות",
+   "spotify_url": "https://open.spotify.com/episode/3ClGfKlKMCkIYPMAsM3Mjo?si=Azpcdkf6Sqiva0roERWiEA&utm_source=copy-link",
+   "birth_year": 1200,
+   "death_year": 1300,
+   "date_precision": "century",
+   "has_research": true
+  },
+  {
+   "id": "622",
+   "label": "הרב יהודה לייב הלוי אשלג (בעל הסולם)",
+   "era": "1884–1954",
+   "era_key": "modern",
+   "era_label": "המאה ה־20",
+   "field": "קבלה והגות חברתית",
+   "location": "פולין; ירושלים",
+   "bio": "מגדולי מפרשי הקבלה בעת החדשה. ב״תלמוד עשר הספירות״ סידר את כתבי האר״י לשיטה לימודית, וב״פירוש הסולם״ הנגיש את הזוהר. לצד זאת פיתח הגות חברתית שבמרכזה מעבר מן הרצון לקבל לעצמו אל אחריות, ערבות והשפעה.",
+   "central_idea": "תיקון רוחני איננו נשאר בעולמות העליונים: שינוי הכוונה של היחיד אמור להקרין גם על מבנה החברה. אהבת הזולת, ערבות ואחריות הדדית הן בעיניו תרגום חברתי של רעיון ההשפעה הקבלי.",
+   "tags": "בעל הסולם, פירוש הסולם, תלמוד עשר הספירות, הזוהר, האר״י, השוואת הצורה, רצון לקבל, רצון להשפיע, ערבות, הדור האחרון, האומה, בן־גוריון",
+   "chapter_type": "דמות",
+   "spotify_url": "https://open.spotify.com/episode/56ZfHwIuCVuWheqmgyawIj?si=3rkjd6YWTz6W7h1tqAVDJg&utm_source=copy-link",
+   "birth_year": 1884,
+   "death_year": 1954,
+   "date_precision": "exact",
    "has_research": false
   }
  ],
  "links": [
   {
-   "source": "435",
-   "target": "4",
+   "source": "4",
+   "target": "435",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "580",
-   "target": "7",
+   "source": "7",
+   "target": "580",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "95",
-   "target": "11",
+   "source": "11",
+   "target": "95",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "325",
-   "target": "11",
+   "source": "11",
+   "target": "325",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "336",
-   "target": "11",
+   "source": "11",
+   "target": "336",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -8540,20 +8666,20 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "443",
-   "target": "13",
+   "source": "13",
+   "target": "443",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "594",
-   "target": "201",
+   "source": "201",
+   "target": "594",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "192",
-   "target": "201",
+   "source": "201",
+   "target": "192",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -8576,8 +8702,8 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "463",
-   "target": "16",
+   "source": "16",
+   "target": "463",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -8618,14 +8744,14 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "25",
-   "target": "21",
+   "source": "21",
+   "target": "25",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "594",
-   "target": "22",
+   "source": "22",
+   "target": "594",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -8654,8 +8780,8 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "41",
-   "target": "25",
+   "source": "25",
+   "target": "41",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -8672,8 +8798,8 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "41",
-   "target": "27",
+   "source": "27",
+   "target": "41",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -8684,14 +8810,20 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "195",
-   "target": "262",
+   "source": "28",
+   "target": "33",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "44",
-   "target": "262",
+   "source": "262",
+   "target": "195",
+   "type": "influence",
+   "evidence_source": "CSV דמויות קשורות"
+  },
+  {
+   "source": "262",
+   "target": "44",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -8702,14 +8834,20 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
+   "source": "261",
+   "target": "33",
+   "type": "influence",
+   "evidence_source": "CSV דמויות קשורות"
+  },
+  {
    "source": "276",
    "target": "261",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "41",
-   "target": "32",
+   "source": "32",
+   "target": "41",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -8732,56 +8870,56 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
+   "source": "38",
+   "target": "195",
+   "type": "influence",
+   "evidence_source": "CSV דמויות קשורות"
+  },
+  {
+   "source": "38",
+   "target": "42",
+   "type": "influence",
+   "evidence_source": "CSV דמויות קשורות"
+  },
+  {
+   "source": "41",
+   "target": "195",
+   "type": "influence",
+   "evidence_source": "CSV דמויות קשורות"
+  },
+  {
    "source": "195",
-   "target": "38",
+   "target": "42",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "42",
-   "target": "38",
-   "type": "influence",
-   "evidence_source": "CSV דמויות קשורות"
-  },
-  {
-   "source": "41",
-   "target": "195",
-   "type": "influence",
-   "evidence_source": "CSV דמויות קשורות"
-  },
-  {
-   "source": "42",
-   "target": "195",
-   "type": "influence",
-   "evidence_source": "CSV דמויות קשורות"
-  },
-  {
-   "source": "44",
-   "target": "195",
-   "type": "influence",
-   "evidence_source": "CSV דמויות קשורות"
-  },
-  {
-   "source": "44",
-   "target": "41",
-   "type": "influence",
-   "evidence_source": "CSV דמויות קשורות"
-  },
-  {
-   "source": "47",
-   "target": "43",
-   "type": "influence",
-   "evidence_source": "CSV דמויות קשורות"
-  },
-  {
-   "source": "41",
-   "target": "43",
-   "type": "influence",
-   "evidence_source": "CSV דמויות קשורות"
-  },
-  {
-   "source": "13",
+   "source": "195",
    "target": "44",
+   "type": "influence",
+   "evidence_source": "CSV דמויות קשורות"
+  },
+  {
+   "source": "41",
+   "target": "44",
+   "type": "influence",
+   "evidence_source": "CSV דמויות קשורות"
+  },
+  {
+   "source": "43",
+   "target": "47",
+   "type": "influence",
+   "evidence_source": "CSV דמויות קשורות"
+  },
+  {
+   "source": "41",
+   "target": "43",
+   "type": "influence",
+   "evidence_source": "CSV דמויות קשורות"
+  },
+  {
+   "source": "44",
+   "target": "13",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -8798,20 +8936,20 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "44",
-   "target": "46",
+   "source": "46",
+   "target": "44",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "53",
-   "target": "47",
+   "source": "47",
+   "target": "53",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "53",
-   "target": "49",
+   "source": "49",
+   "target": "53",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -8828,8 +8966,8 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "325",
-   "target": "50",
+   "source": "50",
+   "target": "325",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -8870,8 +9008,8 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "443",
-   "target": "56",
+   "source": "56",
+   "target": "443",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -8882,8 +9020,8 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "443",
-   "target": "343",
+   "source": "343",
+   "target": "443",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -8894,14 +9032,14 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "463",
-   "target": "264",
+   "source": "264",
+   "target": "463",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "457",
-   "target": "64",
+   "source": "64",
+   "target": "457",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -8948,20 +9086,20 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "558",
-   "target": "76",
+   "source": "76",
+   "target": "558",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "325",
-   "target": "77",
+   "source": "77",
+   "target": "325",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "558",
-   "target": "79",
+   "source": "79",
+   "target": "558",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9002,14 +9140,14 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "105",
-   "target": "202",
+   "source": "202",
+   "target": "105",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "203",
-   "target": "202",
+   "source": "202",
+   "target": "203",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9038,8 +9176,8 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "130",
-   "target": "113",
+   "source": "113",
+   "target": "130",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9098,14 +9236,8 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "568",
-   "target": "135",
-   "type": "influence",
-   "evidence_source": "CSV דמויות קשורות"
-  },
-  {
-   "source": "340",
-   "target": "137",
+   "source": "137",
+   "target": "340",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9116,14 +9248,20 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "340",
-   "target": "144",
+   "source": "144",
+   "target": "340",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "340",
-   "target": "146",
+   "source": "196",
+   "target": "620",
+   "type": "influence",
+   "evidence_source": "CSV דמויות קשורות"
+  },
+  {
+   "source": "146",
+   "target": "340",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9140,14 +9278,14 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "169",
-   "target": "148",
+   "source": "148",
+   "target": "169",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "340",
-   "target": "149",
+   "source": "149",
+   "target": "340",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9160,12 +9298,6 @@
   {
    "source": "148",
    "target": "151",
-   "type": "influence",
-   "evidence_source": "CSV דמויות קשורות"
-  },
-  {
-   "source": "482",
-   "target": "154",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9242,8 +9374,8 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "478",
-   "target": "179",
+   "source": "179",
+   "target": "478",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9254,20 +9386,20 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "463",
-   "target": "64",
+   "source": "64",
+   "target": "463",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "67",
-   "target": "64",
+   "source": "64",
+   "target": "67",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "443",
-   "target": "189",
+   "source": "189",
+   "target": "443",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9296,14 +9428,14 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "594",
-   "target": "348",
+   "source": "348",
+   "target": "594",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "351",
-   "target": "348",
+   "source": "348",
+   "target": "351",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9314,20 +9446,20 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "594",
-   "target": "353",
+   "source": "353",
+   "target": "594",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "594",
-   "target": "583",
+   "source": "583",
+   "target": "594",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "594",
-   "target": "355",
+   "source": "355",
+   "target": "594",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9338,38 +9470,44 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "47",
+   "source": "33",
    "target": "265",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "44",
-   "target": "266",
+   "source": "265",
+   "target": "47",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "195",
-   "target": "266",
+   "source": "266",
+   "target": "44",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "395",
-   "target": "266",
+   "source": "266",
+   "target": "195",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "52",
-   "target": "266",
+   "source": "266",
+   "target": "395",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "190",
-   "target": "266",
+   "source": "266",
+   "target": "52",
+   "type": "influence",
+   "evidence_source": "CSV דמויות קשורות"
+  },
+  {
+   "source": "266",
+   "target": "190",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9386,8 +9524,8 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "609",
-   "target": "270",
+   "source": "33",
+   "target": "271",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9398,14 +9536,26 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "280",
-   "target": "271",
+   "source": "271",
+   "target": "280",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "53",
+   "source": "33",
    "target": "272",
+   "type": "influence",
+   "evidence_source": "CSV דמויות קשורות"
+  },
+  {
+   "source": "272",
+   "target": "53",
+   "type": "influence",
+   "evidence_source": "CSV דמויות קשורות"
+  },
+  {
+   "source": "33",
+   "target": "273",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9422,8 +9572,8 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "482",
-   "target": "274",
+   "source": "33",
+   "target": "275",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9440,8 +9590,14 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "275",
+   "source": "33",
    "target": "276",
+   "type": "influence",
+   "evidence_source": "CSV דמויות קשורות"
+  },
+  {
+   "source": "276",
+   "target": "275",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9458,8 +9614,14 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "41",
+   "source": "33",
    "target": "279",
+   "type": "influence",
+   "evidence_source": "CSV דמויות קשורות"
+  },
+  {
+   "source": "279",
+   "target": "41",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9494,14 +9656,14 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "44",
-   "target": "283",
+   "source": "283",
+   "target": "44",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "51",
-   "target": "283",
+   "source": "283",
+   "target": "51",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9512,20 +9674,20 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "41",
-   "target": "284",
+   "source": "284",
+   "target": "41",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "44",
-   "target": "284",
+   "source": "284",
+   "target": "44",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "395",
-   "target": "284",
+   "source": "284",
+   "target": "395",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9554,14 +9716,14 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "443",
-   "target": "285",
+   "source": "285",
+   "target": "443",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "325",
-   "target": "285",
+   "source": "285",
+   "target": "325",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9572,14 +9734,14 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "51",
-   "target": "286",
+   "source": "286",
+   "target": "51",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "343",
-   "target": "286",
+   "source": "286",
+   "target": "343",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9590,14 +9752,14 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "44",
-   "target": "287",
+   "source": "287",
+   "target": "44",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "390",
-   "target": "287",
+   "source": "287",
+   "target": "390",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9608,8 +9770,8 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "42",
-   "target": "287",
+   "source": "287",
+   "target": "42",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9656,14 +9818,14 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "41",
-   "target": "391",
+   "source": "391",
+   "target": "41",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "600",
-   "target": "391",
+   "source": "391",
+   "target": "600",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9710,8 +9872,8 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "443",
-   "target": "395",
+   "source": "395",
+   "target": "443",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9734,14 +9896,14 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "395",
-   "target": "44",
+   "source": "44",
+   "target": "395",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "294",
-   "target": "44",
+   "source": "44",
+   "target": "294",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9752,14 +9914,14 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "443",
-   "target": "299",
+   "source": "299",
+   "target": "443",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "43",
-   "target": "300",
+   "source": "300",
+   "target": "43",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9812,8 +9974,8 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "52",
-   "target": "308",
+   "source": "308",
+   "target": "52",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9824,8 +9986,8 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "53",
-   "target": "309",
+   "source": "309",
+   "target": "53",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9842,8 +10004,8 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "443",
-   "target": "311",
+   "source": "311",
+   "target": "443",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9884,8 +10046,8 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "443",
-   "target": "318",
+   "source": "318",
+   "target": "443",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9896,8 +10058,8 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "443",
-   "target": "319",
+   "source": "319",
+   "target": "443",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -9968,8 +10130,8 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "580",
-   "target": "430",
+   "source": "430",
+   "target": "580",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -10016,14 +10178,14 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "463",
-   "target": "443",
+   "source": "443",
+   "target": "463",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "463",
-   "target": "444",
+   "source": "444",
+   "target": "463",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -10040,8 +10202,8 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "463",
-   "target": "447",
+   "source": "447",
+   "target": "463",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -10058,8 +10220,8 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "463",
-   "target": "449",
+   "source": "449",
+   "target": "463",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -10070,8 +10232,8 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "463",
-   "target": "450",
+   "source": "450",
+   "target": "463",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -10082,14 +10244,14 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "443",
-   "target": "452",
+   "source": "452",
+   "target": "443",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "463",
-   "target": "452",
+   "source": "452",
+   "target": "463",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -10100,32 +10262,32 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "557",
-   "target": "455",
+   "source": "455",
+   "target": "557",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "463",
-   "target": "457",
+   "source": "457",
+   "target": "463",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "458",
-   "target": "457",
-   "type": "influence",
-   "evidence_source": "CSV דמויות קשורות"
-  },
-  {
-   "source": "463",
+   "source": "457",
    "target": "458",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "463",
-   "target": "459",
+   "source": "458",
+   "target": "463",
+   "type": "influence",
+   "evidence_source": "CSV דמויות קשורות"
+  },
+  {
+   "source": "459",
+   "target": "463",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -10136,14 +10298,14 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "13",
-   "target": "460",
+   "source": "460",
+   "target": "13",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "463",
-   "target": "461",
+   "source": "461",
+   "target": "463",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -10184,26 +10346,26 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "439",
-   "target": "467",
+   "source": "467",
+   "target": "439",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "395",
-   "target": "469",
+   "source": "469",
+   "target": "395",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "294",
-   "target": "469",
+   "source": "469",
+   "target": "294",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "13",
-   "target": "469",
+   "source": "469",
+   "target": "13",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -10232,8 +10394,8 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "579",
-   "target": "477",
+   "source": "477",
+   "target": "579",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -10280,8 +10442,8 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "395",
-   "target": "486",
+   "source": "486",
+   "target": "395",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -10304,8 +10466,8 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "177",
-   "target": "490",
+   "source": "490",
+   "target": "177",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -10340,19 +10502,13 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "118",
-   "target": "498",
+   "source": "498",
+   "target": "118",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
    "source": "502",
-   "target": "501",
-   "type": "influence",
-   "evidence_source": "CSV דמויות קשורות"
-  },
-  {
-   "source": "482",
    "target": "501",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
@@ -10406,8 +10562,8 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "202",
-   "target": "508",
+   "source": "508",
+   "target": "202",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -10430,8 +10586,8 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "511",
-   "target": "510",
+   "source": "510",
+   "target": "511",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -10460,12 +10616,6 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "568",
-   "target": "520",
-   "type": "influence",
-   "evidence_source": "CSV דמויות קשורות"
-  },
-  {
    "source": "574",
    "target": "521",
    "type": "influence",
@@ -10486,12 +10636,6 @@
   {
    "source": "595",
    "target": "523",
-   "type": "influence",
-   "evidence_source": "CSV דמויות קשורות"
-  },
-  {
-   "source": "482",
-   "target": "524",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -10586,8 +10730,8 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "99",
-   "target": "539",
+   "source": "539",
+   "target": "99",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -10622,44 +10766,38 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "482",
-   "target": "542",
+   "source": "544",
+   "target": "89",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "89",
-   "target": "544",
+   "source": "544",
+   "target": "325",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "325",
-   "target": "544",
+   "source": "544",
+   "target": "334",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "334",
-   "target": "544",
+   "source": "545",
+   "target": "325",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "325",
-   "target": "545",
+   "source": "545",
+   "target": "202",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "202",
-   "target": "545",
-   "type": "influence",
-   "evidence_source": "CSV דמויות קשורות"
-  },
-  {
-   "source": "336",
-   "target": "545",
+   "source": "545",
+   "target": "336",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -10682,14 +10820,8 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "33",
-   "target": "548",
-   "type": "influence",
-   "evidence_source": "CSV דמויות קשורות"
-  },
-  {
-   "source": "336",
-   "target": "548",
+   "source": "548",
+   "target": "336",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -10700,20 +10832,20 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "591",
-   "target": "550",
+   "source": "550",
+   "target": "591",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "592",
-   "target": "550",
+   "source": "550",
+   "target": "592",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "25",
-   "target": "551",
+   "source": "551",
+   "target": "25",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -10736,14 +10868,8 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "574",
-   "target": "553",
-   "type": "influence",
-   "evidence_source": "CSV דמויות קשורות"
-  },
-  {
-   "source": "535",
-   "target": "553",
+   "source": "553",
+   "target": "574",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -10754,20 +10880,20 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "395",
-   "target": "598",
+   "source": "598",
+   "target": "395",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "311",
-   "target": "598",
+   "source": "598",
+   "target": "311",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "443",
-   "target": "598",
+   "source": "598",
+   "target": "443",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -10802,12 +10928,6 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "482",
-   "target": "601",
-   "type": "influence",
-   "evidence_source": "CSV דמויות קשורות"
-  },
-  {
    "source": "38",
    "target": "602",
    "type": "influence",
@@ -10820,8 +10940,8 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "443",
-   "target": "603",
+   "source": "603",
+   "target": "443",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -10832,8 +10952,8 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "594",
-   "target": "604",
+   "source": "604",
+   "target": "594",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },
@@ -10862,12 +10982,6 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "99",
-   "target": "608",
-   "type": "influence",
-   "evidence_source": "CSV דמויות קשורות"
-  },
-  {
    "source": "563",
    "target": "610",
    "type": "influence",
@@ -10886,908 +11000,38 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "13",
-   "target": "41",
-   "type": "student",
-   "strength": 4,
-   "period": "תנאים-אמוראים",
-   "context_he": "תלמיד בדירוג ראשון",
-   "evidence_source": "משנה"
-  },
-  {
-   "source": "45",
-   "target": "100",
-   "type": "student",
-   "strength": 5,
-   "period": "ראשונים",
-   "context_he": "תלמיד קרוב מאוד",
-   "evidence_source": "ספרים"
-  },
-  {
-   "source": "18",
-   "target": "50",
-   "type": "student",
-   "strength": 4,
-   "period": "אמוראים",
-   "context_he": "למד לפעמים",
-   "evidence_source": "גמרא"
-  },
-  {
-   "source": "41",
-   "target": "13",
-   "type": "teacher",
-   "strength": 5,
-   "period": "תנאים",
-   "context_he": "לימד בבית מדרש",
-   "evidence_source": "תלמודי"
-  },
-  {
-   "source": "100",
-   "target": "45",
-   "type": "teacher",
-   "strength": 4,
-   "period": "ראשונים",
-   "context_he": "היה המורה שלו",
-   "evidence_source": "היסטוריה"
-  },
-  {
-   "source": "50",
-   "target": "18",
-   "type": "teacher",
-   "strength": 4,
-   "period": "אמוראים",
-   "context_he": "הורה בדברים חשובים",
-   "evidence_source": "סוגיות"
-  },
-  {
-   "source": "329",
-   "target": "80",
+   "source": "613",
+   "target": "557",
    "type": "influence",
-   "strength": 3,
-   "period": "ראשונים",
-   "context_he": "השפיע על שיטתו",
-   "evidence_source": "היסטוריה"
+   "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "120",
-   "target": "126",
+   "source": "576",
+   "target": "619",
    "type": "influence",
-   "strength": 4,
-   "period": "אחרונים",
-   "context_he": "השפעה משמעותית",
-   "evidence_source": "מחקר"
+   "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "343",
-   "target": "65",
-   "type": "oppose",
-   "strength": 4,
-   "period": "ראשונים",
-   "context_he": "חלוקת דעות חריפה",
-   "evidence_source": "כתבים"
-  },
-  {
-   "source": "150",
-   "target": "155",
-   "type": "oppose",
-   "strength": 3,
-   "period": "אחרונים",
-   "context_he": "מחלוקת הלכתית",
-   "evidence_source": "פולמוס"
-  },
-  {
-   "source": "351",
-   "target": "356",
-   "type": "oppose",
-   "strength": 4,
-   "period": "ראשונים",
-   "context_he": "התנגדות לשיטה",
-   "evidence_source": "ספרים"
-  },
-  {
-   "source": "332",
-   "target": "344",
-   "type": "predecessor",
-   "strength": 3,
-   "period": "תנאים",
-   "context_he": "דור קודם",
-   "evidence_source": "סדר הדורות"
-  },
-  {
-   "source": "110",
-   "target": "341",
-   "type": "predecessor",
-   "strength": 4,
-   "period": "ראשונים",
-   "context_he": "הקדימו בדורות",
-   "evidence_source": "כרונולוגיה"
-  },
-  {
-   "source": "190",
-   "target": "195",
-   "type": "predecessor",
-   "strength": 3,
-   "period": "עת חדשה",
-   "context_he": "קדומים בזמן",
-   "evidence_source": "היסטוריה"
-  },
-  {
-   "source": "262",
-   "target": "35",
-   "type": "contemporary",
-   "strength": 3,
-   "period": "תנאים",
-   "context_he": "חברים בדורם",
-   "evidence_source": "סוגיות"
-  },
-  {
-   "source": "140",
-   "target": "196",
-   "type": "contemporary",
-   "strength": 4,
-   "period": "אחרונים",
-   "context_he": "דור אחד בדיוק",
-   "evidence_source": "ספרים"
-  },
-  {
-   "source": "170",
-   "target": "175",
-   "type": "contemporary",
-   "strength": 3,
-   "period": "ראשונים",
-   "context_he": "בעלי תקופה",
-   "evidence_source": "נתונים"
-  },
-  {
-   "source": "70",
-   "target": "72",
-   "type": "family",
-   "strength": 5,
-   "period": "ראשונים",
-   "context_he": "אב ובן",
-   "evidence_source": "גנאלוגיה"
-  },
-  {
-   "source": "130",
-   "target": "135",
-   "type": "family",
-   "strength": 4,
-   "period": "אחרונים",
-   "context_he": "קרובים משפחה",
-   "evidence_source": "תוכן"
-  },
-  {
-   "source": "160",
-   "target": "165",
-   "type": "family",
-   "strength": 5,
-   "period": "אחרונים",
-   "context_he": "אישה ובעלה",
-   "evidence_source": "תיעוד"
-  },
-  {
-   "source": "2",
-   "target": "17",
-   "type": "teacher"
-  },
-  {
-   "source": "2",
-   "target": "388",
-   "type": "teacher"
-  },
-  {
-   "source": "2",
-   "target": "443",
-   "type": "teacher"
-  },
-  {
-   "source": "182",
-   "target": "47",
-   "type": "student"
-  },
-  {
-   "source": "182",
-   "target": "300",
-   "type": "student"
-  },
-  {
-   "source": "16",
-   "target": "173",
-   "type": "student"
-  },
-  {
-   "source": "16",
-   "target": "335",
-   "type": "teacher"
-  },
-  {
-   "source": "16",
-   "target": "336",
-   "type": "teacher"
-  },
-  {
-   "source": "8",
-   "target": "113",
-   "type": "student"
-  },
-  {
-   "source": "8",
-   "target": "341",
-   "type": "teacher"
-  },
-  {
-   "source": "8",
-   "target": "196",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "41",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "424",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "443",
-   "type": "student"
-  },
-  {
-   "source": "262",
-   "target": "176",
-   "type": "teacher"
-  },
-  {
-   "source": "262",
-   "target": "177",
-   "type": "teacher"
-  },
-  {
-   "source": "262",
-   "target": "196",
-   "type": "teacher"
-  },
-  {
-   "source": "262",
-   "target": "340",
-   "type": "teacher"
-  },
-  {
-   "source": "262",
-   "target": "41",
-   "type": "teacher"
-  },
-  {
-   "source": "262",
-   "target": "168",
-   "type": "teacher"
-  },
-  {
-   "source": "262",
-   "target": "336",
-   "type": "teacher"
-  },
-  {
-   "source": "262",
-   "target": "465",
-   "type": "student"
-  },
-  {
-   "source": "262",
-   "target": "467",
-   "type": "teacher"
-  },
-  {
-   "source": "262",
-   "target": "9",
-   "type": "family"
-  },
-  {
-   "source": "262",
-   "target": "192",
-   "type": "family"
-  },
-  {
-   "source": "262",
-   "target": "12",
-   "type": "teacher"
-  },
-  {
-   "source": "262",
-   "target": "62",
-   "type": "teacher"
-  },
-  {
-   "source": "262",
-   "target": "443",
-   "type": "teacher"
-  },
-  {
-   "source": "262",
-   "target": "164",
-   "type": "teacher"
-  },
-  {
-   "source": "23",
-   "target": "335",
-   "type": "student"
-  },
-  {
-   "source": "262",
-   "target": "74",
-   "type": "teacher"
-  },
-  {
-   "source": "262",
-   "target": "341",
-   "type": "teacher"
-  },
-  {
-   "source": "262",
-   "target": "472",
-   "type": "teacher"
-  },
-  {
-   "source": "262",
-   "target": "335",
-   "type": "teacher"
-  },
-  {
-   "source": "262",
-   "target": "468",
-   "type": "teacher"
-  },
-  {
-   "source": "182",
-   "target": "41",
-   "type": "teacher"
-  },
-  {
-   "source": "182",
-   "target": "334",
-   "type": "teacher"
-  },
-  {
-   "source": "182",
-   "target": "294",
-   "type": "student"
-  },
-  {
-   "source": "182",
-   "target": "44",
-   "type": "teacher"
-  },
-  {
-   "source": "182",
-   "target": "433",
-   "type": "teacher"
-  },
-  {
-   "source": "182",
-   "target": "443",
-   "type": "student"
+   "source": "619",
+   "target": "25",
+   "type": "influence",
+   "evidence_source": "CSV דמויות קשורות"
   },
   {
    "source": "183",
-   "target": "438",
-   "type": "teacher"
+   "target": "621",
+   "type": "influence",
+   "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "345",
-   "target": "267",
-   "type": "family"
-  },
-  {
-   "source": "4",
-   "target": "17",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "431",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "443",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "47",
-   "type": "student"
-  },
-  {
-   "source": "4",
-   "target": "273",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "314",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "449",
-   "type": "teacher"
-  },
-  {
-   "source": "67",
-   "target": "128",
-   "type": "student"
-  },
-  {
-   "source": "262",
-   "target": "154",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "47",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "445",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "25",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "426",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "174",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "428",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "49",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "427",
-   "type": "teacher"
-  },
-  {
-   "source": "262",
-   "target": "331",
-   "type": "family"
-  },
-  {
-   "source": "24",
-   "target": "41",
-   "type": "family"
-  },
-  {
-   "source": "24",
-   "target": "192",
-   "type": "teacher"
-  },
-  {
-   "source": "81",
-   "target": "344",
-   "type": "student"
-  },
-  {
-   "source": "81",
-   "target": "28",
-   "type": "teacher"
-  },
-  {
-   "source": "81",
-   "target": "273",
-   "type": "family"
-  },
-  {
-   "source": "190",
-   "target": "267",
-   "type": "teacher"
-  },
-  {
-   "source": "437",
-   "target": "7",
-   "type": "teacher"
+   "source": "621",
+   "target": "71",
+   "type": "influence",
+   "evidence_source": "CSV דמויות קשורות"
   },
   {
    "source": "438",
    "target": "437",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "467",
-   "type": "student"
-  },
-  {
-   "source": "4",
-   "target": "113",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "74",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "192",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "331",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "442",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "41",
-   "type": "family"
-  },
-  {
-   "source": "4",
-   "target": "435",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "335",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "336",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "267",
-   "type": "family"
-  },
-  {
-   "source": "4",
-   "target": "44",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "151",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "395",
-   "type": "student"
-  },
-  {
-   "source": "4",
-   "target": "310",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "415",
-   "type": "student"
-  },
-  {
-   "source": "4",
-   "target": "464",
-   "type": "student"
-  },
-  {
-   "source": "2",
-   "target": "41",
-   "type": "student"
-  },
-  {
-   "source": "2",
-   "target": "339",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "50",
-   "type": "student"
-  },
-  {
-   "source": "4",
-   "target": "50",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "471",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "189",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "340",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "264",
-   "type": "student"
-  },
-  {
-   "source": "4",
-   "target": "64",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "70",
-   "type": "student"
-  },
-  {
-   "source": "4",
-   "target": "76",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "453",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "457",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "458",
-   "type": "student"
-  },
-  {
-   "source": "4",
-   "target": "395",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "457",
-   "type": "student"
-  },
-  {
-   "source": "4",
-   "target": "452",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "344",
-   "type": "student"
-  },
-  {
-   "source": "4",
-   "target": "273",
-   "type": "student"
-  },
-  {
-   "source": "4",
-   "target": "408",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "70",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "467",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "319",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "449",
-   "type": "student"
-  },
-  {
-   "source": "4",
-   "target": "356",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "407",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "344",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "51",
-   "type": "student"
-  },
-  {
-   "source": "4",
-   "target": "312",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "327",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "41",
-   "type": "student"
-  },
-  {
-   "source": "4",
-   "target": "44",
-   "type": "student"
-  },
-  {
-   "source": "4",
-   "target": "46",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "51",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "279",
-   "type": "student"
-  },
-  {
-   "source": "4",
-   "target": "287",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "294",
-   "type": "student"
-  },
-  {
-   "source": "4",
-   "target": "469",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "436",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "458",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "293",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "415",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "50",
-   "type": "family"
-  },
-  {
-   "source": "4",
-   "target": "317",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "12",
-   "type": "teacher"
-  },
-  {
-   "source": "4",
-   "target": "41",
-   "type": "oppose"
-  },
-  {
-   "source": "4",
-   "target": "460",
-   "type": "teacher"
-  },
-  {
-   "source": "12",
-   "target": "344",
-   "type": "teacher"
-  },
-  {
-   "source": "12",
-   "target": "41",
-   "type": "teacher"
-  },
-  {
-   "source": "12",
-   "target": "113",
-   "type": "teacher"
-  },
-  {
-   "source": "12",
-   "target": "335",
-   "type": "teacher"
-  },
-  {
-   "source": "12",
-   "target": "22",
-   "type": "teacher"
-  },
-  {
-   "source": "12",
-   "target": "79",
-   "type": "teacher"
-  },
-  {
-   "source": "12",
-   "target": "443",
-   "type": "teacher"
-  },
-  {
-   "source": "12",
-   "target": "17",
-   "type": "teacher"
-  },
-  {
-   "source": "12",
-   "target": "41",
-   "type": "student"
-  },
-  {
-   "source": "12",
-   "target": "433",
-   "type": "teacher"
-  },
-  {
-   "source": "448",
-   "target": "268",
-   "type": "teacher"
-  },
-  {
-   "source": "448",
-   "target": "340",
    "type": "teacher"
   },
   {
@@ -11796,28 +11040,28 @@
    "type": "family"
   },
   {
-   "source": "449",
-   "target": "264",
+   "source": "264",
+   "target": "449",
    "type": "student"
   },
   {
-   "source": "134",
-   "target": "196",
+   "source": "196",
+   "target": "134",
    "type": "student"
   },
   {
-   "source": "28",
-   "target": "273",
+   "source": "273",
+   "target": "28",
    "type": "student"
   },
   {
-   "source": "156",
-   "target": "173",
+   "source": "173",
+   "target": "156",
    "type": "student"
   },
   {
-   "source": "464",
-   "target": "415",
+   "source": "415",
+   "target": "464",
    "type": "student"
   },
   {
@@ -11826,54 +11070,21 @@
    "type": "student"
   },
   {
-   "source": "582",
-   "target": "32",
+   "source": "340",
+   "target": "144",
    "type": "student"
   },
   {
-   "source": "144",
-   "target": "340",
-   "type": "student"
+   "source": "344",
+   "target": "28",
+   "type": "influence",
+   "evidence_source": "הורד מקשר רב–תלמיד: שנות חייהם אינן חופפות; לכל היותר למד מספריו"
   },
   {
-   "source": "28",
-   "target": "344",
-   "type": "student"
-  },
-  {
-   "source": "583",
-   "target": "458",
-   "type": "student"
-  },
-  {
-   "source": "498",
-   "target": "568",
-   "type": "student"
-  },
-  {
-   "source": "287",
-   "target": "393",
-   "type": "student"
-  },
-  {
-   "source": "426",
-   "target": "568",
-   "type": "student"
-  },
-  {
-   "source": "502",
-   "target": "294",
-   "type": "student"
-  },
-  {
-   "source": "583",
-   "target": "70",
-   "type": "student"
-  },
-  {
-   "source": "4",
-   "target": "435",
-   "type": "student"
+   "source": "294",
+   "target": "502",
+   "type": "influence",
+   "evidence_source": "הורד מקשר רב–תלמיד: שנות חייהם אינן חופפות; לכל היותר למד מספריו"
   },
   {
    "source": "151",
@@ -11891,24 +11102,15 @@
    "type": "student"
   },
   {
-   "source": "490",
-   "target": "177",
-   "type": "student"
-  },
-  {
    "source": "432",
    "target": "467",
    "type": "student"
   },
   {
-   "source": "425",
-   "target": "449",
-   "type": "student"
-  },
-  {
-   "source": "273",
-   "target": "22",
-   "type": "student"
+   "source": "22",
+   "target": "273",
+   "type": "influence",
+   "evidence_source": "הורד מקשר רב–תלמיד: שנות חייהם אינן חופפות; לכל היותר למד מספריו"
   },
   {
    "source": "146",
@@ -11916,44 +11118,27 @@
    "type": "student"
   },
   {
-   "source": "287",
-   "target": "44",
+   "source": "336",
+   "target": "154",
    "type": "student"
   },
   {
-   "source": "154",
-   "target": "336",
-   "type": "student"
+   "source": "22",
+   "target": "261",
+   "type": "influence",
+   "evidence_source": "הורד מקשר רב–תלמיד: שנות חייהם אינן חופפות; לכל היותר למד מספריו"
   },
   {
-   "source": "261",
-   "target": "22",
-   "type": "student"
-  },
-  {
-   "source": "565",
-   "target": "192",
-   "type": "student"
-  },
-  {
-   "source": "339",
-   "target": "568",
-   "type": "student"
-  },
-  {
-   "source": "469",
-   "target": "294",
-   "type": "student"
+   "source": "192",
+   "target": "565",
+   "type": "influence",
+   "evidence_source": "הורד מקשר רב–תלמיד: שנות חייהם אינן חופפות; לכל היותר למד מספריו"
   },
   {
    "source": "582",
    "target": "41",
-   "type": "student"
-  },
-  {
-   "source": "287",
-   "target": "390",
-   "type": "student"
+   "type": "influence",
+   "evidence_source": "הורד מקשר רב–תלמיד: שנות חייהם אינן חופפות; לכל היותר למד מספריו"
   },
   {
    "source": "453",
@@ -11966,39 +11151,21 @@
    "type": "student"
   },
   {
-   "source": "585",
-   "target": "331",
-   "type": "teacher"
-  },
-  {
-   "source": "583",
-   "target": "453",
-   "type": "teacher"
-  },
-  {
    "source": "425",
    "target": "319",
    "type": "teacher"
   },
   {
-   "source": "169",
-   "target": "568",
-   "type": "teacher"
-  },
-  {
-   "source": "126",
-   "target": "568",
-   "type": "teacher"
-  },
-  {
-   "source": "315",
-   "target": "41",
-   "type": "teacher"
+   "source": "41",
+   "target": "315",
+   "type": "influence",
+   "evidence_source": "הורד מקשר רב–תלמיד: שנות חייהם אינן חופפות; לכל היותר למד מספריו"
   },
   {
    "source": "39",
    "target": "113",
-   "type": "teacher"
+   "type": "influence",
+   "evidence_source": "הורד מקשר רב–תלמיד: 810 שנים בין לידותיהם; לכל היותר למד מספריו"
   },
   {
    "source": "319",
@@ -12011,39 +11178,14 @@
    "type": "oppose"
   },
   {
-   "source": "579",
-   "target": "66",
-   "type": "oppose"
-  },
-  {
    "source": "126",
    "target": "443",
    "type": "oppose"
   },
   {
    "source": "12",
-   "target": "568",
-   "type": "oppose"
-  },
-  {
-   "source": "93",
-   "target": "568",
-   "type": "oppose"
-  },
-  {
-   "source": "12",
    "target": "41",
    "type": "oppose"
-  },
-  {
-   "source": "424",
-   "target": "568",
-   "type": "influence"
-  },
-  {
-   "source": "579",
-   "target": "64",
-   "type": "influence"
   },
   {
    "source": "39",
@@ -12058,11 +11200,6 @@
   {
    "source": "352",
    "target": "189",
-   "type": "influence"
-  },
-  {
-   "source": "458",
-   "target": "568",
    "type": "influence"
   },
   {

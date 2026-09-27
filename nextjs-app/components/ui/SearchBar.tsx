@@ -1,97 +1,169 @@
 'use client'
 
-import { useEffect, useRef, useState, useCallback, useMemo } from 'react'
+import { useEffect, useRef, useState, useMemo, useId } from 'react'
 import { cn } from '@/lib/utils'
-import { searchSages } from '@/lib/supabase'
-import { searchSagesLocal } from '@/lib/search'
+import { searchSagesRanked, loadEnglishNames } from '@/lib/search'
+import type { SearchHit } from '@/lib/search'
+import { displayName } from '@/lib/displayName'
 import { useAppStore } from '@/store/useAppStore'
 import { EraChip } from './EraChip'
-import type { Sage, Locale } from '@/lib/types'
-import { UI, tr } from '@/lib/i18n'
+import { ERA_COLORS } from '@/lib/types'
+import type { Locale } from '@/lib/types'
+import { UI } from '@/lib/i18n'
 
 interface SearchBarProps {
   locale: Locale
   className?: string
 }
 
+const T: Record<Locale, { popular: string; loading: string; hint: string; clear: string }> = {
+  he: { popular: 'חכמים מובילים', loading: 'טוען את מאגר החכמים…', hint: '↑↓ לבחירה · Enter לפתיחה · Esc לסגירה', clear: 'נקה חיפוש' },
+  en: { popular: 'Popular sages', loading: 'Loading the sages…', hint: '↑↓ to choose · Enter to open · Esc to close', clear: 'Clear search' },
+  ru: { popular: 'Известные мудрецы', loading: 'Загружаем мудрецов…', hint: '↑↓ выбор · Enter открыть · Esc закрыть', clear: 'Очистить поиск' },
+}
+
+/** `text` with [start, end) wrapped in a highlight. */
+function Highlighted({ text, range }: { text: string; range: [number, number] | null }) {
+  if (!range) return <>{text}</>
+  return (
+    <>
+      {text.slice(0, range[0])}
+      <mark className="bg-gold-500/20 text-gold-200 rounded-sm px-px">{text.slice(range[0], range[1])}</mark>
+      {text.slice(range[1])}
+    </>
+  )
+}
+
 export function SearchBar({ locale, className }: SearchBarProps) {
   const t = UI[locale]
+  const s = T[locale]
   const [query, setQuery]         = useState('')
-  const [results, setResults]     = useState<Sage[]>([])
-  const [loading, setLoading]     = useState(false)
   const [focused, setFocused]     = useState(false)
+  const [open, setOpen]           = useState(false)
   const [activeIdx, setActiveIdx] = useState(-1)
+  const [aliasTick, setAliasTick] = useState(0)
   const inputRef  = useRef<HTMLInputElement>(null)
+  const listRef   = useRef<HTMLUListElement>(null)
   const timerRef  = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const baseId    = useId()
+  const listId    = `${baseId}-list`
+  const optionId  = (i: number) => `${baseId}-opt-${i}`
 
-  const { selectSage, setSearchQuery, sages, connections } = useAppStore()
+  const { selectSage, setSearchQuery, sages, connections, isSearchOpen, toggleSearch } = useAppStore()
+  // Static data arrives in well under a second; until then the box says so
+  // instead of guessing (the old Supabase fallback searched a stale snapshot).
+  const dataReady = sages.length > 0
 
-  // Popular sages (highest connection degree) — suggested on empty focus
-  const popular = useMemo(() => {
-    if (!sages.length) return []
+  // English names (sages.en.json) make "Maimonides" / "rambam" work in every
+  // locale; re-run the current query once they arrive.
+  useEffect(() => {
+    let alive = true
+    loadEnglishNames().then(() => { if (alive) setAliasTick(x => x + 1) })
+    return () => { alive = false }
+  }, [])
+
+  const degree = useMemo(() => {
     const deg = new Map<string, number>()
     connections.forEach(c => {
       deg.set(c.source, (deg.get(c.source) ?? 0) + 1)
       deg.set(c.target, (deg.get(c.target) ?? 0) + 1)
     })
-    return [...sages]
-      .sort((a, b) => (deg.get(b.id) ?? 0) - (deg.get(a.id) ?? 0))
-      .slice(0, 6)
-  }, [sages, connections])
+    return deg
+  }, [connections])
 
-  const runSearch = useCallback(async (q: string) => {
-    if (!q.trim()) { setResults([]); return }
-    // Instant fuzzy client-side search once the dataset is loaded
-    // (handles "רמבם" → "רמב״ם" and similar spelling variations)
-    if (sages.length > 0) {
-      setResults(searchSagesLocal(sages, q, 8))
-      return
-    }
-    // Fallback: Supabase ilike while data is still loading
-    setLoading(true)
-    const found = await searchSages(q, 8)
-    setResults(found)
-    setLoading(false)
-  }, [sages])
+  // Popular sages (highest connection degree) — suggested on empty focus
+  const popular = useMemo<SearchHit[]>(() => {
+    if (!sages.length) return []
+    return [...sages]
+      .sort((a, b) => (degree.get(b.id) ?? 0) - (degree.get(a.id) ?? 0))
+      .slice(0, 6)
+      .map(sage => ({ sage, score: 0, via: null, nameRange: null, viaRange: null }))
+  }, [sages, degree])
+
+  // Ranking 450 sages takes a millisecond or two, so suggestions follow every
+  // keystroke; only the graph filter (a full restyle) waits for a pause.
+  const results = useMemo(
+    () => (query.trim() && dataReady ? searchSagesRanked(sages, query, { limit: 8, degree }) : []),
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+    [query, sages, degree, dataReady, aliasTick])
 
   useEffect(() => {
     if (timerRef.current) clearTimeout(timerRef.current)
+    // Only a real change: every call re-filters and reheats the graph layout
     timerRef.current = setTimeout(() => {
-      runSearch(query)
-      setSearchQuery(query)
+      if (useAppStore.getState().filters.searchQuery !== query) setSearchQuery(query)
     }, 220)
     return () => { if (timerRef.current) clearTimeout(timerRef.current) }
-  }, [query, runSearch, setSearchQuery])
+  }, [query, setSearchQuery])
 
-  const handleSelect = (sage: Sage) => {
-    selectSage(sage)
+  const trimmed = query.trim()
+  // Suggestions shown: search results while typing, popular sages on empty focus
+  const shown = trimmed ? results : popular
+  const loadingData = !dataReady && trimmed.length > 0
+  const showDropdown = open && (shown.length > 0 || loadingData || trimmed.length > 1)
+
+  // Keep the keyboard-active option in view
+  useEffect(() => {
+    if (activeIdx < 0) return
+    document.getElementById(optionId(activeIdx))?.scrollIntoView({ block: 'nearest' })
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeIdx])
+
+  const reset = () => {
     setQuery('')
-    setResults([])
-    inputRef.current?.blur()
+    setActiveIdx(-1)
   }
 
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    const list = query.trim() ? results : popular
-    if (!list.length) return
+  const handleSelect = (hit: SearchHit) => {
+    selectSage(hit.sage)
+    reset()
+    setOpen(false)
+    inputRef.current?.blur()
+    // The mobile overlay has done its job once a sage is chosen
+    if (isSearchOpen) toggleSearch()
+  }
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Tab') {
+      // Close now, not on the delayed blur: Tab must land on the next header
+      // control, never inside a list that is about to unmount (focus → body).
+      setOpen(false)
+      setActiveIdx(-1)
+      return
+    }
+    if (e.key === 'Escape') {
+      // Esc here belongs to the search box, not to the drawer or graph focus
+      e.preventDefault()
+      e.stopPropagation()
+      // First Esc closes the list, a second clears the text
+      if (showDropdown) setOpen(false)
+      else if (query) { reset(); setSearchQuery('') }
+      else inputRef.current?.blur()
+      setActiveIdx(-1)
+      return
+    }
+    if (!shown.length) return
     if (e.key === 'ArrowDown') {
       e.preventDefault()
-      setActiveIdx(i => Math.min(i + 1, list.length - 1))
+      setOpen(true)
+      setActiveIdx(i => (i + 1) % shown.length)
     } else if (e.key === 'ArrowUp') {
       e.preventDefault()
-      setActiveIdx(i => Math.max(i - 1, 0))
-    } else if (e.key === 'Enter' && activeIdx >= 0) {
-      e.preventDefault()
-      handleSelect(list[activeIdx])
-    } else if (e.key === 'Escape') {
-      setQuery('')
-      setResults([])
-      inputRef.current?.blur()
+      setOpen(true)
+      setActiveIdx(i => (i <= 0 ? shown.length - 1 : i - 1))
+    } else if (e.key === 'Enter') {
+      // Enter with nothing highlighted opens the best match
+      const pick = shown[activeIdx >= 0 ? activeIdx : 0]
+      if (pick && (activeIdx >= 0 || trimmed)) {
+        e.preventDefault()
+        handleSelect(pick)
+      }
+    } else if (e.key === 'Home' && activeIdx >= 0) {
+      e.preventDefault(); setActiveIdx(0)
+    } else if (e.key === 'End' && activeIdx >= 0) {
+      e.preventDefault(); setActiveIdx(shown.length - 1)
     }
   }
-
-  // Suggestions shown: search results while typing, popular sages on empty focus
-  const shown = query.trim() ? results : popular
-  const showDropdown = focused && (shown.length > 0 || (loading && query.length > 0))
 
   return (
     <div className={cn('relative w-full max-w-md', className)}>
@@ -116,25 +188,34 @@ export function SearchBar({ locale, className }: SearchBarProps) {
         <input
           ref={inputRef}
           type="search"
+          role="combobox"
+          aria-expanded={showDropdown}
+          aria-controls={listId}
+          aria-autocomplete="list"
+          aria-activedescendant={showDropdown && activeIdx >= 0 ? optionId(activeIdx) : undefined}
           value={query}
-          onChange={e => { setQuery(e.target.value); setActiveIdx(-1) }}
-          onFocus={() => setFocused(true)}
-          onBlur={() => setTimeout(() => setFocused(false), 150)}
+          onChange={e => { setQuery(e.target.value); setActiveIdx(-1); setOpen(true) }}
+          onFocus={() => { setFocused(true); setOpen(true) }}
+          onBlur={() => setTimeout(() => { setFocused(false); setOpen(false); setActiveIdx(-1) }, 150)}
           onKeyDown={handleKeyDown}
           placeholder={t.searchPlaceholder}
           className={cn(
             'flex-1 bg-transparent text-ink-100 placeholder-ink-400',
-            'text-sm font-sans outline-none border-none',
+            'text-sm font-sans outline-none border-none focus-visible:outline-none',
+            // our own clear button replaces the browser's
+            '[&::-webkit-search-cancel-button]:appearance-none',
             'min-w-0',
           )}
           aria-label={t.searchLabel}
           dir={locale === 'he' ? 'rtl' : 'ltr'}
           autoComplete="off"
+          spellCheck={false}
+          enterKeyHint="search"
           data-search-input
         />
 
-        {/* Loading spinner */}
-        {loading && (
+        {/* Waiting for the dataset */}
+        {loadingData && (
           <svg className="w-4 h-4 text-gold-400 animate-spin flex-shrink-0" viewBox="0 0 24 24" aria-hidden>
             <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none"/>
             <path className="opacity-75" fill="currentColor"
@@ -143,11 +224,11 @@ export function SearchBar({ locale, className }: SearchBarProps) {
         )}
 
         {/* Clear */}
-        {query && !loading && (
+        {query && !loadingData && (
           <button
-            onClick={() => { setQuery(''); setResults([]); setSearchQuery('') }}
+            onClick={() => { reset(); setSearchQuery(''); inputRef.current?.focus() }}
             className="text-ink-500 hover:text-ink-200 transition-colors flex-shrink-0"
-            aria-label="Clear search"
+            aria-label={s.clear}
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -164,45 +245,87 @@ export function SearchBar({ locale, className }: SearchBarProps) {
             'glass rounded-xl overflow-hidden shadow-glass-lg',
             'animate-fade-in',
           )}
+          // near-opaque: the filter chips sit right under the list
+          style={{ background: 'rgb(var(--ink-850-rgb) / 0.97)' }}
         >
-          {!query.trim() && shown.length > 0 && (
+          {!trimmed && shown.length > 0 && (
             <p className="px-4 pt-3 pb-1 text-[9px] font-sans font-semibold uppercase tracking-widest text-ink-500">
-              {tr(locale, 'חכמים מובילים', 'Popular sages', 'Известные мудрецы')}
+              {s.popular}
             </p>
           )}
-          <ul role="listbox" aria-label={t.searchLabel}>
-            {shown.map((sage, idx) => (
-              <li key={sage.id} role="option" aria-selected={idx === activeIdx}>
-                <button
+
+          {loadingData && (
+            <p className="px-4 py-3 text-xs text-ink-400 font-sans flex items-center gap-2" role="status">
+              <span className="w-1.5 h-1.5 rounded-full bg-gold-400 animate-pulse" aria-hidden />
+              {s.loading}
+            </p>
+          )}
+
+          <ul
+            ref={listRef}
+            id={listId}
+            role="listbox"
+            aria-label={t.searchLabel}
+            // Chrome puts scrollable boxes in the Tab order; this one is driven
+            // by the arrow keys from the input instead
+            tabIndex={-1}
+            className="max-h-[min(60vh,26rem)] overflow-y-auto"
+          >
+            {shown.map((hit, idx) => {
+              const { sage } = hit
+              const name = displayName(sage.label)
+              const active = idx === activeIdx
+              return (
+                <li
+                  key={sage.id}
+                  id={optionId(idx)}
+                  role="option"
+                  aria-selected={active}
+                  onMouseDown={e => { e.preventDefault(); handleSelect(hit) }}
+                  onMouseMove={() => { if (!active) setActiveIdx(idx) }}
                   className={cn(
-                    'w-full flex items-center gap-3 px-4 py-3 text-start',
-                    'hover:bg-ink-700/50 transition-colors',
-                    idx === activeIdx && 'bg-ink-700/50',
+                    'relative w-full flex items-center gap-3 px-4 py-2.5 text-start cursor-pointer',
+                    'transition-colors',
+                    active ? 'bg-gold-500/10' : 'hover:bg-ink-700/40',
                     idx > 0 && 'border-t border-ink-700/40',
                   )}
-                  onMouseDown={() => handleSelect(sage)}
                 >
+                  {/* Active marker on the reading-start edge */}
+                  <span
+                    aria-hidden
+                    className={cn('absolute inset-y-1.5 start-0 w-0.5 rounded-full transition-opacity',
+                      active ? 'bg-gold-400 opacity-100' : 'opacity-0')}
+                  />
+                  <span className="era-dot" style={{ background: ERA_COLORS[sage.period] ?? '#7a6550' }} aria-hidden />
                   <div className="flex-1 min-w-0">
                     <p className="text-sm font-serif font-medium text-ink-100 truncate">
-                      {sage.label}
+                      <Highlighted text={name} range={hit.nameRange} />
                     </p>
-                    {sage.name_en && (
-                      <p className="text-xs text-ink-400 font-sans truncate mt-0.5">
-                        {sage.name_en}
+                    {hit.via ? (
+                      <p className="text-xs text-ink-400 font-sans truncate mt-0.5" dir="auto">
+                        <Highlighted text={hit.via} range={hit.viaRange} />
                       </p>
-                    )}
+                    ) : sage.name_en && sage.name_en !== name ? (
+                      <p className="text-xs text-ink-400 font-sans truncate mt-0.5" dir="auto">{sage.name_en}</p>
+                    ) : null}
                   </div>
                   {sage.period && (
-                    <EraChip period={sage.period} locale={locale} size="sm" />
+                    <EraChip period={sage.period} locale={locale} size="sm" className="flex-shrink-0" />
                   )}
-                </button>
-              </li>
-            ))}
+                </li>
+              )
+            })}
           </ul>
 
-          {results.length === 0 && !loading && query.length > 1 && (
-            <p className="px-4 py-3 text-sm text-ink-400 font-sans text-center">
+          {dataReady && trimmed.length > 1 && results.length === 0 && (
+            <p className="px-4 py-3 text-sm text-ink-400 font-sans text-center" role="status">
               {t.noResults}
+            </p>
+          )}
+
+          {shown.length > 0 && (
+            <p className="hidden md:block px-4 py-1.5 border-t border-ink-700/40 text-[10px] font-sans text-ink-500">
+              {s.hint}
             </p>
           )}
         </div>

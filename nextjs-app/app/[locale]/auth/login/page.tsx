@@ -17,7 +17,8 @@ export default async function LoginPage({ params }: PageProps) {
   const dir = validLocale === 'he' ? 'rtl' : 'ltr'
 
   return (
-    <div
+    <main
+      id="main"
       className="h-dvh flex flex-col items-center justify-center gap-8 bg-ink-900 text-ink-100 font-sans px-4"
       dir={dir}
     >
@@ -27,6 +28,6 @@ export default async function LoginPage({ params }: PageProps) {
       <div className="w-full max-w-sm rounded-2xl border border-ink-700/40 bg-ink-800/30 p-6">
         <LoginForm locale={validLocale} />
       </div>
-    </div>
+    </main>
   )
 }

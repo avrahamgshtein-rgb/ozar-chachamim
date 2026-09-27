@@ -1,31 +1,35 @@
+// Skeleton in the shape of the sage page: top bar, hero, overview beside the
+// related-sages card, then the research column.
 export default function SageLoading() {
   return (
-    <div className="min-h-dvh bg-ink-900 text-ink-100 font-sans">
-      <div className="max-w-4xl mx-auto px-4 py-8 animate-pulse">
-        {/* Back nav skeleton */}
-        <div className="h-8 w-24 bg-ink-800 rounded-lg mb-8" />
-
+    <div className="h-dvh overflow-hidden bg-ink-900 font-sans text-ink-100">
+      <div className="h-14 border-b border-gold-500/10 bg-ink-850/80" />
+      <div className="mx-auto max-w-6xl animate-pulse px-4 pt-6 md:px-8 md:pt-10 motion-reduce:animate-none">
         {/* Hero */}
-        <div className="mb-8 space-y-3">
-          <div className="h-5 w-20 bg-ink-800 rounded-full" />
-          <div className="h-10 w-3/4 bg-ink-800 rounded-lg" />
-          <div className="h-4 w-1/2 bg-ink-800 rounded" />
-          <div className="flex gap-3 pt-2">
-            <div className="h-4 w-24 bg-ink-800 rounded" />
-            <div className="h-4 w-32 bg-ink-800 rounded" />
+        <div className="space-y-4 rounded-3xl border border-ink-700/40 p-6 md:p-10">
+          <div className="flex gap-2">
+            <div className="h-6 w-20 rounded-full bg-ink-800" />
+            <div className="h-6 w-24 rounded-full bg-ink-800" />
+          </div>
+          <div className="h-10 w-3/4 rounded-lg bg-ink-800 md:h-12" />
+          <div className="h-5 w-1/2 rounded bg-ink-800" />
+          <div className="flex gap-2 pt-2">
+            <div className="h-9 w-40 rounded-full bg-ink-800" />
+            <div className="h-9 w-36 rounded-full bg-ink-800" />
           </div>
         </div>
 
-        {/* Body */}
-        <div className="grid md:grid-cols-3 gap-6">
-          <div className="md:col-span-2 space-y-4">
-            {[1, 2, 3, 4, 5].map(i => (
-              <div key={i} className="h-4 bg-ink-800 rounded" style={{ width: `${70 + i * 5}%` }} />
+        {/* Overview + related */}
+        <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1fr)_20rem] lg:gap-12">
+          <div className="space-y-4">
+            <div className="h-24 rounded-2xl bg-ink-800" />
+            {[1, 2, 3, 4].map(i => (
+              <div key={i} className="h-4 rounded bg-ink-800" style={{ width: `${70 + i * 6}%` }} />
             ))}
           </div>
-          <div className="space-y-3">
-            {[1, 2, 3].map(i => (
-              <div key={i} className="h-16 bg-ink-800 rounded-xl" />
+          <div className="space-y-2.5">
+            {[1, 2, 3, 4].map(i => (
+              <div key={i} className="h-11 rounded-xl bg-ink-800" />
             ))}
           </div>
         </div>

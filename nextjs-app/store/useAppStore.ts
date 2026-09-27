@@ -1,11 +1,11 @@
 'use client'
 
 import { create } from 'zustand'
-import type { Sage, Connection, Tab, Filters, Period, Region } from '@/lib/types'
+import type { Sage, Connection, Tab, Filters, Period, Region, SageGroup } from '@/lib/types'
 import { isTagFacet } from '@/lib/types'
 import { regionsOf } from '@/lib/regions'
 import { placesIn } from '@/lib/placeIndex'
-import { normalizeHe, fuzzyIncludes } from '@/lib/search'
+import { sageQueryMatcher } from '@/lib/search'
 
 /** One selectable field chip: a single trimmed field name and how many sages carry it. */
 export interface FieldOption {
@@ -88,10 +88,20 @@ interface AppState {
   clearFilters: () => void
   /** Focus one place; `anchorId` marks whose journey prompted it. */
   setPlaceFocus: (place: string | null, anchorId?: string | null) => void
+  /**
+   * Focus a named set of sages (a school, from the Traditions tab), or clear it
+   * with null. Focusing replaces the era/region/field/place filters so the
+   * whole group shows; the free-text search is left to the search bar.
+   */
+  setGroupFocus: (group: SageGroup | null) => void
   applyNavigationState: (tab: Tab | null, sage: string | null, regions: Region[], periods: Period[] | null) => void
 }
 
 function applyFilters(sages: Sage[], filters: Filters): Sage[] {
+  // The same matcher as the search box's suggestions (names, titles dropped,
+  // acronyms, English names, then field/place/tags), so the graph dims to
+  // exactly what the dropdown offers.
+  const matchesQuery = filters.searchQuery ? sageQueryMatcher(filters.searchQuery) : null
   return sages.filter(sage => {
     // Period filtering: null = all periods (no filter), [] = no periods (empty set), [...] = selected subset
     if (filters.period !== null && filters.period.length === 0) return false
@@ -122,15 +132,8 @@ function applyFilters(sages: Sage[], filters: Filters): Sage[] {
         stops.some(s => placesIn(s).includes(filters.place!))
       if (!here) return false
     }
-    if (filters.searchQuery) {
-      // Fuzzy Hebrew matching: "רמבם" ↔ "רמב״ם" (nikud/quotes/finals-insensitive)
-      const q = normalizeHe(filters.searchQuery)
-      const matchLabel   = fuzzyIncludes(sage.label, q)
-      const matchNameEn  = fuzzyIncludes(sage.name_en, q)
-      const matchField   = fuzzyIncludes(sage.field, q)
-      const matchLoc     = fuzzyIncludes(sage.location, q)
-      if (!matchLabel && !matchNameEn && !matchField && !matchLoc) return false
-    }
+    if (filters.group && !filters.group.ids.includes(sage.id)) return false
+    if (matchesQuery && !matchesQuery(sage)) return false
     return true
   })
 }
@@ -288,6 +291,18 @@ export const useAppStore = create<AppState>((set, get) => ({
       filters: updated,
       filteredSages: applyFilters(sages, updated),
       placeAnchorId: place ? anchorId : null,
+    })
+  },
+
+  setGroupFocus: (group) => {
+    const { sages, filters } = get()
+    const updated: Filters = group
+      ? { ...filters, period: null, region: [], field: [], place: null, group }
+      : { ...filters, group: null }
+    set({
+      filters: updated,
+      filteredSages: applyFilters(sages, updated),
+      ...(group ? { placeAnchorId: null } : {}),
     })
   },
 
