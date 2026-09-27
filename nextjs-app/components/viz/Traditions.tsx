@@ -1,7 +1,7 @@
 'use client'
 
 import { useCallback, useEffect, useId, useMemo, useRef, useState } from 'react'
-import type { CSSProperties, KeyboardEvent as ReactKeyboardEvent } from 'react'
+import type { CSSProperties, KeyboardEvent as ReactKeyboardEvent, ReactNode } from 'react'
 import { useAppStore } from '@/store/useAppStore'
 import { ALL_PERIODS, ERA_COLORS, ERA_LABELS, REGION_COLORS, REGION_LABELS } from '@/lib/types'
 import type { Locale, Period, Region, Sage } from '@/lib/types'
@@ -23,24 +23,31 @@ import { tr } from '@/lib/i18n'
  */
 
 // ── Shared time axis ──────────────────────────────────────────────────────
-// Piecewise linear: -100…1000 takes the first 30%, 1000…2030 the rest, so
-// the medieval and modern schools (most of them) get room to be told apart.
-// Every axis draws its ticks, so the compression is visible, not hidden.
-const AXIS_MIN = -100
-const AXIS_BREAK = 1000
-const AXIS_MAX = 2030
+// Piecewise linear: on the cards -100…1000 takes the first 30% and 1000…2030
+// the rest, so the medieval and modern schools (most of them) can be told
+// apart. Every axis draws its ticks, so the compression is visible.
+type Stops = [year: number, at: number][]
+const CARD_STOPS: Stops = [[-100, 0], [1000, 0.3], [2030, 1]]
+/** The map is wider and its modern schools cluster, so it spreads 1500+ further. */
+const MAP_STOPS: Stops = [[-100, 0], [1000, 0.2], [1500, 0.45], [2030, 1]]
 const BREAK_AT = 0.3
 const THIS_YEAR = new Date().getFullYear()
 
-function axisX(year: number): number {
-  const y = Math.min(AXIS_MAX, Math.max(AXIS_MIN, year))
-  return y <= AXIS_BREAK
-    ? ((y - AXIS_MIN) / (AXIS_BREAK - AXIS_MIN)) * BREAK_AT
-    : BREAK_AT + ((y - AXIS_BREAK) / (AXIS_MAX - AXIS_BREAK)) * (1 - BREAK_AT)
+function scaleX(year: number, stops: Stops = CARD_STOPS): number {
+  const y = Math.min(stops[stops.length - 1][0], Math.max(stops[0][0], year))
+  for (let i = 1; i < stops.length; i++) {
+    const [y1, a1] = stops[i]
+    if (y <= y1) {
+      const [y0, a0] = stops[i - 1]
+      return a0 + ((y - y0) / (y1 - y0)) * (a1 - a0)
+    }
+  }
+  return 1
 }
+const axisX = (year: number) => scaleX(year, CARD_STOPS)
 
 const CARD_TICKS = [0, 500, 1000, 1500, 2000]
-const MAP_TICKS = [0, 500, 1000, 1200, 1400, 1600, 1800, 2000]
+const MAP_TICKS = [0, 500, 1000, 1200, 1400, 1500, 1600, 1700, 1800, 1900, 2000]
 
 /** Conventional era windows (as in the timeline), for the axis tint. */
 const ERA_WINDOW: Partial<Record<Period, [number, number]>> = {
@@ -81,7 +88,7 @@ function ruPlural(n: number, one: string, few: string, many: string): string {
 
 const S = {
   title:        { he: 'בתי מדרש ומסורות', en: 'Schools and Centres of Learning', ru: 'Школы и центры учёности' },
-  axisNote:     { he: 'ציר הזמן דחוס לפני שנת 1000', en: 'Time axis compressed before 1000 CE', ru: 'До 1000 года шкала сжата' },
+  axisNote:     { he: 'ציר הזמן אינו אחיד: המאות הקדומות דחוסות', en: 'Time axis not to scale: earlier centuries are compressed', ru: 'Шкала времени неравномерна: ранние века сжаты' },
   era:          { he: 'תקופה', en: 'Era', ru: 'Эпоха' },
   region:       { he: 'אזור', en: 'Region', ru: 'Регион' },
   all:          { he: 'הכל', en: 'All', ru: 'Все' },
@@ -224,6 +231,10 @@ export function Traditions({ locale }: TraditionsProps) {
     [sages],
   )
   const byKey = useMemo(() => new Map(schools.map(s => [s.key, s])), [schools])
+  const relationsByKey = useMemo(
+    () => new Map(schools.map(s => [s.key, relationsOf(s, byKey, schools)])),
+    [schools, byKey],
+  )
   const peopleCount = useMemo(() => new Set(schools.flatMap(s => s.people.map(p => p.id))).size, [schools])
 
   // Global filters dim, never hide: null when nothing is filtered out.
@@ -461,7 +472,7 @@ export function Traditions({ locale }: TraditionsProps) {
                 key={s.key}
                 school={s}
                 locale={locale}
-                relations={relationsOf(s, byKey, schools)}
+                relations={relationsByKey.get(s.key) ?? []}
                 byKey={byKey}
                 inFilter={inFilter}
                 flash={flashKey === s.key}
@@ -635,7 +646,7 @@ function SchoolCard({
   )
 }
 
-function PeopleRow({ label, children }: { label: string; children: React.ReactNode }) {
+function PeopleRow({ label, children }: { label: string; children: ReactNode }) {
   return (
     <div>
       <h4 className="sc-label mb-1.5">{label}</h4>
@@ -730,7 +741,8 @@ function FamilyMap({ schools, edges, visibleKeys, locale, onJump }: {
   const wrapRef = useRef<HTMLDivElement>(null)
   const [width, setWidth] = useState(0)
   const [hover, setHover] = useState<string | null>(null)
-  const uid = useId().replace(/:/g, '')
+  // Marker ids go inside url(#…), so keep only plain characters.
+  const uid = 'sc' + useId().replace(/[^a-zA-Z0-9_-]/g, '')
 
   useEffect(() => {
     const el = wrapRef.current
@@ -743,27 +755,46 @@ function FamilyMap({ schools, edges, visibleKeys, locale, onJump }: {
   }, [])
 
   const W = Math.max(MAP_MIN_W, width)
-  const xOf = useCallback((year: number) => MAP_PAD + axisX(year) * (W - 2 * MAP_PAD), [W])
+  const xOf = useCallback((year: number) => MAP_PAD + scaleX(year, MAP_STOPS) * (W - 2 * MAP_PAD), [W])
 
-  // Pills sit at their start year; each takes the first lane where it fits.
+  // Pills sit at their start year. Each takes the free lane that keeps its
+  // edges to already-placed schools short and clear of other pills.
   const { nodes, lanes } = useMemo(() => {
     const laneEnds: number[] = []
     const out: MapNode[] = []
+    const placed = new Map<string, MapNode & { lane: number }>()
+    const neighbours = (key: string) =>
+      edges.filter(e => e.from === key || e.to === key).map(e => (e.from === key ? e.to : e.from))
     for (const s of schools) {
       const label = s.short[locale]
       const w = Math.ceil(textWidth(label)) + 30
       let x = xOf(s.span[0])
       if (x + w > W - MAP_PAD) x = W - MAP_PAD - w
-      let lane = laneEnds.findIndex(end => end + 8 <= x)
-      if (lane < 0) { lane = laneEnds.length; laneEnds.push(0) }
-      laneEnds[lane] = x + w
-      out.push({
-        key: s.key, x, y: MAP_TOP + lane * LANE_H, w, label,
+      let best = 0, bestCost = Infinity
+      for (let lane = 0; lane <= laneEnds.length; lane++) {
+        if (lane < laneEnds.length && laneEnds[lane] + 8 > x) continue
+        const cand: MapNode = { key: s.key, x, y: MAP_TOP + lane * LANE_H, w, label: '', color: '', name: '' }
+        let cost = lane * 0.3 + (lane === laneEnds.length ? 1.5 : 0)
+        for (const nk of neighbours(s.key)) {
+          const n = placed.get(nk)
+          if (!n) continue
+          cost += Math.abs(lane - n.lane)
+          const bz = edgeCurve(n, cand)
+          cost += 6 * [...placed.values()].filter(p => p.key !== nk && curveHits(bz, p)).length
+        }
+        if (cost < bestCost) { bestCost = cost; best = lane }
+      }
+      if (best === laneEnds.length) laneEnds.push(0)
+      laneEnds[best] = x + w
+      const node = {
+        key: s.key, x, y: MAP_TOP + best * LANE_H, w, label,
         color: REGION_COLORS[s.region], name: s.name[locale],
-      })
+      }
+      out.push(node)
+      placed.set(s.key, { ...node, lane: best })
     }
     return { nodes: out, lanes: laneEnds.length }
-  }, [schools, locale, xOf, W])
+  }, [schools, edges, locale, xOf, W])
 
   const byKey = useMemo(() => new Map(nodes.map(n => [n.key, n])), [nodes])
   const H = MAP_TOP + lanes * LANE_H + MAP_AXIS_H
@@ -805,7 +836,7 @@ function FamilyMap({ schools, edges, visibleKeys, locale, onJump }: {
         {edges.map((e, i) => {
           const a = byKey.get(e.from), b = byKey.get(e.to)
           if (!a || !b) return null
-          const d = edgePath(a, b)
+          const d = edgePath(a, b, nodes)
           const active = !connected || (connected.has(e.from) && connected.has(e.to) && (e.from === hover || e.to === hover))
           return (
             <path key={i} d={d} fill="none"
@@ -849,25 +880,56 @@ function FamilyMap({ schools, edges, visibleKeys, locale, onJump }: {
   )
 }
 
+type Pt = [number, number]
+type Curve = [Pt, Pt, Pt, Pt]
+
 /** A smooth curve between two pills: sideways when they don't overlap in x, else vertical. */
-function edgePath(a: MapNode, b: MapNode): string {
+function edgeCurve(a: MapNode, b: MapNode): Curve {
   const ay = a.y + NODE_H / 2, by = b.y + NODE_H / 2
   if (a.x + a.w + 6 <= b.x) {
     const x1 = a.x + a.w, x2 = b.x - 1
     const dx = Math.max(18, (x2 - x1) / 2)
-    return `M${x1},${ay} C${x1 + dx},${ay} ${x2 - dx},${by} ${x2},${by}`
+    return [[x1, ay], [x1 + dx, ay], [x2 - dx, by], [x2, by]]
   }
   if (b.x + b.w + 6 <= a.x) {
     const x1 = a.x, x2 = b.x + b.w + 1
     const dx = Math.max(18, (x1 - x2) / 2)
-    return `M${x1},${ay} C${x1 - dx},${ay} ${x2 + dx},${by} ${x2},${by}`
+    return [[x1, ay], [x1 - dx, ay], [x2 + dx, by], [x2, by]]
   }
   const down = b.y > a.y
   const x1 = a.x + Math.min(a.w, 40), x2 = b.x + Math.min(b.w, 40)
   const y1 = down ? a.y + NODE_H : a.y
   const y2 = down ? b.y - 1 : b.y + NODE_H + 1
   const dy = Math.max(10, Math.abs(y2 - y1) / 2) * (down ? 1 : -1)
-  return `M${x1},${y1} C${x1},${y1 + dy} ${x2},${y2 - dy} ${x2},${y2}`
+  return [[x1, y1], [x1, y1 + dy], [x2, y2 - dy], [x2, y2]]
+}
+
+/** Does the curve pass through a pill? Sampled, with a small inset. */
+function curveHits([p0, p1, p2, p3]: Curve, n: MapNode): boolean {
+  for (let i = 1; i < 24; i++) {
+    const t = i / 24, u = 1 - t
+    const x = u * u * u * p0[0] + 3 * u * u * t * p1[0] + 3 * u * t * t * p2[0] + t * t * t * p3[0]
+    const y = u * u * u * p0[1] + 3 * u * u * t * p1[1] + 3 * u * t * t * p2[1] + t * t * t * p3[1]
+    if (x > n.x + 2 && x < n.x + n.w - 2 && y > n.y + 2 && y < n.y + NODE_H - 2) return true
+  }
+  return false
+}
+
+/**
+ * The drawn path. Two pills in one lane with others between them are joined
+ * by a shallow arc through the gap under the lane instead of through the pills.
+ */
+function edgePath(a: MapNode, b: MapNode, all: MapNode[]): string {
+  let c = edgeCurve(a, b)
+  if (a.y === b.y && all.some(n => n !== a && n !== b && curveHits(c, n))) {
+    const [l, r] = a.x < b.x ? [a, b] : [b, a]
+    const y = a.y + NODE_H
+    const sx = l.x + l.w - 12, ex = r.x + 12
+    const pts: Curve = [[sx, y], [sx + 10, y + 10], [ex - 10, y + 10], [ex, y + 1]]
+    c = a === l ? pts : [[ex, y], [ex - 10, y + 10], [sx + 10, y + 10], [sx, y + 1]]
+  }
+  const [p0, p1, p2, p3] = c
+  return `M${p0[0]},${p0[1]} C${p1[0]},${p1[1]} ${p2[0]},${p2[1]} ${p3[0]},${p3[1]}`
 }
 
 // ── Styles ────────────────────────────────────────────────────────────────
