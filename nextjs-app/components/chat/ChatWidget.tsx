@@ -94,6 +94,7 @@ export function ChatWidget({ locale, placement = 'app', initialSubject, pageSage
   const checkedRef = useRef(false)
   /** Where focus goes once the panel has rendered: set by whoever opened it. */
   const focusOnOpen = useRef<'starter' | 'input' | null>(null)
+  const returnFocus = useRef<HTMLElement | null>(null)
   const isRtl = locale === 'he'
   const onPage = placement === 'page'
 
@@ -125,6 +126,9 @@ export function ChatWidget({ locale, placement = 'app', initialSubject, pageSage
 
   // "שאלו על החכם" anywhere on the page: open, scoped to that sage.
   useEffect(() => onAskAboutSage(next => {
+    // Closing returns focus to the button that asked, not to the chat button.
+    const opener = document.activeElement
+    returnFocus.current = opener instanceof HTMLElement && opener !== document.body ? opener : null
     setSubject(next)
     setSubjectMark(messagesRef.current.length)
     setError(null)
@@ -148,7 +152,10 @@ export function ChatWidget({ locale, placement = 'app', initialSubject, pageSage
 
   const close = useCallback(() => {
     setIsOpen(false)
-    toggleRef.current?.focus()
+    const back = returnFocus.current
+    returnFocus.current = null
+    if (back?.isConnected) back.focus()
+    else toggleRef.current?.focus()
   }, [])
 
   async function send(raw: string) {
@@ -251,7 +258,7 @@ export function ChatWidget({ locale, placement = 'app', initialSubject, pageSage
     <>
       <button
         ref={toggleRef}
-        onClick={() => { focusOnOpen.current = isOpen ? null : 'input'; setIsOpen(o => !o) }}
+        onClick={() => { returnFocus.current = null; focusOnOpen.current = isOpen ? null : 'input'; setIsOpen(o => !o) }}
         aria-label={isOpen
           ? tr(locale, 'סגור צ׳אט', 'Close chat', 'Закрыть чат')
           : tr(locale, 'שאל שאלה', 'Ask a question', 'Задать вопрос')}
