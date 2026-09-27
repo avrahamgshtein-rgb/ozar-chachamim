@@ -89,7 +89,10 @@ export function SearchBar({ locale, className }: SearchBarProps) {
 
   useEffect(() => {
     if (timerRef.current) clearTimeout(timerRef.current)
-    timerRef.current = setTimeout(() => setSearchQuery(query), 220)
+    // Only a real change: every call re-filters and reheats the graph layout
+    timerRef.current = setTimeout(() => {
+      if (useAppStore.getState().filters.searchQuery !== query) setSearchQuery(query)
+    }, 220)
     return () => { if (timerRef.current) clearTimeout(timerRef.current) }
   }, [query, setSearchQuery])
 

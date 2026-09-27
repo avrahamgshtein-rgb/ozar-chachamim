@@ -304,6 +304,7 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
   useEffect(() => {
     if (!sages.length || !containerRef.current) return
     let mounted = true
+    let onFontsLoaded: (() => void) | null = null
 
     async function build() {
       const d3 = await import('d3')
@@ -529,7 +530,8 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
         return w
       }
       // Web fonts arrive after the first measurement; measure again then
-      document.fonts?.addEventListener?.('loadingdone', () => { widthCache.clear(); if (mounted) relabel() })
+      onFontsLoaded = () => { widthCache.clear(); if (mounted) relabel() }
+      document.fonts?.addEventListener?.('loadingdone', onFontsLoaded)
 
       const labelY = (p: LabelSpot) => {
         const rr = Math.max(p.d.r * transform.k, MIN_SCREEN_R)
@@ -951,7 +953,13 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
       fitCurrent(800)
     }, 2000)
 
-    return () => { mounted = false; simRef.current?.stop(); clearTimeout(fitTimer); apiRef.current = null }
+    return () => {
+      mounted = false
+      simRef.current?.stop()
+      clearTimeout(fitTimer)
+      apiRef.current = null
+      if (onFontsLoaded) document.fonts?.removeEventListener?.('loadingdone', onFontsLoaded)
+    }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sages.length, connections.length])
 
@@ -1053,7 +1061,8 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
   // ── Selection → focus ────────────────────────────────────────────────────
   useEffect(() => {
     selectedIdRef.current = selectedSageId
-    if (selectedSageId) setFocusId(selectedSageId)
+    // While a path is on show, opening one of its sages keeps the path
+    if (selectedSageId && !modeRef.current.path) setFocusId(selectedSageId)
     apiRef.current?.restyle()
   }, [selectedSageId, graphVersion])
 
