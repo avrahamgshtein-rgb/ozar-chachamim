@@ -73,6 +73,11 @@ export function getAllSages(): Sage[] {
   return Array.from(db().sages.values())
 }
 
+/** Every link in the merged corpus (for whole-graph walks such as lib/sinaiPath.ts). */
+export function getAllConnections(): Connection[] {
+  return db().links
+}
+
 /**
  * Corpus totals for the About page, computed rather than written in.
  * These were hardcoded and had drifted a long way — 1,624 connections were
