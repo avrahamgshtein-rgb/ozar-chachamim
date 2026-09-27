@@ -86,7 +86,7 @@ export async function callClaude(
 
 /** Rough USD estimate — good enough for the usage_events audit trail, not
  *  meant to be billing-accurate. Update if the model/pricing changes. */
-const PRICE_PER_MTOK = { input: 3, output: 15 } // Sonnet-class pricing, USD per million tokens
+const PRICE_PER_MTOK = { input: 2, output: 10 } // claude-sonnet-5 (DEFAULT_MODEL), USD per million tokens
 export function estimateCost(inputTokens: number, outputTokens: number): number {
   return (inputTokens / 1_000_000) * PRICE_PER_MTOK.input
        + (outputTokens / 1_000_000) * PRICE_PER_MTOK.output
