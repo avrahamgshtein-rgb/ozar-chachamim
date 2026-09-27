@@ -85,13 +85,15 @@ export function getCorpusStats(): { sages: number; connections: number; withRese
   return { sages: sages.size, connections: links.length, withResearch }
 }
 
-export function getSageConnections(id: string): Array<{ type: Connection['type']; otherSage: Sage }> {
+// source/target are kept so callers can tell which end the sage is on:
+// "teacher" means source teaches target, so the type alone can't label a relation.
+export function getSageConnections(id: string): Array<{ type: Connection['type']; source: string; target: string; otherSage: Sage }> {
   const { sages, links } = db()
-  const out: Array<{ type: Connection['type']; otherSage: Sage }> = []
+  const out: Array<{ type: Connection['type']; source: string; target: string; otherSage: Sage }> = []
   for (const l of links) {
     if (l.source === id || l.target === id) {
       const other = sages.get(l.source === id ? l.target : l.source)
-      if (other) out.push({ type: l.type, otherSage: other })
+      if (other) out.push({ type: l.type, source: l.source, target: l.target, otherSage: other })
     }
   }
   return out
