@@ -9813,12 +9813,6 @@
   },
   {
    "source": "391",
-   "target": "41",
-   "type": "influence",
-   "evidence_source": "CSV דמויות קשורות"
-  },
-  {
-   "source": "391",
    "target": "600",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
