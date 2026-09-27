@@ -163,15 +163,22 @@ export function GenealogyTree({ locale }: GenealogyTreeProps) {
     url.searchParams.delete('view')
     window.history.replaceState(window.history.state, '', url)
   }, [])
-  // Arriving from a sage page's "road to Sinai" link: ?sage= opens that sage's
-  // card, which would cover the road it came to see. Close it once, keeping
-  // the selection (closeDrawer would clear it, and the map, mounted behind,
-  // reacts to every selection change).
+  // Arriving from a sage page's "road to Sinai" link: ?sage= would open that
+  // sage's card over the road it came to see. When the data is still loading,
+  // claim the selection by id now: AppShell opens a parked ?sage= card only
+  // when nothing is selected yet. If the data won the race and the card is
+  // already open, close it once, keeping the selection.
   const arrivalSage = useRef<string | null | undefined>(undefined)
   if (arrivalSage.current === undefined) {
     arrivalSage.current = pane === 'sinai' ? new URLSearchParams(window.location.search).get('sage') : null
   }
   const isDrawerOpen = useAppStore(s => s.isDrawerOpen)
+  useEffect(() => {
+    const id = arrivalSage.current
+    if (id && !useAppStore.getState().sageMap.size && !useAppStore.getState().selectedSageId) {
+      useAppStore.setState({ selectedSageId: id })
+    }
+  }, [])
   useEffect(() => {
     if (!arrivalSage.current || !isDrawerOpen || selectedSageId !== arrivalSage.current) return
     arrivalSage.current = null
@@ -181,9 +188,9 @@ export function GenealogyTree({ locale }: GenealogyTreeProps) {
   // road on screen, so any road can be shared or reloaded. An open card is
   // left as the reader opened it.
   useEffect(() => {
-    if (pane !== 'sinai' || !focusId || isDrawerOpen) return
+    if (pane !== 'sinai' || !focusId || isDrawerOpen || !sageMap.has(focusId)) return
     const st = useAppStore.getState()
-    if (st.selectedSageId !== focusId && sageMap.has(focusId)) {
+    if (st.selectedSageId !== focusId || !st.selectedSage) {
       useAppStore.setState({ selectedSage: sageMap.get(focusId)!, selectedSageId: focusId })
     }
   }, [pane, focusId, isDrawerOpen, selectedSageId, sageMap])
