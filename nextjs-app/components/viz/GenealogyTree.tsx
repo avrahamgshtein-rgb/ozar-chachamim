@@ -502,7 +502,8 @@ export function GenealogyTree({ locale }: GenealogyTreeProps) {
     <SagePicker
       locale={locale}
       sages={sages}
-      degree={sinai ? (id => (sinai.best.has(id) ? 60 : 0) + Math.min(degreeOf(idx, id, kinds), 30)) : (id => degreeOf(idx, id, kinds))}
+      // (The picker caps the rank at 60: a road is worth 30, lineage links the rest.)
+      degree={sinai ? (id => (sinai.best.has(id) ? 30 : 0) + Math.min(degreeOf(idx, id, kinds), 29)) : (id => degreeOf(idx, id, kinds))}
       badge={sinai ? (id => sinai.best.has(id)
         ? { on: true, text: tr(locale, 'דרך לסיני', 'reaches Sinai', 'путь к Синаю') }
         : { on: false, text: tr(locale, 'ללא דרך מתועדת', 'no recorded road', 'путь не записан') }) : undefined}

@@ -502,6 +502,8 @@ const SINAI_CSS = `
 .sp-root .sp-focus { --ny: 22px; padding-block: 10px 14px; }
 .sp-root .sp-focus .sp-river { margin-block: -10px -14px; }
 
+.sp-root .sp-summit .sp-river::before { content: ''; position: absolute; left: 50%; top: 16px; width: 180px; height: 150px; transform: translate(-50%, -50%);
+  background: radial-gradient(closest-side, rgb(var(--gold-400-rgb) / .16), transparent); pointer-events: none; }
 .sp-root .sp-mount { position: absolute; left: 50%; top: 0; transform: translateX(-50%); overflow: visible; filter: drop-shadow(0 0 10px rgb(var(--gold-400-rgb) / .45)); }
 .sp-root .sp-peak { fill: rgb(var(--gold-500-rgb) / .22); stroke: var(--gold-400); stroke-width: 1.6; stroke-linejoin: round; }
 .sp-root .sp-snow { fill: none; stroke: var(--gold-300); stroke-width: 1.3; stroke-linecap: round; stroke-linejoin: round; }
@@ -554,9 +556,12 @@ const SINAI_CSS = `
 }
 
 .sp-root .sp-anim .sp-river { animation: sp-draw var(--dur) cubic-bezier(.35, .6, .35, 1) var(--d) both; }
+.sp-root .sp-anim .sp-summit .sp-river { animation: sp-fade .6s ease-out both; }
 .sp-root .sp-anim .sp-main, .sp-root .sp-anim .sp-meta { animation: sp-rise .45s ease-out calc(var(--d) + 90ms) both; }
 .sp-root .sp-anim .sp-node-focus { animation: sp-pulse 1.8s ease-out calc(var(--d) + 350ms) 2; }
-@keyframes sp-draw { from { clip-path: inset(0 0 100% 0); } to { clip-path: inset(0 0 -2px 0); } }
+/* The clip reaches past the cell so node halos and the summit glow aren't cut. */
+@keyframes sp-draw { from { clip-path: inset(-30px -40px calc(100% + 30px) -40px); } to { clip-path: inset(-30px -40px -30px -40px); } }
+@keyframes sp-fade { from { opacity: 0; } to { opacity: 1; } }
 @keyframes sp-rise { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: none; } }
 @keyframes sp-pulse {
   0% { box-shadow: 0 0 0 2px var(--gold-400), 0 0 0 0 rgb(var(--gold-400-rgb) / .55); }
@@ -564,6 +569,7 @@ const SINAI_CSS = `
 }
 @media (prefers-reduced-motion: reduce) {
   .sp-root { scroll-behavior: auto; }
-  .sp-root .sp-anim .sp-river, .sp-root .sp-anim .sp-main, .sp-root .sp-anim .sp-meta, .sp-root .sp-anim .sp-node-focus { animation: none; }
+  .sp-root .sp-anim .sp-river, .sp-root .sp-anim .sp-summit .sp-river, .sp-root .sp-anim .sp-main, .sp-root .sp-anim .sp-meta,
+  .sp-root .sp-anim .sp-node-focus { animation: none; }
 }
 `
