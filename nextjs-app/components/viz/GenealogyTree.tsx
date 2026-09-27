@@ -104,8 +104,8 @@ export function GenealogyTree({ locale }: GenealogyTreeProps) {
 
   const refocus = useCallback((id: string) => {
     if (!sageMap.has(id) || id === focusRef.current) return
+    camera.current = focusRef.current ? 'recenter' : 'fit'
     focusRef.current = id
-    camera.current = focusId ? 'recenter' : 'fit'
     setFocusId(id)
     setTrail(t => {
       const at = t.indexOf(id)
@@ -115,7 +115,7 @@ export function GenealogyTree({ locale }: GenealogyTreeProps) {
     // An open card follows the focus; a closed one stays closed.
     const st = useAppStore.getState()
     if (st.isDrawerOpen && st.selectedSageId !== id) st.selectSage(sageMap.get(id)!)
-  }, [sageMap, focusId])
+  }, [sageMap])
 
   // First focus: the selected sage, else the richest lineage.
   useEffect(() => {
@@ -302,6 +302,8 @@ export function GenealogyTree({ locale }: GenealogyTreeProps) {
       ? [(old.x - target.x) / target.k, (old.y - target.y) / target.k]
       : [0, 0]
     const fresh = nodesG.select('g.lt-node[data-key]').empty()
+    // A pan or zoom still in flight would keep steering the camera afterwards.
+    if (intent !== 'keep') svg.interrupt()
     // A first tree grows out of the focus in place; only a refit of an
     // existing tree (mode switch) pans the camera visibly.
     if (intent === 'recenter' || (intent === 'fit' && fresh)) svg.call(z.transform, target)
@@ -369,9 +371,10 @@ export function GenealogyTree({ locale }: GenealogyTreeProps) {
       })
       .on('mouseenter', (_ev, d) => highlightChain(vp, d, byKeyRef.current))
       .on('mouseleave', () => clearChain(vp))
-      .on('focus', (_ev, d) => {
+      .on('focus', function (_ev, d) {
         highlightChain(vp, d, byKeyRef.current)
-        revealNode(svgEl, z, tRef.current, d, viewRef.current)
+        // Keyboard focus only: a click also focuses, and must not pan first.
+        if (this.matches(':focus-visible')) revealNode(svgEl, z, tRef.current, d, viewRef.current)
       })
       .on('blur', () => clearChain(vp))
 
@@ -386,7 +389,7 @@ export function GenealogyTree({ locale }: GenealogyTreeProps) {
       .transition().duration(dur)
       .attr('opacity', 1)
       .attr('transform', d => `translate(${d.x},${d.y})`)
-    // Tab order follows reading order: the focus, then ancestors, then descendants.
+    // Tab order: the focus, then ancestors, then descendants (see lineage.ts finish()).
     nAll.order()
   }, [layout, view, rtl, filteredIds, sageMap, yearsOf])
 

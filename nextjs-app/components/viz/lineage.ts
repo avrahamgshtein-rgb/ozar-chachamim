@@ -307,13 +307,13 @@ function wrap(text: string, width: number, max: number, font: string, measure: L
     }
   }
   if (cur) lines.push(cur)
-  const last = lines.length - 1
-  if (last >= 0 && measure(lines[last], font) > width) {
-    let s = lines[last]
+  // The last line holds the remainder, and a single word can outrun any line.
+  return lines.slice(0, max).map(line => {
+    if (measure(line, font) <= width) return line
+    let s = line
     while (s.length > 1 && measure(s + '…', font) > width) s = s.slice(0, -1)
-    lines[last] = s.trimEnd() + '…'
-  }
-  return lines.slice(0, max)
+    return s.trimEnd() + '…'
+  })
 }
 
 interface Box { w: number; h: number; lines: string[] }
@@ -507,7 +507,10 @@ function layoutOutline(t: LineageTree, o: LayoutOptions): Layout {
   return finish('outline', nodes, edges, o.rtl)
 }
 
+/** Mirror for RTL, order for keyboard (focus, ancestors, descendants), measure the bounds. */
 function finish(mode: LayoutMode, nodes: PlacedNode[], edges: PlacedEdge[], rtl: boolean): Layout {
+  const rank = (n: PlacedNode) => (n.node.type === 'focus' ? 0 : n.node.side === 'up' ? 1 : 2)
+  nodes.sort((a, b) => rank(a) - rank(b))
   if (rtl) {
     for (const n of nodes) n.x = -n.x
     for (const e of edges) e.pts = e.pts.map(([x, y]) => [-x, y] as [number, number])
