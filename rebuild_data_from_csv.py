@@ -286,12 +286,63 @@ def add_link(src, tgt, ltype, **extra):
     links.append({'source': src, 'target': tgt, 'type': ltype, **extra})
     return True
 
+ERA_ORDER = ['patriarchs', 'exodus', 'judges', 'kings', 'second-temple', 'tannaim',
+             'amoraim', 'geonim', 'rishonim', 'acharonim', 'modern']
+
+def era_gap(a, b):
+    if a.get('era_key') not in ERA_ORDER or b.get('era_key') not in ERA_ORDER: return 0
+    return abs(ERA_ORDER.index(a['era_key']) - ERA_ORDER.index(b['era_key']))
+
+def find_related(token, row):
+    """Resolve one token of a row's related-figures column. Stricter than
+    find_node, whose loose substring match suits the curated-link recovery below
+    but misread this column:
+    - Containment is by whole words (a leading ה/מ/ב/ל/ו/ש belongs to the word:
+      "מהר"ם מרוטנבורג" is המהר"ם מרוטנבורג).
+    - A known name found inside a longer token must be more than a bare given
+      name: "שמואל" sits inside "ספר שמואל", "בנו רבי שמואל" and "שמואל ויטאל",
+      "צרויה" inside "יואב בן צרויה", "יהודית" inside "ספרות יהודית"; none of them
+      is that sage.
+    - A one-word token may name a sage by surname or epithet (קנפנטון, המאירי),
+      not by the given name that opens the sage's name (ירמיהו is not רבי ירמיהו
+      חחיאשוילי). Acronyms (רש"י) stand on their own.
+    - An exact bare name that other sages' names also begin with is ambiguous:
+      "שמואל" is the Amora's whole key, but in Hannah's row it is the prophet.
+      The exact match is kept if it lived within one era of the row's sage, else
+      the single longer-named candidate who did, else nothing.
+    Short exact keys are allowed here ("תם" is רבנו תם, which find_node's
+    three-letter floor always missed)."""
+    k = norm_name(token)
+    if not k: return None
+    if k in byname:
+        exact = byname[k]
+        others = [n for key2, n in byname.items() if key2.startswith(k + ' ')]
+        if not others or era_gap(exact, row) <= 1: return exact
+        near = [n for n in others if era_gap(n, row) <= 1]
+        return near[0] if len(near) == 1 else None
+    if len(k) <= 5: return None
+    def word_at(short, long):
+        m = re.search(r'(^|\s)[המבלוש]?' + re.escape(short) + r'($|\s)', long)
+        return m.start() if m else None
+    def named(short):
+        return ' ' in short or '"' in short or "'" in short
+    mine = fathers(token)
+    cands = []
+    for key2, n in byname.items():
+        at = word_at(k, key2)
+        inside = at is not None and (named(k) or at > 0)
+        at = word_at(key2, k)
+        around = at is not None and named(key2)
+        if (inside or around) and not (mine and fathers(n['label']) and not mine & fathers(n['label'])):
+            cands.append(n)
+    return cands[0] if len(cands) == 1 else None
+
 csv_links = 0
 for node in nodes:
     raw = node.pop('related_raw', '')
     if not raw: continue
     for token in re.split(r'[;,·•/]', raw):
-        rel = find_node(token)
+        rel = find_related(token, node)
         if rel and add_link(rel['id'], node['id'], 'influence', evidence_source='CSV דמויות קשורות'):
             csv_links += 1
 print(f'links from CSV related-figures: {csv_links}')
@@ -706,6 +757,30 @@ with open('data/link_validation_report.txt', 'w', encoding='utf-8') as f:
         else:
             verdict = 'ok'
         f.write(f'  {fname}: {fmt(T)} teacher of {fmt(S)}: {verdict}\n')
+
+# ---------- Orient related-figure links in time ----------
+# A row's "related figures" column says only that two people are connected, not
+# who shaped whom; the link was always written related -> row, so every sage who
+# listed a successor or student was drawn as influenced by them (Rav Hai Gaon
+# by Maimonides, Rabbi Akiva by Rabbi Shimon bar Yochai). An influence edge
+# runs from the earlier to the later: flip one whose source was born more than
+# 25 years after its target, or, when either is undated, belongs to a later
+# era. Close contemporaries keep the order they were written in.
+flipped = 0
+node_by_id = {n['id']: n for n in nodes}
+for l in links:
+    if l['type'] != 'influence' or l.get('evidence_source') != 'CSV דמויות קשורות': continue
+    S, T = node_by_id.get(l['source']), node_by_id.get(l['target'])
+    if not S or not T: continue
+    if S.get('birth_year') is not None and T.get('birth_year') is not None:
+        later = S['birth_year'] - T['birth_year'] > 25
+    else:
+        later = (S.get('era_key') in ERA_ORDER and T.get('era_key') in ERA_ORDER
+                 and ERA_ORDER.index(S['era_key']) > ERA_ORDER.index(T['era_key']))
+    if later:
+        l['source'], l['target'] = l['target'], l['source']
+        flipped += 1
+print(f'related-figure links oriented earlier -> later: {flipped} flipped')
 
 # ---------- Write ----------
 shutil.copy('data.json', 'data.json.backup_pre_rebuild')

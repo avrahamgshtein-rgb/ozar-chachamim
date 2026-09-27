@@ -61,12 +61,13 @@ const GENERATION = 25
  *   predecessor  source preceded target (succession)  → source above
  *   family       source is the elder relative         → source above
  *
- * Influence links are often stored the wrong way round (the spreadsheet
- * records "who influenced this sage" and "whom this sage influenced" in the
- * same column), so a link whose upper end was born more than a generation
- * after its lower end (or, when either is undated, belongs to a later era)
- * is drawn in chronological order instead. Nothing is
- * added or dropped: only the direction of a link the data already holds.
+ * The spreadsheet records "who influenced this sage" and "whom this sage
+ * influenced" in one column, so `rebuild_data_from_csv.py` orients those links
+ * earlier → later. As a guard for the hand-edited supplement files, a link
+ * whose upper end was born more than a generation after its lower end (or,
+ * when either is undated, belongs to a later era) is still drawn in
+ * chronological order here. Nothing is added or dropped: only the direction
+ * of a link the data already holds.
  * When one pair has several links, the strongest kind wins (teacher first).
  */
 export function buildLineageIndex(sageMap: Map<string, Sage>, connections: Connection[]): LineageIndex {
