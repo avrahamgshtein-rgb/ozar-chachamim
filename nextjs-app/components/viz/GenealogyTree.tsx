@@ -188,7 +188,8 @@ export function GenealogyTree({ locale }: GenealogyTreeProps) {
       .slice(0, 8)
   }, [sinai, idx])
   const openFromRiver = useCallback((id: string) => {
-    if (id !== focusRef.current) keepFocusFor.current = id
+    // Only when the selection will change: otherwise no effect run would clear the mark.
+    if (id !== focusRef.current && id !== useAppStore.getState().selectedSageId) keepFocusFor.current = id
     openCard(id)
   }, [openCard])
   const switchPane = (p: Pane) => {
