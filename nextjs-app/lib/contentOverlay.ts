@@ -30,15 +30,17 @@ export async function fetchContentOverlay(locale: Locale): Promise<SageOverlay |
 export function applyOverlay(sages: Sage[], overlay: SageOverlay | null): Sage[] {
   if (!overlay) return sages
   let applied = 0
+  // `label_he` keeps the canonical Hebrew label for name-keyed lookups
+  // (lib/schools.ts) once `label` is replaced by a translation.
   const merged = sages.map(sage => {
     const entry = overlay[sage.id]
     if (!entry) {
       // Fallback: no translation entry yet → at least show the Latin name
       // instead of Hebrew when one exists
-      return sage.name_en ? { ...sage, label: sage.name_en } : sage
+      return sage.name_en ? { ...sage, label: sage.name_en, label_he: sage.label } : sage
     }
     applied++
-    return { ...sage, ...entry }
+    return { ...sage, ...entry, label_he: sage.label }
   })
   if (applied > 0) {
     console.log(`[i18n] ✅ Content overlay: ${applied} sages translated`)

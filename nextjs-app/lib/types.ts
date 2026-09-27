@@ -54,6 +54,12 @@ export interface MigrationPath {
 export interface Sage {
   id: string
   label: string
+  /**
+   * The canonical Hebrew label, kept by `applyOverlay` when a locale overlay
+   * replaces `label` (en/ru). Name-keyed lookups (e.g. lib/schools.ts) match
+   * against this, since the translated label is not a stable key.
+   */
+  label_he?: string
   name_en?: string
   period: Period
   region?: Region
@@ -113,6 +119,19 @@ export interface Filters {
    * keyword bucket: this is one named city or land.
    */
   place: string | null
+  /**
+   * A named set of sages, e.g. one school's members from the Traditions tab
+   * ("show on graph"). When set, the dataset narrows to exactly these ids.
+   * Optional so existing `Filters` literals stay valid; absent = no group.
+   */
+  group?: SageGroup | null
+}
+
+/** A named, curated set of sages that can be focused as a filter. */
+export interface SageGroup {
+  key: string
+  label: Record<Locale, string>
+  ids: string[]
 }
 
 /**
