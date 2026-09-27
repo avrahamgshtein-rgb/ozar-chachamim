@@ -9452,12 +9452,6 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "583",
-   "target": "594",
-   "type": "influence",
-   "evidence_source": "CSV דמויות קשורות"
-  },
-  {
    "source": "355",
    "target": "594",
    "type": "influence",
@@ -10316,12 +10310,6 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "542",
-   "target": "462",
-   "type": "influence",
-   "evidence_source": "CSV דמויות קשורות"
-  },
-  {
    "source": "395",
    "target": "464",
    "type": "influence",
@@ -10730,12 +10718,6 @@
    "evidence_source": "CSV דמויות קשורות"
   },
   {
-   "source": "539",
-   "target": "99",
-   "type": "influence",
-   "evidence_source": "CSV דמויות קשורות"
-  },
-  {
    "source": "612",
    "target": "540",
    "type": "influence",
@@ -10750,12 +10732,6 @@
   {
    "source": "41",
    "target": "541",
-   "type": "influence",
-   "evidence_source": "CSV דמויות קשורות"
-  },
-  {
-   "source": "71",
-   "target": "542",
    "type": "influence",
    "evidence_source": "CSV דמויות קשורות"
   },

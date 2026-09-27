@@ -765,11 +765,19 @@ with open('data/link_validation_report.txt', 'w', encoding='utf-8') as f:
 # by Maimonides, Rabbi Akiva by Rabbi Shimon bar Yochai). An influence edge
 # runs from the earlier to the later: flip one whose source was born more than
 # 25 years after its target, or, when either is undated, belongs to a later
-# era. Close contemporaries keep the order they were written in.
-flipped = 0
+# era. Close contemporaries keep the order they were written in; their
+# direction can't be read from the column, so where it matters (the Ari and R.
+# Chaim Vital, eight years apart) a curated teacher link states it, and the
+# column's link for that pair is dropped as the weaker duplicate.
+flipped = superseded = 0
 node_by_id = {n['id']: n for n in nodes}
+kept = []
 for l in links:
-    if l['type'] != 'influence' or l.get('evidence_source') != 'CSV דמויות קשורות': continue
+    if l['type'] != 'influence' or l.get('evidence_source') != 'CSV דמויות קשורות':
+        kept.append(l); continue
+    if frozenset((l['source'], l['target'])) in curated:
+        superseded += 1; continue
+    kept.append(l)
     S, T = node_by_id.get(l['source']), node_by_id.get(l['target'])
     if not S or not T: continue
     if S.get('birth_year') is not None and T.get('birth_year') is not None:
@@ -780,7 +788,9 @@ for l in links:
     if later:
         l['source'], l['target'] = l['target'], l['source']
         flipped += 1
-print(f'related-figure links oriented earlier -> later: {flipped} flipped')
+links = kept
+print(f'related-figure links oriented earlier -> later: {flipped} flipped, '
+      f'{superseded} dropped for a curated teacher link')
 
 # ---------- Write ----------
 shutil.copy('data.json', 'data.json.backup_pre_rebuild')
