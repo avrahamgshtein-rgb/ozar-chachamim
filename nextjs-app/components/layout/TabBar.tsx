@@ -1,82 +1,121 @@
 'use client'
 
+import { useEffect, useRef } from 'react'
 import { cn } from '@/lib/utils'
 import { useAppStore } from '@/store/useAppStore'
 import { TAB_META } from '@/lib/types'
 import type { Tab, Locale } from '@/lib/types'
+import { UI } from '@/lib/i18n'
 
-const TABS: Tab[] = ['graph', 'map', 'traditions', 'ideas', 'timeline', 'genealogy', 'about']
+export const TABS: Tab[] = ['graph', 'map', 'traditions', 'ideas', 'timeline', 'genealogy', 'about']
+
+/** Ids shared with AppShell's tab panels (aria-controls / aria-labelledby). */
+export const tabId = (tab: Tab) => `tab-${tab}`
+export const panelId = (tab: Tab) => `panel-${tab}`
 
 interface TabBarProps {
   locale: Locale
 }
 
+/**
+ * The view switcher, as an ARIA tablist: one tab stop (the selected tab, a
+ * roving tabindex), arrow keys move and select, Home/End jump to the ends.
+ * Arrows follow the reading direction: in Hebrew, ArrowLeft is "next".
+ */
 export function TabBar({ locale }: TabBarProps) {
-  const { activeTab, setActiveTab } = useAppStore()
-  const isHe = locale === 'he'
+  const activeTab = useAppStore(s => s.activeTab)
+  const setActiveTab = useAppStore(s => s.setActiveTab)
+  const t = UI[locale]
+  const rtl = locale === 'he'
+  const refs = useRef<Array<HTMLButtonElement | null>>([])
+
+  // Keep the selected tab in view where the bar scrolls sideways (phones).
+  useEffect(() => {
+    const el = refs.current[TABS.indexOf(activeTab)]
+    if (!el) return
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    el.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: reduce ? 'auto' : 'smooth' })
+  }, [activeTab])
+
+  function onKeyDown(e: React.KeyboardEvent<HTMLButtonElement>, index: number) {
+    const next = rtl ? 'ArrowLeft' : 'ArrowRight'
+    const prev = rtl ? 'ArrowRight' : 'ArrowLeft'
+    let to: number
+    if (e.key === next) to = (index + 1) % TABS.length
+    else if (e.key === prev) to = (index - 1 + TABS.length) % TABS.length
+    else if (e.key === 'Home') to = 0
+    else if (e.key === 'End') to = TABS.length - 1
+    else return
+    e.preventDefault()
+    setActiveTab(TABS[to])
+    refs.current[to]?.focus()
+  }
 
   return (
     <nav
+      id="tabbar"
+      tabIndex={-1}
+      data-focus-region
       className={cn(
         'fixed bottom-4 left-1/2 -translate-x-1/2 z-30',
-        'glass rounded-2xl px-2 py-1.5',
-        'shadow-glass flex items-center gap-0.5',
-        'max-w-[calc(100vw-2rem)]',
-        'overflow-x-auto overflow-y-hidden',
-        '[&::-webkit-scrollbar]:h-1 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-ink-500 [&::-webkit-scrollbar-thumb]:rounded-full',
+        'glass rounded-2xl p-1.5 shadow-glass',
+        'max-w-[calc(100vw-1.5rem)]',
+        'overflow-x-auto overflow-y-hidden overscroll-x-contain',
+        '[scrollbar-width:none] [&::-webkit-scrollbar]:hidden',
       )}
-      aria-label={isHe ? 'ניווט ראשי' : 'Main navigation'}
+      aria-label={t.tabsLabel}
       data-tour="tabs"
     >
-      {TABS.map(tab => {
-        const meta   = TAB_META[tab]
-        const label  = isHe ? meta.labelHe : locale === 'ru' ? meta.labelRu : meta.labelEn
-        const active = activeTab === tab
+      <div role="tablist" aria-label={t.tabsLabel} aria-orientation="horizontal" className="flex items-stretch gap-0.5">
+        {TABS.map((tab, i) => {
+          const meta   = TAB_META[tab]
+          const label  = rtl ? meta.labelHe : locale === 'ru' ? meta.labelRu : meta.labelEn
+          const active = activeTab === tab
 
-        return (
-          <button
-            key={tab}
-            onClick={() => setActiveTab(tab)}
-            aria-current={active ? 'page' : undefined}
-            title={label}
-            className={cn(
-              'flex flex-col items-center gap-0.5 px-3 py-2 rounded-xl',
-              'transition-all duration-200 min-w-[64px] min-h-[44px]',
-              active
-                ? 'bg-gold-500/20 text-gold-300 shadow-gold-glow border border-gold-500/40'
-                : 'border border-transparent text-ink-400 hover:text-ink-200 hover:bg-ink-700/40',
-            )}
-          >
-            {meta.icon === 'temple' ? (
-              <img
-                src="/icons/temple.svg"
-                alt={label}
-                className={cn(
-                  'w-6 h-6',
-                  active ? '[filter:drop-shadow(0_0_4px_#c99a3a)]' : '',
-                )}
-                aria-hidden
-              />
-            ) : (
-              <span
-                className="text-base leading-none"
-                style={{ fontFamily: 'monospace' }}
-                aria-hidden
-              >
-                {meta.icon}
-              </span>
-            )}
-            <span
+          return (
+            <button
+              key={tab}
+              ref={el => { refs.current[i] = el }}
+              type="button"
+              role="tab"
+              id={tabId(tab)}
+              aria-selected={active}
+              aria-controls={active ? panelId(tab) : undefined}
+              tabIndex={active ? 0 : -1}
+              onClick={() => setActiveTab(tab)}
+              onKeyDown={e => onKeyDown(e, i)}
               className={cn(
-                'text-[10px] font-sans font-medium leading-tight whitespace-nowrap',
-                active ? 'text-gold-300' : 'text-ink-500',
+                'relative flex flex-col items-center justify-center gap-1 flex-shrink-0',
+                'px-2.5 sm:px-3 py-1.5 rounded-xl min-w-[52px] sm:min-w-[64px] min-h-[48px]',
+                'border transition-colors duration-200',
+                active
+                  ? 'bg-gold-500/15 text-gold-300 border-gold-500/40 shadow-gold-glow'
+                  : 'border-transparent text-ink-400 hover:text-ink-100 hover:bg-ink-700/40',
               )}
             >
-              {label}
-            </span>
-          </button>
-        )
-      })}
+              {meta.icon === 'temple' ? (
+                <img
+                  src="/icons/temple.svg"
+                  alt=""
+                  className={cn('w-5 h-5', active ? '[filter:drop-shadow(0_0_4px_#c99a3a)]' : 'opacity-80')}
+                />
+              ) : (
+                <span className="text-base leading-none font-mono" aria-hidden>
+                  {meta.icon}
+                </span>
+              )}
+              <span
+                className={cn(
+                  'text-[11px] font-sans font-medium leading-none whitespace-nowrap',
+                  active ? 'text-gold-300' : 'text-ink-400',
+                )}
+              >
+                {label}
+              </span>
+            </button>
+          )
+        })}
+      </div>
     </nav>
   )
 }

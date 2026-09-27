@@ -11,7 +11,7 @@
   --ink-700: #2a2318;
   --ink-600: #665b4f;
   --ink-500: #90806e;
-  --ink-400: #917c67;
+  --ink-400: #968169;
   --ink-300: #9a8570;
   --ink-200: #c4a87d;
   --ink-100: #e8d5b0;
@@ -25,10 +25,16 @@
   /* RGB triplets for Tailwind alpha support */
   --ink-950-rgb: 7 5 3;   --ink-900-rgb: 10 8 6;    --ink-850-rgb: 15 13 10;
   --ink-800-rgb: 28 24 18; --ink-700-rgb: 42 35 24;  --ink-600-rgb: 102 91 79;
-  --ink-500-rgb: 144 128 110; --ink-400-rgb: 145 124 103; --ink-300-rgb: 154 133 112;
+  --ink-500-rgb: 144 128 110; --ink-400-rgb: 150 129 105; --ink-300-rgb: 154 133 112;
   --ink-200-rgb: 196 168 125; --ink-100-rgb: 232 213 176; --ink-50-rgb: 245 238 216;
   --gold-600-rgb: 160 120 40; --gold-500-rgb: 201 151 58; --gold-400-rgb: 217 170 74;
   --gold-300-rgb: 232 184 75; --gold-200-rgb: 240 204 128; --gold-100-rgb: 247 228 176;
+
+  /* ink-600 doubles as a border and surface tone, too dim for text (3:1).
+     Text set in it uses this lifted value instead (see "Muted text" below). */
+  --ink-600-text-rgb: 143 126 108;
+
+  color-scheme: dark;
 
   --radius: 0.5rem;
   --header-h: 64px;
@@ -134,10 +140,54 @@ h1, h2, h3 {
 }
 
 /* ── Focus ring ─────────────────────────────────────────────── */
-:focus-visible {
-  outline: 2px solid var(--gold-500);
+/* One visible ring for every keyboard-focused control. `:root` lifts the
+   specificity above Tailwind's `outline-none` / `focus:outline-none`, which
+   several components set and which left keyboard users with no ring at all.
+   No border-radius here: the outline follows the element's own corners. */
+:root :focus-visible {
+  outline: 2px solid rgb(var(--gold-400-rgb));
   outline-offset: 2px;
-  border-radius: 4px;
+}
+/* Programmatic focus targets (skip-link destinations) are whole regions. */
+:root #main:focus,
+:root [data-focus-region]:focus {
+  outline: none;
+}
+
+/* ── Skip link ──────────────────────────────────────────────── */
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  inset-inline-start: 0.75rem;
+  z-index: 2000;
+  padding: 0.625rem 1rem;
+  border-radius: 0.75rem;
+  background: rgb(var(--gold-500-rgb));
+  color: rgb(var(--ink-900-rgb));
+  font: 700 0.875rem/1.2 'Heebo', sans-serif;
+  text-decoration: none;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+  transform: translateY(calc(-100% - 1rem));
+  transition: transform 0.15s ease-out;
+}
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: none;
+}
+:root .skip-link:focus-visible {
+  outline-color: rgb(var(--ink-100-rgb));
+}
+
+/* ── Muted text ─────────────────────────────────────────────── */
+/* Text in ink-600 fell to 3:1 in dark and 2:1 in light, below WCAG AA's
+   4.5:1. Borders and surfaces keep the ink-600 tone; its text utilities
+   read from --ink-600-text-rgb, which clears 4.5:1 on the page, glass and
+   card surfaces in both themes. */
+.text-ink-600 {
+  color: rgb(var(--ink-600-text-rgb) / var(--tw-text-opacity, 1));
+}
+.placeholder-ink-600::placeholder {
+  color: rgb(var(--ink-600-text-rgb) / var(--tw-placeholder-opacity, 1));
 }
 
 /* ── Graph canvas fills full height ────────────────────────── */
@@ -205,7 +255,7 @@ h1, h2, h3 {
   --ink-800: #efe6d2;
   --ink-700: #e3d5ba;
   --ink-600: #c3ad86;
-  --ink-500: #8a7350;
+  --ink-500: #7a6443;
   --ink-400: #6b573f;
   --ink-300: #52422e;
   --ink-200: #3d2f1f;
@@ -213,16 +263,20 @@ h1, h2, h3 {
   --ink-50:  #140e08;
 
   --gold-600: #7a5a16;
-  --gold-500: #8a6a1e;
+  --gold-500: #80621a;
   --gold-400: #7a5a16;
   --gold-300: #6d4f12;
 
   --ink-950-rgb: 245 238 216; --ink-900-rgb: 250 247 240; --ink-850-rgb: 245 239 226;
   --ink-800-rgb: 239 230 210; --ink-700-rgb: 227 213 186; --ink-600-rgb: 195 173 134;
-  --ink-500-rgb: 138 115 80;  --ink-400-rgb: 107 87 63;   --ink-300-rgb: 82 66 46;
+  --ink-500-rgb: 122 100 67;  --ink-400-rgb: 107 87 63;   --ink-300-rgb: 82 66 46;
   --ink-200-rgb: 61 47 31;    --ink-100-rgb: 36 27 16;    --ink-50-rgb: 20 14 8;
-  --gold-600-rgb: 122 90 22;  --gold-500-rgb: 138 106 30; --gold-400-rgb: 122 90 22;
+  --gold-600-rgb: 122 90 22;  --gold-500-rgb: 128 98 26;  --gold-400-rgb: 122 90 22;
   --gold-300-rgb: 109 79 18;  --gold-200-rgb: 138 106 30; --gold-100-rgb: 158 126 50;
+
+  --ink-600-text-rgb: 120 99 74;
+
+  color-scheme: light;
 }
 
 [data-theme='light'] body::before {
