@@ -268,6 +268,10 @@ Before: {'teacher': 7, 'student': 28}. After: {'teacher': 2, 'student': 15}.
 
 Part 3. Teacher/student links in the hand-curated supplement files, checked read-only.
   data-ancient.json: שמואל הנביא [596] (-1120–-1012) teacher of דוד המלך [557] (-1040–-970): ok
+  data-research-links.json: רבי יוסף אבן מיגאש [32] (1077–1141) teacher of רב מימון הדיין [391] (1110–1165): ok
+  data-research-links.json: רבנו חננאל בן חושיאל [35] (ללא שנים) teacher of רבי נתן מרומי [351] (1038–1106): ok (undated)
+  data-research-links.json: רבנו חננאל בן חושיאל [35] (ללא שנים) teacher of רבי יצחק אלפסי (הרי"ף) [582] (1013–1103): ok (undated)
+  data-research-links.json: רב מימון הדיין [391] (1110–1165) teacher of הרמב"ם [41] (1138–1204): ok
   data-research-links.json: האר״י הקדוש [462] (1534–1572) teacher of רבי חיים ויטאל [542] (1542–1620): ok
   data-research-links.json: רבי אליהו בן שלמה זלמן – הגאון מווילנה [539] (1720–1797) teacher of רבי חיים מוולוז'ין – מייסד 'אם הישיבות' ו'נפש החיים' [99] (1749–1821): ok
   data-research-links.json: רבי יוסף טאיטצאק – המקובל שחזה את הציונות [68] (1465–1546) teacher of רבי שלמה הלוי אלקבץ [327] (1505–1584): ok

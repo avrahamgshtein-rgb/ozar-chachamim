@@ -24,8 +24,10 @@ CITATION
   · INTERNAL RESEARCH — this project's research corpus (the cited passages)
   · PRIMARY — Sefaria references
   · EXTERNAL — Wikipedia summaries
-- Dataset fields (biography, core idea, connections) may be used without a
-  passage handle, but say they come from the dataset.
+- Dataset fields (biography, core idea, relations) may be used without a
+  passage handle, but say they come from the dataset. Relation lines are
+  already oriented: "Students: X" means X was this sage's student, never the
+  other way round.
 - Do not cite a handle that does not appear in the context.
 
 INSUFFICIENT EVIDENCE
@@ -56,7 +58,7 @@ If no sage was identified, explain that the system covers the sages in its datab
 
 export function buildSystemPrompt(context: RagContext, locale: Locale): string {
   const localeRules = LOCALE_RULES[locale] ?? LOCALE_RULES.he
-  const contextText = formatContextForPrompt(context)
+  const contextText = formatContextForPrompt(context, locale)
 
   return [
     localeRules,

@@ -14,6 +14,8 @@ import { UI, tr } from '@/lib/i18n'
 import { useAppStore } from '@/store/useAppStore'
 import { ResearchSection } from '@/components/sages/ResearchSection'
 import { SageMiniMap } from '@/components/sages/SageMiniMap'
+import { AskSageButton } from '@/components/sages/AskSageButton'
+import type { AskSubject } from '@/components/chat/askAbout'
 import { resolveCoords } from '@/lib/locationCoords'
 import { currentUser, loadSageMemory, recordSageView, saveSageNote, setSageBookmark } from '@/lib/personal'
 
@@ -127,6 +129,17 @@ export function SageCard({ sage, locale, onClose }: SageCardProps) {
   const yearRange   = formatYearRangeFor(locale, sage.birth_year, sage.death_year, sage.date_precision)
   const { name, tagline, fullName } = labelParts(sage.label)
 
+  // "שאלו על החכם": opens the app's chat widget scoped to this sage.
+  const askSubject: AskSubject = {
+    id: sage.id,
+    name,
+    period: sage.period,
+    field: sage.field,
+    coreConcept: sage.core_concept,
+    hasResearch: sage.has_research === true,
+    related: related.flatMap(g => g.people.slice(0, 2).map(p => ({ group: g.group, name: p.name }))).slice(0, 6),
+  }
+
   return (
     <article className="flex flex-col h-full overflow-hidden">
       {/* Hero header */}
@@ -206,8 +219,9 @@ export function SageCard({ sage, locale, onClose }: SageCardProps) {
           </div>
         )}
 
-        {/* Cross-view sync: jump to this sage in other tabs */}
+        {/* Ask about this sage, then cross-view sync: jump to this sage in other tabs */}
         <div className="flex flex-wrap gap-1.5 mt-3">
+          <AskSageButton subject={askSubject} locale={locale} variant="drawer" />
           {activeTab !== 'graph' && (
             <CrossViewBtn onClick={() => setActiveTab('graph')} icon="⬡"
               label={tr(locale, 'הצג ברשת', 'Show in network', 'Показать в сети')} />

@@ -4,7 +4,7 @@
  */
 
 import assert from 'assert'
-import { parseURLState, serializeURLState } from '../lib/urlState'
+import { parseURLState, serializeURLState, updateURLWithState, parseJourneyURLState, withJourneyURLState } from '../lib/urlState'
 import type { NavigationState } from '../lib/urlState'
 
 let passed = 0, failed = 0
@@ -152,6 +152,82 @@ test('deduplicates repeated periods', () => {
 test('filters invalid periods', () => {
   const state = parseURLState('?periods=rishonim,invalid,acharonim')
   assert.deepStrictEqual(state.periods, ['rishonim', 'acharonim'])
+})
+
+console.log('\n=== Journey deep link (?journey=1&year=) ===')
+
+test('?tab=geography is an alias of map', () => {
+  assert.strictEqual(parseURLState('?tab=geography&journey=1&year=1100').tab, 'map')
+})
+
+test('?journey=1&year=1100 → on at 1100', () => {
+  assert.deepStrictEqual(parseJourneyURLState('?tab=geography&journey=1&year=1100'), { journey: true, year: 1100 })
+})
+
+test('BCE year is a negative number', () => {
+  assert.deepStrictEqual(parseJourneyURLState('?journey=1&year=-586'), { journey: true, year: -586 })
+})
+
+test('missing journey → off; unreadable year → null', () => {
+  assert.deepStrictEqual(parseJourneyURLState('?tab=map&year=1100'), { journey: false, year: 1100 })
+  assert.deepStrictEqual(parseJourneyURLState('?journey=1&year=abc'), { journey: true, year: null })
+  assert.deepStrictEqual(parseJourneyURLState('?journey=1&year='), { journey: true, year: null })
+})
+
+test('withJourneyURLState sets and clears only its own params', () => {
+  const on = new URL(withJourneyURLState('https://x.test/he?tab=map&regions=sefarad', { journey: true, year: 1200 }))
+  assert.strictEqual(on.searchParams.get('journey'), '1')
+  assert.strictEqual(on.searchParams.get('year'), '1200')
+  assert.strictEqual(on.searchParams.get('regions'), 'sefarad')
+  const off = new URL(withJourneyURLState(on.toString(), { journey: false, year: 1200 }))
+  assert.strictEqual(off.searchParams.has('journey'), false)
+  assert.strictEqual(off.searchParams.has('year'), false)
+  assert.strictEqual(off.searchParams.get('tab'), 'map')
+})
+
+test("AppShell's URL writer keeps the journey params", () => {
+  const g = globalThis as unknown as { window?: unknown }
+  const saved = g.window
+  g.window = { location: { href: 'https://x.test/he?tab=geography&journey=1&year=1100' } }
+  try {
+    const url = new URL(updateURLWithState({ tab: 'map', sage: null, regions: [], periods: null }))
+    assert.strictEqual(url.searchParams.get('tab'), 'map')
+    assert.strictEqual(url.searchParams.get('journey'), '1')
+    assert.strictEqual(url.searchParams.get('year'), '1100')
+  } finally {
+    g.window = saved
+  }
+})
+
+console.log('\n=== Road-to-Sinai deep link (?view=sinai&focus=) ===')
+
+// The sage page links to /<locale>?tab=genealogy&view=sinai&focus=<id>.
+// urlState owns tab/sage/regions/periods only; `view` and `focus` belong to
+// the lineage tab (GenealogyTree). The road names its sage with `focus`, not
+// `sage`, because a ?sage= opens that sage's card over the road.
+
+test('deep link parses to the lineage tab with no card to open', () => {
+  const state = parseURLState('?tab=genealogy&view=sinai&focus=594')
+  assert.strictEqual(state.tab, 'genealogy')
+  assert.strictEqual(state.sage, null)
+  assert.deepStrictEqual(state.regions, [])
+  assert.strictEqual(state.periods, null)
+})
+
+test('rewriting the URL keeps ?view=sinai&focus= beside a selected sage', () => {
+  const g = globalThis as unknown as { window?: unknown }
+  const had = 'window' in g, prev = g.window
+  g.window = { location: { href: 'https://example.org/he?tab=genealogy&view=sinai&focus=594' } }
+  try {
+    const url = new URL(updateURLWithState({ tab: 'genealogy', sage: '505', regions: [], periods: null }))
+    assert.strictEqual(url.searchParams.get('view'), 'sinai')
+    assert.strictEqual(url.searchParams.get('focus'), '594')
+    assert.strictEqual(url.searchParams.get('sage'), '505')
+    assert.strictEqual(url.searchParams.get('tab'), 'genealogy')
+  } finally {
+    if (had) g.window = prev
+    else delete g.window
+  }
 })
 
 console.log(`\n${'='.repeat(50)}`)

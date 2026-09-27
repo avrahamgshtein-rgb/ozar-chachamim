@@ -23,9 +23,10 @@ npm run build         # production build — do this before pushing anything tou
                       # AppShell.tsx, or the viz components; it catches type errors tsc alone can miss
 npm run start         # serve the production build locally (useful for testing Leaflet init and data-load timing)
 npm run type-check    # tsc --noEmit
+npm test              # tests/*.test.ts via tsx (rag, chat wiring, geo layers, url state)
 ```
 
-There is no test suite or linter wired up (`eslint: { ignoreDuringBuilds: true }` in `next.config.ts`, no jest/vitest/playwright in `package.json`). `npm run build` + `npm run type-check` are the only automated checks — treat a clean build as the bar for "done."
+There is no linter wired up (`eslint: { ignoreDuringBuilds: true }` in `next.config.ts`). There is a small test suite: `npm test` runs four `tsx` scripts in `tests/` (RAG retrieval, chat wiring, geo layers, URL state) with no framework. Treat a clean `npm run type-check`, `npm test` and `npm run build` as the bar for "done."
 
 Deployment is automatic: push to `main` → GitHub Action (`.github/workflows/deploy.yml`) builds `nextjs-app/` and deploys to Vercel. There's no staging branch; `main` is production.
 

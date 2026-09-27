@@ -79,6 +79,11 @@ export function splitIntoPassages(content: string): SplitPassage[] {
       out.push({ passageIndex: out.length, charStart: start, charEnd: start + chunk.length, text: chunk })
       start += cut
       remaining = remaining.slice(cut)
+      // The next chunk starts after the space the cut left behind; without
+      // this every later offset pointed one character early.
+      const skip = remaining.length - remaining.trimStart().length
+      start += skip
+      remaining = remaining.slice(skip)
     }
     if (remaining.trim()) {
       out.push({

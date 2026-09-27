@@ -14,8 +14,12 @@ import { ResearchReader } from '@/components/sages/ResearchReader'
 import { RelatedSages, type RelatedPersonView } from '@/components/sages/RelatedSages'
 import { groupRelated } from '@/components/sages/relations'
 import { SpotifyListen } from '@/components/sages/SpotifyListen'
+import { AskSageButton } from '@/components/sages/AskSageButton'
+import { SinaiPathCard } from '@/components/viz/SinaiPathCard'
 import { PrintButton, ShareButton, ThemeToggle } from '@/components/sages/PageActions'
 import { Toaster } from '@/components/sages/Toast'
+import { ChatWidget } from '@/components/chat/ChatWidget'
+import type { AskSubject } from '@/components/chat/askAbout'
 import type { Locale, Sage } from '@/lib/types'
 import { SITE_URL } from '@/lib/siteUrl'
 
@@ -28,6 +32,7 @@ const S = {
   related: { he: 'חכמים קשורים', en: 'Related sages', ru: 'Связанные мудрецы' },
   showInGraph: { he: 'הצגה ברשת הקשרים', en: 'Show in the network', ru: 'Показать в сети' },
   readResearch: { he: 'לקריאת המחקר', en: 'Read the research', ru: 'Читать исследование' },
+  listen: { he: 'האזנה לפרק', en: 'Listen', ru: 'Слушать' },
   minRead: { he: 'דק׳', en: 'min', ru: 'мин' },
   back: { he: 'חזרה לאוצר חכמים', en: 'Back to Ozar Chachamim', ru: 'Назад в Озар Хахамим' },
   breadcrumbs: { he: 'פירורי לחם', en: 'Breadcrumbs', ru: 'Навигационная цепочка' },
@@ -134,6 +139,17 @@ export default async function SagePage({ params }: PageProps) {
   }
   const related = groupRelated(raw.id, connections, otherId => people.get(otherId))
   const relatedCount = related.reduce((n, g) => n + g.people.length, 0)
+
+  // "שאלו על החכם": what the chat needs to scope itself and suggest questions.
+  const askSubject: AskSubject = {
+    id: raw.id,
+    name,
+    period: sage.period,
+    field: sage.field,
+    coreConcept: sage.core_concept,
+    hasResearch: researchDocs.length > 0,
+    related: related.flatMap(g => g.people.slice(0, 2).map(p => ({ group: g.group, name: p.name }))).slice(0, 6),
+  }
 
   const jsonLd = jsonLdScript(
     getSageSchema(sage, loc, {
@@ -250,6 +266,16 @@ export default async function SagePage({ params }: PageProps) {
                   <span className="text-xs text-ink-400">· {researchMinutes} {S.minRead[loc]}</span>
                 </a>
               )}
+              {sage.spotify_url && (
+                <a href="#listen"
+                  className="inline-flex items-center gap-2 rounded-full border border-[#1DB954]/35 bg-[#1DB954]/10 px-4 py-2 text-sm text-ink-100 transition-colors hover:border-[#1DB954]/60 hover:bg-[#1DB954]/15">
+                  <svg className="h-4 w-4 text-[#1ed760] [[data-theme=light]_&]:text-[#11773a]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                    <path d="M3 18v-6a9 9 0 0 1 18 0v6" /><path d="M21 19a2 2 0 0 1-2 2h-1v-6h3zM3 19a2 2 0 0 0 2 2h1v-6H3z" />
+                  </svg>
+                  {S.listen[loc]}
+                </a>
+              )}
+              <AskSageButton subject={askSubject} locale={loc} />
               <Link href={`/${loc}?sage=${raw.id}`}
                 className="inline-flex items-center gap-2 rounded-full border border-ink-700/50 bg-ink-800/40 px-4 py-2 text-sm text-ink-200 transition-colors hover:border-gold-500/40 hover:text-gold-300">
                 <span aria-hidden className="font-mono text-xs">⬡</span>
@@ -320,6 +346,8 @@ export default async function SagePage({ params }: PageProps) {
             )}
           </div>
 
+          <SinaiPathCard sageId={raw.id} locale={loc} />
+
           {/* ── Full research ─────────────────────────────────── */}
           {researchDocs.length > 0 && (
             <div className="mt-14 border-t border-ink-700/40 pt-10 md:mt-16">
@@ -347,6 +375,7 @@ export default async function SagePage({ params }: PageProps) {
           </footer>
         </main>
         <Toaster />
+        <ChatWidget locale={loc} placement="page" initialSubject={askSubject} pageSageId={raw.id} />
       </div>
     </>
   )

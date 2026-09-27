@@ -5,6 +5,7 @@ import { useAppStore } from '@/store/useAppStore'
 import { ERA_COLORS, ERA_LABELS, REGION_COLORS, REGION_LABELS, ALL_PERIODS } from '@/lib/types'
 import type { Locale, Period, Region } from '@/lib/types'
 import { cn } from '@/lib/utils'
+import { useJourneyStore } from '@/lib/journeyStore'
 
 const ERAS: Period[] = ALL_PERIODS
 const REGIONS: Region[] = [
@@ -26,6 +27,8 @@ export function MapLegend({ locale }: { locale: Locale }) {
   )
   const { filters, togglePeriodFilter, toggleRegionFilter, clearFilters, filteredSages, sages } = useAppStore()
   const active = (filters.period?.length ?? 0) + filters.region.length + filters.field.length > 0
+  // מסע התורה has its own legend, in its dock; this one would sit under it.
+  const journeyOn = useJourneyStore(st => st.on)
 
   const Row = ({ color, label, on, onClick }: {
     color: string; label: string; on: boolean; onClick: () => void
@@ -47,6 +50,8 @@ export function MapLegend({ locale }: { locale: Locale }) {
   // must clear 800 or it renders behind the tiles: invisible but still clickable.
   // bottom-[9.25rem] on phones: the fixed tab bar and the chat/search buttons
   // own the bottom ~9rem there and paint above this whole stacking context.
+  if (journeyOn) return null
+
   return (
     <div className="absolute bottom-[9.25rem] md:bottom-6 start-4 z-[1000] glass rounded-xl overflow-hidden min-w-[150px] max-h-[50vh] md:max-h-[70vh] flex flex-col">
       <button
