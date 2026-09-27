@@ -138,6 +138,8 @@ export default async function SagePage({ params }: PageProps) {
   const jsonLd = jsonLdScript(
     getSageSchema(sage, loc, {
       url: pageUrl,
+      // On en/ru pages the Hebrew name is an alternate name too.
+      alternateNames: loc !== 'he' ? [labelParts(raw.label).name] : [],
       research: researchDocs.map(d => ({ title: d.title, wordCount: d.wordCount, inLanguage: d.dir === 'rtl' ? 'he' : loc === 'he' ? 'en' : loc })),
     }),
     getSageBreadcrumbSchema(loc, {
@@ -171,7 +173,7 @@ export default async function SagePage({ params }: PageProps) {
                 <Link href={`/${loc}?periods=${sage.period}`} className="whitespace-nowrap hover:text-gold-300">{era}</Link>
               </li>
               <li aria-hidden className="text-ink-600">/</li>
-              <li aria-current="page" className="truncate text-ink-300">{name}</li>
+              <li aria-current="page" dir="auto" className="truncate text-ink-300">{name}</li>
             </ol>
 
             <div className="ms-auto flex flex-shrink-0 items-center gap-1.5">
@@ -212,26 +214,26 @@ export default async function SagePage({ params }: PageProps) {
               )}
             </div>
 
-            <h1 className="mt-5 font-serif text-[2.1rem] font-bold leading-[1.12] tracking-tight text-ink-50 [overflow-wrap:anywhere] md:text-5xl">
+            <h1 dir="auto" className="mt-5 font-serif text-[2.1rem] font-bold leading-[1.12] tracking-tight text-ink-50 [overflow-wrap:anywhere] md:text-5xl">
               {name}
             </h1>
             {fullName && (
-              <p className="mt-2 font-serif text-lg text-ink-300 md:text-xl">({fullName})</p>
+              <p dir="auto" className="mt-2 font-serif text-lg text-ink-300 md:text-xl">({fullName})</p>
             )}
             {tagline && (
-              <p className="mt-3 max-w-3xl font-serif text-lg italic leading-relaxed text-ink-300 md:text-xl">{tagline}</p>
+              <p dir="auto" className="mt-3 max-w-3xl font-serif text-lg italic leading-relaxed text-ink-300 md:text-xl">{tagline}</p>
             )}
             {loc === 'he' && raw.name_en && (
               <p className="mt-2 font-sans text-base text-ink-400" dir="ltr">{raw.name_en}</p>
             )}
             {sage.field && (
-              <p className="mt-4 font-sans text-sm text-ink-400">{sage.field}</p>
+              <p dir="auto" className="mt-4 font-sans text-sm text-ink-400">{sage.field}</p>
             )}
 
             {sage.tags && sage.tags.length > 0 && (
               <ul className="mt-4 flex flex-wrap gap-1.5">
                 {sage.tags.map(tag => (
-                  <li key={tag} className="rounded-full border border-ink-700/40 bg-ink-800/60 px-2.5 py-0.5 text-xs text-ink-300">{tag}</li>
+                  <li key={tag} dir="auto" className="rounded-full border border-ink-700/40 bg-ink-800/60 px-2.5 py-0.5 text-xs text-ink-300">{tag}</li>
                 ))}
               </ul>
             )}
@@ -261,7 +263,7 @@ export default async function SagePage({ params }: PageProps) {
           )}
 
           {/* ── Listen + overview + related ───────────────────── */}
-          <div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_20rem] lg:gap-12">
+          <div className={`mt-8 grid grid-cols-1 gap-8 lg:gap-12 ${relatedCount > 0 ? 'lg:grid-cols-[minmax(0,1fr)_20rem]' : 'max-w-4xl'}`}>
             <div className="min-w-0 space-y-8">
               {sage.spotify_url && (
                 <div id="listen" className="scroll-mt-20">
@@ -271,7 +273,7 @@ export default async function SagePage({ params }: PageProps) {
 
               {sage.core_concept && (
                 <Section title={t.coreConcept}>
-                  <blockquote className="border-s-[3px] ps-5 py-1 font-serif text-lg italic leading-relaxed text-ink-100 md:text-xl" style={{ borderColor: accent }}>
+                  <blockquote dir="auto" className="border-s-[3px] ps-5 py-1 font-serif text-lg italic leading-relaxed text-ink-100 md:text-xl" style={{ borderColor: accent }}>
                     {sage.core_concept}
                   </blockquote>
                 </Section>
@@ -279,7 +281,7 @@ export default async function SagePage({ params }: PageProps) {
 
               {sage.bio && (
                 <Section title={t.biography}>
-                  <p className="whitespace-pre-line text-[15px] leading-loose text-ink-200">{sage.bio}</p>
+                  <p dir="auto" className="whitespace-pre-line text-[15px] leading-loose text-ink-200">{sage.bio}</p>
                 </Section>
               )}
 
@@ -305,8 +307,8 @@ export default async function SagePage({ params }: PageProps) {
               )}
             </div>
 
-            <aside className="min-w-0">
-              {relatedCount > 0 && (
+            {relatedCount > 0 && (
+              <aside className="min-w-0">
                 <section aria-labelledby="related-title" className="rounded-2xl border border-ink-700/40 bg-ink-800/25 p-4 md:p-5">
                   <h2 id="related-title" className="mb-4 flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-ink-500">
                     {S.related[loc]}
@@ -314,8 +316,8 @@ export default async function SagePage({ params }: PageProps) {
                   </h2>
                   <RelatedSages groups={related} locale={loc} hrefFor={otherId => `/${loc}/sage/${otherId}`} />
                 </section>
-              )}
-            </aside>
+              </aside>
+            )}
           </div>
 
           {/* ── Full research ─────────────────────────────────── */}
@@ -372,7 +374,7 @@ function MetaChip({ icon, children }: { icon: 'calendar' | 'pin'; children: Reac
           </>
         )}
       </svg>
-      <span className="truncate">{children}</span>
+      <span dir="auto" className="truncate">{children}</span>
     </span>
   )
 }

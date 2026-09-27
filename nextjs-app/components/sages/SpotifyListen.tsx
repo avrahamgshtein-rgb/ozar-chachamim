@@ -42,10 +42,10 @@ export function SpotifyListen({ url, locale, name }: { url: string; locale: Loca
         </span>
         <div className="min-w-0 flex-1">
           <h2 className="font-serif text-lg font-bold leading-tight text-ink-50">{title}</h2>
-          <p className="truncate text-xs font-sans text-ink-400">{S.sub[locale]} · {name}</p>
+          <p dir="auto" className="truncate text-xs font-sans text-ink-400">{S.sub[locale]} · {name}</p>
         </div>
         <a href={url} target="_blank" rel="noopener noreferrer"
-          className="print-url hidden flex-shrink-0 items-center gap-1 rounded-lg px-2.5 py-1.5 text-xs font-sans text-[#1ed760] hover:bg-[#1DB954]/10 sm:inline-flex">
+          className="print-url hidden flex-shrink-0 items-center gap-1 rounded-lg px-2.5 py-1.5 text-xs font-sans text-[#1ed760] [[data-theme=light]_&]:text-[#11773a] hover:bg-[#1DB954]/10 sm:inline-flex">
           {S.open[locale]} <ExternalIcon />
         </a>
       </div>
@@ -73,7 +73,7 @@ export function SpotifyListen({ url, locale, name }: { url: string; locale: Loca
       ) : null}
 
       <a href={url} target="_blank" rel="noopener noreferrer"
-        className={`mt-3 items-center gap-1 text-xs font-sans text-[#1ed760] hover:underline ${parsed ? 'inline-flex sm:hidden' : 'inline-flex'}`}>
+        className={`mt-3 items-center gap-1 text-xs font-sans text-[#1ed760] [[data-theme=light]_&]:text-[#11773a] hover:underline ${parsed ? 'inline-flex sm:hidden' : 'inline-flex'}`}>
         {S.open[locale]} <ExternalIcon />
       </a>
     </section>

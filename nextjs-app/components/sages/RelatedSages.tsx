@@ -87,7 +87,7 @@ function RelatedItem({ person, locale, relation, href, onSelect, compact }: {
     <>
       <span className="h-2 w-2 flex-shrink-0 rounded-full" style={{ background: color }} aria-hidden />
       <span className="min-w-0 flex-1">
-        <span className={`block truncate font-serif text-ink-100 transition-colors group-hover:text-gold-300 ${compact ? 'text-sm' : 'text-[15px]'}`}>
+        <span dir="auto" className={`block truncate font-serif text-ink-100 transition-colors group-hover:text-gold-300 ${compact ? 'text-sm' : 'text-[15px]'}`}>
           {person.name}
         </span>
         {person.name_en && person.name_en !== person.name && (

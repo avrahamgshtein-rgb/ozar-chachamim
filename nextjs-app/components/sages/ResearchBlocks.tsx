@@ -40,7 +40,10 @@ export function Inline({ text, ctx = {} }: { text: string; ctx?: InlineCtx }) {
           case 'url':
             return (
               <a key={i} href={t.href} target="_blank" rel="noopener noreferrer" dir="ltr"
-                className={`reader-url text-gold-300/90 underline decoration-gold-500/30 underline-offset-2 hover:text-gold-200 hover:decoration-gold-300 ${ctx.urlBlock ? 'block truncate text-[0.92em] no-underline' : '[overflow-wrap:anywhere]'}`}
+                className={`reader-url ${ctx.urlBlock
+                  // In the sources list: one quiet line, aligned with its (RTL or LTR) entry.
+                  ? 'mt-0.5 block truncate text-[0.92em] text-ink-500 [text-align:match-parent] hover:text-gold-300'
+                  : 'text-gold-300/90 underline decoration-gold-500/30 underline-offset-2 [overflow-wrap:anywhere] hover:text-gold-200 hover:decoration-gold-300'}`}
                 title={t.href}
               >
                 {displayUrl(t.href)}
@@ -49,7 +52,7 @@ export function Inline({ text, ctx = {} }: { text: string; ctx?: InlineCtx }) {
           case 'cite': {
             const parts = t.body.split(/(\d+)/)
             return (
-              <sup key={i} className="cite ms-0.5 font-sans text-[0.68em] font-medium text-ink-400 whitespace-nowrap">
+              <sup key={i} dir="ltr" className="cite ms-0.5 font-sans text-[0.68em] font-medium text-ink-400 whitespace-nowrap">
                 [
                 {t.prefix && <span className="sr-only">{t.prefix}</span>}
                 {parts.map((p, j) => {

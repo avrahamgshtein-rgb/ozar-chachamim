@@ -47,6 +47,8 @@ export function ResearchReader({ docs, locale, isFallback = false }: Props) {
   const [prefs, setPrefs] = useReadingPrefs()
   const [progress, setProgress] = useState(0)
   const [active, setActive] = useState<string | null>(null)
+  /** True while the reader fills the screen: the phone's "now reading" bar shows. */
+  const [inside, setInside] = useState(false)
   const sectionRef = useRef<HTMLElement>(null)
   const mobileTocRef = useRef<HTMLDetailsElement>(null)
 
@@ -69,12 +71,15 @@ export function ResearchReader({ docs, locale, isFallback = false }: Props) {
       const span = rect.height - (window.innerHeight - top)
       const p = span > 0 ? (top - rect.top) / span : rect.top < top ? 1 : 0
       setProgress(Math.max(0, Math.min(1, p)))
+      // The section being read: the last heading above the top third of the screen.
+      const line = top + window.innerHeight * 0.3
       let current: string | null = null
       for (const h of section.querySelectorAll<HTMLElement>('[data-toc]')) {
-        if (h.getBoundingClientRect().top - top <= 48) current = h.id
+        if (h.getBoundingClientRect().top <= line) current = h.id
         else break
       }
       setActive(current)
+      setInside(rect.top < top - 40 && rect.bottom > window.innerHeight * 0.6)
     }
     const onScroll = () => { if (!frame) frame = requestAnimationFrame(measure) }
     measure()
@@ -95,6 +100,24 @@ export function ResearchReader({ docs, locale, isFallback = false }: Props) {
 
   const minutesLeft = Math.max(0, Math.ceil(totalMinutes * (1 - progress)))
 
+  // What the phone bar names as "now reading".
+  const activeLabel = useMemo(() => {
+    if (!active) return null
+    for (let di = 0; di < docs.length; di++) {
+      if (active === `doc-${di + 1}`) return docTitle(docs[di])
+      const e = docs[di].toc.find(x => x.id === active)
+      if (e) return e.text ?? READER_STRINGS.sources[locale]
+    }
+    return null
+  }, [active, docs, locale])
+
+  const openMobileToc = () => {
+    const d = mobileTocRef.current
+    if (!d) return
+    d.open = true
+    d.scrollIntoView({ block: 'start' })
+  }
+
   return (
     <section ref={sectionRef} id="research" aria-labelledby="research-title" className="reader relative">
       {/* Reading progress, pinned under the page's top bar */}
@@ -108,6 +131,23 @@ export function ResearchReader({ docs, locale, isFallback = false }: Props) {
           style={{ transform: `scaleX(${progress})`, transformOrigin: pageDir === 'rtl' ? 'right' : 'left' }}
         />
       </div>
+
+      {/* Phones: a slim "now reading" bar under the top bar while inside the text */}
+      {tocCount > 1 && (
+        <div
+          aria-hidden={!inside}
+          className={`no-print fixed inset-x-0 top-14 z-20 border-b border-gold-500/10 glass border-x-0 border-t-0 transition-all duration-200 lg:hidden ${
+            inside ? 'translate-y-0 opacity-100' : 'pointer-events-none -translate-y-2 opacity-0'
+          }`}
+        >
+          <button type="button" onClick={openMobileToc} tabIndex={inside ? 0 : -1}
+            className="flex h-10 w-full items-center gap-2 px-4 text-start font-sans text-xs text-ink-300">
+            <ListIcon />
+            <span dir="auto" className="min-w-0 flex-1 truncate text-ink-100">{activeLabel ?? S.toc[locale]}</span>
+            <span className="flex-shrink-0 tabular-nums text-ink-500">{minutesLeft} {S.minLeft[locale]}</span>
+          </button>
+        </div>
+      )}
 
       <header className="mb-6 flex flex-wrap items-end justify-between gap-x-4 gap-y-3 border-b border-ink-700/40 pb-4">
         <div className="min-w-0">
@@ -150,7 +190,7 @@ export function ResearchReader({ docs, locale, isFallback = false }: Props) {
         <div className="min-w-0">
           {/* Phones and tablets: a collapsible contents */}
           {tocCount > 1 && (
-            <details ref={mobileTocRef} className="no-print group/toc mb-8 rounded-xl border border-ink-700/50 bg-ink-800/40 lg:hidden">
+            <details ref={mobileTocRef} className="no-print group/toc mb-8 scroll-mt-28 rounded-xl border border-ink-700/50 bg-ink-800/40 lg:hidden">
               <summary className="flex cursor-pointer select-none list-none items-center gap-2 px-4 py-3 font-sans text-sm text-ink-200 [&::-webkit-details-marker]:hidden">
                 <ListIcon />
                 <span className="font-semibold">{S.toc[locale]}</span>
@@ -168,7 +208,7 @@ export function ResearchReader({ docs, locale, isFallback = false }: Props) {
 
           <div className="reader-body mx-auto max-w-[46rem] text-ink-200" style={readingStyle(prefs)}>
             {docs.map((doc, di) => (
-              <article key={di} id={`doc-${di + 1}`} dir={doc.dir} lang={doc.dir === 'rtl' ? 'he' : undefined}
+              <article key={di} id={`doc-${di + 1}`} data-toc="" dir={doc.dir} lang={doc.dir === 'rtl' ? 'he' : undefined}
                 className={`reader-doc scroll-mt-24 ${di > 0 ? 'mt-20 border-t border-ink-700/40 pt-12' : ''}`}>
                 <DocHeader doc={doc} index={di} count={docs.length} locale={locale} />
                 <ResearchBlocks doc={doc} locale={locale} onCopyLink={onCopyLink} />
@@ -181,11 +221,16 @@ export function ResearchReader({ docs, locale, isFallback = false }: Props) {
   )
 }
 
+/** The paper's title as written in its first line, else the file's title field. */
+function docTitle(doc: ParsedResearchDoc): string {
+  const first = doc.blocks.find(b => b.kind === 'title' && !b.duplicate)
+  return first && first.kind === 'title' ? first.text : doc.title
+}
+
 function DocHeader({ doc, index, count, locale }: {
   doc: ParsedResearchDoc; index: number; count: number; locale: Locale
 }) {
-  const titleBlock = doc.blocks.find(b => b.kind === 'title' && !b.duplicate)
-  const title = titleBlock && titleBlock.kind === 'title' ? titleBlock.text : doc.title
+  const title = docTitle(doc)
   return (
     <header className="mb-8">
       {count > 1 && (
@@ -196,7 +241,7 @@ function DocHeader({ doc, index, count, locale }: {
       <h2 dir="auto" className="reader-doc-title font-serif text-[1.7em] font-bold leading-tight text-ink-50 md:text-[1.95em]">
         {title}
       </h2>
-      <p className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-[0.8em] font-sans text-ink-500" dir={locale === 'he' ? 'rtl' : 'ltr'}>
+      <p className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-[0.8em] font-sans text-ink-500">
         <span className="inline-flex items-center gap-1 tabular-nums"><ClockIcon /> {doc.readingMinutes} {S.minRead[locale]}</span>
         <Dot />
         <span className="tabular-nums">{doc.wordCount.toLocaleString(locale === 'he' ? 'he-IL' : locale)} {S.words[locale]}</span>
@@ -217,8 +262,7 @@ function TocList({ docs, locale, active, onNavigate, collapseSubsections = false
   return (
     <ol className="space-y-3 font-sans text-[13px]">
       {docs.map((doc, di) => {
-        const titleBlock = doc.blocks.find(b => b.kind === 'title' && !b.duplicate)
-        const title = titleBlock && titleBlock.kind === 'title' ? titleBlock.text : doc.title
+        const title = docTitle(doc)
         const entries = (
           <TocEntries toc={doc.toc} locale={locale} active={active} onNavigate={onNavigate}
             collapseSubsections={collapseSubsections} dir={doc.dir} />
@@ -227,7 +271,10 @@ function TocList({ docs, locale, active, onNavigate, collapseSubsections = false
         return (
           <li key={di}>
             <a href={`#doc-${di + 1}`} onClick={onNavigate} dir="auto"
-              className="mb-1.5 line-clamp-2 block font-serif text-[14px] font-semibold leading-snug text-ink-100 hover:text-gold-300">
+              aria-current={active === `doc-${di + 1}` ? 'location' : undefined}
+              className={`mb-1.5 line-clamp-2 block font-serif text-[14px] font-semibold leading-snug hover:text-gold-300 ${
+                active === `doc-${di + 1}` ? 'text-gold-300' : 'text-ink-100'
+              }`}>
               {title}
             </a>
             {entries}
