@@ -177,6 +177,13 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
   const eraGuidesRef  = useRef<import('d3').Selection<any, any, any, any> | null>(null)
   const tooltipRef    = useRef<HTMLDivElement | null>(null)
   const pendingFitRef = useRef<FitRequest | null>(null)
+  /**
+   * The reader has panned or zoomed since the camera last framed something.
+   * Until they do, the view is framed again when the layout settles: a fit
+   * taken while the simulation still moves (a deep link, the first seconds)
+   * leaves nodes drifting under the tab bar.
+   */
+  const userMovedRef  = useRef(false)
   const pathPanelRef  = useRef<HTMLDivElement | null>(null)
   /** Everything the D3 closures read about the current emphasis. */
   const modeRef       = useRef<Mode>({ hoverId: null, focusId: null, depth: 1, path: null })
@@ -629,7 +636,7 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
           // Hit-testing off only once the view really moves: d3-zoom also
           // "starts" on the mouse event a tap emulates, and turning targets
           // off there sent a tapped node's click to the canvas instead.
-          if (ev.sourceEvent) svg.classed('ng-zooming', true)
+          if (ev.sourceEvent) { svg.classed('ng-zooming', true); userMovedRef.current = true }
           transform = ev.transform
           g.attr('transform', ev.transform)
           positionLabels()
@@ -926,7 +933,10 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
         const now = performance.now()
         if (now - lastTickLabels > 400) { lastTickLabels = now; relabel() }
       })
-      sim.on('end', relabel)
+      sim.on('end', () => {
+        relabel()
+        if (!userMovedRef.current && !container.closest('.hidden')) fitCurrent(600)
+      })
 
       apiRef.current = { restyle, relabel, drawPath, hood }
       if (mounted) setGraphVersion(v => v + 1)
@@ -1069,11 +1079,8 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
 
   useEffect(() => {
     if (!focusId || !apiRef.current) return
+    userMovedRef.current = false
     fitCurrent(750)
-    // a deep link focuses before the layout has settled; frame it again then
-    const sim = simRef.current
-    const again = sim && sim.alpha() > 0.2 ? setTimeout(() => fitCurrent(600), 1600) : undefined
-    return () => { if (again) clearTimeout(again) }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [focusId, focusDepth, graphVersion])
 
@@ -1085,7 +1092,7 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
     apiRef.current.drawPath(true)
     apiRef.current.restyle()
     apiRef.current.relabel()
-    if (path) fitCurrent(750)
+    if (path) { userMovedRef.current = false; fitCurrent(750) }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [path, graphVersion])
 

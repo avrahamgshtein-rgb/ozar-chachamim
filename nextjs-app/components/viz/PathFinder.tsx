@@ -158,6 +158,7 @@ function SagePicker({ label, value, onChange, locale, exclude, autoFocus }: Sage
   const showList = open && results.length > 0
 
   const onKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Tab') { setOpen(false); return }
     if (e.key === 'Escape') {
       if (showList) { e.preventDefault(); e.stopPropagation(); setOpen(false) }
       return
@@ -214,6 +215,7 @@ function SagePicker({ label, value, onChange, locale, exclude, autoFocus }: Sage
           id={listId}
           role="listbox"
           aria-label={label}
+          tabIndex={-1}
           className={cn(
             'absolute z-50 w-full mt-1 rounded-lg overflow-hidden',
             'bg-ink-800 border border-ink-700/60',

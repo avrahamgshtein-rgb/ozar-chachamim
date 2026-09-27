@@ -121,6 +121,13 @@ export function SearchBar({ locale, className }: SearchBarProps) {
   }
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Tab') {
+      // Close now, not on the delayed blur: Tab must land on the next header
+      // control, never inside a list that is about to unmount (focus → body).
+      setOpen(false)
+      setActiveIdx(-1)
+      return
+    }
     if (e.key === 'Escape') {
       // Esc here belongs to the search box, not to the drawer or graph focus
       e.preventDefault()
@@ -256,6 +263,9 @@ export function SearchBar({ locale, className }: SearchBarProps) {
             id={listId}
             role="listbox"
             aria-label={t.searchLabel}
+            // Chrome puts scrollable boxes in the Tab order; this one is driven
+            // by the arrow keys from the input instead
+            tabIndex={-1}
             className="max-h-[min(60vh,26rem)] overflow-y-auto"
           >
             {shown.map((hit, idx) => {
