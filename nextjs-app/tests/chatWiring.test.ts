@@ -11,8 +11,12 @@
  */
 
 import assert from 'node:assert/strict'
-import { buildRagContext } from '../lib/rag/buildContext'
+import { buildRagContext, formatRelations, relationsOf } from '../lib/rag/buildContext'
 import { buildSystemPrompt } from '../lib/rag/systemPrompt'
+import { citationPayload } from '../lib/rag/citations'
+import { getSageById, getResearchDocs } from '../lib/serverData'
+import { parseResearchDocs } from '../lib/researchParse'
+import { parseAnswer, starterQuestions, stripIsolates } from '../components/chat/askAbout'
 
 // claude.ts reads its timeout budget once, at module load, so it is imported
 // inside main() after a short budget is set — otherwise the hung-provider case
@@ -165,17 +169,16 @@ async function main() {
     // Must name a sage: a question with no entity is a no-match by design.
     const ctx = await buildRagContext('מה לימד רבן יוחנן בן זכאי ביבנה?', { locale: 'he' })
     restore()
-    // Mirrors exactly what app/api/chat/route.ts serialises.
-    const citations = ctx.passages.map(p => ({
-      id: p.citationId, sourceKind: p.sourceKind, sageId: p.sageId, sageLabel: p.sageLabel,
-      docTitle: p.docTitle, charStart: p.charStart, charEnd: p.charEnd, score: p.score,
-    }))
+    // The same helper app/api/chat/route.ts serialises with.
+    const citations = citationPayload(ctx.passages)
     assert.ok(citations.length > 0, 'payload is non-empty')
     for (const c of citations) {
       assert.equal(typeof c.id, 'string')
       assert.equal(typeof c.docTitle, 'string')
       assert.ok(c.charEnd > c.charStart, 'range is non-empty')
       assert.equal(typeof c.score, 'number')
+      assert.equal(typeof c.docIndex, 'number')
+      assert.ok(c.anchor === null || typeof c.anchor === 'string', 'anchor is an id or null')
     }
     assert.equal(JSON.parse(JSON.stringify(citations)).length, citations.length, 'payload is JSON-serialisable')
   })
@@ -218,6 +221,112 @@ async function main() {
     const ctx = await buildRagContext('ומי היו התלמידים שלו?', { locale: 'he' })
     restore()
     assert.equal(ctx.noMatch, true, 'no subject invented when none is available')
+  })
+
+  // ── "שאלו על החכם": the sage the chat was opened about ──────────────────
+  group('Sage-scoped chat (mocked)')
+
+  await test('a question naming nobody is answered about the scoped sage', async () => {
+    mockProviderOk('unused')
+    const ctx = await buildRagContext('מי היו התלמידים שלו?', { locale: 'he', subjectSageId: '539' })
+    restore()
+    assert.equal(ctx.noMatch, false, 'subject supplied the referent')
+    assert.equal(ctx.matchedSages[0].sage.id, '539')
+    assert.equal(ctx.matchedSages[0].isSubject, true)
+    assert.match(buildSystemPrompt(ctx, 'he'), /the sage this chat was opened about/)
+  })
+
+  await test('the scoped sage comes before sages carried from history', async () => {
+    mockProviderOk('unused')
+    const ctx = await buildRagContext('ומה עוד?', { locale: 'he', subjectSageId: '539', conversationSageIds: ['4', '539'] })
+    restore()
+    assert.deepEqual(ctx.matchedSages.map(s => s.sage.id), ['539', '4'], 'subject first, no duplicate')
+    assert.equal(ctx.matchedSages[1].fromConversation, true)
+  })
+
+  await test('a question naming another sage keeps the scoped sage after it', async () => {
+    mockProviderOk('unused')
+    const ctx = await buildRagContext('מה היה היחס שלו לרבי עקיבא?', { locale: 'he', subjectSageId: '539' })
+    restore()
+    const ids = ctx.matchedSages.map(s => s.sage.id)
+    assert.equal(ids[0], '4', 'the named sage leads')
+    assert.equal(ids[ids.length - 1], '539', 'the scoped sage is kept, last')
+  })
+
+  await test('an unknown scope id is ignored, not invented', async () => {
+    mockProviderOk('unused')
+    const ctx = await buildRagContext('מי היו התלמידים שלו?', { locale: 'he', subjectSageId: 'no-such-sage' })
+    restore()
+    assert.equal(ctx.noMatch, true)
+  })
+
+  // ── relation direction ───────────────────────────────────────────────────
+  group('Relation direction (the Gra, 539)')
+
+  await test('the Gra\'s student is listed as a student, not as his teacher', async () => {
+    const lines = formatRelations({ sage: getSageById('539')!, relations: relationsOf(getSageById('539')!) }, 'he')
+    const students = lines.find(l => l.startsWith('- Students'))
+    const teachers = lines.find(l => l.startsWith('- Teachers'))
+    assert.ok(students && students.includes('חיים מוולוז'), 'R. Chaim of Volozhin is under Students')
+    assert.ok(!teachers || !teachers.includes('חיים מוולוז'), 'and not under Teachers')
+  })
+
+  await test('seen from the student, the Gra is the teacher', async () => {
+    const chaim = getSageById('99')!
+    const lines = formatRelations({ sage: chaim, relations: relationsOf(chaim) }, 'en')
+    const teachers = lines.find(l => l.startsWith('- Teachers'))
+    assert.ok(teachers && teachers.includes('אליהו'), 'the Gra is under Teachers on R. Chaim\'s side')
+  })
+
+  await test('influence and dispute keep their direction', async () => {
+    const gra = getSageById('539')!
+    const lines = formatRelations({ sage: gra, relations: relationsOf(gra) }, 'en')
+    assert.ok(lines.some(l => l.startsWith('- Influenced by:') && l.includes('האר')), 'the Ari influenced the Gra')
+    assert.ok(lines.some(l => l.startsWith('- Disputed:') && l.includes('בעל שם טוב')), 'the Gra disputed the Besht')
+  })
+
+  // ── citations point into the reader ──────────────────────────────────────
+  group('Citation anchors')
+
+  await test('every located citation names a heading that the reader renders', async () => {
+    mockProviderOk('unused')
+    const ctx = await buildRagContext('מה כתב הגאון על נפש החיים וישיבת וולוז׳ין?', { locale: 'he', subjectSageId: '539' })
+    restore()
+    assert.ok(ctx.passages.length > 0, 'passages retrieved')
+    for (const p of ctx.passages) {
+      const docs = parseResearchDocs(await getResearchDocs(p.sageId, 'he'))
+      const ids = new Set(docs.flatMap((d, i) => [`doc-${i + 1}`, ...d.toc.map(t => t.id)]))
+      assert.ok(p.anchor && ids.has(p.anchor), `anchor ${p.anchor} exists on the page`)
+    }
+  })
+
+  // ── the widget's pure helpers ────────────────────────────────────────────
+  group('Answer parsing and starter questions')
+
+  await test('handles become numbered sources; unknown handles are dropped', async () => {
+    const cites = [
+      { id: 'R539:0#4', sageId: '539', sageLabel: 'הגר״א', docTitle: 'D', section: 'S', anchor: 's' },
+      { id: 'R99:1#7', sageId: '99', sageLabel: 'ר׳ חיים', docTitle: 'E', section: null, anchor: 'd2-x' },
+    ]
+    const { segments, sources } = parseAnswer('א [R539:0#4]. ב [R99:1#7, R539:0#4] ג [R1:0#0].', cites)
+    assert.deepEqual(sources.map(s => [s.n, s.citation.id]), [[1, 'R539:0#4'], [2, 'R99:1#7']])
+    assert.deepEqual(segments.filter(s => s.kind === 'cite').map(s => (s as { n: number }).n), [1, 2, 1])
+    const text = segments.filter(s => s.kind === 'text').map(s => (s as { text: string }).text).join('|')
+    assert.ok(!text.includes('R1:0#0'), 'the uncited handle is not shown')
+    assert.ok(text.endsWith(' ג.'), 'and leaves no stray space')
+  })
+
+  await test('starter questions come from the sage\'s own data and name it', async () => {
+    const subject = {
+      id: '539', name: 'הגר״א', period: 'acharonim' as const, field: 'תלמוד, הלכה',
+      coreConcept: 'x', hasResearch: true, related: [{ group: 'students' as const, name: 'רבי חיים מוולוז׳ין' }],
+    }
+    const he = starterQuestions(subject, 'he').map(stripIsolates)
+    assert.ok(he.length >= 3 && he.length <= 4)
+    assert.ok(he.every(q => q.includes('הגר״א')), 'every question names the sage')
+    assert.ok(he[0].includes('רבי חיים מוולוז׳ין'), 'a real relation from the data leads')
+    const en = starterQuestions(subject, 'en').map(stripIsolates)
+    assert.ok(!en.some(q => q.includes('תלמוד')), 'no untranslated field inside an English question')
   })
 
   // ── prompt contract ──────────────────────────────────────────────────────
