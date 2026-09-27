@@ -14,6 +14,7 @@ import { ResearchReader } from '@/components/sages/ResearchReader'
 import { RelatedSages, type RelatedPersonView } from '@/components/sages/RelatedSages'
 import { groupRelated } from '@/components/sages/relations'
 import { SpotifyListen } from '@/components/sages/SpotifyListen'
+import { SinaiPathCard } from '@/components/viz/SinaiPathCard'
 import { PrintButton, ShareButton, ThemeToggle } from '@/components/sages/PageActions'
 import { Toaster } from '@/components/sages/Toast'
 import type { Locale, Sage } from '@/lib/types'
@@ -319,6 +320,8 @@ export default async function SagePage({ params }: PageProps) {
               </aside>
             )}
           </div>
+
+          <SinaiPathCard sageId={raw.id} locale={loc} />
 
           {/* ── Full research ─────────────────────────────────── */}
           {researchDocs.length > 0 && (

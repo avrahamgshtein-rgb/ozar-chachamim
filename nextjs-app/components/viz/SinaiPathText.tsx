@@ -3,6 +3,7 @@
 // so the server card doesn't import a client module. No React here.
 
 import type { Locale } from '@/lib/types'
+import { displayName } from '@/lib/displayName'
 import type { LineageKind } from './lineage'
 import type { SinaiStepKind } from '@/lib/sinaiPath'
 
@@ -51,6 +52,12 @@ const RECEIVED: Record<LineageKind, { he: [string, string]; en: string; ru: stri
 export function receivedFrom(kind: LineageKind, above: string, locale: Locale, feminine = false): string {
   const r = RECEIVED[kind]
   return (locale === 'he' ? r.he[feminine ? 1 : 0] : r[locale]) + above
+}
+
+/** A chip-sized name: `displayName` without a trailing parenthetical ("רבי אליעזר הגדול (רבי אליעזר בן הורקנוס)" → "רבי אליעזר הגדול"). */
+export function shortName(label: string | undefined): string {
+  const n = displayName(label)
+  return /^(.{3,}?)\s*\([^)]*\)$/.exec(n)?.[1] ?? n
 }
 
 /** "Generation 12" of the Rambam's forty. */

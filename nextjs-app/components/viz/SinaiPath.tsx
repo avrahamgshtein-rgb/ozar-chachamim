@@ -13,7 +13,7 @@ import type { ResolvedStation, SinaiIndex, SinaiStepKind } from '@/lib/sinaiPath
 import { chronoYear } from './lineage'
 import type { LineageIndex, LineageKind } from './lineage'
 import {
-  LEGEND, SINAI_LINE_CSS, SP, genLabel, generationsLabel, inspirationsLabel, leapLabel, linksLabel, receivedFrom,
+  LEGEND, SINAI_LINE_CSS, SP, genLabel, generationsLabel, inspirationsLabel, leapLabel, linksLabel, receivedFrom, shortName,
 } from './SinaiPathText'
 
 /*
@@ -415,7 +415,7 @@ function RowView({ p, delay, dur, locale, sageMap, name, yearsOf, onOpen }: {
           {!single && st.ids.length > 0 && (
             <span className="sp-chips">
               {st.ids.map(id => (
-                <button key={id} onClick={() => onOpen(id)} className={cn('sp-chip', entry === id && 'sp-hit')}>{name(id)}</button>
+                <button key={id} onClick={() => onOpen(id)} className={cn('sp-chip', entry === id && 'sp-hit')}>{shortName(sageMap.get(id)?.label)}</button>
               ))}
             </span>
           )}
@@ -430,7 +430,7 @@ function RowView({ p, delay, dur, locale, sageMap, name, yearsOf, onOpen }: {
                 <span className="text-ink-500">{SP.alongside[locale]} </span>
                 {!all && <span>{a.name[locale]} </span>}
                 {a.ids.map(id => (
-                  <button key={id} onClick={() => onOpen(id)} className={cn('sp-chip sp-chip-sm', entry === id && 'sp-hit')}>{name(id)}</button>
+                  <button key={id} onClick={() => onOpen(id)} className={cn('sp-chip sp-chip-sm', entry === id && 'sp-hit')}>{shortName(sageMap.get(id)?.label)}</button>
                 ))}
               </span>
             )
@@ -438,7 +438,7 @@ function RowView({ p, delay, dur, locale, sageMap, name, yearsOf, onOpen }: {
           {entry && (
             <span className="sp-join">
               <span aria-hidden>↓ </span>{SP.joinsHere[locale]}
-              {entry && !(single && entry === st.ids[0]) && <> · {name(entry)}</>}
+              {!(single && entry === st.ids[0]) && <> · {shortName(sageMap.get(entry)?.label)}</>}
             </span>
           )}
         </div>
