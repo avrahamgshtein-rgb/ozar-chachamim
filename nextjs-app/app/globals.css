@@ -294,6 +294,10 @@ h1, h2, h3 {
   .sage-page button,
   .sage-page iframe { display: none !important; }
 
+  /* Folded lists ("ועוד 5") print in full, without their toggle. */
+  .sage-page details > summary { display: none !important; }
+  .sage-page details::details-content { content-visibility: visible !important; }
+
   /* No dark surfaces, glows or tinted panels. */
   .sage-page *,
   .sage-page *::before,

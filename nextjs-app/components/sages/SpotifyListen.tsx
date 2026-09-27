@@ -45,7 +45,7 @@ export function SpotifyListen({ url, locale, name }: { url: string; locale: Loca
           <p dir="auto" className="truncate text-xs font-sans text-ink-400">{S.sub[locale]} · {name}</p>
         </div>
         <a href={url} target="_blank" rel="noopener noreferrer"
-          className="print-url hidden flex-shrink-0 items-center gap-1 rounded-lg px-2.5 py-1.5 text-xs font-sans text-[#1ed760] [[data-theme=light]_&]:text-[#11773a] hover:bg-[#1DB954]/10 sm:inline-flex">
+          className="hidden flex-shrink-0 items-center gap-1 rounded-lg px-2.5 py-1.5 text-xs font-sans text-[#1ed760] [[data-theme=light]_&]:text-[#11773a] hover:bg-[#1DB954]/10 sm:inline-flex">
           {S.open[locale]} <ExternalIcon />
         </a>
       </div>
