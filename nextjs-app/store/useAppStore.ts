@@ -1,7 +1,7 @@
 'use client'
 
 import { create } from 'zustand'
-import type { Sage, Connection, Tab, Filters, Period, Region } from '@/lib/types'
+import type { Sage, Connection, Tab, Filters, Period, Region, SageGroup } from '@/lib/types'
 import { isTagFacet } from '@/lib/types'
 import { regionsOf } from '@/lib/regions'
 import { placesIn } from '@/lib/placeIndex'
@@ -88,6 +88,12 @@ interface AppState {
   clearFilters: () => void
   /** Focus one place; `anchorId` marks whose journey prompted it. */
   setPlaceFocus: (place: string | null, anchorId?: string | null) => void
+  /**
+   * Focus a named set of sages (a school, from the Traditions tab), or clear it
+   * with null. Focusing replaces the era/region/field/place filters so the
+   * whole group shows; the free-text search is left to the search bar.
+   */
+  setGroupFocus: (group: SageGroup | null) => void
   applyNavigationState: (tab: Tab | null, sage: string | null, regions: Region[], periods: Period[] | null) => void
 }
 
@@ -122,6 +128,7 @@ function applyFilters(sages: Sage[], filters: Filters): Sage[] {
         stops.some(s => placesIn(s).includes(filters.place!))
       if (!here) return false
     }
+    if (filters.group && !filters.group.ids.includes(sage.id)) return false
     if (filters.searchQuery) {
       // Fuzzy Hebrew matching: "רמבם" ↔ "רמב״ם" (nikud/quotes/finals-insensitive)
       const q = normalizeHe(filters.searchQuery)
@@ -288,6 +295,18 @@ export const useAppStore = create<AppState>((set, get) => ({
       filters: updated,
       filteredSages: applyFilters(sages, updated),
       placeAnchorId: place ? anchorId : null,
+    })
+  },
+
+  setGroupFocus: (group) => {
+    const { sages, filters } = get()
+    const updated: Filters = group
+      ? { ...filters, period: null, region: [], field: [], place: null, group }
+      : { ...filters, group: null }
+    set({
+      filters: updated,
+      filteredSages: applyFilters(sages, updated),
+      ...(group ? { placeAnchorId: null } : {}),
     })
   },
 
