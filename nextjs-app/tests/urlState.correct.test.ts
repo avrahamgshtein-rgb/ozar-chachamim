@@ -4,7 +4,7 @@
  */
 
 import assert from 'assert'
-import { parseURLState, serializeURLState } from '../lib/urlState'
+import { parseURLState, serializeURLState, updateURLWithState } from '../lib/urlState'
 import type { NavigationState } from '../lib/urlState'
 
 let passed = 0, failed = 0
@@ -152,6 +152,35 @@ test('deduplicates repeated periods', () => {
 test('filters invalid periods', () => {
   const state = parseURLState('?periods=rishonim,invalid,acharonim')
   assert.deepStrictEqual(state.periods, ['rishonim', 'acharonim'])
+})
+
+console.log('\n=== Road-to-Sinai deep link (?view=sinai) ===')
+
+// The sage page links to /<locale>?tab=genealogy&sage=<id>&view=sinai.
+// urlState owns tab/sage/regions/periods only; `view` belongs to the lineage
+// tab (GenealogyTree), so it must parse cleanly and survive every rewrite.
+
+test('deep link parses to the lineage tab and the sage', () => {
+  const state = parseURLState('?tab=genealogy&sage=594&view=sinai')
+  assert.strictEqual(state.tab, 'genealogy')
+  assert.strictEqual(state.sage, '594')
+  assert.deepStrictEqual(state.regions, [])
+  assert.strictEqual(state.periods, null)
+})
+
+test('rewriting the URL keeps ?view=sinai and updates the sage', () => {
+  const g = globalThis as unknown as { window?: unknown }
+  const had = 'window' in g, prev = g.window
+  g.window = { location: { href: 'https://example.org/he?tab=genealogy&sage=594&view=sinai' } }
+  try {
+    const url = new URL(updateURLWithState({ tab: 'genealogy', sage: '41', regions: [], periods: null }))
+    assert.strictEqual(url.searchParams.get('view'), 'sinai')
+    assert.strictEqual(url.searchParams.get('sage'), '41')
+    assert.strictEqual(url.searchParams.get('tab'), 'genealogy')
+  } finally {
+    if (had) g.window = prev
+    else delete g.window
+  }
 })
 
 console.log(`\n${'='.repeat(50)}`)
