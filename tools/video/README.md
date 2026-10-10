@@ -40,6 +40,26 @@ node tools/video/assemble.mjs --main out/ozar-chachamim-intro-he.mp4 \
   --voice voice-he.mp3 --music music.mp3 --out final-he.mp4
 ```
 
+## Narration
+
+`narration-he.json` is the Hebrew script, one line per scene, each with the
+second it should start and the latest second it should end (same clock as
+`intro-he.srt`: zero is the first frame of the walkthrough). Record one take
+per line, name each file after its id (`01.m4a`, `02.m4a`, ...), and build the
+track:
+
+```bash
+node tools/video/voice-track.mjs --plan tools/video/narration-he.json \
+  --dir takes/ --out voice-he.wav
+```
+
+Each take has its leading and trailing silence trimmed and its loudness
+levelled, then is placed at its start time. A take that runs past its window is
+sped up by at most 15% (`MAX_SPEEDUP`); beyond that it is reported as too long
+and should be re-recorded shorter. Pass the result to `assemble.mjs --voice`.
+If the walkthrough is re-recorded and the scenes move, update the times in the
+plan from the new `intro-<lang>.srt`.
+
 ## Notes
 
 - Record against the live site or a production build, never `next dev`.
@@ -51,7 +71,7 @@ node tools/video/assemble.mjs --main out/ozar-chachamim-intro-he.mp4 \
   video shows the panel and the starter questions but no answer. Replace that
   scene with a real recording once the assistant is confirmed working on the
   live site.
-- No audio is recorded. Add narration and music in an editor; `intro-<lang>.srt`
-  has the caption timings for it.
+- No audio is recorded. Narration and music are added afterwards (see
+  "Narration" and `assemble.mjs`); `intro-<lang>.srt` has the caption timings.
 - Never put AI-generated faces of sages, or AI-rendered Hebrew text, into the
   video. Text comes from the overlay.
