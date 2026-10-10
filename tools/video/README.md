@@ -27,6 +27,19 @@ Or run the **Record intro video** workflow from the Actions tab: it records the
 live site in all three languages on a machine with internet access (so the map
 tiles and fonts are the real ones) and attaches the mp4 and srt files to the run.
 
+## Assembling the final video
+
+`assemble.mjs` joins opening clips (for example from OpenArt), the recorded
+walkthrough and closing clips with cross-fades, and mixes in a narration track
+and music if given. The narration starts at the first frame of the walkthrough,
+so a voice file recorded against `intro-<lang>.srt` lines up without offsets.
+
+```bash
+node tools/video/assemble.mjs --main out/ozar-chachamim-intro-he.mp4 \
+  --pre 1-manuscript.mp4,3-network.mp4 --post 4-glow.mp4 \
+  --voice voice-he.mp3 --music music.mp3 --out final-he.mp4
+```
+
 ## Notes
 
 - Record against the live site or a production build, never `next dev`.
