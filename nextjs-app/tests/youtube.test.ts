@@ -7,7 +7,7 @@
  */
 import assert from 'node:assert/strict'
 import graph from '../public/data.json'
-import { INTRO_VIDEO, durationLabel, embedUrl, getYoutubeEntry, isVideoId, sageVideo, watchUrl, youtubeEntries } from '../lib/youtube'
+import { INTRO_VIDEO, durationLabel, embedUrl, getYoutubeEntry, isVideoId, sageVideos, watchUrl, youtubeEntries } from '../lib/youtube'
 
 let passed = 0
 let failed = 0
@@ -46,12 +46,15 @@ test('every video has a well-formed id, a title and a length', () => {
   for (const [id, e] of youtubeEntries()) {
     let any = false
     for (const lang of LANGS) {
-      const v = e[lang]
-      if (!v) continue
+      const list = e[lang]
+      if (!list) continue
+      assert.ok(Array.isArray(list) && list.length > 0, `${id}/${lang}: empty list`)
       any = true
-      assert.ok(isVideoId(v.id), `${id}/${lang}: bad video id "${v.id}"`)
-      assert.ok(v.title.trim().length > 3, `${id}/${lang}: empty title`)
-      assert.ok(v.seconds > 30 && v.seconds < 3600, `${id}/${lang}: odd length ${v.seconds}s`)
+      for (const v of list) {
+        assert.ok(isVideoId(v.id), `${id}/${lang}: bad video id "${v.id}"`)
+        assert.ok(v.title.trim().length > 3, `${id}/${lang}: empty title`)
+        assert.ok(v.seconds > 30 && v.seconds < 3600, `${id}/${lang}: odd length ${v.seconds}s`)
+      }
     }
     assert.ok(any, `${id} has an entry but no video`)
   }
@@ -61,19 +64,19 @@ test('no video belongs to two sages, or to two languages', () => {
   const seen = new Map<string, string>()
   for (const [id, e] of youtubeEntries()) {
     for (const lang of LANGS) {
-      const v = e[lang]
-      if (!v) continue
-      assert.ok(!seen.has(v.id), `${v.id} is used by both ${seen.get(v.id)} and ${id}/${lang}`)
-      seen.set(v.id, `${id}/${lang}`)
+      for (const v of e[lang] ?? []) {
+        assert.ok(!seen.has(v.id), `${v.id} is used by both ${seen.get(v.id)} and ${id}/${lang}`)
+        seen.set(v.id, `${id}/${lang}`)
+      }
     }
   }
 })
 
 test('a video sits under the language its title is written in', () => {
   for (const [id, e] of youtubeEntries()) {
-    if (e.en) assert.ok(!hasHebrew(e.en.title) && !hasCyrillic(e.en.title), `${id}/en: "${e.en.title}"`)
-    if (e.ru) assert.ok(hasCyrillic(e.ru.title), `${id}/ru: "${e.ru.title}"`)
-    if (e.he) assert.ok(hasHebrew(e.he.title), `${id}/he: "${e.he.title}"`)
+    for (const v of e.en ?? []) assert.ok(!hasHebrew(v.title) && !hasCyrillic(v.title), `${id}/en: "${v.title}"`)
+    for (const v of e.ru ?? []) assert.ok(hasCyrillic(v.title), `${id}/ru: "${v.title}"`)
+    for (const v of e.he ?? []) assert.ok(hasHebrew(v.title), `${id}/he: "${v.title}"`)
   }
 })
 
@@ -81,13 +84,19 @@ console.log('\nlookup and urls')
 
 test('a page only ever gets the video of its own language', () => {
   // The Maharal (72) has an English and a Russian video, none in Hebrew; Rabbi Goren (491) has all three.
-  assert.ok(sageVideo('72', 'en'), 'the Maharal (72) should have an English video')
-  assert.ok(sageVideo('72', 'ru'), 'the Maharal (72) should have a Russian video')
-  assert.equal(sageVideo('72', 'he'), undefined)
-  assert.notEqual(sageVideo('72', 'en')?.id, sageVideo('72', 'ru')?.id)
-  assert.ok(sageVideo('491', 'he') && sageVideo('491', 'en') && sageVideo('491', 'ru'), 'Rabbi Goren (491) should have all three')
-  assert.equal(sageVideo('does-not-exist', 'en'), undefined)
+  assert.equal(sageVideos('72', 'en').length, 1, 'the Maharal (72) has one English video')
+  assert.equal(sageVideos('72', 'ru').length, 1, 'the Maharal (72) has one Russian video')
+  assert.deepEqual(sageVideos('72', 'he'), [])
+  assert.notEqual(sageVideos('72', 'en')[0]?.id, sageVideos('72', 'ru')[0]?.id)
+  assert.ok(sageVideos('491', 'he').length && sageVideos('491', 'en').length && sageVideos('491', 'ru').length, 'Rabbi Goren (491) should have all three')
+  assert.deepEqual(sageVideos('does-not-exist', 'en'), [])
   assert.equal(getYoutubeEntry('72')?.label, labels.get('72'))
+})
+
+test('every video of the playlist that names a roster sage is kept: a sage can have several in a language', () => {
+  const two = youtubeEntries().filter(([, e]) => (e.en?.length ?? 0) >= 2).length
+  assert.ok(two >= 200, `only ${two} sages have two English videos`)
+  assert.ok(sageVideos('44', 'en').length >= 4, 'the Ramban (44) has six English uploads')
 })
 
 test('the player is the cookieless embed, and the watch link is the plain one', () => {

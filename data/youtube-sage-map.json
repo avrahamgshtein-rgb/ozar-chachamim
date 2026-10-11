@@ -1,21 +1,12 @@
 {
- "_about": "Which playlist videos belong to which sage, by hand: the playlist's titles are English, Russian and Hebrew renderings of a sage's name, and the roster's labels are Hebrew, so a script cannot join them safely. Keys are sage ids, values are row numbers of data/youtube-playlist.tsv. A row is only listed when its title names the sage; ambiguous titles are left out (see _left_out).",
+ "_about": "Which playlist videos belong to which sage, by hand: the playlist's titles are English, Russian and Hebrew renderings of a name and the roster's labels are Hebrew (and sometimes a formal name: the Vilna Gaon is 'רבי אליהו בן שלמה זלמן'), so a script cannot join them safely. Keys are sage ids, values are row numbers of data/youtube-playlist.tsv. A row is listed when its title names the sage, or when that sage's own research document (public/research/<id>.json) is about the same person or book. Rows that stay out are in _left_out.",
  "_left_out": {
   "45": "title says Maimon; its twin (46) says Don Yichya, so only 46 is used",
-  "49-50": "Abraham ben Isaac of Montpellier: no such sage in the roster",
   "79-80": "a parashat Ekev lesson, not a sage",
-  "85-86": "the Vilna Gaon: not in the roster",
-  "149-150": "the Crescas family: could be 57 or 469",
-  "220-221": "Baal HaTurim and the Ben Zerach family: could be 189 or 310",
-  "260-261": "the Great Luminary of Lunel: could be 278 or 318",
-  "302-303": "Sephardic heritage in general",
-  "451-452": "Religious authority in ancient Rome: not a sage",
-  "579-580": "the Paris Talmud trial of 1240: not a sage",
+  "451-452": "Religious authority in ancient Rome: possibly Theodos of Rome (485), whose research is about a Roman community leader; not sure enough",
   "670-672": "Shabtai Ben-Dov: not in the roster",
   "682": "Yehuda Gurland: not in the roster",
-  "1-12, 25-26 etc.": "sages with no roster entry (Bokrat, Miriam, Abbahu, Imma Shalom, Berdugo, Nathan Shapira, Margoza) are not listed",
-  "103-104": "Tova Kuczynski, national service: the roster's Tova Sanhedrai-Goldreich is not described that way",
-  "518": "Shaar HaMelech on the Mishneh Torah: probably not Isaac Nunes Belmonte (81)"
+  "1-12": "Avraham Bokrat, Miriam the Prophetess, Rabbi Abbahu, Imma Shalom, Raphael Berdugo, Nathan Shapira of Jerusalem: not in the roster"
  },
  "sages": {
   "1": [
@@ -175,6 +166,10 @@
    394,
    395
   ],
+  "54": [
+   579,
+   580
+  ],
   "55": [
    396,
    397
@@ -262,6 +257,9 @@
   "80": [
    512,
    513
+  ],
+  "81": [
+   518
   ],
   "82": [
    575,
@@ -673,6 +671,10 @@
    262,
    263
   ],
+  "278": [
+   260,
+   261
+  ],
   "280": [
    258,
    259
@@ -714,6 +716,10 @@
   "309": [
    230,
    231
+  ],
+  "310": [
+   220,
+   221
   ],
   "311": [
    218,
@@ -764,6 +770,10 @@
   "329": [
    322,
    323
+  ],
+  "331": [
+   302,
+   303
   ],
   "334": [
    320,
@@ -948,6 +958,10 @@
    151,
    152
   ],
+  "469": [
+   149,
+   150
+  ],
   "470": [
    147,
    148
@@ -1085,6 +1099,10 @@
    105,
    106
   ],
+  "517": [
+   103,
+   104
+  ],
   "519": [
    101,
    102
@@ -1124,6 +1142,10 @@
    51,
    52
   ],
+  "531": [
+   81,
+   82
+  ],
   "532": [
    91,
    92
@@ -1139,6 +1161,14 @@
   "537": [
    59,
    60
+  ],
+  "538": [
+   49,
+   50
+  ],
+  "539": [
+   85,
+   86
   ],
   "540": [
    61,

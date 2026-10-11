@@ -143,6 +143,10 @@ export async function POST(request: NextRequest) {
 
   const subjectSageId = subjectSageIdOf(bodyObj.sageId)
 
+  // No language model configured (ANTHROPIC_API_KEY unset: the model is meant to be switched on only when
+  // there is demand to fund it): answer automatically and leave the auth and quota stores alone.
+  if (!process.env.ANTHROPIC_API_KEY) return await automaticAnswer(null, message, locale, subjectSageId)
+
   let supabase: Awaited<ReturnType<typeof createClient>> | null = null
   let user: { id: string } | null = null
   try {
@@ -175,10 +179,11 @@ export async function POST(request: NextRequest) {
 /**
  * The automatic answer to `message`: the research passages closest to the question, quoted with
  * their citations (lib/rag/extractiveAnswer.ts). It needs neither the language model nor the quota
- * store, so it costs nothing and is not counted. Anything it cannot do hands back `failed`.
+ * store, so it costs nothing and is not counted. Anything it cannot do hands back `failed` (or a plain
+ * 500 when there was no failed attempt).
  */
 async function automaticAnswer(
-  failed: NextResponse,
+  failed: NextResponse | null,
   message: string,
   locale: Locale,
   subjectSageId: string | undefined,
@@ -193,11 +198,11 @@ async function automaticAnswer(
       mode: 'extractive',
     })
     // The anonymous flow may already have issued its cookie.
-    for (const cookie of failed.cookies.getAll()) res.cookies.set(cookie)
+    for (const cookie of failed?.cookies.getAll() ?? []) res.cookies.set(cookie)
     return res
   } catch (err) {
     console.error('[api/chat] automatic answer failed:', err)
-    return failed
+    return failed ?? NextResponse.json({ error: 'internal_error' }, { status: 500 })
   }
 }
 

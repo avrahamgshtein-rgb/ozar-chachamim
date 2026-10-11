@@ -16,9 +16,10 @@ export interface SageVideo {
 export interface YoutubeEntry {
   /** The roster label this entry was made for; guards against ids drifting. */
   label: string
-  he?: SageVideo
-  en?: SageVideo
-  ru?: SageVideo
+  /** The sage's videos in that language, in playlist order (often the same lesson uploaded twice). */
+  he?: SageVideo[]
+  en?: SageVideo[]
+  ru?: SageVideo[]
 }
 
 const entries = (youtubeData as unknown as { sages: Record<string, YoutubeEntry> }).sages
@@ -31,9 +32,9 @@ export function youtubeEntries(): Array<[string, YoutubeEntry]> {
   return Object.entries(entries)
 }
 
-/** The sage's video in the page's language, or none: a video is never shown in another language. */
-export function sageVideo(sageId: string, locale: Locale): SageVideo | undefined {
-  return entries[sageId]?.[locale]
+/** The sage's videos in the page's language, or none: a video is never shown in another language. */
+export function sageVideos(sageId: string, locale: Locale): SageVideo[] {
+  return entries[sageId]?.[locale] ?? []
 }
 
 /** A YouTube video id is 11 characters of letters, digits, "-" and "_". */
@@ -45,7 +46,7 @@ export const isVideoId = (id: string) => /^[A-Za-z0-9_-]{11}$/.test(id)
  */
 export const INTRO_VIDEO: Record<Locale, SageVideo | null> = {
   he: { id: 'uf4X20K1pq0', title: 'אוצר חכמים - כנסו, חפשו, גלו!', seconds: 0 },
-  en: null, // not uploaded yet
+  en: { id: 'ZbVfjEiNg6s', title: 'Otzar Hahachamim - Come in, search, discover!', seconds: 0 },
   ru: { id: '9u__eJAvb9s', title: 'Оцар Хахамим - Заходите, ищите, открывайте!', seconds: 0 },
 }
 
