@@ -1,7 +1,7 @@
 name: Probe YouTube (temporary)
 
-# One-off: tries other yt-dlp player clients to read the spoken language of a few playlist videos,
-# so the pairs of videos per sage can be split into English and Russian. Remove after it has run.
+# One-off: reads the thumbnails of a few playlist videos and OCRs them, to learn whether the slides
+# carry text in the spoken language (English / Russian). Remove after it has run.
 on:
   push:
     branches: [claude/tender-keller-ugj09l]
@@ -16,21 +16,19 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - name: Try several clients on one pair
+      - name: Thumbnails and OCR of a sample
         run: |
-          pip install -q yt-dlp
-          for client in android_vr tv_embedded web_embedded mweb ios; do
-            echo "== client $client"
-            yt-dlp -J --skip-download --no-warnings --extractor-args "youtube:player_client=$client" "https://www.youtube.com/watch?v=V_IWxYu1f9Y" > one.json 2> err.txt || { echo "FAILED"; head -c 200 err.txt; echo; continue; }
-            python3 - <<'PY'
-          import json
-          d = json.load(open('one.json'))
-          ac = sorted(d.get('automatic_captions', {}).keys())
-          print('title:', d.get('title'))
-          print('language:', d.get('language'), '| auto -orig:', [k for k in ac if k.endswith('-orig')], '| auto count:', len(ac))
-          PY
+          sudo apt-get update -qq && sudo apt-get install -y -qq tesseract-ocr tesseract-ocr-rus tesseract-ocr-heb > /dev/null
+          # rows 13,14 Rashi; 59,60 Basilea (ru, en); 93,94 Gamliel; 125,126 Shammai; 657,658 Maharal; 1,2 Bokrat
+          for pair in "13 V_IWxYu1f9Y" "14 q5x9P6uZGpE" "59 HN4xheHyH7s" "60 PQJAHFKdwJg" "93 qWkGCUgsagA" "94 zNRv16vRMqM" "125 2O9fB4pFm5E" "126 TuIOTBpjNZE" "657 BJb0xFe53U8" "658 uqI_wh57lO8" "1 llK6TjhR-ok" "2 3tqZnY6xxJ4"; do
+            set -- $pair
+            echo "== row $1 id $2"
+            for f in hqdefault 1 2 3; do
+              code=$(curl -s -m 20 -o t.jpg -w '%{http_code}' "https://i.ytimg.com/vi/$2/$f.jpg")
+              size=$(stat -c %s t.jpg 2>/dev/null || echo 0)
+              txt=$(tesseract t.jpg - -l rus+eng --psm 11 2>/dev/null | tr '\n' ' ' | tr -s ' ')
+              cyr=$(printf '%s' "$txt" | grep -o '[А-Яа-яЁё]' | wc -l)
+              lat=$(printf '%s' "$txt" | grep -o '[A-Za-z]' | wc -l)
+              echo "  $f http=$code bytes=$size cyr=$cyr lat=$lat | ${txt:0:110}"
+            done
           done
-          echo "== timedtext list"
-          curl -s -m 20 "https://www.youtube.com/api/timedtext?v=V_IWxYu1f9Y&type=list" | head -c 400; echo
-          echo "== watch page"
-          curl -s -m 20 -A "Mozilla/5.0" "https://www.youtube.com/watch?v=V_IWxYu1f9Y" | grep -o '"defaultAudioLanguage":"[^"]*"\|"languageCode":"[^"]*"\|"captionTracks":\[{[^]]\{0,300\}' | head -5
