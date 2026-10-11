@@ -10,11 +10,12 @@
     "build": "next build",
     "start": "next start",
     "type-check": "tsc --noEmit",
-    "test": "npm run test:rag && npm run test:wiring && npm run test:geo && npm run test:url",
+    "test": "npm run test:rag && npm run test:wiring && npm run test:geo && npm run test:url && npm run test:sefaria",
     "test:rag": "tsx tests/rag.test.ts",
     "test:wiring": "tsx tests/chatWiring.test.ts",
     "test:geo": "tsx tests/geoLayers.test.ts",
-    "test:url": "tsx tests/urlState.correct.test.ts"
+    "test:url": "tsx tests/urlState.correct.test.ts",
+    "test:sefaria": "tsx tests/sefaria.test.ts"
   },
   "dependencies": {
     "@supabase/ssr": "^0.5.2",

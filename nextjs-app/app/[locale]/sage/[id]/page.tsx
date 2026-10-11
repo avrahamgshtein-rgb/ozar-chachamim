@@ -14,6 +14,8 @@ import { ResearchReader } from '@/components/sages/ResearchReader'
 import { RelatedSages, type RelatedPersonView } from '@/components/sages/RelatedSages'
 import { groupRelated } from '@/components/sages/relations'
 import { SpotifyListen } from '@/components/sages/SpotifyListen'
+import { SefariaSection } from '@/components/sages/SefariaSection'
+import { getSefaria, sefariaTopicUrl } from '@/lib/sefaria'
 import { AskSageButton } from '@/components/sages/AskSageButton'
 import { SinaiPathCard } from '@/components/viz/SinaiPathCard'
 import { PrintButton, ShareButton, ThemeToggle } from '@/components/sages/PageActions'
@@ -33,6 +35,7 @@ const S = {
   showInGraph: { he: 'הצגה ברשת הקשרים', en: 'Show in the network', ru: 'Показать в сети' },
   readResearch: { he: 'לקריאת המחקר', en: 'Read the research', ru: 'Читать исследование' },
   listen: { he: 'האזנה לפרק', en: 'Listen', ru: 'Слушать' },
+  sefariaButton: { he: 'ספריא', en: 'Sefaria', ru: 'Sefaria' },
   minRead: { he: 'דק׳', en: 'min', ru: 'мин' },
   back: { he: 'חזרה לאוצר חכמים', en: 'Back to Ozar Chachamim', ru: 'Назад в Озар Хахамим' },
   breadcrumbs: { he: 'פירורי לחם', en: 'Breadcrumbs', ru: 'Навигационная цепочка' },
@@ -166,6 +169,7 @@ export default async function SagePage({ params }: PageProps) {
   )
 
   const searchName = labelParts(raw.label).name
+  const sefaria = getSefaria(raw.id)
 
   return (
     <>
@@ -275,6 +279,13 @@ export default async function SagePage({ params }: PageProps) {
                   {S.listen[loc]}
                 </a>
               )}
+              {sefaria && (
+                <a href="#sefaria"
+                  className="inline-flex items-center gap-2 rounded-full border border-ink-700/50 bg-ink-800/40 px-4 py-2 text-sm text-ink-200 transition-colors hover:border-gold-500/40 hover:text-gold-300">
+                  <span aria-hidden>📜</span>
+                  {S.sefariaButton[loc]}
+                </a>
+              )}
               <AskSageButton subject={askSubject} locale={loc} />
               <Link href={`/${loc}?sage=${raw.id}`}
                 className="inline-flex items-center gap-2 rounded-full border border-ink-700/50 bg-ink-800/40 px-4 py-2 text-sm text-ink-200 transition-colors hover:border-gold-500/40 hover:text-gold-300">
@@ -326,6 +337,10 @@ export default async function SagePage({ params }: PageProps) {
                 </Section>
               )}
 
+              {sefaria && (
+                <SefariaSection entry={sefaria} locale={loc} name={name} accent={accent} />
+              )}
+
               {sage.migration_path && (
                 <Section title={t.migrationPath}>
                   <MigrationPath path={sage.migration_path} accentColor={accent} />
@@ -359,7 +374,7 @@ export default async function SagePage({ params }: PageProps) {
           <footer className="mt-16 grid gap-6 border-t border-ink-700/40 pt-8 md:grid-cols-[minmax(0,1fr)_auto]">
             <Section title={t.externalLinks}>
               <div className="flex flex-wrap gap-2">
-                <ExtLink href={`https://www.sefaria.org/search?q=${encodeURIComponent(raw.name_en ?? searchName)}`} label="Sefaria" icon="📜" />
+                <ExtLink href={sefaria ? sefariaTopicUrl(sefaria.slug) : `https://www.sefaria.org/search?q=${encodeURIComponent(raw.name_en ?? searchName)}`} label="Sefaria" icon="📜" />
                 <ExtLink href={`https://he.wikipedia.org/w/index.php?search=${encodeURIComponent(searchName)}`} label={S.wikipedia[loc]} icon="📖" />
                 {raw.name_en && (
                   <ExtLink href={`https://en.wikipedia.org/w/index.php?search=${encodeURIComponent(raw.name_en)}`} label="Wikipedia" icon="🌐" />
