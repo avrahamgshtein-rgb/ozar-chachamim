@@ -1,0 +1,41 @@
+name: Probe YouTube (temporary)
+
+# One-off: reads the spoken language of a few playlist videos (yt-dlp metadata) so the pairs of
+# videos per sage can be split into English and Russian. Remove after it has run.
+on:
+  push:
+    branches: [claude/tender-keller-ugj09l]
+    paths: [.github/workflows/probe-youtube.yml]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Metadata of a sample
+        run: |
+          pip install -q yt-dlp
+          for id in 4jGtpuCsmRQ LyYbJ5ZzZeE ; do :; done
+          python3 - <<'PY'
+          import json, subprocess
+          ids = ['qb0YPH-1KLg']
+          PY
+          # rows 13,14 (Rashi), 59,60, 93,94, 125,126, 657,658 of the sages playlist
+          yt-dlp --flat-playlist --no-warnings --print "%(playlist_index)s %(id)s" "https://www.youtube.com/playlist?list=PLZTqkkizXfX-8NLT5G77GBhgMylisckyf" > all.txt
+          for n in 13 14 59 60 93 94 125 126 657 658; do
+            id=$(awk -v n=$n '$1==n {print $2}' all.txt)
+            echo "== row $n $id"
+            yt-dlp -J --skip-download --no-warnings "https://www.youtube.com/watch?v=$id" > one.json 2> err.txt || { echo "FAILED"; head -c 300 err.txt; continue; }
+            python3 - <<'PY'
+          import json
+          d = json.load(open('one.json'))
+          ac = sorted(d.get('automatic_captions', {}).keys())
+          print('title:', d.get('title'))
+          print('language:', d.get('language'), '| subtitles:', sorted(d.get('subtitles', {}).keys())[:5], '| auto -orig:', [k for k in ac if k.endswith('-orig')], '| auto count:', len(ac))
+          print('description:', (d.get('description') or '')[:120].replace('\n', ' '))
+          PY
+          done
