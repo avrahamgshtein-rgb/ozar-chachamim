@@ -14,8 +14,9 @@ import { ResearchReader } from '@/components/sages/ResearchReader'
 import { RelatedSages, type RelatedPersonView } from '@/components/sages/RelatedSages'
 import { groupRelated } from '@/components/sages/relations'
 import { SpotifyListen } from '@/components/sages/SpotifyListen'
-import { SefariaSection } from '@/components/sages/SefariaSection'
+import { WritingsSection } from '@/components/sages/WritingsSection'
 import { getSefaria, sefariaTopicUrl } from '@/lib/sefaria'
+import { wikiLinks, wikipediaUrl } from '@/lib/wikipedia'
 import { AskSageButton } from '@/components/sages/AskSageButton'
 import { SinaiPathCard } from '@/components/viz/SinaiPathCard'
 import { PrintButton, ShareButton, ThemeToggle } from '@/components/sages/PageActions'
@@ -36,6 +37,8 @@ const S = {
   readResearch: { he: 'לקריאת המחקר', en: 'Read the research', ru: 'Читать исследование' },
   listen: { he: 'האזנה לפרק', en: 'Listen', ru: 'Слушать' },
   sefariaButton: { he: 'ספריא', en: 'Sefaria', ru: 'Sefaria' },
+  wikisourceButton: { he: 'ויקיטקסט', en: 'Wikisource', ru: 'Викитека' },
+  wikipediaEn: { he: 'ויקיפדיה (אנגלית)', en: 'Wikipedia', ru: 'Википедия (англ.)' },
   minRead: { he: 'דק׳', en: 'min', ru: 'мин' },
   back: { he: 'חזרה לאוצר חכמים', en: 'Back to Ozar Chachamim', ru: 'Назад в Озар Хахамим' },
   breadcrumbs: { he: 'פירורי לחם', en: 'Breadcrumbs', ru: 'Навигационная цепочка' },
@@ -170,6 +173,8 @@ export default async function SagePage({ params }: PageProps) {
 
   const searchName = labelParts(raw.label).name
   const sefaria = getSefaria(raw.id)
+  const wiki = wikiLinks(raw.id, sefaria)
+  const hasWritings = !!sefaria || !!wiki.wikisource
 
   return (
     <>
@@ -279,11 +284,11 @@ export default async function SagePage({ params }: PageProps) {
                   {S.listen[loc]}
                 </a>
               )}
-              {sefaria && (
-                <a href="#sefaria"
+              {hasWritings && (
+                <a href="#writings"
                   className="inline-flex items-center gap-2 rounded-full border border-ink-700/50 bg-ink-800/40 px-4 py-2 text-sm text-ink-200 transition-colors hover:border-gold-500/40 hover:text-gold-300">
                   <span aria-hidden>📜</span>
-                  {S.sefariaButton[loc]}
+                  {sefaria ? S.sefariaButton[loc] : S.wikisourceButton[loc]}
                 </a>
               )}
               <AskSageButton subject={askSubject} locale={loc} />
@@ -337,8 +342,8 @@ export default async function SagePage({ params }: PageProps) {
                 </Section>
               )}
 
-              {sefaria && (
-                <SefariaSection entry={sefaria} locale={loc} name={name} accent={accent} />
+              {hasWritings && (
+                <WritingsSection sefaria={sefaria} wikisource={wiki.wikisource} locale={loc} name={name} accent={accent} />
               )}
 
               {sage.migration_path && (
@@ -375,8 +380,10 @@ export default async function SagePage({ params }: PageProps) {
             <Section title={t.externalLinks}>
               <div className="flex flex-wrap gap-2">
                 <ExtLink href={sefaria ? sefariaTopicUrl(sefaria.slug) : `https://www.sefaria.org/search?q=${encodeURIComponent(raw.name_en ?? searchName)}`} label="Sefaria" icon="📜" />
-                <ExtLink href={`https://he.wikipedia.org/w/index.php?search=${encodeURIComponent(searchName)}`} label={S.wikipedia[loc]} icon="📖" />
-                {raw.name_en && (
+                <ExtLink href={wiki.he ? wikipediaUrl('he', wiki.he) : `https://he.wikipedia.org/w/index.php?search=${encodeURIComponent(searchName)}`} label={S.wikipedia[loc]} icon="📖" />
+                {wiki.en ? (
+                  <ExtLink href={wikipediaUrl('en', wiki.en)} label={S.wikipediaEn[loc]} icon="🌐" />
+                ) : raw.name_en && (
                   <ExtLink href={`https://en.wikipedia.org/w/index.php?search=${encodeURIComponent(raw.name_en)}`} label="Wikipedia" icon="🌐" />
                 )}
                 <ExtLink href={`https://www.nli.org.il/find/books?query=${encodeURIComponent(searchName)}`} label={S.nli[loc]} icon="🏛" />

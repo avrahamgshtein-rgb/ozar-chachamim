@@ -26,6 +26,8 @@ export interface SefariaEntry {
   /** Works Sefaria lists for the author, which can be more than `works` holds. */
   total: number
   works: SefariaWork[]
+  /** Titles of the author's Wikipedia articles, as Sefaria links them. */
+  wiki?: { he?: string; en?: string }
 }
 
 const entries = (sefariaData as unknown as { authors: Record<string, SefariaEntry> }).authors
