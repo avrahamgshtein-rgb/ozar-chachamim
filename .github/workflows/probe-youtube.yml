@@ -1,7 +1,8 @@
 name: Probe YouTube (temporary)
 
-# One-off: reads the thumbnails of a few playlist videos and OCRs them, to learn whether the slides
-# carry text in the spoken language (English / Russian). Remove after it has run.
+# One-off: loads a few playlist videos in a real browser and reads their caption tracks, to learn
+# the spoken language (YouTube's automatic captions are made in the detected language). Remove after
+# it has run.
 on:
   push:
     branches: [claude/tender-keller-ugj09l]
@@ -14,21 +15,34 @@ permissions:
 jobs:
   probe:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     steps:
-      - name: Thumbnails and OCR of a sample
+      - name: Caption tracks of a sample, read in a browser
         run: |
-          sudo apt-get update -qq && sudo apt-get install -y -qq tesseract-ocr tesseract-ocr-rus tesseract-ocr-heb > /dev/null
-          # rows 13,14 Rashi; 59,60 Basilea (ru, en); 93,94 Gamliel; 125,126 Shammai; 657,658 Maharal; 1,2 Bokrat
-          for pair in "13 V_IWxYu1f9Y" "14 q5x9P6uZGpE" "59 HN4xheHyH7s" "60 PQJAHFKdwJg" "93 qWkGCUgsagA" "94 zNRv16vRMqM" "125 2O9fB4pFm5E" "126 TuIOTBpjNZE" "657 BJb0xFe53U8" "658 uqI_wh57lO8" "1 llK6TjhR-ok" "2 3tqZnY6xxJ4"; do
-            set -- $pair
-            echo "== row $1 id $2"
-            for f in hqdefault 1 2 3; do
-              code=$(curl -s -m 20 -o t.jpg -w '%{http_code}' "https://i.ytimg.com/vi/$2/$f.jpg")
-              size=$(stat -c %s t.jpg 2>/dev/null || echo 0)
-              txt=$(tesseract t.jpg - -l rus+eng --psm 11 2>/dev/null | tr '\n' ' ' | tr -s ' ')
-              cyr=$(printf '%s' "$txt" | grep -o '[А-Яа-яЁё]' | wc -l)
-              lat=$(printf '%s' "$txt" | grep -o '[A-Za-z]' | wc -l)
-              echo "  $f http=$code bytes=$size cyr=$cyr lat=$lat | ${txt:0:110}"
-            done
-          done
+          pip install -q playwright
+          python3 -m playwright install --with-deps chromium > /dev/null
+          cat > probe.py <<'PY'
+          import json, sys
+          from playwright.sync_api import sync_playwright
+          sample = [(13,'V_IWxYu1f9Y'),(14,'q5x9P6uZGpE'),(59,'HN4xheHyH7s'),(60,'PQJAHFKdwJg'),(93,'qWkGCUgsagA'),(94,'zNRv16vRMqM'),(125,'2O9fB4pFm5E'),(126,'TuIOTBpjNZE'),(657,'BJb0xFe53U8'),(658,'uqI_wh57lO8'),(1,'llK6TjhR-ok'),(2,'3tqZnY6xxJ4')]
+          with sync_playwright() as p:
+              b = p.chromium.launch()
+              ctx = b.new_context(locale='en-US', user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36')
+              ctx.add_cookies([{'name':'CONSENT','value':'YES+1','domain':'.youtube.com','path':'/'},{'name':'SOCS','value':'CAI','domain':'.youtube.com','path':'/'}])
+              for row, vid in sample:
+                  page = ctx.new_page()
+                  try:
+                      page.goto('https://www.youtube.com/watch?v=' + vid, wait_until='domcontentloaded', timeout=45000)
+                      page.wait_for_timeout(2500)
+                      info = page.evaluate("""() => {
+                        const r = window.ytInitialPlayerResponse || {};
+                        const t = (((r.captions||{}).playerCaptionsTracklistRenderer||{}).captionTracks||[]).map(x => (x.languageCode||'') + ':' + (x.kind||'manual'));
+                        return {status: (r.playabilityStatus||{}).status, reason: ((r.playabilityStatus||{}).reason||'').slice(0,80), tracks: t, title: ((r.videoDetails||{}).title||'').slice(0,60), lang: document.documentElement.lang}
+                      }""")
+                      print('row', row, vid, json.dumps(info, ensure_ascii=False))
+                  except Exception as e:
+                      print('row', row, vid, 'ERR', str(e)[:120])
+                  page.close()
+              b.close()
+          PY
+          python3 probe.py
