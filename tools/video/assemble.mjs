@@ -4,7 +4,12 @@
 //
 //   node tools/video/assemble.mjs --main intro-he.mp4 \
 //     --pre 1-manuscript.mp4,3-network.mp4 --post 4-glow.mp4 \
-//     [--voice voice-he.mp3] [--music music.mp3] --out final-he.mp4
+//     [--voice voice-he.mp3] [--music music.mp3] [--music-volume 0.38] --out final-he.mp4
+//
+// --music-volume is a plain gain on the music track as it comes. The default is
+// 0.22 under a voice and 0.6 without one; the right value depends on how loud
+// the track itself is, so check the result (for example with ffmpeg's ebur128:
+// about 8 dB below the voice reads well).
 //
 // Every clip is scaled and cropped to 1920x1080 at 30 fps. The fade from the
 // opening clips into the walkthrough goes through black; the others are plain
@@ -69,7 +74,7 @@ if (args.voice || args.music) {
   }
   if (args.music) {
     ff.push('-stream_loop', '-1', '-i', args.music)
-    audio.push(`[${next}:a]volume=${args.voice ? 0.22 : 0.6},afade=t=in:d=2,afade=t=out:st=${Math.max(0, len - 3).toFixed(2)}:d=3[music]`)
+    audio.push(`[${next}:a]volume=${+args['music-volume'] || (args.voice ? 0.22 : 0.6)},afade=t=in:d=2,afade=t=out:st=${Math.max(0, len - 3).toFixed(2)}:d=3[music]`)
     next++
   }
   const mix = args.voice && args.music
