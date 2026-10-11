@@ -8523,7 +8523,7 @@
    "birth_year": 1944,
    "death_year": 2026,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "618",
@@ -8541,7 +8541,7 @@
    "birth_year": 1915,
    "death_year": 2006,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "619",
@@ -8613,7 +8613,7 @@
    "birth_year": 1884,
    "death_year": 1954,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   }
  ],
  "links": [
