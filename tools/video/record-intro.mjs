@@ -35,7 +35,6 @@ const T = {
     page1: ['לכל חכם דף עם מחקר מלא'],
     page2: ['תוכן עניינים, הערות שוליים וזמן קריאה'],
     writings: ['הכתבים של החכם, בלחיצה אחת', 'בספריא ובוויקיטקסט'],
-    page3: ['אפשר גם לשאול את העוזר על החכם'],
     listen: ['ולרוב החכמים יש פרק בפודקאסט', 'מאזינים ישר מהדף'],
     timeline: ['ציר הזמן: אלפי שנים של תורה'],
     journey: ['מסע התורה: איך מרכזי התורה נעו בעולם'],
@@ -57,7 +56,6 @@ const T = {
     page1: ['Every sage has a page with full research'],
     page2: ['Contents, footnotes and reading time'],
     writings: ['The sage’s own writings, one click away', 'On Sefaria and Wikisource'],
-    page3: ['You can also ask the assistant about the sage'],
     listen: ['Most sages have a podcast episode', 'Listen right from the page'],
     timeline: ['The timeline: thousands of years of Torah'],
     journey: ['The journey of Torah: how its centres moved around the world'],
@@ -79,7 +77,6 @@ const T = {
     page1: ['У каждого мудреца есть страница с полным исследованием'],
     page2: ['Оглавление, сноски и время чтения'],
     writings: ['Сочинения мудреца — в один клик', 'На Sefaria и Викитеке'],
-    page3: ['Ассистенту можно задать вопрос о мудреце'],
     listen: ['У большинства мудрецов есть выпуск подкаста', 'Слушайте прямо со страницы'],
     timeline: ['Лента времени: тысячелетия Торы'],
     journey: ['Путь Торы: как центры Торы перемещались по миру'],
@@ -109,8 +106,8 @@ const ctx = await browser.newContext({
 await ctx.addInitScript(() => { try { localStorage.setItem('ozar-tour-v1', '1') } catch {} })
 await ctx.addInitScript(installOverlay)
 // The assistant's quota check needs Supabase, which a recording box can't
-// reach. Report it as available so the panel opens in its normal state; the
-// walkthrough never sends a question.
+// reach. Report it as available so the panel opens in its normal state if a
+// scene opens it; the walkthrough never sends a question.
 await ctx.route('**/api/chat', route =>
   route.request().method() === 'GET'
     ? route.fulfill({ json: { authenticated: false, quota: { limit: 5, remaining: 5 } } })
@@ -204,12 +201,9 @@ await scene('sage page', async () => {
   await d.sleep(600)
   await page.evaluate(() => document.getElementById('sage-scroll')?.scrollTo({ top: 0, behavior: 'instant' }))
   await d.sleep(800)
-  await d.cap(...T.page3)
-  const ask = page.locator('button[aria-haspopup="dialog"]').first()
-  await d.click(ask, 1000)
-  await d.sleep(3300)
-  await page.keyboard.press('Escape')
-  await d.sleep(400)
+  // The assistant ("שאלו על החכם") is not shown: on 2026-10-11 the live /api/chat
+  // answered every question with 500 internal_error. Add the scene back (open the
+  // panel, type a question, show the answer) once an answer is confirmed working.
 })
 
 // ── 3b. listen to the episode, on a sage who has one (the Rambam) ────────

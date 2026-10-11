@@ -1,6 +1,6 @@
 {
   "language": "he",
-  "about": "Narration plan for the Hebrew walkthrough. Times are seconds from the first frame of the recorded walkthrough (the title card), the same clock as intro-he.srt. `start` is when the line should begin, `end` the latest it should be over. Record one take per id, then build the track with voice-track.mjs.",
+  "about": "Narration plan for the Hebrew walkthrough. Times are seconds from the first frame of the recorded walkthrough (the title card), the same clock as intro-he.srt. `start` is when the line should begin, `end` the latest it should be over. Record one take per id, then build the track with voice-track.mjs. Line 07 (the assistant) was dropped with its scene on 2026-10-11, so ids 01-06 and 08-13 are the take file names; lines from 08 on moved 5.66 s earlier.",
   "segments": [
     {
       "id": "01",
@@ -39,45 +39,39 @@
       "text": "תוכן עניינים, הערות שוליים וזמן קריאה."
     },
     {
-      "id": "07",
-      "start": 47.9,
-      "end": 52.6,
-      "text": "ואפשר גם לשאול את העוזר על החכם."
-    },
-    {
       "id": "08",
-      "start": 56.6,
-      "end": 64.0,
+      "start": 50.94,
+      "end": 58.34,
       "text": "ולרוב החכמים יש פרק בפודקאסט, ומאזינים ישר מהדף."
     },
     {
       "id": "09",
-      "start": 68.5,
-      "end": 77.1,
+      "start": 62.84,
+      "end": 71.44,
       "text": "בציר הזמן רואים אלפי שנים של תורה, דור אחרי דור. אפשר להתקרב לכל תקופה."
     },
     {
       "id": "10",
-      "start": 80.5,
-      "end": 94.5,
+      "start": 74.84,
+      "end": 88.84,
       "text": "מסע התורה: מפה שמראה איך מרכזי התורה נעו בעולם לאורך הדורות. לוחצים על הפעלה, ורואים אותם עוברים ממקום למקום."
     },
     {
       "id": "11",
-      "start": 98.5,
-      "end": 109.5,
+      "start": 92.84,
+      "end": 103.84,
       "text": "הדרך לסיני: מכל חכם אפשר לעקוב אחורה עד משה רבנו. קו מקווקו הוא השראה, לא קבלה ישירה."
     },
     {
       "id": "12",
-      "start": 113.5,
-      "end": 120.4,
+      "start": 107.84,
+      "end": 114.74,
       "text": "ובבתי מדרש ומסורות רואים מי הושפע ממי."
     },
     {
       "id": "13",
-      "start": 120.9,
-      "end": 124.8,
+      "start": 115.24,
+      "end": 119.14,
       "text": "אוצר חכמים. כנסו, חפשו, גלו."
     }
   ]
