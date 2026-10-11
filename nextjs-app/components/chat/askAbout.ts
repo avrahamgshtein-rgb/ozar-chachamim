@@ -35,6 +35,42 @@ export function onAskAboutSage(handler: (subject: AskSubject) => void): () => vo
   return () => window.removeEventListener(ASK_EVENT, listener)
 }
 
+const QUESTION_EVENT = 'ozar:ask-question'
+
+/** Open the chat and send `text` as a free question (the search box's "ask the assistant"). */
+export function askQuestion(text: string) {
+  if (typeof window === 'undefined') return
+  window.dispatchEvent(new CustomEvent<string>(QUESTION_EVENT, { detail: text }))
+}
+
+/** Subscribe to askQuestion calls. Returns the unsubscribe function. */
+export function onAskQuestion(handler: (text: string) => void): () => void {
+  const listener = (e: Event) => handler((e as CustomEvent<string>).detail)
+  window.addEventListener(QUESTION_EVENT, listener)
+  return () => window.removeEventListener(QUESTION_EVENT, listener)
+}
+
+// Whole-word question openers in the three languages. \b does not see Hebrew or Cyrillic letters, so
+// the word has to be followed by a space or the end explicitly.
+const QUESTION_OPENERS = new RegExp(
+  '^(?:' + [
+    'מי', 'מה', 'מהו', 'מהי', 'מדוע', 'למה', 'איך', 'כיצד', 'מתי', 'איפה', 'היכן', 'האם', 'כמה', 'איזה', 'איזו', 'מאיפה', 'מניין', 'לאן', 'על מה',
+    'who', 'what', 'why', 'how', 'when', 'where', 'which', 'did', 'does', 'do', 'is', 'are', 'was', 'were', 'can', 'could', 'should',
+    'кто', 'что', 'почему', 'зачем', 'как', 'когда', 'где', 'куда', 'откуда', 'какой', 'какая', 'какое', 'какие', 'сколько', 'чем', 'в чём',
+  ].join('|') + ')(?=\\s)', 'iu')
+
+/**
+ * Does the search text read as a question rather than a name? A question mark ends it, or it opens
+ * with a question word and has at least three words ("מי היה רש״י", "who taught Rashi"). The search box
+ * then offers the assistant first; a plain name still opens the sage.
+ */
+export function looksLikeQuestion(text: string): boolean {
+  const t = stripIsolates(text).trim()
+  if (t.length < 3) return false
+  if (/[?？؟]\s*$/.test(t)) return true
+  return t.split(/\s+/).length >= 3 && QUESTION_OPENERS.test(t)
+}
+
 /** The related sage a pair question is about: lineage first, then influence, then the rest. */
 const PAIR_ORDER: RelationGroup[] = [
   'teachers', 'students', 'influencedBy', 'influenced', 'disputed', 'disputedBy', 'predecessors', 'successors', 'family', 'peers',

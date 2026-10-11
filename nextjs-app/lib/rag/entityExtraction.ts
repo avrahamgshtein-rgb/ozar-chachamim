@@ -16,8 +16,16 @@ const STOPWORDS = new Set(
   ['רבי', 'רב', 'הרב', 'רבן', 'רבנו', 'רבינו', 'הרבי', 'בן', 'בר', 'בת',
    'אבן', 'דון', 'חכם', 'הרה"ג', 'הגאון', 'האדמו"ר', 'מרן', 'של', 'עם',
    'מה', 'מי', 'איך', 'למה', 'האם', 'מתי', 'בין', 'זה', 'היה', 'הוא',
-   'רבי\'', 'הכהן', 'הלוי'].map(normalizeHe),
+   'רבי\'', 'הכהן', 'הלוי',
+   // English and Russian titles, particles and question words, for the names in sages.en/ru.json
+   'rabbi', 'rav', 'rabban', 'rabbeinu', 'rabbenu', 'rebbe', 'rebbetzin', 'rabbanit', 'chacham', 'hakham', 'the', 'ben', 'bar', 'bat',
+   'ibn', 'and', 'of', 'who', 'what', 'was', 'were', 'did', 'does', 'how', 'why', 'when', 'where', 'which', 'about', 'tell', 'his', 'her',
+   'рабби', 'рав', 'раввин', 'рабейну', 'ребе', 'хахам', 'бен', 'бар', 'бат', 'ибн', 'кто', 'что', 'был', 'была', 'как', 'почему', 'когда',
+   'где', 'какой', 'расскажите', 'расскажи', 'про', 'его', 'она'].map(normalizeHe),
 )
+
+const HEBREW_LETTER = /[א-ת]/
+const CYRILLIC_LETTER = /[Ѐ-ӿ]/
 
 // Max number of distinct sages a single token may appear in before it's
 // considered too common to be a distinguishing name match on its own
@@ -49,20 +57,34 @@ export interface EntityMatch {
  *  2. Fallback: a single non-stopword token (≥3 chars) from the label that
  *     appears as a whole word in the question — catches "מה רמב"ם אמר על..."
  *     style phrasing without the full title.
+ *
+ * `localNames` maps a sage id to its name in another language (the English or
+ * Russian overlay's label), so "who was Maimonides" and "кто такой Рамбам"
+ * find the sage as "מי היה הרמב״ם" does. Latin and Cyrillic names match whole
+ * words only (a Russian name also in its case endings: "о Рамбаме").
  */
-export function extractMentionedSages(question: string, allSages: Sage[]): EntityMatch[] {
+export function extractMentionedSages(
+  question: string,
+  allSages: Sage[],
+  localNames?: ReadonlyMap<string, string>,
+): EntityMatch[] {
   const q = normalizeHe(question)
   if (!q) return []
+  const qClean = q.split(' ').map(stripPunct).filter(Boolean).join(' ')
 
   const matches: EntityMatch[] = []
   const matchedIds = new Set<string>()
 
-  // Pass 1: full-alias substring match
+  // Pass 1: full-alias match
   for (const sage of allSages) {
-    const aliases = [...aliasesOf(sage.label), ...(sage.name_en ? [sage.name_en] : [])]
+    const local = localNames?.get(sage.id)
+    const aliases = [...aliasesOf(sage.label), ...(sage.name_en ? [sage.name_en] : []), ...(local ? aliasesOf(local) : [])]
     for (const alias of aliases) {
       const normAlias = normalizeHe(alias)
-      if (normAlias.length >= 2 && q.includes(normAlias)) {
+      const hit = HEBREW_LETTER.test(normAlias)
+        ? normAlias.length >= 2 && q.includes(normAlias)
+        : normAlias.length >= 3 && ` ${qClean} `.includes(` ${stripPunct(normAlias)} `)
+      if (hit) {
         matches.push({ sage, matchedAlias: alias })
         matchedIds.add(sage.id)
         break
@@ -76,18 +98,28 @@ export function extractMentionedSages(question: string, allSages: Sage[]): Entit
   const tokensBySageId = new Map<string, string[]>()
   const tokenSageCount = new Map<string, number>()
   for (const sage of allSages) {
-    const tokens = [...new Set(
-      normalizeHe(sage.label).split(' ').map(stripPunct).filter(t => t.length >= 3 && !STOPWORDS.has(t)),
-    )]
+    const local = localNames?.get(sage.id)
+    const tokens = [...new Set([
+      ...normalizeHe(sage.label).split(' ').map(stripPunct).filter(t => t.length >= 3 && !STOPWORDS.has(t)),
+      // a Latin or Cyrillic token needs four letters: "ben", "bar" and "ibn" are particles, not names
+      ...(local ? normalizeHe(local).split(' ').map(stripPunct).filter(t => t.length >= 4 && !STOPWORDS.has(t)) : []),
+    ])]
     tokensBySageId.set(sage.id, tokens)
     for (const t of tokens) tokenSageCount.set(t, (tokenSageCount.get(t) ?? 0) + 1)
   }
 
-  const qWords = new Set(q.split(' ').map(stripPunct).filter(Boolean))
+  const qWordList = q.split(' ').map(stripPunct).filter(Boolean)
+  const qWords = new Set(qWordList)
+  // A Russian name changes its ending ("Рамбам", "о Рамбаме"): a long Cyrillic token matches a word
+  // that starts with all but its last letter.
+  // Titles and particles ("рабби", "бен") are left out of that comparison: "рабби" starts like "Рабба".
+  const nameWords = qWordList.filter(w => !STOPWORDS.has(w))
+  const inQuestion = (t: string) => qWords.has(t)
+    || (CYRILLIC_LETTER.test(t) && t.length >= 5 && nameWords.some(w => w.length >= t.length - 1 && w.startsWith(t.slice(0, -1))))
   for (const sage of allSages) {
     if (matchedIds.has(sage.id)) continue
     const tokens = tokensBySageId.get(sage.id) ?? []
-    const hit = tokens.find(t => qWords.has(t) && (tokenSageCount.get(t) ?? 0) <= MAX_TOKEN_SAGE_COUNT)
+    const hit = tokens.find(t => inQuestion(t) && (tokenSageCount.get(t) ?? 0) <= MAX_TOKEN_SAGE_COUNT)
     if (hit) {
       matches.push({ sage, matchedAlias: hit })
       matchedIds.add(sage.id)

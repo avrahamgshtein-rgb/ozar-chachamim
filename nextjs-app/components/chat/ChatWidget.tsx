@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { displayName } from '@/lib/displayName'
 import type { Locale } from '@/lib/types'
 import {
-  onAskAboutSage, parseAnswer, starterQuestions, stripIsolates,
+  onAskAboutSage, onAskQuestion, parseAnswer, starterQuestions, stripIsolates,
   type AskSubject, type Citation,
 } from './askAbout'
 
@@ -140,6 +140,27 @@ export function ChatWidget({ locale, placement = 'app', initialSubject, pageSage
     focusOnOpen.current = 'starter'
     setIsOpen(true)
   }), [])
+
+  // A question typed in the search box ("שאלו את העוזר"): open unscoped and send it as soon as the
+  // quota check is through. If the check failed, the question waits in the input box instead.
+  const [pendingQuestion, setPendingQuestion] = useState<string | null>(null)
+  useEffect(() => onAskQuestion(text => {
+    const opener = document.activeElement
+    returnFocus.current = opener instanceof HTMLElement && opener !== document.body ? opener : null
+    setSubject(null)
+    setSubjectMark(messagesRef.current.length)
+    setError(null)
+    setPendingQuestion(text)
+    setIsOpen(true)
+  }), [])
+  useEffect(() => {
+    if (pendingQuestion === null || !isOpen || status === 'checking' || sending) return
+    const text = pendingQuestion
+    setPendingQuestion(null)
+    if (status === 'ready') void send(text)
+    else setInput(text)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pendingQuestion, isOpen, status, sending])
 
   useEffect(() => {
     if (!isOpen || !focusOnOpen.current) return

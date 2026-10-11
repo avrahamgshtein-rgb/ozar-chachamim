@@ -44,9 +44,9 @@ export const isVideoId = (id: string) => /^[A-Za-z0-9_-]{11}$/.test(id)
  * video. Replace the entry when the video is uploaded again: YouTube gives a new upload a new id.
  */
 export const INTRO_VIDEO: Record<Locale, SageVideo | null> = {
-  he: null,
-  en: null,
-  ru: null,
+  he: { id: 'uf4X20K1pq0', title: 'אוצר חכמים - כנסו, חפשו, גלו!', seconds: 0 },
+  en: null, // not uploaded yet
+  ru: { id: '9u__eJAvb9s', title: 'Оцар Хахамим - Заходите, ищите, открывайте!', seconds: 0 },
 }
 
 export const watchUrl = (id: string) => `https://www.youtube.com/watch?v=${id}`
