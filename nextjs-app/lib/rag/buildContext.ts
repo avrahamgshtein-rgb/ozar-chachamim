@@ -146,7 +146,7 @@ export interface BuildContextOptions {
   subjectSageId?: string
   /**
    * Ask Sefaria and Wikipedia about each sage (default). The automatic answer
-   * (extractiveAnswer.ts) quotes only the research and the dataset, so it
+   * (referralAnswer.ts) uses only the research and the dataset, so it
    * passes false and never waits on a third party.
    */
   external?: boolean

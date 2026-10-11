@@ -3,10 +3,8 @@
  "_left_out": {
   "45": "title says Maimon; its twin (46) says Don Yichya, so only 46 is used",
   "79-80": "a parashat Ekev lesson, not a sage",
-  "451-452": "Religious authority in ancient Rome: possibly Theodos of Rome (485), whose research is about a Roman community leader; not sure enough",
-  "670-672": "Shabtai Ben-Dov: not in the roster",
-  "682": "Yehuda Gurland: not in the roster",
-  "1-12": "Avraham Bokrat, Miriam the Prophetess, Rabbi Abbahu, Imma Shalom, Raphael Berdugo, Nathan Shapira of Jerusalem: not in the roster"
+  "670-672": "Shabtai Ben-Dov: not in the roster, and the owner's Drive folder has no paper on him",
+  "682": "Yehuda Gurland: not in the roster, and the owner's Drive folder has no paper on him"
  },
  "sages": {
   "1": [
@@ -1001,6 +999,10 @@
    713,
    722
   ],
+  "485": [
+   451,
+   452
+  ],
   "486": [
    695,
    696,
@@ -1385,6 +1387,30 @@
   "621": [
    19,
    20
+  ],
+  "623": [
+   5,
+   6
+  ],
+  "624": [
+   7,
+   8
+  ],
+  "625": [
+   9,
+   10
+  ],
+  "626": [
+   11,
+   12
+  ],
+  "627": [
+   1,
+   2
+  ],
+  "629": [
+   3,
+   4
   ]
  }
 }

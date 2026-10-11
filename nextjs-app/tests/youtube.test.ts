@@ -99,6 +99,20 @@ test('every video of the playlist that names a roster sage is kept: a sage can h
   assert.ok(sageVideos('44', 'en').length >= 4, 'the Ramban (44) has six English uploads')
 })
 
+test('the sages added from the owner’s Drive have their videos, and Theodos of Rome his two', () => {
+  // 623 Abbahu, 624 Imma Shalom, 625 Berdugo, 626 Nathan Shapira, 627 Bokrat, 629 Miriam
+  for (const id of ['623', '624', '625', '626', '627', '629']) {
+    assert.ok(sageVideos(id, 'en').length >= 2, `${id} (${labels.get(id)}) has no English videos`)
+  }
+  assert.equal(sageVideos('485', 'en').length, 2, 'Theodos of Rome (485): "Religious Authority and Imperial Policy in Ancient Rome"')
+})
+
+test('a lesson on a weekly portion is not a sage’s video', () => {
+  // parashat Ekev, two uploads (rows 79-80 of the playlist): the owner asked for them to stay out
+  const used = new Set(youtubeEntries().flatMap(([, e]) => LANGS.flatMap(lang => (e[lang] ?? []).map(v => v.id))))
+  assert.ok(!used.has('iYtU6ZBjyjw') && !used.has('Cd4lauoPrw0'), 'an Ekev lesson is attached to a sage')
+})
+
 test('the player is the cookieless embed, and the watch link is the plain one', () => {
   assert.equal(watchUrl('abcdefghijk'), 'https://www.youtube.com/watch?v=abcdefghijk')
   assert.equal(embedUrl('abcdefghijk', 'he'), 'https://www.youtube-nocookie.com/embed/abcdefghijk?autoplay=1&rel=0&hl=he&cc_lang_pref=he')

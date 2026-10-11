@@ -1,7 +1,7 @@
 /**
  * The automatic answer and the search box's "ask the assistant":
- *  - extractiveAnswer quotes the research with citation handles the chat widget already understands,
- *    and says so plainly when it has nothing to quote;
+ *  - referralAnswer says who the sage is in a sentence and sends the reader on (page, research,
+ *    episode, video, writings, relatives); it quotes nothing and never calls itself a stand-in;
  *  - looksLikeQuestion decides when the search box offers the assistant first;
  *  - the sage matcher finds a sage by his English or Russian name, not only the Hebrew one.
  * Imports the real production modules; no network, no provider.
@@ -9,9 +9,11 @@
 import assert from 'node:assert/strict'
 import { buildRagContext, localNamesFor } from '../lib/rag/buildContext'
 import { extractMentionedSages } from '../lib/rag/entityExtraction'
-import { extractiveAnswer, quoteOf } from '../lib/rag/extractiveAnswer'
+import { quoteOf, referralAnswer } from '../lib/rag/referralAnswer'
 import { citationPayload } from '../lib/rag/citations'
 import { getAllSages } from '../lib/serverData'
+import { getSefaria } from '../lib/sefaria'
+import { wikiLinks } from '../lib/wikipedia'
 import { looksLikeQuestion, parseAnswer } from '../components/chat/askAbout'
 
 let passed = 0
@@ -29,44 +31,84 @@ async function test(name: string, fn: () => void | Promise<void>) {
   }
 }
 
+const ask = (q: string, locale: 'he' | 'en' | 'ru') => buildRagContext(q, { locale, external: false })
+
 async function main() {
-  console.log('\nautomatic answer')
+  console.log('\nautomatic answer: a referral')
 
-  await test('a question about a sage with research is answered with cited quotes', async () => {
-    const ctx = await buildRagContext('מי היה רש״י ומה הרעיון המרכזי שלו?', { locale: 'he', external: false })
-    const text = extractiveAnswer(ctx, 'he')
-    assert.ok(ctx.passages.length > 0, 'retrieval found nothing for Rashi')
-    // every handle in the text is one of the route's citations, so the widget can number and link it
+  await test('a question about a sage names him, says who he is in a sentence and cites one research passage', async () => {
+    const ctx = await ask('מי היה רש״י ומה הרעיון המרכזי שלו?', 'he')
+    const { text } = referralAnswer(ctx, 'he')
+    assert.match(text, /^\*\*רש"י/, 'the answer starts with the sage’s name')
+    assert.ok(text.length < 400, `not minimal: ${text.length} characters`)
+    // the handle is one of the route's citations, so the widget can number and link it
     const parsed = parseAnswer(text, citationPayload(ctx.passages))
-    assert.ok(parsed.sources.length >= 1, 'no citation survived parsing')
-    assert.ok(parsed.sources.every(s => s.citation.sageId === '594'), 'a quote came from another sage')
-    assert.match(text, /אוטומטית/)
+    assert.equal(parsed.sources.length, 1, 'exactly one source')
+    assert.equal(parsed.sources[0].citation.sageId, '594')
   })
 
-  await test('the answer never contains markup the widget would misread', async () => {
-    const ctx = await buildRagContext('מי היה רש״י?', { locale: 'he', external: false })
-    const text = extractiveAnswer(ctx, 'he')
-    assert.ok(!/\[cite:/i.test(text), 'research citation markers leaked into the quote')
-    assert.ok(!/^#/m.test(text), 'a markdown heading leaked into the quote')
+  await test('it quotes nothing and does not call itself a stand-in', async () => {
+    for (const [q, locale] of [['מי היה רש״י?', 'he'], ['who was Maimonides?', 'en'], ['Кто такой Маймонид?', 'ru']] as const) {
+      const { text } = referralAnswer(await ask(q, locale), locale)
+      assert.ok(!/—\s*[«"“]/.test(text), `the summary is wrapped as a quote: ${text}`)
+      assert.ok(!/אוטומטי|לא זמין|automatic|unavailable|not available|автоматическ|недоступ/i.test(text), `apologises: ${text}`)
+      assert.ok(!/\[cite:/i.test(text) && !/^#/m.test(text), 'markup leaked')
+    }
   })
 
-  await test('a question naming nobody says so, in the question\'s language', async () => {
-    const he = extractiveAnswer(await buildRagContext('מזג האוויר מחר', { locale: 'he', external: false }), 'he')
-    const en = extractiveAnswer(await buildRagContext('tomorrow weather', { locale: 'en', external: false }), 'en')
-    assert.match(he, /לא זיהיתי/)
-    assert.match(en, /could not tell which sage/)
+  await test('the links lead to the sections the sage page really has', async () => {
+    const he = referralAnswer(await ask('מי היה רש״י?', 'he'), 'he').links
+    const byKind = (links: typeof he, kind: string) => links.filter(l => l.kind === kind)
+    assert.deepEqual(byKind(he, 'page').map(l => l.href), ['/he/sage/594'])
+    assert.deepEqual(byKind(he, 'research').map(l => l.href), ['/he/sage/594#research'])
+    assert.equal(byKind(he, 'listen').length, 0, 'Rashi has no episode, so no chip for one')
+    assert.ok(byKind(he, 'related').length >= 1 && byKind(he, 'related').every(l => /^\/he\/sage\/\d+$/.test(l.href)), 'relatives link to their pages')
+    // the Rambam has an episode, and a Sefaria or Wikisource page decides the writings chip
+    const rambam = referralAnswer(await ask('מי היה הרמב״ם?', 'he'), 'he').links
+    assert.deepEqual(byKind(rambam, 'listen').map(l => l.href), ['/he/sage/41#listen'])
+    const hasWritings = !!getSefaria('41') || !!wikiLinks('41', getSefaria('41')).wikisource
+    assert.equal(byKind(rambam, 'writings').length, hasWritings ? 1 : 0)
+    // the video chip follows the page’s language: the Maharal (72) has English and Russian videos, none in Hebrew
+    assert.equal(byKind(referralAnswer(await ask('מי היה המהר״ל?', 'he'), 'he').links, 'video').length, 0)
+    const en = referralAnswer(await ask('who was the Maharal?', 'en'), 'en').links
+    assert.ok(en.some(l => l.kind === 'video' && l.href === '/en/sage/72#video'), 'English page has the video chip')
+    assert.ok(en.every(l => l.href.startsWith('/en/')), 'links stay in the question’s language')
   })
 
-  await test('an English or Russian question gets the sage\'s name and summary in that language', async () => {
-    const en = extractiveAnswer(await buildRagContext('who was Maimonides?', { locale: 'en', external: false }), 'en')
+  await test('a sage added from the owner’s Drive is answered like any other', async () => {
+    const { text, links } = referralAnswer(await ask('מי הייתה אימא שלום?', 'he'), 'he')
+    assert.match(text, /^\*\*אימא שלום/)
+    assert.ok(links.some(l => l.kind === 'research' && l.href === '/he/sage/624#research'))
+    assert.ok(links.some(l => l.kind === 'listen' && l.href === '/he/sage/624#listen'))
+    assert.ok(links.some(l => l.kind === 'related' && l.href === '/he/sage/591'), 'her brother, Rabban Gamliel')
+  })
+
+  await test('a question naming nobody says so and sends no one anywhere, in the question’s language', async () => {
+    const he = referralAnswer(await ask('מזג האוויר מחר', 'he'), 'he')
+    const en = referralAnswer(await ask('tomorrow weather', 'en'), 'en')
+    assert.match(he.text, /לא זיהיתי/)
+    assert.match(en.text, /could not tell which sage/)
+    assert.deepEqual(he.links, [])
+  })
+
+  await test('an English or Russian question gets the sage’s name and summary in that language', async () => {
+    const en = referralAnswer(await ask('who was Maimonides?', 'en'), 'en').text
     assert.match(en, /Maimonides/)
     assert.ok(!/מהפכן כפול/.test(en), 'the Hebrew summary was shown to an English reader')
-    const ru = extractiveAnswer(await buildRagContext('Кто такой Маймонид?', { locale: 'ru', external: false }), 'ru')
+    const ru = referralAnswer(await ask('Кто такой Маймонид?', 'ru'), 'ru').text
     assert.match(ru, /Маймонид/)
     assert.ok(!/מהפכן כפול/.test(ru), 'the Hebrew summary was shown to a Russian reader')
   })
 
-  await test('the quote is cut at a sentence end, with no headings or bold', () => {
+  await test('a pair question names both sages and links both pages', async () => {
+    const { text, links } = referralAnswer(await ask('מה הקשר בין רש״י והרמב״ם?', 'he'), 'he')
+    assert.match(text, /רש"י/)
+    assert.match(text, /הרמב"ם/)
+    const pages = links.filter(l => l.kind === 'page').map(l => l.href)
+    assert.ok(pages.includes('/he/sage/594') && pages.includes('/he/sage/41'), pages.join(' '))
+  })
+
+  await test('the summary is cut at a sentence end, with no headings or bold', () => {
     const long = '## כותרת\n\n' + 'משפט ראשון **מודגש** כאן. '.repeat(40)
     const q = quoteOf(long, 120)
     assert.ok(q.length <= 130, `too long: ${q.length}`)

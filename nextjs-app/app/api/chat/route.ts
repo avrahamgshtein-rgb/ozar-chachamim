@@ -9,7 +9,7 @@ import { buildRagContext, sageIdsFromHistory, type RagContext } from '@/lib/rag/
 import { buildSystemPrompt } from '@/lib/rag/systemPrompt'
 import { citationPayload } from '@/lib/rag/citations'
 import { callClaude, estimateCost, ClaudeApiError, type ChatMessage } from '@/lib/rag/claude'
-import { extractiveAnswer } from '@/lib/rag/extractiveAnswer'
+import { referralAnswer } from '@/lib/rag/referralAnswer'
 import { getSageById } from '@/lib/serverData'
 import { isValidLocale } from '@/lib/i18n'
 import type { Locale } from '@/lib/types'
@@ -177,10 +177,10 @@ export async function POST(request: NextRequest) {
 }
 
 /**
- * The automatic answer to `message`: the research passages closest to the question, quoted with
- * their citations (lib/rag/extractiveAnswer.ts). It needs neither the language model nor the quota
- * store, so it costs nothing and is not counted. Anything it cannot do hands back `failed` (or a plain
- * 500 when there was no failed attempt).
+ * The automatic answer to `message`: who the sage is in a sentence, and where to read on (his page,
+ * the research, the episode, the video, the writings, related sages) (lib/rag/referralAnswer.ts).
+ * It needs neither the language model nor the quota store, so it costs nothing and is not counted.
+ * Anything it cannot do hands back `failed` (or a plain 500 when there was no failed attempt).
  */
 async function automaticAnswer(
   failed: NextResponse | null,
@@ -190,12 +190,14 @@ async function automaticAnswer(
 ): Promise<NextResponse> {
   try {
     const ragContext = await buildRagContext(message, { locale, subjectSageId, external: false })
+    const referral = referralAnswer(ragContext, locale)
     const res = NextResponse.json({
       sessionId: null,
-      reply: extractiveAnswer(ragContext, locale),
+      reply: referral.text,
+      links: referral.links,
       ...groundingFields(ragContext, subjectSageId),
       quota: null,
-      mode: 'extractive',
+      mode: 'referral',
     })
     // The anonymous flow may already have issued its cookie.
     for (const cookie of failed?.cookies.getAll() ?? []) res.cookies.set(cookie)

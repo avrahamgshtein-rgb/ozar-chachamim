@@ -3793,6 +3793,21 @@
     }
    ]
   },
+  "485": {
+   "label": "תודוס איש רומי",
+   "en": [
+    {
+     "id": "3LPnIGfe8GY",
+     "title": "Religious Authority and Imperial Policy in Ancient Rome",
+     "seconds": 508
+    },
+    {
+     "id": "LJjUME0eG6g",
+     "title": "Religious Authority and Imperial Politics in Ancient Rome",
+     "seconds": 304
+    }
+   ]
+  },
   "486": {
    "label": "רבנו יונה גירונדי",
    "en": [
@@ -5279,6 +5294,96 @@
      "id": "rM4jaxCsHho",
      "title": "Rabbi Menachem Recanati - The Kabbalist Who Made the Zohar a Foundational Text",
      "seconds": 443
+    }
+   ]
+  },
+  "623": {
+   "label": "רבי אבהו",
+   "en": [
+    {
+     "id": "-IKOyrDQF6E",
+     "title": "Rabbi Abbahu - The Sage of Caesarea Who Stood Between the Study Hall and the Empire",
+     "seconds": 357
+    },
+    {
+     "id": "BPdVWImZx70",
+     "title": "Rabbi Abbahu: The Sage of Caesarea Standing Between the Study Hall and the Empire",
+     "seconds": 475
+    }
+   ]
+  },
+  "624": {
+   "label": "אימא שלום",
+   "en": [
+    {
+     "id": "AZz17ZTQt5E",
+     "title": "Imma Shalom: The Woman Between Rabbi Eliezer and Rabban Gamaliel",
+     "seconds": 433
+    },
+    {
+     "id": "MT7n6kqD8Es",
+     "title": "Imma Shalom - The Woman Who Stood Between Rabbi Eliezer and Rabban Gamliel",
+     "seconds": 372
+    }
+   ]
+  },
+  "625": {
+   "label": "רבי רפאל בירדוגו (המלאך רפאל)",
+   "en": [
+    {
+     "id": "qbhTWbSmqKA",
+     "title": "Rabbi Raphael Berdugo - \"The Angel Raphael\" from Meknes",
+     "seconds": 388
+    },
+    {
+     "id": "t3EKqmQhgek",
+     "title": "Rabbi Raphael Berdugo - The “Angel Raphael” of Meknes",
+     "seconds": 292
+    }
+   ]
+  },
+  "626": {
+   "label": "רבי נתן שפירא הירושלמי (הרב הנשי״א)",
+   "en": [
+    {
+     "id": "92-41jb_3uA",
+     "title": "Rabbi Nathan Shapira of Jerusalem: The Kabbalist Who Systematized the Works of the Arizal",
+     "seconds": 376
+    },
+    {
+     "id": "bVC_T1MR4nE",
+     "title": "Rabbi Nathan Shapira of Jerusalem - The Kabbalist Who Organized the Writings of the Ari",
+     "seconds": 304
+    }
+   ]
+  },
+  "627": {
+   "label": "רבי אברהם בן שלמה הלוי בוקראט",
+   "en": [
+    {
+     "id": "llK6TjhR-ok",
+     "title": "Rabbi Avraham Bokrat: The Sage Exiled from Spain Who Defended Rashi",
+     "seconds": 387
+    },
+    {
+     "id": "3tqZnY6xxJ4",
+     "title": "Rabbi Abraham Bokrat - The Scholar Expelled from Spain Who Rose to Rashi’s Defense",
+     "seconds": 334
+    }
+   ]
+  },
+  "629": {
+   "label": "מרים הנביאה",
+   "en": [
+    {
+     "id": "AwjeicEsSuw",
+     "title": "Miriam the Prophetess: The Woman Who Believed in Deliverance Before the Sea Parted",
+     "seconds": 547
+    },
+    {
+     "id": "cPBZwmA-SJw",
+     "title": "Miriam the Prophetess - The Woman Who Believed in Redemption Before the Sea Was Parted",
+     "seconds": 515
     }
    ]
   }
