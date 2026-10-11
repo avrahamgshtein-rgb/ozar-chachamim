@@ -1,0 +1,61 @@
+name: Record intro video
+
+# Manual only. Records the live site as a captioned walkthrough in Hebrew,
+# English and Russian and attaches the mp4 and srt files to the run.
+# See tools/video/README.md.
+on:
+  workflow_dispatch:
+    inputs:
+      base:
+        description: Site to record
+        default: https://ozar-chachamim-app.vercel.app
+      langs:
+        description: Languages, space separated
+        default: he en ru
+
+permissions:
+  contents: read
+
+jobs:
+  record:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Playwright and ffmpeg
+        run: |
+          mkdir -p "$RUNNER_TEMP/pw"
+          cd "$RUNNER_TEMP/pw"
+          npm init -y >/dev/null
+          npm i playwright
+          npx playwright install --with-deps chromium
+          sudo apt-get install -y ffmpeg
+
+      - name: Record
+        env:
+          BASE: ${{ inputs.base }}
+          LANGS: ${{ inputs.langs }}
+        run: |
+          mkdir -p out
+          for L in $LANGS; do
+            PW_DIR="$RUNNER_TEMP/pw" BASE="$BASE" LANG_CODE="$L" OUT_DIR=out node tools/video/record-intro.mjs
+            TRIM=$(node -p "require('./out/intro-$L.json').trimStart")
+            ffmpeg -y -loglevel error -ss "$TRIM" -i "out/intro-$L.webm" \
+              -c:v libx264 -preset slow -crf 22 -pix_fmt yuv420p -r 30 -movflags +faststart \
+              "out/ozar-chachamim-intro-$L.mp4"
+            cp "out/intro-$L.srt" "out/ozar-chachamim-intro-$L.srt"
+          done
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: intro-videos
+          path: |
+            out/*.mp4
+            out/*.srt
+            out/*.json
+          retention-days: 14
