@@ -10,17 +10,24 @@ import { EraChip } from './EraChip'
 import { ERA_COLORS } from '@/lib/types'
 import type { Locale } from '@/lib/types'
 import { UI } from '@/lib/i18n'
+import { askQuestion, looksLikeQuestion } from '@/components/chat/askAbout'
 
 interface SearchBarProps {
   locale: Locale
   className?: string
 }
 
-const T: Record<Locale, { popular: string; loading: string; hint: string; clear: string }> = {
-  he: { popular: 'חכמים מובילים', loading: 'טוען את מאגר החכמים…', hint: '↑↓ לבחירה · Enter לפתיחה · Esc לסגירה', clear: 'נקה חיפוש' },
-  en: { popular: 'Popular sages', loading: 'Loading the sages…', hint: '↑↓ to choose · Enter to open · Esc to close', clear: 'Clear search' },
-  ru: { popular: 'Известные мудрецы', loading: 'Загружаем мудрецов…', hint: '↑↓ выбор · Enter открыть · Esc закрыть', clear: 'Очистить поиск' },
+const T: Record<Locale, { popular: string; loading: string; hint: string; clear: string; ask: string; askSub: string }> = {
+  he: { popular: 'חכמים מובילים', loading: 'טוען את מאגר החכמים…', hint: '↑↓ לבחירה · Enter לפתיחה · Esc לסגירה', clear: 'נקה חיפוש',
+    ask: 'שאלו את העוזר', askSub: 'תשובה מתוך המחקר, עם מקורות' },
+  en: { popular: 'Popular sages', loading: 'Loading the sages…', hint: '↑↓ to choose · Enter to open · Esc to close', clear: 'Clear search',
+    ask: 'Ask the assistant', askSub: 'An answer from the research, with sources' },
+  ru: { popular: 'Известные мудрецы', loading: 'Загружаем мудрецов…', hint: '↑↓ выбор · Enter открыть · Esc закрыть', clear: 'Очистить поиск',
+    ask: 'Спросить ассистента', askSub: 'Ответ из исследования, со ссылками на источники' },
 }
+
+/** What the list holds: sages, plus the assistant's own row once there is something to ask. */
+type Option = { kind: 'sage'; hit: SearchHit } | { kind: 'ask' }
 
 /** `text` with [start, end) wrapped in a highlight. */
 function Highlighted({ text, range }: { text: string; range: [number, number] | null }) {
@@ -98,8 +105,17 @@ export function SearchBar({ locale, className }: SearchBarProps) {
 
   const trimmed = query.trim()
   // Suggestions shown: search results while typing, popular sages on empty focus
-  const shown = trimmed ? results : popular
+  const sageHits = trimmed ? results : popular
   const loadingData = !dataReady && trimmed.length > 0
+  // The assistant is always one row away once three characters are typed; a text that reads as a
+  // question puts it first, so Enter asks instead of opening the nearest name.
+  const askable = trimmed.length >= 3
+  const askFirst = askable && looksLikeQuestion(trimmed)
+  const shown: Option[] = [
+    ...(askFirst ? [{ kind: 'ask' } as Option] : []),
+    ...sageHits.map(hit => ({ kind: 'sage', hit }) as Option),
+    ...(askable && !askFirst ? [{ kind: 'ask' } as Option] : []),
+  ]
   const showDropdown = open && (shown.length > 0 || loadingData || trimmed.length > 1)
 
   // Keep the keyboard-active option in view
@@ -114,14 +130,26 @@ export function SearchBar({ locale, className }: SearchBarProps) {
     setActiveIdx(-1)
   }
 
-  const handleSelect = (hit: SearchHit) => {
-    selectSage(hit.sage)
+  const finish = () => {
     reset()
     setOpen(false)
     inputRef.current?.blur()
     // The mobile overlay has done its job once a sage is chosen
     if (isSearchOpen) toggleSearch()
   }
+
+  const handleSelect = (hit: SearchHit) => {
+    selectSage(hit.sage)
+    finish()
+  }
+
+  const handleAsk = () => {
+    const text = trimmed
+    finish()
+    askQuestion(text)
+  }
+
+  const choose = (opt: Option) => (opt.kind === 'ask' ? handleAsk() : handleSelect(opt.hit))
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Tab') {
@@ -156,7 +184,7 @@ export function SearchBar({ locale, className }: SearchBarProps) {
       const pick = shown[activeIdx >= 0 ? activeIdx : 0]
       if (pick && (activeIdx >= 0 || trimmed)) {
         e.preventDefault()
-        handleSelect(pick)
+        choose(pick)
       }
     } else if (e.key === 'Home' && activeIdx >= 0) {
       e.preventDefault(); setActiveIdx(0)
@@ -271,10 +299,45 @@ export function SearchBar({ locale, className }: SearchBarProps) {
             tabIndex={-1}
             className="max-h-[min(60vh,26rem)] overflow-y-auto"
           >
-            {shown.map((hit, idx) => {
+            {shown.map((opt, idx) => {
+              const active = idx === activeIdx
+              if (opt.kind === 'ask') {
+                return (
+                  <li
+                    key="ask-the-assistant"
+                    id={optionId(idx)}
+                    role="option"
+                    aria-selected={active}
+                    onMouseDown={e => { e.preventDefault(); handleAsk() }}
+                    onMouseMove={() => { if (!active) setActiveIdx(idx) }}
+                    className={cn(
+                      'relative w-full flex items-center gap-3 px-4 py-2.5 text-start cursor-pointer',
+                      'transition-colors',
+                      active ? 'bg-gold-500/10' : 'hover:bg-ink-700/40',
+                      idx > 0 && 'border-t border-ink-700/40',
+                    )}
+                  >
+                    <span
+                      aria-hidden
+                      className={cn('absolute inset-y-1.5 start-0 w-0.5 rounded-full transition-opacity',
+                        active ? 'bg-gold-400 opacity-100' : 'opacity-0')}
+                    />
+                    <svg className="w-4 h-4 flex-shrink-0 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                        d="M8 10h8M8 14h5m-9 6l2.5-3H18a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v14z" />
+                    </svg>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-sm font-serif font-medium text-ink-100 truncate" dir="auto">
+                        {s.ask}: <span className="text-gold-300">{trimmed}</span>
+                      </p>
+                      <p className="text-xs text-ink-400 font-sans truncate mt-0.5">{s.askSub}</p>
+                    </div>
+                  </li>
+                )
+              }
+              const { hit } = opt
               const { sage } = hit
               const name = displayName(sage.label)
-              const active = idx === activeIdx
               return (
                 <li
                   key={sage.id}
@@ -317,7 +380,7 @@ export function SearchBar({ locale, className }: SearchBarProps) {
             })}
           </ul>
 
-          {dataReady && trimmed.length > 1 && results.length === 0 && (
+          {dataReady && trimmed.length > 1 && results.length === 0 && !askFirst && (
             <p className="px-4 py-3 text-sm text-ink-400 font-sans text-center" role="status">
               {t.noResults}
             </p>

@@ -14,6 +14,8 @@ import { ResearchReader } from '@/components/sages/ResearchReader'
 import { RelatedSages, type RelatedPersonView } from '@/components/sages/RelatedSages'
 import { groupRelated } from '@/components/sages/relations'
 import { SpotifyListen } from '@/components/sages/SpotifyListen'
+import { YoutubeWatch } from '@/components/sages/YoutubeWatch'
+import { sageVideos } from '@/lib/youtube'
 import { WritingsSection } from '@/components/sages/WritingsSection'
 import { getSefaria, sefariaTopicUrl } from '@/lib/sefaria'
 import { wikiLinks, wikipediaUrl } from '@/lib/wikipedia'
@@ -36,6 +38,10 @@ const S = {
   showInGraph: { he: 'הצגה ברשת הקשרים', en: 'Show in the network', ru: 'Показать в сети' },
   readResearch: { he: 'לקריאת המחקר', en: 'Read the research', ru: 'Читать исследование' },
   listen: { he: 'האזנה לפרק', en: 'Listen', ru: 'Слушать' },
+  watch: { he: 'צפייה בסרטון', en: 'Watch the video', ru: 'Смотреть видео' },
+  watchTitle: { he: 'צפו בסרטון', en: 'Watch the video', ru: 'Смотреть видео' },
+  watchAnother: { he: 'סרטון נוסף', en: 'Another video', ru: 'Ещё одно видео' },
+  watchMore: { he: 'עוד {n} סרטונים', en: '{n} more videos', ru: 'Ещё видео: {n}' },
   sefariaButton: { he: 'ספריא', en: 'Sefaria', ru: 'Sefaria' },
   wikisourceButton: { he: 'ויקיטקסט', en: 'Wikisource', ru: 'Викитека' },
   wikipediaEn: { he: 'ויקיפדיה (אנגלית)', en: 'Wikipedia', ru: 'Википедия (англ.)' },
@@ -175,6 +181,7 @@ export default async function SagePage({ params }: PageProps) {
   const sefaria = getSefaria(raw.id)
   const wiki = wikiLinks(raw.id, sefaria)
   const hasWritings = !!sefaria || !!wiki.wikisource
+  const videos = sageVideos(raw.id, loc)
 
   return (
     <>
@@ -284,6 +291,15 @@ export default async function SagePage({ params }: PageProps) {
                   {S.listen[loc]}
                 </a>
               )}
+              {videos.length > 0 && (
+                <a href="#video"
+                  className="inline-flex items-center gap-2 rounded-full border border-[#ff3b3b]/35 bg-[#ff3b3b]/10 px-4 py-2 text-sm text-ink-100 transition-colors hover:border-[#ff3b3b]/60 hover:bg-[#ff3b3b]/15">
+                  <svg className="h-4 w-4 text-[#ff6b6b] [[data-theme=light]_&]:text-[#b3002a]" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+                    <path d="M8 5.14v13.72a1 1 0 0 0 1.52.85l10.9-6.86a1 1 0 0 0 0-1.7L9.52 4.29A1 1 0 0 0 8 5.14z" />
+                  </svg>
+                  {S.watch[loc]}
+                </a>
+              )}
               {hasWritings && (
                 <a href="#writings"
                   className="inline-flex items-center gap-2 rounded-full border border-ink-700/50 bg-ink-800/40 px-4 py-2 text-sm text-ink-200 transition-colors hover:border-gold-500/40 hover:text-gold-300">
@@ -310,6 +326,25 @@ export default async function SagePage({ params }: PageProps) {
               {sage.spotify_url && (
                 <div id="listen" className="scroll-mt-20">
                   <SpotifyListen url={sage.spotify_url} locale={loc} name={name} />
+                </div>
+              )}
+
+              {videos.length > 0 && (
+                <div id="video" className="scroll-mt-20 space-y-4">
+                  <YoutubeWatch id={videos[0].id} title={videos[0].title} heading={S.watchTitle[loc]} sub={name} seconds={videos[0].seconds} locale={loc} />
+                  {videos.slice(1, 2).map(v => (
+                    <YoutubeWatch key={v.id} id={v.id} title={v.title} heading={S.watchAnother[loc]} sub={name} seconds={v.seconds} locale={loc} />
+                  ))}
+                  {videos.length > 2 && (
+                    <details className="rounded-2xl border border-ink-700/40 bg-ink-800/25 p-4">
+                      <summary className="cursor-pointer text-sm font-sans text-ink-200">{S.watchMore[loc].replace('{n}', String(videos.length - 2))}</summary>
+                      <div className="mt-4 space-y-4">
+                        {videos.slice(2).map(v => (
+                          <YoutubeWatch key={v.id} id={v.id} title={v.title} heading={S.watchAnother[loc]} sub={name} seconds={v.seconds} locale={loc} />
+                        ))}
+                      </div>
+                    </details>
+                  )}
                 </div>
               )}
 

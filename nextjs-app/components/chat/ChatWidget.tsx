@@ -4,8 +4,9 @@ import { Fragment, useCallback, useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { displayName } from '@/lib/displayName'
 import type { Locale } from '@/lib/types'
+import type { ReferralLink } from '@/lib/rag/referralAnswer'
 import {
-  onAskAboutSage, parseAnswer, starterQuestions, stripIsolates,
+  onAskAboutSage, onAskQuestion, parseAnswer, starterQuestions, stripIsolates,
   type AskSubject, type Citation,
 } from './askAbout'
 
@@ -26,6 +27,8 @@ interface ChatMessageView {
   noMatch?: boolean
   /** The route's citation list for this answer (lib/rag/citations.ts). */
   citations?: Citation[]
+  /** Where the automatic answer sends the reader on (lib/rag/referralAnswer.ts). */
+  links?: ReferralLink[]
 }
 
 interface Quota {
@@ -141,6 +144,27 @@ export function ChatWidget({ locale, placement = 'app', initialSubject, pageSage
     setIsOpen(true)
   }), [])
 
+  // A question typed in the search box ("שאלו את העוזר"): open unscoped and send it as soon as the
+  // quota check is through. If the check failed, the question waits in the input box instead.
+  const [pendingQuestion, setPendingQuestion] = useState<string | null>(null)
+  useEffect(() => onAskQuestion(text => {
+    const opener = document.activeElement
+    returnFocus.current = opener instanceof HTMLElement && opener !== document.body ? opener : null
+    setSubject(null)
+    setSubjectMark(messagesRef.current.length)
+    setError(null)
+    setPendingQuestion(text)
+    setIsOpen(true)
+  }), [])
+  useEffect(() => {
+    if (pendingQuestion === null || !isOpen || status === 'checking' || sending) return
+    const text = pendingQuestion
+    setPendingQuestion(null)
+    if (status === 'ready') void send(text)
+    else setInput(text)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pendingQuestion, isOpen, status, sending])
+
   useEffect(() => {
     if (!isOpen || !focusOnOpen.current) return
     const want = focusOnOpen.current
@@ -219,6 +243,7 @@ export function ChatWidget({ locale, placement = 'app', initialSubject, pageSage
         content: data.reply,
         noMatch: data.noMatch,
         citations: Array.isArray(data.citations) ? data.citations : [],
+        links: Array.isArray(data.links) ? data.links : [],
       }])
       if (data.sessionId) setSessionId(data.sessionId)
     } catch {
@@ -408,7 +433,10 @@ export function ChatWidget({ locale, placement = 'app', initialSubject, pageSage
               >
                 {m.role === 'user'
                   ? m.content
-                  : <Answer text={m.content} citations={m.citations ?? []} locale={locale} pageSageId={pageSageId} onJump={jumpTo} />}
+                  : <>
+                      <Answer text={m.content} citations={m.citations ?? []} locale={locale} pageSageId={pageSageId} onJump={jumpTo} />
+                      {m.links && m.links.length > 0 && <ReferralChips links={m.links} locale={locale} />}
+                    </>}
               </div>
             ))}
             {sending && (
@@ -567,6 +595,32 @@ function Answer({ text, citations, locale, pageSageId, onJump }: {
         </div>
       )}
     </>
+  )
+}
+
+/** "Go on" links under an automatic answer: the sage's page, research, episode, video, writings, relatives. */
+function ReferralChips({ links, locale }: { links: ReferralLink[]; locale: Locale }) {
+  return (
+    <div className="mt-2.5 border-t border-ink-700/50 pt-2">
+      <p className="mb-1.5 text-[10px] font-semibold uppercase tracking-widest text-ink-500">
+        {tr(locale, 'להמשך', 'Go further', 'Дальше')}
+      </p>
+      <ul className="flex flex-wrap gap-1.5">
+        {links.map(l => (
+          <li key={`${l.kind}:${l.href}`}>
+            <Link href={l.href} dir="auto"
+              className={cn(
+                'inline-flex items-center rounded-full border px-2.5 py-1 text-[11px] leading-none transition-colors',
+                l.kind === 'related'
+                  ? 'border-ink-600/60 bg-ink-700/30 text-ink-200 hover:border-gold-500/40 hover:text-gold-300'
+                  : 'border-gold-500/40 bg-gold-500/10 text-gold-300 hover:bg-gold-500/25 hover:text-gold-200',
+              )}>
+              {l.label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
   )
 }
 

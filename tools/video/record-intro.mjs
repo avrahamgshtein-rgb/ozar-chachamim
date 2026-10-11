@@ -34,7 +34,8 @@ const T = {
     drawer: ['כרטיס חכם: תקופה, מקום, רעיון מרכזי וקשרים'],
     page1: ['לכל חכם דף עם מחקר מלא'],
     page2: ['תוכן עניינים, הערות שוליים וזמן קריאה'],
-    page3: ['אפשר להאזין לפרק, ולשאול את העוזר על החכם'],
+    writings: ['הכתבים של החכם, בלחיצה אחת', 'בספריא ובוויקיטקסט'],
+    listen: ['ולרוב החכמים יש פרק בפודקאסט', 'מאזינים ישר מהדף'],
     timeline: ['ציר הזמן: אלפי שנים של תורה'],
     journey: ['מסע התורה: איך מרכזי התורה נעו בעולם'],
     sinai: ['הדרך לסיני: מכל חכם עד משה רבנו', 'קו מקווקו הוא השראה, לא קבלה ישירה'],
@@ -44,6 +45,7 @@ const T = {
     full: 'דף מלא',
     speed: /מהירות/,
     play: /נגן/,
+    load: /הפעלת הנגן/,
   },
   en: {
     title: ['Ozar Chachamim', 'The knowledge map of Jewish sages, through the generations'],
@@ -53,7 +55,8 @@ const T = {
     drawer: ['A sage card: era, place, core idea and connections'],
     page1: ['Every sage has a page with full research'],
     page2: ['Contents, footnotes and reading time'],
-    page3: ['Listen to the episode, and ask the assistant about the sage'],
+    writings: ['The sage’s own writings, one click away', 'On Sefaria and Wikisource'],
+    listen: ['Most sages have a podcast episode', 'Listen right from the page'],
     timeline: ['The timeline: thousands of years of Torah'],
     journey: ['The journey of Torah: how its centres moved around the world'],
     sinai: ['The road to Sinai: from any sage back to Moses', 'A dashed line is inspiration, not direct transmission'],
@@ -63,6 +66,7 @@ const T = {
     full: 'Full Profile',
     speed: /Speed/,
     play: /Play/,
+    load: /Load player/,
   },
   ru: {
     title: ['Оцар Хахамим', 'Карта знаний о мудрецах Израиля сквозь поколения'],
@@ -72,7 +76,8 @@ const T = {
     drawer: ['Карточка мудреца: эпоха, место, главная идея и связи'],
     page1: ['У каждого мудреца есть страница с полным исследованием'],
     page2: ['Оглавление, сноски и время чтения'],
-    page3: ['Можно послушать выпуск и задать вопрос ассистенту о мудреце'],
+    writings: ['Сочинения мудреца — в один клик', 'На Sefaria и Викитеке'],
+    listen: ['У большинства мудрецов есть выпуск подкаста', 'Слушайте прямо со страницы'],
     timeline: ['Лента времени: тысячелетия Торы'],
     journey: ['Путь Торы: как центры Торы перемещались по миру'],
     sinai: ['Путь к Синаю: от любого мудреца до Моисея', 'Пунктир — вдохновение, а не прямая передача'],
@@ -82,6 +87,7 @@ const T = {
     full: 'Полный профиль',
     speed: /Скорость/,
     play: /Воспроизвести/,
+    load: /Включить плеер/,
   },
 }[LANG]
 if (!T) throw new Error('LANG_CODE must be he, en or ru')
@@ -100,8 +106,8 @@ const ctx = await browser.newContext({
 await ctx.addInitScript(() => { try { localStorage.setItem('ozar-tour-v1', '1') } catch {} })
 await ctx.addInitScript(installOverlay)
 // The assistant's quota check needs Supabase, which a recording box can't
-// reach. Report it as available so the panel opens in its normal state; the
-// walkthrough never sends a question.
+// reach. Report it as available so the panel opens in its normal state if a
+// scene opens it; the walkthrough never sends a question.
 await ctx.route('**/api/chat', route =>
   route.request().method() === 'GET'
     ? route.fulfill({ json: { authenticated: false, quota: { limit: 5, remaining: 5 } } })
@@ -180,16 +186,37 @@ await scene('sage page', async () => {
   await d.cap(...T.page1)
   await d.glide(W * 0.5, H * 0.55, 500)
   await d.sleep(2600)
+  // the sage's writings on Sefaria and Wikisource
+  await d.cap(...T.writings)
+  await page.evaluate(() => document.getElementById('writings')?.scrollIntoView({ block: 'center', behavior: 'smooth' }))
+  await d.sleep(1500)
+  await d.pointAt(page.locator('#writings ul a').first(), 900)
+  await d.sleep(1800)
+  await d.pointAt(page.locator('#writings a[href*="wikisource"]').first(), 900)
+  await d.sleep(2200)
+  await page.evaluate(() => document.getElementById('sage-scroll')?.scrollTo({ top: 0, behavior: 'instant' }))
+  await d.sleep(500)
   await d.cap(...T.page2)
   await d.scroll(1100, 4400)
   await d.sleep(600)
   await page.evaluate(() => document.getElementById('sage-scroll')?.scrollTo({ top: 0, behavior: 'instant' }))
   await d.sleep(800)
-  await d.cap(...T.page3)
-  const ask = page.locator('button[aria-haspopup="dialog"]').first()
-  await d.click(ask, 1000)
-  await d.sleep(3300)
-  await page.keyboard.press('Escape')
+  // The assistant ("שאלו על החכם") is not shown: on 2026-10-11 the live /api/chat
+  // answered every question with 500 internal_error. Add the scene back (open the
+  // panel, type a question, show the answer) once an answer is confirmed working.
+})
+
+// ── 3b. listen to the episode, on a sage who has one (the Rambam) ────────
+await scene('listen', async () => {
+  await go('/sage/41')
+  await d.glide(W * 0.4, H * 0.5, 500)
+  await d.cap(...T.listen)
+  await page.evaluate(() => document.getElementById('listen')?.scrollIntoView({ block: 'center', behavior: 'smooth' }))
+  await d.sleep(1600)
+  await d.click(page.getByRole('button', { name: T.load }).first(), 900)
+  await d.sleep(4600)
+  await d.capOff()
+  await page.evaluate(() => document.getElementById('sage-scroll')?.scrollTo({ top: 0, behavior: 'instant' }))
   await d.sleep(400)
 })
 

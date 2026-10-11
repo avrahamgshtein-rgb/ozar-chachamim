@@ -9,6 +9,7 @@ import { buildRagContext, sageIdsFromHistory, type RagContext } from '@/lib/rag/
 import { buildSystemPrompt } from '@/lib/rag/systemPrompt'
 import { citationPayload } from '@/lib/rag/citations'
 import { callClaude, estimateCost, ClaudeApiError, type ChatMessage } from '@/lib/rag/claude'
+import { referralAnswer } from '@/lib/rag/referralAnswer'
 import { getSageById } from '@/lib/serverData'
 import { isValidLocale } from '@/lib/i18n'
 import type { Locale } from '@/lib/types'
@@ -142,11 +143,23 @@ export async function POST(request: NextRequest) {
 
   const subjectSageId = subjectSageIdOf(bodyObj.sageId)
 
-  const supabase = await createClient()
-  const { data: { user } } = await supabase.auth.getUser()
+  // No language model configured (ANTHROPIC_API_KEY unset: the model is meant to be switched on only when
+  // there is demand to fund it): answer automatically and leave the auth and quota stores alone.
+  if (!process.env.ANTHROPIC_API_KEY) return await automaticAnswer(null, message, locale, subjectSageId)
 
+  let supabase: Awaited<ReturnType<typeof createClient>> | null = null
+  let user: { id: string } | null = null
   try {
-    return user
+    supabase = await createClient()
+    user = (await supabase.auth.getUser()).data.user
+  } catch (err) {
+    // No auth store: carry on as an anonymous visitor, the automatic answer below needs none.
+    console.error('[api/chat] auth lookup failed:', err)
+  }
+
+  let primary: NextResponse
+  try {
+    primary = user && supabase
       ? await handleAuthenticated(supabase, user.id, message, bodyObj.sessionId as string | undefined, locale, subjectSageId)
       : await handleAnonymous(request, message, locale, subjectSageId)
   } catch (err) {
@@ -155,7 +168,43 @@ export async function POST(request: NextRequest) {
     // without this, such errors bubble up as an empty-body 500 instead of
     // the JSON shape the chat widget expects.
     console.error('[api/chat] unhandled error:', err)
-    return NextResponse.json({ error: 'internal_error' }, { status: 500 })
+    primary = NextResponse.json({ error: 'internal_error' }, { status: 500 })
+  }
+
+  // The service failed (no model, no quota store, a timeout): the visitor still gets an answer.
+  // 4xx stay as they are: a spent quota or an invalid session is the visitor's to resolve.
+  return primary.status >= 500 ? await automaticAnswer(primary, message, locale, subjectSageId) : primary
+}
+
+/**
+ * The automatic answer to `message`: who the sage is in a sentence, and where to read on (his page,
+ * the research, the episode, the video, the writings, related sages) (lib/rag/referralAnswer.ts).
+ * It needs neither the language model nor the quota store, so it costs nothing and is not counted.
+ * Anything it cannot do hands back `failed` (or a plain 500 when there was no failed attempt).
+ */
+async function automaticAnswer(
+  failed: NextResponse | null,
+  message: string,
+  locale: Locale,
+  subjectSageId: string | undefined,
+): Promise<NextResponse> {
+  try {
+    const ragContext = await buildRagContext(message, { locale, subjectSageId, external: false })
+    const referral = referralAnswer(ragContext, locale)
+    const res = NextResponse.json({
+      sessionId: null,
+      reply: referral.text,
+      links: referral.links,
+      ...groundingFields(ragContext, subjectSageId),
+      quota: null,
+      mode: 'referral',
+    })
+    // The anonymous flow may already have issued its cookie.
+    for (const cookie of failed?.cookies.getAll() ?? []) res.cookies.set(cookie)
+    return res
+  } catch (err) {
+    console.error('[api/chat] automatic answer failed:', err)
+    return failed ?? NextResponse.json({ error: 'internal_error' }, { status: 500 })
   }
 }
 

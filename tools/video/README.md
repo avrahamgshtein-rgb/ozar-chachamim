@@ -66,11 +66,13 @@ plan from the new `intro-<lang>.srt`.
 - The recording is the site itself, so re-run it after a release to refresh the
   video. If a scene breaks because the UI changed, the scene is logged in
   `intro-<lang>.json` under `error` and the recording continues.
-- The assistant's quota check needs Supabase. The script answers it locally so
-  the chat panel opens in its normal state. It never sends a question, so the
-  video shows the panel and the starter questions but no answer. Replace that
-  scene with a real recording once the assistant is confirmed working on the
-  live site.
+- The assistant ("שאלו על החכם") is not in the video. On 2026-10-11 a question
+  sent to the live `/api/chat` came back `500 internal_error` (the quota check
+  `GET` answered 200), so showing it would promise a feature that did not
+  answer. Add the scene back, with a real question and answer, once the
+  endpoint is confirmed working: probe it with one POST first. The script still
+  answers the quota check locally, because a recording box cannot reach
+  Supabase, so the panel opens in its normal state.
 - No audio is recorded. Narration and music are added afterwards (see
   "Narration" and `assemble.mjs`); `intro-<lang>.srt` has the caption timings.
 - Never put AI-generated faces of sages, or AI-rendered Hebrew text, into the

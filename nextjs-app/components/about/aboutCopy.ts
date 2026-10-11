@@ -20,6 +20,7 @@ export interface AboutCopy {
   moreTitle: string
   listenTitle: string
   listenBody: N
+  introVideoTitle: string
   askTitle: string
   askBody: string
   searchTitle: string
@@ -78,6 +79,7 @@ export const ABOUT_COPY: Record<Locale, AboutCopy> = {
     moreTitle: 'ועוד',
     listenTitle: 'האזנה',
     listenBody: n => `${n} פרקי פודקאסט בספוטיפיי מלווים את החכמים. הקישור לפרק מופיע בכרטיס החכם.`,
+    introVideoTitle: 'סרטון הסבר קצר',
     askTitle: 'שאלו את החכמים',
     askBody:
       'עוזר מבוסס בינה מלאכותית עונה על שאלות מתוך עבודות המחקר שבאתר, ובמידת הצורך גם מספריא ומוויקיפדיה, ומציין לכל טענה את המקור שעליו היא נשענת. כשהמקורות אינם עונים על השאלה, הוא אומר זאת במפורש. הכפתור נמצא בפינת המסך בדף הראשי.',
@@ -138,6 +140,7 @@ export const ABOUT_COPY: Record<Locale, AboutCopy> = {
     moreTitle: 'And more',
     listenTitle: 'Listen',
     listenBody: n => `${n} podcast episodes on Spotify accompany the sages. The episode link is on each sage's card.`,
+    introVideoTitle: 'A short introduction',
     askTitle: 'Ask the sages',
     askBody:
       "An AI assistant answers questions from the site's research papers, drawing on Sefaria and Wikipedia where needed, and names the source behind each claim. When the sources do not answer a question, it says so plainly. You'll find the button in the corner of the main page.",
@@ -198,6 +201,7 @@ export const ABOUT_COPY: Record<Locale, AboutCopy> = {
     moreTitle: 'А также',
     listenTitle: 'Слушать',
     listenBody: n => `${n} выпусков подкаста на Spotify сопровождают мудрецов. Ссылка на выпуск есть в карточке мудреца.`,
+    introVideoTitle: 'Короткое введение',
     askTitle: 'Спросите мудрецов',
     askBody:
       'ИИ-ассистент отвечает на вопросы по исследованиям сайта, при необходимости привлекая Sefaria и Википедию, и указывает источник каждого утверждения. Если источники не отвечают на вопрос, он прямо об этом говорит. Кнопка находится в углу главной страницы.',

@@ -6,6 +6,7 @@
 // document, and every piece of evidence carries a citation handle and a source
 // kind so the answer can attribute it.
 import { getAllSages, getSageConnections, getResearchDocs } from '@/lib/serverData'
+import { overlayEntry } from '@/lib/serverDataTranslator'
 import { extractMentionedSages, findAmbiguousMentions } from './entityExtraction'
 import { retrievePassages } from './retrieval'
 import { locatePassages, type CitedPassage } from './citations'
@@ -68,13 +69,15 @@ export function relationsOf(sage: Sage): SageRelation[] {
   }))
 }
 
-async function buildSageContext(sage: Sage, origin: Origin): Promise<SageContext> {
+async function buildSageContext(sage: Sage, origin: Origin, external: boolean): Promise<SageContext> {
   const relations = relationsOf(sage)
 
-  const [sefariaTopic, wikipediaSummary] = await Promise.all([
-    fetchSefariaTopic(sage.name_en ?? sage.label).catch(() => null),
-    fetchWikipediaSummary(sage.label, sage.name_en).catch(() => null),
-  ])
+  const [sefariaTopic, wikipediaSummary] = external
+    ? await Promise.all([
+      fetchSefariaTopic(sage.name_en ?? sage.label).catch(() => null),
+      fetchWikipediaSummary(sage.label, sage.name_en).catch(() => null),
+    ])
+    : [null, null]
 
   return {
     sage,
@@ -112,6 +115,20 @@ export function sageIdsFromHistory(
   return ids.slice(0, MAX_SAGES_PER_QUESTION)
 }
 
+/**
+ * Each sage's name in the question's language (the English or Russian overlay's label, English as the
+ * fallback and as the extra name a Hebrew question may use), so questions are not matched on Hebrew names
+ * only. Overlays cover about half the roster; the rest still match in Hebrew.
+ */
+export function localNamesFor(sages: Sage[], locale: Locale): Map<string, string> {
+  const out = new Map<string, string>()
+  for (const s of sages) {
+    const label = (locale === 'he' ? null : overlayEntry(s.id, locale)?.label) ?? overlayEntry(s.id, 'en')?.label
+    if (label) out.set(s.id, label)
+  }
+  return out
+}
+
 export interface BuildContextOptions {
   locale?: Locale
   /**
@@ -127,6 +144,12 @@ export interface BuildContextOptions {
    * "him" still have a referent. An unknown id is ignored.
    */
   subjectSageId?: string
+  /**
+   * Ask Sefaria and Wikipedia about each sage (default). The automatic answer
+   * (referralAnswer.ts) uses only the research and the dataset, so it
+   * passes false and never waits on a third party.
+   */
+  external?: boolean
 }
 
 /** Why a sage is in the context: named in the question, the chat's subject, or carried over from earlier turns. */
@@ -136,12 +159,12 @@ export async function buildRagContext(
   question: string,
   options: BuildContextOptions = {},
 ): Promise<RagContext> {
-  const { locale = 'he', conversationSageIds = [], subjectSageId } = options
+  const { locale = 'he', conversationSageIds = [], subjectSageId, external = true } = options
   const allSages = getAllSages()
   const byId = new Map(allSages.map(s => [s.id, s]))
   const subject = subjectSageId ? byId.get(subjectSageId) ?? null : null
 
-  const mentioned = extractMentionedSages(question, allSages)
+  const mentioned = extractMentionedSages(question, allSages, localNamesFor(allSages, locale))
   const ambiguous = findAmbiguousMentions(question, allSages)
 
   let resolved: Array<{ sage: Sage; origin: Origin }> = mentioned
@@ -175,7 +198,7 @@ export async function buildRagContext(
   }
 
   const [matchedSages, docSets] = await Promise.all([
-    Promise.all(resolved.map(r => buildSageContext(r.sage, r.origin))),
+    Promise.all(resolved.map(r => buildSageContext(r.sage, r.origin, external))),
     Promise.all(
       resolved.map(async r => ({
         sageId: r.sage.id,

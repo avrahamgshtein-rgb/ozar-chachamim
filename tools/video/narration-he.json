@@ -1,15 +1,78 @@
 {
   "language": "he",
-  "about": "Narration plan for the Hebrew walkthrough. Times are seconds from the first frame of the recorded walkthrough (the title card), the same clock as intro-he.srt. `start` is when the line should begin, `end` the latest it should be over. Record one take per id, then build the track with voice-track.mjs.",
+  "about": "Narration plan for the Hebrew walkthrough. Times are seconds from the first frame of the recorded walkthrough (the title card), the same clock as intro-he.srt. `start` is when the line should begin, `end` the latest it should be over. Record one take per id, then build the track with voice-track.mjs. Line 07 (the assistant) was dropped with its scene on 2026-10-11, so ids 01-06 and 08-13 are the take file names; lines from 08 on moved 5.66 s earlier.",
   "segments": [
-    { "id": "01", "start": 0.4, "end": 4.6, "text": "אוצר חכמים. מפת הידע של חכמי ישראל לדורותיהם." },
-    { "id": "02", "start": 5.9, "end": 17.6, "text": "מפה אחת, מאות חכמים והקשרים ביניהם, מהאבות ועד ימינו. כל נקודה היא חכם, וכל קו הוא קשר של לימוד או השפעה." },
-    { "id": "03", "start": 18.6, "end": 26.6, "text": "מחפשים כמו שכותבים: ״רשי״ מוצא את רש״י. ומיד נפתח כרטיס: תקופה, מקום, הרעיון המרכזי והקשרים." },
-    { "id": "04", "start": 30.9, "end": 44.8, "text": "לכל חכם יש דף עם מחקר מלא: תוכן עניינים, הערות שוליים וזמן קריאה. אפשר גם להאזין לפרק, ולשאול את העוזר על החכם." },
-    { "id": "05", "start": 49.2, "end": 57.8, "text": "בציר הזמן רואים אלפי שנים של תורה, דור אחרי דור. אפשר להתקרב לכל תקופה." },
-    { "id": "06", "start": 61.2, "end": 75.2, "text": "מסע התורה: מפה שמראה איך מרכזי התורה נעו בעולם לאורך הדורות. לוחצים על הפעלה, ורואים אותם עוברים ממקום למקום." },
-    { "id": "07", "start": 79.2, "end": 90.2, "text": "הדרך לסיני: מכל חכם אפשר לעקוב אחורה עד משה רבנו. קו מקווקו הוא השראה, לא קבלה ישירה." },
-    { "id": "08", "start": 94.2, "end": 101.2, "text": "ובבתי מדרש ומסורות רואים מי הושפע ממי." },
-    { "id": "09", "start": 101.6, "end": 105.8, "text": "אוצר חכמים. כנסו, חפשו, גלו." }
+    {
+      "id": "01",
+      "start": 0.4,
+      "end": 4.6,
+      "text": "אוצר חכמים. מפת הידע של חכמי ישראל לדורותיהם."
+    },
+    {
+      "id": "02",
+      "start": 5.9,
+      "end": 17.6,
+      "text": "מפה אחת, מאות חכמים והקשרים ביניהם, מהאבות ועד ימינו. כל נקודה היא חכם, וכל קו הוא קשר של לימוד או השפעה."
+    },
+    {
+      "id": "03",
+      "start": 18.6,
+      "end": 26.6,
+      "text": "מחפשים כמו שכותבים: ״רשי״ מוצא את רש״י. ומיד נפתח כרטיס: תקופה, מקום, הרעיון המרכזי והקשרים."
+    },
+    {
+      "id": "04",
+      "start": 30.4,
+      "end": 33.4,
+      "text": "לכל חכם יש דף עם מחקר מלא."
+    },
+    {
+      "id": "05",
+      "start": 33.8,
+      "end": 41.0,
+      "text": "והכתבים של החכם בלחיצה אחת: בספריא ובוויקיטקסט."
+    },
+    {
+      "id": "06",
+      "start": 41.6,
+      "end": 47.4,
+      "text": "תוכן עניינים, הערות שוליים וזמן קריאה."
+    },
+    {
+      "id": "08",
+      "start": 50.94,
+      "end": 58.34,
+      "text": "ולרוב החכמים יש פרק בפודקאסט, ומאזינים ישר מהדף."
+    },
+    {
+      "id": "09",
+      "start": 62.84,
+      "end": 71.44,
+      "text": "בציר הזמן רואים אלפי שנים של תורה, דור אחרי דור. אפשר להתקרב לכל תקופה."
+    },
+    {
+      "id": "10",
+      "start": 74.84,
+      "end": 88.84,
+      "text": "מסע התורה: מפה שמראה איך מרכזי התורה נעו בעולם לאורך הדורות. לוחצים על הפעלה, ורואים אותם עוברים ממקום למקום."
+    },
+    {
+      "id": "11",
+      "start": 92.84,
+      "end": 103.84,
+      "text": "הדרך לסיני: מכל חכם אפשר לעקוב אחורה עד משה רבנו. קו מקווקו הוא השראה, לא קבלה ישירה."
+    },
+    {
+      "id": "12",
+      "start": 107.84,
+      "end": 114.74,
+      "text": "ובבתי מדרש ומסורות רואים מי הושפע ממי."
+    },
+    {
+      "id": "13",
+      "start": 115.24,
+      "end": 119.14,
+      "text": "אוצר חכמים. כנסו, חפשו, גלו."
+    }
   ]
 }
