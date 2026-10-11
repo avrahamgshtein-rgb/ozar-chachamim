@@ -9,6 +9,8 @@ import type { Locale, Tab } from '@/lib/types'
 import { UI } from '@/lib/i18n'
 import { SITE_URL } from '@/lib/siteUrl'
 import type { CorpusStats } from '@/lib/siteStats'
+import { YoutubeWatch } from '@/components/sages/YoutubeWatch'
+import { INTRO_VIDEO } from '@/lib/youtube'
 import { ABOUT_COPY, formatAboutDate } from './aboutCopy'
 import { CiteBox } from './CiteBox'
 
@@ -30,6 +32,7 @@ interface AboutContentProps {
 
 export function AboutContent({ locale, stats, variant, onOpenTab }: AboutContentProps) {
   const c = ABOUT_COPY[locale]
+  const intro = INTRO_VIDEO[locale]
   const t = UI[locale]
   const isHe = locale === 'he'
   const fmt = (n: number) => n.toLocaleString(locale === 'he' ? 'he-IL' : locale)
@@ -83,6 +86,13 @@ export function AboutContent({ locale, stats, variant, onOpenTab }: AboutContent
           {c.audience}
         </p>
       </header>
+
+      {/* ── Introduction video, when one is uploaded in this language ── */}
+      {intro && (
+        <div className="mt-10">
+          <YoutubeWatch id={intro.id} title={intro.title} heading={c.introVideoTitle} sub={t.appTitle} seconds={intro.seconds} locale={locale} />
+        </div>
+      )}
 
       {/* ── Live figures ─────────────────────────────────────── */}
       <dl className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-px overflow-hidden rounded-2xl border border-gold-500/15 bg-gold-500/10">
