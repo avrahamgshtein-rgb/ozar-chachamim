@@ -1,0 +1,32 @@
+name: Probe YouTube (temporary)
+
+# One-off: reads the public titles of three videos and the contents of the user's sages
+# playlist from a GitHub runner (the sandbox cannot reach YouTube) and prints them to the
+# log. Remove this file once it has run.
+on:
+  push:
+    branches: [claude/tender-keller-ugj09l]
+    paths: [.github/workflows/probe-youtube.yml]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Titles of the three videos
+        run: |
+          for id in 9u__eJAvb9s uf4X20K1pq0 llK6TjhR-ok; do
+            echo "== $id"
+            curl -sS -m 30 "https://www.youtube.com/oembed?url=https://youtu.be/$id&format=json"; echo
+          done
+      - name: The playlist
+        run: |
+          pip install -q yt-dlp
+          yt-dlp --flat-playlist --no-warnings \
+            --print "ROW|%(playlist_index)s|%(id)s|%(duration)s|%(title)s" \
+            "https://www.youtube.com/playlist?list=PLZTqkkizXfX-8NLT5G77GBhgMylisckyf" | tee playlist.txt
+          echo "ROWS: $(grep -c '^ROW|' playlist.txt)"
