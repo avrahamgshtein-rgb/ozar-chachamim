@@ -104,6 +104,21 @@
     }
    ]
   },
+  "14": {
+   "label": "רבי שמעון לביא",
+   "slug": "shimon-lavi",
+   "kind": "author",
+   "he": "שמעון לביא",
+   "en": "Shimon Lavi",
+   "total": 1,
+   "works": [
+    {
+     "he": "כתם פז על ספר הזהר",
+     "en": "Ketem Paz on Zohar",
+     "url": "/Ketem_Paz_on_Zohar"
+    }
+   ]
+  },
   "18": {
    "label": "רבי עובדיה מברטנורא (הרע״ב)",
    "slug": "ovadiah-bartenura",
@@ -124,6 +139,64 @@
      "cat": true
     }
    ]
+  },
+  "23": {
+   "label": "מנחם בן סרוק (910–970) – מהפכת הלשון העברית: שורשים, דקדוק ופולמוס בספרד",
+   "slug": "menahem-ibn-saruq",
+   "kind": "author",
+   "he": "מנחם אבן סרוק",
+   "en": "Menahem ibn Saruq",
+   "total": 1,
+   "works": [
+    {
+     "he": "מחברת מנחם",
+     "en": "Machberet Menachem",
+     "url": "/Machberet_Menachem"
+    }
+   ]
+  },
+  "28": {
+   "label": "ר' יצחק בן אשר הלוי (ריב\"א הראשון)",
+   "slug": "riva",
+   "kind": "person",
+   "he": "ריב\"א",
+   "en": "Riva",
+   "total": 0,
+   "works": []
+  },
+  "32": {
+   "label": "רבי יוסף אבן מיגאש",
+   "slug": "joseph-ibn-migash",
+   "kind": "author",
+   "he": "יוסף אבן מיגאש",
+   "en": "Joseph Ibn Migash (Ri Migash)",
+   "total": 3,
+   "works": [
+    {
+     "he": "חדושי הר\"י מיגאש על בבא בתרא",
+     "en": "Ri Migash on Bava Batra",
+     "url": "/Ri_Migash_on_Bava_Batra"
+    },
+    {
+     "he": "חדושי הר\"י מיגאש על שבועות",
+     "en": "Ri Migash on Shevuot",
+     "url": "/Ri_Migash_on_Shevuot"
+    },
+    {
+     "he": "תשובות הר\"י מיגאש",
+     "en": "Teshuvot HaRi Migash",
+     "url": "/Teshuvot_HaRi_Migash"
+    }
+   ]
+  },
+  "33": {
+   "label": "רבנו תם (ר׳ יעקב בן מאיר) – מהפכן השיטה התוספתית",
+   "slug": "rabbenu-tam",
+   "kind": "person",
+   "he": "רבנו תם",
+   "en": "Rabbenu Tam",
+   "total": 0,
+   "works": []
   },
   "39": {
    "label": "רבנו בחיי אבן פקודה – חובות הלבבות",
@@ -218,6 +291,30 @@
     }
    ]
   },
+  "42": {
+   "label": "רבי יצחק סגי נהור",
+   "slug": "isaac-the-blind",
+   "kind": "person",
+   "he": "יצחק סגי נהור",
+   "en": "Isaac the Blind",
+   "total": 0,
+   "works": []
+  },
+  "43": {
+   "label": "רבי יצחק מווינה (בעל האור זרוע)",
+   "slug": "yitzchak-ben-moshe-of-vienna",
+   "kind": "author",
+   "he": "יצחק בן משה מווינה",
+   "en": "Yitzchak ben Moshe of Vienna",
+   "total": 1,
+   "works": [
+    {
+     "he": "אור זרוע",
+     "en": "Ohr Zarua",
+     "url": "/Ohr_Zarua"
+    }
+   ]
+  },
   "44": {
    "label": "הרמב\"ן (רבי משה בן נחמן)",
    "slug": "ramban",
@@ -302,6 +399,106 @@
     }
    ]
   },
+  "45": {
+   "label": "רבי יוסף בכור שור",
+   "slug": "yosef-bekhor-shor",
+   "kind": "author",
+   "he": "יוסף בכור שור",
+   "en": "Yosef Bekhor Shor",
+   "total": 1,
+   "works": [
+    {
+     "he": "בכור שור",
+     "en": "Bekhor Shor",
+     "url": "/Bekhor_Shor"
+    }
+   ]
+  },
+  "46": {
+   "label": "רבי זרחיה הלוי (בעל המאור)",
+   "slug": "zerachiah-ha-levi-of-girona",
+   "kind": "author",
+   "he": "זרחיה הלוי",
+   "en": "Zerachiah HaLevi of Gerona",
+   "total": 3,
+   "works": [
+    {
+     "he": "המאור על תלמוד",
+     "en": "HaMaor on Talmud",
+     "url": "/texts/Talmud/Bavli/Rishonim on Talmud/Rif/Commentary/Baal HaMaor",
+     "cat": true
+    },
+    {
+     "he": "הקדמת המאור",
+     "en": "Introdution to HaMaor",
+     "url": "/Introdution_to_HaMaor"
+    },
+    {
+     "he": "סלע המחלקות על בעלי הנפש",
+     "en": "Sela HaMachlakot on Ba'alei HaNefesh",
+     "url": "/Sela_HaMachlakot_on_Ba'alei_HaNefesh"
+    }
+   ]
+  },
+  "47": {
+   "label": "המהר\"ם מרוטנבורג",
+   "slug": "maharam-of-rothenburg",
+   "kind": "author",
+   "he": "מהר\"ם מרוטנבורג",
+   "en": "Meir ben Barukh (Maharam) of Rothenburg",
+   "total": 1,
+   "works": [
+    {
+     "he": "תשובות מהר\"ם",
+     "en": "Teshuvot Maharam",
+     "url": "/Teshuvot_Maharam"
+    }
+   ]
+  },
+  "49": {
+   "label": "הראבי\"ה (רבי אליעזר בן יואל הלוי)",
+   "slug": "raavyah",
+   "kind": "person",
+   "he": "ראבי\"ה",
+   "en": "Ra'avyah",
+   "total": 0,
+   "works": []
+  },
+  "50": {
+   "label": "רבי אברהם אבולעפיה",
+   "slug": "abraham-ben-samuel-abulafia",
+   "kind": "author",
+   "he": "אברהם אבולעפיה",
+   "en": "Abraham Abulafia",
+   "total": 5,
+   "works": [
+    {
+     "he": "גן נעול (אבולעפיה)",
+     "en": "Gan Naul (Abulafia)",
+     "url": "/Gan_Naul_(Abulafia)"
+    },
+    {
+     "he": "גט השמות",
+     "en": "Get HaShemot",
+     "url": "/Get_HaShemot"
+    },
+    {
+     "he": "אור השכל",
+     "en": "Ohr HaSekhel",
+     "url": "/Ohr_HaSekhel"
+    },
+    {
+     "he": "ספר החשק",
+     "en": "Sefer HaCheshek",
+     "url": "/Sefer_HaCheshek"
+    },
+    {
+     "he": "אגרת וזאת ליהודה",
+     "en": "VeZot LiYehuda",
+     "url": "/VeZot_LiYehuda"
+    }
+   ]
+  },
   "52": {
    "label": "הריטב\"א – המקובל שהגן על הפילוסוף",
    "slug": "ritva",
@@ -360,6 +557,66 @@
      "he": "תשובות הריב\"ש",
      "en": "Teshuvot HaRivash",
      "url": "/Teshuvot_HaRivash"
+    }
+   ]
+  },
+  "57": {
+   "label": "הרב חסדאי קרשקש",
+   "slug": "hasdai-ben-avraham-crescas",
+   "kind": "author",
+   "he": "חסדאי בן אברהם קרשקש",
+   "en": "Hasdai Crescas",
+   "total": 1,
+   "works": [
+    {
+     "he": "אור ה'",
+     "en": "Ohr Hashem",
+     "url": "/Ohr_Hashem"
+    }
+   ]
+  },
+  "59": {
+   "label": "רבי יצחק קנפנטון",
+   "slug": "isaac-canpanton",
+   "kind": "author",
+   "he": "יצחק קנפנטון",
+   "en": "Isaac Canpanton",
+   "total": 1,
+   "works": [
+    {
+     "he": "דרכי התלמוד",
+     "en": "Darkhei HaTalmud",
+     "url": "/Darkhei_HaTalmud"
+    }
+   ]
+  },
+  "65": {
+   "label": "רבי יצחק עראמה (בעל העקידה)",
+   "slug": "isaac-ben-moses-arama",
+   "kind": "author",
+   "he": "יצחק בן משה עראמה",
+   "en": "Isaac Arama",
+   "total": 1,
+   "works": [
+    {
+     "he": "עקידת יצחק",
+     "en": "Akeidat Yitzchak",
+     "url": "/Akeidat_Yitzchak"
+    }
+   ]
+  },
+  "66": {
+   "label": "רבי אליהו מזרחי (הרא\"ם)",
+   "slug": "eliyahu-ben-abraham-mizrahi",
+   "kind": "author",
+   "he": "אליהו בן אברהם מזרחי",
+   "en": "Eliyahu Mizrachi (Re'em)",
+   "total": 1,
+   "works": [
+    {
+     "he": "מזרחי",
+     "en": "Mizrachi",
+     "url": "/Mizrachi"
     }
    ]
   },
@@ -589,6 +846,62 @@
     }
    ]
   },
+  "73": {
+   "label": "רבי מרדכי יפה – “בעל הלבוש”",
+   "slug": "mordechai-jaffe",
+   "kind": "author",
+   "he": "הרב מרדכי יפה",
+   "en": "Mordechai Jaffe",
+   "total": 1,
+   "works": [
+    {
+     "he": "לבוש האורה",
+     "en": "Levush HaOrah",
+     "url": "/Levush_HaOrah"
+    }
+   ]
+  },
+  "74": {
+   "label": "רבי אלעזר אזכרי",
+   "slug": "elazar-ben-moshe-azikri",
+   "kind": "author",
+   "he": "אלעזר בן משה אזכרי",
+   "en": "Elazar ben Moshe Azikri",
+   "total": 1,
+   "works": [
+    {
+     "he": "ספר חרדים",
+     "en": "Sefer Charedim",
+     "url": "/Sefer_Charedim"
+    }
+   ]
+  },
+  "76": {
+   "label": "רבי יואל סירקיש (הב\"ח)",
+   "slug": "yoel-ben-shmuel-sirkes",
+   "kind": "author",
+   "he": "יואל בן שמואל סירקיש",
+   "en": "Yoel ben Shmuel Sirkes",
+   "total": 3,
+   "works": [
+    {
+     "he": "הגהות הב\"ח על רי\"ף",
+     "en": "Hagahot HaBach on Rif",
+     "url": "/texts/Talmud/Bavli/Rishonim on Talmud/Rif/Commentary/Hagahot HaBach",
+     "cat": true
+    },
+    {
+     "he": "ב\"ח",
+     "en": "Bach",
+     "url": "/Bach"
+    },
+    {
+     "he": "תשובות בית חדש",
+     "en": "Teshuvot Bayit Chadash",
+     "url": "/Teshuvot_Bayit_Chadash"
+    }
+   ]
+  },
   "77": {
    "label": "רבי אברהם אזולאי – המקובל שבנה מחדש את עולמות הסוד",
    "slug": "abraham-azulai",
@@ -664,6 +977,96 @@
     }
    ]
   },
+  "85": {
+   "label": "רבי יהודה רוזאניס (1657–1727) – המשנה למלך: עיון תלמודי ופילוסופיית ההלכה",
+   "slug": "judah-rosanes",
+   "kind": "author",
+   "he": "יהודה רוזאניס",
+   "en": "Judah Rosanes",
+   "total": 2,
+   "works": [
+    {
+     "he": "משנה למלך על משנה תורה",
+     "en": "Mishneh LaMelech on Mishneh Torah",
+     "url": "/texts/Halakhah/Mishneh Torah/Commentary/Mishneh LaMelech",
+     "cat": true
+    },
+    {
+     "he": "פרשת דרכים",
+     "en": "Parashat Derakhim",
+     "url": "/Parashat_Derakhim"
+    }
+   ]
+  },
+  "87": {
+   "label": "הרב אפרים נבון (1677–1735) – מחנה אפרים: עקרונות פסיקה וסדרי קניינים",
+   "slug": "ephraim-navon",
+   "kind": "author",
+   "he": "אפרים נבון",
+   "en": "Ephraim Navon",
+   "total": 1,
+   "works": [
+    {
+     "he": "חידושים מהגאון בעל מחנה אפרים על משנה תורה",
+     "en": "Chidushim of Machaneh Ephraim on Mishneh Torah",
+     "url": "/texts/Halakhah/Mishneh Torah/Commentary/Chidushim of Machaneh Ephraim",
+     "cat": true
+    }
+   ]
+  },
+  "89": {
+   "label": "הרב יעקב עמדין (יעב\"ץ)",
+   "slug": "yaakov-emden",
+   "kind": "author",
+   "he": "יעקב עמדין",
+   "en": "Yaakov Emden",
+   "total": 8,
+   "works": [
+    {
+     "he": "הגהות יעב\"ץ על משנה",
+     "en": "Haggahot Ya'avetz on Mishnah",
+     "url": "/texts/Mishnah/Acharonim on Mishnah/Haggahot Ya'avetz",
+     "cat": true
+    },
+    {
+     "he": "לחם שמים, הקדמה לפירוש המשנה",
+     "en": "Lechem Shamayim, Introduction to Mishnah Commentary",
+     "url": "/Lechem_Shamayim,_Introduction_to_Mishnah_Commentary"
+    },
+    {
+     "he": "לחם שמים על משנה",
+     "en": "Lechem Shamayim on Mishnah",
+     "url": "/texts/Mishnah/Acharonim on Mishnah/Lechem Shamayim",
+     "cat": true
+    },
+    {
+     "he": "הגהות יעב\"ץ על תלמוד",
+     "en": "Haggahot Ya'avetz on Talmud",
+     "url": "/texts/Talmud/Bavli",
+     "cat": true
+    },
+    {
+     "he": "יעב\"ץ על סדר עולם רבה",
+     "en": "Yaakov Emden on Seder Olam Rabbah",
+     "url": "/Yaakov_Emden_on_Seder_Olam_Rabbah"
+    },
+    {
+     "he": "לחם שמים על משנה תורה, הלכות בית הבחירה",
+     "en": "Lechem Shamayim on Mishneh Torah, The Chosen Temple",
+     "url": "/Lechem_Shamayim_on_Mishneh_Torah,_The_Chosen_Temple"
+    },
+    {
+     "he": "מטפחת ספרים",
+     "en": "Mitpachat Sefarim",
+     "url": "/Mitpachat_Sefarim"
+    },
+    {
+     "he": "שאילת יעבץ",
+     "en": "Sheilat Yaavetz",
+     "url": "/Sheilat_Yaavetz"
+    }
+   ]
+  },
   "93": {
    "label": "רבי משה חיים לוצאטו (הרמח״ל)",
    "slug": "moses-chaim-luzzatto-(ramchal)",
@@ -719,6 +1122,43 @@
     }
    ]
   },
+  "95": {
+   "label": "הנודע ביהודה (הרב יחזקאל לנדא)",
+   "slug": "yehezkel-landau",
+   "kind": "author",
+   "he": "יחזקאל לנדא",
+   "en": "Yechezkel Landau (Noda BiYehudah)",
+   "total": 5,
+   "works": [
+    {
+     "he": "צל\"ח על תלמוד",
+     "en": "Tzelach on Talmud",
+     "url": "/texts/Talmud/Bavli/Acharonim on Talmud/Tziyyun LeNefesh Chayyah",
+     "cat": true
+    },
+    {
+     "he": "ציון לנפש חיה",
+     "en": "Tziyyun LeNefesh Chayyah",
+     "url": "/texts/Talmud/Bavli/Acharonim on Talmud/Tziyyun LeNefesh Chayyah",
+     "cat": true
+    },
+    {
+     "he": "דגול מרבבה על שלחן ערוך אורח חיים",
+     "en": "Dagul MeRevava on Shulchan Arukh, Orach Chayim",
+     "url": "/Dagul_MeRevava_on_Shulchan_Arukh,_Orach_Chayim"
+    },
+    {
+     "he": "נודע ביהודה מהדורא קמא",
+     "en": "Noda BiYehudah I",
+     "url": "/Noda_BiYehudah_I"
+    },
+    {
+     "he": "נודע ביהודה מהדורא תנינא",
+     "en": "Noda BiYehudah II",
+     "url": "/Noda_BiYehudah_II"
+    }
+   ]
+  },
   "97": {
    "label": "רבי אריה לייב הלר (1745–1812) – קצות החושן: לוגיקה הלכתית ועמקות למדנית",
    "slug": "aryeh-leib-heller",
@@ -736,6 +1176,87 @@
      "he": "שב שמעתתא",
      "en": "Shev Shmateta",
      "url": "/Shev_Shmateta"
+    }
+   ]
+  },
+  "98": {
+   "label": "הרב אברהם דנציג",
+   "slug": "abraham-danzig",
+   "kind": "author",
+   "he": "אברהם דנציג",
+   "en": "Abraham Danzig",
+   "total": 5,
+   "works": [
+    {
+     "he": "חכמת אדם",
+     "en": "Chokhmat Adam",
+     "url": "/Chokhmat_Adam"
+    },
+    {
+     "he": "חיי אדם",
+     "en": "Chayyei Adam",
+     "url": "/Chayyei_Adam"
+    },
+    {
+     "he": "קיצור ספר חרדים",
+     "en": "Kitzur Sefer Haredim of Rabbi Elazar Azcari",
+     "url": "/Kitzur_Sefer_Haredim_of_Rabbi_Elazar_Azcari"
+    },
+    {
+     "he": "בינת אדם",
+     "en": "Binat Adam",
+     "url": "/Binat_Adam"
+    },
+    {
+     "he": "נשמת אדם",
+     "en": "Nishmat Adam",
+     "url": "/Nishmat_Adam"
+    }
+   ]
+  },
+  "100": {
+   "label": "מנחם מנדל לפין (מסאטנוב)",
+   "slug": "menachem-mendel-lefin",
+   "kind": "author",
+   "he": "מנחם מנדל לפין",
+   "en": "Menachem Mendel Lefin",
+   "total": 1,
+   "works": [
+    {
+     "he": "חשבון הנפש",
+     "en": "Cheshbon HaNefesh",
+     "url": "/Cheshbon_HaNefesh"
+    }
+   ]
+  },
+  "102": {
+   "label": "החת\"ם סופר (הרב משה סופר)",
+   "slug": "moses-sofer",
+   "kind": "author",
+   "he": "משה סופר",
+   "en": "Moses Sofer (Chatam Sofer)",
+   "total": 4,
+   "works": [
+    {
+     "he": "חתם סופר על התורה",
+     "en": "Chatam Sofer on Torah",
+     "url": "/Chatam_Sofer_on_Torah"
+    },
+    {
+     "he": "חידושי חתם סופר על תלמוד",
+     "en": "Chidushei Chatam Sofer on Talmud",
+     "url": "/texts/Talmud/Bavli/Acharonim on Talmud/Chidushei Chatam Sofer",
+     "cat": true
+    },
+    {
+     "he": "חתם סופר על שלחן ערוך אורח חיים",
+     "en": "Chatam Sofer on Shulchan Arukh, Orach Chayim",
+     "url": "/Chatam_Sofer_on_Shulchan_Arukh,_Orach_Chayim"
+    },
+    {
+     "he": "שו\"ת חתם סופר",
+     "en": "Responsa Chatam Sofer",
+     "url": "/Responsa_Chatam_Sofer"
     }
    ]
   },
@@ -780,6 +1301,42 @@
     }
    ]
   },
+  "111": {
+   "label": "הרב צבי הירש חיות (מהר\"ץ חיות)",
+   "slug": "zvi-hirsch-chajes",
+   "kind": "author",
+   "he": "צבי הירש חיות",
+   "en": "Zvi Hirsch Chajes",
+   "total": 2,
+   "works": [
+    {
+     "he": "מבוא התלמוד",
+     "en": "Mevo HaTalmud (Chajes)",
+     "url": "/Mevo_HaTalmud_(Chajes)"
+    },
+    {
+     "he": "חידושים ומקורים מהר\"ץ חיות על משנה תורה",
+     "en": "Annotations of Maharatz Chajes on Mishneh Torah",
+     "url": "/texts/Halakhah/Mishneh Torah/Commentary/Annotations of Maharatz Chajes",
+     "cat": true
+    }
+   ]
+  },
+  "113": {
+   "label": "רבי ישראל מסלנט",
+   "slug": "israel-salanter",
+   "kind": "author",
+   "he": "ישראל סלנטר",
+   "en": "Israel Salanter",
+   "total": 1,
+   "works": [
+    {
+     "he": "אור ישראל",
+     "en": "Ohr Yisrael",
+     "url": "/Ohr_Yisrael"
+    }
+   ]
+  },
   "117": {
    "label": "הרב צדוק הכהן מלובלין – המיסטיקן האינטלקטואלי",
    "slug": "tzadok-hakohen-of-lublin",
@@ -793,6 +1350,21 @@
      "en": "R' Tzadok HaKohen",
      "url": "/texts/Chasidut/R' Tzadok HaKohen",
      "cat": true
+    }
+   ]
+  },
+  "118": {
+   "label": "אליהו בן אמוזג – ההוגה שדחו הדורות, אך רעיונו התגלה כגדול מדורותיו",
+   "slug": "elijah-benamozegh",
+   "kind": "author",
+   "he": "אליהו בן-אמוזג",
+   "en": "Elijah Benamozegh",
+   "total": 1,
+   "works": [
+    {
+     "he": "אם למקרא",
+     "en": "Em LaMikra",
+     "url": "/Em_LaMikra"
     }
    ]
   },
@@ -970,6 +1542,27 @@
     }
    ]
   },
+  "132": {
+   "label": "הרב יוסף רוזין (הגאון הרוגצ'ובי)",
+   "slug": "joseph-rosen",
+   "kind": "author",
+   "he": "יוסף רוזין",
+   "en": "Joseph Rosen",
+   "total": 2,
+   "works": [
+    {
+     "he": "צפנת פענח על התורה",
+     "en": "Tzafnat Pa'neach on Torah",
+     "url": "/Tzafnat_Pa'neach_on_Torah"
+    },
+    {
+     "he": "צפנת פענח על משנה תורה",
+     "en": "Tzafnat Pa'neach on Mishneh Torah",
+     "url": "/texts/Halakhah/Mishneh Torah/Commentary/Tzafnat Pa'neach",
+     "cat": true
+    }
+   ]
+  },
   "134": {
    "label": "הרב אברהם יצחק הכהן קוק – החזון שאיחד קודש וחול",
    "slug": "abraham-isaac-hacohen-kook",
@@ -1045,6 +1638,21 @@
     }
    ]
   },
+  "135": {
+   "label": "הלל צייטלין (1871–1942) – פילוסוף יהודי בין ניטשה לחסידות, שנרצח בשואה",
+   "slug": "hillel-zeitlin",
+   "kind": "author",
+   "he": "הלל צייטלין",
+   "en": "Hillel Zeitlin",
+   "total": 1,
+   "works": [
+    {
+     "he": "בפרדס החסידות והקבלה",
+     "en": "BePardes HaChasidut VeHakabbalah",
+     "url": "/BePardes_HaChasidut_VeHakabbalah"
+    }
+   ]
+  },
   "143": {
    "label": "האדמו\"ר מפיאסצ'נה (1889–1942) – קודש בתוך החורבן: תורה פסיכולוגית, אמונה ועמידה בגטו ורשה",
    "slug": "kalonymus-kalman-shapira",
@@ -1090,6 +1698,26 @@
     }
    ]
   },
+  "149": {
+   "label": "הרב יצחק נסים – הראשון לציון שניהל 'מדיניות חוץ' עצמאית",
+   "slug": "yitzchak-nissim",
+   "kind": "author",
+   "he": "יצחק נסים",
+   "en": "Yitzchak Nissim",
+   "total": 2,
+   "works": [
+    {
+     "he": "לַכְּלָל וְלַפְּרָט",
+     "en": "LaKelal VeLaPerat",
+     "url": "/LaKelal_VeLaPerat"
+    },
+    {
+     "he": "יין הטוב",
+     "en": "Yein HaTov",
+     "url": "/Yein_HaTov"
+    }
+   ]
+  },
   "189": {
    "label": "יעקב בן אשר",
    "slug": "jacob-ben-asher",
@@ -1118,6 +1746,21 @@
      "he": "טור",
      "en": "Tur",
      "url": "/Tur"
+    }
+   ]
+  },
+  "191": {
+   "label": "מנחם מנדל מוויטבסק",
+   "slug": "menachem-mendel-of-vitebsk",
+   "kind": "author",
+   "he": "מנחם מנדל מוויטבסק",
+   "en": "Menachem Mendel of Vitebsk",
+   "total": 1,
+   "works": [
+    {
+     "he": "פרי הארץ",
+     "en": "Peri HaAretz",
+     "url": "/Peri_HaAretz"
     }
    ]
   },
@@ -1162,12 +1805,45 @@
     }
    ]
   },
+  "261": {
+   "label": "רבי מאיר בן שמואל מרמרו",
+   "slug": "meir-ben-shmuel",
+   "kind": "person",
+   "he": "מאיר בן שמואל",
+   "en": "Meir ben Shmuel",
+   "total": 0,
+   "works": []
+  },
+  "264": {
+   "label": "מהר\"י ברונא",
+   "slug": "yisrael-ben-hayim-of-bruno",
+   "kind": "author",
+   "he": "ישראל בן חיים ברונא",
+   "en": "Yisrael ben Hayim of Bruno",
+   "total": 1,
+   "works": [
+    {
+     "he": "מהר\"י ברונא",
+     "en": "Mahari Bruna",
+     "url": "/Mahari_Bruna"
+    }
+   ]
+  },
   "270": {
    "label": "חולדה הנביאה",
    "slug": "huldah",
    "kind": "person",
    "he": "חולדה נביאה",
    "en": "Huldah",
+   "total": 0,
+   "works": []
+  },
+  "273": {
+   "label": "הרב אליעזר בן נתן (ראב\"ן)",
+   "slug": "raavan",
+   "kind": "person",
+   "he": "ראב\"ן",
+   "en": "Ra'avan",
    "total": 0,
    "works": []
   },
@@ -1179,6 +1855,21 @@
    "en": "Abigail",
    "total": 0,
    "works": []
+  },
+  "275": {
+   "label": "ר״י הזקן מדמפייר",
+   "slug": "isaac-ben-samuel-of-dampierre",
+   "kind": "author",
+   "he": "יצחק בן שמואל הזקן מדַמְפִּיֶיר",
+   "en": "Isaac ben Samuel of Dampierre (Ri HaZaken)",
+   "total": 1,
+   "works": [
+    {
+     "he": "תוספות ר\"י הזקן על קידושין",
+     "en": "Tosafot Ri HaZaken on Kiddushin",
+     "url": "/Tosafot_Ri_HaZaken_on_Kiddushin"
+    }
+   ]
   },
   "276": {
    "label": "הרשב״ם",
@@ -1199,6 +1890,21 @@
      "en": "Rashbam on Talmud",
      "url": "/texts/Talmud/Bavli/Rishonim on Talmud/Rashbam",
      "cat": true
+    }
+   ]
+  },
+  "278": {
+   "label": "רבי יהונתן הכהן מלוניל",
+   "slug": "rabbenu-yehonatan-of-lunel",
+   "kind": "author",
+   "he": "יהונתן מלוניל",
+   "en": "Rabbenu Yehonatan of Lunel",
+   "total": 1,
+   "works": [
+    {
+     "he": "רבינו יהונתן מלוניל על עירובין",
+     "en": "Rabbeinu Yehonatan of Lunel on Eruvin",
+     "url": "/Rabbeinu_Yehonatan_of_Lunel_on_Eruvin"
     }
    ]
   },
@@ -1229,6 +1935,127 @@
      "he": "ספר השרשים",
      "en": "Sefer HaShorashim",
      "url": "/Sefer_HaShorashim"
+    }
+   ]
+  },
+  "293": {
+   "label": "רבי מאיר הלוי אבולעפיה",
+   "slug": "meir-abulafia",
+   "kind": "author",
+   "he": "מאיר הלוי אבולעפיה",
+   "en": "Meir Abulafia",
+   "total": 1,
+   "works": [
+    {
+     "he": "יד רמה על סדר נזיקין",
+     "en": "Yad Ramah on Seder Nezikin",
+     "url": "/texts/Talmud/Bavli/Rishonim on Talmud/Yad Ramah",
+     "cat": true
+    }
+   ]
+  },
+  "294": {
+   "label": "רבי אהרן הלוי",
+   "slug": "aharon-halevi",
+   "kind": "author",
+   "he": "אהרן הלוי",
+   "en": "Aharon HaLevi (Ra'ah)",
+   "total": 3,
+   "works": [
+    {
+     "he": "רא\"ה על ברכות",
+     "en": "Chiddushei HaRa'ah on Berakhot",
+     "url": "/Chiddushei_HaRa'ah_on_Berakhot"
+    },
+    {
+     "he": "חדושי הרא\"ה על כתובות",
+     "en": "Chiddushei HaRa'ah on Ketubot",
+     "url": "/Chiddushei_HaRa'ah_on_Ketubot"
+    },
+    {
+     "he": "בדק הבית על תורת הבית הארוך",
+     "en": "Bedek HaBayit on Torat HaBayit HaArokh",
+     "url": "/Bedek_HaBayit_on_Torat_HaBayit_HaArokh"
+    }
+   ]
+  },
+  "299": {
+   "label": "צדקיה בן אברהם",
+   "slug": "zedekiah-ben-abraham-harofei",
+   "kind": "author",
+   "he": "ר' צדקיה בן ר' אברהם הרופא",
+   "en": "Zedekiah ben Abraham HaRofei",
+   "total": 2,
+   "works": [
+    {
+     "he": "שבלי הלקט",
+     "en": "Shibbolei HaLeket",
+     "url": "/Shibbolei_HaLeket"
+    },
+    {
+     "he": "שבלי הלקט על הגדה של פסח",
+     "en": "Shibolei HaLeket on Pesach Haggadah",
+     "url": "/Shibolei_HaLeket_on_Pesach_Haggadah"
+    }
+   ]
+  },
+  "308": {
+   "label": "הרי״ד הזקן – רבי ישעיה די טראני",
+   "slug": "isaiah-dtrani",
+   "kind": "author",
+   "he": "ישעיה דטראני",
+   "en": "Isaiah d'Trani",
+   "total": 2,
+   "works": [
+    {
+     "he": "תוספות רי\"ד על תלמוד",
+     "en": "Tosafot Rid on Talmud",
+     "url": "/texts/Talmud/Bavli/Rishonim on Talmud/Tosafot Rid",
+     "cat": true
+    },
+    {
+     "he": "ספר המכריע",
+     "en": "Sefer HaMakhria",
+     "url": "/Sefer_HaMakhria"
+    }
+   ]
+  },
+  "314": {
+   "label": "רבי יצחק מדורא",
+   "slug": "isaac-ben-meir-halevi-from-dren",
+   "kind": "person",
+   "he": "יצחק בן רבי מאיר הלוי מדורא",
+   "en": "Isaac of Dueren",
+   "total": 0,
+   "works": []
+  },
+  "317": {
+   "label": "רבי שמשון בן צדוק",
+   "slug": "shimshon-ben-tzadok",
+   "kind": "author",
+   "he": "שמשון בן צדוק",
+   "en": "Shimshon ben Tzadok",
+   "total": 1,
+   "works": [
+    {
+     "he": "תשב\"ץ קטן",
+     "en": "Tashbetz Katan",
+     "url": "/Tashbetz_Katan"
+    }
+   ]
+  },
+  "324": {
+   "label": "הרב נתן צבי פינקל (הסבא מסלבודקה)",
+   "slug": "nosson-tzvi-finkel",
+   "kind": "author",
+   "he": "נתן צבי פינקל",
+   "en": "Nosson Tzvi Finkel",
+   "total": 1,
+   "works": [
+    {
+     "he": "אור הצפון",
+     "en": "Ohr HaTzafun",
+     "url": "/Ohr_HaTzafun"
     }
    ]
   },
@@ -1487,6 +2314,36 @@
    "total": 0,
    "works": []
   },
+  "349": {
+   "label": "רבי דוד פארדו",
+   "slug": "david-pardo",
+   "kind": "author",
+   "he": "דוד פארדו",
+   "en": "David Pardo",
+   "total": 1,
+   "works": [
+    {
+     "he": "משכיל לדוד",
+     "en": "Maskil LeDavid",
+     "url": "/Maskil_LeDavid"
+    }
+   ]
+  },
+  "356": {
+   "label": "מחזור ויטרי",
+   "slug": "simchah-of-vitry",
+   "kind": "author",
+   "he": "שמחה בן שמואל מויטרי",
+   "en": "Simchah of Vitry",
+   "total": 1,
+   "works": [
+    {
+     "he": "מחזור ויטרי",
+     "en": "Machzor Vitry",
+     "url": "/Machzor_Vitry"
+    }
+   ]
+  },
   "389": {
    "label": "דבורה הנביאה",
    "slug": "deborah-the-prophetess",
@@ -1587,6 +2444,78 @@
     }
    ]
   },
+  "406": {
+   "label": "רבנו פרץ מקורביל",
+   "slug": "peretz-ben-elijah-of-corbeil",
+   "kind": "author",
+   "he": "פרץ בן אליהו מקורביל",
+   "en": "Peretz ben Elijah of Corbeil",
+   "total": 1,
+   "works": [
+    {
+     "he": "הגהות רבנו פרץ על ספר מצוות קטן",
+     "en": "Haggahot Rabbeinu Peretz on Sefer Mitzvot Katan",
+     "url": "/Haggahot_Rabbeinu_Peretz_on_Sefer_Mitzvot_Katan"
+    }
+   ]
+  },
+  "415": {
+   "label": "רבי שם טוב אבן גאון",
+   "slug": "shem-tov-ben-avraham-ibn-gaon",
+   "kind": "author",
+   "he": "שם טוב בן אברהם אבן גאון",
+   "en": "Shem Tov ben Avraham ibn Gaon",
+   "total": 1,
+   "works": [
+    {
+     "he": "מגדל עוז על משנה תורה",
+     "en": "Migdal Oz on Mishneh Torah",
+     "url": "/texts/Halakhah/Mishneh Torah/Commentary/Migdal Oz",
+     "cat": true
+    }
+   ]
+  },
+  "433": {
+   "label": "רבי יוסף חביבא",
+   "slug": "yosef-ibn-habib",
+   "kind": "author",
+   "he": "יוסף חביבא",
+   "en": "Yosef ibn Habib",
+   "total": 1,
+   "works": [
+    {
+     "he": "נימוקי יוסף על רי\"ף",
+     "en": "Nimukei Yosef on Rif",
+     "url": "/texts/Talmud/Bavli/Rishonim on Talmud/Rif/Commentary/Nimukei Yosef",
+     "cat": true
+    }
+   ]
+  },
+  "434": {
+   "label": "הרשב״ץ (רבי שמעון בן צמח דוראן)",
+   "slug": "shimon-ben-tzemach-duran",
+   "kind": "author",
+   "he": "שמעון בן צמח דוראן",
+   "en": "Shimon ben Tzemach Duran",
+   "total": 3,
+   "works": [
+    {
+     "he": "מגן אבות",
+     "en": "Magen Avot on Avot",
+     "url": "/Magen_Avot_on_Avot"
+    },
+    {
+     "he": "זוהר הרקיע",
+     "en": "Zohar HaRakia",
+     "url": "/Zohar_HaRakia"
+    },
+    {
+     "he": "ספר התשב\"ץ",
+     "en": "Sefer HaTashbetz",
+     "url": "/Sefer_HaTashbetz"
+    }
+   ]
+  },
   "435": {
    "label": "רבי שמעון בר יוחאי",
    "slug": "shimon-bar-yochai",
@@ -1596,6 +2525,21 @@
    "total": 0,
    "works": []
   },
+  "436": {
+   "label": "רבי שלום בוזגלו",
+   "slug": "shalom-buzaglo",
+   "kind": "author",
+   "he": "שלום בוזגלו",
+   "en": "Shalom Buzaglo",
+   "total": 1,
+   "works": [
+    {
+     "he": "מקדש מלך על ספר הזהר",
+     "en": "Mikdash Melekh on Zohar",
+     "url": "/Mikdash_Melekh_on_Zohar"
+    }
+   ]
+  },
   "438": {
    "label": "רב יוסף בר חמא",
    "slug": "rav-yosef-b-chama",
@@ -1604,6 +2548,37 @@
    "en": "Rav Yosef b. Chama",
    "total": 0,
    "works": []
+  },
+  "440": {
+   "label": "הרשב״ש (רבי שלמה בן שמעון דוראן)",
+   "slug": "shlomo-ben-shimon-duran",
+   "kind": "author",
+   "he": "שלמה בן שמעון דוראן",
+   "en": "Shlomo ben Shimon Duran",
+   "total": 1,
+   "works": [
+    {
+     "he": "תשובות הרשב\"ש",
+     "en": "Teshuvot HaRashbash",
+     "url": "/Teshuvot_HaRashbash"
+    }
+   ]
+  },
+  "442": {
+   "label": "רבי בצלאל אשכנזי",
+   "slug": "betzalel-ben-abraham-ashkenazi",
+   "kind": "author",
+   "he": "בצלאל בן אברהם אשכנזי",
+   "en": "Betzalel Ashkenazi",
+   "total": 1,
+   "works": [
+    {
+     "he": "שיטה מקובצת על תלמוד",
+     "en": "Shita Mekubetzet on Talmud",
+     "url": "/texts/Talmud/Bavli/Acharonim on Talmud/Shita Mekubetzet",
+     "cat": true
+    }
+   ]
   },
   "443": {
    "label": "רבי יוסף קארו",
@@ -1665,6 +2640,36 @@
    "total": 0,
    "works": []
   },
+  "449": {
+   "label": "רבי ישראל איסרלן",
+   "slug": "israel-isserlin",
+   "kind": "author",
+   "he": "ישראל איסרלן",
+   "en": "Israel Isserlin",
+   "total": 1,
+   "works": [
+    {
+     "he": "תרומת הדשן",
+     "en": "Terumat HaDeshen",
+     "url": "/Terumat_HaDeshen"
+    }
+   ]
+  },
+  "459": {
+   "label": "המהרי״ק (רבי יוסף קולון)",
+   "slug": "joseph-colon",
+   "kind": "author",
+   "he": "יוסף קולון",
+   "en": "Joseph Colon (Maharik)",
+   "total": 1,
+   "works": [
+    {
+     "he": "שו\"ת מהרי\"ק",
+     "en": "Teshuvot Maharik",
+     "url": "/Teshuvot_Maharik"
+    }
+   ]
+  },
   "463": {
    "label": "הרמ״א (רבי משה איסרליש)",
    "slug": "moses-isserles-(rema)",
@@ -1692,6 +2697,58 @@
      "he": "שאלות ותשובות רמ\"א",
      "en": "Responsa of Rema",
      "url": "/Responsa_of_Rema"
+    }
+   ]
+  },
+  "470": {
+   "label": "האדר״ת (רבי אליהו דוד רבינוביץ'-תאומים)",
+   "slug": "eliyahu-david-rabinowitz-teomim",
+   "kind": "author",
+   "he": "אליהו דוד רבינוביץ' תאומים",
+   "en": "Eliyahu David Rabinowitz-Teomim",
+   "total": 2,
+   "works": [
+    {
+     "he": "בני בנימין על משנה תורה",
+     "en": "Benei Binyamin on Mishneh Torah",
+     "url": "/texts/Halakhah/Mishneh Torah/Commentary/Benei Binyamin",
+     "cat": true
+    },
+    {
+     "he": "קונטרס תשובה מיראה על משנה תורה",
+     "en": "Teshuvah MeYirah on Mishneh Torah",
+     "url": "/texts/Halakhah/Mishneh Torah/Commentary/Teshuvah MeYirah",
+     "cat": true
+    }
+   ]
+  },
+  "477": {
+   "label": "רבי שלמה אבן גבירול",
+   "slug": "solomon-ibn-gabirol",
+   "kind": "author",
+   "he": "שלמה בן יהודה אבן גבירול",
+   "en": "Solomon ibn Gabirol",
+   "total": 4,
+   "works": [
+    {
+     "he": "אזהרות לרבי שלמה אבן גבירול",
+     "en": "Azharot of Solomon ibn Gabirol",
+     "url": "/Azharot_of_Solomon_ibn_Gabirol"
+    },
+    {
+     "he": "כתר מלכות",
+     "en": "Keter Malkhut",
+     "url": "/Keter_Malkhut"
+    },
+    {
+     "he": "מבחר הפנינים",
+     "en": "Mivchar HaPeninim",
+     "url": "/Mivchar_HaPeninim"
+    },
+    {
+     "he": "תקון מדות הנפש",
+     "en": "The Improvement of the Moral Qualities",
+     "url": "/The_Improvement_of_the_Moral_Qualities"
     }
    ]
   },
@@ -1735,6 +2792,21 @@
     }
    ]
   },
+  "487": {
+   "label": "חכם דוד ניטו",
+   "slug": "david-nieto",
+   "kind": "author",
+   "he": "דוד ניטו",
+   "en": "David Nieto",
+   "total": 1,
+   "works": [
+    {
+     "he": "מטה דן",
+     "en": "Matteh Dan",
+     "url": "/Matteh_Dan"
+    }
+   ]
+  },
   "488": {
    "label": "רבי שלמה אפרים מלונטשיץ (כלי יקר)",
    "slug": "shlomo-ephraim-ben-aaron-luntschitz",
@@ -1750,6 +2822,39 @@
      "cat": true
     }
    ]
+  },
+  "493": {
+   "label": "הרב יצחק אייזיק חבר",
+   "slug": "yitzchak-isaac-chaver1",
+   "kind": "author",
+   "he": "יצחק אייזיק חבר",
+   "en": "Yitzchak Isaac Chaver",
+   "total": 1,
+   "works": [
+    {
+     "he": "בנין עולם",
+     "en": "Binyan Olam",
+     "url": "/Binyan_Olam"
+    }
+   ]
+  },
+  "495": {
+   "label": "רבי משה די ליאון",
+   "slug": "moshe-de-leon",
+   "kind": "person",
+   "he": "משה בן שם-טוב די-ליאון",
+   "en": "Moshe de Leon",
+   "total": 0,
+   "works": []
+  },
+  "497": {
+   "label": "הרב אליהו אליעזר דסלר",
+   "slug": "eliyahu-eliezer-dessler",
+   "kind": "person",
+   "he": "אליהו אליעזר דסלר",
+   "en": "Eliyahu Eliezer Dessler",
+   "total": 0,
+   "works": []
   },
   "503": {
    "label": "רבי יהושע בן חנניה",
@@ -1851,12 +2956,56 @@
    "total": 0,
    "works": []
   },
+  "528": {
+   "label": "הרב יעקב צבי מקלנבורג",
+   "slug": "yaakov-tzvi-mecklenburg",
+   "kind": "author",
+   "he": "יעקב צבי מקלנבורג",
+   "en": "Yaakov Tzvi Mecklenburg",
+   "total": 1,
+   "works": [
+    {
+     "he": "הכתב והקבלה",
+     "en": "HaKtav VeHaKabalah",
+     "url": "/HaKtav_VeHaKabalah"
+    }
+   ]
+  },
+  "529": {
+   "label": "הרב מנשה בן ישראל",
+   "slug": "menasseh-ben-israel",
+   "kind": "author",
+   "he": "מנשה בן ישראל",
+   "en": "Menasseh ben Israel",
+   "total": 2,
+   "works": [
+    {
+     "he": "על תחיית המתים",
+     "en": "On Resurrection of the Dead",
+     "url": "/On_Resurrection_of_the_Dead"
+    },
+    {
+     "he": "נשמת חיים",
+     "en": "Nishmat Chayyim",
+     "url": "/Nishmat_Chayyim"
+    }
+   ]
+  },
   "534": {
    "label": "ילתא",
    "slug": "yalta",
    "kind": "person",
    "he": "ילתא",
    "en": "Yalta",
+   "total": 0,
+   "works": []
+  },
+  "535": {
+   "label": "צרויה",
+   "slug": "zeruiah",
+   "kind": "person",
+   "he": "צרויה",
+   "en": "Zeruiah",
    "total": 0,
    "works": []
   },
@@ -1962,6 +3111,28 @@
    "en": "Rabbi Hanina b. Pappa",
    "total": 0,
    "works": []
+  },
+  "546": {
+   "label": "רבי ישראל ליפשיץ",
+   "slug": "israel-lifschitz",
+   "kind": "author",
+   "he": "ישראל ליפשיץ‎‎",
+   "en": "Israel Lifschitz",
+   "total": 2,
+   "works": [
+    {
+     "he": "יכין על משנה",
+     "en": "Yachin on Mishnah",
+     "url": "/texts/Mishnah/Acharonim on Mishnah/Yachin",
+     "cat": true
+    },
+    {
+     "he": "בועז על משנה",
+     "en": "Boaz on Mishnah",
+     "url": "/texts/Mishnah/Acharonim on Mishnah/Boaz",
+     "cat": true
+    }
+   ]
   },
   "549": {
    "label": "רבי שמשון רפאל הירש",
@@ -2335,6 +3506,36 @@
    "total": 0,
    "works": []
   },
+  "585": {
+   "label": "רבי לוי בן חביב (המהרלב\"ח)",
+   "slug": "levi-ibn-habib",
+   "kind": "author",
+   "he": "לוי בן חביב",
+   "en": "Levi ibn Habib",
+   "total": 1,
+   "works": [
+    {
+     "he": "עין יעקב",
+     "en": "Ein Yaakov",
+     "url": "/Ein_Yaakov"
+    }
+   ]
+  },
+  "587": {
+   "label": "רבי משה חיים אפרים מסדילקוב",
+   "slug": "moshe-chaim-ephraim-of-sudilkov",
+   "kind": "author",
+   "he": "משה חיים אפרים מסדילקוב",
+   "en": "Moshe Chaim Ephraim of Sudilkov",
+   "total": 1,
+   "works": [
+    {
+     "he": "דגל מחנה אפרים",
+     "en": "Degel Machaneh Ephraim",
+     "url": "/Degel_Machaneh_Ephraim"
+    }
+   ]
+  },
   "588": {
    "label": "רבי משה מקוצי (הסמ\"ג)",
    "slug": "moses-ben-jacob-of-coucy",
@@ -2347,6 +3548,41 @@
      "he": "ספר מצוות גדול",
      "en": "Sefer Mitzvot Gadol",
      "url": "/Sefer_Mitzvot_Gadol"
+    }
+   ]
+  },
+  "589": {
+   "label": "רבי נתן מברסלב (מנמירוב)",
+   "slug": "nathan-sternhartz",
+   "kind": "author",
+   "he": "נתן שטרנהרץ",
+   "en": "Nathan Sternhartz",
+   "total": 5,
+   "works": [
+    {
+     "he": "חיי מוהר\"ן",
+     "en": "Chayei Moharan",
+     "url": "/Chayei_Moharan"
+    },
+    {
+     "he": "ליקוטי הלכות",
+     "en": "Likutei Halakhot",
+     "url": "/Likutei_Halakhot"
+    },
+    {
+     "he": "ליקוטי תפילות",
+     "en": "Likutei Tefilot",
+     "url": "/Likutei_Tefilot"
+    },
+    {
+     "he": "שבחי הר\"ן",
+     "en": "Shivchei HaRan",
+     "url": "/Shivchei_HaRan"
+    },
+    {
+     "he": "סיפורי מעשיות",
+     "en": "Sippurei Maasiyot",
+     "url": "/Sippurei_Maasiyot"
     }
    ]
   },
@@ -2517,6 +3753,52 @@
     }
    ]
   },
+  "601": {
+   "label": "רבנו חזקיה די סילוה (פרי חדש)",
+   "slug": "hezekiah-da-silva",
+   "kind": "author",
+   "he": "חזקיה די סילוה",
+   "en": "Hezekiah da Silva",
+   "total": 2,
+   "works": [
+    {
+     "he": "חידושי מים חיים על ספר מדע",
+     "en": "Chidushei Mayim Chayim on Sefer Madda",
+     "url": "/texts/Halakhah/Mishneh Torah/Commentary/Chidushei Mayim Chayim/Sefer Madda",
+     "cat": true
+    },
+    {
+     "he": "פרי חדש על ספר מדע",
+     "en": "Peri Chadash on Sefer Madda",
+     "url": "/texts/Halakhah/Mishneh Torah/Commentary/Peri Chadash/Sefer Madda",
+     "cat": true
+    }
+   ]
+  },
+  "602": {
+   "label": "רבי יצחק בן אבא מרי (בעל העיטור)",
+   "slug": "isaac-ben-abba-mari",
+   "kind": "person",
+   "he": "יצחק בן אבא מרי",
+   "en": "Isaac ben Abba Mari",
+   "total": 0,
+   "works": []
+  },
+  "603": {
+   "label": "רבי יעקב אבן חביב (עין יעקב)",
+   "slug": "jacob-ibn-habib",
+   "kind": "author",
+   "he": "יעקב בן שלמה אבן חביב",
+   "en": "Jacob ibn Habib",
+   "total": 1,
+   "works": [
+    {
+     "he": "עין יעקב",
+     "en": "Ein Yaakov",
+     "url": "/Ein_Yaakov"
+    }
+   ]
+  },
   "605": {
    "label": "רבי יוסי בן חלפתא",
    "slug": "rabbi-yose-b-chalafta",
@@ -2571,6 +3853,15 @@
     }
    ]
   },
+  "612": {
+   "label": "ר' משה מנדלסון (רמבמ\"ן)",
+   "slug": "moses-mendelssohn",
+   "kind": "person",
+   "he": "משה מנדלסון",
+   "en": "Moses Mendelssohn",
+   "total": 0,
+   "works": []
+  },
   "613": {
    "label": "לאה אמנו",
    "slug": "leah",
@@ -2586,6 +3877,15 @@
    "kind": "person",
    "he": "גדליה",
    "en": "Gedaliah",
+   "total": 0,
+   "works": []
+  },
+  "618": {
+   "label": "הרב אליעזר יהודה וולדנברג (הציץ אליעזר)",
+   "slug": "eliezer-yehuda-waldenberg",
+   "kind": "person",
+   "he": "אליעזר יהודה וולדנברג",
+   "en": "Eliezer Yehuda Waldenberg",
    "total": 0,
    "works": []
   },

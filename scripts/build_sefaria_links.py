@@ -46,7 +46,13 @@ ERA = {'T': 'tannaim', 'A': 'amoraim', 'GN': 'geonim', 'RI': 'rishonim', 'AH': '
 # People whose writings Sefaria files under the book rather than under an author page.
 # sage id -> list of (Sefaria index title in English, Hebrew title). Verified by hand
 # against the roster; extend deliberately.
-# sage label (normalized) is not used; the key is the Sefaria topic slug.
+# Where two sages carry names that lead to one Sefaria page, the page belongs to
+# the one named here. (Isaiah di Trani the Elder, "הרי״ד הזקן", wrote the Tosafot
+# Rid; his grandson of the same name, "הריא״ז", is a different man whom Sefaria
+# does not list under that page.)
+PREFER = {'isaiah-dtrani': '308'}
+
+# Keyed by Sefaria topic slug.
 MANUAL = {
     'moses': [('Torah', 'תורה', '/texts/Tanakh/Torah')],
     'king-david': [('Psalms', 'תהלים', '/Psalms')],
@@ -202,6 +208,64 @@ def main():
             detail_cache[slug] = get('/topics/%s?with_indexes=1&with_refs=0' % urllib.parse.quote(slug))
         return detail_cache[slug]
 
+    def evaluate(s, slugs, exact):
+        """Sort candidate slugs into (works verified, person pages, rejected)."""
+        good, persons, bad = [], [], []
+        for slug in slugs:
+            d = detail(slug)
+            if not d or d.get('subclass') not in ('author', 'person'):
+                continue
+            verdict = years_ok(s, d.get('properties') or {}, need_years=slug not in exact)
+            works = d.get('indexes') or []
+            if verdict is True and works:
+                good.append((slug, d))
+            elif not works and (verdict is True or (slug in exact and verdict is None)):
+                # A person Sefaria lists no books for (the tannaim, the prophets):
+                # the topic page still collects every source in which he appears.
+                # Accepted when the years agree, or when the name is exactly his
+                # and nothing contradicts it.
+                persons.append((slug, d))
+            else:
+                bad.append((slug, verdict, len(works), d))
+        return good, persons, bad
+
+    def raw_names(label):
+        """The names a sage goes by, as written (not normalized), for Sefaria's own search."""
+        main = label.split(' – ')[0]
+        parens = [p for p in re.findall(r'\(([^)]*)\)', main) if not re.search(r'\d', p)]
+        base = re.sub(r'\([^)]*\)', ' ', main).strip()
+        out = []
+        for n in [base] + parens:
+            toks = n.split()
+            for cand in [n] + ([' '.join(toks[1:])] if len(toks) >= 3 and norm(toks[0]) in HONORIFIC else []):
+                if cand and cand not in out:
+                    out.append(cand)
+        return out
+
+    def name_search(s):
+        """Candidates from Sefaria's name search for sages the topic list did not
+        settle. The search is fuzzy ("בעל העקידה" returns "בעל הסולם"), so a result
+        counts only if its title is the sage's name, or contains it, or is contained
+        in it; the birth/death years then decide, as for any loose match."""
+        found, exact = [], set()
+        wanted = set(variants(s['label']))
+        for q in raw_names(s['label']):
+            r = get('/name/%s?limit=10' % urllib.parse.quote(q))
+            for c in (r or {}).get('completion_objects', []):
+                if c.get('type') not in ('AuthorTopic', 'PersonTopic'):
+                    continue
+                tn = norm(c['title'])
+                is_exact = any(f in wanted for f in forms(tn, c['title']))
+                tt = frozenset(tn.split()) - GENERIC
+                is_loose = any(
+                    (len(tt) >= 2 and tt <= vt) or (len(vt) >= 2 and vt <= tt)
+                    for vt in (frozenset(v.split()) - GENERIC for v in wanted) if vt)
+                if (is_exact or is_loose) and c['key'] not in found:
+                    found.append(c['key'])
+                    if is_exact:
+                        exact.add(c['key'])
+        return found, exact
+
     matches, ties, rejected, nothing = {}, [], [], []
     for s in sages:
         slugs = []
@@ -213,27 +277,17 @@ def main():
         for slug in loose(s['label']):
             if slug not in slugs:
                 slugs.append(slug)
+        good, persons, bad = evaluate(s, slugs, exact) if slugs else ([], [], [])
+        if not good and not persons:
+            more, more_exact = name_search(s)
+            more = [m for m in more if m not in slugs]
+            if more:
+                g2, p2, b2 = evaluate(s, more, more_exact)
+                good, persons, bad = good + g2, persons + p2, bad + b2
+                slugs += more
         if not slugs:
             nothing.append(s)
             continue
-        good, bad, persons = [], [], []
-        for slug in slugs:
-            d = detail(slug)
-            if not d:
-                continue
-            if d.get('subclass') not in ('author', 'person'):
-                continue
-            verdict = years_ok(s, d.get('properties') or {}, need_years=slug not in exact)
-            works = d.get('indexes') or []
-            if verdict is True and works:
-                good.append((slug, d))
-            elif not works and slug in exact and verdict in (True, None):
-                # A person Sefaria knows by this very name but lists no books for
-                # (the tannaim, the prophets): the topic page still collects every
-                # source in which he appears.
-                persons.append((slug, d))
-            else:
-                bad.append((slug, verdict, len(works), d))
         if len(good) == 1:
             matches[s['id']] = (s, good[0][0], good[0][1])
         elif len(good) > 1:
@@ -244,6 +298,20 @@ def main():
             ties.append((s, [g[0] for g in persons]))
         else:
             rejected.append((s, bad))
+
+    # One page, one sage. A page claimed by two sages goes to the one in PREFER; if
+    # there is none, to neither, and both are reported.
+    claimed = {}
+    for sid, (s, slug, d) in matches.items():
+        claimed.setdefault(slug, []).append(sid)
+    shared = []
+    for slug, sids in claimed.items():
+        if len(sids) < 2:
+            continue
+        keep = PREFER.get(slug)
+        for sid in sids:
+            if sid != keep:
+                shared.append((matches.pop(sid)[0], slug))
 
     out = {}
     for sid, (s, slug, d) in matches.items():
@@ -278,8 +346,10 @@ def main():
         json.dump(doc, f, ensure_ascii=False, indent=1)
         f.write('\n')
 
-    print('sages: %d | matched: %d | tie: %d | rejected: %d | no Sefaria topic by that name: %d'
-          % (len(sages), len(matches), len(ties), len(rejected), len(nothing)))
+    print('sages: %d | matched: %d | tie: %d | page claimed twice: %d | rejected: %d | no Sefaria topic by that name: %d'
+          % (len(sages), len(matches), len(ties), len(shared), len(rejected), len(nothing)))
+    for s, slug in shared:
+        print('  not used: %s %s also leads to %s' % (s['id'], s['label'].split(' – ')[0], slug))
     if args.report:
         print('\n== MATCHED ==')
         for sid, (s, slug, d) in matches.items():
