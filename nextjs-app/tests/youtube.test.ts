@@ -81,21 +81,26 @@ test('a video sits under the language its title is written in, or is marked infe
   }
 })
 
-test('the owner’s rule: of two adjacent English-titled uploads the first is the Russian one, except two sages', () => {
+test('the pairs the owner listened to are filed as he heard them', () => {
   const inferred = youtubeEntries().filter(([, e]) => (e.ru ?? []).some(v => v.inferred))
-  assert.ok(inferred.length >= 270, `only ${inferred.length} sages have an inferred Russian video`)
+  assert.ok(inferred.length >= 70, `only ${inferred.length} sages have an inferred Russian video`)
   for (const [id, e] of inferred) {
     assert.equal(e.ru!.length, 1, `${id}: one Russian video`)
     assert.equal(e.en?.length, 1, `${id}: and one English video`)
   }
-  // Rabbi Shabtai HaKohen (83), the Shach, was one of the owner's own examples: first Russian, second English
-  assert.equal(sageVideos('83', 'ru')[0]?.id, 'OlCwbut_kfc')
-  assert.equal(sageVideos('83', 'en')[0]?.id, '_w9R_rFvReU')
-  // Rabbeinu Perachiah (288) and the Meshech Chochmah (128): both videos are English
-  for (const id of ['288', '128']) {
-    assert.equal(sageVideos(id, 'ru').length, 0, `${id} has no Russian video`)
-    assert.equal(sageVideos(id, 'en').length, 2, `${id} has two English videos`)
-  }
+  // first Russian, second English: Rashi (13/14) and the Shach (420/421)
+  assert.deepEqual([sageVideos('594', 'ru')[0]?.id, sageVideos('594', 'en')[0]?.id], ['V_IWxYu1f9Y', 'q5x9P6uZGpE'])
+  assert.deepEqual([sageVideos('83', 'ru')[0]?.id, sageVideos('83', 'en')[0]?.id], ['OlCwbut_kfc', '_w9R_rFvReU'])
+  // first English, second Russian: Rabbeinu Perachiah (288, rows 248/249) and the Meshech Chochmah (128, rows 600/601)
+  assert.deepEqual([sageVideos('288', 'en')[0]?.id, sageVideos('288', 'ru')[0]?.id], ['NnujnyQUOOg', '-pmGp_mGqDw'])
+  assert.deepEqual([sageVideos('128', 'en')[0]?.id, sageVideos('128', 'ru')[0]?.id], ['V8-UTxd-8bA', 'P3ez1FM8JmA'])
+})
+
+test('a pair nobody has checked is not guessed: both stay English', () => {
+  // rows 189-656 flip order from pair to pair, so the unchecked pairs there are left as titled
+  // (Rabbi Yisrael Yehoshua Trunk of Kutno, 422, rows 200/201, was not among the pairs checked)
+  assert.equal(sageVideos('422', 'ru').length, 0)
+  assert.equal(sageVideos('422', 'en').length, 2)
 })
 
 console.log('\nlookup and urls')
