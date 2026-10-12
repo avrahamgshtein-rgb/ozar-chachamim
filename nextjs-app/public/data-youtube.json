@@ -9,10 +9,12 @@
      "id": "N4VkJHxmCyw",
      "title": "The Book of Ben Sira: Wisdom, Canon, and Rabbinic Reception",
      "seconds": 401
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "LaxBMDaBkts",
-     "title": "The Book of Ben Sira: Wisdom, Canon, and the Attitude of the Sages",
+     "title": "Книга Бен Сира: мудрость, канон и отношение мудрецов",
      "seconds": 456
     }
    ]
@@ -21,14 +23,16 @@
    "label": "שמעון בן שטח",
    "en": [
     {
-     "id": "45auP5om2UY",
-     "title": "Shimon ben Shetach: Architect of Halacha, Law, and Society during the Temple Period",
-     "seconds": 431
-    },
-    {
      "id": "pO3Q-MvYB4k",
      "title": "Shimon ben Shetach: Architect of Halakha, Law, and Society in the Days of the Temple",
      "seconds": 518
+    }
+   ],
+   "ru": [
+    {
+     "id": "45auP5om2UY",
+     "title": "Шимон бен Шетах: архитектор галахи, права и общества во времена Храма",
+     "seconds": 431
     }
    ]
   },
@@ -39,10 +43,12 @@
      "id": "ZbHRSHV1t3k",
      "title": "Philo: Allegory, Providence, and the Logos",
      "seconds": 499
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "hPZTrIjN9BQ",
-     "title": "Philo: Allegory, Providence, and Logos",
+     "title": "Филон: Аллегория, Провидение и Логос",
      "seconds": 450
     }
    ]
@@ -54,10 +60,12 @@
      "id": "cWkL7SblnzA",
      "title": "Rabbi Akiva and the Bar Kokhba Revolt: Between Faith, Mysticism, and History",
      "seconds": 477
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "o8MRkCu3L3k",
-     "title": "Rabbi Akiva and the Bar Kochba Revolt: Between Faith, Mysticism, and History",
+     "title": "Рабби Акива и восстание Бар-Кохбы: между верой, мистикой и историей",
      "seconds": 389
     }
    ]
@@ -66,14 +74,16 @@
    "label": "עקילס מפונטוס – הגר שהפך את השפה היוונית לכלי נשק של תורה",
    "en": [
     {
-     "id": "4cjauEuG0zc",
-     "title": "Aquiles of Pontus, a proselyte who turned the Greek language into a weapon of the Torah",
-     "seconds": 488
-    },
-    {
      "id": "BDVUJqIUl6w",
      "title": "Aquila of Pontus – the Convert Who Turned the Greek Language into a Weapon of Torah",
      "seconds": 486
+    }
+   ],
+   "ru": [
+    {
+     "id": "4cjauEuG0zc",
+     "title": "Акилес из Понта — прозелит, превративший греческий язык в оружие Торы",
+     "seconds": 488
     }
    ]
   },
@@ -84,10 +94,12 @@
      "id": "Mrqy1OXaNlM",
      "title": "The Legacy of Rabbi Ḥiyya and His Sons",
      "seconds": 384
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "5KDTHavLk3U",
-     "title": "The Legacy of Rabbi Chiya and His Sons",
+     "title": "Наследие раби Хии и его сыновей",
      "seconds": 516
     }
    ]
@@ -99,10 +111,12 @@
      "id": "mSwsevTfIbE",
      "title": "The Legends of Rabbah bar bar Ḥana: Mystery, Allegory, and Reality",
      "seconds": 376
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "ItTVEvyZgWw",
-     "title": "Agadoth Rabbi bar bar Khani: mystery, allegory and reality",
+     "title": "Агадот Раббы бар бар Ханы: тайна, аллегория и реальность",
      "seconds": 415
     }
    ]
@@ -111,14 +125,16 @@
    "label": "תרגום השבעים",
    "en": [
     {
-     "id": "tPrp9x3x1qY",
-     "title": "The Epistle of Aristeas and the Septuagint: History, Myth, and Interpretation",
-     "seconds": 450
-    },
-    {
      "id": "a7EkTYHAuGs",
      "title": "The Letter of Aristeas and the Septuagint: History, Myth, and Interpretation",
      "seconds": 462
+    }
+   ],
+   "ru": [
+    {
+     "id": "tPrp9x3x1qY",
+     "title": "Послание Аристея и Септуагинта: история, миф и интерпретация",
+     "seconds": 450
     }
    ]
   },
@@ -129,10 +145,12 @@
      "id": "rQWrr2AWGWg",
      "title": "Rabbi Yehudah HaHasid: Between Law and Mysticism",
      "seconds": 495
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "KSKk18BgQBQ",
-     "title": "Rabbi Yehuda the Chassid and His Testament: Between Halacha and Mysticism in the Teachings of Ash...",
+     "title": "Рабби Йеhуда Хасид и его Завещание: между Галахой и мистикой в учении ашкеназских хасидов",
      "seconds": 400
     }
    ]
@@ -141,14 +159,16 @@
    "label": "רבנו בחיי בן אשר",
    "en": [
     {
-     "id": "21WBLQ8ETjc",
-     "title": "Rabbeinu Bachya ben Asher: Between pshat and sod",
-     "seconds": 341
-    },
-    {
      "id": "A9WGoajqE-g",
      "title": "Rabbeinu  Bahya ben Asher: Between Peshat and Sod",
      "seconds": 462
+    }
+   ],
+   "ru": [
+    {
+     "id": "21WBLQ8ETjc",
+     "title": "Рабейну Бахья бен Ашер: между пшат и сод",
+     "seconds": 341
     }
    ]
   },
@@ -156,23 +176,25 @@
    "label": "הר\"ן (רבנו נסים מגירונה)",
    "en": [
     {
-     "id": "h0NH3WSv5YA",
-     "title": "Rabbi Nissim of Girona (Ran): Leadership, Halacha, and Philosophy in Spanish Judaism",
-     "seconds": 471
-    },
-    {
      "id": "2XJJabgWnnc",
      "title": "Rabbi Nissim of Girona (Ran): Leadership, Halakha, and Philosophy in Spanish Judaism",
      "seconds": 459
+    }
+   ],
+   "ru": [
+    {
+     "id": "h0NH3WSv5YA",
+     "title": "Рабби Ниссим из Гироны (Ран): лидерство, галаха и философия в испанском иудаизме",
+     "seconds": 471
     }
    ]
   },
   "14": {
    "label": "רבי שמעון לביא",
-   "en": [
+   "ru": [
     {
      "id": "UVxTJs_uH04",
-     "title": "Rabbi Shimon Lavi: His Life and Kabbalistic-Poetic Works",
+     "title": "Рабби Шимон Лави: его жизнь и каббалистико-поэтическое творчество",
      "seconds": 349
     }
    ]
@@ -181,14 +203,16 @@
    "label": "רבי יוסף אלבו",
    "en": [
     {
-     "id": "V7L8nIRQO3I",
-     "title": "Rabbi Yosef Albo – a sage who maintained faith in times of crisis",
-     "seconds": 491
-    },
-    {
      "id": "gmQs0iEFQo0",
      "title": "Rabbi Joseph Albo – The Sage Who Preserved Faith in a Time of Crisis",
      "seconds": 458
+    }
+   ],
+   "ru": [
+    {
+     "id": "V7L8nIRQO3I",
+     "title": "Рабби Йосеф Альбо – мудрец, сохранивший веру во времена кризиса",
+     "seconds": 491
     }
    ]
   },
@@ -199,10 +223,12 @@
      "id": "Q-Xyz1QIjRM",
      "title": "Rabbi Ovadia of Bartenura – The Reviver of Torah in Jerusalem",
      "seconds": 429
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "4gIWbVxeqY0",
-     "title": "Rabbi Ovadia of Bartenura – Reviver of the Torah in Jerusalem",
+     "title": "Рабби Овадия из Бартенуры – Возродитель Торы в Иерусалиме",
      "seconds": 439
     }
    ]
@@ -214,10 +240,12 @@
      "id": "3q5n5tvD3Uc",
      "title": "Joseph Hayyun's Interpretation and the Authorship of Deuteronomy",
      "seconds": 547
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "jJsDJ8jG8P8",
-     "title": "Joseph Hayun: Interpretation and Authorship of Deuteronomy",
+     "title": "Иосеф Хаюн: интерпретация и авторство Второзакония",
      "seconds": 374
     }
    ]
@@ -226,14 +254,16 @@
    "label": "רב שרירא גאון – איגרת רב שרירא גאון",
    "en": [
     {
-     "id": "lSjipsMeeN8",
-     "title": "The Message of Rabbi Sherir Gaon: The Transmission of the Oral Torah",
-     "seconds": 433
-    },
-    {
      "id": "NbRX0_4a0YU",
      "title": "The Epistle of Rav Sherira Gaon: The Transmission of the Oral Torah",
      "seconds": 471
+    }
+   ],
+   "ru": [
+    {
+     "id": "lSjipsMeeN8",
+     "title": "Послание рава Шерира Гаона: передача Устной Торы",
+     "seconds": 433
     }
    ]
   },
@@ -241,14 +271,16 @@
    "label": "רבנו גרשום מאור הגולה",
    "en": [
     {
-     "id": "QkMGSEKSloA",
-     "title": "Rabbi Gershom Maor HaGola: Leadership, Rulings, and Ashkenazi Heritage",
-     "seconds": 396
-    },
-    {
      "id": "iIawKcomtms",
      "title": "Rabbeinu Gershom, the Light of the Exile: Leadership, Decrees, and the Ashkenazic Legacy",
      "seconds": 387
+    }
+   ],
+   "ru": [
+    {
+     "id": "QkMGSEKSloA",
+     "title": "Рабби Гершом Маор ха-Гола: лидерство, постановления и ашкеназское наследие",
+     "seconds": 396
     }
    ]
   },
@@ -259,10 +291,12 @@
      "id": "7Q4Ko9rvn1c",
      "title": "Menahem ben Saruq: Reviving the Holy Tongue",
      "seconds": 369
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "ju-wq16y4z4",
-     "title": "Menachem ben Saruk: The Revival of the Holy Language",
+     "title": "Менахем бен Сарук: Возрождение святого языка",
      "seconds": 420
     }
    ]
@@ -271,14 +305,16 @@
    "label": "חסדאי אבן שפרוט",
    "en": [
     {
-     "id": "Edtc41JuKoQ",
-     "title": "Hasdai ibn Shaprut and the Golden Age in Muslim Spain",
-     "seconds": 368
-    },
-    {
      "id": "m1y3lw3Ie8k",
      "title": "Hasdai ibn Shaprut and the Golden Age in Muslim Spain",
      "seconds": 391
+    }
+   ],
+   "ru": [
+    {
+     "id": "Edtc41JuKoQ",
+     "title": "Хасдай ибн Шапрут и Золотой век в мусульманской Испании",
+     "seconds": 368
     }
    ]
   },
@@ -289,10 +325,12 @@
      "id": "hfCTq-3SG2w",
      "title": "Rav Hai Gaon: Last of the Geonim, First of the Greats",
      "seconds": 413
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "95zK1eE05_w",
-     "title": "Rabbi Hai Gaon – the last of the Gaonim and the first of the Greats: the man who restored the fir...",
+     "title": "Рабби Хай Гаон – последний из Гаонов и первый из Великих:человек, восстановивший твёрдость Галахи",
      "seconds": 456
     }
    ]
@@ -301,14 +339,16 @@
    "label": "רבי יונה אבן ג'נאח",
    "en": [
     {
-     "id": "ExXX4KtZnyo",
-     "title": "Rabbi Jonah ibn Janah: The Father of Grammarians",
-     "seconds": 471
-    },
-    {
      "id": "J99rxn7meSI",
      "title": "Rabbi Jonah ibn Janah: The Father of the Grammarians",
      "seconds": 433
+    }
+   ],
+   "ru": [
+    {
+     "id": "ExXX4KtZnyo",
+     "title": "Рабби Йона ибн Джанах: отец грамматиков",
+     "seconds": 471
     }
    ]
   },
@@ -319,10 +359,12 @@
      "id": "rMuyNAx8F-0",
      "title": "Rabbi Isaac ben Asher HaLevi: Founder of the Tosafist Movement in Ashkenaz",
      "seconds": 376
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "cojlkEc7V64",
-     "title": "Rabbi Yitzhak ben Asher ha-Levi: Founder of the Tosafist movement in Ashkenaz",
+     "title": "Рабби Ицхак бен Ашер ха-Леви: основатель движения тосафистов в Ашкеназе",
      "seconds": 377
     }
    ]
@@ -331,14 +373,16 @@
    "label": "רבנו תם (ר׳ יעקב בן מאיר) – מהפכן השיטה התוספתית",
    "en": [
     {
-     "id": "suR4WZYbvQI",
-     "title": "Rabbeinu Tam: Architect of Talmudic Scholarship and the Legacy of the Tosefists",
-     "seconds": 370
-    },
-    {
      "id": "s0OXFxwzbvY",
      "title": "Rabbeinu Tam: Architect of Talmudic Scholarship and the Tosafists’ Legacy",
      "seconds": 371
+    }
+   ],
+   "ru": [
+    {
+     "id": "suR4WZYbvQI",
+     "title": "Рабейну Там: архитектор талмудической учености и наследие тосефистов",
+     "seconds": 370
     }
    ]
   },
@@ -349,10 +393,12 @@
      "id": "sk-8_se67No",
      "title": "Rabbi Abraham ibn Daud – The Sephardic thinker who restored sacred intellect to its rightful place",
      "seconds": 423
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "0vbc9ck6Cp0",
-     "title": "Rabbi Abraham ibn Daud – the Sephardic thinker who restored the holy mind to its true place",
+     "title": "Рабби Авраам ибн Дауд – сефардский мыслитель, который вернул святой разум на его истинное место",
      "seconds": 382
     }
    ]
@@ -364,10 +410,12 @@
      "id": "rKV8pFNPoNc",
      "title": "Rabbeinu Chananel – Charting a Path Through the Sea of Talmud",
      "seconds": 420
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "78fXQnBLjTc",
-     "title": "Rabbeinu Hananel – a guide in the sea of ​​Talmud",
+     "title": "Рабейну Хананель – проводник в море Талмуда",
      "seconds": 403
     }
    ]
@@ -379,10 +427,12 @@
      "id": "eGf4x9EmZPY",
      "title": "The Sages of Provence: Renaissance, Kabbalah, and Philosophy",
      "seconds": 400
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "_uAhnK-DRuE",
-     "title": "The Wise Men of Provence: Renaissance, Kabbalah, and Philosophy",
+     "title": "Мудрецы Прованса: Ренессанс, каббала и философия",
      "seconds": 319
     }
    ]
@@ -394,10 +444,12 @@
      "id": "k5g7dfUeBlw",
      "title": "“Duties of the Heart”: The Essence of Jewish Ethics",
      "seconds": 372
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "eEk1_6ItRcY",
-     "title": "\"Hovot ha-Levavot\": The Essence of Jewish Ethics",
+     "title": "«Ховот ха-Левавот»: сущность иудейской этики",
      "seconds": 411
     }
    ]
@@ -409,10 +461,12 @@
      "id": "L3QYphJftL0",
      "title": "The Legacy of Maimonides: Halakha, Philosophy, and Medicine",
      "seconds": 476
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "oTMlHYkU8EI",
-     "title": "Rambam's Legacy: Halacha, Philosophy, and Medicine",
+     "title": "Наследие Рамбама: галаха, философия и медицина",
      "seconds": 416
     }
    ]
@@ -424,10 +478,12 @@
      "id": "LPctSZFc1Ok",
      "title": "Rabbi Yitzhak Sagi Nahor – the Blind Sage Who “Saw” the Secrets of Creation",
      "seconds": 398
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "Zs2RLQN4GZE",
-     "title": "Rabbi Yitzchak Sagi Nahor – the blind sage who “saw” the secrets of creation",
+     "title": "Рабби Ицхак Саги Наhор – слепой мудрец, который “видел” тайны творения",
      "seconds": 433
     }
    ]
@@ -436,14 +492,16 @@
    "label": "רבי יצחק מווינה (בעל האור זרוע)",
    "en": [
     {
-     "id": "ARiH1Rj5xY8",
-     "title": "Rabbi Yitzchak of Vienna, author of Or Zaruah, the man who brought light between the Talmuds",
-     "seconds": 421
-    },
-    {
      "id": "512lSocpjjs",
-     "title": "Rabbi Isaac of Vienna, Author of the Or Zarua – the Man Who Sowed Light",
+     "title": "Rabbi Isaac of Vienna, Author of the Or Zarua – the Man Who Sowed Light ",
      "seconds": 380
+    }
+   ],
+   "ru": [
+    {
+     "id": "ARiH1Rj5xY8",
+     "title": "Рабби Ицхак из Вены, автор «Ор Зару́а» — человек, посеявший свет между Талмудами",
+     "seconds": 421
     }
    ]
   },
@@ -451,19 +509,9 @@
    "label": "הרמב\"ן (רבי משה בן נחמן)",
    "en": [
     {
-     "id": "YQ8jGmsbrBQ",
-     "title": "Ramban is a leader exiled from Spain to rebuild Jerusalem.",
-     "seconds": 497
-    },
-    {
      "id": "mZ9WV8-dTh0",
      "title": "Nachmanides – the leader who was exiled from Spain in order to revive Jerusalem",
      "seconds": 540
-    },
-    {
-     "id": "R2ZKRgGHDhw",
-     "title": "Ramban: An Intellectual and Polemical Portrait and His Tortious Legacy from Girona to Jerusalem",
-     "seconds": 398
     },
     {
      "id": "wiaVl7oe37Q",
@@ -471,23 +519,35 @@
      "seconds": 519
     },
     {
-     "id": "LfvYLMFkpPQ",
-     "title": "Ramban: An Intellectual and Polemical Portrait and His Torah Legacy – From Girona to Jerusalem",
-     "seconds": 398
-    },
-    {
      "id": "ZzkrglHsFzo",
      "title": "Ramban: An Intellectual and Polemical Portrait and His Torah Legacy from Girona to Jerusalem",
      "seconds": 519
+    }
+   ],
+   "ru": [
+    {
+     "id": "YQ8jGmsbrBQ",
+     "title": "Рамбан — лидер, изгнанный из Испании, чтобы возродить Иерусалим",
+     "seconds": 497
+    },
+    {
+     "id": "R2ZKRgGHDhw",
+     "title": "Рамбан: интеллектуальный и полемический портрет и его торческое наследие от Жироны до Иерусалима",
+     "seconds": 398
+    },
+    {
+     "id": "LfvYLMFkpPQ",
+     "title": "Рамбан : интеллектуальный и полемический портрет и его Торо́вское наследие — от Гироны до Иерусалима",
+     "seconds": 398
     }
    ]
   },
   "45": {
    "label": "רבי יוסף בכור שור",
-   "en": [
+   "ru": [
     {
      "id": "F6OpXRNgnEA",
-     "title": "Exegesis of the Torah by Rabbi Yosefa Behor-Shora",
+     "title": "Экзегеза Торы рабби Йосефа Бехор-Шора",
      "seconds": 399
     }
    ]
@@ -496,14 +556,16 @@
    "label": "רבי זרחיה הלוי (בעל המאור)",
    "en": [
     {
-     "id": "yCxglEA5Qv8",
-     "title": "Rabbi Zerachiah Halevi: The Light of Provence and the Objections of the Raabd",
-     "seconds": 388
-    },
-    {
      "id": "BF8m7S_sCk0",
      "title": "Rabbi Zerachiah HaLevi: The Luminary of Provence and the Raavad’s Critiques",
      "seconds": 507
+    }
+   ],
+   "ru": [
+    {
+     "id": "yCxglEA5Qv8",
+     "title": "Рабби Зерахия ха-Леви: Свет Прованса и возражения РААБДа",
+     "seconds": 388
     }
    ]
   },
@@ -511,23 +573,25 @@
    "label": "המהר\"ם מרוטנבורג",
    "en": [
     {
-     "id": "ixo0Ng7SFaI",
-     "title": "Maharam of Rothenburg: Leadership, Halacha, and Community Authority in Ashkenazi",
-     "seconds": 377
-    },
-    {
      "id": "elwVhjoLh2g",
      "title": "Maharam of Rothenburg: Leadership, Halakha, and Communal Authority in Ashkenaz",
      "seconds": 379
+    }
+   ],
+   "ru": [
+    {
+     "id": "ixo0Ng7SFaI",
+     "title": "Маарам из Ротенбурга: лидерство, галаха и власть общины в Ашкеназе",
+     "seconds": 377
     }
    ]
   },
   "48": {
    "label": "בנימין מטודלה – העד הנאמן של ישראל בגלות, שגילה את העולם היהודי במאה ה־12",
-   "en": [
+   "ru": [
     {
      "id": "frMqYX-cjBU",
-     "title": "Benjamin of Tudela: A Medieval Jewish Traveler",
+     "title": "Биньямин из Туделы: средневековый еврейский путешественник",
      "seconds": 494
     }
    ]
@@ -536,14 +600,16 @@
    "label": "הראבי\"ה (רבי אליעזר בן יואל הלוי)",
    "en": [
     {
-     "id": "rfZNADRiPjw",
-     "title": "Rabbi Eliezer ben Yoel ha-Levi (Raaviya): His Legacy, Halachic Decisions, and Life Story",
-     "seconds": 421
-    },
-    {
      "id": "RDA9SnI7ZD0",
      "title": "Rabbi Eliezer ben Joel HaLevi (Ra’avyah): His Legacy, Halakhic Authority, and Life Story",
      "seconds": 456
+    }
+   ],
+   "ru": [
+    {
+     "id": "rfZNADRiPjw",
+     "title": "Раби Элиэзер бен Йоэль ха-Леви (Раавия): его наследие, галахические решения и история жизни",
+     "seconds": 421
     }
    ]
   },
@@ -554,10 +620,12 @@
      "id": "RpFBvcWIKS8",
      "title": "Abraham Abulafia: Prophetic Kabbalah and the Secret of Letter Permutation",
      "seconds": 459
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "Meyf-0CHBJo",
-     "title": "Abraham Abulafia: Prophetic Kabbalah and the Mystery of Letter Combinations",
+     "title": "Авраам Абулaфия: пророческая каббала и тайна сочетания букв",
      "seconds": 323
     }
    ]
@@ -566,14 +634,16 @@
    "label": "רבי מנחם המאירי",
    "en": [
     {
-     "id": "l8T39ViQofk",
-     "title": "Meiri: His Halachic, Exegetical, and Philosophical Teachings",
-     "seconds": 362
-    },
-    {
      "id": "E6ZIUMBfZzk",
      "title": "The Meiri: His Halakhic, Exegetical, and Philosophical Legacy",
      "seconds": 476
+    }
+   ],
+   "ru": [
+    {
+     "id": "l8T39ViQofk",
+     "title": "Меири: его галахическое, экзегетическое и философское учение",
+     "seconds": 362
     }
    ]
   },
@@ -584,10 +654,12 @@
      "id": "_Xj-R0KVDCo",
      "title": "Rabbi Mordechai ben Hillel: The Sefer Mordechai and Its Place in Halakhic History",
      "seconds": 462
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "lWft0zgbZwM",
-     "title": "Rabbi Mordechai ben Hillel: \"Sefer Mordechai\" and its place in the history of halacha",
+     "title": "Рабби Мордехай бен Гиллель: «Сефер Мордехай» и его место в истории галахи",
      "seconds": 451
     }
    ]
@@ -599,10 +671,12 @@
      "id": "J5lA2_D9PrY",
      "title": "The Talmud Trial of 1240 in Paris",
      "seconds": 490
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "e2gK9CVUvxw",
-     "title": "The Paris Talmud Trial of 1240",
+     "title": "Парижский процесс над Талмудом 1240 года",
      "seconds": 410
     }
    ]
@@ -614,10 +688,12 @@
      "id": "nAV7hB3__Lk",
      "title": "Yalkut Shimoni – the book that introduced nothing new, yet saved an entire world",
      "seconds": 288
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "Uxpwp_8Mf04",
-     "title": "Yalkut Shimoni – a book that didn't bring anything new, but saved the entire world",
+     "title": "Ялкут Шимони — книга, которая не внесла ничего нового, но спасла целый мир",
      "seconds": 314
     }
    ]
@@ -629,10 +705,12 @@
      "id": "Y-9QRCgya0g",
      "title": "Rivash: Torah, Philosophy, and Communal Authority",
      "seconds": 449
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "fWRI-DZMTpg",
-     "title": "Ribash: Torah, Philosophy, and Communal Authority",
+     "title": "Рибаш: Тора, философия и общинная власть",
      "seconds": 401
     }
    ]
@@ -644,10 +722,12 @@
      "id": "WrOqrIzred0",
      "title": "Rabbi Hasdai Crescas – Philosopher, Halakhic Authority, and Leader in a Time of Crisis",
      "seconds": 456
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "nBGArPbfedw",
-     "title": "Rabbi Hasdai Crescas – Philosopher, Law Teacher, and Leader in a Time of Crisis",
+     "title": "Рабби Хасдай Крескас – философ, законоучитель и лидер в эпоху кризиса",
      "seconds": 423
     }
    ]
@@ -676,10 +756,12 @@
      "id": "Dmc5ELj1zzk",
      "title": "Paths of the Talmud: The Analytical Method of Kanfaṇton",
      "seconds": 475
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "l0vP0mGFpv0",
-     "title": "The Paths of the Talmud: Kanfanton's Analytical Method",
+     "title": "Пути Талмуда: аналитический метод Канфантона",
      "seconds": 412
     }
    ]
@@ -688,14 +770,16 @@
    "label": "רבי ישראל אלנקוה",
    "en": [
     {
-     "id": "6sry43yaGQA",
-     "title": "Rabbi Israel Alankava and his work \"Menorat HaMaor\"",
-     "seconds": 371
-    },
-    {
      "id": "Cb2El3-5EYY",
      "title": "Rabbi Yisrael Alnakawa and His Work Menorat Ha-Ma’or",
      "seconds": 328
+    }
+   ],
+   "ru": [
+    {
+     "id": "6sry43yaGQA",
+     "title": "Рабби Исраэль Аланкава и его труд «Менорат ха-Маор»",
+     "seconds": 371
     }
    ]
   },
@@ -706,10 +790,12 @@
      "id": "L03uSsP6N4E",
      "title": "Rabbi Yitzhak Abuhav – The Light of Generations, Author of “Menorat Ha-Maor”",
      "seconds": 328
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "pE9lqQ7vziM",
-     "title": "Rabbi Yitzhak Abuhav – Light of Generations, author of Menorat HaMaor",
+     "title": "Рабби Ицхак Абухав — Свет поколений, автор «Менорат ха-Маор»",
      "seconds": 371
     }
    ]
@@ -721,10 +807,12 @@
      "id": "88r1sRM-Dow",
      "title": "Isaac Arama: The Akeidah, a Difficult Vision, and a Revolution in Interpretation",
      "seconds": 307
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "1rf1ReptsmQ",
-     "title": "Yitzhak Araama: \"Akida,\" a difficult vision, and a revolution in interpretation",
+     "title": "Ицхак Араама: «Акида», трудное видение и революция в толковании",
      "seconds": 415
     }
    ]
@@ -733,14 +821,16 @@
    "label": "רבי אליהו מזרחי (הרא\"ם)",
    "en": [
     {
-     "id": "vQrUHN44lBs",
-     "title": "Rabbi Eliyahu Mizrachi (REM) – the man who taught the world how to truly study Rashi",
-     "seconds": 273
-    },
-    {
      "id": "d6_ivh-C8rk",
      "title": "Rabbi Elijah Mizrahi (the Re’em) – the man who taught the world how Rashi should truly be studied",
      "seconds": 408
+    }
+   ],
+   "ru": [
+    {
+     "id": "vQrUHN44lBs",
+     "title": "Рабби Элиягу Мизрахи (РЭЭМ) — человек, научивший мир тому, как по-настоящему изучать Раши",
+     "seconds": 273
     }
    ]
   },
@@ -751,10 +841,12 @@
      "id": "chS_iUb-VEY",
      "title": "Don Isaac Abravanel: Commentator, Philosopher, and Statesman",
      "seconds": 414
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "fxdPsirh2sc",
-     "title": "Don Isaac Abarbanel: Commentator, Philosopher, and Statesman",
+     "title": "Дон Ицхак Абарбанель: комментатор, философ и государственный деятель",
      "seconds": 341
     }
    ]
@@ -780,14 +872,16 @@
    "label": "הרדב\"ז (1479–1573) – מגדולי הפוסקים: בין ספרד למצרים וארץ ישראל",
    "en": [
     {
-     "id": "GFjSDWEX5iY",
-     "title": "Radbaz is the greatest lawmaker who stood firm when the foundations of faith were shaking.",
-     "seconds": 398
-    },
-    {
      "id": "-rfTiUpV0WM",
      "title": "The Radbaz – the great halakhic authority who stood firm when the principles of faith were shaken",
      "seconds": 376
+    }
+   ],
+   "ru": [
+    {
+     "id": "GFjSDWEX5iY",
+     "title": "Радбаз – величайший постановщик закона, который устоял, когда основы веры дрожали",
+     "seconds": 398
     }
    ]
   },
@@ -795,14 +889,16 @@
    "label": "המהרש\"ל (רבי שלמה לוריא)",
    "en": [
     {
-     "id": "ICCDMlkMvPU",
-     "title": "Maharshal: His Teachings, Controversies, and Path in Halacha and Kabbalah",
-     "seconds": 470
-    },
-    {
      "id": "CCDWA-LGLNA",
      "title": "The Maharshal: His Teachings, Polemics, and Path in Halakha and Kabbalah",
      "seconds": 424
+    }
+   ],
+   "ru": [
+    {
+     "id": "ICCDMlkMvPU",
+     "title": "Маhаршаль: его учение, полемика и путь в галахе и каббале",
+     "seconds": 470
     }
    ]
   },
@@ -810,31 +906,33 @@
    "label": "רבי משה קורדובירו (הרמ״ק)",
    "en": [
     {
-     "id": "-MYV1OKRUMg",
-     "title": "The Systematized Soul: Moshe Cordovero and the Kabbalists of Safed",
-     "seconds": 588
-    },
-    {
      "id": "2GNEXzjL9XA",
      "title": "The Systematized Soul: Moses Cordovero and the Safed Kabbalists",
      "seconds": 445
+    }
+   ],
+   "ru": [
+    {
+     "id": "-MYV1OKRUMg",
+     "title": "Систематизированная душа: Моше Кордоверо и каббалисты Цфата",
+     "seconds": 588
     }
    ]
   },
   "72": {
    "label": "המהר\"ל מפראג – הפילוסוף שחיבר בין השכל למסתורין",
-   "ru": [
-    {
-     "id": "BJb0xFe53U8",
-     "title": "Учение Махараля: Тора, душа и истина",
-     "seconds": 330
-    }
-   ],
    "en": [
     {
      "id": "uqI_wh57lO8",
      "title": "The Thought of the Maharal: Torah, Soul, and Truth",
      "seconds": 369
+    }
+   ],
+   "ru": [
+    {
+     "id": "BJb0xFe53U8",
+     "title": "Учение Махараля: Тора, душа и истина",
+     "seconds": 330
     }
    ]
   },
@@ -845,10 +943,12 @@
      "id": "I4iSync7vvQ",
      "title": "Rabbi Yaffe and the Architecture of the Golden Age",
      "seconds": 413
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "iyC5zUxayyU",
-     "title": "Rabbi Jaffe and the Architecture of the Golden Age",
+     "title": "Рабби Яффе и архитектура Золотого века",
      "seconds": 345
     }
    ]
@@ -857,14 +957,16 @@
    "label": "רבי אלעזר אזכרי",
    "en": [
     {
-     "id": "cFbFezd9Z50",
-     "title": "Rabbi Elazar Azkari: Kabbalist, poet, and spiritual leader of 16th-century Safed",
-     "seconds": 410
-    },
-    {
      "id": "X5WU4DCK5Lg",
      "title": "Rabbi Elazar Azikri: Kabbalist, Poet, and Spiritual Leader of 16th-Century Safed",
      "seconds": 455
+    }
+   ],
+   "ru": [
+    {
+     "id": "cFbFezd9Z50",
+     "title": "Рабби Элазар Азкари: каббалист, поэт и духовный лидер Цфата XVI века",
+     "seconds": 410
     }
    ]
   },
@@ -872,14 +974,16 @@
    "label": "רבי יואל סירקיש (הב\"ח)",
    "en": [
     {
-     "id": "hMU6FHyskxg",
-     "title": "The World of Bach: Halachic Decision, Analytical Thinking, and the Legacy of Bayit Chadash",
-     "seconds": 484
-    },
-    {
      "id": "BfONy_IOmsQ",
      "title": "The World of the Bach: Halakhic Rulings, Scholarship, and the Legacy of Bayit Chadash",
      "seconds": 432
+    }
+   ],
+   "ru": [
+    {
+     "id": "hMU6FHyskxg",
+     "title": "Мир Баха: галахическое решение, аналитическое мышление и наследие Байт Хадаш",
+     "seconds": 484
     }
    ]
   },
@@ -890,10 +994,12 @@
      "id": "DP5jmqScdkQ",
      "title": "Rabbi Abraham Azulai – the Kabbalist who rebuilt the worlds of Sod",
      "seconds": 474
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "hgAK0AYadZ4",
-     "title": "Rabbi Avraham Azulai, the Kabbalist who rebuilt the worlds of hidden wisdom",
+     "title": "Рабби Авраhам Азулай — каббалист, который заново выстроил миры тайной мудрости ",
      "seconds": 431
     }
    ]
@@ -902,14 +1008,16 @@
    "label": "הרב יהודה אריה מודנה – דיוקן של גאונות שנאבקה על עצמה",
    "en": [
     {
-     "id": "WpZE3-VDjqA",
-     "title": "Rabbi Yehuda Aryeh Modena – a portrait of a genius who struggled with himself",
-     "seconds": 478
-    },
-    {
      "id": "Y4owf1ghTBA",
      "title": "Rabbi Yehuda Aryeh Modena – A Portrait of Genius Fighting Itself",
      "seconds": 418
+    }
+   ],
+   "ru": [
+    {
+     "id": "WpZE3-VDjqA",
+     "title": "Рав Иехуда Арье Модена – портрет гения, боровшегося с самим собой",
+     "seconds": 478
     }
    ]
   },
@@ -920,10 +1028,12 @@
      "id": "EfMLCZVUz68",
      "title": "Rabbi David HaLevi Segal – The Taz: A Halakhic Authority Who Turned Law into Living Reality",
      "seconds": 419
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "ztC3R2CNsNk",
-     "title": "Rabbi David ha-Levi Segal – Taz: The Halachic Authority Who Transformed the Law into Living Reality",
+     "title": "Рабби Давид га-Леви Сегаль — Таз: галахический авторитет, превративший закон в живую реальность",
      "seconds": 463
     }
    ]
@@ -932,23 +1042,25 @@
    "label": "רבי שלום שבזי – המשורר, המקובל, והאיש שעיצב את נשמתה של יהדות תימן",
    "en": [
     {
-     "id": "-55qQi_UwTE",
-     "title": "Shabazi, Hemdat Yamim and Yemeni Heritage",
-     "seconds": 247
-    },
-    {
      "id": "Mxis3A_SAPU",
      "title": "Shabazi, Hemdat Yamim, and the Yemenite Heritage",
      "seconds": 351
+    }
+   ],
+   "ru": [
+    {
+     "id": "-55qQi_UwTE",
+     "title": "Шабази, «Хемдат Ямим» и йеменское наследие",
+     "seconds": 247
     }
    ]
   },
   "81": {
    "label": "יצחק נוניש בילמונטי (1601–1652) – אנוס בין יהדות לנצרות: פילוסופיה, רפואה וזהות",
-   "en": [
+   "ru": [
     {
      "id": "ZXMnPANtiXw",
-     "title": "\"Shaar ha-Melech\" to the \"Mishnah Torah\"",
+     "title": "«Шаар hа-Мелех» к «Мишне Тора»",
      "seconds": 409
     }
    ]
@@ -960,10 +1072,12 @@
      "id": "BsdAXcdUv-8",
      "title": "Rabbi Jacob Sasportas – The Lone Warrior Against Messianic Fervor",
      "seconds": 426
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "Zo1APYsCUGc",
-     "title": "Rabbi Yaakov Sheshportas – a lone fighter against messianic fervor",
+     "title": "Рабби Яаков Шешпортас – одинокий борец против мессианского пыла",
      "seconds": 462
     }
    ]
@@ -972,14 +1086,16 @@
    "label": "רבי שבתאי הכהן (הש\"ך)",
    "en": [
     {
-     "id": "OlCwbut_kfc",
-     "title": "Rabbi Shabtai HaKohen (Shach) – the man who turned the Shulchan Aruch into an intellectual battle...",
-     "seconds": 451
-    },
-    {
      "id": "_w9R_rFvReU",
      "title": "Rabbi Shabbetai HaKohen  – The Man Who Turned the Shulchan Aruch into an Intellectual Battlefield",
      "seconds": 389
+    }
+   ],
+   "ru": [
+    {
+     "id": "OlCwbut_kfc",
+     "title": "Рабби Шабтай ха-Коэн (Шах) — человек, превративший «Шульхан Арух» в интеллектуальное поле битвы",
+     "seconds": 451
     }
    ]
   },
@@ -987,14 +1103,16 @@
    "label": "רבי אברהם אבלי גומבינר (המגן אברהם)",
    "en": [
     {
-     "id": "cWRw7Msa4_M",
-     "title": "Rabbi Avraham Abely ha-Levi Gombiner: author of the book \"Magen Avraham\"",
-     "seconds": 369
-    },
-    {
      "id": "fc4v6HpMukM",
      "title": "Rabbi Abraham Abele HaLevi Gombiner: Author of the “Magen Avraham”",
      "seconds": 421
+    }
+   ],
+   "ru": [
+    {
+     "id": "cWRw7Msa4_M",
+     "title": "Рабби Авраам Абели ха-Леви Гомбинер: автор книги «Маген Авраам»",
+     "seconds": 369
     }
    ]
   },
@@ -1005,10 +1123,12 @@
      "id": "HYYyqN8tG2M",
      "title": "Mishneh LaMelekh: A Forerunner of Modern Analytical Learning",
      "seconds": 383
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "5GWVmoRSSCM",
-     "title": "Mishneh LeMelekh: A Forerunner of Modern Analytical Theory",
+     "title": "«Мишне ле-Мелех»: предвестник современного аналитического учения",
      "seconds": 368
     }
    ]
@@ -1020,10 +1140,12 @@
      "id": "TBMI1NhMLYM",
      "title": "Rabbi Moshe Hagiz – The Jerusalem Zealot Who Tried to Save Judaism from Internal Collapse",
      "seconds": 567
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "dr5QO159wCw",
-     "title": "Rabbi Moshe Hagiz was a Jerusalem zealot who tried to save Judaism from internal decay.",
+     "title": "Рабби Моше Хагиз — иерусалимский ревнитель, который пытался спасти иудаизм от внутреннего распада",
      "seconds": 400
     }
    ]
@@ -1032,14 +1154,16 @@
    "label": "הרב אפרים נבון (1677–1735) – מחנה אפרים: עקרונות פסיקה וסדרי קניינים",
    "en": [
     {
-     "id": "H5uIKNUyubQ",
-     "title": "Rabbi Ephraim Navon and the Mahaneh Ephraim",
-     "seconds": 312
-    },
-    {
      "id": "_8SN0I-7CoY",
      "title": "Rabbi Ephraim Navon and Machaneh Ephraim",
      "seconds": 354
+    }
+   ],
+   "ru": [
+    {
+     "id": "H5uIKNUyubQ",
+     "title": "Рабби Эфраим Навон и «Махане Эфраим»",
+     "seconds": 312
     }
    ]
   },
@@ -1050,10 +1174,12 @@
      "id": "izbNtzKRxTQ",
      "title": "Rabbi Israel Yaakov Algazi – The Rishon LeZion Who United Kabbalah, Halakha, and Public Leadership",
      "seconds": 341
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "LhgSaQOr8L4",
-     "title": "Rabbi Israel Yaakov Algazi – The First Zion, who united Kabbalah, Halacha, and public leadership",
+     "title": "Рабби Исраэль Яаков Альгази — Первый Сион, объединивший Каббалу, Галаху и общественное лидерство",
      "seconds": 437
     }
    ]
@@ -1062,14 +1188,16 @@
    "label": "הרב יעקב עמדין (יעב\"ץ)",
    "en": [
     {
-     "id": "YCmFh12Oa7k",
-     "title": "Rabbi Yaakov Emden – a warrior-sage who did not fear the truth",
-     "seconds": 458
-    },
-    {
      "id": "LjUdBVLTjWI",
      "title": "Rabbi Yaakov Emden – The Warrior Sage Who Feared No Truth",
      "seconds": 485
+    }
+   ],
+   "ru": [
+    {
+     "id": "YCmFh12Oa7k",
+     "title": "Рабби Яаков Эмден — воин-мудрец, который не боялся истины",
+     "seconds": 458
     }
    ]
   },
@@ -1080,10 +1208,12 @@
      "id": "VsFl1kfc-30",
      "title": "Moshe David Vali's Hermeneutical Methodology",
      "seconds": 479
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "MOaM2q3yLeg",
-     "title": "Moshe David Vala's Hermeneutics Methodology",
+     "title": "Методология герменевтики Моше Давида Вали",
      "seconds": 354
     }
    ]
@@ -1092,14 +1222,16 @@
    "label": "רבי אברהם גרשון מקיטוב (1701–1761) – גיס הבעל שם טוב: עלייה לארץ וחסידות מוקדמת",
    "en": [
     {
-     "id": "okFKcDZFOxY",
-     "title": "Rabbi Gershon of Kitov: A Bridge of Kabbalah and a Pioneer of Dissemination",
-     "seconds": 451
-    },
-    {
      "id": "YpNxfpCkSWg",
      "title": "Rabbi Gershon of Kitov: A Bridge of Kabbalah and a Pioneer of Dissemination",
      "seconds": 457
+    }
+   ],
+   "ru": [
+    {
+     "id": "okFKcDZFOxY",
+     "title": "Рабби Гершон из Китовa: мост каббалы и пионер распространения",
+     "seconds": 451
     }
    ]
   },
@@ -1107,14 +1239,16 @@
    "label": "רבי משה חיים לוצאטו (הרמח״ל)",
    "en": [
     {
-     "id": "N_VZqV5fzNo",
-     "title": "The Teachings of Ramchal: Kabbalah, Ethics, and Messiahship",
-     "seconds": 379
-    },
-    {
      "id": "2YLu1YF2Www",
      "title": "The Doctrine of the Ramchal: Kabbalah, Ethics, and Messianism",
      "seconds": 341
+    }
+   ],
+   "ru": [
+    {
+     "id": "N_VZqV5fzNo",
+     "title": "Учение Рамхаля: Каббала, Этика и Мессианство",
+     "seconds": 379
     }
    ]
   },
@@ -1125,10 +1259,12 @@
      "id": "hhjJiHIE1gs",
      "title": "The Philosophy of Rabbi Yehezkel Landau",
      "seconds": 439
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "kwwXYrRICV8",
-     "title": "The Philosophy of Rabbi Yechezkel Landau",
+     "title": "Философия раввина Йехезкеля Ландау",
      "seconds": 447
     }
    ]
@@ -1140,10 +1276,12 @@
      "id": "HvMt-duFwZA",
      "title": "Rabbi Shalom Sharabi: The Father of Sephardic Kabbalists and the World of Kavanot",
      "seconds": 471
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "h6AoD4qlCPw",
-     "title": "Rabbi Shalom Sharabi: The Father of Sephardic Kabbalists and the World of Kavvanot",
+     "title": "Рабби Шалом Шараби: отец сефардских каббалистов и мир кавванот",
      "seconds": 509
     }
    ]
@@ -1155,10 +1293,12 @@
      "id": "0FQdwX6gQ2U",
      "title": "Ketzot HaChoshen: Pledges and Bailees in Jewish Law",
      "seconds": 364
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "Y-zL2hRyOEE",
-     "title": "Ktzot ha-Khoshen: The Deposit and Responsibility of the Custodian in Jewish Law",
+     "title": "«Кцот ха-Хошен»: залог и ответственность хранителя в еврейском праве",
      "seconds": 406
     }
    ]
@@ -1167,14 +1307,16 @@
    "label": "הרב אברהם דנציג",
    "en": [
     {
-     "id": "hXuQ9qj9KXQ",
-     "title": "Rabbi Avraham Danzig: The Author of Chayei Adam and His Halachic Teachings",
-     "seconds": 408
-    },
-    {
      "id": "QOZBGReAPLA",
      "title": "Rabbi Abraham Danzig: Author of Chayei Adam and His Halakhic Thought",
      "seconds": 374
+    }
+   ],
+   "ru": [
+    {
+     "id": "hXuQ9qj9KXQ",
+     "title": "Рабби Авраам Данциг: автор «Хаей Адам» и его галахическое учение",
+     "seconds": 408
     }
    ]
   },
@@ -1182,14 +1324,16 @@
    "label": "רבי חיים מוולוז'ין – מייסד 'אם הישיבות' ו'נפש החיים'",
    "en": [
     {
-     "id": "D5ctLfiF46Q",
-     "title": "Rabbi Chaim of Volozhin – a quiet revolutionary who shaped the backbone of the Torah world",
-     "seconds": 471
-    },
-    {
      "id": "bU33b80yZKU",
      "title": "Rabbi Chaim of Volozhin – The Quiet Revolutionary Who Shaped the Backbone of the Torah World",
      "seconds": 382
+    }
+   ],
+   "ru": [
+    {
+     "id": "D5ctLfiF46Q",
+     "title": "Рабби Хаим из Воложина — тихий революционер, сформировавший позвоночник мира Торы",
+     "seconds": 471
     }
    ]
   },
@@ -1200,10 +1344,12 @@
      "id": "u8lwMvjuBSc",
      "title": "Mendel Lefin and the Haskalah in Galicia",
      "seconds": 384
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "Ls1d4OE6QTQ",
-     "title": "Mendel Lefin and the Jewish Enlightenment in Galicia",
+     "title": "Мендель Лефин и еврейское Просвещение в Галиции",
      "seconds": 418
     }
    ]
@@ -1215,10 +1361,12 @@
      "id": "ktMKTGYOM5A",
      "title": "The Chatam Sofer: Shaping Orthodoxy Between Conservatism and Modernity",
      "seconds": 419
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "bIprJgy_hAE",
-     "title": "Chatam Sofer: Shaping Orthodoxy Between Conservatism and Modernism",
+     "title": "Хатам Софер: формирование ортодоксии между консерватизмом и модерном",
      "seconds": 346
     }
    ]
@@ -1230,10 +1378,12 @@
      "id": "tMVTFzknfyQ",
      "title": "Ḥaḥam Haim Palachi  (ḤaBi\"F): His Life, Work, and Writings",
      "seconds": 364
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "8x_wbvx-5Vg",
-     "title": "Chacham Chaim Falaji (HaBi\"F): His Life, Work, and Books",
+     "title": "Хахам Хаим Фаладжи (ХаБи\"Ф): его жизнь, деятельность и книги",
      "seconds": 426
     }
    ]
@@ -1245,10 +1395,12 @@
      "id": "4XZIw1lY0k0",
      "title": "Rabbi Yehuda Bibas: Proto-Zionist and His Legacy",
      "seconds": 392
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "DyqI3jUvFdE",
-     "title": "Rabbi Yehuda Bibas: A Harbinger of Zionism and His Legacy",
+     "title": "Раввин Йеhуда Бибас: предвестник сионизма и его наследие",
      "seconds": 389
     }
    ]
@@ -1260,10 +1412,12 @@
      "id": "30St_Dug_1g",
      "title": "Rabbi Zvi Hirsch Kalischer – Religious Zionism Before Zionism",
      "seconds": 403
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "LWaFSpY45E8",
-     "title": "Rabbi Zvi Hirsch Kalischer: Religious Zionism Before Zionism",
+     "title": "Рабби Цви Гирш Калишер — религиозный сионизм до сионизма",
      "seconds": 396
     }
    ]
@@ -1275,10 +1429,12 @@
      "id": "dQ69FzKEc94",
      "title": "Alkalai: The Harbinger of Political Zionism",
      "seconds": 401
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "CB65dvhz6lA",
-     "title": "Alkalai: A Harbinger of Political Zionism",
+     "title": "Алкалай: Предвестник политического сионизма",
      "seconds": 390
     }
    ]
@@ -1287,14 +1443,16 @@
    "label": "שד\"ל – הלוחם האחרון של היהדות הרגשית מול כיבוש השכל היווני",
    "en": [
     {
-     "id": "8n_2rHJxY_w",
-     "title": "Shadal: Thinker, Poet and Commentator",
-     "seconds": 452
-    },
-    {
      "id": "8SXhCEWNIiY",
      "title": "Shadal: Thinker, Poet, and Commentator",
      "seconds": 404
+    }
+   ],
+   "ru": [
+    {
+     "id": "8n_2rHJxY_w",
+     "title": "Шадаль: мыслитель, поэт и комментатор",
+     "seconds": 452
     }
    ]
   },
@@ -1305,10 +1463,12 @@
      "id": "6FgfPFQJB5w",
      "title": "Rabbi Tzvi Hirsch Chajes: His Life and Thought",
      "seconds": 428
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "r6yB861RruY",
-     "title": "Rabbi Tzvi Hirsch Hayat: His Life and Worldview",
+     "title": "Рав Цви Гирш Хаят: его жизнь и мировоззрение",
      "seconds": 382
     }
    ]
@@ -1320,10 +1480,12 @@
      "id": "sjsfmY3JHck",
      "title": "Rabbi Yaakov Abuhatzira: The “Abir Yaakov” – Legacy, Torah, and Wonders",
      "seconds": 360
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "br5KoEKYfNY",
-     "title": "Rabbi Yaakov Abutzhira: \"Abir Yaakov\" - Heritage, Torah and Miracles",
+     "title": "Рабби Яаков Абуцхира: «Абир Яаков» — наследие, Тора и чудеса",
      "seconds": 293
     }
    ]
@@ -1335,10 +1497,12 @@
      "id": "VO2DSrVt-mI",
      "title": "The Mussar Movement and Rabbi Israel Salanter: Between Thought and Psychology",
      "seconds": 439
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "Her-LcEzYPU",
-     "title": "The Mussar Movement and Rabbi Israel Salanter: Between Philosophy and Psychology",
+     "title": "Движение мусар и рабби Исраэль Салантер: между философией и психологией",
      "seconds": 521
     }
    ]
@@ -1350,10 +1514,12 @@
      "id": "y8lCLSb5iC8",
      "title": "The Kabbalah: How Tradition Became a Meta-Map of Creation, and Redemption Adolf Franck’s Perspective",
      "seconds": 429
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "PMFCHrSsrvQ",
-     "title": "Kabbalah: How \"Tradition\" Became a Meta-Map of Creation, Evil, and Redemption – A View by Adolf F...",
+     "title": "Каббала: как «традиция» превратилась в метакарту творения, зла и искупления — взгляд Адольфа Франка",
      "seconds": 527
     }
    ]
@@ -1361,11 +1527,6 @@
   "116": {
    "label": "המהרי\"ל דיסקין",
    "en": [
-    {
-     "id": "VjbKrBNOTkg",
-     "title": "Maaril Diskin: A Fiery Guardian of Torah and the Creator of the Old Yishuv",
-     "seconds": 469
-    },
     {
      "id": "tTQrbSuvj08",
      "title": "The Maharil Diskin: The Fiery Torah Scholar and Founder of the Old Yishuv",
@@ -1375,10 +1536,17 @@
      "id": "MNDEQBKN0Es",
      "title": "The Maharil Diskin: The Zealot for Torah and Founder of the Old Yishuv",
      "seconds": 448
+    }
+   ],
+   "ru": [
+    {
+     "id": "VjbKrBNOTkg",
+     "title": "Маариль Дискин: Пламенный хранитель Торы и создатель Старого ишува",
+     "seconds": 469
     },
     {
      "id": "uj5lOToLAEk",
-     "title": "Mahariel Diskin: Torah Zealot and Founder of the Old Yishuv",
+     "title": "Маhариль Дискин: ревнитель Торы и основатель старого ишува",
      "seconds": 469
     }
    ]
@@ -1390,10 +1558,12 @@
      "id": "YHggVMwG7FE",
      "title": "The Mysticism and Thought of Rabbi Zadok HaKohen of Lublin",
      "seconds": 401
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "EzzrD5P9qvo",
-     "title": "Mysticism and the Thought of Rabbi Tzadok HaKohen of Lublin",
+     "title": "Мистика и мысль раввина Цадока а-Коэна из Люблина",
      "seconds": 386
     }
    ]
@@ -1401,11 +1571,6 @@
   "118": {
    "label": "אליהו בן אמוזג – ההוגה שדחו הדורות, אך רעיונו התגלה כגדול מדורותיו",
    "en": [
-    {
-     "id": "bZExqr6-xwg",
-     "title": "Eliyahu Ben-Amozeg: Philosophy and Kabbalah, Israel and Humanity",
-     "seconds": 421
-    },
     {
      "id": "e0UU_AcaYAg",
      "title": "Elia Benamozegh: Philosophy and Kabbalah, Israel and Humanity",
@@ -1415,10 +1580,17 @@
      "id": "_eA6LMnmEao",
      "title": "Elia Benamozegh: Philosophy and Kabbalah, Israel and Humanity",
      "seconds": 366
+    }
+   ],
+   "ru": [
+    {
+     "id": "bZExqr6-xwg",
+     "title": "Элиягу Бен-Амозег: философия и каббала, Израиль и человечество",
+     "seconds": 421
     },
     {
      "id": "Uetw7LJWRjY",
-     "title": "Eliyahu Ben-Amozeg: Philosophy and Kabbalah, Israel and Humanity",
+     "title": "Элияу Бен-Амозэг: философия и каббала, Израиль и человечество",
      "seconds": 377
     }
    ]
@@ -1430,10 +1602,12 @@
      "id": "VTU-WlOa-Hk",
      "title": "Rabbi Shmuel Mohilever: Pioneer of Religious Zionism",
      "seconds": 377
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "vUjK21VU1Ww",
-     "title": "Rabbi Shmuel Moaliver: A Pioneer of Religious Zionism",
+     "title": "Раввин Шмуэль Моаливер: пионер религиозного сионизма",
      "seconds": 359
     }
    ]
@@ -1442,14 +1616,16 @@
    "label": "ערוך השולחן (הרב יחיאל מיכל אפשטיין)",
    "en": [
     {
-     "id": "r7DU9avIsf4",
-     "title": "Aruch ha-Shulhan by Rabbi Yehiel Michael Epstein",
-     "seconds": 477
-    },
-    {
      "id": "uHi3P8JTaYE",
      "title": "Rabbi Yechiel Mikhel Epstein and the Arukh HaShulchan",
      "seconds": 428
+    }
+   ],
+   "ru": [
+    {
+     "id": "r7DU9avIsf4",
+     "title": "Рабби Йехиэль Михель Эпштейн и «Арух ха-Шулхан»",
+     "seconds": 477
     }
    ]
   },
@@ -1460,10 +1636,12 @@
      "id": "CO29eKFHEmc",
      "title": "Rabbi Yosef Chaim of Baghdad: Teachings, Social Critique, and Legacy",
      "seconds": 472
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "ST3uDsJdluA",
-     "title": "Rabbi Yosef Chaim of Baghdad: Teachings, Social Criticism, and Legacy",
+     "title": "Рабби Йосеф Хаим из Багдада: учение, социальная критика и наследие",
      "seconds": 417
     }
    ]
@@ -1475,10 +1653,12 @@
      "id": "9TVO7XytyN4",
      "title": "The Legacy of the Chafetz Chaim: Halacha, Kindness, and Leadership in the Modern Era",
      "seconds": 479
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "n8omRHtaIXU",
-     "title": "The Chafetz Chaim's Legacy: Halacha, Charity, and Leadership in Modern Times",
+     "title": "Наследие Хафец Хаима: галаха, милосердие и лидерство в новейшее время",
      "seconds": 315
     }
    ]
@@ -1490,10 +1670,12 @@
      "id": "V8-UTxd-8bA",
      "title": "Meshech Chochmah: Exile, Destiny, and Holiness",
      "seconds": 408
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "P3ez1FM8JmA",
-     "title": "Meshech Chochma: Exile, Purpose, and Holiness",
+     "title": "Мешех Хохма: Изгнание, предназначение и святость",
      "seconds": 386
     }
    ]
@@ -1502,14 +1684,16 @@
    "label": "השפת אמת – ההוגה שחיפש את האמת הפנימית",
    "en": [
     {
-     "id": "zRS-dM-SkiM",
-     "title": "Sfat Emet – a thinker seeking inner truth",
-     "seconds": 420
-    },
-    {
      "id": "OJ7w3P3Gn6o",
      "title": "Sefat Emet – The Thinker Who Sought Inner Truth",
      "seconds": 359
+    }
+   ],
+   "ru": [
+    {
+     "id": "zRS-dM-SkiM",
+     "title": "Сфат Эмет – мыслитель, ищущий внутреннюю истину",
+     "seconds": 420
     }
    ]
   },
@@ -1520,10 +1704,12 @@
      "id": "BANN0i_zJyo",
      "title": "Novardok: His Educational Doctrine and the “Doctrine of Sensitivity”",
      "seconds": 436
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "KZfCmmOBN3Y",
-     "title": "Novardok: His Pedagogical Teachings and the \"Doctrine of Sensitivity\"",
+     "title": "Новардок: его педагогическое учение и «доктрина чувствительности»",
      "seconds": 418
     }
    ]
@@ -1549,13 +1735,15 @@
    "label": "הרב יוסף רוזין (הגאון הרוגצ'ובי)",
    "en": [
     {
-     "id": "Sq4xnbvBb5I",
-     "title": "Rabbi Yosef Rozin – Gaon of Rogachev: The Mind of Rambam, the Soul of a Chassid",
-     "seconds": 385
-    },
-    {
      "id": "0KOlVvRX1t4",
      "title": "Rabbi Yosef Rozin – The Rogatchover Gaon: The Mind of the Rambam, the Soul of a Hasid",
+     "seconds": 385
+    }
+   ],
+   "ru": [
+    {
+     "id": "Sq4xnbvBb5I",
+     "title": "Рав Йосеф Розин – Гаон из Рогачёва: Ум Рамбама, душа хасида",
      "seconds": 385
     }
    ]
@@ -1564,14 +1752,16 @@
    "label": "הרב יהודה משה ישועה פתיה",
    "en": [
     {
-     "id": "BdeTXUjZHSU",
-     "title": "Rabbi Yehuda Moshe Petaya: Life and Kabbalistic Legacy",
-     "seconds": 377
-    },
-    {
      "id": "cFbu8yYG334",
      "title": "Rabbi Yehudah Moses Petaya: Life and Kabbalistic Legacy",
      "seconds": 427
+    }
+   ],
+   "ru": [
+    {
+     "id": "BdeTXUjZHSU",
+     "title": "Рабби Йехуда Моше Петая: жизнь и каббалистическое наследие",
+     "seconds": 377
     }
    ]
   },
@@ -1579,14 +1769,16 @@
    "label": "הרב אברהם יצחק הכהן קוק – החזון שאיחד קודש וחול",
    "en": [
     {
-     "id": "0pR5G_e6puA",
-     "title": "The Teachings of Rabbi Kook: Unity, Redemption, and Religious-National Revival",
-     "seconds": 412
-    },
-    {
      "id": "CXzNmkVRL0s",
      "title": "The Teachings of Rabbi Kook: Unity, Redemption, and Religious-National Revival",
      "seconds": 451
+    }
+   ],
+   "ru": [
+    {
+     "id": "0pR5G_e6puA",
+     "title": "Учение рава Кука: единство, искупление и религиозно-национальное возрождение",
+     "seconds": 412
     }
    ]
   },
@@ -1594,14 +1786,16 @@
    "label": "הלל צייטלין (1871–1942) – פילוסוף יהודי בין ניטשה לחסידות, שנרצח בשואה",
    "en": [
     {
-     "id": "WDoRhJSn7ZQ",
-     "title": "Hillel Zeitlin: On the Border of Two Worlds",
-     "seconds": 375
-    },
-    {
      "id": "KwuZs9YkF44",
      "title": "Hillel Zeitlin: On the Border of Two Worlds",
      "seconds": 427
+    }
+   ],
+   "ru": [
+    {
+     "id": "WDoRhJSn7ZQ",
+     "title": "Гиллель Цейтлин: на границе двух миров",
+     "seconds": 375
     }
    ]
   },
@@ -1609,14 +1803,16 @@
    "label": "הרב כלפון משה הכהן (1874–1950) – רב ג'רבא: הלכה, הנהגה וציונות דתית בצפון אפריקה",
    "en": [
     {
-     "id": "4jSAZxRwNeI",
-     "title": "Rabbi Kalfon Moshe HaCohen: Halachic Authority and Zionist Leader",
-     "seconds": 474
-    },
-    {
      "id": "rrilooQ8bSw",
      "title": "Rabbi Khalfon: Halakhic Decisor and Zionist Leader",
      "seconds": 412
+    }
+   ],
+   "ru": [
+    {
+     "id": "4jSAZxRwNeI",
+     "title": "Рабби Калфон Моше а-Коэн: Галахический авторитет и сионистский лидер ",
+     "seconds": 474
     }
    ]
   },
@@ -1627,10 +1823,12 @@
      "id": "Z2ywjHTTFuE",
      "title": "Rabbi Yitzhak Alfiya: His Teachings and Legacy",
      "seconds": 368
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "Ukw-oKFNOus",
-     "title": "Rabbi Yitzchak Alfiya: His Teachings and Work",
+     "title": "Рабби Ицхак Альфия: его учение и деятельность",
      "seconds": 425
     }
    ]
@@ -1642,10 +1840,12 @@
      "id": "L2hQKYIBlmE",
      "title": "Rabbi Ben-Zion Meir Hai Uziel: Thought, Halakha, and Zionism",
      "seconds": 467
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "CFAc_YocNCQ",
-     "title": "Rabbi Ben-Zion Meir Chai Uziel: Philosophy, Halacha, and Zionism",
+     "title": "Рабби Бен-Цион Меир Хай Узиэль: философия, Галаха и сионизм",
      "seconds": 398
     }
    ]
@@ -1657,10 +1857,12 @@
      "id": "aUSP0aDUHAc",
      "title": "Rabbi Harlap’s Teaching: The Light of Redemption",
      "seconds": 480
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "guOXopbKGUk",
-     "title": "Rabbi Harlap's Teachings: Light of Redemption",
+     "title": "Учение раввина Харлапа: Свет Искупления",
      "seconds": 456
     }
    ]
@@ -1672,10 +1874,12 @@
      "id": "wcJxuOK2dE4",
      "title": "Rabbi Aryeh Levin: The Father of Prisoners and the Righteous Man of Jerusalem",
      "seconds": 450
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "Oi9DjhHkLaU",
-     "title": "Rabbi Aryeh Levin: Father of Prisoners and Righteous Man of Jerusalem",
+     "title": "Рабби Арье Левин: отец заключённых и иерусалимский праведник",
      "seconds": 478
     }
    ]
@@ -1684,14 +1888,16 @@
    "label": "פרנץ רוזנצווייג – הפילוסוף שהחזיר את האדם למרכז",
    "en": [
     {
-     "id": "fF1fkXyG-IU",
-     "title": "Franz Rosenzweig and His Teachings: Jewish Theology and Philosophy",
-     "seconds": 449
-    },
-    {
      "id": "-KEL3MtX4nU",
      "title": "Franz Rosenzweig and His Thought: Jewish Theology and Philosophy",
      "seconds": 541
+    }
+   ],
+   "ru": [
+    {
+     "id": "fF1fkXyG-IU",
+     "title": "Франц Розенцвейг и его учение: иудейская теология и философия",
+     "seconds": 449
     }
    ]
   },
@@ -1702,10 +1908,12 @@
      "id": "7XvsRGX7oXA",
      "title": "The Piaseczno Rebbe – the master who revealed the depth of the soul even in the darkest hours",
      "seconds": 374
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "USnwMr659sE",
-     "title": "The Piaseczno Rebbe is a righteous man who revealed the depths of the human soul even in hours of...",
+     "title": "Пясечненский ребе – праведник, раскрывший глубины человеческой души даже в часы тьмы",
      "seconds": 412
     }
    ]
@@ -1714,14 +1922,16 @@
    "label": "הרב עובדיה הדאיה",
    "en": [
     {
-     "id": "TavL4Mjk7g0",
-     "title": "Rabbi Ovadia Aday: A Pillar of Halachic Teaching, Kabbalah, and Zionism",
-     "seconds": 359
-    },
-    {
      "id": "vBnD4aZ_OY8",
      "title": "Rabbi Ovadia Hadaya: A Pillar of Halakhic Authority, Kabbalah, and Zionism",
      "seconds": 445
+    }
+   ],
+   "ru": [
+    {
+     "id": "TavL4Mjk7g0",
+     "title": "Рав Овадия Адая: опора галахического учения, каббалы и сионизма",
+     "seconds": 359
     }
    ]
   },
@@ -1732,10 +1942,12 @@
      "id": "6Ljolsuf41Q",
      "title": "Hakham Menachem Menashe – the Tinsmith Who Was One of the Hidden Righteous",
      "seconds": 419
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "Vt1L2pvzvh4",
-     "title": "Chacham Menachem Menashe - a tinsmith who belonged to the hidden righteous",
+     "title": "Хахам Менахем Менаше — жестянщик, принадлежавший к скрытым праведникам",
      "seconds": 482
     }
    ]
@@ -1744,25 +1956,29 @@
    "label": "הרב יוסף משאש",
    "en": [
     {
-     "id": "5tzgvJP0UfE",
-     "title": "Rabbi Yosef Mesas – the Polymath of Meknes who united Torah, reason, and time",
-     "seconds": 410
-    },
-    {
      "id": "KXLZkemVI1k",
      "title": "Rabbi Yosef Messas – The Polymath of Meknes Who Bridged Torah, Reason, and Time",
      "seconds": 531
+    }
+   ],
+   "ru": [
+    {
+     "id": "5tzgvJP0UfE",
+     "title": "Рабби Йосеф Месас – Полимат из Мекнеса, соединивший Тору, разум и время",
+     "seconds": 410
     }
    ]
   },
   "148": {
    "label": "מר שושני",
-   "en": [
+   "he": [
     {
      "id": "BnvjlU5JUqE",
-     "title": "The Enigma of the Mysterious Genius: Monsieur Chouchani",
+     "title": "חידת הגאון המסתורי: מר שושני",
      "seconds": 385
-    },
+    }
+   ],
+   "en": [
     {
      "id": "unqH7pHySmM",
      "title": "The Riddle of the Mysterious Genius: Mr. Shushani",
@@ -1784,10 +2000,12 @@
      "id": "2MZbYudsJdw",
      "title": "Yitzhak Nissim: Chief Sephardic Rabbi of the State of Israel",
      "seconds": 479
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "Iv9j59KmRNk",
-     "title": "Yitzhak Nissim: Chief Sephardic Rabbi of the State of Israel",
+     "title": "Ицхак Ниссим: Главный сефардский раввин Государства Израиль",
      "seconds": 410
     }
    ]
@@ -1796,14 +2014,16 @@
    "label": "עמנואל לוינס",
    "en": [
     {
-     "id": "vyuGrknqd9g",
-     "title": "Emmanuel Levinas: Ethics, Phenomenology, and the Face of the Other",
-     "seconds": 412
-    },
-    {
      "id": "e9KpVSP9s9E",
      "title": "Emmanuel Levinas: Ethics, Phenomenology, and the Face of the Other",
      "seconds": 444
+    }
+   ],
+   "ru": [
+    {
+     "id": "vyuGrknqd9g",
+     "title": "Эммануэль Левинас: этика, феноменология и лицо Другого",
+     "seconds": 412
     }
    ]
   },
@@ -1811,14 +2031,16 @@
    "label": "הרב אברהם יהושע השל – הגות ומעורבות מוסרית",
    "en": [
     {
-     "id": "ASOGLLfZ_DE",
-     "title": "Rabbi Abraham Joshua Heschel: Philosophy, Moral Responsibility, and Human Engagement",
-     "seconds": 390
-    },
-    {
      "id": "qGvEP-M3giA",
      "title": "Rabbi Abraham Joshua Heschel – Thought, Moral Responsibility, and Human Engagement",
      "seconds": 330
+    }
+   ],
+   "ru": [
+    {
+     "id": "ASOGLLfZ_DE",
+     "title": "Раввин Авраам Джошуа Хешель — философия, нравственная ответственность и человеческая вовлечённость",
+     "seconds": 390
     }
    ]
   },
@@ -1829,10 +2051,12 @@
      "id": "UP9MKbxXoUw",
      "title": "Biography of Rabbi Mordechai Sharabi, Kabbalist",
      "seconds": 478
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "LwAuDELnHZw",
-     "title": "Rabbi Mordechai Sharabi – Biography of the Yemenite Kabbalist and Righteous Man",
+     "title": "Рабби Мордехай Шараби — биография йеменского каббалиста и праведника",
      "seconds": 480
     }
    ]
@@ -1841,14 +2065,16 @@
    "label": "הרב שאול ישראלי – הפוסק שבנה גשר בין בית המדרש למדינה",
    "en": [
     {
-     "id": "XMC8HPXGRpk",
-     "title": "Rabbi Shaul Yisraeli: Psak, Halacha, and the State",
-     "seconds": 359
-    },
-    {
      "id": "UeETQMMzi8c",
      "title": "Rabbi Shaul Yisraeli: Halakhic Rulings, Law, and the State",
      "seconds": 454
+    }
+   ],
+   "ru": [
+    {
+     "id": "XMC8HPXGRpk",
+     "title": "Рабби Шауль Израэли: Псак, Галаха и Государство",
+     "seconds": 359
     }
    ]
   },
@@ -1856,14 +2082,16 @@
    "label": "הרב שלמה זלמן אויערבך",
    "en": [
     {
-     "id": "2H2TiQbQUvk",
-     "title": "Gaon Rabbi Shlomo Zalman Auerbach: A Halachic Authority for the Modern Era",
-     "seconds": 385
-    },
-    {
      "id": "WvYmgdvQa2M",
      "title": "Rabbi Shlomo Zalman Auerbach: A Leading Halachic Authority in the Modern Era",
      "seconds": 509
+    }
+   ],
+   "ru": [
+    {
+     "id": "2H2TiQbQUvk",
+     "title": "Гаон рабби Шломо Залман Ауэрбах: галахический авторитет эпохи модерна",
+     "seconds": 385
     }
    ]
   },
@@ -1888,14 +2116,16 @@
    "label": "הרב משה־צבי נריה – המהפכן הציוני־דתי שחי כל חייו בין חזון ל\"בדיעבד\" כעבודה: כשהעשייה היא דרך המלך",
    "en": [
     {
-     "id": "2Mohy9a-MhU",
-     "title": "Rabbi Moshe-Zvi Neria: Worldview, Work, and Commemoration",
-     "seconds": 436
-    },
-    {
      "id": "dYCrlSFT2Tc",
      "title": "Rabbi Moshe Tzvi Neria: Thought, Activity, and Legacy",
      "seconds": 387
+    }
+   ],
+   "ru": [
+    {
+     "id": "2Mohy9a-MhU",
+     "title": "Рабби Моше-Цви Нерия: мировоззрение, деятельность и увековечивание памяти",
+     "seconds": 436
     }
    ]
   },
@@ -1903,14 +2133,16 @@
    "label": "אנדרה נהר",
    "en": [
     {
-     "id": "BjmaBm1HFbo",
-     "title": "André Nehr and Modern Jewish Thought in France",
-     "seconds": 351
-    },
-    {
      "id": "6Mup_Uzm18g",
      "title": "André Neher and Modern Jewish Thought in France",
      "seconds": 320
+    }
+   ],
+   "ru": [
+    {
+     "id": "BjmaBm1HFbo",
+     "title": "Андре Нер и современная еврейская мысль во Франции",
+     "seconds": 351
     }
    ]
   },
@@ -1921,10 +2153,12 @@
      "id": "zIwn1eBSnAc",
      "title": "Éliane Amado Lévy-Valensi – the thinker who saw Abraham as the founder of history",
      "seconds": 405
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "lSBPCGUSyDg",
-     "title": "Eliane Amado Levy-Valensi, a thinker who saw Abraham as the founder of history",
+     "title": "Элиан Амадо Леви-Валенси — мыслительница, увидевшая в Аврааме того, кто учреждает историю",
      "seconds": 471
     }
    ]
@@ -1936,10 +2170,12 @@
      "id": "XPtZlcrgnKs",
      "title": "Rabbi Levi Saadia Nachmani – His Character and Prophetic Legacy",
      "seconds": 391
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "YQc8_y-dnpE",
-     "title": "Rabbi Levi Saadia Nachmani – His Personality and Prophetic Legacy",
+     "title": "Рав Леви Саадия Нахмани — черты его личности и пророческое наследие",
      "seconds": 372
     }
    ]
@@ -1951,10 +2187,12 @@
      "id": "TRDE4AG2kLE",
      "title": "Rabbi Meir Zini: The Heroic Leader Bridging Algeria, Auschwitz, and Montmartre",
      "seconds": 355
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "kNOJeHVpaRU",
-     "title": "Rabbi Meir Zini: The Heroic Leader Who Connected Algiers, Auschwitz, and Montmartre",
+     "title": "Рабби Меир Зини: Герой-лидер, соединивший Алжир, Аушвиц и Монмартр",
      "seconds": 442
     }
    ]
@@ -1966,10 +2204,12 @@
      "id": "b8wdCf4nkSo",
      "title": "Manitou: Life, Thought, and the Revival of Israel",
      "seconds": 506
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "ozWDYmakbxI",
-     "title": "Manitou: Life, Thought, and the Rebirth of Israel",
+     "title": "Маниту: Жизнь, мысль и возрождение Израиля",
      "seconds": 489
     }
    ]
@@ -1981,10 +2221,12 @@
      "id": "cNUZDC5gmog",
      "title": "Rabbi Meir Yehuda Getz – The Righteous Man Who Revealed the Secrets of the Western Wall",
      "seconds": 366
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "WYkB28LnXwg",
-     "title": "Rabbi Meir Yehuda Getz – the righteous man who revealed the secrets of the Western Wall",
+     "title": "Рав Меир Йеуда Гец – праведник, раскрывший тайны Стены Плача",
      "seconds": 366
     }
    ]
@@ -1996,10 +2238,12 @@
      "id": "wXKpszj-v6c",
      "title": "Rabbi Chaim David Halevi – the rabbi who brought Halakha back to life, and life back to Halakha",
      "seconds": 395
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "UxZMPvEL6y4",
-     "title": "Rabbi Chaim David Halevi – the rabbi who brought Halacha back to life and life back to Halacha",
+     "title": "Рав Хаим Давид ха-Леви – раввин, который вернул Галаху к жизни, а жизнь — к Галахе",
      "seconds": 465
     }
    ]
@@ -2008,14 +2252,16 @@
    "label": "אלי ויזל",
    "en": [
     {
-     "id": "0x9PQIt6dhk",
-     "title": "Elie Wiesel: Faith, Memory, and Narrative in the Shadow of the Holocaust",
-     "seconds": 422
-    },
-    {
      "id": "uieL_mS1vfE",
      "title": "Elie Wiesel: Faith, Memory, and Story in the Shadow of the Holocaust",
      "seconds": 399
+    }
+   ],
+   "ru": [
+    {
+     "id": "0x9PQIt6dhk",
+     "title": "Эли Визель: вера, память и рассказ в тени Холокоста",
+     "seconds": 422
     }
    ]
   },
@@ -2026,10 +2272,12 @@
      "id": "79rKPdmmKM4",
      "title": "The “Prince of Torah”: The Encyclopedic Legacy of Rav Kanievsky",
      "seconds": 392
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "LB1W0gByREA",
-     "title": "\"Prince of the Torah\": The Encyclopedic Legacy of Rabbi Kanevsky",
+     "title": "«Князь Торы»: Энциклопедическое наследие раввина Каньевского",
      "seconds": 437
     }
    ]
@@ -2038,14 +2286,16 @@
    "label": "הרב חיים דרוקמן – מנהיג ציונות דתית בדורנו",
    "en": [
     {
-     "id": "KDIDft-UrlQ",
-     "title": "Rabbi Chaim Druckman: Leadership, Torah Teaching, and the Or Etzion Institutions",
-     "seconds": 366
-    },
-    {
      "id": "fkB-Y0geQvA",
      "title": "Rabbi Chaim Druckman: Leadership, Torah Thought, and the Or Etzion Institutions",
      "seconds": 332
+    }
+   ],
+   "ru": [
+    {
+     "id": "KDIDft-UrlQ",
+     "title": "Раввин Хаим Друкман: лидерство, тороучение и институты «Ор Эцион»",
+     "seconds": 366
     }
    ]
   },
@@ -2056,10 +2306,12 @@
      "id": "jiS4OfSaAAg",
      "title": "Rabbi Moshe Luria: Kabbalist and Scholar",
      "seconds": 559
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "OvfCDsr2-p4",
-     "title": "Rabbi Moshe Luria: Kabbalist and Scholar",
+     "title": "Раввин Моше Лурия: каббалист и учёный",
      "seconds": 386
     }
    ]
@@ -2088,10 +2340,12 @@
      "id": "yAFcbHgZh5c",
      "title": "Rabbi Avichai Rontzki: Warrior, Military Rabbi, Leader",
      "seconds": 389
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "6KhQR-Y3WR4",
-     "title": "Rabbi Avichai Rontzky: Warrior, Military Rabbi, Leader",
+     "title": "Рав Авихай Ронцки: воин, военный раввин, лидер",
      "seconds": 409
     }
    ]
@@ -2103,10 +2357,12 @@
      "id": "5PpKus6feXI",
      "title": "The Teaching of Connections: Rabbi Elisha Vishlitzki",
      "seconds": 438
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "Ko1d4sI1oWY",
-     "title": "Teachings on Connections: Rabbi Elisha Vishlitsky",
+     "title": "Учение о связях: рав Элиша Вишлицкий",
      "seconds": 441
     }
    ]
@@ -2115,14 +2371,16 @@
    "label": "חכם ציון חביב ברכה",
    "en": [
     {
-     "id": "RwJV0m6byqU",
-     "title": "Rav Zion Haviv Bracha – the hidden Kabbalist who connected generations of the Rashasha tradition",
-     "seconds": 303
-    },
-    {
      "id": "uS2JTq4xVJo",
      "title": "Rabbi Zion Haviv Bracha – the hidden kabbalist who bridged the generations of the Rashash tradition",
      "seconds": 435
+    }
+   ],
+   "ru": [
+    {
+     "id": "RwJV0m6byqU",
+     "title": "Рав Цион Хавив Браха – скрытый каббалист, связавший поколения традиции Рашаша",
+     "seconds": 303
     }
    ]
   },
@@ -2130,23 +2388,25 @@
    "label": "שיטת בריסק (ר' חיים סולובייצ'יק) והלימוד האקדמי – האם לימוד חיצוני סותר קדושה?",
    "en": [
     {
-     "id": "Yf2iOgUggqc",
-     "title": "The Brisk Dynasty: Worldview, Leadership, and Teaching Method",
-     "seconds": 415
-    },
-    {
      "id": "nPEiqToKuTE",
      "title": "The Brisk Dynasty: Thought, Leadership, and the Method of Study",
      "seconds": 525
     },
     {
      "id": "V8JzEaRajfw",
-     "title": "Rav Chaim of Brisk: Method, History, Alliance",
+     "title": "Rav Chaim of Brisk: Method, History, Alliance ",
      "seconds": 531
+    }
+   ],
+   "ru": [
+    {
+     "id": "Yf2iOgUggqc",
+     "title": "Династия Бриска: мировоззрение, лидерство и метод обучения",
+     "seconds": 415
     },
     {
      "id": "HUm6ZNwyWQA",
-     "title": "Rabbi Chaim of Brisk: Method, History, Union",
+     "title": "Рав Хаим из Бриска: Метод, История, Союз",
      "seconds": 396
     }
    ]
@@ -2155,14 +2415,16 @@
    "label": "ספר הזוהר – מי כתב? רבי שמעון בר יוחאי או חיבור מאוחר? המחלוקת סביב מחבר הזוהר",
    "en": [
     {
-     "id": "ppidjHnQAfw",
-     "title": "The Zohar Controversy: Liebes, Moses de Leon, and Isaac of Acre",
-     "seconds": 373
-    },
-    {
      "id": "Pfp1BGTanFU",
      "title": "The Zohar Controversy: Liebes, Moses de León, and Isaac of Acre",
      "seconds": 437
+    }
+   ],
+   "ru": [
+    {
+     "id": "ppidjHnQAfw",
+     "title": "Полемика вокруг Зоара: Либес, Моше де Леон и Ицхак из Акко",
+     "seconds": 373
     }
    ]
   },
@@ -2170,14 +2432,16 @@
    "label": "יעקב בן אשר",
    "en": [
     {
-     "id": "kkcdpEijKKU",
-     "title": "Arba'a Turim and Baal HaTurim: The Architecture of Halacha and Torah Interpretation",
-     "seconds": 307
-    },
-    {
      "id": "kzg117o0wX8",
      "title": "The Arba’ah Turim and the Ba'al HaTurim: The Architecture of Halakhah and Biblical Commentary",
      "seconds": 419
+    }
+   ],
+   "ru": [
+    {
+     "id": "kkcdpEijKKU",
+     "title": "«Арбаа Турим» и Бааль ха-Турим: архитектура галахи и толкование Торы",
+     "seconds": 307
     }
    ]
   },
@@ -2212,33 +2476,37 @@
      "id": "baFE4sw4wi4",
      "title": "Menachem Mendel of Vitebsk: Leadership, Hasidism, and Aliyah to the Land of Israel",
      "seconds": 440
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "Hkexsl2it6s",
-     "title": "Menachem Mendel of Vitebsk: Leadership, Hasidism, and Aliyah to the Land of Israel",
+     "title": "Менахем Мендл из Витебска: лидерство, хасидизм и алия в Землю Израиля",
      "seconds": 476
     }
    ]
   },
   "192": {
    "label": "אברהם אבן עזרא",
-   "en": [
-    {
-     "id": "8LaG-3zPauk",
-     "title": "Abraham Ibn Ezra: Scholar, Commentator, Poet, and Scientist",
-     "seconds": 477
-    },
-    {
-     "id": "bt_k2bZpO7Q",
-     "title": "Abraham ibn Ezra: Scholar, Commentator, Poet, and Explorer",
-     "seconds": 409
-    }
-   ],
    "he": [
     {
      "id": "O99w1av0-tc",
      "title": "אברהם אבן עזרא: חכם, פרשן, פייטן ומדען",
      "seconds": 509
+    }
+   ],
+   "en": [
+    {
+     "id": "8LaG-3zPauk",
+     "title": "Abraham Ibn Ezra: Scholar, Commentator, Poet, and Scientist",
+     "seconds": 477
+    }
+   ],
+   "ru": [
+    {
+     "id": "bt_k2bZpO7Q",
+     "title": "Авраам ибн Эзра: учёный, комментатор, поэт и исследователь",
+     "seconds": 409
     }
    ]
   },
@@ -2246,14 +2514,16 @@
    "label": "שמעון כיפא – מרטיר נוצרי או צדיק נסתר ששלחו חכמי ישראל?",
    "en": [
     {
-     "id": "u84i8JBpXDA",
-     "title": "Shimon Kefa – a Christian martyr or a hidden righteous man sent by the sages of Israel?",
-     "seconds": 421
-    },
-    {
      "id": "R5vUpyUbgkY",
      "title": "Shimon Kefa – Christian Martyr or a Hidden Righteous Agent Sent by the Sages of Israel?",
      "seconds": 400
+    }
+   ],
+   "ru": [
+    {
+     "id": "u84i8JBpXDA",
+     "title": "Шимон Кефа – христианский мученик или сокровенный праведник, посланный мудрецами Израиля?",
+     "seconds": 421
     }
    ]
   },
@@ -2264,10 +2534,12 @@
      "id": "dizAAlZoORM",
      "title": "Rabbi Tzvi Yehuda Kook: Educator and Ideologue of a Generation",
      "seconds": 426
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "WCsz7dDVNyw",
-     "title": "Rabbi Tzvi Yehuda Kook: Educator and Ideologist of a Generation",
+     "title": "Рав Цви Иегуда Кук: воспитатель и идеолог поколения",
      "seconds": 426
     }
    ]
@@ -2276,14 +2548,16 @@
    "label": "הרב מאיר כהנא",
    "en": [
     {
-     "id": "T0dmGJYjTBg",
-     "title": "Rabbi Meir Kahane – an ideology, work, and legacy that continues to shake Israel",
-     "seconds": 399
-    },
-    {
      "id": "x_YuhpmskCM",
      "title": "Rabbi Meir Kahane – The Ideology, Activism, and Legacy That Continue to Shake Israel",
      "seconds": 437
+    }
+   ],
+   "ru": [
+    {
+     "id": "T0dmGJYjTBg",
+     "title": "Рав Меир Кахане — идеология, деятельность и наследие, продолжающие потрясать Израиль",
+     "seconds": 399
     }
    ]
   },
@@ -2294,16 +2568,25 @@
      "id": "Nh2zBFGV2_Q",
      "title": "Dunash ben Labrat: His Life and Works",
      "seconds": 402
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "mMw8ON5iVTg",
-     "title": "Dunash ben Labrat: Life and Works",
+     "title": "Дунаш бен Лабрат: жизнь и творчество",
      "seconds": 318
     }
    ]
   },
   "199": {
    "label": "רבי רפאל עמנואל חי ריקי",
+   "he": [
+    {
+     "id": "_9NcbCvXiFs",
+     "title": "ר' עמנואל חי ריקי: רב ומקובל איטלקי",
+     "seconds": 373
+    }
+   ],
    "en": [
     {
      "id": "p2feMrPaQ1o",
@@ -2317,13 +2600,6 @@
      "title": "Рабби Эммануэль Хай Рикки: итальянский раввин и каббалист",
      "seconds": 316
     }
-   ],
-   "he": [
-    {
-     "id": "_9NcbCvXiFs",
-     "title": "ר' עמנואל חי ריקי: רב ומקובל איטלקי",
-     "seconds": 373
-    }
    ]
   },
   "201": {
@@ -2333,10 +2609,12 @@
      "id": "fQl2cdE5Kp8",
      "title": "Rabbi Elazar Birabi Kalir and His Liturgical Poetry: A Collection of Studies",
      "seconds": 375
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "PM-wTEsSnH4",
-     "title": "Rabbi Elazar ben Rabbi Kalir and his liturgical poetry: a collection of studies",
+     "title": "Рабби Элазар бен рабби Калир и его литургическая поэзия: собрание исследований",
      "seconds": 371
     }
    ]
@@ -2348,10 +2626,12 @@
      "id": "pfhmR70iwVk",
      "title": "Rabbi Akiva Eiger: His Life, Teachings, and Halachic Rulings",
      "seconds": 426
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "Y0UGWrIwvRU",
-     "title": "Rabbi Akiva Eiger: Life, Teachings, and Halachic Rulings",
+     "title": "Рабби Акива Эйгер: жизнь, учение и галахические постановления",
      "seconds": 352
     }
    ]
@@ -2363,10 +2643,12 @@
      "id": "VrCjZHi8QRQ",
      "title": "Rabbi Eliyahu Guttmacher – The Saint of Greiditz Who Opened the Gates of Practical Redemption",
      "seconds": 350
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "q7lpXfIn2YA",
-     "title": "Rabbi Eliyahu Guttmacher – the righteous man from Greiditz who opened the gates of practical rede...",
+     "title": "Рав Элиягу Гутмахер – праведник из Грейдица, открывший ворота практического искупления",
      "seconds": 453
     }
    ]
@@ -2375,14 +2657,16 @@
    "label": "רבי מאיר בן שמואל מרמרו",
    "en": [
     {
-     "id": "ylSWCUHUKm8",
-     "title": "Rabbi Meir ben Shmuel of Rameru – the man who turned the Talmud into an intellectual battlefield",
-     "seconds": 446
-    },
-    {
      "id": "kaDuXwLFIow",
      "title": "Rabbi Meir ben Shmuel of Rameru – The Man Who Turned the Talmud into a Battlefield of Thought",
      "seconds": 417
+    }
+   ],
+   "ru": [
+    {
+     "id": "ylSWCUHUKm8",
+     "title": "Рабби Меир бен Шмуэль из Рамеру – человек, превративший Талмуд в поле интеллектуальной битвы",
+     "seconds": 446
     }
    ]
   },
@@ -2390,14 +2674,16 @@
    "label": "הרב אפרים מקלעת־חמאד",
    "en": [
     {
-     "id": "9mXcEABBfso",
-     "title": "Rabbi Ephraim of Kalaat Hammad – the sage who lost his works, but not his voice",
-     "seconds": 408
-    },
-    {
      "id": "4ohqmB7z6zM",
      "title": "Rabbi Ephraim of Qal‘at Hammad – The Sage Who Lost His Writings, but Not His Voice",
      "seconds": 396
+    }
+   ],
+   "ru": [
+    {
+     "id": "9mXcEABBfso",
+     "title": "Рабби Эфраим из Калаат-Хаммада – мудрец, утративший свои труды, но не свой голос",
+     "seconds": 408
     }
    ]
   },
@@ -2405,14 +2691,16 @@
    "label": "רבנו יהודה בן ברזילי הברצלוני",
    "en": [
     {
-     "id": "gJqBX-aCIAc",
-     "title": "Rabbi Yehuda of Barcelona: His Halachic and Philosophical Teachings and the History of the Sages ...",
-     "seconds": 367
-    },
-    {
      "id": "w9D_Dfjaz9c",
      "title": "Rabbi Judah of Barcelona: His Halakhic and Philosophical Doctrine and History of the Sages of Spain",
      "seconds": 355
+    }
+   ],
+   "ru": [
+    {
+     "id": "gJqBX-aCIAc",
+     "title": "Рабби Иегуда Барселонский: Его галахическое и философское учение и история мудрецов Испании",
+     "seconds": 367
     }
    ]
   },
@@ -2423,10 +2711,12 @@
      "id": "0LHTmmAvWDk",
      "title": "Esther the Queen – The Leader Who Acted from Concealment and Defeated an Empire",
      "seconds": 419
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "Ekgw00hC5Gc",
-     "title": "Esther, the queen who acted from concealment and conquered the empire",
+     "title": "Эстер – царица, действовавшая из сокрытия и победившая империю",
      "seconds": 419
     }
    ]
@@ -2438,10 +2728,12 @@
      "id": "fC0CRV6XQ2I",
      "title": "Queen Helena and the House of Adiabene: Between Jerusalem, the Talmud, and Archaeology",
      "seconds": 467
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "Hqj0gUp1pw4",
-     "title": "Queen Helena and the House of Adiabene: Between Jerusalem, the Talmud, and Archaeology",
+     "title": "Царица Елена и дом Адиабены: между Иерусалимом, Талмудом и археологией",
      "seconds": 387
     }
    ]
@@ -2453,10 +2745,12 @@
      "id": "d6IW-rDVwkY",
      "title": "Huldah the Prophetess – The Story Behind the Discovery of the Book of the Torah in the Temple",
      "seconds": 489
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "FQ0SYVbT4y4",
-     "title": "Prophetess Hulda – the story of the discovery of the Torah in the Temple",
+     "title": "Пророчица Хульда — история открытия книги Торы в Храме",
      "seconds": 335
     }
    ]
@@ -2468,10 +2762,12 @@
      "id": "Gi9RqZFJuVM",
      "title": "The World of the Tosafists: Rabbi Eliezer of Metz and His Halakhic Thought",
      "seconds": 433
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "UUR-yRmUlJc",
-     "title": "The World of Tosfists: Rabbi Eliezer of Metz and His Halachic Teachings",
+     "title": "Мир тосфистов: рабби Элиэзер из Меца и его галахическое учение",
      "seconds": 375
     }
    ]
@@ -2483,10 +2779,12 @@
      "id": "A09Irq5RbxM",
      "title": "Rabbi Yitzhak ha-Lavan: One of the Early Tosafists in Bohemia",
      "seconds": 337
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "ZABkizcYLkI",
-     "title": "Rabbi Yitzchak ha-Lavan: one of the early Tosafists in Bohemia",
+     "title": "Рабби Ицхак ха-Лаван: один из ранних тосафистов в Богемии",
      "seconds": 366
     }
    ]
@@ -2498,10 +2796,12 @@
      "id": "lVjrbFo5Ts4",
      "title": "Rabbi Eliezer ben Nathan – the Ra’avan: The Scholar Who Wrote the First Halakhic Book of Ashkenaz",
      "seconds": 386
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "ONf5F3Lv8zc",
-     "title": "Rabbi Eliezer ben Nathan – Raavan: the sage who wrote the first halachic book of Ashkenaz",
+     "title": "Рабби Элиэзер бен Натан — Рааван: мудрец, написавший первую галахическую книгу Ашкеназа",
      "seconds": 447
     }
    ]
@@ -2513,10 +2813,12 @@
      "id": "XwY-GGirRy4",
      "title": "Rabbi Saadia Shuraki – The Rabbi Who Brought Mathematics into the Beit Midrash",
      "seconds": 397
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "ZY7m_A8SBuA",
-     "title": "Rabbi Saadia Shuraki, the rabbi who brought mathematics into the house of learning",
+     "title": "Рабби Саадия Шураки — раввин, который ввёл математику в дом учения",
      "seconds": 389
     }
    ]
@@ -2525,14 +2827,16 @@
    "label": "רבי יהונתן הכהן מלוניל",
    "en": [
     {
-     "id": "_ffc7dn76qo",
-     "title": "The Great Lamp of Lunel: The Sage Who Brought Maimonides' Teachings to Europe",
-     "seconds": 441
-    },
-    {
      "id": "YxI2_lApcDI",
      "title": "The Great Luminary of Lunel: The Sage Who Brought Maimonides to Europe",
      "seconds": 439
+    }
+   ],
+   "ru": [
+    {
+     "id": "_ffc7dn76qo",
+     "title": "Великий светильник из Люнеля: мудрец, принесший учение Маймонида в Европу",
+     "seconds": 441
     }
    ]
   },
@@ -2543,10 +2847,12 @@
      "id": "XewrhViUp7E",
      "title": "Rabbi Eleazar of Worms and the Ordinances of ShUM",
      "seconds": 317
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "MD18M1WhsFA",
-     "title": "Rabbi Eleazar of Worms and the decrees of SHUM",
+     "title": "Рабби Элеазар из Вормса и постановления ШУМ",
      "seconds": 425
     }
    ]
@@ -2558,10 +2864,12 @@
      "id": "uf6D-8ElhLQ",
      "title": "Hannah’s Prayer: Faith, Halakha, and a Model for Education",
      "seconds": 402
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "buf6CKTYKVI",
-     "title": "Hannah's Prayer: Faith, Halacha, and Parenting Model",
+     "title": "Молитва Ханны: вера, галаха и образец воспитания",
      "seconds": 368
     }
    ]
@@ -2573,10 +2881,12 @@
      "id": "4UX9v3kx5Nc",
      "title": "Rabbi Meshullam ben Moshe and the Early Dynasty of the Sages of Lunel",
      "seconds": 408
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "aSGyBU1k1Fc",
-     "title": "Rabbi Meshulam ben Moshe and the Early Dynasty of Lunel Sages",
+     "title": "Рабби Мешулам бен Моше и ранняя династия мудрецов Люнеля",
      "seconds": 466
     }
    ]
@@ -2585,24 +2895,26 @@
    "label": "רבינו מנוח מנרבונה",
    "en": [
     {
-     "id": "uoEDpicThEM",
-     "title": "Rabbeinu Manoach of Narbonne – the commentator who gave “peace” to Rambam",
-     "seconds": 452
-    },
-    {
      "id": "Nnix88v6Wgs",
      "title": "Rabbeinu Manoach of Narbonne – The Commentator Who Gave “Rest” to the Rambam",
      "seconds": 415
     },
     {
-     "id": "cpv24KtaSr4",
-     "title": "Rabbeinu Manoach of Narbonne – the commentator who gave “peace” to Rambam",
-     "seconds": 417
-    },
-    {
      "id": "n87R6orOkbg",
      "title": "Rabbeinu Manoach of Narbonne – The Commentator Who Gave “Rest” to the Rambam",
      "seconds": 391
+    }
+   ],
+   "ru": [
+    {
+     "id": "uoEDpicThEM",
+     "title": "Рабейну Маноах из Нарбонны — комментатор, давший «покой» Рамбаму",
+     "seconds": 452
+    },
+    {
+     "id": "cpv24KtaSr4",
+     "title": "Рабейну Маноах из Нарбонны — комментатор, давший «покой» Рамбаму",
+     "seconds": 417
     }
    ]
   },
@@ -2613,10 +2925,12 @@
      "id": "aKNFO4YzEBA",
      "title": "Rabbi Nathan ben Meir of Trinquetaille: A Crossroads of the Sages of Provence",
      "seconds": 304
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "lYZGEE8L1oQ",
-     "title": "Rabbi Nathan ben Meir of Trenctai: The Crossroads of the Sages of Provence",
+     "title": "Рабби Натан бен Меир из Тренктайя: перекрёсток мудрецов Прованса",
      "seconds": 369
     }
    ]
@@ -2628,10 +2942,12 @@
      "id": "NnujnyQUOOg",
      "title": "Rabbeinu Perachiah ben Nissim – A Sage Who Defended the Legacy of Maimonides",
      "seconds": 272
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "-pmGp_mGqDw",
-     "title": "Rabbeinu Perachia ben Nissim - a sage who defended the legacy of Rambam",
+     "title": "Рабейну Перахия бен Ниссим — мудрец, защищавший наследие Рамбама",
      "seconds": 442
     }
    ]
@@ -2640,14 +2956,16 @@
    "label": "צדקיה בן אברהם",
    "en": [
     {
-     "id": "85q_BwP8bDI",
-     "title": "Rabbi Zadkiah ben Avraham and the book \"Shibolei a-leket\"",
-     "seconds": 385
-    },
-    {
      "id": "aU788mO4h4U",
      "title": "Rabbi Tzadkiah ben Abraham and the book Shibolei HaLeket",
      "seconds": 298
+    }
+   ],
+   "ru": [
+    {
+     "id": "85q_BwP8bDI",
+     "title": "Рабби Цадкия бен Авраам и книга «Шиболей а-лекет»",
+     "seconds": 385
     }
    ]
   },
@@ -2658,10 +2976,12 @@
      "id": "V18l2aj30Qw",
      "title": "Rabbi Estori HaParchi: A Pioneer of the Study of the Land of Israel",
      "seconds": 353
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "87kQHf3DkfU",
-     "title": "Rabbi Ashtori ha-Parhi: A Pioneer of Land of Israel Studies",
+     "title": "Рабби Аштори hа-Пархи: пионер исследования Земли Израиля",
      "seconds": 374
     }
    ]
@@ -2673,10 +2993,12 @@
      "id": "2fHzICtEzsU",
      "title": "Rabbi Isaac of Corbeil: The Author of the Sefer Mitzvot Katan and His Halakhic Legacy",
      "seconds": 413
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "hG20RFcZ0Ts",
-     "title": "Rabbi Yitzchak of Corbeil: The Author of Sefer Mitzvot Katan and His Halachic Legacy",
+     "title": "Рабби Ицхак из Корбейля: автор «Сефер мицвот катан» и его галахическое наследие",
      "seconds": 357
     }
    ]
@@ -2688,10 +3010,12 @@
      "id": "LCI53rUjpJw",
      "title": "Rabbi Avigdor HaKohen of Vienna: The Shift of Centers and the Consolidation of Halakhah in Ashkenaz",
      "seconds": 275
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "gM-SSfGccoI",
-     "title": "Rabbi Avigdor HaCohen of Vienna: The Shifting Centers and the Formation of Halacha in Ashkenaz",
+     "title": "Рабби Авигдор ха-Коэн из Вены: перемещение центров и формирование Галахи в Ашкеназе",
      "seconds": 384
     }
    ]
@@ -2700,14 +3024,16 @@
    "label": "רבי מנחם בן זרח",
    "en": [
     {
-     "id": "oIQHV_XChFA",
-     "title": "The Legacy and Work of Rabbi Yaakov Baal HaTurim and the Ben Zerach Family",
-     "seconds": 536
-    },
-    {
      "id": "FzihQEaAP4I",
      "title": "The Legacy and Works of Rabbi Yaakov Baal HaTurim and the Ben Zerach Family",
      "seconds": 386
+    }
+   ],
+   "ru": [
+    {
+     "id": "oIQHV_XChFA",
+     "title": "Наследие и деятельность рабби Яакова Бааль а-Турим и семьи бен Зерах",
+     "seconds": 536
     }
    ]
   },
@@ -2715,14 +3041,16 @@
    "label": "רבי יהודה בן הרא״ש",
    "en": [
     {
-     "id": "vFvZdYtISsM",
-     "title": "Rabbi Yehuda ben ha-Rosh: Leadership and Spiritual Testament",
-     "seconds": 460
-    },
-    {
      "id": "Kx93YOiMv8U",
      "title": "Rabbi Yehuda ben the Rosh: Leadership and a Spiritual Testament",
      "seconds": 312
+    }
+   ],
+   "ru": [
+    {
+     "id": "vFvZdYtISsM",
+     "title": "Рабби Йеуда бен ха-Рош: лидерство и духовное завещание",
+     "seconds": 460
     }
    ]
   },
@@ -2735,19 +3063,21 @@
      "seconds": 272
     },
     {
+     "id": "tMw4LBBvRsU",
+     "title": "Rabbi Moses of Évreux – the quiet revolutionary who turned the book into a teacher",
+     "seconds": 371
+    }
+   ],
+   "ru": [
+    {
      "id": "K7Xxix0kKJ8",
-     "title": "Rabbi Moshe of Evreux – the man who made the book a rabbi",
+     "title": "Рабби Моше из Эврё — человек, который сделал книгу раввином",
      "seconds": 517
     },
     {
      "id": "0Q2VuWQeL_U",
-     "title": "Rabbi Moshe of Evreux: The Quiet Revolutionary Who Turned a Book into a Teacher",
+     "title": "Рабби Моше из Эврё — тихий революционер, превративший книгу в учителя",
      "seconds": 458
-    },
-    {
-     "id": "tMw4LBBvRsU",
-     "title": "Rabbi Moses of Évreux – the quiet revolutionary who turned the book into a teacher",
-     "seconds": 371
     }
    ]
   },
@@ -2755,14 +3085,16 @@
    "label": "רבי נחמן קרוכמל (רנ״ק)",
    "en": [
     {
-     "id": "doTEC_Kq7Iw",
-     "title": "Rabbi Nachman Krochmal (Ranak) – a thinker who turned history into proof of the eternity of Israel",
-     "seconds": 407
-    },
-    {
      "id": "oAjWELNrN0I",
      "title": "Rabbi Nachman Krochmal (RaNaK) – The Thinker Who Turned History into Proof of the Eternity of Israel",
      "seconds": 467
+    }
+   ],
+   "ru": [
+    {
+     "id": "doTEC_Kq7Iw",
+     "title": "Рабби Нахман Крохмаль (Ранак) — мыслитель, превративший историю в доказательство вечности Израиля",
+     "seconds": 407
     }
    ]
   },
@@ -2773,10 +3105,12 @@
      "id": "O8j_x3TsVqk",
      "title": "Rabbi Shimshon ben Tzadok: The Tashbetz Katan Through the Generations",
      "seconds": 412
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "06ds3hdUdyI",
-     "title": "Rabbi Shimshon ben Tzadok: \"Tashbetz Katan\" in the Mirror of Generations",
+     "title": "Рабби Шимшон бен Цадок: «Ташбец катан» в зеркале поколений",
      "seconds": 487
     }
    ]
@@ -2788,10 +3122,12 @@
      "id": "qBYkt1v-dIE",
      "title": "Rabbi Alexandri Zusselin HaKohen – the halachic authority who preserved Torah from the ashes",
      "seconds": 490
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "D03fiiP5cJM",
-     "title": "Rabbi Alexandri Zusslin ha-Kohen – the rabbi who saved the Torah from the ashes",
+     "title": "Рабби Александри Зусслин ха-Коэн — законоучитель, сохранивший Тору из пепла",
      "seconds": 424
     }
    ]
@@ -2800,14 +3136,16 @@
    "label": "רס״ן רועי קליין הי״ד",
    "en": [
     {
-     "id": "NuQ6ASLKEcA",
-     "title": "Roi Klein: The Archetype of the \"Book and Sword\" and His Spiritual-Torah Legacy",
-     "seconds": 383
-    },
-    {
      "id": "20F3tJ8uoVk",
      "title": "Roi Klein: An Archetype of “Sefer and Sword” and His Torah Legacy",
      "seconds": 295
+    }
+   ],
+   "ru": [
+    {
+     "id": "NuQ6ASLKEcA",
+     "title": "Рои Кляйн: архетип «книги и меча» и его духовно-Торийное наследие",
+     "seconds": 383
     }
    ]
   },
@@ -2815,14 +3153,16 @@
    "label": "הרב נתן צבי פינקל (הסבא מסלבודקה)",
    "en": [
     {
-     "id": "To2EA3VY0VU",
-     "title": "Saba from Slobodka and the Kingdom of Human Greatness: From Lithuania to Hebron and Jerusalem",
-     "seconds": 483
-    },
-    {
      "id": "XqiW1-Q_dkY",
      "title": "The Grandfather of Slabodka and the Kingdom of Human Greatness: From Lithuania to Hebron & Jerusalem",
      "seconds": 436
+    }
+   ],
+   "ru": [
+    {
+     "id": "To2EA3VY0VU",
+     "title": "Саба из Слободки и царство величия человека: от Литвы к Хеврону и Иерусалиму",
+     "seconds": 483
     }
    ]
   },
@@ -2833,10 +3173,12 @@
      "id": "ABRNJx1bSZE",
      "title": "The ḤIDA: Between Halakhah, Kabbalah, and Bibliography",
      "seconds": 465
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "I2IthCb6BSo",
-     "title": "Hida: Between Halacha, Kabbalah, and Bibliography",
+     "title": "Хида: между галахой, каббалой и библиографией",
      "seconds": 444
     }
    ]
@@ -2848,10 +3190,12 @@
      "id": "s7NQCbMVv90",
      "title": "Shlomo Molcho: The Messianic Kabbalist and His Self-Sacrifice for the Sanctification of God’s Name",
      "seconds": 476
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "A5Zh4dbKGoA",
-     "title": "Shlomo Molcho: Messianic Kabbalist and Self-Sacrifice for the Sanctification of the Name",
+     "title": "Шломо Молхо: мессианский каббалист и самопожертвование во имя освящения Имени",
      "seconds": 457
     }
    ]
@@ -2863,10 +3207,12 @@
      "id": "0Grw9xmokQs",
      "title": "Rabbi Shlomo Alkabetz: Architect of Kabbalah, Shabbat, and Liturgical Poetry in Safed",
      "seconds": 403
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "v5Aoa0zeIYY",
-     "title": "Rabbi Shlomo Alkabetz: Architect of Kabbalah, Shabbat, and Liturgical Poetry in Safed",
+     "title": "Рабби Шломо Алькабец: архитектор каббалы, субботы и литургической поэзии в Цфате",
      "seconds": 502
     }
    ]
@@ -2875,14 +3221,16 @@
    "label": "רבי יום־טוב ליפמן הלר",
    "en": [
     {
-     "id": "bB15zwrvVTg",
-     "title": "Rabbi Yom-Tov Lipman Haller – His Personality, Teachings, and Times",
-     "seconds": 504
-    },
-    {
      "id": "-lUoOXHkUtI",
      "title": "Briefing: Rabbi Yom-Tov Lipmann Heller – His Figure, Thought, and Era",
      "seconds": 397
+    }
+   ],
+   "ru": [
+    {
+     "id": "bB15zwrvVTg",
+     "title": "Рабби Йом-Тов Липман Галлер — его личность, учение и эпоха",
+     "seconds": 504
     }
    ]
   },
@@ -2893,10 +3241,12 @@
      "id": "9w3tpSxCG_A",
      "title": "The Maharsha – the man who connected intellect, heart, and public responsibility",
      "seconds": 470
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "oKZzcHz2jlE",
-     "title": "Maarsha is a man who combines mind, heart and social responsibility.",
+     "title": "Маарша — человек, соединивший разум, сердце и общественную ответственность",
      "seconds": 431
     }
    ]
@@ -2905,14 +3255,16 @@
    "label": "גירוש ספרד",
    "en": [
     {
-     "id": "AKaU3ACKg08",
-     "title": "The Legacy of Sephardic Jewry: From Exile to Dispersion to the Present Day",
-     "seconds": 563
-    },
-    {
      "id": "p9Ga-GF7Ccg",
      "title": "Sephardic Jewish Heritage: From Expulsion to Diaspora and Until Our Time",
      "seconds": 459
+    }
+   ],
+   "ru": [
+    {
+     "id": "AKaU3ACKg08",
+     "title": "Наследие сефардского еврейства: от изгнания к рассеянию и до наших дней",
+     "seconds": 563
     }
    ]
   },
@@ -2920,14 +3272,16 @@
    "label": "הרב יוסף קאפח",
    "en": [
     {
-     "id": "1rHzqiQzvPs",
-     "title": "Gaon Rabbi Yosef Kafich: Rambam's Legacy, Research, and Teachings",
-     "seconds": 404
-    },
-    {
      "id": "OxHbyOdiFSE",
      "title": "Rabbi Yosef Qafih: Legacy, Scholarship, and the Teachings of Maimonides",
      "seconds": 458
+    }
+   ],
+   "ru": [
+    {
+     "id": "1rHzqiQzvPs",
+     "title": "Гаон рав Йосеф Кафих: наследие, исследования и учение Рамбама",
+     "seconds": 404
     }
    ]
   },
@@ -2940,18 +3294,20 @@
      "seconds": 311
     },
     {
-     "id": "jtQ37qmsC44",
-     "title": "The Lubavitcher Rebbe: The Vision of Shlichut That Changed the Face of Judaism",
-     "seconds": 565
-    },
-    {
      "id": "opuzk7ph6_o",
      "title": "The Lubavitcher Rebbe: Engineer, Leader, and Herald of Redemption",
      "seconds": 405
+    }
+   ],
+   "ru": [
+    {
+     "id": "jtQ37qmsC44",
+     "title": "Ребе из Любавича - Видение шлихута, изменившее лицо иудаизма",
+     "seconds": 565
     },
     {
      "id": "tXLX6gTUm94",
-     "title": "The Lubavitcher Rebbe: Engineer, Leader, and Herald of Redemption",
+     "title": "Любавичский Ребе: инженер, лидер и вестник Избавления",
      "seconds": 423
     }
    ]
@@ -2960,14 +3316,16 @@
    "label": "הרב עובדיה יוסף",
    "en": [
     {
-     "id": "JuRIsLggxwU",
-     "title": "The Modern Sephardic Revolution: Rabbi Ovadia Yosef and the Resurrected Crown",
-     "seconds": 441
-    },
-    {
      "id": "UdGSWUkqtUI",
      "title": "The Modern Sephardic Revolution – Rabbi Ovadia Yosef and the Crown Reborn",
      "seconds": 552
+    }
+   ],
+   "ru": [
+    {
+     "id": "JuRIsLggxwU",
+     "title": "Современная сефардская революция — рав Овадья Йосеф и возрождённая корона",
+     "seconds": 441
     }
    ]
   },
@@ -2975,14 +3333,16 @@
    "label": "רב סעדיה גאון",
    "en": [
     {
-     "id": "7-x93C0iTs4",
-     "title": "Rabbi Saadia Gaon: His Teachings, Works, and Historical Controversies",
-     "seconds": 472
-    },
-    {
      "id": "T3hG4115Cfk",
      "title": "Rabbi Saadia Gaon: His Thought, Works, and Historical Controversies",
      "seconds": 460
+    }
+   ],
+   "ru": [
+    {
+     "id": "7-x93C0iTs4",
+     "title": "Рабби Саадия Гаон: его учение, труды и исторические полемики",
+     "seconds": 472
     }
    ]
   },
@@ -2993,10 +3353,12 @@
      "id": "JXPDRMNygUo",
      "title": "Shlomo Munk – The Blind Man Who Opened Europe’s Eyes",
      "seconds": 416
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "TB8T3gR9Omw",
-     "title": "Shlomo Munk – the blind man who opened Europe's eyes",
+     "title": "Шломо Мунк – слепой, открывший глаза Европе",
      "seconds": 483
     }
    ]
@@ -3008,10 +3370,12 @@
      "id": "B7dQL1mV29k",
      "title": "Rabbi Moshe HaDarshan – The Sage Who Shaped the World of Midrash in Europe",
      "seconds": 409
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "OaN2uwYLzKY",
-     "title": "Rabbi Moshe HaDarshan – the sage who shaped the world of midrash in Europe",
+     "title": "Рабби Моше а-Даршан – мудрец, сформировавший мир мидраша в Европе",
      "seconds": 416
     }
    ]
@@ -3020,14 +3384,16 @@
    "label": "רבי דוד פארדו",
    "en": [
     {
-     "id": "RYT4Z85a2TY",
-     "title": "Rabbi David Pardo and the Revolution in Tosefta Interpretation in the Book of Chasdei David",
-     "seconds": 493
-    },
-    {
      "id": "U6Jz3o9QeI0",
      "title": "Rabbi David Pardo and the Revolution in Tosefta Interpretation in Chasdei David",
      "seconds": 348
+    }
+   ],
+   "ru": [
+    {
+     "id": "RYT4Z85a2TY",
+     "title": "Рабби Давид Пардо и революция в толковании Тосефты в книге «Хасдей Давид»",
+     "seconds": 493
     }
    ]
   },
@@ -3038,10 +3404,12 @@
      "id": "19XGMEJ3LoY",
      "title": "Rabbi Nathan of Rome and the Sefer Ha-Arukh: Tradition, Language, and Halakhah",
      "seconds": 450
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "-asHB4Ewm_A",
-     "title": "Rabbi Nathan of Rome and the Sefer ha-Aruch: Tradition, Language, and Halacha",
+     "title": "Рабби Натан из Рима и «Сефер ха-Арух»: традиция, язык и галаха",
      "seconds": 500
     }
    ]
@@ -3053,10 +3421,12 @@
      "id": "HMZspSg9ujQ",
      "title": "The World of Piyyut and Halakha: The Teachings of Rabbi Yitzhak ibn Giat and the Traditions of Spain",
      "seconds": 474
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "Z5oH9lR9tZo",
-     "title": "The World of Piyyutim and Halacha: The Teachings of Rabbi Isaac Ibn Giat and the Traditions of Spain",
+     "title": "Мир пиютов и галахи: учение рабби Ицхака ибн Гиата и традиции Испании",
      "seconds": 424
     }
    ]
@@ -3065,14 +3435,16 @@
    "label": "מחזור ויטרי",
    "en": [
     {
-     "id": "JH-JHMwPEFM",
-     "title": "Machzor Vitry: History, Textual Traditions, and Customs of the Rashi School",
-     "seconds": 300
-    },
-    {
      "id": "QkHc7VdwyyQ",
      "title": "Machzor Vitry: History, Textual Traditions, and the Customs of the School of Rashi",
      "seconds": 402
+    }
+   ],
+   "ru": [
+    {
+     "id": "JH-JHMwPEFM",
+     "title": "Махзор Витри: история, текстовые традиции и обычаи школы Раши",
+     "seconds": 300
     }
    ]
   },
@@ -3083,10 +3455,12 @@
      "id": "E52YBJ1z_58",
      "title": "Deborah the Prophetess: Leadership, Justice, and Torah Thought",
      "seconds": 485
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "he3TX2TknG0",
-     "title": "Deborah the Prophetess: Leadership, Judgment, and the Religious-Magical Legacy – An Interdiscipli...",
+     "title": "Девора-пророчица: лидерство, суд и религиозно-учительное наследие — междисциплинарный анализ",
      "seconds": 526
     }
    ]
@@ -3098,10 +3472,12 @@
      "id": "eB864xW3LIM",
      "title": "Thought and Public Activity of Rabbeinu Shmuel Ha-Sardi",
      "seconds": 402
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "pvCr5EZsF-w",
-     "title": "The Teachings and Public Activities of Rabbeinu Shmuel Ha-Sardi: An Analysis of Codification, Tho...",
+     "title": "У чение и общественная деятельность рабейну Шмуэля а-Сарди: анализ кодификации, мысли и права",
      "seconds": 376
     }
    ]
@@ -3113,10 +3489,12 @@
      "id": "sA1D0OuJ_S8",
      "title": "The Thought, Activity, and Legacy of Rabbi Maimon the Judge: A Link Between Generations",
      "seconds": 359
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "eKtYaaeC8BY",
-     "title": "The Teachings, Work, and Legacy of Rav Maimon Dayan: A Link Between Generations",
+     "title": "Учение, деятельность и наследие рава Маймона-даяна: связующее звено между поколениями",
      "seconds": 504
     }
    ]
@@ -3128,10 +3506,12 @@
      "id": "rhhpQdgh5CM",
      "title": "The Torah legacy and activity of Rabbi Meir ben Shimon HaMe’ili",
      "seconds": 372
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "Y9_WYJM9LY0",
-     "title": "The activities and teachings of Rabbi Meir ben Shimon ha-Meili",
+     "title": "Деятельность и учение рабби Меира бен Шимона а-Меили",
      "seconds": 414
     }
    ]
@@ -3143,10 +3523,12 @@
      "id": "mpK4lW27XWQ",
      "title": "Rabbi Yechiel ben Yekutiel: The Leiden Manuscript",
      "seconds": 279
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "BX0hmaRuQm0",
-     "title": "Rabbi Yechiel ben Yekutiel: The Leiden Manuscript",
+     "title": "Рабби Йехиэль бен Йекутиэль: Лейденская рукопись",
      "seconds": 453
     }
    ]
@@ -3158,10 +3540,12 @@
      "id": "qye5KMrSkWM",
      "title": "Riaz (Rabbi Isaiah di Trani the Younger) - The Struggle for the Soul of Faith",
      "seconds": 307
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "LdvONEKFp68",
-     "title": "Riaz (Rabbi Ishaya di Trani the Younger) – Between Tradition and Philosophy: The Struggle for the...",
+     "title": "Риаз (Рабби Ишая ди Трани младший) –между традицией и философией: борьба за душу веры",
      "seconds": 418
     }
    ]
@@ -3173,10 +3557,12 @@
      "id": "msovXAc2swc",
      "title": "Rabbi Shem Tov Ibn Gaon – The Sage Who United Halacha, Kabbalah, and Sacred Art",
      "seconds": 505
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "E4Ntxaz1RWc",
-     "title": "Rabbi Shem Tov ibn Gaon, the sage who united halacha, Kabbalah, and sacred art",
+     "title": "Рабби Шем Тов ибн Гаон — мудрец, объединивший галаху, каббалу и священное искусство",
      "seconds": 397
     }
    ]
@@ -3188,10 +3574,12 @@
      "id": "UxGRHKF3iQ8",
      "title": "Rabbi Shem Tov Gefen: The Kabbalist Scientist and Polymath",
      "seconds": 329
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "1QwFpMBaBVY",
-     "title": "Rabbi Shem Tov Geffen: Kabbalist, Scholar, and Encyclopedic Man",
+     "title": "Рав Шем Тов Гефен: каббалист, учёный и человек энциклопедического склада",
      "seconds": 420
     }
    ]
@@ -3200,14 +3588,16 @@
    "label": "רבי שלמה הכהן מווילנה",
    "en": [
     {
-     "id": "21KfqhPBlhM",
-     "title": "Rabbi Shlomo ha-Kohen of Vilna: Torah, Zionism, and \"Heshek Shlomo\"",
-     "seconds": 358
-    },
-    {
      "id": "AHHjQ5flji4",
      "title": "Rabbi Shlomo HaKohen of Vilna: Torah, Zionism, and Ḥeshek Shlomo",
      "seconds": 238
+    }
+   ],
+   "ru": [
+    {
+     "id": "21KfqhPBlhM",
+     "title": "Рабби Шломо ха-Коэн из Вильно: Тора, сионизм и «Хешек Шломо»",
+     "seconds": 358
     }
    ]
   },
@@ -3215,14 +3605,16 @@
    "label": "רבי ישראל יהושע טרונק מקוטנא",
    "en": [
     {
-     "id": "KQ14DueH1Jg",
-     "title": "Rabbi Yehoshua of Kutna, a halachic authority who saw the return to the Land as the beginning of ...",
-     "seconds": 436
-    },
-    {
      "id": "oefm0G9kWek",
      "title": "Rabbi Yisrael Yehoshua Trunk of Kutna – Halachic Authority Who Saw Return to the Land as Redemption",
      "seconds": 324
+    }
+   ],
+   "ru": [
+    {
+     "id": "KQ14DueH1Jg",
+     "title": "Рабби Йеошуа из Кутны – галахический авторитет, увидевший возвращение к Земле как начало избавления",
+     "seconds": 436
     }
    ]
   },
@@ -3233,10 +3625,12 @@
      "id": "coYnfxRPZD0",
      "title": "Rabbi Vidal di Tolosa – The Commentator Who Restored Maimonides’ Voice",
      "seconds": 310
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "DrJyqdeVAeE",
-     "title": "Rabbi Vidal di Tolosa – the commentator who gave Rambam his voice back",
+     "title": "Рав Видаль ди Толоза – комментатор, вернувший Рамбаму его голос",
      "seconds": 293
     }
    ]
@@ -3248,10 +3642,12 @@
      "id": "FBL394gsb4g",
      "title": "Rabbi Meir ben Baruch HaLevi Segal – The Man Who Reshaped Ashkenazi Rabbinic Authority",
      "seconds": 406
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "3Dp8cAF3Whs",
-     "title": "Rabbi Meir ben Baruch ha-Levi Segal – the man who reshaped Ashkenazi rabbinate",
+     "title": "Рабби Меир бен Барух ха-Леви Сегаль – человек, заново сформировавший ашкеназское раввинство",
      "seconds": 316
     }
    ]
@@ -3263,10 +3659,12 @@
      "id": "nJQ_RbQIEvI",
      "title": "Rabbi Samson ben Eliezer and the Tradition of Scribal Writing (STaM) in the Book \"Baruch She’amar\"",
      "seconds": 287
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "Mf9WorpjPKA",
-     "title": "Rabbi Shimshon ben Eliezer and the tradition of writing STA'M in the book \"Baruch She-Amar\"",
+     "title": "Рабби Шимшон бен Элиэзер и традиция письма СТаМ в книге «Барух ше-амар»",
      "seconds": 436
     }
    ]
@@ -3278,10 +3676,12 @@
      "id": "eb2oNTiOC1k",
      "title": "Rabbi Israel of Krems: The “Hagahot Ashri” and the Formation of Ashkenazic Halakhic Ruling",
      "seconds": 448
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "d9SODLJNFNw",
-     "title": "Rabbi Israel of Krems: The Architecture of \"Hagaot Ashri\" and the Formation of the Ashkenazi Hala...",
+     "title": "Рабби Исраэл из Кремса: архитектура «Хагаот Ашри» и формирование ашкеназской галахической традиции",
      "seconds": 538
     }
    ]
@@ -3293,10 +3693,12 @@
      "id": "wAbja8j_2_w",
      "title": "Rabbi David Gans and the Cosmological Revolution in Rabbinic Thought",
      "seconds": 299
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "7jB5xlxSzWA",
-     "title": "Rabbi David Gans and the Cosmological Revolution in the Thought of the Sages of Israel",
+     "title": "Раби Давид Ганс и космологическая революция в мысли мудрецов Израиля",
      "seconds": 482
     }
    ]
@@ -3313,52 +3715,52 @@
   },
   "430": {
    "label": "רבי יהודה בר אילאי",
-   "ru": [
-    {
-     "id": "B8WYcBu8FIA",
-     "title": "Рабби Йехуда бар Илай: лидерство, галаха и мидраш Сифра",
-     "seconds": 500
-    }
-   ],
    "en": [
     {
      "id": "VksJwSjUTqQ",
      "title": "Rabbi Yehuda bar Ilai: Leadership, Halakhah, and the Sifra Midrash",
      "seconds": 371
     }
+   ],
+   "ru": [
+    {
+     "id": "B8WYcBu8FIA",
+     "title": "Рабби Йехуда бар Илай: лидерство, галаха и мидраш Сифра",
+     "seconds": 500
+    }
    ]
   },
   "431": {
    "label": "רבי מאיר בעל הנס",
-   "ru": [
-    {
-     "id": "H8WtxOkgJGE",
-     "title": "Рабби Меир: его жизнь и учение как светоч традиции",
-     "seconds": 489
-    }
-   ],
    "en": [
     {
      "id": "rPFKI2erb2E",
      "title": "Rabbi Meir: His Life and Teachings as a Luminary of Tradition",
      "seconds": 344
     }
+   ],
+   "ru": [
+    {
+     "id": "H8WtxOkgJGE",
+     "title": "Рабби Меир: его жизнь и учение как светоч традиции",
+     "seconds": 489
+    }
    ]
   },
   "434": {
    "label": "הרשב״ץ (רבי שמעון בן צמח דוראן)",
-   "ru": [
-    {
-     "id": "ecl65fy6iGE",
-     "title": "Рашбац: универсальный мудрец, галахический авторитет и энциклопедист",
-     "seconds": 552
-    }
-   ],
    "en": [
     {
      "id": "e1uRNGIXOsw",
      "title": "Rashbatz: A Comprehensive Sage, Halakhic Authority, and Encyclopedist",
      "seconds": 343
+    }
+   ],
+   "ru": [
+    {
+     "id": "ecl65fy6iGE",
+     "title": "Рашбац: универсальный мудрец, галахический авторитет и энциклопедист",
+     "seconds": 552
     }
    ]
   },
@@ -3366,14 +3768,16 @@
    "label": "רב יוסף בר חמא",
    "en": [
     {
-     "id": "ubBihik_GWA",
-     "title": "Rabbi Yosef bar Hama and the Birth of the Babylonian Torah Elite",
-     "seconds": 541
-    },
-    {
      "id": "L2lV3N6FCw4",
-     "title": "Rav Yosef bar Hama and the Birth of Babylonian Torah Aristocracy",
+     "title": "Rav Yosef bar Hama and the Birth of Babylonian Torah Aristocracy ",
      "seconds": 501
+    }
+   ],
+   "ru": [
+    {
+     "id": "ubBihik_GWA",
+     "title": "Рав Йосеф бар Хама и рождение вавилонской элиты Торы",
+     "seconds": 541
     }
    ]
   },
@@ -3384,10 +3788,12 @@
      "id": "coQyIiMtHho",
      "title": "The Teachings and Historical Influence of Rabbi Menachem Azariah of Pano",
      "seconds": 295
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "NGZ4n57j8g8",
-     "title": "The Teachings and Historical Influence of Rabbi Menachem Azariah da Fano",
+     "title": "Учение и историческое влияние рабби Менахема Азарии из Пано",
      "seconds": 436
     }
    ]
@@ -3396,14 +3802,16 @@
    "label": "מהר״י קורקוס",
    "en": [
     {
-     "id": "NaoBguesmXw",
-     "title": "Mahari Korkos: The Sage Who Prepared Halakha for Redemption",
-     "seconds": 463
-    },
-    {
      "id": "1ujQnhxNFy8",
      "title": "Mahari Korkos - The Sage Who Prepared Halakhah for Redemption",
      "seconds": 458
+    }
+   ],
+   "ru": [
+    {
+     "id": "NaoBguesmXw",
+     "title": "Махари Коркос - мудрец, подготовивший галаху к избавлению",
+     "seconds": 463
     }
    ]
   },
@@ -3411,14 +3819,16 @@
    "label": "רבי יוסף קארו",
    "en": [
     {
-     "id": "XMHlD_piB-4",
-     "title": "Rabbi Yosef Karo: Between Halachic Decisions, Kabbalah, and Mysticism",
-     "seconds": 472
-    },
-    {
      "id": "qYE8cC26YRA",
      "title": "Rabbi Yosef Karo: Between Halakhic Ruling, Kabbalah, and Mysticism",
      "seconds": 558
+    }
+   ],
+   "ru": [
+    {
+     "id": "XMHlD_piB-4",
+     "title": "Рабби Йосеф Каро: между галахическим решением, каббалой и мистикой",
+     "seconds": 472
     }
    ]
   },
@@ -3429,10 +3839,12 @@
      "id": "QHHa6EXkb8U",
      "title": "Sarah Our Matriarch:The Foundation of Prophecy and the Sovereignty of Spirit in the Tent and in Time",
      "seconds": 372
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "rTWSGX6coxc",
-     "title": "Sarah the Foremother: The Foundation of Prophecy and the Dominion of the Spirit in the Tent and i...",
+     "title": "Сара Праматерь: основание пророчества и владычество духа в шатре и во времени",
      "seconds": 411
     }
    ]
@@ -3441,14 +3853,16 @@
    "label": "רבי ישראל איסרלן",
    "en": [
     {
-     "id": "iNQ-FOwDufk",
-     "title": "Rabbi Israel Isserlein, the rabbi who raised Ashkenazi Jewry from the ashes",
-     "seconds": 479
-    },
-    {
      "id": "q8eLxP2lgjA",
      "title": "Rabbi Israel Isserlein - The Halachic Authority Who Rebuilt Ashkenazic Jewry from the Ashes",
      "seconds": 280
+    }
+   ],
+   "ru": [
+    {
+     "id": "iNQ-FOwDufk",
+     "title": "Рабби Исраэль Иссерлейн - законоучитель, восстановивший ашкеназское еврейство из пепла",
+     "seconds": 479
     }
    ]
   },
@@ -3456,14 +3870,16 @@
    "label": "רבי יעקב לנדא",
    "en": [
     {
-     "id": "wEmwGlLhGjw",
-     "title": "Rabbi Jacob Landau: Author of the \"Agur\"",
-     "seconds": 396
-    },
-    {
      "id": "ycaGC9cXwLY",
      "title": "Rabbi Yaakov Landau: Author of the “Agur”",
      "seconds": 309
+    }
+   ],
+   "ru": [
+    {
+     "id": "wEmwGlLhGjw",
+     "title": "Рабби Яаков Ландау: автор «Агура»",
+     "seconds": 396
     }
    ]
   },
@@ -3474,10 +3890,12 @@
      "id": "q3pKKKJP3Do",
      "title": "The Path of Ruth: Mercy, Law, and Spiritual Legacy",
      "seconds": 338
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "OMUpBWCh0ts",
-     "title": "The Path of Ruth: Mercy, Law, and Spiritual Heritage",
+     "title": "Путь Руфи: милосердие, закон и духовное наследие",
      "seconds": 537
     }
    ]
@@ -3486,14 +3904,16 @@
    "label": "הרב ד״ר אברהם לבני",
    "en": [
     {
-     "id": "-O3vOHVMLw8",
-     "title": "Avraham Livni: The Israeli Mystery and a Message to the World",
-     "seconds": 410
-    },
-    {
      "id": "7xG6akhghaE",
      "title": "Abraham Livni: The Israeli Secret and the Message to the World",
      "seconds": 284
+    }
+   ],
+   "ru": [
+    {
+     "id": "-O3vOHVMLw8",
+     "title": "Авраам Ливни: израильская тайна и весть миру",
+     "seconds": 410
     }
    ]
   },
@@ -3501,14 +3921,16 @@
    "label": "רבי יעקב פולק",
    "en": [
     {
-     "id": "L5T6oVKBsSU",
-     "title": "Rabbi Yaakov Pollak: Founder of the Pilpul Method and the Birth of the Torah World in Poland",
-     "seconds": 548
-    },
-    {
      "id": "JwwrnklLPac",
      "title": "Rabbi Yaakov Pollak: Founder of the Pilpul Method and the Rise of Torah Scholarship in Poland",
      "seconds": 280
+    }
+   ],
+   "ru": [
+    {
+     "id": "L5T6oVKBsSU",
+     "title": "Рабби Яаков Поллак: основатель метода пилпула и зарождения мира Торы в Польше",
+     "seconds": 548
     }
    ]
   },
@@ -3516,14 +3938,16 @@
    "label": "רבינו דוד בונפיד",
    "en": [
     {
-     "id": "pGDFGE42KoM",
-     "title": "Rabbi David Bonafed: Student of Ramban and His Spiritual Legacy in Spain",
-     "seconds": 406
-    },
-    {
      "id": "m3z94b-NIKM",
      "title": "Rabbi David Bonafed: Disciple of the Ramban and His Torah Legacy in Spain",
      "seconds": 469
+    }
+   ],
+   "ru": [
+    {
+     "id": "pGDFGE42KoM",
+     "title": "Рав Давид Бонафед: ученик Рамбана и его духовное наследие в Испании",
+     "seconds": 406
     }
    ]
   },
@@ -3534,10 +3958,12 @@
      "id": "NLdSQBDGwBg",
      "title": "The Holy Ari: Esoteric Teaching, the Refinement of Sparks, and the World of Tikkun",
      "seconds": 322
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "B3hHNfGRIec",
-     "title": "The Holy Ari: Teachings of Mystery, Purification of Sparks, and the World of Rectification",
+     "title": "Святой Ари: учение тайны, очищение искр и мир исправления",
      "seconds": 470
     }
    ]
@@ -3546,23 +3972,25 @@
    "label": "הרמ״א (רבי משה איסרליש)",
    "en": [
     {
+     "id": "M0cUg_YSLFk",
+     "title": "Analysis of Halakha and the Thought of the Rema",
+     "seconds": 472
+    }
+   ],
+   "ru": [
+    {
      "id": "qfhtXb3f3pU",
-     "title": "Rema: Biography, Halakhic Legacy, and Philosophical Worldview",
+     "title": "Рамо: биография, галахическое наследие и философское мировоззрение",
      "seconds": 298
     },
     {
      "id": "L24nCHU4_z8",
-     "title": "Ramo: Biography, Halachic Legacy, and Philosophical Worldview",
+     "title": "Рамо: биография, галахическое наследие и философское мировоззрение",
      "seconds": 475
     },
     {
-     "id": "M0cUg_YSLFk",
-     "title": "Analysis of Halakha and the Thought of the Rema",
-     "seconds": 472
-    },
-    {
      "id": "2-BMSlpVodA",
-     "title": "Study of Halacha and the worldview of Rem",
+     "title": "Изучение Галахи и мировоззрения Рэма",
      "seconds": 426
     }
    ]
@@ -3571,14 +3999,16 @@
    "label": "רבי יהושע אבן שועיב",
    "en": [
     {
-     "id": "AtlCXb3JDx8",
-     "title": "Rabbi Yehoshua ibn Shu'ayb: Leadership, Sermons, and the Secrets of Ramban",
-     "seconds": 445
-    },
-    {
      "id": "Tcix3Bmm-t0",
      "title": "Rabbi Yehoshua Ibn Shu'aib: Leadership, Homiletics, and the Secrets of Ramban",
      "seconds": 260
+    }
+   ],
+   "ru": [
+    {
+     "id": "AtlCXb3JDx8",
+     "title": "Рабби Йеошуа ибн Шуайб: лидерство, проповедь и тайны Рамбана",
+     "seconds": 445
     }
    ]
   },
@@ -3586,14 +4016,16 @@
    "label": "רבי יוסף אבן טבול",
    "en": [
     {
-     "id": "OlesEjzoTZs",
-     "title": "Rabbi Yosef ibn Tabul is a Kabbalist who preserved another voice in the teachings of the Ari.",
-     "seconds": 535
-    },
-    {
      "id": "Ll6Abt2Cq7w",
      "title": "Rabbi Yosef ibn Tabul - The Kabbalist Who Preserved Another Voice in the Teachings of the Ari",
      "seconds": 281
+    }
+   ],
+   "ru": [
+    {
+     "id": "OlesEjzoTZs",
+     "title": "Рабби Йосеф ибн Табуль - каббалист, сохранивший ещё один голос в учении Ари",
+     "seconds": 535
     }
    ]
   },
@@ -3604,10 +4036,12 @@
      "id": "NgZ2WbGy9E0",
      "title": "Rabbi Yaakov Skili: His Life, Writings, and Eretz Israel-Oriented Thought",
      "seconds": 303
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "OL0B8iX_o2Y",
-     "title": "Rabbi Yaakov Skili: Biography, Works, and His Teachings on the Land of Israel",
+     "title": "Рабби Яаков Скили: биография, труды и его учение о Земле Израиля",
      "seconds": 376
     }
    ]
@@ -3616,14 +4050,16 @@
    "label": "רבי קרשקש וידאל",
    "en": [
     {
-     "id": "ZhX1ONdf8lo",
-     "title": "The Crescas Family: Personalities and History in the Jewish Encyclopedia",
-     "seconds": 489
-    },
-    {
      "id": "UH3nhew-7mk",
      "title": "The Crescas Family: Personalities and History in the Jewish Encyclopedia",
      "seconds": 254
+    }
+   ],
+   "ru": [
+    {
+     "id": "ZhX1ONdf8lo",
+     "title": "Семья Крескас: личности и история в Еврейской энциклопедии",
+     "seconds": 489
     }
    ]
   },
@@ -3631,14 +4067,16 @@
    "label": "האדר״ת (רבי אליהו דוד רבינוביץ'-תאומים)",
    "en": [
     {
-     "id": "mcIKHpp9a7E",
-     "title": "\"Eder HaYakar\": The Personality and Teachings of the Aderet",
-     "seconds": 449
-    },
-    {
      "id": "LYiGsAE-GWo",
      "title": "Adar HaYakar: The Life and Thought of the Aderet",
      "seconds": 289
+    }
+   ],
+   "ru": [
+    {
+     "id": "mcIKHpp9a7E",
+     "title": "«Адар ха-Якар»: личность и учение Адерета",
+     "seconds": 449
     }
    ]
   },
@@ -3646,14 +4084,16 @@
    "label": "רבי יוסף ג'יקטיליה",
    "en": [
     {
-     "id": "FCgf1OySW6Y",
-     "title": "Rabbi Yosef Jikatilla: \"The Gates of Light\" and the Secrets of the Divine Name",
-     "seconds": 458
-    },
-    {
      "id": "B9lywyLu4fQ",
      "title": "Rabbi Yosef Gikatilla: Sha'arei Orah and the Mysteries of the Divine Name",
      "seconds": 426
+    }
+   ],
+   "ru": [
+    {
+     "id": "FCgf1OySW6Y",
+     "title": "Рабби Йосеф Джикатилья: «Врата света» и тайны Божественного Имени",
+     "seconds": 458
     }
    ]
   },
@@ -3664,16 +4104,25 @@
      "id": "0llPWZMJZ6I",
      "title": "Rabbi Tzvi Pesach Frank - Chief Rabbi of Jerusalem in the Years of National Revival and Statehood",
      "seconds": 342
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "iAkHcsFYmjY",
-     "title": "Rabbi Zvi Pesach Frank: Chief Rabbi of Jerusalem During the Years of National Revival and Statehood",
+     "title": "Раввин Цви Песах Франк - главный раввин Иерусалима в годы возрождения и становления государства",
      "seconds": 472
     }
    ]
   },
   "477": {
    "label": "רבי שלמה אבן גבירול",
+   "he": [
+    {
+     "id": "Q-npnZnP5yI",
+     "title": "שלמה אבן גבירול: הגות ושירה",
+     "seconds": 385
+    }
+   ],
    "en": [
     {
      "id": "pJrZizKjmEQ",
@@ -3687,13 +4136,6 @@
      "title": "Шломо ибн Гвироль: философия и поэзия",
      "seconds": 407
     }
-   ],
-   "he": [
-    {
-     "id": "Q-npnZnP5yI",
-     "title": "שלמה אבן גבירול: הגות ושירה",
-     "seconds": 385
-    }
    ]
   },
   "478": {
@@ -3703,10 +4145,12 @@
      "id": "WsQIhjMCoD0",
      "title": "Baba Sali: His Life Story, Legacy, and Miracles of Sidna Baba Sali",
      "seconds": 410
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "vacWbrO6-eA",
-     "title": "Baba Sali: The Life, Legacy, and Miracles of Sidna Baba Sali",
+     "title": "Баба Сали: жизненный путь, наследие и чудеса Сидна Баба Сали",
      "seconds": 219
     }
    ]
@@ -3723,6 +4167,13 @@
   },
   "481": {
    "label": "רבי יהודה מוסקאטו",
+   "he": [
+    {
+     "id": "U6bO7czlEMo",
+     "title": "יהודה מוסקאטו: דרשן הרנסנס ומשנתו",
+     "seconds": 393
+    }
+   ],
    "en": [
     {
      "id": "9WaQKwpGW1U",
@@ -3736,17 +4187,17 @@
      "title": "Иехуда Москато: проповедник эпохи Ренессанса и его мировоззрение",
      "seconds": 416
     }
-   ],
-   "he": [
-    {
-     "id": "U6bO7czlEMo",
-     "title": "יהודה מוסקאטו: דרשן הרנסנס ומשנתו",
-     "seconds": 393
-    }
    ]
   },
   "482": {
    "label": "שמואל (האמורא)",
+   "he": [
+    {
+     "id": "Vuw15RpJHs4",
+     "title": "שמואל: פסיקת הלכה ותורתו",
+     "seconds": 512
+    }
+   ],
    "en": [
     {
      "id": "6UfjwSUASjI",
@@ -3760,17 +4211,17 @@
      "title": "Шмуэль: Галахические постановления и его учение",
      "seconds": 444
     }
-   ],
-   "he": [
-    {
-     "id": "Vuw15RpJHs4",
-     "title": "שמואל: פסיקת הלכה ותורתו",
-     "seconds": 512
-    }
    ]
   },
   "484": {
    "label": "רבי ישראל נג'ארה",
+   "he": [
+    {
+     "id": "tT8v-J8f-HM",
+     "title": "ר’ ישראל נג’ארה – פייטן הקבלה ומהפכן במסורת השירה",
+     "seconds": 422
+    }
+   ],
    "en": [
     {
      "id": "zLVWgUlCl5U",
@@ -3784,13 +4235,6 @@
      "title": "Раввин Исраэль Наджара – Каббалистический поэт и революционер в традиции еврейской песни",
      "seconds": 393
     }
-   ],
-   "he": [
-    {
-     "id": "tT8v-J8f-HM",
-     "title": "ר’ ישראל נג’ארה – פייטן הקבלה ומהפכן במסורת השירה",
-     "seconds": 422
-    }
    ]
   },
   "485": {
@@ -3800,22 +4244,26 @@
      "id": "3LPnIGfe8GY",
      "title": "Religious Authority and Imperial Policy in Ancient Rome",
      "seconds": 508
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "LJjUME0eG6g",
-     "title": "Religious Authority and Imperial Politics in Ancient Rome",
+     "title": "Религиозная власть и имперская политика в Древнем Риме",
      "seconds": 304
     }
    ]
   },
   "486": {
    "label": "רבנו יונה גירונדי",
-   "en": [
+   "he": [
     {
      "id": "9IgiGP6fvv0",
-     "title": "Rabbeinu Yonah Gerondi: Torah, Ethics, and Controversy",
+     "title": "רבנו יונה גירונדי: תורה, מוסר ומחלוקת",
      "seconds": 426
-    },
+    }
+   ],
+   "en": [
     {
      "id": "zlre6biDOqs",
      "title": "Rabbeinu Yonah Gerondi: Torah, Ethics, and Controversy",
@@ -3832,11 +4280,11 @@
   },
   "487": {
    "label": "חכם דוד ניטו",
-   "ru": [
+   "he": [
     {
-     "id": "l9UXMGGkyhk",
-     "title": "Давид Ньето: «Матэ Дан» и полемика о Природе",
-     "seconds": 357
+     "id": "dT4vX4G3LJk",
+     "title": "דוד ניטו: מטה דן ופולמוס הטבע",
+     "seconds": 491
     }
    ],
    "en": [
@@ -3844,31 +4292,37 @@
      "id": "qrsMMkYIs6I",
      "title": "David Nieto: “Mateh Dan” and the Debate on Nature",
      "seconds": 510
-    },
+    }
+   ],
+   "ru": [
     {
-     "id": "dT4vX4G3LJk",
-     "title": "David Nito: The Dan Headquarters and the Nature Controversy",
-     "seconds": 491
+     "id": "l9UXMGGkyhk",
+     "title": "Давид Ньето: «Матэ Дан» и полемика о Природе",
+     "seconds": 357
     }
    ]
   },
   "489": {
    "label": "הרב יצחק יעקב ריינס",
-   "en": [
+   "he": [
     {
-     "id": "kDCAvcLFzC0",
-     "title": "Rabbi Isaac Jacob Reines and the Founding of the Mizrachi Movement",
-     "seconds": 447
-    },
+     "id": "BVYplCpF02c",
+     "title": "הרב יצחק יעקב ריינס ומייסד המזרחי",
+     "seconds": 472
+    }
+   ],
+   "en": [
     {
      "id": "nJ4FWiXK5VQ",
      "title": "Rabbi Yitzhak Yaakov Reines and the Founding of Mizrachi",
      "seconds": 501
-    },
+    }
+   ],
+   "ru": [
     {
-     "id": "BVYplCpF02c",
-     "title": "Rabbi Yitzchak Yaacov Reines and the Founder of Mizrachi",
-     "seconds": 472
+     "id": "kDCAvcLFzC0",
+     "title": "Рав Ицхак Яаков Рейнес и основание движения \"Мизрахи\"",
+     "seconds": 447
     }
    ]
   },
@@ -3876,26 +4330,21 @@
    "label": "הרב אברהם יהושע צוקרמן",
    "en": [
     {
-     "id": "W1333JXqOsI",
-     "title": "Rav Avraham Yehoshua Zuckerman: The Educator Who Unified the Beit Midrash, the Garden, and the Sc...",
-     "seconds": 584
-    },
-    {
      "id": "l3kyNbAnAOc",
      "title": "Rabbi Avraham Yehoshua Zuckerman The Educator Who Bridged the Beit Midrash and the Building Scaffold",
      "seconds": 248
+    }
+   ],
+   "ru": [
+    {
+     "id": "W1333JXqOsI",
+     "title": "Рав Авраам Йеошуа Цукерман - педагог, объединивший Бейт-Мидраш, сад и строительные леса",
+     "seconds": 584
     }
    ]
   },
   "491": {
    "label": "הרב שלמה גורן",
-   "ru": [
-    {
-     "id": "Uix-I9vP7fw",
-     "title": "Раввин Горен: Галаха, Государство и Армия",
-     "seconds": 436
-    }
-   ],
    "he": [
     {
      "id": "RdfuIDNHbKw",
@@ -3909,20 +4358,29 @@
      "title": "Rabbi Goren: Halakha, State, and Army",
      "seconds": 467
     }
+   ],
+   "ru": [
+    {
+     "id": "Uix-I9vP7fw",
+     "title": "Раввин Горен: Галаха, Государство и Армия",
+     "seconds": 436
+    }
    ]
   },
   "492": {
    "label": "הרב יצחק הוטנר",
+   "he": [
+    {
+     "id": "RPFTTHh0bEM",
+     "title": "משנת הרב הוטנר: פחד יצחק ודעת",
+     "seconds": 460
+    }
+   ],
    "en": [
     {
      "id": "mRv5aE4ZFaI",
      "title": "Rabbi Hutner’s Thought: Pachad Yitzchak and Da’at",
      "seconds": 439
-    },
-    {
-     "id": "RPFTTHh0bEM",
-     "title": "The Teachings of Rabbi Hutner: Pachad Yitzchak and Da'at",
-     "seconds": 460
     }
    ],
    "ru": [
@@ -3935,6 +4393,13 @@
   },
   "493": {
    "label": "הרב יצחק אייזיק חבר",
+   "he": [
+    {
+     "id": "i0USXpk2JPI",
+     "title": "הרב יצחק אייזיק חבר – הפה השלישי של הגר״א",
+     "seconds": 552
+    }
+   ],
    "en": [
     {
      "id": "MIFYw8-Kn0w",
@@ -3948,27 +4413,22 @@
      "title": "Раввин Ицхак Эйзик Хавер – Третий Уста Виленского Гаона",
      "seconds": 406
     }
-   ],
-   "he": [
-    {
-     "id": "i0USXpk2JPI",
-     "title": "הרב יצחק אייזיק חבר – הפה השלישי של הגר״א",
-     "seconds": 552
-    }
    ]
   },
   "496": {
    "label": "פרופ' נחמה ליבוביץ",
    "en": [
     {
-     "id": "420idkUpoAs",
-     "title": "Nehama Leibowitz: The Teacher Who Taught Us to Ask the Right Questions",
-     "seconds": 535
-    },
-    {
      "id": "xjhEVrowK4A",
      "title": "Nechama Leibowitz - The Teacher Who Taught Us to Ask the Right Questions",
      "seconds": 271
+    }
+   ],
+   "ru": [
+    {
+     "id": "420idkUpoAs",
+     "title": "Нехама Лейбович - Учительница, которая научила задавать правильные вопросы",
+     "seconds": 535
     }
    ]
   },
@@ -3976,31 +4436,33 @@
    "label": "הרב אליהו אליעזר דסלר",
    "en": [
     {
-     "id": "kf4SpyqXBtg",
-     "title": "The Teachings of Rabbi Dessler: Morality, Faith, and Freedom of Choice",
-     "seconds": 562
-    },
-    {
      "id": "73L7-ieMTrw",
      "title": "Rabbi Eliyahu Eliezer Dessler: Ethics, Faith, and Free Choice",
      "seconds": 486
+    }
+   ],
+   "ru": [
+    {
+     "id": "kf4SpyqXBtg",
+     "title": "Учение раввина Десслера: нравственность, вера и свобода выбора",
+     "seconds": 562
     }
    ]
   },
   "498": {
    "label": "רבי יהודה קורייאט",
-   "ru": [
-    {
-     "id": "N2r08ESQ2TY",
-     "title": "Рабби Йехуда Кориат - каббалист, передавший наследие Магриба в новую эпоху",
-     "seconds": 431
-    }
-   ],
    "en": [
     {
      "id": "Uw_P0UXjIDA",
      "title": "Rabbi Yehuda Coriat - The Kabbalist Who Transmitted the Heritage of the Maghreb into the Modern Era",
      "seconds": 279
+    }
+   ],
+   "ru": [
+    {
+     "id": "N2r08ESQ2TY",
+     "title": "Рабби Йехуда Кориат - каббалист, передавший наследие Магриба в новую эпоху",
+     "seconds": 431
     }
    ]
   },
@@ -4011,10 +4473,12 @@
      "id": "dJ_EigYpX8I",
      "title": "The Tzemach Tzedek - The Rebbe Who Turned Chabad into a Center of Halakhah and Leadership",
      "seconds": 275
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "27qzVovmga0",
-     "title": "Tzemach Tzedek: The Rebbe Who Turned Chabad into a Center of Halakha and Spiritual Leadership",
+     "title": "Цемах Цедек - Ребе, превративший Хабад в центр Галахи и духовного руководства",
      "seconds": 548
     }
    ]
@@ -4023,14 +4487,16 @@
    "label": "רבי דובער שניאורי (האדמו\"ר האמצעי)",
    "en": [
     {
-     "id": "tmTfkxXZt2c",
-     "title": "Rabbi Dovber Schneuri: The Leader Who Expanded and Strengthened the Chabad Movement",
-     "seconds": 434
-    },
-    {
      "id": "_SlbQRSyuaw",
      "title": "Rabbi Dovber Schneuri - The Leader Who Expanded and Consolidated the Chabad Movement",
      "seconds": 346
+    }
+   ],
+   "ru": [
+    {
+     "id": "tmTfkxXZt2c",
+     "title": "Рабби Довбер Шнеури - лидер, расширивший и укрепивший движение Хабад",
+     "seconds": 434
     }
    ]
   },
@@ -4041,28 +4507,30 @@
      "id": "QvnqcWMw9Hs",
      "title": "Rabbi Yehoshua ben Hananiah - The Sage Who Declared: \"It Is Not in Heaven\"",
      "seconds": 324
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "R3U6POac3oY",
-     "title": "Rabbi Joshua ben Hananiah: The Sage Who Said, \"It Is Not in Heaven\"",
+     "title": "Рабби Йеошуа бен Ханания - мудрец, сказавший: «Не на небесах она»",
      "seconds": 564
     }
    ]
   },
   "504": {
    "label": "שמאי הזקן",
-   "ru": [
-    {
-     "id": "2O9fB4pFm5E",
-     "title": "Шаммай Старец: его личность, учение и наследие школы Бейт Шаммай",
-     "seconds": 624
-    }
-   ],
    "en": [
     {
      "id": "TuIOTBpjNZE",
      "title": "Shammai the Elder: His Character, Teachings, and the Legacy of the House of Shammai",
      "seconds": 498
+    }
+   ],
+   "ru": [
+    {
+     "id": "2O9fB4pFm5E",
+     "title": "Шаммай Старец: его личность, учение и наследие школы Бейт Шаммай",
+     "seconds": 624
     }
    ]
   },
@@ -4090,10 +4558,12 @@
      "id": "Z628S1iuCmU",
      "title": "Rabbi Elazar ben Azariah: Leadership, Halakhah, and Aggadah",
      "seconds": 344
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "0W2KIyP9r98",
-     "title": "Rabbi Eleazar ben Azariah: Leadership, Halakha, and Aggadah",
+     "title": "Рабби Элазар бен Азария: лидерство, Галаха и Агада",
      "seconds": 599
     }
    ]
@@ -4102,14 +4572,16 @@
    "label": "רבי אליעזר הגדול (רבי אליעזר בן הורקנוס)",
    "en": [
     {
-     "id": "ZNkmYo-mdpA",
-     "title": "Rabbi Eliezer ben Hyrcanus: Between Traditional Conservatism and Halakhic Schism",
-     "seconds": 716
-    },
-    {
      "id": "kCiWOjnvc10",
      "title": "Rabbi Eliezer ben Hyrcanus: Between Traditional Conservatism and a Halakhic Schism",
      "seconds": 414
+    }
+   ],
+   "ru": [
+    {
+     "id": "ZNkmYo-mdpA",
+     "title": "Рабби Элиэзер бен Гиркан: между традиционным консерватизмом и галахическим расколом",
+     "seconds": 716
     }
    ]
   },
@@ -4120,10 +4592,12 @@
      "id": "YmkhdJODjfk",
      "title": "Or HaChaim: His Life, Legacy, and Connection to the Baal Shem Tov",
      "seconds": 291
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "YJ73CNeOB3I",
-     "title": "\"Ohr HaChaim\": Biography, Legacy, and Connection to the Baal Shem Tov",
+     "title": "«Ор ха-Хаим»: биография, наследие и связь с Баал Шем Товом",
      "seconds": 527
     }
    ]
@@ -4132,14 +4606,16 @@
    "label": "הרבנית ויכנא קפלן",
    "en": [
     {
-     "id": "SgvgFTJ26y8",
-     "title": "Rebbetzin Vichna Kaplan: Carrying on Sarah Schenirer’s Legacy in America",
-     "seconds": 553
-    },
-    {
      "id": "k3fseLFUo0w",
      "title": "Rebbetzin Vichna Kaplan - Continuing Sarah Schenirer's Legacy in America",
      "seconds": 237
+    }
+   ],
+   "ru": [
+    {
+     "id": "SgvgFTJ26y8",
+     "title": "Ребецн Вихна Каплан - продолжательница пути Сары Шнирер в Америке",
+     "seconds": 553
     }
    ]
   },
@@ -4147,14 +4623,16 @@
    "label": "הרבנית דענה ויינברג",
    "en": [
     {
-     "id": "oT20E266xU0",
-     "title": "Rabbanit Dinie Weinberg: A Legacy of Greatness, Education, and Empowering Women",
-     "seconds": 534
-    },
-    {
      "id": "wIYweXEWhYg",
      "title": "Rabbanit Deanna Weinberg: A Legacy of Greatness, Education, and Women's Empowerment",
      "seconds": 376
+    }
+   ],
+   "ru": [
+    {
+     "id": "oT20E266xU0",
+     "title": "Раббанит Дина Вайнберг: наследие величия, образования и раскрытия потенциала женщин",
+     "seconds": 534
     }
    ]
   },
@@ -4165,10 +4643,12 @@
      "id": "qr-Jzk95mEA",
      "title": "A Call from the Ashes: The Legacy of Rebbetzin Esther Jungreis and the Hineni Movement",
      "seconds": 304
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "i_LjhX-53kQ",
-     "title": "A Call from the Ashes: The Legacy of Rebbetzin Esther Jungreis and the Hineni Movement",
+     "title": "Призыв из пепла: наследие ребецен Эстер Юнграйс и движение «Хинени»",
      "seconds": 433
     }
    ]
@@ -4180,10 +4660,12 @@
      "id": "42ivyJiVm5Q",
      "title": "Rebbetzin Bracha Kapach - The Woman Who Turned Kindness into a Lifelong System",
      "seconds": 312
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "Bn9l_iYU94c",
-     "title": "Rabbanit Bracha Kapach: The Woman Who Turned Charity into a Complete Way of Life",
+     "title": "Раббанит Браха Капах - Женщина, превратившая милосердие в целостную систему жизни",
      "seconds": 551
     }
    ]
@@ -4192,14 +4674,16 @@
    "label": "הרבנית שרה הרצוג",
    "en": [
     {
-     "id": "n0HeygT8K0E",
-     "title": "Rabbanit Sarah Herzog: The Woman Who United Charity, Leadership, and Nation-Building",
-     "seconds": 410
-    },
-    {
      "id": "GzU2LaLlafw",
      "title": "Rabbanit Sarah Herzog - The Woman Who United Kindness, Leadership, and Nation-Building",
      "seconds": 314
+    }
+   ],
+   "ru": [
+    {
+     "id": "n0HeygT8K0E",
+     "title": "Раббанит Сара Герцог - женщина, объединившая милосердие, лидерство и созидание государства",
+     "seconds": 410
     }
    ]
   },
@@ -4207,14 +4691,16 @@
    "label": "טובה סנהדראי-גולדרייך",
    "en": [
     {
-     "id": "ZDkfA474Sso",
-     "title": "Tova Kuczynski and the Origins of National Service in Israel",
-     "seconds": 538
-    },
-    {
      "id": "d1t5JxzCLMI",
      "title": "Tova Kuczynski and the Origins of National Service in Israel",
      "seconds": 212
+    }
+   ],
+   "ru": [
+    {
+     "id": "ZDkfA474Sso",
+     "title": "Това Кучински и истоки национальной службы в Израиле",
+     "seconds": 538
     }
    ]
   },
@@ -4225,10 +4711,12 @@
      "id": "O71Q3HrKHmQ",
      "title": "Sarah Stern-Katan - Torah, Work, and Social Responsibility",
      "seconds": 270
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "XC5vL6MTdhw",
-     "title": "Sara Stern-Katan: Torah, Labor, and Social Responsibility",
+     "title": "Сара Штерн-Катан - Тора, труд и социальная ответственность",
      "seconds": 427
     }
    ]
@@ -4237,14 +4725,16 @@
    "label": "הנרייטה סאלד",
    "en": [
     {
-     "id": "n1ZrT4N8l1I",
-     "title": "Henrietta Szold: Between Tradition, Zionism, and Social Responsibility",
-     "seconds": 552
-    },
-    {
      "id": "rqvPXBDfXFE",
      "title": "Henrietta Szold - Between Tradition, Zionism, and Social Responsibility",
      "seconds": 334
+    }
+   ],
+   "ru": [
+    {
+     "id": "n1ZrT4N8l1I",
+     "title": "Генриетта Сольд - между традицией, сионизмом и социальной ответственностью",
+     "seconds": 552
     }
    ]
   },
@@ -4255,10 +4745,12 @@
      "id": "O31lUKbkcpw",
      "title": "Aaron the High Priest - Teaching That Love for People Is the First Step to Torah",
      "seconds": 361
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "E3lo3Xg8ako",
-     "title": "Aaron the High Priest: Love for People as the First Step to Bringing Them Closer to the Torah",
+     "title": "Аарон-первосвященник - Любовь к людям как первый шаг к приближению их к Торе",
      "seconds": 484
     }
    ]
@@ -4267,14 +4759,16 @@
    "label": "רב יהודה בר יחזקאל",
    "en": [
     {
-     "id": "DoUacsauI4g",
-     "title": "Rav Yehuda bar Yechezkel: The Founder of Pumbedita Who Defined the Path of Babylonian Jewry",
-     "seconds": 543
-    },
-    {
      "id": "UABDpOW_aiY",
      "title": "Rabbi Yehuda bar Yechezkel - The Founder of Pumbedita Who Shaped the Course of Babylonian Jewry",
      "seconds": 280
+    }
+   ],
+   "ru": [
+    {
+     "id": "DoUacsauI4g",
+     "title": "Рав Йехуда бар Йехезкель - основатель Пумбедиты, определивший путь вавилонского еврейства",
+     "seconds": 543
     }
    ]
   },
@@ -4285,10 +4779,12 @@
      "id": "xQ2dUpSvXYU",
      "title": "Dona Gracia Nasi - The Woman Who Turned Wealth and Political Power into a Jewish Rescue Mission",
      "seconds": 354
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "CZDAMd7aLp0",
-     "title": "Doña Gracia Nasi: The Woman Who Used Her Wealth and Political Power to Save Jews",
+     "title": "Дона Грация Наси - женщина, превратившая богатство и политическое влияние в дело спасения евреев",
      "seconds": 541
     }
    ]
@@ -4300,10 +4796,12 @@
      "id": "64rOl_X18e8",
      "title": "Rabbi Aryeh Kaplan - Between Nuclear Physics and the Worlds of Kabbalah",
      "seconds": 288
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "jRfno0wSAbw",
-     "title": "Rabbi Aryeh Kaplan: Between Nuclear Physics and the Worlds of Kabbalah",
+     "title": "Раввин Арье Каплан - между ядерной физикой и мирами Каббалы ",
      "seconds": 532
     }
    ]
@@ -4312,14 +4810,16 @@
    "label": "הרב ד״ר עזריאל הילדסהיימר",
    "en": [
     {
-     "id": "sKXr9HHMr3s",
-     "title": "Rabbi Dr. Azriel Hildesheimer: Torah and Science in a Changing World",
-     "seconds": 440
-    },
-    {
      "id": "ufiyCI_7LN4",
      "title": "Rabbi Dr. Azriel Hildesheimer - Torah and Science in a Changing World",
      "seconds": 308
+    }
+   ],
+   "ru": [
+    {
+     "id": "sKXr9HHMr3s",
+     "title": "Раввин д-р Азриэль Хильдесхаймер - Тора и наука в меняющемся мире",
+     "seconds": 440
     }
    ]
   },
@@ -4331,6 +4831,13 @@
      "title": "Rabbi Yehuda Leib Don Yichya - Between Brisk, Hasidism, and Zionism",
      "seconds": 284
     }
+   ],
+   "ru": [
+    {
+     "id": "FD0at4Hnmqg",
+     "title": "Раввин Иегуда Лейб Дон-Ихья - между Бриском, хасидизмом и сионизмом",
+     "seconds": 558
+    }
    ]
   },
   "529": {
@@ -4340,10 +4847,12 @@
      "id": "CfT6qqfiRYc",
      "title": "The Ten Lost Tribes, Rembrandt and Cromwell - The Story of Rabbi Menasseh ben Israel",
      "seconds": 329
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "N1HhQRstBl0",
-     "title": "The Ten Lost Tribes, Rembrandt, and Cromwell: The Story of Rabbi Menasseh ben Israel",
+     "title": "Десять колен, Рембрандт и Кромвель - история рабби Менаше бен Исраэля",
      "seconds": 529
     }
    ]
@@ -4355,10 +4864,12 @@
      "id": "laf46Rl3Gpc",
      "title": "Rabbi Mordechai Eliasberg - The Golden Path of National Revival",
      "seconds": 295
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "8rF8OmOowDs",
-     "title": "Rabbi Mordechai Eliasberg: The Golden Path of National Revival",
+     "title": "Раввин Мордехай Элиасберг - золотой путь национального возрождения",
      "seconds": 498
     }
    ]
@@ -4367,14 +4878,16 @@
    "label": "הרב רפאל יהודה מנחם לוי – רבי יהודה מרגוזה",
    "en": [
     {
-     "id": "TC6i8YLD8qM",
-     "title": "Rabbi Yehuda Halevi Maragosa and the Revival of the Jaffa Jewish Community",
-     "seconds": 491
-    },
-    {
      "id": "sMVZgqvMqXI",
      "title": "Rabbi Yehuda Halevi Marguza and the Revival of the Jewish Community of Jaffa",
      "seconds": 352
+    }
+   ],
+   "ru": [
+    {
+     "id": "TC6i8YLD8qM",
+     "title": "Рабби Иегуда Галеви Маргуза и возрождение еврейской общины Яффо",
+     "seconds": 491
     }
    ]
   },
@@ -4382,14 +4895,16 @@
    "label": "הרבנית בת שבע אסתר קניבסקי",
    "en": [
     {
-     "id": "uzhD9y3Z8KY",
-     "title": "Rabbanit Batsheva Kanievsky: A Home of Mercy, Prayer, and Spiritual Guidance",
-     "seconds": 434
-    },
-    {
      "id": "ktAHrAfYdcY",
      "title": "Rabbanit Batsheva Kanievsky - A Home of Kindness, Prayer, and Spiritual Guidance",
      "seconds": 278
+    }
+   ],
+   "ru": [
+    {
+     "id": "uzhD9y3Z8KY",
+     "title": "Раббанит Бат-Шева Каневская - Дом, ставший местом милосердия, молитвы и духовного наставничества",
+     "seconds": 434
     }
    ]
   },
@@ -4397,14 +4912,16 @@
    "label": "ילתא",
    "en": [
     {
-     "id": "DGCFQealrGw",
-     "title": "Yalta: The Woman Who Smashed 400 Barrels of Wine",
-     "seconds": 379
-    },
-    {
      "id": "DC0vmQmepa0",
      "title": "Yalta - The Woman Who Smashed 400 Barrels of Wine",
      "seconds": 351
+    }
+   ],
+   "ru": [
+    {
+     "id": "DGCFQealrGw",
+     "title": "Ялта - женщина, разбившая 400 бочек вина",
+     "seconds": 379
     }
    ]
   },
@@ -4412,31 +4929,33 @@
    "label": "צרויה",
    "en": [
     {
-     "id": "RMW3arWEEQw",
-     "title": "Zeruiah: The Woman Whose Sons Bore Her Name at the Heart of King David's Kingdom",
-     "seconds": 522
-    },
-    {
      "id": "VbKKhrAATyE",
      "title": "Zeruiah - The Woman Whose Sons Bore Her Name at the Heart of David’s Kingdom",
      "seconds": 279
+    }
+   ],
+   "ru": [
+    {
+     "id": "RMW3arWEEQw",
+     "title": "Церуя - женщина, чьи сыновья носили её имя в самом сердце царства Давида",
+     "seconds": 522
     }
    ]
   },
   "537": {
    "label": "רבי אביעד שר שלום באזילה",
-   "ru": [
-    {
-     "id": "HN4xheHyH7s",
-     "title": "Рабби Авиад Сар Шалом Базила - где каббала, Евклид и астрономия встретились в бейт-мидраше",
-     "seconds": 413
-    }
-   ],
    "en": [
     {
      "id": "PQJAHFKdwJg",
      "title": "Rabbi Aviad Sar Shalom Basilea - Where Kabbalah, Euclid, and Astronomy Met in the Beit Midrash",
      "seconds": 312
+    }
+   ],
+   "ru": [
+    {
+     "id": "HN4xheHyH7s",
+     "title": "Рабби Авиад Сар Шалом Базила - где каббала, Евклид и астрономия встретились в бейт-мидраше",
+     "seconds": 413
     }
    ]
   },
@@ -4447,10 +4966,12 @@
      "id": "BGfo7XA7eJQ",
      "title": "Rabbi Abraham ben Isaac of Montpellier - The Provençal Sage Whose Writings Returned from Oblivion",
      "seconds": 367
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "VbEOubdBL10",
-     "title": "Rabbi Abraham ben Isaac of Montpellier: The Provençal Sage Whose Works Returned from Oblivion",
+     "title": "Рабби Авраам бен Ицхак из Монпелье - провансальский мудрец, чьи труды вернулись из забвения",
      "seconds": 430
     }
    ]
@@ -4459,14 +4980,16 @@
    "label": "רבי אליהו בן שלמה זלמן – הגאון מווילנה",
    "en": [
     {
-     "id": "0j8wko1m4uY",
-     "title": "The Legacy of the Vilna Gaon: From Scholarly Works to the Aliyah of His Disciples",
-     "seconds": 460
-    },
-    {
      "id": "EGcq-ll5vH8",
      "title": "The Legacy of the Vilna Gaon: From Scientific Scholarship to the Disciples' Aliyah",
      "seconds": 356
+    }
+   ],
+   "ru": [
+    {
+     "id": "0j8wko1m4uY",
+     "title": "Наследие Виленского Гаона: от научных трудов до алии его учеников",
+     "seconds": 460
     }
    ]
   },
@@ -4474,14 +4997,16 @@
    "label": "רבי ברוך שיק משקלוב",
    "en": [
     {
-     "id": "PX215cuHqAI",
-     "title": "Rabbi Baruch Schick of Shklov – From the Vilna Gaon to Euclid: Science in the Service of Understa...",
-     "seconds": 501
-    },
-    {
      "id": "-aQphfpP758",
      "title": "Rabbi Baruch Schick of Shklov - From the Vilna Gaon to Euclid: When Science Helps Understand Torah",
      "seconds": 274
+    }
+   ],
+   "ru": [
+    {
+     "id": "PX215cuHqAI",
+     "title": "Рабби Барух Шик из Шклова - от Виленского Гаона до Евклида: наука на службе понимания Торы",
+     "seconds": 501
     }
    ]
   },
@@ -4492,10 +5017,12 @@
      "id": "b3MGed9-cb0",
      "title": "Rabbi Gedaliah Nadel - Torah, Science, and the Search for Truth",
      "seconds": 356
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "VC4hexRfopM",
-     "title": "Rabbi Gedaliah Nadel: Torah, Science, and the Search for Truth",
+     "title": "Раввин Гедалия Надель - Тора, наука и поиск истины",
      "seconds": 417
     }
    ]
@@ -4504,14 +5031,16 @@
    "label": "רבי חיים ויטאל",
    "en": [
     {
-     "id": "L8-ubmGo6_Y",
-     "title": "Rabbi Hayim Vital: The Ari’s Disciple Who Preserved His Teachings and Unified Kabbalah with Nature",
-     "seconds": 544
-    },
-    {
      "id": "xHFq__NoPpg",
      "title": "Rabbi Chaim Vital - The Disciple Who Preserved the Ari's Teachings and United Kabbalah with Nature",
      "seconds": 342
+    }
+   ],
+   "ru": [
+    {
+     "id": "L8-ubmGo6_Y",
+     "title": "Рабби Хаим Виталь - Ученик Ари, сохранивший его учение и объединивший каббалу с природой",
+     "seconds": 544
     }
    ]
   },
@@ -4519,14 +5048,16 @@
    "label": "רבי חנינא בר פפא",
    "en": [
     {
-     "id": "oZif-VqdVNU",
-     "title": "Rabbi Hanina bar Papa: The Amora Who Asked the Angel of Death for 30 More Days",
-     "seconds": 564
-    },
-    {
      "id": "xxmxesk4B6E",
      "title": "Rabbi Hanina bar Pappa - The Amora Who Asked the Angel of Death for 30 More Days",
      "seconds": 379
+    }
+   ],
+   "ru": [
+    {
+     "id": "oZif-VqdVNU",
+     "title": "Рабби Ханина бар Папа - аморай, попросивший у Ангела смерти ещё 30 дней",
+     "seconds": 564
     }
    ]
   },
@@ -4534,14 +5065,16 @@
    "label": "רבי יוסף שלמה דלמדיגו – יש״ר מקנדיה",
    "en": [
     {
-     "id": "0h6oj9furxI",
-     "title": "Yashar of Candia: Between Galileo, Science, the Torah, and Kabbalah",
-     "seconds": 466
-    },
-    {
      "id": "ngKIWLZzCrE",
      "title": "Yashar of Candia - Between Galileo, Science, Torah, and Kabbalah",
      "seconds": 470
+    }
+   ],
+   "ru": [
+    {
+     "id": "0h6oj9furxI",
+     "title": "Яшар из Кандии - между Галилеем, наукой, Торой и каббалой",
+     "seconds": 466
     }
    ]
   },
@@ -4549,14 +5082,16 @@
    "label": "רבי יצחק חזקיה למפרונטי",
    "en": [
     {
-     "id": "TX-BEGATFq8",
-     "title": "Rabbi Isaac Lampronti: Rabbi, Physician, and Author of the \"Pachad Yitzchak\" Encyclopedia",
-     "seconds": 506
-    },
-    {
      "id": "O6RksBawIt4",
      "title": "Rabbi Isaac Lampronti - The Rabbi, Physician, and Author of Pachad Yitzchak",
      "seconds": 291
+    }
+   ],
+   "ru": [
+    {
+     "id": "TX-BEGATFq8",
+     "title": "Рабби Ицхак Лампронти - раввин, врач и автор энциклопедии «Пахад Ицхак»",
+     "seconds": 506
     }
    ]
   },
@@ -4564,14 +5099,16 @@
    "label": "רבי ישראל ליפשיץ",
    "en": [
     {
-     "id": "C15ER1t4Tgo",
-     "title": "Rabbi Israel Lipschutz: Between the Mishnah and Modern Science",
-     "seconds": 491
-    },
-    {
      "id": "wc3g0MGSNVM",
      "title": "Rabbi Israel Lipschitz - Between the Mishnah and Modern Science",
      "seconds": 327
+    }
+   ],
+   "ru": [
+    {
+     "id": "C15ER1t4Tgo",
+     "title": "Рабби Исраэль Липшиц - между Мишной и современной наукой",
+     "seconds": 491
     }
    ]
   },
@@ -4579,14 +5116,16 @@
    "label": "רבי מאיר הגדול מפרמישלאן",
    "en": [
     {
-     "id": "82qcRQstFQs",
-     "title": "Rabbi Meir of Peremyshliany: Life and Miracles of the Righteous Tzadik of Peremyshliany",
-     "seconds": 480
-    },
-    {
      "id": "y2-Z7bfgR5U",
      "title": "Rabbi Meir of Premishlan: The Life and Miracles of the Righteous Sage of Premishlan",
      "seconds": 323
+    }
+   ],
+   "ru": [
+    {
+     "id": "82qcRQstFQs",
+     "title": "Рабби Меир из Перемышляна: жизнь и чудеса праведника из Перемышляна",
+     "seconds": 480
     }
    ]
   },
@@ -4597,10 +5136,12 @@
      "id": "lu-CEEbbD4c",
      "title": "Rabbi Pinchas Eliyahu Horowitz - When Science Becomes a Gateway to Serving God",
      "seconds": 348
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "Hirtp3JygZM",
-     "title": "Rabbi Pinchas Eliyahu Horowitz: When Science Becomes a Path to Serving God",
+     "title": "Рабби Пинхас Элиягу Горовиц - когда наука становится путем к служению Богу",
      "seconds": 527
     }
    ]
@@ -4609,14 +5150,16 @@
    "label": "רבי שמשון רפאל הירש",
    "en": [
     {
-     "id": "6ANyR2tvoWs",
-     "title": "Rabbi Samson Raphael Hirsch: Torah, Education, and the Encounter with Modernity",
-     "seconds": 520
-    },
-    {
      "id": "-1vI47GrHgQ",
      "title": "Rabbi Samson Raphael Hirsch - Torah, Education, and the Encounter with Modernity",
      "seconds": 382
+    }
+   ],
+   "ru": [
+    {
+     "id": "6ANyR2tvoWs",
+     "title": "Рабби Шимшон Рафаэль Гирш - Тора, образование и встреча с современностью",
+     "seconds": 520
     }
    ]
   },
@@ -4624,14 +5167,16 @@
    "label": "רבן שמעון בן גמליאל הראשון",
    "en": [
     {
-     "id": "lVKW3ot6R5E",
-     "title": "Rabban Simeon ben Gamaliel I: The Nasi Who Tried to Save Jerusalem Before Its Destruction",
-     "seconds": 628
-    },
-    {
      "id": "qDYMHEbFSRg",
      "title": "Rabban Shimon ben Gamliel I - The Nasi Who Tried to Save Jerusalem Before the Destruction",
      "seconds": 360
+    }
+   ],
+   "ru": [
+    {
+     "id": "lVKW3ot6R5E",
+     "title": "Раббан Шимон бен Гамлиэль I - Наси, пытавшийся спасти Иерусалим накануне разрушения",
+     "seconds": 628
     }
    ]
   },
@@ -4639,14 +5184,16 @@
    "label": "רמי בר פפא",
    "en": [
     {
-     "id": "zX-018kWaVE",
-     "title": "Rami bar Papa is an amorai whose name is recited at each completion of the tractate.",
-     "seconds": 405
-    },
-    {
      "id": "4ENM292sgI4",
      "title": "Rami bar Pappa - The Amora Whose Name Is Recited at Every Siyum",
      "seconds": 394
+    }
+   ],
+   "ru": [
+    {
+     "id": "zX-018kWaVE",
+     "title": "Рами бар Папа - аморай, чьё имя произносят при каждом завершении трактата",
+     "seconds": 405
     }
    ]
   },
@@ -4654,14 +5201,16 @@
    "label": "רפרם בר פפא",
    "en": [
     {
-     "id": "7lCipAKhO3M",
-     "title": "Rafram bar Papa: The Amora Who Bridged Halakha, Science, and the Destruction of the Temple",
-     "seconds": 533
-    },
-    {
      "id": "F970V-O0D_M",
      "title": "Rafram bar Pappa - The Amora Who Connected Halakha, Science, and the Destruction of the Temple",
      "seconds": 400
+    }
+   ],
+   "ru": [
+    {
+     "id": "7lCipAKhO3M",
+     "title": "Рафрам бар Папа - аморай, соединивший Галаху, науку и разрушение Храма",
+     "seconds": 533
     }
    ]
   },
@@ -4669,14 +5218,16 @@
    "label": "שרח בת אשר",
    "en": [
     {
-     "id": "cEPDeH-wcE4",
-     "title": "Serah, Daughter of Asher: The Woman Who Lived from the Time of Jacob and the Exodus to the Reign ...",
-     "seconds": 500
-    },
-    {
      "id": "6yKjdGc3NK4",
      "title": "Serah Daughter of Asher - The Woman Who Lived from Jacob to the Exodus and King David’s Reign",
      "seconds": 290
+    }
+   ],
+   "ru": [
+    {
+     "id": "cEPDeH-wcE4",
+     "title": "Серах, дочь Ашера - женщина, жившая от Яакова и Исхода из Египта до царствования Давида",
+     "seconds": 500
     }
    ]
   },
@@ -4687,10 +5238,12 @@
      "id": "DT9CpfJgA4Q",
      "title": "Rabbi Aharon Kotler and the Legacy of the Yeshiva World in America",
      "seconds": 411
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "MNf7xuRGHKw",
-     "title": "Rabbi Aharon Kotler and the Legacy of the Yeshiva World in America",
+     "title": "Рабби Аарон Котлер и наследие мира ешив в Америке",
      "seconds": 416
     }
    ]
@@ -4699,14 +5252,16 @@
    "label": "הרב יוסף יצחק שניאורסון (הריי\"צ)",
    "en": [
     {
-     "id": "WoOqXITVTK8",
-     "title": "Rebbe Rayatz: Life, Struggle, and Liberation",
-     "seconds": 409
-    },
-    {
      "id": "c8ooCzew1jY",
      "title": "The Rebbe Rayatz: A Life of Leadership, Struggle, and Redemption",
      "seconds": 400
+    }
+   ],
+   "ru": [
+    {
+     "id": "WoOqXITVTK8",
+     "title": "Ребе Раяц: жизнь, борьба и освобождение",
+     "seconds": 409
     }
    ]
   },
@@ -4714,14 +5269,16 @@
    "label": "הרב לורד יונתן זקס",
    "en": [
     {
-     "id": "ayrL1xWdbH0",
-     "title": "Rabbi Sachs's Legacy: A Torah Ambassador for the Modern World",
-     "seconds": 479
-    },
-    {
      "id": "LUArMPoycxc",
      "title": "The Legacy of Rabbi Sacks: An Ambassador of Torah in the Modern World",
      "seconds": 407
+    }
+   ],
+   "ru": [
+    {
+     "id": "ayrL1xWdbH0",
+     "title": "Наследие раввина Закса: посланник Торы в современном мире",
+     "seconds": 479
     }
    ]
   },
@@ -4732,10 +5289,12 @@
      "id": "fN4wj_4nPac",
      "title": "Rabbi Mordechai Attiya – the Kabbalist who saw Zionism as a cosmic rectification",
      "seconds": 356
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "OzNrMveex_c",
-     "title": "Rabbi Mordechai Attiyah, a Kabbalist who saw Zionism as the correction of the worlds",
+     "title": "Рав Мордехай Аттия — каббалист, видевший в сионизме исправление миров",
      "seconds": 365
     }
    ]
@@ -4747,10 +5306,12 @@
      "id": "XTcC_QSMfYc",
      "title": "Otzarot HaRa’ayah and the Thought of Rabbi Moshe Tzuriel",
      "seconds": 374
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "u7rwTB4ZYq8",
-     "title": "Otzrot ha-Ra'aya and the teachings of Rabbi Moshe Tzuriel",
+     "title": "«Оцрот ха-Раая» и учение раввина Моше Цуриэля",
      "seconds": 416
     }
    ]
@@ -4759,19 +5320,28 @@
    "label": "הרב שלמה קרליבך",
    "en": [
     {
-     "id": "G-CZnuD4sWs",
-     "title": "Rabbi Shlomo Carlebach and the Carlebach Synagogue",
-     "seconds": 369
-    },
-    {
      "id": "rDjWSWF6Jkk",
      "title": "Rabbi Shlomo Carlebach and the Carlebach Synagogue",
      "seconds": 454
+    }
+   ],
+   "ru": [
+    {
+     "id": "G-CZnuD4sWs",
+     "title": "Рав Шломо Карлебах и синагога Карлебаха ",
+     "seconds": 369
     }
    ]
   },
   "569": {
    "label": "יוסל מרוסהיים",
+   "he": [
+    {
+     "id": "uZlwAxCV1qc",
+     "title": "יוסל מרוסהיים: סנגור יהדות האימפריה",
+     "seconds": 458
+    }
+   ],
    "en": [
     {
      "id": "MV7nH10GCMc",
@@ -4785,13 +5355,6 @@
      "title": "Йозель из Розгейма: защитник евреев Священной Римской империи",
      "seconds": 383
     }
-   ],
-   "he": [
-    {
-     "id": "uZlwAxCV1qc",
-     "title": "יוסל מרוסהיים: סנגור יהדות האימפריה",
-     "seconds": 458
-    }
    ]
   },
   "573": {
@@ -4801,10 +5364,12 @@
      "id": "7q2m3PmYxIw",
      "title": "Rabbi Jacob Berab – The Rabbi Who Nearly Restored Authority to the Jewish People",
      "seconds": 470
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "zbholz3FoVQ",
-     "title": "Rabbi Yaakov Birab is the rabbi who almost restored the Jewish people's spiritual authority.",
+     "title": "Рабби Яаков Бираб — раввин, который почти вернул еврейскому народу его духовную власть",
      "seconds": 435
     }
    ]
@@ -4813,14 +5378,16 @@
    "label": "עזרא הסופר",
    "en": [
     {
-     "id": "yVmnV3bc11I",
-     "title": "Ezra the Scribe and the Restoration of Israel",
-     "seconds": 431
-    },
-    {
      "id": "eD8HU682GZo",
      "title": "Ezra the Scribe and the Restoration of Israel",
      "seconds": 457
+    }
+   ],
+   "ru": [
+    {
+     "id": "yVmnV3bc11I",
+     "title": "Эзра-книжник и восстановление Израиля",
+     "seconds": 431
     }
    ]
   },
@@ -4828,14 +5395,16 @@
    "label": "רבי יהודה הלוי (ריה\"ל)",
    "en": [
     {
-     "id": "Xj6jO15DlXo",
-     "title": "Rabbi Yehuda Halevi: His Life, Poetry, and Teachings in the Book of Kuzari",
-     "seconds": 488
-    },
-    {
      "id": "r8Ozs9ZeRKA",
      "title": "Rabbi Yehuda Halevi: His Life, Poetry, and Philosophy in The Kuzari",
      "seconds": 468
+    }
+   ],
+   "ru": [
+    {
+     "id": "Xj6jO15DlXo",
+     "title": "Рабби Йеуда ха-Леви: его жизнь, поэзия и учение в книге «Кузари»",
+     "seconds": 488
     }
    ]
   },
@@ -4843,23 +5412,25 @@
    "label": "רבי יהודה הנשיא",
    "en": [
     {
-     "id": "lik5L505iH0",
-     "title": "Rabbi Yehuda ha-Nasi: Between Completing the Mishnah and Leading the People",
-     "seconds": 514
-    },
-    {
      "id": "65LGLt1b1M8",
      "title": "Rabbi Judah the Prince: Between the Sealing of the Mishnah and the Leadership of the People",
      "seconds": 456
+    }
+   ],
+   "ru": [
+    {
+     "id": "lik5L505iH0",
+     "title": "Рабби Йеуда ха-Наси: между завершением Мишны и руководством народом",
+     "seconds": 514
     }
    ]
   },
   "582": {
    "label": "רבי יצחק אלפסי (הרי\"ף)",
-   "en": [
+   "ru": [
     {
      "id": "U_JUh6tGdAM",
-     "title": "The Rif Legacy and the Sephardic Chain of Halachic Lawmaking",
+     "title": "Наследие Рифа и сефардская цепь галахического законотворчества",
      "seconds": 403
     }
    ]
@@ -4871,10 +5442,12 @@
      "id": "1Lso3VeJbm8",
      "title": "Rabbi Isaac ben Elazar HaLevi, known by the title “Segan Leviyah”",
      "seconds": 406
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "dgaGohZZCa0",
-     "title": "Rabbi Isaac ben Elazar ha-Levi, known by the nickname \"Segan Levia\"",
+     "title": "Рабби Ицхак бен Элазар ха-Леви, известный под прозвищем «Сеган Левия»",
      "seconds": 297
     }
    ]
@@ -4888,23 +5461,16 @@
      "seconds": 482
     }
    ],
-   "he": [
+   "ru": [
     {
      "id": "6JNrGW73kSU",
-     "title": "Maharalbah: Leadership, Halacha, and the Controversy over סמיכה in Jerusalem",
+     "title": "Маhаралбах: лидерство, галаха и полемика о סמיכה в Иерусалиме",
      "seconds": 426
     }
    ]
   },
   "586": {
    "label": "רבי משה אלשקר (מהר\"ם אלשקר)",
-   "he": [
-    {
-     "id": "7qRFGN5xO8k",
-     "title": "Maharam Alshkar: Key Milestones in Halacha, Thoughts, and Controversies on the Renewal of סמיכה",
-     "seconds": 352
-    }
-   ],
    "en": [
     {
      "id": "1mmUmm3SC60",
@@ -4912,14 +5478,21 @@
      "seconds": 492
     },
     {
-     "id": "i2KZCDB2RHU",
-     "title": "Maharam Alshkar: Milestones in Halacha, Thoughts and Controversies on the Resumption of Smicha",
-     "seconds": 352
-    },
-    {
      "id": "NmvQTeBrkms",
      "title": "Maharam Alashkar: Milestones in Halakhah, Thought, and the Semikhah Controversy",
      "seconds": 492
+    }
+   ],
+   "ru": [
+    {
+     "id": "7qRFGN5xO8k",
+     "title": "Махарам Альшкар: ключевые вехи в галахе, мысли и полемике о возобновлении סמיכה",
+     "seconds": 352
+    },
+    {
+     "id": "i2KZCDB2RHU",
+     "title": "Маhарам Альшкар: вехи в галахе, мысли и полемике о возобновлении смихи",
+     "seconds": 352
     }
    ]
   },
@@ -4927,14 +5500,16 @@
    "label": "רבי משה מקוצי (הסמ\"ג)",
    "en": [
     {
-     "id": "bYjp_4IwKDg",
-     "title": "Rabbi Moshe of Kusi, the man who saw the burning of the Talmud and built a tower out of it",
-     "seconds": 343
-    },
-    {
      "id": "diLTJBy2Jag",
      "title": "Rabbi Moses of Coucy – the man who saw the Talmud burned and built a tower from it",
      "seconds": 400
+    }
+   ],
+   "ru": [
+    {
+     "id": "bYjp_4IwKDg",
+     "title": "Рабби Моше из Куси — человек, который видел сожжение Талмуда и построил из него башню",
+     "seconds": 343
     }
    ]
   },
@@ -4942,14 +5517,16 @@
    "label": "רבי נתן מברסלב (מנמירוב)",
    "en": [
     {
-     "id": "Waeq9WqGwFM",
-     "title": "Light of Breslov: The Teachings of Rabbi Nachman and the Work of Rabbi Nathan",
-     "seconds": 480
-    },
-    {
      "id": "G12UVF3WftA",
      "title": "The Light of Breslov: The Teachings of Rabbi Nachman and the Work of Rabbi Nathan",
      "seconds": 472
+    }
+   ],
+   "ru": [
+    {
+     "id": "Waeq9WqGwFM",
+     "title": "Свет Бреслава: учение рабби Нахмана и дело рабби Натана",
+     "seconds": 480
     }
    ]
   },
@@ -4957,31 +5534,33 @@
    "label": "רבי רפאל ברוך טולידאנו",
    "en": [
     {
-     "id": "AmkB2QZ4HA8",
-     "title": "Rabbi Raphael Baruch Toledano: Leadership, Halacha, and the Legacy of Moroccan Jewry",
-     "seconds": 466
-    },
-    {
      "id": "UTd-PzczMhI",
      "title": "Rabbi Raphael Baruch Toledano: Leadership, Halakhah, and the Heritage of Moroccan Jewry",
      "seconds": 351
+    }
+   ],
+   "ru": [
+    {
+     "id": "AmkB2QZ4HA8",
+     "title": "Рабби Рафаэль Барух Толедано: лидерство, Галаха и наследие марокканского еврейства",
+     "seconds": 466
     }
    ]
   },
   "591": {
    "label": "רבן גמליאל דיבנה",
-   "ru": [
-    {
-     "id": "qWkGCUgsagA",
-     "title": "Раббан Гамлиэль из Явне - Наси, восстановивший еврейское руководство",
-     "seconds": 516
-    }
-   ],
    "en": [
     {
      "id": "zNRv16vRMqM",
      "title": "Rabban Gamliel of Yavne- The Nasi Who Led the Restoration of Jewish Leadership After the Destruction",
      "seconds": 459
+    }
+   ],
+   "ru": [
+    {
+     "id": "qWkGCUgsagA",
+     "title": "Раббан Гамлиэль из Явне - Наси, восстановивший еврейское руководство",
+     "seconds": 516
     }
    ]
   },
@@ -4989,14 +5568,16 @@
    "label": "רבן יוחנן בן זכאי",
    "en": [
     {
-     "id": "PSlsgd30bzQ",
-     "title": "Rabban Yohanan ben Zakkai: Leading the People and the Torah in an Era of Destruction and Renewal",
-     "seconds": 490
-    },
-    {
      "id": "ViB_CDTMyrQ",
      "title": "Rabban Yohanan ben Zakkai: Leadership and Torah in an Age of Destruction and Renewal",
      "seconds": 286
+    }
+   ],
+   "ru": [
+    {
+     "id": "PSlsgd30bzQ",
+     "title": "Раббан Йоханан бен Заккай: руководство народом и Тора в эпоху разрушения и восстановления",
+     "seconds": 490
     }
    ]
   },
@@ -5004,25 +5585,29 @@
    "label": "רש\"י (רבי שלמה יצחקי)",
    "en": [
     {
-     "id": "V_IWxYu1f9Y",
-     "title": "Rashi: The Sage Who Opened the Torah and Talmud to Every Jew",
-     "seconds": 626
-    },
-    {
      "id": "q5x9P6uZGpE",
      "title": "Rashi - The Sage Who Opened the Torah and Talmud to Every Jew",
      "seconds": 397
+    }
+   ],
+   "ru": [
+    {
+     "id": "V_IWxYu1f9Y",
+     "title": "Раши - мудрец, открывший Тору и Талмуд каждому еврею",
+     "seconds": 626
     }
    ]
   },
   "597": {
    "label": "שמואל הנגיד",
-   "en": [
+   "he": [
     {
      "id": "XhGQHLo57Nw",
-     "title": "Samuel HaNagid: The Golden Age and the Poetry of Redemption",
+     "title": "שמואל הנגיד: תור הזהב ושירת הגאולה",
      "seconds": 381
-    },
+    }
+   ],
+   "en": [
     {
      "id": "3xskVDMUd34",
      "title": "Shmuel HaNagid: The Golden Age and the Poetry of Redemption",
@@ -5041,14 +5626,16 @@
    "label": "רבנו אשר בן יחיאל (הרא״ש)",
    "en": [
     {
-     "id": "gYP7i6rUTQQ",
-     "title": "Rosh: Leadership, Halacha, and Heritage Between Ashkenaz and Sepharad",
-     "seconds": 387
-    },
-    {
      "id": "6xpkRFDm_Go",
      "title": "The Rosh: Leadership, Halakhah, and Legacy Between Ashkenaz and Sepharad",
      "seconds": 449
+    }
+   ],
+   "ru": [
+    {
+     "id": "gYP7i6rUTQQ",
+     "title": "Рош: лидерство, галаха и наследие между Ашкеназом и Сефарадом",
+     "seconds": 387
     }
    ]
   },
@@ -5056,14 +5643,16 @@
    "label": "רבי ישעיה הלוי הורוויץ (השל״ה הקדוש)",
    "en": [
     {
-     "id": "M1XvqQQP-AM",
-     "title": "SHLA ha-Kadosh and Or ha-Chaim ha-Kadosh – two voices, one revolution",
-     "seconds": 540
-    },
-    {
      "id": "Ne_fHLX2gjk",
      "title": "The Shelah HaKadosh and the Ohr HaChaim HaKadosh – Two Voices, One Revolution",
      "seconds": 354
+    }
+   ],
+   "ru": [
+    {
+     "id": "M1XvqQQP-AM",
+     "title": "ШЛА hа-Кадош и Ор hа-Хаим hа-Кадош – два голоса, одна революция",
+     "seconds": 540
     }
    ]
   },
@@ -5074,10 +5663,12 @@
      "id": "PgF5k3u4JVU",
      "title": "Abraham Maimonides: Rationalism, Sufism, and the Defense of His Father’s Legacy",
      "seconds": 377
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "Bg4_G8RzZnA",
-     "title": "Abraham Maimonides: Rationalism, Sufism, and the Defense of His Father's Legacy",
+     "title": "Авраам Маймонид: рационализм, суфизм и защита наследия отца",
      "seconds": 318
     }
    ]
@@ -5086,14 +5677,16 @@
    "label": "רבי יעקב אבן חביב (עין יעקב)",
    "en": [
     {
-     "id": "3RaB87PhVjs",
-     "title": "Ein Yaakov: The World and Legacy of Rabbi Yaakov ibn Habib",
-     "seconds": 325
-    },
-    {
      "id": "eF-1X93-6jI",
      "title": "Ein Yaakov: The World and Legacy of Rabbi Jacob ibn Habib",
      "seconds": 317
+    }
+   ],
+   "ru": [
+    {
+     "id": "3RaB87PhVjs",
+     "title": "«Эйн Яаков»: мир и наследие рабби Яакова ибн Хабиба",
+     "seconds": 325
     }
    ]
   },
@@ -5104,10 +5697,12 @@
      "id": "VDEDD49awgo",
      "title": "Rabbi Yaakov ben Yakar: The Teacher of Rashi and the Ashkenazic Tradition",
      "seconds": 407
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "ZWAKMRS0aLI",
-     "title": "Rabbi Yaakov ben Yakar: Rashi's teacher and the Ashkenazi tradition",
+     "title": "Рабби Яаков бен Якар: учитель Раши и ашкеназская традиция",
      "seconds": 341
     }
    ]
@@ -5119,10 +5714,12 @@
      "id": "OXMfO24yAeU",
      "title": "Rabbi Joseph Dov Soloveitchik - The Halakhic Man Who Lived Between Two Worlds",
      "seconds": 620
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "mfhklEClXVk",
-     "title": "Rabbi Joseph Soloveitchik: The Man of Halakha Living Between Two Worlds",
+     "title": "Рав Йосеф Дов Соловейчик - человек Галахи, живший между двумя мирами",
      "seconds": 537
     }
    ]
@@ -5131,14 +5728,16 @@
    "label": "הרבנית חיה מושקא שניאורסון",
    "en": [
     {
-     "id": "vfjBSPWJqe4",
-     "title": "Rebbetzin Chaya Mushka Schneerson: Spiritual Partnership, Selflessness, and Quiet Leadership",
-     "seconds": 600
-    },
-    {
      "id": "cNOHzH5oy-0",
      "title": "Rebbetzin Chaya Mushka Schneerson - Spiritual Partnership, Selfless Devotion and Quiet Leadership",
      "seconds": 272
+    }
+   ],
+   "ru": [
+    {
+     "id": "vfjBSPWJqe4",
+     "title": "Ребецн Хая-Мушка Шнеерсон - духовное партнерство, самоотверженность и тихое лидерство",
+     "seconds": 600
     }
    ]
   },
@@ -5149,30 +5748,36 @@
      "id": "viy9jsulLoc",
      "title": "Geula Cohen: The Life and Legacy of a Fighter for Israel",
      "seconds": 363
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "rGBISPIIbek",
-     "title": "Geula Cohen: The Life and Legacy of an Israeli Freedom Fighter",
+     "title": "Геула Коэн: жизнь и наследие борца за Израиль",
      "seconds": 476
     }
    ]
   },
   "612": {
    "label": "ר' משה מנדלסון (רמבמ\"ן)",
-   "en": [
+   "he": [
     {
      "id": "mtPEMfJWZfc",
-     "title": "Moses Mendelssohn: Father of the Jewish Enlightenment and the Haskalah",
+     "title": "משה מנדלסון: אבי ההשכלה היהודית והנאורות",
      "seconds": 514
-    },
+    }
+   ],
+   "en": [
     {
      "id": "9Jden3KLVak",
      "title": "Moses Mendelssohn: Father of the Jewish Enlightenment (Haskalah) and the Age of Reason",
      "seconds": 497
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "szRvQy-38H8",
-     "title": "Moses Mendelssohn: The Father of the Jewish Enlightenment and the Age of Reason",
+     "title": "Мозес Мендельсон: отец еврейского Просвещения и эпохи разума",
      "seconds": 462
     }
    ]
@@ -5181,14 +5786,16 @@
    "label": "לאה אמנו",
    "en": [
     {
-     "id": "tYm9XY5Ol_o",
-     "title": "Leah, the Matriarch: The Woman Whose Prayer Changed Her Destiny",
-     "seconds": 491
-    },
-    {
      "id": "YsDYWOKdKmM",
      "title": "Leah Our Matriarch - The Woman Whose Prayer Changed Her Destiny",
      "seconds": 300
+    }
+   ],
+   "ru": [
+    {
+     "id": "tYm9XY5Ol_o",
+     "title": "Лея, праматерь - женщина, чья молитва изменила её судьбу",
+     "seconds": 491
     }
    ]
   },
@@ -5196,14 +5803,16 @@
    "label": "רב נחמן בר פפא",
    "en": [
     {
-     "id": "o9iBCp_Vi7k",
-     "title": "Rav Nachman bar Papa - the amora who prayed and it rained",
-     "seconds": 515
-    },
-    {
      "id": "kLJUwmjj7Cc",
      "title": "Rav Nachman bar Pappa - The Amora Who Prayed and the Rain Fell",
      "seconds": 353
+    }
+   ],
+   "ru": [
+    {
+     "id": "o9iBCp_Vi7k",
+     "title": "Рав Нахман бар Папа - аморай, который помолился, и пошёл дождь",
+     "seconds": 515
     }
    ]
   },
@@ -5214,10 +5823,12 @@
      "id": "6tFcTQDpfog",
      "title": "Gedaliah ben Ahikam - The Murder That Extinguished Judah’s Last Hope",
      "seconds": 317
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "5GkX20zWwAs",
-     "title": "Gedaliah ben Ahikam: The Assassination That Extinguished Judea's Last Hope",
+     "title": "Гедалия бен Ахикам - убийство, погасившее последнюю надежду Иудеи",
      "seconds": 490
     }
    ]
@@ -5229,10 +5840,12 @@
      "id": "eiQt0ycF4sc",
      "title": "Rabbi Yisrael Yitzchak Besançon - The Artist Who Made Breslov a Language of the Soul",
      "seconds": 273
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "fD8YrjG0Ly8",
-     "title": "Rabbi Israel Isaac Besancon, of blessed memory – The artist who turned Breslov into the language ...",
+     "title": "Рав Исраэль Ицхак Безансон, благословенной памяти - художник, превративший Бреслав в язык души",
      "seconds": 525
     }
    ]
@@ -5244,10 +5857,12 @@
      "id": "xgdqNPQiiVk",
      "title": "Rabbi Eliezer Yehuda Waldenberg - The Tzitz Eliezer, a Leading Halakhic Authority",
      "seconds": 402
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "Yjo_hGXtcOw",
-     "title": "Gaon Rabbi Eliezer Waldenberg - The Distinguished Halachic Authority of \"Tzitz Eliezer\"",
+     "title": "Гаон раввин Элиэзер Йехуда Вальденберг - выдающийся галахический авторитет «Циц Элиэзер»",
      "seconds": 492
     }
    ]
@@ -5259,10 +5874,12 @@
      "id": "aOhTT4BYqTA",
      "title": "Rabbi Ahai bar Papa - The Sage Included in the Hadran Despite Living Generations Before Rav Papa",
      "seconds": 404
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "f29AXHW8Sus",
-     "title": "Rabbi Achai bar Papa: The Sage in the Hadran Who Lived Generations Before Rav Papa",
+     "title": "Рабби Ахай бар Папа - мудрец, вошедший в Адран, хотя жил за поколения до Рава Папы",
      "seconds": 570
     }
    ]
@@ -5274,10 +5891,12 @@
      "id": "8ncHBXpcsjA",
      "title": "Rabbi Hanan Porat - The Man Who Refused to Choose Between Torah and Life",
      "seconds": 328
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "5BJnsTcrvhM",
-     "title": "Rabbi Hanan Porat: The Man Who Refused to Choose Between Torah and Life",
+     "title": "Рав Ханан Порат - человек, отказавшийся выбирать между Торой и жизнью",
      "seconds": 476
     }
    ]
@@ -5286,14 +5905,16 @@
    "label": "רבי מנחם רקנאטי",
    "en": [
     {
-     "id": "GKVirv2oTpE",
-     "title": "Rabbi Menachem Recanati: The Kabbalist Who Transformed the Zohar into a Foundational Text",
-     "seconds": 424
-    },
-    {
      "id": "rM4jaxCsHho",
      "title": "Rabbi Menachem Recanati - The Kabbalist Who Made the Zohar a Foundational Text",
      "seconds": 443
+    }
+   ],
+   "ru": [
+    {
+     "id": "GKVirv2oTpE",
+     "title": "Рабби Менахем Реканати - каббалист, превративший Зоар в основополагающую книгу",
+     "seconds": 424
     }
    ]
   },
@@ -5304,10 +5925,12 @@
      "id": "-IKOyrDQF6E",
      "title": "Rabbi Abbahu - The Sage of Caesarea Who Stood Between the Study Hall and the Empire",
      "seconds": 357
-    },
+    }
+   ],
+   "ru": [
     {
      "id": "BPdVWImZx70",
-     "title": "Rabbi Abbahu: The Sage of Caesarea Standing Between the Study Hall and the Empire",
+     "title": "Рабби Аббаху - мудрец из Кесарии, стоявший между домом учения и империей",
      "seconds": 475
     }
    ]
@@ -5316,14 +5939,16 @@
    "label": "אימא שלום",
    "en": [
     {
-     "id": "AZz17ZTQt5E",
-     "title": "Imma Shalom: The Woman Between Rabbi Eliezer and Rabban Gamaliel",
-     "seconds": 433
-    },
-    {
      "id": "MT7n6kqD8Es",
      "title": "Imma Shalom - The Woman Who Stood Between Rabbi Eliezer and Rabban Gamliel",
      "seconds": 372
+    }
+   ],
+   "ru": [
+    {
+     "id": "AZz17ZTQt5E",
+     "title": "Имма Шалом - женщина между рабби Элиэзером и раббаном Гамлиэлем",
+     "seconds": 433
     }
    ]
   },
@@ -5331,14 +5956,16 @@
    "label": "רבי רפאל בירדוגו (המלאך רפאל)",
    "en": [
     {
-     "id": "qbhTWbSmqKA",
-     "title": "Rabbi Raphael Berdugo - \"The Angel Raphael\" from Meknes",
-     "seconds": 388
-    },
-    {
      "id": "t3EKqmQhgek",
      "title": "Rabbi Raphael Berdugo - The “Angel Raphael” of Meknes",
      "seconds": 292
+    }
+   ],
+   "ru": [
+    {
+     "id": "qbhTWbSmqKA",
+     "title": "Рабби Рафаэль Бердуго - «Ангел Рафаэль» из Мекнеса",
+     "seconds": 388
     }
    ]
   },
@@ -5346,14 +5973,16 @@
    "label": "רבי נתן שפירא הירושלמי (הרב הנשי״א)",
    "en": [
     {
-     "id": "92-41jb_3uA",
-     "title": "Rabbi Nathan Shapira of Jerusalem: The Kabbalist Who Systematized the Works of the Arizal",
-     "seconds": 376
-    },
-    {
      "id": "bVC_T1MR4nE",
      "title": "Rabbi Nathan Shapira of Jerusalem - The Kabbalist Who Organized the Writings of the Ari",
      "seconds": 304
+    }
+   ],
+   "ru": [
+    {
+     "id": "92-41jb_3uA",
+     "title": "Рабби Натан Шапира Иерусалимский - каббалист, систематизировавший труды Аризаля",
+     "seconds": 376
     }
    ]
   },
@@ -5361,14 +5990,16 @@
    "label": "רבי אברהם בן שלמה הלוי בוקראט",
    "en": [
     {
-     "id": "llK6TjhR-ok",
-     "title": "Rabbi Avraham Bokrat: The Sage Exiled from Spain Who Defended Rashi",
-     "seconds": 387
-    },
-    {
      "id": "3tqZnY6xxJ4",
      "title": "Rabbi Abraham Bokrat - The Scholar Expelled from Spain Who Rose to Rashi’s Defense",
      "seconds": 334
+    }
+   ],
+   "ru": [
+    {
+     "id": "llK6TjhR-ok",
+     "title": "Рабби Авраам Бократ - мудрец, изгнанный из Испании и выступивший в защиту РашиРабби Ав",
+     "seconds": 387
     }
    ]
   },
@@ -5376,14 +6007,16 @@
    "label": "מרים הנביאה",
    "en": [
     {
-     "id": "AwjeicEsSuw",
-     "title": "Miriam the Prophetess: The Woman Who Believed in Deliverance Before the Sea Parted",
-     "seconds": 547
-    },
-    {
      "id": "cPBZwmA-SJw",
      "title": "Miriam the Prophetess - The Woman Who Believed in Redemption Before the Sea Was Parted",
      "seconds": 515
+    }
+   ],
+   "ru": [
+    {
+     "id": "AwjeicEsSuw",
+     "title": "Мирьям-пророчица - женщина, верившая в избавление ещё до того, как расступилось море",
+     "seconds": 547
     }
    ]
   }

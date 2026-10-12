@@ -8,7 +8,7 @@ import type { Locale } from './types'
 export interface SageVideo {
   /** YouTube video id. */
   id: string
-  /** The video's own title, in the video's language. */
+  /** The video's own title, in the video's language (YouTube's snippet.title, not the translation a viewer sees). */
   title: string
   seconds: number
 }
@@ -16,7 +16,7 @@ export interface SageVideo {
 export interface YoutubeEntry {
   /** The roster label this entry was made for; guards against ids drifting. */
   label: string
-  /** The sage's videos in that language, in playlist order (often the same lesson uploaded twice). */
+  /** The sage's videos in that language, in playlist order. */
   he?: SageVideo[]
   en?: SageVideo[]
   ru?: SageVideo[]

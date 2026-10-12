@@ -72,12 +72,29 @@ test('no video belongs to two sages, or to two languages', () => {
   }
 })
 
-test('a video sits under the language its title is written in', () => {
+test('a video sits under the language its own title is written in', () => {
+  // the snapshot holds each video's original title and language (YouTube Data API), so the two agree
   for (const [id, e] of youtubeEntries()) {
     for (const v of e.en ?? []) assert.ok(!hasHebrew(v.title) && !hasCyrillic(v.title), `${id}/en: "${v.title}"`)
     for (const v of e.ru ?? []) assert.ok(hasCyrillic(v.title), `${id}/ru: "${v.title}"`)
     for (const v of e.he ?? []) assert.ok(hasHebrew(v.title), `${id}/he: "${v.title}"`)
   }
+})
+
+test('the pairs the owner listened to are filed as he heard them', () => {
+  // first Russian, second English: Rashi (13/14), R. Jacob Landau (452, rows 169/170), the Shach (83, 420/421)
+  assert.deepEqual([sageVideos('594', 'ru')[0]?.id, sageVideos('594', 'en')[0]?.id], ['V_IWxYu1f9Y', 'q5x9P6uZGpE'])
+  assert.deepEqual([sageVideos('452', 'ru')[0]?.id, sageVideos('452', 'en')[0]?.id], ['wEmwGlLhGjw', 'ycaGC9cXwLY'])
+  assert.deepEqual([sageVideos('83', 'ru')[0]?.id, sageVideos('83', 'en')[0]?.id], ['OlCwbut_kfc', '_w9R_rFvReU'])
+  // first English, second Russian: Rabbeinu Perachiah (288, rows 248/249) and the Meshech Chochmah (128, rows 600/601)
+  assert.deepEqual([sageVideos('288', 'en')[0]?.id, sageVideos('288', 'ru')[0]?.id], ['NnujnyQUOOg', '-pmGp_mGqDw'])
+  assert.deepEqual([sageVideos('128', 'en')[0]?.id, sageVideos('128', 'ru')[0]?.id], ['V8-UTxd-8bA', 'P3ez1FM8JmA'])
+})
+
+test('most sages have one video in English and one in Russian', () => {
+  const both = youtubeEntries().filter(([, e]) => e.en?.length === 1 && e.ru?.length === 1).length
+  assert.ok(both >= 300, `only ${both} sages have exactly one English and one Russian video`)
+  assert.ok(youtubeEntries().filter(([, e]) => e.ru).length >= 330, 'a Russian page without a video for most sages')
 })
 
 console.log('\nlookup and urls')
@@ -93,18 +110,20 @@ test('a page only ever gets the video of its own language', () => {
   assert.equal(getYoutubeEntry('72')?.label, labels.get('72'))
 })
 
-test('every video of the playlist that names a roster sage is kept: a sage can have several in a language', () => {
-  const two = youtubeEntries().filter(([, e]) => (e.en?.length ?? 0) >= 2).length
-  assert.ok(two >= 200, `only ${two} sages have two English videos`)
-  assert.ok(sageVideos('44', 'en').length >= 4, 'the Ramban (44) has six English uploads')
+test('every video of the playlist that names a roster sage is kept, a sage can have several in a language', () => {
+  assert.equal(sageVideos('44', 'en').length, 3, 'the Ramban (44) has six uploads: three in each language')
+  assert.equal(sageVideos('44', 'ru').length, 3)
 })
 
 test('the sages added from the owner’s Drive have their videos, and Theodos of Rome his two', () => {
-  // 623 Abbahu, 624 Imma Shalom, 625 Berdugo, 626 Nathan Shapira, 627 Bokrat, 629 Miriam
+  // 623 Abbahu, 624 Imma Shalom, 625 Berdugo, 626 Nathan Shapira, 627 Bokrat, 629 Miriam: one Russian, one English
   for (const id of ['623', '624', '625', '626', '627', '629']) {
-    assert.ok(sageVideos(id, 'en').length >= 2, `${id} (${labels.get(id)}) has no English videos`)
+    assert.equal(sageVideos(id, 'en').length, 1, `${id} (${labels.get(id)}) has no English video`)
+    assert.equal(sageVideos(id, 'ru').length, 1, `${id} (${labels.get(id)}) has no Russian video`)
   }
-  assert.equal(sageVideos('485', 'en').length, 2, 'Theodos of Rome (485): "Religious Authority and Imperial Policy in Ancient Rome"')
+  // Theodos of Rome (485): "Religious Authority and Imperial Policy in Ancient Rome", English and Russian
+  assert.equal(sageVideos('485', 'en').length, 1)
+  assert.equal(sageVideos('485', 'ru').length, 1)
 })
 
 test('a lesson on a weekly portion is not a sage’s video', () => {
