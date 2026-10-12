@@ -8,14 +8,9 @@ import type { Locale } from './types'
 export interface SageVideo {
   /** YouTube video id. */
   id: string
-  /** The video's own title (usually in the video's language; see `inferred`). */
+  /** The video's own title, in the video's language (YouTube's snippet.title, not the translation a viewer sees). */
   title: string
   seconds: number
-  /**
-   * True when the video is filed as Russian by the owner's rule (the first of two adjacent
-   * English-titled uploads of one sage), not by its title. data/youtube-language-overrides.json.
-   */
-  inferred?: boolean
 }
 
 export interface YoutubeEntry {

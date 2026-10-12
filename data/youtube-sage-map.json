@@ -1,7 +1,6 @@
 {
  "_about": "Which playlist videos belong to which sage, by hand: the playlist's titles are English, Russian and Hebrew renderings of a name and the roster's labels are Hebrew (and sometimes a formal name: the Vilna Gaon is 'רבי אליהו בן שלמה זלמן'), so a script cannot join them safely. Keys are sage ids, values are row numbers of data/youtube-playlist.tsv. A row is listed when its title names the sage, or when that sage's own research document (public/research/<id>.json) is about the same person or book. Rows that stay out are in _left_out.",
  "_left_out": {
-  "45": "title says Maimon; its twin (46) says Don Yichya, so only 46 is used",
   "79-80": "a parashat Ekev lesson, not a sage",
   "670-672": "Shabtai Ben-Dov: not in the roster, and the owner's Drive folder has no paper on him",
   "682": "Yehuda Gurland: not in the roster, and the owner's Drive folder has no paper on him"
@@ -1134,6 +1133,7 @@
    68
   ],
   "527": [
+   45,
    46
   ],
   "529": [
