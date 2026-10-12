@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0a0806">
+<title>אוצר חכמים</title>
+<style>
+  html, body { height: 100%; margin: 0; }
+  body {
+    display: grid; place-items: center; padding: 24px; box-sizing: border-box; text-align: center;
+    background: #0a0806; color: #e8e2d4;
+    font-family: system-ui, -apple-system, "Segoe UI", Arial, sans-serif; line-height: 1.6;
+  }
+  main { max-width: 420px; }
+  img { width: 96px; height: 96px; border-radius: 50%; }
+  h1 { margin: 20px 0 8px; font-size: 1.5rem; color: #e6c36a; font-family: Georgia, "Times New Roman", serif; }
+  p { margin: 0 0 20px; color: #b9b2a2; }
+  button {
+    font: inherit; font-weight: 600; cursor: pointer; padding: 10px 22px; border-radius: 12px;
+    border: 1px solid rgba(230, 195, 106, .45); background: rgba(230, 195, 106, .1); color: #e6c36a;
+  }
+  button:hover { background: rgba(230, 195, 106, .2); }
+</style>
+</head>
+<body>
+<main>
+  <img src="/icons/icon-192.png" alt="" width="96" height="96">
+  <h1 id="title"></h1>
+  <p id="body"></p>
+  <button id="retry" type="button"></button>
+</main>
+<script>
+  var COPY = {
+    he: { dir: 'rtl', title: 'אין חיבור לאינטרנט', body: 'דפים שכבר ביקרתם בהם נשמרו ואפשר לפתוח אותם גם כעת. שאר האתר יחזור כשהחיבור יחזור.', retry: 'ניסיון נוסף' },
+    en: { dir: 'ltr', title: 'You are offline', body: 'Pages you have already visited are saved and still open. The rest of the site returns when your connection does.', retry: 'Try again' },
+    ru: { dir: 'ltr', title: 'Нет подключения к интернету', body: 'Страницы, которые вы уже открывали, сохранены и открываются без сети. Остальное появится, когда вернётся связь.', retry: 'Повторить' }
+  };
+  var lang = (navigator.language || 'he').slice(0, 2);
+  var c = COPY[lang] || COPY.he;
+  document.documentElement.lang = COPY[lang] ? lang : 'he';
+  document.documentElement.dir = c.dir;
+  document.getElementById('title').textContent = c.title;
+  document.getElementById('body').textContent = c.body;
+  var retry = document.getElementById('retry');
+  retry.textContent = c.retry;
+  retry.addEventListener('click', function () { location.reload(); });
+  window.addEventListener('online', function () { location.reload(); });
+</script>
+</body>
+</html>

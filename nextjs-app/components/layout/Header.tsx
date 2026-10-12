@@ -8,6 +8,7 @@ import { ERA_COLORS, ERA_LABELS, ALL_PERIODS } from '@/lib/types'
 import type { Locale, Period } from '@/lib/types'
 import { UI, LOCALES, LOCALE_NAMES, LOCALE_SHORT } from '@/lib/i18n'
 import { AuthStatus } from '@/components/auth/AuthStatus'
+import { InstallApp } from '@/components/ui/InstallApp'
 
 interface HeaderProps {
   locale: Locale
@@ -104,6 +105,11 @@ export function Header({ locale, initialStats }: HeaderProps) {
         >
           <span aria-hidden>?</span>
         </button>
+
+        {/* Install as an app (only where the browser offers it; on iOS a press shows the steps) */}
+        <div className="hidden sm:block">
+          <InstallApp locale={locale} compact className={cn(pill, 'justify-center h-9 w-9')} />
+        </div>
 
         {/* Auth status (desktop) */}
         <div className="hidden sm:block">
@@ -334,6 +340,7 @@ function MobileActionsMenu({ locale }: { locale: Locale }) {
             <span aria-hidden className="w-4 text-center font-semibold">?</span>
             {t.guidedTour}
           </button>
+          <InstallApp locale={locale} showHint onDone={() => setOpen(false)} className={cn(item, 'border-t border-ink-700/40')} />
           {LOCALES.filter(l => l !== locale).map(l => (
             <a
               key={l}

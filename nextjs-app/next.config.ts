@@ -9,6 +9,19 @@ const nextConfig: NextConfig = {
   outputFileTracingIncludes: {
     '/[locale]/sage/[id]': ['./public/research/**'],
   },
+  // The service worker must never be served from a stale cache, or a fix to it would not reach
+  // visitors until the old copy expired; it may control the whole site.
+  async headers() {
+    return [
+      {
+        source: '/sw.js',
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=0, must-revalidate' },
+          { key: 'Service-Worker-Allowed', value: '/' },
+        ],
+      },
+    ]
+  },
   images: {
     remotePatterns: [
       {
