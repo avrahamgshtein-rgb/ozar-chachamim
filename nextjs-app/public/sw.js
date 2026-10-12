@@ -5,7 +5,7 @@
  *
  *   /api/*, /auth/*            network only (chat, quota, sign-in are never cached)
  *   /_next/static/*            cache first (file names carry a hash, so they never go stale)
- *   data*.json, i18n, research network first (an edited dataset shows at once), the saved copy when
+ *   data*.json, i18n, research, quiz network first (an edited dataset shows at once), the saved copy when
  *                              offline or when the network takes more than SLOW_MS
  *   images, icons              stale-while-revalidate (shown at once, refreshed in the background)
  *   pages (navigations)        network first, the last good copy when offline, /offline.html at last
@@ -19,7 +19,7 @@ const RESEARCH = `ozar-research-${VERSION}`
 const ALL = [SHELL, STATIC, DATA, PAGES, RESEARCH]
 const MAX_PAGES = 60
 const SLOW_MS = 4000
-const MAX_RESEARCH = 80      // research documents are the only large files: keep the ones read last
+const MAX_RESEARCH = 80      // research documents (and quizzes) are the only large files: keep the ones read last
 
 const PRECACHE = [
   '/offline.html',
@@ -129,7 +129,7 @@ self.addEventListener('fetch', event => {
   // the dataset and the research change when the owner edits them: fresh when online
   if (/^\/(data[^/]*\.json|i18n\/)/.test(path)) {
     event.respondWith(networkFirst(event, DATA))
-  } else if (path.startsWith('/research/')) {
+  } else if (path.startsWith('/research/') || path.startsWith('/quiz/')) {
     event.respondWith(networkFirst(event, RESEARCH, MAX_RESEARCH))
   } else if (/^\/(icons|images)\//.test(path)) {
     // not hashed, so they can change in place: show the saved copy and refresh it

@@ -17,6 +17,8 @@ import { SpotifyListen } from '@/components/sages/SpotifyListen'
 import { YoutubeWatch } from '@/components/sages/YoutubeWatch'
 import { sageVideos } from '@/lib/youtube'
 import { WritingsSection } from '@/components/sages/WritingsSection'
+import { SageQuiz } from '@/components/sages/SageQuiz'
+import { hasQuiz } from '@/lib/quiz'
 import { getSefaria, sefariaTopicUrl } from '@/lib/sefaria'
 import { wikiLinks, wikipediaUrl } from '@/lib/wikipedia'
 import { AskSageButton } from '@/components/sages/AskSageButton'
@@ -39,6 +41,7 @@ const S = {
   readResearch: { he: 'לקריאת המחקר', en: 'Read the research', ru: 'Читать исследование' },
   listen: { he: 'האזנה לפרק', en: 'Listen', ru: 'Слушать' },
   watch: { he: 'צפייה בסרטון', en: 'Watch the video', ru: 'Смотреть видео' },
+  quiz: { he: 'חידון', en: 'Quiz', ru: 'Викторина' },
   watchTitle: { he: 'צפו בסרטון', en: 'Watch the video', ru: 'Смотреть видео' },
   watchAnother: { he: 'סרטון נוסף', en: 'Another video', ru: 'Ещё одно видео' },
   watchMore: { he: 'עוד {n} סרטונים', en: '{n} more videos', ru: 'Ещё видео: {n}' },
@@ -181,6 +184,7 @@ export default async function SagePage({ params }: PageProps) {
   const sefaria = getSefaria(raw.id)
   const wiki = wikiLinks(raw.id, sefaria)
   const hasWritings = !!sefaria || !!wiki.wikisource
+  const quiz = hasQuiz(raw.id, loc)
   const videos = sageVideos(raw.id, loc)
 
   return (
@@ -307,6 +311,13 @@ export default async function SagePage({ params }: PageProps) {
                   {sefaria ? S.sefariaButton[loc] : S.wikisourceButton[loc]}
                 </a>
               )}
+              {quiz && (
+                <a href="#quiz"
+                  className="inline-flex items-center gap-2 rounded-full border border-gold-500/35 bg-gold-500/10 px-4 py-2 text-sm text-ink-100 transition-colors hover:border-gold-500/60 hover:bg-gold-500/15">
+                  <span aria-hidden className="text-gold-400">★</span>
+                  {S.quiz[loc]}
+                </a>
+              )}
               <AskSageButton subject={askSubject} locale={loc} />
               <Link href={`/${loc}?sage=${raw.id}`}
                 className="inline-flex items-center gap-2 rounded-full border border-ink-700/50 bg-ink-800/40 px-4 py-2 text-sm text-ink-200 transition-colors hover:border-gold-500/40 hover:text-gold-300">
@@ -407,6 +418,13 @@ export default async function SagePage({ params }: PageProps) {
           {researchDocs.length > 0 && (
             <div className="mt-14 border-t border-ink-700/40 pt-10 md:mt-16">
               <ResearchReader docs={researchDocs} locale={loc} isFallback={researchIsFallback} />
+            </div>
+          )}
+
+          {/* ── Quiz: after the research it is drawn from ───────── */}
+          {quiz && (
+            <div className="mt-14 max-w-4xl md:mt-16">
+              <SageQuiz sageId={raw.id} name={name} locale={loc} hasResearch={researchDocs.length > 0} />
             </div>
           )}
 
