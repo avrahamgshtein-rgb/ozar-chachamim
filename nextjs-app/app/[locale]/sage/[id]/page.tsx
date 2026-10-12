@@ -19,6 +19,7 @@ import { sageVideos } from '@/lib/youtube'
 import { WritingsSection } from '@/components/sages/WritingsSection'
 import { SageQuiz } from '@/components/sages/SageQuiz'
 import { hasQuiz } from '@/lib/quiz'
+import { stationAnchor, stationsOfSage } from '@/lib/kidsJourney'
 import { getSefaria, sefariaTopicUrl } from '@/lib/sefaria'
 import { wikiLinks, wikipediaUrl } from '@/lib/wikipedia'
 import { AskSageButton } from '@/components/sages/AskSageButton'
@@ -185,6 +186,8 @@ export default async function SagePage({ params }: PageProps) {
   const wiki = wikiLinks(raw.id, sefaria)
   const hasWritings = !!sefaria || !!wiki.wikisource
   const quiz = hasQuiz(raw.id, loc)
+  // The kids' journey is in Hebrew, so only the Hebrew page points to it
+  const kidsStops = loc === 'he' ? stationsOfSage(raw.id) : []
   const videos = sageVideos(raw.id, loc)
 
   return (
@@ -318,6 +321,13 @@ export default async function SagePage({ params }: PageProps) {
                   {S.quiz[loc]}
                 </a>
               )}
+              {kidsStops.map(({ route, station }) => (
+                <a key={`${route.key}-${station.n}`} href={`/he/kids#${stationAnchor(route.key, station.n)}`}
+                  className="inline-flex items-center gap-2 rounded-full border border-ink-700/50 bg-ink-800/40 px-4 py-2 text-sm text-ink-200 transition-colors hover:border-gold-500/40 hover:text-gold-300">
+                  <span aria-hidden>🧭</span>
+                  {`תחנה ${station.n} ב${route.title} (לילדים)`}
+                </a>
+              ))}
               <AskSageButton subject={askSubject} locale={loc} />
               <Link href={`/${loc}?sage=${raw.id}`}
                 className="inline-flex items-center gap-2 rounded-full border border-ink-700/50 bg-ink-800/40 px-4 py-2 text-sm text-ink-200 transition-colors hover:border-gold-500/40 hover:text-gold-300">

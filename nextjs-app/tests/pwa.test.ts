@@ -251,6 +251,15 @@ test('service worker: a quiz once played can be played again offline', async () 
   online = true
 })
 
+test('service worker: the kids\' illustrations are kept for offline reading', async () => {
+  online = true
+  await ask('/kids/saltiel-1.webp')
+  online = false
+  const res = await ask('/kids/saltiel-1.webp')
+  assert.equal(await res!.text(), 'network:/kids/saltiel-1.webp')
+  online = true
+})
+
 test('service worker: a slow network falls back to the saved copy', async () => {
   online = true
   await ask('/data-youtube.json')                           // saved

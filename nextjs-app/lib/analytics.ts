@@ -16,6 +16,7 @@ export type AnalyticsEvent =
   | 'tab_view'            // a visualization tab was opened               { tab }
   | 'quiz_start'          // a sage quiz was started                      { locale }
   | 'quiz_complete'       // ... and finished                             { locale, score: 0..100, stars: 0..3 }
+  | 'kids_station_done'   // a child stamped a station of the kids' journey { route: saltiel|shira }
   | 'return_visit'        // the browser came back on another day        { visits: '2'..'10+' }
   | 'pwa_prompt_available' // the browser offered installation          {}
   | 'pwa_install_click'   // the visitor pressed "install as an app"      { platform }

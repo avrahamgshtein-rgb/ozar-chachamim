@@ -187,6 +187,22 @@ export function AboutContent({ locale, stats, variant, onOpenTab }: AboutContent
         />
       </section>
 
+      {/* ── The kids' journey (Hebrew only, like the books) ───── */}
+      {locale === 'he' && (
+        <section aria-labelledby="about-kids" className="mt-14">
+          <a href="/he/kids" className="group grid overflow-hidden rounded-2xl border border-gold-500/30 bg-gold-500/[0.05] transition-colors hover:border-gold-500/60 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+            <img src="/kids/saltiel-cover.webp" width={1400} height={786} alt="" loading="lazy" className="h-full w-full object-cover" />
+            <div className="p-6">
+              <H2 id="about-kids" className="font-serif text-2xl font-bold text-gold-300">מסע לילדים: היכן החכמה מתגוררת</H2>
+              <p className="mt-2 font-sans text-sm leading-relaxed text-ink-200">
+                לגילאי 9–12: שאלתי והמגיד בשבעה מפגשים, ושירה והמספרת בשמונה תחנות בשער החכמות. כרטיסי מסע, משחקים ומשימות לבית ולכיתה, ודרכון מסע להחתמה.
+              </p>
+              <span className="mt-3 inline-block font-sans text-sm font-semibold text-gold-300 group-hover:underline">יוצאים לדרך {arrow}</span>
+            </div>
+          </a>
+        </section>
+      )}
+
       {/* ── Citation ─────────────────────────────────────────── */}
       <section aria-labelledby="about-cite" className="mt-14">
         <H2 id="about-cite" className={sectionTitle}>{c.citeTitle}</H2>

@@ -30,6 +30,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // About.
   add('/about', 'monthly', () => 0.5)
 
+  // The kids' journey: Hebrew only (the other two addresses are noindex and point here).
+  entries.push({ url: `${SITE_URL}/he/kids`, lastModified, changeFrequency: 'monthly', priority: 0.6 })
+
   // Sage pages — the substantive, indexable content of the site.
   for (const sage of getAllSages()) {
     add(`/sage/${encodeURIComponent(String(sage.id))}`, 'monthly', l => (l === 'he' ? 0.8 : 0.6))

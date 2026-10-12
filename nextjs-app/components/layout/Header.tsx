@@ -106,6 +106,13 @@ export function Header({ locale, initialStats }: HeaderProps) {
           <span aria-hidden>?</span>
         </button>
 
+        {/* The kids' journey (Hebrew, like the books it comes from) */}
+        {locale === 'he' && (
+          <a href="/he/kids" className={cn(pill, 'hidden sm:grid place-items-center h-9 w-9 text-base')} title="מסע לילדים: היכן החכמה מתגוררת" aria-label="מסע לילדים: היכן החכמה מתגוררת">
+            <span aria-hidden>🧭</span>
+          </a>
+        )}
+
         {/* Install as an app (only where the browser offers it; on iOS a press shows the steps) */}
         <div className="hidden sm:block">
           <InstallApp locale={locale} compact className={cn(pill, 'justify-center h-9 w-9')} />
@@ -340,6 +347,12 @@ function MobileActionsMenu({ locale }: { locale: Locale }) {
             <span aria-hidden className="w-4 text-center font-semibold">?</span>
             {t.guidedTour}
           </button>
+          {locale === 'he' && (
+            <a href="/he/kids" className={cn(item, 'border-t border-ink-700/40')}>
+              <span aria-hidden className="w-4 text-center">🧭</span>
+              מסע לילדים
+            </a>
+          )}
           <InstallApp locale={locale} showHint onDone={() => setOpen(false)} className={cn(item, 'border-t border-ink-700/40')} />
           {LOCALES.filter(l => l !== locale).map(l => (
             <a
