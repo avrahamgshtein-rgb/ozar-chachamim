@@ -14,6 +14,8 @@ export type AnalyticsEvent =
   | 'chat_open'           // the assistant panel was opened               { locale }
   | 'chat_question'       // a question was sent                          { locale, mode: model|referral }
   | 'tab_view'            // a visualization tab was opened               { tab }
+  | 'quiz_start'          // a sage quiz was started                      { locale }
+  | 'quiz_complete'       // ... and finished                             { locale, score: 0..100, stars: 0..3 }
   | 'return_visit'        // the browser came back on another day        { visits: '2'..'10+' }
   | 'pwa_prompt_available' // the browser offered installation          {}
   | 'pwa_install_click'   // the visitor pressed "install as an app"      { platform }

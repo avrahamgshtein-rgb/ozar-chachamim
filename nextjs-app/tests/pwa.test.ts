@@ -242,6 +242,15 @@ test('service worker: research documents are kept offline too, in their own cach
   online = true
 })
 
+test('service worker: a quiz once played can be played again offline', async () => {
+  online = true
+  await ask('/quiz/41.json')
+  online = false
+  const res = await ask('/quiz/41.json')
+  assert.equal(await res!.text(), 'network:/quiz/41.json')
+  online = true
+})
+
 test('service worker: a slow network falls back to the saved copy', async () => {
   online = true
   await ask('/data-youtube.json')                           // saved
