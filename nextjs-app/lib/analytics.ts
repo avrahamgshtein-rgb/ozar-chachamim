@@ -1,78 +1,34 @@
-'use client'
+// Demand measurement: what the site is used for, so a decision about an app, a paid assistant or a
+// new feature rests on numbers. Cookie-free (Vercel Web Analytics), no account, no personal data: an
+// event carries a name and a few coarse properties, never a question, a name or an id of a person.
+//
+// Page views, devices, countries, referrers and UTM tags (the installed app opens with
+// utm_source=pwa) come from <Analytics /> itself. Custom events below need a Vercel plan that records
+// them (Pro); on a plan that does not, track() is harmless and records nothing.
+import { track as vercelTrack } from '@vercel/analytics'
 
-import type { Locale, Sage } from '@/lib/types'
+/** The events the site sends. Keep this list short and the names stable: a chart is built on a name. */
+export type AnalyticsEvent =
+  | 'video_play'          // the visitor loaded a sage's YouTube video   { locale }
+  | 'listen_load'         // ... or the Spotify player                    { locale }
+  | 'chat_open'           // the assistant panel was opened               { locale }
+  | 'chat_question'       // a question was sent                          { locale, mode: model|referral }
+  | 'tab_view'            // a visualization tab was opened               { tab }
+  | 'return_visit'        // the browser came back on another day        { visits: '2'..'10+' }
+  | 'pwa_prompt_available' // the browser offered installation          {}
+  | 'pwa_install_click'   // the visitor pressed "install as an app"      { platform }
+  | 'pwa_install_choice'  // ... and answered the browser's prompt        { outcome: accepted|dismissed }
+  | 'pwa_installed'       // the app was installed                        {}
+  | 'pwa_open'            // the installed app was opened                 {}
 
-export interface AnalyticsEvent {
-  name: string
-  properties?: Record<string, any>
-  timestamp?: number
-}
+type Props = Record<string, string | number | boolean | null>
 
-/**
- * Track user analytics events
- * Vercel Analytics is auto-enabled; this sends custom events
- */
-export function trackEvent(name: string, properties?: Record<string, any>) {
-  if (typeof window === 'undefined') return
-
-  // Log to console in development
-  if (process.env.NODE_ENV === 'development') {
-    console.log(`[Analytics] ${name}`, properties)
+/** Send one event. Never throws, never runs outside production, never blocks the interface. */
+export function track(name: AnalyticsEvent, props?: Props): void {
+  if (process.env.NODE_ENV !== 'production') return
+  try {
+    vercelTrack(name, props)
+  } catch {
+    // measurement must not break the page
   }
-
-  // Send to Vercel Analytics (if available)
-  if ('dataLayer' in window) {
-    (window.dataLayer as any)?.push({
-      event: name,
-      ...properties,
-    })
-  }
-}
-
-// ── Event tracking helpers ────────────────────────────────────────
-
-export function trackSageViewed(sage: Sage, locale: Locale) {
-  trackEvent('sage_viewed', {
-    sage_id: sage.id,
-    sage_label: sage.label,
-    period: sage.period,
-    locale,
-  })
-}
-
-export function trackTabSwitched(tab: string, durationMs: number) {
-  trackEvent('tab_switched', {
-    tab_name: tab,
-    duration_ms: durationMs,
-  })
-}
-
-export function trackFilterApplied(filterType: string, value: string) {
-  trackEvent('filter_applied', {
-    filter_type: filterType,
-    value,
-  })
-}
-
-export function trackSearchQuery(query: string, resultCount: number) {
-  trackEvent('search_query', {
-    query_text: query,
-    result_count: resultCount,
-  })
-}
-
-export function trackErrorOccurred(errorType: string, component: string, message?: string) {
-  trackEvent('error_occurred', {
-    error_type: errorType,
-    component,
-    message: message?.slice(0, 100), // Truncate long messages
-  })
-}
-
-export function trackPathFinderSearch(source: string, target: string, found: boolean) {
-  trackEvent('pathfinder_search', {
-    source_id: source,
-    target_id: target,
-    path_found: found,
-  })
 }

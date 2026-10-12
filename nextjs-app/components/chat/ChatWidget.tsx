@@ -3,6 +3,7 @@
 import { Fragment, useCallback, useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { displayName } from '@/lib/displayName'
+import { track } from '@/lib/analytics'
 import type { Locale } from '@/lib/types'
 import type { ReferralLink } from '@/lib/rag/referralAnswer'
 import {
@@ -126,6 +127,9 @@ export function ChatWidget({ locale, placement = 'app', initialSubject, pageSage
   // The home page checks up front; a sage page waits until the panel opens.
   useEffect(() => { if (!onPage) checkStatus() }, [checkStatus, onPage])
 
+  // Demand: how often the panel is opened (no content, no identity)
+  useEffect(() => { if (isOpen) track('chat_open', { locale }) }, [isOpen, locale])
+
   // A check that failed (or never ran) gets another chance when the panel opens
   useEffect(() => {
     if (isOpen && (status === 'unavailable' || !checkedRef.current)) checkStatus()
@@ -246,6 +250,7 @@ export function ChatWidget({ locale, placement = 'app', initialSubject, pageSage
         links: Array.isArray(data.links) ? data.links : [],
       }])
       if (data.sessionId) setSessionId(data.sessionId)
+      track('chat_question', { locale, mode: data.mode === 'referral' ? 'referral' : 'model' })
     } catch {
       setError(tr(locale, 'שגיאת רשת. נסה שוב.', 'Network error. Please try again.', 'Ошибка сети. Попробуйте снова.'))
     } finally {

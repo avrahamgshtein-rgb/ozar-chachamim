@@ -5,6 +5,7 @@
 // markup and an inline icon; the player is youtube-nocookie.com.
 import { useState } from 'react'
 import type { Locale } from '@/lib/types'
+import { track } from '@/lib/analytics'
 import { durationLabel, embedUrl, watchUrl } from '@/lib/youtube'
 
 const S = {
@@ -69,7 +70,7 @@ export function YoutubeWatch({
         <div className="no-print mt-4">
           <p dir="auto" className="font-serif text-base leading-snug text-ink-100">{title}</p>
           <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2">
-            <button type="button" onClick={() => setLoaded(true)}
+            <button type="button" onClick={() => { track('video_play', { locale }); setLoaded(true) }}
               className="group inline-flex items-center gap-2 rounded-full bg-[#ff0033] px-4 py-2 text-sm font-sans font-semibold text-white shadow-lg shadow-[#ff0033]/20 transition hover:scale-[1.03] hover:bg-[#ff2a55] focus-visible:outline-offset-4 motion-reduce:hover:scale-100">
               <PlayIcon className="h-4 w-4" />
               {S.play[locale]}

@@ -13,6 +13,7 @@
 // and would stop the audio.
 import { useEffect, useRef, useState } from 'react'
 import type { Locale } from '@/lib/types'
+import { track } from '@/lib/analytics'
 
 export function parseSpotifyUrl(url: string | undefined | null): { kind: 'episode' | 'show'; id: string } | null {
   if (!url) return null
@@ -172,7 +173,7 @@ export function SpotifyListen({ url, locale, name }: { url: string; locale: Loca
           </div>
         ) : (
           <div className="no-print mt-4 flex flex-wrap items-center gap-x-4 gap-y-2">
-            <button ref={loadRef} type="button" onClick={() => setLoaded(true)}
+            <button ref={loadRef} type="button" onClick={() => { track('listen_load', { locale }); setLoaded(true) }}
               className="group inline-flex items-center gap-2 rounded-full bg-[#1DB954] px-4 py-2 text-sm font-sans font-semibold text-black shadow-lg shadow-[#1DB954]/20 transition hover:scale-[1.03] hover:bg-[#1ed760] focus-visible:outline-offset-4 motion-reduce:hover:scale-100">
               <PlayIcon />
               {S.load[locale]}

@@ -10,6 +10,7 @@ import { UI } from '@/lib/i18n'
 import { SITE_URL } from '@/lib/siteUrl'
 import type { CorpusStats } from '@/lib/siteStats'
 import { YoutubeWatch } from '@/components/sages/YoutubeWatch'
+import { InstallApp } from '@/components/ui/InstallApp'
 import { INTRO_VIDEO } from '@/lib/youtube'
 import { ABOUT_COPY, formatAboutDate } from './aboutCopy'
 import { CiteBox } from './CiteBox'
@@ -178,6 +179,12 @@ export function AboutContent({ locale, stats, variant, onOpenTab }: AboutContent
             </li>
           ))}
         </ul>
+        {/* Only where the browser can install the site (renders nothing otherwise) */}
+        <InstallApp
+          locale={locale}
+          showHint
+          className="mt-4 rounded-xl border border-gold-500/40 px-4 py-2.5 font-sans text-sm font-medium text-gold-300 transition-colors hover:bg-gold-500/10"
+        />
       </section>
 
       {/* ── Citation ─────────────────────────────────────────── */}

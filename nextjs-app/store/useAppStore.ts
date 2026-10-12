@@ -6,6 +6,7 @@ import { isTagFacet } from '@/lib/types'
 import { regionsOf } from '@/lib/regions'
 import { placesIn } from '@/lib/placeIndex'
 import { sageQueryMatcher } from '@/lib/search'
+import { track } from '@/lib/analytics'
 
 /** One selectable field chip: a single trimmed field name and how many sages carry it. */
 export interface FieldOption {
@@ -192,7 +193,10 @@ export const useAppStore = create<AppState>((set, get) => ({
     set({ selectedSage: null, selectedSageId: null, isDrawerOpen: false })
   },
 
-  setActiveTab: (tab) => set({ activeTab: tab }),
+  setActiveTab: (tab) => {
+    if (get().activeTab !== tab) track('tab_view', { tab })
+    set({ activeTab: tab })
+  },
 
   toggleTheme: () => {
     const theme = get().theme === 'dark' ? 'light' : 'dark'

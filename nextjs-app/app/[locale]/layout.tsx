@@ -4,6 +4,7 @@ import { isValidLocale, getDirection, getHtmlLang, OG_LOCALES, UI } from '@/lib/
 import type { Locale } from '@/lib/types'
 import { SITE_URL } from '@/lib/siteUrl'
 import { SkipLink } from '@/components/layout/SkipLink'
+import { SiteTelemetry } from '@/components/layout/SiteTelemetry'
 import { fontVariables, THEME_INIT_SCRIPT } from '../fonts'
 
 interface LocaleLayoutProps {
@@ -68,6 +69,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
       <body className="font-sans bg-ink-900 text-ink-100 antialiased">
         <SkipLink label={UI[validLocale].skipToContent} />
         {children}
+        <SiteTelemetry />
       </body>
     </html>
   )
