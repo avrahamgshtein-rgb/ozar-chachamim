@@ -92,16 +92,25 @@ def quiz_path(sid, lang):
 
 
 def research_text(sid):
-    """The sage's research, as one text: titles as headings, the citation markers removed."""
+    """The sage's research, as one text: titles as headings, the citation markers and the closing source
+    list removed. A line of dashes is also a section break inside many papers (157 of them), so only a
+    last section made of links counts as the source list. A document stored twice is sent once."""
     path = os.path.join(RESEARCH, f'{sid}.json')
     if not os.path.exists(path):
         return ''
-    parts = []
+    parts, seen = [], set()
     for doc in json.load(open(path, encoding='utf-8')):
-        body = re.split(r'\n-{10,}\n', doc.get('content', ''))[0]  # the source list after the rule
+        sections = re.split(r'\n-{10,}\n', doc.get('content', ''))
+        if len(sections) > 1 and len(re.findall(r'https?://', sections[-1])) >= 2:
+            sections = sections[:-1]
+        body = '\n'.join(sections)
         body = re.sub(r'\s*\[cite:[^\]]*\]', '', body)
         body = re.sub(r'\[\d+(?:,\s*\d+)*\]', '', body)           # footnote markers [1, 2]
-        parts.append(f"# {doc.get('title', '').strip()}\n\n{body.strip()}")
+        key = body.strip()
+        if key in seen:
+            continue
+        seen.add(key)
+        parts.append(f"# {doc.get('title', '').strip()}\n\n{key}")
     return '\n\n'.join(parts)
 
 

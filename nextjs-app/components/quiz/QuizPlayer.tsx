@@ -36,16 +36,24 @@ const S = {
     en: ['Read the research and try again.', 'A good start! A little more for the second star.', 'Very good! You know this sage well.', 'Excellent! You are an expert already.'],
     ru: ['Прочитайте исследование и попробуйте снова.', 'Хорошее начало! Ещё немного до второй звезды.', 'Очень хорошо! Вы хорошо знаете этого мудреца.', 'Отлично! Вы уже знаток.'],
   },
-  passport: {
-    he: 'בדרכון המסע שלכם: {stars} כוכבים אצל {sages} חכמים',
-    en: 'In your journey passport: {stars} stars from {sages} sages',
-    ru: 'В вашем паспорте путешествия: {stars} звёзд у {sages} мудрецов',
-  },
   review: { he: 'השאלות שכדאי לחזור אליהן ({n})', en: 'Questions to revisit ({n})', ru: 'Вопросы, к которым стоит вернуться ({n})' },
   answer: { he: 'התשובה:', en: 'Answer:', ru: 'Ответ:' },
 } satisfies Record<string, Record<Locale, string | string[]>>
 
 const fill = (s: string, vars: Record<string, string | number>) => s.replace(/\{(\w+)\}/g, (_, k) => String(vars[k] ?? ''))
+
+const ruPlural = new Intl.PluralRules('ru')
+/** The passport line, with the nouns in the number they need (one sage, 2 stars). */
+function passportLine(locale: Locale, { stars, sages }: { stars: number; sages: number }): string {
+  if (locale === 'he') {
+    return `בדרכון המסע שלכם: ${stars === 1 ? 'כוכב אחד' : `${stars} כוכבים`} אצל ${sages === 1 ? 'חכם אחד' : `${sages} חכמים`}`
+  }
+  if (locale === 'ru') {
+    const star = { one: 'звезда', few: 'звезды' }[ruPlural.select(stars) as 'one' | 'few'] ?? 'звёзд'
+    return `В вашем паспорте путешествия: ${stars} ${star} у ${sages} ${ruPlural.select(sages) === 'one' ? 'мудреца' : 'мудрецов'}`
+  }
+  return `In your journey passport: ${stars} ${stars === 1 ? 'star' : 'stars'} from ${sages} ${sages === 1 ? 'sage' : 'sages'}`
+}
 
 type Phase = 'intro' | 'loading' | 'error' | 'play' | 'done'
 
@@ -248,7 +256,7 @@ export function QuizPlayer({
             {newBest && <span className="rounded-full bg-gold-500/20 px-3 py-1 text-sm font-semibold text-gold-300">{S.newBest[locale]}</span>}
           </div>
           <p className="mt-3 text-[15px] text-ink-200">{(verdicts ?? S.verdict[locale])[starsFor(score)]}</p>
-          {showPassport && passport.stars > 0 && <p className="mt-2 text-sm text-ink-400">{fill(S.passport[locale], passport)}</p>}
+          {showPassport && passport.stars > 0 && <p className="mt-2 text-sm text-ink-400">{passportLine(locale, passport)}</p>}
 
           {missed.length > 0 && (
             <details className="mt-4 rounded-xl border border-ink-700/40 bg-ink-800/30 p-4">
