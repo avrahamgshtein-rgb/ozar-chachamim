@@ -1,0 +1,233 @@
+{
+ "label": "רב יוסף בר חייא",
+ "questions": [
+  {
+   "question": "True or false: Rav Yosef was blind.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 0,
+   "explanation": "He was called \"sagi nahor.\" His figure combines great wealth, blindness and a phenomenal memory.",
+   "points": 3
+  },
+  {
+   "question": "What is the meaning of the epithet \"Sinai\" given to Rav Yosef?",
+   "options": [
+    "Expert in all the sources of the Oral Torah, arranged in his head as they were given",
+    "Sharp and dialectical, dissolving difficulties by reasoning",
+    "One who immigrated from Babylonia to the Land of Israel",
+    "One who used to fast for forty days"
+   ],
+   "correctIndex": 0,
+   "explanation": "Mishnah, baraita, Tosefta and halakhic midrashim were arranged in his head \"as they were given at the assembly at Mount Sinai.\"",
+   "points": 5
+  },
+  {
+   "question": "Who was the \"Uprooter of Mountains,\" Rav Yosef's colleague?",
+   "options": [
+    "Abaye",
+    "Rabba bar Nachmani",
+    "Rava",
+    "Rav Yehuda bar Yechezkel"
+   ],
+   "correctIndex": 1,
+   "explanation": "Rabba excelled in sharpness and pilpul, the ability to dissolve difficulties and resolve contradictions through reasoning.",
+   "points": 5
+  },
+  {
+   "question": "True or false: When the sages of the Land of Israel were asked who takes precedence, they answered: \"The Uprooter of Mountains is preferable.\"",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 1,
+   "explanation": "The answer was decisive: \"Sinai is preferable.\"",
+   "points": 3
+  },
+  {
+   "question": "What was the reasoning for the ruling \"Sinai is preferable\"?",
+   "options": [
+    "Rav Yosef was wealthier than Rabba",
+    "So ruled the Head of the Exile",
+    "\"Everyone needs the master of wheat\": everyone needs the owner of the wheat",
+    "Rav Yosef was older than Rabba"
+   ],
+   "correctIndex": 2,
+   "explanation": "Just as the baker needs wheat, the sharp scholar needs the erudite one, who supplies him with the raw materials of halakha.",
+   "points": 5
+  },
+  {
+   "question": "Under whom did Rav Yosef study?",
+   "options": [
+    "Rabbi Yehuda HaNasi",
+    "Rav Ashi",
+    "Rabbi Yochanan",
+    "Rav Yehuda bar Yechezkel, founder of the yeshiva of Pumbedita"
+   ],
+   "correctIndex": 3,
+   "explanation": "Rav Yehuda was known for his exactitude in the traditions of Rav and Shmuel, and this trait was implanted deeply in Rav Yosef.",
+   "points": 5
+  },
+  {
+   "question": "True or false: Rav Yosef refused to head the yeshiva as long as Rabba was alive.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 0,
+   "explanation": "Although the sages of the Land of Israel ruled in his favor, he gave Rabba precedence.",
+   "points": 3
+  },
+  {
+   "question": "For how many years did Rabba head the yeshiva, with Rav Yosef giving way to him?",
+   "options": [
+    "22 years",
+    "12 years",
+    "40 years",
+    "7 years"
+   ],
+   "correctIndex": 0,
+   "explanation": "Only after Rabba's death did Rav Yosef accept the position, and he served in it for two and a half years until his death.",
+   "points": 5
+  },
+  {
+   "question": "What did Rav Yosef say to the Tanna who taught \"When Rabbi died, humility ceased\"?",
+   "options": [
+    "\"You are right, there is no longer a humble man in the generation\"",
+    "\"Do not teach 'humility,' for I am here\"",
+    "\"Teach it only before students\"",
+    "\"Humility has ceased, but Torah has not\""
+   ],
+   "correctIndex": 1,
+   "explanation": "That is: do not teach that humility ceased, for I exist. The great teachers of ethics saw in this an inner truth, not pride.",
+   "points": 5
+  },
+  {
+   "question": "How did Rav Yosef express his recognition of Rabba's authority?",
+   "options": [
+    "He did not preach in public all his life",
+    "He gave up all his wealth to him",
+    "He did not even invite a bloodletter to his house without his permission",
+    "He always sat at the end of the study hall"
+   ],
+   "correctIndex": 2,
+   "explanation": "\"He did not even call a craftsman to his house\": he did not behave with any trappings of authority in the years that Rabba stood at the head.",
+   "points": 5
+  },
+  {
+   "question": "True or false: According to the rule, wherever Rabba and Rav Yosef disagree, the halakha follows Rav Yosef.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 1,
+   "explanation": "The rule is \"the halakha follows Rabba,\" with the exception of three cases.",
+   "points": 3
+  },
+  {
+   "question": "What did Abaye do when he saw from afar the ear of Rav Yosef's donkey?",
+   "options": [
+    "Ran to bring him water",
+    "Hid his books",
+    "Went out to meet him with song",
+    "Stood up before him, out of honor for his teacher"
+   ],
+   "correctIndex": 3,
+   "explanation": "Abaye grew up in the house of Rav Yosef and the house of his uncle Rabba, and was his outstanding disciple.",
+   "points": 5
+  },
+  {
+   "question": "True or false: When Rav Yosef forgot his learning, Rabba bar Nachmani restored it to him.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 1,
+   "explanation": "Abaye restored it to him: \"You yourself told us this, and you learned it from such-and-such a baraita.\"",
+   "points": 3
+  },
+  {
+   "question": "In which translation of Scripture is Rav Yosef considered the great expert?",
+   "options": [
+    "The translation of Yonatan ben Uziel on the Prophets",
+    "The Septuagint translation into Greek",
+    "Rasag's translation into Arabic",
+    "The Syriac Peshitta"
+   ],
+   "correctIndex": 0,
+   "explanation": "In many cases he testified that were it not for the translation, he would not have understood the plain meaning of the verses.",
+   "points": 5
+  },
+  {
+   "question": "True or false: On every festival of Shavuot Rav Yosef held a great feast.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 0,
+   "explanation": "He said: \"Were it not for this day that causes it, how many Yosefs there are in the marketplace.\"",
+   "points": 3
+  },
+  {
+   "question": "What did Rav Yosef explain at the Shavuot feast that he held?",
+   "options": [
+    "That on this day he was born",
+    "That without the Torah that was given on this day, there would be another Yosef in the marketplace",
+    "That on this day he was chosen as head of the yeshiva",
+    "That on this day his learning returned to him"
+   ],
+   "correctIndex": 1,
+   "explanation": "The Torah is what gave him his identity, his standing and the meaning of his life.",
+   "points": 5
+  },
+  {
+   "question": "What did Rav Yosef change in his opinion about the exemption of the blind from the commandments, and why?",
+   "options": [
+    "He asked to be exempted, because the reward of one who is not commanded is greater",
+    "He asked for an exemption from the written commandments only, because he does not read",
+    "He asked to be obligated, because \"greater is one who is commanded and does than one who is not commanded and does\"",
+    "He never changed his opinion"
+   ],
+   "correctIndex": 2,
+   "explanation": "At first he was glad about the opinion of Rabbi Yehuda that a blind person is exempt, but when he heard Rabbi Chanina he asked that they prove that the halakha follows the Sages, who obligate.",
+   "points": 8
+  },
+  {
+   "question": "According to the research, what was the contribution of Rav Yosef and his disciples to the form of the Babylonian Talmud?",
+   "options": [
+    "Giving up pilpul in favor of erudition",
+    "Writing the Talmud for the first time",
+    "Moving the center of Torah from Babylonia to the Land of Israel",
+    "A sharp logical discussion resting on an enormous reservoir of mishnayot and baraitot"
+   ],
+   "correctIndex": 3,
+   "explanation": "Abaye inherited from him the exact traditions, and Rava combined Rabba's sharpness with the foundation of Rav Yosef.",
+   "points": 8
+  },
+  {
+   "question": "How, according to the research, are \"Sinai is preferable\" and the rule \"the halakha follows Rabba\" reconciled?",
+   "options": [
+    "In leadership erudition was preferred, and in deciding halakha Rabba's reasoning generally prevailed",
+    "The two rules were stated in different generations and are not related",
+    "The rule \"the halakha follows Rabba\" was annulled when Rav Yosef reigned",
+    "Rabba was in fact \"Sinai\" and Rav Yosef the \"Uprooter of Mountains\""
+   ],
+   "correctIndex": 0,
+   "explanation": "The Chazon Ish explains: where Rav Yosef found no explicit proof in his erudition, the deciding power passed to Rabba's straightforward reasoning.",
+   "points": 8
+  },
+  {
+   "question": "What is the meaning of what was said about Rav Yehuda, Rav Yosef's teacher: \"He would even recite the doubts of the transmitters\"?",
+   "options": [
+    "That he provided the sages with their livelihood",
+    "That he would even pass on the uncertainties about the names of those who transmitted the traditions",
+    "That he would recite the whole Talmud in one day",
+    "That he was in doubt about every halakha until he had checked it"
+   ],
+   "correctIndex": 1,
+   "explanation": "This exactitude made Rav Yosef the supreme authority on the exact wording of the mishnayot and baraitot.",
+   "points": 8
+  }
+ ]
+}
