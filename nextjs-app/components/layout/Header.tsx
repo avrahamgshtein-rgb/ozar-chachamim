@@ -10,6 +10,9 @@ import { UI, LOCALES, LOCALE_NAMES, LOCALE_SHORT } from '@/lib/i18n'
 import { AuthStatus } from '@/components/auth/AuthStatus'
 import { InstallApp } from '@/components/ui/InstallApp'
 
+const TODAY_LABEL: Record<Locale, string> = { he: 'היום באוצר חכמים: יום ההילולא וחכם היום', en: 'Today: hillula and sage of the day', ru: 'Сегодня: день памяти и мудрец дня' }
+const TODAY_MENU: Record<Locale, string> = { he: 'היום: הילולא וחכם היום', en: 'Today', ru: 'Сегодня' }
+
 interface HeaderProps {
   locale: Locale
   otherLocale: Locale
@@ -105,6 +108,11 @@ export function Header({ locale, initialStats }: HeaderProps) {
         >
           <span aria-hidden>?</span>
         </button>
+
+        {/* Today: the hillula and the sage of the day */}
+        <a href={`/${locale}/today`} className={cn(pill, 'hidden sm:grid place-items-center h-9 w-9 text-base')} title={TODAY_LABEL[locale]} aria-label={TODAY_LABEL[locale]}>
+          <span aria-hidden>📅</span>
+        </a>
 
         {/* The kids' journey (Hebrew, like the books it comes from) */}
         {locale === 'he' && (
@@ -347,6 +355,10 @@ function MobileActionsMenu({ locale }: { locale: Locale }) {
             <span aria-hidden className="w-4 text-center font-semibold">?</span>
             {t.guidedTour}
           </button>
+          <a href={`/${locale}/today`} className={cn(item, 'border-t border-ink-700/40')}>
+            <span aria-hidden className="w-4 text-center">📅</span>
+            {TODAY_MENU[locale]}
+          </a>
           {locale === 'he' && (
             <a href="/he/kids" className={cn(item, 'border-t border-ink-700/40')}>
               <span aria-hidden className="w-4 text-center">🧭</span>

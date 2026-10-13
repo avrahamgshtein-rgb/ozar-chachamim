@@ -30,6 +30,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // About.
   add('/about', 'monthly', () => 0.5)
 
+  // Today: the hillula and the sage of the day, in every language.
+  for (const l of ['he', 'en', 'ru']) entries.push({ url: `${SITE_URL}/${l}/today`, lastModified, changeFrequency: 'daily', priority: 0.7 })
   // The kids' journey: Hebrew only (the other two addresses are noindex and point here).
   entries.push({ url: `${SITE_URL}/he/kids`, lastModified, changeFrequency: 'monthly', priority: 0.6 })
 

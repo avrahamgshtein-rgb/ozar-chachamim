@@ -3,8 +3,6 @@
 // language: name, subtitle, era, years, what the page holds, and the site's medallion.
 // Hebrew goes through lib/ogText, because Satori has no right-to-left layout of its own.
 import { ImageResponse } from 'next/og'
-import { readFile } from 'fs/promises'
-import { join } from 'path'
 import { getSageById } from '@/lib/serverData'
 import { localizeSage } from '@/lib/serverDataTranslator'
 import { labelParts } from '@/lib/displayName'
@@ -15,7 +13,8 @@ import { formatYearRangeFor } from '@/lib/utils'
 import { hasQuiz } from '@/lib/quiz'
 import { sageVideos } from '@/lib/youtube'
 import { SITE_URL } from '@/lib/siteUrl'
-import { clipWords, isRtlText, rtlWords } from '@/lib/ogText'
+import { clipWords } from '@/lib/ogText'
+import { OG, OgLine, ogAssets } from '@/lib/ogCard'
 
 export const alt = 'אוצר חכמים · Ozar Chachamim'
 export const size = { width: 1200, height: 630 }
@@ -28,57 +27,16 @@ const FEATURES = {
   episode: { he: 'פרק להאזנה', en: 'Podcast episode', ru: 'Подкаст' },
 } satisfies Record<string, Record<Locale, string>>
 
-const INK = '#0b0907'
-const PARCHMENT = '#f3ead8'
-const GOLD = '#c9973a'
-const GOLD_SOFT = '#e2c27d'
-const MUTED = '#a89a82'
-
-async function asset(path: string): Promise<Buffer> {
-  return readFile(join(process.cwd(), path))
-}
-
-/** A line of text that may be Hebrew: right to left as word boxes, otherwise plain text. */
-function Line({ text, size, color, font, weight, align }: {
-  text: string; size: number; color: string; font: string; weight: number; align: 'start' | 'end'
-}) {
-  const common = { fontSize: size, color, fontFamily: font, fontWeight: weight, lineHeight: 1.18 }
-  if (!isRtlText(text)) {
-    return <div style={{ display: 'flex', ...common, textAlign: align === 'end' ? 'right' : 'left' }}>{text}</div>
-  }
-  return (
-    <div style={{ display: 'flex', flexDirection: 'row-reverse', flexWrap: 'wrap', ...common }}>
-      {rtlWords(text).map((w, i, all) => (
-        // row-reverse: the gap to the next word is on a word's left, so a wrapped line starts flush right
-        <span key={i} style={{ marginLeft: i === all.length - 1 ? 0 : size * 0.26 }}>{w}</span>
-      ))}
-    </div>
-  )
-}
+const { ink: INK, parchment: PARCHMENT, gold: GOLD, goldSoft: GOLD_SOFT, muted: MUTED } = OG
+const Line = OgLine
 
 export default async function Image({ params }: { params: Promise<{ locale: string; id: string }> }) {
   const { locale, id } = await Promise.resolve(params)
   const loc: Locale = isValidLocale(locale) ? (locale as Locale) : 'he'
   const rtl = loc === 'he'
 
-  const [frank, heebo, ptSerif, ptSans, medallion] = await Promise.all([
-    asset('assets/og/FrankRuhlLibre-Bold.ttf'),
-    asset('assets/og/Heebo-Medium.ttf'),
-    asset('assets/og/PTSerif-Bold.ttf'),
-    asset('assets/og/PTSans-Regular.ttf'),
-    asset('assets/og/medallion-400.png'),
-  ])
-  const fonts = [
-    { name: 'Frank Ruhl Libre', data: frank, weight: 700 as const, style: 'normal' as const },
-    { name: 'Heebo', data: heebo, weight: 500 as const, style: 'normal' as const },
-    { name: 'PT Serif', data: ptSerif, weight: 700 as const, style: 'normal' as const },
-    { name: 'PT Sans', data: ptSans, weight: 400 as const, style: 'normal' as const },
-  ]
-  // Russian has no glyphs in the Hebrew faces: its own serif and sans come first there.
-  const serif = loc === 'ru' ? 'PT Serif' : 'Frank Ruhl Libre'
-  const sans = loc === 'ru' ? 'PT Sans' : 'Heebo'
+  const { fonts, serif, sans, medallion: medallionSrc } = await ogAssets(loc)
   const host = SITE_URL.replace(/^https?:\/\//, '')
-  const medallionSrc = `data:image/png;base64,${medallion.toString('base64')}`
 
   const raw = getSageById(id)
   if (!raw) {

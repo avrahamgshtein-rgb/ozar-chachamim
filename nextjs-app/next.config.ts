@@ -10,6 +10,7 @@ const nextConfig: NextConfig = {
     '/[locale]/sage/[id]': ['./public/research/**'],
     // The share card reads its fonts and the medallion with fs.
     '/[locale]/sage/[id]/opengraph-image': ['./assets/og/**'],
+    '/[locale]/today/story': ['./assets/og/**'],
   },
   // The service worker must never be served from a stale cache, or a fix to it would not reach
   // visitors until the old copy expired; it may control the whole site.
