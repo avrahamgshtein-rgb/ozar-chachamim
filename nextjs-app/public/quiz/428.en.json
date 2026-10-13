@@ -1,0 +1,233 @@
+{
+ "label": "רבי דוד גנז",
+ "questions": [
+  {
+   "question": "In which city was David Gans born?",
+   "options": [
+    "Lippstadt, in Germany",
+    "Prague",
+    "Kraków",
+    "Frankfurt"
+   ],
+   "correctIndex": 0,
+   "explanation": "He was born in 1541 to a family of moneylenders, and first studied in Bonn and Frankfurt.",
+   "points": 5
+  },
+  {
+   "question": "Which of his teachers \"raised and exalted\" him and initiated him into the secret of the sciences?",
+   "options": [
+    "The Maharal, in Prague",
+    "The Rema, in Kraków",
+    "Rabbi Reuben Fulda, in Bonn",
+    "Rabbi Sinai, the Maharal's brother"
+   ],
+   "correctIndex": 1,
+   "explanation": "The Rema incorporated philosophy and astronomy into his writings, and under his patronage Gans was exposed to Euclid in Hebrew translation.",
+   "points": 5
+  },
+  {
+   "question": "In which year did Gans publish \"Tzemach David\"?",
+   "options": [
+    "1492",
+    "1648",
+    "1592",
+    "1700"
+   ],
+   "correctIndex": 2,
+   "explanation": "In the Hebrew year 5352. The Frankfurt edition (1692) added a third part to it.",
+   "points": 5
+  },
+  {
+   "question": "How is \"Tzemach David\" divided?",
+   "options": [
+    "According to the tractates of the Talmud",
+    "According to the countries of the Diaspora",
+    "According to the sefirot of Kabbalah",
+    "The history of Israel, and in a separate part the history of the nations"
+   ],
+   "correctIndex": 3,
+   "explanation": "The division reflects a distinction between the sacred history of Israel and general history.",
+   "points": 5
+  },
+  {
+   "question": "True or false: Gans based the second part of \"Tzemach David\" on Jewish sources only.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 1,
+   "explanation": "This was the first serious attempt by an Ashkenazi Jew to encompass world history, and in it he cited Christian authors.",
+   "points": 3
+  },
+  {
+   "question": "True or false: \"Tzemach David\" was the standard history book in Jewish homes in Ashkenaz until the 19th century.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 0,
+   "explanation": "The book gave Ashkenazi Jewry its first historical awareness.",
+   "points": 3
+  },
+  {
+   "question": "True or false: Gans spent three days at the observatory of Tycho Brahe.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 0,
+   "explanation": "In Benátky, in the castle of Emperor Rudolf II. He took part in observations and described the instruments with excitement.",
+   "points": 3
+  },
+  {
+   "question": "What task did Tycho Brahe assign to Gans?",
+   "options": [
+    "To translate the \"Alfonsine Tables\" from Hebrew into German",
+    "To calculate the molad of the moon for the Emperor",
+    "To build him an observation instrument",
+    "To teach him Hebrew"
+   ],
+   "correctIndex": 0,
+   "explanation": "The tables were essential for calculating the positions of the stars, and Brahe recognized Gans's access to the Jewish-Sephardic scientific tradition.",
+   "points": 5
+  },
+  {
+   "question": "Whom did Gans meet at Tycho Brahe's, as Brahe's assistant?",
+   "options": [
+    "Nicolaus Copernicus",
+    "Johannes Kepler",
+    "Galileo Galilei",
+    "Isaac Newton"
+   ],
+   "correctIndex": 1,
+   "explanation": "Prague in the late 16th century was the capital of world astronomy.",
+   "points": 5
+  },
+  {
+   "question": "In which book did Gans deal with astronomy?",
+   "options": [
+    "\"Tzemach David\"",
+    "\"Me'or Einayim\"",
+    "\"Nechmad ve-Naim\"",
+    "\"Torat ha-Olah\""
+   ],
+   "correctIndex": 2,
+   "explanation": "The book was written around 1612 and printed only in 1743. In it he set out all the astronomical and geographical knowledge of his time.",
+   "points": 5
+  },
+  {
+   "question": "Which astronomical model did Gans prefer?",
+   "options": [
+    "Copernicus's: the sun at the center",
+    "Aristotle's, without any change",
+    "A model in which the earth is flat",
+    "Tycho Brahe's: the earth at the center, and the planets revolve around the sun"
+   ],
+   "correctIndex": 3,
+   "explanation": "He was the first Jew to mention Copernicus by name, and called him \"a wondrous sage without equal,\" but did not accept his system.",
+   "points": 5
+  },
+  {
+   "question": "True or false: Gans described the discovery of America and the sphericity of the earth.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 0,
+   "explanation": "He was among the first in Ashkenazi Jewry to do so, and claimed that science only confirms what the sages of Israel knew.",
+   "points": 3
+  },
+  {
+   "question": "What does the name \"Gans\" mean, which he hinted at in the signature \"David Avzi\"?",
+   "options": [
+    "Goose",
+    "Treasure",
+    "Garden",
+    "Star"
+   ],
+   "correctIndex": 0,
+   "explanation": "On his tombstone in the old cemetery in Prague a Star of David and a goose are engraved.",
+   "points": 5
+  },
+  {
+   "question": "According to Gans, from where did the science of the stars reach the Greeks?",
+   "options": [
+    "From the Babylonians, who discovered it themselves",
+    "From the Egyptians, who learned it from the forefathers of Israel",
+    "From the Romans",
+    "From the Arabs"
+   ],
+   "correctIndex": 1,
+   "explanation": "Therefore engaging in science is not the adoption of a foreign culture, but the \"return of a lost object\" of a Jewish wisdom that was forgotten in exile.",
+   "points": 5
+  },
+  {
+   "question": "True or false: Gans was a community rabbi and composed many books of responsa.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 1,
+   "explanation": "He was not a community rabbi and did not compose responsa or pilpul, and yet his influence on Jewish culture was far-reaching.",
+   "points": 3
+  },
+  {
+   "question": "True or false: Gans wrote his books for sages only, in scholarly Hebrew.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 1,
+   "explanation": "He wrote in Yiddish and in simple Hebrew, also for householders and for the young, in order to make the knowledge accessible to the public.",
+   "points": 3
+  },
+  {
+   "question": "On what did Gans base the permission to read the second part of \"Tzemach David\" on Shabbat?",
+   "options": [
+    "On a responsum of the Maharal, who permitted every book",
+    "On the rule that there is no prohibition against reading on Shabbat",
+    "On the ruling of the Rema, which permits books of chronicles that contain moral teaching",
+    "On the fact that the book was written in Yiddish"
+   ],
+   "correctIndex": 2,
+   "explanation": "The Rema in Orach Chayim, section 307. His other reasons: moral lessons, good relations with the neighbors and strengthening of faith.",
+   "points": 8
+  },
+  {
+   "question": "What were Gans's reasons for rejecting Copernicus's system?",
+   "options": [
+    "Copernicus was not a good mathematician",
+    "His own observations refuted Copernicus",
+    "The Maharal forbade him to engage in this",
+    "Brahe's model explained the observations and did not directly contradict the plain sense of Scripture"
+   ],
+   "correctIndex": 3,
+   "explanation": "He also argued that the heliocentric system is not new, and that it originates with Pythagoras and his school.",
+   "points": 8
+  },
+  {
+   "question": "What is the \"Irenism\" that scholarship attributes to Gans?",
+   "options": [
+    "An aspiration for reconciliation between religions through shared scientific knowledge",
+    "A preference for history over Talmud",
+    "A belief that science will replace religion",
+    "Opposition to all outside study"
+   ],
+   "correctIndex": 0,
+   "explanation": "He saw astronomy as a \"theologically neutral\" domain, a bridge on which Jews and Christians would respect one another.",
+   "points": 8
+  },
+  {
+   "question": "Which separation, which he learned from the Maharal and the Rema, reduced, according to the research, the friction between science and faith?",
+   "options": [
+    "Science is permitted only to mature sages",
+    "Science deals only with the laws of nature, not with the essence of God or the reasons for the commandments",
+    "Science is studied only in a foreign language",
+    "Science deals with the heavens and Torah with the earth"
+   ],
+   "correctIndex": 1,
+   "explanation": "Thus he could see in the beit midrash and in the observatory two places in which divine truth is revealed.",
+   "points": 8
+  }
+ ]
+}

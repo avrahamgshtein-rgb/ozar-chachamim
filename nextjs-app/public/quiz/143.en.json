@@ -1,0 +1,233 @@
+{
+ "label": "האדמו\"ר מפיאסצ'נה (1889–1942) – קודש בתוך החורבן: תורה פסיכולוגית, אמונה ועמידה בגטו ורשה",
+ "questions": [
+  {
+   "question": "True or false: Rabbi Kalonymus Kalman Shapira was a descendant of the Kozhnitz Hasidic dynasty.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 0,
+   "explanation": "As a descendant of the dynasty, he was required not only to lead as a Rebbe, but to respond in a new way to the crisis of faith of his generation.",
+   "points": 3
+  },
+  {
+   "question": "In which large city did the Rebbe operate, alongside his court in Piaseczna?",
+   "options": [
+    "Warsaw",
+    "Kraków",
+    "Łódź",
+    "Lublin"
+   ],
+   "correctIndex": 0,
+   "explanation": "Warsaw was the largest, most modern and most challenged Jewish center in Poland, and he chose to confront modernity there directly.",
+   "points": 5
+  },
+  {
+   "question": "Which yeshiva did the Rebbe found in Warsaw in 1923?",
+   "options": [
+    "\"Chachmei Lublin\"",
+    "\"Da'at Moshe\"",
+    "\"Beit Yosef\"",
+    "\"Etz Chaim\""
+   ],
+   "correctIndex": 1,
+   "explanation": "The aim: a framework that would stand up to the temptations of the big city, with a Torah combining spiritual depth and educational sensitivity.",
+   "points": 5
+  },
+  {
+   "question": "True or false: The Rebbe saw the spiritual crisis of the youth as a decree that one must come to terms with.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 1,
+   "explanation": "He saw it as an active educational challenge that demanded creative solutions; hence the yeshiva and his educational books.",
+   "points": 3
+  },
+  {
+   "question": "What is the innovation at the focus of \"Chovat HaTalmidim\"?",
+   "options": [
+    "The institution's duties toward the parents",
+    "The order of study in the heder",
+    "The student's personal and inner responsibility for his growth",
+    "The disciplinary regulations of the yeshiva"
+   ],
+   "correctIndex": 2,
+   "explanation": "The book deals not with the \"duty of the rabbi\" or the \"duty of the institution\" but with the \"duty of the student,\" and is regarded as groundbreaking in Hasidic education.",
+   "points": 5
+  },
+  {
+   "question": "What is the meaning of \"preparing the vessels\" in his educational method?",
+   "options": [
+    "To prepare books and writing implements for every student",
+    "To test the student before accepting him",
+    "To build a suitable building for the yeshiva",
+    "To prepare the soul and emotion before entering the depths of study"
+   ],
+   "correctIndex": 3,
+   "explanation": "He sought to develop the whole person, willing and joyful, as a necessary stage before theoretical study.",
+   "points": 5
+  },
+  {
+   "question": "True or false: According to \"Chovat HaTalmidim,\" joy is a necessary instrument for success in education.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 0,
+   "explanation": "Without joy, devekut and prayer remain mechanical and lifeless.",
+   "points": 3
+  },
+  {
+   "question": "What did \"Chovat HaTalmidim\" propose regarding prayer?",
+   "options": [
+    "To turn it into a genuine emotional experience, and to find vitality in the fixed text",
+    "To shorten the prayer for the young",
+    "To pray only alone",
+    "To replace the text with free prayer"
+   ],
+   "correctIndex": 0,
+   "explanation": "He identified that the younger generation has difficulty connecting to the fixed formulas, and sought inner vitality in their content.",
+   "points": 5
+  },
+  {
+   "question": "For what purpose was the work \"Benei Machshavah Tovah\" written?",
+   "options": [
+    "As a commentary on the Talmud",
+    "As a guide for fellowships that seek spiritual elevation",
+    "As a book of the laws of Shabbat",
+    "As a prayer book for children"
+   ],
+   "correctIndex": 1,
+   "explanation": "It outlines a path of self-improvement, acquiring character traits and daily spiritual perseverance within the group.",
+   "points": 5
+  },
+  {
+   "question": "True or false: Even in the Warsaw Ghetto the Rebbe continued to hold a Hasidic \"table\" on Shabbatot.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 0,
+   "explanation": "The tish was an act of spiritual defiance in the face of hunger and decline, and the sermons were adapted to the situation of the listeners.",
+   "points": 3
+  },
+  {
+   "question": "What is the book that collects his sermons in the Warsaw Ghetto called?",
+   "options": [
+    "\"Chovat HaTalmidim\"",
+    "\"Benei Machshavah Tovah\"",
+    "\"Aish Kodesh\"",
+    "\"Madregat ha-Adam\""
+   ],
+   "correctIndex": 2,
+   "explanation": "The book is regarded as the deepest contribution of Hasidic theology to coping with the Holocaust.",
+   "points": 5
+  },
+  {
+   "question": "Where did the Rebbe bury the manuscripts of his sermons?",
+   "options": [
+    "In the cellar of the synagogue in Piaseczna",
+    "With a Christian family outside the ghetto",
+    "In his father's grave",
+    "In the \"Oneg Shabbat\" archive, the Ringelblum archive in the ghetto"
+   ],
+   "correctIndex": 3,
+   "explanation": "He did so out of recognition of the importance of the testimony for future generations. The exposure of the writings after the war made him a central figure in the theology of the Holocaust.",
+   "points": 5
+  },
+  {
+   "question": "True or false: The Rebbe's ghetto sermons were printed during his lifetime.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 1,
+   "explanation": "They were preserved in a manuscript that was buried in the ghetto, and were discovered and published only after the war.",
+   "points": 3
+  },
+  {
+   "question": "By what concept did the Rebbe describe the state of the world in the ghetto?",
+   "options": [
+    "Profound hiding of the face",
+    "A time of favor",
+    "The beginning of redemption",
+    "A Sabbatical year"
+   ],
+   "correctIndex": 0,
+   "explanation": "A hiding so deep that it is almost a divine relinquishing of the world. Precisely in it, he said, Israel's choice of faith is put to the test.",
+   "points": 5
+  },
+  {
+   "question": "True or false: According to \"Aish Kodesh,\" the suffering of the ghetto can be explained by means of traditional theology.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 1,
+   "explanation": "He argued that the magnitude of the suffering cannot be explained in this way, and instead of justifying God he strengthened the human capacity to go on choosing faith.",
+   "points": 3
+  },
+  {
+   "question": "What was the \"renewal of the heart\" that he taught in the ghetto?",
+   "options": [
+    "To change the text of the prayer",
+    "To find inner vitality even when external life is waning",
+    "To renew the yeshiva after the war",
+    "To fast until the heart is purified"
+   ],
+   "correctIndex": 1,
+   "explanation": "The ability to preserve spiritual fervor when hope has vanished is, in his eyes, an act of inner resistance.",
+   "points": 5
+  },
+  {
+   "question": "According to the research, what connects \"Chovat HaTalmidim\" with \"Aish Kodesh\"?",
+   "options": [
+    "Both were written in the Warsaw Ghetto",
+    "Both deal with the laws of prayer",
+    "The same sensitivity to the soul of the individual, which prepared him to speak to shattered souls in the ghetto",
+    "Both were intended for rabbis only"
+   ],
+   "correctIndex": 2,
+   "explanation": "In both cases he focused on the inner forces of the individual: the drive to improve, and the need to survive spiritually.",
+   "points": 8
+  },
+  {
+   "question": "In what way did his approach in the ghetto depart from the traditional approach to suffering, according to the research?",
+   "options": [
+    "He demanded that prayer cease until the wrath passes",
+    "He determined that suffering is a punishment for the sins of the generation",
+    "He asked his students not to speak about the suffering",
+    "He permitted and even sanctified the right to express pain and protest before God"
+   ],
+   "correctIndex": 3,
+   "explanation": "Outburst and protest became part of the service of God, in contrast to the traditional emphasis on accepting suffering with love.",
+   "points": 8
+  },
+  {
+   "question": "According to the research, why did the Rebbe divide his time between Piaseczna and Warsaw?",
+   "options": [
+    "In order to preserve his traditional court and to exert influence in the heart of the modern Jewish center",
+    "Because the authorities forbade him to live in Warsaw",
+    "Because his yeshiva in Piaseczna was burned",
+    "Because his Hasidim split into two camps"
+   ],
+   "correctIndex": 0,
+   "explanation": "This was not logistical convenience but a move of proactive leadership, which sought to confront secularization rather than withdraw.",
+   "points": 8
+  },
+  {
+   "question": "According to his teaching in the ghetto, why did Torah and prayer become vital?",
+   "options": [
+    "They guaranteed rescue from deportation",
+    "They are the way to protect the freedom of spiritual choice when the body is under the control of evil",
+    "They were a substitute for the Temple",
+    "They maintained order in the ghetto"
+   ],
+   "correctIndex": 1,
+   "explanation": "The observance of the commandments became an existential declaration: a person's refusal to surrender to evil, rather than hope for reward or habit.",
+   "points": 8
+  }
+ ]
+}

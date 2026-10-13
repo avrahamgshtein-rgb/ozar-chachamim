@@ -1,0 +1,233 @@
+{
+ "label": "דונה גרציה נשיא",
+ "questions": [
+  {
+   "question": "What did the people of her generation call Doña Gracia?",
+   "options": [
+    "\"La Señora,\" the Lady",
+    "\"The Great Nasi\"",
+    "\"Mother of the Diaspora\"",
+    "\"The Duchess\""
+   ],
+   "correctIndex": 0,
+   "explanation": "A synagogue she established in Izmir was called simply \"La Señora,\" without mentioning her name: evidence of her authority.",
+   "points": 5
+  },
+  {
+   "question": "True or false: Doña Gracia was born in Lisbon to a family of Anusim.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 0,
+   "explanation": "Her parents were baptized by force in 1497, with all the Jews of Portugal, and kept the commandments in secret.",
+   "points": 3
+  },
+  {
+   "question": "True or false: Only when she reached bat mitzvah age did Doña Gracia learn that she was Jewish.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 0,
+   "explanation": "The revelation shaped her world, and she devoted her life and her fortune to the rescue of her people.",
+   "points": 3
+  },
+  {
+   "question": "Whom did Doña Gracia marry in 1528?",
+   "options": [
+    "Don Joseph Nasi",
+    "Francisco Mendes, Tzemach Benveniste, head of an international trading house",
+    "Diogo Mendes",
+    "The Duke of Ferrara"
+   ],
+   "correctIndex": 1,
+   "explanation": "The trading house dealt in silver and spices, and especially in black pepper. The marriage was held in a secret Jewish ceremony and a public Christian ceremony.",
+   "points": 5
+  },
+  {
+   "question": "Which city granted her refuge in 1549, and there she returned openly to Judaism?",
+   "options": [
+    "Venice",
+    "Antwerp",
+    "Ferrara",
+    "Rome"
+   ],
+   "correctIndex": 2,
+   "explanation": "Duke Ercole II recognized her inheritance rights, and she began to use the family name \"Nasi.\"",
+   "points": 5
+  },
+  {
+   "question": "What was the \"Ferrara Bible\" (1553), which she supported?",
+   "options": [
+    "A vocalized Hebrew edition for yeshivot",
+    "A Kabbalistic commentary on the Torah",
+    "A Latin translation for the Church",
+    "A translation of the Bible into Judeo-Spanish, for Anusim who did not know Hebrew"
+   ],
+   "correctIndex": 3,
+   "explanation": "The translation adhered to the structure of the Hebrew sentence and avoided Christian interpretations. It was officially dedicated to her.",
+   "points": 5
+  },
+  {
+   "question": "To which port was Jewish trade diverted in the Ancona boycott?",
+   "options": [
+    "Pesaro",
+    "Venice",
+    "Livorno",
+    "Genoa"
+   ],
+   "correctIndex": 0,
+   "explanation": "The boycott came after Pope Paul IV burned at the stake Anusim who had returned to Judaism in Ancona, in 1556.",
+   "points": 5
+  },
+  {
+   "question": "Which of the great sages of Constantinople supported the boycott and ruled that the community may compel compliance with it?",
+   "options": [
+    "Maharashdam",
+    "Rabbi Yosef ibn Lev (Maharival)",
+    "Rabbi Yosef Karo",
+    "Radbaz"
+   ],
+   "correctIndex": 1,
+   "explanation": "He saw her leadership as a legitimate political arm of the Jewish people in a time of crisis.",
+   "points": 5
+  },
+  {
+   "question": "True or false: The Maharashdam of Salonica supported the Ancona boycott wholeheartedly.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 1,
+   "explanation": "He opposed the boycott, and feared for the fate of the Jewish communities in the Papal States.",
+   "points": 3
+  },
+  {
+   "question": "What did the opponents of the boycott fear?",
+   "options": [
+    "That the Sultan would forbid trade with Europe",
+    "That the boycott would enrich Doña Gracia",
+    "That the Pope would take revenge on the communities in his state",
+    "That the Anusim would return to Christianity"
+   ],
+   "correctIndex": 2,
+   "explanation": "They also argued that merchants should not be forced to endanger their livelihood in the name of abstract solidarity.",
+   "points": 5
+  },
+  {
+   "question": "True or false: The Ancona boycott succeeded, and the Anusim who remained in the city were saved.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 1,
+   "explanation": "Without halakhic consensus and with the opposition of merchants, among them merchants of Bursa, the boycott failed.",
+   "points": 3
+  },
+  {
+   "question": "True or false: Doña Gracia and Don Joseph Nasi first sought to lease Jerusalem.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 0,
+   "explanation": "When the authorities refused, they leased Tiberias and its surroundings from Sultan Suleiman.",
+   "points": 3
+  },
+  {
+   "question": "Which industry did Doña Gracia plan in Tiberias so that its residents could make a living without donations?",
+   "options": [
+    "Salt mines",
+    "A fishing port on the Kinneret",
+    "A gold mint",
+    "A silk industry, by planting mulberry trees"
+   ],
+   "correctIndex": 3,
+   "explanation": "The plan also included rebuilding the walls, houses for immigrants and a palace for Doña Gracia herself.",
+   "points": 5
+  },
+  {
+   "question": "What did Doña Gracia do for the bones of her husband, Francisco Mendes?",
+   "options": [
+    "She obtained permission to transfer them for burial on the Mount of Olives",
+    "She buried them in Ferrara",
+    "She moved them to Tiberias",
+    "She left them in Antwerp"
+   ],
+   "correctIndex": 0,
+   "explanation": "The sages of the Land of Israel saw in this halakhic and familial self-sacrifice.",
+   "points": 5
+  },
+  {
+   "question": "In which city did Doña Gracia die?",
+   "options": [
+    "Tiberias",
+    "Constantinople, in 1569",
+    "Ferrara",
+    "Venice"
+   ],
+   "correctIndex": 1,
+   "explanation": "Her death prevented her from going up to Tiberias, as she had planned.",
+   "points": 5
+  },
+  {
+   "question": "True or false: After Doña Gracia's death the Tiberias enterprise continued and grew stronger.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 1,
+   "explanation": "Without her dominant leadership the settlement enterprise faded.",
+   "points": 3
+  },
+  {
+   "question": "What was distinctive about the translation of the word \"almah\" (Isaiah 7:14) in the Jewish Ferrara Bible?",
+   "options": [
+    "It was translated \"queen\"",
+    "It was omitted from the translation",
+    "It remained \"Alma\" or was translated \"young woman,\" and not \"virgin\" as in the Christian version",
+    "It was translated \"virgin\" as in the Church version"
+   ],
+   "correctIndex": 2,
+   "explanation": "So it emerged from the examination of 49 copies by Stanley Rypins: the printers prevented foreign theological distortion.",
+   "points": 8
+  },
+  {
+   "question": "What was the fate of Abraham Usque's printing house after it printed a lament for the martyrs of Ancona?",
+   "options": [
+    "It moved to Constantinople under the Sultan's patronage",
+    "It printed the entire Talmud",
+    "It received a prize from the Duke of Ferrara",
+    "Bishop Ghislieri ordered the book burned, and the printing house was closed"
+   ],
+   "correctIndex": 3,
+   "explanation": "The lament appeared in \"Shiltei ha-Giborim\" (Shields of the Heroes) by Rabbi Jacob of Fano. Ghislieri later became Pope Pius V.",
+   "points": 8
+  },
+  {
+   "question": "According to the research, why was her work downplayed after her death?",
+   "options": [
+    "Fear that her figure would become an uncontrolled messianic focal point",
+    "Because she failed in the Ancona boycott",
+    "Because she was one of the Anusim",
+    "Because she left no books"
+   ],
+   "correctIndex": 0,
+   "explanation": "The 16th century knew many false messiahs. Only at the end of the 20th century did her study and commemoration begin in Israel.",
+   "points": 8
+  },
+  {
+   "question": "What did Sultan Suleiman demand of the Pope, under her influence?",
+   "options": [
+    "To open the ghetto of Rome",
+    "To release the prisoners who enjoyed Ottoman protection",
+    "To transfer Ancona to him",
+    "To abolish the Inquisition in Portugal"
+   ],
+   "correctIndex": 1,
+   "explanation": "At the same time she sent Rabbi Yehuda Faraj to enlist the support of the rabbis for the boycott.",
+   "points": 8
+  }
+ ]
+}

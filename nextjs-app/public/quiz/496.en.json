@@ -1,0 +1,233 @@
+{
+ "label": "פרופ' נחמה ליבוביץ",
+ "questions": [
+  {
+   "question": "True or false: Nechama Leibowitz was born in Riga, Latvia.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 0,
+   "explanation": "She was born in 1905 and grew up in a rich intellectual environment.",
+   "points": 3
+  },
+  {
+   "question": "In which year did Nechama Leibowitz immigrate to the Land of Israel?",
+   "options": [
+    "1930",
+    "1905",
+    "1948",
+    "1967"
+   ],
+   "correctIndex": 0,
+   "explanation": "At the age of 25 she settled in Jerusalem and devoted her life to teaching Torah, Prophets and Writings.",
+   "points": 5
+  },
+  {
+   "question": "At which universities in Germany did she study?",
+   "options": [
+    "Heidelberg and Bonn",
+    "Berlin and Marburg",
+    "Munich and Leipzig",
+    "Frankfurt and Göttingen"
+   ],
+   "correctIndex": 1,
+   "explanation": "Her higher academic education enabled her to bridge the philological world and the world of Torah.",
+   "points": 5
+  },
+  {
+   "question": "True or false: Nechama Leibowitz adopted the methods of biblical criticism.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 1,
+   "explanation": "She rejected them completely, and saw in them \"an attempt to take from the people of Israel what is theirs.\"",
+   "points": 3
+  },
+  {
+   "question": "What were the \"gilyonot\" (study sheets) that she distributed from 1942?",
+   "options": [
+    "A weekly news newspaper",
+    "Transcripts of radio lessons",
+    "Weekly question sheets on the weekly Torah portion, which the learners answered in writing",
+    "Booklets of halakha for the festivals"
+   ],
+   "correctIndex": 2,
+   "explanation": "They were born of envelopes of questions that she sent to students who felt that they had not learned enough from her, and became an enterprise for thousands of learners.",
+   "points": 5
+  },
+  {
+   "question": "Which question is the symbol of her method?",
+   "options": [
+    "\"What did the Ramban innovate?\"",
+    "\"What is the reader's opinion?\"",
+    "\"When was the verse written?\"",
+    "\"What's bothering Rashi?\""
+   ],
+   "correctIndex": 3,
+   "explanation": "The assumption: Rashi brings a homily or an explanation only in order to resolve a genuine difficulty in the plain meaning of Scripture.",
+   "points": 5
+  },
+  {
+   "question": "True or false: Leibowitz liked to give lectures to an audience that came only to listen.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 1,
+   "explanation": "She rejected the \"lecture\" completely, and demanded that the learners be active and discover the Torah for themselves.",
+   "points": 3
+  },
+  {
+   "question": "What did Leibowitz demand of her students in class?",
+   "options": [
+    "To arrive on time and to come with a Tanakh",
+    "To sit quietly and take notes",
+    "To memorize verses by heart",
+    "To bring her books"
+   ],
+   "correctIndex": 0,
+   "explanation": "At the beginning of each series of lessons she asked her students about their residence and occupations, in order to create a warm space of discourse.",
+   "points": 5
+  },
+  {
+   "question": "What did she reply to Rabbi Yoel Bin-Nun, who claimed that she has no direct reading of Scripture?",
+   "options": [
+    "\"The plain meaning is what I understand\"",
+    "\"If you read without commentaries, then you are the commentator, and are you better than all the commentators?!\"",
+    "\"There is no need for commentators in our generation\"",
+    "\"Rashi already said everything\""
+   ],
+   "correctIndex": 1,
+   "explanation": "A reading detached from the great commentators seemed to her arrogance, and even impudence.",
+   "points": 5
+  },
+  {
+   "question": "True or false: Leibowitz's personal archive was deposited in the National Library.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 0,
+   "explanation": "It was deposited in September 2021, and opened a window onto the study of her methods and her letters.",
+   "points": 3
+  },
+  {
+   "question": "What did Rabbi Zvi Yehuda Kook say when he was asked whether she could be invited to teach at the yeshiva?",
+   "options": [
+    "\"Only in the women's section\"",
+    "\"It is forbidden to teach at a yeshiva\"",
+    "\"Nechama, certainly it is possible; she is a talmidat chakham\"",
+    "\"Only if she teaches Prophets\""
+   ],
+   "correctIndex": 2,
+   "explanation": "The recognition of her as a \"talmidat chakham\" (a female Torah scholar) crossed sectors.",
+   "points": 5
+  },
+  {
+   "question": "Who, according to his daughter's testimony, listened to her lessons on the radio during meals?",
+   "options": [
+    "Rabbi Zvi Yehuda Kook",
+    "Rabbi Shlomo Goren",
+    "Rabbi Eliezer Schach",
+    "Rabbi Ovadia Yosef"
+   ],
+   "correctIndex": 3,
+   "explanation": "Adina Bar-Shalom related that her father urged her to learn from her and from her ways.",
+   "points": 5
+  },
+  {
+   "question": "True or false: Leibowitz regarded herself as a feminist and supported women putting on tefillin.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 1,
+   "explanation": "She rejected the feminist label and a declarative halakhic change.",
+   "points": 3
+  },
+  {
+   "question": "How did she explain why she does not put on tefillin?",
+   "options": [
+    "In a free moment it is better to visit a sick person, a commandment that she is obligated in",
+    "Because tefillin are expensive",
+    "Because she has no time to learn",
+    "Because her brother instructed her so"
+   ],
+   "correctIndex": 0,
+   "explanation": "Religious value in her eyes is measured by practical commitment, and not by adopting commandments that one is not commanded in.",
+   "points": 5
+  },
+  {
+   "question": "Who was her brother, who was also a prominent thinker?",
+   "options": [
+    "Yochanan Breuer",
+    "Yeshayahu Leibowitz",
+    "Ephraim Urbach",
+    "David Carlebach"
+   ],
+   "correctIndex": 1,
+   "explanation": "The esteem between them was mutual, but she strongly objected to some of his political statements.",
+   "points": 5
+  },
+  {
+   "question": "True or false: Nechama Leibowitz died in Jerusalem at the age of 92.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 0,
+   "explanation": "In 1997. On the 100th anniversary of her birth an international conference was held in her memory in New York and in Tel Aviv.",
+   "points": 3
+  },
+  {
+   "question": "What did Leibowitz claim about the relationship between derash (homiletic interpretation) and peshat (plain meaning), according to the research?",
+   "options": [
+    "Derash is detached from the text",
+    "Peshat cancels derash",
+    "Derash reveals \"the depth of the plain meaning of Scripture\"",
+    "Derash is meant for children only"
+   ],
+   "correctIndex": 2,
+   "explanation": "She used philology to show that the Sages and the Rishonim were sensitive to every double expression and grammatical deviation.",
+   "points": 8
+  },
+  {
+   "question": "Why did she regard Benno Jacob, a Reform commentator, as an important source?",
+   "options": [
+    "Because he was an Orthodox Torah scholar",
+    "Because he translated the Bible into German",
+    "Because he agreed with biblical criticism",
+    "His arguments against biblical criticism were the best ever written"
+   ],
+   "correctIndex": 3,
+   "explanation": "She said that she learned from his books more than from the books of devout and wholehearted people, because they opened her eyes to \"the Torah in its truth.\"",
+   "points": 8
+  },
+  {
+   "question": "What did Prof. Ephraim Elimelech Urbach say about Nechama Leibowitz?",
+   "options": [
+    "That she is the only one in our generation worthy of writing a new commentary on the Torah",
+    "That she is greater than her brother Yeshayahu",
+    "That she should be granted semikha (rabbinic ordination)",
+    "That she is the great researcher of biblical criticism"
+   ],
+   "correctIndex": 0,
+   "explanation": "In this way she was recognized as a Torah authority in the academic world as well.",
+   "points": 8
+  },
+  {
+   "question": "How did the gilyonot become a tool for building identity, according to the research?",
+   "options": [
+    "They were given as a prize to outstanding students",
+    "The learner answered in writing and was corrected personally, and felt that the Torah is his and that his voice is heard",
+    "The learners wrote them themselves",
+    "They were mandatory in all schools"
+   ],
+   "correctIndex": 1,
+   "explanation": "She read, corrected and returned thousands of sheets, and turned one-directional knowledge into an active discourse.",
+   "points": 8
+  }
+ ]
+}

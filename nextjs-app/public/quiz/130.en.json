@@ -1,0 +1,233 @@
+{
+ "label": "הסבא מנובהרדוק – מהפכת המוסר של 'מדרגת האדם'",
+ "questions": [
+  {
+   "question": "True or false: Before he devoted himself to Torah, Rabbi Yosef Yozel Horowitz engaged in commerce in order to support his family.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 0,
+   "explanation": "His father-in-law died between the betrothal and the marriage, and the burden of supporting the family, including his wife's sisters, was placed on him.",
+   "points": 3
+  },
+  {
+   "question": "Whom did he meet in the port city of Memel, in a meeting that changed his course?",
+   "options": [
+    "Rabbi Israel Salanter, founder of the Mussar movement",
+    "The Alter of Kelm",
+    "The Chafetz Chaim",
+    "Rabbi Chaim of Brisk"
+   ],
+   "correctIndex": 0,
+   "explanation": "Rabbi Israel persuaded him to set most of his time for Torah study and invited him to a mussar lesson. He abandoned commerce and studied in the kollel in Kovno.",
+   "points": 5
+  },
+  {
+   "question": "For how long did he shut himself in a small house in Slobodka, without letting anyone enter?",
+   "options": [
+    "One week",
+    "One year and nine months",
+    "Forty days",
+    "Seven years"
+   ],
+   "correctIndex": 1,
+   "explanation": "This was extreme withdrawal from the material world and its temptations.",
+   "points": 5
+  },
+  {
+   "question": "Who rebuked him that in times of spiritual crisis one must not seclude oneself alone?",
+   "options": [
+    "Rabbi Israel Salanter",
+    "The author of \"Arukh ha-Shulchan\"",
+    "The Alter of Kelm, Rabbi Simcha Zissel Ziv",
+    "Rabbi Eliyahu Dov Berkovsky"
+   ],
+   "correctIndex": 2,
+   "explanation": "He accepted the rebuke, returned to the public and established study halls for Gemara and mussar in many communities.",
+   "points": 5
+  },
+  {
+   "question": "In which year did he found the Novardok yeshiva?",
+   "options": [
+    "1850",
+    "1919",
+    "1939",
+    "1896"
+   ],
+   "correctIndex": 3,
+   "explanation": "In the Hebrew year 5656, in the city of Novardok in the Minsk province.",
+   "points": 5
+  },
+  {
+   "question": "True or false: The Novardok yeshiva opened with two hundred students.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 1,
+   "explanation": "It opened with only ten. Within months there were about fifty, and two hundred only in 1899.",
+   "points": 3
+  },
+  {
+   "question": "True or false: The author of \"Arukh ha-Shulchan,\" the rabbi of the city of Novardok, gave the yeshiva his backing against its opponents.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 0,
+   "explanation": "Elements in the city demanded that the yeshiva be closed because of its moral approach, but Rabbi Epstein and the city's leaders stood by it.",
+   "points": 3
+  },
+  {
+   "question": "To where were two thirds of the yeshiva's young men transferred in 1908, and why?",
+   "options": [
+    "To Zhetl, to keep them away from the dispute over the rabbinate in the city",
+    "To Gomel, because of the war",
+    "To Kiev, to help refugees",
+    "To Bialystok, for a new building"
+   ],
+   "correctIndex": 0,
+   "explanation": "After the death of Rabbi Epstein a dispute broke out over the rabbinic post. The young men returned when it subsided.",
+   "points": 5
+  },
+  {
+   "question": "How did the Alter of Novardok die?",
+   "options": [
+    "He was killed in a pogrom",
+    "He contracted typhus while tending the sick in Kiev",
+    "He died in exile in Siberia",
+    "He died in old age in Jerusalem"
+   ],
+   "correctIndex": 1,
+   "explanation": "In 1919 he moved to Kiev to help the refugees, and he died on 17 Kislev 5680.",
+   "points": 5
+  },
+  {
+   "question": "True or false: The bones of the Alter of Novardok were brought up to Jerusalem and interred on Har HaMenuchot.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 0,
+   "explanation": "His legacy continued also through his sons-in-law, among them Rabbi Avraham Yaffen, head of the Novardok yeshiva.",
+   "points": 3
+  },
+  {
+   "question": "True or false: According to the Alter of Novardok, one should rely on the natural intellect in working on the character traits.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 1,
+   "explanation": "He held that the intellect distances a person from true self-work through excuses and vested interests, and therefore it must be subdued and the character traits worked on in practice.",
+   "points": 3
+  },
+  {
+   "question": "What was the purpose of the acts of \"breaking the character traits\" in Novardok?",
+   "options": [
+    "To raise money for the yeshiva",
+    "To impress the residents of the city",
+    "To uproot the fear of the criticism of those around and to develop indifference to honor",
+    "To strengthen the body"
+   ],
+   "correctIndex": 2,
+   "explanation": "The best known of them are acts of public self-humiliation, intended to injure the inflated ego.",
+   "points": 5
+  },
+  {
+   "question": "What \"bizarre\" act did the Novardok students perform?",
+   "options": [
+    "Fast for forty days",
+    "Deliver sermons in the town square",
+    "Disguise themselves as merchants",
+    "Enter a pharmacy and ask for nails"
+   ],
+   "correctIndex": 3,
+   "explanation": "They also deliberately dressed in worn clothing, in order to disconnect from the esteem of others.",
+   "points": 5
+  },
+  {
+   "question": "True or false: The Novardok students were careful to dress elegantly, in honor of the Torah.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 1,
+   "explanation": "They deliberately wore worn and unelegant clothing, as part of the breaking of the character traits.",
+   "points": 3
+  },
+  {
+   "question": "What did Rabbi Yosef Yozel do when his candle went out as he was secluded in the forest?",
+   "options": [
+    "He placed his trust in God, that if he deserved light it would be provided to him",
+    "He went out to the city to buy a candle",
+    "He stopped studying and went to sleep",
+    "He asked his students to bring a candle"
+   ],
+   "correctIndex": 0,
+   "explanation": "This is absolute trust, with the reduction of physical effort. According to the Novardok tradition his needs were indeed provided for.",
+   "points": 5
+  },
+  {
+   "question": "What is the name of his central book, the essence of his teaching?",
+   "options": [
+    "\"Mesillat Yesharim\"",
+    "\"Madregat ha-Adam\"",
+    "\"Duties of the Heart\"",
+    "\"Or Yisrael\""
+   ],
+   "correctIndex": 1,
+   "explanation": "After his death his discourses were studied in the Novardok yeshivas according to the months of the year, a different discourse each month.",
+   "points": 5
+  },
+  {
+   "question": "How were the discourses of \"Madregat ha-Adam\" written?",
+   "options": [
+    "He wrote them himself in the years of his seclusion",
+    "They were written after his death from the students' memory",
+    "Students recorded his talks, and he chose the precise wording and corrected it",
+    "They were translated from Yiddish by his sons"
+   ],
+   "correctIndex": 2,
+   "explanation": "Usually he chose the notes of Rabbi Yitzchak Elchanan Waldshan. When he was not satisfied, he wrote the matter himself.",
+   "points": 8
+  },
+  {
+   "question": "What was the Chazon Ish's fundamental criticism of the institutional mussar path?",
+   "options": [
+    "Mussar takes time away from prayer",
+    "Mussar is studied only in Kabbalistic books",
+    "Mussar is suitable only for householders",
+    "There is no inner change by a person's power alone; the inclination yields through subordination to halakha and theoretical study"
+   ],
+   "correctIndex": 3,
+   "explanation": "In his eyes the study of Torah itself breaks the character traits, without any need for external psychological systems.",
+   "points": 8
+  },
+  {
+   "question": "According to the research, what price did the extreme work on the character traits sometimes exact?",
+   "options": [
+    "A feeling of worthlessness and harm to the joy of life among some of the students",
+    "A dispute with the authorities in Poland",
+    "Neglect of the study of Gemara",
+    "The departure of most of the students"
+   ],
+   "correctIndex": 0,
+   "explanation": "On the other hand, the iron resilience of those who endured it enabled the network to rehabilitate itself quickly after the First World War, in Poland and Latvia.",
+   "points": 8
+  },
+  {
+   "question": "What rupture did the Alter of Novardok identify and seek to heal?",
+   "options": [
+    "A shortage of printed mussar books",
+    "A chasm that had opened between the sacred and the profane, and enthusiasm that had cooled even in the yeshivas",
+    "The multiplication of yeshivas in Lithuania",
+    "The dispute between Hasidim and Mitnagdim"
+   ],
+   "correctIndex": 1,
+   "explanation": "The solution: to restore to the yeshivas their power as in the days of Sura and Pumbedita, and \"to establish whole Jews.\"",
+   "points": 8
+  }
+ ]
+}
