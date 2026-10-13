@@ -1,0 +1,233 @@
+{
+ "label": "רבי אלעזר בן ערך",
+ "questions": [
+  {
+   "question": "True or false: Rabbi Elazar ben Arakh was one of the five disciples who surrounded Rabban Yochanan ben Zakkai.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 0,
+   "explanation": "This small group was a spiritual laboratory in which the foundations of rabbinic Judaism were shaped, and in it Rabbi Elazar was identified as the one who outweighs them all.",
+   "points": 3
+  },
+  {
+   "question": "With what image did Rabban Yochanan ben Zakkai describe Rabbi Elazar ben Arakh?",
+   "options": [
+    "An ever-strengthening spring",
+    "A plastered cistern that does not lose a drop",
+    "Sin-fearing",
+    "A threefold cord"
+   ],
+   "correctIndex": 0,
+   "explanation": "In Avot de-Rabbi Natan he is also called \"a flowing stream.\" The spring is the archetype of the creator, as opposed to the preserving cistern of Rabbi Eliezer.",
+   "points": 5
+  },
+  {
+   "question": "What is the difference between a cistern and a spring, according to the research?",
+   "options": [
+    "The cistern is deeper than the spring",
+    "The water of the cistern comes from outside, and the spring wells up from within itself",
+    "The spring dries up in the summer and the cistern does not",
+    "The cistern belongs to the many and the spring to the individual"
+   ],
+   "correctIndex": 1,
+   "explanation": "The cistern preserves knowledge learned from a teacher exactly as it is; the spring innovates, deduces one thing from another and develops new branches on the trunk of the tradition.",
+   "points": 5
+  },
+  {
+   "question": "According to the commentators, why does \"a good heart\" include the answers of the other disciples?",
+   "options": [
+    "Because the heart is the largest organ in the body",
+    "Because a good heart means a good memory",
+    "Because the heart is the mover of all the other powers",
+    "Because a heavenly voice ruled so"
+   ],
+   "correctIndex": 2,
+   "explanation": "So explained Rabbi Ovadia of Bartenura and the Maharal: the eye sees and the legs walk, but the power that arouses and directs is in the heart.",
+   "points": 5
+  },
+  {
+   "question": "True or false: According to Rabbi Ovadia of Bartenura, anger, worry and envy strengthen the power of memory.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 1,
+   "explanation": "They \"weaken the power of memory.\" The tranquility that stems from a good heart is a condition for preserving the Torah and developing it.",
+   "points": 3
+  },
+  {
+   "question": "What did Rabbi Elazar propose when his teacher refused to teach him the Account of the Chariot on the road?",
+   "options": [
+    "To return to the study hall and learn there",
+    "To ask Rabbi Nechunya ben HaKaneh",
+    "To wait until he grew older",
+    "\"Permit me to say before you one thing that you taught me\""
+   ],
+   "correctIndex": 3,
+   "explanation": "He did not ask to receive new knowledge, but to show that he \"understands on his own\" what had already been sown within him, as the Mishnah requires.",
+   "points": 5
+  },
+  {
+   "question": "True or false: When Rabbi Elazar began to expound, Rabban Yochanan ben Zakkai got down from the donkey, wrapped himself in a prayer shawl and sat under an olive tree.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 0,
+   "explanation": "Getting down from the donkey symbolizes the transition from the material world to the world of the secret, and the recognition that Rabbi Elazar is not merely a student.",
+   "points": 3
+  },
+  {
+   "question": "What happened when Rabbi Elazar expounded on the Account of the Chariot?",
+   "options": [
+    "Fire came down and surrounded the trees, and the trees sang a song",
+    "The earth trembled and the donkey fled",
+    "Rain fell out of season",
+    "A heavenly voice ruled that the halakha follows him"
+   ],
+   "correctIndex": 0,
+   "explanation": "Rabban Yochanan testified that even the ministering angels accompany them, and kissed Rabbi Elazar on his head.",
+   "points": 5
+  },
+  {
+   "question": "How did Rabban Yochanan ben Zakkai define him after the homily?",
+   "options": [
+    "\"A plastered cistern that does not lose a drop\"",
+    "\"One who expounds well and fulfills well\"",
+    "\"Sin-fearing\"",
+    "\"Father of wisdom and father of the generations\""
+   ],
+   "correctIndex": 1,
+   "explanation": "That is: his most abstract Torah is expressed in the wholeness of his personality and deeds.",
+   "points": 5
+  },
+  {
+   "question": "Why did Rabbi Elazar go to Emmaus after his teacher's death?",
+   "options": [
+    "Because the Romans expelled him from Yavneh",
+    "Because his teacher had lived there in his final years",
+    "On his wife's advice and because of the pleasantness of the place, certain that his colleagues would come to him",
+    "In order to establish the Sanhedrin there"
+   ],
+   "correctIndex": 2,
+   "explanation": "Emmaus was known for its \"beautiful waters and pleasant dwelling.\" He saw himself as a focal point whom everyone needs, but his colleagues remained in Yavneh.",
+   "points": 5
+  },
+  {
+   "question": "True or false: In Emmaus, Rabbi Elazar's colleagues and disciples gathered around him, as he expected.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 1,
+   "explanation": "He remained alone. Without colleagues or a teacher, \"his learning was uprooted\": his Torah was uprooted from him.",
+   "points": 3
+  },
+  {
+   "question": "What did Rabbi Elazar mistakenly read in place of \"HaChodesh HaZeh Lakhem\" (\"This month shall be for you\")?",
+   "options": [
+    "\"HaChoshekh HaZeh Lakhem\" (\"This darkness is for you\")",
+    "\"HaChozeh Hayah Libam\" (\"The seer was their heart\")",
+    "\"HaChodesh HaZeh Libam\" (\"This month is their heart\")",
+    "\"HaCheresh Hayah Libam\" (\"Their heart was deaf\")"
+   ],
+   "correctIndex": 3,
+   "explanation": "The one who had been the symbol of the \"good heart\" became one whose heart was sealed. His colleagues prayed for him and his Torah returned to him.",
+   "points": 5
+  },
+  {
+   "question": "True or false: According to the Gemara, Rabbi Nehorai is Rabbi Elazar ben Arakh.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 0,
+   "explanation": "\"His name was not Rabbi Nehorai but Rabbi Elazar ben Arakh was his name\" (Shabbat 147b, Eruvin 13b).",
+   "points": 3
+  },
+  {
+   "question": "What is the meaning of the epithet \"Nehorai,\" according to the Gemara?",
+   "options": [
+    "That he illuminates the eyes of the sages in halakha",
+    "That he lived on the bank of a river",
+    "That he used to pray at night",
+    "That he studied under Rabbi Nechunya"
+   ],
+   "correctIndex": 0,
+   "explanation": "The name means light. Perhaps it was given to him precisely after his Torah returned to him, as testimony that the light within him had not gone out.",
+   "points": 5
+  },
+  {
+   "question": "From whom did Rabbi Elazar receive the tradition of the crowns on the letters, according to the introduction to \"Sefer Tagin\"?",
+   "options": [
+    "Rabbi Akiva",
+    "Rabbi Nechunya ben HaKaneh",
+    "Rabbi Eliezer ben Hyrcanus",
+    "Rabban Gamliel"
+   ],
+   "correctIndex": 1,
+   "explanation": "From Rabbi Elazar the tradition passed to Rabbi Yehoshua ben Hananiah and from him to Rabbi Akiva.",
+   "points": 5
+  },
+  {
+   "question": "True or false: Rabbi Elazar left behind many mishnayot, more than most of his colleagues.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 1,
+   "explanation": "Their number is surprisingly small. His legacy endured thanks to the quality of his Torah and the direction he charted, and the scarcity of halakhot attests to the forgetting.",
+   "points": 3
+  },
+  {
+   "question": "According to the research, why did Ribaz rule that the spring \"outweighs them all\"?",
+   "options": [
+    "Because Rabbi Elazar was the most expert in the traditions",
+    "Because Rabbi Elazar was the oldest of the disciples",
+    "Because after the destruction a creative force was needed to rebuild spiritual worlds",
+    "Because Rabbi Eliezer ben Hyrcanus had already been excommunicated"
+   ],
+   "correctIndex": 2,
+   "explanation": "In a broken world the tendency is to withdraw and preserve, but the real need is for a force that breathes new life.",
+   "points": 8
+  },
+  {
+   "question": "Which saying of Rabbi Nehorai sounds, according to the research, like a confession about Emmaus?",
+   "options": [
+    "\"Make for yourself a teacher and acquire for yourself a friend\"",
+    "\"The study is not the main thing but the deed\"",
+    "\"If I am not for myself, who is for me?\"",
+    "\"Go into exile to a place of Torah, and do not say that it will come after you\""
+   ],
+   "correctIndex": 3,
+   "explanation": "He warns others not to repeat his mistake: to think that his personal understanding would suffice for him without the company of the sages.",
+   "points": 8
+  },
+  {
+   "question": "On which verse did Rabbi Elazar base the washing of hands, and what is the nature of the homily?",
+   "options": [
+    "\"And has not rinsed his hands in water\"; an asmachta, a hint in Scripture for an enactment of the Sages",
+    "\"And they shall wash their hands and their feet\"; a commandment from the Torah",
+    "\"And you shall sanctify yourselves and be holy\"; a law given to Moses at Sinai",
+    "\"And that will by no means clear the guilty\"; a custom and not halakha"
+   ],
+   "correctIndex": 0,
+   "explanation": "Thus (Chullin 106a) he sought to connect the everyday commandments of purity to the root in Scripture.",
+   "points": 8
+  },
+  {
+   "question": "What does Rabbi Elazar's \"theory of counsel\" teach, according to Midrash Tehillim?",
+   "options": [
+    "One must not give counsel without asking the rabbi",
+    "Every counsel that is for the sake of Heaven will in the end be fulfilled",
+    "Good counsel stems from logical analysis alone",
+    "The counsel of the many is always preferable to the counsel of the individual"
+   ],
+   "correctIndex": 1,
+   "explanation": "Successful counsel stems from purity of heart and intention, and therefore \"everyone needs his counsel.\"",
+   "points": 8
+  }
+ ]
+}
