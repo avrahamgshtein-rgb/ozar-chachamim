@@ -1,0 +1,233 @@
+{
+ "label": "רבי לוי בן חביב (המהרלב\"ח)",
+ "questions": [
+  {
+   "question": "In which city was Rabbi Levi ben Chaviv born?",
+   "options": [
+    "Zamora, in Spain",
+    "Toledo",
+    "Lisbon",
+    "Salonica"
+   ],
+   "correctIndex": 0,
+   "explanation": "He was born around 1480 to the distinguished Chaviv family, from which also came Rav Yosef Habiba, author of the \"Nimukei Yosef.\"",
+   "points": 5
+  },
+  {
+   "question": "True or false: In his youth Rabbi Levi ben Chaviv was forcibly baptized into Christianity, in Portugal.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 0,
+   "explanation": "Following the decree of forced baptism of King Manuel. The experience of forced conversion shaped his outlook on the Anusim of Spain.",
+   "points": 3
+  },
+  {
+   "question": "Where did he flee when it became possible, and where did he openly return to his Judaism?",
+   "options": [
+    "To Venice",
+    "To Salonica",
+    "To Amsterdam",
+    "To Fez"
+   ],
+   "correctIndex": 1,
+   "explanation": "Salonica was a center of religious freedom for the exiles. There he also acquired an education in the sciences, astronomy and geometry.",
+   "points": 5
+  },
+  {
+   "question": "What was the lifework of his father, Rabbi Yaakov ben Chaviv?",
+   "options": [
+    "The \"Nimukei Yosef\" on the Rif",
+    "A commentary on the laws of the Sanctification of the New Moon",
+    "The \"Ein Yaakov,\" a collection of the aggadot of the Talmud",
+    "\"Kuntres HaSemikhah\""
+   ],
+   "correctIndex": 2,
+   "explanation": "The father sought to strengthen the broad public through the stories of the Sages, and not only through halakhic discussion.",
+   "points": 5
+  },
+  {
+   "question": "True or false: The Maharalbach composed the \"Ein Yaakov\" alone, from beginning to end.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 1,
+   "explanation": "His father began the enterprise and died in 1516, and the son completed it and added commentaries of his own.",
+   "points": 3
+  },
+  {
+   "question": "In which city did the Maharalbach settle and become the head of its sages?",
+   "options": [
+    "Safed",
+    "Damascus",
+    "Tiberias",
+    "Jerusalem"
+   ],
+   "correctIndex": 3,
+   "explanation": "After a brief stay in Safed and Damascus he settled in Jerusalem, around 1525, and was immediately recognized as its spiritual leader.",
+   "points": 5
+  },
+  {
+   "question": "True or false: The Maharalbach was among the leaders of the renewal of semikhah in Safed.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 1,
+   "explanation": "He objected sharply to the renewal. The initiative was led by Maharyb Berab, head of the sages of Safed, in 1538.",
+   "points": 3
+  },
+  {
+   "question": "On what did the Maharalbach rely when he determined that the Rambam's words on the renewal of semikhah are not a final ruling?",
+   "options": [
+    "The Rambam concluded: \"and the matter requires a decision\"",
+    "The Rambam retracted in a later responsum",
+    "The sages of Babylonia did not accept his words",
+    "The Rambam wrote this only in his youth"
+   ],
+   "correctIndex": 0,
+   "explanation": "The words attest to a doubt that the Rambam himself did not resolve.",
+   "points": 5
+  },
+  {
+   "question": "What did the Maharalbach claim about the way in which semikhah was renewed?",
+   "options": [
+    "Semikhah was conferred without the permission of the government",
+    "The sages of Safed acted alone, without involving the sages of Jerusalem",
+    "Berab ordained only his relatives",
+    "The ceremony was held on Shabbat"
+   ],
+   "correctIndex": 1,
+   "explanation": "The sages of Jerusalem are part of \"all the sages of the Land of Israel\" whose agreement is required, and he saw the move as undermining the unity of the people.",
+   "points": 5
+  },
+  {
+   "question": "What concern did the Maharalbach raise by virtue of his expertise in astronomy?",
+   "options": [
+    "That the Sanhedrin would abolish the intercalated month",
+    "That the secret of intercalation would be revealed to the gentiles",
+    "That a Sanhedrin would return to sanctifying the month on the basis of sighting, and the festivals would be divided",
+    "That the sages of Safed would determine a calendar of their own"
+   ],
+   "correctIndex": 2,
+   "explanation": "In the Land of Israel they would celebrate according to sighting and in the Diaspora according to calculation: part of the people would eat chametz on Passover while others would cease from work.",
+   "points": 5
+  },
+  {
+   "question": "In which work did he set out his objection to the renewal?",
+   "options": [
+    "\"Ein Yaakov\"",
+    "\"Tikkun Yissachar\"",
+    "\"Maggid Meisharim\"",
+    "\"Kuntres HaSemikhah\""
+   ],
+   "correctIndex": 3,
+   "explanation": "There he combined cold halakhic analysis with deep concern for public order.",
+   "points": 5
+  },
+  {
+   "question": "True or false: The Maharalbach was expert in astronomy and geometry.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 0,
+   "explanation": "His scientific expertise was part of his halakhic profile, in the classical Sephardic tradition.",
+   "points": 3
+  },
+  {
+   "question": "How does the research describe his style in the Responsa of the Maharalbach?",
+   "options": [
+    "\"Lishna kalila\": easy and clear language, with logical depth",
+    "Poetic and ornate language",
+    "Obscure Aramaic",
+    "Short rulings without reasons"
+   ],
+   "correctIndex": 0,
+   "explanation": "The book contains 147 sections, and in each of them he seeks to reach the root of the legal truth.",
+   "points": 5
+  },
+  {
+   "question": "True or false: In the days of the Maharalbach, Jerusalem was richer than Safed.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 1,
+   "explanation": "It was far poorer than Safed, and bore a heavy burden of taxes. The Maharalbach divided the tax burden between the rich and the poor.",
+   "points": 3
+  },
+  {
+   "question": "Under what name was the \"Ein Yaakov\" permitted to be printed after it was banned and burned in Italy?",
+   "options": [
+    "\"Aggadot HaTalmud\" (\"Aggadot of the Talmud\")",
+    "\"Ein Yisrael\"",
+    "\"Ma'ayan HaChokhmah\" (\"Fountain of Wisdom\")",
+    "\"Be'er Yaakov\" (\"Well of Jacob\")"
+   ],
+   "correctIndex": 1,
+   "explanation": "The Christian censorship in Italy struck at the book in the mid-16th century, together with the Talmud.",
+   "points": 5
+  },
+  {
+   "question": "True or false: The Maharashdam, Rabbi Shmuel de Medina, regarded the Maharalbach as his preeminent teacher.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 0,
+   "explanation": "The Maharashdam headed the sages of Salonica and became the central decisor of the Jewry of the Balkans.",
+   "points": 3
+  },
+  {
+   "question": "What did the Maharalbach rule in the case of a widow whose husband had divorced her with a conditional get in order to exempt her from levirate marriage?",
+   "options": [
+    "She is a rebellious wife and is not entitled to anything",
+    "The ketubah passes to the husband's relatives",
+    "She is entitled to the ketubah and its addition: the get did not cancel the husband's obligation",
+    "The get is void and she requires levirate marriage"
+   ],
+   "correctIndex": 2,
+   "explanation": "He attacked the relatives sharply (\"he has no brain in his skull\") and secured the woman's economic security.",
+   "points": 8
+  },
+  {
+   "question": "Which part of the \"Mishneh Torah\" did the Maharalbach interpret, and what is special about it?",
+   "options": [
+    "The Laws of the Sanhedrin, in which the Rambam discusses semikhah",
+    "The Laws of Repentance, because of the question of the Anusim",
+    "The Laws of Kings, because of the coming of the Messiah",
+    "The Laws of the Sanctification of the New Moon, which are difficult because of the mathematics in them"
+   ],
+   "correctIndex": 3,
+   "explanation": "He put this knowledge to use in the semikhah controversy, and his student Rabbi Yissachar ben Susan relied on it in \"Tikkun Yissachar.\"",
+   "points": 8
+  },
+  {
+   "question": "Which orders did the Maharalbach complete in the \"Ein Yaakov,\" according to the research?",
+   "options": [
+    "Nashim, Nezikin, Kodashim and Tohorot",
+    "Zeraim and Moed",
+    "Moed and Nashim only",
+    "All six orders anew"
+   ],
+   "correctIndex": 0,
+   "explanation": "His father had managed to complete only Zeraim and Moed before his death.",
+   "points": 8
+  },
+  {
+   "question": "Why did the Maharalbach struggle against the emigration of the residents of Jerusalem to Safed?",
+   "options": [
+    "In order to collect a double tax from the emigrants",
+    "The sanctity of Jerusalem requires a firm Jewish settlement in it, even at the price of hardships",
+    "In order to establish Safed as the sole center",
+    "In order to return the Anusim to Portugal"
+   ],
+   "correctIndex": 1,
+   "explanation": "This was part of his struggle over the standing of Jerusalem as the spiritual capital, against the rising power of Safed.",
+   "points": 8
+  }
+ ]
+}
