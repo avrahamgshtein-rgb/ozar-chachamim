@@ -9,6 +9,7 @@ import dataAncient from '../public/data-ancient.json'
 import dataSupplement from '../public/data-supplement.json'
 import dataSupplement2 from '../public/data-supplement-2.json'
 import dataResearchLinks from '../public/data-research-links.json'
+import dataCatalogLinks from '../public/data-catalog-links.json'
 import dataPatch from '../public/data-patch.json'
 
 interface Db {
@@ -28,6 +29,7 @@ function db(): Db {
     dataSupplement,
     dataSupplement2,
     dataResearchLinks,
+    dataCatalogLinks,
   ] as Array<{ nodes?: Record<string, unknown>[]; links?: Record<string, unknown>[] }>
 
   const issues: any[] = []
