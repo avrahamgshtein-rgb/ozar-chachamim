@@ -101,6 +101,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       locale: OG_LOCALES[loc],
       url: `${SITE_URL}/${loc}/sage/${id}`,
     },
+    // The image itself is opengraph-image.tsx beside this page; X shows it large.
+    twitter: { card: 'summary_large_image', title, description },
     alternates: {
       canonical: `/${loc}/sage/${id}`,
       languages: {

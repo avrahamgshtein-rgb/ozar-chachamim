@@ -1,0 +1,171 @@
+// The share card: the image WhatsApp, Telegram, Facebook and X show when a sage's page is shared.
+// Drawn on request by next/og and cached by the CDN (the response is immutable), in the page's
+// language: name, subtitle, era, years, what the page holds, and the site's medallion.
+// Hebrew goes through lib/ogText, because Satori has no right-to-left layout of its own.
+import { ImageResponse } from 'next/og'
+import { readFile } from 'fs/promises'
+import { join } from 'path'
+import { getSageById } from '@/lib/serverData'
+import { localizeSage } from '@/lib/serverDataTranslator'
+import { labelParts } from '@/lib/displayName'
+import { isValidLocale, UI } from '@/lib/i18n'
+import { ERA_COLORS, ERA_LABELS } from '@/lib/types'
+import type { Locale } from '@/lib/types'
+import { formatYearRangeFor } from '@/lib/utils'
+import { hasQuiz } from '@/lib/quiz'
+import { sageVideos } from '@/lib/youtube'
+import { SITE_URL } from '@/lib/siteUrl'
+import { clipWords, isRtlText, rtlWords } from '@/lib/ogText'
+
+export const alt = 'אוצר חכמים · Ozar Chachamim'
+export const size = { width: 1200, height: 630 }
+export const contentType = 'image/png'
+
+const FEATURES = {
+  research: { he: 'מחקר מלא', en: 'Full research', ru: 'Полное исследование' },
+  video: { he: 'סרטון', en: 'Video', ru: 'Видео' },
+  quiz: { he: 'חידון', en: 'Quiz', ru: 'Викторина' },
+  episode: { he: 'פרק להאזנה', en: 'Podcast episode', ru: 'Подкаст' },
+} satisfies Record<string, Record<Locale, string>>
+
+const INK = '#0b0907'
+const PARCHMENT = '#f3ead8'
+const GOLD = '#c9973a'
+const GOLD_SOFT = '#e2c27d'
+const MUTED = '#a89a82'
+
+async function asset(path: string): Promise<Buffer> {
+  return readFile(join(process.cwd(), path))
+}
+
+/** A line of text that may be Hebrew: right to left as word boxes, otherwise plain text. */
+function Line({ text, size, color, font, weight, align }: {
+  text: string; size: number; color: string; font: string; weight: number; align: 'start' | 'end'
+}) {
+  const common = { fontSize: size, color, fontFamily: font, fontWeight: weight, lineHeight: 1.18 }
+  if (!isRtlText(text)) {
+    return <div style={{ display: 'flex', ...common, textAlign: align === 'end' ? 'right' : 'left' }}>{text}</div>
+  }
+  return (
+    <div style={{ display: 'flex', flexDirection: 'row-reverse', flexWrap: 'wrap', ...common }}>
+      {rtlWords(text).map((w, i, all) => (
+        // row-reverse: the gap to the next word is on a word's left, so a wrapped line starts flush right
+        <span key={i} style={{ marginLeft: i === all.length - 1 ? 0 : size * 0.26 }}>{w}</span>
+      ))}
+    </div>
+  )
+}
+
+export default async function Image({ params }: { params: Promise<{ locale: string; id: string }> }) {
+  const { locale, id } = await Promise.resolve(params)
+  const loc: Locale = isValidLocale(locale) ? (locale as Locale) : 'he'
+  const rtl = loc === 'he'
+
+  const [frank, heebo, ptSerif, ptSans, medallion] = await Promise.all([
+    asset('assets/og/FrankRuhlLibre-Bold.ttf'),
+    asset('assets/og/Heebo-Medium.ttf'),
+    asset('assets/og/PTSerif-Bold.ttf'),
+    asset('assets/og/PTSans-Regular.ttf'),
+    asset('assets/og/medallion-400.png'),
+  ])
+  const fonts = [
+    { name: 'Frank Ruhl Libre', data: frank, weight: 700 as const, style: 'normal' as const },
+    { name: 'Heebo', data: heebo, weight: 500 as const, style: 'normal' as const },
+    { name: 'PT Serif', data: ptSerif, weight: 700 as const, style: 'normal' as const },
+    { name: 'PT Sans', data: ptSans, weight: 400 as const, style: 'normal' as const },
+  ]
+  // Russian has no glyphs in the Hebrew faces: its own serif and sans come first there.
+  const serif = loc === 'ru' ? 'PT Serif' : 'Frank Ruhl Libre'
+  const sans = loc === 'ru' ? 'PT Sans' : 'Heebo'
+  const host = SITE_URL.replace(/^https?:\/\//, '')
+  const medallionSrc = `data:image/png;base64,${medallion.toString('base64')}`
+
+  const raw = getSageById(id)
+  if (!raw) {
+    return new ImageResponse(
+      (
+        <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: INK }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={medallionSrc} width={360} height={360} alt="" />
+        </div>
+      ),
+      { ...size, fonts },
+    )
+  }
+
+  const sage = localizeSage(raw, loc)
+  const { name, tagline, fullName } = labelParts(sage.label)
+  const subtitle = clipWords(tagline ?? fullName ?? '', 90)
+  const era = ERA_LABELS[sage.period]?.[loc] ?? ''
+  const years = formatYearRangeFor(loc, sage.birth_year, sage.death_year, sage.date_precision)
+  const accent = ERA_COLORS[sage.period] ?? GOLD
+  const features = [
+    FEATURES.research[loc],
+    sageVideos(raw.id, loc).length > 0 ? FEATURES.video[loc] : null,
+    raw.spotify_url ? FEATURES.episode[loc] : null,
+    hasQuiz(raw.id, loc) ? FEATURES.quiz[loc] : null,
+  ].filter((x): x is string => Boolean(x))
+  const nameSize = name.length <= 16 ? 92 : name.length <= 28 ? 76 : name.length <= 44 ? 62 : 52
+  const meta = [era, years].filter(Boolean).join('  ·  ')
+  const align = rtl ? 'end' : 'start'
+
+  return new ImageResponse(
+    (
+      <div
+        style={{
+          width: '100%', height: '100%', display: 'flex',
+          flexDirection: rtl ? 'row-reverse' : 'row',
+          background: INK,
+          fontFamily: sans,
+        }}
+      >
+        {/* The era's colour, as a band along the reading edge */}
+        <div style={{ width: 14, height: '100%', background: accent, display: 'flex' }} />
+
+        <div style={{
+          flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
+          alignItems: rtl ? 'flex-end' : 'flex-start', padding: '58px 64px 52px',
+        }}>
+          <Line text={UI[loc].appTitle} size={30} color={GOLD} font={serif} weight={700} align={align} />
+
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: rtl ? 'flex-end' : 'flex-start', maxWidth: 760 }}>
+            <Line text={name} size={nameSize} color={PARCHMENT} font={serif} weight={700} align={align} />
+            {subtitle && (
+              <div style={{ display: 'flex', marginTop: 18 }}>
+                <Line text={subtitle} size={34} color={GOLD_SOFT} font={serif} weight={700} align={align} />
+              </div>
+            )}
+            {meta && (
+              <div style={{
+                display: 'flex', marginTop: 28, padding: '8px 22px', borderRadius: 999,
+                border: `2px solid ${accent}`, background: 'rgba(255,255,255,0.04)',
+              }}>
+                <Line text={meta} size={28} color={PARCHMENT} font={sans} weight={500} align={align} />
+              </div>
+            )}
+          </div>
+
+          <div style={{ display: 'flex', flexDirection: rtl ? 'row-reverse' : 'row', alignItems: 'center', gap: 14 }}>
+            {features.map((f, i) => (
+              <div key={i} style={{
+                display: 'flex', padding: '6px 16px', borderRadius: 10,
+                background: 'rgba(201,151,58,0.14)', border: '1px solid rgba(201,151,58,0.35)',
+              }}>
+                <Line text={f} size={24} color={GOLD_SOFT} font={sans} weight={500} align={align} />
+              </div>
+            ))}
+            <div style={{ display: 'flex', marginLeft: rtl ? 0 : 10, marginRight: rtl ? 10 : 0, fontSize: 22, color: MUTED, fontFamily: 'PT Sans' }}>
+              {host}
+            </div>
+          </div>
+        </div>
+
+        <div style={{ width: 400, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={medallionSrc} width={330} height={330} alt="" style={{ opacity: 0.95 }} />
+        </div>
+      </div>
+    ),
+    { ...size, fonts },
+  )
+}

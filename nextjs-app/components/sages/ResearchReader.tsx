@@ -10,6 +10,7 @@ import type { Locale } from '@/lib/types'
 import type { ParsedResearchDoc, TocEntry } from '@/lib/researchParse'
 import { ReadingControls, readingStyle, useReadingPrefs } from '@/components/ui/ReadingControls'
 import { ResearchBlocks, READER_STRINGS } from './ResearchBlocks'
+import { ListenResearch } from './ListenResearch'
 import { copyText, showToast } from './Toast'
 
 const S = {
@@ -56,6 +57,7 @@ export function ResearchReader({ docs, locale, isFallback = false }: Props) {
   const totalMinutes = docs.reduce((n, d) => n + d.readingMinutes, 0)
   const tocCount = docs.reduce((n, d) => n + d.toc.length, 0)
   const pageDir = locale === 'he' ? 'rtl' : 'ltr'
+  const titles = useMemo(() => docs.map(docTitle), [docs])
 
   // Progress through the research section and the heading currently read,
   // from one rAF-throttled scroll listener on the page's scroll container.
@@ -164,7 +166,10 @@ export function ResearchReader({ docs, locale, isFallback = false }: Props) {
             </span>
           </p>
         </div>
-        <ReadingControls prefs={prefs} onChange={setPrefs} locale={locale} className="no-print" />
+        <div className="flex flex-wrap items-center gap-2">
+          <ListenResearch docs={docs} titles={titles} locale={locale} />
+          <ReadingControls prefs={prefs} onChange={setPrefs} locale={locale} className="no-print" />
+        </div>
       </header>
 
       {isFallback && S.hebrewOnly[locale] && (
