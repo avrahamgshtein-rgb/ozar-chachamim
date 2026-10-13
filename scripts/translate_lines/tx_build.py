@@ -15,6 +15,7 @@ def build(sid, lang, write=True):
     got, problems = parse_tx(f'{TX}/{sid}.{lang}.txt')
     need = {n for n, t, k in us if k == 'h' or (k == 'l' and lang == 'ru')}
     missing = sorted(need - set(got))
+    cyr_left = sorted(n for n, t, k in us if k == 'c' and lang == 'en' and n not in got)
     extra = sorted(set(got) - {n for n, _, _ in us})
     warn = []
     byid = {n: (t, k) for n, t, k in us}
@@ -22,7 +23,7 @@ def build(sid, lang, write=True):
         if n not in byid:
             continue
         src, k = byid[n]
-        if k == 'l' and lang == 'en':
+        if (k == 'l' and lang == 'en') or (k == 'c' and lang == 'ru'):
             continue
         if not tr:
             problems.append(f'unit {n} is empty')
@@ -46,6 +47,8 @@ def build(sid, lang, write=True):
         return False
     def tr_of(t):
         k = classify(t)
+        if k == 'v' and lang == 'en' and is_cyr_prose(t) and t in seen and seen[t] in got:
+            return got[seen[t]]
         if k == 'v' or (k == 'l' and lang == 'en'):
             return t
         if t in composite:
@@ -55,6 +58,8 @@ def build(sid, lang, write=True):
     for d in docs:
         content = '\n'.join(tr_of(ln) for ln in lines_of(d.get('content', '')))
         out.append({**d, 'title': tr_of(d.get('title', '')), 'content': content, 'word_count': len(content.split())})
+    if cyr_left:
+        warn.insert(0, f'Russian paragraph(s) {cyr_left} (en only) not translated: left in Russian')
     for w in warn[:25]:
         print(f'  warn {sid}.{lang} {w}')
     if len(warn) > 25:

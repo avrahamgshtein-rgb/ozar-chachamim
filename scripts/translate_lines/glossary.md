@@ -32,3 +32,7 @@ Book titles: transliterate + gloss on first mention. Sage's own name: use the fo
 ## Names fixed by agents so far (reuse them)
 Doña Gracia Nasi / Дона Грация Наси; Don Joseph Nasi / Дон Йосеф Наси; Maharival / Махариваль; Maharashdam / Махаршадам;
 Sarah Schenirer / Сара Шенирер; Beit Yaakov / «Бейт Яаков»; Nechama Leibowitz / Нехама Лейбович; "Gilyonot" / «гильонот».
+
+Homonyms in the `names:` line: רבי מנחם מנדל שניאורסון is hinted as the Tzemach Tzedek (19th c.); when the paper means the
+Lubavitcher Rebbe (20th c., son-in-law of the Rayatz), write Rabbi Menachem Mendel Schneerson (the Lubavitcher Rebbe) /
+рабби Менахем-Мендл Шнеерсон (Любавичский Ребе). חסידי אשכנז as a movement: Chasidei Ashkenaz (the Ashkenazi Pietists) / хасидей Ашкеназ.

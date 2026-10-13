@@ -28,8 +28,11 @@ for sid in ids:
                 if len(hl) != len(tl):
                     problems.append(f'doc {k}: {len(tl)} lines vs {len(hl)}')
                     continue
-                short = heb = scr = cit = num = 0
+                short = heb = scr = cit = num = rus = 0
                 for a, b in zip(hl, tl):
+                    if lang == 'en' and is_cyr_prose(a):
+                        if a == b or not LAT.search(b): rus += 1
+                        continue
                     if classify(a) == 'v':
                         if a != b: problems.append(f'doc {k}: a verbatim line changed')
                         continue
@@ -39,7 +42,7 @@ for sid in ids:
                     if len(HEB.findall(b)) > 40: heb += 1
                     want = LAT if lang == 'en' else CYR
                     if len(a) > 40 and not want.search(b): scr += 1
-                for name, n in (('citation markers differ', cit), ('numbers missing', num), ('too short', short), ('Hebrew remains', heb), ('wrong script', scr)):
+                for name, n in (('citation markers differ', cit), ('numbers missing', num), ('too short', short), ('Hebrew remains', heb), ('wrong script', scr), ('Russian paragraph left untranslated', rus)):
                     if n: problems.append(f'doc {k}: {name} in {n} line(s)')
                 if not t.get('title', '').strip(): problems.append(f'doc {k}: empty title')
                 ratio = t['word_count'] / max(1, h['word_count'] or len(h['content'].split()))
