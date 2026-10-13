@@ -50,12 +50,14 @@ test('a long subtitle is cut at a word, with an ellipsis', () => {
 })
 
 test('the card\'s fonts and medallion are in the repository and traced into the deployment', () => {
-  const card = fs.readFileSync(path.join(__dirname, '..', 'app/[locale]/sage/[id]/opengraph-image.tsx'), 'utf8')
+  const card = fs.readFileSync(path.join(__dirname, '..', 'lib/ogCard.tsx'), 'utf8')
   const files = [...card.matchAll(/asset\('([^']+)'\)/g)].map(m => m[1])
   assert.ok(files.length >= 5, 'expected fonts and the medallion')
   for (const f of files) assert.ok(fs.existsSync(path.join(__dirname, '..', f)), `missing ${f}`)
   const includes = (nextConfig.outputFileTracingIncludes ?? {})['/[locale]/sage/[id]/opengraph-image'] ?? []
   assert.ok(includes.includes('./assets/og/**'), 'assets/og must be traced for the card route')
+  const story = (nextConfig.outputFileTracingIncludes ?? {})['/[locale]/today/story'] ?? []
+  assert.ok(story.includes('./assets/og/**'), 'assets/og must be traced for the status image route')
 })
 
 console.log(`\n${passed} passed, ${failed} failed`)
