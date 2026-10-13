@@ -1,0 +1,233 @@
+{
+ "label": "המהר\"ל מפראג – הפילוסוף שחיבר בין השכל למסתורין",
+ "questions": [
+  {
+   "question": "What was the full name of the Maharal of Prague?",
+   "options": [
+    "Rabbi Yehuda Liva ben Bezalel",
+    "Rabbi Yehuda Liva ben Shmuel",
+    "Rabbi Liva ben Yehuda",
+    "Rabbi Bezalel ben Yehuda Liva"
+   ],
+   "correctIndex": 0,
+   "explanation": "In German literature he is called \"Rabbi Loew the High.\" He was active in the late 16th century and the early 17th.",
+   "points": 5
+  },
+  {
+   "question": "True or false: Rudolf II, Emperor of the Holy Roman Empire, invited the Maharal to his court.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 0,
+   "explanation": "The Emperor sent an official emissary, and the two spoke face to face. The content of the conversation is not known. The connection benefited the security of the Jews of Prague.",
+   "points": 3
+  },
+  {
+   "question": "Through whom did the Maharal maintain contact with the astronomer Tycho Brahe?",
+   "options": [
+    "Rabbi Moshe Isserles",
+    "His student, Rabbi David Gans",
+    "Rabbi Yom Tov Lipmann Heller",
+    "Rabbi Azariah de' Rossi"
+   ],
+   "correctIndex": 1,
+   "explanation": "Gans, a historian and scientist, described his teacher as \"the crown of the sages and exemplar of our generations.\"",
+   "points": 5
+  },
+  {
+   "question": "True or false: According to the Maharal, the people of Israel is a \"form\" in relation to the world, and the Torah is the \"form\" of Israel.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 0,
+   "explanation": "Form is the soul and the source of vitality, and matter is the substrate that carries it. The Holy One, blessed be He, is the \"ultimate form\" of reality.",
+   "points": 3
+  },
+  {
+   "question": "Which geometric image represents the Torah for the Maharal?",
+   "options": [
+    "The circle",
+    "The triangle",
+    "The straight line",
+    "The point"
+   ],
+   "correctIndex": 2,
+   "explanation": "The circle represents the natural sciences, a cyclical order in which there is no choice. The straight line leads from the source to man and defines the space of choice.",
+   "points": 5
+  },
+  {
+   "question": "What do the odd numbers express in the Maharal's doctrine of numbers?",
+   "options": [
+    "Multiplicity and separation",
+    "Exile and destruction",
+    "Matter without form",
+    "Joining, convergence and wholeness"
+   ],
+   "correctIndex": 3,
+   "explanation": "The even numbers, by contrast, represent multiplicity, division and opposing sides.",
+   "points": 5
+  },
+  {
+   "question": "According to the \"Netzach Yisrael,\" why must exile be explained before redemption?",
+   "options": [
+    "Because all things are recognized through their opposites",
+    "Because exile preceded redemption in time",
+    "Because exile is shorter than redemption",
+    "Because that is how the books of the Prophets were arranged"
+   ],
+   "correctIndex": 0,
+   "explanation": "Like white that is recognized through black. Therefore the Haggadah too \"begins with disgrace and ends with praise.\"",
+   "points": 5
+  },
+  {
+   "question": "True or false: According to the Maharal, an unnatural situation can become, with time, natural and permanent.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 1,
+   "explanation": "This is the essence of the \"law of the natural place\": fire that was forced to stay below will return upward. Therefore exile is proof of redemption.",
+   "points": 3
+  },
+  {
+   "question": "What is the \"natural place\" of the people of Israel, according to the Maharal?",
+   "options": [
+    "Any place where Torah is studied",
+    "The Land of Israel",
+    "Among the nations",
+    "Babylonia, the land of the Talmud"
+   ],
+   "correctIndex": 1,
+   "explanation": "The Holy One, blessed be He, arranged every nation in its place, and dispersion among the nations is contrary to the nature of a single people.",
+   "points": 5
+  },
+  {
+   "question": "How does the word \"ga'al\" differ from the word \"galah,\" according to the Maharal?",
+   "options": [
+    "In the heh at the end: the four directions of heaven",
+    "In the number of letters",
+    "In the aleph in the middle: the Master of the World, who gathers the dispersion",
+    "In the vocalization alone"
+   ],
+   "correctIndex": 2,
+   "explanation": "The heh of \"galah\" is built of a dalet and a dot, a symbol of dispersion to the four directions. Hence exile itself preserves the possibility of unity.",
+   "points": 5
+  },
+  {
+   "question": "Against whose book did the Maharal come out in \"Be'er HaGolah\"?",
+   "options": [
+    "\"Tzemach David\" by Rabbi David Gans",
+    "\"The Guide of the Perplexed\" by the Rambam",
+    "\"Shulchan Arukh\" by Rabbi Yosef Karo",
+    "\"Me'or Einayim\" by Rabbi Azariah de' Rossi"
+   ],
+   "correctIndex": 3,
+   "explanation": "The Maharal rejected the attempt to evaluate the words of the Sages with external historical and scientific tools.",
+   "points": 5
+  },
+  {
+   "question": "True or false: In \"Be'er HaGolah\" the Maharal protested against silencing opinions that run contrary to faith.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 0,
+   "explanation": "Alongside his defense of the Sages, he determined, in universal wording, that force is not to be used to silence opposing opinions.",
+   "points": 3
+  },
+  {
+   "question": "According to the sequence of ages in the Mishnah, which the Maharal demanded be implemented, at what age does one begin Gemara?",
+   "options": [
+    "15",
+    "5",
+    "9",
+    "10"
+   ],
+   "correctIndex": 0,
+   "explanation": "At five for Scripture, at ten for Mishnah and at fifteen for Gemara. He opposed the leap from the Chumash directly to the Gemara.",
+   "points": 5
+  },
+  {
+   "question": "True or false: The Maharal encouraged teaching children Gemara with Tosafot already at the age of nine.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 1,
+   "explanation": "That was the custom against which he came out. He recommended beginning with the plain meaning, and ascending to pilpul only when the student's judgment is stable.",
+   "points": 3
+  },
+  {
+   "question": "Which commentary did the Maharal recommend studying with the Gemara at the first stage?",
+   "options": [
+    "Tosafot",
+    "Rashi, who offers a basic and straightforward explanation",
+    "The Maharsha",
+    "The Rif"
+   ],
+   "correctIndex": 1,
+   "explanation": "\"Rectitude\" (yosher) was a guiding concept for him in study, and therefore he kept the Tosafot away from the young student.",
+   "points": 5
+  },
+  {
+   "question": "True or false: The story of the Golem is mentioned in the writings of the Maharal and in the writings of his students.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 1,
+   "explanation": "There is no trace of it in sources from the 16th and 17th centuries. According to the legend, the Maharal erased the aleph from the word \"emet\" (\"truth\") on the Golem's forehead and left \"met\" (\"dead\").",
+   "points": 3
+  },
+  {
+   "question": "What did the Maharal claim against examining the words of the Sages with scientific tools?",
+   "options": [
+    "The Sages knew more science than their contemporaries",
+    "The scientific errors are those of the copyists",
+    "Their words deal with the supreme spiritual causes, not with the physical level",
+    "One should not engage in science at all"
+   ],
+   "correctIndex": 2,
+   "explanation": "Therefore putting their words to the test of scientific tools is, in his eyes, a category error.",
+   "points": 8
+  },
+  {
+   "question": "What was the Maharal's reasoning against silencing opposing opinions?",
+   "options": [
+    "Opposing opinions disappear on their own",
+    "Halakha forbids censoring books",
+    "Every opinion is true in its own way",
+    "A victor takes pride only if his rival struggles freely; silencing signals weakness"
+   ],
+   "correctIndex": 3,
+   "explanation": "He compared the religious debate to a battle: silencing prevents the truth from being clarified in its full glory.",
+   "points": 8
+  },
+  {
+   "question": "On which Talmudic statement does the possibility that a righteous person might create a human-like being rest?",
+   "options": [
+    "The words of Rava: \"If the righteous wished, they would create a world\"",
+    "The words of Rabbi Akiva: \"All is foreseen, and freedom of choice is granted\"",
+    "The words of Hillel: \"In a place where there are no men, strive to be a man\"",
+    "The words of Rabbi Tarfon: \"It is not for you to complete the work\""
+   ],
+   "correctIndex": 0,
+   "explanation": "The righteous, who are clean of sin, can use the power of the letters of the Holy Tongue and the combinations of names of the \"Sefer Yetzirah.\"",
+   "points": 8
+  },
+  {
+   "question": "What did scholars such as Eli Yassif prove about the book of Rabbi Yehuda Yudel Rosenberg on the Golem?",
+   "options": [
+    "That it is a faithful copy of the writings of the Maharal",
+    "That it is not a translation of an ancient manuscript but a literary fiction",
+    "That it was written by Rabbi David Gans",
+    "That it was written in Prague in the 17th century"
+   ],
+   "correctIndex": 1,
+   "explanation": "The book was written in the early 20th century. Nevertheless the Golem became a global myth, hence \"the Golem rose up against its creator.\"",
+   "points": 8
+  }
+ ]
+}

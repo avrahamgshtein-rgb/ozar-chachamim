@@ -1,0 +1,233 @@
+{
+ "label": "הרב פנחס קהתי – הפקיד מהבנק שחולל מהפכה בעולם התורה",
+ "questions": [
+  {
+   "question": "True or false: Pinchas Kehati's original name was Pinchas Hechtman.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 0,
+   "explanation": "He was born in 1910 in a village near Rovno. His father, Kehat, was a Trisk Hasid and a fervent Zionist of the \"Mizrachi\" movement.",
+   "points": 3
+  },
+  {
+   "question": "Why did he change his surname to Kehati?",
+   "options": [
+    "To commemorate his father's name, Kehat, since he had only daughters",
+    "Because the Mandate authorities required it",
+    "After his hometown",
+    "After his teacher at the yeshiva"
+   ],
+   "correctIndex": 0,
+   "explanation": "His parents and most of his family perished in the Holocaust. The name also sounded more modern and Israeli to him.",
+   "points": 5
+  },
+  {
+   "question": "At which institution in Warsaw did he receive a matriculation certificate and a teaching certificate?",
+   "options": [
+    "\"Chachmei Lublin\"",
+    "\"Tachkemoni\"",
+    "\"Etz Chaim\"",
+    "\"Daat Moshe\""
+   ],
+   "correctIndex": 1,
+   "explanation": "The combination of Torah study and a matriculation certificate was unusual in the Orthodox landscape of the time.",
+   "points": 5
+  },
+  {
+   "question": "In which religious youth movement in Poland was he a member of the national executive?",
+   "options": [
+    "\"HaShomer HaTzair\"",
+    "\"Betar\"",
+    "\"HaShomer HaDati\"",
+    "\"Ezra\""
+   ],
+   "correctIndex": 2,
+   "explanation": "He coordinated seminars for guides who prepared youth for aliyah, a model of a \"religious pioneer\" that combines labor and halakha.",
+   "points": 5
+  },
+  {
+   "question": "True or false: Kehati completed a full degree in mathematics at the Hebrew University.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 1,
+   "explanation": "He studied for one year mathematics, physics, philosophy, and Kabbalah, and was forced to stop for lack of means.",
+   "points": 3
+  },
+  {
+   "question": "Where did Kehati work for many years?",
+   "options": [
+    "At the Ministry of Education, as an inspector",
+    "At the Tel Aviv municipality, as an engineer",
+    "At a publishing house, as an editor",
+    "At Bank Hapoel HaMizrachi, as a clerk and auditor"
+   ],
+   "correctIndex": 3,
+   "explanation": "He was known for his precision and his talent for unraveling accounting tangles, and he brought the same precision to his commentary on the Mishnah.",
+   "points": 5
+  },
+  {
+   "question": "True or false: Kehati was one of the founders of Bnei Akiva and a member of its first national executive.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 0,
+   "explanation": "In 1937, alongside Rabbi Moshe Zvi Neria. For many years he coordinated the movement's guidance department.",
+   "points": 3
+  },
+  {
+   "question": "What led Kehati to write the commentary himself?",
+   "options": [
+    "The sample commentaries he received missed the mark, and his wife Rachel told him to write it himself",
+    "Bnei Akiva assigned him the task by lottery",
+    "Rabbi Unterman commanded him to",
+    "The bank requested a booklet for its savers"
+   ],
+   "correctIndex": 0,
+   "explanation": "\"If you know so well what you want, write it yourself.\" Rachel was the \"engine and fuel\" of the enterprise.",
+   "points": 5
+  },
+  {
+   "question": "For whom was the commentary originally intended?",
+   "options": [
+    "For students of advanced yeshivot",
+    "For youths who went out to work after eighth grade and were cut off from Torah study",
+    "For rabbis in the Diaspora",
+    "For university students"
+   ],
+   "correctIndex": 1,
+   "explanation": "He imagined small booklets that could be carried in a pocket and studied in a queue or on the bus.",
+   "points": 5
+  },
+  {
+   "question": "In what form was the commentary first published?",
+   "options": [
+    "In a daily newspaper",
+    "In radio lessons",
+    "In weekly booklets sent by mail to about 5,000 subscribers",
+    "In one large volume"
+   ],
+   "correctIndex": 2,
+   "explanation": "Each booklet contained 14 elucidated mishnayot, halakhot from the Shulchan Arukh and from the Rambam, and a passage from the Tanakh. His daughters helped with copying and mailing.",
+   "points": 5
+  },
+  {
+   "question": "True or false: Kehati wrote the commentary in Aramaic, in the manner of the classical commentators.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 1,
+   "explanation": "He wrote in contemporary, fluent Hebrew, within reach of everyone.",
+   "points": 3
+  },
+  {
+   "question": "What was the main innovation in the form of the commentary?",
+   "options": [
+    "Translating the Mishnah into Yiddish",
+    "An illustration for every mishnah",
+    "A commentary on the Talmud instead of the Mishnah",
+    "Weaving the words of explanation into the text of the Mishnah, for continuous reading"
+   ],
+   "correctIndex": 3,
+   "explanation": "The learner does not need to skip between the Mishnah and the explanation: the two are read as a single unit.",
+   "points": 5
+  },
+  {
+   "question": "True or false: Kehati personally vocalized all six orders of the Mishnah.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 0,
+   "explanation": "This was pioneering philological work, part of the effort to make the Mishnah accessible.",
+   "points": 3
+  },
+  {
+   "question": "Which tune of Kehati's won first place at the first Hasidic Song Festival, in 1969?",
+   "options": [
+    "\"Tzama Nafshi\"",
+    "\"Harachaman\"",
+    "\"Kol Atzmotai Tomarna\"",
+    "\"Yedid Nefesh\""
+   ],
+   "correctIndex": 0,
+   "explanation": "He composed it in honor of the wedding of his daughter Livia. In all, he composed more than twenty tunes.",
+   "points": 5
+  },
+  {
+   "question": "True or false: Kehati asked to be called \"Rabbi\" and was strict about the title.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 1,
+   "explanation": "He objected to being called \"Rabbi\" and did not use his teaching certificate. He attributed his success to divine assistance.",
+   "points": 3
+  },
+  {
+   "question": "When did Kehati die?",
+   "options": [
+    "On Yom Kippur, at the age of 70",
+    "On the night of the sixth candle of Hanukkah, at the age of 66",
+    "On Lag BaOmer, at the age of 60",
+    "On the Ninth of Av, at the age of 66"
+   ],
+   "correctIndex": 1,
+   "explanation": "On 29 Kislev 5737. The number six accompanied him: the six orders of the Mishnah, the age of 66, and the sixth candle.",
+   "points": 5
+  },
+  {
+   "question": "How did Kehati test whether the elucidation he had written was comprehensible?",
+   "options": [
+    "He sent it to a committee of rabbis",
+    "He taught it in a class at Bnei Akiva",
+    "He woke his daughters at night to check whether they understood",
+    "He compared it with the Rambam's commentary"
+   ],
+   "correctIndex": 2,
+   "explanation": "If they understood, the commentary was clear enough. He also memorized the mishnayot from a notebook of word initials.",
+   "points": 8
+  },
+  {
+   "question": "What did Kehati explain when, one evening, he searched for an error of one agora in his accounts?",
+   "options": [
+    "That the bank would deduct it from his salary",
+    "That every agora belongs to charity",
+    "That halakha requires it",
+    "That the error shows he did something during the day and does not remember it"
+   ],
+   "correctIndex": 3,
+   "explanation": "It was not the sum that troubled him, but what it taught about his attention to all of his actions.",
+   "points": 8
+  },
+  {
+   "question": "On whom does Kehati's commentary rely?",
+   "options": [
+    "On the Rambam, Rabbi Ovadia of Bartenura, and Tosafot Yom Tov, without personal interpretation",
+    "On Rashi alone",
+    "On a new personal interpretation",
+    "On the Zohar and the writings of the Ari"
+   ],
+   "correctIndex": 0,
+   "explanation": "In addition, it condenses the Gemara's innovations relating to the Mishnah and cites the halakhic ruling.",
+   "points": 8
+  },
+  {
+   "question": "Which enterprise's author testified that he began it inspired by Kehati?",
+   "options": [
+    "The Rambam's Commentary on the Mishnah",
+    "\"HaMishnah HaSedura\" (The Arranged Mishnah) of Rabbi Dordak",
+    "\"Tosafot Yom Tov\"",
+    "\"Mishnah Berurah\""
+   ],
+   "correctIndex": 1,
+   "explanation": "Kehati created a new genre of modern, clear elucidations, which also paved the way for the Steinsaltz commentary on the Talmud.",
+   "points": 8
+  }
+ ]
+}
