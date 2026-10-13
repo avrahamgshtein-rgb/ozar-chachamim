@@ -1,0 +1,233 @@
+{
+ "label": "ברוריה",
+ "questions": [
+  {
+   "question": "True or false: Bruriah was the daughter of Rabbi Hananiah ben Teradion and the wife of Rabbi Meir.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 0,
+   "explanation": "Her father was one of the Ten Martyrs of the Kingdom, and her husband was one of the foremost disciples of Rabbi Akiva.",
+   "points": 3
+  },
+  {
+   "question": "True or false: Rabbi Hananiah ben Teradion taught Torah to both his son and his daughter.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 0,
+   "explanation": "This was an exceptional step for his time, and in the scholarly competition between the siblings Bruriah stood out.",
+   "points": 3
+  },
+  {
+   "question": "How was her father, Rabbi Hananiah ben Teradion, executed?",
+   "options": [
+    "By burning, wrapped in a Torah scroll",
+    "By stoning",
+    "By the sword",
+    "By hanging"
+   ],
+   "correctIndex": 0,
+   "explanation": "He was caught teaching Torah in public in the days of the decrees of religious persecution.",
+   "points": 5
+  },
+  {
+   "question": "What did her father say to her in his last moments, according to the research?",
+   "options": [
+    "\"Do not weep for me, for it is a joy\"",
+    "\"The parchments are burning and the letters are soaring in the air\"",
+    "\"Go to Rabbi Akiva\"",
+    "\"Guard the Torah scrolls\""
+   ],
+   "correctIndex": 1,
+   "explanation": "The sentence separates the annihilation of the body from the eternity of the spirit, and became a compass in her life and her studies.",
+   "points": 5
+  },
+  {
+   "question": "True or false: The Sages of the Talmud granted Bruriah the title \"the Tannait.\"",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 1,
+   "explanation": "Her words were always cited in the name of \"the daughter of Rabbi Hananiah\" or \"the wife of Rabbi Meir,\" without an official title.",
+   "points": 3
+  },
+  {
+   "question": "True or false: According to tractate Pesachim, Bruriah learned three hundred traditions in one day.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 0,
+   "explanation": "From three hundred rabbis. And yet, said Rabbi Yochanan, even she did not complete the \"Book of Genealogies\" (Sefer Yuchasin) in three years.",
+   "points": 3
+  },
+  {
+   "question": "What did Bruriah rule regarding the purification of a clay oven that had become impure?",
+   "options": [
+    "Once they have moved it from its place",
+    "Once it has cooled completely",
+    "It becomes pure once they have stripped off its tunic, the outer layer of clay",
+    "Once they have immersed it in a mikveh"
+   ],
+   "correctIndex": 2,
+   "explanation": "Her brother said, \"once they have moved it from its place.\" Rabbi Yehuda ben Bava ruled in accordance with her: \"His daughter has spoken better than his son.\"",
+   "points": 5
+  },
+  {
+   "question": "Who said \"Bruriah has spoken well\" about her words concerning the klostra key?",
+   "options": [
+    "Rabbi Akiva",
+    "Rabbi Tarfon",
+    "Rabbi Meir",
+    "Rabbi Yehoshua"
+   ],
+   "correctIndex": 3,
+   "explanation": "She distinguished between the key and the lock: \"One detaches this key and hangs it on its fellow on the Sabbath,\" and therefore the key is a vessel in its own right.",
+   "points": 5
+  },
+  {
+   "question": "What was Bruriah's distinction regarding the verse \"Let sins cease from the earth\"?",
+   "options": [
+    "It says \"sins,\" the deeds, and not \"sinners,\" the people",
+    "It says \"from the earth\" and not \"from the city\"",
+    "It is stated in the plural and not in the singular",
+    "The verse speaks of the Gentiles only"
+   ],
+   "correctIndex": 0,
+   "explanation": "When the sinners repent, \"and the wicked will be no more\": wickedness will vanish without destroying people.",
+   "points": 5
+  },
+  {
+   "question": "What happened when Rabbi Meir prayed for the ruffians, as Bruriah said?",
+   "options": [
+    "They died",
+    "They repented",
+    "They left the city",
+    "They became his disciples"
+   ],
+   "correctIndex": 1,
+   "explanation": "This is an approach of repair and rehabilitation, which prefers repentance to punishment.",
+   "points": 5
+  },
+  {
+   "question": "In which parable did Bruriah inform Rabbi Meir of the death of their sons?",
+   "options": [
+    "A candle that went out on the Sabbath",
+    "A tree uprooted in a storm",
+    "A deposit whose owner came to take it",
+    "A book that was burned"
+   ],
+   "correctIndex": 2,
+   "explanation": "When he answered that a deposit must be returned, she showed him the sons, and comforted him: \"The Lord gave and the Lord has taken; blessed be the name of the Lord.\"",
+   "points": 5
+  },
+  {
+   "question": "Why did Bruriah wait until the end of the Sabbath to tell her husband?",
+   "options": [
+    "Because she did not know until then",
+    "Because Rabbi Meir was on the road",
+    "Because the Sages so commanded",
+    "To preserve the sanctity of the Sabbath and to spare him"
+   ],
+   "correctIndex": 3,
+   "explanation": "She laid the sons in a room and covered them, and waited until after Havdalah.",
+   "points": 5
+  },
+  {
+   "question": "True or false: Bruriah encouraged a student who studied in a whisper to continue studying that way.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 1,
+   "explanation": "She kicked him and rebuked him: Torah is preserved only when it is said aloud, with all the limbs.",
+   "points": 3
+  },
+  {
+   "question": "From which verse did Bruriah justify the requirement to study aloud?",
+   "options": [
+    "\"Ordered in all things and secure\"",
+    "\"And you shall meditate therein day and night\"",
+    "\"And you shall teach them diligently to your children\"",
+    "\"The voice of my beloved knocks\""
+   ],
+   "correctIndex": 0,
+   "explanation": "If the Torah is ordered in all 248 limbs, it is preserved. Study in a whisper leads to forgetting.",
+   "points": 5
+  },
+  {
+   "question": "To where did Rabbi Meir flee, according to tractate Avodah Zarah?",
+   "options": [
+    "To Egypt",
+    "To Babylonia",
+    "To Rome",
+    "To the Galilee"
+   ],
+   "correctIndex": 1,
+   "explanation": "The Gemara gives two reasons for the flight, one of which is \"because of the Incident of Bruriah,\" without detail.",
+   "points": 5
+  },
+  {
+   "question": "True or false: The Gemara in Avodah Zarah specifies what the \"Incident of Bruriah\" is.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 1,
+   "explanation": "The detail appears for the first time in the commentary attributed to Rashi on the passage, and many scholars doubt it.",
+   "points": 3
+  },
+  {
+   "question": "What did Rabbi Itam Henkin claim about the story in Rashi on the \"Incident of Bruriah\"?",
+   "options": [
+    "That Rashi copied it from the Jerusalem Talmud",
+    "That Rabbi Meir himself told it",
+    "That it was not Rashi who wrote it, but a student who copied a corrupt note",
+    "That it is a proven historical truth"
+   ],
+   "correctIndex": 2,
+   "explanation": "He relies on the absence of the story from early manuscripts of Rashi. Other scholars see in it a story designed to deter women from study.",
+   "points": 8
+  },
+  {
+   "question": "Why, according to the research, were her words always cited in the name of her father or her husband?",
+   "options": [
+    "Because her real name was not known",
+    "Because that was the custom with all the Tannaim",
+    "Because she herself asked for it",
+    "To confine her wisdom within the family structure and not make her an independent authority"
+   ],
+   "correctIndex": 3,
+   "explanation": "This expresses the tension between her scholarly superiority and the social structure of her generation.",
+   "points": 8
+  },
+  {
+   "question": "What two reasons does the Gemara give for Rabbi Meir's flight to Babylonia?",
+   "options": [
+    "Persecution by the Romans after he rescued Bruriah's sister, and the \"Incident of Bruriah\"",
+    "A dispute with the Nasi, and a famine in the Land",
+    "The death of his sons, and the death of Bruriah",
+    "Decrees of religious persecution, and a debt to the Romans"
+   ],
+   "correctIndex": 0,
+   "explanation": "Rabbi Meir rescued Bruriah's sister from a Roman brothel, and as a result was pursued.",
+   "points": 8
+  },
+  {
+   "question": "How does Bruriah understand the process of learning, according to the research?",
+   "options": [
+    "As quiet, concentrated repetition",
+    "As full physical and vocal involvement, without which the Torah is forgotten",
+    "As listening to the teacher alone",
+    "As an orderly writing down of every tradition"
+   ],
+   "correctIndex": 1,
+   "explanation": "The Amora Shmuel also instructed his student to open his mouth while studying. A student of Rabbi Eliezer who studied in a whisper forgot his learning.",
+   "points": 8
+  }
+ ]
+}
