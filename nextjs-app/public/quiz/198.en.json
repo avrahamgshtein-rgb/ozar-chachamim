@@ -1,0 +1,233 @@
+{
+ "label": "דונש בן לברט",
+ "questions": [
+  {
+   "question": "Which famous Shabbat piyyut did Dunash ben Labrat compose?",
+   "options": [
+    "\"Yah Ribon\"",
+    "\"Dror Yikra\"",
+    "\"Lekha Dodi\"",
+    "\"Tzur Mishelo Achalnu\""
+   ],
+   "correctIndex": 1,
+   "explanation": "\"Dror Yikra\" is sung at Shabbat tables in all the communities of Israel, in many melodies, from Yemen to Georgia. It expresses longing for redemption within the rest of Shabbat.",
+   "points": 5
+  },
+  {
+   "question": "In which city was Dunash born and educated?",
+   "options": [
+    "Cordoba, in Spain",
+    "Kairouan, in Tunisia",
+    "Baghdad, in Babylonia",
+    "Fez, in Morocco"
+   ],
+   "correctIndex": 3,
+   "explanation": "Dunash was born in Fez, Morocco, around 920. The city was then a vibrant spiritual and cultural center.",
+   "points": 5
+  },
+  {
+   "question": "Under whom did Dunash study in Babylonia?",
+   "options": [
+    "Rav Saadia Gaon",
+    "Rav Hai Gaon",
+    "Rav Sherira Gaon",
+    "Rabbenu Chananel"
+   ],
+   "correctIndex": 0,
+   "explanation": "Dunash studied in Babylonia in the yeshiva of Rav Saadia Gaon, and there he was exposed to the methods of analysis of Arabic and Hebrew and began to compose poems.",
+   "points": 5
+  },
+  {
+   "question": "Who invited Dunash to Cordoba?",
+   "options": [
+    "Rabbi Shmuel HaNagid",
+    "Rabbi Hasdai ibn Shaprut",
+    "Rabbi Moshe ben Chanoch",
+    "Rabbi Yehuda HaLevi"
+   ],
+   "correctIndex": 1,
+   "explanation": "Hasdai ibn Shaprut, the minister and leader of the Jews of Cordoba, sought to establish in Spain an independent center of Torah, poetry and science, and gathered the finest minds to himself.",
+   "points": 5
+  },
+  {
+   "question": "True or false: Dunash was the first to introduce into Hebrew poetry the quantitative meter of Arabic poetry.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 0,
+   "explanation": "Until his time, Hebrew poetry and piyyut had not been composed according to the rules of quantitative meter. The meter he introduced became the hallmark of Hebrew secular poetry in Spain.",
+   "points": 3
+  },
+  {
+   "question": "What is the name of the system of meter that Dunash introduced into Hebrew poetry?",
+   "options": [
+    "The syllabic meter",
+    "The meter of the accents",
+    "The meter of yatedot (pegs) and tenuot (movements)",
+    "The running rhyme"
+   ],
+   "correctIndex": 2,
+   "explanation": "Hebrew does not distinguish between short and long vowels as Arabic does, and so Dunash built the meter from \"yatedot\" (pegs) and \"tenuot\" (movements). Poets used this system for generations.",
+   "points": 5
+  },
+  {
+   "question": "With whom did Dunash conduct the great grammatical controversy in Cordoba?",
+   "options": [
+    "Menachem ben Saruq",
+    "Yehuda Hayyuj",
+    "Abraham ibn Ezra",
+    "Yosef Kimchi"
+   ],
+   "correctIndex": 0,
+   "explanation": "The debate between Dunash and Menachem ben Saruq was also a cultural and theological struggle, which stirred the Jews of Spain and continued through their students.",
+   "points": 5
+  },
+  {
+   "question": "Which linguistic principle did Dunash champion, and Menachem ben Saruq opposed?",
+   "options": [
+    "Interpreting Scripture according to Kabbalah only",
+    "Comparing Hebrew with Greek",
+    "Comparing Hebrew with Arabic in order to understand difficult words in Scripture",
+    "Giving up the vocalization of Scripture"
+   ],
+   "correctIndex": 2,
+   "explanation": "Dunash argued that the two languages share a common Semitic origin, and therefore the rules of Arabic shed light on Hebrew. Menachem regarded Hebrew as a unique divine language that must not be compared.",
+   "points": 8
+  },
+  {
+   "question": "True or false: In the acrostic of \"Dror Yikra\" the name of Hasdai ibn Shaprut, Dunash's patron, is signed.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 1,
+   "explanation": "In the initial letters of the first, second, third and sixth stanzas the name \"Dunash\" is signed, and this is evidence that he is the author of the piyyut.",
+   "points": 3
+  },
+  {
+   "question": "Which work of Menachem ben Saruq did Dunash criticize in his \"Teshuvot\" (Replies)?",
+   "options": [
+    "A commentary on the Babylonian Talmud",
+    "The \"Mahberet,\" a dictionary of the words of Scripture",
+    "A prayer book for the communities of Spain",
+    "A book of wedding poems"
+   ],
+   "correctIndex": 1,
+   "explanation": "\"Mahberet Menachem\" is a comprehensive dictionary of biblical words. In it Menachem identified many roots as consisting of only one or two letters.",
+   "points": 5
+  },
+  {
+   "question": "True or false: In the Cairo Genizah, poems were found that Dunash and his wife, who was herself a poet, exchanged.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 0,
+   "explanation": "Mournful poems that Dunash and his wife wrote when he was forced to wander were found in the Genizah, and they attest that she was an important poet in her own right.",
+   "points": 3
+  },
+  {
+   "question": "True or false: Menachem's students enthusiastically accepted the new meter that Dunash introduced.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 1,
+   "explanation": "Menachem's students sharply attacked the meter and claimed that Dunash was corrupting biblical Hebrew, because in order to meet the meter he altered biblical forms.",
+   "points": 3
+  },
+  {
+   "question": "True or false: Dunash also disagreed with his teacher, Rav Saadia Gaon, and wrote critiques of his commentaries on Scripture.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 0,
+   "explanation": "Dunash composed about two hundred grammatical and exegetical critiques of the translations and commentaries of Rasag, in the work \"The Replies of Dunash ben Labrat on Rasag.\"",
+   "points": 3
+  },
+  {
+   "question": "Which other work of Dunash, in the same meter, is accepted to this day in the Ashkenazi communities?",
+   "options": [
+    "\"Maoz Tzur\" for Chanukah",
+    "\"Adir Hu\" for the Seder night",
+    "\"Devai Haser,\" the opening of the invitation to the Seven Blessings meal",
+    "\"Shalom Aleichem\" for Friday night"
+   ],
+   "correctIndex": 2,
+   "explanation": "\"Devai Haser\" was written in the same meter as \"Dror Yikra,\" and both works became part of the liturgy of Shabbat and of joy.",
+   "points": 5
+  },
+  {
+   "question": "Which sage composed \"Safah Yeterah\" in defense of Rav Saadia Gaon against Dunash's critiques?",
+   "options": [
+    "Rabbenu Tam",
+    "Rabbi Yosef Kimchi",
+    "Rashi",
+    "Rabbi Abraham ibn Ezra"
+   ],
+   "correctIndex": 3,
+   "explanation": "Ibn Ezra regarded Rasag as a supreme authority, and composed \"Safah Yeterah\" in the city of Lucca in Italy in 1140–1142.",
+   "points": 5
+  },
+  {
+   "question": "Which exegete, active in France in the eleventh century, cites Dunash's words in his commentary on Scripture?",
+   "options": [
+    "Rashi",
+    "Rabbenu Gershom Meor HaGolah",
+    "Rabbi Yosef Bekhor Shor",
+    "Rabbenu Tam"
+   ],
+   "correctIndex": 0,
+   "explanation": "Dunash's influence is evident in Rashi's commentary on Scripture, which cites his words as an anchor for understanding the plain meaning of words.",
+   "points": 5
+  },
+  {
+   "question": "True or false: Rabbenu Tam, Rashi's grandson, ruled in most cases in favor of Dunash against Menachem.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 1,
+   "explanation": "In the \"Sefer HaHakhra'ot\" Rabbenu Tam analyzed the claims of both sides, and in most cases ruled in favor of Menachem ben Saruq.",
+   "points": 3
+  },
+  {
+   "question": "Why did Rabbenu Tam rule in most cases in favor of Menachem?",
+   "options": [
+    "Because of a family relationship between him and Menachem",
+    "Because of his conservative outlook, which preferred the tradition of the text over innovations and reconstructions",
+    "Because Dunash's critiques were written in Arabic and were not understood in France",
+    "Because Hasdai ibn Shaprut asked this of him"
+   ],
+   "correctIndex": 1,
+   "explanation": "Rabbenu Tam came out against those who alter versions of texts on the basis of their own reasoning, and even criticized his brother, the Rashbam. For the same reason he preferred Menachem's conservative grammar.",
+   "points": 8
+  },
+  {
+   "question": "Which grammarian, a student of Menachem, ultimately adopted the principle of comparison with Arabic and established that the Hebrew root is built of three consonants?",
+   "options": [
+    "Yitzchak ben Kaprun",
+    "Yehudi ben Sheshet",
+    "Yehuda Hayyuj",
+    "Yosef Kimchi"
+   ],
+   "correctIndex": 2,
+   "explanation": "It was precisely the student of his great rival who adopted the principle for which Dunash fought, and with its help he established Hebrew grammar on three fixed consonants.",
+   "points": 8
+  },
+  {
+   "question": "What is a \"yated\" (peg) in the meter that Dunash introduced?",
+   "options": [
+    "A closed syllable at the end of a line",
+    "A word of one syllable",
+    "A rhyme that repeats at the end of each stanza",
+    "A mobile shva or a hataf, followed by a full vowel"
+   ],
+   "correctIndex": 3,
+   "explanation": "Dunash equated the mobile shva and the hataf vowels with the short vowels in Arabic. A \"yated\" is a mobile shva or a hataf followed by a vowel, and a \"tenuah\" is an ordinary syllable.",
+   "points": 8
+  }
+ ]
+}
