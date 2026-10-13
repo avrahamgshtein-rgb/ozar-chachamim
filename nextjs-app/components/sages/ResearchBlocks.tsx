@@ -95,6 +95,8 @@ function renderBlock(
   b: ResearchBlock, key: string, ctx: InlineCtx, doc: ParsedResearchDoc,
   locale: Locale, compact: boolean, onCopyLink?: (id: string) => void,
 ): ReactNode {
+  // The block's index, for the read-aloud player to find and light up (lib/speech.ts).
+  const sp = key.slice(key.lastIndexOf('-') + 1)
   switch (b.kind) {
     case 'title':
       // The document header shows the first copy; the repeat adds nothing.
@@ -104,14 +106,14 @@ function renderBlock(
       const Tag = b.level === 2 ? 'h3' : 'h4'
       if (compact) {
         return (
-          <Tag key={key} dir="auto"
+          <Tag key={key} dir="auto" data-speak={sp}
             className={`font-serif font-bold text-ink-50 ${b.level === 2 ? 'mt-5 mb-2 text-[1.05em]' : 'mt-4 mb-1.5 text-[0.98em] text-ink-100'}`}>
             <Inline text={b.text} />
           </Tag>
         )
       }
       return (
-        <Tag key={key} id={b.id} data-toc="" dir="auto"
+        <Tag key={key} id={b.id} data-toc="" data-speak={sp} dir="auto"
           className={`reader-h${b.level} group relative scroll-mt-24 font-serif font-bold text-ink-50 ${
             b.level === 2 ? 'mt-12 mb-4 text-[1.45em] leading-snug' : 'mt-8 mb-3 text-[1.18em] leading-snug text-ink-100'
           }`}>
@@ -131,7 +133,7 @@ function renderBlock(
     case 'paragraph':
       if (b.lead) {
         return (
-          <div key={key} className="reader-lead mb-8 rounded-xl border-s-2 border-gold-500/50 bg-ink-800/40 px-5 py-4">
+          <div key={key} data-speak={sp} className="reader-lead mb-8 rounded-xl border-s-2 border-gold-500/50 bg-ink-800/40 px-5 py-4">
             <p className="mb-1.5 text-[11px] font-sans font-semibold uppercase tracking-widest text-gold-400/80">
               {READER_STRINGS.summary[locale]}
             </p>
@@ -142,14 +144,14 @@ function renderBlock(
         )
       }
       return (
-        <p key={key} dir="auto" className={compact ? 'mb-3' : 'mb-5'}>
+        <p key={key} dir="auto" data-speak={sp} className={compact ? 'mb-3' : 'mb-5'}>
           <Inline text={b.text} ctx={ctx} />
         </p>
       )
 
     case 'quote':
       return (
-        <blockquote key={key} dir="auto"
+        <blockquote key={key} dir="auto" data-speak={sp}
           className="my-5 border-s-2 border-gold-500/40 ps-4 font-serif italic text-ink-100 [font-size:1.03em]">
           <Inline text={b.text} ctx={ctx} />
         </blockquote>
@@ -160,7 +162,7 @@ function renderBlock(
       return (
         <Tag key={key} className={`${compact ? 'mb-3 space-y-1.5' : 'mb-6 space-y-2.5'}`}>
           {b.items.map((it, ii) => (
-            <li key={ii} dir="auto" className="flex gap-2.5">
+            <li key={ii} dir="auto" data-speak={`${sp}.${ii}`} className="flex gap-2.5">
               {it.marker ? (
                 <span className="min-w-[1.6em] flex-shrink-0 font-sans text-[0.9em] tabular-nums text-gold-400/90">{it.marker}</span>
               ) : (
