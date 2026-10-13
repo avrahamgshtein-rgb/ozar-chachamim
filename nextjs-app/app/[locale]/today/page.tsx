@@ -33,7 +33,7 @@ const S = {
   },
   hillula: { he: 'יום ההילולא', en: 'Hillula today', ru: 'День памяти сегодня' },
   daily: { he: 'חכם היום', en: 'Sage of the day', ru: 'Мудрец дня' },
-  diedOn: { he: 'נפטר', en: 'Died on', ru: 'Скончался' },
+  diedOn: { he: 'יום הפטירה:', en: 'Yahrzeit:', ru: 'День кончины:' },
   fromPaper: { he: 'מתוך המחקר', en: 'From the research paper', ru: 'Из исследования' },
   page: { he: 'לעמוד החכם', en: 'Open the page', ru: 'Открыть страницу' },
   read: { he: 'קריאה והאזנה למחקר', en: 'Read or listen', ru: 'Читать или слушать' },
