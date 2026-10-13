@@ -135,8 +135,8 @@ for m in sorted(merged.values(), key=lambda m: (m['type'], int(m['source']), int
     if m['relation']:
         entry['relation'] = ', '.join(sorted(m['relation']))
     entry.update({
-        'papers': sorted({q[0] for q in m['quotes']}, key=int),
         'source_label': label[a], 'target_label': label[b],
+        'quotes': [{'paper': pid, 'quote': q} for pid, q, _ in m['quotes']],
         'evidence_source': ' | '.join(f'מחקר {pid}: {q}' for pid, q, _ in m['quotes']),
     })
     out.append(entry)

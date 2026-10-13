@@ -594,7 +594,7 @@ except FileNotFoundError:
 TS = ('teacher', 'student')
 NOT_A_PERSON = {'נושא/מושג', 'נושא', 'ספר', 'חיבור', 'אירוע היסטורי', 'דמויות'}
 SUPPLEMENTS = ['data-ancient.json', 'data-supplement.json', 'data-supplement-2.json', 'data-research-links.json',
-               'data-catalog-links.json']
+               'data-catalog-links.json', 'data-paper-links.json']
 by_id = {n['id']: n for n in nodes}
 
 def merged_into(i):

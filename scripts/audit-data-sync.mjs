@@ -13,6 +13,7 @@ const supplementalPaths = [
   'data-supplement-2.json',
   'data-research-links.json',
   'data-catalog-links.json',
+  'data-paper-links.json',
 ].map(name => resolve(repoRoot, 'nextjs-app', 'public', name))
 const aliasPath = resolve(repoRoot, 'data', 'sage-id-aliases-2026-07-21.json')
 
