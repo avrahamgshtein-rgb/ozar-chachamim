@@ -29,6 +29,11 @@ export function parseProgress(raw: string): JourneyProgress {
   }
 }
 
+/** Whether the station is stamped in this browser's passport. */
+export function isStationDone(route: RouteKey, n: number): boolean {
+  return parseProgress(readRaw())[route].includes(n)
+}
+
 /** Mark a station done, or undone. Returns whether it is now done. */
 export function toggleStation(route: RouteKey, n: number): boolean {
   const p = parseProgress(readRaw())

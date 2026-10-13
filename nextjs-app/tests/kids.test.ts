@@ -12,6 +12,7 @@ import supplement2 from '../public/data-supplement-2.json'
 import ancient from '../public/data-ancient.json'
 import { KIDS_ROUTES, stationAnchor, stationsOfSage } from '../lib/kidsJourney'
 import { parseProgress } from '../lib/kidsJourneyProgress'
+import { KIDS_QUIZ_LENGTH, kidsQuizUrl, validateQuiz, isTrueFalse, type QuizFile } from '../lib/quiz'
 
 let passed = 0
 let failed = 0
@@ -102,6 +103,24 @@ test('Hebrew acronyms carry gershayim, not a plain quote', () => {
   const text = JSON.stringify(KIDS_ROUTES)
   const bad = text.match(/[א-ת]\\?"[א-ת](?![א-ת])/g) ?? []
   assert.deepEqual(bad, [])
+})
+
+test('every station has its quiz: ten questions, valid, written for that station', () => {
+  const pub = path.join(__dirname, '..', 'public')
+  const files = fs.readdirSync(path.join(pub, 'quiz', 'kids')).filter(f => f.endsWith('.json'))
+  assert.equal(files.length, 15, 'one quiz per station, nothing else')
+  for (const r of KIDS_ROUTES) {
+    for (const s of r.stations) {
+      const file = path.join(pub, kidsQuizUrl(r.key, s.n))
+      assert.ok(fs.existsSync(file), `${r.key} ${s.n}: no quiz`)
+      const quiz = JSON.parse(fs.readFileSync(file, 'utf8')) as QuizFile
+      assert.deepEqual(validateQuiz(quiz, KIDS_QUIZ_LENGTH), [], `${r.key} ${s.n}`)
+      assert.equal(quiz.label, s.title, `${r.key} ${s.n}: the quiz was written for another station`)
+      for (const q of quiz.questions.filter(isTrueFalse)) assert.deepEqual(q.options, ['נכון', 'לא נכון'])
+      const tf = quiz.questions.filter(isTrueFalse).length
+      assert.ok(tf >= 2 && tf <= 4, `${r.key} ${s.n}: ${tf} true/false questions`)
+    }
+  }
 })
 
 test('the passport survives whatever the browser kept', () => {

@@ -25,6 +25,8 @@ export interface QuizFile {
 
 export const QUIZ_TOTAL_POINTS = 100
 export const QUIZ_LENGTH = 20
+/** A station quiz of the kids' journey is shorter. */
+export const KIDS_QUIZ_LENGTH = 10
 export const MIN_OPTIONS = 2
 export const MAX_OPTIONS = 4
 
@@ -48,14 +50,19 @@ export function quizUrl(sageId: string, locale: Locale): string {
   return `/quiz/${encodeURIComponent(sageId)}${locale === 'he' ? '' : `.${locale}`}.json`
 }
 
-/** Every rule a quiz file must keep; an empty list means it is valid. */
-export function validateQuiz(quiz: unknown): string[] {
+/** Where a kids' station quiz is served (beside the sage quizzes, so the service worker keeps it fresh). */
+export function kidsQuizUrl(route: string, n: number): string {
+  return `/quiz/kids/${route}-${n}.json`
+}
+
+/** Every rule a quiz file must keep; an empty list means it is valid. `length`: the sage quiz's 20, or the kids' 10. */
+export function validateQuiz(quiz: unknown, length: number = QUIZ_LENGTH): string[] {
   const errors: string[] = []
   const q = quiz as Partial<QuizFile> | null
   if (!q || typeof q !== 'object') return ['not an object']
   if (typeof q.label !== 'string' || !q.label.trim()) errors.push('label is missing')
   if (!Array.isArray(q.questions)) return [...errors, 'questions is not a list']
-  if (q.questions.length !== QUIZ_LENGTH) errors.push(`${q.questions.length} questions, expected ${QUIZ_LENGTH}`)
+  if (q.questions.length !== length) errors.push(`${q.questions.length} questions, expected ${length}`)
   let total = 0
   const seen = new Set<string>()
   q.questions.forEach((item, i) => {
