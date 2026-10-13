@@ -8,6 +8,7 @@ import { KIDS_ROUTES, stationAnchor, type JourneyRoute, type JourneyStation } fr
 import { SiteTopBar } from '@/components/layout/SiteTopBar'
 import { KidsPassport } from '@/components/kids/KidsPassport'
 import { StationDone } from '@/components/kids/StationDone'
+import { StationQuiz } from '@/components/kids/StationQuiz'
 
 // The children's track: "היכן החכמה מתגוררת", the owner's two books for ages 9–12, as a journey through the
 // site. Hebrew only, like the books; the English and Russian addresses show the same page with a note, and
@@ -183,6 +184,10 @@ function Station({ route, station: s }: { route: JourneyRoute; station: JourneyS
                 </ol>
               </details>
             )}
+
+            <div className="mt-5">
+              <StationQuiz route={route.key} n={s.n} />
+            </div>
 
             <div className="mt-5">
               <StationDone route={route.key} n={s.n} object={s.object} />
