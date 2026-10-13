@@ -7,7 +7,7 @@
  *   /_next/static/*            cache first (file names carry a hash, so they never go stale)
  *   data*.json, i18n, research, quiz network first (an edited dataset shows at once), the saved copy when
  *                              offline or when the network takes more than SLOW_MS
- *   images, icons              stale-while-revalidate (shown at once, refreshed in the background)
+ *   images, icons, kids        stale-while-revalidate (shown at once, refreshed in the background)
  *   pages (navigations)        network first, the last good copy when offline, /offline.html at last
  */
 const VERSION = 'v1'
@@ -131,7 +131,7 @@ self.addEventListener('fetch', event => {
     event.respondWith(networkFirst(event, DATA))
   } else if (path.startsWith('/research/') || path.startsWith('/quiz/')) {
     event.respondWith(networkFirst(event, RESEARCH, MAX_RESEARCH))
-  } else if (/^\/(icons|images)\//.test(path)) {
+  } else if (/^\/(icons|images|kids)\//.test(path)) {
     // not hashed, so they can change in place: show the saved copy and refresh it
     event.respondWith(staleWhileRevalidate(event, DATA))
   }
