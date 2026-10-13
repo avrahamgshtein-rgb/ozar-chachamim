@@ -1,0 +1,233 @@
+{
+ "label": "רבי אליעזר הגדול (רבי אליעזר בן הורקנוס)",
+ "questions": [
+  {
+   "question": "What did Rabbi Eliezer do when his brothers charged him with plowing rocky, hard ground?",
+   "options": [
+    "He sat and wept over the plow, and finally fled to study in Jerusalem",
+    "He left home and engaged in the grain trade",
+    "He accepted the work in silence for many years",
+    "He hired workers in his place at his own expense"
+   ],
+   "correctIndex": 0,
+   "explanation": "He grew up as a farmhand without a Torah education. Out of longing for study, and after guidance from Elijah the Prophet, he fled to the yeshiva of Rabban Yochanan ben Zakkai.",
+   "points": 5
+  },
+  {
+   "question": "According to the traditions, how long did Rabbi Eliezer go without tasting anything when he arrived in Jerusalem?",
+   "options": [
+    "One day",
+    "Two Sabbaths, about two weeks",
+    "Forty days",
+    "A whole year"
+   ],
+   "correctIndex": 1,
+   "explanation": "Rabban Yochanan ben Zakkai noticed the smell of his mouth arising from hunger. Despite his poverty he persisted in his studies for three consecutive years.",
+   "points": 5
+  },
+  {
+   "question": "True or false: Hyrcanus went up to Jerusalem in order to give his son all his property.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 1,
+   "explanation": "He went up in order to disinherit his son of his property. Only when he found him expounding before the great men of Jerusalem did he retract his vow.",
+   "points": 3
+  },
+  {
+   "question": "What did Rabbi Eliezer ask for when his father offered him all his property?",
+   "options": [
+    "All the property, in order to dedicate it to the yeshiva",
+    "Nothing, because he gave up the inheritance",
+    "Only a portion equal to that of his brothers",
+    "Only the rocky land"
+   ],
+   "correctIndex": 2,
+   "explanation": "He refused to dispossess his brothers, even though they were the ones who had informed on him to their father.",
+   "points": 5
+  },
+  {
+   "question": "With what image did Rabban Yochanan ben Zakkai describe Rabbi Eliezer?",
+   "options": [
+    "An ever-strengthening spring",
+    "A threefold cord",
+    "One who uproots mountains",
+    "A plastered cistern that does not lose a drop"
+   ],
+   "correctIndex": 3,
+   "explanation": "The image describes a living archive of the tradition of the generations: he preserves the halakhot as he received them, without change, subtraction or addition.",
+   "points": 5
+  },
+  {
+   "question": "True or false: According to his approach, a sage may not rule a halakha that he did not hear from his teacher.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 0,
+   "explanation": "This approach rejects the development of halakha on the basis of new analogies or pilpul.",
+   "points": 3
+  },
+  {
+   "question": "Who was Rabbi Eliezer's wife?",
+   "options": [
+    "Imma Shalom, sister of Rabban Gamliel of Yavneh",
+    "Bruriah, daughter of Rabbi Chananiah ben Teradion",
+    "Yalta, wife of Rav Nachman",
+    "Rachel, daughter of Kalba Savua"
+   ],
+   "correctIndex": 0,
+   "explanation": "The marriage tied him directly to the patriarchal dynasty and to the central leadership of Yavneh.",
+   "points": 5
+  },
+  {
+   "question": "True or false: In Avot, Rabbi Eliezer said: \"Warm yourself by the fire of the sages, and do not beware of their coals.\"",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 1,
+   "explanation": "He warned: \"And beware of their coals, lest you be burned,\" for their bite is the bite of a fox, and all their words are like fiery coals.",
+   "points": 3
+  },
+  {
+   "question": "What was Rabbi Eliezer's position in the controversy over the Oven of Akhnai?",
+   "options": [
+    "The oven is impure, because it serves as an oven in every respect",
+    "The oven is pure, because the sand between the segments separates them",
+    "The oven must be broken and rebuilt",
+    "No ruling should be made until Elijah comes"
+   ],
+   "correctIndex": 1,
+   "explanation": "In his view the oven is not a whole vessel but separate segments attached to the ground, and therefore it does not become impure. The Sages declared it impure.",
+   "points": 5
+  },
+  {
+   "question": "What signs did Rabbi Eliezer bring from heaven to prove that he was right?",
+   "options": [
+    "An earthquake, lightning and rain in the summer",
+    "Fire from heaven that consumed the oven",
+    "A carob tree that was uprooted, water that flowed backward, and the walls of the study hall that began to tilt and fall",
+    "The sun standing still and a river drying up"
+   ],
+   "correctIndex": 2,
+   "explanation": "The Sages, led by Rabbi Yehoshua ben Hananiah, refused to recognize miracles as a means of halakhic decision.",
+   "points": 5
+  },
+  {
+   "question": "What did Rabbi Yehoshua answer the heavenly voice that said \"The halakha follows him in every place\"?",
+   "options": [
+    "\"We will do and we will hear\"",
+    "\"The halakha follows the House of Hillel\"",
+    "\"We have only the words of our teacher\"",
+    "\"It is not in heaven\""
+   ],
+   "correctIndex": 3,
+   "explanation": "Based on Deuteronomy 30:12. The Sages interpreted \"follow the majority\" as a basic constitutional law: the decision is given to the majority of the Sages.",
+   "points": 5
+  },
+  {
+   "question": "How did Rabbi Eliezer learn of his ban?",
+   "options": [
+    "Rabbi Akiva, dressed in black, sat at a distance from him and said: \"It seems to me that my colleagues are separating from you\"",
+    "Rabban Gamliel sent him a letter",
+    "Rabbi Yehoshua announced it in the study hall in Lod",
+    "A heavenly voice informed him"
+   ],
+   "correctIndex": 0,
+   "explanation": "Many avoided approaching him because of his greatness, and Rabbi Akiva, his outstanding disciple, volunteered to inform him gently.",
+   "points": 5
+  },
+  {
+   "question": "True or false: When he said to the Roman judge \"I trust the judge,\" Rabbi Eliezer meant the judge himself.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 1,
+   "explanation": "He meant the Judge in heaven, out of acceptance of the judgment. The governor thought that he meant him, and acquitted him.",
+   "points": 3
+  },
+  {
+   "question": "What did Yaakov of Kfar Sechania ask Rabbi Eliezer in the upper marketplace of Sepphoris?",
+   "options": [
+    "Whether it is permitted to pray in Greek",
+    "Whether it is permitted to build a privy for the High Priest from the hire of a prostitute",
+    "Whether it is permitted to offer sacrifices after the destruction",
+    "Whether it is permitted to marry a gentile woman"
+   ],
+   "correctIndex": 1,
+   "explanation": "Rabbi Eliezer enjoyed the interpretation \"For from the hire of a prostitute she gathered them, and to the hire of a prostitute they shall return,\" and thereby transgressed \"Keep your way far from her.\"",
+   "points": 5
+  },
+  {
+   "question": "True or false: Students of Torah through the generations, such as Rashi and the Rambam, attributed \"Pirkei de-Rabbi Eliezer\" to Rabbi Eliezer ben Hyrcanus.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 0,
+   "explanation": "From Rav Amram Gaon to the Ramban the work was attributed to the Tanna, although modern research dates it later.",
+   "points": 3
+  },
+  {
+   "question": "True or false: Rabbi Eliezer died while saying the word \"pure.\"",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 0,
+   "explanation": "During his final illness in Caesarea the Sages asked him about impurity and purity. After his death the ban was lifted, and Rabbi Akiva eulogized him with bitter weeping.",
+   "points": 3
+  },
+  {
+   "question": "According to Rabbi Eliezer's homily, why is \"with all your might\" stated after \"with all your soul\"?",
+   "options": [
+    "Because money is more important than the body to every person",
+    "Because money suffices to atone for idolatry",
+    "Because there is a person whose money is dearer to him than his body",
+    "Because one who gave his money is exempt from giving up his life"
+   ],
+   "correctIndex": 2,
+   "explanation": "One whose body is dear to him was commanded \"with all your soul,\" and one whose money is dear to him \"with all your might\": one must give both body and money and not commit idolatry.",
+   "points": 8
+  },
+  {
+   "question": "According to the research, how are his words \"I never said anything that I did not hear\" reconciled with homilies \"that no ear had heard\"?",
+   "options": [
+    "In his youth he innovated, and in his old age he retracted",
+    "He expounded his novel ideas only before his disciples",
+    "The novel ideas were those of Rabban Yochanan ben Zakkai, and he merely transmitted them",
+    "Innovation, in his view, is the discovery of an ancient truth from Sinai that had been forgotten, not a human creation"
+   ],
+   "correctIndex": 3,
+   "explanation": "The sage, in his conception, is not a legislator but a clean conduit that restores divine knowledge that had been hidden from the people.",
+   "points": 8
+  },
+  {
+   "question": "What principle did the Sages establish in the controversy over the Oven of Akhnai, according to the research?",
+   "options": [
+    "Since the giving of the Torah the decision is in the hands of the majority of the Sages, and no heavenly voice or miracle overrides it",
+    "The halakha follows the one who brings signs from heaven",
+    "In an evenly balanced dispute the Nasi decides",
+    "In the laws of impurity the halakha follows the House of Shammai"
+   ],
+   "correctIndex": 0,
+   "explanation": "Rabbi Eliezer saw halakha as a fixed divine truth; the Sages gave the study hall the authority to shape halakha.",
+   "points": 8
+  },
+  {
+   "question": "What did the scholar Zunz prove about \"Pirkei de-Rabbi Eliezer\"?",
+   "options": [
+    "That Rabbi Eliezer wrote it in Lod in his old age",
+    "That the work was written in the eighth century and contains allusions to Islamic rule",
+    "That it was written in Babylonia in the days of Rav Ashi",
+    "That it was written in Spain in the twelfth century"
+   ],
+   "correctIndex": 1,
+   "explanation": "Among the evidence: criticism of the rule of the Ishmaelites and a mention of the Dome of the Rock. Nevertheless, the midrash preserves ancient traditions of the Land of Israel.",
+   "points": 8
+  }
+ ]
+}

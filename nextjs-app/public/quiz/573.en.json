@@ -1,0 +1,233 @@
+{
+ "label": "מהר\"י בירב (רבי יעקב בירב)",
+ "questions": [
+  {
+   "question": "True or false: Rabbi Jacob Berab was born in the Kingdom of Castile.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 0,
+   "explanation": "He was born in 1474 in Maqueda, near Toledo, in the heart of Castile.",
+   "points": 3
+  },
+  {
+   "question": "With whom did Maharyb Berab study in his youth?",
+   "options": [
+    "Rabbi Yitzchak Aboab, in his yeshiva in Guadalajara",
+    "Rabbi Yitzchak Abarbanel, in Lisbon",
+    "The Ralbach, in Jerusalem",
+    "Rabbi Yosef Karo, in Safed"
+   ],
+   "correctIndex": 0,
+   "explanation": "Rabbi Yitzchak Aboab, the \"last of the Geonim\" of Castile; Berab saw himself as the torchbearer of the Spanish Torah world that had been destroyed.",
+   "points": 5
+  },
+  {
+   "question": "How old was Berab when he went into exile in the expulsion from Spain?",
+   "options": [
+    "8",
+    "18",
+    "30",
+    "50"
+   ],
+   "correctIndex": 1,
+   "explanation": "In the summer of 1492 the young Berab went into exile, and yet he was immediately appointed rabbi of a community.",
+   "points": 5
+  },
+  {
+   "question": "To which city did he come first after the expulsion, where he was appointed rabbi of the community?",
+   "options": [
+    "Constantinople",
+    "Venice",
+    "Fez, in Morocco",
+    "Tunis"
+   ],
+   "correctIndex": 2,
+   "explanation": "An appointment at such a young age attests to his early genius. From there he continued to Algiers and to Egypt.",
+   "points": 5
+  },
+  {
+   "question": "What did Berab do for a living in Egypt?",
+   "options": [
+    "Medicine",
+    "Printing books",
+    "Banking for the government",
+    "Trade in raisins and spices"
+   ],
+   "correctIndex": 3,
+   "explanation": "His economic independence from commerce was one of the sources of his authority in Safed.",
+   "points": 5
+  },
+  {
+   "question": "What was the \"Beit HaVa'ad\" that Berab founded in Safed?",
+   "options": [
+    "A supreme body of the sages of all the congregations, a beit din and a council for halakha and leadership",
+    "A synagogue for the Anusim only",
+    "A printing house for Kabbalistic books",
+    "A yeshiva for the children of the exiles"
+   ],
+   "correctIndex": 0,
+   "explanation": "He sought to unite the many sages who flowed into Safed from all over the Diaspora, and he also headed the \"Great Yeshiva.\"",
+   "points": 5
+  },
+  {
+   "question": "True or false: Maharyb Berab initiated the renewal of semikhah in Jerusalem.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 1,
+   "explanation": "He renewed semikhah in Safed, claiming that most of the sages of the Land of Israel were concentrated there. The sages of Jerusalem objected.",
+   "points": 3
+  },
+  {
+   "question": "In which year did Berab try to renew semikhah?",
+   "options": [
+    "1492",
+    "1538",
+    "1517",
+    "1567"
+   ],
+   "correctIndex": 1,
+   "explanation": "In the Hebrew year 5298. This was one of the most significant attempts in the history of Israel to change the legal structure of the nation.",
+   "points": 5
+  },
+  {
+   "question": "Whose position did Berab base himself on in renewing semikhah?",
+   "options": [
+    "The Ramban: semikhah will be renewed only by a prophet",
+    "Rashi: semikhah never ceased",
+    "The Rambam: the agreement of all the sages of the Land of Israel renews semikhah",
+    "The Rif: any rabbi may ordain"
+   ],
+   "correctIndex": 2,
+   "explanation": "According to the Rambam, a judge whom all the sages of the Land of Israel ordained unanimously is considered ordained and may ordain others.",
+   "points": 5
+  },
+  {
+   "question": "What urgent need did Berab seek to resolve by renewing semikhah?",
+   "options": [
+    "Appointing a chief rabbi for the Ottoman Empire",
+    "Building the Temple",
+    "Collecting taxes from the communities",
+    "Atonement for the Anusim: those liable to karet who were lashed are released from their karet"
+   ],
+   "correctIndex": 3,
+   "explanation": "Such lashes can be administered only by a beit din of ordained judges, and Berab wanted to give the Anusim who had returned full atonement and peace of mind.",
+   "points": 5
+  },
+  {
+   "question": "True or false: The sages of Jerusalem, headed by the Ralbach, supported the semikhah initiative.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 1,
+   "explanation": "The Ralbach objected sharply: the sages of Jerusalem were not asked and did not agree, and the Rambam required the agreement of all.",
+   "points": 3
+  },
+  {
+   "question": "Where was Berab forced to go as a result of the controversy?",
+   "options": [
+    "To Damascus",
+    "To Egypt",
+    "To Constantinople",
+    "To Fez"
+   ],
+   "correctIndex": 0,
+   "explanation": "He feared denunciations to the Ottoman authorities, but before leaving he ordained four of his students, among them Rabbi Yosef Karo and the Mabit.",
+   "points": 5
+  },
+  {
+   "question": "True or false: Rabbi Yosef Karo regarded Maharyb Berab as his preeminent teacher.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 0,
+   "explanation": "In the book \"Maggid Meisharim\" Karo is told that he merited to be ordained by virtue of his self-sacrifice for the renewal of the crown of semikhah.",
+   "points": 3
+  },
+  {
+   "question": "How did Rabbi Yosef Karo realize his teacher's vision of unity in a different way?",
+   "options": [
+    "By establishing the Sanhedrin in Jerusalem",
+    "By writing the \"Shulchan Arukh,\" a code for all the communities of Israel",
+    "By founding a yeshiva in Constantinople",
+    "By printing his teacher's novellae on the entire Talmud"
+   ],
+   "correctIndex": 1,
+   "explanation": "The Sanhedrin was not established, but the Shulchan Arukh served as a kind of \"substitute for authority\" and united the people halakhically.",
+   "points": 5
+  },
+  {
+   "question": "True or false: All of Berab's commentaries on the Talmud were printed and have reached us.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 1,
+   "explanation": "Of all his work on the Talmud, only the commentary on tractate Kiddushin has reached us.",
+   "points": 3
+  },
+  {
+   "question": "True or false: Rabbi Moshe Alshich, who was ordained by Rabbi Yosef Karo, ordained Rabbi Chaim Vital.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 0,
+   "explanation": "In this way Berab's chain of semikhah became linked to the Kabbalah of Safed and to the preeminent student of the Ari.",
+   "points": 3
+  },
+  {
+   "question": "What argument did the Ralbach raise against the renewal of semikhah?",
+   "options": [
+    "Semikhah is forbidden under foreign rule",
+    "Berab is not worthy of being ordained",
+    "The Rambam himself wrote that \"the matter requires a decision\"",
+    "The Anusim do not need atonement"
+   ],
+   "correctIndex": 2,
+   "explanation": "This implies that the Rambam himself was not certain. He also argued that the Ramban and others hold that semikhah will be renewed only by a prophet or with the coming of the Messiah.",
+   "points": 8
+  },
+  {
+   "question": "What distinguished Berab's glosses on the \"Mishneh Torah\"?",
+   "options": [
+    "They translated the book into Spanish",
+    "They disagreed with the Rambam in every chapter",
+    "They abridged the book for the use of judges",
+    "They were written on the parts that the \"Maggid Mishneh\" did not explain, in order to complete it"
+   ],
+   "correctIndex": 3,
+   "explanation": "This was the first attempt to give the Rambam's code a comprehensive explanation, and in it his admiration for the Rambam, the foundation of the semikhah initiative, is evident.",
+   "points": 8
+  },
+  {
+   "question": "What did Rabbi Israel of Shklov try to do in the 1830s?",
+   "options": [
+    "To renew semikhah by means of a letter to the Ten Lost Tribes, in the hope that it had been preserved there",
+    "To gather all the sages of Safed for a single ordination",
+    "To annul the semikhah that Berab had renewed",
+    "To print the semikhah pamphlets"
+   ],
+   "correctIndex": 0,
+   "explanation": "He, one of the disciples of the Gra, sought to bypass the obstacles raised in the controversy between Berab and the Ralbach.",
+   "points": 8
+  },
+  {
+   "question": "What did Rabbi Yehuda Leib Maimon, the first Minister of Religions, claim in the wake of Berab's approach?",
+   "options": [
+    "That Berab's approach was finally rejected",
+    "That in the State of Israel the obligation to renew the central authority is stronger than ever",
+    "That semikhah can be renewed only with the coming of the Messiah",
+    "That the Shulchan Arukh makes the Sanhedrin superfluous"
+   ],
+   "correctIndex": 1,
+   "explanation": "He saw in the State the fulfillment of the conditions that Berab sought: the return of the people to its land and the concentration of its sages in one place.",
+   "points": 8
+  }
+ ]
+}

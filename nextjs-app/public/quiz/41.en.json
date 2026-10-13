@@ -1,0 +1,233 @@
+{
+ "label": "הרמב\"ם",
+ "questions": [
+  {
+   "question": "In which city was the Rambam born?",
+   "options": [
+    "Fez, in Morocco",
+    "Córdoba, in Spain",
+    "Toledo, in Spain",
+    "Alexandria, in Egypt"
+   ],
+   "correctIndex": 1,
+   "explanation": "The Rambam was born in Córdoba in 1135 (some suggest 1138), into a family of judges and communal leaders. The rise of the Almohads forced his family to wander for many years.",
+   "points": 5
+  },
+  {
+   "question": "What is the Rambam's great halakhic work, which sums up all the laws of the Oral Torah?",
+   "options": [
+    "Shulchan Arukh",
+    "Sefer HaIkkarim",
+    "Mishneh Torah",
+    "Halakhot Gedolot"
+   ],
+   "correctIndex": 2,
+   "explanation": "The \"Mishneh Torah\" sums up all the laws, including those that do not apply when there is no Temple, in clear and orderly Mishnaic language, so that a person could know the laws of the Torah without delving into the thicket of the Talmud.",
+   "points": 5
+  },
+  {
+   "question": "True or false: The Rambam was also a physician, and served as a physician in the court of Saladin.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 0,
+   "explanation": "The Rambam practiced medicine in Egypt and rose to the position of physician in the court of Saladin and his son al-Afdal. In his medical writings he emphasized preventive medicine.",
+   "points": 3
+  },
+  {
+   "question": "Why is the \"Mishneh Torah\" also called the \"Strong Hand\" (Yad HaHazakah)?",
+   "options": [
+    "Because it was meant to strengthen the hands of the judges",
+    "Because it was written in the Rambam's own handwriting",
+    "Because it ends with the Laws of Kings and Wars",
+    "Because it is built of 14 books, matching the numerical value of \"yad\""
+   ],
+   "correctIndex": 3,
+   "explanation": "The work consists of fourteen books, from the Book of Knowledge to the Book of Judges, hence its name \"Yad HaHazakah\".",
+   "points": 5
+  },
+  {
+   "question": "True or false: In the \"Mishneh Torah\" the Rambam cited the names of the Amoraim and their disagreements before each ruling.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 1,
+   "explanation": "The Rambam omitted from the \"Mishneh Torah\" the names of the Amoraim and the disagreements, in order to give a clear, final ruling.",
+   "points": 3
+  },
+  {
+   "question": "In what language were the \"Commentary on the Mishnah\" and the \"Guide of the Perplexed\" written?",
+   "options": [
+    "Judeo-Arabic",
+    "Hebrew in the language of the Mishnah",
+    "Aramaic",
+    "Latin"
+   ],
+   "correctIndex": 0,
+   "explanation": "Both works were written in Judeo-Arabic. The \"Guide of the Perplexed\" was originally called \"Dalalat al-Ha'irin,\" whereas the \"Mishneh Torah\" was written in Hebrew.",
+   "points": 5
+  },
+  {
+   "question": "For which reader was the \"Guide of the Perplexed\" intended?",
+   "options": [
+    "For children at the start of their studies",
+    "For the educated believer, perplexed between the truths of the Torah and the proofs of philosophy",
+    "For judges who need a quick ruling",
+    "For physicians who wanted to study medicine"
+   ],
+   "correctIndex": 1,
+   "explanation": "The book was intended for the believer who finds no rest between the truths of the Torah and Aristotelian philosophy. The Rambam testified that he had concealed \"secrets\" in it that only the thorough student would decipher.",
+   "points": 5
+  },
+  {
+   "question": "True or false: The Rambam formulated the thirteen principles of faith in his Commentary on the Mishnah, in the introduction to the chapter \"Helek\" in tractate Sanhedrin.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 0,
+   "explanation": "In the introduction to the chapter \"Helek,\" the Rambam formulated thirteen principles, among them the existence of God, His unity, the prophecy of Moses, the Torah from Heaven, the coming of the Messiah and the resurrection of the dead.",
+   "points": 3
+  },
+  {
+   "question": "Through which texts did the thirteen principles enter the prayer book?",
+   "options": [
+    "\"Adon Olam\" and \"Lekha Dodi\"",
+    "\"Anim Zemirot\" and \"Shir HaYichud\"",
+    "\"Akdamut\" and \"Yah Ribon\"",
+    "The hymn \"Yigdal\" and the formula \"Ani Ma'amin\""
+   ],
+   "correctIndex": 3,
+   "explanation": "Despite the criticism of them, the thirteen principles were accepted in all the communities of Israel and entered the prayer book through the hymn \"Yigdal\" and the formula \"Ani Ma'amin.\"",
+   "points": 5
+  },
+  {
+   "question": "What did the Rambam combat in the \"Guide of the Perplexed\"?",
+   "options": [
+    "The study of Aristotle's philosophy",
+    "Corporealism, that is, the view that God has a body",
+    "The study of natural science",
+    "Ruling on halakha without sources"
+   ],
+   "correctIndex": 1,
+   "explanation": "The Rambam presented God as a wholly abstract being, who cannot be grasped by the senses, and fought the tendency to anthropomorphize the Creator.",
+   "points": 5
+  },
+  {
+   "question": "Which work did the Rambam write, before the \"Mishneh Torah,\" in order to establish the count of the 613 commandments?",
+   "options": [
+    "The Book of Commandments",
+    "Eight Chapters",
+    "Epistle to Yemen",
+    "Regimen of Health"
+   ],
+   "correctIndex": 0,
+   "explanation": "In the \"Book of Commandments\" the Rambam established fourteen \"roots\" for the count of the commandments, and criticized earlier counters of the commandments, such as the author of the \"Halakhot Gedolot.\"",
+   "points": 5
+  },
+  {
+   "question": "Which event in his life led the Rambam to practice medicine as a profession?",
+   "options": [
+    "A severe illness he suffered in his youth",
+    "His appointment as rabbi of the Cairo community",
+    "The drowning of his brother David at sea, which placed the family's livelihood upon him",
+    "Saladin's request that he teach his sons"
+   ],
+   "correctIndex": 2,
+   "explanation": "His brother David drowned at sea, and the disaster deeply affected the Rambam's spirit and placed upon him the burden of supporting the family.",
+   "points": 5
+  },
+  {
+   "question": "True or false: The \"Mishneh Torah\" opens with the Laws of Shabbat and the festivals.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 1,
+   "explanation": "The \"Mishneh Torah\" opens with the \"Book of Knowledge,\" which deals with the foundations of faith, and ends with the Laws of Kings and Wars and the vision of redemption. The Laws of Shabbat and the festivals are found in the \"Book of Seasons.\"",
+   "points": 3
+  },
+  {
+   "question": "What does the work \"Eight Chapters\" contain?",
+   "options": [
+    "An introduction to the order Zeraim on the chain of transmission",
+    "An introduction to tractate Avot, dealing with the structure of the soul and with ethics",
+    "Eight books from the \"Mishneh Torah\"",
+    "A medical work on eight diseases"
+   ],
+   "correctIndex": 1,
+   "explanation": "\"Eight Chapters\" is the Rambam's introduction to tractate Avot in the Commentary on the Mishnah. His long introductions to the tractates serve as independent works in Jewish thought.",
+   "points": 5
+  },
+  {
+   "question": "True or false: According to the Rambam, one who errs about one of the principles of faith because of a mistaken understanding of verses is not considered a heretic.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 1,
+   "explanation": "The Rambam ruled that even one who errs about one of the principles, for example one who believes that God has a body because of a mistaken understanding of verses, is considered a heretic. This approach aroused great controversy.",
+   "points": 3
+  },
+  {
+   "question": "True or false: Rabbi Yosef Karo based his rulings in the Shulchan Arukh on three \"pillars of instruction,\" and the Rambam is one of them.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 0,
+   "explanation": "The three pillars of instruction are the Rif, the Rambam and the Rosh. In many cases the language of the Shulchan Arukh copies the rulings of the Rambam.",
+   "points": 3
+  },
+  {
+   "question": "What did the Rambam claim about the relationship between faith and reason?",
+   "options": [
+    "That in case of a contradiction one must give up reason",
+    "That reason is meant for this world and faith for the World to Come",
+    "That there is no contradiction between them, and that the Torah speaks in metaphorical language in order to make profound truths accessible",
+    "That philosophy is forbidden to study until the age of forty"
+   ],
+   "correctIndex": 2,
+   "explanation": "According to the Rambam, \"the Torah speaks in the language of human beings\": the Torah speaks in borrowed terms in order to make scientific and metaphysical truths accessible to every person.",
+   "points": 8
+  },
+  {
+   "question": "According to the \"First Root\" in the Book of Commandments, what is not to be counted among the 613 commandments?",
+   "options": [
+    "Rabbinic commandments",
+    "Commandments dependent on the Land",
+    "Commandments between one person and another",
+    "Time-bound positive commandments"
+   ],
+   "correctIndex": 0,
+   "explanation": "The roots made it necessary to distinguish between Torah law and rabbinic law: the first root excludes rabbinic commandments from the count, and the third counts only commandments that apply for all generations.",
+   "points": 8
+  },
+  {
+   "question": "Why did the Rambam regard maintaining the health of the body as part of the service of God?",
+   "options": [
+    "Because illness is always a punishment for sin",
+    "Because a sick person cannot understand the truths of the Creator",
+    "Because medicine is an honorable livelihood for a Torah scholar",
+    "Because the Torah forbids the use of medicines"
+   ],
+   "correctIndex": 1,
+   "explanation": "The Rambam regarded medicine as a tool for attaining intellectual and spiritual perfection. He emphasized physical activity, proper nutrition and clean air, and warned against excessive use of medicines.",
+   "points": 8
+  },
+  {
+   "question": "What did the opponents of the \"Mishneh Torah,\" foremost among them the Raavad, fear?",
+   "options": [
+    "That the book does not include the laws that do not apply in the present time",
+    "That the book was written in Arabic and would not be understood in Christian lands",
+    "That the Rambam was more lenient in the laws of Shabbat than his predecessors",
+    "That the omission of the sources would lead to the neglect of Talmud study and to errors in ruling"
+   ],
+   "correctIndex": 3,
+   "explanation": "The sages of Ashkenaz and France feared the omission of the sources. Nevertheless, the Raavad, despite his sharp critical glosses, valued the work, and his words became part of the study of the Rambam for generations.",
+   "points": 8
+  }
+ ]
+}

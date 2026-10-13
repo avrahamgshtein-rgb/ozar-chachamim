@@ -1,0 +1,233 @@
+{
+ "label": "ילתא",
+ "questions": [
+  {
+   "question": "In which city was Yalta born and raised?",
+   "options": [
+    "Nehardea",
+    "Pumbedita",
+    "Sura",
+    "Mechoza"
+   ],
+   "correctIndex": 0,
+   "explanation": "Nehardea, a flourishing Jewish center on the banks of the Euphrates, was destroyed in 259 in the revolt of Papa bar Netzer.",
+   "points": 5
+  },
+  {
+   "question": "True or false: Yalta was the wife of Rav Nachman.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 0,
+   "explanation": "Rav Nachman was a young orphan, the son of Rav Yaakov, a scribe and judge in the court of Shmuel.",
+   "points": 3
+  },
+  {
+   "question": "What status did Rav Nachman acquire through his marriage to Yalta?",
+   "options": [
+    "Head of the yeshiva of Sura",
+    "\"Chatna de-vei nesiah,\" son-in-law of the house of the Exilarch",
+    "The Exilarch himself",
+    "A judge in the court of Rabbi Yochanan"
+   ],
+   "correctIndex": 1,
+   "explanation": "The status gave him great political and legal power and exceptional wealth.",
+   "points": 5
+  },
+  {
+   "question": "Which rule did Yalta formulate in her conversation with Rav Nachman (Chullin 109b)?",
+   "options": [
+    "\"Whoever forbids himself [things] shall be called holy\"",
+    "\"In a doubt concerning a rabbinic law, rule leniently\"",
+    "\"Everything the Merciful One has forbidden us, He has permitted us its equivalent\"",
+    "\"Everything follows custom\""
+   ],
+   "correctIndex": 2,
+   "explanation": "For everything that the Torah forbade, it permitted something similar to it in taste, in eating and in marital relations.",
+   "points": 5
+  },
+  {
+   "question": "True or false: According to Yalta, the Torah is meant to prevent a person from enjoying the pleasures of this world.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 1,
+   "explanation": "In her view the Torah does not suppress pleasure but steers it toward the permitted. This is a response to ascetic approaches.",
+   "points": 3
+  },
+  {
+   "question": "What taste did Yalta ask to taste, and what did Rav Nachman instruct his cooks?",
+   "options": [
+    "The taste of libation wine: to pour her cooked wine",
+    "The taste of a Gentile's bread: to bake her bread in his house",
+    "The taste of terumah: to bring her challah",
+    "The taste of meat with milk: to roast her an udder"
+   ],
+   "correctIndex": 3,
+   "explanation": "The udder contains meat and absorbed milk, and may be eaten when it is torn and roasted.",
+   "points": 5
+  },
+  {
+   "question": "On what did Ulla base his refusal to give Yalta from the cup of blessing?",
+   "options": [
+    "\"The fruit of a woman's womb is blessed from the fruit of a man's womb\"",
+    "That a woman may not drink wine",
+    "That the cup had already been drunk",
+    "That Yalta did not hear the blessing"
+   ],
+   "correctIndex": 0,
+   "explanation": "So, according to him, Rabbi Yochanan and Rabbi Natan ruled: \"And He will bless the fruit of your womb,\" and not \"the fruit of her womb.\"",
+   "points": 5
+  },
+  {
+   "question": "True or false: When Ulla refused, Yalta smashed four hundred barrels of wine.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 0,
+   "explanation": "She rose in anger (\"bizihara\") and went down to the wine cellar. According to the research, this was a demonstrative act and not a fit of rage.",
+   "points": 3
+  },
+  {
+   "question": "What did Yalta reply to Ulla, who sent her the message that \"all the wine in the barrel is a cup of blessing\"?",
+   "options": [
+    "\"There is no wisdom for a woman except at the spindle\"",
+    "\"From gathered words, and from rags, lice\"",
+    "\"Everything the Merciful One has forbidden us, He has permitted us its equivalent\"",
+    "\"You have spoken well\""
+   ],
+   "correctIndex": 1,
+   "explanation": "\"From gathered words\" (mimahaduri milei): his ruling is a collection of hearsay by a nomad, and not deep study.",
+   "points": 5
+  },
+  {
+   "question": "True or false: According to the Ben Ish Chai, the smashing of the barrels raises no halakhic difficulty.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 1,
+   "explanation": "He asked how Yalta, a scholarly woman, transgressed \"do not destroy\" (bal tashchit) and the breaking of vessels in anger.",
+   "points": 3
+  },
+  {
+   "question": "Why did Yalta turn to another sage when Rabbah bar bar Chana declared impure the blood that she brought?",
+   "options": [
+    "Because he was not authorized to rule",
+    "Because he ruled contrary to Shmuel",
+    "Every day he used to declare such a stain pure, and only on that day his eyes pained him",
+    "Because he made an error in counting the days"
+   ],
+   "correctIndex": 2,
+   "explanation": "Rav Yitzchak son of Rav Yehuda declared it pure. This is how the rule \"a sage who has declared impure, his colleague may not declare pure\" was reconciled.",
+   "points": 5
+  },
+  {
+   "question": "Who harassed Rav Amram Chasida, until Yalta saved him?",
+   "options": [
+    "The soldiers of King Shapur",
+    "The students of Rav Yehuda",
+    "His neighbors in Nehardea",
+    "The servants of the house of the Exilarch, her family's house"
+   ],
+   "correctIndex": 3,
+   "explanation": "They laid him down on the snow and afterwards fed him fatty meat and neat wine.",
+   "points": 5
+  },
+  {
+   "question": "True or false: Yalta healed Rav Amram Chasida by seating him in hot water in a bathhouse.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 0,
+   "explanation": "In this way the sweat was expelled from his body and he was healed: medical knowledge and moral courage in the face of the servants of her father's house.",
+   "points": 3
+  },
+  {
+   "question": "True or false: Rav Yehuda agreed to send greetings to Yalta, as Rav Nachman requested.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 1,
+   "explanation": "He refused, in the name of Shmuel: \"One does not greet a woman at all,\" not even through her husband.",
+   "points": 3
+  },
+  {
+   "question": "What advice did Yalta send to Rav Nachman in the discussion with Rav Yehuda?",
+   "options": [
+    "\"Release him from his dispute, so that he does not make you like other ignoramuses\"",
+    "\"Invite him to a meal and make peace with him\"",
+    "\"Send him to the Exilarch\"",
+    "\"Excommunicate him as he excommunicated\""
+   ],
+   "correctIndex": 0,
+   "explanation": "End the discussion quickly, so that he does not present you as a simple man. Rav Nachman accepted her advice immediately.",
+   "points": 5
+  },
+  {
+   "question": "Why did Rav Nachman permit Yalta to go out on a festival in a litter, according to the Gemara?",
+   "options": [
+    "Because she was ill in her legs",
+    "\"Yalta is different, for she is fearful\"",
+    "Because the road was muddy",
+    "Because she was very old"
+   ],
+   "correctIndex": 1,
+   "explanation": "Another explanation among the commentators: the needs of the many, because the public needed her.",
+   "points": 5
+  },
+  {
+   "question": "What did Rabbi Yitzchak Isaac HaLevi and Rabbi Aharon Hyman claim about Yalta's ancestry?",
+   "options": [
+    "That she was the daughter of Shmuel",
+    "That she was the daughter of Rav Yehuda",
+    "That she was the daughter of the serving Exilarch, and that Rabbah bar Avuha was Rav Nachman's teacher and matched them",
+    "That she was a convert from the royal house"
+   ],
+   "correctIndex": 2,
+   "explanation": "According to the accepted tradition she is the daughter of Rabbah bar Avuha, but he did not serve as Exilarch, and he is described at first as a pauper.",
+   "points": 8
+  },
+  {
+   "question": "What is the meaning of \"and from rags, lice\" (umisamartutei kalmei), according to the research?",
+   "options": [
+    "A curse that Ulla be humiliated",
+    "That her wine is old and spoiled",
+    "That Ulla did not wash his hands",
+    "A parable against generalization: just as Ulla in his worn clothes is not filthy, so excellent women should not be restricted"
+   ],
+   "correctIndex": 3,
+   "explanation": "Lice multiply in worn clothes, but it is clear that this does not apply to a great man like Ulla.",
+   "points": 8
+  },
+  {
+   "question": "According to Rabbi Kook in \"Ein Ayah,\" what did Yalta demonstrate by smashing the barrels?",
+   "options": [
+    "Her independent authority, and that excellent women have a principal place in leadership",
+    "A momentary anger from which nothing is to be learned",
+    "Contempt for the wealth of her father's house",
+    "A protest against drinking wine"
+   ],
+   "correctIndex": 0,
+   "explanation": "As a leader who was entrusted with the education of girls, she saw in Ulla's words a threat to her educational and public authority.",
+   "points": 8
+  },
+  {
+   "question": "What precedent arises from the permission \"Yalta is different, for she is fearful,\" according to the research?",
+   "options": [
+    "Women are exempt from observing the festival",
+    "Psychological distress and anxiety may justify leniency in laws of the public sphere",
+    "It is permitted to carry any person in the public domain",
+    "The custom of the house of the Exilarch overrides halakha"
+   ],
+   "correctIndex": 1,
+   "explanation": "Rav Nachman defined her fear of falling and of the crush of the crowd as a real need.",
+   "points": 8
+  }
+ ]
+}

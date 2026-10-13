@@ -1,0 +1,233 @@
+{
+ "label": "שרה שנירר",
+ "questions": [
+  {
+   "question": "True or false: Sarah Schenirer was born in Krakow to a Hasidic family.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 0,
+   "explanation": "Her family was among the Hasidim of Belz and Sanz. Her father, Rabbi Betzalel, was a follower of the Rebbe of Sanz.",
+   "points": 3
+  },
+  {
+   "question": "True or false: At the beginning of the 20th century, girls in Poland studied in organized religious schools, like the boys.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 1,
+   "explanation": "They were sent to general government schools, and their religious knowledge rested on an oral family tradition.",
+   "points": 3
+  },
+  {
+   "question": "In which city was Schenirer exposed to modern, organized Orthodoxy, in the days of the First World War?",
+   "options": [
+    "Vienna",
+    "Berlin",
+    "Frankfurt",
+    "Budapest"
+   ],
+   "correctIndex": 0,
+   "explanation": "Her family migrated there temporarily during the war, and the experience shaped her practical vision.",
+   "points": 5
+  },
+  {
+   "question": "Whose sermons produced in her a spiritual shock?",
+   "options": [
+    "Rabbi Shimshon Raphael Hirsch",
+    "Rabbi Moshe David Flesch",
+    "The Chafetz Chaim",
+    "The Rebbe of Belz"
+   ],
+   "correctIndex": 1,
+   "explanation": "He preached to women about the heroism of Judith and the Hasmonean women. She came to his synagogue on the advice of her landlord.",
+   "points": 5
+  },
+  {
+   "question": "Which educational doctrine did she become acquainted with through Rabbi Flesch?",
+   "options": [
+    "That of Rabbi Israel Salanter, the mussar movement",
+    "That of Chabad Hasidism",
+    "That of Rabbi Shimshon Raphael Hirsch, \"Torah im Derekh Eretz\"",
+    "That of the Brisk school"
+   ],
+   "correctIndex": 2,
+   "explanation": "Hirsch, the leader of German Orthodoxy, opposed the radical Haskalah but supported a modern religious education.",
+   "points": 5
+  },
+  {
+   "question": "What did Schenirer combine in her educational enterprise?",
+   "options": [
+    "Gemara study with an academic education",
+    "Religious Zionism with agricultural work",
+    "General education only",
+    "A systematic religious education for women in the spirit of Hirsch, with Hasidic warmth"
+   ],
+   "correctIndex": 3,
+   "explanation": "In this way she bridged between Western Orthodoxy and East European Hasidism.",
+   "points": 5
+  },
+  {
+   "question": "What did Schenirer do in the years in which she wrote her diaries?",
+   "options": [
+    "She was a seamstress in Krakow",
+    "She was a teacher in a government school",
+    "She was a nurse in a hospital in Vienna",
+    "She was a journalist in Warsaw"
+   ],
+   "correctIndex": 0,
+   "explanation": "She belonged to the working class, but her intellectual inclinations drew her close to educated culture.",
+   "points": 5
+  },
+  {
+   "question": "True or false: Schenirer wrote her diaries in Hebrew.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 1,
+   "explanation": "She wrote them in Polish and German, between 1908 and 1913.",
+   "points": 3
+  },
+  {
+   "question": "True or false: The \"Girls' Association\" that she founded immediately brought the girls to practical observance of the commandments.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 1,
+   "explanation": "The girls were enthusiastic about the sermons, but did not translate the experience into halakhic commitment, and she was disappointed.",
+   "points": 3
+  },
+  {
+   "question": "Where did she open the first class in 1918?",
+   "options": [
+    "In Rabbi Flesch's synagogue",
+    "In her sewing workshop in Krakow",
+    "In her parents' home in Belz",
+    "In the building of Agudat Israel in Warsaw"
+   ],
+   "correctIndex": 1,
+   "explanation": "The official \"Beit Yaakov\" class opened with only seven pupils.",
+   "points": 5
+  },
+  {
+   "question": "Which movement gave the enterprise official patronage in 1919?",
+   "options": [
+    "\"Mizrachi\"",
+    "\"The Bund\"",
+    "\"Agudat Israel\"",
+    "\"Ha-Shomer ha-Dati\""
+   ],
+   "correctIndex": 2,
+   "explanation": "In 1925 \"Bnot Agudat Israel\" was founded for graduates of the institutions.",
+   "points": 5
+  },
+  {
+   "question": "How many schools and students did the network have in 1935?",
+   "options": [
+    "12 schools and 800 students",
+    "A thousand schools and 200,000 students",
+    "50 schools and 5,000 students",
+    "248 schools and more than 35,000 students"
+   ],
+   "correctIndex": 3,
+   "explanation": "Including teachers' seminaries, elementary schools and a youth movement, in Poland and in neighboring countries.",
+   "points": 5
+  },
+  {
+   "question": "True or false: The Chafetz Chaim and the Rebbe of Gur supported the \"Beit Yaakov\" enterprise.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 0,
+   "explanation": "They contended with the ruling \"whoever teaches his daughter Torah, it is as if he taught her tiflut (frivolity)\" and found a halakhic justification for it.",
+   "points": 3
+  },
+  {
+   "question": "What did the students of \"Beit Yaakov\" learn?",
+   "options": [
+    "Scripture, mussar, practical halakha and Jewish history",
+    "Gemara and Tosafot",
+    "Kabbalah and philosophy",
+    "Grammar and Hebrew poetry only"
+   ],
+   "correctIndex": 0,
+   "explanation": "Schenirer avoided theoretical Gemara study, and focused on what was required for a life of faith and commandments.",
+   "points": 5
+  },
+  {
+   "question": "Which experiential means did Schenirer incorporate into education?",
+   "options": [
+    "Sports competitions",
+    "Plays, songs in Yiddish and trips in nature",
+    "Journeys to the Land of Israel",
+    "Film screenings"
+   ],
+   "correctIndex": 1,
+   "explanation": "For example, the trip on the 15th of Av in 1932 to the forests: a bonfire, study, song and dance.",
+   "points": 5
+  },
+  {
+   "question": "True or false: In Haredi society Sarah Schenirer was granted the title \"Our Mother Sarah.\"",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 0,
+   "explanation": "According to the research, the canonization also obscured parts of her writings and of her intellectual aspirations.",
+   "points": 3
+  },
+  {
+   "question": "What conclusion did Schenirer draw from the failure of the \"Girls' Association\"?",
+   "options": [
+    "That one should address only adult women",
+    "That boys and girls should be educated together",
+    "That one should begin educating at a young age, before the secular schools shape the girls",
+    "That one should give up teaching and be content with social activity"
+   ],
+   "correctIndex": 2,
+   "explanation": "From this came the kindergarten and the first class that she opened in 1918.",
+   "points": 8
+  },
+  {
+   "question": "On what did the halakhic justification for the education of girls rest, according to the research?",
+   "options": [
+    "The abolition of the rule \"whoever teaches his daughter Torah\"",
+    "A ruling that women are obligated in Torah study like men",
+    "A decision of a conference of Polish rabbis",
+    "Every person, man and woman, is obligated in the foundational commandments that Maimonides counted, and knowledge of halakha is required for them"
+   ],
+   "correctIndex": 3,
+   "explanation": "In order to fulfill the foundations of faith one must \"fill his belly with meat and wine\": know the halakha.",
+   "points": 8
+  },
+  {
+   "question": "What did the publication of her diaries reveal, according to the research?",
+   "options": [
+    "A stormy inner world: an unhappy match, and an attraction to literature and to university lectures",
+    "A detailed plan for establishing the network",
+    "Letters from the Chafetz Chaim",
+    "A list of the first students"
+   ],
+   "correctIndex": 0,
+   "explanation": "Only 11 censored passages were included in \"Em be-Yisrael\" (A Mother in Israel) (1955). Extensive passages from the Polish diary were published in 2014.",
+   "points": 8
+  },
+  {
+   "question": "What distinguishes the book \"Di Mames Tzavoe\" (1936), according to the research?",
+   "options": [
+    "Her complete diaries, without censorship",
+    "A long list of \"Beit Yaakov\" students in Poland: documentation of a world that was annihilated in the Holocaust",
+    "A Hebrew translation of her writings",
+    "A Gemara textbook for girls"
+   ],
+   "correctIndex": 1,
+   "explanation": "The book came out in Lodz on the first anniversary of her death, and contained letters, thought and the list of the \"Pronumerantn.\"",
+   "points": 8
+  }
+ ]
+}

@@ -1,0 +1,233 @@
+{
+ "label": "חנה הנביאה",
+ "questions": [
+  {
+   "question": "True or false: Hannah was the wife of Elkanah, who lived in Ramathaim-Zophim in the hill country of Ephraim.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 0,
+   "explanation": "Elkanah, a man of the tribe of Levi, worked to revive the pilgrimage to the Tabernacle at Shiloh.",
+   "points": 3
+  },
+  {
+   "question": "What did Elkanah say to Hannah in order to comfort her?",
+   "options": [
+    "\"Am I not better to you than ten sons?\"",
+    "\"Do I not love you above all?\"",
+    "\"What have you to do with Peninnah?\"",
+    "\"Shall I not give you all that you ask?\""
+   ],
+   "correctIndex": 0,
+   "explanation": "He gave her \"one portion, a double one,\" but did not understand that her pain stemmed from a religious calling: a son who would be dedicated to the Lord.",
+   "points": 5
+  },
+  {
+   "question": "What did Eli the priest think when he saw Hannah praying?",
+   "options": [
+    "That she was ill",
+    "That she was drunk",
+    "That she was cursing",
+    "That she was a false prophetess"
+   ],
+   "correctIndex": 1,
+   "explanation": "Only her lips moved and her voice was not heard, which was so exceptional in Shiloh. She answered: \"and I pour out my soul before the Lord.\"",
+   "points": 5
+  },
+  {
+   "question": "True or false: Hannah prayed at Shiloh in a loud voice, so that everyone would hear.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 1,
+   "explanation": "Her prayer was silent: \"Now Hannah spoke in her heart.\" From this the laws of the Amidah prayer were learned.",
+   "points": 3
+  },
+  {
+   "question": "True or false: Eli the priest rebuked Hannah and did not bless her.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 1,
+   "explanation": "When he realized his mistake he blessed her: \"And the God of Israel grant your petition.\" Her face \"was no longer sad.\"",
+   "points": 3
+  },
+  {
+   "question": "What did the Sages learn from the words \"Now Hannah spoke in her heart\"?",
+   "options": [
+    "That it is forbidden to pray in Shiloh",
+    "That prayer is said in the heart alone, without the lips",
+    "That the one who prays must direct his heart",
+    "That prayer offered in private exempts one from a sacrifice"
+   ],
+   "correctIndex": 2,
+   "explanation": "The intention of the heart became the center of religious service: a transition from institutional sacrificial worship to the service of the heart.",
+   "points": 5
+  },
+  {
+   "question": "True or false: Hannah was the first to call God by the name \"Lord of Hosts.\"",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 0,
+   "explanation": "\"Of all the hosts upon hosts that You created in Your world, is it hard in Your eyes to give me one son?\"",
+   "points": 3
+  },
+  {
+   "question": "Which parable did Hannah use in her prayer, according to the Sages?",
+   "options": [
+    "A guest who was forgotten outside the palace",
+    "A farmer asking for rain in the summer",
+    "A servant asking for freedom from his master",
+    "A poor man asking for a small slice at a king's great feast"
+   ],
+   "correctIndex": 3,
+   "explanation": "It is no trouble for the king to give it to him. So she asked for one son from the Creator of Hosts.",
+   "points": 5
+  },
+  {
+   "question": "How did Hannah expound the name \"Samuel\"?",
+   "options": [
+    "\"Sha'ul me-El\" (\"asked of God\"): the child is a deposit for his mission",
+    "After his grandfather",
+    "From the word \"shemen\" (oil), a hint of the anointing of kings",
+    "From the word \"shem\" (name), for his good name"
+   ],
+   "correctIndex": 0,
+   "explanation": "The child is not the property of his parents, but a deposit that they must prepare for his public mission.",
+   "points": 5
+  },
+  {
+   "question": "True or false: Hannah kept Samuel at home until he grew up, and only then brought him to the Tabernacle.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 1,
+   "explanation": "She handed him over to the Tabernacle at Shiloh as soon as he was weaned, at the age of two or two and a half.",
+   "points": 3
+  },
+  {
+   "question": "What did Hannah prepare for Samuel every year?",
+   "options": [
+    "A little crown",
+    "A little robe",
+    "A little Torah scroll",
+    "A little candle"
+   ],
+   "correctIndex": 1,
+   "explanation": "The robe symbolized the continuing bond between them. Even the medium recognized Samuel by his robe.",
+   "points": 5
+  },
+  {
+   "question": "According to the Malbim, in what did Hannah ask that Samuel differ from the other Levites?",
+   "options": [
+    "That he be a high priest and a king",
+    "That he be a judge and a military commander",
+    "That he be a nazirite, dedicated from his youth, and a prophet",
+    "That he be wealthy and a poet"
+   ],
+   "correctIndex": 2,
+   "explanation": "She gave up the pleasure of raising him for the sake of his national calling.",
+   "points": 5
+  },
+  {
+   "question": "What were the nine blessings of the Rosh Hashanah Musaf prayer instituted to correspond to?",
+   "options": [
+    "The nine months of pregnancy",
+    "The nine tribes of the north",
+    "The nine days of judgment",
+    "The nine mentions of the Name of the Lord in Hannah's prayer"
+   ],
+   "correctIndex": 3,
+   "explanation": "Hannah was remembered on Rosh Hashanah, and her story is the haftarah of the first day of the festival.",
+   "points": 5
+  },
+  {
+   "question": "True or false: The story of Hannah is the haftarah of the first day of Rosh Hashanah.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 0,
+   "explanation": "Hannah represents remembrance and being remembered: the Holy One, blessed be He, remembers the individual within the collective.",
+   "points": 3
+  },
+  {
+   "question": "With which words does the Song of Hannah end?",
+   "options": [
+    "\"And He shall give strength to His king, and exalt the horn of His anointed\"",
+    "\"The Lord shall reign forever and ever\"",
+    "\"The Lord will give strength to His people\"",
+    "\"Blessed be the Lord forever. Amen and Amen\""
+   ],
+   "correctIndex": 0,
+   "explanation": "In a period when there was no king in Israel, Hannah prophesied about the monarchy and messianism.",
+   "points": 5
+  },
+  {
+   "question": "What does the verse \"The Lord makes poor and makes rich; He brings low, He also lifts up\" express?",
+   "options": [
+    "That wealth is a sign of righteousness",
+    "The principle of reversal: the Lord raises up the weak and brings down the proud",
+    "That the order of the world must not be changed",
+    "That the poor will remain poor forever"
+   ],
+   "correctIndex": 1,
+   "explanation": "History is not determined by military or economic power, but by \"the God of knowledge, the Lord.\"",
+   "points": 5
+  },
+  {
+   "question": "What is the difference between \"blessing\" and \"prayer\" in Hannah's teaching, according to the research?",
+   "options": [
+    "A blessing is said aloud and a prayer in a whisper",
+    "A blessing is for the priests and a prayer is for the people",
+    "A blessing draws down existing abundance; a prayer seeks to renew a will",
+    "A blessing concerns the past and a prayer concerns the present"
+   ],
+   "correctIndex": 2,
+   "explanation": "Hannah asked for a change of nature itself: that a barren woman should bear a child, and not just any child but \"seed of men.\"",
+   "points": 8
+  },
+  {
+   "question": "What is the difference, according to the Sages, between anointing with a \"flask\" and anointing with a \"horn\"?",
+   "options": [
+    "A flask for priests, a horn for kings",
+    "A flask in Shiloh, a horn in Jerusalem",
+    "A flask for prophets, a horn for judges",
+    "A flask (Saul, Jehu): temporary kingship; a horn (David, Solomon): eternal kingship"
+   ],
+   "correctIndex": 3,
+   "explanation": "The flask is a fragile vessel and the horn is a strong vessel. The Sages see in the song an explicit prophecy about Saul and David.",
+   "points": 8
+  },
+  {
+   "question": "Which \"physical\" argument did Hannah hurl upward, according to the Sages?",
+   "options": [
+    "\"Why did You create breasts in me, if not to nurse with them?\"",
+    "\"Why did You give to Peninnah and not to me?\"",
+    "\"Why did You not hear Elkanah's sacrifices?\"",
+    "\"Why did You create me a woman?\""
+   ],
+   "correctIndex": 0,
+   "explanation": "If the Creator made the instruments, He must enable them to fulfill their function. Prayer is not only submission, but sometimes a demand.",
+   "points": 8
+  },
+  {
+   "question": "According to the Midrash, what was Peninnah's intention in her taunts?",
+   "options": [
+    "To take her place with Elkanah",
+    "For the sake of Heaven: to press Hannah until she would pray with all her heart",
+    "To drive Hannah away from Shiloh",
+    "To prove that her sons were worthy of the Tabernacle"
+   ],
+   "correctIndex": 1,
+   "explanation": "Peninnah, who had ten sons and daughters, behaved cruelly, but according to the Midrash her intention was that Hannah would cry out.",
+   "points": 8
+  }
+ ]
+}

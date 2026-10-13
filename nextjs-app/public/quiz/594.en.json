@@ -1,0 +1,233 @@
+{
+ "label": "רש\"י (רבי שלמה יצחקי)",
+ "questions": [
+  {
+   "question": "In which city was Rashi born, and where did he also establish his yeshiva?",
+   "options": [
+    "Mainz (Magenza)",
+    "Worms (Vermaiza)",
+    "Troyes",
+    "Paris"
+   ],
+   "correctIndex": 2,
+   "explanation": "Rashi was born in Troyes in northern France. After years of study in Germany he returned to it, led the community and established a beit midrash and a yeshiva there.",
+   "points": 5
+  },
+  {
+   "question": "True or false: In his youth Rashi studied in the yeshivot of Mainz and Worms in Germany.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 0,
+   "explanation": "Rashi went out to the yeshivot of Magenza (Mainz) and Vermaiza (Worms), and there he studied for about a decade under the students of Rabbenu Gershom Meor HaGolah.",
+   "points": 3
+  },
+  {
+   "question": "Who is considered Rashi's primary teacher?",
+   "options": [
+    "Rabbi Yaakov ben Yakar",
+    "Rabbenu Gershom Meor HaGolah",
+    "Rabbenu Tam",
+    "Rabbi Yosef Kara"
+   ],
+   "correctIndex": 0,
+   "explanation": "Rabbi Yaakov ben Yakar, one of the students of Rabbenu Gershom, is considered his primary teacher. Rashi also studied under Rabbi Yitzchak Segan Leviah and Rabbi Yitzchak ben Yehuda.",
+   "points": 5
+  },
+  {
+   "question": "By what epithet was Rashi known thanks to his commentary on the Torah?",
+   "options": [
+    "Light of the Exile (Meor HaGolah)",
+    "Parshandata, that is, the interpreter of the law",
+    "The Great Eagle",
+    "Head of the Exile (Rosh HaGolah)"
+   ],
+   "correctIndex": 1,
+   "explanation": "His commentary on the Torah gave him the epithet \"Parshandata,\" and his commentary on the Talmud cemented his standing as \"the Rabban of Israel.\"",
+   "points": 5
+  },
+  {
+   "question": "What characterizes Rashi's approach in interpreting the Torah?",
+   "options": [
+    "Plain meaning only, rejecting all the midrashim of the Sages",
+    "Citing all the midrashim of the Sages on every verse, without selection",
+    "Philosophical interpretation in the spirit of Aristotle",
+    "Combining the plain meaning of Scripture with selected midrashim that resolve a difficulty in the text"
+   ],
+   "correctIndex": 3,
+   "explanation": "Rashi defined this himself (Genesis 3:8): the plain meaning of Scripture and \"aggadah that resolves the words of Scripture.\" Of the midrashim he chose only those that solve a difficulty in the text.",
+   "points": 8
+  },
+  {
+   "question": "By what name is Rashi's commentary on the Talmud known in the literature of the Rishonim?",
+   "options": [
+    "The Tosafot",
+    "HaMaor",
+    "The Kuntres",
+    "Yad HaHazakah"
+   ],
+   "correctIndex": 2,
+   "explanation": "In the literature of the Rishonim, Rashi's commentary on the Talmud is called \"the Kuntres.\"",
+   "points": 5
+  },
+  {
+   "question": "True or false: In his commentary on the Talmud, Rashi always ruled the practical halakha at the end of each talmudic passage.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 1,
+   "explanation": "Rashi separated the explanation of the talmudic passage from the ruling of the halakha: he explained the Gemara according to its own internal logic, even when the conclusion contradicts the halakha as ruled.",
+   "points": 3
+  },
+  {
+   "question": "What tragic event befell the Ashkenazi communities late in Rashi's life?",
+   "options": [
+    "The expulsion from Spain",
+    "The First Crusade, the Decrees of 4856",
+    "The pogroms of Tach and Tat (1648–1649)",
+    "The burning of the Talmud in Paris"
+   ],
+   "correctIndex": 1,
+   "explanation": "In 1096 the Crusaders massacred the communities of Shum (Speyer, Worms and Mainz). Many of Rashi's teachers and students were killed, and the disaster is evident in his piyyutim and in his later responsa.",
+   "points": 5
+  },
+  {
+   "question": "How did Rashi treat forced converts who had converted to Christianity out of fear of death and asked to return to Judaism?",
+   "options": [
+    "He ruled to accept them immediately, without humiliation, and forbade reminding them of their past",
+    "He demanded that they remain under a ban for a whole year",
+    "He ruled that their wine would be forbidden as \"yayin nesekh\" forever",
+    "He instructed them to immigrate to the Land of Israel"
+   ],
+   "correctIndex": 0,
+   "explanation": "Rashi relied on the principle \"A Jew, even though he has sinned, remains a Jew,\" permitted their wine and forbade calling them by derogatory epithets. His position helped to rehabilitate the communities that had been destroyed.",
+   "points": 5
+  },
+  {
+   "question": "True or false: Rashi had three sons, who continued his yeshiva in Troyes.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 1,
+   "explanation": "Rashi had no sons but three daughters, Yocheved, Miriam and Rachel, who were learned in Torah and assisted him. His sons-in-law and grandsons continued his path.",
+   "points": 3
+  },
+  {
+   "question": "Who were Rashi's grandsons, among the founders of the Tosafist movement?",
+   "options": [
+    "The Rif, the Rosh and the Ran",
+    "The Raavad, the Ramban and the Rashba",
+    "Rabbi Yosef Kara, Rabbi Shemaya and Rabbi Simcha",
+    "The Rashbam, Rabbenu Tam and the Rivam"
+   ],
+   "correctIndex": 3,
+   "explanation": "His grandsons the Rashbam, Rabbenu Tam and the Rivam were among the founders of the Tosafist movement, who developed the talmudic discussion on the foundation laid by their grandfather.",
+   "points": 5
+  },
+  {
+   "question": "True or false: Rashi did not earn his living from serving as a rabbi, and according to tradition he engaged in growing vines and producing wine.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 0,
+   "explanation": "According to tradition, Rashi earned his living from trade and agriculture, in particular from vineyards and wine. His familiarity with crafts and commerce is evident in his realistic commentaries.",
+   "points": 3
+  },
+  {
+   "question": "What is a \"laaz\" in Rashi's commentaries?",
+   "options": [
+    "An Old French word, written in Hebrew letters, that explains a difficult term",
+    "An aggadic midrash that resolves a difficulty in a verse",
+    "A student's note added in the margin of the page",
+    "An Aramaic expression from the Jerusalem Talmud"
+   ],
+   "correctIndex": 0,
+   "explanation": "To explain names of plants, utensils, garments and actions, Rashi incorporated Old French words in Hebrew transliteration. Today they are an important source for scholars of medieval French.",
+   "points": 5
+  },
+  {
+   "question": "True or false: Rashi's commentary on the Torah was the first dated Hebrew book to be printed.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 0,
+   "explanation": "Rashi's commentary on the Torah was printed in 1475 in Reggio di Calabria, Italy, and it was the first dated Hebrew book to be printed.",
+   "points": 3
+  },
+  {
+   "question": "True or false: Rashi himself wrote the letters known as \"Rashi script.\"",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correctIndex": 1,
+   "explanation": "The printers used a fluent Sephardic script to distinguish between the commentary and the text of Scripture, and the script was named after Rashi, although Rashi himself never wrote in it.",
+   "points": 3
+  },
+  {
+   "question": "What is the famous selichah piyyut that Rashi composed?",
+   "options": [
+    "\"U-Netaneh Tokef\"",
+    "\"Az Terem Nimtachu\"",
+    "\"Lekha Dodi\"",
+    "\"Adon Olam\""
+   ],
+   "correctIndex": 1,
+   "explanation": "The piyyut, recited in the Ashkenazi communities on the Days of Awe, is built as an acrostic and signed \"Shlomo b'Rabbi Yitzchak.\" Its theme: repentance was created even before the creation of the world.",
+   "points": 5
+  },
+  {
+   "question": "Which student of Rashi edited the \"Machzor Vitry\"?",
+   "options": [
+    "Rabbi Yosef Kara",
+    "Rabbi Shemaya",
+    "Rabbenu Tam",
+    "Rabbi Simcha of Vitry"
+   ],
+   "correctIndex": 3,
+   "explanation": "Rashi's responsa were collected by his students in books such as \"Sefer HaPardes,\" \"Siddur Rashi\" and the \"Machzor Vitry,\" edited by Rabbi Simcha of Vitry.",
+   "points": 5
+  },
+  {
+   "question": "According to Rashi's first comment on the Torah, why did the Torah begin with the creation of the world and not with the first commandment?",
+   "options": [
+    "To teach that Shabbat precedes all the commandments",
+    "To show that the Torah is a book of history and not a book of laws",
+    "So that Israel could answer the nations that the Holy One, blessed be He, created the world and gave them the land",
+    "So that the student would begin with the easy and move on to the difficult"
+   ],
+   "correctIndex": 2,
+   "explanation": "If the nations say, \"You are robbers, for you conquered the lands of seven nations,\" Israel will answer that the Holy One, blessed be He, created the world, and by His will gave the land to them.",
+   "points": 8
+  },
+  {
+   "question": "What was the main contribution of Rashi's commentary on the Babylonian Talmud?",
+   "options": [
+    "A summary of the halakhot for practice without the talmudic discussion",
+    "A continuous commentary that accompanies the talmudic passage step by step and opens the Talmud to every learner",
+    "A complete translation of the Talmud into French",
+    "A systematic comparison between the Bavli and the Yerushalmi"
+   ],
+   "correctIndex": 1,
+   "explanation": "The commentaries of the Geonim that preceded him dealt with isolated difficulties. Rashi created a complete commentary that enables every learner to decipher the Aramaic and the course of the discussion, and it is printed in all editions of the Talmud.",
+   "points": 8
+  },
+  {
+   "question": "What do expressions such as \"I do not know\" and \"I was mistaken\" teach in Rashi's writings?",
+   "options": [
+    "His humility and his willingness to admit a mistake",
+    "That his commentary was written in haste and not edited",
+    "That his students added reservations to his words",
+    "That he refrained from interpreting difficult verses"
+   ],
+   "correctIndex": 0,
+   "explanation": "Alongside his loyalty to tradition, Rashi stood out for humility and honesty. He even encouraged his students to think independently, including to disagree with his words.",
+   "points": 8
+  }
+ ]
+}
