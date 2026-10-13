@@ -49,7 +49,8 @@ PUBLIC = os.path.join(REPO, 'nextjs-app', 'public')
 OUT = os.path.join(PUBLIC, 'data-catalog-links.json')
 REPORT = os.path.join(REPO, 'data', 'catalog_links_report.txt')
 # The site's own links, which a catalogue link must not repeat or contradict.
-SITE_FILES = ['data.json', 'data-ancient.json', 'data-supplement.json', 'data-supplement-2.json', 'data-research-links.json']
+SITE_FILES = ['data.json', 'data-ancient.json', 'data-supplement.json', 'data-supplement-2.json', 'data-research-links.json',
+              'data-paper-links.json']
 UA = 'OzarChachamim/1.0 (https://github.com/avrahamgshtein-rgb/ozar-chachamim; linking sages to each other)'
 NOT_A_PERSON = {'נושא/מושג', 'נושא', 'ספר', 'חיבור', 'אירוע היסטורי', 'דמויות'}   # as in rebuild_data_from_csv.py
 # Entries typed 'טקסט יסוד' are mostly people (Rav Sherira Gaon, Ben Sira); these two are books.
@@ -186,7 +187,8 @@ def exact(i):
 
 site = []
 for f in SITE_FILES:
-    site += load(f).get('links', [])
+    if os.path.exists(os.path.join(PUBLIC, f)):
+        site += load(f).get('links', [])
 
 def teach_pair(l):
     return (l['source'], l['target']) if l['type'] == 'teacher' else (l['target'], l['source'])
