@@ -56,3 +56,13 @@ Keep Hebrew gershayim abbreviations as their usual English/Russian form (Rambam,
 ## Report back
 
 One short line per id: `<id>: en ok/ru ok (warnings N)` or what failed. Do not paste translations in the report.
+
+## One language only
+
+An id marked `[ru only]` already has an English file (or `[en only]`: a Russian file) that must stay as it is: write only the
+missing language's txt and run `python3 tx_build.py <id> ru` (or `en`). The build refuses to rebuild an existing translation anyway.
+
+## Damaged Hebrew
+
+Some papers have typos or OCR damage. Translate what the Hebrew says; where a sentence is broken, render its evident sense with
+the least reconstruction possible, never invent content, and name those unit numbers in your report.

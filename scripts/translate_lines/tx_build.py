@@ -66,8 +66,17 @@ def build(sid, lang, write=True):
         print(f'{sid}.{lang}: written, {len(out)} doc(s), {words} words ({len(warn)} warnings)')
     return True
 
+def protected():
+    # translations that existed before this run (one file name per line): never rebuilt
+    p = f'{TX}/protected.txt'
+    return set(open(p, encoding='utf-8').read().split()) if os.path.exists(p) else set()
+
 if __name__ == '__main__':
     sid = sys.argv[1]
     langs = [a for a in sys.argv[2:] if a in LANGS] or list(LANGS)
+    keep = protected()
+    for l in [l for l in langs if f'{sid}.{l}.json' in keep]:
+        print(f'{sid}.{l}: an existing translation, left as it is')
+        langs.remove(l)
     ok = all([build(sid, l) for l in langs])
     sys.exit(0 if ok else 1)

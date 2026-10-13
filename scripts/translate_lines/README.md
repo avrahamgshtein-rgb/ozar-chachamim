@@ -3,7 +3,7 @@
 `scripts/character-factory/translate_research.py` translates a paper through the Claude API. When there is no key, the
 papers were translated by hand (by the assistant itself, in parallel by sub-agents) with this set of scripts. Same output
 files (`nextjs-app/public/research/<id>.en.json`, `<id>.ru.json`, quizzes `nextjs-app/public/quiz/<id>.en.json`, `.ru.json`),
-same rule as the API script: **an existing translation is never replaced** (the build scripts do not check this: only rebuild a file you wrote yourself in the same run).
+same rule as the API script: **an existing translation is never replaced** (list the files that existed before a run in `$TX_WORK/protected.txt`, one name per line, and `tx_build.py` will not rebuild them).
 
 Working files go to `$TX_WORK` (default `/tmp/ozar-translate-lines`), never into the repo.
 
