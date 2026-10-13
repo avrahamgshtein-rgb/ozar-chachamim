@@ -41,7 +41,7 @@ def main(sid):
     if hs:
         print('names: ' + '; '.join(f'{p} = {e or "?"} / {r or "?"}' for p, e, r, _ in hs))
     for n, t, k in us:
-        print(f'{n}|{"(ru only) " if k == "l" else ""}{t}')
+        print(f'{n}|{"(ru only) " if k == "l" else "(en only) " if k == "c" else ""}{t}')
 
 if __name__ == '__main__':
     main(sys.argv[1])

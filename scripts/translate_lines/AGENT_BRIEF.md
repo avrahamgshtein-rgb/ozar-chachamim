@@ -12,7 +12,8 @@ For each id you were given, in order:
 1. `python3 scripts/translate_lines/tx_prepare.py <id> > <id>.src.txt`, then READ `<id>.src.txt` (use Read, or cat in parts). It prints a header,
    a `names:` line (English / Russian spellings the site already uses for sages named in the paper: use them) and the
    Hebrew **units**, one per line: `N|hebrew text`. A unit marked `(ru only)` is an English paragraph inside the Hebrew paper:
-   translate it for Russian only (leave it out of the English file).
+   translate it for Russian only (leave it out of the English file). A unit marked `(en only)` is a Russian paragraph inside
+   the Hebrew paper: translate it into English only (leave it out of the Russian file; the build copies it there as it is).
 2. Write `<id>.en.txt` and `<id>.ru.txt`: for EVERY unit one line `N|translation` (same N, in order, one physical line per unit,
    no blank lines inside a translation, no line breaks). Use a Bash heredoc with a quoted delimiter
    (`cat > <id>.en.txt <<'EOF' ... EOF`). Long paper: write it in parts, the first with `>` and the next with `>>`
@@ -40,7 +41,7 @@ For each id you were given, in order:
   `בור סוד` (a typo for the Mishnaic `בור סיד`) is rendered "plastered cistern" / «колодец, обмазанный известью».
 - Russian: natural, correct Russian (cases, agreement), «таннаи, амораи, гаоны, ришоним, ахроним, галаха, агада, Тора, ешива,
   бейт-мидраш, Шулхан арух»; no Latin letters except where the paper has them (e.g. a Latin term in parentheses).
-- A finished example to imitate for style and line structure (skim only the first 8 lines of each): a finished paper such as 592 (`592.en.txt`, `592.ru.txt` in the working directory, if present),
+- A finished example to imitate for style and line structure (skim only the first 8 lines of each): `592.en.txt`, `592.ru.txt`,
   `41.en.txt`, `41.ru.txt`.
 
 ## Quizzes (only if you were given quiz ids)
@@ -56,3 +57,13 @@ Keep Hebrew gershayim abbreviations as their usual English/Russian form (Rambam,
 ## Report back
 
 One short line per id: `<id>: en ok/ru ok (warnings N)` or what failed. Do not paste translations in the report.
+
+## One language only
+
+An id marked `[ru only]` already has an English file (or `[en only]`: a Russian file) that must stay as it is: write only the
+missing language's txt and run `python3 scripts/translate_lines/tx_build.py <id> ru` (or `en`). The build refuses to rebuild an existing translation anyway.
+
+## Damaged Hebrew
+
+Some papers have typos or OCR damage. Translate what the Hebrew says; where a sentence is broken, render its evident sense with
+the least reconstruction possible, never invent content, and name those unit numbers in your report.

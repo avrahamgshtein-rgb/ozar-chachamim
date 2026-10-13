@@ -31,6 +31,11 @@ def classify(line):
         return 'v'
     return 'h'
 
+def is_cyr_prose(line):
+    """A Russian paragraph inside the Hebrew paper (no Hebrew letters): English translates it, Russian copies it."""
+    s = line.strip()
+    return bool(s) and classify(s) == 'v' and not HEB.search(s) and len(re.findall(r'[Ѐ-ӿ]{2,}', s)) >= 4 and not re.search(r'https?://', s)
+
 def split_into(t, cands):
     """t as a run of other lines with the text between them as gaps: the list of parts, or None."""
     cands = [c for c in cands if len(c) < len(t)]
@@ -84,6 +89,12 @@ def units(sid):
             continue
         seen[t] = len(out) + 1
         out.append((len(out) + 1, t, classify(t)))
+    # Russian paragraphs ('c', English only) are numbered after everything else, so older numbering stays valid
+    for d in docs:
+        for t in [d.get('title', '')] + lines_of(d.get('content', '')):
+            if is_cyr_prose(t) and t not in seen:
+                seen[t] = len(out) + 1
+                out.append((len(out) + 1, t, 'c'))
     return docs, out, seen, composite
 
 def parse_tx(path):
