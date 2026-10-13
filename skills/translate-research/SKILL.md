@@ -13,3 +13,5 @@ description: Inspect and process the English and Russian translation queue for O
 6. Re-run `--summary` and report exactly how coverage changed.
 
 Do not claim a translation batch ran when the provider library, API key, or network access is unavailable.
+
+Without an API key the papers can still be translated by hand, line-aligned, with `scripts/translate_lines/` (see its README): `tx_prepare.py` → write `<id>.en.txt` / `<id>.ru.txt` → `tx_build.py`. Say plainly that these were translated by the assistant, not by an API batch.
