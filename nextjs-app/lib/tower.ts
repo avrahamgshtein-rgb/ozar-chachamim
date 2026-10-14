@@ -150,6 +150,8 @@ export interface RoadPoint {
   alongside?: string
   /** A chain station named for several people and shown by that name: no one person's years under it. */
   group?: boolean
+  /** The name drawn in the scene, when it is not the sage's own (the kids' journey numbers its stations). */
+  label?: string
   x: number
   y: number
   z: number

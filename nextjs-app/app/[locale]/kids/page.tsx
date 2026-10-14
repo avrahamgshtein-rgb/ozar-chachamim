@@ -5,6 +5,7 @@ import { isValidLocale } from '@/lib/i18n'
 import type { Locale } from '@/lib/types'
 import { SITE_URL } from '@/lib/siteUrl'
 import { KIDS_ROUTES, stationAnchor, type JourneyRoute, type JourneyStation } from '@/lib/kidsJourney'
+import { kidsTourPath } from '@/lib/kidsTour'
 import { SiteTopBar } from '@/components/layout/SiteTopBar'
 import { KidsPassport } from '@/components/kids/KidsPassport'
 import { StationDone } from '@/components/kids/StationDone'
@@ -110,6 +111,12 @@ function RouteSection({ route }: { route: JourneyRoute }) {
           <h2 id={`${route.key}-title`} className="mt-1 font-serif text-3xl font-bold text-ink-50">{route.title}</h2>
           <p className="mt-1 text-ink-300">{route.subtitle} · עם {route.guide}</p>
           <p className="mt-4 max-w-3xl leading-relaxed text-ink-200">{route.intro}</p>
+          {/* a plain link: the kids' page does not prefetch the tower (three.js and every sage) */}
+          <a href={kidsTourPath(route.key)}
+            className="mt-5 inline-flex items-center gap-2 rounded-2xl border border-gold-500/60 bg-gradient-to-b from-gold-500/30 to-gold-500/10 px-5 py-3 font-semibold text-gold-100 shadow-[0_0_24px_rgba(233,196,106,0.2)] transition-colors hover:from-gold-500/40">
+            <span aria-hidden className="text-xl">🚀</span>
+            <span>מכונת הזמן: {route.title} בתלת־ממד</span>
+          </a>
         </div>
         {route.key === 'shira' && (
           <img src={route.cover.src} width={route.cover.width} height={route.cover.height} alt={`כריכת הספר ״${route.book}״`} loading="lazy"

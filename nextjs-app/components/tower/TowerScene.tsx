@@ -15,6 +15,8 @@ import type { RoadPoint, TowerData, TowerNode, TowerLinkKind } from '@/lib/tower
 import { lineageOf, roadOf, towerPath } from '@/lib/tower'
 import { track } from '@/lib/analytics'
 import { SP, genLabel, receivedFrom, ruPlural } from '@/components/viz/SinaiPathText'
+import type { KidsTour } from '@/lib/kidsTour'
+import { KidsTourPanel } from '@/components/kids/KidsTourPanel'
 
 const S = {
   play: { he: 'הפעלת ההיסטוריה', en: 'Play history', ru: 'Запустить историю' },
@@ -90,7 +92,10 @@ interface SceneApi {
   dispose(): void
 }
 
-export function TowerScene({ data, locale, initialSage }: { data: TowerData; locale: Locale; initialSage?: string }) {
+/** A kids' route is flown station by station, by the reader's hand (or on its own, seven seconds a station). */
+const TOUR_STEP_MS = 7000
+
+export function TowerScene({ data, locale, initialSage, tour }: { data: TowerData; locale: Locale; initialSage?: string; tour?: KidsTour }) {
   const mount = useRef<HTMLDivElement>(null)
   const api = useRef<SceneApi | null>(null)
   const [failed, setFailed] = useState(false)
@@ -110,6 +115,9 @@ export function TowerScene({ data, locale, initialSage }: { data: TowerData; loc
   // three.js has loaded, so the scene reads this when it is ready (a sage opened from a link)
   const live = useRef({ selected, time, kinds, road, roadAt })
   useEffect(() => { live.current = { selected, time, kinds, road, roadAt } })
+  // the kids' journey (app/[locale]/kids/journey/[route]): its own trail colour, no choosing sages on the way
+  const tourRef = useRef(tour)
+  tourRef.current = tour
 
   // the scene: built once per data set
   useEffect(() => {
@@ -401,6 +409,7 @@ export function TowerScene({ data, locale, initialSage }: { data: TowerData; loc
         return out.set(u * u * a.x + 2 * u * t * mx + t * t * b.x, u * u * a.y + 2 * u * t * my + t * t * b.y, u * u * a.z + 2 * u * t * mz + t * t * b.z)
       }
       const clearRoad = () => {
+        for (const [id, o] of landmarkLabels) if (!o.parent) { scene.add(o); o.visible = !focusSet || focusSet.has(id) }
         roadGroup.clear()
         for (const { o } of roadLabels) scene.remove(o)
         roadLabels = []
@@ -453,7 +462,7 @@ export function TowerScene({ data, locale, initialSage }: { data: TowerData; loc
           roadGeo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(samples), 3))
           roadGeo.setDrawRange(0, 1)
           roadGroup.add(new THREE.Points(roadGeo, new THREE.PointsMaterial({
-            size: 1.7, map: glow, color: 0xffd98a, transparent: true, opacity: 0.95, depthWrite: false, blending: THREE.AdditiveBlending,
+            size: 1.7, map: glow, color: new THREE.Color(tourRef.current?.color ?? '#ffd98a'), transparent: true, opacity: 0.95, depthWrite: false, blending: THREE.AdditiveBlending,
           })))
           // the stations nobody in the archive stands for (Joshua, Eli, Elijah…): a light of their own
           const virt = points.filter(p => !p.id)
@@ -465,11 +474,13 @@ export function TowerScene({ data, locale, initialSage }: { data: TowerData; loc
             })))
           }
           points.forEach((p, i) => {
-            if (p.id && landmarkLabels.has(p.id)) return
+            if (p.id && !p.label && landmarkLabels.has(p.id)) return
+            // a numbered station replaces the sage's own name while the journey is flown
+            if (p.id && p.label) landmarkLabels.get(p.id)?.removeFromParent()
             const el = document.createElement('div')
-            el.className = i === 0 ? 'tower-label tower-label-focus' : p.id ? 'tower-label tower-label-chain' : 'tower-label tower-label-station'
+            el.className = p.label ? 'tower-label tower-label-tour' : i === 0 ? 'tower-label tower-label-focus' : p.id ? 'tower-label tower-label-chain' : 'tower-label tower-label-station'
             el.dir = 'auto'
-            el.textContent = p.id ? byId.get(p.id)?.short ?? p.name : p.name
+            el.textContent = p.label ?? (p.id ? byId.get(p.id)?.short ?? p.name : p.name)
             const o = new CSS2DObject(el)
             o.position.set(p.x, p.y + 1.3, p.z)
             o.visible = i === 0
@@ -549,6 +560,7 @@ export function TowerScene({ data, locale, initialSage }: { data: TowerData; loc
       const onUp = (ev: PointerEvent) => {
         if (!downAt || Math.hypot(ev.clientX - downAt.x, ev.clientY - downAt.y) > 6) { downAt = null; return }
         downAt = null
+        if (tourRef.current) return
         const i = pick(ev)
         setSelected(i == null ? null : nodes[i].id)
       }
@@ -632,7 +644,15 @@ export function TowerScene({ data, locale, initialSage }: { data: TowerData; loc
 
   // the road to Sinai: another sage chosen ends it
   const roadFor = useMemo(() => (selected ? roadOf(data, selected) : null), [data, selected])
-  useEffect(() => { setRoad(null); setRoadPlaying(false) }, [selected])
+  useEffect(() => { if (!tourRef.current) { setRoad(null); setRoadPlaying(false) } }, [selected])
+  // the kids' journey starts at its first station, the reader turning the pages
+  useEffect(() => {
+    if (!tour) return
+    setRoad(tour.points)
+    setRoadAt(0)
+    setRoadPlaying(false)
+    track('kids_tour', { route: tour.route, stage: 'start' })
+  }, [tour])
   const startRoad = (from: 'panel' | 'link') => {
     if (!roadFor || roadFor.length < 2) return
     setPlaying(false)
@@ -653,7 +673,7 @@ export function TowerScene({ data, locale, initialSage }: { data: TowerData; loc
     if (road) { api.current?.road(road); hadRoad.current = true }
     else if (hadRoad.current) { hadRoad.current = false; api.current?.road(null); api.current?.focus(live.current.selected) }
   }, [road])
-  useEffect(() => { if (road) api.current?.roadGo(roadAt, stepMs(road[roadAt], roadAt)) }, [road, roadAt])
+  useEffect(() => { if (road) api.current?.roadGo(roadAt, tour ? 2000 : stepMs(road[roadAt], roadAt)) }, [road, roadAt, tour])
   useEffect(() => {
     if (!road || !roadPlaying || !ready) return
     if (roadAt >= road.length - 1) {
@@ -661,14 +681,17 @@ export function TowerScene({ data, locale, initialSage }: { data: TowerData; loc
       const t = setTimeout(() => { setRoadPlaying(false); api.current?.roadOverview() }, 2600)
       return () => clearTimeout(t)
     }
-    const t = setTimeout(() => setRoadAt(a => Math.min(a + 1, road.length - 1)), stepMs(road[roadAt], roadAt))
+    const t = setTimeout(() => setRoadAt(a => Math.min(a + 1, road.length - 1)), tour ? TOUR_STEP_MS : stepMs(road[roadAt], roadAt))
     return () => clearTimeout(t)
-  }, [road, roadAt, roadPlaying, ready])
+  }, [road, roadAt, roadPlaying, ready, tour])
+  useEffect(() => { if (tour && road && roadAt === road.length - 1) track('kids_tour', { route: tour.route, stage: 'end' }) }, [tour, road, roadAt])
 
   // the address follows the chosen sage, and ?road=1 while his road is flown (replaced, not pushed:
   // Back leaves the tower). The state is null on purpose: Next.js passes a replaceState on to
   // usePathname (the language links) only when the state is not its own
   useEffect(() => {
+    // the kids' journey keeps its own address
+    if (tourRef.current) return
     const next = towerPath(locale, selected) + (road && selected ? '?road=1' : '')
     if (window.location.pathname + window.location.search !== next) window.history.replaceState(null, '', next)
     setCopied(false)
@@ -768,8 +791,8 @@ export function TowerScene({ data, locale, initialSage }: { data: TowerData; loc
         </div>
       )}
 
-      {/* controls */}
-      <div dir={dir} className="absolute inset-x-0 bottom-0 z-10 flex flex-col gap-2 bg-gradient-to-t from-black/80 via-black/50 to-transparent px-3 pb-3 pt-8 sm:px-5">
+      {/* controls (not on the kids' journey, which has its own) */}
+      <div dir={dir} className={`absolute inset-x-0 bottom-0 z-10 flex-col${tour ? ' hidden' : ' flex'} gap-2 bg-gradient-to-t from-black/80 via-black/50 to-transparent px-3 pb-3 pt-8 sm:px-5`}>
         <div className="flex items-center gap-3">
           <button
             type="button"
@@ -799,6 +822,18 @@ export function TowerScene({ data, locale, initialSage }: { data: TowerData; loc
           <button type="button" onClick={() => { setSelected(null); api.current?.reset() }} className="ms-auto rounded-full border border-white/15 px-3 py-1.5 text-xs text-ink-200">{S.reset[locale]}</button>
         </div>
       </div>
+
+      {/* the kids' journey, station by station */}
+      {tour && road && (
+        <KidsTourPanel
+          tour={tour}
+          at={roadAt}
+          playing={roadPlaying}
+          onGo={i => { setRoadPlaying(false); setRoadAt(Math.max(0, Math.min(road.length - 1, i))) }}
+          onPlay={() => { if (roadAt === road.length - 1) setRoadAt(0); setRoadPlaying(v => roadAt === road.length - 1 ? true : !v) }}
+          onOverview={() => { setRoadPlaying(false); api.current?.roadOverview() }}
+        />
+      )}
 
       {/* the road to Sinai, station by station */}
       {sel && road && (() => {
