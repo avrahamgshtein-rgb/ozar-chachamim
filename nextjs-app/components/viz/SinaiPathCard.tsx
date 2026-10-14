@@ -13,6 +13,7 @@ import type { Locale, Sage } from '@/lib/types'
 import { beforeSinai, buildSinaiIndex, sinaiPath, sinaiTrail } from '@/lib/sinaiPath'
 import type { SinaiIndex, SinaiStep, SinaiStepKind } from '@/lib/sinaiPath'
 import { buildLineageIndex } from './lineage'
+import { towerPath } from '@/lib/tower'
 import type { LineageIndex } from './lineage'
 import { SINAI_LINE_CSS, SP, genLabel, inspirationsLabel, isGroupStation, isWoman, ruPlural, shortName } from './SinaiPathText'
 
@@ -29,6 +30,7 @@ const S = {
     ru: 'Поколения даны по предисловию Рамбама к «Мишне Тора». Пунктир — вдохновение, а не прямая передача.',
   } as Record<Locale, string>,
   seeChain: { he: 'לשלשלת הדורות מסיני', en: 'See the generations from Sinai', ru: 'Поколения от Синая' } as Record<Locale, string>,
+  fly: { he: 'המסע במגדל הדורות', en: 'Fly it in the Tower', ru: 'Полёт в Башне поколений' } as Record<Locale, string>,
 }
 
 let cache: { si: SinaiIndex; idx: LineageIndex; sages: Map<string, Sage> } | null = null
@@ -186,7 +188,15 @@ export function SinaiPathCard({ sageId, locale }: { sageId: string; locale: Loca
           {badge && <span className={`me-2 inline-block rounded-full border px-2 py-0.5 text-[11px] font-semibold ${path.direct ? 'border-gold-500/50 text-gold-300' : 'border-ink-600/60 text-ink-300'}`}>{badge}</span>}
           {S.note[locale]}
         </p>
-        {more(SP.fullView[locale])}
+        <div className="flex flex-wrap items-center gap-2">
+          {/* a plain link: the sage page does not prefetch the tower (three.js and every sage) */}
+          {steps.length > 1 && (
+            <a href={`${towerPath(locale, sageId)}?road=1`} className="inline-flex h-9 items-center gap-1.5 rounded-full bg-gold-500 px-4 text-sm font-semibold text-ink-900 transition-colors hover:bg-gold-400">
+              <span aria-hidden>✦</span>{S.fly[locale]}
+            </a>
+          )}
+          {more(SP.fullView[locale])}
+        </div>
       </div>
     </section>
   )

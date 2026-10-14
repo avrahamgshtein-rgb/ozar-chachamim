@@ -6,11 +6,15 @@
 // and his students' students; press play to watch 3,700 years fill in. three.js is loaded only
 // here (a dynamic import inside the effect), so no other page pays for it.
 // The chosen sage is kept in the address (/he/tower/41), so a link opens on him: `initialSage`.
+// "הדרך לסיני": from the chosen sage the camera flies down the centuries along his road to Moses
+// (the same road as his page's card, lib/sinaiPath.ts), a golden thread unrolling behind it and a
+// caption at every station; `?road=1` in the address starts it, so a shared link flies it too.
 import { useEffect, useMemo, useRef, useState } from 'react'
 import type { Locale } from '@/lib/types'
-import type { TowerData, TowerNode, TowerLinkKind } from '@/lib/tower'
-import { lineageOf, towerPath } from '@/lib/tower'
+import type { RoadPoint, TowerData, TowerNode, TowerLinkKind } from '@/lib/tower'
+import { lineageOf, roadOf, towerPath } from '@/lib/tower'
 import { track } from '@/lib/analytics'
+import { SP, genLabel, receivedFrom, ruPlural } from '@/components/viz/SinaiPathText'
 
 const S = {
   play: { he: 'הפעלת ההיסטוריה', en: 'Play history', ru: 'Запустить историю' },
@@ -35,7 +39,31 @@ const S = {
     ru: 'Этот браузер не показывает 3D-графику. Те же связи есть в сети связей.',
   },
   toMap: { he: 'לרשת הקשרים', en: 'To the network', ru: 'К сети связей' },
+  sinai: { he: 'קיבל תורה מסיני', en: 'Received the Torah at Sinai', ru: 'Получил Тору на Синае' },
+  receivedChain: { he: 'קיבל מ', en: 'Received from ', ru: 'Принял от: ' },
+  sameGen: { he: 'באותו דור בשלשלת: ', en: 'Same generation of the chain as ', ru: 'В том же поколении цепи: ' },
+  toSinai: { he: 'עד סיני', en: 'To Sinai', ru: 'До Синая' },
+  again: { he: 'שוב מההתחלה', en: 'Fly it again', ru: 'Ещё раз' },
+  prev: { he: 'תחנה קודמת', en: 'Previous station', ru: 'Предыдущая остановка' },
+  next: { he: 'תחנה הבאה', en: 'Next station', ru: 'Следующая остановка' },
 } satisfies Record<string, Record<Locale, string>>
+
+/** "Station 12 of 46" */
+const stationOf = (i: number, n: number, l: Locale) =>
+  l === 'he' ? `תחנה ${i} מתוך ${n}` : l === 'en' ? `Station ${i} of ${n}` : `Остановка ${i} из ${n}`
+/** The Rambam's generation, or past Rav Ashi the epistle that continues the count. */
+const genOf = (gen: number, l: Locale) =>
+  gen > 40 ? genLabel(gen, l) : l === 'he' ? `דור ${gen} לפי הרמב״ם` : l === 'en' ? `Generation ${gen}, as the Rambam counts` : `${gen}-е поколение по Рамбаму`
+const roadSummary = (n: number, name: string, l: Locale) =>
+  l === 'he' ? `${n} תחנות בדרך מסיני אל ${name}`
+    : l === 'en' ? `${n} stations on the road from Sinai to ${name}`
+      : `${n} ${ruPlural(n, 'остановка', 'остановки', 'остановок')} на пути от Синая к «${name}»`
+/** How long the camera stays at a road point: the archive's sages longer, stations named only briefly. */
+function stepMs(p: RoadPoint, i: number): number {
+  if (i === 0) return 2200
+  if (p.how !== 'chain' && p.how !== 'sinai') return 2300
+  return p.id ? 1500 : 950
+}
 
 const KIND_COLOR: Record<TowerLinkKind, string> = { teacher: '#e9c46a', family: '#e48aa7', influence: '#7d8ba3', other: '#9f86d8' }
 const KIND_OPACITY: Record<TowerLinkKind, number> = { teacher: 0.5, family: 0.5, influence: 0.12, other: 0.14 }
@@ -53,6 +81,12 @@ interface SceneApi {
   focus(id: string | null): void
   setVisible(kind: TowerLinkKind, on: boolean): void
   reset(): void
+  /** Draw a road to Sinai (or clear it, null), dimming the rest of the tower. */
+  road(points: RoadPoint[] | null): void
+  /** Fly to the road's point `i`, the thread unrolled from the sage down to it. */
+  roadGo(i: number, ms: number): void
+  /** Pull back until the whole thread, Sinai to the sage, is in view. */
+  roadOverview(): void
   dispose(): void
 }
 
@@ -65,12 +99,17 @@ export function TowerScene({ data, locale, initialSage }: { data: TowerData; loc
   const [playing, setPlaying] = useState(false)
   const [kinds, setKinds] = useState<Record<TowerLinkKind, boolean>>({ teacher: true, family: true, influence: false, other: false })
   const [copied, setCopied] = useState(false)
+  const [road, setRoad] = useState<RoadPoint[] | null>(null)
+  const [roadAt, setRoadAt] = useState(0)
+  const [roadPlaying, setRoadPlaying] = useState(false)
+  // the scene is built after three.js loads: a road opened from a link waits for it
+  const [ready, setReady] = useState(false)
   const byId = useMemo(() => new Map(data.nodes.map(n => [n.id, n])), [data])
   const dir = locale === 'he' ? 'rtl' : 'ltr'
   // what the scene must show once it is built: the effects below that pass state to it run before
   // three.js has loaded, so the scene reads this when it is ready (a sage opened from a link)
-  const live = useRef({ selected, time, kinds })
-  useEffect(() => { live.current = { selected, time, kinds } })
+  const live = useRef({ selected, time, kinds, road, roadAt })
+  useEffect(() => { live.current = { selected, time, kinds, road, roadAt } })
 
   // the scene: built once per data set
   useEffect(() => {
@@ -286,7 +325,7 @@ export function TowerScene({ data, locale, initialSage }: { data: TowerData; loc
       let cutoff: number | null = null
       let focusSet: Set<string> | null = null
       let focusId: string | null = null
-      let flyTo: { from: InstanceType<typeof THREE.Vector3>; to: InstanceType<typeof THREE.Vector3>; camFrom: InstanceType<typeof THREE.Vector3>; camTo: InstanceType<typeof THREE.Vector3>; t0: number } | null = null
+      let flyTo: { from: InstanceType<typeof THREE.Vector3>; to: InstanceType<typeof THREE.Vector3>; camFrom: InstanceType<typeof THREE.Vector3>; camTo: InstanceType<typeof THREE.Vector3>; t0: number; dur?: number } | null = null
       const dim = new THREE.Color(0x15131b)
 
       const visible = (i: number) => cutoff == null || nodes[i].year <= cutoff
@@ -341,6 +380,35 @@ export function TowerScene({ data, locale, initialSage }: { data: TowerData; loc
         }
       }
 
+      // the road to Sinai: a thread of light from the sage down through the centuries to Moses,
+      // solid where Torah was received, dotted where the archive records only inspiration
+      const roadGroup = new THREE.Group()
+      scene.add(roadGroup)
+      let roadPts: RoadPoint[] | null = null
+      let roadStart: number[] = []
+      let roadGeo: InstanceType<typeof THREE.BufferGeometry> | null = null
+      let roadLabels: Array<{ i: number; o: InstanceType<typeof CSS2DObject> }> = []
+      const headPos = new Float32Array(3)
+      const headGeo = new THREE.BufferGeometry()
+      headGeo.setAttribute('position', new THREE.BufferAttribute(headPos, 3))
+      const headMat = new THREE.PointsMaterial({ size: 8, map: glow, color: 0xfff0c4, transparent: true, opacity: 0.95, depthWrite: false, blending: THREE.AdditiveBlending })
+      const head = new THREE.Points(headGeo, headMat)
+      head.visible = false
+      scene.add(head)
+      const bow = (a: RoadPoint, b: RoadPoint, t: number, out: InstanceType<typeof THREE.Vector3>) => {
+        const mx = (a.x + b.x) / 2 * 1.12, my = (a.y + b.y) / 2, mz = (a.z + b.z) / 2 * 1.12
+        const u = 1 - t
+        return out.set(u * u * a.x + 2 * u * t * mx + t * t * b.x, u * u * a.y + 2 * u * t * my + t * t * b.y, u * u * a.z + 2 * u * t * mz + t * t * b.z)
+      }
+      const clearRoad = () => {
+        roadGroup.clear()
+        for (const { o } of roadLabels) scene.remove(o)
+        roadLabels = []
+        roadGeo = null
+        roadPts = null
+        head.visible = false
+      }
+
       const sceneApi: SceneApi = {
         setTime(t) { cutoff = t; refreshNodes(); refreshLinks() },
         focus(id) {
@@ -359,6 +427,91 @@ export function TowerScene({ data, locale, initialSage }: { data: TowerData; loc
           refreshNodes(); refreshLinks(); buildLit()
         },
         setVisible(kind, on) { lines[kind].visible = on },
+        road(points) {
+          clearRoad()
+          if (!points || points.length < 2) return
+          roadPts = points
+          cutoff = null
+          focusId = points[0].id
+          focusSet = new Set(points.map(p => p.id).filter((x): x is string => !!x))
+          lit.clear()
+          for (const o of chainLabels) scene.remove(o)
+          chainLabels = []
+          refreshNodes(); refreshLinks()
+          const samples: number[] = []
+          roadStart = []
+          for (let i = 0; i < points.length - 1; i++) {
+            roadStart.push(samples.length / 3)
+            const solid = points[i].how === 'teacher' || points[i].how === 'chain'
+            const n = solid ? 26 : 8
+            for (let k = 0; k < n; k++) { bow(points[i], points[i + 1], k / n, tmp); samples.push(tmp.x, tmp.y, tmp.z) }
+          }
+          const last = points[points.length - 1]
+          roadStart.push(samples.length / 3)
+          samples.push(last.x, last.y, last.z)
+          roadGeo = new THREE.BufferGeometry()
+          roadGeo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(samples), 3))
+          roadGeo.setDrawRange(0, 1)
+          roadGroup.add(new THREE.Points(roadGeo, new THREE.PointsMaterial({
+            size: 1.7, map: glow, color: 0xffd98a, transparent: true, opacity: 0.95, depthWrite: false, blending: THREE.AdditiveBlending,
+          })))
+          // the stations nobody in the archive stands for (Joshua, Eli, Elijah…): a light of their own
+          const virt = points.filter(p => !p.id)
+          if (virt.length) {
+            const vg = new THREE.BufferGeometry()
+            vg.setAttribute('position', new THREE.BufferAttribute(new Float32Array(virt.flatMap(p => [p.x, p.y, p.z])), 3))
+            roadGroup.add(new THREE.Points(vg, new THREE.PointsMaterial({
+              size: 3.6, map: glow, color: 0xfff1c9, transparent: true, opacity: 0.9, depthWrite: false, blending: THREE.AdditiveBlending,
+            })))
+          }
+          points.forEach((p, i) => {
+            if (p.id && landmarkLabels.has(p.id)) return
+            const el = document.createElement('div')
+            el.className = i === 0 ? 'tower-label tower-label-focus' : p.id ? 'tower-label tower-label-chain' : 'tower-label tower-label-station'
+            el.dir = 'auto'
+            el.textContent = p.id ? byId.get(p.id)?.short ?? p.name : p.name
+            const o = new CSS2DObject(el)
+            o.position.set(p.x, p.y + 1.3, p.z)
+            o.visible = i === 0
+            roadLabels.push({ i, o })
+            scene.add(o)
+          })
+          head.visible = true
+          controls.autoRotate = false
+        },
+        roadGo(i, ms) {
+          if (!roadPts || !roadGeo) return
+          const at = Math.max(0, Math.min(i, roadPts.length - 1))
+          roadGeo.setDrawRange(0, at >= roadPts.length - 1 ? roadStart[roadStart.length - 1] + 1 : roadStart[at] + 1)
+          // the archive's sages keep their names; stations named only by the chain (the prophets stand
+          // close together in time) show theirs around the current one
+          for (const { i: k, o } of roadLabels) o.visible = k <= at && (!!roadPts[k].id || Math.abs(k - at) <= 1)
+          const p = roadPts[at]
+          headPos.set([p.x, p.y, p.z])
+          headGeo.attributes.position.needsUpdate = true
+          // seen from outside the tower, a little above, aimed lower on a phone so the caption clears it
+          const to = new THREE.Vector3(p.x, p.y - (w() / h() < 0.8 ? 7 : 0), p.z)
+          const out = new THREE.Vector3(p.x, 0, p.z)
+          if (out.lengthSq() < 1) out.set(1, 0, 0)
+          out.normalize()
+          const camTo = new THREE.Vector3(p.x, p.y, p.z).add(out.multiplyScalar(30)).add(new THREE.Vector3(0, 8, 0))
+          flyTo = { from: controls.target.clone(), to, camFrom: camera.position.clone(), camTo, t0: performance.now(), dur: Math.min(1400, ms * 0.8) }
+          controls.autoRotate = false
+        },
+        roadOverview() {
+          if (!roadPts) return
+          const box = new THREE.Box3().setFromPoints(roadPts.map(p => new THREE.Vector3(p.x, p.y, p.z)))
+          const mid = box.getCenter(new THREE.Vector3())
+          const size = box.getSize(new THREE.Vector3())
+          const span = Math.max(size.y, size.x, size.z, 20)
+          const v = Math.tan(THREE.MathUtils.degToRad(24))
+          const dist = (span * 0.62) / (v * Math.min(1, w() / h())) + 10
+          const out = new THREE.Vector3(mid.x, 0, mid.z)
+          if (out.lengthSq() < 1) out.set(1, 0, 0)
+          out.normalize()
+          const to = mid.clone().setY(mid.y - (w() / h() < 0.8 ? span * 0.18 : 0))
+          flyTo = { from: controls.target.clone(), to, camFrom: camera.position.clone(), camTo: to.clone().add(out.multiplyScalar(dist)).add(new THREE.Vector3(0, span * 0.12, 0)), t0: performance.now(), dur: 2600 }
+        },
         reset() {
           const d = homeDistance()
           flyTo = { from: controls.target.clone(), to: CENTER.clone(), camFrom: camera.position.clone(), camTo: new THREE.Vector3(d * 0.62, CENTER.y + d * 0.28, d * 0.74), t0: performance.now() }
@@ -370,6 +523,8 @@ export function TowerScene({ data, locale, initialSage }: { data: TowerData; loc
       sceneApi.setTime(live.current.time)
       for (const k of Object.keys(live.current.kinds) as TowerLinkKind[]) sceneApi.setVisible(k, live.current.kinds[k])
       if (live.current.selected) sceneApi.focus(live.current.selected)
+      if (live.current.road) { sceneApi.road(live.current.road); sceneApi.roadGo(live.current.roadAt, 1200) }
+      setReady(true)
 
       // pointer: hover shows a name, a press chooses
       const ray = new THREE.Raycaster()
@@ -418,13 +573,14 @@ export function TowerScene({ data, locale, initialSage }: { data: TowerData; loc
         const now = performance.now()
         if (!controls.autoRotate && !focusId && idleSince && now - idleSince > 9000) { controls.autoRotate = true; idleSince = 0 }
         if (flyTo) {
-          const k = Math.min(1, (now - flyTo.t0) / 1100), e = k < 0.5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2
+          const k = Math.min(1, (now - flyTo.t0) / (flyTo.dur ?? 1100)), e = k < 0.5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2
           controls.target.lerpVectors(flyTo.from, flyTo.to, e)
           camera.position.lerpVectors(flyTo.camFrom, flyTo.camTo, e)
           if (k >= 1) flyTo = null
         }
         // light flowing from teacher to student
         const el = clock.getElapsedTime()
+        if (head.visible) headMat.size = 7 + 2.2 * Math.sin(el * 3.2)
         let m = 0
         arcs.teacher.forEach((arc, j) => {
           if (cutoff != null && arc.reveal > cutoff) return
@@ -474,18 +630,53 @@ export function TowerScene({ data, locale, initialSage }: { data: TowerData; loc
   useEffect(() => { for (const k of Object.keys(kinds) as TowerLinkKind[]) api.current?.setVisible(k, kinds[k]) }, [kinds])
   useEffect(() => { api.current?.setTime(time) }, [time])
 
-  // the address follows the chosen sage (replaced, not pushed: Back leaves the tower). The state is
-  // null on purpose: Next.js passes a replaceState on to usePathname (the language links) only when
-  // the state is not its own
+  // the road to Sinai: another sage chosen ends it
+  const roadFor = useMemo(() => (selected ? roadOf(data, selected) : null), [data, selected])
+  useEffect(() => { setRoad(null); setRoadPlaying(false) }, [selected])
+  const startRoad = (from: 'panel' | 'link') => {
+    if (!roadFor || roadFor.length < 2) return
+    setPlaying(false)
+    setTime(null)
+    setRoad(roadFor)
+    setRoadAt(0)
+    setRoadPlaying(true)
+    track('tower_road', { locale, from })
+  }
+  // a link with ?road=1 (the sage page's card, a shared road) flies it at once
   useEffect(() => {
-    const next = towerPath(locale, selected)
-    if (window.location.pathname !== next) window.history.replaceState(null, '', next + window.location.search)
-    setCopied(false)
-  }, [locale, selected])
+    if (initialSage && new URLSearchParams(window.location.search).has('road')) startRoad('link')
+    // once, on arrival
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+  const hadRoad = useRef(false)
+  useEffect(() => {
+    if (road) { api.current?.road(road); hadRoad.current = true }
+    else if (hadRoad.current) { hadRoad.current = false; api.current?.road(null); api.current?.focus(live.current.selected) }
+  }, [road])
+  useEffect(() => { if (road) api.current?.roadGo(roadAt, stepMs(road[roadAt], roadAt)) }, [road, roadAt])
+  useEffect(() => {
+    if (!road || !roadPlaying || !ready) return
+    if (roadAt >= road.length - 1) {
+      // arrived at Sinai: hold, then pull back to the whole thread
+      const t = setTimeout(() => { setRoadPlaying(false); api.current?.roadOverview() }, 2600)
+      return () => clearTimeout(t)
+    }
+    const t = setTimeout(() => setRoadAt(a => Math.min(a + 1, road.length - 1)), stepMs(road[roadAt], roadAt))
+    return () => clearTimeout(t)
+  }, [road, roadAt, roadPlaying, ready])
 
-  const share = async (n: TowerNode) => {
-    const url = `${window.location.origin}${towerPath(locale, n.id)}`
-    const text = `${n.short} ${S.inTower[locale]}`
+  // the address follows the chosen sage, and ?road=1 while his road is flown (replaced, not pushed:
+  // Back leaves the tower). The state is null on purpose: Next.js passes a replaceState on to
+  // usePathname (the language links) only when the state is not its own
+  useEffect(() => {
+    const next = towerPath(locale, selected) + (road && selected ? '?road=1' : '')
+    if (window.location.pathname + window.location.search !== next) window.history.replaceState(null, '', next)
+    setCopied(false)
+  }, [locale, selected, road])
+
+  const share = async (n: TowerNode, withRoad = false) => {
+    const url = `${window.location.origin}${towerPath(locale, n.id)}${withRoad ? '?road=1' : ''}`
+    const text = withRoad ? `${SP.title[locale]}: ${n.short}` : `${n.short} ${S.inTower[locale]}`
     if (navigator.share) {
       try {
         await navigator.share({ title: text, text, url })
@@ -609,8 +800,58 @@ export function TowerScene({ data, locale, initialSage }: { data: TowerData; loc
         </div>
       </div>
 
+      {/* the road to Sinai, station by station */}
+      {sel && road && (() => {
+        const p = road[roadAt], next = road[roadAt + 1], end = roadAt === road.length - 1
+        const n = p.id ? byId.get(p.id) : undefined
+        const sub = [p.gen ? genOf(p.gen, locale) : null, n && !p.group ? (n.years || data.eras.find(e => e.era === n.era)?.label) : null].filter(Boolean).join(' · ')
+        const how = p.how === 'sinai' ? S.sinai[locale]
+          : p.alongside ? S.sameGen[locale] + p.alongside
+            : !next ? null
+              : p.how === 'chain' ? S.receivedChain[locale] + (locale === 'en' ? next.name.replace(/^The /, 'the ') : next.name)
+                : receivedFrom(p.how, next.name, locale, n?.feminine)
+        const btn = 'grid h-9 w-9 place-items-center rounded-full border border-white/15 text-ink-100 hover:border-gold-500/60 disabled:opacity-30'
+        return (
+          <aside dir={dir} className="absolute inset-x-3 bottom-32 z-20 rounded-2xl border border-gold-500/35 bg-ink-900/90 p-4 shadow-2xl backdrop-blur sm:inset-x-auto sm:end-4 sm:top-4 sm:bottom-auto sm:w-80">
+            <div className="flex items-center justify-between gap-3">
+              <p className="text-[11px] font-semibold uppercase tracking-widest text-gold-400">{SP.title[locale]}</p>
+              <button type="button" onClick={() => setRoad(null)} aria-label={S.close[locale]} className="text-ink-400 hover:text-ink-100">✕</button>
+            </div>
+            <p className="mt-0.5 text-[11px] tabular-nums text-ink-500">{stationOf(roadAt + 1, road.length, locale)}</p>
+            <div aria-live="polite">
+              <h2 className="mt-2 font-serif text-xl font-bold leading-tight text-ink-50">{p.name}</h2>
+              {sub && <p className="mt-1 text-xs text-ink-400">{sub}</p>}
+              {how && <p className={`mt-2 text-sm ${p.how === 'influence' ? 'text-ink-300' : 'text-gold-200'}`}>{how}</p>}
+            </div>
+            {end && (
+              <div className="mt-3 border-t border-white/10 pt-3">
+                <p className="font-serif text-base font-semibold text-gold-300">{roadSummary(road.length, sel.short, locale)}</p>
+                <p className="mt-1.5 text-[11px] leading-relaxed text-ink-400">{SP.honesty[locale]}</p>
+              </div>
+            )}
+            <div className="mt-3 flex items-center gap-2">
+              {/* the road runs from the sage down to Sinai: "next" goes back in time, in reading direction */}
+              <button type="button" className={btn} aria-label={S.prev[locale]} disabled={roadAt === 0} onClick={() => { setRoadPlaying(false); setRoadAt(a => Math.max(0, a - 1)) }}><svg aria-hidden className="h-4 w-4 rtl:-scale-x-100" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6" /></svg></button>
+              <button type="button" className={btn} aria-label={roadPlaying ? S.pause[locale] : S.play[locale]} onClick={() => { if (end) setRoadAt(0); setRoadPlaying(v => end ? true : !v) }}><span aria-hidden className="text-xs">{roadPlaying ? '❚❚' : '▶'}</span></button>
+              <button type="button" className={btn} aria-label={S.next[locale]} disabled={end} onClick={() => { setRoadPlaying(false); setRoadAt(a => Math.min(road.length - 1, a + 1)) }}><svg aria-hidden className="h-4 w-4 rtl:-scale-x-100" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6" /></svg></button>
+              {!end && <button type="button" onClick={() => { setRoadPlaying(false); setRoadAt(road.length - 1) }} className="ms-auto rounded-full border border-white/15 px-3 py-1.5 text-xs text-ink-200 hover:border-gold-500/60">{S.toSinai[locale]}</button>}
+            </div>
+            {end && (
+              <div className="mt-3 flex flex-wrap items-center gap-2">
+                <button type="button" onClick={() => share(sel, true)} className="inline-flex items-center gap-1.5 rounded-lg bg-gold-500 px-3 py-2 text-sm font-semibold text-ink-900 hover:bg-gold-400">
+                  <span aria-hidden>↗</span>{S.share[locale]}
+                </button>
+                <button type="button" onClick={() => { setRoadAt(0); setRoadPlaying(true) }} className="rounded-lg border border-white/15 px-3 py-2 text-sm text-ink-100 hover:border-gold-500/50">{S.again[locale]}</button>
+                <a href={`/${locale}/sage/${sel.id}`} className="text-sm text-gold-300 underline-offset-4 hover:underline">{S.open[locale]}</a>
+                {copied && <span role="status" className="text-xs text-gold-300">{S.copied[locale]}</span>}
+              </div>
+            )}
+          </aside>
+        )
+      })()}
+
       {/* the chosen sage */}
-      {sel && direct && chain && (
+      {sel && direct && chain && !road && (
         <aside dir={dir} className="absolute inset-x-3 bottom-32 z-20 max-h-[38%] overflow-y-auto rounded-2xl border border-gold-500/25 bg-ink-900/90 p-4 shadow-2xl backdrop-blur sm:inset-x-auto sm:end-4 sm:top-4 sm:bottom-auto sm:w-80 sm:max-h-[70%]">
           <div className="flex items-start justify-between gap-3">
             <div>
@@ -622,6 +863,17 @@ export function TowerScene({ data, locale, initialSage }: { data: TowerData; loc
             </div>
             <button type="button" onClick={() => setSelected(null)} aria-label={S.close[locale]} className="text-ink-400 hover:text-ink-100">✕</button>
           </div>
+          {roadFor && roadFor.length > 1 && (
+            <button
+              type="button"
+              onClick={() => startRoad('panel')}
+              className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-xl border border-gold-500/50 bg-gradient-to-b from-gold-500/25 to-gold-500/10 px-3 py-2 text-sm font-semibold text-gold-200 shadow-[0_0_18px_rgba(233,196,106,0.18)] hover:from-gold-500/35"
+            >
+              <svg aria-hidden className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinejoin="round" strokeLinecap="round"><path d="M2.5 20 10 8.5l3.2 4.8 2.3-3L21.5 20z" /><path d="M12 3.5v2.2M7.4 5.3l1.1 1.6M16.6 5.3l-1.1 1.6" /></svg>
+              {SP.title[locale]}
+              <span className="text-[11px] font-normal tabular-nums text-gold-300/80">· {roadFor.length}</span>
+            </button>
+          )}
           <p className="mt-3 text-xs text-gold-300/90">{S.chain[locale]}: {chain.up.size + chain.down.size + chain.family.size}</p>
           {direct.teachers.length > 0 && (<><h3 className="mt-3 text-[11px] font-semibold uppercase tracking-widest text-gold-400">{S.teachers[locale]}</h3><ul className="mt-1 space-y-0.5 text-sm">{nameList(direct.teachers)}</ul></>)}
           {direct.students.length > 0 && (<><h3 className="mt-3 text-[11px] font-semibold uppercase tracking-widest text-gold-400">{S.students[locale]}</h3><ul className="mt-1 space-y-0.5 text-sm">{nameList(direct.students)}</ul></>)}

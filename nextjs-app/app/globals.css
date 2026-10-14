@@ -453,3 +453,5 @@ h1, h2, h3 {
   .tower-label { font-size: 10px; }
   .tower-region, .tower-era { font-size: 9px; }
 }
+/* the road to Sinai in the tower: stations named only by the chain (Joshua, Eli, Elijah…) */
+.tower-label-station { color: #fff1c9; font-family: 'Frank Ruhl Libre', Georgia, serif; font-style: italic; font-size: 12px; opacity: 1; }
