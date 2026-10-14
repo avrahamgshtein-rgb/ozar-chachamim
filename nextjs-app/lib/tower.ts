@@ -99,6 +99,11 @@ export interface TowerData {
 
 const SECTOR = (2 * Math.PI) / TOWER_REGIONS.length
 
+/** The tower, opened on a sage when one is given: `/he/tower/41`, the link his page and a share carry. */
+export function towerPath(locale: Locale, id?: string | null): string {
+  return id ? `/${locale}/tower/${encodeURIComponent(id)}` : `/${locale}/tower`
+}
+
 /** The angle at the middle of a region's sector. */
 export function regionAngle(region: Region): number {
   return TOWER_REGIONS.indexOf(region) * SECTOR

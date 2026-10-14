@@ -7,7 +7,7 @@
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import { getAllConnections, getAllSages } from '../lib/serverData'
-import { buildTower, heightOf, lineageOf, regionAngle, TOWER_HEIGHT, TOWER_REGIONS } from '../lib/tower'
+import { buildTower, heightOf, lineageOf, regionAngle, TOWER_HEIGHT, TOWER_REGIONS, towerPath } from '../lib/tower'
 
 let passed = 0
 let failed = 0
@@ -93,8 +93,35 @@ test('the header, the mobile menu and the sitemap lead to /tower', () => {
   assert.match(readFileSync(new URL('../app/sitemap.ts', import.meta.url), 'utf8'), /\/tower`/)
 })
 
+const src = (path: string) => readFileSync(new URL(path, import.meta.url), 'utf8')
+
+test("every sage page links to the tower opened on him, and that page exists", () => {
+  assert.equal(towerPath('he', '41'), '/he/tower/41')
+  assert.equal(towerPath('en', null), '/en/tower')
+  assert.match(src('../app/[locale]/sage/[id]/page.tsx'), /href=\{towerPath\(loc, raw\.id\)\}/)
+  const page = src('../app/[locale]/tower/[id]/page.tsx')
+  // an id that is not a sage is a 404, not an empty tower; the page opens on the sage it names
+  assert.match(page, /if \(!data\.nodes\.some\(n => n\.id === id\)\) notFound\(\)/)
+  assert.match(page, /initialSage=\{id\}/)
+  // its preview is the sage's share card, and the per-sage pages stay out of search
+  assert.match(page, /\/sage\/\$\{id\}\/opengraph-image/)
+  assert.match(page, /index: false/)
+})
+
+test('the scene opens on the linked sage once three.js has loaded, and keeps the address on the chosen sage', () => {
+  const scene = src('../components/tower/TowerScene.tsx')
+  assert.match(scene, /useState<string \| null>\(initialSage \?\? null\)/)
+  // the effects that pass state to the scene run before it exists: it reads the state when built
+  assert.match(scene, /api\.current = sceneApi\s+sceneApi\.setTime\(live\.current\.time\)/)
+  assert.match(scene, /if \(live\.current\.selected\) sceneApi\.focus\(live\.current\.selected\)/)
+  // null, not history.state: Next.js syncs usePathname (the language links) only for a state not its own
+  assert.match(scene, /replaceState\(null, '', next/)
+  // and the language links follow that address
+  assert.match(src('../components/tower/TowerPage.tsx'), /<SiteTopBar [^>]*followUrl/)
+})
+
 test('three.js is loaded only inside the scene, never at the top of a module', () => {
-  const scene = readFileSync(new URL('../components/tower/TowerScene.tsx', import.meta.url), 'utf8')
+  const scene = src('../components/tower/TowerScene.tsx')
   assert.doesNotMatch(scene, /^import .* from 'three/m)
   assert.match(scene, /await import\('three'\)/)
 })

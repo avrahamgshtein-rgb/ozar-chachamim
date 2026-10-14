@@ -30,6 +30,7 @@ import { ChatWidget } from '@/components/chat/ChatWidget'
 import type { AskSubject } from '@/components/chat/askAbout'
 import type { Locale, Sage } from '@/lib/types'
 import { SITE_URL } from '@/lib/siteUrl'
+import { towerPath } from '@/lib/tower'
 
 interface PageProps {
   params: Promise<{ locale: string; id: string }>
@@ -39,6 +40,7 @@ interface PageProps {
 const S = {
   related: { he: 'חכמים קשורים', en: 'Related sages', ru: 'Связанные мудрецы' },
   showInGraph: { he: 'הצגה ברשת הקשרים', en: 'Show in the network', ru: 'Показать в сети' },
+  showInTower: { he: 'הצגה במגדל הדורות', en: 'Show in the Tower of Generations', ru: 'Показать в Башне поколений' },
   readResearch: { he: 'לקריאת המחקר', en: 'Read the research', ru: 'Читать исследование' },
   listen: { he: 'האזנה לפרק', en: 'Listen', ru: 'Слушать' },
   watch: { he: 'צפייה בסרטון', en: 'Watch the video', ru: 'Смотреть видео' },
@@ -336,6 +338,12 @@ export default async function SagePage({ params }: PageProps) {
                 <span aria-hidden className="font-mono text-xs">⬡</span>
                 {S.showInGraph[loc]}
               </Link>
+              {/* a plain link: prefetching the tower (every sage's position) from every sage page would be waste */}
+              <a href={towerPath(loc, raw.id)}
+                className="inline-flex items-center gap-2 rounded-full border border-ink-700/50 bg-ink-800/40 px-4 py-2 text-sm text-ink-200 transition-colors hover:border-gold-500/40 hover:text-gold-300">
+                <span aria-hidden>🌌</span>
+                {S.showInTower[loc]}
+              </a>
             </div>
           </header>
 

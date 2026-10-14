@@ -5,10 +5,12 @@
 // the line of transmission, family links in rose. Press a sage to light up his teachers' teachers
 // and his students' students; press play to watch 3,700 years fill in. three.js is loaded only
 // here (a dynamic import inside the effect), so no other page pays for it.
+// The chosen sage is kept in the address (/he/tower/41), so a link opens on him: `initialSage`.
 import { useEffect, useMemo, useRef, useState } from 'react'
 import type { Locale } from '@/lib/types'
 import type { TowerData, TowerNode, TowerLinkKind } from '@/lib/tower'
-import { lineageOf } from '@/lib/tower'
+import { lineageOf, towerPath } from '@/lib/tower'
+import { track } from '@/lib/analytics'
 
 const S = {
   play: { he: 'הפעלת ההיסטוריה', en: 'Play history', ru: 'Запустить историю' },
@@ -24,6 +26,9 @@ const S = {
   familyOf: { he: 'משפחתו', en: 'Family', ru: 'Семья' },
   chain: { he: 'בשלשלת שלו', en: 'In his chain', ru: 'В его цепи' },
   close: { he: 'סגירה', en: 'Close', ru: 'Закрыть' },
+  share: { he: 'שיתוף', en: 'Share', ru: 'Поделиться' },
+  copied: { he: 'הקישור הועתק', en: 'Link copied', ru: 'Ссылка скопирована' },
+  inTower: { he: 'במגדל הדורות', en: 'in the Tower of Generations', ru: 'в Башне поколений' },
   noWebgl: {
     he: 'הדפדפן הזה לא מציג גרפיקה תלת־ממדית. אפשר לראות את אותם קשרים ברשת הקשרים.',
     en: 'This browser cannot show 3D graphics. The same links are in the network view.',
@@ -51,16 +56,21 @@ interface SceneApi {
   dispose(): void
 }
 
-export function TowerScene({ data, locale }: { data: TowerData; locale: Locale }) {
+export function TowerScene({ data, locale, initialSage }: { data: TowerData; locale: Locale; initialSage?: string }) {
   const mount = useRef<HTMLDivElement>(null)
   const api = useRef<SceneApi | null>(null)
   const [failed, setFailed] = useState(false)
-  const [selected, setSelected] = useState<string | null>(null)
+  const [selected, setSelected] = useState<string | null>(initialSage ?? null)
   const [time, setTime] = useState<number | null>(null)
   const [playing, setPlaying] = useState(false)
   const [kinds, setKinds] = useState<Record<TowerLinkKind, boolean>>({ teacher: true, family: true, influence: false, other: false })
+  const [copied, setCopied] = useState(false)
   const byId = useMemo(() => new Map(data.nodes.map(n => [n.id, n])), [data])
   const dir = locale === 'he' ? 'rtl' : 'ltr'
+  // what the scene must show once it is built: the effects below that pass state to it run before
+  // three.js has loaded, so the scene reads this when it is ready (a sage opened from a link)
+  const live = useRef({ selected, time, kinds })
+  useEffect(() => { live.current = { selected, time, kinds } })
 
   // the scene: built once per data set
   useEffect(() => {
@@ -357,6 +367,9 @@ export function TowerScene({ data, locale }: { data: TowerData; locale: Locale }
         dispose() {},
       }
       api.current = sceneApi
+      sceneApi.setTime(live.current.time)
+      for (const k of Object.keys(live.current.kinds) as TowerLinkKind[]) sceneApi.setVisible(k, live.current.kinds[k])
+      if (live.current.selected) sceneApi.focus(live.current.selected)
 
       // pointer: hover shows a name, a press chooses
       const ray = new THREE.Raycaster()
@@ -460,6 +473,36 @@ export function TowerScene({ data, locale }: { data: TowerData; locale: Locale }
   useEffect(() => { api.current?.focus(selected) }, [selected])
   useEffect(() => { for (const k of Object.keys(kinds) as TowerLinkKind[]) api.current?.setVisible(k, kinds[k]) }, [kinds])
   useEffect(() => { api.current?.setTime(time) }, [time])
+
+  // the address follows the chosen sage (replaced, not pushed: Back leaves the tower). The state is
+  // null on purpose: Next.js passes a replaceState on to usePathname (the language links) only when
+  // the state is not its own
+  useEffect(() => {
+    const next = towerPath(locale, selected)
+    if (window.location.pathname !== next) window.history.replaceState(null, '', next + window.location.search)
+    setCopied(false)
+  }, [locale, selected])
+
+  const share = async (n: TowerNode) => {
+    const url = `${window.location.origin}${towerPath(locale, n.id)}`
+    const text = `${n.short} ${S.inTower[locale]}`
+    if (navigator.share) {
+      try {
+        await navigator.share({ title: text, text, url })
+        track('tower_share', { locale, method: 'share' })
+        return
+      } catch (e) {
+        if ((e as Error)?.name === 'AbortError') return
+      }
+    }
+    try {
+      await navigator.clipboard.writeText(url)
+      setCopied(true)
+      track('tower_share', { locale, method: 'copy' })
+    } catch {
+      window.prompt(text, url)
+    }
+  }
 
   // the time-lapse
   useEffect(() => {
@@ -583,7 +626,13 @@ export function TowerScene({ data, locale }: { data: TowerData; locale: Locale }
           {direct.teachers.length > 0 && (<><h3 className="mt-3 text-[11px] font-semibold uppercase tracking-widest text-gold-400">{S.teachers[locale]}</h3><ul className="mt-1 space-y-0.5 text-sm">{nameList(direct.teachers)}</ul></>)}
           {direct.students.length > 0 && (<><h3 className="mt-3 text-[11px] font-semibold uppercase tracking-widest text-gold-400">{S.students[locale]}</h3><ul className="mt-1 space-y-0.5 text-sm">{nameList(direct.students)}</ul></>)}
           {direct.family.length > 0 && (<><h3 className="mt-3 text-[11px] font-semibold uppercase tracking-widest text-rose-300">{S.familyOf[locale]}</h3><ul className="mt-1 space-y-0.5 text-sm">{nameList(direct.family)}</ul></>)}
-          <a href={`/${locale}/sage/${sel.id}`} className="mt-4 inline-block rounded-lg bg-gold-500 px-4 py-2 text-sm font-semibold text-ink-900 hover:bg-gold-400">{S.open[locale]}</a>
+          <div className="mt-4 flex flex-wrap items-center gap-2">
+            <a href={`/${locale}/sage/${sel.id}`} className="inline-block rounded-lg bg-gold-500 px-4 py-2 text-sm font-semibold text-ink-900 hover:bg-gold-400">{S.open[locale]}</a>
+            <button type="button" onClick={() => share(sel)} className="inline-flex items-center gap-1.5 rounded-lg border border-white/15 px-3 py-2 text-sm text-ink-100 hover:border-gold-500/50">
+              <span aria-hidden>↗</span>{S.share[locale]}
+            </button>
+            {copied && <span role="status" className="text-xs text-gold-300">{S.copied[locale]}</span>}
+          </div>
         </aside>
       )}
     </div>
