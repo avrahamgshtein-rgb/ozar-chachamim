@@ -168,9 +168,11 @@ roster sages, and what became of it. Generated; do not edit.
 == dropped: not a person: 1 ==
   teacher: רש"י (רבי שלמה יצחקי) [594] (1040–1105) -> מחזור ויטרי [356] (ללא שנים)  [ספריא: simchah-of-vitry learned-from rashi; ספריא: rashi taught simchah-of-vitry]
 
-== dropped: teacher born after student: 5 ==
+== dropped: teacher born after student: 4 ==
   teacher: הרמב"ן (רבי משה בן נחמן) [44] (1194–1270) -> רבנו שמואל הסרדי [390] (1190–1256)  [ויקינתונים: Q355455 student (P802) Q7413003]
   teacher: הרב חסדאי קרשקש [57] (1340–1410) -> רבי יצחק בר ששת (הריב״ש) [56] (1326–1408)  [ויקינתונים: Q460650 student of (P1066) Q528415; ויקינתונים: Q528415 student (P802) Q460650]
   teacher: רבי משה חיים לוצאטו (הרמח״ל) [93] (1707–1746) -> רבי משה דוד ואלי (הרמ״ד ואלי) [90] (1697–1777)  [ויקינתונים: Q6616438 student of (P1066) Q982845]
   teacher: הרב שלום שרעבי (הרש"ש) [96] (1720–1777) -> רבי אברהם גרשון מקיטוב (1701–1761) – גיס הבעל שם טוב: עלייה לארץ וחסידות מוקדמת [92] (1701–1761)  [ויקינתונים: Q2899025 student of (P1066) Q1977067]
+
+== dropped: the site says the other taught: 1 ==
   teacher: רבנו יונה גירונדי [486] (1200–1263) -> הרמב"ן (רבי משה בן נחמן) [44] (1194–1270)  [ספריא: ramban learned-from rabbeinu-yonah-gerondi; ספריא: rabbeinu-yonah-gerondi taught ramban]
