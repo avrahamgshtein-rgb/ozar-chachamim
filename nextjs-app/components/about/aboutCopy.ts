@@ -29,6 +29,9 @@ export interface AboutCopy {
   langsBody: string
   musicTitle: string
   musicBody: string
+  connectTitle: string
+  connectBody: string
+  connectCta: string
   citeTitle: string
   citeIntro: string
   citeSiteLabel: string
@@ -91,6 +94,10 @@ export const ABOUT_COPY: Record<Locale, AboutCopy> = {
     langsBody: 'האתר זמין בשלוש שפות. תרגום תוכן החכמים עדיין נמשך, ובינתיים מוצג במקומות רבים המקור העברי.',
     musicTitle: 'מוזיקת רקע',
     musicBody: 'פס קול מקורי בשם Journey of the Sages, שנוצר לאתר ב־Suno: שחר במדבר, נדודים וגלות, ספרד ואשכנז, ועד ימינו. הוא כבוי עד שמדליקים אותו בכפתור 🎵 שבראש העמוד, מתנגן בשקט, ומפנה את מקומו כשמחקר מוקרא או כשסרטון מתנגן.',
+    connectTitle: 'שרשרת החכמים',
+    connectBody:
+      'בחרו שני חכמים וגלו את שרשרת הקשרים הקצרה ביותר ביניהם: רב ותלמיד, משפחה, חברים והשפעה. אפשר לטוס בה במגדל הדורות תחנה אחר תחנה. בכל יום יש גם משחק: לחבר בין שני חכמים בכמה שפחות צעדים.',
+    connectCta: 'למסלולים ולמשחק',
     citeTitle: 'איך לצטט',
     citeIntro: 'אפשר לצטט את האתר כולו או את הדף של חכם מסוים. כתובות דפי החכמים קבועות, ולכן אפשר להפנות אליהן ישירות.',
     citeSiteLabel: 'האתר',
@@ -154,6 +161,10 @@ export const ABOUT_COPY: Record<Locale, AboutCopy> = {
     langsBody: 'The site is available in three languages. Translation of the sage content is still under way, so in many places the Hebrew original is shown for now.',
     musicTitle: 'Background music',
     musicBody: 'An original soundtrack, “Journey of the Sages”, made for the site with Suno: dawn in the desert, wandering and exile, Sepharad and Ashkenaz, and our own day. It stays off until you press 🎵 at the top of the page, plays softly, and steps aside while a paper is read aloud or a video plays.',
+    connectTitle: 'Sage Chain',
+    connectBody:
+      'Pick any two sages and see the shortest chain of recorded relations between them (teacher and student, family, colleagues, influence), then fly it through the Tower of Generations station by station. There is a daily game too: connect two sages in as few steps as you can.',
+    connectCta: 'Paths and the daily game',
     citeTitle: 'How to cite',
     citeIntro: "You can cite the site as a whole or a particular sage's page. Sage page addresses are permanent, so you can link to them directly.",
     citeSiteLabel: 'The site',
@@ -217,6 +228,10 @@ export const ABOUT_COPY: Record<Locale, AboutCopy> = {
     langsBody: 'Сайт доступен на трёх языках. Перевод материалов о мудрецах ещё продолжается, поэтому пока во многих местах показан ивритский оригинал.',
     musicTitle: 'Фоновая музыка',
     musicBody: 'Оригинальная музыка «Journey of the Sages», созданная для сайта в Suno: рассвет в пустыне, странствия и изгнание, Сфарад и Ашкеназ — и наши дни. Она выключена, пока вы не нажмёте 🎵 вверху страницы, звучит тихо и уступает место, когда исследование читается вслух или идёт видео.',
+    connectTitle: 'Цепочка мудрецов',
+    connectBody:
+      'Выберите двух мудрецов и увидьте самую короткую цепочку известных связей между ними (учитель и ученик, семья, коллеги, влияние), а потом пролетите по ней через Башню поколений, остановку за остановкой. Каждый день есть и игра: соединить двух мудрецов как можно меньшим числом шагов.',
+    connectCta: 'К путям и игре',
     citeTitle: 'Как цитировать',
     citeIntro: 'Можно ссылаться на сайт целиком или на страницу конкретного мудреца. Адреса страниц мудрецов постоянны, на них можно ссылаться напрямую.',
     citeSiteLabel: 'Сайт',

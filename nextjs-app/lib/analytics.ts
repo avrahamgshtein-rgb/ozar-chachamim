@@ -21,6 +21,11 @@ export type AnalyticsEvent =
   | 'riddle_complete'     // ... and the game was won or lost              { locale, won, tries: 1..6 }
   | 'riddle_share'        // the riddle's result was shared                { locale, method: share|copy|whatsapp }
   | 'tower_road'          // the road to Sinai was flown in the tower      { locale, from: panel|link }
+  | 'connect_path'        // the picker found a path between two sages     { locale, steps }
+  | 'connect_fly'         // a path was flown in the tower                 { locale, from: picker|game|link }
+  | 'chain_start'         // the first move of the day in the sage chain   { locale }
+  | 'chain_complete'      // ... and the game was won or lost              { locale, won, steps, best }
+  | 'chain_share'         // the chain's result was shared                 { locale, method: share|copy|whatsapp }
   | 'quiz_start'          // a quiz was started                           { locale, kind: sage|kids }
   | 'quiz_complete'       // ... and finished                             { locale, kind, score: 0..100, stars: 0..3 }
   | 'kids_station_done'   // a child stamped a station of the kids' journey { route: saltiel|shira }

@@ -9,14 +9,18 @@
 // "הדרך לסיני": from the chosen sage the camera flies down the centuries along his road to Moses
 // (the same road as his page's card, lib/sinaiPath.ts), a golden thread unrolling behind it and a
 // caption at every station; `?road=1` in the address starts it, so a shared link flies it too.
+// "שישה צעדים": a path between two sages (lib/connectFlight.ts) is flown the same way, by itself, in
+// its own teal, dotted where the link is only influence (`flight`, app/[locale]/tower/path/[from]/[to]).
 import { useEffect, useMemo, useRef, useState } from 'react'
 import type { Locale } from '@/lib/types'
 import type { RoadPoint, TowerData, TowerNode, TowerLinkKind } from '@/lib/tower'
-import { lineageOf, roadOf, towerPath } from '@/lib/tower'
+import { lineageOf, roadOf, shortName, towerPath } from '@/lib/tower'
 import { track } from '@/lib/analytics'
 import { SP, genLabel, receivedFrom, ruPlural } from '@/components/viz/SinaiPathText'
 import type { KidsTour } from '@/lib/kidsTour'
 import { KidsTourPanel } from '@/components/kids/KidsTourPanel'
+import { connectHref, type ConnectFlight, type FlightPoint } from '@/lib/connectFlight'
+import { FlightPanel } from '@/components/connect/FlightPanel'
 
 const S = {
   play: { he: 'הפעלת ההיסטוריה', en: 'Play history', ru: 'Запустить историю' },
@@ -48,6 +52,8 @@ const S = {
   again: { he: 'שוב מההתחלה', en: 'Fly it again', ru: 'Ещё раз' },
   prev: { he: 'תחנה קודמת', en: 'Previous station', ru: 'Предыдущая остановка' },
   next: { he: 'תחנה הבאה', en: 'Next station', ru: 'Следующая остановка' },
+  connectHim: { he: 'חברו אותו לחכם אחר', en: 'Connect him to another sage', ru: 'Связать с другим мудрецом' },
+  connectHer: { he: 'חברו אותה לחכם אחר', en: 'Connect her to another sage', ru: 'Связать с другим мудрецом' },
 } satisfies Record<string, Record<Locale, string>>
 
 /** "Station 12 of 46" */
@@ -94,8 +100,10 @@ interface SceneApi {
 
 /** A kids' route is flown station by station, by the reader's hand (or on its own, seven seconds a station). */
 const TOUR_STEP_MS = 7000
+/** A path between two sages is flown on its own, two and a half seconds a station. */
+const FLIGHT_STEP_MS = 2400
 
-export function TowerScene({ data, locale, initialSage, tour }: { data: TowerData; locale: Locale; initialSage?: string; tour?: KidsTour }) {
+export function TowerScene({ data, locale, initialSage, tour, flight }: { data: TowerData; locale: Locale; initialSage?: string; tour?: KidsTour; flight?: ConnectFlight }) {
   const mount = useRef<HTMLDivElement>(null)
   const api = useRef<SceneApi | null>(null)
   const [failed, setFailed] = useState(false)
@@ -118,6 +126,9 @@ export function TowerScene({ data, locale, initialSage, tour }: { data: TowerDat
   // the kids' journey (app/[locale]/kids/journey/[route]): its own trail colour, no choosing sages on the way
   const tourRef = useRef(tour)
   tourRef.current = tour
+  // a path between two sages (app/[locale]/tower/path/[from]/[to]): the same, in the path's teal
+  const flightRef = useRef(flight)
+  flightRef.current = flight
 
   // the scene: built once per data set
   useEffect(() => {
@@ -451,7 +462,8 @@ export function TowerScene({ data, locale, initialSage, tour }: { data: TowerDat
           roadStart = []
           for (let i = 0; i < points.length - 1; i++) {
             roadStart.push(samples.length / 3)
-            const solid = points[i].how === 'teacher' || points[i].how === 'chain'
+            // a flight's thread is dotted where the link into the next sage is only influence
+            const solid = (points[i].how === 'teacher' || points[i].how === 'chain') && !(points[i] as FlightPoint).dotted
             const n = solid ? 26 : 8
             for (let k = 0; k < n; k++) { bow(points[i], points[i + 1], k / n, tmp); samples.push(tmp.x, tmp.y, tmp.z) }
           }
@@ -462,7 +474,7 @@ export function TowerScene({ data, locale, initialSage, tour }: { data: TowerDat
           roadGeo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(samples), 3))
           roadGeo.setDrawRange(0, 1)
           roadGroup.add(new THREE.Points(roadGeo, new THREE.PointsMaterial({
-            size: 1.7, map: glow, color: new THREE.Color(tourRef.current?.color ?? '#ffd98a'), transparent: true, opacity: 0.95, depthWrite: false, blending: THREE.AdditiveBlending,
+            size: 1.7, map: glow, color: new THREE.Color(tourRef.current?.color ?? flightRef.current?.color ?? '#ffd98a'), transparent: true, opacity: 0.95, depthWrite: false, blending: THREE.AdditiveBlending,
           })))
           // the stations nobody in the archive stands for (Joshua, Eli, Elijah…): a light of their own
           const virt = points.filter(p => !p.id)
@@ -481,6 +493,7 @@ export function TowerScene({ data, locale, initialSage, tour }: { data: TowerDat
             el.className = p.label ? 'tower-label tower-label-tour' : i === 0 ? 'tower-label tower-label-focus' : p.id ? 'tower-label tower-label-chain' : 'tower-label tower-label-station'
             el.dir = 'auto'
             el.textContent = p.label ?? (p.id ? byId.get(p.id)?.short ?? p.name : p.name)
+            if (flightRef.current && p.label) el.style.borderColor = `${flightRef.current.color}99`
             const o = new CSS2DObject(el)
             o.position.set(p.x, p.y + 1.3, p.z)
             o.visible = i === 0
@@ -516,11 +529,14 @@ export function TowerScene({ data, locale, initialSage, tour }: { data: TowerDat
           const size = box.getSize(new THREE.Vector3())
           const span = Math.max(size.y, size.x, size.z, 20)
           const v = Math.tan(THREE.MathUtils.degToRad(24))
-          const dist = (span * 0.62) / (v * Math.min(1, w() / h())) + 10
+          // on a phone a flight's card covers more than half the screen: stand farther back and aim lower, so
+          // the whole thread shows in the strip above it (the road to Sinai's card is smaller and keeps its view)
+          const tight = w() / h() < 0.8 && !!flightRef.current
+          const dist = ((span * 0.62) / (v * Math.min(1, w() / h())) + 10) * (tight ? 1.45 : 1)
           const out = new THREE.Vector3(mid.x, 0, mid.z)
           if (out.lengthSq() < 1) out.set(1, 0, 0)
           out.normalize()
-          const to = mid.clone().setY(mid.y - (w() / h() < 0.8 ? span * 0.18 : 0))
+          const to = mid.clone().setY(mid.y - (w() / h() < 0.8 ? span * (tight ? 1.0 : 0.18) : 0))
           flyTo = { from: controls.target.clone(), to, camFrom: camera.position.clone(), camTo: to.clone().add(out.multiplyScalar(dist)).add(new THREE.Vector3(0, span * 0.12, 0)), t0: performance.now(), dur: 2600 }
         },
         reset() {
@@ -560,6 +576,7 @@ export function TowerScene({ data, locale, initialSage, tour }: { data: TowerDat
       const onUp = (ev: PointerEvent) => {
         if (!downAt || Math.hypot(ev.clientX - downAt.x, ev.clientY - downAt.y) > 6) { downAt = null; return }
         downAt = null
+        if (flightRef.current) return
         if (tourRef.current) return
         const i = pick(ev)
         setSelected(i == null ? null : nodes[i].id)
@@ -644,7 +661,7 @@ export function TowerScene({ data, locale, initialSage, tour }: { data: TowerDat
 
   // the road to Sinai: another sage chosen ends it
   const roadFor = useMemo(() => (selected ? roadOf(data, selected) : null), [data, selected])
-  useEffect(() => { if (!tourRef.current) { setRoad(null); setRoadPlaying(false) } }, [selected])
+  useEffect(() => { if (!tourRef.current && !flightRef.current) { setRoad(null); setRoadPlaying(false) } }, [selected])
   // the kids' journey starts at its first station, the reader turning the pages
   useEffect(() => {
     if (!tour) return
@@ -653,6 +670,16 @@ export function TowerScene({ data, locale, initialSage, tour }: { data: TowerDat
     setRoadPlaying(false)
     track('kids_tour', { route: tour.route, stage: 'start' })
   }, [tour])
+  // a path between two sages starts at its first sage and flies on by itself once the scene is built;
+  // `?via=` says whether the picker or the game sent the visitor, else he came by a link
+  useEffect(() => {
+    if (!flight) return
+    setRoad(flight.points)
+    setRoadAt(0)
+    setRoadPlaying(true)
+    const via = new URLSearchParams(window.location.search).get('via')
+    track('connect_fly', { locale, from: via === 'picker' || via === 'game' ? via : 'link' })
+  }, [flight, locale])
   const startRoad = (from: 'panel' | 'link') => {
     if (!roadFor || roadFor.length < 2) return
     setPlaying(false)
@@ -673,7 +700,7 @@ export function TowerScene({ data, locale, initialSage, tour }: { data: TowerDat
     if (road) { api.current?.road(road); hadRoad.current = true }
     else if (hadRoad.current) { hadRoad.current = false; api.current?.road(null); api.current?.focus(live.current.selected) }
   }, [road])
-  useEffect(() => { if (road) api.current?.roadGo(roadAt, tour ? 2000 : stepMs(road[roadAt], roadAt)) }, [road, roadAt, tour])
+  useEffect(() => { if (road) api.current?.roadGo(roadAt, tour ? 2000 : flight ? FLIGHT_STEP_MS : stepMs(road[roadAt], roadAt)) }, [road, roadAt, tour, flight])
   useEffect(() => {
     if (!road || !roadPlaying || !ready) return
     if (roadAt >= road.length - 1) {
@@ -681,9 +708,9 @@ export function TowerScene({ data, locale, initialSage, tour }: { data: TowerDat
       const t = setTimeout(() => { setRoadPlaying(false); api.current?.roadOverview() }, 2600)
       return () => clearTimeout(t)
     }
-    const t = setTimeout(() => setRoadAt(a => Math.min(a + 1, road.length - 1)), tour ? TOUR_STEP_MS : stepMs(road[roadAt], roadAt))
+    const t = setTimeout(() => setRoadAt(a => Math.min(a + 1, road.length - 1)), tour ? TOUR_STEP_MS : flight ? FLIGHT_STEP_MS : stepMs(road[roadAt], roadAt))
     return () => clearTimeout(t)
-  }, [road, roadAt, roadPlaying, ready, tour])
+  }, [road, roadAt, roadPlaying, ready, tour, flight])
   useEffect(() => { if (tour && road && roadAt === road.length - 1) track('kids_tour', { route: tour.route, stage: 'end' }) }, [tour, road, roadAt])
 
   // the address follows the chosen sage, and ?road=1 while his road is flown (replaced, not pushed:
@@ -692,6 +719,8 @@ export function TowerScene({ data, locale, initialSage, tour }: { data: TowerDat
   useEffect(() => {
     // the kids' journey keeps its own address
     if (tourRef.current) return
+    // so does a path between two sages: it keeps the address it was opened on
+    if (flightRef.current) return
     const next = towerPath(locale, selected) + (road && selected ? '?road=1' : '')
     if (window.location.pathname + window.location.search !== next) window.history.replaceState(null, '', next)
     setCopied(false)
@@ -712,6 +741,29 @@ export function TowerScene({ data, locale, initialSage, tour }: { data: TowerDat
     try {
       await navigator.clipboard.writeText(url)
       setCopied(true)
+      track('tower_share', { locale, method: 'copy' })
+    } catch {
+      window.prompt(text, url)
+    }
+  }
+
+  // the path between two sages: the flight's own address, no query
+  const shareFlight = async (f: ConnectFlight) => {
+    const url = `${window.location.origin}${f.href}`
+    const text = `${shortName(f.stations[0].name)} ↔ ${shortName(f.stations[f.stations.length - 1].name)} · ${S.inTower[locale]}`
+    if (navigator.share) {
+      try {
+        await navigator.share({ title: text, text, url })
+        track('tower_share', { locale, method: 'share' })
+        return
+      } catch (e) {
+        if ((e as Error)?.name === 'AbortError') return
+      }
+    }
+    try {
+      await navigator.clipboard.writeText(url)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 3000)
       track('tower_share', { locale, method: 'copy' })
     } catch {
       window.prompt(text, url)
@@ -791,8 +843,8 @@ export function TowerScene({ data, locale, initialSage, tour }: { data: TowerDat
         </div>
       )}
 
-      {/* controls (not on the kids' journey, which has its own) */}
-      <div dir={dir} className={`absolute inset-x-0 bottom-0 z-10 flex-col${tour ? ' hidden' : ' flex'} gap-2 bg-gradient-to-t from-black/80 via-black/50 to-transparent px-3 pb-3 pt-8 sm:px-5`}>
+      {/* controls (not on the kids' journey or a path between two sages, which have their own) */}
+      <div dir={dir} className={`absolute inset-x-0 bottom-0 z-10 flex-col${tour || flight ? ' hidden' : ' flex'} gap-2 bg-gradient-to-t from-black/80 via-black/50 to-transparent px-3 pb-3 pt-8 sm:px-5`}>
         <div className="flex items-center gap-3">
           <button
             type="button"
@@ -832,6 +884,21 @@ export function TowerScene({ data, locale, initialSage, tour }: { data: TowerDat
           onGo={i => { setRoadPlaying(false); setRoadAt(Math.max(0, Math.min(road.length - 1, i))) }}
           onPlay={() => { if (roadAt === road.length - 1) setRoadAt(0); setRoadPlaying(v => roadAt === road.length - 1 ? true : !v) }}
           onOverview={() => { setRoadPlaying(false); api.current?.roadOverview() }}
+        />
+      )}
+
+      {/* a path between two sages, station by station */}
+      {flight && road && (
+        <FlightPanel
+          flight={flight}
+          locale={locale}
+          at={roadAt}
+          playing={roadPlaying}
+          copied={copied}
+          onGo={i => { setRoadPlaying(false); setRoadAt(Math.max(0, Math.min(road.length - 1, i))) }}
+          onPlay={() => { if (roadAt === road.length - 1) setRoadAt(0); setRoadPlaying(v => roadAt === road.length - 1 ? true : !v) }}
+          onOverview={() => { setRoadPlaying(false); api.current?.roadOverview() }}
+          onShare={() => shareFlight(flight)}
         />
       )}
 
@@ -920,6 +987,10 @@ export function TowerScene({ data, locale, initialSage, tour }: { data: TowerDat
             </button>
             {copied && <span role="status" className="text-xs text-gold-300">{S.copied[locale]}</span>}
           </div>
+          {/* a plain link: the connect page ships a net of its own, nothing to prefetch from here */}
+          <a href={connectHref(locale, sel.id)} className="mt-3 inline-flex min-h-[44px] items-center gap-1.5 rounded-lg border border-[#5fd4d0]/40 px-3 py-2 text-sm text-[#9fe6e2] hover:border-[#5fd4d0]/80">
+            <span aria-hidden>🔗</span>{sel.feminine ? S.connectHer[locale] : S.connectHim[locale]}
+          </a>
         </aside>
       )}
     </div>
