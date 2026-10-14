@@ -15,6 +15,8 @@ const TOWER_LABEL: Record<Locale, string> = { he: 'מגדל הדורות: כל �
 const TOWER_MENU: Record<Locale, string> = { he: 'מגדל הדורות (תלת־ממד)', en: 'Tower of Generations (3D)', ru: 'Башня поколений (3D)' }
 const TODAY_LABEL: Record<Locale, string> = { he: 'היום באוצר חכמים: יום ההילולא וחכם היום', en: 'Today: hillula and sage of the day', ru: 'Сегодня: день памяти и мудрец дня' }
 const TODAY_MENU: Record<Locale, string> = { he: 'היום: הילולא וחכם היום', en: 'Today', ru: 'Сегодня' }
+const RIDDLE_LABEL: Record<Locale, string> = { he: 'חידת החכם: נחשו מי החכם של היום', en: 'Sage Riddle: guess today’s sage', ru: 'Загадка мудреца: угадайте мудреца дня' }
+const RIDDLE_MENU: Record<Locale, string> = { he: 'חידת החכם היומית', en: 'Sage Riddle', ru: 'Загадка мудреца' }
 
 interface HeaderProps {
   locale: Locale
@@ -120,6 +122,11 @@ export function Header({ locale, initialStats }: HeaderProps) {
         {/* Today: the hillula and the sage of the day */}
         <a href={`/${locale}/today`} className={cn(pill, 'hidden sm:grid place-items-center h-9 w-9 text-base')} title={TODAY_LABEL[locale]} aria-label={TODAY_LABEL[locale]}>
           <span aria-hidden>📅</span>
+        </a>
+
+        {/* The daily riddle: guess the sage from clues. From 768px: the row between 640 and 768 has no room for one more icon */}
+        <a href={`/${locale}/riddle`} className={cn(pill, 'hidden md:grid place-items-center h-9 w-9 text-base')} title={RIDDLE_LABEL[locale]} aria-label={RIDDLE_LABEL[locale]}>
+          <span aria-hidden>🧩</span>
         </a>
 
         {/* The kids' journey (Hebrew, like the books it comes from) */}
@@ -373,6 +380,10 @@ function MobileActionsMenu({ locale }: { locale: Locale }) {
           <a href={`/${locale}/today`} className={cn(item, 'border-t border-ink-700/40')}>
             <span aria-hidden className="w-4 text-center">📅</span>
             {TODAY_MENU[locale]}
+          </a>
+          <a href={`/${locale}/riddle`} className={cn(item, 'border-t border-ink-700/40')}>
+            <span aria-hidden className="w-4 text-center">🧩</span>
+            {RIDDLE_MENU[locale]}
           </a>
           {locale === 'he' && (
             <a href="/he/kids" className={cn(item, 'border-t border-ink-700/40')}>

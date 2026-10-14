@@ -45,6 +45,12 @@ const S = {
   alsoToday: { he: 'גם היום', en: 'Also today', ru: 'Также сегодня' },
   upcoming: { he: 'ההילולות הקרובות', en: 'Coming hillulot', ru: 'Ближайшие дни памяти' },
   inDays: { he: (n: number) => (n === 1 ? 'מחר' : `בעוד ${n} ימים`), en: (n: number) => (n === 1 ? 'tomorrow' : `in ${n} days`), ru: (n: number) => (n === 1 ? 'завтра' : `через ${n} дн.`) },
+  riddle: { he: 'חידת החכם של היום', en: 'Today’s Sage Riddle', ru: 'Загадка мудреца на сегодня' },
+  riddleLine: {
+    he: 'מי החכם הנסתר? נחשו לפי רמזים, ושתפו את התוצאה בלי לחשוף את התשובה.',
+    en: 'Who is the hidden sage? Guess from the clues and share your result without giving the answer away.',
+    ru: 'Кто этот скрытый мудрец? Угадайте по подсказкам и поделитесь результатом, не выдавая ответа.',
+  },
   note: {
     he: 'תאריכי ההילולא לקוחים מהמחקרים שבאתר, כפי שהם כתובים בהם. היום מתחלף בחצות לפי שעון ישראל.',
     en: 'Hillula dates are taken from the research papers on the site, as they state them. The day changes at midnight, Israel time.',
@@ -185,6 +191,19 @@ export default async function TodayPage({ params }: PageProps) {
         )}
 
         <ShareToday locale={loc} pageUrl={pageUrl} card={card} shareText={`${S.title[loc]} · ${t.kind === 'hillula' ? S.hillula[loc] : S.daily[loc]}: ${name}`} />
+
+        {/* a plain <a>: a <Link> would prefetch the riddle's payload (every sage's name) for each visitor of this page */}
+        <a
+          href={`/${loc}/riddle`}
+          className="mt-6 flex items-center gap-4 rounded-2xl border border-ink-700/50 bg-ink-800/30 p-4 transition-colors hover:border-gold-500/40 hover:bg-gold-500/[0.06]"
+        >
+          <span aria-hidden className="text-3xl">🧩</span>
+          <span className="min-w-0 flex-1">
+            <span className="block font-serif text-lg font-bold text-ink-50">{S.riddle[loc]}</span>
+            <span className="mt-0.5 block text-sm text-ink-300">{S.riddleLine[loc]}</span>
+          </span>
+          <span aria-hidden className="text-gold-400">{dir === 'rtl' ? '←' : '→'}</span>
+        </a>
 
         {upcoming.length > 0 && (
           <section aria-labelledby="today-upcoming" className="mt-10">

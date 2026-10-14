@@ -33,6 +33,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Today: the hillula and the sage of the day, in every language.
   for (const l of ['he', 'en', 'ru']) entries.push({ url: `${SITE_URL}/${l}/today`, lastModified, changeFrequency: 'daily', priority: 0.7 })
   for (const l of ['he', 'en', 'ru']) entries.push({ url: `${SITE_URL}/${l}/tower`, lastModified, changeFrequency: 'weekly', priority: 0.6 })
+  // The daily sage riddle, in every language.
+  for (const l of ['he', 'en', 'ru']) entries.push({ url: `${SITE_URL}/${l}/riddle`, lastModified, changeFrequency: 'daily', priority: 0.6 })
   // The kids' journey: Hebrew only (the other two addresses are noindex and point here).
   entries.push({ url: `${SITE_URL}/he/kids`, lastModified, changeFrequency: 'monthly', priority: 0.6 })
 
