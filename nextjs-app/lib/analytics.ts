@@ -17,6 +17,9 @@ export type AnalyticsEvent =
   | 'research_listen'     // the research was read aloud (first press)   { locale, lang }
   | 'today_share'         // the Today page was shared                   { locale, method: image|download|whatsapp|video|video_download }
   | 'tower_share'         // a sage in the Tower of Generations was shared { locale, method: share|copy }
+  | 'riddle_start'        // the first guess of the day in the sage riddle   { locale }
+  | 'riddle_complete'     // ... and the game was won or lost              { locale, won, tries: 1..6 }
+  | 'riddle_share'        // the riddle's result was shared                { locale, method: share|copy|whatsapp }
   | 'tower_road'          // the road to Sinai was flown in the tower      { locale, from: panel|link }
   | 'quiz_start'          // a quiz was started                           { locale, kind: sage|kids }
   | 'quiz_complete'       // ... and finished                             { locale, kind, score: 0..100, stars: 0..3 }

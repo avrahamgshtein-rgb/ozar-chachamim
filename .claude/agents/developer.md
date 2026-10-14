@@ -21,6 +21,11 @@ How to work:
 5. **Git.** Do not commit, push, open or merge a pull request, or touch GitHub. The main agent reviews the working tree and commits.
 6. **Documentation.** Update `CLAUDE.md` when the change adds or alters something a later reader needs to know.
 
+**When you are one of several workers** (your prompt names a work package from the `lead` agent's split), other workers edit the same working tree at the same time, so:
+- Touch only the files your package lists. A change you need in another file goes in your report, for the lead, never into the file.
+- Run only `npm run type-check` and your own test file (`npx tsx tests/<yours>.test.ts`). Do not run `npm test`, `npm run build` or `npm run start`: a build started by two workers at once corrupts `.next`, and the lead runs them after integration.
+- Leave `package.json`, `CLAUDE.md` and `lib/analytics.ts` to the lead; say in your report what should be added to them.
+
 Your report, in this order:
 - **What changed:** files, and one line each on why.
 - **Acceptance criteria:** each criterion from the plan, met or not met, with the evidence (a command's result, a test's name, a screenshot path).
