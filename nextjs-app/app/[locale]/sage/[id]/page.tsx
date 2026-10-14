@@ -25,6 +25,7 @@ import { wikiLinks, wikipediaUrl } from '@/lib/wikipedia'
 import { AskSageButton } from '@/components/sages/AskSageButton'
 import { SinaiPathCard } from '@/components/viz/SinaiPathCard'
 import { PrintButton, ShareButton, ThemeToggle } from '@/components/sages/PageActions'
+import { SoundtrackToggle } from '@/components/ui/SoundtrackToggle'
 import { Toaster } from '@/components/sages/Toast'
 import { ChatWidget } from '@/components/chat/ChatWidget'
 import type { AskSubject } from '@/components/chat/askAbout'
@@ -227,6 +228,10 @@ export default async function SagePage({ params }: PageProps) {
             <div className="ms-auto flex flex-shrink-0 items-center gap-1.5">
               <ShareButton title={name} text={tagline ?? undefined} locale={loc} />
               <span className="hidden sm:contents"><PrintButton locale={loc} /></span>
+              <SoundtrackToggle
+                locale={loc}
+                className="h-9 justify-center rounded-lg border border-ink-700/50 bg-ink-800/40 px-2.5 text-ink-300 transition-colors hover:border-gold-500/40 hover:text-gold-300"
+              />
               <ThemeToggle locale={loc} />
               <div role="group" aria-label={S.language[loc]} className="ms-1 flex h-9 items-center rounded-lg border border-ink-700/50 bg-ink-800/40 p-0.5 text-[11px]">
                 {LOCALES.map(l => (

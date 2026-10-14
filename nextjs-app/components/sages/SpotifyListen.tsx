@@ -14,6 +14,7 @@
 import { useEffect, useRef, useState } from 'react'
 import type { Locale } from '@/lib/types'
 import { track } from '@/lib/analytics'
+import { holdSoundtrack, releaseSoundtrack } from '@/lib/soundtrack'
 
 export function parseSpotifyUrl(url: string | undefined | null): { kind: 'episode' | 'show'; id: string } | null {
   if (!url) return null
@@ -61,6 +62,13 @@ export function SpotifyListen({ url, locale, name }: { url: string; locale: Loca
   const title = parsed?.kind === 'show' ? S.titleShow[locale] : S.title[locale]
   const fullHeight = parsed?.kind === 'show' ? 232 : 152
   const mini = loaded && !docked
+
+  // The episode player is another site's: the background music waits while it is open.
+  useEffect(() => {
+    if (!loaded) return
+    holdSoundtrack('spotify')
+    return () => releaseSoundtrack('spotify')
+  }, [loaded])
 
   // Undock once less than a third of the slot is visible below the top bar.
   useEffect(() => {

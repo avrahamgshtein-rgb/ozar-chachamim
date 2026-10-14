@@ -5,6 +5,7 @@
 import assert from 'node:assert/strict'
 import fs from 'node:fs'
 import path from 'node:path'
+import { ENCODER_CANDIDATES, VIDEO, nameSize, phase, wrapWords } from '../lib/todayVideo'
 import {
   dayNumber, formatHebrewDate, hebrewDate, hebrewNumeral, HEBREW_MONTHS, isLeapYear, isYahrzeitOn, sageOfTheDay, YAHRZEITS,
 } from '../lib/today'
@@ -94,6 +95,39 @@ test('every death date is still its sage\'s, and the words are still in his pape
     const text = norm(paper.map((d: { content?: string }) => d.content ?? '').join(' '))
     assert.ok(text.includes(norm(y.quote)), `${id}: the quote is no longer in the paper`)
   }
+})
+
+console.log('\nthe video for a status')
+
+test('twelve seconds, 1080×1920, and every encoder tried is H.264 (what WhatsApp plays)', () => {
+  assert.deepEqual([VIDEO.width, VIDEO.height, VIDEO.seconds], [1080, 1920, 12])
+  assert.ok(ENCODER_CANDIDATES.every(c => c.codec.startsWith('avc1.')))
+  assert.ok(ENCODER_CANDIDATES.every(c => c.height / c.width === 16 / 9))
+})
+
+test('the timeline eases from 0 to 1 and holds; long lines wrap and a very long text is cut with an ellipsis', () => {
+  assert.equal(phase(0, 1, 1), 0)
+  assert.equal(phase(2.5, 1, 1), 1)
+  assert.ok(phase(1.5, 1, 1) > 0.5 && phase(1.5, 1, 1) < 1)
+  const measure = (s: string) => s.length * 10
+  assert.deepEqual(wrapWords('אחת שתיים שלוש ארבע', 100, measure), ['אחת שתיים', 'שלוש ארבע'])
+  const many = wrapWords('מילה '.repeat(80), 100, measure, 3)
+  assert.equal(many.length, 3)
+  assert.ok(many[2].endsWith('…'))
+  assert.ok(nameSize('רש״י') > nameSize('רבי אלכסנדרי זוסלין הכהן (המהרא״ך) מפרנקפורט ומקרקוב'))
+})
+
+test('the Today page offers the video beside the image, made in the browser and never on the server', () => {
+  const page = fs.readFileSync(path.join(__dirname, '../app/[locale]/today/page.tsx'), 'utf8')
+  assert.match(page, /<ShareToday [^>]*card=\{card\}/)
+  const comp = fs.readFileSync(path.join(__dirname, '../components/today/TodayVideo.tsx'), 'utf8')
+  assert.match(comp, /^'use client'/)
+  // the muxer loads only when a video is made
+  assert.match(comp, /await import\('mp4-muxer'\)/)
+  assert.doesNotMatch(comp, /^import .* from 'mp4-muxer'/m)
+  // no encoder: record the canvas; neither: no button
+  assert.match(comp, /MediaRecorder/)
+  assert.match(comp, /if \(!can\) return null/)
 })
 
 console.log(`\n${passed} passed, ${failed} failed`)

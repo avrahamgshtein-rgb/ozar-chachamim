@@ -27,6 +27,8 @@ export interface AboutCopy {
   searchBody: string
   langsTitle: string
   langsBody: string
+  musicTitle: string
+  musicBody: string
   citeTitle: string
   citeIntro: string
   citeSiteLabel: string
@@ -87,6 +89,8 @@ export const ABOUT_COPY: Record<Locale, AboutCopy> = {
     searchBody: 'רמבם, רמב״ם ורמב"ם מובילים לאותו חכם: החיפוש מתעלם מניקוד, מגרשיים ומאותיות סופיות.',
     langsTitle: 'עברית, English, Русский',
     langsBody: 'האתר זמין בשלוש שפות. תרגום תוכן החכמים עדיין נמשך, ובינתיים מוצג במקומות רבים המקור העברי.',
+    musicTitle: 'מוזיקת רקע',
+    musicBody: 'פס קול מקורי בשם Journey of the Sages, שנוצר לאתר ב־Suno: שחר במדבר, נדודים וגלות, ספרד ואשכנז, ועד ימינו. הוא כבוי עד שמדליקים אותו בכפתור 🎵 שבראש העמוד, מתנגן בשקט, ומפנה את מקומו כשמחקר מוקרא או כשסרטון מתנגן.',
     citeTitle: 'איך לצטט',
     citeIntro: 'אפשר לצטט את האתר כולו או את הדף של חכם מסוים. כתובות דפי החכמים קבועות, ולכן אפשר להפנות אליהן ישירות.',
     citeSiteLabel: 'האתר',
@@ -148,6 +152,8 @@ export const ABOUT_COPY: Record<Locale, AboutCopy> = {
     searchBody: 'In the Hebrew interface, search ignores vowel points, gershayim and final letter forms, so רמבם and רמב״ם find the same sage.',
     langsTitle: 'עברית, English, Русский',
     langsBody: 'The site is available in three languages. Translation of the sage content is still under way, so in many places the Hebrew original is shown for now.',
+    musicTitle: 'Background music',
+    musicBody: 'An original soundtrack, “Journey of the Sages”, made for the site with Suno: dawn in the desert, wandering and exile, Sepharad and Ashkenaz, and our own day. It stays off until you press 🎵 at the top of the page, plays softly, and steps aside while a paper is read aloud or a video plays.',
     citeTitle: 'How to cite',
     citeIntro: "You can cite the site as a whole or a particular sage's page. Sage page addresses are permanent, so you can link to them directly.",
     citeSiteLabel: 'The site',
@@ -209,6 +215,8 @@ export const ABOUT_COPY: Record<Locale, AboutCopy> = {
     searchBody: 'В ивритском интерфейсе поиск не учитывает огласовки, гершаим и конечные формы букв, поэтому רמבם и רמב״ם находят одного и того же мудреца.',
     langsTitle: 'עברית, English, Русский',
     langsBody: 'Сайт доступен на трёх языках. Перевод материалов о мудрецах ещё продолжается, поэтому пока во многих местах показан ивритский оригинал.',
+    musicTitle: 'Фоновая музыка',
+    musicBody: 'Оригинальная музыка «Journey of the Sages», созданная для сайта в Suno: рассвет в пустыне, странствия и изгнание, Сфарад и Ашкеназ — и наши дни. Она выключена, пока вы не нажмёте 🎵 вверху страницы, звучит тихо и уступает место, когда исследование читается вслух или идёт видео.',
     citeTitle: 'Как цитировать',
     citeIntro: 'Можно ссылаться на сайт целиком или на страницу конкретного мудреца. Адреса страниц мудрецов постоянны, на них можно ссылаться напрямую.',
     citeSiteLabel: 'Сайт',

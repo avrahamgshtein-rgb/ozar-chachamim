@@ -9,6 +9,7 @@ import type { Locale, Period } from '@/lib/types'
 import { UI, LOCALES, LOCALE_NAMES, LOCALE_SHORT } from '@/lib/i18n'
 import { AuthStatus } from '@/components/auth/AuthStatus'
 import { InstallApp } from '@/components/ui/InstallApp'
+import { SoundtrackToggle } from '@/components/ui/SoundtrackToggle'
 
 const TOWER_LABEL: Record<Locale, string> = { he: 'מגדל הדורות: כל החכמים בתלת־ממד', en: 'Tower of Generations: every sage in 3D', ru: 'Башня поколений: все мудрецы в 3D' }
 const TOWER_MENU: Record<Locale, string> = { he: 'מגדל הדורות (תלת־ממד)', en: 'Tower of Generations (3D)', ru: 'Башня поколений (3D)' }
@@ -127,6 +128,9 @@ export function Header({ locale, initialStats }: HeaderProps) {
             <span aria-hidden>🧭</span>
           </a>
         )}
+
+        {/* Background music, off until pressed */}
+        <SoundtrackToggle locale={locale} className={cn(pill, 'hidden sm:inline-flex justify-center h-9 w-9')} />
 
         {/* Install as an app (only where the browser offers it; on iOS a press shows the steps) */}
         <div className="hidden sm:block">
@@ -376,6 +380,7 @@ function MobileActionsMenu({ locale }: { locale: Locale }) {
               מסע לילדים
             </a>
           )}
+          <SoundtrackToggle locale={locale} withLabel className={cn(item, 'border-t border-ink-700/40')} />
           <InstallApp locale={locale} showHint onDone={() => setOpen(false)} className={cn(item, 'border-t border-ink-700/40')} />
           {LOCALES.filter(l => l !== locale).map(l => (
             <a

@@ -11,6 +11,7 @@ import { SITE_URL } from '@/lib/siteUrl'
 import type { CorpusStats } from '@/lib/siteStats'
 import { YoutubeWatch } from '@/components/sages/YoutubeWatch'
 import { InstallApp } from '@/components/ui/InstallApp'
+import { SoundtrackToggle } from '@/components/ui/SoundtrackToggle'
 import { INTRO_VIDEO } from '@/lib/youtube'
 import { ABOUT_COPY, formatAboutDate } from './aboutCopy'
 import { CiteBox } from './CiteBox'
@@ -57,6 +58,7 @@ export function AboutContent({ locale, stats, variant, onOpenTab }: AboutContent
     { title: c.askTitle, body: c.askBody, icon: <IconChat /> },
     { title: c.searchTitle, body: c.searchBody, icon: <IconSearch /> },
     { title: c.langsTitle, body: c.langsBody, icon: <IconGlobe /> },
+    { title: c.musicTitle, body: c.musicBody, icon: <IconMusic /> },
   ]
 
   const sectionTitle = 'font-serif text-2xl md:text-3xl font-bold text-ink-50'
@@ -179,12 +181,19 @@ export function AboutContent({ locale, stats, variant, onOpenTab }: AboutContent
             </li>
           ))}
         </ul>
-        {/* Only where the browser can install the site (renders nothing otherwise) */}
-        <InstallApp
-          locale={locale}
-          showHint
-          className="mt-4 rounded-xl border border-gold-500/40 px-4 py-2.5 font-sans text-sm font-medium text-gold-300 transition-colors hover:bg-gold-500/10"
-        />
+        <div className="mt-4 flex flex-wrap items-center gap-3">
+          <SoundtrackToggle
+            locale={locale}
+            withLabel
+            className="rounded-xl border border-gold-500/40 px-4 py-2.5 font-sans text-sm font-medium text-gold-300 transition-colors hover:bg-gold-500/10"
+          />
+          {/* Only where the browser can install the site (renders nothing otherwise) */}
+          <InstallApp
+            locale={locale}
+            showHint
+            className="rounded-xl border border-gold-500/40 px-4 py-2.5 font-sans text-sm font-medium text-gold-300 transition-colors hover:bg-gold-500/10"
+          />
+        </div>
       </section>
 
       {/* ── The kids' journey (Hebrew only, like the books) ───── */}
@@ -275,6 +284,10 @@ function IconChat() {
 function IconSearch() {
   return <Svg><circle cx="11" cy="11" r="7" /><path d="M20 20l-3.5-3.5" /></Svg>
 }
+function IconMusic() {
+  return <Svg><path d="M9 18V5l11-2v13" /><circle cx="6" cy="18" r="3" /><circle cx="17" cy="16" r="3" /></Svg>
+}
+
 function IconGlobe() {
   return <Svg><circle cx="12" cy="12" r="9" /><path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18" /></Svg>
 }

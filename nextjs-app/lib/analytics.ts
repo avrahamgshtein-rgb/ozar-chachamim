@@ -15,13 +15,14 @@ export type AnalyticsEvent =
   | 'chat_question'       // a question was sent                          { locale, mode: model|referral }
   | 'tab_view'            // a visualization tab was opened               { tab }
   | 'research_listen'     // the research was read aloud (first press)   { locale, lang }
-  | 'today_share'         // the Today page was shared                   { locale, method: image|download|whatsapp }
+  | 'today_share'         // the Today page was shared                   { locale, method: image|download|whatsapp|video|video_download }
   | 'tower_share'         // a sage in the Tower of Generations was shared { locale, method: share|copy }
   | 'tower_road'          // the road to Sinai was flown in the tower      { locale, from: panel|link }
   | 'quiz_start'          // a quiz was started                           { locale, kind: sage|kids }
   | 'quiz_complete'       // ... and finished                             { locale, kind, score: 0..100, stars: 0..3 }
   | 'kids_station_done'   // a child stamped a station of the kids' journey { route: saltiel|shira }
   | 'kids_tour'           // the kids' journey flown in the tower (time machine) { route, stage: start|end }
+  | 'music_toggle'        // the background music was turned on or off   { locale, state: on|off }
   | 'return_visit'        // the browser came back on another day        { visits: '2'..'10+' }
   | 'pwa_prompt_available' // the browser offered installation          {}
   | 'pwa_install_click'   // the visitor pressed "install as an app"      { platform }

@@ -6,6 +6,8 @@
 import { useState } from 'react'
 import type { Locale } from '@/lib/types'
 import { track } from '@/lib/analytics'
+import type { TodayCard } from '@/lib/todayVideo'
+import { TodayVideo } from './TodayVideo'
 
 const S = {
   heading: { he: 'שתפו את היום', en: 'Share today', ru: 'Поделиться' },
@@ -15,7 +17,7 @@ const S = {
   working: { he: 'מכין תמונה…', en: 'Preparing the image…', ru: 'Готовим картинку…' },
 } satisfies Record<string, Record<Locale, string>>
 
-export function ShareToday({ locale, pageUrl, shareText }: { locale: Locale; pageUrl: string; shareText: string }) {
+export function ShareToday({ locale, pageUrl, shareText, card }: { locale: Locale; pageUrl: string; shareText: string; card?: TodayCard }) {
   const [busy, setBusy] = useState(false)
   const [note, setNote] = useState('')
   const imageUrl = `/${locale}/today/story`
@@ -59,6 +61,7 @@ export function ShareToday({ locale, pageUrl, shareText }: { locale: Locale; pag
         <span aria-hidden>💬</span>{S.whatsapp[locale]}
       </a>
       {note && <span role="status" className="text-xs text-ink-400">{note}</span>}
+      {card && <TodayVideo locale={locale} card={card} shareText={shareText} pageUrl={pageUrl} />}
     </section>
   )
 }
