@@ -251,10 +251,17 @@ try:
         if node:
             node['has_research'] = True
             # summaries were cut from the papers' opening lines, so they start
-            # with NotebookLM's "Source guide" header (see rebuild_research_corpus.py)
-            summary = re.sub(r'^Source guide\s*|\s*Source guide', '', s.get('summary') or '')
+            # with NotebookLM's "Source guide" header (see rebuild_research_corpus.py),
+            # in Hebrew too ("מדריך בנושא המקור"), and stop mid-word at the cut.
+            # Six bios came out that way (34, 42, 65, 89, 168, 176) until they were
+            # written into the spreadsheet; a sage with a summary there is not touched.
+            summary = re.sub(r'(^|\s*)(Source guide|מדריך בנושא המקור)\s*', ' ', s.get('summary') or '').strip()
+            if len(summary) > 600:
+                cut = summary[:600]
+                end = max(cut.rfind('. '), cut.rfind('.\n'))
+                summary = cut[:end + 1] if end > 200 else cut.rsplit(' ', 1)[0] + '…'
             if not node['bio'] and summary:
-                node['bio'] = summary[:600]
+                node['bio'] = summary
                 enriched += 1
 except Exception as e:
     print('research enrich skipped:', e)

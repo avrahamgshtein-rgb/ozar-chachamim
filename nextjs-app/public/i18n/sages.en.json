@@ -294,7 +294,8 @@
  },
  "42": {
   "label": "Rabbi Isaac the Blind (Sagi Nahor)",
-  "bio": "Called \"the father of Kabbalah\", he made a decisive contribution to the founding of Jewish mysticism in southern France in the 13th century; his physical blindness led him to an abstract thought based on inner illumination and the concept of the Ein Sof, and he defended the doctrine of the sefirot against criticism."
+  "bio": "Called \"the father of Kabbalah\", the son of the Ra'avad of Posquières, he was active in Provence at the end of the 12th century and the start of the 13th. Blind from birth, he developed an abstract thought on the Ein Sof and the sefirot, and turned the teaching of mystery from an oral tradition into an ordered system that, through his students from Girona, influenced great figures of the generation such as the Ramban.",
+  "core_concept": "Kabbalah as the inner layer of the Torah and prayer: thought on the Ein Sof and the sefirot that grew at the heart of the Torah establishment, not at its margins."
  },
  "343": {
   "label": "Rabbi David Abudarham",
@@ -993,7 +994,8 @@
  },
  "34": {
   "label": "Rabbi Avraham ibn Daud (the First Ra'avad)",
-  "bio": "A bridging figure who sought to defend rabbinic Judaism in the 12th century against intellectual and political threats; the father of Aristotelian rationalism in Judaism, not to be confused with other sages known by the same title."
+  "bio": "Rabbi Avraham ibn Daud HaLevi (1110–1180) saw a double threat to rabbinic Judaism: Karaism from within and Aristotelian philosophy from without. In \"Sefer HaKabbalah\" he fortified the continuity of the Oral Torah, and in \"HaEmunah HaRamah\" he was the first to ground faith on Aristotelian foundations, paving the way for the Rambam.",
+  "core_concept": "Torah and wisdom complete each other: history fortifies the authority of tradition, and reason grounds faith up to the point where it stops."
  },
  "39": {
   "label": "Rabbenu Bachya ibn Paquda (Duties of the Heart)",
@@ -1036,7 +1038,8 @@
  },
  "65": {
   "label": "Rabbi Yitzchak Arama (the Ba'al ha-Akedah)",
-  "bio": "One of the great thinkers of 15th-century Spanish Jewry, known for his foundational work \"Akedat Yitzchak\"; he developed an innovative three-stage homiletic method meant to give an intellectual and polemical answer to the influence of Christianity and of extreme Aristotelian philosophy."
+  "bio": "One of the great thinkers of 15th-century Spanish Jewry (1420–1494), a rabbi, preacher and head of a yeshiva. In his book \"Akedat Yitzchak\" he developed a three-stage method of homily that answered Christianity and extreme Aristotelian philosophy and strengthened the faith of the educated on the eve of the Expulsion.",
+  "core_concept": "The homily as a stronghold of faith: joining reason, biblical interpretation and Kabbalah to build spiritual resilience in an age of crisis."
  },
  "66": {
   "label": "Rabbi Eliyahu Mizrachi (the Re'em)",
@@ -1108,7 +1111,8 @@
  },
  "89": {
   "label": "Rabbi Yaakov Emden (the Yaavetz)",
-  "bio": "One of the great sages of 18th-century Ashkenaz, who pursued spiritual autonomy uncompromisingly and kept away from official rabbinic posts to preserve his independence of thought; his broad Torah teaching combines bold halakhic innovation with philological skill."
+  "bio": "One of the great sages of 18th-century Ashkenaz, son and student of the \"Chacham Tzvi\". He kept away from official rabbinic posts to preserve his independence, combined bold halakhic innovation with textual criticism and openness to science, and fought Sabbateanism, including the amulets controversy against Rabbi Yonatan Eybeschütz.",
+  "core_concept": "Spiritual independence as a condition of truth: bold ruling, philological precision and an uncompromising stand against Sabbateanism."
  },
  "90": {
   "label": "Rabbi Moshe David Valle (the Ramad Valle)",
@@ -1356,7 +1360,8 @@
  },
  "168": {
   "label": "Rabbi Chaim David HaLevi",
-  "bio": "One of the most significant figures of religious life in 20th-century Israel; his worldview rested on a \"Zionism of redemption\"."
+  "bio": "One of the great halakhic authorities and thinkers of the State of Israel, and from 5733 (1972–73) until his death the Chief Rabbi of Tel Aviv–Jaffa. He combined loyalty to the Sephardi tradition of ruling with a Zionism that sees Jewish sovereignty as a stage of redemption, and saw halakha as a living system, as his book \"Aseh Lecha Rav\" and his ruling forbidding smoking show.",
+  "core_concept": "A living, purposeful halakha that answers the challenges of modernity, medicine and technology, seeing the State as a stage in the process of redemption."
  },
  "170": {
   "label": "Rabbi Chaim Kanievsky",
@@ -1370,7 +1375,8 @@
  },
  "176": {
   "label": "Rabbi Avichai Rontzki",
-  "bio": "One of the most central and complex figures of modern religious Zionism, whose work embodied a rare synthesis of combat command, Torah and halakhic leadership, and settlement."
+  "bio": "A fighter and company commander in the Shaked reconnaissance unit who turned to the world of Torah after the Yom Kippur War. He helped found the Elon Moreh yeshiva, was one of the founders of the settlement of Itamar and founded its yeshiva, and until 2010 was the fifth Chief Military Rabbi of the IDF.",
+  "core_concept": "Combining military, Torah and settlement leadership: fighting spirit grows from a Zionism connected to the roots of the Torah and the Land."
  },
  "177": {
   "label": "Rabbi Elisha Wishlitzky",
