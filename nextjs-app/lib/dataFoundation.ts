@@ -184,12 +184,31 @@ export function mergeDatasets(
     }
   }
 
+  // One edge per relation. Files state the same relation in different ways: the spreadsheet's
+  // related column gives a pair an influence link, a catalogue or a paper names one the other's
+  // teacher or father, and teacher X→Y says what student Y→X says. Without this the network
+  // graph draws two edges for one relation and counts the sage twice in its degree. The sage
+  // page and the lineage tree already pick the strongest link per pair, so they show the same.
+  const pairKey = (c: Connection) => (c.source < c.target ? `${c.source}|${c.target}` : `${c.target}|${c.source}`)
+  const strongPairs = new Set(
+    connections.filter(c => c.type === 'teacher' || c.type === 'student' || c.type === 'family').map(pairKey),
+  )
+  const taught = new Set<string>()
+  const merged = connections.filter(c => {
+    if (c.type === 'influence') return !strongPairs.has(pairKey(c))
+    if (c.type !== 'teacher' && c.type !== 'student') return true
+    const lesson = c.type === 'teacher' ? `${c.source}>${c.target}` : `${c.target}>${c.source}`
+    if (taught.has(lesson)) return false
+    taught.add(lesson)
+    return true
+  })
+
   return {
     sages,
-    connections,
+    connections: merged,
     quality: {
       total_sages: sages.size,
-      total_connections: connections.length,
+      total_connections: merged.length,
       issues,
       canonical_count,
       supplement_count,

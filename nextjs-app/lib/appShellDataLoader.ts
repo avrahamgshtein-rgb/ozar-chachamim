@@ -26,6 +26,8 @@ const SUPPLEMENTS = [
   '/data-supplement.json',
   '/data-supplement-2.json',
   '/data-research-links.json',
+  '/data-catalog-links.json',
+  '/data-paper-links.json',
 ]
 
 async function fetchJson<T>(src: string): Promise<T | null> {
