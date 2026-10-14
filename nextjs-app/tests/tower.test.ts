@@ -7,7 +7,9 @@
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import { getAllConnections, getAllSages } from '../lib/serverData'
-import { buildTower, heightOf, lineageOf, regionAngle, TOWER_HEIGHT, TOWER_REGIONS, towerPath } from '../lib/tower'
+import { buildTower, buildTowerRoad, heightOf, lineageOf, regionAngle, roadOf, TOWER_HEIGHT, TOWER_REGIONS, towerPath } from '../lib/tower'
+import { buildLineageIndex } from '../components/viz/lineage'
+import { buildSinaiIndex, sinaiPath } from '../lib/sinaiPath'
 
 let passed = 0
 let failed = 0
@@ -124,6 +126,64 @@ test('three.js is loaded only inside the scene, never at the top of a module', (
   const scene = src('../components/tower/TowerScene.tsx')
   assert.doesNotMatch(scene, /^import .* from 'three/m)
   assert.match(scene, /await import\('three'\)/)
+})
+
+console.log('\nthe road to Sinai in the tower')
+
+const road = buildTowerRoad(tower, sages, connections, 'he')
+const withRoad = { ...tower, road }
+
+test("the chain's stations run from Moses, one per generation, each at a point inside the tower", () => {
+  assert.deepEqual(road.stations.map(s => s.gen), road.stations.map((_, i) => i + 1))
+  assert.equal(road.stations[0].id, sages.find(s => s.label === 'משה רבנו')?.id)
+  const bad = road.stations.filter(s => ![s.x, s.y, s.z].every(Number.isFinite) || s.y < 0 || s.y > TOWER_HEIGHT)
+  assert.deepEqual(bad.map(s => s.gen), [])
+  // a station nobody in the corpus stands for lies between its neighbours in time
+  for (let i = 1; i < road.stations.length - 1; i++) {
+    const [a, b, c] = road.stations.slice(i - 1, i + 2)
+    if (!b.id) assert.ok(a.y <= b.y + 1e-9 && b.y <= c.y + 1e-9 || !a.id || !c.id, `station ${b.gen} out of order`)
+  }
+})
+
+test("every sage's road in the tower is the road his page's card draws (the same sages, the other way round)", () => {
+  const si = buildSinaiIndex(sages, buildLineageIndex(new Map(sages.map(s => [s.id, s])), connections))
+  let roads = 0
+  for (const s of sages) {
+    const card = sinaiPath(si, s.id), flown = roadOf(withRoad, s.id)
+    assert.equal(!!card, !!flown, s.id)
+    if (!card || !flown) continue
+    roads++
+    assert.deepEqual(flown.map(p => p.id ?? `gen ${p.gen}`), card.steps.map(p => p.id ?? `gen ${p.gen}`).reverse(), s.id)
+  }
+  assert.ok(roads > 200, `${roads} roads`)
+})
+
+test('a road starts at the sage and ends with Moses at Sinai; links below the chain keep their kind', () => {
+  const rambam = sages.find(s => s.label === 'הרמב"ם')!
+  const r = roadOf(withRoad, rambam.id)!
+  assert.equal(r[0].id, rambam.id)
+  assert.equal(r[r.length - 1].how, 'sinai')
+  assert.equal(r[r.length - 1].name, 'משה רבנו')
+  assert.ok(r.every((p, i) => i === r.length - 1 || p.how !== 'sinai'))
+  assert.ok(r.every(p => [p.x, p.y, p.z].every(Number.isFinite)))
+  // no road for a sage the archive cannot connect: the button is not offered
+  const none = sages.find(s => !roadOf(withRoad, s.id))
+  assert.ok(none)
+})
+
+test('the road travels light: its data adds a few kilobytes to the tower page', () => {
+  assert.ok(JSON.stringify(road).length < 30_000, `${JSON.stringify(road).length} bytes`)
+})
+
+test('the scene flies the road, ?road=1 starts it, and the sage page card links there', () => {
+  const scene = src('../components/tower/TowerScene.tsx')
+  assert.match(scene, /road\(points\)/)
+  assert.match(scene, /roadGo\(i, ms\)/)
+  assert.match(scene, /has\('road'\)\) startRoad\('link'\)/)
+  assert.match(scene, /'\?road=1'/)
+  assert.match(src('../lib/towerServer.ts'), /road: buildTowerRoad\(/)
+  assert.match(src('../components/viz/SinaiPathCard.tsx'), /towerPath\(locale, sageId\)\}\?road=1/)
+  assert.match(src('../lib/analytics.ts'), /'tower_road'/)
 })
 
 console.log(`\n${passed} passed, ${failed} failed`)
