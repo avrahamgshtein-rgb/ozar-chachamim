@@ -14,6 +14,9 @@ import { todayFeature, upcomingHillulot, yahrzeitOf } from '@/lib/todayServer'
 import { SiteTopBar } from '@/components/layout/SiteTopBar'
 import { EraChip } from '@/components/ui/EraChip'
 import { ShareToday } from '@/components/today/ShareToday'
+import { ERA_COLORS, ERA_LABELS } from '@/lib/types'
+import { clipWords } from '@/lib/ogText'
+import type { TodayCard } from '@/lib/todayVideo'
 
 // "Today at Ozar Chachamim": today's Hebrew date; the sages whose hillula falls today, from the dates their
 // own research papers give (lib/today.ts); otherwise the sage of the day; the hillulot of the coming month;
@@ -48,6 +51,12 @@ const S = {
     ru: 'Даты дней памяти взяты из исследований на сайте, как они там указаны. День меняется в полночь по израильскому времени.',
   },
 } as const
+
+// as the status image words them
+const VIDEO_KIND = { hillula: { he: 'יום ההילולא של', en: 'The hillula of', ru: 'День памяти' } } as const
+const VIDEO_MORE: Record<Locale, string> = {
+  he: 'מחקר מלא · האזנה · סרטון · חידון', en: 'Full research · Listen · Video · Quiz', ru: 'Исследование · Аудио · Видео · Викторина',
+}
 
 const MONTH_RU: Record<HebrewMonth, string> = {
   Tishri: 'тишрея', Heshvan: 'хешвана', Kislev: 'кислева', Tevet: 'тевета', Shevat: 'швата', 'Adar I': 'адара I', Adar: 'адара',
@@ -104,6 +113,20 @@ export default async function TodayPage({ params }: PageProps) {
   const bio = bioIsLocal ? (featured.bio || featured.core_concept || '') : ''
   const href = `/${loc}/sage/${t.featured.id}`
   const videos = sageVideos(t.featured.id, loc).length > 0
+  // the video for a status says what the status image says (app/[locale]/today/story/route.tsx)
+  const card: TodayCard = {
+    dir,
+    heading: S.title[loc],
+    date: formatHebrewDate(t.date, loc),
+    kind: t.kind === 'hillula' ? VIDEO_KIND.hillula[loc] : S.daily[loc],
+    name,
+    sub: [ERA_LABELS[featured.period]?.[loc], years].filter(Boolean).join('  ·  '),
+    line: loc === 'he' || translatedFields(t.featured.id, loc).has('core_concept') ? clipWords(featured.core_concept || '', 150) : '',
+    more: VIDEO_MORE[loc],
+    host: `${SITE_URL.replace(/^https?:\/\//, '')}/${loc}/today`,
+    appTitle: UI[loc].appTitle,
+    accent: ERA_COLORS[featured.period] ?? '#c9973a',
+  }
 
   return (
     <div className="h-dvh overflow-y-auto scroll-smooth bg-ink-900 text-ink-100">
@@ -161,7 +184,7 @@ export default async function TodayPage({ params }: PageProps) {
           </section>
         )}
 
-        <ShareToday locale={loc} pageUrl={pageUrl} shareText={`${S.title[loc]} · ${t.kind === 'hillula' ? S.hillula[loc] : S.daily[loc]}: ${name}`} />
+        <ShareToday locale={loc} pageUrl={pageUrl} card={card} shareText={`${S.title[loc]} · ${t.kind === 'hillula' ? S.hillula[loc] : S.daily[loc]}: ${name}`} />
 
         {upcoming.length > 0 && (
           <section aria-labelledby="today-upcoming" className="mt-10">

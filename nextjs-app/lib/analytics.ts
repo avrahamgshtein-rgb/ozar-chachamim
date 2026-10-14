@@ -15,7 +15,7 @@ export type AnalyticsEvent =
   | 'chat_question'       // a question was sent                          { locale, mode: model|referral }
   | 'tab_view'            // a visualization tab was opened               { tab }
   | 'research_listen'     // the research was read aloud (first press)   { locale, lang }
-  | 'today_share'         // the Today page was shared                   { locale, method: image|download|whatsapp }
+  | 'today_share'         // the Today page was shared                   { locale, method: image|download|whatsapp|video|video_download }
   | 'tower_share'         // a sage in the Tower of Generations was shared { locale, method: share|copy }
   | 'tower_road'          // the road to Sinai was flown in the tower      { locale, from: panel|link }
   | 'quiz_start'          // a quiz was started                           { locale, kind: sage|kids }
