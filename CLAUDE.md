@@ -13,6 +13,31 @@ This repo contains **two generations of the same project**. Only one is live:
 
 Everything below refers to `nextjs-app/` unless stated otherwise.
 
+## Working method: plan, delegate, review, grade (the owner's instruction, 2026-10-14)
+
+The owner asked for every writing and development task to run this way from now on. This is standing permission to use sub-agents for them; other work (answering a question, a small lookup) does not need it.
+
+1. **Plan (main agent).** Write a detailed plan:
+   - the goal in the owner's words;
+   - the files to touch and the approach;
+   - the rules from this file that apply;
+   - numbered **acceptance criteria**, each one checkable (a test, a command, a screenshot);
+   - what is out of scope.
+2. **Delegate.** Hand the plan to the **`developer`** sub-agent (`.claude/agents/developer.md`, model **Sonnet**). It does the actual writing and development in the working tree, runs the checks, and never commits or pushes. If `developer` is not listed as an agent type (the session started before the file existed), use the general-purpose agent with `model: sonnet` and paste that file's instructions into the prompt.
+3. **Review and grade (main agent).** Do not take the report on trust:
+   - read the whole diff;
+   - run `npm run type-check`, `npm test` and `npm run build` yourself;
+   - check every acceptance criterion;
+   - look at visible changes in a browser;
+   - re-read the change against this file's rules.
+   Give a grade with detailed findings (what is wrong, where, why, what A requires):
+   - **A**: every criterion met, all checks green, no findings that matter.
+   - **B**: works, but has real gaps (a missing test, an edge case, a rule bent, unclear code).
+   - **C**: a criterion unmet or a check failing.
+   - **D/F**: wrong or broken.
+4. **Iterate.** Send the grade and findings back to the same sub-agent (SendMessage, so it keeps its context) to fix, then review and grade again. Repeat until the work earns an A. If several rounds bring no progress (e.g. after 4), stop and tell the owner what blocks it, rather than looping on.
+5. **Finish (main agent).** Commit, push and open the PR as before (one push per feature). Tell the owner the rounds and grades in a line or two.
+
 ## Commands
 
 Run from `nextjs-app/`:
