@@ -10,6 +10,8 @@ import { UI, LOCALES, LOCALE_NAMES, LOCALE_SHORT } from '@/lib/i18n'
 import { AuthStatus } from '@/components/auth/AuthStatus'
 import { InstallApp } from '@/components/ui/InstallApp'
 
+const TOWER_LABEL: Record<Locale, string> = { he: 'מגדל הדורות: כל החכמים בתלת־ממד', en: 'Tower of Generations: every sage in 3D', ru: 'Башня поколений: все мудрецы в 3D' }
+const TOWER_MENU: Record<Locale, string> = { he: 'מגדל הדורות (תלת־ממד)', en: 'Tower of Generations (3D)', ru: 'Башня поколений (3D)' }
 const TODAY_LABEL: Record<Locale, string> = { he: 'היום באוצר חכמים: יום ההילולא וחכם היום', en: 'Today: hillula and sage of the day', ru: 'Сегодня: день памяти и мудрец дня' }
 const TODAY_MENU: Record<Locale, string> = { he: 'היום: הילולא וחכם היום', en: 'Today', ru: 'Сегодня' }
 
@@ -108,6 +110,11 @@ export function Header({ locale, initialStats }: HeaderProps) {
         >
           <span aria-hidden>?</span>
         </button>
+
+        {/* The Tower of Generations: the corpus in 3D */}
+        <a href={`/${locale}/tower`} className={cn(pill, 'hidden sm:grid place-items-center h-9 w-9 text-base')} title={TOWER_LABEL[locale]} aria-label={TOWER_LABEL[locale]}>
+          <span aria-hidden>🌌</span>
+        </a>
 
         {/* Today: the hillula and the sage of the day */}
         <a href={`/${locale}/today`} className={cn(pill, 'hidden sm:grid place-items-center h-9 w-9 text-base')} title={TODAY_LABEL[locale]} aria-label={TODAY_LABEL[locale]}>
@@ -355,6 +362,10 @@ function MobileActionsMenu({ locale }: { locale: Locale }) {
             <span aria-hidden className="w-4 text-center font-semibold">?</span>
             {t.guidedTour}
           </button>
+          <a href={`/${locale}/tower`} className={cn(item, 'border-t border-ink-700/40')}>
+            <span aria-hidden className="w-4 text-center">🌌</span>
+            {TOWER_MENU[locale]}
+          </a>
           <a href={`/${locale}/today`} className={cn(item, 'border-t border-ink-700/40')}>
             <span aria-hidden className="w-4 text-center">📅</span>
             {TODAY_MENU[locale]}

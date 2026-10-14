@@ -10,7 +10,7 @@
     "build": "next build",
     "start": "next start",
     "type-check": "tsc --noEmit",
-    "test": "npm run test:rag && npm run test:wiring && npm run test:geo && npm run test:url && npm run test:sefaria && npm run test:wikipedia && npm run test:youtube && npm run test:answer && npm run test:pwa && npm run test:quiz && npm run test:kids && npm run test:share && npm run test:listen && npm run test:today && npm run test:catalog && npm run test:paperlinks",
+    "test": "npm run test:rag && npm run test:wiring && npm run test:geo && npm run test:url && npm run test:sefaria && npm run test:wikipedia && npm run test:youtube && npm run test:answer && npm run test:pwa && npm run test:quiz && npm run test:kids && npm run test:share && npm run test:listen && npm run test:today && npm run test:catalog && npm run test:paperlinks && npm run test:tower",
     "test:rag": "tsx tests/rag.test.ts",
     "test:wiring": "tsx tests/chatWiring.test.ts",
     "test:geo": "tsx tests/geoLayers.test.ts",
@@ -26,7 +26,8 @@
     "test:listen": "tsx tests/listen.test.ts",
     "test:today": "tsx tests/today.test.ts",
     "test:catalog": "tsx tests/catalogLinks.test.ts",
-    "test:paperlinks": "tsx tests/paperLinks.test.ts"
+    "test:paperlinks": "tsx tests/paperLinks.test.ts",
+    "test:tower": "tsx tests/tower.test.ts"
   },
   "dependencies": {
     "@supabase/ssr": "^0.5.2",
@@ -39,6 +40,7 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "tailwind-merge": "^2.5.4",
+    "three": "0.185.1",
     "zustand": "^5.0.1"
   },
   "devDependencies": {
@@ -47,6 +49,7 @@
     "@types/node": "^22.9.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
+    "@types/three": "0.185.0",
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.47",
     "tailwindcss": "^3.4.14",

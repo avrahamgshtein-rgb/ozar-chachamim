@@ -412,3 +412,44 @@ h1, h2, h3 {
   }
   .sage-page sup.cite a { text-decoration: none !important; }
 }
+
+/* Tower of Generations (components/tower/TowerScene.tsx): names drawn over the 3D scene */
+.tower-label {
+  color: #f3ead8;
+  font-family: 'Heebo', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+  text-shadow: 0 0 6px #000, 0 0 2px #000;
+  opacity: 0.88;
+  pointer-events: none;
+}
+.tower-label-chain { color: #f6dfb0; opacity: 1; }
+.tower-label-focus { color: #ffe3a3; font-size: 15px; font-weight: 700; opacity: 1; }
+.tower-label-hover { color: #fff; font-size: 12px; opacity: 1; background: rgba(0, 0, 0, 0.6); padding: 1px 7px; border-radius: 6px; }
+.tower-region {
+  color: rgba(226, 194, 125, 0.8);
+  font-family: 'Heebo', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  text-shadow: 0 0 6px #000;
+  pointer-events: none;
+}
+.tower-era {
+  color: var(--era);
+  font-family: 'Heebo', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  white-space: nowrap;
+  opacity: 0.9;
+  text-shadow: 0 0 6px #000;
+  pointer-events: none;
+}
+@media (max-width: 640px) {
+  .tower-label-minor { display: none; }
+  .tower-label { font-size: 10px; }
+  .tower-region, .tower-era { font-size: 9px; }
+}
