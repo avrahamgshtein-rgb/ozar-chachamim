@@ -13,6 +13,7 @@ import { cn, formatYearRange } from '@/lib/utils'
 import { useJourneyStore } from '@/lib/journeyStore'
 import { JOURNEY_START } from '@/lib/journeyRange'
 import { parseJourneyURLState } from '@/lib/urlState'
+import { shownLocation } from '@/lib/contentOverlay'
 
 // מסע התורה — loaded only when the mode is first switched on.
 const JourneyMode = dynamic(() => import('./JourneyMode').then(m => ({ default: m.JourneyMode })), { ssr: false })
@@ -293,7 +294,7 @@ export function GeoMap({ locale }: GeoMapProps) {
                 background:${color}26;border:1px solid ${color};">${eraLabel}</span>
               ${years ? `<span class="text-ink-400" style="font-size:10px;margin-inline-start:6px;">${years}</span>` : ''}
             </p>
-            ${sage.location ? `<p class="text-ink-300" style="font-size:11px;margin:0;">📍 ${sage.location}</p>` : ''}
+            ${sage.location ? `<p class="text-ink-300" style="font-size:11px;margin:0;">📍 ${shownLocation(sage)}</p>` : ''}
             ${sage.spotify_url ? `<a href="${sage.spotify_url}" target="_blank" rel="noopener" style="display:inline-block;margin-top:6px;padding:3px 10px;background:#1DB954;color:#fff;border-radius:12px;font-size:10px;font-weight:700;text-decoration:none;">🎵 ${tr(locale, 'האזן בספוטיפיי', 'Listen on Spotify', 'Слушать в Spotify')}</a>` : ''}
           </div>
         `

@@ -65,6 +65,15 @@ export interface Sage {
   region?: Region
   location?: string
   field?: string
+  /**
+   * `location` and `field` in the reader's language, for display only (lib/terms.ts). The two stay
+   * in Hebrew because regions, map coordinates, filters and search read them; show these instead
+   * (shownLocation / shownField in lib/contentOverlay.ts). Absent in Hebrew or when untranslated.
+   */
+  location_label?: string
+  field_label?: string
+  /** `tags` in the reader's language, for display only (the filters and search read the Hebrew tags). */
+  tags_label?: string[]
   bio?: string
   core_concept?: string
   birth_year?: number

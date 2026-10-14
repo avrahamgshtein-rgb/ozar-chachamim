@@ -10,6 +10,7 @@ import { cn, formatYearRangeFor } from '@/lib/utils'
 import { labelParts } from '@/lib/displayName'
 import { normalizeHe, fuzzyIncludes } from '@/lib/search'
 import { tr } from '@/lib/i18n'
+import { shownField, shownLocation } from '@/lib/contentOverlay'
 
 /*
  * The sages table ("טבלה").
@@ -148,10 +149,10 @@ export function SagesTable({ locale }: SagesTableProps) {
       sub,
       years,
       chrono: chronoKey(sage),
-      place: (sage.location ?? '').trim(),
+      place: (shownLocation(sage) ?? '').trim(),
       degree: degreeMap.get(sage.id) ?? 0,
       haystack: normalizeHe([
-        sage.label, sage.name_en, sage.location, sage.field, years,
+        sage.label, sage.name_en, sage.location, sage.field, sage.location_label, sage.field_label, years,
         ERA_LABELS[sage.period]?.[locale],
       ].filter(Boolean).join(' · ')),
     }
@@ -191,7 +192,7 @@ export function SagesTable({ locale }: SagesTableProps) {
           break
         case 'field':
           if (!a.sage.field || !b.sage.field) cmp = !a.sage.field && !b.sage.field ? 0 : !a.sage.field ? 1 : -1
-          else cmp = sign * collator.compare(a.sage.field, b.sage.field)
+          else cmp = sign * collator.compare(shownField(a.sage)!, shownField(b.sage)!)
           break
         case 'connections':
           cmp = sign * (a.degree - b.degree)
@@ -298,7 +299,7 @@ export function SagesTable({ locale }: SagesTableProps) {
     const lines = [head, ...rows.map(r => [
       r.sage.id, r.name, r.sage.label, ERA_LABELS[r.sage.period]?.[locale] ?? r.sage.period,
       r.years, r.sage.birth_year, r.sage.death_year, r.sage.date_precision ?? '',
-      r.place, r.sage.field ?? '', r.degree, r.sage.has_research ? yes : '',
+      r.place, shownField(r.sage) ?? '', r.degree, r.sage.has_research ? yes : '',
     ])].map(line => line.map(cell).join(','))
     // The BOM makes Excel read the file as UTF-8; without it Hebrew opens as mojibake.
     const blob = new Blob(['﻿' + lines.join('\r\n') + '\r\n'], { type: 'text/csv;charset=utf-8' })
@@ -621,7 +622,7 @@ const SageTableRow = memo(function SageTableRow({
         <span className="block text-xs text-ink-300 truncate" title={m.place || undefined}>{m.place || '—'}</span>
       </td>
       <td className="px-3 py-2.5 border-b border-ink-800/70 hidden lg:table-cell">
-        <span className="block text-xs text-ink-400 truncate" title={sage.field || undefined}>{sage.field || '—'}</span>
+        <span className="block text-xs text-ink-400 truncate" title={shownField(sage) || undefined}>{shownField(sage) || '—'}</span>
       </td>
       <td className="px-3 py-2.5 border-b border-ink-800/70 text-center">
         {m.degree > 0 ? (

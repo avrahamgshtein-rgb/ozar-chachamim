@@ -7,6 +7,7 @@ import { useEffect, useRef } from 'react'
 import type { Sage, Locale } from '@/lib/types'
 import { ERA_COLORS } from '@/lib/types'
 import { resolveCoords, coordsForName } from '@/lib/locationCoords'
+import { shownLocation } from '@/lib/contentOverlay'
 
 interface SageMiniMapProps {
   sage: Sage
@@ -120,7 +121,7 @@ export function SageMiniMap({ sage, locale }: SageMiniMapProps) {
       aria-label={
         locale === 'he'
           ? `מפה: ${sage.location ?? ''}`
-          : `Map: ${sage.location ?? ''}`
+          : `Map: ${shownLocation(sage) ?? ''}`
       }
     />
   )

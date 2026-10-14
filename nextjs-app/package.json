@@ -10,7 +10,7 @@
     "build": "next build",
     "start": "next start",
     "type-check": "tsc --noEmit",
-    "test": "npm run test:rag && npm run test:wiring && npm run test:geo && npm run test:url && npm run test:sefaria && npm run test:wikipedia && npm run test:youtube && npm run test:answer && npm run test:pwa && npm run test:quiz && npm run test:kids && npm run test:share && npm run test:listen && npm run test:today && npm run test:catalog && npm run test:paperlinks && npm run test:tower",
+    "test": "npm run test:rag && npm run test:wiring && npm run test:geo && npm run test:url && npm run test:sefaria && npm run test:wikipedia && npm run test:youtube && npm run test:answer && npm run test:pwa && npm run test:quiz && npm run test:kids && npm run test:share && npm run test:listen && npm run test:today && npm run test:catalog && npm run test:paperlinks && npm run test:tower && npm run test:terms",
     "test:rag": "tsx tests/rag.test.ts",
     "test:wiring": "tsx tests/chatWiring.test.ts",
     "test:geo": "tsx tests/geoLayers.test.ts",
@@ -27,7 +27,8 @@
     "test:today": "tsx tests/today.test.ts",
     "test:catalog": "tsx tests/catalogLinks.test.ts",
     "test:paperlinks": "tsx tests/paperLinks.test.ts",
-    "test:tower": "tsx tests/tower.test.ts"
+    "test:tower": "tsx tests/tower.test.ts",
+    "test:terms": "tsx tests/terms.test.ts"
   },
   "dependencies": {
     "@supabase/ssr": "^0.5.2",

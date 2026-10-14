@@ -11,11 +11,18 @@ import type { Locale, Sage } from './types'
 import type { SageOverlay, SageOverlayEntry } from './contentOverlay'
 import overlayEn from '../public/i18n/sages.en.json'
 import overlayRu from '../public/i18n/sages.ru.json'
+import termsEn from '../public/i18n/terms.en.json'
+import termsRu from '../public/i18n/terms.ru.json'
+import { withTermLabels } from './contentOverlay'
+import { CONJUNCTION_WORD, translateTerm, type TermDict } from './terms'
 
 const OVERLAYS: Record<'en' | 'ru', SageOverlay> = {
   en: overlayEn as SageOverlay,
   ru: overlayRu as SageOverlay,
 }
+
+/** The place and field vocabulary (lib/terms.ts): shown beside the Hebrew, never written over it. */
+const TERMS: Record<'en' | 'ru', TermDict> = { en: termsEn.terms as TermDict, ru: termsRu.terms as TermDict }
 
 /** The translatable fields; anything else in an overlay entry is ignored. */
 const FIELDS = ['label', 'bio', 'core_concept', 'field', 'location'] as const satisfies readonly (keyof SageOverlayEntry)[]
@@ -34,13 +41,19 @@ export function overlayEntry(id: string, locale: Locale): SageOverlayEntry | nul
 export function localizeSage(sage: Sage, locale: Locale): Sage {
   if (locale === 'he') return sage
   const entry = overlayEntry(sage.id, locale)
-  if (!entry) return sage.name_en ? { ...sage, label: sage.name_en } : sage
+  if (!entry) return withTermLabels(sage.name_en ? { ...sage, label: sage.name_en } : sage, TERMS[locale], locale)
   const out: Sage = { ...sage }
   for (const f of FIELDS) {
     const v = entry[f]
     if (typeof v === 'string' && v.trim()) out[f] = v
   }
-  return out
+  return withTermLabels(out, TERMS[locale], locale)
+}
+
+/** A place or term (a journey stop, say) in `locale`, or the Hebrew when the vocabulary lacks it. */
+export function localizeTerm(text: string, locale: Locale): string {
+  if (locale === 'he') return text
+  return translateTerm(text, TERMS[locale], CONJUNCTION_WORD[locale]) ?? text
 }
 
 /** Which fields of this sage are actually translated in `locale`. */

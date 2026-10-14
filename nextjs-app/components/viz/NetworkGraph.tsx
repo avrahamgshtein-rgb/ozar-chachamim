@@ -10,6 +10,7 @@ import type { GraphPath } from '@/components/viz/PathFinder'
 import type { Locale, Period, Region } from '@/lib/types'
 import { locationToRegion, regionsOf } from '@/lib/regions'
 import { displayName, displayNameShort, labelParts } from '@/lib/displayName'
+import { shownLocation } from '@/lib/contentOverlay'
 
 type ColorMode = 'era' | 'region'
 
@@ -876,7 +877,7 @@ export function NetworkGraph({ locale }: NetworkGraphProps) {
               ${deg} ${UI_TEXT.links[locale]}</span>` : ''}
           </div>
           ${years ? `<div style="font-size:10px;color:var(--ink-400);">${escapeHtml(years)}</div>` : ''}
-          ${d.location ? `<div style="font-size:10px;color:var(--ink-400);">📍 ${escapeHtml(d.location)}</div>` : ''}
+          ${d.location ? `<div style="font-size:10px;color:var(--ink-400);">📍 ${escapeHtml(shownLocation(d) ?? '')}</div>` : ''}
           ${parts.tagline ? `<div style="font-size:10px;color:var(--ink-500);margin-top:3px;font-style:italic;line-height:1.35">${escapeHtml(parts.tagline)}</div>` : ''}
         `
         tip.style.display = 'block'
