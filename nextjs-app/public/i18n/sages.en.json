@@ -1026,7 +1026,8 @@
  },
  "59": {
   "label": "Rabbi Yitzchak Canpanton",
-  "bio": "Canpanton founded a logical method of Gemara study that saved the world of Torah on the eve of the Expulsion."
+  "bio": "Canpanton founded a logical method of Gemara study that saved the world of Torah on the eve of the Expulsion.",
+  "core_concept": "The way of study is the defence of the Torah: a logical, orderly method of studying the Gemara, in five stages and with rules against faulty reasoning, shows that scientific thinking and the Talmudic tradition do not contradict each other."
  },
  "61": {
   "label": "Rabbi Yisrael Alnakawa",
@@ -1140,7 +1141,8 @@
  },
  "96": {
   "label": "Rabbi Shalom Sharabi (the Rashash)",
-  "bio": "The Rashash organised the teaching of the Ari into a precise system and became the leader of Kabbalah in Jerusalem."
+  "bio": "The Rashash organised the teaching of the Ari into a precise system and became the leader of Kabbalah in Jerusalem.",
+  "core_concept": "Prayer is an act of repair: the kavanot he arranged according to the teaching of the Ari turn every word of prayer into a unification of worlds, and unite communities around a shared spiritual service."
  },
  "97": {
   "label": "Rabbi Aryeh Leib Heller (the Ketzot ha-Choshen)",
@@ -2219,19 +2221,23 @@
  },
  "554": {
   "label": "Oenomaus of Gadara",
-  "bio": "A Cynic philosopher from Gadara whom the Sages saw as \"the greatest of the philosophers of the nations\". He was a conversation partner of the Sages and the author of a sharp polemic against belief in fate."
+  "bio": "A Cynic philosopher from Gadara whom the Sages saw as \"the greatest of the philosophers of the nations\". He was a conversation partner of the Sages and the author of a sharp polemic against belief in fate.",
+  "core_concept": "Man is responsible for his deeds and is not bound by fate: Oenomaus attacked the belief in fate and the oracles in the name of free will, and in the literature of the Sages, if the identification holds, he is a gentile sage who respects the Torah and those who study it."
  },
  "555": {
   "label": "Abraham Our Father",
-  "bio": "The father of the nation. He left Ur of the Chaldees at the call of \"Go forth\", spread faith in the One God and made the Covenant between the Pieces."
+  "bio": "The father of the nation. He left Ur of the Chaldees at the call of \"Go forth\", spread faith in the One God and made the Covenant between the Pieces.",
+  "core_concept": "Faith in the One God that becomes a way of life: setting out into the unknown at God's word, kindness open to every person, and an everlasting covenant between God and his descendants."
  },
  "556": {
   "label": "Bruriah",
-  "bio": "The renowned learned woman of the Tannaitic generation, wife of Rabbi Meir and daughter of Rabbi Chanina ben Teradyon. Her rulings and scholarship are cited in the Talmud – \"three hundred teachings in a day\"."
+  "bio": "The renowned learned woman of the Tannaitic generation, wife of Rabbi Meir and daughter of Rabbi Chanina ben Teradyon. Her rulings and scholarship are cited in the Talmud – \"three hundred teachings in a day\".",
+  "core_concept": "Learning and moral wisdom that do not depend on rank: Bruriah ruled on the laws of purity, taught to pray for an end to sins rather than to sinners, and faced her tragedies with courage."
  },
  "557": {
   "label": "King David",
-  "bio": "Founder of the royal house of David and author of the Book of Psalms. He conquered Jerusalem and brought the Ark of the Covenant up to it – \"the sweet singer of Israel\"."
+  "bio": "Founder of the royal house of David and author of the Book of Psalms. He conquered Jerusalem and brought the Ark of the Covenant up to it – \"the sweet singer of Israel\".",
+  "core_concept": "Kingship in Israel rests on humility and repentance before God: David united the people around Jerusalem, and in the Psalms turned his struggles, his falls and his hope into a prayer for all generations."
  },
  "558": {
   "label": "The Baal Shem Tov (Rabbi Israel Baal Shem Tov)",
@@ -2240,7 +2246,8 @@
  },
  "560": {
   "label": "Rabbi Avraham Yitzchaki (the Zera Avraham)",
-  "bio": "Rishon LeZion and author of the responsa \"Zera Avraham\". One of the leaders of Jerusalem in the struggle against Sabbateanism and in fortifying the city's Torah standing."
+  "bio": "Rishon LeZion and author of the responsa \"Zera Avraham\". One of the leaders of Jerusalem in the struggle against Sabbateanism and in fortifying the city's Torah standing.",
+  "core_concept": "Guarding the walls of tradition in a time of crisis: an uncompromising fight against Sabbateanism, alongside rulings that do not shrink from stringency or innovation when the hour demands it, as in keeping women from becoming agunot."
  },
  "561": {
   "label": "Rabbi Avraham Mordechai Yitzchaki (the Rav of Porat)",
@@ -2249,51 +2256,63 @@
  },
  "562": {
   "label": "Rabbi Aharon Kotler",
-  "bio": "Founder of the Lakewood yeshiva and the architect of the Torah world in America after the Holocaust. He set Torah study for its own sake as the supreme value, without compromise."
+  "bio": "Founder of the Lakewood yeshiva and the architect of the Torah world in America after the Holocaust. He set Torah study for its own sake as the supreme value, without compromise.",
+  "core_concept": "Torah study for its own sake, whole and without compromise, is what will ensure the people's continuity after the Holocaust: a yeshiva of learners in the heart of America, not an adaptation of the Torah to the surrounding culture."
  },
  "563": {
   "label": "Rabbi Yosef Yitzchak Schneersohn (the Rayatz)",
-  "bio": "The sixth Rebbe of Chabad. He stood firm against the Soviet regime, was released from a death sentence, and moved the centre of Chabad to America."
+  "bio": "The sixth Rebbe of Chabad. He stood firm against the Soviet regime, was released from a death sentence, and moved the centre of Chabad to America.",
+  "core_concept": "Self-sacrifice as the driving force of leadership: keeping the Torah alive underground against Soviet repression, and declaring that 'America is no different': Judaism can flourish anywhere."
  },
  "564": {
   "label": "Rabbi Lord Jonathan Sacks",
-  "bio": "Chief Rabbi of Britain and a Jewish thinker of worldwide influence. He presented the voice of the Torah in the language of philosophy and universal ethics."
+  "bio": "Chief Rabbi of Britain and a Jewish thinker of worldwide influence. He presented the voice of the Torah in the language of philosophy and universal ethics.",
+  "core_concept": "'The dignity of difference': keeping one's religious distinctiveness is a key to peace, not an obstacle to it, and faith is a call to moral responsibility, to covenant and to repairing the world."
  },
  "565": {
   "label": "Rabbi Mordechai Atiya",
-  "bio": "A kabbalist and head of the kabbalists' yeshiva, one of the sages of Aleppo who settled in Jerusalem. He called for redemption through the hidden teaching and action."
+  "bio": "A kabbalist and head of the kabbalists' yeshiva, one of the sages of Aleppo who settled in Jerusalem. He called for redemption through the hidden teaching and action.",
+  "core_concept": "Zionism does not contradict religion but is a stage in a Kabbalistic process of redemption: going up to the Land is a great commandment that may not be put off, and the study of the hidden Torah is a way of life that sanctifies every movement and every word of prayer."
  },
  "566": {
   "label": "Rabbi Moshe Tzuriel",
-  "bio": "Spiritual supervisor of the Sha'alvim yeshiva and a prolific author. He gathered and explained the writings of Rabbi Abraham Isaac Kook, the Vilna Gaon and the Ramchal – a bridge between the world of mussar and the Torah of the Land of Israel."
+  "bio": "Spiritual supervisor of the Sha'alvim yeshiva and a prolific author. He gathered and explained the writings of Rabbi Abraham Isaac Kook, the Vilna Gaon and the Ramchal – a bridge between the world of mussar and the Torah of the Land of Israel.",
+  "core_concept": "Arranging the treasures of Jewish thought so that every learner can reach them: Rav Kook's teaching, ethics and aggadah as an ordered body of teaching, joining Lithuanian erudition, Kabbalistic depth and national revival."
  },
  "567": {
   "label": "Rabbi Shlomo Carlebach",
-  "bio": "\"The dancing rabbi\" – the instigator of the revolution in Jewish music in the generation of return. His melodies and his open heart brought tens of thousands closer to Judaism."
+  "bio": "\"The dancing rabbi\" – the instigator of the revolution in Jewish music in the generation of return. His melodies and his open heart brought tens of thousands closer to Judaism.",
+  "core_concept": "Melody and story are a way into the Torah and into the Jewish heart: unconditional love and joy as the way to bring the distant near, without giving up halakha."
  },
  "568": {
   "label": "Judith",
-  "bio": "The heroine of the apocryphal book named after her, who risked her life to save her people. In tradition her figure became linked to the miracle of Chanukah."
+  "bio": "The heroine of the apocryphal book named after her, who risked her life to save her people. In tradition her figure became linked to the miracle of Chanukah.",
+  "core_concept": "One must act within nature and history out of complete trust in God, without confining salvation to a time and place, and without waiting idly for a miracle."
  },
  "569": {
   "label": "Josel of Rosheim",
-  "bio": "The great intercessor of Ashkenazi Jewry before Emperor Charles V. His \"Sefer HaMikneh\" is a personal testimony to leadership in a generation of decrees and the Reformation."
+  "bio": "The great intercessor of Ashkenazi Jewry before Emperor Charles V. His \"Sefer HaMikneh\" is a personal testimony to leadership in a generation of decrees and the Reformation.",
+  "core_concept": "Defending the communities is a religious duty: intercession before the emperor and the authorities, resting on rabbinic learning, moral discipline and legal expertise."
  },
  "570": {
   "label": "Jacob Our Father",
-  "bio": "The chosen of the patriarchs and father of the twelve tribes. \"A plain man, dwelling in tents\", who went down to Egypt and laid the foundation of the house of Israel."
+  "bio": "The chosen of the patriarchs and father of the twelve tribes. \"A plain man, dwelling in tents\", who went down to Egypt and laid the foundation of the house of Israel.",
+  "core_concept": "'You will give truth to Jacob': truth and integrity tested in exile and in struggle, from which the house of Israel was built, twelve tribes that are one people."
  },
  "571": {
   "label": "Isaac Our Father",
-  "bio": "The second of the patriarchs. He was bound on the altar on Mount Moriah, and dug anew the wells of his father – continuing the way in the Land."
+  "bio": "The second of the patriarchs. He was bound on the altar on Mount Moriah, and dug anew the wells of his father – continuing the way in the Land.",
+  "core_concept": "Strength of devotion and perseverance: readiness to be bound on the altar, prayer in the field, and continuing his father's way in the Land by digging his wells anew."
  },
  "572": {
   "label": "Isaiah the Prophet",
-  "bio": "One of the greatest of the literary prophets. His prophecies of destruction and consolation – \"Comfort, comfort my people\" – accompany Israel in every generation."
+  "bio": "One of the greatest of the literary prophets. His prophecies of destruction and consolation – \"Comfort, comfort my people\" – accompany Israel in every generation.",
+  "core_concept": "Destruction is not the last word: from the same prophet came the rebuke of society's wrongs and the promise of consolation and redemption, for Israel and for all the nations."
  },
  "573": {
   "label": "Mahari Berab (Rabbi Yaakov Berab)",
-  "bio": "The greatest sage of Safed in his generation and the initiator of the renewal of semikhah (1538) as a step towards hastening redemption – a move that ignited the great controversy with the sages of Jerusalem."
+  "bio": "The greatest sage of Safed in his generation and the initiator of the renewal of semikhah (1538) as a step towards hastening redemption – a move that ignited the great controversy with the sages of Jerusalem.",
+  "core_concept": "Halakha is a living instrument meant to serve redemption: renewing semikhah and the Sanhedrin in Safed, to give the people back sovereign halakhic authority and restore its dignity after the Expulsion."
  },
  "574": {
   "label": "Moses Our Teacher",
@@ -2302,23 +2321,28 @@
  },
  "575": {
   "label": "Ezra the Scribe",
-  "bio": "The renewer of the Torah in Israel at the start of the Second Temple period. He brought the exiles up from Babylon and established the public reading of the Torah – \"Ezra was worthy that the Torah should have been given through him\"."
+  "bio": "The renewer of the Torah in Israel at the start of the Second Temple period. He brought the exiles up from Babylon and established the public reading of the Torah – \"Ezra was worthy that the Torah should have been given through him\".",
+  "core_concept": "The nation's survival depends not only on territory and government but on the book and on learning: Ezra turned the Torah from a closed code into the living foundation of daily life, so that wherever there is a Jew there will be a book, a language and a community."
  },
  "576": {
   "label": "Rav Huna",
-  "bio": "The pillar of the second generation of Babylonian Amoraim and head of the Sura yeshiva for forty years. In monetary law the halakha follows him in most of his disputes."
+  "bio": "The pillar of the second generation of Babylonian Amoraim and head of the Sura yeshiva for forty years. In monetary law the halakha follows him in most of his disputes.",
+  "core_concept": "Torah, leadership and social justice as one whole: outstanding learning together with firmness in judgement, public humility, and wealth used for acts of kindness and the public good."
  },
  "577": {
   "label": "Rabbi Abun the Great",
-  "bio": "One of the founders of the early rabbinic community on the Rhine. One of those who laid the foundation for the Torah culture of early Ashkenaz, generations before Rabbenu Gershom."
+  "bio": "One of the founders of the early rabbinic community on the Rhine. One of those who laid the foundation for the Torah culture of early Ashkenaz, generations before Rabbenu Gershom.",
+  "core_concept": "The foundation of Ashkenaz's line of Torah: the study house and the family he established in the Rhineland created the setting from which Rashi's teachers came, and laid the groundwork for early Ashkenaz's Talmud commentary, liturgical poetry and esoteric teaching."
  },
  "578": {
   "label": "Rabbi Tarfon",
-  "bio": "One of the great Tannaim of Yavne, a kohen who served in the Temple. Rabbi Akiva's disputant and friend; \"The day is short and the work is great\"."
+  "bio": "One of the great Tannaim of Yavne, a kohen who served in the Temple. Rabbi Akiva's disputant and friend; \"The day is short and the work is great\".",
+  "core_concept": "A bridge between the Temple that was destroyed and the study house that was being built: keeping the priesthood and its gifts after the Destruction and using them for charity, rulings that ease the public's burden, and Torah study that must lead to action."
  },
  "579": {
   "label": "Rabbi Yehuda HaLevi (Rihal)",
-  "bio": "One of the great poets of Spain and the thinker of the \"Kuzari\". His poetry of longing for Zion – \"My heart is in the East and I am at the edge of the West\" – accompanies the nation; at the end of his life he set out for the Land of Israel."
+  "bio": "One of the great poets of Spain and the thinker of the \"Kuzari\". His poetry of longing for Zion – \"My heart is in the East and I am at the edge of the West\" – accompanies the nation; at the end of his life he set out for the Land of Israel.",
+  "core_concept": "Faith is not a cold logical conclusion but prophetic experience and a whole life, bound inseparably to the people of Israel, the Land of Israel and the Hebrew language."
  },
  "580": {
   "label": "Rabbi Yehuda HaNasi",
@@ -2327,11 +2351,13 @@
  },
  "581": {
   "label": "Rabbi Yaakov HaKohen (the Kabbalist)",
-  "bio": "One of the first kabbalists of Castile, one of the fathers of the \"Kabbalah of the Kohen brothers\". His works on the letters and the Chariot preceded the Zohar and influenced it."
+  "bio": "One of the first kabbalists of Castile, one of the fathers of the \"Kabbalah of the Kohen brothers\". His works on the letters and the Chariot preceded the Zohar and influenced it.",
+  "core_concept": "A path to the hidden through personal vision and combinations of letters; and from it the teaching of the 'left emanation', a map of the forces of evil, which deeply influenced the Zohar."
  },
  "582": {
   "label": "Rabbi Yitzchak Alfasi (the Rif)",
-  "bio": "The greatest halakhic authority of the generation between the Geonim and the Rishonim. \"The Halakhot of the Rif\" distilled the Talmud into halakhic rulings and served as a cornerstone of the Shulchan Arukh."
+  "bio": "The greatest halakhic authority of the generation between the Geonim and the Rishonim. \"The Halakhot of the Rif\" distilled the Talmud into halakhic rulings and served as a cornerstone of the Shulchan Arukh.",
+  "core_concept": "Halakha requires selection, distillation and decision: the Rif condensed the Babylonian Talmud into practical rulings, made the Bavli the highest source and set the rule that the law follows the later authorities, and so put halakha within reach of every rabbinic decisor."
  },
  "583": {
   "label": "Rabbi Yitzchak HaLevi (Segan Leviah)",
@@ -2340,35 +2366,43 @@
  },
  "584": {
   "label": "Rabbi Yishmael (ben Elisha)",
-  "bio": "A father of the world and the master of the thirteen rules by which the Torah is expounded. Rabbi Akiva's great disputant on the ways of midrash – \"the Torah speaks in human language\"."
+  "bio": "A father of the world and the master of the thirteen rules by which the Torah is expounded. Rabbi Akiva's great disputant on the ways of midrash – \"the Torah speaks in human language\".",
+  "core_concept": "'The Torah speaks in human language': systematic, reasoned interpretation through the thirteen principles, avoiding needless stringency, together with joining Torah to a worldly occupation and compassion for Israel's poor."
  },
  "585": {
   "label": "Rabbi Levi ben Chaviv (the Maharalbach)",
-  "bio": "Rabbi of Jerusalem and the great opponent of the renewal of semikhah. His \"Kuntres HaSemikhah\" decided the famous halakhic controversy with the sages of Safed."
+  "bio": "Rabbi of Jerusalem and the great opponent of the renewal of semikhah. His \"Kuntres HaSemikhah\" decided the famous halakhic controversy with the sages of Safed.",
+  "core_concept": "Sovereign halakhic authority cannot be set up by one centre alone: renewing semikhah requires the consent of all the sages of the Land of Israel, to preserve the unity of the people and the Hebrew calendar."
  },
  "586": {
   "label": "Rabbi Moshe Alashkar (Maharam Alashkar)",
-  "bio": "One of the great halakhic authorities after the Expulsion from Spain. He survived a sinking ship, served as a judge in Egypt and at the end of his life went up to Jerusalem."
+  "bio": "One of the great halakhic authorities after the Expulsion from Spain. He survived a sinking ship, served as a judge in Egypt and at the end of his life went up to Jerusalem.",
+  "core_concept": "Balance in a time of crisis: complete loyalty to the rulings of the Rishonim alongside a defence of the Rambam's rationalism, to give wandering Spanish Jewry a stable framework of law and thought."
  },
  "587": {
   "label": "Rabbi Moshe Chaim Ephraim of Sudilkov",
-  "bio": "A grandson of the Baal Shem Tov and author of \"Degel Machaneh Ephraim\" – one of the earliest and most faithful sources of his great grandfather's teaching."
+  "bio": "A grandson of the Baal Shem Tov and author of \"Degel Machaneh Ephraim\" – one of the earliest and most faithful sources of his great grandfather's teaching.",
+  "core_concept": "Joining mystical revelation to the repair of the soul in daily life: the teaching of the Baal Shem Tov, the kavanot of the Ari and a deep understanding of the human soul, as inner service of God."
  },
  "588": {
   "label": "Rabbi Moshe of Coucy (the Semag)",
-  "bio": "One of the Tosafists and author of \"Sefer Mitzvot Gadol\" – the great halakhic code of French Jewry. He travelled among the communities of Spain and Ashkenaz as a preacher and awakener."
+  "bio": "One of the Tosafists and author of \"Sefer Mitzvot Gadol\" – the great halakhic code of French Jewry. He travelled among the communities of Spain and Ashkenaz as a preacher and awakener.",
+  "core_concept": "Preserving the Oral Torah after the burning of the Talmud: an ordered code of the 613 commandments combining Talmud, rulings, aggadah and ethics, and a call to the public to keep the commandments in deed and in conduct."
  },
  "589": {
   "label": "Rabbi Nathan of Breslov (of Nemirov)",
-  "bio": "The great student and scribe of Rabbi Nachman of Breslov. He wrote down his teachings and founded the tradition of hitbodedut and prayer – \"Likkutei Tefillot\"."
+  "bio": "The great student and scribe of Rabbi Nachman of Breslov. He wrote down his teachings and founded the tradition of hitbodedut and prayer – \"Likkutei Tefillot\".",
+  "core_concept": "For the master's prophetic fire to warm later generations, it must be poured into vessels of language, law and community; prayer and hope are the answer to despair."
  },
  "590": {
   "label": "Rabbi Raphael Baruch Toledano",
-  "bio": "Head of the rabbinical court of Meknes and author of a \"Kitzur Shulchan Arukh\" for Sephardim. His poem \"Eshtachaveh Apayim Artzah\" is sung throughout the Eastern diaspora."
+  "bio": "Head of the rabbinical court of Meknes and author of a \"Kitzur Shulchan Arukh\" for Sephardim. His poem \"Eshtachaveh Apayim Artzah\" is sung throughout the Eastern diaspora.",
+  "core_concept": "True spiritual leadership does not shut itself away in the study house: alongside rulings and poetry, care for the poor, the orphan and the dignity of the weak, and keeping the Torah heritage of Moroccan Jewry alive in Israel too."
  },
  "591": {
   "label": "Rabban Gamliel of Yavne",
-  "bio": "The leader of Israel after the destruction. He fortified the authority of the patriarchate and the unity of halakha in the generation of rebuilding at Yavne."
+  "bio": "The leader of Israel after the destruction. He fortified the authority of the patriarchate and the unity of halakha in the generation of rebuilding at Yavne.",
+  "core_concept": "The nation's unity after the Destruction requires central authority and uniform halakha: a fixed prayer, one calendar and the Passover Seder as a 'small sanctuary' in every home, together with humility and care for the weak."
  },
  "592": {
   "label": "Rabban Yochanan ben Zakkai",
@@ -2377,7 +2411,8 @@
  },
  "593": {
   "label": "Rebecca Our Matriarch",
-  "bio": "The second of the matriarchs. With divine inspiration she saw her sons' destinies and decided the continuation of the covenant's way – \"the elder shall serve the younger\"."
+  "bio": "The second of the matriarchs. With divine inspiration she saw her sons' destinies and decided the continuation of the covenant's way – \"the elder shall serve the younger\".",
+  "core_concept": "Prophetic foresight and responsibility for the nation's future: Rebecca decided that the blessing would go to Jacob, and taught that a Jew's inner essence matters more than his outer garment."
  },
  "594": {
   "label": "Rashi (Rabbi Shlomo Yitzchaki)",
@@ -2386,15 +2421,18 @@
  },
  "595": {
   "label": "King Solomon",
-  "bio": "The wisest of all men and builder of the First Temple. He wrote Proverbs, Ecclesiastes and the Song of Songs."
+  "bio": "The wisest of all men and builder of the First Temple. He wrote Proverbs, Ecclesiastes and the Song of Songs.",
+  "core_concept": "Wisdom is a gift from God that obliges the king: Solomon asked for an understanding heart to judge the people, built the House for God's name, and wrote down his wisdom for all generations."
  },
  "596": {
   "label": "Samuel the Prophet",
-  "bio": "The last of the judges and the greatest prophet after Moses. He established the monarchy in Israel and anointed Saul and David."
+  "bio": "The last of the judges and the greatest prophet after Moses. He established the monarchy in Israel and anointed Saul and David.",
+  "core_concept": "Leadership as a mission, not as rule: Samuel went round the towns of Israel to judge the people, prayed for them, and handed leadership over to the monarchy without giving up the authority of prophecy."
  },
  "597": {
   "label": "Shmuel HaNagid",
-  "bio": "Vizier of Granada, general, poet and halakhic authority – a symbol of the Golden Age of Spain. His \"Introduction to the Talmud\" is studied to this day."
+  "bio": "Vizier of Granada, general, poet and halakhic authority – a symbol of the Golden Age of Spain. His \"Introduction to the Talmud\" is studied to this day.",
+  "core_concept": "'Torah and greatness in one place': statecraft, generalship, poetry, grammar and halakhic rulings joined in one person, with political power used to strengthen the Torah and those who study it."
  },
  "598": {
   "label": "Rabbenu Asher ben Yechiel (the Rosh)",
