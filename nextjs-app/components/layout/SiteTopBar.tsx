@@ -3,6 +3,7 @@ import { cn } from '@/lib/utils'
 import type { Locale } from '@/lib/types'
 import { UI } from '@/lib/i18n'
 import { LocaleLinks } from './LocaleLinks'
+import { SoundtrackToggle } from '@/components/ui/SoundtrackToggle'
 
 /**
  * Slim top bar for the site's standalone pages (About, 404): the site title
@@ -34,6 +35,10 @@ export function SiteTopBar({ locale, path = '', followUrl = false }: {
           >
             {t.backToMap}
           </Link>
+          <SoundtrackToggle
+            locale={locale}
+            className="justify-center h-9 w-9 rounded-xl glass-light border border-ink-600/40 text-ink-300 transition-colors hover:border-gold-500/30 hover:text-ink-100"
+          />
           <LocaleLinks locale={locale} path={path} follow={followUrl} />
         </div>
       </div>

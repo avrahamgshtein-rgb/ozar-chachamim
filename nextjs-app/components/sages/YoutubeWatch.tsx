@@ -3,10 +3,11 @@
 // A YouTube video behind a click-to-load facade, like the podcast player: nothing is requested from
 // YouTube (no thumbnail, no script, no cookie) until the visitor presses play. The facade is local
 // markup and an inline icon; the player is youtube-nocookie.com.
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import type { Locale } from '@/lib/types'
 import { track } from '@/lib/analytics'
 import { durationLabel, embedUrl, watchUrl } from '@/lib/youtube'
+import { holdSoundtrack, releaseSoundtrack } from '@/lib/soundtrack'
 
 const S = {
   play: { he: 'הפעלת הסרטון', en: 'Play the video', ru: 'Смотреть видео' },
@@ -36,6 +37,13 @@ export function YoutubeWatch({
 }) {
   const [loaded, setLoaded] = useState(false)
   const length = seconds ? durationLabel(seconds) : ''
+  // The player is another site's: we cannot hear when it stops, so the background music waits
+  // while it is on the page (the 🎵 button still turns the music on over it).
+  useEffect(() => {
+    if (!loaded) return
+    holdSoundtrack('youtube')
+    return () => releaseSoundtrack('youtube')
+  }, [loaded])
 
   return (
     <section aria-label={heading}

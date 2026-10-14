@@ -190,6 +190,9 @@ test('service worker: leaves chat, sign-in, other sites and non-GET requests alo
   assert.equal(await ask('https://www.youtube-nocookie.com/embed/abc'), null)
   assert.equal(await ask('/he', { method: 'POST', mode: 'navigate' }), null)
   assert.equal(await ask('/research/12.json', { headers: { range: 'bytes=0-9' } }), null)
+  // the background music streams in ranges (Safari plays media only from 206 answers): never cached
+  assert.equal(await ask('/audio/journey-of-the-sages.mp3'), null)
+  assert.equal(await ask('/audio/journey-of-the-sages.mp3', { headers: { range: 'bytes=0-' } }), null)
   assert.equal(await ask('/sw.js'), null)
 })
 

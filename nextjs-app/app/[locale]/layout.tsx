@@ -5,6 +5,7 @@ import type { Locale } from '@/lib/types'
 import { SITE_URL } from '@/lib/siteUrl'
 import { SkipLink } from '@/components/layout/SkipLink'
 import { SiteTelemetry } from '@/components/layout/SiteTelemetry'
+import { Soundtrack } from '@/components/layout/Soundtrack'
 import { fontVariables, THEME_INIT_SCRIPT } from '../fonts'
 
 interface LocaleLayoutProps {
@@ -70,6 +71,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
         <SkipLink label={UI[validLocale].skipToContent} />
         {children}
         <SiteTelemetry />
+        <Soundtrack />
       </body>
     </html>
   )

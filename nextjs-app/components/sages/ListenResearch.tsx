@@ -9,6 +9,7 @@ import type { Locale } from '@/lib/types'
 import type { ParsedResearchDoc } from '@/lib/researchParse'
 import { speechItems, VOICE_LANGS, type SpeechItem, type SpeechLang } from '@/lib/speech'
 import { track } from '@/lib/analytics'
+import { holdSoundtrack, releaseSoundtrack } from '@/lib/soundtrack'
 
 const S = {
   listen: { he: 'האזנה למחקר', en: 'Listen', ru: 'Слушать' },
@@ -46,6 +47,12 @@ function elementOf(item: SpeechItem): HTMLElement | null {
 export function ListenResearch({ docs, titles, locale }: { docs: ParsedResearchDoc[]; titles: string[]; locale: Locale }) {
   const [voices, setVoices] = useState<SpeechSynthesisVoice[] | null>(null)
   const [status, setStatus] = useState<'idle' | 'playing' | 'paused'>('idle')
+  // The background music steps aside while the paper is read, and comes back after.
+  useEffect(() => {
+    if (status !== 'playing') return
+    holdSoundtrack('speech')
+    return () => releaseSoundtrack('speech')
+  }, [status])
   const [rate, setRate] = useState(1)
   const index = useRef(0)
   const run = useRef(0) // bumped on every start/stop, so a late `end` event of an old utterance is ignored
