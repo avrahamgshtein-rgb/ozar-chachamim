@@ -455,3 +455,5 @@ h1, h2, h3 {
 }
 /* the road to Sinai in the tower: stations named only by the chain (Joshua, Eli, Elijah…) */
 .tower-label-station { color: #fff1c9; font-family: 'Frank Ruhl Libre', Georgia, serif; font-style: italic; font-size: 12px; opacity: 1; }
+/* the kids' journey in the tower: numbered stations */
+.tower-label-tour { color: #fff6dc; font-size: 13px; font-weight: 700; opacity: 1; background: rgba(20, 16, 10, 0.72); padding: 2px 8px; border-radius: 999px; border: 1px solid rgba(233, 196, 106, 0.45); }
