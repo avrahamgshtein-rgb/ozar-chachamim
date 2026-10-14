@@ -6,7 +6,7 @@ import { normalizeHe } from '@/lib/search'
 
 // normalizeHe keeps punctuation, so "יעקב?" would never match the token
 // "יעקב" taken from a sage label. Strip it on both sides of every comparison.
-const PUNCT = /[?!.,;:()[\]{}"'`׳״־–—\-…]/g
+const PUNCT = /[?!.,;:()[\]{}"'`׳״־–—\-…«»“”„]/g
 const stripPunct = (t: string) => t.replace(PUNCT, '')
 
 // Generic title/kinship/grammar words that are too common to count as a
@@ -21,7 +21,11 @@ const STOPWORDS = new Set(
    'rabbi', 'rav', 'rabban', 'rabbeinu', 'rabbenu', 'rebbe', 'rebbetzin', 'rabbanit', 'chacham', 'hakham', 'the', 'ben', 'bar', 'bat',
    'ibn', 'and', 'of', 'who', 'what', 'was', 'were', 'did', 'does', 'how', 'why', 'when', 'where', 'which', 'about', 'tell', 'his', 'her',
    'рабби', 'рав', 'раввин', 'рабейну', 'ребе', 'хахам', 'бен', 'бар', 'бат', 'ибн', 'кто', 'что', 'был', 'была', 'как', 'почему', 'когда',
-   'где', 'какой', 'расскажите', 'расскажи', 'про', 'его', 'она'].map(normalizeHe),
+   'где', 'какой', 'расскажите', 'расскажи', 'про', 'его', 'она',
+   // epithets, not names: "King David" must not be found by "king" alone, nor Deborah by "prophetess"
+   'king', 'queen', 'prophet', 'prophetess', 'great', 'elder', 'holy', 'our', 'father', 'mother', 'matriarch', 'teacher',
+   'scribe', 'from', 'major', 'prof', 'царь', 'царица', 'пророк', 'пророчица', 'праотец', 'праматерь', 'великий',
+   'старший', 'святой', 'ребецн', 'майор', 'проф'].map(normalizeHe),
 )
 
 const HEBREW_LETTER = /[א-ת]/
@@ -92,6 +96,26 @@ export function extractMentionedSages(
     }
   }
 
+  // A name inside a longer name the question holds is not a mention of its own: "Shmuel HaNagid"
+  // names Shmuel HaNagid, not also Shmuel the Amora (whose name is "Shmuel"). Such a match is
+  // dropped unless the shorter name also stands in the question by itself.
+  const hits = (alias: string, text: string, textClean: string) => {
+    const a = normalizeHe(alias)
+    return HEBREW_LETTER.test(a) ? text.includes(a) : ` ${textClean} `.includes(` ${stripPunct(a)} `)
+  }
+  for (const m of [...matches]) {
+    const longer = matches.filter(o => o !== m && o.matchedAlias.length > m.matchedAlias.length
+      && normalizeHe(o.matchedAlias).includes(normalizeHe(m.matchedAlias)))
+    if (!longer.length) continue
+    let rest = q
+    for (const o of longer) rest = rest.split(normalizeHe(o.matchedAlias)).join(' ')
+    const restClean = rest.split(' ').map(stripPunct).filter(Boolean).join(' ')
+    if (!hits(m.matchedAlias, rest, restClean)) {
+      matches.splice(matches.indexOf(m), 1)
+      matchedIds.delete(m.sage.id)
+    }
+  }
+
   // Pass 2: distinctive single-token fallback (only for sages not already
   // matched). A token only counts if it's rare across the whole corpus —
   // otherwise a common first name like "יוסף" would flag dozens of sages.
@@ -116,14 +140,20 @@ export function extractMentionedSages(
   const nameWords = qWordList.filter(w => !STOPWORDS.has(w))
   const inQuestion = (t: string) => qWords.has(t)
     || (CYRILLIC_LETTER.test(t) && t.length >= 5 && nameWords.some(w => w.length >= t.length - 1 && w.startsWith(t.slice(0, -1))))
+  // A rare token decides that a sage is meant; how many of his tokens the question holds, common
+  // ones too, decides the order: "о Рабби Шимоне бар Йохае" is about Shimon bar Yochai (two of his
+  // words) before Yalkut Shimoni (one word that declines alike)
+  const fallback: Array<EntityMatch & { score: number }> = []
   for (const sage of allSages) {
     if (matchedIds.has(sage.id)) continue
     const tokens = tokensBySageId.get(sage.id) ?? []
     const hit = tokens.find(t => inQuestion(t) && (tokenSageCount.get(t) ?? 0) <= MAX_TOKEN_SAGE_COUNT)
-    if (hit) {
-      matches.push({ sage, matchedAlias: hit })
-      matchedIds.add(sage.id)
-    }
+    if (hit) fallback.push({ sage, matchedAlias: hit, score: tokens.filter(inQuestion).length })
+  }
+  fallback.sort((a, b) => b.score - a.score)
+  for (const { sage, matchedAlias } of fallback) {
+    matches.push({ sage, matchedAlias })
+    matchedIds.add(sage.id)
   }
 
   return matches

@@ -686,5 +686,983 @@
  "629": {
   "label": "Miriam the Prophetess",
   "bio": "The prophetess, sister of Moses and Aaron, active already in the Egyptian bondage: she stood up to her father’s despair, watched over the infant Moses and led the women in the Song of the Sea. In the wilderness she is counted among the three leaders and the well is tied to her; her slander and its punishment became the basis of the commandment to remember what was done to Miriam."
+ },
+ "1": {
+  "label": "Ben Sira"
+ },
+ "3": {
+  "label": "Philo of Alexandria"
+ },
+ "345": {
+  "label": "Yehuda ben Tema"
+ },
+ "6": {
+  "label": "Aquila of Pontus"
+ },
+ "7": {
+  "label": "Rabbi Chiya the Great"
+ },
+ "332": {
+  "label": "Midrash Rabbah"
+ },
+ "14": {
+  "label": "Rabbi Shimon Lavi"
+ },
+ "201": {
+  "label": "Rabbi Elazar Birabi Kalir"
+ },
+ "21": {
+  "label": "Rav Sherira Gaon"
+ },
+ "26": {
+  "label": "Rabbi Yonah ibn Janah"
+ },
+ "28": {
+  "label": "Rabbi Yitzchak ben Asher HaLevi (the First Riva)"
+ },
+ "261": {
+  "label": "Rabbi Meir ben Shmuel of Ramerupt"
+ },
+ "32": {
+  "label": "Rabbi Yosef ibn Migash (the Ri Migash)"
+ },
+ "34": {
+  "label": "Rabbi Avraham ibn Daud (the First Ra'avad)"
+ },
+ "39": {
+  "label": "Rabbenu Bachya ibn Paquda (Duties of the Heart)"
+ },
+ "45": {
+  "label": "Rabbi Yosef Bekhor Shor"
+ },
+ "48": {
+  "label": "Benjamin of Tudela"
+ },
+ "55": {
+  "label": "Yalkut Shimoni"
+ },
+ "58": {
+  "label": "Rabbi Ephraim Ankawa"
+ },
+ "59": {
+  "label": "Rabbi Yitzchak Canpanton"
+ },
+ "61": {
+  "label": "Rabbi Yisrael Alnakawa"
+ },
+ "62": {
+  "label": "Rabbi Yitzchak Aboab"
+ },
+ "65": {
+  "label": "Rabbi Yitzchak Arama (the Ba'al ha-Akedah)"
+ },
+ "66": {
+  "label": "Rabbi Eliyahu Mizrachi (the Re'em)"
+ },
+ "68": {
+  "label": "Rabbi Yosef Taitazak"
+ },
+ "71": {
+  "label": "Rabbi Moshe Cordovero (the Ramak)"
+ },
+ "73": {
+  "label": "Rabbi Mordechai Yaffe (the Ba'al ha-Levushim)"
+ },
+ "329": {
+  "label": "The Maharsha"
+ },
+ "77": {
+  "label": "Rabbi Avraham Azulai"
+ },
+ "78": {
+  "label": "Rabbi Yehuda Aryeh of Modena"
+ },
+ "79": {
+  "label": "Rabbi David HaLevi Segal (the Taz)"
+ },
+ "80": {
+  "label": "Rabbi Shalom Shabazi"
+ },
+ "82": {
+  "label": "Rabbi Yaakov Sasportas"
+ },
+ "83": {
+  "label": "Rabbi Shabtai HaKohen (the Shach)"
+ },
+ "84": {
+  "label": "Rabbi Avraham Abele Gombiner (the Magen Avraham)"
+ },
+ "86": {
+  "label": "Rabbi Moshe Hagiz"
+ },
+ "88": {
+  "label": "Rabbi Yisrael Yaakov Algazi"
+ },
+ "89": {
+  "label": "Rabbi Yaakov Emden (the Yaavetz)"
+ },
+ "90": {
+  "label": "Rabbi Moshe David Valle (the Ramad Valle)"
+ },
+ "91": {
+  "label": "Rabbi Aryeh Leib Ginzburg (the Sha'agat Aryeh)"
+ },
+ "93": {
+  "label": "Rabbi Moshe Chaim Luzzatto (the Ramchal)"
+ },
+ "95": {
+  "label": "The Noda bi-Yehuda (Rabbi Yechezkel Landau)"
+ },
+ "96": {
+  "label": "Rabbi Shalom Sharabi (the Rashash)"
+ },
+ "97": {
+  "label": "Rabbi Aryeh Leib Heller (the Ketzot ha-Choshen)"
+ },
+ "98": {
+  "label": "Rabbi Avraham Danzig"
+ },
+ "99": {
+  "label": "Rabbi Chaim of Volozhin"
+ },
+ "100": {
+  "label": "Menachem Mendel Lefin (of Satanov)"
+ },
+ "102": {
+  "label": "The Chatam Sofer (Rabbi Moshe Sofer)"
+ },
+ "103": {
+  "label": "Rabbi Chaim Palagi (the Chabif)"
+ },
+ "104": {
+  "label": "Rabbi Yehuda Bibas"
+ },
+ "105": {
+  "label": "Rabbi Zvi Hirsch Kalischer"
+ },
+ "108": {
+  "label": "Rabbi Yehuda Alkalai"
+ },
+ "110": {
+  "label": "Shadal (Samuel David Luzzatto)"
+ },
+ "112": {
+  "label": "Rabbi Yaakov Abuhatzeira"
+ },
+ "114": {
+  "label": "Adolphe Franck"
+ },
+ "116": {
+  "label": "The Maharil Diskin"
+ },
+ "117": {
+  "label": "Rabbi Tzadok HaKohen of Lublin"
+ },
+ "118": {
+  "label": "Elijah Benamozegh"
+ },
+ "120": {
+  "label": "Rabbi Shmuel Mohliver"
+ },
+ "123": {
+  "label": "The Arukh HaShulchan (Rabbi Yechiel Michel Epstein)"
+ },
+ "342": {
+  "label": "Rabbi Chaim Chizkiyahu Medini"
+ },
+ "129": {
+  "label": "The Sefat Emet"
+ },
+ "131": {
+  "label": "Rabbi Shmuel Bornsztain (the Shem MiShmuel)"
+ },
+ "132": {
+  "label": "Rabbi Yosef Rosen (the Rogatchover Gaon)"
+ },
+ "133": {
+  "label": "Rabbi Yehuda Moshe Yeshua Fatiya"
+ },
+ "135": {
+  "label": "Hillel Zeitlin"
+ },
+ "136": {
+  "label": "Rabbi Khalfon Moshe HaKohen"
+ },
+ "138": {
+  "label": "Rabbi Ben-Zion Meir Chai Uziel"
+ },
+ "139": {
+  "label": "Rabbi Yaakov Moshe Charlap"
+ },
+ "140": {
+  "label": "Rabbi Aryeh Levin"
+ },
+ "141": {
+  "label": "Franz Rosenzweig"
+ },
+ "143": {
+  "label": "The Rebbe of Piaseczno"
+ },
+ "144": {
+  "label": "Rabbi Ovadia Hadaya"
+ },
+ "147": {
+  "label": "Rabbi Yosef Messas"
+ },
+ "149": {
+  "label": "Rabbi Yitzhak Nissim"
+ },
+ "152": {
+  "label": "Rabbi Abraham Joshua Heschel"
+ },
+ "155": {
+  "label": "Rabbi Shaul Yisraeli"
+ },
+ "156": {
+  "label": "Rabbi Pinchas Kehati"
+ },
+ "157": {
+  "label": "Rabbi Shlomo Zalman Auerbach"
+ },
+ "158": {
+  "label": "The Slonimer Rebbe (the Netivot Shalom)"
+ },
+ "159": {
+  "label": "Rabbi Moshe-Zvi Neria"
+ },
+ "160": {
+  "label": "Rabbi Shmuel HaLevi Wosner"
+ },
+ "161": {
+  "label": "André Neher"
+ },
+ "163": {
+  "label": "Éliane Amado Lévy-Valensi"
+ },
+ "164": {
+  "label": "Rabbi Levi Saadia Nahmani"
+ },
+ "165": {
+  "label": "Rabbi Meir Zeini"
+ },
+ "167": {
+  "label": "Rabbi Meir Yehuda Getz"
+ },
+ "168": {
+  "label": "Rabbi Chaim David HaLevi"
+ },
+ "170": {
+  "label": "Rabbi Chaim Kanievsky"
+ },
+ "173": {
+  "label": "Rabbi Chaim Druckman"
+ },
+ "176": {
+  "label": "Rabbi Avichai Rontzki"
+ },
+ "177": {
+  "label": "Rabbi Elisha Wishlitzky"
+ },
+ "178": {
+  "label": "The Kabbalah as Adolphe Franck Saw It (1843)"
+ },
+ "179": {
+  "label": "The Abuhatzeira Dynasty"
+ },
+ "180": {
+  "label": "Chacham Tzion Chaviv Bracha"
+ },
+ "331": {
+  "label": "The Expulsion from Spain"
+ },
+ "183": {
+  "label": "The Zohar: Who Wrote It?"
+ },
+ "191": {
+  "label": "Menachem Mendel of Vitebsk"
+ },
+ "9": {
+  "label": "The Septuagint"
+ },
+ "193": {
+  "label": "Shimon Kefa (Simon Peter)"
+ },
+ "197": {
+  "label": "Rabbi Meir Kahane"
+ },
+ "199": {
+  "label": "Rabbi Refael Immanuel Chai Ricchi"
+ },
+ "346": {
+  "label": "Rabbi Elazar ben Arach"
+ },
+ "349": {
+  "label": "Rabbi David Pardo"
+ },
+ "350": {
+  "label": "Rav Evyatar ben Eliyahu HaKohen"
+ },
+ "352": {
+  "label": "Rabbi Yitzchak ibn Ghiyyat"
+ },
+ "353": {
+  "label": "Rabbenu Yitzchak ben Yehuda of Mainz"
+ },
+ "355": {
+  "label": "Rabbi Yehuda ben Natan (the Rivan)"
+ },
+ "356": {
+  "label": "Machzor Vitry"
+ },
+ "265": {
+  "label": "Rabbi Shemaria of Speyer"
+ },
+ "268": {
+  "label": "Queen Esther"
+ },
+ "269": {
+  "label": "Queen Helena"
+ },
+ "270": {
+  "label": "Huldah the Prophetess"
+ },
+ "272": {
+  "label": "Rabbi Yitzchak ben Yaakov HaLavan of Prague"
+ },
+ "274": {
+  "label": "Abigail"
+ },
+ "277": {
+  "label": "Rabbi Saadia Chouraqui"
+ },
+ "278": {
+  "label": "Rabbi Yehonatan HaKohen of Lunel"
+ },
+ "281": {
+  "label": "Queen Shlomtzion (Salome Alexandra)"
+ },
+ "282": {
+  "label": "Hannah the Prophetess"
+ },
+ "273": {
+  "label": "Rabbi Eliezer ben Natan (the Ra'avan)"
+ },
+ "289": {
+  "label": "Rabbi David Kimchi (Radak)"
+ },
+ "293": {
+  "label": "Rabbi Meir HaLevi Abulafia"
+ },
+ "299": {
+  "label": "Tzidkiyah ben Avraham"
+ },
+ "403": {
+  "label": "The Riaz (Rabbi Isaiah ben Elijah di Trani)"
+ },
+ "302": {
+  "label": "Rabbi Estori HaParchi"
+ },
+ "303": {
+  "label": "Rabbi Yitzchak of Corbeil (the Semak)"
+ },
+ "406": {
+  "label": "Rabbenu Peretz of Corbeil"
+ },
+ "408": {
+  "label": "Rabbi Eliezer of Touques"
+ },
+ "307": {
+  "label": "The Rivevan (Rabbi Yehuda ben Binyamin HaAnav)"
+ },
+ "312": {
+  "label": "Rabbi Moshe of Évreux"
+ },
+ "313": {
+  "label": "The Kaliver Rebbe (Rabbi Menachem Mendel Taub)"
+ },
+ "315": {
+  "label": "Rabbi Nachman Krochmal (Ranak)"
+ },
+ "317": {
+  "label": "Rabbi Shimshon ben Tzadok"
+ },
+ "318": {
+  "label": "Rabbi Aharon HaKohen of Lunel"
+ },
+ "319": {
+  "label": "Rabbi Alexandri Zuslin HaKohen (the Maharach)"
+ },
+ "320": {
+  "label": "Major Roi Klein"
+ },
+ "421": {
+  "label": "Rabbi Shlomo HaKohen of Vilna"
+ },
+ "323": {
+  "label": "Rabbi Baruch Shapira"
+ },
+ "324": {
+  "label": "Rabbi Nosson Tzvi Finkel (the Alter of Slabodka)"
+ },
+ "326": {
+  "label": "Shlomo Molcho"
+ },
+ "327": {
+  "label": "Rabbi Shlomo HaLevi Alkabetz"
+ },
+ "328": {
+  "label": "Rabbi Yom-Tov Lipmann Heller"
+ },
+ "337": {
+  "label": "Rabbi Shlomo Elyashiv (the Leshem)"
+ },
+ "339": {
+  "label": "Rabbi Yosef ben Yehuda ibn Shimon"
+ },
+ "348": {
+  "label": "Rabbi Moshe HaDarshan"
+ },
+ "388": {
+  "label": "The Ralbag (Gersonides)"
+ },
+ "391": {
+  "label": "Rav Maimon the Dayyan"
+ },
+ "397": {
+  "label": "Rabbi Yechiel ben Yekutiel Anav"
+ },
+ "416": {
+  "label": "Rabbi Kalman Shem Tov Gefen"
+ },
+ "422": {
+  "label": "Rabbi Yisrael Yehoshua Trunk of Kutno"
+ },
+ "425": {
+  "label": "Rabbi Meir ben Baruch HaLevi (Maharam Segal)"
+ },
+ "426": {
+  "label": "Rabbi Shimshon ben Eliezer (Baruch She'amar)"
+ },
+ "427": {
+  "label": "Rabbi Israel of Krems"
+ },
+ "428": {
+  "label": "Rabbi David Gans"
+ },
+ "429": {
+  "label": "Rabbi Moshe Zacuto (the Ramaz)"
+ },
+ "430": {
+  "label": "Rabbi Yehuda bar Ilai"
+ },
+ "431": {
+  "label": "Rabbi Meir Baal HaNes"
+ },
+ "432": {
+  "label": "Rabbi Abraham Cohen de Herrera"
+ },
+ "434": {
+  "label": "The Rashbatz (Rabbi Shimon ben Tzemach Duran)"
+ },
+ "435": {
+  "label": "Rabbi Shimon bar Yochai"
+ },
+ "436": {
+  "label": "Rabbi Shalom Buzaglo"
+ },
+ "437": {
+  "label": "Rav Yosef bar Chiya"
+ },
+ "438": {
+  "label": "Rav Yosef bar Chama"
+ },
+ "439": {
+  "label": "The Rama of Fano (Rabbi Menachem Azariah)"
+ },
+ "440": {
+  "label": "The Rashbash (Rabbi Shlomo ben Shimon Duran)"
+ },
+ "441": {
+  "label": "Mahari Corcos"
+ },
+ "442": {
+  "label": "Rabbi Betzalel Ashkenazi"
+ },
+ "445": {
+  "label": "Rabbi Avraham Klausner"
+ },
+ "446": {
+  "label": "Rabbi Aharon Blumlein"
+ },
+ "447": {
+  "label": "Rabbi Yitzchak Isaac Tyrnau"
+ },
+ "448": {
+  "label": "Sarah Our Matriarch"
+ },
+ "450": {
+  "label": "The Mahari Weil"
+ },
+ "451": {
+  "label": "Rabbi Yonah of Regensburg"
+ },
+ "453": {
+  "label": "Rabbi Yaakov Margolioth of Nuremberg"
+ },
+ "454": {
+  "label": "The Maharam Mintz"
+ },
+ "455": {
+  "label": "Ruth the Moabite"
+ },
+ "456": {
+  "label": "Rabbi Dr. Avraham Livni"
+ },
+ "460": {
+  "label": "Rabbenu David Bonafed"
+ },
+ "461": {
+  "label": "The Maharam of Padua"
+ },
+ "462": {
+  "label": "The Holy Ari"
+ },
+ "465": {
+  "label": "Rabbi Yosef ibn Tabul"
+ },
+ "466": {
+  "label": "Rabbi Yaakov ben Chananel Sikili"
+ },
+ "468": {
+  "label": "Rabbi Shlomo Yosef Zevin"
+ },
+ "470": {
+  "label": "The Aderet (Rabbi Eliyahu David Rabinowitz-Teomim)"
+ },
+ "471": {
+  "label": "Rabbi Joseph Gikatilla"
+ },
+ "472": {
+  "label": "Rabbi Tzvi Pesach Frank"
+ },
+ "477": {
+  "label": "Rabbi Solomon ibn Gabirol"
+ },
+ "479": {
+  "label": "Maharash of Neustadt (Rabbi Shalom of Neustadt)"
+ },
+ "480": {
+  "label": "Rabbi Reuven Margaliot"
+ },
+ "481": {
+  "label": "Rabbi Yehuda Moscato"
+ },
+ "482": {
+  "label": "Shmuel (the Amora)"
+ },
+ "483": {
+  "label": "Shimon Bar Kokhba"
+ },
+ "484": {
+  "label": "Rabbi Yisrael Najara"
+ },
+ "485": {
+  "label": "Theodos of Rome"
+ },
+ "486": {
+  "label": "Rabbenu Yonah Gerondi"
+ },
+ "487": {
+  "label": "Chacham David Nieto"
+ },
+ "488": {
+  "label": "Rabbi Shlomo Ephraim of Luntschitz (the Kli Yakar)"
+ },
+ "489": {
+  "label": "Rabbi Yitzchak Yaakov Reines"
+ },
+ "490": {
+  "label": "Rabbi Avraham Yehoshua Zuckerman"
+ },
+ "491": {
+  "label": "Rabbi Shlomo Goren"
+ },
+ "492": {
+  "label": "Rabbi Yitzchak Hutner"
+ },
+ "493": {
+  "label": "Rabbi Yitzchak Eizik Chaver"
+ },
+ "494": {
+  "label": "Rabbenu Simcha of Vitry"
+ },
+ "495": {
+  "label": "Rabbi Moshe de León"
+ },
+ "496": {
+  "label": "Prof. Nechama Leibowitz"
+ },
+ "497": {
+  "label": "Rabbi Eliyahu Eliezer Dessler"
+ },
+ "498": {
+  "label": "Rabbi Yehuda Coriat"
+ },
+ "499": {
+  "label": "Rabbi Haviv Toledano"
+ },
+ "501": {
+  "label": "The Tzemach Tzedek (Rabbi Menachem Mendel Schneersohn)"
+ },
+ "502": {
+  "label": "Rabbi Dovber Schneuri (the Mitteler Rebbe)"
+ },
+ "503": {
+  "label": "Rabbi Yehoshua ben Chananiah"
+ },
+ "506": {
+  "label": "Rabbi Elazar ben Azariah"
+ },
+ "507": {
+  "label": "Rabbi Eliezer the Great (Rabbi Eliezer ben Hyrcanus)"
+ },
+ "508": {
+  "label": "Rabbi Eliyahu ben Chaim (the Ra'anach)"
+ },
+ "509": {
+  "label": "Rabbi Chaim ben Attar (the Or HaChaim)"
+ },
+ "510": {
+  "label": "Sarah Schenirer"
+ },
+ "511": {
+  "label": "Rebbetzin Vichna Kaplan"
+ },
+ "512": {
+  "label": "Rebbetzin Dr. Bruria David"
+ },
+ "513": {
+  "label": "Rebbetzin Denah Weinberg"
+ },
+ "514": {
+  "label": "Rebbetzin Esther Jungreis"
+ },
+ "515": {
+  "label": "Rebbetzin Bracha Qafih"
+ },
+ "516": {
+  "label": "Rebbetzin Sarah Herzog"
+ },
+ "517": {
+  "label": "Tova Sanhedrai-Goldreich"
+ },
+ "518": {
+  "label": "Rabbi Amos Kamus Chaim Guetta"
+ },
+ "519": {
+  "label": "Sarah Stern-Katan"
+ },
+ "520": {
+  "label": "Henrietta Szold"
+ },
+ "522": {
+  "label": "Rav Yehuda bar Yechezkel"
+ },
+ "523": {
+  "label": "Bathsheba"
+ },
+ "524": {
+  "label": "Doña Gracia Nasi"
+ },
+ "525": {
+  "label": "Rabbi Aryeh Kaplan"
+ },
+ "526": {
+  "label": "Rabbi Dr. Azriel Hildesheimer"
+ },
+ "527": {
+  "label": "Rabbi Yehuda Leib Don Yahia"
+ },
+ "528": {
+  "label": "Rabbi Yaakov Zvi Mecklenburg"
+ },
+ "529": {
+  "label": "Rabbi Menasseh ben Israel"
+ },
+ "530": {
+  "label": "Rabbi Mordechai Eliasberg"
+ },
+ "531": {
+  "label": "Rabbi Raphael Yehuda Menachem Levi (Rabbi Yehuda Margoza)"
+ },
+ "532": {
+  "label": "Rebbetzin Batsheva Esther Kanievsky"
+ },
+ "533": {
+  "label": "Hannah Szenes"
+ },
+ "534": {
+  "label": "Yalta"
+ },
+ "535": {
+  "label": "Zeruiah"
+ },
+ "536": {
+  "label": "Rav Chisda"
+ },
+ "537": {
+  "label": "Rabbi Aviad Sar Shalom Basilea"
+ },
+ "538": {
+  "label": "Rabbi Avraham ben Yitzchak min HaHar"
+ },
+ "539": {
+  "label": "The Vilna Gaon (Rabbi Eliyahu ben Shlomo Zalman)"
+ },
+ "540": {
+  "label": "Rabbi Baruch Schick of Shklov"
+ },
+ "541": {
+  "label": "Rabbi Gedalia Nadel"
+ },
+ "542": {
+  "label": "Rabbi Chaim Vital"
+ },
+ "543": {
+  "label": "Rabbi Chanina bar Pappa"
+ },
+ "544": {
+  "label": "Rabbi Yosef Shlomo Delmedigo (the Yashar of Candia)"
+ },
+ "545": {
+  "label": "Rabbi Yitzchak Chizkiya Lampronti"
+ },
+ "546": {
+  "label": "Rabbi Israel Lipschitz"
+ },
+ "547": {
+  "label": "Rabbi Meir the Great of Premishlan"
+ },
+ "548": {
+  "label": "Rabbi Pinchas Eliyahu Horowitz (the Sefer HaBrit)"
+ },
+ "549": {
+  "label": "Rabbi Samson Raphael Hirsch"
+ },
+ "550": {
+  "label": "Rabban Shimon ben Gamliel I"
+ },
+ "551": {
+  "label": "Rami bar Papa"
+ },
+ "552": {
+  "label": "Rafram bar Pappa"
+ },
+ "553": {
+  "label": "Serach bat Asher"
+ },
+ "554": {
+  "label": "Oenomaus of Gadara"
+ },
+ "555": {
+  "label": "Abraham Our Father"
+ },
+ "556": {
+  "label": "Bruriah"
+ },
+ "557": {
+  "label": "King David"
+ },
+ "558": {
+  "label": "The Baal Shem Tov (Rabbi Israel Baal Shem Tov)"
+ },
+ "560": {
+  "label": "Rabbi Avraham Yitzchaki (the Zera Avraham)"
+ },
+ "561": {
+  "label": "Rabbi Avraham Mordechai Yitzchaki (the Rav of Porat)"
+ },
+ "562": {
+  "label": "Rabbi Aharon Kotler"
+ },
+ "563": {
+  "label": "Rabbi Yosef Yitzchak Schneersohn (the Rayatz)"
+ },
+ "564": {
+  "label": "Rabbi Lord Jonathan Sacks"
+ },
+ "565": {
+  "label": "Rabbi Mordechai Atiya"
+ },
+ "566": {
+  "label": "Rabbi Moshe Tzuriel"
+ },
+ "567": {
+  "label": "Rabbi Shlomo Carlebach"
+ },
+ "568": {
+  "label": "Judith"
+ },
+ "569": {
+  "label": "Josel of Rosheim"
+ },
+ "570": {
+  "label": "Jacob Our Father"
+ },
+ "571": {
+  "label": "Isaac Our Father"
+ },
+ "572": {
+  "label": "Isaiah the Prophet"
+ },
+ "573": {
+  "label": "Mahari Berab (Rabbi Yaakov Berab)"
+ },
+ "574": {
+  "label": "Moses Our Teacher"
+ },
+ "575": {
+  "label": "Ezra the Scribe"
+ },
+ "576": {
+  "label": "Rav Huna"
+ },
+ "577": {
+  "label": "Rabbi Abun the Great"
+ },
+ "578": {
+  "label": "Rabbi Tarfon"
+ },
+ "579": {
+  "label": "Rabbi Yehuda HaLevi (Rihal)"
+ },
+ "580": {
+  "label": "Rabbi Yehuda HaNasi"
+ },
+ "581": {
+  "label": "Rabbi Yaakov HaKohen (the Kabbalist)"
+ },
+ "582": {
+  "label": "Rabbi Yitzchak Alfasi (the Rif)"
+ },
+ "583": {
+  "label": "Rabbi Yitzchak HaLevi (Segan Leviah)"
+ },
+ "584": {
+  "label": "Rabbi Yishmael (ben Elisha)"
+ },
+ "585": {
+  "label": "Rabbi Levi ben Chaviv (the Maharalbach)"
+ },
+ "586": {
+  "label": "Rabbi Moshe Alashkar (Maharam Alashkar)"
+ },
+ "587": {
+  "label": "Rabbi Moshe Chaim Ephraim of Sudilkov"
+ },
+ "588": {
+  "label": "Rabbi Moshe of Coucy (the Semag)"
+ },
+ "589": {
+  "label": "Rabbi Nathan of Breslov (of Nemirov)"
+ },
+ "590": {
+  "label": "Rabbi Raphael Baruch Toledano"
+ },
+ "591": {
+  "label": "Rabban Gamliel of Yavne"
+ },
+ "592": {
+  "label": "Rabban Yochanan ben Zakkai"
+ },
+ "593": {
+  "label": "Rebecca Our Matriarch"
+ },
+ "594": {
+  "label": "Rashi (Rabbi Shlomo Yitzchaki)"
+ },
+ "595": {
+  "label": "King Solomon"
+ },
+ "596": {
+  "label": "Samuel the Prophet"
+ },
+ "597": {
+  "label": "Shmuel HaNagid"
+ },
+ "598": {
+  "label": "Rabbenu Asher ben Yechiel (the Rosh)"
+ },
+ "599": {
+  "label": "Rabbi Isaiah HaLevi Horowitz (the Holy Shelah)"
+ },
+ "600": {
+  "label": "Rabbi Avraham ben HaRambam"
+ },
+ "601": {
+  "label": "Rabbenu Chizkiyah da Silva (the Pri Chadash)"
+ },
+ "602": {
+  "label": "Rabbi Yitzchak ben Abba Mari (the Ba'al ha-Ittur)"
+ },
+ "603": {
+  "label": "Rabbi Yaakov ibn Habib (Ein Yaakov)"
+ },
+ "604": {
+  "label": "Rabbi Yaakov ben Yakar"
+ },
+ "605": {
+  "label": "Rabbi Yosei ben Halafta"
+ },
+ "606": {
+  "label": "Mordechai the Jew"
+ },
+ "607": {
+  "label": "Isaac Samuel Reggio (the Yashar of Gorizia)"
+ },
+ "608": {
+  "label": "Rabbi Yosef Dov HaLevi Soloveitchik (the Rav)"
+ },
+ "609": {
+  "label": "Rabbi Yirmiyahu Chachiashvili"
+ },
+ "610": {
+  "label": "Rebbetzin Chaya Mushka Schneerson"
+ },
+ "611": {
+  "label": "Geula Cohen"
+ },
+ "612": {
+  "label": "Rabbi Moses Mendelssohn (Rambeman)"
+ },
+ "613": {
+  "label": "Leah Our Matriarch"
+ },
+ "614": {
+  "label": "Solika Hachuel"
+ },
+ "615": {
+  "label": "Rav Nachman bar Papa"
+ },
+ "616": {
+  "label": "Gedaliah ben Ahikam"
+ },
+ "617": {
+  "label": "Rabbi Yisrael Yitzchak Besançon"
+ },
+ "618": {
+  "label": "Rabbi Eliezer Yehuda Waldenberg (the Tzitz Eliezer)"
+ },
+ "619": {
+  "label": "Rabbi Achai bar Pappa"
+ },
+ "620": {
+  "label": "Rabbi Hanan Porat"
+ },
+ "621": {
+  "label": "Rabbi Menachem Recanati"
+ },
+ "622": {
+  "label": "Rabbi Yehuda Leib HaLevi Ashlag (the Baal HaSulam)"
  }
 }
