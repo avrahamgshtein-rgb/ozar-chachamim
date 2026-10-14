@@ -7,6 +7,7 @@ import { useAppStore } from '@/store/useAppStore'
 import { formatYearRange } from '@/lib/utils'
 import type { Locale, Sage } from '@/lib/types'
 import { tr } from '@/lib/i18n'
+import { shownField, shownLocation } from '@/lib/contentOverlay'
 
 // ── Minimal BFS to find path between two sages ──────────────────────────────
 function findPath(aId: string, bId: string, connections: { source: string; target: string; type: string }[]): { sage: Sage; connType?: string }[] | null {
@@ -126,13 +127,13 @@ function SageColumn({ sage, locale, onSelect }: { sage: Sage; locale: Locale; on
         {sage.location && (
           <div className="flex justify-between gap-2">
             <dt className="text-ink-600">{tr(locale, 'מקום', 'Location', 'Место')}</dt>
-            <dd className="text-ink-300 truncate max-w-[120px]">{sage.location}</dd>
+            <dd className="text-ink-300 truncate max-w-[120px]">{shownLocation(sage)}</dd>
           </div>
         )}
         {sage.field && (
           <div className="flex justify-between gap-2">
             <dt className="text-ink-600">{tr(locale, 'תחום', 'Field', 'Область')}</dt>
-            <dd className="text-ink-300 truncate max-w-[120px]">{sage.field}</dd>
+            <dd className="text-ink-300 truncate max-w-[120px]">{shownField(sage)}</dd>
           </div>
         )}
       </dl>

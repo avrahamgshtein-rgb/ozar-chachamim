@@ -22,6 +22,7 @@ import { tr } from '@/lib/i18n'
 import { cn } from '@/lib/utils'
 import type { Locale, Period } from '@/lib/types'
 import type { PeriodLayer } from '@/lib/geoLayers'
+import { shownLocation } from '@/lib/contentOverlay'
 
 /** Vertical gap between plates, in px of Z translation. */
 const LAYER_GAP = 78
@@ -291,7 +292,7 @@ function LayerPlate({
               boxShadow: isSelected ? '0 0 10px 2px rgba(232,201,106,0.55)' : 'none',
               transition: reducedMotion ? 'none' : 'width 120ms, height 120ms',
             }}
-            title={`${p.sage.label} · ${p.sage.location ?? ''}`}
+            title={`${p.sage.label} · ${shownLocation(p.sage) ?? ''}`}
             aria-label={`${p.sage.label}, ${ERA_LABELS[layer.period]?.[locale] ?? layer.period}`}
           />
         )

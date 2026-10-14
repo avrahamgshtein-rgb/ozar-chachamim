@@ -23,7 +23,7 @@ import { GeographyPanel } from '@/components/viz/GeographyPanel'
 import { GeographyMobileDrawer } from '@/components/viz/GeographyMobileDrawer'
 import { useAppStore } from '@/store/useAppStore'
 import { parseURLState, updateURLWithState } from '@/lib/urlState'
-import { fetchContentOverlay, applyOverlay } from '@/lib/contentOverlay'
+import { fetchContentOverlay, fetchTerms, applyOverlay } from '@/lib/contentOverlay'
 import { loadAppShellData } from '@/lib/appShellDataLoader'
 import type { Locale, Tab } from '@/lib/types'
 import type { CorpusStats } from '@/lib/siteStats'
@@ -113,16 +113,18 @@ export function AppShell({ locale, initialTotal, initialLastUpdate, initialStats
       // old snapshot, and waiting on it (no timeout) left "0 חכמים" and an
       // empty graph on screen for seconds. Supabase stays for auth, chat and
       // personal features only.
-      const [{ sages: normalizedSages, connections: normalizedConnections, quality }, overlay] =
+      const [{ sages: normalizedSages, connections: normalizedConnections, quality }, overlay, terms] =
         await Promise.all([
           loadAppShellData(),
           fetchContentOverlay(locale),
+          fetchTerms(locale),
         ])
 
       console.log(`[AppShell] 📊 merged: ${quality.canonical_count} canonical + ${quality.supplement_count} supplement = ${quality.total_sages} sages`)
 
       // Content localization: merge per-locale translated fields
-      const localizedSages = applyOverlay(normalizedSages, overlay)
+      // (and the place and field in the reader's language, beside the Hebrew the filters read)
+      const localizedSages = applyOverlay(normalizedSages, overlay, terms, locale)
 
       setData(localizedSages, normalizedConnections, localizedSages.length, initialLastUpdate)
 

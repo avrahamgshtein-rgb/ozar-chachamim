@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { getSageById, getSageConnections, getResearchDocs, hasLocalisedResearch } from '@/lib/serverData'
-import { localizeSage, translatedFields } from '@/lib/serverDataTranslator'
+import { localizeSage, localizeTerm, translatedFields } from '@/lib/serverDataTranslator'
 import { parseResearchDocs } from '@/lib/researchParse'
 import { getSageBreadcrumbSchema, getSageSchema, jsonLdScript } from '@/lib/structuredData'
 import { labelParts } from '@/lib/displayName'
@@ -31,6 +31,7 @@ import type { AskSubject } from '@/components/chat/askAbout'
 import type { Locale, Sage } from '@/lib/types'
 import { SITE_URL } from '@/lib/siteUrl'
 import { towerPath } from '@/lib/tower'
+import { shownField, shownLocation, shownTags } from '@/lib/contentOverlay'
 
 interface PageProps {
   params: Promise<{ locale: string; id: string }>
@@ -142,7 +143,11 @@ export default async function SagePage({ params }: PageProps) {
   const yearRange = formatYearRangeFor(loc, sage.birth_year, sage.death_year, sage.date_precision)
   const pageUrl = `${SITE_URL}/${loc}/sage/${raw.id}`
   const researchMinutes = researchDocs.reduce((n, d) => n + d.readingMinutes, 0)
-  const untranslated = loc !== 'he' && translatedFields(raw.id, loc).size === 0 && !raw.name_en
+  // the note says the text below is Hebrew: whenever the profile's bio or core concept is, even if
+  // the name is translated (every sage has an English and a Russian name)
+  const translated = translatedFields(raw.id, loc)
+  const untranslated = loc !== 'he'
+    && ((!!raw.bio?.trim() && !translated.has('bio')) || (!!raw.core_concept?.trim() && !translated.has('core_concept')))
 
   // Related sages, grouped by how they stand to this one (link direction matters).
   const people = new Map<string, RelatedPersonView>()
@@ -253,7 +258,7 @@ export default async function SagePage({ params }: PageProps) {
                 <MetaChip icon="calendar">{yearRange}</MetaChip>
               )}
               {sage.location && (
-                <MetaChip icon="pin">{sage.location}</MetaChip>
+                <MetaChip icon="pin">{shownLocation(sage)}</MetaChip>
               )}
             </div>
 
@@ -270,13 +275,13 @@ export default async function SagePage({ params }: PageProps) {
               <p className="mt-2 font-sans text-base text-ink-400" dir="ltr">{raw.name_en}</p>
             )}
             {sage.field && (
-              <p dir="auto" className="mt-4 font-sans text-sm text-ink-400">{sage.field}</p>
+              <p dir="auto" className="mt-4 font-sans text-sm text-ink-400">{shownField(sage)}</p>
             )}
 
             {sage.tags && sage.tags.length > 0 && (
               <ul className="mt-4 flex flex-wrap gap-1.5">
-                {sage.tags.map(tag => (
-                  <li key={tag} dir="auto" className="rounded-full border border-ink-700/40 bg-ink-800/60 px-2.5 py-0.5 text-xs text-ink-300">{tag}</li>
+                {shownTags(sage).map((tag, i) => (
+                  <li key={`${i}-${tag}`} dir="auto" className="rounded-full border border-ink-700/40 bg-ink-800/60 px-2.5 py-0.5 text-xs text-ink-300">{tag}</li>
                 ))}
               </ul>
             )}
@@ -400,7 +405,7 @@ export default async function SagePage({ params }: PageProps) {
                       <li key={work}>
                         <a href={`https://www.sefaria.org/search?q=${encodeURIComponent(work)}`} target="_blank" rel="noopener noreferrer"
                           className="inline-flex items-center gap-1.5 rounded-lg border border-ink-700/40 bg-ink-800/60 px-3 py-1.5 text-sm text-ink-200 transition-colors hover:border-gold-500/30 hover:text-gold-300">
-                          <span aria-hidden>📖</span>{work}
+                          <span aria-hidden>📖</span>{localizeTerm(work, loc)}
                         </a>
                       </li>
                     ))}
@@ -414,7 +419,7 @@ export default async function SagePage({ params }: PageProps) {
 
               {sage.migration_path && (
                 <Section title={t.migrationPath}>
-                  <MigrationPath path={sage.migration_path} accentColor={accent} />
+                  <MigrationPath path={sage.migration_path} accentColor={accent} shown={stop => localizeTerm(stop, loc)} />
                 </Section>
               )}
             </div>
@@ -503,7 +508,7 @@ function MetaChip({ icon, children }: { icon: 'calendar' | 'pin'; children: Reac
   )
 }
 
-function MigrationPath({ path, accentColor }: { path: NonNullable<Sage['migration_path']>; accentColor: string }) {
+function MigrationPath({ path, accentColor, shown }: { path: NonNullable<Sage['migration_path']>; accentColor: string; shown: (stop: string) => string }) {
   const stops = [path.from, ...(path.intermediate ?? []), path.to]
   return (
     <div className="flex flex-wrap items-center gap-1.5">
@@ -515,7 +520,7 @@ function MigrationPath({ path, accentColor }: { path: NonNullable<Sage['migratio
               ? { background: `${accentColor}22`, border: `1px solid ${accentColor}55` }
               : undefined}
           >
-            {stop}
+            {shown(stop)}
           </span>
           {i < stops.length - 1 && (
             <svg className="h-3 w-3 flex-shrink-0 text-ink-600 rtl:-scale-x-100" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
