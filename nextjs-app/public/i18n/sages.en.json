@@ -294,7 +294,8 @@
  },
  "42": {
   "label": "Rabbi Isaac the Blind (Sagi Nahor)",
-  "bio": "Called \"the father of Kabbalah\", he made a decisive contribution to the founding of Jewish mysticism in southern France in the 13th century; his physical blindness led him to an abstract thought based on inner illumination and the concept of the Ein Sof, and he defended the doctrine of the sefirot against criticism."
+  "bio": "Called \"the father of Kabbalah\", the son of the Ra'avad of Posquières, he was active in Provence at the end of the 12th century and the start of the 13th. Blind from birth, he developed an abstract thought on the Ein Sof and the sefirot, and turned the teaching of mystery from an oral tradition into an ordered system that, through his students from Girona, influenced great figures of the generation such as the Ramban.",
+  "core_concept": "Kabbalah as the inner layer of the Torah and prayer: thought on the Ein Sof and the sefirot that grew at the heart of the Torah establishment, not at its margins."
  },
  "343": {
   "label": "Rabbi David Abudarham",
@@ -929,7 +930,9 @@
   "core_concept": "Faith is an action that prepares the vessels before the miracle comes: Miriam and the women brought drums out of Egypt and led song from below to above (\"returning light\"). Her leadership gave the people its existential foundation, and her absence at her death revealed how much the other leaders had leaned on her."
  },
  "1": {
-  "label": "Ben Sira"
+  "label": "Ben Sira",
+  "bio": "Shimon ben Yeshua ben Sira, one of the great sages of Jerusalem in Second Temple times, wrote his book around 180 BCE, as Hellenistic culture was reaching the upper classes of Judea. The book was not admitted to the canon, but the Sages quoted its finest sayings and wove them into midrash and prayer, and its lost Hebrew text was found again in the Cairo Geniza and at Masada.",
+  "core_concept": "Supreme wisdom, which sought a dwelling among the nations, came to rest in Jerusalem, and it is the Torah of Moses; man chooses between good and evil, and his reward comes in this world and in the good name he leaves behind."
  },
  "3": {
   "label": "Philo of Alexandria",
@@ -993,7 +996,8 @@
  },
  "34": {
   "label": "Rabbi Avraham ibn Daud (the First Ra'avad)",
-  "bio": "A bridging figure who sought to defend rabbinic Judaism in the 12th century against intellectual and political threats; the father of Aristotelian rationalism in Judaism, not to be confused with other sages known by the same title."
+  "bio": "Rabbi Avraham ibn Daud HaLevi (1110–1180) saw a double threat to rabbinic Judaism: Karaism from within and Aristotelian philosophy from without. In \"Sefer HaKabbalah\" he fortified the continuity of the Oral Torah, and in \"HaEmunah HaRamah\" he was the first to ground faith on Aristotelian foundations, paving the way for the Rambam.",
+  "core_concept": "Torah and wisdom complete each other: history fortifies the authority of tradition, and reason grounds faith up to the point where it stops."
  },
  "39": {
   "label": "Rabbenu Bachya ibn Paquda (Duties of the Heart)",
@@ -1036,7 +1040,8 @@
  },
  "65": {
   "label": "Rabbi Yitzchak Arama (the Ba'al ha-Akedah)",
-  "bio": "One of the great thinkers of 15th-century Spanish Jewry, known for his foundational work \"Akedat Yitzchak\"; he developed an innovative three-stage homiletic method meant to give an intellectual and polemical answer to the influence of Christianity and of extreme Aristotelian philosophy."
+  "bio": "One of the great thinkers of 15th-century Spanish Jewry (1420–1494), a rabbi, preacher and head of a yeshiva. In his book \"Akedat Yitzchak\" he developed a three-stage method of homily that answered Christianity and extreme Aristotelian philosophy and strengthened the faith of the educated on the eve of the Expulsion.",
+  "core_concept": "The homily as a stronghold of faith: joining reason, biblical interpretation and Kabbalah to build spiritual resilience in an age of crisis."
  },
  "66": {
   "label": "Rabbi Eliyahu Mizrachi (the Re'em)",
@@ -1084,7 +1089,9 @@
   "core_concept": "Liturgical poetry as a force of leadership and theology: combining the Rambam with the world of mystery and turning exile into hope."
  },
  "82": {
-  "label": "Rabbi Yaakov Sasportas"
+  "label": "Rabbi Yaakov Sasportas",
+  "bio": "Rabbi Yaakov Sasportas (1610–1698), born in Oran in Algeria and a descendant of Nahmanides, headed the rabbinical court of Tlemcen as a young man, then moved between North Africa, Amsterdam, London, Hamburg and Livorno until he became chief rabbi of the Sephardic community of Amsterdam. In the years of Shabbetai Tzvi he stood almost alone against the messianic frenzy, and gathered the letters of that struggle in \"Tzitzat Novel Tzvi\".",
+  "core_concept": "Torah authority comes not from visions or charisma but from submission to halakha and to the tradition of rulings; true Kabbalah upholds the commandments, and a Kabbalah that breaks them is strange fire."
  },
  "83": {
   "label": "Rabbi Shabtai HaKohen (the Shach)",
@@ -1108,7 +1115,8 @@
  },
  "89": {
   "label": "Rabbi Yaakov Emden (the Yaavetz)",
-  "bio": "One of the great sages of 18th-century Ashkenaz, who pursued spiritual autonomy uncompromisingly and kept away from official rabbinic posts to preserve his independence of thought; his broad Torah teaching combines bold halakhic innovation with philological skill."
+  "bio": "One of the great sages of 18th-century Ashkenaz, son and student of the \"Chacham Tzvi\". He kept away from official rabbinic posts to preserve his independence, combined bold halakhic innovation with textual criticism and openness to science, and fought Sabbateanism, including the amulets controversy against Rabbi Yonatan Eybeschütz.",
+  "core_concept": "Spiritual independence as a condition of truth: bold ruling, philological precision and an uncompromising stand against Sabbateanism."
  },
  "90": {
   "label": "Rabbi Moshe David Valle (the Ramad Valle)",
@@ -1356,7 +1364,8 @@
  },
  "168": {
   "label": "Rabbi Chaim David HaLevi",
-  "bio": "One of the most significant figures of religious life in 20th-century Israel; his worldview rested on a \"Zionism of redemption\"."
+  "bio": "One of the great halakhic authorities and thinkers of the State of Israel, and from 5733 (1972–73) until his death the Chief Rabbi of Tel Aviv–Jaffa. He combined loyalty to the Sephardi tradition of ruling with a Zionism that sees Jewish sovereignty as a stage of redemption, and saw halakha as a living system, as his book \"Aseh Lecha Rav\" and his ruling forbidding smoking show.",
+  "core_concept": "A living, purposeful halakha that answers the challenges of modernity, medicine and technology, seeing the State as a stage in the process of redemption."
  },
  "170": {
   "label": "Rabbi Chaim Kanievsky",
@@ -1370,7 +1379,8 @@
  },
  "176": {
   "label": "Rabbi Avichai Rontzki",
-  "bio": "One of the most central and complex figures of modern religious Zionism, whose work embodied a rare synthesis of combat command, Torah and halakhic leadership, and settlement."
+  "bio": "A fighter and company commander in the Shaked reconnaissance unit who turned to the world of Torah after the Yom Kippur War. He helped found the Elon Moreh yeshiva, was one of the founders of the settlement of Itamar and founded its yeshiva, and until 2010 was the fifth Chief Military Rabbi of the IDF.",
+  "core_concept": "Combining military, Torah and settlement leadership: fighting spirit grows from a Zionism connected to the roots of the Torah and the Land."
  },
  "177": {
   "label": "Rabbi Elisha Wishlitzky",
@@ -1388,7 +1398,9 @@
   "core_concept": "Practical holiness alongside poems of redemption. Spiritual leadership through experience and tradition."
  },
  "180": {
-  "label": "Chacham Tzion Chaviv Bracha"
+  "label": "Chacham Tzion Chaviv Bracha",
+  "bio": "Chacham Tzion Chaviv Bracha (d. 14 Tishrei 5765, 2004), an orphan from Aleppo who came to the Land of Israel as a boy, was a hidden Kabbalist in Jerusalem, a disciple of Rabbi Yehuda Fatiya and Rabbi Mordechai Sharabi. He earned his living as a greengrocer in the Machane Yehuda market and as a postman, and in 1970 founded the Leshem yeshiva in Nachlaot, where he chose to sit with the beginners and the newly observant.",
+  "core_concept": "Leshem, \"le-hakamat Shekhinta me-afra\" (for raising the Shekhinah from the dust): at the centre stand the repair of the Shekhinah and of the whole people, not only the needs of the individual, carried out with love for every Jew, with humility and simplicity, and by accepting suffering as atonement for the generation."
  },
  "331": {
   "label": "The Expulsion from Spain",

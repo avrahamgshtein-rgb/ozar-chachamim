@@ -86,6 +86,19 @@ for (const locale of ['en', 'ru'] as const) {
   })
 }
 
+test("the Hebrew bios are bios, not a paper's opening lines (NotebookLM's header, a cut mid-word)", () => {
+  const bad = sages.filter(s => {
+    const b = s.bio?.trim() ?? ''
+    return /^(מדריך בנושא המקור|סקירה זו|דוח זה|מאמר זה)|Source guide/.test(b) || /[\u0400-\u04FF]/.test(b) || (b && !/[.!?״"'׳)…]$/.test(b))
+  }).map(s => s.id)
+  assert.deepEqual(bad, [], 'write the bio into the spreadsheet column תקציר (2–3 שורות)')
+})
+
+test('every sage has a Hebrew bio (the page shows nothing under his name without one)', () => {
+  const missing = sages.filter(s => !s.bio?.trim()).map(s => `${s.id} ${s.label}`)
+  assert.deepEqual(missing, [], 'write it into the spreadsheet column תקציר (2–3 שורות)')
+})
+
 test('the translation is shown beside the Hebrew, never over it: regions and places still read Hebrew', () => {
   for (const s of sages) {
     const en = localizeSage(s, 'en')
