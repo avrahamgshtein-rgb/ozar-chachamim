@@ -32,6 +32,7 @@ import type { AskSubject } from '@/components/chat/askAbout'
 import type { Locale, Sage } from '@/lib/types'
 import { SITE_URL } from '@/lib/siteUrl'
 import { towerPath } from '@/lib/tower'
+import { connectHref } from '@/lib/connectFlight'
 import { shownField, shownLocation, shownTags } from '@/lib/contentOverlay'
 
 interface PageProps {
@@ -43,6 +44,7 @@ const S = {
   related: { he: 'חכמים קשורים', en: 'Related sages', ru: 'Связанные мудрецы' },
   showInGraph: { he: 'הצגה ברשת הקשרים', en: 'Show in the network', ru: 'Показать в сети' },
   showInTower: { he: 'הצגה במגדל הדורות', en: 'Show in the Tower of Generations', ru: 'Показать в Башне поколений' },
+  connectToOther: { he: 'המסלול אל חכם אחר', en: 'The path to another sage', ru: 'Путь к другому мудрецу' },
   readResearch: { he: 'לקריאת המחקר', en: 'Read the research', ru: 'Читать исследование' },
   listen: { he: 'האזנה לפרק', en: 'Listen', ru: 'Слушать' },
   watch: { he: 'צפייה בסרטון', en: 'Watch the video', ru: 'Смотреть видео' },
@@ -353,6 +355,12 @@ export default async function SagePage({ params }: PageProps) {
                 className="inline-flex items-center gap-2 rounded-full border border-ink-700/50 bg-ink-800/40 px-4 py-2 text-sm text-ink-200 transition-colors hover:border-gold-500/40 hover:text-gold-300">
                 <span aria-hidden>🌌</span>
                 {S.showInTower[loc]}
+              </a>
+              {/* the connect page ships a net of its own: a plain link, nothing to prefetch from every sage page */}
+              <a href={connectHref(loc, raw.id)}
+                className="inline-flex items-center gap-2 rounded-full border border-ink-700/50 bg-ink-800/40 px-4 py-2 text-sm text-ink-200 transition-colors hover:border-gold-500/40 hover:text-gold-300">
+                <span aria-hidden>🔗</span>
+                {S.connectToOther[loc]}
               </a>
             </div>
           </header>

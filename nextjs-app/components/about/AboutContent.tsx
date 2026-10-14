@@ -59,6 +59,7 @@ export function AboutContent({ locale, stats, variant, onOpenTab }: AboutContent
     { title: c.searchTitle, body: c.searchBody, icon: <IconSearch /> },
     { title: c.langsTitle, body: c.langsBody, icon: <IconGlobe /> },
     { title: c.musicTitle, body: c.musicBody, icon: <IconMusic /> },
+    { title: c.connectTitle, body: c.connectBody, icon: <IconLink />, href: `/${locale}/connect`, cta: c.connectCta },
   ]
 
   const sectionTitle = 'font-serif text-2xl md:text-3xl font-bold text-ink-50'
@@ -177,6 +178,11 @@ export function AboutContent({ locale, stats, variant, onOpenTab }: AboutContent
               <div>
                 <H3 className="font-serif text-lg font-bold text-ink-50">{item.title}</H3>
                 <p className="mt-1.5 font-sans text-sm leading-relaxed text-ink-300">{item.body}</p>
+                {item.href && (
+                  <a href={item.href} className="mt-2 inline-block font-sans text-sm font-medium text-gold-300 underline-offset-4 hover:underline">
+                    {item.cta} {arrow}
+                  </a>
+                )}
               </div>
             </li>
           ))}
@@ -286,6 +292,10 @@ function IconSearch() {
 }
 function IconMusic() {
   return <Svg><path d="M9 18V5l11-2v13" /><circle cx="6" cy="18" r="3" /><circle cx="17" cy="16" r="3" /></Svg>
+}
+
+function IconLink() {
+  return <Svg><path d="M10 14a4 4 0 005.7 0l3-3a4 4 0 00-5.7-5.7l-1 1" /><path d="M14 10a4 4 0 00-5.7 0l-3 3a4 4 0 005.7 5.7l1-1" /></Svg>
 }
 
 function IconGlobe() {

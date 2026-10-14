@@ -17,6 +17,7 @@ const TODAY_LABEL: Record<Locale, string> = { he: 'היום באוצר חכמי�
 const TODAY_MENU: Record<Locale, string> = { he: 'היום: הילולא וחכם היום', en: 'Today', ru: 'Сегодня' }
 const RIDDLE_LABEL: Record<Locale, string> = { he: 'חידת החכם: נחשו מי החכם של היום', en: 'Sage Riddle: guess today’s sage', ru: 'Загадка мудреца: угадайте мудреца дня' }
 const RIDDLE_MENU: Record<Locale, string> = { he: 'חידת החכם היומית', en: 'Sage Riddle', ru: 'Загадка мудреца' }
+const CONNECT_MENU: Record<Locale, string> = { he: 'שרשרת החכמים', en: 'Sage Chain', ru: 'Цепочка мудрецов' }
 
 interface HeaderProps {
   locale: Locale
@@ -384,6 +385,11 @@ function MobileActionsMenu({ locale }: { locale: Locale }) {
           <a href={`/${locale}/riddle`} className={cn(item, 'border-t border-ink-700/40')}>
             <span aria-hidden className="w-4 text-center">🧩</span>
             {RIDDLE_MENU[locale]}
+          </a>
+          {/* the mobile menu only: the desktop row has no room for one more icon */}
+          <a href={`/${locale}/connect`} className={cn(item, 'border-t border-ink-700/40')}>
+            <span aria-hidden className="w-4 text-center">🔗</span>
+            {CONNECT_MENU[locale]}
           </a>
           {locale === 'he' && (
             <a href="/he/kids" className={cn(item, 'border-t border-ink-700/40')}>

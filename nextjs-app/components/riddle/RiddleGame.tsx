@@ -47,6 +47,13 @@ const S = {
   lostSub: { he: 'החכם הנסתר היה:', en: 'The hidden sage was:', ru: 'Скрытым мудрецом был:' },
   openPage: { he: 'לעמוד החכם', en: 'Open the page', ru: 'Открыть страницу' },
   inTower: { he: 'במגדל הדורות', en: 'In the Tower of Generations', ru: 'В Башне поколений' },
+  otherGame: { he: 'משחק נוסף: שרשרת החכמים', en: 'Another game: Sage Chain', ru: 'Ещё одна игра: Цепочка мудрецов' },
+  otherGameBody: {
+    he: 'שני חכמים בכל יום, ומטרה אחת: לחבר ביניהם בשרשרת של חכמים קשורים, בכמה שפחות צעדים.',
+    en: 'Two sages every day, one goal: connect them through a chain of linked sages in as few steps as you can.',
+    ru: 'Каждый день два мудреца и одна цель: соединить их цепочкой связанных мудрецов, сделав как можно меньше шагов.',
+  },
+  otherGameGo: { he: 'לשרשרת החכמים', en: 'Play Sage Chain', ru: 'К цепочке мудрецов' },
   quiz: { he: 'חידון על החכם', en: 'Quiz on this sage', ru: 'Викторина о мудреце' },
   shareHeading: { he: 'שתפו את התוצאה', en: 'Share your result', ru: 'Поделитесь результатом' },
   share: { he: 'שיתוף', en: 'Share', ru: 'Поделиться' },
@@ -517,6 +524,13 @@ function EndScreen({ sectionRef, locale, payload, state, feedback, pageUrl }: {
 
       <Stats locale={locale} stats={state.stats} day={payload.day} guesses={state.won ? state.guesses.length : 0} />
       <Countdown locale={locale} />
+
+      {/* the other daily game; a plain link, as the connect page ships a net of its own */}
+      <div data-testid="riddle-other-game" className="mt-7 rounded-xl border border-gold-500/30 bg-gold-500/[0.05] p-4">
+        <p className="font-serif text-lg font-bold text-ink-50"><span aria-hidden>🔗</span> {S.otherGame[locale]}</p>
+        <p className="mt-1 text-sm leading-relaxed text-ink-300">{S.otherGameBody[locale]}</p>
+        <a href={`/${locale}/connect`} className={cn(primary, 'mt-3')}>{S.otherGameGo[locale]}</a>
+      </div>
     </section>
   )
 }
