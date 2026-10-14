@@ -12,6 +12,7 @@ import { extractMentionedSages } from '../lib/rag/entityExtraction'
 import { quoteOf, referralAnswer } from '../lib/rag/referralAnswer'
 import { citationPayload } from '../lib/rag/citations'
 import { getAllSages } from '../lib/serverData'
+import { overlayEntry } from '../lib/serverDataTranslator'
 import { getSefaria } from '../lib/sefaria'
 import { wikiLinks } from '../lib/wikipedia'
 import { looksLikeQuestion, parseAnswer } from '../components/chat/askAbout'
@@ -140,6 +141,29 @@ async function main() {
   await test('the overlays supply names for a good part of the roster', () => {
     assert.ok(names('en').size >= 100, `only ${names('en').size} English names`)
     assert.ok(names('ru').size >= 100, `only ${names('ru').size} Russian names`)
+  })
+
+  await test('every sage on the roster has a name in English and in Russian', () => {
+    // a new sage needs a label in public/i18n/sages.en.json and sages.ru.json (keyed by id), or the
+    // English and Russian pages, the tower and the assistant show him in Hebrew
+    for (const locale of ['en', 'ru'] as const) {
+      const missing = sages.filter(s => !overlayEntry(s.id, locale)?.label?.trim()).map(s => `${s.id} ${s.label}`)
+      assert.deepEqual(missing, [], `no ${locale} name`)
+    }
+  })
+
+  await test('a name inside a longer name is not a second mention; epithets are not names', () => {
+    // "Shmuel HaNagid" holds "Shmuel", the name of Shmuel the Amora (482)
+    assert.deepEqual(idsFor('Tell me about Shmuel HaNagid', 'en'), ['597'])
+    assert.deepEqual(idsFor('Кто был Шмуэль ха-Нагид?', 'ru'), ['597'])
+    assert.ok(idsFor('What did Shmuel and Rav teach?', 'en').includes('482'), 'Shmuel standing alone is still found')
+    // "King David" does not bring King Solomon by "king"
+    assert.deepEqual(idsFor('What did King David write?', 'en'), ['557'])
+  })
+
+  await test('the sage more of whose name the question holds comes first', () => {
+    // "Шимоне" declines like "Шимони" (Yalkut Shimoni, 55), but "бар Йохае" is his too
+    assert.equal(idsFor('Расскажите о Рабби Шимоне бар Йохае', 'ru')[0], '435')
   })
 
   await test('an English question finds the sage by his English name', () => {
