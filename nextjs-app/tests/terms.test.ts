@@ -94,9 +94,9 @@ test("the Hebrew bios are bios, not a paper's opening lines (NotebookLM's header
   assert.deepEqual(bad, [], 'write the bio into the spreadsheet column תקציר (2–3 שורות)')
 })
 
-test('every sage has a Hebrew bio (the page shows nothing under his name without one)', () => {
-  const missing = sages.filter(s => !s.bio?.trim()).map(s => `${s.id} ${s.label}`)
-  assert.deepEqual(missing, [], 'write it into the spreadsheet column תקציר (2–3 שורות)')
+test('every sage has a Hebrew bio and core concept (the page shows nothing under his name without them)', () => {
+  const missing = sages.filter(s => !s.bio?.trim() || !s.core_concept?.trim()).map(s => `${s.id} ${s.label}`)
+  assert.deepEqual(missing, [], 'write them into the spreadsheet columns תקציר (2–3 שורות) and רעיון מרכזי/חידוש')
 })
 
 test('the translation is shown beside the Hebrew, never over it: regions and places still read Hebrew', () => {
