@@ -510,6 +510,20 @@ export function applyGuess(state: RiddleState, guess: string, answer: string): R
 
 /* ── What the page hands the game ─────────────────────────────────────── */
 
+/**
+ * The sage's portrait for the end screen, as ready-made strings: the server (lib/riddleServer.ts) holds the portraits
+ * data file, the browser never imports it. `kind` is the portrait's kind (`illustration` | `photo`, as in lib/portraits.ts),
+ * which already picked the wording of `alt` and `credit`. Shown only once the game is over, never before.
+ */
+export interface RiddlePortrait {
+  src: string
+  alt: string
+  credit: string
+  /** The episode section of the sage's page. */
+  href: string
+  kind: 'illustration' | 'photo'
+}
+
 /** The sage once the game is over: what the end screen shows. */
 export interface RiddleCard {
   id: string
@@ -521,6 +535,8 @@ export interface RiddleCard {
   sageHref: string
   towerHref: string
   quizHref: string | null
+  /** null when the sage has no portrait: the end screen then looks as it did before portraits. */
+  portrait: RiddlePortrait | null
 }
 
 export interface RiddlePayload {

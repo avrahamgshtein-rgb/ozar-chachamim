@@ -263,6 +263,24 @@ test('service worker: the kids\' illustrations are kept for offline reading', as
   online = true
 })
 
+test('service worker: the sages\' portraits are shown from the saved copy and refreshed behind it, and kept for offline reading', async () => {
+  online = true
+  const first = await ask('/portraits/41.webp')               // not saved yet: the network, then saved
+  assert.equal(await first!.text(), 'network:/portraits/41.webp')
+  const before = fetched.length
+  const again = await ask('/portraits/41.webp')               // the saved copy at once
+  assert.equal(await again!.text(), 'network:/portraits/41.webp')
+  assert.ok(fetched.length > before, 'and the copy is refreshed in the background (stale-while-revalidate)')
+  await ask('/portraits/41.sm.webp')                          // the small file, seen online
+  online = false
+  for (const f of ['/portraits/41.webp', '/portraits/41.sm.webp']) {
+    const res = await ask(f)
+    assert.equal(await res!.text(), 'network:' + f, `${f} offline`)
+  }
+  assert.ok(/\(icons\|images\|kids\|portraits\)/.test(swSource), 'the rule names /portraits/')
+  online = true
+})
+
 test('service worker: a slow network falls back to the saved copy', async () => {
   online = true
   await ask('/data-youtube.json')                           // saved

@@ -1,0 +1,5283 @@
+{
+ "_about": "The reviewed decisions for the sages' portraits: the cover of each sage's own podcast episode, cut to his head and shoulders. \"portraits\" holds the kept ones (crop = [x, y, size] in the pixels of the 640 x 640 cover, image = the cover's hash, kind = illustration, or photo only for an id in _approved_photos); \"_left_out\" holds every other sage with the reason and a note, and for a photograph or an uncertain one the crop and image that were recorded anyway, so approving more photographs later is adding their ids to _approved_photos (scripts/build_portraits.py then builds them) with no second review. Merged from the five reviewers' files; scripts/build_portraits.py builds public/portraits/*, assets/og/portraits/* and public/data-portraits.json from it.",
+ "_approved_photos": [
+  "161",
+  "610"
+ ],
+ "portraits": {
+  "1": {
+   "label": "בן סירא",
+   "episode": "3u5udRWI84FVJ3OsOBBbPF",
+   "title": "ספר בן סירא: חכמה, קאנון ויחס חז\"ל",
+   "image": "3ca9c56fb6a056e55200f82a",
+   "kind": "illustration",
+   "crop": [
+    236,
+    205,
+    220
+   ],
+   "note": "Ben Sira seated in a library; two other men stand beside him and are outside the crop (crop 220 px, soft at 384: the largest that keeps them out)"
+  },
+  "2": {
+   "label": "שמעון בן שטח",
+   "episode": "68uAirBRMlyOGWWqbi1MTr",
+   "title": "שמעון בן שטח – האיש שהעמיד את המלך לדין והציל את התורה שבעל פה",
+   "image": "bf049b938b3514c720efb3c1",
+   "kind": "illustration",
+   "crop": [
+    130,
+    0,
+    340
+   ]
+  },
+  "3": {
+   "label": "פילון האלכסנדרוני",
+   "episode": "2fMVi1amabmKmdSX6B0EFd",
+   "title": "פילון: אלגוריה, השגחה ולוגוס",
+   "image": "2cf13422382265b2badba0c9",
+   "kind": "illustration",
+   "crop": [
+    146,
+    130,
+    324
+   ],
+   "note": "colour print, extreme close-up; the crop starts below the X-shaped mark on the top of the cap (so no cross-like mark shows); the open book at the left is outside, a sliver of the reading man at the right edge"
+  },
+  "4": {
+   "label": "רבי עקיבא בן יוסף",
+   "episode": "0uanJ3YCjtfh1LxDbnbiPK",
+   "title": "רבי עקיבא בן יוסף – החכם שבנה את עולם התורה מתוך שבר",
+   "image": "7477fdbf49ff79ed77a3f692",
+   "kind": "illustration",
+   "crop": [
+    210,
+    0,
+    420
+   ]
+  },
+  "7": {
+   "label": "רבי חייא הגדול",
+   "episode": "4MI4LUL2FI4WeVtEdPZS5F",
+   "title": "רבי חייא הגדול – האיש שהציל את התורה משכחה",
+   "image": "1ce7eb9d39e491f6dd4d668a",
+   "kind": "illustration",
+   "crop": [
+    210,
+    0,
+    160
+   ],
+   "note": "standing man with a scroll, a family group and a loom behind; small head, so the crop is at the 160 px minimum and ends above the scroll's text"
+  },
+  "8": {
+   "label": "רבה בר בר חנה",
+   "episode": "7kYTSzyLvPI8HKdt7bdgf5",
+   "title": "אגדות רבה בר בר חנה: סוד, משל ומציאות",
+   "image": "9a0b46ce5f48484c2e02a22d",
+   "kind": "illustration",
+   "crop": [
+    175,
+    0,
+    280
+   ],
+   "note": "turban cut by the picture top; a second man behind is outside the crop"
+  },
+  "11": {
+   "label": "רבי יהודה החסיד (חסידי אשכנז)",
+   "episode": "70SOBeANLpCEBeEplD3eOw",
+   "title": "רבי יהודה החסיד - המתח בין ההלכה והמיסטיקה",
+   "image": "e2206a2c08f9eb1864b76d08",
+   "kind": "illustration",
+   "crop": [
+    10,
+    30,
+    340
+   ],
+   "note": "the open book with its text is below the crop"
+  },
+  "12": {
+   "label": "רבנו בחיי בן אשר",
+   "episode": "3TickrNhU6vSQBo54LXxGf",
+   "title": "רבנו בחיי בן אשר: בין פשט לסוד",
+   "image": "14b6f92d0847bf5343dfb136",
+   "kind": "illustration",
+   "crop": [
+    210,
+    30,
+    430
+   ]
+  },
+  "13": {
+   "label": "הר\"ן (רבנו נסים מגירונה)",
+   "episode": "2LuetW1C27UfICNkPhakAr",
+   "title": "הר\"ן: מנהיגות, הלכה ופילוסופיה ביהדות ספרד",
+   "image": "add9ad23d798a9793883ded8",
+   "kind": "illustration",
+   "crop": [
+    220,
+    0,
+    335
+   ],
+   "note": "cap cut by the picture top"
+  },
+  "14": {
+   "label": "רבי שמעון לביא",
+   "episode": "09sbxccxPcM8mqxUj6yDR4",
+   "title": "רבי שמעון לביא: חייו ויצירתו הקבלית והפיוטית",
+   "image": "9fd5bad2d94df086e9f9a4a2",
+   "kind": "illustration",
+   "crop": [
+    178,
+    78,
+    290
+   ]
+  },
+  "17": {
+   "label": "רבי יוסף אלבו",
+   "episode": "3H710rBuEItb7at39hVzLn",
+   "title": "רבי יוסף אלבו – החכם ששמר על האמונה בתקופת משבר",
+   "image": "d78ba4a6d0ad34ed007d1d32",
+   "kind": "illustration",
+   "crop": [
+    298,
+    118,
+    272
+   ]
+  },
+  "19": {
+   "label": "רבי יוסף חיון (רי״ח)",
+   "episode": "5J3m8GmCr0dbgQl0IyUyW6",
+   "title": "רבי יוסף חיון – איש האמונה והדיוק: ההוגה שראה תיאולוגיה ולשון בקול אחד",
+   "image": "e00c5669e1cfe2e9b7a81b17",
+   "kind": "illustration",
+   "crop": [
+    292,
+    25,
+    270
+   ]
+  },
+  "21": {
+   "label": "רב שרירא גאון – איגרת רב שרירא גאון",
+   "episode": "7f2XqM3393CxSX04yH8mpv",
+   "title": "אגרת רב שרירא גאון: השתלשלות התורה שבעל-פה",
+   "image": "459fe073e80aa05906279ea8",
+   "kind": "illustration",
+   "crop": [
+    150,
+    115,
+    225
+   ],
+   "note": "two men at a table; the older white-bearded man holding the scroll of the letter is taken as Rav Sherira (judgement: the second man, in red, is the recipient or a scribe); the scroll text is below the crop (crop 225 px, soft at 384)"
+  },
+  "22": {
+   "label": "רבנו גרשום מאור הגולה",
+   "episode": "6rxAHJOCR3W7MJnFSV86xT",
+   "title": "רבנו גרשום מאור הגולה: מנהיגות, תקנות ומורשת אשכנז",
+   "image": "9d11e0209cd78726253694bd",
+   "kind": "illustration",
+   "crop": [
+    0,
+    0,
+    440
+   ],
+   "note": "extreme close-up; hat cut by the picture top; three small scribes in the background at the right; the book and its text are below the crop"
+  },
+  "23": {
+   "label": "מנחם בן סרוק (910–970) – מהפכת הלשון העברית: שורשים, דקדוק ופולמוס בספרד",
+   "episode": "1aatpLWRTj8Ez9CCPESBsJ",
+   "title": "מנחם בן סרוק – האיש שהעיר את לשון הקודש מתרדמתה, ושילם על כך מחיר כבד",
+   "image": "c6b8d68ace0ec9ec7d2c981d",
+   "kind": "illustration",
+   "crop": [
+    225,
+    40,
+    340
+   ]
+  },
+  "24": {
+   "label": "חסדאי אבן שפרוט",
+   "episode": "36w5041jUrEn5oPKATSVn1",
+   "title": "חסדאי אבן שפרוט ותור הזהב בספרד המוסלמית",
+   "image": "9e1bb86d8a20bbfb4bd45461",
+   "kind": "illustration",
+   "crop": [
+    140,
+    22,
+    265
+   ]
+  },
+  "25": {
+   "label": "רב האי גאון",
+   "episode": "1crQJTeUeTRzuNWrBy5Xnw",
+   "title": "רב האי גאון – אחרון הגאונים וראשון הגדולים: האיש שהעמיד את ההלכה על תילה",
+   "image": "9d216afa13a35ac4f9960d67",
+   "kind": "illustration",
+   "crop": [
+    205,
+    38,
+    350
+   ]
+  },
+  "26": {
+   "label": "רבי יונה אבן ג'נאח",
+   "episode": "2ZySwZSy0mmYVgrpGXmiAa",
+   "title": "רבי יונה אבן ג'נאח – האיש שבנה את העברית מחדש",
+   "image": "6e9719f6a374ed552499ada1",
+   "kind": "illustration",
+   "crop": [
+    305,
+    82,
+    215
+   ],
+   "note": "smaller figure: crop 215 px"
+  },
+  "27": {
+   "label": "רב שמואל בן חפני גאון (רשב״ה)",
+   "episode": "5WkWoNLiebM2a8oFJMR0Ww",
+   "title": "רב שמואל בן חפני גאון - המכריע והמעמיד את ההלכה מעל האגדה",
+   "image": "bcf9f6b11b45193988fdfe7c",
+   "kind": "illustration",
+   "crop": [
+    190,
+    85,
+    300
+   ]
+  },
+  "32": {
+   "label": "רבי יוסף אבן מיגאש",
+   "episode": "4rAsgRTzQIOx4TeBSEabWs",
+   "title": "רבי יוסף אבן מיגאש והרמב\"ם – שני ענקים, דרך אחת, מהפכה אחת",
+   "image": "af3b1f1ad8406991d256fce1",
+   "kind": "illustration",
+   "crop": [
+    277,
+    82,
+    260
+   ]
+  },
+  "33": {
+   "label": "רבנו תם (ר׳ יעקב בן מאיר) – מהפכן השיטה התוספתית",
+   "episode": "5u9zxyAssijvwzZnbKM7OQ",
+   "title": "רבנו תם: אדריכל הלמדנות ומורשת בעלי התוספות",
+   "image": "9bb2f401896bd0c32c811769",
+   "kind": "illustration",
+   "crop": [
+    60,
+    0,
+    340
+   ],
+   "note": "turban top at the picture edge"
+  },
+  "34": {
+   "label": "רבי אברהם אבן דאוד (הראב\"ד הראשון)",
+   "episode": "7w1L1hQYnLtvaAWjCSIoud",
+   "title": "רבי אברהם אבן דאוד – ההוגה הספרדי שהציב את חכמת השכל בקדושה על הרגליים",
+   "image": "b36c86b83546fe0bb939aa64",
+   "kind": "illustration",
+   "crop": [
+    215,
+    100,
+    160
+   ],
+   "note": "standing man in a library under a round window; small figure, so the crop is at the 160 px minimum; the open book he holds (with Hebrew-like text) starts to the right of the crop"
+  },
+  "35": {
+   "label": "רבנו חננאל בן חושיאל",
+   "episode": "580Us9ygui6IR3ypcVlNrx",
+   "title": "רבנו חננאל – האיש שתווה דרך בים התלמוד והפך אותו לבהיר לדורות",
+   "image": "6c3460fcc1deeaa2dec6ca94",
+   "kind": "illustration",
+   "crop": [
+    262,
+    105,
+    330
+   ]
+  },
+  "39": {
+   "label": "רבנו בחיי אבן פקודה – חובות הלבבות",
+   "episode": "1qBD3kU3bmTNA8rWq0ezbD",
+   "title": "רבנו בחיי אבן פקודה – „חובות הלבבות”: תמצית האתיקה היהודית",
+   "image": "8c9b17d64c38788f10ba7441",
+   "kind": "illustration",
+   "crop": [
+    20,
+    125,
+    350
+   ]
+  },
+  "41": {
+   "label": "הרמב\"ם",
+   "episode": "3SyvZ5qZe9Mjieu9Wf6pzA",
+   "title": "מורשת הרמב\"ם: הלכה, פילוסופיה ורפואה",
+   "image": "131931633bbad753b4fc9340",
+   "kind": "illustration",
+   "crop": [
+    0,
+    175,
+    230
+   ],
+   "note": "triptych (a young scholar writing, a man in a tallit, an old man in a turban with a book: taken as the Rambam at three ages); the left panel is used, inside it and clear of the white borders; two small figures in the arch behind him (the panel is 231 px wide, so the crop is 230, soft at 384)"
+  },
+  "43": {
+   "label": "רבי יצחק מווינה (בעל האור זרוע)",
+   "episode": "7oMEYgzLDDMfqNduDgnyXR",
+   "title": "רבי יצחק מווינה, בעל האור זרוע – האיש שזרע אור בין בבלי לירושלמי",
+   "image": "6912cfc04c00af685990d482",
+   "kind": "illustration",
+   "crop": [
+    137,
+    0,
+    400
+   ],
+   "note": "extreme close-up; beard end cut at the crop bottom so the book text stays out"
+  },
+  "44": {
+   "label": "הרמב\"ן (רבי משה בן נחמן)",
+   "episode": "3ZjAqfQEp21lw1GXKibFGq",
+   "title": "הרמב\"ן – חכם שחיבר פשט, קבלה, הלכה וארץ ישראל למהלך אחד",
+   "image": "c02697c1e1ba9df86a83d8ec",
+   "kind": "illustration",
+   "crop": [
+    140,
+    0,
+    420
+   ],
+   "note": "Star of David pendant is fine"
+  },
+  "45": {
+   "label": "רבי יוסף בכור שור",
+   "episode": "6gxbZoolueHckeaIeU0qC4",
+   "title": "רבי יוסף בכור שור ריב\"ש - פרשנותו לתורה",
+   "image": "1b79b48650b2cb6e445e3636",
+   "kind": "illustration",
+   "crop": [
+    160,
+    95,
+    335
+   ]
+  },
+  "46": {
+   "label": "רבי זרחיה הלוי (בעל המאור)",
+   "episode": "1Oey4Q7UY5P9TmSReEIy5e",
+   "title": "רבי זרחיה הלוי - בעל המאור שהאיר את דרך הלימוד מחדש",
+   "image": "c6fe9fcbd8d4fcdc454bcb5d",
+   "kind": "illustration",
+   "crop": [
+    176,
+    108,
+    280
+   ],
+   "note": "book titles on the desk are outside the crop"
+  },
+  "47": {
+   "label": "המהר\"ם מרוטנבורג",
+   "episode": "2KEK5HHxNXY0mD1HV36wrn",
+   "title": "מהר\"ם מרוטנבורג: מנהיגות, הלכה וסמכות הקהילה באשכנז",
+   "image": "539078443851e6fb51ee4837",
+   "kind": "illustration",
+   "crop": [
+    27,
+    0,
+    320
+   ],
+   "note": "conical hat cut by the picture top"
+  },
+  "49": {
+   "label": "הראבי\"ה (רבי אליעזר בן יואל הלוי)",
+   "episode": "0oglKv7NMszH0VEiXz5kUO",
+   "title": "ראבי\"ה: מורשתו, פסיקתו ותולדות חייו של בעל אבי העזרי",
+   "image": "4deb0b5aae14113194c7b395",
+   "kind": "illustration",
+   "crop": [
+    75,
+    10,
+    400
+   ],
+   "note": "dark book at the left edge shows unreadable page lines only"
+  },
+  "50": {
+   "label": "רבי אברהם אבולעפיה",
+   "episode": "7msZQUuF40gc7MzEt8TGBP",
+   "title": "אברהם אבולעפיה: הקבלה הנבואית וסוד הצירוף",
+   "image": "709ce7eeaa4b93a0ec57b0b1",
+   "kind": "illustration",
+   "crop": [
+    70,
+    70,
+    290
+   ],
+   "note": "painterly; tallit and tefillin; crop stops before the floating single Hebrew letters at the right"
+  },
+  "51": {
+   "label": "רבי מנחם המאירי",
+   "episode": "0sf3x7eQhEBrOAR6VxdNkT",
+   "title": "המאירי: משנתו ההלכתית, הפרשנית וההגותית",
+   "image": "0c5f367aa3b50a7b7d1af617",
+   "kind": "illustration",
+   "crop": [
+    220,
+    5,
+    360
+   ]
+  },
+  "52": {
+   "label": "הריטב\"א – המקובל שהגן על הפילוסוף",
+   "episode": "4Ao8OV05AacTbZqu6NBgea",
+   "title": "הריטב\"א - המקובל שהגן על הפילוסוף",
+   "image": "fe8a26c887b3adf97604e916",
+   "kind": "illustration",
+   "crop": [
+    120,
+    0,
+    430
+   ],
+   "note": "faint tree-of-sefirot diagram and a hexagram in the corners, no text"
+  },
+  "53": {
+   "label": "המרדכי (רבי מרדכי בן הלל אשכנזי)",
+   "episode": "4TIzbEP8cp0XnScsOSVYcj",
+   "title": "רבי מרדכי בן הלל: ספר המרדכי ותולדותיו בהלכה",
+   "image": "792c748e734a0eebdfb8d0e8",
+   "kind": "illustration",
+   "crop": [
+    255,
+    30,
+    270
+   ],
+   "note": "beard tip cut at the crop bottom to keep the book text out; paper notes at the right edge are outside"
+  },
+  "54": {
+   "label": "רבי יחיאל מפריז",
+   "episode": "46MHn4vu6ORF3S4hyf9rN9",
+   "title": "משפט התלמוד בפריז בשנת 1240 - רבי יחיאל מפריז",
+   "image": "1178acf78db59ed169cd6035",
+   "kind": "illustration",
+   "crop": [
+    153,
+    0,
+    360
+   ],
+   "note": "burning books and a crowd are the scene behind him"
+  },
+  "56": {
+   "label": "רבי יצחק בר ששת (הריב״ש)",
+   "episode": "59OpwWz4UjKqH3FjomFj2o",
+   "title": "הריב\"ש: תורה, פילוסופיה וסמכות קהילתית",
+   "image": "2fa7bdc87039457b940bb2f9",
+   "kind": "illustration",
+   "crop": [
+    232,
+    190,
+    200
+   ],
+   "note": "small figure at the table: crop 200 px"
+  },
+  "61": {
+   "label": "רבי ישראל אלנקוה",
+   "episode": "7ong9XinXN1Na6aWhTzXME",
+   "title": "הרב ישראל אלנקאווה וספרו מנורת המאור",
+   "image": "54e0f9594abecbbcec260a0a",
+   "kind": "illustration",
+   "crop": [
+    127,
+    30,
+    300
+   ]
+  },
+  "62": {
+   "label": "הרב יצחק אבוהב",
+   "episode": "2ajjVlwvLyK2uIK53Hfeav",
+   "title": "הרב יצחק אבוהב - מאור הדורות שכתב את \"מנורת המאור\"",
+   "image": "8aec937c9aa7576c0b131b29",
+   "kind": "illustration",
+   "crop": [
+    100,
+    85,
+    340
+   ],
+   "note": "menorah behind him; the open book and its text are below the crop"
+  },
+  "64": {
+   "label": "מהר\"י מינץ",
+   "episode": "2UFLK856gB3r5MDYUiO2mV",
+   "title": "המהר\"י מינץ – הרב שעמד מול הרנסנס ולא נשבר",
+   "image": "630750aafc3147e7ef194b15",
+   "kind": "illustration",
+   "crop": [
+    215,
+    140,
+    285
+   ],
+   "note": "arms raised in prayer; sun and crowd behind"
+  },
+  "65": {
+   "label": "רבי יצחק עראמה (בעל העקידה)",
+   "episode": "569PKgJ66rKNm3LAxtU8Hv",
+   "title": "יצחק עראמה: העקידה, חזות קשה ומהפכת הפרשנות",
+   "image": "8c6024d532e2ec8bdc8b9f27",
+   "kind": "illustration",
+   "crop": [
+    250,
+    60,
+    360
+   ]
+  },
+  "66": {
+   "label": "רבי אליהו מזרחי (הרא\"ם)",
+   "episode": "3prGOsLsSDsg5gSp4qNFVk",
+   "title": "רבי אליהו מזרחי (הרא\"ם) – האיש שלימד את העולם איך באמת לומדים רש\"י",
+   "image": "6bcc052e0a570889209bd649",
+   "kind": "illustration",
+   "crop": [
+    40,
+    0,
+    380
+   ],
+   "note": "two men in front; the older one with the long white beard is taken as the Re'em; a preacher in the background at the top"
+  },
+  "67": {
+   "label": "דון יצחק אברבנאל – המדינאי, הפילוסוף והפרשן שבנה גשר בין הגלות לגאולה",
+   "episode": "5TcOFBOg5ZWpmJzEWAE1ef",
+   "title": "דון יצחק אברבנאל: פרשן, פילוסוף ומדינאי",
+   "image": "8169ae8e899a2271a925ecd8",
+   "kind": "illustration",
+   "crop": [
+    60,
+    15,
+    470
+   ],
+   "note": "painterly close-up; beard runs past the picture bottom"
+  },
+  "68": {
+   "label": "רבי יוסף טאיטצאק – המקובל שחזה את הציונות",
+   "episode": "2wytNryqHZzLbnhrdOWa5R",
+   "title": "רבי יוסף טאיטצאק - המקובל שחזה את הציונות",
+   "image": "67cb83d22f4a1c09388ef3a0",
+   "kind": "illustration",
+   "crop": [
+    160,
+    105,
+    280
+   ],
+   "note": "dark painting; faint faces and wall text in the background are outside or too faint to read"
+  },
+  "69": {
+   "label": "הרדב\"ז (1479–1573) – מגדולי הפוסקים: בין ספרד למצרים וארץ ישראל",
+   "episode": "5IjkApm09lYPZJ5CqYQ33i",
+   "title": "הרדב\"ז – הפוסק הענק שעמד בפרץ כשהעיקרים רעדו",
+   "image": "cd1ae39eaefe9e21c605a685",
+   "kind": "illustration",
+   "crop": [
+    35,
+    0,
+    530
+   ]
+  },
+  "70": {
+   "label": "המהרש\"ל (רבי שלמה לוריא)",
+   "episode": "77qmOPOAQ6RIlbvk9VtmFb",
+   "title": "המהרש\"ל: משנתו, פולמוסיו ודרכו בהלכה ובקבלה",
+   "image": "5727c8b51fc40ec922f37438",
+   "kind": "illustration",
+   "crop": [
+    60,
+    5,
+    420
+   ],
+   "note": "large hat; crop stops above the open book"
+  },
+  "72": {
+   "label": "המהר\"ל מפראג – הפילוסוף שחיבר בין השכל למסתורין",
+   "episode": "37eDPuFbb4oSjIRx8U8B88",
+   "title": "משנת המהר\"ל: תורה, נפש ואמת",
+   "image": "b7b8459ca2f4eda6590bc6df",
+   "kind": "illustration",
+   "crop": [
+    0,
+    0,
+    640
+   ],
+   "note": "extreme close-up of a painted face with eyes closed; the whole cover is used (the beard runs past the picture bottom); no watermark in the corner"
+  },
+  "73": {
+   "label": "רבי מרדכי יפה – “בעל הלבוש”",
+   "episode": "30117xL4w5HtBLLFICQuvM",
+   "title": "לפני המדינה: רבי מרדכי יפה והאוטונומיה היהודית הגדולה בהיסטוריה",
+   "image": "e5e04c2a2d49a7998537eed0",
+   "kind": "illustration",
+   "crop": [
+    133,
+    80,
+    380
+   ]
+  },
+  "74": {
+   "label": "רבי אלעזר אזכרי",
+   "episode": "1z1ZTOGvJvtWOoXPHrXEJZ",
+   "title": "רבי אלעזר אזכרי: מקובל, משורר ומנהיג רוחני בצפת של המאה ה-16",
+   "image": "fff00ed24268a1a24a785859",
+   "kind": "illustration",
+   "crop": [
+    180,
+    25,
+    340
+   ]
+  },
+  "77": {
+   "label": "רבי אברהם אזולאי – המקובל שבנה מחדש את עולמות הסוד",
+   "episode": "7oZMpwJNWpTibhB6EvhJ6R",
+   "title": "רבי אברהם אזולאי – המקובל שבנה מחדש את עולמות הסוד והחזיר את תורת האר\"י אל הציבור",
+   "image": "c0f0914a53951cdff0ec6014",
+   "kind": "illustration",
+   "crop": [
+    10,
+    25,
+    510
+   ],
+   "note": "cartoon-style drawing"
+  },
+  "78": {
+   "label": "הרב יהודה אריה מודנה – דיוקן של גאונות שנאבקה על עצמה",
+   "episode": "7dCBE5OnROaK58y5cK5tiO",
+   "title": "הרב יהודה אריה מודנה – דיוקן של גאונות שנאבקה על עצמה",
+   "image": "48672b0cd4e519ffde2a1266",
+   "kind": "illustration",
+   "crop": [
+    190,
+    28,
+    350
+   ],
+   "note": "crop stops above the cards with Hebrew words in his hand"
+  },
+  "79": {
+   "label": "רבי דוד הלוי סגל (הט\"ז)",
+   "episode": "0xSD9i70yODc67pyeQVP67",
+   "title": "עיונים בהלכה ובמורשת הט\"ז",
+   "image": "dad6b546b268c3670bfb98c3",
+   "kind": "illustration",
+   "crop": [
+    55,
+    0,
+    510
+   ],
+   "note": "painterly close-up; fur hat cut by the picture top, beard past the bottom"
+  },
+  "80": {
+   "label": "רבי שלום שבזי – המשורר, המקובל, והאיש שעיצב את נשמתה של יהדות תימן",
+   "episode": "0esvJn3mSqW2Pa26wtwS9Q",
+   "title": "שבזי, חמדת ימים ומורשת תימן",
+   "image": "7189e77ae737bdb81c2369c9",
+   "kind": "illustration",
+   "crop": [
+    140,
+    0,
+    270
+   ],
+   "note": "crop ends before the open book in his hand"
+  },
+  "81": {
+   "label": "יצחק נוניש בילמונטי (1601–1652) – אנוס בין יהדות לנצרות: פילוסופיה, רפואה וזהות",
+   "episode": "6toRtHRX2wPZtF0myPk3lz",
+   "title": "רבי יצחק נוניש בילמונטי – העני מאיזמיר ששמר את קולות הראשונים",
+   "image": "64f5f85c8006484868179d14",
+   "kind": "illustration",
+   "crop": [
+    45,
+    90,
+    355
+   ]
+  },
+  "82": {
+   "label": "הרב יעקב ששפורטש",
+   "episode": "09JfLsbxRNjLhC969SxOPd",
+   "title": "הרב יעקב ששפורטש – הלוחם הבודד מול הלהט המשיחי",
+   "image": "f6140f66d8d58fe511bbf50c",
+   "kind": "illustration",
+   "crop": [
+    188,
+    0,
+    278
+   ],
+   "note": "painterly portrait; single Hebrew letters, music notes, a crown and a castle float around him, and the crop is clear of all of them"
+  },
+  "83": {
+   "label": "רבי שבתאי הכהן (הש\"ך)",
+   "episode": "0zeTxQVV4ZhQFYYST2sO12",
+   "title": "הרב שבתאי הכהן (הש״ך) – האיש שהפך את השולחן ערוך לשדה קרב אינטלקטואלי",
+   "image": "9ea56242ee44ac605ef9d720",
+   "kind": "illustration",
+   "crop": [
+    130,
+    0,
+    495
+   ],
+   "note": "painterly; hat cut by the picture top"
+  },
+  "84": {
+   "label": "רבי אברהם אבלי גומבינר (המגן אברהם)",
+   "episode": "5fzAXAiCnkg42WFvOV2dci",
+   "title": "רבי אברהם אבלי הלוי גומבינר: בעל ה\"מגן אברהם\"",
+   "image": "b4e154c87da75c51748d6e9e",
+   "kind": "illustration",
+   "crop": [
+    145,
+    35,
+    265
+   ],
+   "note": "crop ends before the wall covered with Hebrew-like words at the right"
+  },
+  "86": {
+   "label": "רבי משה חגיז – הקנאי הירושלמי שניסה להציל את היהדות מן הקריסה הפנימית",
+   "episode": "2kCpBIWS1B2NtObhJemSdG",
+   "title": "רבי משה חגיז – הקנאי הירושלמי שניסה להציל את היהדות מן הקריסה הפנימית",
+   "image": "ceb76ea9f9258064f0177839",
+   "kind": "illustration",
+   "crop": [
+    120,
+    0,
+    335
+   ],
+   "note": "turban top at the picture edge; crop ends before the open book"
+  },
+  "87": {
+   "label": "הרב אפרים נבון (1677–1735) – מחנה אפרים: עקרונות פסיקה וסדרי קניינים",
+   "episode": "2mIWzXSez8GJIqoh92VTlU",
+   "title": "הרב אפרים נבון ו\"מחנה אפרים\" – כשהלמדן הספרדי הופך למשפטן על זמני",
+   "image": "f6a63a0ab6dc23ca1edab738",
+   "kind": "illustration",
+   "crop": [
+    177,
+    30,
+    360
+   ]
+  },
+  "88": {
+   "label": "רבי ישראל יעקב אלגאזי – הראשון לציון שחיבר בין קבלה, הלכה ומנהיגות ציבורית",
+   "episode": "3CL54iYhfjNTz1KREt1aJk",
+   "title": "רבי ישראל יעקב אלגאזי - חייו, פועלו והגותו",
+   "image": "72bb57589fb154749415e7e7",
+   "kind": "illustration",
+   "crop": [
+    33,
+    70,
+    340
+   ]
+  },
+  "90": {
+   "label": "רבי משה דוד ואלי (הרמ״ד ואלי)",
+   "episode": "6Sc3CiYpTfV68Ke8SueReD",
+   "title": "הרמ\"ד ואלי - הרופא שהפך למקובל הגדול של פדובה",
+   "image": "0d6b92a08555ec4476f4c7bc",
+   "kind": "illustration",
+   "crop": [
+    98,
+    125,
+    290
+   ]
+  },
+  "91": {
+   "label": "ר׳ אריה־לייב גינצבורג – “שאגת אריה”",
+   "episode": "4tSyrs2SrcNd1WsVBoHZuh",
+   "title": "שאגת אריה: מהלכה, דרך לימוד ומהפכה שקטה",
+   "image": "9053bf70929e21f8f0891cf3",
+   "kind": "illustration",
+   "crop": [
+    210,
+    0,
+    385
+   ],
+   "note": "fur hat; crop stops above the open book",
+   "title_confirmed": "the episode title uses his epithet, the Sha'agat Aryeh, the name he is known by; the research paper for this id is about R. Aryeh Leib Ginzburg"
+  },
+  "93": {
+   "label": "רבי משה חיים לוצאטו (הרמח״ל)",
+   "episode": "1lgKTjkSyrd7SAntCbBGTt",
+   "title": "הרמח״ל - המקובל, המחנך והאינטלקטואל שנרדף וניצח",
+   "image": "8487f0861d59caddf4af65f9",
+   "kind": "illustration",
+   "crop": [
+    140,
+    60,
+    360
+   ]
+  },
+  "95": {
+   "label": "הנודע ביהודה (הרב יחזקאל לנדא)",
+   "episode": "4EJ2FNYaB1FdSuKMRkfonR",
+   "title": "הרב יחזקאל לנדא – “הנודע ביהודה”: הפוסק שניצב מול המודרנה",
+   "image": "6520dd8d0a18a67798567c3f",
+   "kind": "illustration",
+   "crop": [
+    107,
+    0,
+    420
+   ]
+  },
+  "96": {
+   "label": "הרב שלום שרעבי (הרש\"ש)",
+   "episode": "5yAibZuXCCCzAlCFiWICRS",
+   "title": "הרב שלום שרעבי: אבי המקובלים הספרדיים ועולם הכוונות",
+   "image": "2a754149ebf042119d0ef629",
+   "kind": "illustration",
+   "crop": [
+    60,
+    0,
+    480
+   ],
+   "note": "oil-painting style; the gold letters at both edges are outside the crop; turban cut by the picture top"
+  },
+  "98": {
+   "label": "הרב אברהם דנציג",
+   "episode": "182iEVeFAwTuBZxYCYbdIX",
+   "title": "רבי אברהם דנציג: בעל \"חיי אדם\" ומשנתו ההלכתית",
+   "image": "a8ad02920087a07830220d59",
+   "kind": "illustration",
+   "crop": [
+    335,
+    50,
+    300
+   ],
+   "note": "AI painting; the old man at the desk, the younger man at the left is outside the box"
+  },
+  "99": {
+   "label": "רבי חיים מוולוז'ין – מייסד 'אם הישיבות' ו'נפש החיים'",
+   "episode": "4doQLfwiMgf2moAjnxiX0V",
+   "title": "רבי חיים מוולוז'ין - המהפכן השקט שעיצב את עמוד השדרה של עולם התורה",
+   "image": "ea25291de99e68024c273c38",
+   "kind": "illustration",
+   "crop": [
+    225,
+    325,
+    200
+   ],
+   "note": "AI painting; small figure among a crowd, tight box"
+  },
+  "100": {
+   "label": "מנחם מנדל לפין (מסאטנוב)",
+   "episode": "7rCLKRa5bSuYAhNFZpUjV5",
+   "title": "מנדל לפין וההשכלה בגליציה",
+   "image": "0f48d909156f8917ef81e579",
+   "kind": "illustration",
+   "crop": [
+    435,
+    105,
+    205
+   ],
+   "note": "AI sepia engraving look; the man on the right, box held to 205 px by the title page text at its left (Franklin at the far left is outside); tight box"
+  },
+  "102": {
+   "label": "החת\"ם סופר (הרב משה סופר)",
+   "episode": "5XBxxBUWyu9fKUK69gjQgx",
+   "title": "החתם סופר: עיצוב האורתודוקסיה בין שמרנות למודרנה",
+   "image": "e811b99d0d192d4e189b1fd3",
+   "kind": "illustration",
+   "crop": [
+    70,
+    0,
+    460
+   ],
+   "note": "AI painting; the picture itself cuts the fur hat at the top"
+  },
+  "103": {
+   "label": "רבי חיים פלאג'י (החבי\"ף)",
+   "episode": "2ugZ7lWueXQOsEw2z6Va03",
+   "title": "החבי\"ף: חייו, פעלו, וספריו",
+   "image": "55e5de9bf2766f04f92bda7c",
+   "kind": "illustration",
+   "crop": [
+    0,
+    140,
+    400
+   ],
+   "note": "AI painting"
+  },
+  "104": {
+   "label": "הרב יהודה ביבאס",
+   "episode": "2DXKB6Zr62zP0VwCytZznO",
+   "title": "הרב יהודה ביבאס: מבשר הציונות ומורשתו",
+   "image": "16e0c0f501fe3e6182ba279a",
+   "kind": "illustration",
+   "crop": [
+    165,
+    85,
+    320
+   ],
+   "note": "AI painting; star watermark at the bottom-right is outside the box"
+  },
+  "105": {
+   "label": "הרב צבי הירש קלישר – ציונות דתית לפני הרצל",
+   "episode": "7CWcx0r0X5jRyzuRCBPBDh",
+   "title": "הרב צבי הירש קלישר - הציונות הדתית לפני שהייתה ציונות",
+   "image": "66c58758e324fa1cb7038ff5",
+   "kind": "illustration",
+   "crop": [
+    175,
+    170,
+    210
+   ],
+   "note": "AI colourised-look illustration; small figure in a library, tight box; star watermark outside"
+  },
+  "110": {
+   "label": "שד\"ל – הלוחם האחרון של היהדות הרגשית מול כיבוש השכל היווני",
+   "episode": "03tAgaC9jfaMhMJ2rvW4uF",
+   "title": "שד\"ל: הוגה, פייטן ופרשן",
+   "image": "f330281828311ce7b2816159",
+   "kind": "illustration",
+   "crop": [
+    75,
+    0,
+    420
+   ],
+   "note": "AI painting"
+  },
+  "112": {
+   "label": "רבי יעקב אבוחצירא",
+   "episode": "2Er963loo0uKztvzqzvPlA",
+   "title": "רבי יעקב אבוחצירא: האביר יעקב – מורשת, תורה ומופתים",
+   "image": "b444509e4a6073fbe5959074",
+   "kind": "illustration",
+   "crop": [
+    210,
+    25,
+    330
+   ],
+   "note": "AI painting"
+  },
+  "114": {
+   "label": "אדולף פראנק – הקבלה כפילוסופיה דתית",
+   "episode": "5qiFDQTROpb7v21w4imqIE",
+   "title": "תורת הקבלה: איך “מסורת” הפכה למפת־על של הבריאה, הרע והגאולה – בעקבות אדולף פראנק",
+   "image": "fa329ff5e37cc785c44645bc",
+   "kind": "illustration",
+   "crop": [
+    280,
+    35,
+    350
+   ],
+   "note": "AI painting of Adolphe Franck; the episode is shared with 178 (the book entry), kept here only"
+  },
+  "118": {
+   "label": "אליהו בן אמוזג – ההוגה שדחו הדורות, אך רעיונו התגלה כגדול מדורותיו",
+   "episode": "66ocgEWzF0dAp3RmcvYSAn",
+   "title": "אליהו בן־אמוזג: פילוסופיה וקבלה, ישראל והאנושות",
+   "image": "413fa4a4db971eb7147057df",
+   "kind": "illustration",
+   "crop": [
+    212,
+    130,
+    250
+   ],
+   "note": "AI painting; seated, small"
+  },
+  "126": {
+   "label": "הבן איש חי (רבי יוסף חיים מבגדד)",
+   "episode": "5mA6IjVV5SbxfT0OfQ22Ad",
+   "title": "רבי יוסף חיים מבגדאד (הבן איש חי): תורה, ביקורת חברתית ומורשת",
+   "image": "c6515d8725bd1759496b227b",
+   "kind": "illustration",
+   "crop": [
+    40,
+    0,
+    540
+   ],
+   "note": "realistic AI likeness (invented library scene, no source photograph)"
+  },
+  "141": {
+   "label": "פרנץ רוזנצווייג – הפילוסוף שהחזיר את האדם למרכז",
+   "episode": "7EpaIjYgIJVmSWDAsXDI7g",
+   "title": "פרנץ רוזנצווייג והגותו: תיאולוגיה ופילוסופיה יהודית",
+   "image": "612df587f9b0a6b065b4d40c",
+   "kind": "illustration",
+   "crop": [
+    290,
+    30,
+    340
+   ],
+   "note": "realistic AI likeness (invented desk scene with typewriter, binoculars and map)"
+  },
+  "161": {
+   "label": "אנדרה נהר",
+   "episode": "4zJ21QTx6e8QgoBRSCWqiG",
+   "title": "אנדרה נהר – הפילוסוף של השתיקה, והאדם שנשלח לברוא משמעות",
+   "image": "0c1acc1c0d11f2692859d0b2",
+   "kind": "photo",
+   "crop": [
+    190,
+    0,
+    450
+   ],
+   "note": "photograph approved by the owner; low resolution, pixelated"
+  },
+  "166": {
+   "label": "הרב יהודא ליאון אשכנזי (מניטו)",
+   "episode": "6vCbxdldNDpdncGxSjvAyD",
+   "title": "מניטו: חיים, הגות, ותחיית ישראל",
+   "image": "cada8554befd733bec79746e",
+   "kind": "illustration",
+   "crop": [
+    140,
+    0,
+    450
+   ],
+   "note": "realistic AI likeness (invented library scene; star watermark at the bottom-right, outside the box)"
+  },
+  "176": {
+   "label": "הרב אביחי רונצקי",
+   "episode": "3GVwabzRl1ToA2p0d17erP",
+   "title": "הרב אביחי רונצקי: לוחם, רב צבאי, מנהיג",
+   "image": "9ca711126f48697f3044e9c5",
+   "kind": "illustration",
+   "crop": [
+    175,
+    195,
+    230
+   ],
+   "note": "realistic AI likeness (invented scene: the rabbi in army vest among soldiers); small figure, tight box"
+  },
+  "189": {
+   "label": "יעקב בן אשר",
+   "episode": "1ascElHzBKieDVSWk8wZBw",
+   "title": "ארבעה טורים ובעל הטורים: אדריכלות ההלכה והפירוש על התורה",
+   "image": "6e6f1a007aba076b88861f7b",
+   "kind": "illustration",
+   "crop": [
+    180,
+    10,
+    250
+   ],
+   "note": "AI illustration, standing figure; the box ends above the open book",
+   "title_confirmed": "the episode is about the Arba'ah Turim and its author, Baal HaTurim, the sage's own epithet; his paper opens \"רבי יעקב בן אשר - בעל הטורים\""
+  },
+  "195": {
+   "label": "הראב\"ד מפושקייר",
+   "episode": "3V6k0TH0ay1RxaO4bKeVXM",
+   "title": "תורתו ופועלו של הראב\"ד מפוסקייר",
+   "image": "91905a2d1ade2e2de7360ed7",
+   "kind": "illustration",
+   "crop": [
+    215,
+    105,
+    270
+   ],
+   "note": "AI illustration; star watermark at the bottom-right is outside the box"
+  },
+  "198": {
+   "label": "דונש בן לברט",
+   "episode": "2XJ8USkWLQA8Z2lJC3Miew",
+   "title": "דונש בן לברט: חייו ויצירתו",
+   "image": "c37a21cadc84a71ea4a970dc",
+   "kind": "illustration",
+   "crop": [
+    255,
+    60,
+    340
+   ],
+   "note": "AI sepia double-exposure engraving look; faint architectural lines cross the face"
+  },
+  "201": {
+   "label": "ר' אלעזר בירבי קליר",
+   "episode": "32xvqy7PMQACaWnJsbqMlG",
+   "title": "הרב אלעזר בירבי קליר ופיוטיו",
+   "image": "1df7dcfceeafa087e6484369",
+   "kind": "illustration",
+   "crop": [
+    95,
+    10,
+    360
+   ],
+   "note": "AI illustration; star watermark at the bottom-right is outside the box"
+  },
+  "202": {
+   "label": "הרב עקיבא איגר",
+   "episode": "6u60Ab2ZLOPQjjIcY4kwBC",
+   "title": "רבי עקיבא איגר: חייו, תורתו ופסיקותיו ההלכתיות",
+   "image": "11cf6dd416fa8d9e2d9a0e03",
+   "kind": "illustration",
+   "crop": [
+    60,
+    0,
+    500
+   ],
+   "note": "AI painting"
+  },
+  "203": {
+   "label": "הרב אליהו גוטמכר",
+   "episode": "3iEFTRWSwf4AJJ7lCw5SHe",
+   "title": "הרב אליהו גוטמכר – הצדיק מגריידיץ שפתח את שערי הגאולה המעשית",
+   "image": "1c8dd4846ffcfd6d5620083d",
+   "kind": "illustration",
+   "crop": [
+    40,
+    0,
+    490
+   ],
+   "note": "AI painting"
+  },
+  "261": {
+   "label": "רבי מאיר בן שמואל מרמרו",
+   "episode": "3112BV2vntKp6ZDRAWMYIe",
+   "title": "רבי מאיר בן שמואל מרמרו – האיש שהפך את התלמוד לשדה קרב של מחשבה",
+   "image": "ede73b7e54d808a69ac50128",
+   "kind": "illustration",
+   "crop": [
+    245,
+    45,
+    260
+   ],
+   "note": "AI painting of a group around a table; the box is on the central figure, the others are cut at the edges"
+  },
+  "262": {
+   "label": "הרב אפרים מקלעת־חמאד",
+   "episode": "5teJp1U9ghLdy4CXNAusRN",
+   "title": "הרב אפרים מקלעת־חמאד – החכם שאיבד את כתביו, אך לא את קולו",
+   "image": "548fe80d85a1bf7aa938ba8f",
+   "kind": "illustration",
+   "crop": [
+    185,
+    20,
+    420
+   ],
+   "note": "AI painting"
+  },
+  "265": {
+   "label": "רבי שמריה משפירא",
+   "episode": "30fXDBvnqGwwpGM9TOLv4b",
+   "title": "רבי שמריה משפירא – מחלוצי התוספות שעיצבו את אשכנז",
+   "image": "dee5078e8d5d34621c36a03a",
+   "kind": "illustration",
+   "crop": [
+    40,
+    40,
+    440
+   ]
+  },
+  "266": {
+   "label": "רבנו יהודה בן ברזילי הברצלוני",
+   "episode": "0uroeWWeUqiYdTgvlJT7eo",
+   "title": "רבנו יהודה בן ברזילי הברצלוני – הגשר ששמר על התורה שבעל פה",
+   "image": "48183737791b3ad1f1ecc094",
+   "kind": "illustration",
+   "crop": [
+    100,
+    0,
+    480
+   ]
+  },
+  "268": {
+   "label": "אסתר המלכה",
+   "episode": "4WssFuGXzvEgr2GstxIHfx",
+   "title": "אסתר המלכה – המנהיגה שפעלה מתוך הסתר וניצחה אימפריה",
+   "image": "9c2f4fe2b4655917a37154c9",
+   "kind": "illustration",
+   "crop": [
+    110,
+    20,
+    365
+   ]
+  },
+  "269": {
+   "label": "הלני המלכה",
+   "episode": "5M7imLXlORpy1YE9QyPA25",
+   "title": "הלני המלכה – מן החידקל אל ההיכל: סיפורה של מלכה שבחרה בירושלים",
+   "image": "05d5350dbf4f69c021add8e1",
+   "kind": "illustration",
+   "crop": [
+    330,
+    270,
+    250
+   ],
+   "note": "woman in profile looking up at the menorah"
+  },
+  "270": {
+   "label": "חולדה הנביאה",
+   "episode": "6NbBfNFBopFpH9DywPQzS1",
+   "title": "חולדה הנביאה – הסיפור מאחורי גילוי ספר התורה במקדש",
+   "image": "d44de29adb95a0467574fcc3",
+   "kind": "illustration",
+   "crop": [
+    288,
+    158,
+    240
+   ],
+   "note": "scene: Huldah is the woman pointing, men stand around her"
+  },
+  "271": {
+   "label": "הרא\"ם ממיץ",
+   "episode": "6J1axbvjzcVZFeEI2lU1IV",
+   "title": "הרא\"ם ממיץ – הפוסק שראה במצוות דרך לעיצוב האדם",
+   "image": "36af6ceabed3e24e25c968e9",
+   "kind": "illustration",
+   "crop": [
+    115,
+    0,
+    450
+   ],
+   "note": "a small label on a book shows at the top-right corner of the crop"
+  },
+  "272": {
+   "label": "רבי יצחק בן יעקב הלבן מפראג",
+   "episode": "5evpNS9R4Cq5EESziQyspA",
+   "title": "רבי יצחק בן יעקב הלבן מפראג – התוספיסט שבנה גשר בין צרפת לאשכנז",
+   "image": "acda863a444051b5b6af0d78",
+   "kind": "illustration",
+   "crop": [
+    100,
+    0,
+    500
+   ]
+  },
+  "273": {
+   "label": "הרב אליעזר בן נתן (ראב\"ן)",
+   "episode": "5QGbbhxhb2hremjTS5I9E8",
+   "title": "ראב\"ן: מתעד החורבן ומנהגי אשכנז הראשונים",
+   "image": "5ceb4b3ca3b0440780b36997",
+   "kind": "illustration",
+   "crop": [
+    70,
+    0,
+    570
+   ]
+  },
+  "275": {
+   "label": "ר״י הזקן מדמפייר",
+   "episode": "6eSJxUuvK7zTeZR5ODaTfi",
+   "title": "ר\"י הזקן מדמפייר – האיש שהפך את התלמוד למערכת חיה",
+   "image": "949987ff75f98017735cfddb",
+   "kind": "illustration",
+   "crop": [
+    60,
+    0,
+    500
+   ]
+  },
+  "277": {
+   "label": "רבי סעדיה שוראקי",
+   "episode": "6NTm83GThq84iPCuaL50gA",
+   "title": "רבי סעדיה שוראקי – הרב שחיבר בין תורה למתמטיקה",
+   "image": "58e3cbb88b92a2e44dbe3c98",
+   "kind": "illustration",
+   "crop": [
+    90,
+    55,
+    460
+   ]
+  },
+  "278": {
+   "label": "רבי יהונתן הכהן מלוניל",
+   "episode": "2PHGW9Z6HiOIHqumtWFHNl",
+   "title": "המאור הגדול רבי יהונתן הכהן מלוניל: החכם שהביא את הרמב״ם לאירופה",
+   "image": "9b606b011bd1b2a04f01d9af",
+   "kind": "illustration",
+   "crop": [
+    172,
+    0,
+    358
+   ],
+   "note": "crop stops above the text of the page he holds"
+  },
+  "279": {
+   "label": "הריצב״א",
+   "episode": "0fIS5dc7OCTq1C6amM82LT",
+   "title": "הריצב״א – בעל התוספות ששילב חריפות תלמודית עם חזיונות שמימיים",
+   "image": "420f89eccb507f5949455499",
+   "kind": "illustration",
+   "crop": [
+    215,
+    100,
+    400
+   ]
+  },
+  "280": {
+   "label": "רבי אלעזר מגרמייזא (בעל הרוקח)",
+   "episode": "1xnTTOc3bgPDd10LUBerVb",
+   "title": "רבי אלעזר מגרמייזא – המקובל שכתב את סודות התפילה מתוך שבר",
+   "image": "f9e8472b31a408e9c8100a11",
+   "kind": "illustration",
+   "crop": [
+    205,
+    0,
+    250
+   ],
+   "note": "standing figure in a white robe; the picture has white margins, the crop is inside it"
+  },
+  "281": {
+   "label": "שלומציון המלכה",
+   "episode": "1K7M9BQXbRu0lrv4M2gtNu",
+   "title": "שלומציון המלכה – האישה שהצילה ממלכה שלמה בלי להניף דגל מלחמה",
+   "image": "421a48816c9623c676c78589",
+   "kind": "illustration",
+   "crop": [
+    150,
+    20,
+    310
+   ]
+  },
+  "282": {
+   "label": "חנה הנביאה",
+   "episode": "2olkESl0VSSrcsibuXGG6I",
+   "title": "חנה הנביאה – האישה שלימדה את עם ישראל איך להתפלל",
+   "image": "a190dbb090a34931fa883773",
+   "kind": "illustration",
+   "crop": [
+    170,
+    0,
+    300
+   ],
+   "note": "praying with eyes closed"
+  },
+  "283": {
+   "label": "רבי משולם מבדרש",
+   "episode": "5LmJs1gNXoe2H539PdAfrl",
+   "title": "רבי משולם מבדרש – החכם שיצא למלחמה נגד הקבלה",
+   "image": "aa74f251abe927f46d638a19",
+   "kind": "illustration",
+   "crop": [
+    20,
+    110,
+    445
+   ],
+   "note": "Hebrew name banner above the head cropped out"
+  },
+  "284": {
+   "label": "רבי יהודה בן ברכיה",
+   "episode": "647NStP3Z8X3LRqObcCXUZ",
+   "title": "רבי יהודה בן ברכיה – החכם מפרובנס שחיבר בין הרי״ף, הרמב״ם והגאונים",
+   "image": "ea9232922e04c009e7bc2b04",
+   "kind": "illustration",
+   "crop": [
+    105,
+    80,
+    430
+   ],
+   "note": "Hebrew name banner above the head cropped out"
+  },
+  "285": {
+   "label": "רבינו מנוח מנרבונה",
+   "episode": "5ZEbOOmd6ZsVbEz1crhtgC",
+   "title": "רבינו מנוח מנרבונה - הפרשן שהעניק “מנוחה” לרמב\"ם",
+   "image": "559acab3e3915e605d367810",
+   "kind": "illustration",
+   "crop": [
+    125,
+    95,
+    440
+   ],
+   "note": "Hebrew name banner above the head cropped out"
+  },
+  "286": {
+   "label": "רבי ראובן בן חיים מנרבון",
+   "episode": "6Rb28PgOQeeq58bX2clspL",
+   "title": "רבי ראובן בן חיים מנרבון – החכם שנעלם מן ההיסטוריה… והשפיע על גדולי עולם",
+   "image": "49e8be7e2cd59297972d49d6",
+   "kind": "illustration",
+   "crop": [
+    190,
+    222,
+    375
+   ],
+   "note": "Hebrew name banner above the head and the two men at the left cropped out; the edge of an astrolabe shows at the right"
+  },
+  "287": {
+   "label": "רבי נתן בן רבי מאיר מטרינקטיי",
+   "episode": "46wLVmOtDctapvhIXVcT8T",
+   "title": "מנהיג נסתר של עולם ההלכה: רבי נתן בן רבי מאיר מטרינקטיי",
+   "image": "9f4a357737ddd93519dcd558",
+   "kind": "illustration",
+   "crop": [
+    134,
+    95,
+    350
+   ],
+   "note": "box sits left of the head to keep two men at the right out of it"
+  },
+  "288": {
+   "label": "רבנו פרחיה בן ניסים",
+   "episode": "3AjzdU1SkSoQHf4tQAoeJr",
+   "title": "רבנו פרחיה בן ניסים – תלמיד חכמים שנלחם על מורשת הרמב״ם",
+   "image": "810ce58052ecb0e88d28c6bb",
+   "kind": "illustration",
+   "crop": [
+    165,
+    115,
+    385
+   ],
+   "note": "Hebrew name banner above the head cropped out"
+  },
+  "293": {
+   "label": "רבי מאיר הלוי אבולעפיה",
+   "episode": "3DlGOty8LZ8KGhLiLcyqjs",
+   "title": "הרמ\"ה – הנשיא שהגן על התורה מפני הפילוסופיה",
+   "image": "ca565063edf740a2c418d545",
+   "kind": "illustration",
+   "crop": [
+    130,
+    22,
+    340
+   ],
+   "title_confirmed": "the title names him by his acronym, the Ramah (הרמ״ה), and describes R. Meir HaLevi Abulafia, the Nasi who defended the Torah from philosophy in the Maimonidean controversy"
+  },
+  "294": {
+   "label": "רבי אהרן הלוי",
+   "episode": "1VCc2NTp4Fx2MnomLuC2YQ",
+   "title": "הרב אהרן הלוי (הרא״ה) – החכם שבדק את הבית של ההלכה",
+   "image": "dadcad479c67ef95305d0558",
+   "kind": "illustration",
+   "crop": [
+    185,
+    60,
+    335
+   ],
+   "note": "scene: two scholars stand behind him at the sides"
+  },
+  "299": {
+   "label": "צדקיה בן אברהם",
+   "episode": "0zmmVvmiG4Wzj6H3D3wwK7",
+   "title": "רבי צדקיה בן אברהם הרופא – החכם שחיבר בין עולמות ההלכה",
+   "image": "e06d8ae062dc200f0e6618aa",
+   "kind": "illustration",
+   "crop": [
+    140,
+    0,
+    370
+   ]
+  },
+  "300": {
+   "label": "רבי שמחה משפיירא",
+   "episode": "6k54FCiujHgHTF3lHSwe0U",
+   "title": "רבי שמחה משפיירא – החכם שעיצב מחדש את יהדות אשכנז אחרי החורבן",
+   "image": "fe8e23424c1c36e05387792b",
+   "kind": "illustration",
+   "crop": [
+    140,
+    92,
+    378
+   ]
+  },
+  "302": {
+   "label": "רבי אשתורי הפרחי",
+   "episode": "1aefmtAuxfRcdhiH7R2urg",
+   "title": "רבי אשתורי הפרחי – האיש שהפך את ארץ ישראל ממושג לספר פתוח",
+   "image": "acb03d0d622351e09bf6cf41",
+   "kind": "illustration",
+   "crop": [
+    200,
+    0,
+    340
+   ],
+   "note": "holds a coin in the left hand"
+  },
+  "307": {
+   "label": "הריבב״ן – רבי יהודה בן בנימין הענו",
+   "episode": "1ANs8CZ7mIUXhJFOSBrC3u",
+   "title": "הריבב״ן – החכם הרומאי שעיצב מסורת שלמה",
+   "image": "603bc2d8a990f0ea6c20dbac",
+   "kind": "illustration",
+   "crop": [
+    175,
+    0,
+    385
+   ]
+  },
+  "308": {
+   "label": "הרי״ד הזקן – רבי ישעיה די טראני",
+   "episode": "1RhrrkBapQNDsL3Nc92rS3",
+   "title": "הרב ישעיה די טראני (הרי\"ד הזקן) – החכם שהעז לחשוב אחרת בתוך המסורת",
+   "image": "ec464256de636edd5fc8f540",
+   "kind": "illustration",
+   "crop": [
+    200,
+    38,
+    260
+   ],
+   "note": "two translucent faces of his teachers show at the sides of the crop"
+  },
+  "309": {
+   "label": "רבי אביגדור כ״ץ מווינה",
+   "episode": "0Gbt6DvaXHHA3NQUKn6gAe",
+   "title": "רבי אביגדור כ\"ץ מווינה – האיש שהעביר את מרכז התורה מאיטליה לאשכנז",
+   "image": "a7cb9fd4e9777c16f9f01c23",
+   "kind": "illustration",
+   "crop": [
+    50,
+    60,
+    380
+   ]
+  },
+  "310": {
+   "label": "רבי מנחם בן זרח",
+   "episode": "1EzJwt2utRl4bZDfogQTk3",
+   "title": "רבי מנחם בן זרח – הפוסק שכתב הלכה למי שאין לו זמן ללמוד",
+   "image": "d9e62038745974f9e080177f",
+   "kind": "illustration",
+   "crop": [
+    100,
+    25,
+    350
+   ]
+  },
+  "311": {
+   "label": "רבי יהודה בן הרא״ש",
+   "episode": "2m1fncs0HVkTUF3QjJSqrD",
+   "title": "הרב יהודה בן הרא״ש - המנהיג שהפך גלות למשכן של תורה",
+   "image": "3e3f16e35c8e05de55b800d4",
+   "kind": "illustration",
+   "crop": [
+    120,
+    20,
+    400
+   ]
+  },
+  "312": {
+   "label": "רבי משה מאיוורא",
+   "episode": "09Ok3NEhEHqYG6U2fRRb2J",
+   "title": "רבי משה מאיוורא – האיש שהפך את הספר לרב",
+   "image": "0f34ff130598acd93c3b0371",
+   "kind": "illustration",
+   "crop": [
+    140,
+    60,
+    385
+   ],
+   "note": "two scholars beside him; their edges show at the sides of the crop"
+  },
+  "314": {
+   "label": "רבי יצחק מדורא",
+   "episode": "2JtdoVxOBakR7TWV6cxppI",
+   "title": "רבי יצחק מדורא – הפוסק שעיצב את המטבח היהודי לדורות",
+   "image": "886b286d516fc1aba7cd4e41",
+   "kind": "illustration",
+   "crop": [
+    250,
+    95,
+    390
+   ],
+   "note": "a woman leans over his shoulder; a sliver of her scarf shows at the left edge"
+  },
+  "315": {
+   "label": "רבי נחמן קרוכמל (רנ״ק)",
+   "episode": "0ex690joNUDbh2ClkDxF8w",
+   "title": "רבי נחמן קרוכמל (רנ״ק) – ההוגה שהפך את ההיסטוריה להוכחה לנצח ישראל",
+   "image": "cf3b32cfb553a9e605406bff",
+   "kind": "illustration",
+   "crop": [
+    245,
+    0,
+    365
+   ]
+  },
+  "317": {
+   "label": "רבי שמשון בן צדוק",
+   "episode": "5icFLQJoUIWSCfgYau1reF",
+   "title": "רבי שמשון בן צדוק – התלמיד שהפך את הכלא לבית מדרש",
+   "image": "79c4947a17c7f02fabb94a11",
+   "kind": "illustration",
+   "crop": [
+    175,
+    62,
+    400
+   ],
+   "note": "a second elder behind prison bars shows at the top right (the picture tells the story of his imprisonment)"
+  },
+  "318": {
+   "label": "רבי אהרן הכהן מלוניל",
+   "episode": "1hCgDwZ2J6pMMMANMx4cc1",
+   "title": "רבי אהרן הכהן מלוניל – בין הלכה, מוסר וסוד",
+   "image": "5f38b59d70a0200122887d44",
+   "kind": "illustration",
+   "crop": [
+    30,
+    75,
+    270
+   ],
+   "note": "infographic-style cover (map at the right, a second scene below): the figure is in the upper-left panel"
+  },
+  "319": {
+   "label": "רבי אלכסנדרי זוסלין הכהן (המהרא״ך)",
+   "episode": "03IxTZw4qg4XD0zBCuyEOT",
+   "title": "רבי אלכסנדרי זוסלין הכהן – הפוסק ששמר על התורה מתוך האפר",
+   "image": "72a17a072c40b92c49b05c7c",
+   "kind": "illustration",
+   "crop": [
+    80,
+    30,
+    360
+   ]
+  },
+  "325": {
+   "label": "החיד״א (רבי חיים יוסף דוד אזולאי)",
+   "episode": "2MiUUx51sCblnVdS9i61Xq",
+   "title": "החיד\"א: בין הלכה, קבלה וביבליוגרפיה",
+   "image": "97e0c20d9f47e51a5a1e0cc5",
+   "kind": "illustration",
+   "crop": [
+    60,
+    0,
+    540
+   ],
+   "note": "engraving"
+  },
+  "326": {
+   "label": "שלמה מולכו",
+   "episode": "3FgDgymcQOnmJoDgKQHJMU",
+   "title": "שלמה מולכו: המקובל המשיחי ומסירות נפשו על קידוש השם",
+   "image": "81a0cd6b7530033afc60635a",
+   "kind": "illustration",
+   "crop": [
+    227,
+    148,
+    260
+   ],
+   "note": "the flag with the word at the top is cropped out"
+  },
+  "327": {
+   "label": "רבי שלמה הלוי אלקבץ",
+   "episode": "25yj7KlJBpuYyoAu8YZrDW",
+   "title": "רבי שלמה אלקבץ: אדריכל הקבלה, השבת והפיוט בצפת",
+   "image": "b9bd4911899339eb45a5e887",
+   "kind": "illustration",
+   "crop": [
+    195,
+    40,
+    250
+   ],
+   "note": "scene: four men in white behind him, only his head and chest are in the crop"
+  },
+  "329": {
+   "label": "המהרש״א",
+   "episode": "1W9x8xBNjO6o82fNd87LFb",
+   "title": "המהרש״א – האיש שחיבר בין השכל, הלב והאחריות הציבורית",
+   "image": "d27daa06411a73cee055e887",
+   "kind": "illustration",
+   "crop": [
+    65,
+    10,
+    410
+   ],
+   "note": "box sits left of the head to keep out the ghostly figure with a book at the top right"
+  },
+  "339": {
+   "label": "רבי יוסף בן יהודה אבן שמעון",
+   "episode": "1ViQ7DcT0EfyWtdilDH4oL",
+   "title": "רבי יוסף בן יהודה אבן שמעון – התלמיד שגרם לרמב״ם לכתוב את \"מורה נבוכים\"",
+   "image": "65d8ec07e39da3f8b1268b8a",
+   "kind": "illustration",
+   "crop": [
+    175,
+    0,
+    395
+   ]
+  },
+  "343": {
+   "label": "רבי דוד אבודרהם",
+   "episode": "1sYlXFDONZ0TURq4d0e2RP",
+   "title": "רבי דוד אבודרהם – האיש שהחזיר לתפילה את הנשמה",
+   "image": "88c3289740d8b97cf8234c56",
+   "kind": "illustration",
+   "crop": [
+    150,
+    0,
+    330
+   ]
+  },
+  "344": {
+   "label": "רב סעדיה גאון",
+   "episode": "0Xx2IgT8rAGI5bDBi7qIZJ",
+   "title": "רב סעדיה גאון: הגותו, יצירתו ופולמוסיו ההיסטוריים",
+   "image": "93db9591bcaa8e86aa807a8d",
+   "kind": "illustration",
+   "crop": [
+    110,
+    0,
+    380
+   ]
+  },
+  "345": {
+   "label": "יהודה בן תימא",
+   "episode": "7jdJSWd1gl6zbEReRA5lGR",
+   "title": "יהודה בן תימא: דמותו, הגותו ומורשתו ההלכתית",
+   "image": "8af133f13aa0c65a4f8356bc",
+   "kind": "illustration",
+   "crop": [
+    185,
+    25,
+    315
+   ]
+  },
+  "348": {
+   "label": "רבי משה הדרשן",
+   "episode": "1PpzvwnJnR9ssTIwkuP4Lj",
+   "title": "רבי משה הדרשן – חכם שעיצב את עולם המדרש באירופה",
+   "image": "0cdb3080321559abd9147cbf",
+   "kind": "illustration",
+   "crop": [
+    115,
+    40,
+    395
+   ],
+   "note": "crop stops above the page with numbers"
+  },
+  "349": {
+   "label": "רבי דוד פארדו",
+   "episode": "0gNG3pg6tSS0rP12co2dsU",
+   "title": "רבי דוד פארדו – חכם שהחזיר את התוספתא לחיים",
+   "image": "dd64e85f416bb88712389644",
+   "kind": "illustration",
+   "crop": [
+    105,
+    45,
+    345
+   ],
+   "note": "box sits left of the head to keep two boys at the right out of it"
+  },
+  "350": {
+   "label": "רב אביתר בן אליהו הכהן",
+   "episode": "32gThCfsqISZIYKhU1lXHx",
+   "title": "רב אביתר בן אליהו הכהן – הגאון האחרון שנאבק על כבודה של ארץ ישראל",
+   "image": "59bd578a64670c694bfe30e4",
+   "kind": "illustration",
+   "crop": [
+    135,
+    0,
+    365
+   ],
+   "note": "crusader flag and shield in the background are outside the crop"
+  },
+  "351": {
+   "label": "רבי נתן מרומי",
+   "episode": "2KCKjcc8V8h7lzmGQjwBoh",
+   "title": "רבי נתן מרומי – האיש שפענח את שפת התלמוד והציל את תורת הגאונים",
+   "image": "c3d875a4c70c00fa15a8a087",
+   "kind": "illustration",
+   "crop": [
+    140,
+    0,
+    380
+   ]
+  },
+  "352": {
+   "label": "רבי יצחק אבן גיאת",
+   "episode": "46NRbx8KdsxCK30BzV4tyN",
+   "title": "רבי יצחק אבן גיאת – האיש שחיבר בין בבל לספרד",
+   "image": "41fe531289b7c5ec9fb3a281",
+   "kind": "illustration",
+   "crop": [
+    155,
+    0,
+    445
+   ]
+  },
+  "353": {
+   "label": "רבנו יצחק בן יהודה ממגנצא",
+   "episode": "4tFSo5qQFWExTxQDDj1a8Q",
+   "title": "רבנו  יצחק בן יהודה ממגנצא – האיש שעיצב את ה-DNA של יהדות אשכנז",
+   "image": "c915493a70bbc81da668a730",
+   "kind": "illustration",
+   "crop": [
+    160,
+    20,
+    340
+   ]
+  },
+  "355": {
+   "label": "רבי יהודה בן נתן (הריב״ן)",
+   "episode": "1hZbLF24hEHNSungFw9wDI",
+   "title": "רבי יהודה בן נתן (הריב״ן) – האיש שחיבר בין רש״י לבעלי התוספות",
+   "image": "5d9186094d4933e46d139b96",
+   "kind": "illustration",
+   "crop": [
+    80,
+    40,
+    445
+   ],
+   "note": "two scholars sit at a table behind him"
+  },
+  "386": {
+   "label": "הרב חננאל בן שמואל",
+   "episode": "1iaphVyYGkqHZhmhCfl9jE",
+   "title": "הרב חננאל בן שמואל – המנהיג החסיד ששמר על מורשת הרמב״ם",
+   "image": "868d3bd796a4d0399301f310",
+   "kind": "illustration",
+   "crop": [
+    95,
+    105,
+    415
+   ],
+   "note": "an elder embracing a boy: the boy is inside the crop; the Hebrew name banner above is cropped out"
+  },
+  "388": {
+   "label": "הרלב״ג",
+   "episode": "0m3vCYb6YqsaSJvD0cZfXy",
+   "title": "הרלב״ג – הפילוסוף שהעז לומר: השכל יודע את האמת",
+   "image": "4a036ad28bd4a0770b299932",
+   "kind": "illustration",
+   "crop": [
+    222,
+    108,
+    252
+   ],
+   "note": "the Ralbag's cross-staff (his own invention, the Jacob's staff) is a surveying instrument, not a cross; kept on the owner's say-so; the crop is tight (the head fills most of it) and stops above the staff"
+  },
+  "389": {
+   "label": "דבורה הנביאה",
+   "episode": "1tw5HjBDOm7m0U5rHWSIqm",
+   "title": "דבורה הנביאה – האישה שהקימה עם משותק על רגליו",
+   "image": "59763e63e4a51e8b4568c056",
+   "kind": "illustration",
+   "crop": [
+    250,
+    172,
+    240
+   ],
+   "note": "scene: Deborah seated under the palm; her head is small (about 75 px in the cover)"
+  },
+  "390": {
+   "label": "רבנו שמואל הסרדי",
+   "episode": "5Cdc9RvxyriLFWPFMRfciK",
+   "title": "רבנו שמואל הסרדי – האיש שהפך את ההלכה למשפט חי",
+   "image": "de3dd295a7257bb9b210e7a9",
+   "kind": "illustration",
+   "crop": [
+    235,
+    0,
+    350
+   ]
+  },
+  "391": {
+   "label": "רב מימון הדיין",
+   "episode": "0N9JxxpJynDDTur8c5c0fd",
+   "title": "רב מימון הדיין – האב שעיצב את הרמב\"ם",
+   "image": "c37727796717726a81709ef2",
+   "kind": "illustration",
+   "crop": [
+    120,
+    20,
+    320
+   ]
+  },
+  "393": {
+   "label": "רבי מאיר בן שמעון המעילי",
+   "episode": "2LqX1m0yUTIjrytoK1ZOD1",
+   "title": "רבי מאיר בן שמעון המעילי –האיש שנלחם על אחדות ה׳",
+   "image": "6d12d16646ace363d7c96143",
+   "kind": "illustration",
+   "crop": [
+    50,
+    62,
+    240
+   ],
+   "note": "AI illustration of a disputation: the standing speaker in a tallit is the main figure; the hall and the other men are background"
+  },
+  "395": {
+   "label": "הרשב״א",
+   "episode": "3fFSccuIPUhBryOySLd1mz",
+   "title": "הרשב\"א – עמוד התווך שהחזיק את התורה בספרד הנוצרית",
+   "image": "79c706f476c56e229138149d",
+   "kind": "illustration",
+   "crop": [
+    90,
+    0,
+    400
+   ],
+   "note": "AI illustration; two small men behind him on the right are outside the box"
+  },
+  "397": {
+   "label": "רבי יחיאל בן יקותיאל ענו",
+   "episode": "1tRAsJRFk47EvwWKBYsRZc",
+   "title": "רבי יחיאל בן יקותיאל: כתב יד ליידן וספר המידות",
+   "image": "3fc6d82655e6ea4d9dec8a19",
+   "kind": "illustration",
+   "crop": [
+    20,
+    0,
+    470
+   ],
+   "note": "AI illustration; the top of the turban is cut by the picture itself; Star of David on a chain below the chin; the man at the right starts at x=497"
+  },
+  "403": {
+   "label": "הריא״ז (רבי ישעיה בן אליהו דטראני)",
+   "episode": "5mtDbjislFZkbFTuxrfRWN",
+   "title": "הריא״ז – בין מסורת לפילוסופיה: הקרב על נשמת האמונה",
+   "image": "bf1e4facf1c2ec5ac0ab9455",
+   "kind": "illustration",
+   "crop": [
+    180,
+    0,
+    450
+   ],
+   "note": "AI illustration; the top of the turban is cut by the picture itself"
+  },
+  "407": {
+   "label": "רבי מאיר הכהן מרוטנבורג",
+   "episode": "26lw9FnAGUvrdpyiczTl58",
+   "title": "רבי מאיר הכהן מרוטנבורג – האיש שהציל את אשכנז בתוך ספרו של הרמב\"ם (הגהות מיימוניות)",
+   "image": "23f4e5c62eed83b3f89bec4e",
+   "kind": "illustration",
+   "crop": [
+    0,
+    72,
+    330
+   ],
+   "note": "AI collage: the reader at the left is the main figure (the prisoner in the window at the top right is the teacher); the box holds only him and the castle behind"
+  },
+  "408": {
+   "label": "רבי אליעזר מטוך",
+   "episode": "04Hkb5vYxReuIGq0cTG2fh",
+   "title": "הרב אליעזר מטוך – העורך האלמוני שעיצב את דף הגמרא",
+   "image": "b4be7dfcd84c6d75b6c85146",
+   "kind": "illustration",
+   "crop": [
+    180,
+    0,
+    380
+   ],
+   "note": "AI illustration; ends above the open book (pseudo-text)"
+  },
+  "415": {
+   "label": "רבי שם טוב אבן גאון",
+   "episode": "4WLBwaZKgmiVJPIACa5dJR",
+   "title": "רבי שם טוב אבן גאון – החכם שחיבר בין הלכה, קבלה ואמנות הקודש",
+   "image": "b02cb4374b5648f905ba0c9e",
+   "kind": "illustration",
+   "crop": [
+    90,
+    0,
+    430
+   ],
+   "note": "AI illustration; a few faint pseudo-letters on the parchment behind the turban, nothing readable"
+  },
+  "426": {
+   "label": "רבי שמשון בן אליעזר (ברוך שאמר)",
+   "episode": "0xHQG8l47thPFLrmtWggIG",
+   "title": "רבי שמשון בן אליעזר: האיש ששמר על צורת הקדושה – סיפורו של \"ברוך שאמר\"",
+   "image": "0fcf34ed0f7ed62931abdfb1",
+   "kind": "illustration",
+   "crop": [
+    195,
+    0,
+    395
+   ],
+   "note": "AI illustration; tight (head and beard fill 90% of the box) because a plaque of place names on the left (x<=193) and a scroll at the right (x>=593) leave only 395 px; Jerusalem behind"
+  },
+  "429": {
+   "label": "רבי משה זכות (הרמ״ז)",
+   "episode": "7ApVpshXFmnerqdZj67q7L",
+   "title": "המקובל רבי משה זכות (הרמ\"ז) – האיש שחיבר בין קבלה, הלכה ותיאטרון עברי",
+   "image": "53698b0b9c5a912e20e47e24",
+   "kind": "illustration",
+   "crop": [
+    100,
+    22,
+    363
+   ],
+   "note": "AI illustration; tight (head and beard 82%); the place-name map at the left (x<100) and the framed picture at the right (x>=452, a dark border sliver) are outside"
+  },
+  "430": {
+   "label": "רבי יהודה בר אילאי",
+   "episode": "2oyMTbV94Hphr9dGIMMrWs",
+   "title": "רבי יהודה בר אילאי – עמוד התווך של התורה שבנתה עם מחדש",
+   "image": "118655b9a2bdfd1f8f65fd48",
+   "kind": "illustration",
+   "crop": [
+    245,
+    80,
+    360
+   ],
+   "note": "photorealistic AI render of an ancient sage (not a photograph): water jar on his shoulder"
+  },
+  "431": {
+   "label": "רבי מאיר בעל הנס",
+   "episode": "0TMD6S3lT5s5CLq4cU2s95",
+   "title": "מאור הגולה – רבי מאיר בעל הנס: החכם שראה מעבר לקנקן",
+   "image": "180a7d24854d58220f3b96ff",
+   "kind": "illustration",
+   "crop": [
+    60,
+    172,
+    380
+   ],
+   "note": "AI collage: the man writing is the main figure; the box cuts the beard tip; the label \"Beit Shean\" above (y<=167) and the other scenes are outside; a dog and some men show behind him"
+  },
+  "434": {
+   "label": "הרשב״ץ (רבי שמעון בן צמח דוראן)",
+   "episode": "2H66qv8Pu1ovFslG0esMSO",
+   "title": "הרשב\"ץ – החכם שהפך פליט למנהיג עולם התורה",
+   "image": "4633099eacc556c98a0c3e40",
+   "kind": "illustration",
+   "crop": [
+    305,
+    0,
+    335
+   ],
+   "note": "AI illustration; tight (head 87%) because the plaque with text ends at x=300; head at the right of the box, the top of the turban touches the top edge"
+  },
+  "435": {
+   "label": "רבי שמעון בר יוחאי",
+   "episode": "5jiWdUYsdMQTSRAghuCtHo",
+   "title": "הרב שמעון בר יוחאי – האיש שהצית אש שלא כבתה",
+   "image": "2560cff79350451de790fedc",
+   "kind": "illustration",
+   "crop": [
+    0,
+    58,
+    288
+   ],
+   "note": "AI infographic: the large portrait at the left; the banner above (y<58) and the name below (y>348) are outside; tight (head 91%), left side cut by the picture itself"
+  },
+  "438": {
+   "label": "רב יוסף בר חמא",
+   "episode": "1eP3a8IxlJL1jjrarhy929",
+   "title": "רב יוסף בר חמא והולדת האליטה התורנית של בבל",
+   "image": "74087fb8c8df4264f6c27a9c",
+   "kind": "illustration",
+   "crop": [
+    255,
+    98,
+    320
+   ],
+   "note": "AI illustration; the title plaque at the top left (x<=227) and the scroll below are outside"
+  },
+  "439": {
+   "label": "הרמ״ע מפאנו",
+   "episode": "1T5zGLHEk5d5uLbDzh0vs4",
+   "title": "הרמ\"ע מפאנו - המקובל שגישר את הסוד לשפה של שכל",
+   "image": "c112f0301a10432a4ae166c7",
+   "kind": "illustration",
+   "crop": [
+    60,
+    0,
+    500
+   ],
+   "note": "old engraved print on sepia paper (a print, not a photograph); the quill at the bottom is outside"
+  },
+  "440": {
+   "label": "הרשב״ש (רבי שלמה בן שמעון דוראן)",
+   "episode": "3RNUR7nCj9IMQMgkP8UzrS",
+   "title": "הרשב\"ש - החכם מאלג'יר שנלחם גם במיסיון, גם במיסטיקה, וגם בבורות",
+   "image": "be44f5b40433b0c8ca88837a",
+   "kind": "illustration",
+   "crop": [
+    275,
+    175,
+    216
+   ],
+   "note": "AI illustration of four men at a table: the middle one, named by the plaque above, is the main figure; the plaque ends at y=173; a second man (grey beard) shows at the right edge of the box; small crop (216 px), soft at 384"
+  },
+  "441": {
+   "label": "מהר״י קורקוס",
+   "episode": "318qI4uBEs6NKIcOW2bnsG",
+   "title": "מהר\"י קורקוס - החכם שהכין את ההלכה לגאולה",
+   "image": "cddbcc381b110da97c24537f",
+   "kind": "illustration",
+   "crop": [
+    165,
+    205,
+    320
+   ],
+   "note": "AI infographic: text panels at both sides (x<=163 and x>=493), the title banner above (y<123) and the labels (y<160) are outside; a sliver of paper at the right edge"
+  },
+  "444": {
+   "label": "המהרי״ל",
+   "episode": "4JIgpuKHuW2KrBRlo94aZx",
+   "title": "המהרי\"ל - אדריכל יהדות אשכנז אחרי החורבן",
+   "image": "9151bde9ed0024af86c71a12",
+   "kind": "illustration",
+   "crop": [
+    135,
+    45,
+    365
+   ],
+   "note": "AI illustration; wall parchment with text at the left (x<=137) and the plaque at the right (text from x=513); tight (head and beard 85%)"
+  },
+  "445": {
+   "label": "רבי אברהם קלויזנר",
+   "episode": "0UBQxy7MVsKgQG9FPKNaOg",
+   "title": "רבי אברהם קלויזנר - האיש שהפך את המנהג לחומת ההצלה של יהדות אשכנז",
+   "image": "18edce3f068bb2e00ca801fc",
+   "kind": "illustration",
+   "crop": [
+    150,
+    50,
+    315
+   ],
+   "note": "AI illustration; the wall plaque at the left (x<=137) and the banner text at the right (x>=467) are outside; students at both sides outside"
+  },
+  "449": {
+   "label": "רבי ישראל איסרלן",
+   "episode": "7gv0dndMrYgU3b2qGxFpzW",
+   "title": "רבי ישראל איסרלן - הפוסק שבנה מחדש את יהדות אשכנז מן האפר",
+   "image": "9a66072d5d1d409144c42ca3",
+   "kind": "illustration",
+   "crop": [
+    105,
+    100,
+    315
+   ],
+   "note": "AI infographic: the teacher in the middle of his students; the title banner above (y<=93), the plaques at both sides and the strip of panels below (y>=513) are outside; a student shows at each lower corner of the box"
+  },
+  "452": {
+   "label": "רבי יעקב לנדא",
+   "episode": "0yb35S3e2aa4oFxvWAECuJ",
+   "title": "רבי יעקב לנדא – בין מסורת אשכנז למהפכת הדפוס",
+   "image": "2902b1b1d55b579197962868",
+   "kind": "illustration",
+   "crop": [
+    262,
+    0,
+    378
+   ],
+   "note": "AI illustration; the map with text at the left (x<=260) is outside; the head sits at the left of the box because the picture ends at x=640; Naples behind"
+  },
+  "453": {
+   "label": "רבי יעקב מרגליות מנירנברג",
+   "episode": "2kJuUDKrdyK64FhvumpaJj",
+   "title": "רבי יעקב מרגליות מנירנברג – שומר המסורת האשכנזית בעידן של שינוי",
+   "image": "b1a53d183466f36fc72a759b",
+   "kind": "illustration",
+   "crop": [
+    0,
+    10,
+    330
+   ],
+   "note": "AI infographic: the portrait at the left; the map begins at x=290 (its edge, no text, shows at the top right of the box; the first label is at x=373); the notes and panels below and at the right are outside"
+  },
+  "454": {
+   "label": "המהר״ם מינץ",
+   "episode": "75RPO7QyMxuZh7fl9EQzre",
+   "title": "המהר\"ם מינץ – הרב שניסה להציל את אשכנז המתפוררת",
+   "image": "44c99c8daa84ebe4a8a7c8bb",
+   "kind": "illustration",
+   "crop": [
+    360,
+    80,
+    280
+   ],
+   "note": "AI infographic: the title and subtitle above (y<=73) and the text panels at the left (x<=320) are outside; two readers at the right edge of the box; a bridge and a town behind"
+  },
+  "455": {
+   "label": "רות המואבייה",
+   "episode": "2quAJp7CJMUhUg6u5gafmY",
+   "title": "רות המואבייה – הגיורת שבנתה את מלכות ישראל בחסד",
+   "image": "cd372840be6c520c0c391779",
+   "kind": "illustration",
+   "crop": [
+    0,
+    60,
+    240
+   ],
+   "note": "photorealistic AI render (not a photograph), the left panel of a triptych: inside the panel (it ends at x=267); a small reaper behind at the right edge"
+  },
+  "457": {
+   "label": "רבי יעקב פולק",
+   "episode": "0iCRRqPsHHQlOtKAA6y0JC",
+   "title": "רבי יעקב פולק - ממעבירי מרכז התורה לפולין",
+   "image": "b956672c8c95b47dfe6c6fc1",
+   "kind": "illustration",
+   "crop": [
+    160,
+    220,
+    330
+   ],
+   "note": "AI infographic: head and beard fill 78% of the box; the map labels at the left (x<=137) and the scroll at the right (x>=533) are outside; students sit at the right of the box"
+  },
+  "458": {
+   "label": "רבי שלום שכנא מלובלין",
+   "episode": "4aXaSFHWDx4VYnv5gINNBf",
+   "title": "רבי שלום שכנא מלובלין - ראש הישיבה שהעמיד דור של מנהיגי תורה",
+   "image": "c3c6b293b7437ae61f71092a",
+   "kind": "illustration",
+   "crop": [
+    0,
+    174,
+    286
+   ],
+   "note": "AI infographic: the portrait at the left; the title banner and the \"63 years\" pill above (y<=167) and the info panels at the right (x>=377) are outside; left side cut by the picture itself"
+  },
+  "459": {
+   "label": "המהרי״ק (רבי יוסף קולון)",
+   "episode": "5V8efc6gWfwrgHLR6E1AQZ",
+   "title": "המהרי\"ק - הפוסק שהעניק למנהג קול הלכתי",
+   "image": "d7c951d93ea93f61fb4af949",
+   "kind": "illustration",
+   "crop": [
+    110,
+    100,
+    300
+   ],
+   "note": "AI infographic; the title above (y<=93), the map text at the left (x<=107) and the dark text panel at the right (x>=413) are outside"
+  },
+  "461": {
+   "label": "המהר״ם מפדובה",
+   "episode": "3nkaOJuTuUrJBmHUmfUX8i",
+   "title": "המהר\"ם מפדובה - רב ופוסק בצומת שבין אשכנז, איטליה ומהפכת הדפוס",
+   "image": "8105bb0259c20457f19a9d71",
+   "kind": "illustration",
+   "crop": [
+    0,
+    100,
+    266
+   ],
+   "note": "AI collage: the left figure is the main one; the box cuts the beard tip; the text above (y<=57) and the caption of the printers at the right (x>=270) are outside; a printing press shows behind him"
+  },
+  "462": {
+   "label": "האר״י הקדוש",
+   "episode": "4oDKjvoyolPFMcbYCtO5Zt",
+   "title": "האר\"י הקדוש - המקובל שהפך את האדם לשותף בתיקון הבריאה",
+   "image": "3b12efcbc987482fde750cf9",
+   "kind": "illustration",
+   "crop": [
+    30,
+    15,
+    300
+   ],
+   "note": "photorealistic AI render (not a photograph): a man in white with a kippah looking up; golden sparkles around are part of the picture; students at the right are outside"
+  },
+  "463": {
+   "label": "הרמ״א (רבי משה איסרליש)",
+   "episode": "6GkFVCDreWYr2LmbN3L91b",
+   "title": "הרמ\"א - האיש שפרש מפה אחת על כל ישראל",
+   "image": "475a2dc8779f7caf7b921c9b",
+   "kind": "illustration",
+   "crop": [
+    312,
+    8,
+    328
+   ],
+   "note": "AI infographic: the title plaque ends at x=307 (box starts 312, head at the left of the box); panels below and at the left are outside; Krakow castle behind"
+  },
+  "466": {
+   "label": "רבי יעקב בן חננאל סיקילי",
+   "episode": "0QDA50K2sCFRYcR3kLXrpM",
+   "title": "הרב יעקב בן חננאל סיקילי - החכם שחלם על חידוש הסנהדרין מאות שנים לפני הציונות",
+   "image": "df21cffb9a4abb478ac3a04a",
+   "kind": "illustration",
+   "crop": [
+    300,
+    112,
+    300
+   ],
+   "note": "AI infographic: the title and subtitle lines above end at y=107; the panels at the left (x<=257), the book and plaque below are outside; a ship behind the head at the left"
+  },
+  "469": {
+   "label": "רבי קרשקש וידאל",
+   "episode": "3IdyRVwc1dlzf9R2fYok1q",
+   "title": "רבי קרשקש וידאל - המפשר שהציל את יהדות ספרד ממלחמת תרבות",
+   "image": "aa565fe1e43c9af00253d30d",
+   "kind": "illustration",
+   "crop": [
+    196,
+    158,
+    222
+   ],
+   "note": "AI infographic: the portrait in the middle; the intro lines above (y<=153), the panels at both sides (x<=193 and x>=433) and the name plate below (y>=383) are outside; small crop (222 px), soft at 384"
+  },
+  "477": {
+   "label": "רבי שלמה אבן גבירול",
+   "episode": "3n1i3UevwUsbqZszadtNin",
+   "title": "שלמה אבן גבירול: הגות ושירה",
+   "image": "55c08cd82950acdfe05315e5",
+   "kind": "illustration",
+   "crop": [
+    110,
+    10,
+    452
+   ],
+   "note": "oil-painting style AI picture; the medallion with small marks hangs below the box (y 467+); an astrolabe at the left edge is outside"
+  },
+  "479": {
+   "label": "מהר\"ש נוישטט (רבי שלום מנוישטט)",
+   "episode": "2VMv7A3ajbCJoYjkal4Jff",
+   "title": "מהר״ש נוישטט – האיש שהציל את מסורת אשכנז מן השכחה",
+   "image": "98437f68c8abb5f830d10602",
+   "kind": "illustration",
+   "crop": [
+    0,
+    0,
+    392
+   ],
+   "note": "AI illustration; the plaque with text at the right starts at x=397; head fills 72% of the box"
+  },
+  "481": {
+   "label": "רבי יהודה מוסקאטו",
+   "episode": "7n0jYXxrbyEW9fBiNOO0uc",
+   "title": "יהודה מוסקאטו: דרשן הרנסנס ומשנתו",
+   "image": "94610f91cff65285d4925541",
+   "kind": "illustration",
+   "crop": [
+    265,
+    85,
+    300
+   ],
+   "note": "AI illustration: a standing scholar in a library; the star watermark (bottom right) is outside the box; the head is small (about 100 px)"
+  },
+  "482": {
+   "label": "שמואל (האמורא)",
+   "episode": "5RrrepmekZ3GO4eqGqTHLV",
+   "title": "שמואל (האמורא): פסיקת הלכה ותורתו",
+   "image": "9669057af5a07d7882ece91f",
+   "kind": "illustration",
+   "crop": [
+    70,
+    0,
+    490
+   ],
+   "note": "oil-painting style AI picture"
+  },
+  "485": {
+   "label": "תודוס איש רומי",
+   "episode": "5FpiW245vsxYv7x3SXzLgq",
+   "title": "סמכות דתית ומדיניות אימפריאלית ברומא העתיקה",
+   "image": "bfcb35b2ad819836c4ed5f32",
+   "kind": "illustration",
+   "crop": [
+    140,
+    55,
+    265
+   ],
+   "note": "AI illustration: an elder in armour with a menorah medallion in Rome (Colosseum behind), a roast lamb on the table; the star watermark (bottom right) and the scroll with text are outside the box",
+   "title_confirmed": "the owner confirmed that the playlist rows titled \"Religious Authority ... in Ancient Rome\" are Theodos of Rome (CLAUDE.md, YouTube section); the cover shows an elder with a menorah medallion in Rome and a roast lamb on the table, the story of Theodos"
+  },
+  "487": {
+   "label": "חכם דוד ניטו",
+   "episode": "2wO6vlCjeFe4JEEyWuh8xL",
+   "title": "דוד ניטו: מטה דן ופולמוס הטבע",
+   "image": "a0bbfa07233aec9c060b5537",
+   "kind": "illustration",
+   "crop": [
+    60,
+    0,
+    410
+   ],
+   "note": "AI illustration in 17th-century dress (curled wig, black gown, white bands: how Sephardic rabbis of London and Amsterdam were painted); the book shelf at the right and the tablet below are outside"
+  },
+  "488": {
+   "label": "רבי שלמה אפרים מלונטשיץ (כלי יקר)",
+   "episode": "3nwItn9PGKFfIopZY2AUMZ",
+   "title": "רבי שלמה אפרים מלונטשיץ – ה״כלי יקר״ שהפך את התורה למראה של החברה",
+   "image": "b9fa5877fdb7ee3dab8b4af7",
+   "kind": "illustration",
+   "crop": [
+    110,
+    0,
+    450
+   ],
+   "note": "AI illustration; the open book below the box (y>=463) and the street at the right are outside"
+  },
+  "495": {
+   "label": "רבי משה די ליאון",
+   "episode": "5hjMOYSZfyk2PpvO1z7y60",
+   "title": "תעלומת מחבר ספר הזוהר – רבי משה די ליאון בעין המחקר והמסורת",
+   "image": "b7f3346cf1b675f24ddded54",
+   "kind": "illustration",
+   "crop": [
+    0,
+    25,
+    372
+   ],
+   "note": "AI illustration; a young man behind (face at x>=373) is just outside the box; the book with text is below the box"
+  },
+  "498": {
+   "label": "רבי יהודה קורייאט",
+   "episode": "1nKOHBJ23TLr78cnGNeESU",
+   "title": "רבי יהודה קורייאט - המקובל שהעביר את מורשת המגרב לעידן החדש",
+   "image": "cf6db16c26a541be55e421e9",
+   "kind": "illustration",
+   "crop": [
+    128,
+    12,
+    348
+   ],
+   "note": "AI illustration; box ends left of the printing-house sign at top right"
+  },
+  "499": {
+   "label": "רבי חביב טולידאנו",
+   "episode": "7rk4ockzy5i8MSThnAtJ2b",
+   "title": "רבי חביב טולידאנו - בין שימור המסורת לשינויי הזמן",
+   "image": "3c8b8b2b955b3cf04d80c78d",
+   "kind": "illustration",
+   "crop": [
+    250,
+    0,
+    350
+   ],
+   "note": "AI illustration; box starts right of the wall sign and ends above the family-tree scroll"
+  },
+  "501": {
+   "label": "הצמח צדק (רבי מנחם מנדל שניאורסון)",
+   "episode": "42DP4ZMH6a423Kz6EW30Tx",
+   "title": "הצמח צדק - האדמו\"ר שהפך את חב\"ד למרכז של הלכה והנהגה",
+   "image": "0b591e37691d12a454c9f027",
+   "kind": "illustration",
+   "crop": [
+    57,
+    0,
+    540
+   ],
+   "note": "painting"
+  },
+  "503": {
+   "label": "רבי יהושע בן חנניה",
+   "episode": "4GuQl9XmYIYRZ48ooTWu4Q",
+   "title": "רבי יהושע בן חנניה - החכם שאמר: \"לא בשמים היא\"",
+   "image": "467d27cbc86bc0137c52ae7b",
+   "kind": "illustration",
+   "crop": [
+    192,
+    118,
+    164
+   ],
+   "note": "infographic; tight crop between the title banner and the side panels (164 px)"
+  },
+  "504": {
+   "label": "שמאי הזקן",
+   "episode": "65lrqwQXxGTkyqwur7nji0",
+   "title": "שמאי הזקן - איש האמת והגבולות",
+   "image": "9cf72c42af5e70408666d2ff",
+   "kind": "illustration",
+   "crop": [
+    92,
+    0,
+    245
+   ],
+   "note": "infographic; box stops above the builder's measuring rod, which reads as a cross"
+  },
+  "505": {
+   "label": "הלל הזקן",
+   "episode": "65r9B8NufuGizEvQUqbuM5",
+   "title": "הלל הזקן - נשיא הסנהדרין שהעמיד את הענווה במרכז ההנהגה",
+   "image": "0f10c6e4b9fb648709c272f3",
+   "kind": "illustration",
+   "crop": [
+    220,
+    160,
+    200
+   ],
+   "note": "infographic; box sits between the text above and the sign below"
+  },
+  "506": {
+   "label": "רבי אלעזר בן עזריה",
+   "episode": "581Qie3gJwcdnadi7wnNF2",
+   "title": "רבי אלעזר בן עזריה - המנהיג שהרחיב את שערי בית המדרש",
+   "image": "f90aaa0d80362af18f431f89",
+   "kind": "illustration",
+   "crop": [
+    46,
+    0,
+    344
+   ],
+   "note": "AI illustration; box starts right of the blue banner"
+  },
+  "507": {
+   "label": "רבי אליעזר הגדול (רבי אליעזר בן הורקנוס)",
+   "episode": "1tmf7drUh7Zwm09Ndy0seU",
+   "title": "רבי אליעזר הגדול - האיש שהפסיד בוויכוח, אך עיצב את גבולות ההלכה לדורות",
+   "image": "ac0f5fc7d47141029571b3fd",
+   "kind": "illustration",
+   "crop": [
+    53,
+    8,
+    190
+   ],
+   "note": "infographic; tight crop (190 px) between a second figure and the next panel, beard tip at the lower edge"
+  },
+  "508": {
+   "label": "רבי אליהו בן חיים (הראנ\"ח)",
+   "episode": "0N8Q02IOA6RpiF5hrOfEKn",
+   "title": "רבי אליהו בן חיים - המנהיג שהעניק יציבות הלכתית ליהדות האימפריה העות'מאנית",
+   "image": "69fd39a698c64f436952a8f8",
+   "kind": "illustration",
+   "crop": [
+    168,
+    92,
+    285
+   ],
+   "note": "infographic; box starts under the title banner"
+  },
+  "510": {
+   "label": "שרה שנירר",
+   "episode": "74WdM2qTXHDJy1s5uar69w",
+   "title": "שרה שנירר - מחוללת רשת \"בית יעקב\"",
+   "image": "18a916e37292965ab08c67cf",
+   "kind": "illustration",
+   "crop": [
+    30,
+    0,
+    580
+   ],
+   "note": "pencil drawing; the picture itself cuts the top of the hair"
+  },
+  "521": {
+   "label": "אהרן הכהן",
+   "episode": "5IngtmCeOoXdmrTqXfwz2X",
+   "title": "אהרן הכהן - הכהן הגדול שלימד שהדרך לקרב אנשים לתורה מתחילה באהבתם",
+   "image": "ae54bc298490493a15b4ddb3",
+   "kind": "illustration",
+   "crop": [
+    150,
+    20,
+    315
+   ],
+   "note": "AI illustration; panels around, box keeps the raised hands and stops before the right-hand panel"
+  },
+  "522": {
+   "label": "רב יהודה בר יחזקאל",
+   "episode": "2DC70i2c0rP8sdAlwl9GK7",
+   "title": "רב יהודה בר יחזקאל - מייסד פומבדיתא שעיצב את דרכה של יהדות בבל",
+   "image": "49b7ac1a2261a6ad5ccdf8cf",
+   "kind": "illustration",
+   "crop": [
+    88,
+    8,
+    222
+   ],
+   "note": "four-panel collage, top left panel"
+  },
+  "523": {
+   "label": "בת שבע",
+   "episode": "4UNQPluH9dxCJ2iFFLARso",
+   "title": "בת שבע - אשת החיל שהמליכה את שלמה והעמידה את המלכות למשפט",
+   "image": "29f3110f431106c52ff2f232",
+   "kind": "illustration",
+   "crop": [
+    280,
+    25,
+    300
+   ],
+   "note": "AI illustration"
+  },
+  "524": {
+   "label": "דונה גרציה נשיא",
+   "episode": "4KEUbWUGB7p2s33IjcQe9H",
+   "title": "דונה גרציה נשיא - האישה שהפכה הון וכוח מדיני למפעל הצלה יהודי",
+   "image": "8d587dc096dcc1b54f3a4edb",
+   "kind": "illustration",
+   "crop": [
+    234,
+    0,
+    275
+   ],
+   "note": "AI illustration, Renaissance-style portrait; box starts right of the title text"
+  },
+  "527": {
+   "label": "הרב יהודה ליב דון יחיא",
+   "episode": "6CG8NNLgDoledDaEcqfiyq",
+   "title": "הרב יהודה ליב דון יחיא - בין בריסק, החסידות והציונות",
+   "image": "56d0d1002338e8ab21897f46",
+   "kind": "illustration",
+   "crop": [
+    252,
+    20,
+    388
+   ],
+   "note": "AI illustration; box starts right of the wall poster"
+  },
+  "528": {
+   "label": "הרב יעקב צבי מקלנבורג",
+   "episode": "2xqcoW26Nc7MvI7vYf3wO6",
+   "title": "הרב יעקב צבי מקלנבורג - כשהדקדוק הפך לכלי להגנת המסורת",
+   "image": "ac1f9568fcecfcd41cb6f15c",
+   "kind": "illustration",
+   "crop": [
+    205,
+    48,
+    215
+   ],
+   "note": "infographic; box between the book title and the 1844 sign, beard cut at the lower edge"
+  },
+  "534": {
+   "label": "ילתא",
+   "episode": "04QKg9X1UcXao4jKC8l2t9",
+   "title": "ילתא - האישה שניפצה 400 חביות יין",
+   "image": "90d64cb6c6b170cbc132e6a3",
+   "kind": "illustration",
+   "crop": [
+    165,
+    30,
+    220
+   ],
+   "note": "AI illustration"
+  },
+  "535": {
+   "label": "צרויה",
+   "episode": "6QFstokOsEBpFjfF0PK4d9",
+   "title": "צרויה - האישה שבניה נשאו את שמה בלב מלכות דוד",
+   "image": "84eafe952052508c30298408",
+   "kind": "illustration",
+   "crop": [
+    105,
+    25,
+    300
+   ],
+   "note": "AI illustration"
+  },
+  "536": {
+   "label": "רב חסדא",
+   "episode": "2T8PkeKAtWyvbGc1woL1Mo",
+   "title": "רב חסדא - מן האמוראים הבולטים של בבל, ששילב תורה, יושר ועצמאות כלכלית",
+   "image": "714b1ac25ce36602a5896118",
+   "kind": "illustration",
+   "crop": [
+    112,
+    0,
+    250
+   ],
+   "note": "collage, top panel; box clear of the board with text and the students on the right"
+  },
+  "537": {
+   "label": "רבי אביעד שר שלום באזילה",
+   "episode": "1xfkrLSLqF58zv92rUHVvQ",
+   "title": "רבי אביעד שר שלום באזילה - כשהקבלה, אוקלידס והאסטרונומיה נפגשו בבית המדרש",
+   "image": "4f4f1c449fbddff342a7338b",
+   "kind": "illustration",
+   "crop": [
+    148,
+    70,
+    262
+   ],
+   "note": "AI illustration; posters and a star chart with text around, box clear of them"
+  },
+  "538": {
+   "label": "רבי אברהם בן יצחק מן ההר",
+   "episode": "58ZBOPqe8uF6za2MowMWPT",
+   "title": "רבי אברהם בן יצחק מן ההר - החכם הפרובנסלי שכתביו חזרו מן השכחה",
+   "image": "4888f197558a47082faf5f13",
+   "kind": "illustration",
+   "crop": [
+    165,
+    50,
+    315
+   ],
+   "note": "AI illustration"
+  },
+  "539": {
+   "label": "רבי אליהו בן שלמה זלמן – הגאון מווילנה",
+   "episode": "2QG8sesF3Tb94qHxKli4Ip",
+   "title": "הגאון מווילנה - האיש שהעמיד את התורה במרכז חייו",
+   "image": "d744c7a2d2b65f2d2d6f63a9",
+   "kind": "illustration",
+   "crop": [
+    75,
+    0,
+    460
+   ],
+   "note": "dark oil painting, the picture itself cuts the top of the hat; no watermark; soft: a blurry reproduction of the traditional portrait (kept)",
+   "title_confirmed": "the episode title says \"הגאון מווילנה\" (the Vilna Gaon), the roster's \"The Vilna Gaon (Rabbi Eliyahu ben Shlomo Zalman)\"; the picture is the familiar fur-hat portrait"
+  },
+  "542": {
+   "label": "רבי חיים ויטאל",
+   "episode": "2y0lcRB4uzLoGkNjomROGT",
+   "title": "רבי חיים ויטאל - האיש שהעלה על הכתב את תורת האר\"י ושילב בין קבלה לחקר הטבע",
+   "image": "3e96b82a59b9f2c2c90089fa",
+   "kind": "illustration",
+   "crop": [
+    195,
+    135,
+    240
+   ],
+   "note": "collage; the central figure, box clear of the text panels"
+  },
+  "543": {
+   "label": "רבי חנינא בר פפא",
+   "episode": "05UPnPXXJ2u149d7DKjKzG",
+   "title": "רבי חנינא בר פפא - האמורא שביקש ממלאך המוות 30 יום נוספים",
+   "image": "9720a1e5f1b282c9b82e53ea",
+   "kind": "illustration",
+   "crop": [
+    300,
+    150,
+    260
+   ],
+   "note": "AI illustration; box clear of the dark figure on the left"
+  },
+  "550": {
+   "label": "רבן שמעון בן גמליאל הראשון",
+   "episode": "3VkOzr5s5Qg4QmzPUe7nWG",
+   "title": "רבן שמעון בן גמליאל הראשון - הנשיא שניסה להציל את ירושלים ערב החורבן",
+   "image": "d2c98a4089477e75a32d1b06",
+   "kind": "illustration",
+   "crop": [
+    190,
+    97,
+    230
+   ],
+   "note": "infographic; box under the subtitle band and clear of the side panels"
+  },
+  "551": {
+   "label": "רמי בר פפא",
+   "episode": "4VnklajhWABrqOcpzfKLnK",
+   "title": "רמי בר פפא - האמורא ששמו נאמר בכל סיום מסכת",
+   "image": "ceea32f92f6bed74a71a2198",
+   "kind": "illustration",
+   "crop": [
+    168,
+    85,
+    247
+   ],
+   "note": "AI illustration"
+  },
+  "552": {
+   "label": "רפרם בר פפא",
+   "episode": "1jetsbe7jLiTRIFC2KF3Cy",
+   "title": "רפרם בר פפא - האמורא שחיבר בין הלכה, מדע וחורבן המקדש",
+   "image": "e57436da8d5e2d4b0e1b3d92",
+   "kind": "illustration",
+   "crop": [
+    175,
+    55,
+    230
+   ],
+   "note": "AI illustration; box starts right of the wall inscription"
+  },
+  "553": {
+   "label": "שרח בת אשר",
+   "episode": "1sHuHvUl51sFQ0MqtH3Eq9",
+   "title": "שרח בת אשר - האישה שחיה בין יעקב אבינו, יציאת מצרים ומלכות דוד",
+   "image": "cfb0d160c21137d16c2eb3bc",
+   "kind": "illustration",
+   "crop": [
+    225,
+    95,
+    180
+   ],
+   "note": "collage; the central figure, small crop (180 px) between two smaller copies of her"
+  },
+  "558": {
+   "label": "הבעל שם טוב (רבי ישראל בעש\"ט)",
+   "episode": "6rC6Xp3rCNJe1Zq2V9DeVz",
+   "title": "הבעל שם טוב - החכם שהפך את השמחה למהפכה רוחנית",
+   "image": "19bd28b3a53879a75a6a5694",
+   "kind": "illustration",
+   "crop": [
+    228,
+    75,
+    214
+   ],
+   "note": "AI illustration"
+  },
+  "575": {
+   "label": "עזרא הסופר",
+   "episode": "0DqVCI0YepU9u1k1v1IwZV",
+   "title": "עזרא הסופר – מנהיג בלי חרב, עם ספר",
+   "image": "c57515ba6a322e2e8ea129a3",
+   "kind": "illustration",
+   "crop": [
+    232,
+    0,
+    176
+   ],
+   "note": "colourised print of a man reading the Law to the people (the board in his hands is left of the box); small crop (176 px)"
+  },
+  "580": {
+   "label": "רבי יהודה הנשיא",
+   "episode": "5Mo5I6mAkAQs8SSchCY37k",
+   "title": "רבי יהודה הנשיא: בין חתימת המשנה להנהגת העם",
+   "image": "815ee997c62d040bc142f509",
+   "kind": "illustration",
+   "crop": [
+    395,
+    150,
+    210
+   ],
+   "note": "AI illustration; the soldier behind him stays outside"
+  },
+  "583": {
+   "label": "רבי יצחק הלוי (סגן לויה)",
+   "episode": "4mph8tbv9qfvaXuaEBr9Ci",
+   "title": "רבי יצחק בר אלעזר הלוי – הרב שעיצב את רש״י ואת יהדות אשכנז",
+   "image": "1f4bcf9d0d46b537369745c1",
+   "kind": "illustration",
+   "crop": [
+    330,
+    60,
+    300
+   ],
+   "note": "AI illustration"
+  },
+  "588": {
+   "label": "רבי משה מקוצי (הסמ\"ג)",
+   "episode": "7n2v9V9wIbuzvYSKeEVWJ6",
+   "title": "רבי משה מקוצי (הסמ\"ג) ומשנתו, האיש שראה את התלמוד נשרף ובנה ממנו מגדל",
+   "image": "9318c3269b3d911f8013ad3a",
+   "kind": "illustration",
+   "crop": [
+    140,
+    50,
+    340
+   ],
+   "note": "AI illustration; the star mark is at the bottom right, outside the box"
+  },
+  "591": {
+   "label": "רבן גמליאל דיבנה",
+   "episode": "0ufYEm4mK1VJIuNFrlPD8h",
+   "title": "רבן גמליאל דיבנה - הנשיא שהוביל את שיקום ההנהגה היהודית לאחר החורבן",
+   "image": "5237fd4cccd7fe239ba7566b",
+   "kind": "illustration",
+   "crop": [
+    190,
+    85,
+    240
+   ],
+   "note": "collage; the central figure"
+  },
+  "592": {
+   "label": "רבן יוחנן בן זכאי",
+   "episode": "2xtPjdgHnPUi784yQ4DxHg",
+   "title": "רבן יוחנן בן זכאי - המנהיג שהוביל את המעבר מן החורבן אל השיקום",
+   "image": "9a1deb350fff1716a7cbbdd6",
+   "kind": "illustration",
+   "crop": [
+    290,
+    142,
+    285
+   ],
+   "note": "infographic; box under the title text and clear of the soldier at the right"
+  },
+  "597": {
+   "label": "שמואל הנגיד",
+   "episode": "3YUANz5PhKviQJ1xCDKbVQ",
+   "title": "שמואל הנגיד: תור הזהב ושירת הישועה",
+   "image": "fda1b5becdfedcb47a18b081",
+   "kind": "illustration",
+   "crop": [
+    75,
+    0,
+    440
+   ],
+   "note": "painting-style AI portrait; the sword is outside the box"
+  },
+  "603": {
+   "label": "רבי יעקב אבן חביב (עין יעקב)",
+   "episode": "3dm5K7dHWAcSyacS1p49Pk",
+   "title": "עין  יעקב: עולמו ופועלו של רבי יעקב אבן חביב",
+   "image": "9d95afbe4a5b7c745c781dda",
+   "kind": "illustration",
+   "crop": [
+    330,
+    185,
+    215
+   ],
+   "note": "AI illustration"
+  },
+  "604": {
+   "label": "רבי יעקב בן יקר",
+   "episode": "3JqKF5U2CNBQNcxA6Yd8sF",
+   "title": "רבי יעקב בן יקר: רבו של רש\"י ומסורת אשכנז",
+   "image": "74a104c77c79c5443bc38e3b",
+   "kind": "illustration",
+   "crop": [
+    170,
+    0,
+    380
+   ],
+   "note": "AI illustration"
+  },
+  "605": {
+   "label": "רבי יוסי בן חלפתא",
+   "episode": "3yP4JQIYGcmwGbz1tA3SFN",
+   "title": "רבי יוסי בן חלפתא - התנא ש\"נימוקו עמו\"",
+   "image": "85f9d2a25ae5bde0df6db89c",
+   "kind": "illustration",
+   "crop": [
+    0,
+    80,
+    280
+   ],
+   "note": "AI illustration"
+  },
+  "606": {
+   "label": "מרדכי היהודי",
+   "episode": "6E7IM9HeG9fNxZ9iS9q0s4",
+   "title": "מרדכי היהודי – האיש שחיבר בין סנהדרין לארמון המלך",
+   "image": "592384f220bc54ed868efffc",
+   "kind": "illustration",
+   "crop": [
+    130,
+    35,
+    340
+   ],
+   "note": "AI illustration"
+  },
+  "607": {
+   "label": "יצחק שמואל רג׳יו (יש״ר מגוריציה)",
+   "episode": "0bXIGWo64SILhVlnTrallw",
+   "title": "יצחק שמואל רג'יו (יש\"ר) – האיש שניסה לבנות גשר בין התורה למודרנה",
+   "image": "a4a8eeaf5b972e7dae309965",
+   "kind": "illustration",
+   "crop": [
+    100,
+    0,
+    500
+   ],
+   "note": "print (engraving), a coarse scan"
+  },
+  "608": {
+   "label": "הרב יוסף דוב הלוי סולובייצ׳יק (הגרי״ד)",
+   "episode": "4dG8KDTRRjIuVy0J4lXLLo",
+   "title": "הרב יוסף דוב סולובייצ'יק - איש ההלכה שחי בין שני עולמות",
+   "image": "128d6caa1e238a2d43e36d01",
+   "kind": "illustration",
+   "crop": [
+    282,
+    64,
+    330
+   ],
+   "note": "realistic AI likeness of a modern figure; the ark curtain's Hebrew lettering ends at x=281, so the box starts at 282 (the tip of the glasses' arm at the left is cut by a few pixels)"
+  },
+  "610": {
+   "label": "הרבנית חיה מושקא שניאורסון",
+   "episode": "41vgg36ZlQh7fHiDHDoTwp",
+   "title": "הרבנית חיה מושקא שניאורסון - שותפות רוחנית, מסירות נפש והנהגה שקטה",
+   "image": "ca78f21b88f3248529fc5018",
+   "kind": "photo",
+   "crop": [
+    0,
+    0,
+    640
+   ],
+   "note": "photograph approved by the owner; colourised close-up, the face fills the whole frame so the box is the entire cover; no watermark"
+  },
+  "613": {
+   "label": "לאה אמנו",
+   "episode": "5w5U7Y1zeZaiSWtmmA9Ev8",
+   "title": "לאה אמנו - האישה שתפילתה שינתה את גורלה",
+   "image": "68d0005bdf44dd8aa7d975a0",
+   "kind": "illustration",
+   "crop": [
+    145,
+    30,
+    285
+   ],
+   "note": "AI illustration"
+  },
+  "615": {
+   "label": "רב נחמן בר פפא",
+   "episode": "3jacnS80DsxAGMO6Si3S41",
+   "title": "רב נחמן בר פפא - האמורא שהתפלל והגשם ירד",
+   "image": "8d8b063496d9d8815a3489e3",
+   "kind": "illustration",
+   "crop": [
+    190,
+    160,
+    210
+   ],
+   "note": "collage; the central figure"
+  },
+  "616": {
+   "label": "גדליהו בן אחיקם",
+   "episode": "0mqkIuCxWVRVmUhugvgUWl",
+   "title": "גדליהו בן אחיקם - הרצח שכיבה את התקווה האחרונה ביהודה",
+   "image": "9d0ad6f6d0a6f873ff276bbb",
+   "kind": "illustration",
+   "crop": [
+    358,
+    30,
+    177
+   ],
+   "note": "AI illustration; tight crop (177 px): the assassin behind him ends at the left edge and the old man at the right begins just outside"
+  },
+  "618": {
+   "label": "הרב אליעזר יהודה וולדנברג (הציץ אליעזר)",
+   "episode": "10vxjISIbCayZsVsHOxPXS",
+   "title": "הציץ אליעזר - הפוסק שהכניס את הרפואה המודרנית לבית המדרש",
+   "image": "5a6c8b5256a088df2c5fb877",
+   "kind": "illustration",
+   "crop": [
+    30,
+    10,
+    480
+   ],
+   "note": "realistic AI likeness of a modern figure; he holds a book beside his face"
+  },
+  "619": {
+   "label": "רבי אחאי בר פפא",
+   "episode": "5UnOSf9p89BTOE0JvSRkNB",
+   "title": "רבי אחאי בר פפא - החכם שנכנס להדרן למרות שחי דורות לפני רב פפא",
+   "image": "e206b6a50d09e450fe39df40",
+   "kind": "illustration",
+   "crop": [
+    170,
+    60,
+    335
+   ],
+   "note": "AI illustration"
+  },
+  "620": {
+   "label": "הרב חנן פורת",
+   "episode": "32ZOjZ7ks26vRGCcPdt0pU",
+   "title": "הרב חנן פורת - האיש שסירב לבחור בין התורה לחיים",
+   "image": "7d98cc499ea9228e3205887a",
+   "kind": "illustration",
+   "crop": [
+    250,
+    80,
+    230
+   ],
+   "note": "realistic AI likeness of a modern figure (a man leaning on an olive tree, Jerusalem hills behind)"
+  },
+  "621": {
+   "label": "רבי מנחם רקנאטי",
+   "episode": "3ClGfKlKMCkIYPMAsM3Mjo",
+   "title": "רבי מנחם רקנאטי - המקובל שהפך את הזוהר לספר יסודיי",
+   "image": "9d910b55096e275524f5bf32",
+   "kind": "illustration",
+   "crop": [
+    95,
+    45,
+    370
+   ],
+   "note": "AI illustration"
+  },
+  "624": {
+   "label": "אימא שלום",
+   "episode": "0JARNwvbyB634RZzniPZhJ",
+   "title": "אימא שלום - האישה שעמדה בין רבי אליעזר לרבן גמליאל",
+   "image": "5227802ae2ff85fce4e4f772",
+   "kind": "illustration",
+   "crop": [
+    140,
+    20,
+    265
+   ],
+   "note": "AI illustration"
+  },
+  "625": {
+   "label": "רבי רפאל בירדוגו (המלאך רפאל)",
+   "episode": "1b1k2Mg2koS5Li6L1is5nM",
+   "title": "רבי רפאל בירדוגו - \"המלאך רפאל\" של מקנס",
+   "image": "db44097a81ce120d85fb147d",
+   "kind": "illustration",
+   "crop": [
+    105,
+    70,
+    370
+   ],
+   "note": "AI illustration"
+  },
+  "626": {
+   "label": "רבי נתן שפירא הירושלמי (הרב הנשי״א)",
+   "episode": "3hzrkzf5aotISpShNVrIiW",
+   "title": "רבי נתן שפירא הירושלמי - המקובל שסידר את כתבי האר״י",
+   "image": "399b54580c3edb0dae04562c",
+   "kind": "illustration",
+   "crop": [
+    150,
+    70,
+    290
+   ],
+   "note": "AI illustration"
+  },
+  "629": {
+   "label": "מרים הנביאה",
+   "episode": "7kOM2DavDUXYPcc4dWRv9A",
+   "title": "מרים הנביאה - האישה שהאמינה בגאולה עוד לפני שהים נבקע",
+   "image": "4610b94d836f6b22fe194899",
+   "kind": "illustration",
+   "crop": [
+    446,
+    78,
+    194
+   ],
+   "note": "triptych, right panel (the older Miriam, with a staff); small crop (194 px)"
+  },
+  "630": {
+   "label": "רבי משה אלשיך (האלשיך הקדוש)",
+   "episode": "7xXl4sOy18MABmQdtXzrQu",
+   "title": "רבי משה אלשיך - הדרשן הקדוש מצפת שהאר\"י אמר לו: נשמתך נועדה לגלות את סודות התורה בדרך אחרת",
+   "image": "03d08a381456a639fa1f66a1",
+   "kind": "illustration",
+   "crop": [
+    105,
+    45,
+    400
+   ],
+   "note": "AI illustration; the Alshich at a lectern, an open book below the box; the ark curtain's star and crown at the far left are outside it; no watermark"
+  },
+  "631": {
+   "label": "רבי שמואל די אוזידא (בעל מדרש שמואל)",
+   "episode": "6Umixwtvl1Jh3iq0E1sCHW",
+   "title": "רבי שמואל די אוזידא - המקובל מצפת שהציל את חכמת הראשונים מן השכחה",
+   "image": "725b5f77c16f2bd9bbfba6a9",
+   "kind": "illustration",
+   "crop": [
+    150,
+    60,
+    300
+   ],
+   "note": "AI illustration; the scholar writing with a quill at a table, his hand at his temple; the manuscript pages (text) begin below the box; no watermark"
+  },
+  "632": {
+   "label": "רבי משה מטראני (המבי״ט)",
+   "episode": "0V7vkwok6itxSw9niOhmW0",
+   "title": "רבי משה מטראני (המבי\"ט) - החכם מצפת שהעז לחלוק על הבית יוסף במשך ארבעים שנה",
+   "image": "fde91d1b2098b52d84a6bd46",
+   "kind": "illustration",
+   "crop": [
+    208,
+    88,
+    310
+   ],
+   "note": "AI illustration; the Mabit at his desk; the ark curtain's lettering \"בית מדרש צפת\" ends just left of the box (x 205) and the book spines and open pages with text are below it; tight on the left shoulder; no watermark"
+  },
+  "633": {
+   "label": "רבי חזקיה בן מנוח (החזקוני)",
+   "episode": "6VBVggnMCgZu86mq2JMniv",
+   "title": "רבי חזקיה בן מנוח - החזקוני: הפרשן שהסתיר את שמות רבותיו כדי שהאמת תדבר בעד עצמה",
+   "image": "90ab922372a329321bad392e",
+   "kind": "illustration",
+   "crop": [
+    195,
+    50,
+    370
+   ],
+   "note": "AI illustration; the Chizkuni at his desk, quill in hand; the page text begins below the box; no watermark"
+  }
+ },
+ "_left_out": {
+  "6": {
+   "label": "עקילס מפונטוס – הגר שהפך את השפה היוונית לכלי נשק של תורה",
+   "episode": "71nqAiPfV8HB7EWCckohvG",
+   "reason": "other-person",
+   "note": "two men of equal weight: a Roman in a toga holding a scroll marked Aelia Capitolina (left) and a scribe in a tallit (right); no single clear main figure, and the scribe cannot be cut clear of a third face at the right edge"
+  },
+  "9": {
+   "label": "תרגום השבעים",
+   "episode": "0KlkCaGEiFapr5FKt6Vt9u",
+   "reason": "other-person",
+   "note": "no figure: the Septuagint, a young man in a tunic with a scroll before the lighthouse of Alexandria; the entry is the translation, not a man"
+  },
+  "16": {
+   "label": "מהפכת הרמב\"ם, תגובת ספרד ומורשת הרמ\"א – הקרב על נשמתה של התורה",
+   "episode": "4NKKrtI7AcK5wwQ0ejB7h1",
+   "reason": "other-person",
+   "note": "the entry is a topic (the Rambam revolution, the Spanish response, the Rema's legacy), not one man; the picture shows one man in a Polish hat in a Krakow study"
+  },
+  "18": {
+   "label": "רבי עובדיה מברטנורא (הרע״ב)",
+   "episode": "2OEMGQeVLEIKytDCVSLS4c",
+   "reason": "quality",
+   "note": "figure too small: the rabbi stands on a ship deck, his head is about 40 px wide; a head-and-shoulders box would be under 160 px"
+  },
+  "28": {
+   "label": "ר' יצחק בן אשר הלוי (ריב\"א הראשון)",
+   "episode": "0Mz2W0BVeqiMBdoN55MrM3",
+   "reason": "text",
+   "note": "no crop avoids the parchment with Hebrew-like lines pinned on the wall beside the hat; the book in his hands shows Hebrew-like lines too"
+  },
+  "38": {
+   "label": "חכמי פרובנס – בין נרבון, בית דוד והמיסטיקה הראשונה: המרכז היהודי ששבר את המפה הרוחנית של ימי הביניים",
+   "episode": "28wg8VCd8QFBLQiEa8y15f",
+   "reason": "other-person",
+   "note": "triptych of three scenes (a seated scholar, travellers, soldiers and scholars); the entry is the sages of Provence, a group, no single main figure"
+  },
+  "42": {
+   "label": "רבי יצחק סגי נהור",
+   "episode": "16NM4luayYQvcaoGO21kWg",
+   "reason": "text",
+   "note": "a halo of large Hebrew letters (some forming word-like clusters) fills every crop around the head, and a bright flare bar crosses his eyes"
+  },
+  "48": {
+   "label": "בנימין מטודלה – העד הנאמן של ישראל בגלות, שגילה את העולם היהודי במאה ה־12",
+   "episode": "6uPNMCDmtJeamUc81SVz8X",
+   "reason": "text",
+   "note": "the map behind him carries place names in Latin letters (a misspelled CONSTANTON LE, BAGHAD, TUDELA) right beside the head; no crop avoids them"
+  },
+  "55": {
+   "label": "ילקוט שמעוני",
+   "episode": "7tKvMKCTFSZebvK2vj0U5b",
+   "reason": "other-person",
+   "note": "no figure: the title page of the book Yalkut Shimoni (a Hebrew printed page)"
+  },
+  "57": {
+   "label": "הרב חסדאי קרשקש",
+   "episode": "2zU0Aketj3W85PjNE1z3Vb",
+   "reason": "text",
+   "note": "a blackboard covered with large Hebrew-like words and arrows stands right behind his head; no crop avoids it"
+  },
+  "58": {
+   "label": "רבי אפרים אנקווה – 'הרב הרוכב על האריה'",
+   "episode": "7q3U1w91U94YzhWhEWkgSB",
+   "reason": "other-person",
+   "note": "no figure: a round seal showing a rabbi on a lion, with the French text ARRIVEE DU RABB A TLEMCEN"
+  },
+  "59": {
+   "label": "רבי יצחק קנפנטון",
+   "episode": "2xytN0uGuTq03wNYWvusDO",
+   "reason": "text",
+   "note": "glowing equations, triangles and symbols start right at his turban and fill the space beside the head; no crop avoids them"
+  },
+  "71": {
+   "label": "רבי משה קורדובירו (הרמ״ק)",
+   "episode": "6eeW3Kknuudy4VEELZmcof",
+   "reason": "photo",
+   "note": "no crop: no figure (a photograph of the Ramak's gravestone with its Hebrew inscription)"
+  },
+  "76": {
+   "label": "רבי יואל סירקיש (הב\"ח)",
+   "episode": "2owg9vip33cnirUkUc97Gw",
+   "reason": "photo",
+   "note": "no crop: no figure (a photograph of the Bach's gravestone behind an iron gate)"
+  },
+  "85": {
+   "label": "רבי יהודה רוזאניס (1657–1727) – המשנה למלך: עיון תלמודי ופילוסופיית ההלכה",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "app link not resolved: https://spotifycreators-web.app.link/e/1mcxPFf4yQb"
+  },
+  "89": {
+   "label": "הרב יעקב עמדין (יעב\"ץ)",
+   "episode": "1beLl51NE2qBVK8f7hj2Qm",
+   "reason": "quality",
+   "note": "an extreme close-up: the only box that holds the eyes ends at the lips, so the chin is cut (a wider box reaches book pages with text); dropped at integration, the reviewer's crop is kept here",
+   "crop": [
+    126,
+    28,
+    377
+   ],
+   "image": "d98d2ceb3e6648d0d91d5d71"
+  },
+  "92": {
+   "label": "רבי אברהם גרשון מקיטוב (1701–1761) – גיס הבעל שם טוב: עלייה לארץ וחסידות מוקדמת",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "app link not resolved: https://spotifycreators-web.app.link/e/HXK4lf94yQb"
+  },
+  "97": {
+   "label": "רבי אריה לייב הלר (1745–1812) – קצות החושן: לוגיקה הלכתית ועמקות למדנית",
+   "episode": "0HSuP49BFeLukQQnSTadlP",
+   "reason": "text",
+   "note": "AI illustration; letters of the background (a lattice of Hebrew letters) sit beside the head at every box size"
+  },
+  "108": {
+   "label": "הרב יהודה אלקלעי – תשובה שהופכת לתוכנית לאומית",
+   "episode": "6GD0RxzoBaG17nmaGA9pe9",
+   "reason": "text",
+   "note": "AI-enhanced engraving-look portrait; the face fills the frame, any box with the whole head also holds the garbled map labels JERBALEM (x 567-620, y 330) and JERUSAEN (x 120-167, y 461)"
+  },
+  "111": {
+   "label": "הרב צבי הירש חיות (מהר\"ץ חיות)",
+   "episode": "7qsdQhzQdtrX80wVbwkfmZ",
+   "reason": "photo",
+   "note": "uncertain: photographic face composited into a drawn sepia scene (it reads as a photograph at 384 px); the crop is the one that was kept, small figure on a broken bridge, tight box",
+   "crop": [
+    235,
+    125,
+    200
+   ],
+   "image": "03f84dc814c32dc6c83fd569"
+  },
+  "113": {
+   "label": "רבי ישראל מסלנט",
+   "episode": "6SEbHVgsFhOJsCIvwTInSY",
+   "reason": "photo",
+   "note": "old sepia photograph with scratches",
+   "crop": [
+    50,
+    0,
+    530
+   ],
+   "image": "a5b2c3bccb03d2677d3591a3"
+  },
+  "116": {
+   "label": "המהרי\"ל דיסקין",
+   "episode": "6Bp9QqhUSS3A8y5iZkBU55",
+   "reason": "photo",
+   "note": "old high-contrast photograph, the hat is cut at the top",
+   "crop": [
+    20,
+    0,
+    600
+   ],
+   "image": "44fa0f6ccd35d6d93497a930"
+  },
+  "117": {
+   "label": "הרב צדוק הכהן מלובלין – המיסטיקן האינטלקטואלי",
+   "episode": "6DLhfveOXBJupYoYqgceWx",
+   "reason": "photo",
+   "note": "uncertain: sepia library scene in a vintage-photograph look (small figure in profile), either a real photograph or a generated picture",
+   "crop": [
+    335,
+    130,
+    240
+   ],
+   "image": "61d0a2399aa3bd6f8f5e1f82"
+  },
+  "120": {
+   "label": "הרב שמואל מוהליבר – מנהיג דתי ומבשר הציונות",
+   "episode": "5T2FtQnfoEkvsFnCYyFBcQ",
+   "reason": "photo",
+   "note": "photograph composite: the face is cut out and set on an illustrated town; the box takes in the top of the music-staff swirl",
+   "crop": [
+    110,
+    0,
+    420
+   ],
+   "image": "d3d22a2268234d1e9636d509"
+  },
+  "123": {
+   "label": "ערוך השולחן (הרב יחיאל מיכל אפשטיין)",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "127": {
+   "label": "החפץ חיים (רבי ישראל מאיר הכהן)",
+   "episode": "4xzoaG2b7YdsCB3rb0aPPf",
+   "reason": "photo",
+   "note": "colourised photograph",
+   "crop": [
+    20,
+    0,
+    620
+   ],
+   "image": "c3444309af1c6adaaa07ad12"
+  },
+  "128": {
+   "label": "רבי מאיר שמחה הכהן מדווינסק",
+   "episode": "5M242GRqncgReaYVplhjBU",
+   "reason": "photo",
+   "note": "sepia photograph; face fills the frame, no watermark here; the episode title names his book, Meshech Chochmah",
+   "crop": [
+    0,
+    0,
+    640
+   ],
+   "image": "bfca731a70e85eaa9ab7d9fb"
+  },
+  "129": {
+   "label": "השפת אמת – ההוגה שחיפש את האמת הפנימית",
+   "episode": "2rV5jFlhaSLJasVNdd0rMf",
+   "reason": "photo",
+   "note": "uncertain: realistic face with an invented background (ruined wooden shul left, synagogue and menorahs right); either a photograph with a generated background or a realistic generated likeness",
+   "crop": [
+    60,
+    0,
+    540
+   ],
+   "image": "37d6ac08fa86c2571724a363"
+  },
+  "130": {
+   "label": "הסבא מנובהרדוק – מהפכת המוסר של 'מדרגת האדם'",
+   "episode": "7gMcU9ypTl2wkJLtZmnT6S",
+   "reason": "photo",
+   "note": "no crop: group scene, a colourised photograph of a boys' classroom, the teacher is seen from the side with his face hidden"
+  },
+  "131": {
+   "label": "הרב שמואל בורנשטיין – בעל 'שם משמואל'",
+   "episode": "5dTIktS4k7pzb2kSQbqtXB",
+   "reason": "photo",
+   "note": "colourised photograph; face fills the frame, no watermark here",
+   "crop": [
+    0,
+    0,
+    630
+   ],
+   "image": "f720f0fd162566e436dd82ad"
+  },
+  "132": {
+   "label": "הרב יוסף רוזין (הגאון הרוגצ'ובי)",
+   "episode": "4aUeMLx5QyMsdp0moTBcDu",
+   "reason": "photo",
+   "note": "colourised photograph; face fills the frame, no watermark here",
+   "crop": [
+    0,
+    0,
+    640
+   ],
+   "image": "a114bfa6fc058579a79efcef"
+  },
+  "133": {
+   "label": "הרב יהודה משה ישועה פתיה",
+   "episode": "7GkxO9MSNQCoBw1qdYuJVI",
+   "reason": "photo",
+   "note": "colourised photograph (tinted), seated with an open book",
+   "crop": [
+    120,
+    0,
+    460
+   ],
+   "image": "1e00ef0119acf593060e81c7"
+  },
+  "134": {
+   "label": "הרב אברהם יצחק הכהן קוק – החזון שאיחד קודש וחול",
+   "episode": "19vVkCaNfYWm6AlvbjbkRe",
+   "reason": "photo",
+   "note": "colourised photograph on a stone wall; the title \"Mishnat HaRaayah\" is his teaching (he is the Raayah)",
+   "crop": [
+    30,
+    0,
+    610
+   ],
+   "image": "08d8f7c714b68fbf987db66e"
+  },
+  "135": {
+   "label": "הלל צייטלין (1871–1942) – פילוסוף יהודי בין ניטשה לחסידות, שנרצח בשואה",
+   "episode": "7ryT3CCkYVR89sx6pICBmo",
+   "reason": "photo",
+   "note": "uncertain: realistic man reading at a wooden table in a wood; the hands look generated, but it may be a colourised photograph",
+   "crop": [
+    80,
+    0,
+    520
+   ],
+   "image": "425c5025d6f456dcc0411b58"
+  },
+  "136": {
+   "label": "הרב כלפון משה הכהן (1874–1950) – רב ג'רבא: הלכה, הנהגה וציונות דתית בצפון אפריקה",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "app link not resolved: https://spotifycreators-web.app.link/e/JLk74X14yQb"
+  },
+  "137": {
+   "label": "הרב יצחק אלפייה",
+   "episode": "0K70gzGHWICiSDkIOQKFip",
+   "reason": "photo",
+   "note": "black and white photograph",
+   "crop": [
+    20,
+    0,
+    620
+   ],
+   "image": "e265f66002a1a327e7344afc"
+  },
+  "138": {
+   "label": "הרב בן־ציון מאיר חי עוזיאל",
+   "episode": "19Z8t6pZZjaOTG652Clx9c",
+   "reason": "photo",
+   "note": "colourised photograph, the rabbi in the foreground with Ben-Gurion behind him at the left; star watermark at the bottom-right outside the box",
+   "crop": [
+    290,
+    10,
+    280
+   ],
+   "image": "dc6cef4f822e56c70804efc5"
+  },
+  "139": {
+   "label": "הרב יעקב משה חרל\"פ (1882–1951) – תלמיד הרב קוק: קבלה, תשובה וגאולת ישראל",
+   "episode": "2n7Iq3y6sKhtYLYdjnVUFZ",
+   "reason": "photo",
+   "note": "photograph with a generated background (a scroll with Hebrew text and Jerusalem); the box starts below the small text plates and leaves the hat crown cut",
+   "crop": [
+    150,
+    95,
+    410
+   ],
+   "image": "0e7a61d015ffd20dec03658d"
+  },
+  "140": {
+   "label": "הרב אריה לוין",
+   "episode": "3DpekO1U2gizKVNXJlWwha",
+   "reason": "photo",
+   "note": "colourised photograph, face fills the frame, no watermark here",
+   "crop": [
+    10,
+    0,
+    620
+   ],
+   "image": "f5b0a1db90e33af392e730e8"
+  },
+  "143": {
+   "label": "האדמו\"ר מפיאסצ'נה (1889–1942) – קודש בתוך החורבן: תורה פסיכולוגית, אמונה ועמידה בגטו ורשה",
+   "episode": "462p60k0hrJUeoi1OiEtfD",
+   "reason": "photo",
+   "note": "colourised photograph with a star watermark at the bottom-right (outside the box); a faint printed heading shows through behind the head",
+   "crop": [
+    10,
+    0,
+    580
+   ],
+   "image": "f66ea7e1a9f3cfee51f90e01"
+  },
+  "144": {
+   "label": "הרב עובדיה הדאיה",
+   "episode": "7mpAfEie4L4nvzNmMg7hji",
+   "reason": "photo",
+   "note": "old sepia photograph, low resolution",
+   "crop": [
+    20,
+    0,
+    620
+   ],
+   "image": "4c6a4944b7a0e7139f4f1626"
+  },
+  "146": {
+   "label": "חכם מנחם מנשה",
+   "episode": "12xZKv1fqjzLtuftGEYqvf",
+   "reason": "photo",
+   "note": "black and white photograph, low resolution",
+   "crop": [
+    0,
+    0,
+    640
+   ],
+   "image": "04371bdcd6353b08c77ec1fb"
+  },
+  "147": {
+   "label": "הרב יוסף משאש",
+   "episode": "2bY5WI2sxqsa1csNcbHXoG",
+   "reason": "photo",
+   "note": "photograph on a generated illustrated background",
+   "crop": [
+    30,
+    0,
+    490
+   ],
+   "image": "6cc02415b45850eb9e29060f"
+  },
+  "148": {
+   "label": "מר שושני",
+   "episode": "0Kpu3qt4CJeGGkKLHxBgQA",
+   "reason": "photo",
+   "note": "black and white photograph of a young man",
+   "crop": [
+    40,
+    0,
+    520
+   ],
+   "image": "c55bf931ac5905ef3fcfea16"
+  },
+  "149": {
+   "label": "הרב יצחק נסים – הראשון לציון שניהל 'מדיניות חוץ' עצמאית",
+   "episode": "6M7GqxrkmSgbLaowvUoIbM",
+   "reason": "photo",
+   "note": "uncertain: studio-style portrait, either a retouched photograph or a realistic generated likeness",
+   "crop": [
+    50,
+    0,
+    580
+   ],
+   "image": "18c761c885a40266511b93aa"
+  },
+  "150": {
+   "label": "רבי יצחק כדורי",
+   "episode": "3qeCTbEVgPEv319klxLDco",
+   "reason": "photo",
+   "note": "sepia photograph, low resolution; head covered by a tallit",
+   "crop": [
+    40,
+    10,
+    580
+   ],
+   "image": "a0f543c3d3501a61a271e491"
+  },
+  "151": {
+   "label": "עמנואל לוינס",
+   "episode": "3k9m3MfSjWyswqVmHrlM5S",
+   "reason": "photo",
+   "note": "black and white photograph",
+   "crop": [
+    40,
+    0,
+    520
+   ],
+   "image": "4c73a203302d062ce8787837"
+  },
+  "152": {
+   "label": "הרב אברהם יהושע השל – הגות ומעורבות מוסרית",
+   "episode": "63Q7RdapehdnH3FCLVMrBy",
+   "reason": "photo",
+   "note": "colourised photograph",
+   "crop": [
+    10,
+    0,
+    620
+   ],
+   "image": "97917abc752fb0f487cbd3dc"
+  },
+  "154": {
+   "label": "הרב מרדכי שרעבי",
+   "episode": "71fwTzDzMkD8JtOgm8g2kj",
+   "reason": "photo",
+   "note": "photograph, face fills the frame",
+   "crop": [
+    10,
+    0,
+    620
+   ],
+   "image": "27e8af229b719837ac9847f0"
+  },
+  "155": {
+   "label": "הרב שאול ישראלי – הפוסק שבנה גשר בין בית המדרש למדינה",
+   "episode": "0l6TX6iKGkqyzbt4707yeN",
+   "reason": "photo",
+   "note": "photograph cut out on a generated illustrated circle",
+   "crop": [
+    20,
+    0,
+    620
+   ],
+   "image": "698f1c6ba602f891622ada38"
+  },
+  "156": {
+   "label": "הרב פנחס קהתי – הפקיד מהבנק שחולל מהפכה בעולם התורה",
+   "episode": "5YJhfgmjz6YbKNEP0QBzUE",
+   "reason": "photo",
+   "note": "uncertain: smooth portrait on a brushed-metal ground, either a retouched photograph or a realistic generated likeness",
+   "crop": [
+    10,
+    0,
+    620
+   ],
+   "image": "e349d7a14d481af340c46605"
+  },
+  "157": {
+   "label": "הרב שלמה זלמן אויערבך",
+   "episode": "2HlLtLodPvUVPUArvlAmEC",
+   "reason": "photo",
+   "note": "photograph",
+   "crop": [
+    20,
+    0,
+    620
+   ],
+   "image": "6cc9e7629ececbf859fbc8d8"
+  },
+  "158": {
+   "label": "האדמו\"ר מסלונים – בעל 'נתיבות שלום' (\"רגלי המשיח\")",
+   "episode": "2smxXVp67eOBQxkbFpnBEh",
+   "reason": "photo",
+   "note": "photograph, low resolution",
+   "crop": [
+    10,
+    0,
+    620
+   ],
+   "image": "b57c7d3bfa0e292959d0fb9d"
+  },
+  "159": {
+   "label": "הרב משה־צבי נריה – המהפכן הציוני־דתי שחי כל חייו בין חזון ל\"בדיעבד\" כעבודה: כשהעשייה היא דרך המלך",
+   "episode": "43IiFgqfBCu9lLZIR07if7",
+   "reason": "photo",
+   "note": "photograph on a generated banded background",
+   "crop": [
+    30,
+    0,
+    600
+   ],
+   "image": "0f43e2b8981795752ebf08c7"
+  },
+  "160": {
+   "label": "הרב שמואל הלוי וואזנר",
+   "episode": "283XmaljmcMZNoMgipa2cv",
+   "reason": "photo",
+   "note": "photograph, low resolution",
+   "crop": [
+    10,
+    0,
+    620
+   ],
+   "image": "e8fbd75ac38dae2418ba9b10"
+  },
+  "163": {
+   "label": "אליאן עמדו לוי־ולנסי",
+   "episode": "7DJX0cnVGFtntXiLnNdbpj",
+   "reason": "photo",
+   "note": "sepia photograph of a woman",
+   "crop": [
+    10,
+    0,
+    620
+   ],
+   "image": "cda2d44d5f932c5f06bd89c4"
+  },
+  "164": {
+   "label": "הרב לוי סעדיה נחמני",
+   "episode": "2EnV8jysY70VrqWS5EYzEU",
+   "reason": "photo",
+   "note": "photograph pasted on an illustrated Western Wall scene, with white margins at the sides",
+   "crop": [
+    90,
+    10,
+    520
+   ],
+   "image": "2a5156b782e6f342dba765c2"
+  },
+  "165": {
+   "label": "הרב מאיר זייני",
+   "episode": "0hEDzOsuXWV4gBqUTv3KqW",
+   "reason": "photo",
+   "note": "uncertain: modern office portrait with props, either a photograph or a realistic generated likeness",
+   "crop": [
+    160,
+    0,
+    350
+   ],
+   "image": "e8894563f9273906ae41293f"
+  },
+  "167": {
+   "label": "הרב מאיר יהודה גץ – 'סבא כותל' שחשף את סודות הכותל",
+   "episode": "1d2iYDGxvwEW6fWxghPHEK",
+   "reason": "photo",
+   "note": "photograph with a microphone; the box ends before it",
+   "crop": [
+    20,
+    0,
+    470
+   ],
+   "image": "e4486b38160cf93a08f6caec"
+  },
+  "168": {
+   "label": "הרב חיים דוד הלוי",
+   "episode": "0bYyPcQtkqoVwWyC5OWfpn",
+   "reason": "photo",
+   "note": "photograph with a generated background; the box ends before the small symbols at the right",
+   "crop": [
+    40,
+    0,
+    500
+   ],
+   "image": "1f298925509ddffb7d34a01f"
+  },
+  "169": {
+   "label": "אלי ויזל",
+   "episode": "3CyodWcIZlT5rUhlIbpWqm",
+   "reason": "photo",
+   "note": "black and white photograph; sponsor lettering at the right, the box stays left of it",
+   "crop": [
+    0,
+    50,
+    555
+   ],
+   "image": "862bc9407555b9e3a0caa7d1"
+  },
+  "170": {
+   "label": "הרב חיים קניבסקי (1928–2022) – 'שר התורה': פסיקה, שקידה והשפעה בציבור הליטאי",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "app link not resolved: https://spotifycreators-web.app.link/e/y6u1ZKx4yQb"
+  },
+  "173": {
+   "label": "הרב חיים דרוקמן – מנהיג ציונות דתית בדורנו",
+   "episode": "1j4SgDhb3vWdY3gvTjv3oq",
+   "reason": "quality",
+   "note": "no crop: group scene (a gathering around the seated rabbi in a wheelchair), his head is only about 80 px wide; realistic, may be a photograph or generated"
+  },
+  "174": {
+   "label": "רבי רפאל משה לוריא",
+   "episode": "0VCagjZmbRPm2I6ZwrWMgu",
+   "reason": "photo",
+   "note": "photograph with a generated glowing map of Israel behind; white margins at the sides",
+   "crop": [
+    130,
+    60,
+    480
+   ],
+   "image": "0aa27afc96259c74fbdd1fa8"
+  },
+  "175": {
+   "label": "חכם ישועה בן שושן – המקובל שפיקד על סיירת קומנדו",
+   "episode": "7AzhR0GwdztLO5WPLBXPI2",
+   "reason": "photo",
+   "note": "photograph with a microphone; the box ends above it",
+   "crop": [
+    60,
+    0,
+    440
+   ],
+   "image": "e60f74b6f740477279982837"
+  },
+  "177": {
+   "label": "הרב אלישע וישליצקי",
+   "episode": "5kmvc0W7chgl4NeshSU6kX",
+   "reason": "photo",
+   "note": "photograph with a generated background",
+   "crop": [
+    240,
+    0,
+    400
+   ],
+   "image": "b5d6b64e28828cf5d432dc0b"
+  },
+  "178": {
+   "label": "תורת הקבלה – מבטו של אדולף פראנק (1843)",
+   "episode": "5qiFDQTROpb7v21w4imqIE",
+   "reason": "other-person",
+   "note": "the entry is the book \"La Kabbale\", not a sage; the picture is Adolphe Franck and is kept for 114, which shares this episode"
+  },
+  "179": {
+   "label": "שושלת אבוחצירא",
+   "episode": "4zNV0OTiJsa1CUIm4xsy4e",
+   "reason": "other-person",
+   "note": "the entry is a dynasty, not one man; the picture is a photograph of one of them (the episode is about the Baba Sali)"
+  },
+  "180": {
+   "label": "חכם ציון חביב ברכה",
+   "episode": "54WDzXvPJL2lSljQw8ppji",
+   "reason": "photo",
+   "note": "uncertain: film-look courtyard portrait with a sign in Hebrew above; either a photograph or a generated picture",
+   "crop": [
+    70,
+    238,
+    400
+   ],
+   "image": "c33fad63d5b182d56a8aaf83"
+  },
+  "182": {
+   "label": "שיטת בריסק (ר' חיים סולובייצ'יק) והלימוד האקדמי – האם לימוד חיצוני סותר קדושה?",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "app link not resolved: https://spotifycreators-web.app.link/e/NH0Pkku4yQb"
+  },
+  "183": {
+   "label": "ספר הזוהר – מי כתב? רבי שמעון בר יוחאי או חיבור מאוחר? המחלוקת סביב מחבר הזוהר",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "app link not resolved: https://spotifycreators-web.app.link/e/HxZF2iS4yQb"
+  },
+  "190": {
+   "label": "אברהם בר חייא",
+   "episode": "3FAGqYdzyMQbyPbon3KYoC",
+   "reason": "other-person",
+   "note": "no figure: a book page with a diagram of the earth's regions"
+  },
+  "191": {
+   "label": "מנחם מנדל מוויטבסק",
+   "episode": "17SN59z9ioFY7rUaYLDrY3",
+   "reason": "photo",
+   "note": "no crop: no figure, a gravestone"
+  },
+  "192": {
+   "label": "אברהם אבן עזרא",
+   "episode": "4qxJVPlseRPaiWngzoMerl",
+   "reason": "text",
+   "note": "AI painting; Hebrew-like lettering on panels at both sides of the head (right panel starts at x 427, left at x 127) cannot be avoided with the whole head inside"
+  },
+  "193": {
+   "label": "שמעון כיפא – מרטיר נוצרי או צדיק נסתר ששלחו חכמי ישראל?",
+   "episode": "4tu43oeL4qVdXGKzX2025J",
+   "reason": "other-person",
+   "note": "diptych: a Jewish scholar in a cave at the left, Simon Peter with a halo and the key at the right (a Christian symbol); no single main figure"
+  },
+  "196": {
+   "label": "הרב צבי יהודה הכהן קוק",
+   "episode": "33CjfygeixWek05uscU4qM",
+   "reason": "photo",
+   "note": "uncertain: black and white portrait with an open book and hills behind, a star watermark at the bottom-right (outside the box); either an edited photograph or a generated likeness; the box takes the edge of the open book at its lower-left corner",
+   "crop": [
+    215,
+    0,
+    410
+   ],
+   "image": "a4614bfa91d925c719a5996d"
+  },
+  "197": {
+   "label": "הרב מאיר כהנא",
+   "episode": "7aTrR9GQVvo3kwZrfhAuIj",
+   "reason": "photo",
+   "note": "photograph, hand at the temple",
+   "crop": [
+    60,
+    30,
+    440
+   ],
+   "image": "2763ccdd1cfeb3ebb39c14c8"
+  },
+  "199": {
+   "label": "רבי רפאל עמנואל חי ריקי",
+   "episode": "3Foy6VcyWU352VPpw1z1cp",
+   "reason": "other-person",
+   "note": "no figure: a title page of the book Mishnat Chasidim"
+  },
+  "264": {
+   "label": "מהר\"י ברונא",
+   "episode": "675qg10QyWmdYgW9TyQyUB",
+   "reason": "other-person",
+   "note": "no figure: title page of the responsa of Mahari Bruna"
+  },
+  "267": {
+   "label": "ספר הכוזרי",
+   "episode": "0E55prQ6VaFsIXKSiCpDe3",
+   "reason": "other-person",
+   "note": "no figure: the entry is the book (the Kuzari); the picture is the legend of R. Yehuda Halevi prostrate at the gate of Jerusalem, face hidden"
+  },
+  "274": {
+   "label": "אביגיל",
+   "episode": "685JbRdiP4dZzM9Mxg4VSd",
+   "reason": "quality",
+   "note": "figure too small: Abigail kneels in a night scene, her head is about 60 px and a head-and-shoulders box would be under 160 px; no crop"
+  },
+  "276": {
+   "label": "הרשב״ם",
+   "episode": "5BCGheSFuMCKwGBnlNLHSz",
+   "reason": "text",
+   "note": "no clean crop: a parchment notice with ten lines of Hebrew hangs right beside the head (x 413-520, y 33-180); best-effort box shown, it includes the notice",
+   "crop": [
+    195,
+    50,
+    340
+   ],
+   "image": "61ba6c56272b53ea74fbc72d"
+  },
+  "289": {
+   "label": "רבי דוד קמחי",
+   "episode": "7t7Mwzw5zr9XQ4uPrDcKcz",
+   "reason": "other-person",
+   "note": "no figure: title page of the Radak commentary on the Torah (the title names him by his acronym)"
+  },
+  "303": {
+   "label": "רבי יצחק מקורביל (הסמ\"ק)",
+   "episode": "6UrTGXdvwzHksRdb2MK3Nd",
+   "reason": "text",
+   "note": "no clean crop: the scroll he holds, full of Hebrew-looking lines, lies directly under the beard (from y 223) and the top of the turban is cut by the picture; best-effort box shown, it includes the first lines",
+   "crop": [
+    150,
+    0,
+    360
+   ],
+   "image": "427b51fa38db8389085fed04"
+  },
+  "313": {
+   "label": "האדמו״ר מקאליב – רבי מנחם מנדל טאוב",
+   "episode": "2RfVxXD6TIynHVoCEcKPJn",
+   "reason": "photo",
+   "note": "photograph of the Rebbe in a fur hat and brocade coat, low resolution; the face fills the frame so the box is nearly the whole picture; no watermark in the corner",
+   "crop": [
+    30,
+    0,
+    610
+   ],
+   "image": "afa5107ad99c7ab477f7578c"
+  },
+  "320": {
+   "label": "רס״ן רועי קליין הי״ד",
+   "episode": "6oOKCpQo5tEf5hcdghAQIC",
+   "reason": "photo",
+   "note": "colour photograph of an officer in uniform; the name caption at the bottom and a beret on the shoulder are outside the box",
+   "crop": [
+    105,
+    0,
+    340
+   ],
+   "image": "9d98ffeddb3671ff5dd7d234"
+  },
+  "323": {
+   "label": "רבי ברוך שפירא",
+   "episode": "6T3X5jyANKwDXe6qS8gM4I",
+   "reason": "photo",
+   "note": "very blurred, upscaled photograph; face fills the frame so the box is nearly the whole picture; no watermark in the corner",
+   "crop": [
+    20,
+    0,
+    620
+   ],
+   "image": "47c35631f05f8bb5bf477209"
+  },
+  "324": {
+   "label": "הרב נתן צבי פינקל (הסבא מסלבודקה)",
+   "episode": "4iRZ0WdzCGhxJrGTmkAzUf",
+   "reason": "photo",
+   "note": "black-and-white photograph, old man with round glasses and a long beard",
+   "crop": [
+    80,
+    0,
+    440
+   ],
+   "image": "f1f4600d1cfaf3bb7247ebea"
+  },
+  "328": {
+   "label": "רבי יום־טוב ליפמן הלר",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "331": {
+   "label": "גירוש ספרד",
+   "episode": "4BIlH6TQgXb88bidzSeuen",
+   "reason": "other-person",
+   "note": "no figure: triptych of three different sages (the Expulsion from Spain is a topic, not a person)"
+  },
+  "332": {
+   "label": "מדרש רבה",
+   "episode": "0iVxn1iT9qqWMkwdQ3ANqu",
+   "reason": "other-person",
+   "note": "no figure: collage of two sages (Midrash Rabbah is a book, not a person)"
+  },
+  "334": {
+   "label": "הרב יוסף קאפח",
+   "episode": "1rA2UmPl4BccGHQljls8Ij",
+   "reason": "photo",
+   "note": "colour close-up photograph of a man in a black hat and glasses",
+   "crop": [
+    30,
+    0,
+    540
+   ],
+   "image": "692a868ee9dc9396e1da395e"
+  },
+  "335": {
+   "label": "הרבי מליובאוויטש",
+   "episode": "01M5utyXbX5Zwzf2skxRIE",
+   "reason": "photo",
+   "note": "colour close-up photograph of a smiling man in a black hat",
+   "crop": [
+    0,
+    0,
+    540
+   ],
+   "image": "bd4ade2eee2559b038a6f80b"
+  },
+  "336": {
+   "label": "הרב עובדיה יוסף",
+   "episode": "6EwCSxth06Ypc8hwKpUZIn",
+   "reason": "photo",
+   "note": "colour photograph of a man in dark glasses and an embroidered robe; the picture is a tight close-up; no watermark in the corner",
+   "crop": [
+    40,
+    0,
+    600
+   ],
+   "image": "06a2d5170e83d4394c7d904a"
+  },
+  "337": {
+   "label": "רבי שלמה אלישיב (בעל הלשם)",
+   "episode": "4hfLDSOuomsBnjabb72CNT",
+   "reason": "photo",
+   "note": "old black-and-white photograph of a man in a fur hat, damaged and soft; no watermark in the corner",
+   "crop": [
+    20,
+    0,
+    620
+   ],
+   "image": "cd966d1049e2656c43d4d739"
+  },
+  "338": {
+   "label": "הרב עבדאללה סומך",
+   "episode": "4kzWbxQdGlwBkdJD30aYZk",
+   "reason": "photo",
+   "note": "old black-and-white photograph of a man in a large turban and a white beard",
+   "crop": [
+    100,
+    0,
+    530
+   ],
+   "image": "bc012f10f6b6a7958d02fb05"
+  },
+  "340": {
+   "label": "הרב מרדכי אליהו",
+   "episode": "3Us8uX5ozH1clJM6Nkh131",
+   "reason": "photo",
+   "note": "colour photograph of an elderly man in a blue turban against sky, a black strip at the right edge is outside the box",
+   "crop": [
+    30,
+    0,
+    580
+   ],
+   "image": "44cf4198a3ca24e0d7e649c5"
+  },
+  "341": {
+   "label": "הרב שמואל סלנט",
+   "episode": "6IZbp5APF1EvHCXfsHDjsf",
+   "reason": "photo",
+   "note": "old black-and-white photograph of a man in a fur hat; a round stamp with lettering at the bottom right is outside the box",
+   "crop": [
+    20,
+    0,
+    540
+   ],
+   "image": "35c4bf6876225c0ccbe18def"
+  },
+  "342": {
+   "label": "הרב חיים חזקיהו מדיני",
+   "episode": "7G1e30kwtU62b50Mao1pdn",
+   "reason": "photo",
+   "note": "old sepia photograph of a seated man in a turban; the head is small in the picture",
+   "crop": [
+    235,
+    20,
+    270
+   ],
+   "image": "4aeab98be2cfc2d2316fef37"
+  },
+  "346": {
+   "label": "רבי אלעזר בן ערך",
+   "episode": "2XG7fux56GqLM8WnM0QRjs",
+   "reason": "text",
+   "note": "no clean crop: torn strips of Hebrew text cross the top right (x 393-553, y 0-133) and lie beside the neck; best-effort box shown, it includes part of the top-right strip",
+   "crop": [
+    165,
+    30,
+    330
+   ],
+   "image": "79cbc1ea3fd0fa3458b2bc3d"
+  },
+  "347": {
+   "label": "שלמה מונק",
+   "episode": "0fBwsgpkyNbo7MJnjhEgeH",
+   "reason": "photo",
+   "note": "uncertain: a 19th-century carte-de-visite style portrait of a man in profile, photograph or a print of one (captioned Salomon Munk, the caption is outside the box)",
+   "crop": [
+    100,
+    0,
+    440
+   ],
+   "image": "75726e34bbfda56494ada71d"
+  },
+  "356": {
+   "label": "מחזור ויטרי",
+   "episode": "6xiWssuJyV4GypDbnlCpl0",
+   "reason": "other-person",
+   "note": "no figure: title page of Machzor Vitry (the same episode as 494)"
+  },
+  "406": {
+   "label": "רבנו פרץ מקורביל",
+   "episode": "5Iri3H2JcF1NuSrVD3Pnpu",
+   "reason": "symbol",
+   "note": "a cross-shaped pendant hangs on his chest and its chain shows inside the crop; left out on the owner's say-so (the recorded crop is the one the reviewer drew, ending above the pendant)",
+   "crop": [
+    130,
+    20,
+    380
+   ],
+   "image": "8d04b4312110ca140942fa8b"
+  },
+  "416": {
+   "label": "הרב קלמן שם טוב גפן",
+   "episode": "12f9H8UgJMaWzeIBegbaMu",
+   "reason": "photo",
+   "note": "old black-and-white halftone photograph of an elderly rabbi, head cut out against a dark ground; the crop holds the whole picture; no watermark",
+   "crop": [
+    50,
+    10,
+    560
+   ],
+   "image": "c79d0f5e5967f6c59a3b1e5d"
+  },
+  "421": {
+   "label": "רבי שלמה הכהן מווילנה",
+   "episode": "5yWz2GFXuVSZR9a7kMjeyT",
+   "reason": "photo",
+   "note": "old photograph in an oval frame (the dark edge of the frame shows at the top right of the crop); the beard runs past the bottom edge of the picture; no watermark",
+   "crop": [
+    10,
+    0,
+    590
+   ],
+   "image": "15f7796eda37694a034270dd"
+  },
+  "422": {
+   "label": "רבי ישראל יהושע טרונק מקוטנא",
+   "episode": "5CjFGW61SRKSx3ScmazcV1",
+   "reason": "photo",
+   "note": "no crop: old sepia photograph of a man in a fur hat looking down, with a printed Hebrew caption right beside the head and a text fragment at the left edge; no clean square holds the head"
+  },
+  "424": {
+   "label": "רבי וידאל די טולוזא",
+   "episode": "3bAJkTvZUqAhdXCQty6A3B",
+   "reason": "text",
+   "note": "AI infographic: the title plate touches the top of the turban, city labels in Hebrew and Latin on both sides and a text scroll at the left; no square around the head is free of text"
+  },
+  "425": {
+   "label": "רבי מאיר בן ברוך הלוי (מהר״ם סג״ל)",
+   "episode": "51kAKVyQ9chRuXJM5J66so",
+   "reason": "text",
+   "note": "AI illustration of a semicha: a plaque with five lines of Hebrew hangs right behind the head (x 383-520) and the document in his hands carries text; no clean square around him"
+  },
+  "427": {
+   "label": "רבי ישראל מקרמז'",
+   "episode": "3m0Cho5M29aVZp15Pd8poe",
+   "reason": "text",
+   "note": "AI infographic: a shelf plaque with text touches the head on the right, the map panel with text on the left; the free width is about 230 px for a 155 px wide, 225 px tall head and beard"
+  },
+  "428": {
+   "label": "רבי דוד גנז",
+   "episode": "2k24kwgPp3f98lo0KLeybp",
+   "reason": "quality",
+   "note": "the sage is seen from behind and turned away: only the cheek and beard in profile; Latin plaques (\"TICHONIS BRAHE ...\") fill the wall and a Hebrew book title is in front"
+  },
+  "432": {
+   "label": "הרב אברהם כהן דה־הירירה",
+   "episode": "2484MUIhpWjmTxP5KxDWOB",
+   "reason": "text",
+   "note": "AI infographic: the title plate above, the label \"Amsterdam / אמסטרדם\" touches the right of the beret, city names and labels on both sides"
+  },
+  "433": {
+   "label": "רבי יוסף חביבא",
+   "episode": "1EPfEDDABhFrIaVyXmn4UY",
+   "reason": "text",
+   "note": "AI illustration: Hebrew map labels (קשטיון, ברצלונה, סרגוסה) sit right behind the turban at the right and a book title (נימוקי יוסף) at the left"
+  },
+  "436": {
+   "label": "רבי שלום בוזגלו",
+   "episode": "1cdKyl2ZxmH4MV8HxWn5a8",
+   "reason": "text",
+   "note": "AI infographic: a plaque with his name and dates overlaps the turban at the right, map labels and a note at the left"
+  },
+  "437": {
+   "label": "רב יוסף בר חייא",
+   "episode": "7hxuVRnwNLVCSZTDgYaRYf",
+   "reason": "text",
+   "note": "AI infographic: a Hebrew sign (בדיתא) at the right, a man pouring water behind his shoulder, text panels at the left; no clean square around him"
+  },
+  "442": {
+   "label": "רבי בצלאל אשכנזי",
+   "episode": "7kuqHDuRlbICUtT61hWdfH",
+   "reason": "other-person",
+   "note": "two figures, an old scribe (left) and a smiling younger man (right): no clear main figure, and the plaques name two sages (Betzalel Ashkenazi and the Ari)"
+  },
+  "443": {
+   "label": "רבי יוסף קארו",
+   "episode": "0dqB9uZCfNqapz7AN12H0I",
+   "reason": "text",
+   "note": "AI infographic: a title and subtitle at the top right and a text scroll at the left (x<=73) flank the head; the head is at the left edge of the picture"
+  },
+  "446": {
+   "label": "רבי אהרן בלומלין",
+   "episode": "7jqAc8vwpfd04zF5HdhtVG",
+   "reason": "text",
+   "note": "AI infographic: the label \"WIEN / וינה\" sits right above the cap; the cap is cut by the top edge of the picture, so no box clears the label without cutting the cap"
+  },
+  "447": {
+   "label": "רבי יצחק אייזיק טירנא",
+   "episode": "7nFjZxQJCnOnTXIXlmoWYY",
+   "reason": "text",
+   "note": "AI infographic: map labels (וינה, נירנברג, טירנא) directly behind the head at the left, a title panel above, a woman at the right edge"
+  },
+  "448": {
+   "label": "שרה אמנו",
+   "episode": "2XYXmPscJIo8gLmJov6AFc",
+   "reason": "symbol",
+   "note": "photorealistic AI render of a matriarch with a luminous halo ring around her head (reads as a Christian nimbus); otherwise a clean portrait, the crop is free of text",
+   "crop": [
+    195,
+    70,
+    300
+   ],
+   "image": "463258414fa3659c9d0e5058"
+  },
+  "450": {
+   "label": "מהר״י וייל",
+   "episode": "0Rnc7P2J3304nWXui892rt",
+   "reason": "text",
+   "note": "AI infographic: the title plaque begins at x=270, right next to the head, and the head and beard need 330 px"
+  },
+  "451": {
+   "label": "רבי יונה מרגנשבורג",
+   "episode": "3AeKh8nYVsTUmTjaI89Y3i",
+   "reason": "text",
+   "note": "AI infographic: a banner with text at the left (x<=130), a caption at the top right and a text plaque at the right (x>=450) leave 320 px for a 290 px tall head"
+  },
+  "456": {
+   "label": "הרב ד״ר אברהם לבני",
+   "episode": "4Cgva97eqlxFZqxabMWiLM",
+   "reason": "other-person",
+   "note": "no figure: a globe on black with the words \"שיבת ציון נס לעמים\" (the return to Zion, a banner for the nations)"
+  },
+  "460": {
+   "label": "רבינו דוד בונפיד",
+   "episode": "3mgyFdCQJRAQWlTMAC3Ntt",
+   "reason": "text",
+   "note": "AI infographic: the title and the subtitle line touch the top of the turban, panels with text at both sides and the book below leave a box of about 196 px"
+  },
+  "464": {
+   "label": "רבי יהושע אבן שועיב",
+   "episode": "0SXUcjCBFArZF4cHVpUd0W",
+   "reason": "text",
+   "note": "AI infographic: a plaque with five words of Hebrew next to the head at the right, the head and beard need 276 px and the free width is 262"
+  },
+  "465": {
+   "label": "רבי יוסף אבן טבול",
+   "episode": "47ATwhBfywYAPzHptQjjic",
+   "reason": "text",
+   "note": "AI infographic: a text panel at the left (x<=130) and the map with labels at the right (x>=347) leave 217 px for a 246 px tall head"
+  },
+  "467": {
+   "label": "רבי ישראל סרוג",
+   "episode": "0qevAfcXSrvElyw0v6rmd4",
+   "reason": "text",
+   "note": "AI infographic: map panel with text at the left, title lines above and text panels at the right leave a box with 5 px of margin around the head"
+  },
+  "468": {
+   "label": "הרב שלמה יוסף זוין",
+   "episode": "51WVPh2bMIsk9wHI1sMe3i",
+   "reason": "photo",
+   "note": "uncertain: a sepia picture of an old man with round glasses at a desk and bookshelves; very smooth, it may be AI-made rather than a scan; the book in front is blank",
+   "crop": [
+    110,
+    100,
+    360
+   ],
+   "image": "41b14e8842b28a1d9fca54c2"
+  },
+  "470": {
+   "label": "האדר״ת (רבי אליהו דוד רבינוביץ'-תאומים)",
+   "episode": "7zHC1A3dQMNYpbYXahsYQd",
+   "reason": "photo",
+   "note": "old black-and-white photograph on white; the cap is cut by the top edge and the beard by the bottom edge; no watermark",
+   "crop": [
+    90,
+    0,
+    470
+   ],
+   "image": "0a4ad76b8d6aa8ecf4798183"
+  },
+  "471": {
+   "label": "רבי יוסף ג'יקטיליה",
+   "episode": "4HMEfax0JRi5AhwtdObjpn",
+   "reason": "text",
+   "note": "AI illustration with large Hebrew letters floating behind the head, the Sefirot diagram with Hebrew names at the right and a map with labels at the left"
+  },
+  "472": {
+   "label": "הרב צבי פסח פראנק",
+   "episode": "6ONQBYcz8cRuTuz4ULWE6l",
+   "reason": "photo",
+   "note": "no crop: crowd photograph, the rabbi in a hat and round glasses is surrounded by other hats and faces and a white hat covers the lower left"
+  },
+  "478": {
+   "label": "רבי ישראל אבוחצירא (הבבא סאלי)",
+   "episode": "4zNV0OTiJsa1CUIm4xsy4e",
+   "reason": "photo",
+   "note": "uncertain: the familiar portrait of the Baba Sali with a hand on his forehead, in a white hood on a maroon chair; it may be a painting or a colourised photograph; no watermark",
+   "crop": [
+    40,
+    0,
+    540
+   ],
+   "image": "373cfa587706f62da616cb29"
+  },
+  "480": {
+   "label": "הרב ראובן מרגליות",
+   "episode": "30nPMpyfBOS0oMuIfZlC7M",
+   "reason": "photo",
+   "note": "colour photograph of an elderly rabbi in a black hat, close-up, books behind; the crop is almost the whole picture; no watermark",
+   "crop": [
+    10,
+    0,
+    620
+   ],
+   "image": "df75b518c6e8944a569b6b41"
+  },
+  "483": {
+   "label": "שמעון בר כוכבא",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "484": {
+   "label": "רבי ישראל נג'ארה",
+   "episode": "24xak1cI8TsPSCy1icgwKG",
+   "reason": "other-person",
+   "note": "no figure: two open pages of a printed book"
+  },
+  "486": {
+   "label": "רבנו יונה גירונדי",
+   "episode": "45W4Jxd89NsF6dPJtlmZIc",
+   "reason": "other-person",
+   "note": "no figure: the title page of the book \"שערי תשובה\""
+  },
+  "489": {
+   "label": "הרב יצחק יעקב ריינס",
+   "episode": "6MKql77q23ERrOc1ACLYvH",
+   "reason": "photo",
+   "note": "colourised photograph of an old rabbi in a top hat on a carved chair; the hat is cut by the top edge, the crop is almost the whole picture; no watermark",
+   "crop": [
+    40,
+    0,
+    600
+   ],
+   "image": "89ec11b17c8ff9fc1fa41842"
+  },
+  "490": {
+   "label": "הרב אברהם יהושע צוקרמן",
+   "episode": "0GVZh265hNqdgBASfPbYhp",
+   "reason": "photo",
+   "note": "colour photograph, close-up of a white-bearded rabbi looking down; his forehead is cut by the top edge, books behind; no watermark",
+   "crop": [
+    40,
+    0,
+    600
+   ],
+   "image": "14b94fb2ccf7b2c8a8466ee2"
+  },
+  "491": {
+   "label": "הרב שלמה גורן",
+   "episode": "35CkuI8zlv4vcXlbkd2MN9",
+   "reason": "photo",
+   "note": "no crop: the well-known photograph of the shofar at the Western Wall among paratroopers; his face is half behind the shofar and soldiers fill both sides"
+  },
+  "492": {
+   "label": "הרב יצחק הוטנר",
+   "episode": "2g9LIQuPfN5FbE41OYIPCg",
+   "reason": "photo",
+   "note": "sepia photograph of a rabbi with thick glasses and a long beard, close-up; the beard runs past the bottom edge; no watermark",
+   "crop": [
+    20,
+    0,
+    620
+   ],
+   "image": "07f292dbbb3a89c054441db8"
+  },
+  "493": {
+   "label": "הרב יצחק אייזיק חבר",
+   "episode": "5myb4NwaDvGMOOeafcJtXR",
+   "reason": "other-person",
+   "note": "no figure: the blue cover of the book \"פתחי שערים\""
+  },
+  "494": {
+   "label": "רבנו שמחה מוויטרי",
+   "episode": "6xiWssuJyV4GypDbnlCpl0",
+   "reason": "other-person",
+   "note": "no figure: the title page of \"מחזור ויטרי\"; the episode shares its picture with another sage (356)"
+  },
+  "496": {
+   "label": "פרופ' נחמה ליבוביץ",
+   "episode": "6EaZkWizKCeYuAEQsTP6dy",
+   "reason": "photo",
+   "note": "colour photograph, blurred and low-resolution, of an old woman smiling in a dark hat; the face fills the picture; no watermark",
+   "crop": [
+    20,
+    0,
+    600
+   ],
+   "image": "7e84587ed2ced66ca1a6efa8"
+  },
+  "497": {
+   "label": "הרב אליהו אליעזר דסלר",
+   "episode": "59EdZjP2KomK9bh71JzxVm",
+   "reason": "photo",
+   "note": "sepia photograph of a rabbi in a hat and round glasses, close-up; the hat is cut by the top edge and the beard by the bottom; no watermark",
+   "crop": [
+    20,
+    0,
+    620
+   ],
+   "image": "d0cd45d456783ed90c9bedf0"
+  },
+  "502": {
+   "label": "רבי דובער שניאורי (האדמו\"ר האמצעי)",
+   "episode": "0J2MRPc1AEBI5eLsklGJ7k",
+   "reason": "other-person",
+   "note": "photograph of a man in a bowler hat, about 1900: the sage died in 1827, before photography, so this is a later Rebbe (the names are alike); no crop: not him"
+  },
+  "509": {
+   "label": "רבי חיים בן עטר (בעל אור החיים)",
+   "episode": "3HwpG5NALcGOQmbs1wwR4N",
+   "reason": "photo",
+   "note": "no crop: no figure, a photograph of a painted gravestone"
+  },
+  "511": {
+   "label": "הרבנית ויכנא קפלן",
+   "episode": "7gEH0FmW9xyX4je0Jk40A7",
+   "reason": "photo",
+   "note": "old blurred photograph of an older woman; no watermark",
+   "crop": [
+    20,
+    0,
+    620
+   ],
+   "image": "60180d679175ea8bd77ee016"
+  },
+  "512": {
+   "label": "הרבנית ד\"ר ברוריה דייוויד",
+   "episode": "6hBYh8i79O4pCQKeB10QNN",
+   "reason": "other-person",
+   "note": "photograph of two people, a girl leaning on a bearded man in glasses, no clear main figure; no crop: two people"
+  },
+  "513": {
+   "label": "הרבנית דענה ויינברג",
+   "episode": "4pXB7MODLOE9Od1QA1DC0J",
+   "reason": "photo",
+   "note": "photograph of a woman in a burgundy beret cut out on a pastel background; no watermark",
+   "crop": [
+    0,
+    0,
+    640
+   ],
+   "image": "d5f6f40c50307a997c576c46"
+  },
+  "514": {
+   "label": "הרבנית אסתר יונגרייז",
+   "episode": "39zLdLIz7vxGqmTAJn8oRF",
+   "reason": "photo",
+   "note": "colour photograph of a woman with a microphone",
+   "crop": [
+    70,
+    0,
+    520
+   ],
+   "image": "dbafca701402f94f5741b9ec"
+  },
+  "515": {
+   "label": "הרבנית ברכה קאפח",
+   "episode": "78MX2sAT6M6hAi0qCuuhb7",
+   "reason": "photo",
+   "note": "colour photograph of a woman in a white hat and fur collar; no watermark",
+   "crop": [
+    5,
+    5,
+    630
+   ],
+   "image": "2ac17d4ad709a7c067e6e298"
+  },
+  "516": {
+   "label": "הרבנית שרה הרצוג",
+   "episode": "5cRN0ef6AcQepyWCQ1IKwv",
+   "reason": "photo",
+   "note": "old sepia photograph of a woman; no watermark",
+   "crop": [
+    40,
+    0,
+    600
+   ],
+   "image": "79c26f20b438dbad3674692f"
+  },
+  "517": {
+   "label": "טובה סנהדראי-גולדרייך",
+   "episode": "0RuE8l4DbgcRxBQWjGBUv3",
+   "reason": "photo",
+   "note": "no crop: she sits behind a typewriter, the paper hides half of her face and the figure is small"
+  },
+  "518": {
+   "label": "הרב עמוס כמוס חיים גואטה",
+   "episode": "2FCDtvLfOdUiMuZappKmKp",
+   "reason": "photo",
+   "note": "no crop: extreme close-up of an old man, the frame cuts his head and a microphone covers the left"
+  },
+  "519": {
+   "label": "שרה שטרן-קטן",
+   "episode": "1aD7ZsAgg6SdgWpBfy2orm",
+   "reason": "photo",
+   "note": "black and white photograph of an older woman in a headscarf; no watermark",
+   "crop": [
+    40,
+    0,
+    600
+   ],
+   "image": "cc42e63519f4e795333b1142"
+  },
+  "520": {
+   "label": "הנרייטה סאלד",
+   "episode": "0Ck5Kbih9i0wxQG6BVPt02",
+   "reason": "photo",
+   "note": "sepia close-up photograph, the face fills the frame; no watermark",
+   "crop": [
+    0,
+    0,
+    640
+   ],
+   "image": "86fae3791e226fa7c6cf0354"
+  },
+  "525": {
+   "label": "הרב אריה קפלן",
+   "episode": "0IrUJb098H8XGS8eWSfDuY",
+   "reason": "photo",
+   "note": "black and white photograph of a bearded man in glasses, the beard runs to the bottom edge; no watermark",
+   "crop": [
+    10,
+    0,
+    630
+   ],
+   "image": "6713fc6465067b3827e18c0c"
+  },
+  "526": {
+   "label": "הרב ד״ר עזריאל הילדסהיימר",
+   "episode": "36aJmpAPKCKf9f4cFAMKm6",
+   "reason": "photo",
+   "note": "black and white close-up photograph; no watermark",
+   "crop": [
+    0,
+    0,
+    640
+   ],
+   "image": "1aa518889cf4593b0c80be3c"
+  },
+  "529": {
+   "label": "הרב מנשה בן ישראל",
+   "episode": "3so3UXek1m32brnXDw5kNh",
+   "reason": "other-person",
+   "note": "no figure: the title page of a book (Nishmat Chaim)"
+  },
+  "530": {
+   "label": "הרב מרדכי אליאשברג",
+   "episode": "27meRAwcxlSFIHkcn1DS1d",
+   "reason": "text",
+   "note": "infographic: the book title and a quote sit against the hat on both sides, no square holds the whole head without text"
+  },
+  "531": {
+   "label": "הרב רפאל יהודה מנחם לוי – רבי יהודה מרגוזה",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "532": {
+   "label": "הרבנית בת שבע אסתר קניבסקי",
+   "episode": "7BOVg3jdw72gW6XVSLUCOm",
+   "reason": "photo",
+   "note": "no crop: a hug, the girl's head overlaps the old woman's face"
+  },
+  "533": {
+   "label": "חנה סנש",
+   "episode": "5RUwWQbbuqsXRPwuJAAvP2",
+   "reason": "photo",
+   "note": "old black and white photograph, a close-up in profile; no watermark",
+   "crop": [
+    20,
+    0,
+    620
+   ],
+   "image": "ec1064ce14bcd83191dea196"
+  },
+  "540": {
+   "label": "רבי ברוך שיק משקלוב",
+   "episode": "2ldQgMf5rHRSqtWL1mvwae",
+   "reason": "other-person",
+   "note": "no figure: the title page of a book (Yesod Olam)"
+  },
+  "541": {
+   "label": "רבי גדליה נדל",
+   "episode": "4KJrguihixjQhKG3Cgo6G0",
+   "reason": "photo",
+   "note": "colour photograph of an older man in a hat and glasses; no watermark",
+   "crop": [
+    10,
+    10,
+    620
+   ],
+   "image": "074eea39e70a6ffb42dbdf9e"
+  },
+  "544": {
+   "label": "רבי יוסף שלמה דלמדיגו – יש״ר מקנדיה",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "545": {
+   "label": "רבי יצחק חזקיה למפרונטי",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "546": {
+   "label": "רבי ישראל ליפשיץ",
+   "episode": "2is29972PBGNXWcYoaogus",
+   "reason": "text",
+   "note": "infographic: scrolls with Hebrew text stand on both sides of the hat, no square holds the whole head without text"
+  },
+  "547": {
+   "label": "רבי מאיר הגדול מפרמישלאן",
+   "episode": "3rYIaSwkfbiANYCRUHiBnj",
+   "reason": "photo",
+   "note": "no crop: no figure, a photograph of a monument with an inscription"
+  },
+  "548": {
+   "label": "רבי פנחס אליהו הורביץ – בעל ספר הברית",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "549": {
+   "label": "רבי שמשון רפאל הירש",
+   "episode": "3OlUj4h3cBJk9YdD7WDDwP",
+   "reason": "photo",
+   "note": "uncertain: sepia portrait, a retouched photograph or a print; no watermark",
+   "crop": [
+    30,
+    0,
+    600
+   ],
+   "image": "19fa54e844048440828bfd03"
+  },
+  "554": {
+   "label": "אבנימוס הגרדי (אוינומאוס מגדרה)",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "555": {
+   "label": "אברהם אבינו",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "556": {
+   "label": "ברוריה",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "557": {
+   "label": "דוד המלך",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "560": {
+   "label": "הרב אברהם יצחקי (זרע אברהם)",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "561": {
+   "label": "הרב אברהם מרדכי יצחקי (הרב מפורת)",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "562": {
+   "label": "הרב אהרן קוטלר",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "563": {
+   "label": "הרב יוסף יצחק שניאורסון (הריי\"צ)",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "564": {
+   "label": "הרב לורד יונתן זקס",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "565": {
+   "label": "הרב מרדכי עטיה",
+   "episode": "2pMPdP73g7EbdZY5POCdiS",
+   "reason": "photo",
+   "note": "coarse black and white print of a photograph, the beard runs off the bottom edge; no watermark",
+   "crop": [
+    10,
+    0,
+    630
+   ],
+   "image": "335ee57affab4f36ed4c2cbf"
+  },
+  "566": {
+   "label": "הרב משה צוריאל",
+   "episode": "7KIHKoxiJU3LBcUjA44wfg",
+   "reason": "photo",
+   "note": "no crop: the Hebrew lettering of the ark curtain reaches the edge of his head on the left, any box that holds the whole head includes some of it"
+  },
+  "567": {
+   "label": "הרב שלמה קרליבך",
+   "episode": "2bewSSxwiNTkZxRKpvDICY",
+   "reason": "photo",
+   "note": "photograph of a man with a guitar fading over it (double exposure); no watermark",
+   "crop": [
+    0,
+    0,
+    640
+   ],
+   "image": "033d68ece3e41e9f2c4d02b8"
+  },
+  "568": {
+   "label": "יהודית",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "569": {
+   "label": "יוסל מרוסהיים",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "570": {
+   "label": "יעקב אבינו",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "571": {
+   "label": "יצחק אבינו",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "572": {
+   "label": "ישעיהו הנביא",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "573": {
+   "label": "מהר\"י בירב (רבי יעקב בירב)",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "574": {
+   "label": "משה רבנו",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "576": {
+   "label": "רב הונא",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "577": {
+   "label": "רבי אבון הגדול",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "578": {
+   "label": "רבי טרפון",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "579": {
+   "label": "רבי יהודה הלוי (ריה\"ל)",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "581": {
+   "label": "רבי יעקב הכהן (המקובל)",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "582": {
+   "label": "רבי יצחק אלפסי (הרי\"ף)",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "584": {
+   "label": "רבי ישמעאל (בן אלישע)",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "585": {
+   "label": "רבי לוי בן חביב (המהרלב\"ח)",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "586": {
+   "label": "רבי משה אלשקר (מהר\"ם אלשקר)",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "587": {
+   "label": "רבי משה חיים אפרים מסדילקוב",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "589": {
+   "label": "רבי נתן מברסלב (מנמירוב)",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "590": {
+   "label": "רבי רפאל ברוך טולידאנו",
+   "episode": "4XGMsg0fqvcNjnBiTSe0hE",
+   "reason": "photo",
+   "note": "coarse black and white photograph, a hand under the chin",
+   "crop": [
+    60,
+    0,
+    560
+   ],
+   "image": "e9e5d5a4b83babf327f8c1e9"
+  },
+  "593": {
+   "label": "רבקה אמנו",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "594": {
+   "label": "רש\"י (רבי שלמה יצחקי)",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "595": {
+   "label": "שלמה המלך",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "596": {
+   "label": "שמואל הנביא",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "598": {
+   "label": "רבנו אשר בן יחיאל (הרא״ש)",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "599": {
+   "label": "רבי ישעיה הלוי הורוויץ (השל״ה הקדוש)",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "600": {
+   "label": "רבי אברהם בן הרמב״ם",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "601": {
+   "label": "רבנו חזקיה די סילוה (פרי חדש)",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "602": {
+   "label": "רבי יצחק בן אבא מרי (בעל העיטור)",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "609": {
+   "label": "רבי ירמיהו חחיאשוילי",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "611": {
+   "label": "גאולה כהן",
+   "episode": "1StUsJxV4BUgc6Hns77cRy",
+   "reason": "photo",
+   "note": "colour photograph of a smiling older woman; no watermark",
+   "crop": [
+    20,
+    10,
+    610
+   ],
+   "image": "d48911c2db1b8e272dbcf384"
+  },
+  "612": {
+   "label": "ר' משה מנדלסון (רמבמ\"ן)",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "614": {
+   "label": "סוליקא חג'ואל",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "617": {
+   "label": "הרב ישראל יצחק בזאנסון זצ״ל",
+   "episode": "5qT5Z7oVMNOWfC9CTUkR30",
+   "reason": "photo",
+   "note": "colour photograph of a smiling man in a tallit; no watermark",
+   "crop": [
+    40,
+    0,
+    600
+   ],
+   "image": "3024399530a4a14dd1e83292"
+  },
+  "622": {
+   "label": "הרב יהודה לייב הלוי אשלג (בעל הסולם)",
+   "episode": "56ZfHwIuCVuWheqmgyawIj",
+   "reason": "photo",
+   "note": "photograph of a man with a fur hat, sepia, an AI background of a ladder and a kabbalah tree",
+   "crop": [
+    30,
+    0,
+    490
+   ],
+   "image": "2108ebd5a9a70717a8526ef4"
+  },
+  "623": {
+   "label": "רבי אבהו",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "627": {
+   "label": "רבי אברהם בן שלמה הלוי בוקראט",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "628": {
+   "label": "רבי מאיר אבן אלדבי",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "634": {
+   "label": "הרב יוסף בא-גד",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "635": {
+   "label": "רבי עובדיה ספורנו",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "636": {
+   "label": "רבנו ירוחם בן משולם",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "637": {
+   "label": "רבי ברוך בן יצחק (בעל התרומה)",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "638": {
+   "label": "רבי יהושע פלק כ״ץ (הסמ״ע)",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "639": {
+   "label": "רבי שמואל די מדינה (המהרשד״ם)",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "640": {
+   "label": "רבי יוסף בן לב (מהריב״ל)",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "641": {
+   "label": "רבי יוסף מטראני (המהרי״ט)",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "642": {
+   "label": "רבי אברהם די בוטון (בעל לחם משנה)",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "643": {
+   "label": "רבי שמואל בן אורי שרגא פייבוש (בעל בית שמואל)",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "644": {
+   "label": "רבי יהושע בועז (בעל שלטי הגיבורים)",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "645": {
+   "label": "רבי שלמה סיריליו",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "646": {
+   "label": "רבי חיים בנבנשתי (בעל כנסת הגדולה)",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "647": {
+   "label": "רבי אליהו די וידאש (בעל ראשית חכמה)",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "648": {
+   "label": "רבי אליה שפירא (בעל אליה רבה)",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "649": {
+   "label": "רבי דוד אלטשולר (בעל מצודת דוד)",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "650": {
+   "label": "רבי יחיאל הלל אלטשולר (בעל מצודת ציון)",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "651": {
+   "label": "רבי שלמה עדני (בעל מלאכת שלמה)",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "652": {
+   "label": "רבי יעקב יהושע פלק (בעל פני יהושע)",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "653": {
+   "label": "רבי יהונתן אייבשיץ",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "654": {
+   "label": "רבי מנחם די לונזאנו",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "655": {
+   "label": "רבי יעקב חגיז (בעל הלכות קטנות)",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "656": {
+   "label": "רבי אברהם הלוי (בעל גינת ורדים)",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "657": {
+   "label": "רבי יאיר חיים בכרך (בעל חוות יאיר)",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "658": {
+   "label": "רבי אליהו הכהן האתמרי (בעל שבט מוסר)",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "659": {
+   "label": "רבי עזריה פיגו (בעל גידולי תרומה)",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "660": {
+   "label": "רבי יעקב ריישר (בעל שבות יעקב)",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "661": {
+   "label": "רבי שמשון חיים נחמני (בעל זרע שמשון)",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "662": {
+   "label": "רבי יצחק דמן עכו (בעל מאירת עיניים)",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "663": {
+   "label": "רבי שמואל אבוהב (בעל דבר שמואל)",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "664": {
+   "label": "רבי יונה לנדסופר (בעל מעיל צדקה)",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "665": {
+   "label": "רבי נתנאל וייל (בעל קרבן נתנאל)",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "666": {
+   "label": "רבי חייא רופא (בעל מעשה חייא)",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "667": {
+   "label": "רב פלטוי גאון",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "668": {
+   "label": "רבי יעקב הלוי ממרויש (בעל שו״ת מן השמים)",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "669": {
+   "label": "רבי אברהם סבע (בעל צרור המור)",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "670": {
+   "label": "רבי אליעזר אשכנזי (בעל מעשי ה׳)",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "671": {
+   "label": "רבי משה גלאנטי (המג״ן)",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "672": {
+   "label": "רבי אברהם גלאנטי (בעל קול בוכים)",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "673": {
+   "label": "רבי יעקב קשטרו (מהריק״ש)",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "674": {
+   "label": "רבי חיים כפוסי (בעל הנס)",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "675": {
+   "label": "רבי שמואל ויטאל (בן רבי חיים)",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "676": {
+   "label": "רבי אהרן שמואל קאיידנובר (המהרש״ק)",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "677": {
+   "label": "רבי יהודה בן עטר (בעל מנחת יהודה)",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "678": {
+   "label": "רבי מנחם ציוני (בעל ספר ציוני)",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "679": {
+   "label": "רבי אליהו בחור (בעל מסורת המסורת)",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  }
+ }
+}

@@ -8,7 +8,7 @@ import { useCallback, useEffect, useId, useLayoutEffect, useMemo, useRef, useSta
 import { cn } from '@/lib/utils'
 import { track } from '@/lib/analytics'
 import { loadEnglishNames, searchSagesRanked } from '@/lib/search'
-import { ALL_PERIODS, ERA_LABELS } from '@/lib/types'
+import { ALL_PERIODS, ERA_COLORS, ERA_LABELS } from '@/lib/types'
 import type { Locale, Sage } from '@/lib/types'
 import {
   MAX_GUESSES, STORE_KEY, applyGuess, compareGuess, currentStreak, emptyState, formatCountdown, nextRiddleAt, parseState,
@@ -433,7 +433,8 @@ function GuessInput({ locale, candidates, guessed, onSubmit }: {
 
 /* ── The end: the sage, the share, the statistics, the countdown ──────── */
 
-function EndScreen({ sectionRef, locale, payload, state, feedback, pageUrl }: {
+/** Exported for the tests: the end screen is reached through the game's state, which is browser-only. */
+export function EndScreen({ sectionRef, locale, payload, state, feedback, pageUrl }: {
   sectionRef: React.RefObject<HTMLElement | null>
   locale: Locale
   payload: RiddlePayload
@@ -484,15 +485,37 @@ function EndScreen({ sectionRef, locale, payload, state, feedback, pageUrl }: {
           : <span className="text-ink-300"> · {S.lostSub[locale]}</span>}
       </p>
 
-      <h2 className="mt-3 font-serif text-3xl font-bold leading-tight text-ink-50 md:text-4xl">
-        <a href={card.sageHref} className="hover:text-gold-300">{card.name}</a>
-      </h2>
-      {card.tagline && <p className="mt-1 font-serif text-lg text-gold-300">{card.tagline}</p>}
-      <p className="mt-3 flex flex-wrap items-center gap-2 text-sm text-ink-300">
-        <EraChip period={card.period} locale={locale} size="sm" />
-        {card.years && <span className="tabular-nums">{card.years}</span>}
-      </p>
-      {card.bio && <p className="mt-4 leading-relaxed text-ink-200">{card.bio}</p>}
+      {/* the portrait is part of the answer: it is here, in the end screen, and nowhere before the game is over */}
+      <div className="flow-root">
+        {card.portrait && (
+          <figure data-testid="riddle-portrait" className="float-start me-4 mb-2 mt-3 w-24 sm:w-28">
+            <img
+              src={card.portrait.src}
+              alt={card.portrait.alt}
+              width={112}
+              height={112}
+              loading="lazy"
+              decoding="async"
+              data-portrait={card.id}
+              data-portrait-kind={card.portrait.kind}
+              className="aspect-square w-full rounded-xl border-2 object-cover"
+              style={{ borderColor: `${ERA_COLORS[card.period] ?? '#7a6550'}99` }}
+            />
+            <figcaption className="mt-1.5 text-[11px] leading-snug text-ink-400">
+              <a href={card.portrait.href} data-portrait-credit className="underline underline-offset-2 hover:text-gold-300">{card.portrait.credit}</a>
+            </figcaption>
+          </figure>
+        )}
+        <h2 className="mt-3 font-serif text-3xl font-bold leading-tight text-ink-50 md:text-4xl">
+          <a href={card.sageHref} className="hover:text-gold-300">{card.name}</a>
+        </h2>
+        {card.tagline && <p className="mt-1 font-serif text-lg text-gold-300">{card.tagline}</p>}
+        <p className="mt-3 flex flex-wrap items-center gap-2 text-sm text-ink-300">
+          <EraChip period={card.period} locale={locale} size="sm" />
+          {card.years && <span className="tabular-nums">{card.years}</span>}
+        </p>
+        {card.bio && <p className="mt-4 leading-relaxed text-ink-200">{card.bio}</p>}
+      </div>
 
       <div className="mt-5 flex flex-wrap gap-2">
         <a href={card.sageHref} className={primary}>{S.openPage[locale]}</a>

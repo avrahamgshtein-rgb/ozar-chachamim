@@ -11,7 +11,7 @@
 // caption at every station; `?road=1` in the address starts it, so a shared link flies it too.
 // "שישה צעדים": a path between two sages (lib/connectFlight.ts) is flown the same way, by itself, in
 // its own teal, dotted where the link is only influence (`flight`, app/[locale]/tower/path/[from]/[to]).
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import type { Locale } from '@/lib/types'
 import type { RoadPoint, TowerData, TowerNode, TowerLinkKind } from '@/lib/tower'
 import { lineageOf, roadOf, shortName, towerPath } from '@/lib/tower'
@@ -21,6 +21,7 @@ import type { KidsTour } from '@/lib/kidsTour'
 import { KidsTourPanel } from '@/components/kids/KidsTourPanel'
 import { connectHref, type ConnectFlight, type FlightPoint } from '@/lib/connectFlight'
 import { FlightPanel } from '@/components/connect/FlightPanel'
+import { portraitOf, portraitCredit } from '@/lib/portraits'
 
 const S = {
   play: { he: 'הפעלת ההיסטוריה', en: 'Play history', ru: 'Запустить историю' },
@@ -55,6 +56,34 @@ const S = {
   connectHim: { he: 'חברו אותו לחכם אחר', en: 'Connect him to another sage', ru: 'Связать с другим мудрецом' },
   connectHer: { he: 'חברו אותה לחכם אחר', en: 'Connect her to another sage', ru: 'Связать с другим мудрецом' },
 } satisfies Record<string, Record<Locale, string>>
+
+/**
+ * The name block of the chosen sage's panel. A sage who has a portrait gets it beside his name: 56 px, the small file,
+ * the episode credit as its title (a visible caption is for portraits of 96 px and more). The picture is decorative
+ * (`alt=""`): his name is written beside it. A sage without one gets the
+ * plain block the panel always had: no wrapper, no gap, nothing moves.
+ */
+export function PanelName({ id, name, color, locale, children }: { id: string; name: string; color: string; locale: Locale; children: ReactNode }) {
+  const portrait = portraitOf(id)
+  if (!portrait) return <div>{children}</div>
+  return (
+    <div className="flex min-w-0 items-start gap-3">
+      <img data-portrait={id}
+        data-portrait-kind={portrait.kind}
+        src={portrait.srcSm}
+        alt=""
+        title={portraitCredit(portrait, locale)}
+        width={56}
+        height={56}
+        loading="lazy"
+        decoding="async"
+        className="h-14 w-14 shrink-0 rounded-xl border bg-ink-800 object-cover"
+        style={{ borderColor: `${color}99` }}
+      />
+      <div className="min-w-0">{children}</div>
+    </div>
+  )
+}
 
 /** "Station 12 of 46" */
 const stationOf = (i: number, n: number, l: Locale) =>
@@ -956,13 +985,13 @@ export function TowerScene({ data, locale, initialSage, tour, flight }: { data: 
       {sel && direct && chain && !road && (
         <aside dir={dir} className="absolute inset-x-3 bottom-32 z-20 max-h-[38%] overflow-y-auto rounded-2xl border border-gold-500/25 bg-ink-900/90 p-4 shadow-2xl backdrop-blur sm:inset-x-auto sm:end-4 sm:top-4 sm:bottom-auto sm:w-80 sm:max-h-[70%]">
           <div className="flex items-start justify-between gap-3">
-            <div>
+            <PanelName id={sel.id} name={sel.name} color={sel.color} locale={locale}>
               <h2 className="font-serif text-xl font-bold leading-tight text-ink-50">{sel.name}</h2>
               <p className="mt-1 text-xs text-ink-400">
                 <span className="me-1.5 inline-block h-2 w-2 rounded-full align-middle" style={{ background: sel.color }} />
                 {[data.eras.find(e => e.era === sel.era)?.label, sel.years].filter(Boolean).join(' · ')}
               </p>
-            </div>
+            </PanelName>
             <button type="button" onClick={() => setSelected(null)} aria-label={S.close[locale]} className="text-ink-400 hover:text-ink-100">✕</button>
           </div>
           {roadFor && roadFor.length > 1 && (

@@ -10,6 +10,7 @@ import type { ConnectFlight } from '@/lib/connectFlight'
 import { shortName } from '@/lib/tower'
 import { ruPlural } from '@/components/viz/SinaiPathText'
 import { EraChip } from '@/components/ui/EraChip'
+import { portraitOf, portraitCredit } from '@/lib/portraits'
 
 interface Props {
   flight: ConnectFlight
@@ -66,6 +67,8 @@ export function FlightPanel({ flight, locale, at, playing, copied, onGo, onPlay,
   const st = stations[Math.max(0, Math.min(at, stations.length - 1))]
   const last = stations.length - 1
   const end = at === last
+  // the sage at this station, if he has a portrait: a thumbnail beside his name; with none the card is as it was
+  const portrait = portraitOf(st.id)
   const dir = locale === 'he' ? 'rtl' : 'ltr'
   const btn = 'grid h-11 w-11 place-items-center rounded-full border border-white/20 bg-white/5 text-ink-50 hover:border-white/60 disabled:opacity-30'
   const pill = 'inline-flex min-h-[44px] items-center rounded-lg border border-white/15 px-3 py-2 text-sm text-ink-100 hover:border-white/50'
@@ -108,6 +111,21 @@ export function FlightPanel({ flight, locale, at, playing, copied, onGo, onPlay,
 
       <div aria-live="polite">
         <p className="mt-3 text-xs tabular-nums text-ink-400">{stationOf(at + 1, stations.length, locale)}</p>
+        {/* 56 px, the small file; floated to the start so the name and the era chip run beside it. The episode credit is its title (a visible caption is for portraits of 96 px and more); it is decorative (alt=""), so this aria-live region does not read it at every station */}
+        {portrait && (
+          <img data-portrait={st.id}
+            data-portrait-kind={portrait.kind}
+            src={portrait.srcSm}
+            alt=""
+            title={portraitCredit(portrait, locale)}
+            width={56}
+            height={56}
+            loading="lazy"
+            decoding="async"
+            className="float-start me-3 h-14 w-14 rounded-xl border bg-ink-800 object-cover"
+            style={{ borderColor: `${st.color}99` }}
+          />
+        )}
         <h2 className="mt-0.5 font-serif text-xl font-bold leading-snug text-ink-50">
           <a href={`/${locale}/sage/${st.id}`} target="_blank" rel="noopener" className="hover:underline">
             <span aria-hidden className="me-2 inline-block h-2.5 w-2.5 rounded-full align-middle" style={{ background: st.color }} />

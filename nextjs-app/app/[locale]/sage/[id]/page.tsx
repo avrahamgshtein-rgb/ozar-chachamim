@@ -26,6 +26,8 @@ import { AskSageButton } from '@/components/sages/AskSageButton'
 import { SinaiPathCard } from '@/components/viz/SinaiPathCard'
 import { PrintButton, ShareButton, ThemeToggle } from '@/components/sages/PageActions'
 import { SoundtrackToggle } from '@/components/ui/SoundtrackToggle'
+import { SagePortrait } from '@/components/sages/SagePortrait'
+import { hasPortrait } from '@/lib/portraits'
 import { Toaster } from '@/components/sages/Toast'
 import { ChatWidget } from '@/components/chat/ChatWidget'
 import type { AskSubject } from '@/components/chat/askAbout'
@@ -202,6 +204,46 @@ export default async function SagePage({ params }: PageProps) {
   const kidsStops = loc === 'he' ? stationsOfSage(raw.id) : []
   const videos = sageVideos(raw.id, loc)
 
+  const hasHeroPortrait = hasPortrait(raw.id)
+  // The top of the hero: chips, name and tags. With a portrait it sits beside it; without one it is laid out exactly as before.
+  const heroText = (
+    <>
+      <div className="flex flex-wrap items-center gap-2">
+        <EraChip period={sage.period} locale={loc} />
+        {yearRange && (
+          <MetaChip icon="calendar">{yearRange}</MetaChip>
+        )}
+        {sage.location && (
+          <MetaChip icon="pin">{shownLocation(sage)}</MetaChip>
+        )}
+      </div>
+
+      <h1 dir="auto" className="mt-5 font-serif text-[2.1rem] font-bold leading-[1.12] tracking-tight text-ink-50 [overflow-wrap:anywhere] md:text-5xl">
+        {name}
+      </h1>
+      {fullName && (
+        <p dir="auto" className="mt-2 font-serif text-lg text-ink-300 md:text-xl">({fullName})</p>
+      )}
+      {tagline && (
+        <p dir="auto" className="mt-3 max-w-3xl font-serif text-lg italic leading-relaxed text-ink-300 md:text-xl">{tagline}</p>
+      )}
+      {loc === 'he' && raw.name_en && (
+        <p className="mt-2 font-sans text-base text-ink-400" dir="ltr">{raw.name_en}</p>
+      )}
+      {sage.field && (
+        <p dir="auto" className="mt-4 font-sans text-sm text-ink-400">{shownField(sage)}</p>
+      )}
+
+      {sage.tags && sage.tags.length > 0 && (
+        <ul className="mt-4 flex flex-wrap gap-1.5">
+          {shownTags(sage).map((tag, i) => (
+            <li key={`${i}-${tag}`} dir="auto" className="rounded-full border border-ink-700/40 bg-ink-800/60 px-2.5 py-0.5 text-xs text-ink-300">{tag}</li>
+          ))}
+        </ul>
+      )}
+    </>
+  )
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd }} />
@@ -259,39 +301,12 @@ export default async function SagePage({ params }: PageProps) {
               background: `radial-gradient(120% 140% at ${dir === 'rtl' ? '100%' : '0%'} 0%, ${accent}24 0%, transparent 58%)`,
             }}
           >
-            <div className="flex flex-wrap items-center gap-2">
-              <EraChip period={sage.period} locale={loc} />
-              {yearRange && (
-                <MetaChip icon="calendar">{yearRange}</MetaChip>
-              )}
-              {sage.location && (
-                <MetaChip icon="pin">{shownLocation(sage)}</MetaChip>
-              )}
-            </div>
-
-            <h1 dir="auto" className="mt-5 font-serif text-[2.1rem] font-bold leading-[1.12] tracking-tight text-ink-50 [overflow-wrap:anywhere] md:text-5xl">
-              {name}
-            </h1>
-            {fullName && (
-              <p dir="auto" className="mt-2 font-serif text-lg text-ink-300 md:text-xl">({fullName})</p>
-            )}
-            {tagline && (
-              <p dir="auto" className="mt-3 max-w-3xl font-serif text-lg italic leading-relaxed text-ink-300 md:text-xl">{tagline}</p>
-            )}
-            {loc === 'he' && raw.name_en && (
-              <p className="mt-2 font-sans text-base text-ink-400" dir="ltr">{raw.name_en}</p>
-            )}
-            {sage.field && (
-              <p dir="auto" className="mt-4 font-sans text-sm text-ink-400">{shownField(sage)}</p>
-            )}
-
-            {sage.tags && sage.tags.length > 0 && (
-              <ul className="mt-4 flex flex-wrap gap-1.5">
-                {shownTags(sage).map((tag, i) => (
-                  <li key={`${i}-${tag}`} dir="auto" className="rounded-full border border-ink-700/40 bg-ink-800/60 px-2.5 py-0.5 text-xs text-ink-300">{tag}</li>
-                ))}
-              </ul>
-            )}
+            {hasHeroPortrait ? (
+              <div className="flex items-start gap-4 md:gap-8">
+                <div className="min-w-0 flex-1">{heroText}</div>
+                <SagePortrait id={raw.id} name={name} locale={loc} accent={accent} />
+              </div>
+            ) : heroText}
 
             <div className="no-print mt-6 flex flex-wrap gap-2">
               {researchDocs.length > 0 && (
