@@ -140,11 +140,14 @@ test('the owner\'s four episodes are wired to 630-633 and to no other new sage',
   }
 })
 
-test('the owner\'s papers: 630, 631 and 634 have a Hebrew, English and Russian research file; the other new sages have none', () => {
+// 2026-10-18: the tier-A papers (tests/shemHagedolim2.test.ts) came for 17 of these sages, so they have a paper now too
+const TIER_A_PAPERS = ['632', '635', '636', '638', '639', '640', '641', '642', '643', '646', '647', '648', '651', '652', '657', '660', '669']
+
+test('the owner\'s papers: 630, 631, 634 and the 17 tier-A sages have a Hebrew, English and Russian research file; the other new sages have none', () => {
   const dir = join(__dirname, '../public/research')
   for (const id of IDS) {
     const files = ['', '.en', '.ru'].map(x => existsSync(join(dir, `${id}${x}.json`)))
-    const has = ['630', '631', '634'].includes(id)
+    const has = ['630', '631', '634', ...TIER_A_PAPERS].includes(id)
     assert.deepEqual(files, has ? [true, true, true] : [false, false, false], id)
     assert.equal(Boolean(byId.get(id)!.has_research), has, `${id} has_research`)
   }

@@ -36,6 +36,8 @@ export const LOCATION_REGION_MAP: Array<[string, Region]> = [
   ['Venice', 'italy'], ['Padua', 'italy'],
   ['ונצי', 'italy'], ['ליוורנו', 'italy'], ['מנטובה', 'italy'], ['טראני', 'italy'], ['לונטשיץ', 'italy'],
   ['מודינה', 'italy'], ['אמיליה', 'italy'], ['פיזה', 'italy'], ['קרלסרוהה', 'ashkenaz'],
+  ['סלמנקה', 'sefarad'], ['ניקלשבורג', 'ashkenaz'], ['שידלובצא', 'east-europe'], ['פרוסניץ', 'ashkenaz'],
+  ['מהדיה', 'north-africa'], ['סנס', 'tsarfat'],
   ['מרוקו', 'north-africa'], ['מצרים', 'north-africa'], ['תוניסיה', 'north-africa'],
   ['פס', 'north-africa'], ['קהיר', 'north-africa'], ['Egypt', 'north-africa'],
   ['Morocco', 'north-africa'], ['Cairo', 'north-africa'], ['Fez', 'north-africa'],

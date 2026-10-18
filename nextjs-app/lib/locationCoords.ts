@@ -207,6 +207,13 @@ export const LOCATION_COORDS: Record<string, { lat: number; lng: number }> = {
   'מודינה':      { lat: 44.647,  lng: 10.926  },
   "רג'ו אמיליה": { lat: 44.700,  lng: 10.633  },
   'פיזה':        { lat: 43.717,  lng: 10.400  },
+  // Coordinates from Wikipedia (infobox or API), for the sages of the tier-A Shem HaGedolim papers (680-696)
+  'סלמנקה':      { lat: 40.965,  lng: -5.6642 },
+  'ניקלשבורג':   { lat: 48.806,  lng: 16.638  },
+  'שידלובצא':    { lat: 51.233,  lng: 20.850  },
+  'פרוסניץ':     { lat: 49.472,  lng: 17.111  },
+  'מהדיה':       { lat: 35.5047, lng: 11.0622 },
+  'סנס':         { lat: 48.1972, lng: 3.2833  },
 
   // ── יוון ───────────────────────────────────────────────────────────────
   'יוון':        { lat: 37.774,  lng: 25.131  },

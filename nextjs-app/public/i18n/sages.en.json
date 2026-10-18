@@ -2808,5 +2808,90 @@
   "label": "Rabbi Eliyahu Bachur (the Masoret HaMasoret)",
   "bio": "A Hebrew linguist and scholar of the Masorah in the Renaissance, born in Neustadt in Bavaria, who moved in his youth to Italy and lived in Venice, Padua and Rome. He taught Hebrew to Christian scholars, worked as a proofreader at a printing house in Venice and supervised a printing house in Isny, and wrote grammar books and dictionaries, among them HaBachur and HaTishbi, as well as Masoret HaMasoret and Tov Ta’am. He died in Venice in 1549.",
   "core_concept": "In his book Masoret HaMasoret he argued that the vowel points and cantillation marks were introduced by the masoretes and do not date from the time of the Talmud, a view the Chida cites and takes issue with. Through his books and his teaching he passed Hebrew grammar on to Christian scholars, who translated his works into Latin."
+ },
+ "680": {
+  "label": "Rav Yehudai Gaon",
+  "bio": "A Gaon of Sura, son of Nachman, regarded as one of the central figures at the beginning of the Geonic period, who headed the yeshiva in 757–761 although his Torah education took place at the Pumbedita yeshiva. He was blind, and relied on dictation to scribes and on teaching his Torah orally. He was the first Gaon whose halakhic responsa have survived in significant quantity.",
+  "core_concept": "The book Halachot Pesukot, composed by him or in his study house, is the first codification attempt after the close of the Babylonian Talmud; it omits the tangle of Talmudic discussion and the names of the Amoraim. He struggled against the customs of the Land of Israel in order to establish the authority of the Babylonian Talmud, and his students spread his teaching in the Diaspora."
+ },
+ "681": {
+  "label": "Rav (Abba Arikha)",
+  "bio": "An Amora born in Babylonia into a distinguished family, who went up in his youth to the Land of Israel with his uncle Rabbi Chiya and studied in the study house of Rabbi Yehuda HaNasi. Rabbi Yehuda HaNasi gave him only partial ordination: he was permitted to rule on matters of prohibition and permission, but not to permit a blemished firstborn animal. He returned to Babylonia around the year 219, and later founded his yeshiva in Sura, where he established the Yarchei Kallah, mass study gatherings in the months of Elul and Adar.",
+  "core_concept": "The rule \"the halakha follows Rav in prohibitions and Shmuel in monetary law\" holds that in the disputes between Rav and Shmuel the halakha follows Rav in matters of prohibition and permission, and Shmuel in monetary law. He is regarded as the principal shaper of the Musaf prayer of Rosh Hashanah, the \"Tekiata de-Vei Rav\", in which the blessings of Malchuyot, Zichronot and Shofarot were arranged and the Aleinu prayer was incorporated."
+ },
+ "682": {
+  "label": "Rabbi Avraham Zacut (the Sefer Yuchasin)",
+  "bio": "An astronomer and historian, born in Salamanca in Castile, who studied astronomy at the University of Salamanca (and possibly taught there too), completed in his native city in 1478 his astronomical work \"Ha-Chibbur Ha-Gadol\", and also served as the community rabbi. After the expulsion from Spain in 1492 he turned to Portugal, where King João II appointed him royal astronomer and historiographer; when decrees of conversion and expulsion were imposed on the Jews of Portugal at the end of 1496, he refused to convert and fled to Tunis. In Tunis he wrote the Sefer Yuchasin, and according to various sources he died in Jerusalem or in Damascus, around 1515 or in 1520.",
+  "core_concept": "He saw science as a complementary link to understanding the Torah and halakha, and in Sefer Yuchasin he testified that his astronomical pursuit was intended only \"to understand the words of the Sages and the halakhot they wrote on this\". According to the account, he supplied Vasco da Gama with navigation tables and trained his sailors in a refined nautical astrolabe, and his Sefer Yuchasin recounts the chain of the reception and transmission of the Torah from Moses to his own generation."
+ },
+ "683": {
+  "label": "Rabbi Avraham ben Natan HaYarchi (the Sefer HaManhig)",
+  "bio": "A rabbi and scholar from Provence in the twelfth and thirteenth centuries, called HaYarchi after Lunel, and the author of Sefer HaManhig. He studied in northern France at the academy of Ri HaZaken in Dampierre, and after long travels among the communities of Europe he settled in Toledo in Spain, where he won the patronage of Yosef ibn Shushan and his sons. Sefer HaManhig, which he began to write in 1204 and dedicated to his patrons, consists in its present form of his responsa and extracts from the works of the Rif, Rabbi Yitzchak ibn Ghiyyat and Rabbi Yitzchak ben Abba Mari, and records synagogue customs that he saw himself in many lands.",
+  "core_concept": "According to the research on this site, he held that every widespread custom in the Jewish communities has a root in the Talmud, the Midrash or the responsa of the Geonim, and so he sought to uncover its source rather than to set it aside. His book contains many literal quotations from the Talmuds and from the halakhic and aggadic Midrashim, among them from collections of aggadah that have been lost, and so it contributes to the textual criticism of this literature."
+ },
+ "684": {
+  "label": "Rabbi Aharon Berechia of Modena (the Maavar Yabbok)",
+  "bio": "An Italian rabbi and kabbalist from Modena, the author of Maavar Yabbok (1626), which was written at the request of the burial society of Mantua and served as a primary source for burial practices. He was a pupil of Rabbi Hillel of Modena and of the Rama of Fano, and also studied with Rabbi Israel Sarug, a student of the Ari. The prayer book Ashmoret HaBoker (1624), which he compiled for a group of early risers in Modena, was his first work.",
+  "core_concept": "In the introduction to Maavar Yabbok, named for Jacob's crossing of the river Yabbok, he explains the crossing as the soul's passage over the border between this world and the world to come. His thought is presented in the research on this site as a synthesis of the Kabbalah of the Ramak and that of the Ari, in which he draws on the Lurianic system of the sefirot and partzufim as rendered by Rabbi Israel Sarug."
+ },
+ "685": {
+  "label": "Rav Achai Gaon (the Sheiltot)",
+  "bio": "A Babylonian scholar of the Pumbedita academy in the eighth century, the author of the Sheiltot (although it is not known whether he composed them himself or collected them), the first book known after the completion of the Talmud. The title Gaon attached to his name is not an official appointment, since he did not head either of the two academies. When the Gaon of Pumbedita died, the exilarch Solomon bar Chasdai, out of a personal grudge against him, passed Achai over and appointed Natronai Kahana ben Amuna, his student; Achai went up to the Land of Israel and lived there until his death.",
+  "core_concept": "The Sheiltot are about one hundred and ninety homilies in Aramaic on law and ethics, each opening with a commandment, raising a legal question, giving a homily of aggadah and ethics, and ending with a short ruling. Geonic books of rulings such as Halachot Pesukot and Halachot Gedolot drew on the Sheiltot, Rishonim such as Rashi, the Rif and the Rambam quoted them, and the commentaries Sheilat Shalom and Haamek Sheilah were written on them."
+ },
+ "686": {
+  "label": "Rabbi David Oppenheim",
+  "bio": "A rabbi and halakhic authority, born in Worms, who served as rabbi of Nikolsburg and later as chief rabbi of Prague and the districts of Bohemia, and headed a large yeshiva in Prague. He built a large collection of Hebrew books and manuscripts, which the Bodleian Library in Oxford bought in its entirety in 1829. He died in 1736 and was buried in the Old Jewish Cemetery in Prague.",
+  "core_concept": "In his lessons he used to bring before his students rare manuscripts and old printed editions in order to establish accurate readings, and he kept his library in Hanover, in his father-in-law’s house. He wrote about twenty books, among them the responsa Nishal David, but did not print most of them in his lifetime."
+ },
+ "687": {
+  "label": "Rabbi Yedidya Shlomo Raphael Norzi (the Minchat Shai)",
+  "bio": "A rabbi and biblical exegete, born in Mantua and one of the rabbis of the city, who studied under Rabbi Moshe Cases and received rabbinical ordination in 1585. He completed his critical commentary on the whole Bible, concerned with the Masorah and the text of Scripture, in 1626 and called it Goder Peretz; it was printed in Mantua in 1742–1744 under the name Minchat Shai.",
+  "core_concept": "In his work he established the spelling, vocalization and cantillation of the Bible on the basis of Masoretic works and manuscripts, and where a grammarian and a master of the Masorah disagreed, he ruled as the master of the Masorah. He drew on the work of Menachem de Lonzano and on that of Rabbi Meir HaLevi Abulafia, and his work is regarded as a standard work on the text of the Bible."
+ },
+ "688": {
+  "label": "Rabbi Meir Eisenstadt (the Panim Meirot)",
+  "bio": "A halakhic authority and head of a yeshiva, born in Posen, who served as rabbi in Szydłowiec and in Prostějov, headed the yeshiva in Worms, and finally settled in Eisenstadt as rabbi of the Seven Communities. His yeshiva in Eisenstadt attracted students from near and far, and among his students was Rabbi Yonatan Eybeschutz. He died in Eisenstadt in 1744.",
+  "core_concept": "He wrote the responsa Panim Meirot, a book of responsa and novellae on tractates of the Talmud, and Kotnot Or, a homiletic commentary on the Torah and the Five Scrolls. Rabbis from Turkey, Germany and Italy turned to him with halakhic questions, and his halakhic method is marked by caution and by close adherence to the wording of the sources."
+ },
+ "689": {
+  "label": "Rabbi Meir Schiff (the Maharam Schiff)",
+  "bio": "A yeshiva head and Talmud commentator in Germany in the first half of the 17th century, born in Frankfurt am Main, who became known for his great sharpness. At about seventeen he was invited to serve as rabbi, head of the court and head of the yeshiva in Fulda, and his yeshiva drew students from Ashkenaz, Poland and Eastern Europe. Shortly before his death he was called to serve as rabbi of Prague, but he died suddenly at a young age.",
+  "core_concept": "His Chiddushei Halachot is a dense condensation of the lessons he gave in his yeshiva in Fulda, and parts of eleven tractates of the Babylonian Talmud survive in it. In his novellae he concentrated on a deep local understanding of the passage and of the words of the Tosafot, and they are printed at the end of some of the tractates of the Shas in the Vilna edition."
+ },
+ "690": {
+  "label": "Rav Nissim Gaon",
+  "bio": "Head of the yeshiva of Kairouan in North Africa, born in Kairouan, who was called “Gaon” as a title of honour although he did not serve as a gaon in any of the Babylonian yeshivot. He studied in the study hall of his father, Rabbi Yaakov ben Nissim, and afterwards with Rabbi Chushiel ben Elchanan, and he kept up a correspondence with Rav Hai Gaon and with Shmuel HaNagid in Granada. When Kairouan was plundered and destroyed in his time, he moved to Mahdia, where he died.",
+  "core_concept": "In his “Sefer Mafteach Manulei HaTalmud” he sought to decipher Babylonian sugyot given in abbreviated form by directing the student to parallels in the Talmudic literature, among them the Jerusalem Talmud. He also wrote “Chibbur Yafeh MeHaYeshuah”, a book of consolation in Judeo-Arabic, and “Megillat Setarim”, which the Tosafot and the Rishonim mention in several places."
+ },
+ "691": {
+  "label": "Rabbi Natan Neta Shapira (the Megaleh Amukot)",
+  "bio": "Head of the yeshiva and preacher of the Kraków community in the first half of the 17th century, born in Hrodna, known above all as a kabbalist and as the author of “Megaleh Amukot”. His father-in-law, the wealthy communal leader Rabbi Moshe ben Yaakov, supplied all his needs, and so he held his public positions without taking pay. He died in the prime of life, at about forty-eight, and was buried in the old Jewish cemetery in Kraków.",
+  "core_concept": "In his book “Megaleh Amukot” on the portion Va’etchanan he offered two hundred and fifty-two ways to explain, through the mystical tradition, Moses’ prayer “Let me pass over”, and he is called after it “the Megaleh Amukot”. Alongside Kabbalah he also wrote glosses and novellae on the Rif, known as “Chiddushei Anshei Shem”."
+ },
+ "692": {
+  "label": "Rav Amram Gaon",
+  "bio": "A gaon of the Sura academy in Babylonia in the ninth century, a student of Rav Natronai bar Hilai. He compiled Seder Rav Amram Gaon, the earliest complete prayer book to have reached us, which was sent to a Jewish community in Spain that had asked for an authoritative text of the prayers and blessings. He is the author of about 120 halakhic responsa, most of them printed in the collection Shaarei Tzedek.",
+  "core_concept": "He is the first known to have arranged a complete order of prayer for use in the synagogue and at home, and he combined the texts of the prayers with the laws and customs that accompany them. His prayer book is one of the foundations of both the Sephardic and the Ashkenazic liturgy, and the sages of the Middle Ages relied on it."
+ },
+ "693": {
+  "label": "Rabbi Tzvi Hirsch Ashkenazi (the Chacham Tzvi)",
+  "bio": "A rabbi and halakhic authority, a native of Moravia, who studied in Salonica at the school of Rabbi Eliyahu Kovo and became known in Constantinople by the Sephardic title Hakham. He served as rabbi in Sarajevo, Altona and Amsterdam, and at the end of his life was called to be rabbi of Lemberg, where he died in 1718. He placed Nehemiah Chiya Chayon under a ban, his writings having been suspected of Sabbatean principles, and after the dispute that followed he left Amsterdam in 1714.",
+  "core_concept": "He combined Ashkenazic sharpness with Sephardic clarity, and his responsa, in the book Chacham Tzvi (Amsterdam, 1712), are marked by brevity and a drive toward the plain sense of the passage. In the dispute over the hen without a heart he declared fit a hen in which no heart was found, on the grounds that an animal with a blood system cannot live without a heart."
+ },
+ "694": {
+  "label": "Rabbi Shmuel Yaffe Ashkenazi (the Yefe Toar)",
+  "bio": "A sage of the Ottoman Empire in the sixteenth century, a native of Bursa, who served as rabbi of the Ashkenazi community of Constantinople. He wrote the Yefe Toar, a broad exposition of Midrash Rabbah, and the Yefe Mareh on the aggadot of the Jerusalem Talmud, which was printed in Venice during his lifetime. He also wrote the Yefe Anaf on the midrashim to Ruth, Esther and Lamentations, and the Yefe Kol on Song of Songs Rabbah.",
+  "core_concept": "According to the site's research paper, in the Yefe Toar and the Yefe Mareh he brought the methods of Talmudic study to the study of midrash and aggadah, clarifying variant readings and resolving difficulties and puzzles. His Yefe Toar on Genesis Rabbah was first printed in Venice in 1597, and according to the research paper the printing of the commentary on the Five Books of Moses was spread over more than two hundred years."
+ },
+ "695": {
+  "label": "Rabbi Shmuel ibn Tibbon",
+  "bio": "A philosopher, translator and Bible commentator from southern France, the son of Rabbi Yehuda ibn Tibbon. He was active in Lunel, Montpellier, Béziers and Marseille. He translated the Rambam’s Guide of the Perplexed from Arabic into Hebrew and, in the course of the work, wrote letters to the Rambam asking for clarification of difficult passages; the translation was completed in 1204. He wrote Perush HaMilim HaZarot, regarded as the first Hebrew philosophical dictionary, and died in Marseille around 1230.",
+  "core_concept": "According to the research paper, through his translation of the Guide of the Perplexed and his lexicon Perush HaMilim HaZarot he gave the Jewish people the conceptual and linguistic tools to think and write philosophy in Hebrew. According to the research paper, he saw the Guide of the Perplexed as a work built deliberately on contradictions, and according to Aviezer Ravitzky he held that the Rambam concealed in it a position leaning toward the eternity of the world."
+ },
+ "696": {
+  "label": "Rabbi Shimshon ben Avraham of Sens (the Rash of Sens)",
+  "bio": "A Tosafist born in France around 1150, the brother of the Ritzba, who heard Torah from Rabbenu Tam and was the chief student of Ri HaZaken of Dampierre. He settled in Sens and headed a well-known yeshiva there, wrote the Tosafot of Sens and a commentary on the Mishnah orders Zeraim and Tahorot. Around 1211, as one of the leaders of the aliyah of the Tosafists, he went up to the Land of Israel and lived in Jerusalem and Acre. He died in the first half of the thirteenth century: Hebrew Wikipedia gives about 1214, English Wikipedia about 1230.",
+  "core_concept": "According to the research paper, he brought to its peak the dialectical approach of the study house of Rashi, Rabbenu Tam and Ri HaZaken. According to English Wikipedia, he devoted more attention to the Jerusalem Talmud than any of his predecessors or contemporaries, and in his commentary on the Mishnah he often cites the Tosefta as well. The Rosh wrote of Rabbenu Tam, Ri and R. Shimshon that “most of our Torah was expounded by them”."
  }
 }

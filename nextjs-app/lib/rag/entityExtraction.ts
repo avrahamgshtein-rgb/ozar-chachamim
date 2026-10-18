@@ -85,6 +85,9 @@ export function extractMentionedSages(
     const aliases = [...aliasesOf(sage.label), ...(sage.name_en ? [sage.name_en] : []), ...(local ? aliasesOf(local) : [])]
     for (const alias of aliases) {
       const normAlias = normalizeHe(alias)
+      // a bare title is not a name: Rav Abba Aricha's label is "רב (אבא אריכא)", whose part outside the
+      // brackets, "רב", sits inside "רבי עקיבא" ("אבא אריכא" in brackets still finds him)
+      if (STOPWORDS.has(normAlias)) continue
       const hit = HEBREW_LETTER.test(normAlias)
         ? normAlias.length >= 2 && q.includes(normAlias)
         : normAlias.length >= 3 && ` ${qClean} `.includes(` ${stripPunct(normAlias)} `)

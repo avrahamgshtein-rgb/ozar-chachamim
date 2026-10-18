@@ -8790,7 +8790,7 @@
    "birth_year": 1500,
    "death_year": 1580,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "633",
@@ -8841,7 +8841,7 @@
    "birth_year": 1470,
    "death_year": 1549,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "636",
@@ -8859,7 +8859,7 @@
    "birth_year": 1290,
    "death_year": 1350,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "637",
@@ -8895,7 +8895,7 @@
    "birth_year": 1555,
    "death_year": 1614,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "639",
@@ -8913,7 +8913,7 @@
    "birth_year": 1505,
    "death_year": 1589,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "640",
@@ -8931,7 +8931,7 @@
    "birth_year": 1503,
    "death_year": 1580,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "641",
@@ -8949,7 +8949,7 @@
    "birth_year": 1568,
    "death_year": 1639,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "642",
@@ -8967,7 +8967,7 @@
    "birth_year": 1500,
    "death_year": 1600,
    "date_precision": "century",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "643",
@@ -8985,7 +8985,7 @@
    "birth_year": 1650,
    "death_year": 1706,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "644",
@@ -9039,7 +9039,7 @@
    "birth_year": 1603,
    "death_year": 1673,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "647",
@@ -9057,7 +9057,7 @@
    "birth_year": 1500,
    "death_year": 1600,
    "date_precision": "century",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "648",
@@ -9075,7 +9075,7 @@
    "birth_year": 1660,
    "death_year": 1712,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "649",
@@ -9129,7 +9129,7 @@
    "birth_year": 1567,
    "death_year": 1630,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "652",
@@ -9147,7 +9147,7 @@
    "birth_year": 1680,
    "death_year": 1756,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "653",
@@ -9237,7 +9237,7 @@
    "birth_year": 1638,
    "death_year": 1702,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "658",
@@ -9291,7 +9291,7 @@
    "birth_year": 1661,
    "death_year": 1733,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "661",
@@ -9453,7 +9453,7 @@
    "birth_year": 1440,
    "death_year": 1508,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "670",
@@ -9634,6 +9634,312 @@
    "death_year": 1549,
    "date_precision": "exact",
    "has_research": false
+  },
+  {
+   "id": "680",
+   "label": "רב יהודאי גאון",
+   "era": "המאה ה־8",
+   "era_key": "geonim",
+   "era_label": "גאונים",
+   "field": "הלכה והנהגה",
+   "location": "סורא; פומבדיתא; בבל",
+   "bio": "גאון סורא בן נחמן, שנחשב לאחת הדמויות המרכזיות בראשית תקופת הגאונים, ועמד בראש הישיבה בשנים 757–761 למניינם אף שחינוכו התורני נעשה בישיבת פומבדיתא. היה עיוור, והסתמך על הכתבה לסופרים ועל אמירת תורתו בעל פה. הוא הגאון הראשון שתשובותיו ההלכתיות השתמרו בהיקף משמעותי.",
+   "central_idea": "ספר ״הלכות פסוקות״, שחובר על ידו או בבית מדרשו, הוא הניסיון הקודיפיקטיבי הראשון לאחר חתימת התלמוד הבבלי; הושמטו בו סבך הדיון התלמודי ושמות האמוראים. הוא נאבק במנהגי ארץ ישראל כדי להשליט את סמכות התלמוד הבבלי, ותלמידיו הפיצו את תורתו בתפוצות.",
+   "tags": "הלכות פסוקות, הלכות ראו, תשובות הגאונים, ישיבת סורא, ישיבת פומבדיתא, מנהג שמד, מנהגי ארץ ישראל, פירקוי בן באבוי",
+   "chapter_type": "דמות",
+   "spotify_url": "",
+   "birth_year": 700,
+   "death_year": 800,
+   "date_precision": "century",
+   "has_research": true
+  },
+  {
+   "id": "681",
+   "label": "רב (אבא אריכא)",
+   "era": "כ־175–247",
+   "era_key": "amoraim",
+   "era_label": "אמוראים",
+   "field": "הלכה, הנהגה ותפילה",
+   "location": "בבל; ארץ ישראל; סורא; ציפורי",
+   "bio": "אמורא יליד בבל, ממשפחה מיוחסת, שעלה בצעירותו לארץ ישראל עם דודו רבי חייא ולמד בבית מדרשו של רבי יהודה הנשיא. רבי יהודה הנשיא העניק לו סמיכה חלקית בלבד: הותר לו להורות בענייני איסור והיתר, אך לא להתיר בכור בעל מום. בשנת 219 לערך חזר לבבל, ובהמשך הקים בסורא את ישיבתו וייסד בה את ״ירחי כלה״, כינוסי לימוד המוניים בחודשים אלול ואדר.",
+   "central_idea": "הכלל ״הלכה כרב באיסורי וכשמואל בממוני״ קובע שבמחלוקות בין רב לשמואל ההלכה כרב בענייני איסור והיתר, וכשמואל בדיני ממונות. הוא נחשב למעצב המרכזי של תפילת מוסף של ראש השנה, ״תקיעתא דבי רב״, שבה סודרו ברכות מלכויות, זכרונות ושופרות ושולבה תפילת ״עלינו לשבח״.",
+   "tags": "ישיבת סורא, ירחי כלה, תקיעתא דבי רב, עלינו לשבח, הלכה כרב באיסורי, רב ושמואל, ראשון האמוראים, רבי חייא",
+   "chapter_type": "דמות",
+   "spotify_url": "",
+   "birth_year": 175,
+   "death_year": 247,
+   "date_precision": "exact",
+   "has_research": true
+  },
+  {
+   "id": "682",
+   "label": "רבי אברהם זכות (בעל ספר יוחסין)",
+   "era": "1452–כ־1515",
+   "era_key": "acharonim",
+   "era_label": "אחרונים",
+   "field": "אסטרונומיה, מתמטיקה והיסטוריוגרפיה",
+   "location": "סלמנקה; ליסבון; טוניס",
+   "bio": "אסטרונום והיסטוריון, יליד סלמנקה שבקסטיליה, שלמד אסטרונומיה באוניברסיטת סלמנקה (ויתכן שאף לימד בה), השלים בעירו ב־1478 את חיבורו האסטרונומי ״החיבור הגדול״ ושימש גם כרב הקהילה. לאחר צו הגירוש מספרד ב־1492 פנה לפורטוגל, ושם מינה אותו המלך ז׳ואאו השני לאסטרונום והיסטוריוגרף מלכותי; כשהוטלו גזירות המרה וגירוש על יהודי פורטוגל בשלהי 1496 סירב להמיר את דתו ונמלט לטוניס. בטוניס חיבר את ״ספר יוחסין״, ולפי מקורות שונים נפטר בירושלים או בדמשק, בסביבות 1515 או ב־1520.",
+   "central_idea": "הוא ראה במדע חוליה משלימה להבנת התורה וההלכה, ובספר יוחסין העיד שעיסוקו באסטרונומיה לא נועד אלא ״להבין דברי חז״ל וההלכות שכתבו בזה״. לפי הכתוב סיפק לוואסקו דה גאמה טבלאות ניווט ותירגל את מלחיו באסטרולאב ימי משוכלל, ו״ספר יוחסין״ שלו מגולל את שלשלת קבלת התורה ומסירתה ממשה רבנו ועד דורו.",
+   "tags": "החיבור הגדול, ספר יוחסין, אסטרולאב ימי, אלמנך נצחי, ואסקו דה גאמה, יוסף ויסינו, גירוש ספרד",
+   "chapter_type": "דמות",
+   "spotify_url": "",
+   "birth_year": 1452,
+   "death_year": 1515,
+   "date_precision": "exact",
+   "has_research": true
+  },
+  {
+   "id": "683",
+   "label": "רבי אברהם בן נתן הירחי (בעל ספר המנהיג)",
+   "era": "כ־1155–1215",
+   "era_key": "rishonim",
+   "era_label": "ראשונים",
+   "field": "הלכה ומנהג",
+   "location": "לוניל, פרובנס; דמפייר, צרפת; טולדו, ספרד",
+   "bio": "חכם מפרובנס במאות השתים־עשרה והשלוש־עשרה, הקרוי ״הירחי״ על שם לוניל, ומחבר ״ספר המנהיג״. למד בצפון צרפת בדמפייר, בישיבת ר״י הזקן, ולאחר נדודים ארוכים בקהילות אירופה התיישב בטולדו שבספרד, שם זכה לחסותם של יוסף אבן שושן ובניו. ״ספר המנהיג״, שהחל לכתוב ב־1204 והקדיש לתומכיו, מורכב בצורתו הנוכחית מתשובותיו ומקטעים מחיבורי הרי״ף, רבי יצחק אבן גיאת ורבי יצחק בן אבא מרי, ומתעד מנהגי בתי כנסת שראה בעצמו בארצות רבות.",
+   "central_idea": "לפי המחקר באתר, ראה בכל מנהג רווח בקהילות ישראל מנהג שיש לו שורש בתלמוד, במדרש או בתשובות הגאונים, ולכן ביקש לגלות את מקורו ולא לבטלו. ספרו כולל ציטוטים מילוליים רבים מן התלמודים ומן מדרשי ההלכה והאגדה, ובהם מאוספי אגדה שאבדו, ולכן הוא תורם לביקורת הנוסח של ספרות זו.",
+   "tags": "ספר המנהיג, הירחי, מנהג, לוניל, טולדו, משפחת אבן שושן",
+   "chapter_type": "דמות",
+   "spotify_url": "",
+   "birth_year": 1155,
+   "death_year": 1215,
+   "date_precision": "exact",
+   "has_research": true
+  },
+  {
+   "id": "684",
+   "label": "רבי אהרן ברכיה ממודינה (בעל מעבר יבק)",
+   "era": "כ־1549–1639",
+   "era_key": "acharonim",
+   "era_label": "אחרונים",
+   "field": "קבלה, הלכה וליטורגיה",
+   "location": "מודינה, איטליה",
+   "bio": "רב ומקובל איטלקי ממודינה, מחבר ״מעבר יבק״ (1626), שנכתב לבקשת החברה קדישא של מנטובה ושימש מקור מרכזי למנהגי הקבורה. היה תלמידם של רבי הלל ממודינה ושל הרמ״ע מפאנו, ולמד גם אצל רבי ישראל סרוג, תלמידו של האר״י. הסידור ״אשמורת הבוקר״ (1624), שחיבר עבור חבורת משכימי קום במודינה, היה חיבורו הראשון.",
+   "central_idea": "בהקדמה ל״מעבר יבק״, שנקרא על שם חציית נהר היבוק בידי יעקב, הוא מפרש את המעבר כחציית הנשמה את הגבול בין העולם הזה לעולם הבא. הגותו מוצגת במחקר באתר כסינתזה בין קבלת הרמ״ק לקבלת האר״י, ובה הוא נעזר במערכת הספירות והפרצופים הלוריאנית כפי שתורגמה בידי רבי ישראל סרוג.",
+   "tags": "מעבר יבק, אשמורת הבוקר, חברה קדישא, קבלת האר״י, מודינה, הרמ״ע מפאנו",
+   "chapter_type": "דמות",
+   "spotify_url": "",
+   "birth_year": 1549,
+   "death_year": 1639,
+   "date_precision": "exact",
+   "has_research": true
+  },
+  {
+   "id": "685",
+   "label": "רב אחאי גאון (בעל השאילתות)",
+   "era": "המאה ה־8",
+   "era_key": "geonim",
+   "era_label": "גאונים",
+   "field": "הלכה ודרשנות",
+   "location": "פומבדיתא, בבל; ארץ ישראל",
+   "bio": "חכם בבלי מישיבת פומבדיתא במאה השמינית, מחבר ה״שאילתות״ (אף שלא ידוע אם חיברן בעצמו או ליקט אותן), הספר הראשון שנודע לאחר חתימת התלמוד. הכינוי ״גאון״ הצמוד לשמו אינו מינוי רשמי, שכן לא עמד בראש אחת משתי הישיבות. כשנפטר גאון פומבדיתא עקף ראש הגולה שלמה בר חסדאי, מתוך טינה אישית כלפיו, את אחאי ומינה את נטרונאי כהנא בן אמונה, תלמידו; אחאי עלה לארץ ישראל וחי בה עד מותו.",
+   "central_idea": "ה״שאילתות״ הן כמאה ותשעים דרשות בארמית על הלכה ומוסר, ובכל אחת מהן נפתחת מצווה, נשאלת שאלה הלכתית, באה דרשה של אגדה ומוסר ובסופה פסק קצר. ספרי פסק גאוניים כ״הלכות פסוקות״ ו״הלכות גדולות״ נשענו על ה״שאילתות״, ראשונים כרש״י, הרי״ף והרמב״ם ציטטו אותן, ועליהן נכתבו הפירושים ״שאילת שלום״ ו״העמק שאלה״.",
+   "tags": "שאילתות דרב אחאי, משבחא, פומבדיתא, ראש הגולה, נטרונאי כהנא, העמק שאלה",
+   "chapter_type": "דמות",
+   "spotify_url": "",
+   "birth_year": 700,
+   "death_year": 800,
+   "date_precision": "century",
+   "has_research": true
+  },
+  {
+   "id": "686",
+   "label": "רבי דוד אופנהיים",
+   "era": "1664–1736",
+   "era_key": "acharonim",
+   "era_label": "אחרונים",
+   "field": "הלכה ושו״ת, איסוף ספרים",
+   "location": "וורמייזא; ניקלשבורג; פראג",
+   "bio": "רב ופוסק יליד וורמייזא, שכיהן כרבה של ניקלשבורג ולאחר מכן כרבה הראשי של פראג וגלילות בוהמיה, ועמד בפראג בראש ישיבה גדולה. הקים אוסף גדול של ספרים וכתבי יד עבריים, שנרכש בשלמותו ב־1829 על ידי הספרייה הבודליאנית באוקספורד. נפטר ב־1736 ונקבר בבית הקברות היהודי העתיק בפראג.",
+   "central_idea": "בשיעוריו נהג להביא לפני תלמידיו כתבי יד נדירים ומהדורות דפוס עתיקות כדי לברר גרסאות, ואת ספרייתו שמר בהנובר, בבית חמיו. חיבר כעשרים ספרים, ובהם שו״ת ״נשאל דוד״, אך לא הדפיס את מרביתם בחייו.",
+   "tags": "נשאל דוד, ספריית אופנהיים, הספרייה הבודליאנית, ניקלשבורג, פראג, וורמייזא, אוקספורד, יהודי החצר, שבות יעקב",
+   "chapter_type": "דמות",
+   "spotify_url": "",
+   "birth_year": 1664,
+   "death_year": 1736,
+   "date_precision": "exact",
+   "has_research": true
+  },
+  {
+   "id": "687",
+   "label": "רבי ידידיה שלמה רפאל נורצי (בעל מנחת שי)",
+   "era": "כ־1560–1626",
+   "era_key": "acharonim",
+   "era_label": "אחרונים",
+   "field": "פרשנות המקרא ומסורה",
+   "location": "מנטובה",
+   "bio": "רב ומפרש המקרא, יליד מנטובה ומרבני העיר, שלמד אצל רבי משה קאציס והוסמך לרבנות ב־1585. את פירושו הביקורתי על כל המקרא, שעניינו המסורה ונוסח הכתוב, סיים ב־1626 וקרא לו ״גודר פרץ״, והוא נדפס במנטובה ב־1742–1744 בשם ״מנחת שי״.",
+   "central_idea": "בחיבורו ברר את כתיב המקרא, ניקודו וטעמיו על פי ספרי המסורה וכתבי יד, ובמחלוקת בין מדקדק לבעל מסורה פסק כבעל המסורה. נעזר בעבודתו של מנחם די לונזאנו ובחיבורו של רבי מאיר הלוי אבולעפיה, וחיבורו נחשב לחיבור יסוד בנוסח המקרא.",
+   "tags": "מנחת שי, גודר פרץ, מסורה, נוסח המקרא, אור תורה, מנחם די לונזאנו, מאיר אבולעפיה, רבי משה קאציס, מנטובה, כתבי יד",
+   "chapter_type": "דמות",
+   "spotify_url": "",
+   "birth_year": 1560,
+   "death_year": 1626,
+   "date_precision": "exact",
+   "has_research": true
+  },
+  {
+   "id": "688",
+   "label": "רבי מאיר אייזנשטט (בעל פנים מאירות)",
+   "era": "כ־1670–1744",
+   "era_key": "acharonim",
+   "era_label": "אחרונים",
+   "field": "הלכה ושו״ת",
+   "location": "פוזנא; שידלובצא; וורמייזא; פרוסניץ; אייזנשטט",
+   "bio": "פוסק וראש ישיבה, יליד פוזנא, שכיהן כרב בשידלובצא ובפרוסניץ, עמד בראש הישיבה בוורמייזא, ולבסוף התיישב באייזנשטט כרבן של ״שבע הקהילות״. ישיבתו באייזנשטט משכה תלמידים מקרוב ומרחוק, ומתלמידיו היה רבי יהונתן אייבשיץ. נפטר באייזנשטט ב־1744.",
+   "central_idea": "חיבר את שו״ת ״פנים מאירות״, ספר תשובות וחידושים על מסכתות בתלמוד, ואת ״כתנות אור״, פירוש דרשני לתורה ולחמש המגילות. בשאלות הלכה פנו אליו רבנים מטורקיה, מגרמניה ומאיטליה, ושיטתו ההלכתית מתאפיינת בזהירות ובהיצמדות ללשון המקורות.",
+   "tags": "פנים מאירות, כתנות אור, אור הגנוז, מאורי אש, שבע קהילות, ישיבת אייזנשטט, הש״ך, רבי יהונתן אייבשיץ, פוזנא, אייזנשטט",
+   "chapter_type": "דמות",
+   "spotify_url": "",
+   "birth_year": 1670,
+   "death_year": 1744,
+   "date_precision": "exact",
+   "has_research": true
+  },
+  {
+   "id": "689",
+   "label": "רבי מאיר שיף (המהר״ם שיף)",
+   "era": "המאה ה־17",
+   "era_key": "acharonim",
+   "era_label": "אחרונים",
+   "field": "הלכה ופרשנות התלמוד",
+   "location": "גרמניה; פרנקפורט; פולדא",
+   "bio": "ראש ישיבה ופרשן תלמוד בגרמניה במחצית הראשונה של המאה ה־17, יליד פרנקפורט דמיין, שנודע בחריפותו הרבה. כבן שבע עשרה הוזמן לכהן כרב, אב בית דין וראש ישיבה בפולדא, וישיבתו משכה תלמידים מאשכנז, מפולין וממזרח אירופה. בסמוך למותו הוזמן לכהן כרבה של פראג, אך נפטר בפתאומיות בגיל צעיר.",
+   "central_idea": "חיבורו ״חידושי הלכות״ הוא תמצית דחוסה של השיעורים שלימד בישיבתו בפולדא, ומשתמרים בו חלקים מאחד עשר מסכתות בתלמוד הבבלי. בחידושיו התמקד בהבנה מקומית מעמיקה של הסוגיה ושל דברי התוספות, והם נדפסים בסוף חלק ממסכתות הש״ס בדפוס וילנא.",
+   "tags": "חידושי הלכות, ישיבת פולדא, דרוש הדרן, דרושים נחמדים, שריפת פרנקפורט, פלפול",
+   "chapter_type": "דמות",
+   "spotify_url": "",
+   "birth_year": 1600,
+   "death_year": 1700,
+   "date_precision": "century",
+   "has_research": true
+  },
+  {
+   "id": "690",
+   "label": "רב נסים גאון",
+   "era": "כ־990–1062",
+   "era_key": "geonim",
+   "era_label": "גאונים",
+   "field": "פרשנות התלמוד, הלכה ואגדה",
+   "location": "קירואן; מהדיה",
+   "bio": "ראש ישיבת קירואן שבצפון אפריקה, יליד קירואן, שכונה ״גאון״ כתואר כבוד אף שלא כיהן כגאון באחת מישיבות בבל. למד בבית מדרשו של אביו, רבי יעקב בן נסים, ואחר כך אצל רבי חושיאל בן אלחנן, וניהל חליפת מכתבים עם רב האי גאון ועם רבי שמואל הנגיד בגרנדה. כאשר קירואן נשדדה ונחרבה בתקופתו, עבר למהדיה, ושם נפטר.",
+   "central_idea": "בחיבורו ״ספר מפתח מנעולי התלמוד״ ביקש לפענח סוגיות בבליות מקוצרות בהפניית הלומד למקבילות בספרות התלמודית, ובהן התלמוד הירושלמי. חיבר גם את ״חיבור יפה מהישועה״, ספר נחמה בערבית־יהודית, ואת ״מגילת סתרים״, שהתוספות והראשונים הזכירו אותה בכמה מקומות.",
+   "tags": "ספר המפתח, חיבור יפה מהישועה, מגילת סתרים, קירואן, רב האי גאון, שמואל הנגיד, הרי״ף",
+   "chapter_type": "דמות",
+   "spotify_url": "",
+   "birth_year": 990,
+   "death_year": 1062,
+   "date_precision": "exact",
+   "has_research": true
+  },
+  {
+   "id": "691",
+   "label": "רבי נתן נטע שפירא (בעל מגלה עמוקות)",
+   "era": "כ־1585–1633",
+   "era_key": "acharonim",
+   "era_label": "אחרונים",
+   "field": "קבלה, דרשנות והלכה",
+   "location": "גרודנה; קרקוב",
+   "bio": "ראש הישיבה והדרשן של קהילת קרקוב במחצית הראשונה של המאה ה־17, יליד גרודנה, שנודע בעיקר כמקובל וכמחבר ״מגלה עמוקות״. חותנו, הגביר והפרנס רבי משה בן יעקב, סיפק לו את כל צרכיו, ועל כן מילא את תפקידיו הציבוריים שלא על מנת לקבל שכר. נפטר בדמי ימיו, כבן 48, ונקבר בבית הקברות היהודי העתיק בקרקוב.",
+   "central_idea": "בספרו ״מגלה עמוקות״ על פרשת ואתחנן הציע רנ״ב אופנים לבאר בדרך הסוד את תפילת משה ״אעברה נא״, ועל שמו נקרא ״בעל מגלה עמוקות״. לצד הקבלה חיבר גם הגהות וחידושים על הרי״ף, המכונים ״חידושי אנשי שם״.",
+   "tags": "מגלה עמוקות, רנ״ב אופנים, חידושי אנשי שם, אלף פירושים, קבלה לוריאנית, ישיבת קראקא",
+   "chapter_type": "דמות",
+   "spotify_url": "",
+   "birth_year": 1585,
+   "death_year": 1633,
+   "date_precision": "exact",
+   "has_research": true
+  },
+  {
+   "id": "692",
+   "label": "רב עמרם גאון",
+   "era": "המאה ה־9",
+   "era_key": "geonim",
+   "era_label": "גאונים",
+   "field": "תפילה, הלכה ותשובות הגאונים",
+   "location": "בבל; סורא",
+   "bio": "גאון ישיבת סורא בבבל במאה התשיעית, תלמידו של רב נטרונאי בר הילאי. חיבר את ״סדר רב עמרם גאון״, סידור התפילה השלם והקדום ביותר שהגיע לידינו, שנשלח לקהילה יהודית בספרד שביקשה נוסח מוסמך של התפילות והברכות. הוא מחבר כ־120 תשובות הלכתיות, שרובן נדפסו בקובץ ״שערי צדק״.",
+   "central_idea": "הראשון הידוע שסידר תפילה שלמה לשימוש בבית הכנסת ובבית, ושילב בנוסחי התפילה את ההלכות והמנהגים הנלווים להם. סידורו הוא מיסודותיהן של הליטורגיה הספרדית ושל האשכנזית, ועליו נשענו חכמי ימי הביניים.",
+   "tags": "סדר רב עמרם גאון, ישיבת סורא, תשובות הגאונים, שערי צדק, רב נטרונאי גאון, נוסח התפילה, מאה ברכות, הגאונים",
+   "chapter_type": "דמות",
+   "spotify_url": "",
+   "birth_year": 800,
+   "death_year": 900,
+   "date_precision": "century",
+   "has_research": true
+  },
+  {
+   "id": "693",
+   "label": "רבי צבי הירש אשכנזי (החכם צבי)",
+   "era": "כ־1656–1718",
+   "era_key": "acharonim",
+   "era_label": "אחרונים",
+   "field": "הלכה ושו״ת",
+   "location": "אמסטרדם; אלטונה; לבוב; סלוניקי; קושטא; סרייבו",
+   "bio": "רב ופוסק, יליד מוראביה, שלמד בסלוניקי בבית מדרשו של רבי אליהו קובו ובקושטא נודע בתואר הספרדי ״חכם״. כיהן כרב בסרייבו, באלטונה ובאמסטרדם, ובסוף ימיו נקרא לשמש רבה של לבוב, ושם מת ב־1718. הטיל חרם על נחמיה חייא חיון, שכתביו נחשדו בעקרונות שבתאיים, ובעקבות המחלוקת שנוצרה עזב את אמסטרדם ב־1714.",
+   "central_idea": "שילב את החריפות האשכנזית עם הבהירות הספרדית, ותשובותיו, בספר ״חכם צבי״ (אמסטרדם, 1712), מצטיינות בקיצור ובחתירה לפשט הסוגיה. בפולמוס ״תרנגולת בלא לב״ הכשיר תרנגולת שלא נמצא בה לב, בנימוק שבעל חיים בעל מערכת דם אינו יכול לחיות בלא לב.",
+   "tags": "שו״ת חכם צבי, תרנגולת בלא לב, נחמיה חייא חיון, השבתאות, רבי אליהו קובו, אלטונה, אמסטרדם, לבוב",
+   "chapter_type": "דמות",
+   "spotify_url": "",
+   "birth_year": 1656,
+   "death_year": 1718,
+   "date_precision": "exact",
+   "has_research": true
+  },
+  {
+   "id": "694",
+   "label": "רבי שמואל יפה אשכנזי (בעל יפה תואר)",
+   "era": "כ־1525–1595",
+   "era_key": "acharonim",
+   "era_label": "אחרונים",
+   "field": "מדרש ואגדה, פרשנות",
+   "location": "קושטא; בורסה",
+   "bio": "מחכמי האימפריה העות׳מאנית במאה ה־16, יליד בורסה, שכיהן כרבה של הקהילה האשכנזית בקושטא. חיבר את ״יפה תואר״, באור רחב למדרש רבה, ואת ״יפה מראה״ על אגדות התלמוד הירושלמי, שנדפס בוונציה בחייו. כתב גם את ״יפה ענף״ על מדרשי רות, אסתר ואיכה, ואת ״יפה קול״ על שיר השירים רבה.",
+   "central_idea": "לפי נייר המחקר של האתר, ב״יפה תואר״ וב״יפה מראה״ החדיר ללימוד המדרש והאגדה את דרכי העיון התלמודיות, תוך בירור גרסאות ויישוב תמיהות וקשיים. פירושו ״יפה תואר״ על בראשית רבה נדפס לראשונה בוונציה ב־1597, ולפי נייר המחקר נפרסה הדפסת הפירוש על חומשי התורה על פני יותר ממאתיים שנה.",
+   "tags": "יפה תואר, יפה מראה, יפה ענף, יפה קול, יפה עיניים, מדרש רבה, תלמוד ירושלמי, הקהילה האשכנזית בקושטא",
+   "chapter_type": "דמות",
+   "spotify_url": "",
+   "birth_year": 1525,
+   "death_year": 1595,
+   "date_precision": "exact",
+   "has_research": true
+  },
+  {
+   "id": "695",
+   "label": "רבי שמואל אבן תיבון",
+   "era": "כ־1150–1230",
+   "era_key": "rishonim",
+   "era_label": "ראשונים",
+   "field": "פילוסופיה, תרגום ופרשנות המקרא",
+   "location": "לוניל; מונפלייה; בזייה; מרסיי",
+   "bio": "הוגה, מתרגם ופרשן מקרא מדרום צרפת, בנו של רבי יהודה אבן תיבון. פעל בלוניל, במונפלייה, בבזייה ובמרסיי. תרגם מערבית לעברית את ״מורה נבוכים״ של הרמב״ם, ובמהלך העבודה פנה באיגרות אל הרמב״ם וביקש הבהרות לקטעים קשים; התרגום הושלם ב־1204. חיבר את ״פירוש המילים הזרות״, הנחשב למילון הפילוסופי העברי הראשון, ונפטר במרסיי בסביבות 1230.",
+   "central_idea": "לפי נייר המחקר, בתרגומו ל״מורה נבוכים״ ובמילונו ״פירוש המילים הזרות״ העניק לעם היהודי את הכלים המושגיים והלשוניים לחשוב ולכתוב פילוסופיה בעברית. לפי נייר המחקר ראה ב״מורה נבוכים״ חיבור שנבנה בכוונה על סתירות מכוונות, ולפי אביעזר רביצקי טען שהרמב״ם הסתיר בו עמדה הנוטה לקדמות העולם.",
+   "tags": "מורה נבוכים, פירוש המילים הזרות, מאמר יקוו המים, פירוש קהלת, תרגום, פילוסופיה, רמב״ם, משה אבן תיבון, יעקב אנטולי",
+   "chapter_type": "דמות",
+   "spotify_url": "",
+   "birth_year": 1150,
+   "death_year": 1230,
+   "date_precision": "exact",
+   "has_research": true
+  },
+  {
+   "id": "696",
+   "label": "רבי שמשון בן אברהם משאנץ (הר״ש משאנץ)",
+   "era": "כ־1150–1230",
+   "era_key": "rishonim",
+   "era_label": "בעלי התוספות",
+   "field": "תלמוד, תוספות ופירוש המשנה",
+   "location": "צרפת; סנס; ירושלים; עכו",
+   "bio": "מבעלי התוספות, נולד בצרפת בסביבות 1150, אחיו של הריצב״א, שמע תורה מרבנו תם והיה תלמידו המובהק של ר״י הזקן מדמפייר. קבע את מושבו בסנס ועמד שם בראש ישיבה מפורסמת, חיבר את ״תוספות שאנץ״ ופירוש למשניות סדר זרעים וסדר טהרות. בסביבות 1211, כאחד מראשי עליית בעלי התוספות, עלה לארץ ישראל והתגורר בירושלים ובעכו. נפטר במחצית הראשונה של המאה ה־13: ויקיפדיה העברית מציינת בערך 1214, ויקיפדיה האנגלית בערך 1230.",
+   "central_idea": "לפי נייר המחקר הביא לשיאה את הגישה הדיאלקטית של בית מדרשם של רש״י, רבנו תם ור״י הזקן. לפי ויקיפדיה האנגלית הקדיש לתלמוד הירושלמי יותר תשומת לב מכל קודמיו ובני דורו, ובפירושו למשנה הרבה לצטט גם את התוספתא. הרא״ש כתב על רבנו תם, ר״י ור׳ שמשון ש״רוב תורתנו על פיהם פרשו״.",
+   "tags": "בעלי התוספות, תוספות שאנץ, פירוש המשניות, זרעים וטהרות, תלמוד ירושלמי, תוספתא, עליית בעלי התוספות, ר״י הזקן, רבנו תם",
+   "chapter_type": "דמות",
+   "spotify_url": "",
+   "birth_year": 1150,
+   "death_year": 1230,
+   "date_precision": "exact",
+   "has_research": true
   }
  ],
  "links": [
@@ -12689,6 +12995,360 @@
    "target": "599",
    "type": "influence",
    "evidence_source": "ויקיפדיה העברית: https://he.wikipedia.org/wiki/מנחם_ציוני"
+  },
+  {
+   "source": "680",
+   "target": "582",
+   "type": "influence",
+   "evidence_source": "המסמך של הבעלים על רב יהודאי גאון: https://docs.google.com/document/d/1peOlj50YUKK9V3F4C52zGfA8n0zl4cssQ9V1BqVRHwM/edit"
+  },
+  {
+   "source": "580",
+   "target": "681",
+   "type": "teacher",
+   "evidence_source": "המסמך של הבעלים על רב (אבא אריכא): https://docs.google.com/document/d/1jKW3TLpB9QF_htFjAZLJxrstpnSYzI2vaFgCsMWLKH4/edit"
+  },
+  {
+   "source": "7",
+   "target": "681",
+   "type": "family",
+   "evidence_source": "המסמך של הבעלים על רב (אבא אריכא): https://docs.google.com/document/d/1jKW3TLpB9QF_htFjAZLJxrstpnSYzI2vaFgCsMWLKH4/edit"
+  },
+  {
+   "source": "681",
+   "target": "576",
+   "type": "teacher",
+   "evidence_source": "המסמך של הבעלים על רב (אבא אריכא): https://docs.google.com/document/d/1jKW3TLpB9QF_htFjAZLJxrstpnSYzI2vaFgCsMWLKH4/edit"
+  },
+  {
+   "source": "681",
+   "target": "522",
+   "type": "teacher",
+   "evidence_source": "המסמך של הבעלים על רב (אבא אריכא): https://docs.google.com/document/d/1jKW3TLpB9QF_htFjAZLJxrstpnSYzI2vaFgCsMWLKH4/edit"
+  },
+  {
+   "source": "681",
+   "target": "536",
+   "type": "teacher",
+   "evidence_source": "המסמך של הבעלים על רב (אבא אריכא): https://docs.google.com/document/d/1jKW3TLpB9QF_htFjAZLJxrstpnSYzI2vaFgCsMWLKH4/edit"
+  },
+  {
+   "source": "681",
+   "target": "482",
+   "type": "colleague",
+   "evidence_source": "המסמך של הבעלים על רב (אבא אריכא): https://docs.google.com/document/d/1jKW3TLpB9QF_htFjAZLJxrstpnSYzI2vaFgCsMWLKH4/edit"
+  },
+  {
+   "source": "7",
+   "target": "681",
+   "type": "teacher",
+   "evidence_source": "ויקיפדיה העברית: https://he.wikipedia.org/wiki/%D7%A8%D7%91_(%D7%90%D7%9E%D7%95%D7%A8%D7%90)"
+  },
+  {
+   "source": "195",
+   "target": "683",
+   "type": "teacher",
+   "evidence_source": "המחקר של בעל האתר על רבי אברהם בן נתן הירחי: https://docs.google.com/document/d/1mObngILQABssbKakTnpjr_j-yynv89YT52OiDkVQwtM"
+  },
+  {
+   "source": "275",
+   "target": "683",
+   "type": "teacher",
+   "evidence_source": "ויקיפדיה העברית: https://he.wikipedia.org/wiki/%D7%90%D7%91%D7%A8%D7%94%D7%9D_%D7%91%D7%9F_%D7%A0%D7%AA%D7%9F"
+  },
+  {
+   "source": "602",
+   "target": "683",
+   "type": "family",
+   "evidence_source": "ויקיפדיה האנגלית: https://en.wikipedia.org/wiki/Abraham_ben_Nathan"
+  },
+  {
+   "source": "266",
+   "target": "683",
+   "type": "influence",
+   "evidence_source": "המחקר של בעל האתר על רבי אברהם בן נתן הירחי: https://docs.google.com/document/d/1mObngILQABssbKakTnpjr_j-yynv89YT52OiDkVQwtM"
+  },
+  {
+   "source": "683",
+   "target": "343",
+   "type": "influence",
+   "evidence_source": "המחקר של בעל האתר על רבי אברהם בן נתן הירחי: https://docs.google.com/document/d/1mObngILQABssbKakTnpjr_j-yynv89YT52OiDkVQwtM"
+  },
+  {
+   "source": "683",
+   "target": "189",
+   "type": "influence",
+   "evidence_source": "המחקר של בעל האתר על רבי אברהם בן נתן הירחי: https://docs.google.com/document/d/1mObngILQABssbKakTnpjr_j-yynv89YT52OiDkVQwtM"
+  },
+  {
+   "source": "293",
+   "target": "683",
+   "type": "colleague",
+   "evidence_source": "ויקיפדיה העברית: https://he.wikipedia.org/wiki/%D7%90%D7%91%D7%A8%D7%94%D7%9D_%D7%91%D7%9F_%D7%A0%D7%AA%D7%9F"
+  },
+  {
+   "source": "439",
+   "target": "684",
+   "type": "teacher",
+   "evidence_source": "ויקיפדיה העברית: https://he.wikipedia.org/wiki/%D7%90%D7%94%D7%A8%D7%9F_%D7%91%D7%A8%D7%9B%D7%99%D7%94_%D7%9E%D7%9E%D7%95%D7%93%D7%A0%D7%94"
+  },
+  {
+   "source": "467",
+   "target": "684",
+   "type": "teacher",
+   "evidence_source": "ויקיפדיה האנגלית: https://en.wikipedia.org/wiki/Aaron_Berechiah_of_Modena"
+  },
+  {
+   "source": "684",
+   "target": "126",
+   "type": "influence",
+   "evidence_source": "המחקר של בעל האתר על רבי אהרן ברכיה ממודינה: https://docs.google.com/document/d/1nENC21f-1OTrXfwscdwUYg6DSvNkApjcNtdiLEKDBP4"
+  },
+  {
+   "source": "685",
+   "target": "21",
+   "type": "influence",
+   "evidence_source": "המחקר של בעל האתר על רב אחאי גאון: https://docs.google.com/document/d/1PYhQQbCoNV5vzbmrK1hXnpArUVd-fmLJ6ur31YOa1bw"
+  },
+  {
+   "source": "685",
+   "target": "25",
+   "type": "influence",
+   "evidence_source": "המחקר של בעל האתר על רב אחאי גאון: https://docs.google.com/document/d/1PYhQQbCoNV5vzbmrK1hXnpArUVd-fmLJ6ur31YOa1bw"
+  },
+  {
+   "source": "685",
+   "target": "594",
+   "type": "influence",
+   "evidence_source": "המחקר של בעל האתר על רב אחאי גאון: https://docs.google.com/document/d/1PYhQQbCoNV5vzbmrK1hXnpArUVd-fmLJ6ur31YOa1bw"
+  },
+  {
+   "source": "685",
+   "target": "582",
+   "type": "influence",
+   "evidence_source": "המחקר של בעל האתר על רב אחאי גאון: https://docs.google.com/document/d/1PYhQQbCoNV5vzbmrK1hXnpArUVd-fmLJ6ur31YOa1bw"
+  },
+  {
+   "source": "685",
+   "target": "41",
+   "type": "influence",
+   "evidence_source": "המחקר של בעל האתר על רב אחאי גאון: https://docs.google.com/document/d/1PYhQQbCoNV5vzbmrK1hXnpArUVd-fmLJ6ur31YOa1bw"
+  },
+  {
+   "source": "685",
+   "target": "680",
+   "type": "influence",
+   "evidence_source": "המחקר של בעל האתר על רב אחאי גאון: https://docs.google.com/document/d/1PYhQQbCoNV5vzbmrK1hXnpArUVd-fmLJ6ur31YOa1bw"
+  },
+  {
+   "source": "657",
+   "target": "686",
+   "type": "teacher",
+   "evidence_source": "ויקיפדיה האנגלית: https://en.wikipedia.org/wiki/David_Oppenheim_(rabbi)"
+  },
+  {
+   "source": "660",
+   "target": "686",
+   "type": "family",
+   "evidence_source": "המחקר על רבי דוד אופנהיים (מסמך Drive): https://docs.google.com/document/d/1PG29EZGf-_c1XC21dtoVIe5IiD-z1e3qKasoayedwSY"
+  },
+  {
+   "source": "654",
+   "target": "687",
+   "type": "influence",
+   "evidence_source": "ויקיפדיה האנגלית: https://en.wikipedia.org/wiki/Jedidiah_Norzi"
+  },
+  {
+   "source": "293",
+   "target": "687",
+   "type": "influence",
+   "evidence_source": "ויקיפדיה האנגלית: https://en.wikipedia.org/wiki/Jedidiah_Norzi"
+  },
+  {
+   "source": "688",
+   "target": "653",
+   "type": "teacher",
+   "evidence_source": "ספריא: https://www.sefaria.org/topics/meir-eisenstadt"
+  },
+  {
+   "source": "83",
+   "target": "688",
+   "type": "family",
+   "evidence_source": "שם הגדולים, מערכת ספרים (הקטע על פנים מאירות): https://www.sefaria.org/Shem_HaGedolim%2C_Maarekhet_Sefarim%2C_Letter_Peh.104"
+  },
+  {
+   "source": "84",
+   "target": "688",
+   "type": "teacher",
+   "evidence_source": "ויקיפדיה העברית: https://he.wikipedia.org/wiki/%D7%9E%D7%90%D7%99%D7%A8_%D7%90%D7%99%D7%96%D7%A0%D7%A9%D7%98%D7%98"
+  },
+  {
+   "source": "599",
+   "target": "689",
+   "type": "teacher",
+   "evidence_source": "מאמר המחקר של אוצר חכמים: https://docs.google.com/document/d/1JUHKNvh-QHT28pWZ1ZDpQGeLOby3AsbwpuPGMvVskDQ"
+  },
+  {
+   "source": "690",
+   "target": "35",
+   "type": "colleague",
+   "evidence_source": "מאמר המחקר של אוצר חכמים: https://docs.google.com/document/d/1jHWJK89divjtJdnGd855GOf6UrBYriLlNMMQJLNZpEQ"
+  },
+  {
+   "source": "25",
+   "target": "690",
+   "type": "influence",
+   "evidence_source": "מאמר המחקר של אוצר חכמים: https://docs.google.com/document/d/1jHWJK89divjtJdnGd855GOf6UrBYriLlNMMQJLNZpEQ"
+  },
+  {
+   "source": "690",
+   "target": "582",
+   "type": "influence",
+   "evidence_source": "מאמר המחקר של אוצר חכמים: https://docs.google.com/document/d/1jHWJK89divjtJdnGd855GOf6UrBYriLlNMMQJLNZpEQ"
+  },
+  {
+   "source": "690",
+   "target": "41",
+   "type": "influence",
+   "evidence_source": "מאמר המחקר של אוצר חכמים: https://docs.google.com/document/d/1jHWJK89divjtJdnGd855GOf6UrBYriLlNMMQJLNZpEQ"
+  },
+  {
+   "source": "690",
+   "target": "683",
+   "type": "influence",
+   "evidence_source": "מאמר המחקר של אוצר חכמים: https://docs.google.com/document/d/1jHWJK89divjtJdnGd855GOf6UrBYriLlNMMQJLNZpEQ"
+  },
+  {
+   "source": "690",
+   "target": "602",
+   "type": "influence",
+   "evidence_source": "מאמר המחקר של אוצר חכמים: https://docs.google.com/document/d/1jHWJK89divjtJdnGd855GOf6UrBYriLlNMMQJLNZpEQ"
+  },
+  {
+   "source": "690",
+   "target": "597",
+   "type": "colleague",
+   "evidence_source": "ויקיפדיה העברית: https://he.wikipedia.org/wiki/%D7%A8%D7%91_%D7%A0%D7%99%D7%A1%D7%99%D7%9D_%D7%92%D7%90%D7%95%D7%9F"
+  },
+  {
+   "source": "691",
+   "target": "653",
+   "type": "family",
+   "evidence_source": "ויקיפדיה העברית: https://he.wikipedia.org/wiki/%D7%A0%D7%AA%D7%9F_%D7%A0%D7%98%D7%A2_%D7%A9%D7%A4%D7%99%D7%A8%D7%90"
+  },
+  {
+   "source": "691",
+   "target": "76",
+   "type": "colleague",
+   "evidence_source": "מאמר המחקר של אוצר חכמים: https://docs.google.com/document/d/1YXwErMDJNSUjasevIdlNYAv0QuFT7h4EfSfMYKym6F8"
+  },
+  {
+   "source": "691",
+   "target": "83",
+   "type": "teacher",
+   "evidence_source": "ויקיפדיה העברית: https://he.wikipedia.org/wiki/%D7%A0%D7%AA%D7%9F_%D7%A0%D7%98%D7%A2_%D7%A9%D7%A4%D7%99%D7%A8%D7%90"
+  },
+  {
+   "source": "692",
+   "target": "343",
+   "type": "influence",
+   "evidence_source": "המחקר של בעל העבודה (נייר המחקר): https://docs.google.com/document/d/1FsHBZmrdQ2O8K9QXp9C0uT_eteggIIiJyIk4pugCoAg"
+  },
+  {
+   "source": "692",
+   "target": "582",
+   "type": "influence",
+   "evidence_source": "המחקר של בעל העבודה (נייר המחקר): https://docs.google.com/document/d/1FsHBZmrdQ2O8K9QXp9C0uT_eteggIIiJyIk4pugCoAg"
+  },
+  {
+   "source": "692",
+   "target": "683",
+   "type": "influence",
+   "evidence_source": "המחקר של בעל העבודה (נייר המחקר): https://docs.google.com/document/d/1FsHBZmrdQ2O8K9QXp9C0uT_eteggIIiJyIk4pugCoAg"
+  },
+  {
+   "source": "692",
+   "target": "41",
+   "type": "influence",
+   "evidence_source": "ויקיפדיה האנגלית: https://en.wikipedia.org/wiki/Amram_ben_Sheshna"
+  },
+  {
+   "source": "692",
+   "target": "344",
+   "type": "influence",
+   "evidence_source": "ויקיפדיה האנגלית: https://en.wikipedia.org/wiki/Amram_ben_Sheshna"
+  },
+  {
+   "source": "693",
+   "target": "89",
+   "type": "family",
+   "evidence_source": "ויקיפדיה האנגלית: https://en.wikipedia.org/wiki/Tzvi_Ashkenazi"
+  },
+  {
+   "source": "693",
+   "target": "89",
+   "type": "teacher",
+   "evidence_source": "ויקיפדיה העברית: https://he.wikipedia.org/wiki/%D7%A6%D7%91%D7%99_%D7%94%D7%99%D7%A8%D7%A9_%D7%90%D7%A9%D7%9B%D7%A0%D7%96%D7%99"
+  },
+  {
+   "source": "86",
+   "target": "693",
+   "type": "colleague",
+   "evidence_source": "ויקיפדיה האנגלית: https://en.wikipedia.org/wiki/Tzvi_Ashkenazi"
+  },
+  {
+   "source": "327",
+   "target": "694",
+   "type": "teacher",
+   "evidence_source": "ויקיפדיה העברית: https://he.wikipedia.org/wiki/%D7%A9%D7%9E%D7%95%D7%90%D7%9C_%D7%99%D7%A4%D7%94_%D7%90%D7%A9%D7%9B%D7%A0%D7%96%D7%99"
+  },
+  {
+   "source": "41",
+   "target": "695",
+   "type": "influence",
+   "evidence_source": "מאמר המחקר על רבי שמואל אבן תיבון: https://docs.google.com/document/d/14VmnQkhfGqbkSo6NIJjVfb-bFwEpl--4EdVgiLYmueM/edit"
+  },
+  {
+   "source": "289",
+   "target": "695",
+   "type": "colleague",
+   "evidence_source": "ויקיפדיה העברית: https://he.wikipedia.org/wiki/%D7%A9%D7%9E%D7%95%D7%90%D7%9C_%D7%91%D7%9F_%D7%99%D7%94%D7%95%D7%93%D7%94_%D7%90%D7%91%D7%9F_%D7%AA%D7%99%D7%91%D7%95%D7%9F"
+  },
+  {
+   "source": "33",
+   "target": "696",
+   "type": "teacher",
+   "evidence_source": "ויקיפדיה העברית: https://he.wikipedia.org/wiki/%D7%A9%D7%9E%D7%A9%D7%95%D7%9F_%D7%9E%D7%A9%D7%90%D7%A0%D7%A5"
+  },
+  {
+   "source": "275",
+   "target": "696",
+   "type": "teacher",
+   "evidence_source": "ויקיפדיה העברית: https://he.wikipedia.org/wiki/%D7%A9%D7%9E%D7%A9%D7%95%D7%9F_%D7%9E%D7%A9%D7%90%D7%A0%D7%A5"
+  },
+  {
+   "source": "279",
+   "target": "696",
+   "type": "family",
+   "evidence_source": "מאמר המחקר על רבי שמשון משאנץ: https://docs.google.com/document/d/1t2Sn3Sa688x0cOhM4yQW-CAC56aEJ6opg3EobisNFPk/edit"
+  },
+  {
+   "source": "696",
+   "target": "303",
+   "type": "teacher",
+   "evidence_source": "ויקיפדיה העברית: https://he.wikipedia.org/wiki/%D7%A9%D7%9E%D7%A9%D7%95%D7%9F_%D7%9E%D7%A9%D7%90%D7%A0%D7%A5"
+  },
+  {
+   "source": "696",
+   "target": "588",
+   "type": "teacher",
+   "evidence_source": "מאמר המחקר על רבי שמשון משאנץ: https://docs.google.com/document/d/1t2Sn3Sa688x0cOhM4yQW-CAC56aEJ6opg3EobisNFPk/edit"
+  },
+  {
+   "source": "278",
+   "target": "696",
+   "type": "colleague",
+   "evidence_source": "מאמר המחקר על רבי שמשון משאנץ: https://docs.google.com/document/d/1t2Sn3Sa688x0cOhM4yQW-CAC56aEJ6opg3EobisNFPk/edit"
   }
  ]
 }
