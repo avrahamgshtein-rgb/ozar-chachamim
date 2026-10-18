@@ -5,11 +5,14 @@
 // MP4 (mp4-muxer), so the phone gets a file WhatsApp takes and the server does nothing. Where the browser
 // has no encoder, the canvas is recorded in real time instead (MediaRecorder); where it has neither, the
 // button is not shown. Making the file takes a few seconds, more than a share sheet waits for a tap, so
-// the video is first made and shown, then shared or saved with a second tap.
+// the video is first made and shown, then shared or saved with a second tap. The frame is drawn by drawTodayFrame.ts
+// from the layout of lib/todayVideo.ts, computed once here; a card with a portrait loads its picture with the other
+// assets and, if it cannot be loaded, is drawn as the card of a sage who has none.
 import { useEffect, useState } from 'react'
 import type { Locale } from '@/lib/types'
 import { track } from '@/lib/analytics'
-import { ENCODER_CANDIDATES, VIDEO, nameSize, phase, wrapWords, type TodayCard } from '@/lib/todayVideo'
+import { ENCODER_CANDIDATES, VIDEO, videoLayout, type TodayCard, type VideoLayout, type VideoMeasure } from '@/lib/todayVideo'
+import { drawTodayFrame, type VideoAssets, type VideoFonts } from './drawTodayFrame'
 
 const S = {
   make: { he: 'סרטון לסטטוס', en: 'Video for a status', ru: 'Видео для статуса' },
@@ -20,16 +23,12 @@ const S = {
   failed: { he: 'לא הצלחנו להכין סרטון בדפדפן הזה; אפשר לשתף את התמונה.', en: 'This browser could not make the video; the image can be shared instead.', ru: 'В этом браузере не удалось сделать видео; можно поделиться картинкой.' },
 } satisfies Record<string, Record<Locale, string>>
 
-const C = { ink: '#0b0907', parchment: '#f3ead8', gold: '#c9973a', goldSoft: '#e2c27d', muted: '#a89a82' }
-
-type Fonts = { serif: string; sans: string }
-
 function cssFont(variable: string, fallback: string): string {
   const v = getComputedStyle(document.documentElement).getPropertyValue(variable).trim()
   return v || fallback
 }
 
-async function loadAssets(): Promise<{ fonts: Fonts; medallion: HTMLImageElement }> {
+async function loadAssets(card: TodayCard): Promise<VideoAssets> {
   const fonts = { serif: cssFont('--font-frank-ruhl', "'Frank Ruhl Libre', Georgia, serif"), sans: cssFont('--font-heebo', "'Heebo', sans-serif") }
   await Promise.all([
     document.fonts.load(`700 80px ${fonts.serif}`, 'אבג Abc'),
@@ -38,132 +37,38 @@ async function loadAssets(): Promise<{ fonts: Fonts; medallion: HTMLImageElement
   const medallion = new Image()
   medallion.src = '/images/temple-medallion.png'
   await medallion.decode()
-  return { fonts, medallion }
+  // The sage's picture, when the page gave one (same origin, so the canvas stays clean). If it cannot be loaded the card is
+  // drawn without it, exactly as it is for a sage who has none.
+  let portrait: HTMLImageElement | null = null
+  if (card.portrait) {
+    try {
+      const img = new Image()
+      img.src = card.portrait.src
+      await img.decode()
+      portrait = img
+    } catch { /* no picture: the card without one */ }
+  }
+  return { fonts, medallion, portrait }
 }
 
-/** A stable number in [0, 1) for particle `i`. */
-const rnd = (i: number, salt: number) => {
-  const x = Math.sin(i * 127.1 + salt * 311.7) * 43758.5453
-  return x - Math.floor(x)
+/** The text measure the layout needs, on a canvas of its own with the page's fonts. */
+function canvasMeasure(fonts: VideoFonts): VideoMeasure {
+  const ctx = document.createElement('canvas').getContext('2d')!
+  return (text, role, weight, px) => {
+    ctx.font = `${weight} ${px}px ${role === 'serif' ? fonts.serif : fonts.sans}`
+    return ctx.measureText(text).width
+  }
 }
 
-/** One frame at time `t` (seconds), drawn in the 1080×1920 card's own units. */
-function drawFrame(ctx: CanvasRenderingContext2D, t: number, card: TodayCard, a: { fonts: Fonts; medallion: HTMLImageElement }) {
-  const W = VIDEO.width, H = VIDEO.height, cx = W / 2
-  const { serif, sans } = a.fonts
-  ctx.save()
-  ctx.fillStyle = C.ink
-  ctx.fillRect(0, 0, W, H)
-  // a slow drift toward the viewer over the whole video
-  const zoom = 1 + 0.025 * (t / VIDEO.seconds)
-  ctx.translate(cx, H / 2)
-  ctx.scale(zoom, zoom)
-  ctx.translate(-cx, -H / 2)
-
-  // the glow behind the medallion
-  const m = phase(t, 0.1, 1.4)
-  const glow = ctx.createRadialGradient(cx, 400, 0, cx, 400, 520)
-  glow.addColorStop(0, `rgba(201,151,58,${0.22 * m})`)
-  glow.addColorStop(1, 'rgba(201,151,58,0)')
-  ctx.fillStyle = glow
-  ctx.fillRect(0, 0, W, 1000)
-
-  // gold motes rising
-  for (let i = 0; i < 46; i++) {
-    const speed = 30 + 45 * rnd(i, 2)
-    const y = (((rnd(i, 1) * H - speed * t) % H) + H) % H
-    const x = rnd(i, 3) * W + Math.sin(t * 0.7 + i) * 12
-    ctx.globalAlpha = (0.12 + 0.33 * rnd(i, 4)) * (0.6 + 0.4 * Math.sin(t * 2 + i * 1.7)) * phase(t, 0, 1.5)
-    ctx.fillStyle = C.goldSoft
-    ctx.beginPath()
-    ctx.arc(x, y, 2 + 3 * rnd(i, 5), 0, Math.PI * 2)
-    ctx.fill()
-  }
-  ctx.globalAlpha = 1
-
-  // the medallion
-  const size = 300 * (0.86 + 0.14 * m) * (1 + 0.012 * Math.sin(t * 1.6))
-  ctx.globalAlpha = m
-  ctx.drawImage(a.medallion, cx - size / 2, 400 - size / 2, size, size)
-  ctx.globalAlpha = 1
-
-  const text = (s: string, y: number, font: string, color: string, k: number, dir: 'rtl' | 'ltr' = card.dir) => {
-    if (k <= 0 || !s) return
-    ctx.save()
-    ctx.globalAlpha = k
-    ctx.font = font
-    ctx.fillStyle = color
-    ctx.direction = dir
-    ctx.textAlign = 'center'
-    ctx.textBaseline = 'alphabetic'
-    ctx.fillText(s, cx, y + (1 - k) * 26)
-    ctx.restore()
-  }
-  text(card.heading, 640, `700 46px ${serif}`, C.gold, phase(t, 0.7, 0.8))
-  text(card.date, 728, `700 58px ${serif}`, C.parchment, phase(t, 1.0, 0.8))
-
-  // the middle: the kind of day, the name, era and years, one line about him, centred between y 860 and 1580
-  const nSize = nameSize(card.name)
-  ctx.font = `700 ${nSize}px ${serif}`
-  const nameLines = wrapWords(card.name, 940, s => ctx.measureText(s).width, 3)
-  ctx.font = `500 40px ${sans}`
-  const lineLines = card.line ? wrapWords(card.line, 900, s => ctx.measureText(s).width, 5) : []
-  const nameH = nameLines.length * nSize * 1.12
-  const total = 70 + 44 + nameH + (card.sub ? 30 + 44 : 0) + (lineLines.length ? 46 + lineLines.length * 58 : 0)
-  let y = Math.max(860, 860 + (720 - total) / 2)
-
-  const pill = phase(t, 2.0, 0.6)
-  if (pill > 0) {
-    ctx.save()
-    ctx.font = `500 40px ${sans}`
-    ctx.direction = card.dir
-    const pw = ctx.measureText(card.kind).width + 64
-    ctx.globalAlpha = pill
-    ctx.fillStyle = 'rgba(201,151,58,0.16)'
-    ctx.strokeStyle = 'rgba(201,151,58,0.5)'
-    ctx.lineWidth = 2
-    ctx.beginPath()
-    ctx.roundRect(cx - pw / 2, y, pw, 70, 35)
-    ctx.fill()
-    ctx.stroke()
-    ctx.restore()
-    text(card.kind, y + 49, `500 40px ${sans}`, C.goldSoft, pill)
-  }
-  y += 70 + 44
-
-  const nk = phase(t, 2.5, 0.9)
-  nameLines.forEach((l, i) => {
-    y += nSize
-    ctx.save()
-    ctx.translate(cx, y)
-    ctx.scale(0.95 + 0.05 * nk, 0.95 + 0.05 * nk)
-    ctx.translate(-cx, -y)
-    text(l, y, `700 ${nSize}px ${serif}`, C.parchment, nk)
-    ctx.restore()
-    y += nSize * 0.12
-  })
-  if (card.sub) { y += 30 + 40; text(card.sub, y, `500 40px ${sans}`, C.muted, phase(t, 3.3, 0.7)); y += 4 }
-  if (lineLines.length) {
-    y += 46
-    lineLines.forEach((l, i) => { y += 52; text(l, y, `500 40px ${sans}`, C.parchment, phase(t, 4.3 + i * 0.55, 0.7)); y += 6 })
-  }
-
-  // the way to the page
-  text(card.more, 1690, `500 34px ${sans}`, C.goldSoft, phase(t, 8.6, 0.9))
-  text(card.host, 1745, `400 32px ${sans}`, C.muted, phase(t, 8.8, 0.9), 'ltr')
-  text(card.appTitle, 1800, `700 30px ${serif}`, C.gold, phase(t, 9.0, 0.9))
-  ctx.restore()
-
-  // the era's colour along the top and bottom, opening from the middle (outside the zoom)
-  const bar = phase(t, 0, 0.9) * W
-  ctx.fillStyle = card.accent
-  ctx.fillRect(cx - bar / 2, 0, bar, 18)
-  ctx.fillRect(cx - bar / 2, H - 18, bar, 18)
+/** The layout of the video: with the portrait when it loaded, else the card as it is without one. */
+function layoutFor(card: TodayCard, assets: VideoAssets): VideoLayout {
+  return videoLayout(assets.portrait ? card : { ...card, portrait: undefined }, canvasMeasure(assets.fonts))
 }
 
 /** The video as a file: MP4 through WebCodecs where it can, else a real-time recording. */
 async function renderTodayVideo(card: TodayCard, onProgress: (p: number) => void): Promise<File> {
-  const assets = await loadAssets()
+  const assets = await loadAssets(card)
+  const layout = layoutFor(card, assets)
   const frames = VIDEO.fps * VIDEO.seconds
 
   if ('VideoEncoder' in window) {
@@ -186,7 +91,7 @@ async function renderTodayVideo(card: TodayCard, onProgress: (p: number) => void
       for (let i = 0; i < frames; i++) {
         if (failure) throw failure
         ctx.setTransform(scale, 0, 0, scale, 0, 0)
-        drawFrame(ctx, i / VIDEO.fps, card, assets)
+        drawTodayFrame(ctx, i / VIDEO.fps, card, assets, layout)
         const frame = new VideoFrame(canvas, { timestamp: Math.round((i * 1e6) / VIDEO.fps), duration: Math.round(1e6 / VIDEO.fps) })
         encoder.encode(frame, { keyFrame: i % (VIDEO.fps * 2) === 0 })
         frame.close()
@@ -219,7 +124,7 @@ async function renderTodayVideo(card: TodayCard, onProgress: (p: number) => void
     const step = () => {
       const t = (performance.now() - t0) / 1000
       ctx.setTransform(720 / VIDEO.width, 0, 0, 720 / VIDEO.width, 0, 0)
-      drawFrame(ctx, Math.min(t, VIDEO.seconds), card, assets)
+      drawTodayFrame(ctx, Math.min(t, VIDEO.seconds), card, assets, layout)
       onProgress(Math.min(1, t / VIDEO.seconds))
       if (t >= VIDEO.seconds) resolve()
       else requestAnimationFrame(step)

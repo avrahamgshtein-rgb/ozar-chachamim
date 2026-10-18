@@ -1,11 +1,13 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { isValidLocale } from '@/lib/i18n'
+import { isValidLocale, UI } from '@/lib/i18n'
 import type { Locale } from '@/lib/types'
 import { pageMetadata } from '@/lib/siteMetadata'
+import { SITE_URL } from '@/lib/siteUrl'
 import { towerData } from '@/lib/towerServer'
 import { connectPathFor } from '@/lib/connectServer'
 import { buildFlight } from '@/lib/connectFlight'
+import { cardAlt, cardPath, titleOf } from '@/lib/pathShare'
 import { SiteTopBar } from '@/components/layout/SiteTopBar'
 import { TowerScene } from '@/components/tower/TowerScene'
 
@@ -31,9 +33,6 @@ const S = {
   },
 } as const
 
-/** "Rashi ← the Rambam" in Hebrew (the arrow points the way the line reads), "Rashi → the Rambam" elsewhere. */
-const titleOf = (a: string, b: string, loc: Locale) => `${a} ${loc === 'he' ? '←' : '→'} ${b}`
-
 export function generateStaticParams() {
   return []
 }
@@ -45,13 +44,22 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const views = connectPathFor(loc, from, to)
   if (!views) return {}
   const a = views[0].name, b = views[views.length - 1].name
+  const title = titleOf(a, b, loc)
+  const description = S.description[loc](a, b, views.length - 1)
   const base = pageMetadata({
     locale: loc,
     path: `/tower/path/${encodeURIComponent(from)}/${encodeURIComponent(to)}`,
-    title: titleOf(a, b, loc),
-    description: S.description[loc](a, b, views.length - 1),
+    title,
+    description,
   })
-  return { ...base, robots: { index: false, follow: true } }
+  // the preview is the path's own card (./opengraph-image.tsx): the faces of the path, not the site's medallion
+  const image = { url: `${SITE_URL}${cardPath(loc, from, to)}`, width: 1200, height: 630, alt: cardAlt(a, b, views.length - 1, loc) }
+  return {
+    ...base,
+    robots: { index: false, follow: true },
+    openGraph: { ...base.openGraph, images: [image] },
+    twitter: { ...base.twitter, card: 'summary_large_image', title: `${title} | ${UI[loc].appTitle}`, description, images: [image] },
+  }
 }
 
 export default async function TowerPathPage({ params }: PageProps) {

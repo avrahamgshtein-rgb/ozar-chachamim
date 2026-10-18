@@ -94,7 +94,9 @@ test('the pages: /connect is rebuilt every half hour with the game above the pic
   assert.match(tower, /robots: \{ index: false, follow: true \}/)
   assert.match(tower, /if \(!views\) notFound\(\)/)
   assert.match(tower, /if \(!flight\) notFound\(\)/)
-  assert.match(tower, /loc === 'he' \? '←' : '→'/)
+  // the title (the arrow points the way the line reads) is one function, shared with the card and the status image
+  assert.match(tower, /titleOf\(a, b, loc\)/)
+  assert.match(read('lib/pathShare.ts'), /loc === 'he' \? '←' : '→'/)
   assert.match(tower, /<TowerScene data=\{data\} locale=\{loc\} flight=\{flight\} \/>/)
 })
 

@@ -28,7 +28,16 @@ Output, rewritten whole from the review (a file that is not in the review is rem
   nextjs-app/assets/og/portraits/<id>.jpg     320 x 320 baseline JPEG, quality 82 lowered by 4 down to 60 until at most 30 KB:
                                               the copy the share card and the story image draw, because Satori cannot read WebP
   nextjs-app/public/data-portraits.json       { "<id>": { "label", "episode", "w": 384, "kind" } } in id order
-The same review and the same covers give the same bytes.
+  nextjs-app/public/portraits/atlas.webp      every portrait as a 64 x 64 tile, 32 columns, in id order (row-major, the top row first),
+                                              the rows rounded up to a power of two (331 portraits: 2048 x 1024, black where unused);
+                                              webp method 6, quality 80 lowered by 4 down to 50 until at most 400 KB. The tower draws
+                                              the faces from it in one texture (components/tower)
+  nextjs-app/public/portraits/atlas.json      { "tile", "cols", "rows", "w", "h", "v", "ids" }: the geometry, `v` the first 8 hex digits
+                                              of the sha256 of atlas.webp (the page asks for atlas.webp?v=<v>, so a copy a visitor's
+                                              service worker kept never meets a newer page), `ids[k]` the sage in tile k
+The same review and the same covers give the same bytes. Every build (and every --check) decodes the atlas it just made and
+compares each tile with that sage's own small file (mean difference at most 12/255: on the 331 portraits of 2026-10-18 a right
+tile differs by up to 6.3, the nearest wrong pairing by 20.6): a tile in the wrong place is an error and nothing is written.
 
 The 640 px covers are read from a cache outside the repo, files <hash>.jpg: $OZAR_PORTRAITS_CACHE, else
 ~/.cache/ozar-portraits (under --root: DIR/.portraits-cache). --fetch fills it from the image CDN (paced, retried).
@@ -39,9 +48,9 @@ ones with no episode as `no-episode`; the crop rules (three integers, inside the
 and one for a crop that reaches the bottom-right corner, where the image generator's small star watermark sits); reasons from the list; `photo` kind only
 for an approved id; a kept sage whose episode title does not name him carries `title_confirmed`.
 """
-import argparse, io, json, os, re, subprocess, sys, time
+import argparse, hashlib, io, json, os, re, subprocess, sys, time
 
-from PIL import Image
+from PIL import Image, ImageChops, ImageStat
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REASONS = ['photo', 'other-person', 'symbol', 'text', 'gender', 'quality', 'no-episode', 'title-mismatch']
@@ -54,6 +63,9 @@ BIG_MAX, BIG_Q = 38 * 1024, 78
 SMALL_MAX, SMALL_Q = 7 * 1024, 75
 OG_MAX, OG_Q = 30 * 1024, 82
 WEBP_FLOOR, OG_FLOOR, STEP = 50, 60, 4
+TILE, ATLAS_COLS, ATLAS_SIDE_MAX = 64, 32, 4096
+ATLAS_MAX, ATLAS_Q, TILE_TOLERANCE = 400 * 1024, 80, 12
+ATLAS_WEBP, ATLAS_JSON = 'atlas.webp', 'atlas.json'
 IMG_HOSTS = ['https://i.scdn.co/image/', 'https://image-cdn-ak.spotifycdn.com/image/', 'https://image-cdn-fa.spotifycdn.com/image/']
 IMG_PREFIX = 'ab6765630000ba8a'
 UA = 'Mozilla/5.0 (compatible; ozar-chachamim-portraits/1.0)'
@@ -131,6 +143,8 @@ class Layout:
         self.portraits = os.path.join(root, 'nextjs-app', 'public', 'portraits')
         self.og = os.path.join(root, 'nextjs-app', 'assets', 'og', 'portraits')
         self.data_file = os.path.join(root, 'nextjs-app', 'public', 'data-portraits.json')
+        self.atlas = os.path.join(self.portraits, ATLAS_WEBP)
+        self.atlas_json = os.path.join(self.portraits, ATLAS_JSON)
         self.cache = cache
 
     def rel(self, path):
@@ -380,10 +394,64 @@ def render(cover, crop, i, log):
     big, qb = encode_webp(sq.resize((BIG, BIG), Image.LANCZOS), BIG_MAX, BIG_Q)
     sm, qs = encode_webp(sq.resize((SMALL, SMALL), Image.LANCZOS), SMALL_MAX, SMALL_Q)
     og, qo = encode_jpeg(sq.resize((OG, OG), Image.LANCZOS), OG_MAX, OG_Q)
+    tile = sq.resize((TILE, TILE), Image.LANCZOS)
     for name, data, cap, q in (('large webp', big, BIG_MAX, qb), ('small webp', sm, SMALL_MAX, qs), ('share-card jpg', og, OG_MAX, qo)):
         if len(data) > cap:
             log.warn(f'{i}: the {name} is {len(data)} bytes, over {cap} even at quality {q}')
-    return big, sm, og
+    return big, sm, og, tile
+
+
+# ---- the atlas: every portrait as one tile of a single picture, for the tower ----
+def atlas_geometry(n):
+    """The atlas for n portraits: ATLAS_COLS columns of TILE px, the rows rounded up to a power of two (a texture's friend)."""
+    need, rows = max(1, -(-n // ATLAS_COLS)), 1
+    while rows < need:
+        rows *= 2
+    return {'tile': TILE, 'cols': ATLAS_COLS, 'rows': rows, 'w': ATLAS_COLS * TILE, 'h': rows * TILE}
+
+
+def tile_box(k, geom):
+    """Where tile k sits in the atlas: row-major, the top row first."""
+    col, row = k % geom['cols'], k // geom['cols']
+    return (col * geom['tile'], row * geom['tile'], (col + 1) * geom['tile'], (row + 1) * geom['tile'])
+
+
+def compose_atlas(tiles, geom):
+    """tiles: the 64 px images in id order. RGB, black where no sage stands."""
+    im = Image.new('RGB', (geom['w'], geom['h']), (0, 0, 0))
+    for k, t in enumerate(tiles):
+        im.paste(t, tile_box(k, geom)[:2])
+    return im
+
+
+def tile_difference(a, b):
+    """Mean absolute difference per channel, 0 to 255."""
+    return sum(ImageStat.Stat(ImageChops.difference(a, b)).mean) / 3
+
+
+def check_atlas(atlas, geom, ids, small):
+    """Decode the atlas as written and compare tile k with the small file of ids[k] (resized to a tile). `small` maps
+    id -> the bytes of <id>.sm.webp. Returns the problems found (empty: every tile belongs to its sage): the guard against
+    a tile one place off, which would show a wrong face on a sage."""
+    problems = []
+    try:
+        im = Image.open(io.BytesIO(atlas))
+        im.load()
+        im = im.convert('RGB')
+    except Exception as e:
+        return [f'atlas: cannot decode what was just encoded ({e})']
+    if im.size != (geom['w'], geom['h']):
+        problems.append(f'atlas: decoded as {im.size[0]}x{im.size[1]}, expected {geom["w"]}x{geom["h"]}')
+        return problems
+    if len(ids) > geom['cols'] * geom['rows']:
+        problems.append(f'atlas: {len(ids)} portraits do not fit {geom["cols"]} x {geom["rows"]} tiles')
+        return problems
+    for k, i in enumerate(ids):
+        want = Image.open(io.BytesIO(small[i])).convert('RGB').resize((geom['tile'], geom['tile']), Image.LANCZOS)
+        d = tile_difference(im.crop(tile_box(k, geom)), want)
+        if d > TILE_TOLERANCE:
+            problems.append(f'atlas: tile {k} (sage {i}) differs from his small file by {d:.1f}/255 on average, over {TILE_TOLERANCE}: the tile is not his')
+    return problems
 
 
 def build_outputs(kept, lay, log, fetch):
@@ -407,7 +475,7 @@ def build_outputs(kept, lay, log, fetch):
         log.err(f'{len(missing)} cover(s) are not in the cache {lay.cache} (first: {missing[0]}): run with --fetch')
     if log.errors:
         return None
-    files, data = {}, {}
+    files, data, tiles, small = {}, {}, [], {}
     covers = {}
     for i, k in kept.items():
         h = k['image']
@@ -417,15 +485,35 @@ def build_outputs(kept, lay, log, fetch):
             except Exception as e:
                 log.err(f'{i}: {e}')
                 continue
-        big, sm, og = render(covers[h], k['crop'], i, log)
+        big, sm, og, tile = render(covers[h], k['crop'], i, log)
         files[os.path.join(lay.portraits, i + '.webp')] = big
         files[os.path.join(lay.portraits, i + '.sm.webp')] = sm
         files[os.path.join(lay.og, i + '.jpg')] = og
         data[i] = {'label': k['label'], 'episode': k['episode'], 'w': BIG, 'kind': k['kind']}
+        tiles.append(tile)
+        small[i] = sm
     if log.errors:
         return None
     text = json.dumps(data, ensure_ascii=False, indent=1) + '\n'
-    return files, text
+    atlas_info = None
+    if tiles:
+        ids = list(data)
+        geom = atlas_geometry(len(ids))
+        if geom['h'] > ATLAS_SIDE_MAX:
+            log.err(f'atlas: {len(ids)} portraits need {geom["w"]}x{geom["h"]}, over {ATLAS_SIDE_MAX} px a side (a phone cannot hold it)')
+            return None
+        atlas, qa = encode_webp(compose_atlas(tiles, geom), ATLAS_MAX, ATLAS_Q)
+        if len(atlas) > ATLAS_MAX:
+            log.err(f'atlas: {len(atlas)} bytes, over {ATLAS_MAX} even at quality {qa}')
+        for m in check_atlas(atlas, geom, ids, small):
+            log.err(m)
+        if log.errors:
+            return None
+        meta = dict(geom, v=hashlib.sha256(atlas).hexdigest()[:8], ids=ids)
+        files[lay.atlas] = atlas
+        files[lay.atlas_json] = (json.dumps(meta, ensure_ascii=False, indent=1) + '\n').encode('utf-8')
+        atlas_info = {'w': geom['w'], 'h': geom['h'], 'bytes': len(atlas), 'q': qa, 'v': meta['v']}
+    return files, text, atlas_info
 
 
 def differences(files, text, lay):
@@ -462,7 +550,7 @@ def write_all(files, text, lay):
 
 
 # ---- the report for the owner ----
-def report(doc, roster, kept, approved_left, files, lay):
+def report(doc, roster, kept, approved_left, files, lay, atlas_info=None):
     left = doc['_left_out']
     built = set(approved_left)
     left_reasons = {}
@@ -501,7 +589,8 @@ def report(doc, roster, kept, approved_left, files, lay):
         note = (doc['portraits'].get(i) or {}).get('note', '')
         print(f'    {i:>4}  {kept[i]["label"]}  {note}')
 
-    sizes = {p: len(b) for p, b in files.items()}
+    atlas_files = {lay.atlas, lay.atlas_json}
+    sizes = {p: len(b) for p, b in files.items() if p not in atlas_files}
     total_w = sum(v for p, v in sizes.items() if os.path.dirname(p) == lay.portraits)
     total_o = sum(v for p, v in sizes.items() if os.path.dirname(p) == lay.og)
     biggest = max(sizes.items(), key=lambda kv: kv[1]) if sizes else None
@@ -509,6 +598,8 @@ def report(doc, roster, kept, approved_left, files, lay):
           f'assets/og/portraits {total_o / 1024:.0f} KB in {sum(1 for p in sizes if os.path.dirname(p) == lay.og)} files')
     if biggest:
         print(f'  largest file: {lay.rel(biggest[0])} ({biggest[1]} bytes)')
+    if atlas_info:
+        print(f'  atlas: {atlas_info["w"]}x{atlas_info["h"]}, {atlas_info["bytes"] / 1024:.0f} KB at quality {atlas_info["q"]} (limit {ATLAS_MAX // 1024} KB), v={atlas_info["v"]}, {len(kept)} tiles')
 
 
 def main():
@@ -542,10 +633,11 @@ def main():
     if log.errors or out is None:
         print(f'FAILED: {len(log.errors)} error(s), {len(log.warns)} warning(s); nothing written')
         return 1
-    files, text = out
+    files, text, atlas_info = out
+    atlas_note = f', atlas {atlas_info["w"]}x{atlas_info["h"]} {atlas_info["bytes"] / 1024:.0f} KB v={atlas_info["v"]}' if atlas_info else ''
 
     if a.report:
-        report(doc, roster, kept, approved_left, files, lay)
+        report(doc, roster, kept, approved_left, files, lay, atlas_info)
         print()
     changed, extra = differences(files, text, lay)
     if a.check:
@@ -556,11 +648,11 @@ def main():
         if changed or extra:
             print(f'CHECK FAILED: {len(changed)} file(s) differ or are missing, {len(extra)} extra; run scripts/build_portraits.py')
             return 1
-        print(f'check ok: {len(kept)} portraits, {len(files) + 1} files identical to what the review builds')
+        print(f'check ok: {len(kept)} portraits, {len(files) + 1} files identical to what the review builds{atlas_note}')
         return 0
     write_all(files, text, lay)
     print(f'built {len(kept)} portraits ({sum(1 for k in kept.values() if k["kind"] == "photo")} photo): '
-          f'wrote {len(changed)} file(s), unchanged {len(files) + 1 - len(changed)}, removed {len(extra)}')
+          f'wrote {len(changed)} file(s), unchanged {len(files) + 1 - len(changed)}, removed {len(extra)}{atlas_note}')
     return 0
 
 

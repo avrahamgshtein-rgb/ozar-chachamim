@@ -11,6 +11,9 @@ const nextConfig: NextConfig = {
     // The share card reads its fonts and the medallion with fs.
     '/[locale]/sage/[id]/opengraph-image': ['./assets/og/**'],
     '/[locale]/today/story': ['./assets/og/**'],
+    // The card and the status image of a path (Six Steps) read the same fonts, medallion and portraits.
+    '/[locale]/tower/path/[from]/[to]/opengraph-image': ['./assets/og/**'],
+    '/[locale]/tower/path/[from]/[to]/story': ['./assets/og/**'],
   },
   // The service worker must never be served from a stale cache, or a fix to it would not reach
   // visitors until the old copy expired; it may control the whole site.

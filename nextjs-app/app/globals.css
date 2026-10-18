@@ -457,6 +457,27 @@ h1, h2, h3 {
 .tower-label-station { color: #fff1c9; font-family: 'Frank Ruhl Libre', Georgia, serif; font-style: italic; font-size: 12px; opacity: 1; }
 /* the kids' journey in the tower: numbered stations */
 .tower-label-tour { color: #fff6dc; font-size: 13px; font-weight: 700; opacity: 1; background: rgba(20, 16, 10, 0.72); padding: 2px 8px; border-radius: 999px; border: 1px solid rgba(233, 196, 106, 0.45); }
+/* the name of the sage whose face is grown stands above it: --face-r (the face's radius) is set on the labels' layer by the scene */
+.tower-label-grown { margin-top: calc(-1 * var(--face-r, 0px) - 15px); }
+/* the face grown toward the screen in the tower (components/tower/faceLayer.ts): the episode credit under it.
+   --face-r is the face's radius in px, set by the layer on this element; the label's centre sits that far, plus half its height, below the face's centre */
+.tower-face-credit {
+  color: rgba(255, 246, 220, 0.85);
+  font-family: 'Heebo', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.2;
+  white-space: nowrap;
+  margin-top: calc(var(--face-r, 48px) + 14px);
+  padding: 2px 9px;
+  border-radius: 999px;
+  background: rgba(10, 8, 14, 0.62);
+  text-shadow: 0 0 4px #000;
+  pointer-events: none;
+}
+@media (max-width: 640px) {
+  .tower-face-credit { font-size: 10px; padding: 1px 8px; }
+}
 
 /* ── Background music: the 🎵 button's bars while it plays (components/ui/SoundtrackToggle.tsx) ── */
 .music-bars {
