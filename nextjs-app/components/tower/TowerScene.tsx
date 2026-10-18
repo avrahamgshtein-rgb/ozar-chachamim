@@ -11,6 +11,10 @@
 // caption at every station; `?road=1` in the address starts it, so a shared link flies it too.
 // "שישה צעדים": a path between two sages (lib/connectFlight.ts) is flown the same way, by itself, in
 // its own teal, dotted where the link is only influence (`flight`, app/[locale]/tower/path/[from]/[to]).
+// Faces: a sage with a picture in the atlas (`node.face`, data.faces) is drawn as a round face, not a sphere
+// (components/tower/faceLayer.ts). The scene is built with spheres at once and the atlas is fetched after; the
+// spheres of the face sages are hidden only once it has loaded, so a failed fetch leaves the tower as it was.
+// The face at a station of a road, a tour or a flight, and the chosen sage's, grows toward the screen.
 import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import type { Locale } from '@/lib/types'
 import type { RoadPoint, TowerData, TowerNode, TowerLinkKind } from '@/lib/tower'
@@ -22,6 +26,7 @@ import { KidsTourPanel } from '@/components/kids/KidsTourPanel'
 import { connectHref, type ConnectFlight, type FlightPoint } from '@/lib/connectFlight'
 import { FlightPanel } from '@/components/connect/FlightPanel'
 import { portraitOf, portraitCredit } from '@/lib/portraits'
+import { labelCovered, loadFaceLayer, projectPoint, type FaceLayer } from './faceLayer'
 
 const S = {
   play: { he: 'הפעלת ההיסטוריה', en: 'Play history', ru: 'Запустить историю' },
@@ -105,6 +110,10 @@ function stepMs(p: RoadPoint, i: number): number {
 const KIND_COLOR: Record<TowerLinkKind, string> = { teacher: '#e9c46a', family: '#e48aa7', influence: '#7d8ba3', other: '#9f86d8' }
 const KIND_OPACITY: Record<TowerLinkKind, number> = { teacher: 0.5, family: 0.5, influence: 0.12, other: 0.14 }
 const SEGMENTS = 12
+/** Added to a face sage's label height (world units): the face is larger than his sphere. */
+const FACE_LABEL_LIFT = 1.1
+/** A name this close (CSS px) to a grown face, or to its credit line, is hidden while the face is grown. */
+const FACE_LABEL_MARGIN = 14
 const PLAY_SECONDS = 32
 
 function yearLabel(y: number, loc: Locale): string {
@@ -112,6 +121,9 @@ function yearLabel(y: number, loc: Locale): string {
   if (r >= 0) return String(r)
   return loc === 'he' ? `${-r} לפנה״ס` : loc === 'ru' ? `${-r} до н. э.` : `${-r} BCE`
 }
+
+/** The scene's host element, with the read the browser checks use to find a face on the canvas. */
+type TowerHost = HTMLDivElement & { towerFaceAt?: (id: string) => { x: number; y: number; r: number } | null }
 
 interface SceneApi {
   setTime(t: number | null): void
@@ -246,6 +258,8 @@ export function TowerScene({ data, locale, initialSage, tour, flight }: { data: 
       // the region rays on the floor and the era rings up the tower
       const guide = new THREE.Group()
       scene.add(guide)
+      // the era and region names: hidden, like the other names, where they would lie over a grown face
+      const guideLabels: Array<InstanceType<typeof CSS2DObject>> = []
       for (const r of data.regions) {
         const geo = new THREE.BufferGeometry().setFromPoints([
           new THREE.Vector3(Math.cos(r.angle) * 4, -1, Math.sin(r.angle) * 4),
@@ -259,6 +273,7 @@ export function TowerScene({ data, locale, initialSage, tour, flight }: { data: 
         const lab = new CSS2DObject(el)
         lab.position.set(Math.cos(r.angle) * 31, -1, Math.sin(r.angle) * 31)
         guide.add(lab)
+        guideLabels.push(lab)
       }
       for (const e of data.eras) {
         const rad = 7 + 0.17 * e.from + 6.5
@@ -276,6 +291,7 @@ export function TowerScene({ data, locale, initialSage, tour, flight }: { data: 
         const lab = new CSS2DObject(el)
         lab.position.set(-rad - 2, (e.from + e.to) / 2, 0)
         guide.add(lab)
+        guideLabels.push(lab)
       }
 
       // the sages
@@ -360,12 +376,17 @@ export function TowerScene({ data, locale, initialSage, tour, flight }: { data: 
         el.textContent = n.short
         el.dir = 'auto'
         const o = new CSS2DObject(el)
-        o.position.set(n.x, n.y + n.size + 0.9, n.z)
+        // a face is wider than the sphere it stands for: its name stands a little higher
+        const y = n.y + n.size + 0.9 + (n.face != null ? FACE_LABEL_LIFT : 0)
+        o.position.set(n.x, y, n.z)
+        o.userData.sage = n.id
+        o.userData.y = y
         return o
       }
       const landmarkLabels = new Map<string, InstanceType<typeof CSS2DObject>>()
+      const landmarkList: Array<InstanceType<typeof CSS2DObject>> = []
       // on a phone only the first eight names stay (the rest hide below 640px: see globals.css)
-      for (const n of nodes) if (n.landmark) { const o = makeLabel(n, n.rank > 8 ? 'tower-label tower-label-minor' : 'tower-label'); landmarkLabels.set(n.id, o); scene.add(o) }
+      for (const n of nodes) if (n.landmark) { const o = makeLabel(n, n.rank > 8 ? 'tower-label tower-label-minor' : 'tower-label'); landmarkLabels.set(n.id, o); landmarkList.push(o); scene.add(o) }
       let hoverLabel: InstanceType<typeof CSS2DObject> | null = null
       let chainLabels: InstanceType<typeof CSS2DObject>[] = []
 
@@ -373,6 +394,15 @@ export function TowerScene({ data, locale, initialSage, tour, flight }: { data: 
       let cutoff: number | null = null
       let focusSet: Set<string> | null = null
       let focusId: string | null = null
+      // the faces, once the atlas has loaded; the sage whose face is grown (the station, or the chosen one)
+      let faces: FaceLayer | null = null
+      let growId: string | null = null
+      // the name over a grown face (liftLabels): which sage's, and how far up, when it was last placed
+      let liftedId: string | null = null, liftedR = -1
+      // the names hidden under a grown face (hideUnderFace): the set of names changed, and whether any is hidden now
+      let hideStale = true, hiding = false
+      // the canvas' size in CSS px, kept here so the frame loop reads no layout
+      let vw = w(), vh = h()
       let flyTo: { from: InstanceType<typeof THREE.Vector3>; to: InstanceType<typeof THREE.Vector3>; camFrom: InstanceType<typeof THREE.Vector3>; camTo: InstanceType<typeof THREE.Vector3>; t0: number; dur?: number } | null = null
       const dim = new THREE.Color(0x15131b)
 
@@ -381,15 +411,22 @@ export function TowerScene({ data, locale, initialSage, tour, flight }: { data: 
         nodes.forEach((n, i) => {
           const on = visible(i)
           const inFocus = !focusSet || focusSet.has(n.id)
-          place(i, on ? n.size * (focusId === n.id ? 1.35 : !inFocus ? 0.5 : focusSet ? 1.15 : 1) : 0)
+          const mult = on ? (focusId === n.id ? 1.35 : !inFocus ? 0.5 : focusSet ? 1.15 : 1) : 0
+          // a sage drawn as a face has no sphere and no halo (the ring carries his era's colour); the same states apply to it
+          const face = faces != null && faces.has(i)
+          if (face) faces!.set(i, mult, !inFocus)
+          place(i, face ? 0 : n.size * mult)
           mesh.setColorAt(i, inFocus ? baseColor[i] : dim)
           const c = on && inFocus ? baseColor[i] : dim
-          haloCol.set(on ? [c.r, c.g, c.b] : [0, 0, 0], i * 3)
+          haloCol.set(on && !face ? [c.r, c.g, c.b] : [0, 0, 0], i * 3)
         })
+        faces?.commit()
         mesh.instanceMatrix.needsUpdate = true
         if (mesh.instanceColor) mesh.instanceColor.needsUpdate = true
         haloGeo.attributes.color.needsUpdate = true
-        for (const [id, o] of landmarkLabels) o.visible = visible(index.get(id)!) && (!focusSet || focusSet.has(id))
+        // the chosen sage has his own larger label (buildLit): his landmark label is hidden meanwhile, or his name is drawn twice, one over the other.
+        // A road to Sinai keeps it (it is the first station's name there; flights and tours already removed it for a numbered label).
+        for (const [id, o] of landmarkLabels) o.visible = visible(index.get(id)!) && (!focusSet || focusSet.has(id)) && !(id === focusId && !roadPts)
       }
       const refreshLinks = () => {
         for (const kind of Object.keys(arcs) as TowerLinkKind[]) {
@@ -426,6 +463,8 @@ export function TowerScene({ data, locale, initialSage, tour, flight }: { data: 
           chainLabels.push(o)
           scene.add(o)
         }
+        liftedId = null; liftedR = -1
+        hideStale = true
       }
 
       // the road to Sinai: a thread of light from the sage down through the centuries to Moses,
@@ -456,6 +495,57 @@ export function TowerScene({ data, locale, initialSage, tour, flight }: { data: 
         roadGeo = null
         roadPts = null
         head.visible = false
+        growId = null
+        faces?.grow(null)
+        liftedId = null; liftedR = -1
+        hideStale = true
+      }
+
+      // the name of the sage whose face is grown stands just above the face. The face is sized in pixels, so the name is set
+      // from the sage's centre up by the face's radius (a CSS margin), not by world units; only while the size changes
+      const liftLabels = () => {
+        const r = faces ? faces.grownRadius : 0
+        const id = r > 0 ? growId : null
+        if (id === liftedId && Math.abs(r - liftedR) < 0.5) return
+        liftedId = id; liftedR = r
+        labels.domElement.style.setProperty('--face-r', `${r.toFixed(1)}px`)
+        const all = [...landmarkLabels.values(), ...chainLabels, ...roadLabels.map(x => x.o)]
+        for (const o of all) {
+          const on = id != null && o.userData.sage === id
+          o.position.y = on ? byId.get(id)!.y : (o.userData.y as number)
+          o.element.classList.toggle('tower-label-grown', on)
+        }
+      }
+
+      // While a face is grown (the point of the view) the names that would lie over it are hidden: the other sages' names, the era
+      // and region names, and whatever would sit on the credit line under it. A name is a box (its width is estimated from its
+      // length, so no layout is read); it is hidden when the box reaches the disc plus a margin. The grown sage's own name stays.
+      // Visibility only, restored when no face is grown; recomputed only when the disc, the camera or the set of names changed.
+      const grownBox = new Float64Array(4), grownSeen = new Float64Array(4), camSeen = new Float32Array(16), labelAt = new Float64Array(3)
+      let grownOn = false, dX = 0, dY = 0, dR = 0, dCredit = 0
+      const coverLabel = (o: InstanceType<typeof CSS2DObject>) => {
+        const hide = grownOn && o.userData.sage !== growId
+          && projectPoint(camera.matrixWorldInverse.elements, camera.projectionMatrix.elements, o.position.x, o.position.y, o.position.z, vw, vh, labelAt)
+          && labelCovered(labelAt[0], labelAt[1], o.element.textContent!.length, dX, dY, dR, dCredit, FACE_LABEL_MARGIN)
+        if (o.userData.hid !== hide) { o.userData.hid = hide; o.element.style.visibility = hide ? 'hidden' : '' }
+      }
+      const hideUnderFace = () => {
+        const on = faces != null && faces.grownAt(grownBox)
+        let changed = hideStale || on !== grownOn
+        const e = camera.matrixWorldInverse.elements
+        for (let i = 0; i < 16; i++) if (e[i] !== camSeen[i]) { camSeen[i] = e[i]; changed = true }
+        if (on) for (let i = 0; i < 4; i++) if (Math.abs(grownBox[i] - grownSeen[i]) > 0.5) { grownSeen[i] = grownBox[i]; changed = true }
+        if (!changed) return
+        hideStale = false
+        grownOn = on
+        if (on) { dX = grownBox[0]; dY = grownBox[1]; dR = grownBox[2]; dCredit = grownBox[3] }
+        if (!on && !hiding) return
+        hiding = on
+        for (let i = 0; i < landmarkList.length; i++) coverLabel(landmarkList[i])
+        for (let i = 0; i < chainLabels.length; i++) coverLabel(chainLabels[i])
+        for (let i = 0; i < roadLabels.length; i++) coverLabel(roadLabels[i].o)
+        for (let i = 0; i < guideLabels.length; i++) coverLabel(guideLabels[i])
+        if (hoverLabel) coverLabel(hoverLabel)
       }
 
       const sceneApi: SceneApi = {
@@ -474,6 +564,8 @@ export function TowerScene({ data, locale, initialSage, tour, flight }: { data: 
             controls.autoRotate = false
           }
           refreshNodes(); refreshLinks(); buildLit()
+          growId = id
+          faces?.grow(growId)
         },
         setVisible(kind, on) { lines[kind].visible = on },
         road(points) {
@@ -524,11 +616,17 @@ export function TowerScene({ data, locale, initialSage, tour, flight }: { data: 
             el.textContent = p.label ?? (p.id ? byId.get(p.id)?.short ?? p.name : p.name)
             if (flightRef.current && p.label) el.style.borderColor = `${flightRef.current.color}99`
             const o = new CSS2DObject(el)
-            o.position.set(p.x, p.y + 1.3, p.z)
+            // a station's name stands higher over a face than over a sphere
+            const labelY = p.y + 1.3 + (p.id && byId.get(p.id)?.face != null ? FACE_LABEL_LIFT : 0)
+            o.position.set(p.x, labelY, p.z)
+            o.userData.sage = p.id
+            o.userData.y = labelY
             o.visible = i === 0
             roadLabels.push({ i, o })
             scene.add(o)
           })
+          liftedId = null; liftedR = -1
+          hideStale = true
           head.visible = true
           controls.autoRotate = false
         },
@@ -540,6 +638,9 @@ export function TowerScene({ data, locale, initialSage, tour, flight }: { data: 
           // close together in time) show theirs around the current one
           for (const { i: k, o } of roadLabels) o.visible = k <= at && (!!roadPts[k].id || Math.abs(k - at) <= 1)
           const p = roadPts[at]
+          // the station's face comes toward the screen, the previous one goes back
+          growId = p.id ?? null
+          faces?.grow(growId)
           headPos.set([p.x, p.y, p.z])
           headGeo.attributes.position.needsUpdate = true
           // seen from outside the tower, a little above, aimed lower on a phone so the caption clears it
@@ -553,6 +654,9 @@ export function TowerScene({ data, locale, initialSage, tour, flight }: { data: 
         },
         roadOverview() {
           if (!roadPts) return
+          // pulled back over the whole thread: every face at its normal size
+          growId = null
+          faces?.grow(null)
           const box = new THREE.Box3().setFromPoints(roadPts.map(p => new THREE.Vector3(p.x, p.y, p.z)))
           const mid = box.getCenter(new THREE.Vector3())
           const size = box.getSize(new THREE.Vector3())
@@ -582,6 +686,24 @@ export function TowerScene({ data, locale, initialSage, tour, flight }: { data: 
       if (live.current.road) { sceneApi.road(live.current.road); sceneApi.roadGo(live.current.roadAt, 1200) }
       setReady(true)
 
+      // the atlas of faces loads after the scene is up: until it has, and if it never does, the tower is spheres
+      // as before and nothing is shown or thrown. A late atlas (the scene was disposed meanwhile) is let go.
+      // `towerFaceAt(id)` reads where a face is on the canvas, for the browser checks; `data-tower-faces` says how
+      // many faces are drawn. Both are inert in production (a function on the element, a number in an attribute).
+      ;(host as TowerHost).towerFaceAt = id => faces?.screenOf(id) ?? null
+      if (data.faces) {
+        loadFaceLayer({ THREE, CSS2DObject, scene, camera, renderer, nodes, faces: data.faces, locale, size: () => ({ w: w(), h: h() }), cancelled: () => disposed })
+          .then(layer => {
+            if (!layer) return
+            if (disposed) { layer.dispose(); return }
+            faces = layer
+            host.dataset.towerFaces = String(layer.count)
+            refreshNodes()
+            layer.grow(growId)
+          })
+          .catch(() => {})
+      }
+
       // pointer: hover shows a name, a press chooses
       const ray = new THREE.Raycaster()
       const ptr = new THREE.Vector2()
@@ -591,15 +713,26 @@ export function TowerScene({ data, locale, initialSage, tour, flight }: { data: 
         ptr.set(((ev.clientX - rect.left) / rect.width) * 2 - 1, -((ev.clientY - rect.top) / rect.height) * 2 + 1)
         ray.setFromCamera(ptr, camera)
         const hits = ray.intersectObject(mesh)
-        for (const h of hits) if (h.instanceId != null && visible(h.instanceId)) return h.instanceId
-        return null
+        let sphere: number | null = null, sphereAt = Infinity
+        for (const h of hits) if (h.instanceId != null && visible(h.instanceId)) { sphere = h.instanceId; sphereAt = h.distance; break }
+        if (!faces) return sphere
+        // faces are picked on the screen, by what is drawn; a sphere in front of a face wins, as it is drawn over it
+        const face = faces.pick(ev.clientX, ev.clientY, rect, ev.pointerType === 'touch' ? 14 : ev.pointerType === 'pen' ? 8 : 3)
+        return face >= 0 && (sphere == null || faces.pickDistance <= sphereAt) ? face : sphere
       }
       const onMove = (ev: PointerEvent) => {
         if (ev.pointerType !== 'mouse') return
         const i = pick(ev)
-        if (hoverLabel) { scene.remove(hoverLabel); hoverLabel = null }
+        if (hoverLabel) { scene.remove(hoverLabel); hoverLabel = null; hideStale = true }
         renderer.domElement.style.cursor = i == null ? 'grab' : 'pointer'
-        if (i != null && !nodes[i].landmark) { hoverLabel = makeLabel(nodes[i], 'tower-label tower-label-hover'); scene.add(hoverLabel) }
+        if (i != null && !nodes[i].landmark) {
+          hoverLabel = makeLabel(nodes[i], 'tower-label tower-label-hover')
+          // over a face the name stands just above the face, whatever its size on the screen
+          const at = faces?.screenOf(nodes[i].id)
+          if (at) { hoverLabel.position.set(nodes[i].x, nodes[i].y, nodes[i].z); hoverLabel.element.style.marginTop = `${-(at.r + 12)}px` }
+          scene.add(hoverLabel)
+          hideStale = true
+        }
       }
       const onDown = (ev: PointerEvent) => { downAt = { x: ev.clientX, y: ev.clientY } }
       const onUp = (ev: PointerEvent) => {
@@ -619,6 +752,9 @@ export function TowerScene({ data, locale, initialSage, tour, flight }: { data: 
         camera.updateProjectionMatrix()
         renderer.setSize(w(), h())
         labels.setSize(w(), h())
+        vw = w(); vh = h()
+        hideStale = true
+        faces?.resize()
       }
       const ro = new ResizeObserver(onResize)
       ro.observe(host)
@@ -629,6 +765,7 @@ export function TowerScene({ data, locale, initialSage, tour, flight }: { data: 
       const tick = () => {
         raf = requestAnimationFrame(tick)
         const now = performance.now()
+        if (faces) { faces.step(now); liftLabels(); hideUnderFace() }
         if (!controls.autoRotate && !focusId && idleSince && now - idleSince > 9000) { controls.autoRotate = true; idleSince = 0 }
         if (flyTo) {
           const k = Math.min(1, (now - flyTo.t0) / (flyTo.dur ?? 1100)), e = k < 0.5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2
@@ -665,6 +802,10 @@ export function TowerScene({ data, locale, initialSage, tour, flight }: { data: 
         renderer.domElement.removeEventListener('pointerdown', onDown)
         renderer.domElement.removeEventListener('pointerup', onUp)
         controls.dispose()
+        faces?.dispose()
+        faces = null
+        delete host.dataset.towerFaces
+        delete (host as TowerHost).towerFaceAt
         scene.traverse(o => {
           const any = o as unknown as { geometry?: { dispose(): void }; material?: { dispose(): void } | Array<{ dispose(): void }> }
           any.geometry?.dispose()

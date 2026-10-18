@@ -15,6 +15,7 @@ import { flightHref } from '@/lib/connectFlight'
 import { EraChip } from '@/components/ui/EraChip'
 import { ruPlural } from '@/components/viz/SinaiPathText'
 import { SageCombobox, type ComboSage } from './SageCombobox'
+import { SharePathImage } from './SharePathImage'
 
 const S = {
   title: { he: 'מסלול בין שני חכמים', en: 'A path between two sages', ru: 'Путь между двумя мудрецами' },
@@ -259,6 +260,12 @@ export function ConnectPicker({ locale, net }: { locale: Locale; net: ConnectNet
               >
                 <span aria-hidden>🌌</span>{S.fly[locale]}
               </a>
+              <SharePathImage
+                locale={locale}
+                from={outcome.from}
+                to={outcome.to}
+                shareText={summary(outcome.links, outcome.views[0].name, outcome.views[outcome.views.length - 1].name, locale)}
+              />
               <p className="min-w-0 text-xs text-ink-500">{S.flyNote[locale]}</p>
             </div>
           </div>

@@ -11,6 +11,7 @@ import { shortName } from '@/lib/tower'
 import { ruPlural } from '@/components/viz/SinaiPathText'
 import { EraChip } from '@/components/ui/EraChip'
 import { portraitOf, portraitCredit } from '@/lib/portraits'
+import { SharePathImage } from './SharePathImage'
 
 interface Props {
   flight: ConnectFlight
@@ -155,6 +156,8 @@ export function FlightPanel({ flight, locale, at, playing, copied, onGo, onPlay,
             <button type="button" onClick={onOverview} className="inline-flex min-h-[44px] items-center rounded-lg px-3 py-2 text-sm font-semibold text-ink-900 hover:brightness-110" style={{ background: flight.color }}>{S.overview[locale]}</button>
             <button type="button" onClick={onPlay} className={pill}>{S.again[locale]}</button>
             <button type="button" onClick={onShare} className={pill}><span aria-hidden className="me-1.5">↗</span>{S.share[locale]}</button>
+            {/* the path's status image, to the share sheet or saved; it needs only the two ends of the path and the line to go with it */}
+            <SharePathImage locale={locale} from={flight.from} to={flight.to} shareText={summary(last, shortName(stations[0].name), shortName(st.name), locale)} className={`${pill} gap-1.5`} />
             <a href={flight.connectHref} className={pill}>{S.other[locale]}</a>
             {copied && <span role="status" className="text-xs" style={{ color: flight.color }}>{S.copied[locale]}</span>}
           </div>

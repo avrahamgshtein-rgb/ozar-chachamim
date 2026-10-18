@@ -8,6 +8,7 @@ import { localizeSage, translatedFields } from '@/lib/serverDataTranslator'
 import { labelParts } from '@/lib/displayName'
 import { formatYearRangeFor } from '@/lib/utils'
 import { hasQuiz } from '@/lib/quiz'
+import { portraitCredit, portraitOf } from '@/lib/portraits'
 import { sageVideos } from '@/lib/youtube'
 import { formatCivilDate, formatHebrewDate, hebrewNumeral, MONTH_HE, type HebrewMonth } from '@/lib/today'
 import { todayFeature, upcomingHillulot, yahrzeitOf } from '@/lib/todayServer'
@@ -120,7 +121,9 @@ export default async function TodayPage({ params }: PageProps) {
   const bio = bioIsLocal ? (featured.bio || featured.core_concept || '') : ''
   const href = `/${loc}/sage/${t.featured.id}`
   const videos = sageVideos(t.featured.id, loc).length > 0
-  // the video for a status says what the status image says (app/[locale]/today/story/route.tsx)
+  // the video for a status says what the status image says (app/[locale]/today/story/route.tsx); with a portrait it
+  // also shows his picture, and the caption for its kind (the video component never looks a portrait up itself)
+  const portrait = portraitOf(t.featured.id)
   const card: TodayCard = {
     dir,
     heading: S.title[loc],
@@ -133,6 +136,7 @@ export default async function TodayPage({ params }: PageProps) {
     host: `${SITE_URL.replace(/^https?:\/\//, '')}/${loc}/today`,
     appTitle: UI[loc].appTitle,
     accent: ERA_COLORS[featured.period] ?? '#c9973a',
+    ...(portrait ? { portrait: { src: portrait.src, caption: portraitCredit(portrait, loc) } } : {}),
   }
 
   return (

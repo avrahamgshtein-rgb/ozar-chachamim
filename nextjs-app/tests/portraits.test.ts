@@ -52,6 +52,8 @@ const MAX_TOTAL = 20 * 1024 * 1024
 const OG_SIZE = 320
 const PIC = 640
 const MIN_CROP = 160
+/** The tower's atlas and its index, written by the same build (tests/portraitsAtlas.test.ts reads them): not a sage's file, not a stray. */
+const ATLAS_FILES = ['atlas.webp', 'atlas.json']
 const REASONS = ['photo', 'other-person', 'symbol', 'text', 'gender', 'quality', 'no-episode', 'title-mismatch']
 const KINDS = ['illustration', 'photo']
 const TOP_KEYS = ['_about', '_approved_photos', 'portraits', '_left_out']
@@ -69,7 +71,7 @@ const RULES: Array<[string, string]> = [
   ['roster-label', 'every entry is a sage on the roster, with the label the roster has for that id'],
   ['roster-coverage', 'every sage with a Spotify episode is kept or left out under the same episode, the others are no-episode'],
   ['files-for-kept', 'every kept sage has the large, the small and the share-card file'],
-  ['no-stray-files', 'no file in public/portraits/ or assets/og/portraits/ lacks a kept sage'],
+  ['no-stray-files', 'no file in public/portraits/ or assets/og/portraits/ lacks a kept sage (the atlas pair apart)'],
   ['webp-size', 'large webp at most 40 KB and 384 x 384, small at most 8 KB and 128 x 128'],
   ['og-jpeg', 'share-card jpg at most 30 KB, baseline, 320 x 320'],
   ['total-size', 'public/portraits/ is at most 20 MB in all'],
@@ -296,7 +298,7 @@ function portraitProblems(root: string, lookup: Lookup): Problem[] {
   }
   for (const [dir, names, label] of [[large, largeNames, LAYOUT.large], [og, ogNames, LAYOUT.og]] as const) {
     for (const n of names) if (!fs.existsSync(path.join(dir, n))) add('files-for-kept', `${label}/${n} is missing`)
-    for (const n of list(dir)) if (!names.has(n)) add('no-stray-files', `${label}/${n} belongs to no kept sage`)
+    for (const n of list(dir)) if (!names.has(n) && !(dir === large && ATLAS_FILES.includes(n))) add('no-stray-files', `${label}/${n} belongs to no kept sage`)
   }
   for (const id of kept.keys()) {
     const big = path.join(large, `${id}.webp`)
@@ -624,6 +626,20 @@ const BROKEN: Array<[string, string, (p: Parts) => void]> = [
 ]
 
 const ruleNames = new Set(RULES.map(([r]) => r))
+test('the atlas pair is not a stray file, and is counted in the folder size', () => {
+  const atlasFiles = (p: Parts) => {
+    p.files.set(`${LAYOUT.large}/atlas.webp`, fakeWebp(2048, 1024, 1000))
+    p.files.set(`${LAYOUT.large}/atlas.json`, Buffer.from('{}\n'))
+  }
+  const ps = problemsOf(atlasFiles)
+  assert.deepEqual(ps, [], show(ps))
+  // another file next to them is still flagged, and a big atlas counts towards the 20 MB
+  assert.ok(problemsOf(p => { atlasFiles(p); p.files.set(`${LAYOUT.large}/atlas2.webp`, fakeWebp(2048, 1024, 1000)) }).some(q => q.rule === 'no-stray-files'))
+  assert.ok(problemsOf(p => { atlasFiles(p); p.files.set(`${LAYOUT.large}/atlas.webp`, fakeWebp(2048, 1024, MAX_TOTAL + 1)) }).some(q => q.rule === 'total-size'))
+  // the share-card folder takes no atlas file
+  assert.ok(problemsOf(p => { p.files.set(`${LAYOUT.og}/atlas.webp`, fakeWebp(2048, 1024, 1000)) }).some(q => q.rule === 'no-stray-files'))
+})
+
 for (const [name, rule, edit] of BROKEN) {
   test(`${rule} fires: ${name}`, () => {
     assert.ok(ruleNames.has(rule), `unknown rule ${rule}`)

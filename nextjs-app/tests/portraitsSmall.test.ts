@@ -149,7 +149,7 @@ test('the Today portrait uses logical utilities only, plain img and the ink and 
   assert.doesNotMatch(src, /'use client'/)
 })
 
-test('the Today page uses the head once, for the featured sage, and leaves the story and the video alone', () => {
+test('the Today page uses the head once, for the featured sage, and leaves the story alone; the video gets its picture from the page', () => {
   const page = read('../app/[locale]/today/page.tsx')
   assert.equal((page.match(/<TodayFeaturedHead\b/g) ?? []).length, 1)
   assert.match(page, /<TodayFeaturedHead id=\{t\.featured\.id\} name=\{name\} locale=\{loc\} accent=\{card\.accent\}>/)
@@ -160,8 +160,11 @@ test('the Today page uses the head once, for the featured sage, and leaves the s
   const section = page.slice(page.indexOf('<TodayFeaturedHead'), page.indexOf('</TodayFeaturedHead>'))
   assert.match(section, /id="today-featured"/)
   assert.match(section, /<EraChip /)
-  // the status image and the video are not part of this change
-  for (const f of ['../components/today/TodayVideo.tsx', '../lib/todayVideo.ts']) assert.doesNotMatch(read(f), /portrait/i)
+  // the video takes its picture and caption from the page's card and never looks a portrait up itself (tests/todayVideoPortrait.test.ts)
+  assert.match(page, /portrait: \{ src: portrait\.src, caption: portraitCredit\(portrait, loc\) \}/)
+  for (const f of ['../components/today/TodayVideo.tsx', '../lib/todayVideo.ts', '../components/today/drawTodayFrame.ts']) {
+    assert.doesNotMatch(read(f), /lib\/portraits|portraitOf|portraitCredit|PORTRAIT_CREDIT/, `${f} must not look a portrait up`)
+  }
 })
 
 // ---------- the search box ----------

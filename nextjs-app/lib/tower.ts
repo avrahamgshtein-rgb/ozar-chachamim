@@ -82,6 +82,21 @@ export interface TowerNode {
   rank: number
   /** Hebrew agrees in gender ("תלמידתו של"): women carry the 'נשים' tag. */
   feminine?: boolean
+  /** The sage's tile in the portrait atlas (TowerFaces); absent for a sage with no portrait. */
+  face?: number
+}
+
+/** The portrait atlas (public/portraits/atlas.webp, built by scripts/build_portraits.py) as the tower page ships it. */
+export interface TowerFaces {
+  /** '/portraits/atlas.webp?v=<8 hex>': the ?v= is the hash of the image, so a cached copy never meets a newer page */
+  src: string
+  /** side of one square tile in the image, in pixels (64) */
+  tile: number
+  cols: number          // 32
+  rows: number          // 16
+  /** the real size of the image in pixels, cols*tile x rows*tile (2048 x 1024) */
+  w: number
+  h: number
 }
 
 export interface TowerLink {
@@ -100,6 +115,8 @@ export interface TowerData {
   maxYear: number
   /** The road to Sinai (buildTowerRoad), added by the page; absent in a bare layout. */
   road?: TowerRoad
+  /** The portrait atlas (towerServer), absent in a bare layout; a node's `face` is its tile in it. */
+  faces?: TowerFaces
 }
 
 /**
