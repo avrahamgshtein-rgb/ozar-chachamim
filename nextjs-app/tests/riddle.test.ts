@@ -440,7 +440,8 @@ test('the payload: the same answer in every language, a small candidate list wit
     assert.equal(p.candidates.filter(c => c.linked).length, linkedTo(p.answer).size)
     assert.ok(p.candidates.every(c => c.name && !('bio' in c)))
     const bytes = Buffer.byteLength(JSON.stringify(p))
-    assert.ok(bytes < 60_000, `${LOCALES[i]}: ${bytes} bytes`)
+    // 60 000 until the roster grew from 459 to 509 sages: the candidate list holds every sage
+    assert.ok(bytes < 68_000, `${LOCALES[i]}: ${bytes} bytes`)
     assert.equal(p.card.id, p.answer)
     assert.equal(p.card.sageHref, `/${LOCALES[i]}/sage/${p.answer}`)
     assert.equal(p.card.towerHref, `/${LOCALES[i]}/tower/${p.answer}`)

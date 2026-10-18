@@ -8,6 +8,7 @@ import fs from 'node:fs'
 import path from 'node:path'
 import { clipWords, isRtlText, rtlWords, visualWord } from '../lib/ogText'
 import nextConfig from '../next.config'
+import * as React from 'react'
 
 let passed = 0
 let failed = 0
@@ -60,5 +61,30 @@ test('the card\'s fonts and medallion are in the repository and traced into the 
   assert.ok(story.includes('./assets/og/**'), 'assets/og must be traced for the status image route')
 })
 
-console.log(`\n${passed} passed, ${failed} failed`)
-if (failed > 0) process.exit(1)
+// The route itself, as the CDN calls it: a sage's card in each language must come out as a PNG. English and
+// Russian lines are not right-to-left, and a style key set to undefined there (justifyContent) made Satori throw
+// ".trim() of undefined" for every card in those two languages while Hebrew still worked.
+async function renderCards() {
+  process.chdir(path.join(__dirname, '..'))
+  // tsx compiles the route's JSX with the classic runtime (React.createElement); Next uses the automatic one
+  ;(globalThis as unknown as { React: unknown }).React = React
+  const route = (await import('../app/[locale]/sage/[id]/opengraph-image')).default
+  for (const locale of ['he', 'en', 'ru']) {
+    try {
+      const res = await route({ params: Promise.resolve({ locale, id: '594' }) })
+      const bytes = new Uint8Array(await res.arrayBuffer())
+      assert.equal(res.status, 200, `${locale}: status`)
+      assert.equal(res.headers.get('content-type'), 'image/png', `${locale}: content type`)
+      assert.deepEqual([...bytes.slice(0, 4)], [0x89, 0x50, 0x4e, 0x47], `${locale}: a PNG`)
+      assert.ok(bytes.length > 5_000 && bytes.length < 300_000, `${locale}: ${bytes.length} bytes`)
+      passed++; console.log(`  ok  the share card of Rashi renders in ${locale} (${bytes.length} bytes)`)
+    } catch (e) {
+      failed++; console.log(`  FAIL the share card of Rashi in ${locale}\n       ${(e as Error).message}`)
+    }
+  }
+}
+
+renderCards().then(() => {
+  console.log(`\n${passed} passed, ${failed} failed`)
+  if (failed > 0) process.exit(1)
+})

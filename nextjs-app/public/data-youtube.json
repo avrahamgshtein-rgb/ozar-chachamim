@@ -6019,6 +6019,57 @@
      "seconds": 547
     }
    ]
+  },
+  "630": {
+   "label": "רבי משה אלשיך (האלשיך הקדוש)",
+   "en": [
+    {
+     "id": "Rdy9VriKVYM",
+     "title": "Rabbi Moshe Alshich - The Holy Preacher of Safed Destined to Reveal the Torah's Secrets",
+     "seconds": 315
+    }
+   ],
+   "ru": [
+    {
+     "id": "S-9dUr1Xpq4",
+     "title": "Рабби Моше Альшейх - святой проповедник Цфата, раскрывший тайны Торы особым путём",
+     "seconds": 528
+    }
+   ]
+  },
+  "631": {
+   "label": "רבי שמואל די אוזידא (בעל מדרש שמואל)",
+   "en": [
+    {
+     "id": "RtVP5AZW_J4",
+     "title": "Rabbi Shmuel de Uzeda - The Kabbalist of Safed Who Saved the Wisdom of the Early Sages from Oblivion",
+     "seconds": 345
+    }
+   ],
+   "ru": [
+    {
+     "id": "KTKuiDElfCY",
+     "title": "Рабби Шмуэль де Узеда - каббалист из Цфата, спасший мудрость ранних мудрецов от забвения",
+     "seconds": 545
+    }
+   ]
+  },
+  "632": {
+   "label": "רבי משה מטראני (המבי״ט)",
+   "en": [
+    {
+     "id": "PutNe8nmaFM",
+     "title": "Rabbi Moshe of Trani (Mabit) - The Sage of Safed Who Challenged the Beit Yosef for 40 Years",
+     "seconds": 345
+    }
+   ],
+   "ru": [
+    {
+     "id": "zLJxc3eEdCU",
+     "title": "Рабби Моше из Трани (Мабит) - мудрец Цфата, 40 лет споривший с Бейт-Йосефом",
+     "seconds": 521
+    }
+   ]
   }
  }
 }
