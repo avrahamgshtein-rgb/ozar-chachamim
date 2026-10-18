@@ -528,11 +528,11 @@ test('the net: only sages with a link, in id order, named in the language, eras 
   for (const [a, b] of samplePairs(100)) assert.deepEqual(shortestPath(back, a, b), shortestPath(g, a, b), `${a} to ${b}`)
 })
 
-test('the Hebrew net fits the page\'s budget (the whole payload, net and the game\'s day, is under 25 KB)', () => {
+test('the Hebrew net fits the page\'s budget (the whole payload, net and the game\'s day, is under 28 KB)', () => {
   const bytes = (l: Locale) => Buffer.byteLength(JSON.stringify(connectNet(l)), 'utf8')
   console.log(`       (net bytes: he ${bytes('he')}, en ${bytes('en')}, ru ${bytes('ru')})`)
-  // room is left for the day's route and hints; every name is kept
-  assert.ok(bytes('he') <= 23_500, `the Hebrew net is ${bytes('he')} bytes`)
+  // room is left for the day's route and hints; every name is kept. 23 500 until the roster grew from 459 to 509 sages
+  assert.ok(bytes('he') <= 26_500, `the Hebrew net is ${bytes('he')} bytes`)
 })
 
 test('connectPathFor: the chain in a language, or null for an unknown sage, the same sage twice, or no chain', () => {

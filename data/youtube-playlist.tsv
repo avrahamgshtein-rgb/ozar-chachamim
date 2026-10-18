@@ -1,724 +1,730 @@
-1	llK6TjhR-ok	387	ru	Рабби Авраам Бократ - мудрец, изгнанный из Испании и выступивший в защиту РашиРабби Ав
-2	3tqZnY6xxJ4	334	en	Rabbi Abraham Bokrat - The Scholar Expelled from Spain Who Rose to Rashi’s Defense
-3	AwjeicEsSuw	547	ru	Мирьям-пророчица - женщина, верившая в избавление ещё до того, как расступилось море
-4	cPBZwmA-SJw	515	en	Miriam the Prophetess - The Woman Who Believed in Redemption Before the Sea Was Parted
-5	-IKOyrDQF6E	357	en	Rabbi Abbahu - The Sage of Caesarea Who Stood Between the Study Hall and the Empire
-6	BPdVWImZx70	475	ru	Рабби Аббаху - мудрец из Кесарии, стоявший между домом учения и империей
-7	AZz17ZTQt5E	433	ru	Имма Шалом - женщина между рабби Элиэзером и раббаном Гамлиэлем
-8	MT7n6kqD8Es	372	en	Imma Shalom - The Woman Who Stood Between Rabbi Eliezer and Rabban Gamliel
-9	qbhTWbSmqKA	388	ru	Рабби Рафаэль Бердуго - «Ангел Рафаэль» из Мекнеса
-10	t3EKqmQhgek	292	en	Rabbi Raphael Berdugo - The “Angel Raphael” of Meknes
-11	92-41jb_3uA	376	ru	Рабби Натан Шапира Иерусалимский - каббалист, систематизировавший труды Аризаля
-12	bVC_T1MR4nE	304	en	Rabbi Nathan Shapira of Jerusalem - The Kabbalist Who Organized the Writings of the Ari
-13	V_IWxYu1f9Y	626	ru	Раши - мудрец, открывший Тору и Талмуд каждому еврею
-14	q5x9P6uZGpE	397	en	Rashi - The Sage Who Opened the Torah and Talmud to Every Jew
-15	OXMfO24yAeU	620	en	Rabbi Joseph Dov Soloveitchik - The Halakhic Man Who Lived Between Two Worlds
-16	mfhklEClXVk	537	ru	Рав Йосеф Дов Соловейчик - человек Галахи, живший между двумя мирами
-17	aOhTT4BYqTA	404	en	Rabbi Ahai bar Papa - The Sage Included in the Hadran Despite Living Generations Before Rav Papa
-18	f29AXHW8Sus	570	ru	Рабби Ахай бар Папа - мудрец, вошедший в Адран, хотя жил за поколения до Рава Папы
-19	GKVirv2oTpE	424	ru	Рабби Менахем Реканати - каббалист, превративший Зоар в основополагающую книгу
-20	rM4jaxCsHho	443	en	Rabbi Menachem Recanati - The Kabbalist Who Made the Zohar a Foundational Text
-21	8ncHBXpcsjA	328	en	Rabbi Hanan Porat - The Man Who Refused to Choose Between Torah and Life
-22	5BJnsTcrvhM	476	ru	Рав Ханан Порат - человек, отказавшийся выбирать между Торой и жизнью
-23	xgdqNPQiiVk	402	en	Rabbi Eliezer Yehuda Waldenberg - The Tzitz Eliezer, a Leading Halakhic Authority
-24	Yjo_hGXtcOw	492	ru	Гаон раввин Элиэзер Йехуда Вальденберг - выдающийся галахический авторитет «Циц Элиэзер»
-25	eiQt0ycF4sc	273	en	Rabbi Yisrael Yitzchak Besançon - The Artist Who Made Breslov a Language of the Soul
-26	fD8YrjG0Ly8	525	ru	Рав Исраэль Ицхак Безансон, благословенной памяти - художник, превративший Бреслав в язык души
-27	6tFcTQDpfog	317	en	Gedaliah ben Ahikam - The Murder That Extinguished Judah’s Last Hope
-28	5GkX20zWwAs	490	ru	Гедалия бен Ахикам - убийство, погасившее последнюю надежду Иудеи
-29	o9iBCp_Vi7k	515	ru	Рав Нахман бар Папа - аморай, который помолился, и пошёл дождь
-30	kLJUwmjj7Cc	353	en	Rav Nachman bar Pappa - The Amora Who Prayed and the Rain Fell
-31	tYm9XY5Ol_o	491	ru	Лея, праматерь - женщина, чья молитва изменила её судьбу
-32	YsDYWOKdKmM	300	en	Leah Our Matriarch - The Woman Whose Prayer Changed Her Destiny
-33	zX-018kWaVE	405	ru	Рами бар Папа - аморай, чьё имя произносят при каждом завершении трактата
-34	4ENM292sgI4	394	en	Rami bar Pappa - The Amora Whose Name Is Recited at Every Siyum
-35	DGCFQealrGw	379	ru	Ялта - женщина, разбившая 400 бочек вина
-36	DC0vmQmepa0	351	en	Yalta - The Woman Who Smashed 400 Barrels of Wine
-37	7lCipAKhO3M	533	ru	Рафрам бар Папа - аморай, соединивший Галаху, науку и разрушение Храма
-38	F970V-O0D_M	400	en	Rafram bar Pappa - The Amora Who Connected Halakha, Science, and the Destruction of the Temple
-39	cEPDeH-wcE4	500	ru	Серах, дочь Ашера - женщина, жившая от Яакова и Исхода из Египта до царствования Давида
-40	6yKjdGc3NK4	290	en	Serah Daughter of Asher - The Woman Who Lived from Jacob to the Exodus and King David’s Reign
-41	oZif-VqdVNU	564	ru	Рабби Ханина бар Папа - аморай, попросивший у Ангела смерти ещё 30 дней
-42	xxmxesk4B6E	379	en	Rabbi Hanina bar Pappa - The Amora Who Asked the Angel of Death for 30 More Days
-43	RMW3arWEEQw	522	ru	Церуя - женщина, чьи сыновья носили её имя в самом сердце царства Давида
-44	VbKKhrAATyE	279	en	Zeruiah - The Woman Whose Sons Bore Her Name at the Heart of David’s Kingdom
-45	FD0at4Hnmqg	558	ru	Раввин Иегуда Лейб Дон-Ихья - между Бриском, хасидизмом и сионизмом
-46	MlIzdjS4TJE	284	en	Rabbi Yehuda Leib Don Yichya - Between Brisk, Hasidism, and Zionism
-47	xQ2dUpSvXYU	354	en	Dona Gracia Nasi - The Woman Who Turned Wealth and Political Power into a Jewish Rescue Mission
-48	CZDAMd7aLp0	541	ru	Дона Грация Наси - женщина, превратившая богатство и политическое влияние в дело спасения евреев
-49	BGfo7XA7eJQ	367	en	Rabbi Abraham ben Isaac of Montpellier - The Provençal Sage Whose Writings Returned from Oblivion
-50	VbEOubdBL10	430	ru	Рабби Авраам бен Ицхак из Монпелье - провансальский мудрец, чьи труды вернулись из забвения
-51	laf46Rl3Gpc	295	en	Rabbi Mordechai Eliasberg - The Golden Path of National Revival
-52	8rF8OmOowDs	498	ru	Раввин Мордехай Элиасберг - золотой путь национального возрождения
-53	C15ER1t4Tgo	491	ru	Рабби Исраэль Липшиц - между Мишной и современной наукой
-54	wc3g0MGSNVM	327	en	Rabbi Israel Lipschitz - Between the Mishnah and Modern Science
-55	64rOl_X18e8	288	en	Rabbi Aryeh Kaplan - Between Nuclear Physics and the Worlds of Kabbalah
-56	6ANyR2tvoWs	520	ru	Рабби Шимшон Рафаэль Гирш - Тора, образование и встреча с современностью
-57	jRfno0wSAbw	532	ru	Раввин Арье Каплан - между ядерной физикой и мирами Каббалы 
-58	-1vI47GrHgQ	382	en	Rabbi Samson Raphael Hirsch - Torah, Education, and the Encounter with Modernity
-59	HN4xheHyH7s	413	ru	Рабби Авиад Сар Шалом Базила - где каббала, Евклид и астрономия встретились в бейт-мидраше
-60	PQJAHFKdwJg	312	en	Rabbi Aviad Sar Shalom Basilea - Where Kabbalah, Euclid, and Astronomy Met in the Beit Midrash
-61	PX215cuHqAI	501	ru	Рабби Барух Шик из Шклова - от Виленского Гаона до Евклида: наука на службе понимания Торы
-62	-aQphfpP758	274	en	Rabbi Baruch Schick of Shklov - From the Vilna Gaon to Euclid: When Science Helps Understand Torah
-63	CfT6qqfiRYc	329	en	The Ten Lost Tribes, Rembrandt and Cromwell - The Story of Rabbi Menasseh ben Israel
-64	N1HhQRstBl0	529	ru	Десять колен, Рембрандт и Кромвель - история рабби Менаше бен Исраэля
-65	lu-CEEbbD4c	348	en	Rabbi Pinchas Eliyahu Horowitz - When Science Becomes a Gateway to Serving God
-66	Hirtp3JygZM	527	ru	Рабби Пинхас Элиягу Горовиц - когда наука становится путем к служению Богу
-67	sKXr9HHMr3s	440	ru	Раввин д-р Азриэль Хильдесхаймер - Тора и наука в меняющемся мире
-68	ufiyCI_7LN4	308	en	Rabbi Dr. Azriel Hildesheimer - Torah and Science in a Changing World
-69	b3MGed9-cb0	356	en	Rabbi Gedaliah Nadel - Torah, Science, and the Search for Truth
-70	VC4hexRfopM	417	ru	Раввин Гедалия Надель - Тора, наука и поиск истины
-71	TX-BEGATFq8	506	ru	Рабби Ицхак Лампронти - раввин, врач и автор энциклопедии «Пахад Ицхак»
-72	O6RksBawIt4	291	en	Rabbi Isaac Lampronti - The Rabbi, Physician, and Author of Pachad Yitzchak
-73	viy9jsulLoc	363	en	Geula Cohen: The Life and Legacy of a Fighter for Israel
-74	rGBISPIIbek	476	ru	Геула Коэн: жизнь и наследие борца за Израиль
-75	0h6oj9furxI	466	ru	Яшар из Кандии - между Галилеем, наукой, Торой и каббалой
-76	ngKIWLZzCrE	470	en	Yashar of Candia - Between Galileo, Science, Torah, and Kabbalah
-77	82qcRQstFQs	480	ru	Рабби Меир из Перемышляна: жизнь и чудеса праведника из Перемышляна
-78	y2-Z7bfgR5U	323	en	Rabbi Meir of Premishlan: The Life and Miracles of the Righteous Sage of Premishlan
-79	iYtU6ZBjyjw	455	ru	Дерех Эрец, избранность и наследование Земли Израиля в недельной главе «Экев»
-80	Cd4lauoPrw0	289	en	Derekh Eretz, Spiritual Distinctiveness, and the Inheritance of the Land in Parashat Eikev
-81	TC6i8YLD8qM	491	ru	Рабби Иегуда Галеви Маргуза и возрождение еврейской общины Яффо
-82	sMVZgqvMqXI	352	en	Rabbi Yehuda Halevi Marguza and the Revival of the Jewish Community of Jaffa
-83	L8-ubmGo6_Y	544	ru	Рабби Хаим Виталь - Ученик Ари, сохранивший его учение и объединивший каббалу с природой
-84	xHFq__NoPpg	342	en	Rabbi Chaim Vital - The Disciple Who Preserved the Ari's Teachings and United Kabbalah with Nature
-85	0j8wko1m4uY	460	ru	Наследие Виленского Гаона: от научных трудов до алии его учеников
-86	EGcq-ll5vH8	356	en	The Legacy of the Vilna Gaon: From Scientific Scholarship to the Disciples' Aliyah
-87	lVKW3ot6R5E	628	ru	Раббан Шимон бен Гамлиэль I - Наси, пытавшийся спасти Иерусалим накануне разрушения
-88	qDYMHEbFSRg	360	en	Rabban Shimon ben Gamliel I - The Nasi Who Tried to Save Jerusalem Before the Destruction
-89	vfjBSPWJqe4	600	ru	Ребецн Хая-Мушка Шнеерсон - духовное партнерство, самоотверженность и тихое лидерство
-90	cNOHzH5oy-0	272	en	Rebbetzin Chaya Mushka Schneerson - Spiritual Partnership, Selfless Devotion and Quiet Leadership
-91	uzhD9y3Z8KY	434	ru	Раббанит Бат-Шева Каневская - Дом, ставший местом милосердия, молитвы и духовного наставничества
-92	ktAHrAfYdcY	278	en	Rabbanit Batsheva Kanievsky - A Home of Kindness, Prayer, and Spiritual Guidance
-93	qWkGCUgsagA	516	ru	Раббан Гамлиэль из Явне - Наси, восстановивший еврейское руководство
-94	zNRv16vRMqM	459	en	Rabban Gamliel of Yavne- The Nasi Who Led the Restoration of Jewish Leadership After the Destruction
-95	DoUacsauI4g	543	ru	Рав Йехуда бар Йехезкель - основатель Пумбедиты, определивший путь вавилонского еврейства
-96	UABDpOW_aiY	280	en	Rabbi Yehuda bar Yechezkel - The Founder of Pumbedita Who Shaped the Course of Babylonian Jewry
-97	O31lUKbkcpw	361	en	Aaron the High Priest - Teaching That Love for People Is the First Step to Torah
-98	E3lo3Xg8ako	484	ru	Аарон-первосвященник - Любовь к людям как первый шаг к приближению их к Торе
-99	n1ZrT4N8l1I	552	ru	Генриетта Сольд - между традицией, сионизмом и социальной ответственностью
-100	rqvPXBDfXFE	334	en	Henrietta Szold - Between Tradition, Zionism, and Social Responsibility
-101	O71Q3HrKHmQ	270	en	Sarah Stern-Katan - Torah, Work, and Social Responsibility
-102	XC5vL6MTdhw	427	ru	Сара Штерн-Катан - Тора, труд и социальная ответственность
-103	ZDkfA474Sso	538	ru	Това Кучински и истоки национальной службы в Израиле
-104	d1t5JxzCLMI	212	en	Tova Kuczynski and the Origins of National Service in Israel
-105	n0HeygT8K0E	410	ru	Раббанит Сара Герцог - женщина, объединившая милосердие, лидерство и созидание государства
-106	GzU2LaLlafw	314	en	Rabbanit Sarah Herzog - The Woman Who United Kindness, Leadership, and Nation-Building
-107	42ivyJiVm5Q	312	en	Rebbetzin Bracha Kapach - The Woman Who Turned Kindness into a Lifelong System
-108	Bn9l_iYU94c	551	ru	Раббанит Браха Капах - Женщина, превратившая милосердие в целостную систему жизни
-109	qr-Jzk95mEA	304	en	A Call from the Ashes: The Legacy of Rebbetzin Esther Jungreis and the Hineni Movement
-110	i_LjhX-53kQ	433	ru	Призыв из пепла: наследие ребецен Эстер Юнграйс и движение «Хинени»
-111	oT20E266xU0	534	ru	Раббанит Дина Вайнберг: наследие величия, образования и раскрытия потенциала женщин
-112	wIYweXEWhYg	376	en	Rabbanit Deanna Weinberg: A Legacy of Greatness, Education, and Women's Empowerment
-113	420idkUpoAs	535	ru	Нехама Лейбович - Учительница, которая научила задавать правильные вопросы
-114	xjhEVrowK4A	271	en	Nechama Leibowitz - The Teacher Who Taught Us to Ask the Right Questions
-115	SgvgFTJ26y8	553	ru	Ребецн Вихна Каплан - продолжательница пути Сары Шнирер в Америке
-116	k3fseLFUo0w	237	en	Rebbetzin Vichna Kaplan - Continuing Sarah Schenirer's Legacy in America
-117	YmkhdJODjfk	291	en	Or HaChaim: His Life, Legacy, and Connection to the Baal Shem Tov
-118	YJ73CNeOB3I	527	ru	«Ор ха-Хаим»: биография, наследие и связь с Баал Шем Товом
-119	W1333JXqOsI	584	ru	Рав Авраам Йеошуа Цукерман - педагог, объединивший Бейт-Мидраш, сад и строительные леса
-120	l3kyNbAnAOc	248	en	Rabbi Avraham Yehoshua Zuckerman The Educator Who Bridged the Beit Midrash and the Building Scaffold
-121	ZNkmYo-mdpA	716	ru	Рабби Элиэзер бен Гиркан: между традиционным консерватизмом и галахическим расколом
-122	kCiWOjnvc10	414	en	Rabbi Eliezer ben Hyrcanus: Between Traditional Conservatism and a Halakhic Schism
-123	Z628S1iuCmU	344	en	Rabbi Elazar ben Azariah: Leadership, Halakhah, and Aggadah
-124	0W2KIyP9r98	599	ru	Рабби Элазар бен Азария: лидерство, Галаха и Агада
-125	2O9fB4pFm5E	624	ru	Шаммай Старец: его личность, учение и наследие школы Бейт Шаммай
-126	TuIOTBpjNZE	498	en	Shammai the Elder: His Character, Teachings, and the Legacy of the House of Shammai
-127	zd96F8hzIec	285	en	Hillel the Elder: Leadership, Torah Tradition, and Repairing the World
-128	fDj1mkGP_dw	564	ru	Гилель Старший: лидерство, учение Мишны и исправление мира
-129	QvnqcWMw9Hs	324	en	Rabbi Yehoshua ben Hananiah - The Sage Who Declared: "It Is Not in Heaven"
-130	R3U6POac3oY	564	ru	Рабби Йеошуа бен Ханания - мудрец, сказавший: «Не на небесах она»
-131	PSlsgd30bzQ	490	ru	Раббан Йоханан бен Заккай: руководство народом и Тора в эпоху разрушения и восстановления
-132	ViB_CDTMyrQ	286	en	Rabban Yohanan ben Zakkai: Leadership and Torah in an Age of Destruction and Renewal
-133	tmTfkxXZt2c	434	ru	Рабби Довбер Шнеури - лидер, расширивший и укрепивший движение Хабад
-134	_SlbQRSyuaw	346	en	Rabbi Dovber Schneuri - The Leader Who Expanded and Consolidated the Chabad Movement
-135	dJ_EigYpX8I	275	en	The Tzemach Tzedek - The Rebbe Who Turned Chabad into a Center of Halakhah and Leadership
-136	27qzVovmga0	548	ru	Цемах Цедек - Ребе, превративший Хабад в центр Галахи и духовного руководства
-137	aFJw80_8jKE	311	en	The Lubavitcher Rebbe - The Vision of Shlichut That Transformed Judaism
-138	jtQ37qmsC44	565	ru	Ребе из Любавича - Видение шлихута, изменившее лицо иудаизма
-139	N2r08ESQ2TY	431	ru	Рабби Йехуда Кориат - каббалист, передавший наследие Магриба в новую эпоху
-140	Uw_P0UXjIDA	279	en	Rabbi Yehuda Coriat - The Kabbalist Who Transmitted the Heritage of the Maghreb into the Modern Era
-141	kf4SpyqXBtg	562	ru	Учение раввина Десслера: нравственность, вера и свобода выбора
-142	73L7-ieMTrw	486	en	Rabbi Eliyahu Eliezer Dessler: Ethics, Faith, and Free Choice
-143	0llPWZMJZ6I	342	en	Rabbi Tzvi Pesach Frank - Chief Rabbi of Jerusalem in the Years of National Revival and Statehood
-144	iAkHcsFYmjY	472	ru	Раввин Цви Песах Франк - главный раввин Иерусалима в годы возрождения и становления государства
-145	FCgf1OySW6Y	458	ru	Рабби Йосеф Джикатилья: «Врата света» и тайны Божественного Имени
-146	B9lywyLu4fQ	426	en	Rabbi Yosef Gikatilla: Sha'arei Orah and the Mysteries of the Divine Name
-147	mcIKHpp9a7E	449	ru	«Адар ха-Якар»: личность и учение Адерета
-148	LYiGsAE-GWo	289	en	Adar HaYakar: The Life and Thought of the Aderet
-149	ZhX1ONdf8lo	489	ru	Семья Крескас: личности и история в Еврейской энциклопедии
-150	UH3nhew-7mk	254	en	The Crescas Family: Personalities and History in the Jewish Encyclopedia
-151	NgZ2WbGy9E0	303	en	Rabbi Yaakov Skili: His Life, Writings, and Eretz Israel-Oriented Thought
-152	OL0B8iX_o2Y	376	ru	Рабби Яаков Скили: биография, труды и его учение о Земле Израиля
-153	OlesEjzoTZs	535	ru	Рабби Йосеф ибн Табуль - каббалист, сохранивший ещё один голос в учении Ари
-154	Ll6Abt2Cq7w	281	en	Rabbi Yosef ibn Tabul - The Kabbalist Who Preserved Another Voice in the Teachings of the Ari
-155	AtlCXb3JDx8	445	ru	Рабби Йеошуа ибн Шуайб: лидерство, проповедь и тайны Рамбана
-156	Tcix3Bmm-t0	260	en	Rabbi Yehoshua Ibn Shu'aib: Leadership, Homiletics, and the Secrets of Ramban
-157	qfhtXb3f3pU	298	ru	Рамо: биография, галахическое наследие и философское мировоззрение
-158	NLdSQBDGwBg	322	en	The Holy Ari: Esoteric Teaching, the Refinement of Sparks, and the World of Tikkun
-159	L24nCHU4_z8	475	ru	Рамо: биография, галахическое наследие и философское мировоззрение
-160	B3hHNfGRIec	470	ru	Святой Ари: учение тайны, очищение искр и мир исправления
-161	pGDFGE42KoM	406	ru	Рав Давид Бонафед: ученик Рамбана и его духовное наследие в Испании
-162	m3z94b-NIKM	469	en	Rabbi David Bonafed: Disciple of the Ramban and His Torah Legacy in Spain
-163	L5T6oVKBsSU	548	ru	Рабби Яаков Поллак: основатель метода пилпула и зарождения мира Торы в Польше
-164	JwwrnklLPac	280	en	Rabbi Yaakov Pollak: Founder of the Pilpul Method and the Rise of Torah Scholarship in Poland
-165	-O3vOHVMLw8	410	ru	Авраам Ливни: израильская тайна и весть миру
-166	7xG6akhghaE	284	en	Abraham Livni: The Israeli Secret and the Message to the World
-167	q3pKKKJP3Do	338	en	The Path of Ruth: Mercy, Law, and Spiritual Legacy
-168	OMUpBWCh0ts	537	ru	Путь Руфи: милосердие, закон и духовное наследие
-169	wEmwGlLhGjw	396	ru	Рабби Яаков Ландау: автор «Агура»
-170	ycaGC9cXwLY	309	en	Rabbi Yaakov Landau: Author of the “Agur”
-171	iNQ-FOwDufk	479	ru	Рабби Исраэль Иссерлейн - законоучитель, восстановивший ашкеназское еврейство из пепла
-172	q8eLxP2lgjA	280	en	Rabbi Israel Isserlein - The Halachic Authority Who Rebuilt Ashkenazic Jewry from the Ashes
-173	QHHa6EXkb8U	372	en	Sarah Our Matriarch:The Foundation of Prophecy and the Sovereignty of Spirit in the Tent and in Time
-174	rTWSGX6coxc	411	ru	Сара Праматерь: основание пророчества и владычество духа в шатре и во времени
-175	XMHlD_piB-4	472	ru	Рабби Йосеф Каро: между галахическим решением, каббалой и мистикой
-176	qYE8cC26YRA	558	en	Rabbi Yosef Karo: Between Halakhic Ruling, Kabbalah, and Mysticism
-177	NaoBguesmXw	463	ru	Махари Коркос - мудрец, подготовивший галаху к избавлению
-178	1ujQnhxNFy8	458	en	Mahari Korkos - The Sage Who Prepared Halakhah for Redemption
-179	coQyIiMtHho	295	en	The Teachings and Historical Influence of Rabbi Menachem Azariah of Pano
-180	NGZ4n57j8g8	436	ru	Учение и историческое влияние рабби Менахема Азарии из Пано
-181	ubBihik_GWA	541	ru	Рав Йосеф бар Хама и рождение вавилонской элиты Торы
-182	L2lV3N6FCw4	501	en	Rav Yosef bar Hama and the Birth of Babylonian Torah Aristocracy 
-183	ecl65fy6iGE	552	ru	Рашбац: универсальный мудрец, галахический авторитет и энциклопедист
-184	e1uRNGIXOsw	343	en	Rashbatz: A Comprehensive Sage, Halakhic Authority, and Encyclopedist
-185	H8WtxOkgJGE	489	ru	Рабби Меир: его жизнь и учение как светоч традиции
-186	rPFKI2erb2E	344	en	Rabbi Meir: His Life and Teachings as a Luminary of Tradition
-187	B8WYcBu8FIA	500	ru	Рабби Йехуда бар Илай: лидерство, галаха и мидраш Сифра
-188	VksJwSjUTqQ	371	en	Rabbi Yehuda bar Ilai: Leadership, Halakhah, and the Sifra Midrash
-189	wAbja8j_2_w	299	en	Rabbi David Gans and the Cosmological Revolution in Rabbinic Thought
-190	7jB5xlxSzWA	482	ru	Раби Давид Ганс и космологическая революция в мысли мудрецов Израиля
-191	u7Vzgsosv5w	421	en	The Kabbalist Rabbi Moshe Zacuto (the Ramaz): Who Connected Kabbalah, Halakhah, and Hebrew Theater
-192	eb2oNTiOC1k	448	en	Rabbi Israel of Krems: The “Hagahot Ashri” and the Formation of Ashkenazic Halakhic Ruling
-193	d9SODLJNFNw	538	ru	Рабби Исраэл из Кремса: архитектура «Хагаот Ашри» и формирование ашкеназской галахической традиции
-194	nJQ_RbQIEvI	287	en	Rabbi Samson ben Eliezer and the Tradition of Scribal Writing (STaM) in the Book "Baruch She’amar"
-195	Mf9WorpjPKA	436	ru	Рабби Шимшон бен Элиэзер и традиция письма СТаМ в книге «Барух ше-амар»
-196	FBL394gsb4g	406	en	Rabbi Meir ben Baruch HaLevi Segal – The Man Who Reshaped Ashkenazi Rabbinic Authority
-197	3Dp8cAF3Whs	316	ru	Рабби Меир бен Барух ха-Леви Сегаль – человек, заново сформировавший ашкеназское раввинство
-198	coYnfxRPZD0	310	en	Rabbi Vidal di Tolosa – The Commentator Who Restored Maimonides’ Voice
-199	DrJyqdeVAeE	293	ru	Рав Видаль ди Толоза – комментатор, вернувший Рамбаму его голос
-200	KQ14DueH1Jg	436	ru	Рабби Йеошуа из Кутны – галахический авторитет, увидевший возвращение к Земле как начало избавления
-201	oefm0G9kWek	324	en	Rabbi Yisrael Yehoshua Trunk of Kutna – Halachic Authority Who Saw Return to the Land as Redemption
-202	21KfqhPBlhM	358	ru	Рабби Шломо ха-Коэн из Вильно: Тора, сионизм и «Хешек Шломо»
-203	AHHjQ5flji4	238	en	Rabbi Shlomo HaKohen of Vilna: Torah, Zionism, and Ḥeshek Shlomo
-204	NuQ6ASLKEcA	383	ru	Рои Кляйн: архетип «книги и меча» и его духовно-Торийное наследие
-205	20F3tJ8uoVk	295	en	Roi Klein: An Archetype of “Sefer and Sword” and His Torah Legacy
-206	qBYkt1v-dIE	490	en	Rabbi Alexandri Zusselin HaKohen – the halachic authority who preserved Torah from the ashes
-207	D03fiiP5cJM	424	ru	Рабби Александри Зусслин ха-Коэн — законоучитель, сохранивший Тору из пепла
-208	O8j_x3TsVqk	412	en	Rabbi Shimshon ben Tzadok: The Tashbetz Katan Through the Generations
-209	06ds3hdUdyI	487	ru	Рабби Шимшон бен Цадок: «Ташбец катан» в зеркале поколений
-210	UxGRHKF3iQ8	329	en	Rabbi Shem Tov Gefen: The Kabbalist Scientist and Polymath
-211	1QwFpMBaBVY	420	ru	Рав Шем Тов Гефен: каббалист, учёный и человек энциклопедического склада
-212	msovXAc2swc	505	en	Rabbi Shem Tov Ibn Gaon – The Sage Who United Halacha, Kabbalah, and Sacred Art
-213	E4Ntxaz1RWc	397	ru	Рабби Шем Тов ибн Гаон — мудрец, объединивший галаху, каббалу и священное искусство
-214	doTEC_Kq7Iw	407	ru	Рабби Нахман Крохмаль (Ранак) — мыслитель, превративший историю в доказательство вечности Израиля
-215	oAjWELNrN0I	467	en	Rabbi Nachman Krochmal (RaNaK) – The Thinker Who Turned History into Proof of the Eternity of Israel
-216	DBIFV2upuWs	272	en	Rabbi Moshe of Évreux – The Man Who Turned the Book into a Rabbi
-217	K7Xxix0kKJ8	517	ru	Рабби Моше из Эврё — человек, который сделал книгу раввином
-218	vFvZdYtISsM	460	ru	Рабби Йеуда бен ха-Рош: лидерство и духовное завещание
-219	Kx93YOiMv8U	312	en	Rabbi Yehuda ben the Rosh: Leadership and a Spiritual Testament
-220	oIQHV_XChFA	536	ru	Наследие и деятельность рабби Яакова Бааль а-Турим и семьи бен Зерах
-221	FzihQEaAP4I	386	en	The Legacy and Works of Rabbi Yaakov Baal HaTurim and the Ben Zerach Family
-222	V18l2aj30Qw	353	en	Rabbi Estori HaParchi: A Pioneer of the Study of the Land of Israel
-223	87kQHf3DkfU	374	ru	Рабби Аштори hа-Пархи: пионер исследования Земли Израиля
-224	2fHzICtEzsU	413	en	Rabbi Isaac of Corbeil: The Author of the Sefer Mitzvot Katan and His Halakhic Legacy
-225	hG20RFcZ0Ts	357	ru	Рабби Ицхак из Корбейля: автор «Сефер мицвот катан» и его галахическое наследие
-226	qye5KMrSkWM	307	en	Riaz (Rabbi Isaiah di Trani the Younger) - The Struggle for the Soul of Faith
-227	LdvONEKFp68	418	ru	Риаз (Рабби Ишая ди Трани младший) –между традицией и философией: борьба за душу веры
-228	0Q2VuWQeL_U	458	ru	Рабби Моше из Эврё — тихий революционер, превративший книгу в учителя
-229	tMw4LBBvRsU	371	en	Rabbi Moses of Évreux – the quiet revolutionary who turned the book into a teacher
-230	LCI53rUjpJw	275	en	Rabbi Avigdor HaKohen of Vienna: The Shift of Centers and the Consolidation of Halakhah in Ashkenaz
-231	gM-SSfGccoI	384	ru	Рабби Авигдор ха-Коэн из Вены: перемещение центров и формирование Галахи в Ашкеназе
-232	85q_BwP8bDI	385	ru	Рабби Цадкия бен Авраам и книга «Шиболей а-лекет»
-233	aU788mO4h4U	298	en	Rabbi Tzadkiah ben Abraham and the book Shibolei HaLeket
-234	mpK4lW27XWQ	279	en	Rabbi Yechiel ben Yekutiel: The Leiden Manuscript
-235	BX0hmaRuQm0	453	ru	Рабби Йехиэль бен Йекутиэль: Лейденская рукопись
-236	YQ8jGmsbrBQ	497	ru	Рамбан — лидер, изгнанный из Испании, чтобы возродить Иерусалим
-237	mZ9WV8-dTh0	540	en	Nachmanides – the leader who was exiled from Spain in order to revive Jerusalem
-238	aKNFO4YzEBA	304	en	Rabbi Nathan ben Meir of Trinquetaille: A Crossroads of the Sages of Provence
-239	lYZGEE8L1oQ	369	ru	Рабби Натан бен Меир из Тренктайя: перекрёсток мудрецов Прованса
-240	E52YBJ1z_58	485	en	Deborah the Prophetess: Leadership, Justice, and Torah Thought
-241	rhhpQdgh5CM	372	en	The Torah legacy and activity of Rabbi Meir ben Shimon HaMe’ili
-242	Y9_WYJM9LY0	414	ru	Деятельность и учение рабби Меира бен Шимона а-Меили
-243	sA1D0OuJ_S8	359	en	The Thought, Activity, and Legacy of Rabbi Maimon the Judge: A Link Between Generations
-244	eKtYaaeC8BY	504	ru	Учение, деятельность и наследие рава Маймона-даяна: связующее звено между поколениями
-245	eB864xW3LIM	402	en	Thought and Public Activity of Rabbeinu Shmuel Ha-Sardi
-246	pvCr5EZsF-w	376	ru	У чение и общественная деятельность рабейну Шмуэля а-Сарди: анализ кодификации, мысли и права
-247	he3TX2TknG0	526	ru	Девора-пророчица: лидерство, суд и религиозно-учительное наследие — междисциплинарный анализ
-248	NnujnyQUOOg	272	en	Rabbeinu Perachiah ben Nissim – A Sage Who Defended the Legacy of Maimonides
-249	-pmGp_mGqDw	442	ru	Рабейну Перахия бен Ниссим — мудрец, защищавший наследие Рамбама
-250	uoEDpicThEM	452	ru	Рабейну Маноах из Нарбонны — комментатор, давший «покой» Рамбаму
-251	Nnix88v6Wgs	415	en	Rabbeinu Manoach of Narbonne – The Commentator Who Gave “Rest” to the Rambam
-252	cpv24KtaSr4	417	ru	Рабейну Маноах из Нарбонны — комментатор, давший «покой» Рамбаму
-253	n87R6orOkbg	391	en	Rabbeinu Manoach of Narbonne – The Commentator Who Gave “Rest” to the Rambam
-254	4UX9v3kx5Nc	408	en	Rabbi Meshullam ben Moshe and the Early Dynasty of the Sages of Lunel
-255	aSGyBU1k1Fc	466	ru	Рабби Мешулам бен Моше и ранняя династия мудрецов Люнеля
-256	uf6D-8ElhLQ	402	en	Hannah’s Prayer: Faith, Halakha, and a Model for Education
-257	buf6CKTYKVI	368	ru	Молитва Ханны: вера, галаха и образец воспитания
-258	XewrhViUp7E	317	en	Rabbi Eleazar of Worms and the Ordinances of ShUM
-259	MD18M1WhsFA	425	ru	Рабби Элеазар из Вормса и постановления ШУМ
-260	_ffc7dn76qo	441	ru	Великий светильник из Люнеля: мудрец, принесший учение Маймонида в Европу
-261	YxI2_lApcDI	439	en	The Great Luminary of Lunel: The Sage Who Brought Maimonides to Europe
-262	XwY-GGirRy4	397	en	Rabbi Saadia Shuraki – The Rabbi Who Brought Mathematics into the Beit Midrash
-263	ZY7m_A8SBuA	389	ru	Рабби Саадия Шураки — раввин, который ввёл математику в дом учения
-264	Gi9RqZFJuVM	433	en	The World of the Tosafists: Rabbi Eliezer of Metz and His Halakhic Thought
-265	UUR-yRmUlJc	375	ru	Мир тосфистов: рабби Элиэзер из Меца и его галахическое учение
-266	d6IW-rDVwkY	489	en	Huldah the Prophetess – The Story Behind the Discovery of the Book of the Torah in the Temple
-267	FQ0SYVbT4y4	335	ru	Пророчица Хульда — история открытия книги Торы в Храме
-268	A09Irq5RbxM	337	en	Rabbi Yitzhak ha-Lavan: One of the Early Tosafists in Bohemia
-269	ZABkizcYLkI	366	ru	Рабби Ицхак ха-Лаван: один из ранних тосафистов в Богемии
-270	gJqBX-aCIAc	367	ru	Рабби Иегуда Барселонский: Его галахическое и философское учение и история мудрецов Испании
-271	w9D_Dfjaz9c	355	en	Rabbi Judah of Barcelona: His Halakhic and Philosophical Doctrine and History of the Sages of Spain
-272	0LHTmmAvWDk	419	en	Esther the Queen – The Leader Who Acted from Concealment and Defeated an Empire
-273	Ekgw00hC5Gc	419	ru	Эстер – царица, действовавшая из сокрытия и победившая империю
-274	fC0CRV6XQ2I	467	en	Queen Helena and the House of Adiabene: Between Jerusalem, the Talmud, and Archaeology
-275	Hqj0gUp1pw4	387	ru	Царица Елена и дом Адиабены: между Иерусалимом, Талмудом и археологией
-276	Xj6jO15DlXo	488	ru	Рабби Йеуда ха-Леви: его жизнь, поэзия и учение в книге «Кузари»
-277	r8Ozs9ZeRKA	468	en	Rabbi Yehuda Halevi: His Life, Poetry, and Philosophy in The Kuzari
-278	VDEDD49awgo	407	en	Rabbi Yaakov ben Yakar: The Teacher of Rashi and the Ashkenazic Tradition
-279	ZWAKMRS0aLI	341	ru	Рабби Яаков бен Якар: учитель Раши и ашкеназская традиция
-280	ylSWCUHUKm8	446	ru	Рабби Меир бен Шмуэль из Рамеру – человек, превративший Талмуд в поле интеллектуальной битвы
-281	kaDuXwLFIow	417	en	Rabbi Meir ben Shmuel of Rameru – The Man Who Turned the Talmud into a Battlefield of Thought
-282	9mXcEABBfso	408	ru	Рабби Эфраим из Калаат-Хаммада – мудрец, утративший свои труды, но не свой голос
-283	4ohqmB7z6zM	396	en	Rabbi Ephraim of Qal‘at Hammad – The Sage Who Lost His Writings, but Not His Voice
-284	rMuyNAx8F-0	376	en	Rabbi Isaac ben Asher HaLevi: Founder of the Tosafist Movement in Ashkenaz
-285	JH-JHMwPEFM	300	ru	Махзор Витри: история, текстовые традиции и обычаи школы Раши
-286	QkHc7VdwyyQ	402	en	Machzor Vitry: History, Textual Traditions, and the Customs of the School of Rashi
-287	cojlkEc7V64	377	ru	Рабби Ицхак бен Ашер ха-Леви: основатель движения тосафистов в Ашкеназе
-288	1Lso3VeJbm8	406	en	Rabbi Isaac ben Elazar HaLevi, known by the title “Segan Leviyah”
-289	dgaGohZZCa0	297	ru	Рабби Ицхак бен Элазар ха-Леви, известный под прозвищем «Сеган Левия»
-290	HMZspSg9ujQ	474	en	The World of Piyyut and Halakha: The Teachings of Rabbi Yitzhak ibn Giat and the Traditions of Spain
-291	Z5oH9lR9tZo	424	ru	Мир пиютов и галахи: учение рабби Ицхака ибн Гиата и традиции Испании
-292	19XGMEJ3LoY	450	en	Rabbi Nathan of Rome and the Sefer Ha-Arukh: Tradition, Language, and Halakhah
-293	-asHB4Ewm_A	500	ru	Рабби Натан из Рима и «Сефер ха-Арух»: традиция, язык и галаха
-294	7-x93C0iTs4	472	ru	Рабби Саадия Гаон: его учение, труды и исторические полемики
-295	T3hG4115Cfk	460	en	Rabbi Saadia Gaon: His Thought, Works, and Historical Controversies
-296	B7dQL1mV29k	409	en	Rabbi Moshe HaDarshan – The Sage Who Shaped the World of Midrash in Europe
-297	OaN2uwYLzKY	416	ru	Рабби Моше а-Даршан – мудрец, сформировавший мир мидраша в Европе
-298	RYT4Z85a2TY	493	ru	Рабби Давид Пардо и революция в толковании Тосефты в книге «Хасдей Давид»
-299	U6Jz3o9QeI0	348	en	Rabbi David Pardo and the Revolution in Tosefta Interpretation in Chasdei David
-300	JXPDRMNygUo	416	en	Shlomo Munk – The Blind Man Who Opened Europe’s Eyes
-301	TB8T3gR9Omw	483	ru	Шломо Мунк – слепой, открывший глаза Европе
-302	AKaU3ACKg08	563	ru	Наследие сефардского еврейства: от изгнания к рассеянию и до наших дней
-303	p9Ga-GF7Ccg	459	en	Sephardic Jewish Heritage: From Expulsion to Diaspora and Until Our Time
-304	JuRIsLggxwU	441	ru	Современная сефардская революция — рав Овадья Йосеф и возрождённая корона
-305	UdGSWUkqtUI	552	en	The Modern Sephardic Revolution – Rabbi Ovadia Yosef and the Crown Reborn
-306	21WBLQ8ETjc	341	ru	Рабейну Бахья бен Ашер: между пшат и сод
-307	A9WGoajqE-g	462	en	Rabbeinu  Bahya ben Asher: Between Peshat and Sod
-308	baFE4sw4wi4	440	en	Menachem Mendel of Vitebsk: Leadership, Hasidism, and Aliyah to the Land of Israel
-309	Hkexsl2it6s	476	ru	Менахем Мендл из Витебска: лидерство, хасидизм и алия в Землю Израиля
-310	R2ZKRgGHDhw	398	ru	Рамбан: интеллектуальный и полемический портрет и его торческое наследие от Жироны до Иерусалима
-311	wiaVl7oe37Q	519	en	The Ramban: An Intellectual and Polemical Portrait and His Torah Creativity from Girona to Jerusalem
-312	VO2DSrVt-mI	439	en	The Mussar Movement and Rabbi Israel Salanter: Between Thought and Psychology
-313	Her-LcEzYPU	521	ru	Движение мусар и рабби Исраэль Салантер: между философией и психологией
-314	VjbKrBNOTkg	469	ru	Маариль Дискин: Пламенный хранитель Торы и создатель Старого ишува
-315	tTQrbSuvj08	448	en	The Maharil Diskin: The Fiery Torah Scholar and Founder of the Old Yishuv
-316	opuzk7ph6_o	405	en	The Lubavitcher Rebbe: Engineer, Leader, and Herald of Redemption
-317	tXLX6gTUm94	423	ru	Любавичский Ребе: инженер, лидер и вестник Избавления
-318	RpFBvcWIKS8	459	en	Abraham Abulafia: Prophetic Kabbalah and the Secret of Letter Permutation
-319	Meyf-0CHBJo	323	ru	Авраам Абулaфия: пророческая каббала и тайна сочетания букв
-320	1rHzqiQzvPs	404	ru	Гаон рав Йосеф Кафих: наследие, исследования и учение Рамбама
-321	OxHbyOdiFSE	458	en	Rabbi Yosef Qafih: Legacy, Scholarship, and the Teachings of Maimonides
-322	9w3tpSxCG_A	470	en	The Maharsha – the man who connected intellect, heart, and public responsibility
-323	oKZzcHz2jlE	431	ru	Маарша — человек, соединивший разум, сердце и общественную ответственность
-324	ICCDMlkMvPU	470	ru	Маhаршаль: его учение, полемика и путь в галахе и каббале
-325	CCDWA-LGLNA	424	en	The Maharshal: His Teachings, Polemics, and Path in Halakha and Kabbalah
-326	bB15zwrvVTg	504	ru	Рабби Йом-Тов Липман Галлер — его личность, учение и эпоха
-327	-lUoOXHkUtI	397	en	Briefing: Rabbi Yom-Tov Lipmann Heller – His Figure, Thought, and Era
-328	s7NQCbMVv90	476	en	Shlomo Molcho: The Messianic Kabbalist and His Self-Sacrifice for the Sanctification of God’s Name
-329	A5Zh4dbKGoA	457	ru	Шломо Молхо: мессианский каббалист и самопожертвование во имя освящения Имени
-330	0Grw9xmokQs	403	en	Rabbi Shlomo Alkabetz: Architect of Kabbalah, Shabbat, and Liturgical Poetry in Safed
-331	v5Aoa0zeIYY	502	ru	Рабби Шломо Алькабец: архитектор каббалы, субботы и литургической поэзии в Цфате
-332	To2EA3VY0VU	483	ru	Саба из Слободки и царство величия человека: от Литвы к Хеврону и Иерусалиму
-333	ABRNJx1bSZE	465	en	The ḤIDA: Between Halakhah, Kabbalah, and Bibliography
-334	I2IthCb6BSo	444	ru	Хида: между галахой, каббалой и библиографией
-335	XqiW1-Q_dkY	436	en	The Grandfather of Slabodka and the Kingdom of Human Greatness: From Lithuania to Hebron & Jerusalem
-336	AmkB2QZ4HA8	466	ru	Рабби Рафаэль Барух Толедано: лидерство, Галаха и наследие марокканского еврейства
-337	UTd-PzczMhI	351	en	Rabbi Raphael Baruch Toledano: Leadership, Halakhah, and the Heritage of Moroccan Jewry
-338	fN4wj_4nPac	356	en	Rabbi Mordechai Attiya – the Kabbalist who saw Zionism as a cosmic rectification
-339	OzNrMveex_c	365	ru	Рав Мордехай Аттия — каббалист, видевший в сионизме исправление миров
-340	DT9CpfJgA4Q	411	en	Rabbi Aharon Kotler and the Legacy of the Yeshiva World in America
-341	MNf7xuRGHKw	416	ru	Рабби Аарон Котлер и наследие мира ешив в Америке
-342	6Ljolsuf41Q	419	en	Hakham Menachem Menashe – the Tinsmith Who Was One of the Hidden Righteous
-343	Vt1L2pvzvh4	482	ru	Хахам Менахем Менаше — жестянщик, принадлежавший к скрытым праведникам
-344	vQrUHN44lBs	273	ru	Рабби Элиягу Мизрахи (РЭЭМ) — человек, научивший мир тому, как по-настоящему изучать Раши
-345	d6_ivh-C8rk	408	en	Rabbi Elijah Mizrahi (the Re’em) – the man who taught the world how Rashi should truly be studied
-346	h0NH3WSv5YA	471	ru	Рабби Ниссим из Гироны (Ран): лидерство, галаха и философия в испанском иудаизме
-347	2XJJabgWnnc	459	en	Rabbi Nissim of Girona (Ran): Leadership, Halakha, and Philosophy in Spanish Judaism
-348	MNDEQBKN0Es	448	en	The Maharil Diskin: The Zealot for Torah and Founder of the Old Yishuv
-349	uj5lOToLAEk	469	ru	Маhариль Дискин: ревнитель Торы и основатель старого ишува
-350	LfvYLMFkpPQ	398	ru	Рамбан : интеллектуальный и полемический портрет и его Торо́вское наследие — от Гироны до Иерусалима
-351	ZzkrglHsFzo	519	en	Ramban: An Intellectual and Polemical Portrait and His Torah Legacy from Girona to Jerusalem
-352	lik5L505iH0	514	ru	Рабби Йеуда ха-Наси: между завершением Мишны и руководством народом
-353	65LGLt1b1M8	456	en	Rabbi Judah the Prince: Between the Sealing of the Mishnah and the Leadership of the People
-354	WoOqXITVTK8	409	ru	Ребе Раяц: жизнь, борьба и освобождение
-355	c8ooCzew1jY	400	en	The Rebbe Rayatz: A Life of Leadership, Struggle, and Redemption
-356	bYjp_4IwKDg	343	ru	Рабби Моше из Куси — человек, который видел сожжение Талмуда и построил из него башню
-357	diLTJBy2Jag	400	en	Rabbi Moses of Coucy – the man who saw the Talmud burned and built a tower from it
-358	Edtc41JuKoQ	368	ru	Хасдай ибн Шапрут и Золотой век в мусульманской Испании
-359	m1y3lw3Ie8k	391	en	Hasdai ibn Shaprut and the Golden Age in Muslim Spain
-360	cWkL7SblnzA	477	en	Rabbi Akiva and the Bar Kokhba Revolt: Between Faith, Mysticism, and History
-361	o8MRkCu3L3k	389	ru	Рабби Акива и восстание Бар-Кохбы: между верой, мистикой и историей
-362	TavL4Mjk7g0	359	ru	Рав Овадия Адая: опора галахического учения, каббалы и сионизма
-363	vBnD4aZ_OY8	445	en	Rabbi Ovadia Hadaya: A Pillar of Halakhic Authority, Kabbalah, and Zionism
-364	Z2ywjHTTFuE	368	en	Rabbi Yitzhak Alfiya: His Teachings and Legacy
-365	Ukw-oKFNOus	425	ru	Рабби Ицхак Альфия: его учение и деятельность
-366	mSwsevTfIbE	376	en	The Legends of Rabbah bar bar Ḥana: Mystery, Allegory, and Reality
-367	ItTVEvyZgWw	415	ru	Агадот Раббы бар бар Ханы: тайна, аллегория и реальность
-368	Mrqy1OXaNlM	384	en	The Legacy of Rabbi Ḥiyya and His Sons
-369	5KDTHavLk3U	516	ru	Наследие раби Хии и его сыновей
-370	wcJxuOK2dE4	450	en	Rabbi Aryeh Levin: The Father of Prisoners and the Righteous Man of Jerusalem
-371	Oi9DjhHkLaU	478	ru	Рабби Арье Левин: отец заключённых и иерусалимский праведник
-372	WsQIhjMCoD0	410	en	Baba Sali: His Life Story, Legacy, and Miracles of Sidna Baba Sali
-373	vacWbrO6-eA	219	ru	Баба Сали: жизненный путь, наследие и чудеса Сидна Баба Сали
-374	tPrp9x3x1qY	450	ru	Послание Аристея и Септуагинта: история, миф и интерпретация
-375	a7EkTYHAuGs	462	en	The Letter of Aristeas and the Septuagint: History, Myth, and Interpretation
-376	45auP5om2UY	431	ru	Шимон бен Шетах: архитектор галахи, права и общества во времена Храма
-377	pO3Q-MvYB4k	518	en	Shimon ben Shetach: Architect of Halakha, Law, and Society in the Days of the Temple
-378	vyuGrknqd9g	412	ru	Эммануэль Левинас: этика, феноменология и лицо Другого
-379	e9KpVSP9s9E	444	en	Emmanuel Levinas: Ethics, Phenomenology, and the Face of the Other
-380	0x9PQIt6dhk	422	ru	Эли Визель: вера, память и рассказ в тени Холокоста
-381	uieL_mS1vfE	399	en	Elie Wiesel: Faith, Memory, and Story in the Shadow of the Holocaust
-382	ExXX4KtZnyo	471	ru	Рабби Йона ибн Джанах: отец грамматиков
-383	J99rxn7meSI	433	en	Rabbi Jonah ibn Janah: The Father of the Grammarians
-384	2H2TiQbQUvk	385	ru	Гаон рабби Шломо Залман Ауэрбах: галахический авторитет эпохи модерна
-385	WvYmgdvQa2M	509	en	Rabbi Shlomo Zalman Auerbach: A Leading Halachic Authority in the Modern Era
-386	9TVO7XytyN4	479	en	The Legacy of the Chafetz Chaim: Halacha, Kindness, and Leadership in the Modern Era
-387	n8omRHtaIXU	315	ru	Наследие Хафец Хаима: галаха, милосердие и лидерство в новейшее время
-388	ARiH1Rj5xY8	421	ru	Рабби Ицхак из Вены, автор «Ор Зару́а» — человек, посеявший свет между Талмудами
-389	512lSocpjjs	380	en	Rabbi Isaac of Vienna, Author of the Or Zarua – the Man Who Sowed Light 
-390	rfZNADRiPjw	421	ru	Раби Элиэзер бен Йоэль ха-Леви (Раавия): его наследие, галахические решения и история жизни
-391	RDA9SnI7ZD0	456	en	Rabbi Eliezer ben Joel HaLevi (Ra’avyah): His Legacy, Halakhic Authority, and Life Story
-392	lVjrbFo5Ts4	386	en	Rabbi Eliezer ben Nathan – the Ra’avan: The Scholar Who Wrote the First Halakhic Book of Ashkenaz
-393	ONf5F3Lv8zc	447	ru	Рабби Элиэзер бен Натан — Рааван: мудрец, написавший первую галахическую книгу Ашкеназа
-394	_Xj-R0KVDCo	462	en	Rabbi Mordechai ben Hillel: The Sefer Mordechai and Its Place in Halakhic History
-395	lWft0zgbZwM	451	ru	Рабби Мордехай бен Гиллель: «Сефер Мордехай» и его место в истории галахи
-396	nAV7hB3__Lk	288	en	Yalkut Shimoni – the book that introduced nothing new, yet saved an entire world
-397	Uxpwp_8Mf04	314	ru	Ялкут Шимони — книга, которая не внесла ничего нового, но спасла целый мир
-398	ixo0Ng7SFaI	377	ru	Маарам из Ротенбурга: лидерство, галаха и власть общины в Ашкеназе
-399	elwVhjoLh2g	379	en	Maharam of Rothenburg: Leadership, Halakha, and Communal Authority in Ashkenaz
-400	QkMGSEKSloA	396	ru	Рабби Гершом Маор ха-Гола: лидерство, постановления и ашкеназское наследие
-401	iIawKcomtms	387	en	Rabbeinu Gershom, the Light of the Exile: Leadership, Decrees, and the Ashkenazic Legacy
-402	zIwn1eBSnAc	405	en	Éliane Amado Lévy-Valensi – the thinker who saw Abraham as the founder of history
-403	lSBPCGUSyDg	471	ru	Элиан Амадо Леви-Валенси — мыслительница, увидевшая в Аврааме того, кто учреждает историю
-404	BjmaBm1HFbo	351	ru	Андре Нер и современная еврейская мысль во Франции
-405	6Mup_Uzm18g	320	en	André Neher and Modern Jewish Thought in France
-406	ktMKTGYOM5A	419	en	The Chatam Sofer: Shaping Orthodoxy Between Conservatism and Modernity
-407	bIprJgy_hAE	346	ru	Хатам Софер: формирование ортодоксии между консерватизмом и модерном
-408	sjsfmY3JHck	360	en	Rabbi Yaakov Abuhatzira: The “Abir Yaakov” – Legacy, Torah, and Wonders
-409	br5KoEKYfNY	293	ru	Рабби Яаков Абуцхира: «Абир Яаков» — наследие, Тора и чудеса
-410	cWRw7Msa4_M	369	ru	Рабби Авраам Абели ха-Леви Гомбинер: автор книги «Маген Авраам»
-411	fc4v6HpMukM	421	en	Rabbi Abraham Abele HaLevi Gombiner: Author of the “Magen Avraham”
-412	l8T39ViQofk	362	ru	Меири: его галахическое, экзегетическое и философское учение
-413	E6ZIUMBfZzk	476	en	The Meiri: His Halakhic, Exegetical, and Philosophical Legacy
-414	hXuQ9qj9KXQ	408	ru	Рабби Авраам Данциг: автор «Хаей Адам» и его галахическое учение
-415	QOZBGReAPLA	374	en	Rabbi Abraham Danzig: Author of Chayei Adam and His Halakhic Thought
-416	L3QYphJftL0	476	en	The Legacy of Maimonides: Halakha, Philosophy, and Medicine
-417	oTMlHYkU8EI	416	ru	Наследие Рамбама: галаха, философия и медицина
-418	hMU6FHyskxg	484	ru	Мир Баха: галахическое решение, аналитическое мышление и наследие Байт Хадаш
-419	BfONy_IOmsQ	432	en	The World of the Bach: Halakhic Rulings, Scholarship, and the Legacy of Bayit Chadash
-420	OlCwbut_kfc	451	ru	Рабби Шабтай ха-Коэн (Шах) — человек, превративший «Шульхан Арух» в интеллектуальное поле битвы
-421	_w9R_rFvReU	389	en	Rabbi Shabbetai HaKohen  – The Man Who Turned the Shulchan Aruch into an Intellectual Battlefield
-422	EfMLCZVUz68	419	en	Rabbi David HaLevi Segal – The Taz: A Halakhic Authority Who Turned Law into Living Reality
-423	ztC3R2CNsNk	463	ru	Рабби Давид га-Леви Сегаль — Таз: галахический авторитет, превративший закон в живую реальность
-424	O6m3I3yIqMM	482	en	The Mahralbach: Leadership, Halakhah, and the Semikhah Controversy in Jerusalem
-425	6JNrGW73kSU	426	ru	Маhаралбах: лидерство, галаха и полемика о סמיכה в Иерусалиме
-426	7q2m3PmYxIw	470	en	Rabbi Jacob Berab – The Rabbi Who Nearly Restored Authority to the Jewish People
-427	zbholz3FoVQ	435	ru	Рабби Яаков Бираб — раввин, который почти вернул еврейскому народу его духовную власть
-428	XTcC_QSMfYc	374	en	Otzarot HaRa’ayah and the Thought of Rabbi Moshe Tzuriel
-429	u7rwTB4ZYq8	416	ru	«Оцрот ха-Раая» и учение раввина Моше Цуриэля
-430	M1XvqQQP-AM	540	ru	ШЛА hа-Кадош и Ор hа-Хаим hа-Кадош – два голоса, одна революция
-431	Ne_fHLX2gjk	354	en	The Shelah HaKadosh and the Ohr HaChaim HaKadosh – Two Voices, One Revolution
-432	7qRFGN5xO8k	352	ru	Махарам Альшкар: ключевые вехи в галахе, мысли и полемике о возобновлении סמיכה
-433	1mmUmm3SC60	492	en	Maharam Alshakar: Milestones in Halakhah, Thought, and the Ordination Controversy
-434	i2KZCDB2RHU	352	ru	Маhарам Альшкар: вехи в галахе, мысли и полемике о возобновлении смихи
-435	NmvQTeBrkms	492	en	Maharam Alashkar: Milestones in Halakhah, Thought, and the Semikhah Controversy
-436	3RaB87PhVjs	325	ru	«Эйн Яаков»: мир и наследие рабби Яакова ибн Хабиба
-437	eF-1X93-6jI	317	en	Ein Yaakov: The World and Legacy of Rabbi Jacob ibn Habib
-438	gYP7i6rUTQQ	387	ru	Рош: лидерство, галаха и наследие между Ашкеназом и Сефарадом
-439	6xpkRFDm_Go	449	en	The Rosh: Leadership, Halakhah, and Legacy Between Ashkenaz and Sepharad
-440	U_JUh6tGdAM	403	ru	Наследие Рифа и сефардская цепь галахического законотворчества
-441	kkcdpEijKKU	307	ru	«Арбаа Турим» и Бааль ха-Турим: архитектура галахи и толкование Торы
-442	kzg117o0wX8	419	en	The Arba’ah Turim and the Ba'al HaTurim: The Architecture of Halakhah and Biblical Commentary
-443	Waeq9WqGwFM	480	ru	Свет Бреслава: учение рабби Нахмана и дело рабби Натана
-444	G12UVF3WftA	472	en	The Light of Breslov: The Teachings of Rabbi Nachman and the Work of Rabbi Nathan
-445	yVmnV3bc11I	431	ru	Эзра-книжник и восстановление Израиля
-446	eD8HU682GZo	457	en	Ezra the Scribe and the Restoration of Israel
-447	ayrL1xWdbH0	479	ru	Наследие раввина Закса: посланник Торы в современном мире
-448	LUArMPoycxc	407	en	The Legacy of Rabbi Sacks: An Ambassador of Torah in the Modern World
-449	Yf2iOgUggqc	415	ru	Династия Бриска: мировоззрение, лидерство и метод обучения
-450	nPEiqToKuTE	525	en	The Brisk Dynasty: Thought, Leadership, and the Method of Study
-451	3LPnIGfe8GY	508	en	Religious Authority and Imperial Policy in Ancient Rome
-452	LJjUME0eG6g	304	ru	Религиозная власть и имперская политика в Древнем Риме
-453	PgF5k3u4JVU	377	en	Abraham Maimonides: Rationalism, Sufism, and the Defense of His Father’s Legacy
-454	Bg4_G8RzZnA	318	ru	Авраам Маймонид: рационализм, суфизм и защита наследия отца
-455	suR4WZYbvQI	370	ru	Рабейну Там: архитектор талмудической учености и наследие тосефистов
-456	s0OXFxwzbvY	371	en	Rabbeinu Tam: Architect of Talmudic Scholarship and the Tosafists’ Legacy
-457	-MYV1OKRUMg	588	ru	Систематизированная душа: Моше Кордоверо и каббалисты Цфата
-458	2GNEXzjL9XA	445	en	The Systematized Soul: Moses Cordovero and the Safed Kabbalists
-459	KDIDft-UrlQ	366	ru	Раввин Хаим Друкман: лидерство, тороучение и институты «Ор Эцион»
-460	y8lCLSb5iC8	429	en	The Kabbalah: How Tradition Became a Meta-Map of Creation, and Redemption Adolf Franck’s Perspective
-461	PMFCHrSsrvQ	527	ru	Каббала: как «традиция» превратилась в метакарту творения, зла и искупления — взгляд Адольфа Франка
-462	ASOGLLfZ_DE	390	ru	Раввин Авраам Джошуа Хешель — философия, нравственная ответственность и человеческая вовлечённость
-463	qGvEP-M3giA	330	en	Rabbi Abraham Joshua Heschel – Thought, Moral Responsibility, and Human Engagement
-464	fkB-Y0geQvA	332	en	Rabbi Chaim Druckman: Leadership, Torah Thought, and the Or Etzion Institutions
-465	VTU-WlOa-Hk	377	en	Rabbi Shmuel Mohilever: Pioneer of Religious Zionism
-466	vUjK21VU1Ww	359	ru	Раввин Шмуэль Моаливер: пионер религиозного сионизма
-467	r7DU9avIsf4	477	ru	Рабби Йехиэль Михель Эпштейн и «Арух ха-Шулхан»
-468	uHi3P8JTaYE	428	en	Rabbi Yechiel Mikhel Epstein and the Arukh HaShulchan
-469	lSjipsMeeN8	433	ru	Послание рава Шерира Гаона: передача Устной Торы
-470	NbRX0_4a0YU	471	en	The Epistle of Rav Sherira Gaon: The Transmission of the Oral Torah
-471	fF1fkXyG-IU	449	ru	Франц Розенцвейг и его учение: иудейская теология и философия
-472	-KEL3MtX4nU	541	en	Franz Rosenzweig and His Thought: Jewish Theology and Philosophy
-473	hhjJiHIE1gs	439	en	The Philosophy of Rabbi Yehezkel Landau
-474	k5g7dfUeBlw	372	en	“Duties of the Heart”: The Essence of Jewish Ethics
-475	eEk1_6ItRcY	411	ru	«Ховот ха-Левавот»: сущность иудейской этики
-476	0pR5G_e6puA	412	ru	Учение рава Кука: единство, искупление и религиозно-национальное возрождение
-477	CXzNmkVRL0s	451	en	The Teachings of Rabbi Kook: Unity, Redemption, and Religious-National Revival
-478	CO29eKFHEmc	472	en	Rabbi Yosef Chaim of Baghdad: Teachings, Social Critique, and Legacy
-479	ST3uDsJdluA	417	ru	Рабби Йосеф Хаим из Багдада: учение, социальная критика и наследие
-480	dQ69FzKEc94	401	en	Alkalai: The Harbinger of Political Zionism
-481	CB65dvhz6lA	390	ru	Алкалай: Предвестник политического сионизма
-482	30St_Dug_1g	403	en	Rabbi Zvi Hirsch Kalischer – Religious Zionism Before Zionism
-483	LWaFSpY45E8	396	ru	Рабби Цви Гирш Калишер — религиозный сионизм до сионизма
-484	kwwXYrRICV8	447	ru	Философия раввина Йехезкеля Ландау
-485	I4iSync7vvQ	413	en	Rabbi Yaffe and the Architecture of the Golden Age
-486	iyC5zUxayyU	345	ru	Рабби Яффе и архитектура Золотого века
-487	YHggVMwG7FE	401	en	The Mysticism and Thought of Rabbi Zadok HaKohen of Lublin
-488	EzzrD5P9qvo	386	ru	Мистика и мысль раввина Цадока а-Коэна из Люблина
-489	eGf4x9EmZPY	400	en	The Sages of Provence: Renaissance, Kabbalah, and Philosophy
-490	_uAhnK-DRuE	319	ru	Мудрецы Прованса: Ренессанс, каббала и философия
-491	frMqYX-cjBU	494	ru	Биньямин из Туделы: средневековый еврейский путешественник
-492	XMC8HPXGRpk	359	ru	Рабби Шауль Израэли: Псак, Галаха и Государство
-493	UeETQMMzi8c	454	en	Rabbi Shaul Yisraeli: Halakhic Rulings, Law, and the State
-494	u84i8JBpXDA	421	ru	Шимон Кефа – христианский мученик или сокровенный праведник, посланный мудрецами Израиля?
-495	R5vUpyUbgkY	400	en	Shimon Kefa – Christian Martyr or a Hidden Righteous Agent Sent by the Sages of Israel?
-496	2Mohy9a-MhU	436	ru	Рабби Моше-Цви Нерия: мировоззрение, деятельность и увековечивание памяти
-497	dYCrlSFT2Tc	387	en	Rabbi Moshe Tzvi Neria: Thought, Activity, and Legacy
-498	DP5jmqScdkQ	474	en	Rabbi Abraham Azulai – the Kabbalist who rebuilt the worlds of Sod
-499	hgAK0AYadZ4	431	ru	Рабби Авраhам Азулай — каббалист, который заново выстроил миры тайной мудрости 
-500	TBMI1NhMLYM	567	en	Rabbi Moshe Hagiz – The Jerusalem Zealot Who Tried to Save Judaism from Internal Collapse
-501	dr5QO159wCw	400	ru	Рабби Моше Хагиз — иерусалимский ревнитель, который пытался спасти иудаизм от внутреннего распада
-502	bZExqr6-xwg	421	ru	Элиягу Бен-Амозег: философия и каббала, Израиль и человечество
-503	4cjauEuG0zc	488	ru	Акилес из Понта — прозелит, превративший греческий язык в оружие Торы
-504	BDVUJqIUl6w	486	en	Aquila of Pontus – the Convert Who Turned the Greek Language into a Weapon of Torah
-505	WpZE3-VDjqA	478	ru	Рав Иехуда Арье Модена – портрет гения, боровшегося с самим собой
-506	Y4owf1ghTBA	418	en	Rabbi Yehuda Aryeh Modena – A Portrait of Genius Fighting Itself
-507	8n_2rHJxY_w	452	ru	Шадаль: мыслитель, поэт и комментатор
-508	e0UU_AcaYAg	427	en	Elia Benamozegh: Philosophy and Kabbalah, Israel and Humanity
-509	8SXhCEWNIiY	404	en	Shadal: Thinker, Poet, and Commentator
-510	M0cUg_YSLFk	472	en	Analysis of Halakha and the Thought of the Rema
-511	2-BMSlpVodA	426	ru	Изучение Галахи и мировоззрения Рэма
-512	-55qQi_UwTE	247	ru	Шабази, «Хемдат Ямим» и йеменское наследие
-513	Mxis3A_SAPU	351	en	Shabazi, Hemdat Yamim, and the Yemenite Heritage
-514	H5uIKNUyubQ	312	ru	Рабби Эфраим Навон и «Махане Эфраим»
-515	_8SN0I-7CoY	354	en	Rabbi Ephraim Navon and Machaneh Ephraim
-516	okFKcDZFOxY	451	ru	Рабби Гершон из Китовa: мост каббалы и пионер распространения
-517	YpNxfpCkSWg	457	en	Rabbi Gershon of Kitov: A Bridge of Kabbalah and a Pioneer of Dissemination
-518	ZXMnPANtiXw	409	ru	«Шаар hа-Мелех» к «Мишне Тора»
-519	79rKPdmmKM4	392	en	The “Prince of Torah”: The Encyclopedic Legacy of Rav Kanievsky
-520	LB1W0gByREA	437	ru	«Князь Торы»: Энциклопедическое наследие раввина Каньевского
-521	V8JzEaRajfw	531	en	Rav Chaim of Brisk: Method, History, Alliance 
-522	0FQdwX6gQ2U	364	en	Ketzot HaChoshen: Pledges and Bailees in Jewish Law
-523	HUm6ZNwyWQA	396	ru	Рав Хаим из Бриска: Метод, История, Союз
-524	G-CZnuD4sWs	369	ru	Рав Шломо Карлебах и синагога Карлебаха 
-525	rDjWSWF6Jkk	454	en	Rabbi Shlomo Carlebach and the Carlebach Synagogue
-526	Y-zL2hRyOEE	406	ru	«Кцот ха-Хошен»: залог и ответственность хранителя в еврейском праве
-527	HYYyqN8tG2M	383	en	Mishneh LaMelekh: A Forerunner of Modern Analytical Learning
-528	5GWVmoRSSCM	368	ru	«Мишне ле-Мелех»: предвестник современного аналитического учения
-529	aUSP0aDUHAc	480	en	Rabbi Harlap’s Teaching: The Light of Redemption
-530	guOXopbKGUk	456	ru	Учение раввина Харлапа: Свет Искупления
-531	4jSAZxRwNeI	474	ru	Рабби Калфон Моше а-Коэн: Галахический авторитет и сионистский лидер 
-532	rrilooQ8bSw	412	en	Rabbi Khalfon: Halakhic Decisor and Zionist Leader
-533	WDoRhJSn7ZQ	375	ru	Гиллель Цейтлин: на границе двух миров
-534	KwuZs9YkF44	427	en	Hillel Zeitlin: On the Border of Two Worlds
-535	ppidjHnQAfw	373	ru	Полемика вокруг Зоара: Либес, Моше де Леон и Ицхак из Акко
-536	Pfp1BGTanFU	437	en	The Zohar Controversy: Liebes, Moses de León, and Isaac of Acre
-537	7Q4Ko9rvn1c	369	en	Menahem ben Saruq: Reviving the Holy Tongue
-538	ju-wq16y4z4	420	ru	Менахем бен Сарук: Возрождение святого языка
-539	GFjSDWEX5iY	398	ru	Радбаз – величайший постановщик закона, который устоял, когда основы веры дрожали
-540	-rfTiUpV0WM	376	en	The Radbaz – the great halakhic authority who stood firm when the principles of faith were shaken
-541	7XvsRGX7oXA	374	en	The Piaseczno Rebbe – the master who revealed the depth of the soul even in the darkest hours
-542	USnwMr659sE	412	ru	Пясечненский ребе – праведник, раскрывший глубины человеческой души даже в часы тьмы
-543	Dmc5ELj1zzk	475	en	Paths of the Talmud: The Analytical Method of Kanfaṇton
-544	l0vP0mGFpv0	412	ru	Пути Талмуда: аналитический метод Канфантона
-545	pfhmR70iwVk	426	en	Rabbi Akiva Eiger: His Life, Teachings, and Halachic Rulings
-546	Y0UGWrIwvRU	352	ru	Рабби Акива Эйгер: жизнь, учение и галахические постановления
-547	HvMt-duFwZA	471	en	Rabbi Shalom Sharabi: The Father of Sephardic Kabbalists and the World of Kavanot
-548	h6AoD4qlCPw	509	ru	Рабби Шалом Шараби: отец сефардских каббалистов и мир кавванот
-549	VrCjZHi8QRQ	350	en	Rabbi Eliyahu Guttmacher – The Saint of Greiditz Who Opened the Gates of Practical Redemption
-550	q7lpXfIn2YA	453	ru	Рав Элиягу Гутмахер – праведник из Грейдица, открывший ворота практического искупления
-551	88r1sRM-Dow	307	en	Isaac Arama: The Akeidah, a Difficult Vision, and a Revolution in Interpretation
-552	1rf1ReptsmQ	415	ru	Ицхак Араама: «Акида», трудное видение и революция в толковании
-553	RwJV0m6byqU	303	ru	Рав Цион Хавив Браха – скрытый каббалист, связавший поколения традиции Рашаша
-554	uS2JTq4xVJo	435	en	Rabbi Zion Haviv Bracha – the hidden kabbalist who bridged the generations of the Rashash tradition
-555	yAFcbHgZh5c	389	en	Rabbi Avichai Rontzki: Warrior, Military Rabbi, Leader
-556	6KhQR-Y3WR4	409	ru	Рав Авихай Ронцки: воин, военный раввин, лидер
-557	T0dmGJYjTBg	399	ru	Рав Меир Кахане — идеология, деятельность и наследие, продолжающие потрясать Израиль
-558	x_YuhpmskCM	437	en	Rabbi Meir Kahane – The Ideology, Activism, and Legacy That Continue to Shake Israel
-559	dizAAlZoORM	426	en	Rabbi Tzvi Yehuda Kook: Educator and Ideologue of a Generation
-560	WCsz7dDVNyw	426	ru	Рав Цви Иегуда Кук: воспитатель и идеолог поколения
-561	fQl2cdE5Kp8	375	en	Rabbi Elazar Birabi Kalir and His Liturgical Poetry: A Collection of Studies
-562	PM-wTEsSnH4	371	ru	Рабби Элазар бен рабби Калир и его литургическая поэзия: собрание исследований
-563	sk-8_se67No	423	en	Rabbi Abraham ibn Daud – The Sephardic thinker who restored sacred intellect to its rightful place
-564	0vbc9ck6Cp0	382	ru	Рабби Авраам ибн Дауд – сефардский мыслитель, который вернул святой разум на его истинное место
-565	LPctSZFc1Ok	398	en	Rabbi Yitzhak Sagi Nahor – the Blind Sage Who “Saw” the Secrets of Creation
-566	Zs2RLQN4GZE	433	ru	Рабби Ицхак Саги Наhор – слепой мудрец, который “видел” тайны творения
-567	YCmFh12Oa7k	458	ru	Рабби Яаков Эмден — воин-мудрец, который не боялся истины
-568	LjUdBVLTjWI	485	en	Rabbi Yaakov Emden – The Warrior Sage Who Feared No Truth
-569	N4VkJHxmCyw	401	en	The Book of Ben Sira: Wisdom, Canon, and Rabbinic Reception
-570	wXKpszj-v6c	395	en	Rabbi Chaim David Halevi – the rabbi who brought Halakha back to life, and life back to Halakha
-571	LaxBMDaBkts	456	ru	Книга Бен Сира: мудрость, канон и отношение мудрецов
-572	UxZMPvEL6y4	465	ru	Рав Хаим Давид ха-Леви – раввин, который вернул Галаху к жизни, а жизнь — к Галахе
-573	rKV8pFNPoNc	420	en	Rabbeinu Chananel – Charting a Path Through the Sea of Talmud
-574	78fXQnBLjTc	403	ru	Рабейну Хананель – проводник в море Талмуда
-575	BsdAXcdUv-8	426	en	Rabbi Jacob Sasportas – The Lone Warrior Against Messianic Fervor
-576	Zo1APYsCUGc	462	ru	Рабби Яаков Шешпортас – одинокий борец против мессианского пыла
-577	hfCTq-3SG2w	413	en	Rav Hai Gaon: Last of the Geonim, First of the Greats
-578	95zK1eE05_w	456	ru	Рабби Хай Гаон – последний из Гаонов и первый из Великих:человек, восстановивший твёрдость Галахи
-579	J5lA2_D9PrY	490	en	The Talmud Trial of 1240 in Paris
-580	e2gK9CVUvxw	410	ru	Парижский процесс над Талмудом 1240 года
-581	VsFl1kfc-30	479	en	Moshe David Vali's Hermeneutical Methodology
-582	MOaM2q3yLeg	354	ru	Методология герменевтики Моше Давида Вали
-583	N_VZqV5fzNo	379	ru	Учение Рамхаля: Каббала, Этика и Мессианство
-584	2YLu1YF2Www	341	en	The Doctrine of the Ramchal: Kabbalah, Ethics, and Messianism
-585	XPtZlcrgnKs	391	en	Rabbi Levi Saadia Nachmani – His Character and Prophetic Legacy
-586	YQc8_y-dnpE	372	ru	Рав Леви Саадия Нахмани — черты его личности и пророческое наследие
-587	V7L8nIRQO3I	491	ru	Рабби Йосеф Альбо – мудрец, сохранивший веру во времена кризиса
-588	gmQs0iEFQo0	458	en	Rabbi Joseph Albo – The Sage Who Preserved Faith in a Time of Crisis
-589	Q-Xyz1QIjRM	429	en	Rabbi Ovadia of Bartenura – The Reviver of Torah in Jerusalem
-590	4gIWbVxeqY0	439	ru	Рабби Овадия из Бартенуры – Возродитель Торы в Иерусалиме
-591	TRDE4AG2kLE	355	en	Rabbi Meir Zini: The Heroic Leader Bridging Algeria, Auschwitz, and Montmartre
-592	kNOJeHVpaRU	442	ru	Рабби Меир Зини: Герой-лидер, соединивший Алжир, Аушвиц и Монмартр
-593	Y-9QRCgya0g	449	en	Rivash: Torah, Philosophy, and Communal Authority
-594	fWRI-DZMTpg	401	ru	Рибаш: Тора, философия и общинная власть
-595	F6OpXRNgnEA	399	ru	Экзегеза Торы рабби Йосефа Бехор-Шора
-596	6sry43yaGQA	371	ru	Рабби Исраэль Аланкава и его труд «Менорат ха-Маор»
-597	Cb2El3-5EYY	328	en	Rabbi Yisrael Alnakawa and His Work Menorat Ha-Ma’or
-598	L03uSsP6N4E	328	en	Rabbi Yitzhak Abuhav – The Light of Generations, Author of “Menorat Ha-Maor”
-599	pE9lqQ7vziM	371	ru	Рабби Ицхак Абухав — Свет поколений, автор «Менорат ха-Маор»
-600	V8-UTxd-8bA	408	en	Meshech Chochmah: Exile, Destiny, and Holiness
-601	P3ez1FM8JmA	386	ru	Мешех Хохма: Изгнание, предназначение и святость
-602	WrOqrIzred0	456	en	Rabbi Hasdai Crescas – Philosopher, Halakhic Authority, and Leader in a Time of Crisis
-603	nBGArPbfedw	423	ru	Рабби Хасдай Крескас – философ, законоучитель и лидер в эпоху кризиса
-604	3q5n5tvD3Uc	547	en	Joseph Hayyun's Interpretation and the Authorship of Deuteronomy
-605	jJsDJ8jG8P8	374	ru	Иосеф Хаюн: интерпретация и авторство Второзакония
-606	5tzgvJP0UfE	410	ru	Рабби Йосеф Месас – Полимат из Мекнеса, соединивший Тору, разум и время
-607	KXLZkemVI1k	531	en	Rabbi Yosef Messas – The Polymath of Meknes Who Bridged Torah, Reason, and Time
-608	5PpKus6feXI	438	en	The Teaching of Connections: Rabbi Elisha Vishlitzki
-609	Ko1d4sI1oWY	441	ru	Учение о связях: рав Элиша Вишлицкий
-610	UP9MKbxXoUw	478	en	Biography of Rabbi Mordechai Sharabi, Kabbalist
-611	Sq4xnbvBb5I	385	ru	Рав Йосеф Розин – Гаон из Рогачёва: Ум Рамбама, душа хасида
-612	0KOlVvRX1t4	385	en	Rabbi Yosef Rozin – The Rogatchover Gaon: The Mind of the Rambam, the Soul of a Hasid
-613	LwAuDELnHZw	480	ru	Рабби Мордехай Шараби — биография йеменского каббалиста и праведника
-614	jiS4OfSaAAg	559	en	Rabbi Moshe Luria: Kabbalist and Scholar
-615	OvfCDsr2-p4	386	ru	Раввин Моше Лурия: каббалист и учёный
-616	b8wdCf4nkSo	506	en	Manitou: Life, Thought, and the Revival of Israel
-617	ozWDYmakbxI	489	ru	Маниту: Жизнь, мысль и возрождение Израиля
-618	L2hQKYIBlmE	467	en	Rabbi Ben-Zion Meir Hai Uziel: Thought, Halakha, and Zionism
-619	CFAc_YocNCQ	398	ru	Рабби Бен-Цион Меир Хай Узиэль: философия, Галаха и сионизм
-620	4XZIw1lY0k0	392	en	Rabbi Yehuda Bibas: Proto-Zionist and His Legacy
-621	DyqI3jUvFdE	389	ru	Раввин Йеhуда Бибас: предвестник сионизма и его наследие
-622	6FgfPFQJB5w	428	en	Rabbi Tzvi Hirsch Chajes: His Life and Thought
-623	r6yB861RruY	382	ru	Рав Цви Гирш Хаят: его жизнь и мировоззрение
-624	cFbFezd9Z50	410	ru	Рабби Элазар Азкари: каббалист, поэт и духовный лидер Цфата XVI века
-625	X5WU4DCK5Lg	455	en	Rabbi Elazar Azikri: Kabbalist, Poet, and Spiritual Leader of 16th-Century Safed
-626	BdeTXUjZHSU	377	ru	Рабби Йехуда Моше Петая: жизнь и каббалистическое наследие
-627	rQWrr2AWGWg	495	en	Rabbi Yehudah HaHasid: Between Law and Mysticism
-628	KSKk18BgQBQ	400	ru	Рабби Йеhуда Хасид и его Завещание: между Галахой и мистикой в учении ашкеназских хасидов
-629	cFbu8yYG334	427	en	Rabbi Yehudah Moses Petaya: Life and Kabbalistic Legacy
-630	UVxTJs_uH04	349	ru	Рабби Шимон Лави: его жизнь и каббалистико-поэтическое творчество
-631	yCxglEA5Qv8	388	ru	Рабби Зерахия ха-Леви: Свет Прованса и возражения РААБДа
-632	BF8m7S_sCk0	507	en	Rabbi Zerachiah HaLevi: The Luminary of Provence and the Raavad’s Critiques
-633	ZbHRSHV1t3k	499	en	Philo: Allegory, Providence, and the Logos
-634	hPZTrIjN9BQ	450	ru	Филон: Аллегория, Провидение и Логос
-635	tMVTFzknfyQ	364	en	Ḥaḥam Haim Palachi  (ḤaBi"F): His Life, Work, and Writings
-636	8x_wbvx-5Vg	426	ru	Хахам Хаим Фаладжи (ХаБи"Ф): его жизнь, деятельность и книги
-637	u8lwMvjuBSc	384	en	Mendel Lefin and the Haskalah in Galicia
-638	Ls1d4OE6QTQ	418	ru	Мендель Лефин и еврейское Просвещение в Галиции
-639	_eA6LMnmEao	366	en	Elia Benamozegh: Philosophy and Kabbalah, Israel and Humanity
-640	Uetw7LJWRjY	377	ru	Элияу Бен-Амозэг: философия и каббала, Израиль и человечество
-641	chS_iUb-VEY	414	en	Don Isaac Abravanel: Commentator, Philosopher, and Statesman
-642	fxdPsirh2sc	341	ru	Дон Ицхак Абарбанель: комментатор, философ и государственный деятель
-643	BANN0i_zJyo	436	en	Novardok: His Educational Doctrine and the “Doctrine of Sensitivity”
-644	KZfCmmOBN3Y	418	ru	Новардок: его педагогическое учение и «доктрина чувствительности»
-645	izbNtzKRxTQ	341	en	Rabbi Israel Yaakov Algazi – The Rishon LeZion Who United Kabbalah, Halakha, and Public Leadership
-646	LhgSaQOr8L4	437	ru	Рабби Исраэль Яаков Альгази — Первый Сион, объединивший Каббалу, Галаху и общественное лидерство
-647	2MZbYudsJdw	479	en	Yitzhak Nissim: Chief Sephardic Rabbi of the State of Israel
-648	Iv9j59KmRNk	410	ru	Ицхак Ниссим: Главный сефардский раввин Государства Израиль
-649	zRS-dM-SkiM	420	ru	Сфат Эмет – мыслитель, ищущий внутреннюю истину
-650	OJ7w3P3Gn6o	359	en	Sefat Emet – The Thinker Who Sought Inner Truth
-651	D5ctLfiF46Q	471	ru	Рабби Хаим из Воложина — тихий революционер, сформировавший позвоночник мира Торы
-652	bU33b80yZKU	382	en	Rabbi Chaim of Volozhin – The Quiet Revolutionary Who Shaped the Backbone of the Torah World
-653	Nh2zBFGV2_Q	402	en	Dunash ben Labrat: His Life and Works
-654	mMw8ON5iVTg	318	ru	Дунаш бен Лабрат: жизнь и творчество
-655	cNUZDC5gmog	366	en	Rabbi Meir Yehuda Getz – The Righteous Man Who Revealed the Secrets of the Western Wall
-656	WYkB28LnXwg	366	ru	Рав Меир Йеуда Гец – праведник, раскрывший тайны Стены Плача
-657	BJb0xFe53U8	330	ru	Учение Махараля: Тора, душа и истина
-658	uqI_wh57lO8	369	en	The Thought of the Maharal: Torah, Soul, and Truth
-659	p4s-C-bZxak	422	en	Rabbi Shmuel Bornsztain - The Rebbe Whose Embrace Defied Death
-660	n2X4qhQ279E	389	ru	Рабби Шмуэль Борнштейн – Ребе, чьё объятие победило смерть
-661	i0M2vGlw28s	406	en	The Rebbe Who Saw the “Footsteps of the Messiah” – The Author of Netivot Shalom
-662	O0Llyb7qUxg	405	ru	Ребе, увидевший «поступь Машиаха» — автор книги «Нетивот Шалом»
-663	C_hqg3JYniY	534	en	Rabbi Yeshu’a Ben Shoshan: The Kabbalist Who Commanded a Commando Unit
-664	yrWYoEqIZkY	508	ru	Мудрец Йешуа Бен Шошан: каббалист, командовавший отрядом коммандос
-665	v9NtNryySZ0	311	en	Rabbi Ephraim Ankawa: His Life and Legacy
-666	4A2JxVeX8Yc	359	ru	Рав Эфраим Анкава: жизнь и деятельность
-667	sCJ-e_Ggy68	305	en	Rabbi Yosef Taitatzak - The Kabbalist Who Foresaw Zionism
-668	dp4azWA4x_8	408	ru	Рабби Йосеф Тайтцак — каббалист, предсказавший сионизм
-669	Uix-I9vP7fw	436	ru	Раввин Горен: Галаха, Государство и Армия
-670	EkOqfpDFyhY	427	en	Law, Redemption, and Revolution: Shabtai Ben-Dov
-671	jd3AtUqImjc	410	ru	Закон, искупление и революция: Шабтай Бен-Дов
-672	eFm5S4krrKc	391	he	משפט, גאולה ומהפכה: שבתי בן-דב
-673	RdfuIDNHbKw	517	he	הרב גורן: הלכה, מדינה וצבא
-674	f2z86Q7OyLU	467	en	Rabbi Goren: Halakha, State, and Army
-675	MV7nH10GCMc	423	en	Josel of Rosheim: Advocate for Imperial Jewry
-676	ZXV7ObUy-uM	383	ru	Йозель из Розгейма: защитник евреев Священной Римской империи
-677	uZlwAxCV1qc	458	he	יוסל מרוסהיים: סנגור יהדות האימפריה
-678	kDCAvcLFzC0	447	ru	Рав Ицхак Яаков Рейнес и основание движения "Мизрахи"
-679	nJ4FWiXK5VQ	501	en	Rabbi Yitzhak Yaakov Reines and the Founding of Mizrachi
-680	BVYplCpF02c	472	he	הרב יצחק יעקב ריינס ומייסד המזרחי
-681	U9MpctcfTxc	507	ru	Рав Реувен Маргалиот: раввин, учёный и библиотекарь
-682	KIygAJIP_WE	397	he	הרב יעקב גורדין: מחשבת ישראל ופילוסופיה בעולם משתנה
-683	mtPEMfJWZfc	514	he	משה מנדלסון: אבי ההשכלה היהודית והנאורות
-684	9Jden3KLVak	497	en	Moses Mendelssohn: Father of the Jewish Enlightenment (Haskalah) and the Age of Reason
-685	szRvQy-38H8	462	ru	Мозес Мендельсон: отец еврейского Просвещения и эпохи разума
-686	6UfjwSUASjI	421	en	Shmuel: His Legal Rulings and Teachings
-687	IMuLBI4UzIk	444	ru	Шмуэль: Галахические постановления и его учение
-688	XhGQHLo57Nw	381	he	שמואל הנגיד: תור הזהב ושירת הגאולה
-689	WgrFomMiUKQ	390	ru	Шмуэль ха-Нагид: Золотой Век и Поэзия Спасения
-690	3xskVDMUd34	435	en	Shmuel HaNagid: The Golden Age and the Poetry of Redemption
-691	Vuw15RpJHs4	512	he	שמואל: פסיקת הלכה ותורתו
-692	BnvjlU5JUqE	385	he	חידת הגאון המסתורי: מר שושני
-693	unqH7pHySmM	440	en	The Riddle of the Mysterious Genius: Mr. Shushani
-694	KVQy9LNoF2k	369	ru	Загадка таинственного гения: господин Шошани
-695	9IgiGP6fvv0	426	he	רבנו יונה גירונדי: תורה, מוסר ומחלוקת
-696	zlre6biDOqs	374	en	Rabbeinu Yonah Gerondi: Torah, Ethics, and Controversy
-697	yCAH5_oIiX8	405	ru	Рабейну Йона Гиронди: Тора, этика и полемика
-698	mRv5aE4ZFaI	439	en	Rabbi Hutner’s Thought: Pachad Yitzchak and Da’at
-699	RPFTTHh0bEM	460	he	משנת הרב הוטנר: פחד יצחק ודעת
-700	vTYB_RodNy8	491	ru	Учение раввина Хутнера: «Пахад Ицхак» и «Даат»
-701	DTLxE2BwKww	433	he	אברהם בר חייא: מתמטיקאי, אסטרונום ופילוסוף
-702	iVENNe_01H8	418	en	Abraham bar Ḥiyya: Mathematician, Astronomer, and Philosopher
-703	2vnAFKlVNOs	366	ru	Авраам Бар-Хия: Математик, Астроном и Философ
-704	8LaG-3zPauk	477	en	Abraham Ibn Ezra: Scholar, Commentator, Poet, and Scientist
-705	bt_k2bZpO7Q	409	ru	Авраам ибн Эзра: учёный, комментатор, поэт и исследователь
-706	p2feMrPaQ1o	384	en	Emanuel Chai Ricchi: Italian Rabbi and Kabbalist
-707	uhaLWgnajFU	316	ru	Рабби Эммануэль Хай Рикки: итальянский раввин и каббалист
-708	MIFYw8-Kn0w	440	en	Rabbi Yitzchak Eisik Chaver – The Third Mouth of the Vilna Gaon
-709	V4QJXcyDU_k	406	ru	Раввин Ицхак Эйзик Хавер – Третий Уста Виленского Гаона
-710	pJrZizKjmEQ	366	en	Solomon Ibn Gabirol: Philosophy and Poetry
-711	bBCPwCDpfnk	407	ru	Шломо ибн Гвироль: философия и поэзия
-712	zLVWgUlCl5U	395	en	Rabbi Israel Najara – The Kabbalistic Poet and a Revolutionary in the Tradition of Hebrew Song
-713	NVmuBFwRwxM	393	ru	Раввин Исраэль Наджара – Каббалистический поэт и революционер в традиции еврейской песни
-714	l9UXMGGkyhk	357	ru	Давид Ньето: «Матэ Дан» и полемика о Природе
-715	qrsMMkYIs6I	510	en	David Nieto: “Mateh Dan” and the Debate on Nature
-716	9WaQKwpGW1U	459	en	Judah Moscato: Renaissance Preacher and His Thought
-717	0oH6x6LoW5o	416	ru	Иехуда Москато: проповедник эпохи Ренессанса и его мировоззрение
-718	O99w1av0-tc	509	he	אברהם אבן עזרא: חכם, פרשן, פייטן ומדען
-719	_9NcbCvXiFs	373	he	ר' עמנואל חי ריקי: רב ומקובל איטלקי
-720	i0USXpk2JPI	552	he	הרב יצחק אייזיק חבר – הפה השלישי של הגר״א
-721	Q-npnZnP5yI	385	he	שלמה אבן גבירול: הגות ושירה
-722	tT8v-J8f-HM	422	he	ר’ ישראל נג’ארה – פייטן הקבלה ומהפכן במסורת השירה
-723	dT4vX4G3LJk	491	he	דוד ניטו: מטה דן ופולמוס הטבע
-724	U6bO7czlEMo	393	he	יהודה מוסקאטו: דרשן הרנסנס ומשנתו
+1	zLJxc3eEdCU	521	ru	Рабби Моше из Трани (Мабит) - мудрец Цфата, 40 лет споривший с Бейт-Йосефом
+2	PutNe8nmaFM	345	en	Rabbi Moshe of Trani (Mabit) - The Sage of Safed Who Challenged the Beit Yosef for 40 Years
+3	S-9dUr1Xpq4	528	ru	Рабби Моше Альшейх - святой проповедник Цфата, раскрывший тайны Торы особым путём
+4	Rdy9VriKVYM	315	en	Rabbi Moshe Alshich - The Holy Preacher of Safed Destined to Reveal the Torah's Secrets
+5	KTKuiDElfCY	545	ru	Рабби Шмуэль де Узеда - каббалист из Цфата, спасший мудрость ранних мудрецов от забвения
+6	RtVP5AZW_J4	345	en	Rabbi Shmuel de Uzeda - The Kabbalist of Safed Who Saved the Wisdom of the Early Sages from Oblivion
+7	llK6TjhR-ok	387	ru	Рабби Авраам Бократ - мудрец, изгнанный из Испании и выступивший в защиту РашиРабби Ав
+8	3tqZnY6xxJ4	334	en	Rabbi Abraham Bokrat - The Scholar Expelled from Spain Who Rose to Rashi’s Defense
+9	AwjeicEsSuw	547	ru	Мирьям-пророчица - женщина, верившая в избавление ещё до того, как расступилось море
+10	cPBZwmA-SJw	515	en	Miriam the Prophetess - The Woman Who Believed in Redemption Before the Sea Was Parted
+11	-IKOyrDQF6E	357	en	Rabbi Abbahu - The Sage of Caesarea Who Stood Between the Study Hall and the Empire
+12	BPdVWImZx70	475	ru	Рабби Аббаху - мудрец из Кесарии, стоявший между домом учения и империей
+13	AZz17ZTQt5E	433	ru	Имма Шалом - женщина между рабби Элиэзером и раббаном Гамлиэлем
+14	MT7n6kqD8Es	372	en	Imma Shalom - The Woman Who Stood Between Rabbi Eliezer and Rabban Gamliel
+15	qbhTWbSmqKA	388	ru	Рабби Рафаэль Бердуго - «Ангел Рафаэль» из Мекнеса
+16	t3EKqmQhgek	292	en	Rabbi Raphael Berdugo - The “Angel Raphael” of Meknes
+17	92-41jb_3uA	376	ru	Рабби Натан Шапира Иерусалимский - каббалист, систематизировавший труды Аризаля
+18	bVC_T1MR4nE	304	en	Rabbi Nathan Shapira of Jerusalem - The Kabbalist Who Organized the Writings of the Ari
+19	V_IWxYu1f9Y	626	ru	Раши - мудрец, открывший Тору и Талмуд каждому еврею
+20	q5x9P6uZGpE	397	en	Rashi - The Sage Who Opened the Torah and Talmud to Every Jew
+21	OXMfO24yAeU	620	en	Rabbi Joseph Dov Soloveitchik - The Halakhic Man Who Lived Between Two Worlds
+22	mfhklEClXVk	537	ru	Рав Йосеф Дов Соловейчик - человек Галахи, живший между двумя мирами
+23	aOhTT4BYqTA	404	en	Rabbi Ahai bar Papa - The Sage Included in the Hadran Despite Living Generations Before Rav Papa
+24	f29AXHW8Sus	570	ru	Рабби Ахай бар Папа - мудрец, вошедший в Адран, хотя жил за поколения до Рава Папы
+25	GKVirv2oTpE	424	ru	Рабби Менахем Реканати - каббалист, превративший Зоар в основополагающую книгу
+26	rM4jaxCsHho	443	en	Rabbi Menachem Recanati - The Kabbalist Who Made the Zohar a Foundational Text
+27	8ncHBXpcsjA	328	en	Rabbi Hanan Porat - The Man Who Refused to Choose Between Torah and Life
+28	5BJnsTcrvhM	476	ru	Рав Ханан Порат - человек, отказавшийся выбирать между Торой и жизнью
+29	xgdqNPQiiVk	402	en	Rabbi Eliezer Yehuda Waldenberg - The Tzitz Eliezer, a Leading Halakhic Authority
+30	Yjo_hGXtcOw	492	ru	Гаон раввин Элиэзер Йехуда Вальденберг - выдающийся галахический авторитет «Циц Элиэзер»
+31	eiQt0ycF4sc	273	en	Rabbi Yisrael Yitzchak Besançon - The Artist Who Made Breslov a Language of the Soul
+32	fD8YrjG0Ly8	525	ru	Рав Исраэль Ицхак Безансон, благословенной памяти - художник, превративший Бреслав в язык души
+33	6tFcTQDpfog	317	en	Gedaliah ben Ahikam - The Murder That Extinguished Judah’s Last Hope
+34	5GkX20zWwAs	490	ru	Гедалия бен Ахикам - убийство, погасившее последнюю надежду Иудеи
+35	o9iBCp_Vi7k	515	ru	Рав Нахман бар Папа - аморай, который помолился, и пошёл дождь
+36	kLJUwmjj7Cc	353	en	Rav Nachman bar Pappa - The Amora Who Prayed and the Rain Fell
+37	tYm9XY5Ol_o	491	ru	Лея, праматерь - женщина, чья молитва изменила её судьбу
+38	YsDYWOKdKmM	300	en	Leah Our Matriarch - The Woman Whose Prayer Changed Her Destiny
+39	zX-018kWaVE	405	ru	Рами бар Папа - аморай, чьё имя произносят при каждом завершении трактата
+40	4ENM292sgI4	394	en	Rami bar Pappa - The Amora Whose Name Is Recited at Every Siyum
+41	DGCFQealrGw	379	ru	Ялта - женщина, разбившая 400 бочек вина
+42	DC0vmQmepa0	351	en	Yalta - The Woman Who Smashed 400 Barrels of Wine
+43	7lCipAKhO3M	533	ru	Рафрам бар Папа - аморай, соединивший Галаху, науку и разрушение Храма
+44	F970V-O0D_M	400	en	Rafram bar Pappa - The Amora Who Connected Halakha, Science, and the Destruction of the Temple
+45	cEPDeH-wcE4	500	ru	Серах, дочь Ашера - женщина, жившая от Яакова и Исхода из Египта до царствования Давида
+46	6yKjdGc3NK4	290	en	Serah Daughter of Asher - The Woman Who Lived from Jacob to the Exodus and King David’s Reign
+47	oZif-VqdVNU	564	ru	Рабби Ханина бар Папа - аморай, попросивший у Ангела смерти ещё 30 дней
+48	xxmxesk4B6E	379	en	Rabbi Hanina bar Pappa - The Amora Who Asked the Angel of Death for 30 More Days
+49	RMW3arWEEQw	522	ru	Церуя - женщина, чьи сыновья носили её имя в самом сердце царства Давида
+50	VbKKhrAATyE	279	en	Zeruiah - The Woman Whose Sons Bore Her Name at the Heart of David’s Kingdom
+51	FD0at4Hnmqg	558	ru	Раввин Иегуда Лейб Дон-Ихья - между Бриском, хасидизмом и сионизмом
+52	MlIzdjS4TJE	284	en	Rabbi Yehuda Leib Don Yichya - Between Brisk, Hasidism, and Zionism
+53	xQ2dUpSvXYU	354	en	Dona Gracia Nasi - The Woman Who Turned Wealth and Political Power into a Jewish Rescue Mission
+54	CZDAMd7aLp0	541	ru	Дона Грация Наси - женщина, превратившая богатство и политическое влияние в дело спасения евреев
+55	BGfo7XA7eJQ	367	en	Rabbi Abraham ben Isaac of Montpellier - The Provençal Sage Whose Writings Returned from Oblivion
+56	VbEOubdBL10	430	ru	Рабби Авраам бен Ицхак из Монпелье - провансальский мудрец, чьи труды вернулись из забвения
+57	laf46Rl3Gpc	295	en	Rabbi Mordechai Eliasberg - The Golden Path of National Revival
+58	8rF8OmOowDs	498	ru	Раввин Мордехай Элиасберг - золотой путь национального возрождения
+59	C15ER1t4Tgo	491	ru	Рабби Исраэль Липшиц - между Мишной и современной наукой
+60	wc3g0MGSNVM	327	en	Rabbi Israel Lipschitz - Between the Mishnah and Modern Science
+61	64rOl_X18e8	288	en	Rabbi Aryeh Kaplan - Between Nuclear Physics and the Worlds of Kabbalah
+62	6ANyR2tvoWs	520	ru	Рабби Шимшон Рафаэль Гирш - Тора, образование и встреча с современностью
+63	jRfno0wSAbw	532	ru	Раввин Арье Каплан - между ядерной физикой и мирами Каббалы 
+64	-1vI47GrHgQ	382	en	Rabbi Samson Raphael Hirsch - Torah, Education, and the Encounter with Modernity
+65	HN4xheHyH7s	413	ru	Рабби Авиад Сар Шалом Базила - где каббала, Евклид и астрономия встретились в бейт-мидраше
+66	PQJAHFKdwJg	312	en	Rabbi Aviad Sar Shalom Basilea - Where Kabbalah, Euclid, and Astronomy Met in the Beit Midrash
+67	PX215cuHqAI	501	ru	Рабби Барух Шик из Шклова - от Виленского Гаона до Евклида: наука на службе понимания Торы
+68	-aQphfpP758	274	en	Rabbi Baruch Schick of Shklov - From the Vilna Gaon to Euclid: When Science Helps Understand Torah
+69	CfT6qqfiRYc	329	en	The Ten Lost Tribes, Rembrandt and Cromwell - The Story of Rabbi Menasseh ben Israel
+70	N1HhQRstBl0	529	ru	Десять колен, Рембрандт и Кромвель - история рабби Менаше бен Исраэля
+71	lu-CEEbbD4c	348	en	Rabbi Pinchas Eliyahu Horowitz - When Science Becomes a Gateway to Serving God
+72	Hirtp3JygZM	527	ru	Рабби Пинхас Элиягу Горовиц - когда наука становится путем к служению Богу
+73	sKXr9HHMr3s	440	ru	Раввин д-р Азриэль Хильдесхаймер - Тора и наука в меняющемся мире
+74	ufiyCI_7LN4	308	en	Rabbi Dr. Azriel Hildesheimer - Torah and Science in a Changing World
+75	b3MGed9-cb0	356	en	Rabbi Gedaliah Nadel - Torah, Science, and the Search for Truth
+76	VC4hexRfopM	417	ru	Раввин Гедалия Надель - Тора, наука и поиск истины
+77	TX-BEGATFq8	506	ru	Рабби Ицхак Лампронти - раввин, врач и автор энциклопедии «Пахад Ицхак»
+78	O6RksBawIt4	291	en	Rabbi Isaac Lampronti - The Rabbi, Physician, and Author of Pachad Yitzchak
+79	viy9jsulLoc	363	en	Geula Cohen: The Life and Legacy of a Fighter for Israel
+80	rGBISPIIbek	476	ru	Геула Коэн: жизнь и наследие борца за Израиль
+81	0h6oj9furxI	466	ru	Яшар из Кандии - между Галилеем, наукой, Торой и каббалой
+82	ngKIWLZzCrE	470	en	Yashar of Candia - Between Galileo, Science, Torah, and Kabbalah
+83	82qcRQstFQs	480	ru	Рабби Меир из Перемышляна: жизнь и чудеса праведника из Перемышляна
+84	y2-Z7bfgR5U	323	en	Rabbi Meir of Premishlan: The Life and Miracles of the Righteous Sage of Premishlan
+85	iYtU6ZBjyjw	455	ru	Дерех Эрец, избранность и наследование Земли Израиля в недельной главе «Экев»
+86	Cd4lauoPrw0	289	en	Derekh Eretz, Spiritual Distinctiveness, and the Inheritance of the Land in Parashat Eikev
+87	TC6i8YLD8qM	491	ru	Рабби Иегуда Галеви Маргуза и возрождение еврейской общины Яффо
+88	sMVZgqvMqXI	352	en	Rabbi Yehuda Halevi Marguza and the Revival of the Jewish Community of Jaffa
+89	L8-ubmGo6_Y	544	ru	Рабби Хаим Виталь - Ученик Ари, сохранивший его учение и объединивший каббалу с природой
+90	xHFq__NoPpg	342	en	Rabbi Chaim Vital - The Disciple Who Preserved the Ari's Teachings and United Kabbalah with Nature
+91	0j8wko1m4uY	460	ru	Наследие Виленского Гаона: от научных трудов до алии его учеников
+92	EGcq-ll5vH8	356	en	The Legacy of the Vilna Gaon: From Scientific Scholarship to the Disciples' Aliyah
+93	lVKW3ot6R5E	628	ru	Раббан Шимон бен Гамлиэль I - Наси, пытавшийся спасти Иерусалим накануне разрушения
+94	qDYMHEbFSRg	360	en	Rabban Shimon ben Gamliel I - The Nasi Who Tried to Save Jerusalem Before the Destruction
+95	vfjBSPWJqe4	600	ru	Ребецн Хая-Мушка Шнеерсон - духовное партнерство, самоотверженность и тихое лидерство
+96	cNOHzH5oy-0	272	en	Rebbetzin Chaya Mushka Schneerson - Spiritual Partnership, Selfless Devotion and Quiet Leadership
+97	uzhD9y3Z8KY	434	ru	Раббанит Бат-Шева Каневская - Дом, ставший местом милосердия, молитвы и духовного наставничества
+98	ktAHrAfYdcY	278	en	Rabbanit Batsheva Kanievsky - A Home of Kindness, Prayer, and Spiritual Guidance
+99	qWkGCUgsagA	516	ru	Раббан Гамлиэль из Явне - Наси, восстановивший еврейское руководство
+100	zNRv16vRMqM	459	en	Rabban Gamliel of Yavne- The Nasi Who Led the Restoration of Jewish Leadership After the Destruction
+101	DoUacsauI4g	543	ru	Рав Йехуда бар Йехезкель - основатель Пумбедиты, определивший путь вавилонского еврейства
+102	UABDpOW_aiY	280	en	Rabbi Yehuda bar Yechezkel - The Founder of Pumbedita Who Shaped the Course of Babylonian Jewry
+103	O31lUKbkcpw	361	en	Aaron the High Priest - Teaching That Love for People Is the First Step to Torah
+104	E3lo3Xg8ako	484	ru	Аарон-первосвященник - Любовь к людям как первый шаг к приближению их к Торе
+105	n1ZrT4N8l1I	552	ru	Генриетта Сольд - между традицией, сионизмом и социальной ответственностью
+106	rqvPXBDfXFE	334	en	Henrietta Szold - Between Tradition, Zionism, and Social Responsibility
+107	O71Q3HrKHmQ	270	en	Sarah Stern-Katan - Torah, Work, and Social Responsibility
+108	XC5vL6MTdhw	427	ru	Сара Штерн-Катан - Тора, труд и социальная ответственность
+109	ZDkfA474Sso	538	ru	Това Кучински и истоки национальной службы в Израиле
+110	d1t5JxzCLMI	212	en	Tova Kuczynski and the Origins of National Service in Israel
+111	n0HeygT8K0E	410	ru	Раббанит Сара Герцог - женщина, объединившая милосердие, лидерство и созидание государства
+112	GzU2LaLlafw	314	en	Rabbanit Sarah Herzog - The Woman Who United Kindness, Leadership, and Nation-Building
+113	42ivyJiVm5Q	312	en	Rebbetzin Bracha Kapach - The Woman Who Turned Kindness into a Lifelong System
+114	Bn9l_iYU94c	551	ru	Раббанит Браха Капах - Женщина, превратившая милосердие в целостную систему жизни
+115	qr-Jzk95mEA	304	en	A Call from the Ashes: The Legacy of Rebbetzin Esther Jungreis and the Hineni Movement
+116	i_LjhX-53kQ	433	ru	Призыв из пепла: наследие ребецен Эстер Юнграйс и движение «Хинени»
+117	oT20E266xU0	534	ru	Раббанит Дина Вайнберг: наследие величия, образования и раскрытия потенциала женщин
+118	wIYweXEWhYg	376	en	Rabbanit Deanna Weinberg: A Legacy of Greatness, Education, and Women's Empowerment
+119	420idkUpoAs	535	ru	Нехама Лейбович - Учительница, которая научила задавать правильные вопросы
+120	xjhEVrowK4A	271	en	Nechama Leibowitz - The Teacher Who Taught Us to Ask the Right Questions
+121	SgvgFTJ26y8	553	ru	Ребецн Вихна Каплан - продолжательница пути Сары Шнирер в Америке
+122	k3fseLFUo0w	237	en	Rebbetzin Vichna Kaplan - Continuing Sarah Schenirer's Legacy in America
+123	YmkhdJODjfk	291	en	Or HaChaim: His Life, Legacy, and Connection to the Baal Shem Tov
+124	YJ73CNeOB3I	527	ru	«Ор ха-Хаим»: биография, наследие и связь с Баал Шем Товом
+125	W1333JXqOsI	584	ru	Рав Авраам Йеошуа Цукерман - педагог, объединивший Бейт-Мидраш, сад и строительные леса
+126	l3kyNbAnAOc	248	en	Rabbi Avraham Yehoshua Zuckerman The Educator Who Bridged the Beit Midrash and the Building Scaffold
+127	ZNkmYo-mdpA	716	ru	Рабби Элиэзер бен Гиркан: между традиционным консерватизмом и галахическим расколом
+128	kCiWOjnvc10	414	en	Rabbi Eliezer ben Hyrcanus: Between Traditional Conservatism and a Halakhic Schism
+129	Z628S1iuCmU	344	en	Rabbi Elazar ben Azariah: Leadership, Halakhah, and Aggadah
+130	0W2KIyP9r98	599	ru	Рабби Элазар бен Азария: лидерство, Галаха и Агада
+131	2O9fB4pFm5E	624	ru	Шаммай Старец: его личность, учение и наследие школы Бейт Шаммай
+132	TuIOTBpjNZE	498	en	Shammai the Elder: His Character, Teachings, and the Legacy of the House of Shammai
+133	zd96F8hzIec	285	en	Hillel the Elder: Leadership, Torah Tradition, and Repairing the World
+134	fDj1mkGP_dw	564	ru	Гилель Старший: лидерство, учение Мишны и исправление мира
+135	QvnqcWMw9Hs	324	en	Rabbi Yehoshua ben Hananiah - The Sage Who Declared: "It Is Not in Heaven"
+136	R3U6POac3oY	564	ru	Рабби Йеошуа бен Ханания - мудрец, сказавший: «Не на небесах она»
+137	PSlsgd30bzQ	490	ru	Раббан Йоханан бен Заккай: руководство народом и Тора в эпоху разрушения и восстановления
+138	ViB_CDTMyrQ	286	en	Rabban Yohanan ben Zakkai: Leadership and Torah in an Age of Destruction and Renewal
+139	tmTfkxXZt2c	434	ru	Рабби Довбер Шнеури - лидер, расширивший и укрепивший движение Хабад
+140	_SlbQRSyuaw	346	en	Rabbi Dovber Schneuri - The Leader Who Expanded and Consolidated the Chabad Movement
+141	dJ_EigYpX8I	275	en	The Tzemach Tzedek - The Rebbe Who Turned Chabad into a Center of Halakhah and Leadership
+142	27qzVovmga0	548	ru	Цемах Цедек - Ребе, превративший Хабад в центр Галахи и духовного руководства
+143	aFJw80_8jKE	311	en	The Lubavitcher Rebbe - The Vision of Shlichut That Transformed Judaism
+144	jtQ37qmsC44	565	ru	Ребе из Любавича - Видение шлихута, изменившее лицо иудаизма
+145	N2r08ESQ2TY	431	ru	Рабби Йехуда Кориат - каббалист, передавший наследие Магриба в новую эпоху
+146	Uw_P0UXjIDA	279	en	Rabbi Yehuda Coriat - The Kabbalist Who Transmitted the Heritage of the Maghreb into the Modern Era
+147	kf4SpyqXBtg	562	ru	Учение раввина Десслера: нравственность, вера и свобода выбора
+148	73L7-ieMTrw	486	en	Rabbi Eliyahu Eliezer Dessler: Ethics, Faith, and Free Choice
+149	0llPWZMJZ6I	342	en	Rabbi Tzvi Pesach Frank - Chief Rabbi of Jerusalem in the Years of National Revival and Statehood
+150	iAkHcsFYmjY	472	ru	Раввин Цви Песах Франк - главный раввин Иерусалима в годы возрождения и становления государства
+151	FCgf1OySW6Y	458	ru	Рабби Йосеф Джикатилья: «Врата света» и тайны Божественного Имени
+152	B9lywyLu4fQ	426	en	Rabbi Yosef Gikatilla: Sha'arei Orah and the Mysteries of the Divine Name
+153	mcIKHpp9a7E	449	ru	«Адар ха-Якар»: личность и учение Адерета
+154	LYiGsAE-GWo	289	en	Adar HaYakar: The Life and Thought of the Aderet
+155	ZhX1ONdf8lo	489	ru	Семья Крескас: личности и история в Еврейской энциклопедии
+156	UH3nhew-7mk	254	en	The Crescas Family: Personalities and History in the Jewish Encyclopedia
+157	NgZ2WbGy9E0	303	en	Rabbi Yaakov Skili: His Life, Writings, and Eretz Israel-Oriented Thought
+158	OL0B8iX_o2Y	376	ru	Рабби Яаков Скили: биография, труды и его учение о Земле Израиля
+159	OlesEjzoTZs	535	ru	Рабби Йосеф ибн Табуль - каббалист, сохранивший ещё один голос в учении Ари
+160	Ll6Abt2Cq7w	281	en	Rabbi Yosef ibn Tabul - The Kabbalist Who Preserved Another Voice in the Teachings of the Ari
+161	AtlCXb3JDx8	445	ru	Рабби Йеошуа ибн Шуайб: лидерство, проповедь и тайны Рамбана
+162	Tcix3Bmm-t0	260	en	Rabbi Yehoshua Ibn Shu'aib: Leadership, Homiletics, and the Secrets of Ramban
+163	qfhtXb3f3pU	298	ru	Рамо: биография, галахическое наследие и философское мировоззрение
+164	NLdSQBDGwBg	322	en	The Holy Ari: Esoteric Teaching, the Refinement of Sparks, and the World of Tikkun
+165	L24nCHU4_z8	475	ru	Рамо: биография, галахическое наследие и философское мировоззрение
+166	B3hHNfGRIec	470	ru	Святой Ари: учение тайны, очищение искр и мир исправления
+167	pGDFGE42KoM	406	ru	Рав Давид Бонафед: ученик Рамбана и его духовное наследие в Испании
+168	m3z94b-NIKM	469	en	Rabbi David Bonafed: Disciple of the Ramban and His Torah Legacy in Spain
+169	L5T6oVKBsSU	548	ru	Рабби Яаков Поллак: основатель метода пилпула и зарождения мира Торы в Польше
+170	JwwrnklLPac	280	en	Rabbi Yaakov Pollak: Founder of the Pilpul Method and the Rise of Torah Scholarship in Poland
+171	-O3vOHVMLw8	410	ru	Авраам Ливни: израильская тайна и весть миру
+172	7xG6akhghaE	284	en	Abraham Livni: The Israeli Secret and the Message to the World
+173	q3pKKKJP3Do	338	en	The Path of Ruth: Mercy, Law, and Spiritual Legacy
+174	OMUpBWCh0ts	537	ru	Путь Руфи: милосердие, закон и духовное наследие
+175	wEmwGlLhGjw	396	ru	Рабби Яаков Ландау: автор «Агура»
+176	ycaGC9cXwLY	309	en	Rabbi Yaakov Landau: Author of the “Agur”
+177	iNQ-FOwDufk	479	ru	Рабби Исраэль Иссерлейн - законоучитель, восстановивший ашкеназское еврейство из пепла
+178	q8eLxP2lgjA	280	en	Rabbi Israel Isserlein - The Halachic Authority Who Rebuilt Ashkenazic Jewry from the Ashes
+179	QHHa6EXkb8U	372	en	Sarah Our Matriarch:The Foundation of Prophecy and the Sovereignty of Spirit in the Tent and in Time
+180	rTWSGX6coxc	411	ru	Сара Праматерь: основание пророчества и владычество духа в шатре и во времени
+181	XMHlD_piB-4	472	ru	Рабби Йосеф Каро: между галахическим решением, каббалой и мистикой
+182	qYE8cC26YRA	558	en	Rabbi Yosef Karo: Between Halakhic Ruling, Kabbalah, and Mysticism
+183	NaoBguesmXw	463	ru	Махари Коркос - мудрец, подготовивший галаху к избавлению
+184	1ujQnhxNFy8	458	en	Mahari Korkos - The Sage Who Prepared Halakhah for Redemption
+185	coQyIiMtHho	295	en	The Teachings and Historical Influence of Rabbi Menachem Azariah of Pano
+186	NGZ4n57j8g8	436	ru	Учение и историческое влияние рабби Менахема Азарии из Пано
+187	ubBihik_GWA	541	ru	Рав Йосеф бар Хама и рождение вавилонской элиты Торы
+188	L2lV3N6FCw4	501	en	Rav Yosef bar Hama and the Birth of Babylonian Torah Aristocracy 
+189	ecl65fy6iGE	552	ru	Рашбац: универсальный мудрец, галахический авторитет и энциклопедист
+190	e1uRNGIXOsw	343	en	Rashbatz: A Comprehensive Sage, Halakhic Authority, and Encyclopedist
+191	H8WtxOkgJGE	489	ru	Рабби Меир: его жизнь и учение как светоч традиции
+192	rPFKI2erb2E	344	en	Rabbi Meir: His Life and Teachings as a Luminary of Tradition
+193	B8WYcBu8FIA	500	ru	Рабби Йехуда бар Илай: лидерство, галаха и мидраш Сифра
+194	VksJwSjUTqQ	371	en	Rabbi Yehuda bar Ilai: Leadership, Halakhah, and the Sifra Midrash
+195	wAbja8j_2_w	299	en	Rabbi David Gans and the Cosmological Revolution in Rabbinic Thought
+196	7jB5xlxSzWA	482	ru	Раби Давид Ганс и космологическая революция в мысли мудрецов Израиля
+197	u7Vzgsosv5w	421	en	The Kabbalist Rabbi Moshe Zacuto (the Ramaz): Who Connected Kabbalah, Halakhah, and Hebrew Theater
+198	eb2oNTiOC1k	448	en	Rabbi Israel of Krems: The “Hagahot Ashri” and the Formation of Ashkenazic Halakhic Ruling
+199	d9SODLJNFNw	538	ru	Рабби Исраэл из Кремса: архитектура «Хагаот Ашри» и формирование ашкеназской галахической традиции
+200	nJQ_RbQIEvI	287	en	Rabbi Samson ben Eliezer and the Tradition of Scribal Writing (STaM) in the Book "Baruch She’amar"
+201	Mf9WorpjPKA	436	ru	Рабби Шимшон бен Элиэзер и традиция письма СТаМ в книге «Барух ше-амар»
+202	FBL394gsb4g	406	en	Rabbi Meir ben Baruch HaLevi Segal – The Man Who Reshaped Ashkenazi Rabbinic Authority
+203	3Dp8cAF3Whs	316	ru	Рабби Меир бен Барух ха-Леви Сегаль – человек, заново сформировавший ашкеназское раввинство
+204	coYnfxRPZD0	310	en	Rabbi Vidal di Tolosa – The Commentator Who Restored Maimonides’ Voice
+205	DrJyqdeVAeE	293	ru	Рав Видаль ди Толоза – комментатор, вернувший Рамбаму его голос
+206	KQ14DueH1Jg	436	ru	Рабби Йеошуа из Кутны – галахический авторитет, увидевший возвращение к Земле как начало избавления
+207	oefm0G9kWek	324	en	Rabbi Yisrael Yehoshua Trunk of Kutna – Halachic Authority Who Saw Return to the Land as Redemption
+208	21KfqhPBlhM	358	ru	Рабби Шломо ха-Коэн из Вильно: Тора, сионизм и «Хешек Шломо»
+209	AHHjQ5flji4	238	en	Rabbi Shlomo HaKohen of Vilna: Torah, Zionism, and Ḥeshek Shlomo
+210	NuQ6ASLKEcA	383	ru	Рои Кляйн: архетип «книги и меча» и его духовно-Торийное наследие
+211	20F3tJ8uoVk	295	en	Roi Klein: An Archetype of “Sefer and Sword” and His Torah Legacy
+212	qBYkt1v-dIE	490	en	Rabbi Alexandri Zusselin HaKohen – the halachic authority who preserved Torah from the ashes
+213	D03fiiP5cJM	424	ru	Рабби Александри Зусслин ха-Коэн — законоучитель, сохранивший Тору из пепла
+214	O8j_x3TsVqk	412	en	Rabbi Shimshon ben Tzadok: The Tashbetz Katan Through the Generations
+215	06ds3hdUdyI	487	ru	Рабби Шимшон бен Цадок: «Ташбец катан» в зеркале поколений
+216	UxGRHKF3iQ8	329	en	Rabbi Shem Tov Gefen: The Kabbalist Scientist and Polymath
+217	1QwFpMBaBVY	420	ru	Рав Шем Тов Гефен: каббалист, учёный и человек энциклопедического склада
+218	msovXAc2swc	505	en	Rabbi Shem Tov Ibn Gaon – The Sage Who United Halacha, Kabbalah, and Sacred Art
+219	E4Ntxaz1RWc	397	ru	Рабби Шем Тов ибн Гаон — мудрец, объединивший галаху, каббалу и священное искусство
+220	doTEC_Kq7Iw	407	ru	Рабби Нахман Крохмаль (Ранак) — мыслитель, превративший историю в доказательство вечности Израиля
+221	oAjWELNrN0I	467	en	Rabbi Nachman Krochmal (RaNaK) – The Thinker Who Turned History into Proof of the Eternity of Israel
+222	DBIFV2upuWs	272	en	Rabbi Moshe of Évreux – The Man Who Turned the Book into a Rabbi
+223	K7Xxix0kKJ8	517	ru	Рабби Моше из Эврё — человек, который сделал книгу раввином
+224	vFvZdYtISsM	460	ru	Рабби Йеуда бен ха-Рош: лидерство и духовное завещание
+225	Kx93YOiMv8U	312	en	Rabbi Yehuda ben the Rosh: Leadership and a Spiritual Testament
+226	oIQHV_XChFA	536	ru	Наследие и деятельность рабби Яакова Бааль а-Турим и семьи бен Зерах
+227	FzihQEaAP4I	386	en	The Legacy and Works of Rabbi Yaakov Baal HaTurim and the Ben Zerach Family
+228	V18l2aj30Qw	353	en	Rabbi Estori HaParchi: A Pioneer of the Study of the Land of Israel
+229	87kQHf3DkfU	374	ru	Рабби Аштори hа-Пархи: пионер исследования Земли Израиля
+230	2fHzICtEzsU	413	en	Rabbi Isaac of Corbeil: The Author of the Sefer Mitzvot Katan and His Halakhic Legacy
+231	hG20RFcZ0Ts	357	ru	Рабби Ицхак из Корбейля: автор «Сефер мицвот катан» и его галахическое наследие
+232	qye5KMrSkWM	307	en	Riaz (Rabbi Isaiah di Trani the Younger) - The Struggle for the Soul of Faith
+233	LdvONEKFp68	418	ru	Риаз (Рабби Ишая ди Трани младший) –между традицией и философией: борьба за душу веры
+234	0Q2VuWQeL_U	458	ru	Рабби Моше из Эврё — тихий революционер, превративший книгу в учителя
+235	tMw4LBBvRsU	371	en	Rabbi Moses of Évreux – the quiet revolutionary who turned the book into a teacher
+236	LCI53rUjpJw	275	en	Rabbi Avigdor HaKohen of Vienna: The Shift of Centers and the Consolidation of Halakhah in Ashkenaz
+237	gM-SSfGccoI	384	ru	Рабби Авигдор ха-Коэн из Вены: перемещение центров и формирование Галахи в Ашкеназе
+238	85q_BwP8bDI	385	ru	Рабби Цадкия бен Авраам и книга «Шиболей а-лекет»
+239	aU788mO4h4U	298	en	Rabbi Tzadkiah ben Abraham and the book Shibolei HaLeket
+240	mpK4lW27XWQ	279	en	Rabbi Yechiel ben Yekutiel: The Leiden Manuscript
+241	BX0hmaRuQm0	453	ru	Рабби Йехиэль бен Йекутиэль: Лейденская рукопись
+242	YQ8jGmsbrBQ	497	ru	Рамбан — лидер, изгнанный из Испании, чтобы возродить Иерусалим
+243	mZ9WV8-dTh0	540	en	Nachmanides – the leader who was exiled from Spain in order to revive Jerusalem
+244	aKNFO4YzEBA	304	en	Rabbi Nathan ben Meir of Trinquetaille: A Crossroads of the Sages of Provence
+245	lYZGEE8L1oQ	369	ru	Рабби Натан бен Меир из Тренктайя: перекрёсток мудрецов Прованса
+246	E52YBJ1z_58	485	en	Deborah the Prophetess: Leadership, Justice, and Torah Thought
+247	rhhpQdgh5CM	372	en	The Torah legacy and activity of Rabbi Meir ben Shimon HaMe’ili
+248	Y9_WYJM9LY0	414	ru	Деятельность и учение рабби Меира бен Шимона а-Меили
+249	sA1D0OuJ_S8	359	en	The Thought, Activity, and Legacy of Rabbi Maimon the Judge: A Link Between Generations
+250	eKtYaaeC8BY	504	ru	Учение, деятельность и наследие рава Маймона-даяна: связующее звено между поколениями
+251	eB864xW3LIM	402	en	Thought and Public Activity of Rabbeinu Shmuel Ha-Sardi
+252	pvCr5EZsF-w	376	ru	У чение и общественная деятельность рабейну Шмуэля а-Сарди: анализ кодификации, мысли и права
+253	he3TX2TknG0	526	ru	Девора-пророчица: лидерство, суд и религиозно-учительное наследие — междисциплинарный анализ
+254	NnujnyQUOOg	272	en	Rabbeinu Perachiah ben Nissim – A Sage Who Defended the Legacy of Maimonides
+255	-pmGp_mGqDw	442	ru	Рабейну Перахия бен Ниссим — мудрец, защищавший наследие Рамбама
+256	uoEDpicThEM	452	ru	Рабейну Маноах из Нарбонны — комментатор, давший «покой» Рамбаму
+257	Nnix88v6Wgs	415	en	Rabbeinu Manoach of Narbonne – The Commentator Who Gave “Rest” to the Rambam
+258	cpv24KtaSr4	417	ru	Рабейну Маноах из Нарбонны — комментатор, давший «покой» Рамбаму
+259	n87R6orOkbg	391	en	Rabbeinu Manoach of Narbonne – The Commentator Who Gave “Rest” to the Rambam
+260	4UX9v3kx5Nc	408	en	Rabbi Meshullam ben Moshe and the Early Dynasty of the Sages of Lunel
+261	aSGyBU1k1Fc	466	ru	Рабби Мешулам бен Моше и ранняя династия мудрецов Люнеля
+262	uf6D-8ElhLQ	402	en	Hannah’s Prayer: Faith, Halakha, and a Model for Education
+263	buf6CKTYKVI	368	ru	Молитва Ханны: вера, галаха и образец воспитания
+264	XewrhViUp7E	317	en	Rabbi Eleazar of Worms and the Ordinances of ShUM
+265	MD18M1WhsFA	425	ru	Рабби Элеазар из Вормса и постановления ШУМ
+266	_ffc7dn76qo	441	ru	Великий светильник из Люнеля: мудрец, принесший учение Маймонида в Европу
+267	YxI2_lApcDI	439	en	The Great Luminary of Lunel: The Sage Who Brought Maimonides to Europe
+268	XwY-GGirRy4	397	en	Rabbi Saadia Shuraki – The Rabbi Who Brought Mathematics into the Beit Midrash
+269	ZY7m_A8SBuA	389	ru	Рабби Саадия Шураки — раввин, который ввёл математику в дом учения
+270	Gi9RqZFJuVM	433	en	The World of the Tosafists: Rabbi Eliezer of Metz and His Halakhic Thought
+271	UUR-yRmUlJc	375	ru	Мир тосфистов: рабби Элиэзер из Меца и его галахическое учение
+272	d6IW-rDVwkY	489	en	Huldah the Prophetess – The Story Behind the Discovery of the Book of the Torah in the Temple
+273	FQ0SYVbT4y4	335	ru	Пророчица Хульда — история открытия книги Торы в Храме
+274	A09Irq5RbxM	337	en	Rabbi Yitzhak ha-Lavan: One of the Early Tosafists in Bohemia
+275	ZABkizcYLkI	366	ru	Рабби Ицхак ха-Лаван: один из ранних тосафистов в Богемии
+276	gJqBX-aCIAc	367	ru	Рабби Иегуда Барселонский: Его галахическое и философское учение и история мудрецов Испании
+277	w9D_Dfjaz9c	355	en	Rabbi Judah of Barcelona: His Halakhic and Philosophical Doctrine and History of the Sages of Spain
+278	0LHTmmAvWDk	419	en	Esther the Queen – The Leader Who Acted from Concealment and Defeated an Empire
+279	Ekgw00hC5Gc	419	ru	Эстер – царица, действовавшая из сокрытия и победившая империю
+280	fC0CRV6XQ2I	467	en	Queen Helena and the House of Adiabene: Between Jerusalem, the Talmud, and Archaeology
+281	Hqj0gUp1pw4	387	ru	Царица Елена и дом Адиабены: между Иерусалимом, Талмудом и археологией
+282	Xj6jO15DlXo	488	ru	Рабби Йеуда ха-Леви: его жизнь, поэзия и учение в книге «Кузари»
+283	r8Ozs9ZeRKA	468	en	Rabbi Yehuda Halevi: His Life, Poetry, and Philosophy in The Kuzari
+284	VDEDD49awgo	407	en	Rabbi Yaakov ben Yakar: The Teacher of Rashi and the Ashkenazic Tradition
+285	ZWAKMRS0aLI	341	ru	Рабби Яаков бен Якар: учитель Раши и ашкеназская традиция
+286	ylSWCUHUKm8	446	ru	Рабби Меир бен Шмуэль из Рамеру – человек, превративший Талмуд в поле интеллектуальной битвы
+287	kaDuXwLFIow	417	en	Rabbi Meir ben Shmuel of Rameru – The Man Who Turned the Talmud into a Battlefield of Thought
+288	9mXcEABBfso	408	ru	Рабби Эфраим из Калаат-Хаммада – мудрец, утративший свои труды, но не свой голос
+289	4ohqmB7z6zM	396	en	Rabbi Ephraim of Qal‘at Hammad – The Sage Who Lost His Writings, but Not His Voice
+290	rMuyNAx8F-0	376	en	Rabbi Isaac ben Asher HaLevi: Founder of the Tosafist Movement in Ashkenaz
+291	JH-JHMwPEFM	300	ru	Махзор Витри: история, текстовые традиции и обычаи школы Раши
+292	QkHc7VdwyyQ	402	en	Machzor Vitry: History, Textual Traditions, and the Customs of the School of Rashi
+293	cojlkEc7V64	377	ru	Рабби Ицхак бен Ашер ха-Леви: основатель движения тосафистов в Ашкеназе
+294	1Lso3VeJbm8	406	en	Rabbi Isaac ben Elazar HaLevi, known by the title “Segan Leviyah”
+295	dgaGohZZCa0	297	ru	Рабби Ицхак бен Элазар ха-Леви, известный под прозвищем «Сеган Левия»
+296	HMZspSg9ujQ	474	en	The World of Piyyut and Halakha: The Teachings of Rabbi Yitzhak ibn Giat and the Traditions of Spain
+297	Z5oH9lR9tZo	424	ru	Мир пиютов и галахи: учение рабби Ицхака ибн Гиата и традиции Испании
+298	19XGMEJ3LoY	450	en	Rabbi Nathan of Rome and the Sefer Ha-Arukh: Tradition, Language, and Halakhah
+299	-asHB4Ewm_A	500	ru	Рабби Натан из Рима и «Сефер ха-Арух»: традиция, язык и галаха
+300	7-x93C0iTs4	472	ru	Рабби Саадия Гаон: его учение, труды и исторические полемики
+301	T3hG4115Cfk	460	en	Rabbi Saadia Gaon: His Thought, Works, and Historical Controversies
+302	B7dQL1mV29k	409	en	Rabbi Moshe HaDarshan – The Sage Who Shaped the World of Midrash in Europe
+303	OaN2uwYLzKY	416	ru	Рабби Моше а-Даршан – мудрец, сформировавший мир мидраша в Европе
+304	RYT4Z85a2TY	493	ru	Рабби Давид Пардо и революция в толковании Тосефты в книге «Хасдей Давид»
+305	U6Jz3o9QeI0	348	en	Rabbi David Pardo and the Revolution in Tosefta Interpretation in Chasdei David
+306	JXPDRMNygUo	416	en	Shlomo Munk – The Blind Man Who Opened Europe’s Eyes
+307	TB8T3gR9Omw	483	ru	Шломо Мунк – слепой, открывший глаза Европе
+308	AKaU3ACKg08	563	ru	Наследие сефардского еврейства: от изгнания к рассеянию и до наших дней
+309	p9Ga-GF7Ccg	459	en	Sephardic Jewish Heritage: From Expulsion to Diaspora and Until Our Time
+310	JuRIsLggxwU	441	ru	Современная сефардская революция — рав Овадья Йосеф и возрождённая корона
+311	UdGSWUkqtUI	552	en	The Modern Sephardic Revolution – Rabbi Ovadia Yosef and the Crown Reborn
+312	21WBLQ8ETjc	341	ru	Рабейну Бахья бен Ашер: между пшат и сод
+313	A9WGoajqE-g	462	en	Rabbeinu  Bahya ben Asher: Between Peshat and Sod
+314	baFE4sw4wi4	440	en	Menachem Mendel of Vitebsk: Leadership, Hasidism, and Aliyah to the Land of Israel
+315	Hkexsl2it6s	476	ru	Менахем Мендл из Витебска: лидерство, хасидизм и алия в Землю Израиля
+316	R2ZKRgGHDhw	398	ru	Рамбан: интеллектуальный и полемический портрет и его торческое наследие от Жироны до Иерусалима
+317	wiaVl7oe37Q	519	en	The Ramban: An Intellectual and Polemical Portrait and His Torah Creativity from Girona to Jerusalem
+318	VO2DSrVt-mI	439	en	The Mussar Movement and Rabbi Israel Salanter: Between Thought and Psychology
+319	Her-LcEzYPU	521	ru	Движение мусар и рабби Исраэль Салантер: между философией и психологией
+320	VjbKrBNOTkg	469	ru	Маариль Дискин: Пламенный хранитель Торы и создатель Старого ишува
+321	tTQrbSuvj08	448	en	The Maharil Diskin: The Fiery Torah Scholar and Founder of the Old Yishuv
+322	opuzk7ph6_o	405	en	The Lubavitcher Rebbe: Engineer, Leader, and Herald of Redemption
+323	tXLX6gTUm94	423	ru	Любавичский Ребе: инженер, лидер и вестник Избавления
+324	RpFBvcWIKS8	459	en	Abraham Abulafia: Prophetic Kabbalah and the Secret of Letter Permutation
+325	Meyf-0CHBJo	323	ru	Авраам Абулaфия: пророческая каббала и тайна сочетания букв
+326	1rHzqiQzvPs	404	ru	Гаон рав Йосеф Кафих: наследие, исследования и учение Рамбама
+327	OxHbyOdiFSE	458	en	Rabbi Yosef Qafih: Legacy, Scholarship, and the Teachings of Maimonides
+328	9w3tpSxCG_A	470	en	The Maharsha – the man who connected intellect, heart, and public responsibility
+329	oKZzcHz2jlE	431	ru	Маарша — человек, соединивший разум, сердце и общественную ответственность
+330	ICCDMlkMvPU	470	ru	Маhаршаль: его учение, полемика и путь в галахе и каббале
+331	CCDWA-LGLNA	424	en	The Maharshal: His Teachings, Polemics, and Path in Halakha and Kabbalah
+332	bB15zwrvVTg	504	ru	Рабби Йом-Тов Липман Галлер — его личность, учение и эпоха
+333	-lUoOXHkUtI	397	en	Briefing: Rabbi Yom-Tov Lipmann Heller – His Figure, Thought, and Era
+334	s7NQCbMVv90	476	en	Shlomo Molcho: The Messianic Kabbalist and His Self-Sacrifice for the Sanctification of God’s Name
+335	A5Zh4dbKGoA	457	ru	Шломо Молхо: мессианский каббалист и самопожертвование во имя освящения Имени
+336	0Grw9xmokQs	403	en	Rabbi Shlomo Alkabetz: Architect of Kabbalah, Shabbat, and Liturgical Poetry in Safed
+337	v5Aoa0zeIYY	502	ru	Рабби Шломо Алькабец: архитектор каббалы, субботы и литургической поэзии в Цфате
+338	To2EA3VY0VU	483	ru	Саба из Слободки и царство величия человека: от Литвы к Хеврону и Иерусалиму
+339	ABRNJx1bSZE	465	en	The ḤIDA: Between Halakhah, Kabbalah, and Bibliography
+340	I2IthCb6BSo	444	ru	Хида: между галахой, каббалой и библиографией
+341	XqiW1-Q_dkY	436	en	The Grandfather of Slabodka and the Kingdom of Human Greatness: From Lithuania to Hebron & Jerusalem
+342	AmkB2QZ4HA8	466	ru	Рабби Рафаэль Барух Толедано: лидерство, Галаха и наследие марокканского еврейства
+343	UTd-PzczMhI	351	en	Rabbi Raphael Baruch Toledano: Leadership, Halakhah, and the Heritage of Moroccan Jewry
+344	fN4wj_4nPac	356	en	Rabbi Mordechai Attiya – the Kabbalist who saw Zionism as a cosmic rectification
+345	OzNrMveex_c	365	ru	Рав Мордехай Аттия — каббалист, видевший в сионизме исправление миров
+346	DT9CpfJgA4Q	411	en	Rabbi Aharon Kotler and the Legacy of the Yeshiva World in America
+347	MNf7xuRGHKw	416	ru	Рабби Аарон Котлер и наследие мира ешив в Америке
+348	6Ljolsuf41Q	419	en	Hakham Menachem Menashe – the Tinsmith Who Was One of the Hidden Righteous
+349	Vt1L2pvzvh4	482	ru	Хахам Менахем Менаше — жестянщик, принадлежавший к скрытым праведникам
+350	vQrUHN44lBs	273	ru	Рабби Элиягу Мизрахи (РЭЭМ) — человек, научивший мир тому, как по-настоящему изучать Раши
+351	d6_ivh-C8rk	408	en	Rabbi Elijah Mizrahi (the Re’em) – the man who taught the world how Rashi should truly be studied
+352	h0NH3WSv5YA	471	ru	Рабби Ниссим из Гироны (Ран): лидерство, галаха и философия в испанском иудаизме
+353	2XJJabgWnnc	459	en	Rabbi Nissim of Girona (Ran): Leadership, Halakha, and Philosophy in Spanish Judaism
+354	MNDEQBKN0Es	448	en	The Maharil Diskin: The Zealot for Torah and Founder of the Old Yishuv
+355	uj5lOToLAEk	469	ru	Маhариль Дискин: ревнитель Торы и основатель старого ишува
+356	LfvYLMFkpPQ	398	ru	Рамбан : интеллектуальный и полемический портрет и его Торо́вское наследие — от Гироны до Иерусалима
+357	ZzkrglHsFzo	519	en	Ramban: An Intellectual and Polemical Portrait and His Torah Legacy from Girona to Jerusalem
+358	lik5L505iH0	514	ru	Рабби Йеуда ха-Наси: между завершением Мишны и руководством народом
+359	65LGLt1b1M8	456	en	Rabbi Judah the Prince: Between the Sealing of the Mishnah and the Leadership of the People
+360	WoOqXITVTK8	409	ru	Ребе Раяц: жизнь, борьба и освобождение
+361	c8ooCzew1jY	400	en	The Rebbe Rayatz: A Life of Leadership, Struggle, and Redemption
+362	bYjp_4IwKDg	343	ru	Рабби Моше из Куси — человек, который видел сожжение Талмуда и построил из него башню
+363	diLTJBy2Jag	400	en	Rabbi Moses of Coucy – the man who saw the Talmud burned and built a tower from it
+364	Edtc41JuKoQ	368	ru	Хасдай ибн Шапрут и Золотой век в мусульманской Испании
+365	m1y3lw3Ie8k	391	en	Hasdai ibn Shaprut and the Golden Age in Muslim Spain
+366	cWkL7SblnzA	477	en	Rabbi Akiva and the Bar Kokhba Revolt: Between Faith, Mysticism, and History
+367	o8MRkCu3L3k	389	ru	Рабби Акива и восстание Бар-Кохбы: между верой, мистикой и историей
+368	TavL4Mjk7g0	359	ru	Рав Овадия Адая: опора галахического учения, каббалы и сионизма
+369	vBnD4aZ_OY8	445	en	Rabbi Ovadia Hadaya: A Pillar of Halakhic Authority, Kabbalah, and Zionism
+370	Z2ywjHTTFuE	368	en	Rabbi Yitzhak Alfiya: His Teachings and Legacy
+371	Ukw-oKFNOus	425	ru	Рабби Ицхак Альфия: его учение и деятельность
+372	mSwsevTfIbE	376	en	The Legends of Rabbah bar bar Ḥana: Mystery, Allegory, and Reality
+373	ItTVEvyZgWw	415	ru	Агадот Раббы бар бар Ханы: тайна, аллегория и реальность
+374	Mrqy1OXaNlM	384	en	The Legacy of Rabbi Ḥiyya and His Sons
+375	5KDTHavLk3U	516	ru	Наследие раби Хии и его сыновей
+376	wcJxuOK2dE4	450	en	Rabbi Aryeh Levin: The Father of Prisoners and the Righteous Man of Jerusalem
+377	Oi9DjhHkLaU	478	ru	Рабби Арье Левин: отец заключённых и иерусалимский праведник
+378	WsQIhjMCoD0	410	en	Baba Sali: His Life Story, Legacy, and Miracles of Sidna Baba Sali
+379	vacWbrO6-eA	219	ru	Баба Сали: жизненный путь, наследие и чудеса Сидна Баба Сали
+380	tPrp9x3x1qY	450	ru	Послание Аристея и Септуагинта: история, миф и интерпретация
+381	a7EkTYHAuGs	462	en	The Letter of Aristeas and the Septuagint: History, Myth, and Interpretation
+382	45auP5om2UY	431	ru	Шимон бен Шетах: архитектор галахи, права и общества во времена Храма
+383	pO3Q-MvYB4k	518	en	Shimon ben Shetach: Architect of Halakha, Law, and Society in the Days of the Temple
+384	vyuGrknqd9g	412	ru	Эммануэль Левинас: этика, феноменология и лицо Другого
+385	e9KpVSP9s9E	444	en	Emmanuel Levinas: Ethics, Phenomenology, and the Face of the Other
+386	0x9PQIt6dhk	422	ru	Эли Визель: вера, память и рассказ в тени Холокоста
+387	uieL_mS1vfE	399	en	Elie Wiesel: Faith, Memory, and Story in the Shadow of the Holocaust
+388	ExXX4KtZnyo	471	ru	Рабби Йона ибн Джанах: отец грамматиков
+389	J99rxn7meSI	433	en	Rabbi Jonah ibn Janah: The Father of the Grammarians
+390	2H2TiQbQUvk	385	ru	Гаон рабби Шломо Залман Ауэрбах: галахический авторитет эпохи модерна
+391	WvYmgdvQa2M	509	en	Rabbi Shlomo Zalman Auerbach: A Leading Halachic Authority in the Modern Era
+392	9TVO7XytyN4	479	en	The Legacy of the Chafetz Chaim: Halacha, Kindness, and Leadership in the Modern Era
+393	n8omRHtaIXU	315	ru	Наследие Хафец Хаима: галаха, милосердие и лидерство в новейшее время
+394	ARiH1Rj5xY8	421	ru	Рабби Ицхак из Вены, автор «Ор Зару́а» — человек, посеявший свет между Талмудами
+395	512lSocpjjs	380	en	Rabbi Isaac of Vienna, Author of the Or Zarua – the Man Who Sowed Light 
+396	rfZNADRiPjw	421	ru	Раби Элиэзер бен Йоэль ха-Леви (Раавия): его наследие, галахические решения и история жизни
+397	RDA9SnI7ZD0	456	en	Rabbi Eliezer ben Joel HaLevi (Ra’avyah): His Legacy, Halakhic Authority, and Life Story
+398	lVjrbFo5Ts4	386	en	Rabbi Eliezer ben Nathan – the Ra’avan: The Scholar Who Wrote the First Halakhic Book of Ashkenaz
+399	ONf5F3Lv8zc	447	ru	Рабби Элиэзер бен Натан — Рааван: мудрец, написавший первую галахическую книгу Ашкеназа
+400	_Xj-R0KVDCo	462	en	Rabbi Mordechai ben Hillel: The Sefer Mordechai and Its Place in Halakhic History
+401	lWft0zgbZwM	451	ru	Рабби Мордехай бен Гиллель: «Сефер Мордехай» и его место в истории галахи
+402	nAV7hB3__Lk	288	en	Yalkut Shimoni – the book that introduced nothing new, yet saved an entire world
+403	Uxpwp_8Mf04	314	ru	Ялкут Шимони — книга, которая не внесла ничего нового, но спасла целый мир
+404	ixo0Ng7SFaI	377	ru	Маарам из Ротенбурга: лидерство, галаха и власть общины в Ашкеназе
+405	elwVhjoLh2g	379	en	Maharam of Rothenburg: Leadership, Halakha, and Communal Authority in Ashkenaz
+406	QkMGSEKSloA	396	ru	Рабби Гершом Маор ха-Гола: лидерство, постановления и ашкеназское наследие
+407	iIawKcomtms	387	en	Rabbeinu Gershom, the Light of the Exile: Leadership, Decrees, and the Ashkenazic Legacy
+408	zIwn1eBSnAc	405	en	Éliane Amado Lévy-Valensi – the thinker who saw Abraham as the founder of history
+409	lSBPCGUSyDg	471	ru	Элиан Амадо Леви-Валенси — мыслительница, увидевшая в Аврааме того, кто учреждает историю
+410	BjmaBm1HFbo	351	ru	Андре Нер и современная еврейская мысль во Франции
+411	6Mup_Uzm18g	320	en	André Neher and Modern Jewish Thought in France
+412	ktMKTGYOM5A	419	en	The Chatam Sofer: Shaping Orthodoxy Between Conservatism and Modernity
+413	bIprJgy_hAE	346	ru	Хатам Софер: формирование ортодоксии между консерватизмом и модерном
+414	sjsfmY3JHck	360	en	Rabbi Yaakov Abuhatzira: The “Abir Yaakov” – Legacy, Torah, and Wonders
+415	br5KoEKYfNY	293	ru	Рабби Яаков Абуцхира: «Абир Яаков» — наследие, Тора и чудеса
+416	cWRw7Msa4_M	369	ru	Рабби Авраам Абели ха-Леви Гомбинер: автор книги «Маген Авраам»
+417	fc4v6HpMukM	421	en	Rabbi Abraham Abele HaLevi Gombiner: Author of the “Magen Avraham”
+418	l8T39ViQofk	362	ru	Меири: его галахическое, экзегетическое и философское учение
+419	E6ZIUMBfZzk	476	en	The Meiri: His Halakhic, Exegetical, and Philosophical Legacy
+420	hXuQ9qj9KXQ	408	ru	Рабби Авраам Данциг: автор «Хаей Адам» и его галахическое учение
+421	QOZBGReAPLA	374	en	Rabbi Abraham Danzig: Author of Chayei Adam and His Halakhic Thought
+422	L3QYphJftL0	476	en	The Legacy of Maimonides: Halakha, Philosophy, and Medicine
+423	oTMlHYkU8EI	416	ru	Наследие Рамбама: галаха, философия и медицина
+424	hMU6FHyskxg	484	ru	Мир Баха: галахическое решение, аналитическое мышление и наследие Байт Хадаш
+425	BfONy_IOmsQ	432	en	The World of the Bach: Halakhic Rulings, Scholarship, and the Legacy of Bayit Chadash
+426	OlCwbut_kfc	451	ru	Рабби Шабтай ха-Коэн (Шах) — человек, превративший «Шульхан Арух» в интеллектуальное поле битвы
+427	_w9R_rFvReU	389	en	Rabbi Shabbetai HaKohen  – The Man Who Turned the Shulchan Aruch into an Intellectual Battlefield
+428	EfMLCZVUz68	419	en	Rabbi David HaLevi Segal – The Taz: A Halakhic Authority Who Turned Law into Living Reality
+429	ztC3R2CNsNk	463	ru	Рабби Давид га-Леви Сегаль — Таз: галахический авторитет, превративший закон в живую реальность
+430	O6m3I3yIqMM	482	en	The Mahralbach: Leadership, Halakhah, and the Semikhah Controversy in Jerusalem
+431	6JNrGW73kSU	426	ru	Маhаралбах: лидерство, галаха и полемика о סמיכה в Иерусалиме
+432	7q2m3PmYxIw	470	en	Rabbi Jacob Berab – The Rabbi Who Nearly Restored Authority to the Jewish People
+433	zbholz3FoVQ	435	ru	Рабби Яаков Бираб — раввин, который почти вернул еврейскому народу его духовную власть
+434	XTcC_QSMfYc	374	en	Otzarot HaRa’ayah and the Thought of Rabbi Moshe Tzuriel
+435	u7rwTB4ZYq8	416	ru	«Оцрот ха-Раая» и учение раввина Моше Цуриэля
+436	M1XvqQQP-AM	540	ru	ШЛА hа-Кадош и Ор hа-Хаим hа-Кадош – два голоса, одна революция
+437	Ne_fHLX2gjk	354	en	The Shelah HaKadosh and the Ohr HaChaim HaKadosh – Two Voices, One Revolution
+438	7qRFGN5xO8k	352	ru	Махарам Альшкар: ключевые вехи в галахе, мысли и полемике о возобновлении סמיכה
+439	1mmUmm3SC60	492	en	Maharam Alshakar: Milestones in Halakhah, Thought, and the Ordination Controversy
+440	i2KZCDB2RHU	352	ru	Маhарам Альшкар: вехи в галахе, мысли и полемике о возобновлении смихи
+441	NmvQTeBrkms	492	en	Maharam Alashkar: Milestones in Halakhah, Thought, and the Semikhah Controversy
+442	3RaB87PhVjs	325	ru	«Эйн Яаков»: мир и наследие рабби Яакова ибн Хабиба
+443	eF-1X93-6jI	317	en	Ein Yaakov: The World and Legacy of Rabbi Jacob ibn Habib
+444	gYP7i6rUTQQ	387	ru	Рош: лидерство, галаха и наследие между Ашкеназом и Сефарадом
+445	6xpkRFDm_Go	449	en	The Rosh: Leadership, Halakhah, and Legacy Between Ashkenaz and Sepharad
+446	U_JUh6tGdAM	403	ru	Наследие Рифа и сефардская цепь галахического законотворчества
+447	kkcdpEijKKU	307	ru	«Арбаа Турим» и Бааль ха-Турим: архитектура галахи и толкование Торы
+448	kzg117o0wX8	419	en	The Arba’ah Turim and the Ba'al HaTurim: The Architecture of Halakhah and Biblical Commentary
+449	Waeq9WqGwFM	480	ru	Свет Бреслава: учение рабби Нахмана и дело рабби Натана
+450	G12UVF3WftA	472	en	The Light of Breslov: The Teachings of Rabbi Nachman and the Work of Rabbi Nathan
+451	yVmnV3bc11I	431	ru	Эзра-книжник и восстановление Израиля
+452	eD8HU682GZo	457	en	Ezra the Scribe and the Restoration of Israel
+453	ayrL1xWdbH0	479	ru	Наследие раввина Закса: посланник Торы в современном мире
+454	LUArMPoycxc	407	en	The Legacy of Rabbi Sacks: An Ambassador of Torah in the Modern World
+455	Yf2iOgUggqc	415	ru	Династия Бриска: мировоззрение, лидерство и метод обучения
+456	nPEiqToKuTE	525	en	The Brisk Dynasty: Thought, Leadership, and the Method of Study
+457	3LPnIGfe8GY	508	en	Religious Authority and Imperial Policy in Ancient Rome
+458	LJjUME0eG6g	304	ru	Религиозная власть и имперская политика в Древнем Риме
+459	PgF5k3u4JVU	377	en	Abraham Maimonides: Rationalism, Sufism, and the Defense of His Father’s Legacy
+460	Bg4_G8RzZnA	318	ru	Авраам Маймонид: рационализм, суфизм и защита наследия отца
+461	suR4WZYbvQI	370	ru	Рабейну Там: архитектор талмудической учености и наследие тосефистов
+462	s0OXFxwzbvY	371	en	Rabbeinu Tam: Architect of Talmudic Scholarship and the Tosafists’ Legacy
+463	-MYV1OKRUMg	588	ru	Систематизированная душа: Моше Кордоверо и каббалисты Цфата
+464	2GNEXzjL9XA	445	en	The Systematized Soul: Moses Cordovero and the Safed Kabbalists
+465	KDIDft-UrlQ	366	ru	Раввин Хаим Друкман: лидерство, тороучение и институты «Ор Эцион»
+466	y8lCLSb5iC8	429	en	The Kabbalah: How Tradition Became a Meta-Map of Creation, and Redemption Adolf Franck’s Perspective
+467	PMFCHrSsrvQ	527	ru	Каббала: как «традиция» превратилась в метакарту творения, зла и искупления — взгляд Адольфа Франка
+468	ASOGLLfZ_DE	390	ru	Раввин Авраам Джошуа Хешель — философия, нравственная ответственность и человеческая вовлечённость
+469	qGvEP-M3giA	330	en	Rabbi Abraham Joshua Heschel – Thought, Moral Responsibility, and Human Engagement
+470	fkB-Y0geQvA	332	en	Rabbi Chaim Druckman: Leadership, Torah Thought, and the Or Etzion Institutions
+471	VTU-WlOa-Hk	377	en	Rabbi Shmuel Mohilever: Pioneer of Religious Zionism
+472	vUjK21VU1Ww	359	ru	Раввин Шмуэль Моаливер: пионер религиозного сионизма
+473	r7DU9avIsf4	477	ru	Рабби Йехиэль Михель Эпштейн и «Арух ха-Шулхан»
+474	uHi3P8JTaYE	428	en	Rabbi Yechiel Mikhel Epstein and the Arukh HaShulchan
+475	lSjipsMeeN8	433	ru	Послание рава Шерира Гаона: передача Устной Торы
+476	NbRX0_4a0YU	471	en	The Epistle of Rav Sherira Gaon: The Transmission of the Oral Torah
+477	fF1fkXyG-IU	449	ru	Франц Розенцвейг и его учение: иудейская теология и философия
+478	-KEL3MtX4nU	541	en	Franz Rosenzweig and His Thought: Jewish Theology and Philosophy
+479	hhjJiHIE1gs	439	en	The Philosophy of Rabbi Yehezkel Landau
+480	k5g7dfUeBlw	372	en	“Duties of the Heart”: The Essence of Jewish Ethics
+481	eEk1_6ItRcY	411	ru	«Ховот ха-Левавот»: сущность иудейской этики
+482	0pR5G_e6puA	412	ru	Учение рава Кука: единство, искупление и религиозно-национальное возрождение
+483	CXzNmkVRL0s	451	en	The Teachings of Rabbi Kook: Unity, Redemption, and Religious-National Revival
+484	CO29eKFHEmc	472	en	Rabbi Yosef Chaim of Baghdad: Teachings, Social Critique, and Legacy
+485	ST3uDsJdluA	417	ru	Рабби Йосеф Хаим из Багдада: учение, социальная критика и наследие
+486	dQ69FzKEc94	401	en	Alkalai: The Harbinger of Political Zionism
+487	CB65dvhz6lA	390	ru	Алкалай: Предвестник политического сионизма
+488	30St_Dug_1g	403	en	Rabbi Zvi Hirsch Kalischer – Religious Zionism Before Zionism
+489	LWaFSpY45E8	396	ru	Рабби Цви Гирш Калишер — религиозный сионизм до сионизма
+490	kwwXYrRICV8	447	ru	Философия раввина Йехезкеля Ландау
+491	I4iSync7vvQ	413	en	Rabbi Yaffe and the Architecture of the Golden Age
+492	iyC5zUxayyU	345	ru	Рабби Яффе и архитектура Золотого века
+493	YHggVMwG7FE	401	en	The Mysticism and Thought of Rabbi Zadok HaKohen of Lublin
+494	EzzrD5P9qvo	386	ru	Мистика и мысль раввина Цадока а-Коэна из Люблина
+495	eGf4x9EmZPY	400	en	The Sages of Provence: Renaissance, Kabbalah, and Philosophy
+496	_uAhnK-DRuE	319	ru	Мудрецы Прованса: Ренессанс, каббала и философия
+497	frMqYX-cjBU	494	ru	Биньямин из Туделы: средневековый еврейский путешественник
+498	XMC8HPXGRpk	359	ru	Рабби Шауль Израэли: Псак, Галаха и Государство
+499	UeETQMMzi8c	454	en	Rabbi Shaul Yisraeli: Halakhic Rulings, Law, and the State
+500	u84i8JBpXDA	421	ru	Шимон Кефа – христианский мученик или сокровенный праведник, посланный мудрецами Израиля?
+501	R5vUpyUbgkY	400	en	Shimon Kefa – Christian Martyr or a Hidden Righteous Agent Sent by the Sages of Israel?
+502	2Mohy9a-MhU	436	ru	Рабби Моше-Цви Нерия: мировоззрение, деятельность и увековечивание памяти
+503	dYCrlSFT2Tc	387	en	Rabbi Moshe Tzvi Neria: Thought, Activity, and Legacy
+504	DP5jmqScdkQ	474	en	Rabbi Abraham Azulai – the Kabbalist who rebuilt the worlds of Sod
+505	hgAK0AYadZ4	431	ru	Рабби Авраhам Азулай — каббалист, который заново выстроил миры тайной мудрости 
+506	TBMI1NhMLYM	567	en	Rabbi Moshe Hagiz – The Jerusalem Zealot Who Tried to Save Judaism from Internal Collapse
+507	dr5QO159wCw	400	ru	Рабби Моше Хагиз — иерусалимский ревнитель, который пытался спасти иудаизм от внутреннего распада
+508	bZExqr6-xwg	421	ru	Элиягу Бен-Амозег: философия и каббала, Израиль и человечество
+509	4cjauEuG0zc	488	ru	Акилес из Понта — прозелит, превративший греческий язык в оружие Торы
+510	BDVUJqIUl6w	486	en	Aquila of Pontus – the Convert Who Turned the Greek Language into a Weapon of Torah
+511	WpZE3-VDjqA	478	ru	Рав Иехуда Арье Модена – портрет гения, боровшегося с самим собой
+512	Y4owf1ghTBA	418	en	Rabbi Yehuda Aryeh Modena – A Portrait of Genius Fighting Itself
+513	8n_2rHJxY_w	452	ru	Шадаль: мыслитель, поэт и комментатор
+514	e0UU_AcaYAg	427	en	Elia Benamozegh: Philosophy and Kabbalah, Israel and Humanity
+515	8SXhCEWNIiY	404	en	Shadal: Thinker, Poet, and Commentator
+516	M0cUg_YSLFk	472	en	Analysis of Halakha and the Thought of the Rema
+517	2-BMSlpVodA	426	ru	Изучение Галахи и мировоззрения Рэма
+518	-55qQi_UwTE	247	ru	Шабази, «Хемдат Ямим» и йеменское наследие
+519	Mxis3A_SAPU	351	en	Shabazi, Hemdat Yamim, and the Yemenite Heritage
+520	H5uIKNUyubQ	312	ru	Рабби Эфраим Навон и «Махане Эфраим»
+521	_8SN0I-7CoY	354	en	Rabbi Ephraim Navon and Machaneh Ephraim
+522	okFKcDZFOxY	451	ru	Рабби Гершон из Китовa: мост каббалы и пионер распространения
+523	YpNxfpCkSWg	457	en	Rabbi Gershon of Kitov: A Bridge of Kabbalah and a Pioneer of Dissemination
+524	ZXMnPANtiXw	409	ru	«Шаар hа-Мелех» к «Мишне Тора»
+525	79rKPdmmKM4	392	en	The “Prince of Torah”: The Encyclopedic Legacy of Rav Kanievsky
+526	LB1W0gByREA	437	ru	«Князь Торы»: Энциклопедическое наследие раввина Каньевского
+527	V8JzEaRajfw	531	en	Rav Chaim of Brisk: Method, History, Alliance 
+528	0FQdwX6gQ2U	364	en	Ketzot HaChoshen: Pledges and Bailees in Jewish Law
+529	HUm6ZNwyWQA	396	ru	Рав Хаим из Бриска: Метод, История, Союз
+530	G-CZnuD4sWs	369	ru	Рав Шломо Карлебах и синагога Карлебаха 
+531	rDjWSWF6Jkk	454	en	Rabbi Shlomo Carlebach and the Carlebach Synagogue
+532	Y-zL2hRyOEE	406	ru	«Кцот ха-Хошен»: залог и ответственность хранителя в еврейском праве
+533	HYYyqN8tG2M	383	en	Mishneh LaMelekh: A Forerunner of Modern Analytical Learning
+534	5GWVmoRSSCM	368	ru	«Мишне ле-Мелех»: предвестник современного аналитического учения
+535	aUSP0aDUHAc	480	en	Rabbi Harlap’s Teaching: The Light of Redemption
+536	guOXopbKGUk	456	ru	Учение раввина Харлапа: Свет Искупления
+537	4jSAZxRwNeI	474	ru	Рабби Калфон Моше а-Коэн: Галахический авторитет и сионистский лидер 
+538	rrilooQ8bSw	412	en	Rabbi Khalfon: Halakhic Decisor and Zionist Leader
+539	WDoRhJSn7ZQ	375	ru	Гиллель Цейтлин: на границе двух миров
+540	KwuZs9YkF44	427	en	Hillel Zeitlin: On the Border of Two Worlds
+541	ppidjHnQAfw	373	ru	Полемика вокруг Зоара: Либес, Моше де Леон и Ицхак из Акко
+542	Pfp1BGTanFU	437	en	The Zohar Controversy: Liebes, Moses de León, and Isaac of Acre
+543	7Q4Ko9rvn1c	369	en	Menahem ben Saruq: Reviving the Holy Tongue
+544	ju-wq16y4z4	420	ru	Менахем бен Сарук: Возрождение святого языка
+545	GFjSDWEX5iY	398	ru	Радбаз – величайший постановщик закона, который устоял, когда основы веры дрожали
+546	-rfTiUpV0WM	376	en	The Radbaz – the great halakhic authority who stood firm when the principles of faith were shaken
+547	7XvsRGX7oXA	374	en	The Piaseczno Rebbe – the master who revealed the depth of the soul even in the darkest hours
+548	USnwMr659sE	412	ru	Пясечненский ребе – праведник, раскрывший глубины человеческой души даже в часы тьмы
+549	Dmc5ELj1zzk	475	en	Paths of the Talmud: The Analytical Method of Kanfaṇton
+550	l0vP0mGFpv0	412	ru	Пути Талмуда: аналитический метод Канфантона
+551	pfhmR70iwVk	426	en	Rabbi Akiva Eiger: His Life, Teachings, and Halachic Rulings
+552	Y0UGWrIwvRU	352	ru	Рабби Акива Эйгер: жизнь, учение и галахические постановления
+553	HvMt-duFwZA	471	en	Rabbi Shalom Sharabi: The Father of Sephardic Kabbalists and the World of Kavanot
+554	h6AoD4qlCPw	509	ru	Рабби Шалом Шараби: отец сефардских каббалистов и мир кавванот
+555	VrCjZHi8QRQ	350	en	Rabbi Eliyahu Guttmacher – The Saint of Greiditz Who Opened the Gates of Practical Redemption
+556	q7lpXfIn2YA	453	ru	Рав Элиягу Гутмахер – праведник из Грейдица, открывший ворота практического искупления
+557	88r1sRM-Dow	307	en	Isaac Arama: The Akeidah, a Difficult Vision, and a Revolution in Interpretation
+558	1rf1ReptsmQ	415	ru	Ицхак Араама: «Акида», трудное видение и революция в толковании
+559	RwJV0m6byqU	303	ru	Рав Цион Хавив Браха – скрытый каббалист, связавший поколения традиции Рашаша
+560	uS2JTq4xVJo	435	en	Rabbi Zion Haviv Bracha – the hidden kabbalist who bridged the generations of the Rashash tradition
+561	yAFcbHgZh5c	389	en	Rabbi Avichai Rontzki: Warrior, Military Rabbi, Leader
+562	6KhQR-Y3WR4	409	ru	Рав Авихай Ронцки: воин, военный раввин, лидер
+563	T0dmGJYjTBg	399	ru	Рав Меир Кахане — идеология, деятельность и наследие, продолжающие потрясать Израиль
+564	x_YuhpmskCM	437	en	Rabbi Meir Kahane – The Ideology, Activism, and Legacy That Continue to Shake Israel
+565	dizAAlZoORM	426	en	Rabbi Tzvi Yehuda Kook: Educator and Ideologue of a Generation
+566	WCsz7dDVNyw	426	ru	Рав Цви Иегуда Кук: воспитатель и идеолог поколения
+567	fQl2cdE5Kp8	375	en	Rabbi Elazar Birabi Kalir and His Liturgical Poetry: A Collection of Studies
+568	PM-wTEsSnH4	371	ru	Рабби Элазар бен рабби Калир и его литургическая поэзия: собрание исследований
+569	sk-8_se67No	423	en	Rabbi Abraham ibn Daud – The Sephardic thinker who restored sacred intellect to its rightful place
+570	0vbc9ck6Cp0	382	ru	Рабби Авраам ибн Дауд – сефардский мыслитель, который вернул святой разум на его истинное место
+571	LPctSZFc1Ok	398	en	Rabbi Yitzhak Sagi Nahor – the Blind Sage Who “Saw” the Secrets of Creation
+572	Zs2RLQN4GZE	433	ru	Рабби Ицхак Саги Наhор – слепой мудрец, который “видел” тайны творения
+573	YCmFh12Oa7k	458	ru	Рабби Яаков Эмден — воин-мудрец, который не боялся истины
+574	LjUdBVLTjWI	485	en	Rabbi Yaakov Emden – The Warrior Sage Who Feared No Truth
+575	N4VkJHxmCyw	401	en	The Book of Ben Sira: Wisdom, Canon, and Rabbinic Reception
+576	wXKpszj-v6c	395	en	Rabbi Chaim David Halevi – the rabbi who brought Halakha back to life, and life back to Halakha
+577	LaxBMDaBkts	456	ru	Книга Бен Сира: мудрость, канон и отношение мудрецов
+578	UxZMPvEL6y4	465	ru	Рав Хаим Давид ха-Леви – раввин, который вернул Галаху к жизни, а жизнь — к Галахе
+579	rKV8pFNPoNc	420	en	Rabbeinu Chananel – Charting a Path Through the Sea of Talmud
+580	78fXQnBLjTc	403	ru	Рабейну Хананель – проводник в море Талмуда
+581	BsdAXcdUv-8	426	en	Rabbi Jacob Sasportas – The Lone Warrior Against Messianic Fervor
+582	Zo1APYsCUGc	462	ru	Рабби Яаков Шешпортас – одинокий борец против мессианского пыла
+583	hfCTq-3SG2w	413	en	Rav Hai Gaon: Last of the Geonim, First of the Greats
+584	95zK1eE05_w	456	ru	Рабби Хай Гаон – последний из Гаонов и первый из Великих:человек, восстановивший твёрдость Галахи
+585	J5lA2_D9PrY	490	en	The Talmud Trial of 1240 in Paris
+586	e2gK9CVUvxw	410	ru	Парижский процесс над Талмудом 1240 года
+587	VsFl1kfc-30	479	en	Moshe David Vali's Hermeneutical Methodology
+588	MOaM2q3yLeg	354	ru	Методология герменевтики Моше Давида Вали
+589	N_VZqV5fzNo	379	ru	Учение Рамхаля: Каббала, Этика и Мессианство
+590	2YLu1YF2Www	341	en	The Doctrine of the Ramchal: Kabbalah, Ethics, and Messianism
+591	XPtZlcrgnKs	391	en	Rabbi Levi Saadia Nachmani – His Character and Prophetic Legacy
+592	YQc8_y-dnpE	372	ru	Рав Леви Саадия Нахмани — черты его личности и пророческое наследие
+593	V7L8nIRQO3I	491	ru	Рабби Йосеф Альбо – мудрец, сохранивший веру во времена кризиса
+594	gmQs0iEFQo0	458	en	Rabbi Joseph Albo – The Sage Who Preserved Faith in a Time of Crisis
+595	Q-Xyz1QIjRM	429	en	Rabbi Ovadia of Bartenura – The Reviver of Torah in Jerusalem
+596	4gIWbVxeqY0	439	ru	Рабби Овадия из Бартенуры – Возродитель Торы в Иерусалиме
+597	TRDE4AG2kLE	355	en	Rabbi Meir Zini: The Heroic Leader Bridging Algeria, Auschwitz, and Montmartre
+598	kNOJeHVpaRU	442	ru	Рабби Меир Зини: Герой-лидер, соединивший Алжир, Аушвиц и Монмартр
+599	Y-9QRCgya0g	449	en	Rivash: Torah, Philosophy, and Communal Authority
+600	fWRI-DZMTpg	401	ru	Рибаш: Тора, философия и общинная власть
+601	F6OpXRNgnEA	399	ru	Экзегеза Торы рабби Йосефа Бехор-Шора
+602	6sry43yaGQA	371	ru	Рабби Исраэль Аланкава и его труд «Менорат ха-Маор»
+603	Cb2El3-5EYY	328	en	Rabbi Yisrael Alnakawa and His Work Menorat Ha-Ma’or
+604	L03uSsP6N4E	328	en	Rabbi Yitzhak Abuhav – The Light of Generations, Author of “Menorat Ha-Maor”
+605	pE9lqQ7vziM	371	ru	Рабби Ицхак Абухав — Свет поколений, автор «Менорат ха-Маор»
+606	V8-UTxd-8bA	408	en	Meshech Chochmah: Exile, Destiny, and Holiness
+607	P3ez1FM8JmA	386	ru	Мешех Хохма: Изгнание, предназначение и святость
+608	WrOqrIzred0	456	en	Rabbi Hasdai Crescas – Philosopher, Halakhic Authority, and Leader in a Time of Crisis
+609	nBGArPbfedw	423	ru	Рабби Хасдай Крескас – философ, законоучитель и лидер в эпоху кризиса
+610	3q5n5tvD3Uc	547	en	Joseph Hayyun's Interpretation and the Authorship of Deuteronomy
+611	jJsDJ8jG8P8	374	ru	Иосеф Хаюн: интерпретация и авторство Второзакония
+612	5tzgvJP0UfE	410	ru	Рабби Йосеф Месас – Полимат из Мекнеса, соединивший Тору, разум и время
+613	KXLZkemVI1k	531	en	Rabbi Yosef Messas – The Polymath of Meknes Who Bridged Torah, Reason, and Time
+614	5PpKus6feXI	438	en	The Teaching of Connections: Rabbi Elisha Vishlitzki
+615	Ko1d4sI1oWY	441	ru	Учение о связях: рав Элиша Вишлицкий
+616	UP9MKbxXoUw	478	en	Biography of Rabbi Mordechai Sharabi, Kabbalist
+617	Sq4xnbvBb5I	385	ru	Рав Йосеф Розин – Гаон из Рогачёва: Ум Рамбама, душа хасида
+618	0KOlVvRX1t4	385	en	Rabbi Yosef Rozin – The Rogatchover Gaon: The Mind of the Rambam, the Soul of a Hasid
+619	LwAuDELnHZw	480	ru	Рабби Мордехай Шараби — биография йеменского каббалиста и праведника
+620	jiS4OfSaAAg	559	en	Rabbi Moshe Luria: Kabbalist and Scholar
+621	OvfCDsr2-p4	386	ru	Раввин Моше Лурия: каббалист и учёный
+622	b8wdCf4nkSo	506	en	Manitou: Life, Thought, and the Revival of Israel
+623	ozWDYmakbxI	489	ru	Маниту: Жизнь, мысль и возрождение Израиля
+624	L2hQKYIBlmE	467	en	Rabbi Ben-Zion Meir Hai Uziel: Thought, Halakha, and Zionism
+625	CFAc_YocNCQ	398	ru	Рабби Бен-Цион Меир Хай Узиэль: философия, Галаха и сионизм
+626	4XZIw1lY0k0	392	en	Rabbi Yehuda Bibas: Proto-Zionist and His Legacy
+627	DyqI3jUvFdE	389	ru	Раввин Йеhуда Бибас: предвестник сионизма и его наследие
+628	6FgfPFQJB5w	428	en	Rabbi Tzvi Hirsch Chajes: His Life and Thought
+629	r6yB861RruY	382	ru	Рав Цви Гирш Хаят: его жизнь и мировоззрение
+630	cFbFezd9Z50	410	ru	Рабби Элазар Азкари: каббалист, поэт и духовный лидер Цфата XVI века
+631	X5WU4DCK5Lg	455	en	Rabbi Elazar Azikri: Kabbalist, Poet, and Spiritual Leader of 16th-Century Safed
+632	BdeTXUjZHSU	377	ru	Рабби Йехуда Моше Петая: жизнь и каббалистическое наследие
+633	rQWrr2AWGWg	495	en	Rabbi Yehudah HaHasid: Between Law and Mysticism
+634	KSKk18BgQBQ	400	ru	Рабби Йеhуда Хасид и его Завещание: между Галахой и мистикой в учении ашкеназских хасидов
+635	cFbu8yYG334	427	en	Rabbi Yehudah Moses Petaya: Life and Kabbalistic Legacy
+636	UVxTJs_uH04	349	ru	Рабби Шимон Лави: его жизнь и каббалистико-поэтическое творчество
+637	yCxglEA5Qv8	388	ru	Рабби Зерахия ха-Леви: Свет Прованса и возражения РААБДа
+638	BF8m7S_sCk0	507	en	Rabbi Zerachiah HaLevi: The Luminary of Provence and the Raavad’s Critiques
+639	ZbHRSHV1t3k	499	en	Philo: Allegory, Providence, and the Logos
+640	hPZTrIjN9BQ	450	ru	Филон: Аллегория, Провидение и Логос
+641	tMVTFzknfyQ	364	en	Ḥaḥam Haim Palachi  (ḤaBi"F): His Life, Work, and Writings
+642	8x_wbvx-5Vg	426	ru	Хахам Хаим Фаладжи (ХаБи"Ф): его жизнь, деятельность и книги
+643	u8lwMvjuBSc	384	en	Mendel Lefin and the Haskalah in Galicia
+644	Ls1d4OE6QTQ	418	ru	Мендель Лефин и еврейское Просвещение в Галиции
+645	_eA6LMnmEao	366	en	Elia Benamozegh: Philosophy and Kabbalah, Israel and Humanity
+646	Uetw7LJWRjY	377	ru	Элияу Бен-Амозэг: философия и каббала, Израиль и человечество
+647	chS_iUb-VEY	414	en	Don Isaac Abravanel: Commentator, Philosopher, and Statesman
+648	fxdPsirh2sc	341	ru	Дон Ицхак Абарбанель: комментатор, философ и государственный деятель
+649	BANN0i_zJyo	436	en	Novardok: His Educational Doctrine and the “Doctrine of Sensitivity”
+650	KZfCmmOBN3Y	418	ru	Новардок: его педагогическое учение и «доктрина чувствительности»
+651	izbNtzKRxTQ	341	en	Rabbi Israel Yaakov Algazi – The Rishon LeZion Who United Kabbalah, Halakha, and Public Leadership
+652	LhgSaQOr8L4	437	ru	Рабби Исраэль Яаков Альгази — Первый Сион, объединивший Каббалу, Галаху и общественное лидерство
+653	2MZbYudsJdw	479	en	Yitzhak Nissim: Chief Sephardic Rabbi of the State of Israel
+654	Iv9j59KmRNk	410	ru	Ицхак Ниссим: Главный сефардский раввин Государства Израиль
+655	zRS-dM-SkiM	420	ru	Сфат Эмет – мыслитель, ищущий внутреннюю истину
+656	OJ7w3P3Gn6o	359	en	Sefat Emet – The Thinker Who Sought Inner Truth
+657	D5ctLfiF46Q	471	ru	Рабби Хаим из Воложина — тихий революционер, сформировавший позвоночник мира Торы
+658	bU33b80yZKU	382	en	Rabbi Chaim of Volozhin – The Quiet Revolutionary Who Shaped the Backbone of the Torah World
+659	Nh2zBFGV2_Q	402	en	Dunash ben Labrat: His Life and Works
+660	mMw8ON5iVTg	318	ru	Дунаш бен Лабрат: жизнь и творчество
+661	cNUZDC5gmog	366	en	Rabbi Meir Yehuda Getz – The Righteous Man Who Revealed the Secrets of the Western Wall
+662	WYkB28LnXwg	366	ru	Рав Меир Йеуда Гец – праведник, раскрывший тайны Стены Плача
+663	BJb0xFe53U8	330	ru	Учение Махараля: Тора, душа и истина
+664	uqI_wh57lO8	369	en	The Thought of the Maharal: Torah, Soul, and Truth
+665	p4s-C-bZxak	422	en	Rabbi Shmuel Bornsztain - The Rebbe Whose Embrace Defied Death
+666	n2X4qhQ279E	389	ru	Рабби Шмуэль Борнштейн – Ребе, чьё объятие победило смерть
+667	i0M2vGlw28s	406	en	The Rebbe Who Saw the “Footsteps of the Messiah” – The Author of Netivot Shalom
+668	O0Llyb7qUxg	405	ru	Ребе, увидевший «поступь Машиаха» — автор книги «Нетивот Шалом»
+669	C_hqg3JYniY	534	en	Rabbi Yeshu’a Ben Shoshan: The Kabbalist Who Commanded a Commando Unit
+670	yrWYoEqIZkY	508	ru	Мудрец Йешуа Бен Шошан: каббалист, командовавший отрядом коммандос
+671	v9NtNryySZ0	311	en	Rabbi Ephraim Ankawa: His Life and Legacy
+672	4A2JxVeX8Yc	359	ru	Рав Эфраим Анкава: жизнь и деятельность
+673	sCJ-e_Ggy68	305	en	Rabbi Yosef Taitatzak - The Kabbalist Who Foresaw Zionism
+674	dp4azWA4x_8	408	ru	Рабби Йосеф Тайтцак — каббалист, предсказавший сионизм
+675	Uix-I9vP7fw	436	ru	Раввин Горен: Галаха, Государство и Армия
+676	EkOqfpDFyhY	427	en	Law, Redemption, and Revolution: Shabtai Ben-Dov
+677	jd3AtUqImjc	410	ru	Закон, искупление и революция: Шабтай Бен-Дов
+678	eFm5S4krrKc	391	he	משפט, גאולה ומהפכה: שבתי בן-דב
+679	RdfuIDNHbKw	517	he	הרב גורן: הלכה, מדינה וצבא
+680	f2z86Q7OyLU	467	en	Rabbi Goren: Halakha, State, and Army
+681	MV7nH10GCMc	423	en	Josel of Rosheim: Advocate for Imperial Jewry
+682	ZXV7ObUy-uM	383	ru	Йозель из Розгейма: защитник евреев Священной Римской империи
+683	uZlwAxCV1qc	458	he	יוסל מרוסהיים: סנגור יהדות האימפריה
+684	kDCAvcLFzC0	447	ru	Рав Ицхак Яаков Рейнес и основание движения "Мизрахи"
+685	nJ4FWiXK5VQ	501	en	Rabbi Yitzhak Yaakov Reines and the Founding of Mizrachi
+686	BVYplCpF02c	472	he	הרב יצחק יעקב ריינס ומייסד המזרחי
+687	U9MpctcfTxc	507	ru	Рав Реувен Маргалиот: раввин, учёный и библиотекарь
+688	KIygAJIP_WE	397	he	הרב יעקב גורדין: מחשבת ישראל ופילוסופיה בעולם משתנה
+689	mtPEMfJWZfc	514	he	משה מנדלסון: אבי ההשכלה היהודית והנאורות
+690	9Jden3KLVak	497	en	Moses Mendelssohn: Father of the Jewish Enlightenment (Haskalah) and the Age of Reason
+691	szRvQy-38H8	462	ru	Мозес Мендельсон: отец еврейского Просвещения и эпохи разума
+692	6UfjwSUASjI	421	en	Shmuel: His Legal Rulings and Teachings
+693	IMuLBI4UzIk	444	ru	Шмуэль: Галахические постановления и его учение
+694	XhGQHLo57Nw	381	he	שמואל הנגיד: תור הזהב ושירת הגאולה
+695	WgrFomMiUKQ	390	ru	Шмуэль ха-Нагид: Золотой Век и Поэзия Спасения
+696	3xskVDMUd34	435	en	Shmuel HaNagid: The Golden Age and the Poetry of Redemption
+697	Vuw15RpJHs4	512	he	שמואל: פסיקת הלכה ותורתו
+698	BnvjlU5JUqE	385	he	חידת הגאון המסתורי: מר שושני
+699	unqH7pHySmM	440	en	The Riddle of the Mysterious Genius: Mr. Shushani
+700	KVQy9LNoF2k	369	ru	Загадка таинственного гения: господин Шошани
+701	9IgiGP6fvv0	426	he	רבנו יונה גירונדי: תורה, מוסר ומחלוקת
+702	zlre6biDOqs	374	en	Rabbeinu Yonah Gerondi: Torah, Ethics, and Controversy
+703	yCAH5_oIiX8	405	ru	Рабейну Йона Гиронди: Тора, этика и полемика
+704	mRv5aE4ZFaI	439	en	Rabbi Hutner’s Thought: Pachad Yitzchak and Da’at
+705	RPFTTHh0bEM	460	he	משנת הרב הוטנר: פחד יצחק ודעת
+706	vTYB_RodNy8	491	ru	Учение раввина Хутнера: «Пахад Ицхак» и «Даат»
+707	DTLxE2BwKww	433	he	אברהם בר חייא: מתמטיקאי, אסטרונום ופילוסוף
+708	iVENNe_01H8	418	en	Abraham bar Ḥiyya: Mathematician, Astronomer, and Philosopher
+709	2vnAFKlVNOs	366	ru	Авраам Бар-Хия: Математик, Астроном и Философ
+710	8LaG-3zPauk	477	en	Abraham Ibn Ezra: Scholar, Commentator, Poet, and Scientist
+711	bt_k2bZpO7Q	409	ru	Авраам ибн Эзра: учёный, комментатор, поэт и исследователь
+712	p2feMrPaQ1o	384	en	Emanuel Chai Ricchi: Italian Rabbi and Kabbalist
+713	uhaLWgnajFU	316	ru	Рабби Эммануэль Хай Рикки: итальянский раввин и каббалист
+714	MIFYw8-Kn0w	440	en	Rabbi Yitzchak Eisik Chaver – The Third Mouth of the Vilna Gaon
+715	V4QJXcyDU_k	406	ru	Раввин Ицхак Эйзик Хавер – Третий Уста Виленского Гаона
+716	pJrZizKjmEQ	366	en	Solomon Ibn Gabirol: Philosophy and Poetry
+717	bBCPwCDpfnk	407	ru	Шломо ибн Гвироль: философия и поэзия
+718	zLVWgUlCl5U	395	en	Rabbi Israel Najara – The Kabbalistic Poet and a Revolutionary in the Tradition of Hebrew Song
+719	NVmuBFwRwxM	393	ru	Раввин Исраэль Наджара – Каббалистический поэт и революционер в традиции еврейской песни
+720	l9UXMGGkyhk	357	ru	Давид Ньето: «Матэ Дан» и полемика о Природе
+721	qrsMMkYIs6I	510	en	David Nieto: “Mateh Dan” and the Debate on Nature
+722	9WaQKwpGW1U	459	en	Judah Moscato: Renaissance Preacher and His Thought
+723	0oH6x6LoW5o	416	ru	Иехуда Москато: проповедник эпохи Ренессанса и его мировоззрение
+724	O99w1av0-tc	509	he	אברהם אבן עזרא: חכם, פרשן, פייטן ומדען
+725	_9NcbCvXiFs	373	he	ר' עמנואל חי ריקי: רב ומקובל איטלקי
+726	i0USXpk2JPI	552	he	הרב יצחק אייזיק חבר – הפה השלישי של הגר״א
+727	Q-npnZnP5yI	385	he	שלמה אבן גבירול: הגות ושירה
+728	tT8v-J8f-HM	422	he	ר’ ישראל נג’ארה – פייטן הקבלה ומהפכן במסורת השירה
+729	dT4vX4G3LJk	491	he	דוד ניטו: מטה דן ופולמוס הטבע
+730	U6bO7czlEMo	393	he	יהודה מוסקאטו: דרשן הרנסנס ומשנתו

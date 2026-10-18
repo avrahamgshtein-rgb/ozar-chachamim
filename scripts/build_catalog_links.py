@@ -210,7 +210,8 @@ for kind, a, b, rel, ev, via in claims:
         # symmetric relations: elder first when both are dated, else the lower id
         if dated(a) and dated(b) and year(b, 'birth_year') < year(a, 'birth_year') or not (dated(a) and dated(b)) and b < a:
             a, b = b, a
-    key = (kind, a, b) if kind != 'family' else (kind, *sorted((a, b)))
+    # family is symmetric; so is a mutual 'opposed' (Sefaria states it from both ends): one edge per pair
+    key = (kind, a, b) if kind not in ('family', 'oppose') else (kind, *sorted((a, b)))
     m = merged.setdefault(key, {'type': kind, 'source': a, 'target': b, 'relation': set(), 'via': set(), 'evidence': []})
     if rel:
         m['relation'].add(rel)

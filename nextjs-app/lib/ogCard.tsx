@@ -48,7 +48,9 @@ export function OgLine({ text, size, color, font, weight, align }: {
   const common = { fontSize: size, color, fontFamily: font, fontWeight: weight, lineHeight: 1.18 }
   if (!isRtlText(text)) {
     const textAlign = align === 'center' ? 'center' : align === 'end' ? 'right' : 'left'
-    return <div style={{ display: 'flex', ...common, textAlign, justifyContent: align === 'center' ? 'center' : undefined }}>{text}</div>
+    // Satori calls .trim() on every style value it sees: `justifyContent: undefined` made every English and Russian
+    // card fail, so the key is left out unless the line is centred.
+    return <div style={{ display: 'flex', ...common, textAlign, ...(align === 'center' ? { justifyContent: 'center' } : {}) }}>{text}</div>
   }
   return (
     <div style={{

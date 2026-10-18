@@ -135,6 +135,7 @@ export const LOCATION_COORDS: Record<string, { lat: number; lng: number }> = {
   'Speyer':      { lat: 49.320,  lng: 8.443   },
   'רגנסבורג':    { lat: 48.961,  lng: 12.102  },
   'Regensburg':  { lat: 48.961,  lng: 12.102  },
+  'קרלסרוהה':    { lat: 49.009,  lng: 8.404   },
 
   // ── בוהמיה / אוסטריה / הונגריה ─────────────────────────────────────────
   'פראג':        { lat: 50.076,  lng: 14.438  },
@@ -202,6 +203,10 @@ export const LOCATION_COORDS: Record<string, { lat: number; lng: number }> = {
   'Padua':       { lat: 45.406,  lng: 11.877  },
   'ליבורנו':     { lat: 43.552,  lng: 10.307  },
   'Livorno':     { lat: 43.552,  lng: 10.307  },
+  // Coordinates from Wikipedia's API (prop=coordinates), for the sages of the Shem HaGedolim additions
+  'מודינה':      { lat: 44.647,  lng: 10.926  },
+  "רג'ו אמיליה": { lat: 44.700,  lng: 10.633  },
+  'פיזה':        { lat: 43.717,  lng: 10.400  },
 
   // ── יוון ───────────────────────────────────────────────────────────────
   'יוון':        { lat: 37.774,  lng: 25.131  },
@@ -452,7 +457,7 @@ const PLACE_ALIASES: Record<string, string> = {
   'בדרש': 'בזייה', 'טרינקטיי': 'ארל',
   'Germany': 'גרמניה', 'Ashkenaz': 'אשכנז', 'Mainz': 'מגנצא', 'מיינץ': 'מגנצא',
   'Worms': 'וורמייזא', 'Speyer': 'שפיירא', 'שפירא': 'שפיירא',
-  'Regensburg': 'רגנסבורג',
+  'Regensburg': 'רגנסבורג', 'Karlsruhe': 'קרלסרוהה',
   'Prague': 'פראג', 'Austria': 'אוסטריה', 'Vienna': 'וינה', 'Bratislava': 'פרשבורג',
   'Poland': 'פולין', 'Vilna': 'וילנה', 'Vilnius': 'וילנה', 'Lithuania': 'ליטא',
   'Lublin': 'לובלין', 'Galicia': 'גליציה', 'Volozhin': "וולוז'ין",
@@ -463,6 +468,7 @@ const PLACE_ALIASES: Record<string, string> = {
   'Salonika': 'סלוניקי', 'Thessaloniki': 'סלוניקי', 'Izmir': 'איזמיר',
   'Italy': 'איטליה', 'Rome': 'רומא', 'Venice': 'ונציה', 'Padua': 'פדובה',
   'פאדובה': 'פדובה', 'Livorno': 'ליבורנו', 'ליוורנו': 'ליבורנו',
+  'Modena': 'מודינה', 'Pisa': 'פיזה', 'Reggio Emilia': "רג'ו אמיליה",
   'Greece': 'יוון', 'Athens': 'אתונה', 'Yemen': 'תימן', 'India': 'הודו',
   'USA': 'ארה"ב', 'ארצות הברית': 'ארה"ב', 'Europe': 'אירופה',
 }

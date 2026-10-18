@@ -12,6 +12,7 @@ import {
   occupiedLayers,
 } from '../lib/geoLayers'
 import { ALL_PERIODS } from '../lib/types'
+import { keywordIndex, locationToRegion, regionsOf } from '../lib/regions'
 import type { Sage } from '../lib/types'
 
 let passed = 0
@@ -188,6 +189,34 @@ test('produces lines inside the unit square', () => {
   assert.ok(g.horizontals.length > 0)
   assert.ok(g.verticals.every(v => v >= 0 && v <= 1), 'verticals within plate')
   assert.ok(g.horizontals.every(h => h >= 0 && h <= 1), 'horizontals within plate')
+})
+
+console.log('\nregions: a keyword is a word, not a piece of one')
+
+test("'לוב' (Libya) is not found inside שידלוב, מיקולוב, שקלוב or לובלין, but is found as a name, with a prefix too", () => {
+  for (const w of ['שידלוב', 'מיקולוב', 'שקלוב', 'לובלין']) assert.ok(!regionsOf(w).includes('north-africa'), `${w} is not in North Africa`)
+  assert.deepEqual(regionsOf('לוב'), ['north-africa'])
+  assert.deepEqual(regionsOf('צפת; בלוב'), ['eretz-israel', 'north-africa'])
+  assert.equal(keywordIndex('שידלוב', 'לוב'), -1)
+  assert.equal(keywordIndex('לוב', 'לוב'), 0)
+})
+
+test('Lublin and Shklov are in Eastern Europe (they were filed under Libya by the substring)', () => {
+  assert.equal(locationToRegion('לובלין'), 'east-europe')
+  assert.deepEqual(regionsOf('ליטא / לובלין'), ['east-europe'])
+  assert.deepEqual(regionsOf('שקלוב; מינסק'), ['east-europe'])
+})
+
+test('a stem still matches the longer word it stands for, and a one-letter prefix is allowed', () => {
+  assert.deepEqual(regionsOf('בוהמיה'), ['ashkenaz'])
+  assert.deepEqual(regionsOf("אלג'יריה"), ['north-africa'])
+  assert.deepEqual(regionsOf('בפראג ובקהיר'), ['ashkenaz', 'north-africa'])
+  assert.deepEqual(regionsOf('פרוסיה'), ['east-europe'])
+})
+
+test('a three-letter name must be a whole word: פס is Fez, not the middle of כפסים', () => {
+  assert.deepEqual(regionsOf('פס'), ['north-africa'])
+  assert.deepEqual(regionsOf('כפסים'), [])
 })
 
 console.log(`\n${'-'.repeat(46)}`)

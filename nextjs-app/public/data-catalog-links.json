@@ -27,6 +27,18 @@
    "evidence_source": "ספריא: yitzchak-ben-moshe-of-vienna corresponded-with isaiah-dtrani | ספריא: isaiah-dtrani corresponded-with yitzchak-ben-moshe-of-vienna"
   },
   {
+   "source": "612",
+   "target": "653",
+   "type": "colleague",
+   "relation": "corresponded-with",
+   "via": [
+    "sefaria"
+   ],
+   "source_label": "ר' משה מנדלסון (רמבמ\"ן)",
+   "target_label": "רבי יהונתן אייבשיץ",
+   "evidence_source": "ספריא: moses-mendelssohn corresponded-with jonathan-eybeschutz | ספריא: jonathan-eybeschutz corresponded-with moses-mendelssohn"
+  },
+  {
    "source": "2",
    "target": "281",
    "type": "family",
@@ -406,6 +418,18 @@
    "source_label": "הרב צבי הירש קלישר – ציונות דתית לפני הרצל",
    "target_label": "הרב אברהם יצחק הכהן קוק – החזון שאיחד קודש וחול",
    "evidence_source": "ויקינתונים: Q330110 influenced by (P737) Q244522"
+  },
+  {
+   "source": "89",
+   "target": "653",
+   "type": "oppose",
+   "relation": "opposed",
+   "via": [
+    "sefaria"
+   ],
+   "source_label": "הרב יעקב עמדין (יעב\"ץ)",
+   "target_label": "רבי יהונתן אייבשיץ",
+   "evidence_source": "ספריא: yaakov-emden opposed jonathan-eybeschutz | ספריא: jonathan-eybeschutz opposed yaakov-emden"
   },
   {
    "source": "4",
@@ -1232,6 +1256,17 @@
    "evidence_source": "ויקינתונים: Q2302424 student (P802) Q1977082"
   },
   {
+   "source": "542",
+   "target": "675",
+   "type": "teacher",
+   "via": [
+    "wikidata"
+   ],
+   "source_label": "רבי חיים ויטאל",
+   "target_label": "רבי שמואל ויטאל (בן רבי חיים)",
+   "evidence_source": "ויקינתונים: Q2302424 student (P802) Q2897186"
+  },
+  {
    "source": "550",
    "target": "591",
    "type": "teacher",
@@ -1463,6 +1498,17 @@
    "source_label": "רבי יוסי בן חלפתא",
    "target_label": "רבי יהודה הנשיא",
    "evidence_source": "ספריא: rabi learned-from rabbi-yose-b-chalafta | ספריא: rabbi-yose-b-chalafta taught rabi"
+  },
+  {
+   "source": "671",
+   "target": "86",
+   "type": "teacher",
+   "via": [
+    "wikidata"
+   ],
+   "source_label": "רבי משה גלאנטי (המג״ן)",
+   "target_label": "רבי משה חגיז – הקנאי הירושלמי שניסה להציל את היהדות מן הקריסה הפנימית",
+   "evidence_source": "ויקינתונים: Q12409588 student of (P1066) Q12409579"
   }
  ]
 }

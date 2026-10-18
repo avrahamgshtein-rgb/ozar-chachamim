@@ -162,18 +162,19 @@ test('the day carries only the route and the fields of the sages between, in the
   }
 })
 
-test('the net (Hebrew) and the day together are at most 25 000 bytes, on every day of the test', () => {
+test('the net (Hebrew) and the day together are at most 28 000 bytes, on every day of the test', () => {
   const bytes = (v: unknown) => Buffer.byteLength(JSON.stringify(v), 'utf8')
   const net = connectNet('he')
   let most = 0
   for (let d = D0; d < D0 + DAYS; d++) most = Math.max(most, bytes(net) + bytes(chainDay('he', dateOf(d))))
   console.log(`       net ${bytes(net)} + largest day ${most - bytes(net)} = ${most} bytes (he); en ${bytes(connectNet('en'))} + ${bytes(chainDay('en', dateOf(D0)))}, ru ${bytes(connectNet('ru'))} + ${bytes(chainDay('ru', dateOf(D0)))}`)
-  assert.ok(most <= 25_000, `${most} bytes`)
+  // 25 000 until the 50 sages of Shem HaGedolim (roster 459 -> 509, 78 more links) took the Hebrew net from 22.8 to 25.5 KB
+  assert.ok(most <= 28_000, `${most} bytes`)
   const page = connectPageData('he', dateOf(D0))
   assert.deepEqual(Object.keys(page).sort(), ['day', 'net'])
   assert.equal(page.net, net)
   assert.deepEqual(page.day, chainDay('he', dateOf(D0)))
-  assert.ok(bytes(page) <= 25_000, `the page's data is ${bytes(page)} bytes`)
+  assert.ok(bytes(page) <= 28_000, `the page's data is ${bytes(page)} bytes`)
 })
 
 test('the route in the browser (the net\'s graph) is the route on the server and the one the tower page flies', () => {

@@ -35,6 +35,7 @@ export const LOCATION_REGION_MAP: Array<[string, Region]> = [
   ['פדובה', 'italy'], ['Italy', 'italy'], ['Rome', 'italy'],
   ['Venice', 'italy'], ['Padua', 'italy'],
   ['ונצי', 'italy'], ['ליוורנו', 'italy'], ['מנטובה', 'italy'], ['טראני', 'italy'], ['לונטשיץ', 'italy'],
+  ['מודינה', 'italy'], ['אמיליה', 'italy'], ['פיזה', 'italy'], ['קרלסרוהה', 'ashkenaz'],
   ['מרוקו', 'north-africa'], ['מצרים', 'north-africa'], ['תוניסיה', 'north-africa'],
   ['פס', 'north-africa'], ['קהיר', 'north-africa'], ['Egypt', 'north-africa'],
   ['Morocco', 'north-africa'], ['Cairo', 'north-africa'], ['Fez', 'north-africa'],
@@ -47,13 +48,42 @@ export const LOCATION_REGION_MAP: Array<[string, Region]> = [
   ['גליציה', 'east-europe'], ['הונגרי', 'east-europe'], ['ורשה', 'east-europe'],
   ['בריסק', 'east-europe'], ['נובהרדוק', 'east-europe'], ['סלבודקה', 'east-europe'],
   ['וולוז', 'east-europe'], ['סוכטשוב', 'east-europe'], ['סלונים', 'east-europe'],
+  // Prussia (Danzig, Königsberg, Thorn) was filed under east-europe only because 'רוסיה' sat inside פרוסיה; Shklov was
+  // filed under north-africa because 'לוב' sat inside שקלוב. Both are now stated outright.
+  ['פרוסיה', 'east-europe'], ['שקלוב', 'east-europe'],
   ['ישראל', 'eretz-israel'],
 ]
+
+// A keyword counts only where it starts a word: at the start of the text, after a separator, or after a one- or
+// two-letter Hebrew prefix (ב, ל, מ, ש, ה, ו, כ: "בפראג", "ומקהיר"). It used to match anywhere inside a word, so
+// 'לוב' (Libya) was found in שידלוב and מיקולוב and 'פס' in any word holding פס. A keyword of three letters or fewer
+// must also END the word (ירושלים, לוב, פס, עכו are whole names); a longer one may take a suffix, because many
+// keywords are stems on purpose ('בוהמי' for בוהמיה, 'אלג' for אלג'יריה, 'הונגרי', 'קסטילי' ...).
+const LETTER = /[A-Za-z\u05d0-\u05ea]/
+const HEBREW_PREFIX = /^[ובלמשהכ]{1,2}$/
+
+function wordStartOf(text: string, i: number): boolean {
+  let j = i
+  while (j > 0 && LETTER.test(text[j - 1])) j--
+  const before = text.slice(j, i)
+  return before === '' || HEBREW_PREFIX.test(before)
+}
+
+/** Index of the first place where `kw` stands in `text` as a word (see above), or -1. */
+export function keywordIndex(text: string, kw: string): number {
+  const whole = kw.length <= 3
+  for (let i = text.indexOf(kw); i >= 0; i = text.indexOf(kw, i + 1)) {
+    if (!wordStartOf(text, i)) continue
+    if (whole && LETTER.test(text[i + kw.length] ?? ' ')) continue
+    return i
+  }
+  return -1
+}
 
 export function locationToRegion(loc: string | undefined): Region | null {
   if (!loc) return null
   for (const [kw, region] of LOCATION_REGION_MAP) {
-    if (loc.includes(kw)) return region
+    if (keywordIndex(loc, kw) >= 0) return region
   }
   return null
 }
@@ -64,7 +94,7 @@ export function regionsOf(loc: string | undefined): Region[] {
   if (!loc) return []
   const hits: Array<{ r: Region; i: number }> = []
   for (const [kw, region] of LOCATION_REGION_MAP) {
-    const i = loc.indexOf(kw)
+    const i = keywordIndex(loc, kw)
     if (i >= 0) hits.push({ r: region, i })
   }
   hits.sort((a, b) => a.i - b.i)

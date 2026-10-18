@@ -3693,7 +3693,7 @@
    "kind": "author",
    "he": "יונתן זקס",
    "en": "Jonathan Sacks",
-   "total": 30,
+   "total": 32,
    "works": [
     {
      "he": "שיג ושיח; קריאות חדשות בפרשת השבוע על תורה",
@@ -3767,6 +3767,11 @@
      "url": "/Arguments_for_the_Sake_of_Heaven"
     },
     {
+     "he": "לחגוג את החיים; למצוא את האושר במקומות מפתיעים",
+     "en": "Celebrating Life; Finding Happiness in Unexpected Places",
+     "url": "/Celebrating_Life;_Finding_Happiness_in_Unexpected_Places"
+    },
+    {
      "he": "מועדים לשיחה; מהדורה משפחתית",
      "en": "Ceremony and Celebration Family Edition, The Hagim",
      "url": "/Ceremony_and_Celebration_Family_Edition,_The_Hagim"
@@ -3810,11 +3815,6 @@
      "he": "עם אחד? מסורת, מודרניות ואחדות יהודית",
      "en": "One People? Tradition, Modernity, and Jewish Unity",
      "url": "/One_People%3F_Tradition,_Modernity,_and_Jewish_Unity"
-    },
-    {
-     "he": "רדיקלית אז, רדיקלית עכשיו",
-     "en": "Radical Then, Radical Now",
-     "url": "/Radical_Then,_Radical_Now"
     }
    ]
   },
@@ -4531,6 +4531,677 @@
    "wiki": {
     "he": "יהודה לייב הלוי אשלג",
     "en": "Yehuda Ashlag"
+   }
+  },
+  "623": {
+   "label": "רבי אבהו",
+   "slug": "rabbi-abahu",
+   "kind": "person",
+   "he": "רַ' אַבָּהוּ",
+   "en": "Rabbi Abahu",
+   "total": 0,
+   "works": [],
+   "wiki": {
+    "he": "רבי אבהו",
+    "en": "Abbahu"
+   }
+  },
+  "624": {
+   "label": "אימא שלום",
+   "slug": "ema-shalom",
+   "kind": "person",
+   "he": "אימא שלום",
+   "en": "Ema Shalom",
+   "total": 0,
+   "works": []
+  },
+  "629": {
+   "label": "מרים הנביאה",
+   "slug": "miriam",
+   "kind": "person",
+   "he": "מרים",
+   "en": "Miriam",
+   "total": 0,
+   "works": [],
+   "wiki": {
+    "he": "מרים הנביאה",
+    "en": "Miriam"
+   }
+  },
+  "630": {
+   "label": "רבי משה אלשיך (האלשיך הקדוש)",
+   "slug": "moses-alshikh",
+   "kind": "author",
+   "he": "אלשיך",
+   "en": "Moses Alshekh",
+   "total": 10,
+   "works": [
+    {
+     "he": "תורת משה - אלשיך",
+     "en": "Alshekh on Torah",
+     "url": "/Alshekh_on_Torah"
+    },
+    {
+     "he": "רוממות אל על תהילים",
+     "en": "Romemot El on Psalms",
+     "url": "/Romemot_El_on_Psalms"
+    },
+    {
+     "he": "רב פנינים על משלי",
+     "en": "Rav Peninim on Proverbs",
+     "url": "/Rav_Peninim_on_Proverbs"
+    },
+    {
+     "he": "חלקת מחוקק על איוב",
+     "en": "Chelkat Mechokek on Job",
+     "url": "/Chelkat_Mechokek_on_Job"
+    },
+    {
+     "he": "שושנת העמקים על שיר השירים",
+     "en": "Shoshanat HaAmakim on Song of Songs",
+     "url": "/Shoshanat_HaAmakim_on_Song_of_Songs"
+    },
+    {
+     "he": "עיני משה על רות",
+     "en": "Einei Moshe on Ruth",
+     "url": "/Einei_Moshe_on_Ruth"
+    },
+    {
+     "he": "דברים ניחומים על איכה",
+     "en": "Devarim Nichumim on Lamentations",
+     "url": "/Devarim_Nichumim_on_Lamentations"
+    },
+    {
+     "he": "דברים טובים על קהלת",
+     "en": "Devarim Tovim on Ecclesiastes",
+     "url": "/Devarim_Tovim_on_Ecclesiastes"
+    },
+    {
+     "he": "משאת משה על אסתר",
+     "en": "Masat Moshe on Esther",
+     "url": "/Masat_Moshe_on_Esther"
+    },
+    {
+     "he": "חבצלת השרון על דניאל",
+     "en": "Chavatzelet HaSharon on Daniel",
+     "url": "/Chavatzelet_HaSharon_on_Daniel"
+    }
+   ],
+   "wiki": {
+    "he": "משה אלשיך",
+    "en": "Moshe Alshich"
+   }
+  },
+  "631": {
+   "label": "רבי שמואל די אוזידא (בעל מדרש שמואל)",
+   "slug": "samuel-de-ueda",
+   "kind": "author",
+   "he": "שמואל די אוזידא",
+   "en": "Samuel de Uçeda",
+   "total": 3,
+   "works": [
+    {
+     "he": "אגרת שמואל על רות",
+     "en": "Iggeret Shmuel on Ruth",
+     "url": "/Iggeret_Shmuel_on_Ruth"
+    },
+    {
+     "he": "לחם דמעה על איכה",
+     "en": "Lechem Dim'ah on Eikhah",
+     "url": "/Lechem_Dim'ah_on_Eikhah"
+    },
+    {
+     "he": "מדרש שמואל על אבות",
+     "en": "Midrash Shmuel on Avot",
+     "url": "/Midrash_Shmuel_on_Avot"
+    }
+   ],
+   "wiki": {
+    "he": "שמואל אוזידא",
+    "en": "Samuel ben Isaac de Uçeda"
+   }
+  },
+  "632": {
+   "label": "רבי משה מטראני (המבי״ט)",
+   "slug": "moshe-ben-yosef-di-trani",
+   "kind": "author",
+   "he": "משה מטראני",
+   "en": "Moshe ben Yosef di Trani",
+   "total": 2,
+   "works": [
+    {
+     "he": "קרית ספר על משנה תורה",
+     "en": "Kiryat Sefer on Mishneh Torah",
+     "url": "/texts/Halakhah/Mishneh Torah/Commentary/Kiryat Sefer",
+     "cat": true
+    },
+    {
+     "he": "בית אלהים",
+     "en": "Beit Elohim",
+     "url": "/Beit_Elohim"
+    }
+   ],
+   "wiki": {
+    "he": "משה מטראני",
+    "en": "Moses ben Joseph di Trani"
+   }
+  },
+  "633": {
+   "label": "רבי חזקיה בן מנוח (החזקוני)",
+   "slug": "chizkuni1",
+   "kind": "author",
+   "he": "חזקוני",
+   "en": "Chizkiah ben Manoach (Chizkuni)",
+   "total": 1,
+   "works": [
+    {
+     "he": "חזקוני",
+     "en": "Chizkuni",
+     "url": "/Chizkuni"
+    }
+   ],
+   "wiki": {
+    "he": "חזקיה בן מנוח",
+    "en": "Hezekiah ben Manoah"
+   }
+  },
+  "635": {
+   "label": "רבי עובדיה ספורנו",
+   "slug": "ovadiah-seforno",
+   "kind": "author",
+   "he": "ספורנו",
+   "en": "Ovadiah Seforno",
+   "total": 1,
+   "works": [
+    {
+     "he": "ספורנו על תנ\"ך",
+     "en": "Sforno on Tanakh",
+     "url": "/texts/Tanakh/Rishonim on Tanakh/Sforno",
+     "cat": true
+    }
+   ],
+   "wiki": {
+    "he": "עובדיה ספורנו",
+    "en": "Obadiah ben Jacob Sforno"
+   }
+  },
+  "636": {
+   "label": "רבנו ירוחם בן משולם",
+   "slug": "rabbenu-yeruham",
+   "kind": "author",
+   "he": "רבנו ירוחם",
+   "en": "Rabbenu Yeruham",
+   "total": 1,
+   "works": [
+    {
+     "he": "איסור והיתר לרבנו ירוחם",
+     "en": "Issur V'Heter L'Rabbeinu Yerucham",
+     "url": "/Issur_V'Heter_L'Rabbeinu_Yerucham"
+    }
+   ],
+   "wiki": {
+    "he": "ירוחם בן משולם",
+    "en": "Rabbenu Yerucham"
+   }
+  },
+  "637": {
+   "label": "רבי ברוך בן יצחק (בעל התרומה)",
+   "slug": "barukh-ben-isaac-of-worms",
+   "kind": "author",
+   "he": "ברוך בן יצחק מוורמיזא",
+   "en": "Barukh ben Isaac of Worms",
+   "total": 1,
+   "works": [
+    {
+     "he": "ספר התרומה",
+     "en": "Sefer HaTerumah",
+     "url": "/Sefer_HaTerumah"
+    }
+   ],
+   "wiki": {
+    "he": "ברוך בן יצחק",
+    "en": "Baruch ben Isaac"
+   }
+  },
+  "639": {
+   "label": "רבי שמואל די מדינה (המהרשד״ם)",
+   "slug": "samuel-de-medina",
+   "kind": "author",
+   "he": "שמואל די מדינה",
+   "en": "Samuel de Medina",
+   "total": 1,
+   "works": [
+    {
+     "he": "שו\"ת מהרשד\"ם",
+     "en": "Responsa Maharashdam",
+     "url": "/Responsa_Maharashdam"
+    }
+   ],
+   "wiki": {
+    "he": "שמואל די מדינה",
+    "en": "Samuel de Medina"
+   }
+  },
+  "641": {
+   "label": "רבי יוסף מטראני (המהרי״ט)",
+   "slug": "yosef-trani",
+   "kind": "author",
+   "he": "יוסף מטראני",
+   "en": "Yosef Trani",
+   "total": 1,
+   "works": [
+    {
+     "he": "שו\"ת מהרי\"ט",
+     "en": "Teshuvot Maharit",
+     "url": "/Teshuvot_Maharit"
+    }
+   ],
+   "wiki": {
+    "he": "יוסף מטראני",
+    "en": "Joseph Trani"
+   }
+  },
+  "642": {
+   "label": "רבי אברהם די בוטון (בעל לחם משנה)",
+   "slug": "abraham-de-boton",
+   "kind": "author",
+   "he": "אברהם די בוטון",
+   "en": "Abraham de Boton",
+   "total": 1,
+   "works": [
+    {
+     "he": "לחם משנה על משנה תורה",
+     "en": "Lechem Mishneh on Mishneh Torah",
+     "url": "/texts/Halakhah/Mishneh Torah/Commentary/Lechem Mishneh",
+     "cat": true
+    }
+   ],
+   "wiki": {
+    "he": "אברהם די בוטון",
+    "en": "Abraham de Boton"
+   }
+  },
+  "643": {
+   "label": "רבי שמואל בן אורי שרגא פייבוש (בעל בית שמואל)",
+   "slug": "samuel-ben-uri-shraga-phoebus",
+   "kind": "author",
+   "he": "שמואל בן ר' אורי שרגא פייבוש",
+   "en": "Samuel ben Uri Shraga Phoebus",
+   "total": 1,
+   "works": [
+    {
+     "he": "בית שמואל",
+     "en": "Beit Shmuel",
+     "url": "/Beit_Shmuel"
+    }
+   ],
+   "wiki": {
+    "he": "שמואל מפיורדא",
+    "en": "Samuel ben Uri Shraga Phoebus"
+   }
+  },
+  "645": {
+   "label": "רבי שלמה סיריליו",
+   "slug": "solomon-sirilio",
+   "kind": "author",
+   "he": "שלמה סיריליו",
+   "en": "Solomon Sirilio",
+   "total": 1,
+   "works": [
+    {
+     "he": "פירוש שלמה סיריליו על ירושלמי",
+     "en": "Sirilio on Yerushalmi",
+     "url": "/texts/Talmud/Yerushalmi/Commentary/Sirilio on Jerusalem Talmud",
+     "cat": true
+    }
+   ]
+  },
+  "647": {
+   "label": "רבי אליהו די וידאש (בעל ראשית חכמה)",
+   "slug": "eliyahu-de-vidas",
+   "kind": "author",
+   "he": "אליהו די וידאשׂ",
+   "en": "Elijah de Vidas",
+   "total": 1,
+   "works": [
+    {
+     "he": "ראשית חכמה",
+     "en": "Reshit Chokhmah",
+     "url": "/Reshit_Chokhmah"
+    }
+   ]
+  },
+  "649": {
+   "label": "רבי דוד אלטשולר (בעל מצודת דוד)",
+   "slug": "david-altschuler",
+   "kind": "author",
+   "he": "רבי דוד אלטשולר",
+   "en": "David Altschuler",
+   "total": 2,
+   "works": [
+    {
+     "he": "מצודת דוד על תנ\"ך",
+     "en": "Metzudat David on Tanakh",
+     "url": "/texts/Tanakh/Acharonim on Tanakh/Metzudat David",
+     "cat": true
+    },
+    {
+     "he": "מצודת ציון על תנ\"ך",
+     "en": "Metzudat Zion on Tanakh",
+     "url": "/texts/Tanakh/Acharonim on Tanakh/Metzudat Zion",
+     "cat": true
+    }
+   ],
+   "wiki": {
+    "he": "דוד אלטשולר"
+   }
+  },
+  "651": {
+   "label": "רבי שלמה עדני (בעל מלאכת שלמה)",
+   "slug": "solomon-adeni",
+   "kind": "author",
+   "he": "שלמה עדני",
+   "en": "Solomon Adeni",
+   "total": 1,
+   "works": [
+    {
+     "he": "מלאכת שלמה על משנה",
+     "en": "Melekhet Shelomoh on Mishnah",
+     "url": "/texts/Mishnah/Acharonim on Mishnah/Melekhet Shelomoh",
+     "cat": true
+    }
+   ],
+   "wiki": {
+    "he": "שלמה עדני",
+    "en": "Solomon Adeni"
+   }
+  },
+  "652": {
+   "label": "רבי יעקב יהושע פלק (בעל פני יהושע)",
+   "slug": "jacob-joshua-falk",
+   "kind": "author",
+   "he": "יעקב יהושע פלק‎",
+   "en": "Jacob Joshua Falk",
+   "total": 1,
+   "works": [
+    {
+     "he": "פני יהושע על תלמוד",
+     "en": "Penei Yehoshua on Talmud",
+     "url": "/texts/Talmud/Bavli/Acharonim on Talmud/Penei Yehoshua",
+     "cat": true
+    }
+   ],
+   "wiki": {
+    "he": "יעקב יהושע פלק",
+    "en": "Jacob Joshua Falk"
+   }
+  },
+  "653": {
+   "label": "רבי יהונתן אייבשיץ",
+   "slug": "jonathan-eybeschutz",
+   "kind": "author",
+   "he": "יהונתן אייבשיץ",
+   "en": "Jonathan Eybeschutz",
+   "total": 14,
+   "works": [
+    {
+     "he": "אהבת יהונתן",
+     "en": "Ahavat Yehonatan",
+     "url": "/Ahavat_Yehonatan"
+    },
+    {
+     "he": "אלון בכות על איכה",
+     "en": "Alon Bakhut on Lamentations",
+     "url": "/Alon_Bakhut_on_Lamentations"
+    },
+    {
+     "he": "תפארת יהונתן על תורה",
+     "en": "Tiferet Yehonatan on Torah",
+     "url": "/Tiferet_Yehonatan_on_Torah"
+    },
+    {
+     "he": "בני אהובה על ספר נשים",
+     "en": "Benei Ahuvah on Sefer Nashim",
+     "url": "/texts/Halakhah/Mishneh Torah/Commentary/Benei Ahuvah/Sefer Nashim",
+     "cat": true
+    },
+    {
+     "he": "בינה לעתים על משנה תורה, הלכות שביתת יום טוב",
+     "en": "Binah LeIttim on Mishneh Torah, Rest on a Holiday",
+     "url": "/Binah_LeIttim_on_Mishneh_Torah,_Rest_on_a_Holiday"
+    },
+    {
+     "he": "חדושי הלכות נדה על שולחן ערוך יורה דעה",
+     "en": "Chiddushei Hilkhot Niddah on Shulchan Arukh, Yoreh De'ah",
+     "url": "/Chiddushei_Hilkhot_Niddah_on_Shulchan_Arukh,_Yoreh_De'ah"
+    },
+    {
+     "he": "כרתי על שולחן ערוך יורה דעה",
+     "en": "Kereti on Shulchan Arukh, Yoreh De'ah",
+     "url": "/Kereti_on_Shulchan_Arukh,_Yoreh_De'ah"
+    },
+    {
+     "he": "מטה יהונתן על שלחן ערוך יורה דעה",
+     "en": "Mateh Yehonatan on Shulchan Arukh, Yoreh De'ah",
+     "url": "/Mateh_Yehonatan_on_Shulchan_Arukh,_Yoreh_De'ah"
+    },
+    {
+     "he": "פלתי על שולחן ערוך יורה דעה",
+     "en": "Peleti on Shulchan Arukh, Yoreh De'ah",
+     "url": "/Peleti_on_Shulchan_Arukh,_Yoreh_De'ah"
+    },
+    {
+     "he": "תפארת ישראל על שולחן ערוך יורה דעה",
+     "en": "Tiferet Yisrael on Shulchan Arukh, Yoreh De'ah",
+     "url": "/Tiferet_Yisrael_on_Shulchan_Arukh,_Yoreh_De'ah"
+    },
+    {
+     "he": "אורים ותומים, אורים",
+     "en": "Urim VeTumim, Urim",
+     "url": "/Urim_VeTumim,_Urim"
+    },
+    {
+     "he": "אורים ותומים, תומים",
+     "en": "Urim VeTumim, Tumim",
+     "url": "/Urim_VeTumim,_Tumim"
+    },
+    {
+     "he": "יערות דבש חלק א",
+     "en": "Ya'arot Devash I",
+     "url": "/Ya'arot_Devash_I"
+    },
+    {
+     "he": "יערות דבש חלק ב",
+     "en": "Ya'arot Devash II",
+     "url": "/Ya'arot_Devash_II"
+    }
+   ],
+   "wiki": {
+    "he": "יהונתן אייבשיץ",
+    "en": "Jonathan Eybeschutz"
+   }
+  },
+  "654": {
+   "label": "רבי מנחם די לונזאנו",
+   "slug": "menachem-di-lonzano",
+   "kind": "person",
+   "he": "מנחם די לונזאנו",
+   "en": "Menachem di Lonzano",
+   "total": 0,
+   "works": []
+  },
+  "657": {
+   "label": "רבי יאיר חיים בכרך (בעל חוות יאיר)",
+   "slug": "yair-chaim-bacharach",
+   "kind": "author",
+   "he": "יאיר חיים בכרך",
+   "en": "Yair Chaim Bacharach",
+   "total": 2,
+   "works": [
+    {
+     "he": "הגהות חוות יאיר על רי\"ף",
+     "en": "Hagahot Chavot Yair on Rif",
+     "url": "/texts/Talmud/Bavli/Rishonim on Talmud/Rif/Commentary/Hagahot Chavot Yair",
+     "cat": true
+    },
+    {
+     "he": "חוות יאיר",
+     "en": "Havot Yair",
+     "url": "/Havot_Yair"
+    }
+   ],
+   "wiki": {
+    "he": "יאיר חיים בכרך",
+    "en": "Yair Bacharach"
+   }
+  },
+  "658": {
+   "label": "רבי אליהו הכהן האתמרי (בעל שבט מוסר)",
+   "slug": "eliyahu-hakohen-haitamri",
+   "kind": "author",
+   "he": "אליהו הכהן האיתמרי",
+   "en": "Eliyahu HaKohen of Smyrna",
+   "total": 2,
+   "works": [
+    {
+     "he": "מדרש האתמרי",
+     "en": "Midrash HaIttamari",
+     "url": "/Midrash_HaIttamari"
+    },
+    {
+     "he": "שבט מוסר",
+     "en": "Shevet Musar",
+     "url": "/Shevet_Musar"
+    }
+   ],
+   "wiki": {
+    "he": "אליהו הכהן (רב)",
+    "en": "Elijah ben Solomon Abraham ha-Kohen"
+   }
+  },
+  "660": {
+   "label": "רבי יעקב ריישר (בעל שבות יעקב)",
+   "slug": "jacob-reischer",
+   "kind": "author",
+   "he": "יעקב ריישר",
+   "en": "Jacob Reischer",
+   "total": 2,
+   "works": [
+    {
+     "he": "חק יעקב על שולחן ערוך אורח חיים",
+     "en": "Chok Yaakov on Shulchan Arukh, Orach Chayim",
+     "url": "/Chok_Yaakov_on_Shulchan_Arukh,_Orach_Chayim"
+    },
+    {
+     "he": "תורת השלמים על שולחן ערוך יורה דעה",
+     "en": "Torat HaShlamim on Shulchan Arukh, Yoreh De'ah",
+     "url": "/Torat_HaShlamim_on_Shulchan_Arukh,_Yoreh_De'ah"
+    }
+   ],
+   "wiki": {
+    "he": "יעקב ריישר",
+    "en": "Jacob ben Joseph Reischer"
+   }
+  },
+  "665": {
+   "label": "רבי נתנאל וייל (בעל קרבן נתנאל)",
+   "slug": "nathaniel-weil",
+   "kind": "author",
+   "he": "נתנאל וייל",
+   "en": "Nathaniel Weil",
+   "total": 4,
+   "works": [
+    {
+     "he": "קרבן נתנאל על תלמוד",
+     "en": "Korban Netanel on Talmud",
+     "url": "/texts/Talmud/Bavli/Rishonim on Talmud/Rosh/Commentary/Korban Netanel",
+     "cat": true
+    },
+    {
+     "he": "קרבן נתנאל על יומא",
+     "en": "Korban Netanel on Yoma",
+     "url": "/Korban_Netanel_on_Yoma"
+    },
+    {
+     "he": "נתיב חיים על שלחן ערוך אורח חיים",
+     "en": "Netiv Chayim on Shulchan Arukh, Orach Chayim",
+     "url": "/Netiv_Chayim_on_Shulchan_Arukh,_Orach_Chayim"
+    },
+    {
+     "he": "תורת נתנאל",
+     "en": "Torat Netanel",
+     "url": "/Torat_Netanel"
+    }
+   ],
+   "wiki": {
+    "he": "נתנאל וייל",
+    "en": "Nathaniel Weil"
+   }
+  },
+  "668": {
+   "label": "רבי יעקב הלוי ממרויש (בעל שו״ת מן השמים)",
+   "slug": "jacob-of-marvege",
+   "kind": "author",
+   "he": "יעקב הלוי ממרויש",
+   "en": "Jacob of Marvege",
+   "total": 1,
+   "works": [
+    {
+     "he": "שאלות ותשובות מן השמים",
+     "en": "Teshuvot Min HaShamayim",
+     "url": "/Teshuvot_Min_HaShamayim"
+    }
+   ],
+   "wiki": {
+    "he": "יעקב הלוי ממרויש - קורביל"
+   }
+  },
+  "669": {
+   "label": "רבי אברהם סבע (בעל צרור המור)",
+   "slug": "abraham-saba",
+   "kind": "author",
+   "he": "אברהם סבע",
+   "en": "Abraham Saba",
+   "total": 2,
+   "works": [
+    {
+     "he": "אשכול הכופר על רות",
+     "en": "Eshkol HaKofer on Ruth",
+     "url": "/Eshkol_HaKofer_on_Ruth"
+    },
+    {
+     "he": "צרור המור על התורה",
+     "en": "Tzror HaMor on Torah",
+     "url": "/Tzror_HaMor_on_Torah"
+    }
+   ],
+   "wiki": {
+    "he": "אברהם סבע",
+    "en": "Abraham Saba"
+   }
+  },
+  "679": {
+   "label": "רבי אליהו בחור (בעל מסורת המסורת)",
+   "slug": "elias-levita",
+   "kind": "author",
+   "he": "אליהו בחור",
+   "en": "Elias Levita",
+   "total": 2,
+   "works": [
+    {
+     "he": "נימוקי רבי אליהו בחור על ספר השרשים",
+     "en": "Animadversions by Elias Levita on Sefer HaShorashim",
+     "url": "/Animadversions_by_Elias_Levita_on_Sefer_HaShorashim"
+    },
+    {
+     "he": "ספר הבחור",
+     "en": "Sefer HaBachur",
+     "url": "/Sefer_HaBachur"
+    }
+   ],
+   "wiki": {
+    "he": "אליהו בחור",
+    "en": "Elia Levita"
    }
   }
  }
