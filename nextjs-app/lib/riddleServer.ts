@@ -11,11 +11,12 @@ import { getSefaria } from './sefaria'
 import { wikiLinks } from './wikipedia'
 import { hasQuiz } from './quiz'
 import { towerPath } from './tower'
+import { portraitAlt, portraitCredit, portraitEpisodeHref, portraitOf, type Portrait } from './portraits'
 import { formatYearRangeFor } from './utils'
 import type { Locale, Sage } from './types'
 import {
   buildLinkIndex, factsOf, fameScore, riddleClues, riddleIdOn, riddleNumber, riddlePool,
-  type RiddleCandidate, type RiddleContext, type RiddlePayload,
+  type RiddleCandidate, type RiddleContext, type RiddlePayload, type RiddlePortrait,
 } from './riddle'
 
 /** A bio for the end screen: whole sentences while they fit in `max` characters, else cut at a word. */
@@ -24,6 +25,21 @@ export function clipBio(text: string, max: number): string {
   if (flat.length <= max) return flat
   const stop = Math.max(...['. ', '! ', '? '].map(p => flat.lastIndexOf(p, max - 1)))
   return stop > max * 0.5 ? flat.slice(0, stop + 1) : clipWords(flat, max)
+}
+
+/**
+ * The card's portrait as strings the browser can show as they are: the caption and the alt follow the portrait's kind
+ * (a photograph is never given the illustration wording). Null when the sage has none. Exported for the tests.
+ */
+export function cardPortrait(id: string, name: string, locale: Locale, portrait: Portrait | null): RiddlePortrait | null {
+  if (!portrait) return null
+  return {
+    src: portrait.src,
+    alt: portraitAlt(name, locale, portrait),
+    credit: portraitCredit(portrait, locale),
+    href: portraitEpisodeHref(id, locale),
+    kind: portrait.kind,
+  }
 }
 
 let cache: { ctx: RiddleContext; pool: string[] } | null = null
@@ -85,6 +101,8 @@ export function riddlePayload(locale: Locale, date: Date = new Date()): RiddlePa
   const { name, tagline } = labelParts(shown.label)
   const bioIsLocal = locale === 'he' || translatedFields(today.sage.id, locale).has('bio')
   const id = today.sage.id
+  // ready-made strings: this file is the only one that reads the portraits data, so the client bundle never holds it
+  const portrait = portraitOf(id)
   return {
     day: today.day,
     number: today.number,
@@ -101,6 +119,7 @@ export function riddlePayload(locale: Locale, date: Date = new Date()): RiddlePa
       sageHref: `/${locale}/sage/${id}`,
       towerHref: towerPath(locale, id),
       quizHref: hasQuiz(id, locale) ? `/${locale}/sage/${id}#quiz` : null,
+      portrait: cardPortrait(id, name, locale, portrait),
     },
   }
 }

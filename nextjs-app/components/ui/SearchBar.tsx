@@ -11,6 +11,8 @@ import { ERA_COLORS } from '@/lib/types'
 import type { Locale } from '@/lib/types'
 import { UI } from '@/lib/i18n'
 import { askQuestion, looksLikeQuestion } from '@/components/chat/askAbout'
+import { searchThumb, usePortraitLookup } from './usePortraitLookup'
+import type { SearchThumb } from './usePortraitLookup'
 
 interface SearchBarProps {
   locale: Locale
@@ -38,6 +40,28 @@ function Highlighted({ text, range }: { text: string; range: [number, number] | 
       <mark className="bg-gold-500/20 text-gold-200 rounded-sm px-px">{text.slice(range[0], range[1])}</mark>
       {text.slice(range[1])}
     </>
+  )
+}
+
+/**
+ * The sage's own picture in a result row, in place of the era dot: 36 px, the small file, its caption as the `title`
+ * (a thumbnail is too small for a visible caption; the sage page and the Today card show it).
+ */
+export function SearchPortraitThumb({ id, thumb, color }: { id: string; thumb: SearchThumb; color: string }) {
+  return (
+    <img
+      src={thumb.src}
+      alt=""
+      title={thumb.title}
+      width={36}
+      height={36}
+      loading="lazy"
+      decoding="async"
+      data-portrait={id}
+      data-portrait-kind={thumb.kind}
+      className="h-9 w-9 flex-shrink-0 rounded-lg border object-cover"
+      style={{ borderColor: `${color}88` }}
+    />
   )
 }
 
@@ -117,6 +141,12 @@ export function SearchBar({ locale, className }: SearchBarProps) {
     ...(askable && !askFirst ? [{ kind: 'ask' } as Option] : []),
   ]
   const showDropdown = open && (shown.length > 0 || loadingData || trimmed.length > 1)
+
+  // The sages' portraits arrive in their own chunk the first time there is a sage to list; until then (and for a
+  // sage without one) the row keeps its era dot. When a list holds a portrait, the dots of the other rows sit in a
+  // slot as wide as the thumbnail, so the names start at the same place.
+  const portraits = usePortraitLookup(showDropdown && sageHits.length > 0)
+  const listHasPortrait = !!portraits && sageHits.some(h => portraits.hasPortrait(h.sage.id))
 
   // Keep the keyboard-active option in view
   useEffect(() => {
@@ -338,6 +368,8 @@ export function SearchBar({ locale, className }: SearchBarProps) {
               const { hit } = opt
               const { sage } = hit
               const name = displayName(sage.label)
+              const eraColor = ERA_COLORS[sage.period] ?? '#7a6550'
+              const thumb = searchThumb(portraits, sage.id, locale)
               return (
                 <li
                   key={sage.id}
@@ -359,7 +391,15 @@ export function SearchBar({ locale, className }: SearchBarProps) {
                     className={cn('absolute inset-y-1.5 start-0 w-0.5 rounded-full transition-opacity',
                       active ? 'bg-gold-400 opacity-100' : 'opacity-0')}
                   />
-                  <span className="era-dot" style={{ background: ERA_COLORS[sage.period] ?? '#7a6550' }} aria-hidden />
+                  {thumb ? (
+                    <SearchPortraitThumb id={sage.id} thumb={thumb} color={eraColor} />
+                  ) : listHasPortrait ? (
+                    <span className="flex w-9 flex-shrink-0 justify-center" aria-hidden>
+                      <span className="era-dot" style={{ background: eraColor }} />
+                    </span>
+                  ) : (
+                    <span className="era-dot" style={{ background: eraColor }} aria-hidden />
+                  )}
                   <div className="flex-1 min-w-0">
                     <p className="text-sm font-serif font-medium text-ink-100 truncate">
                       <Highlighted text={name} range={hit.nameRange} />

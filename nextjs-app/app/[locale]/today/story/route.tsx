@@ -10,6 +10,7 @@ import { formatYearRangeFor } from '@/lib/utils'
 import { SITE_URL } from '@/lib/siteUrl'
 import { clipWords } from '@/lib/ogText'
 import { OG, OgLine, ogAssets } from '@/lib/ogCard'
+import { ogPortrait, storyPortraitPx } from '@/lib/ogPortrait'
 import { formatHebrewDate } from '@/lib/today'
 import { todayFeature } from '@/lib/todayServer'
 
@@ -36,6 +37,10 @@ export async function GET(_req: Request, { params }: { params: Promise<{ locale:
   const line = local ? clipWords(sage.core_concept || '', 150) : ''
   const host = `${SITE_URL.replace(/^https?:\/\//, '')}/${loc}/today`
   const nameSize = name.length <= 14 ? 120 : name.length <= 26 ? 100 : name.length <= 40 ? 84 : 70
+  // A sage with a portrait has it between the date and his name (the medallion shrinks to make room); one without keeps
+  // the image as it was.
+  const portrait = await ogPortrait(t.featured.id, loc)
+  const portraitPx = portrait ? storyPortraitPx(name, nameSize, line, loc) : 0
 
   return new ImageResponse(
     (
@@ -46,7 +51,7 @@ export async function GET(_req: Request, { params }: { params: Promise<{ locale:
       }}>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={medallion} width={300} height={300} alt="" />
+          <img src={medallion} width={portrait ? 170 : 300} height={portrait ? 170 : 300} alt="" />
           <div style={{ display: 'flex', marginTop: 36 }}>
             <OgLine text={S.today[loc]} size={46} color={OG.gold} font={serif} weight={700} align="center" />
           </div>
@@ -56,6 +61,20 @@ export async function GET(_req: Request, { params }: { params: Promise<{ locale:
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', maxWidth: 920 }}>
+          {portrait && (
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: 40 }}>
+              <div style={{
+                display: 'flex', width: portraitPx, height: portraitPx, borderRadius: 60,
+                border: `6px solid ${accent}`, overflow: 'hidden',
+              }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={portrait.src} width={portraitPx - 12} height={portraitPx - 12} alt="" />
+              </div>
+              <div style={{ display: 'flex', marginTop: 22 }}>
+                <OgLine text={portrait.caption} size={30} color={OG.muted} font={sans} weight={500} align="center" />
+              </div>
+            </div>
+          )}
           <div style={{ display: 'flex', padding: '10px 30px', borderRadius: 999, background: 'rgba(201,151,58,0.16)', border: '2px solid rgba(201,151,58,0.45)' }}>
             <OgLine text={t.kind === 'hillula' ? S.hillula[loc] : S.daily[loc]} size={40} color={OG.goldSoft} font={sans} weight={500} align="center" />
           </div>

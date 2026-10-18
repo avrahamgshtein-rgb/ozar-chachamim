@@ -131,7 +131,7 @@ self.addEventListener('fetch', event => {
     event.respondWith(networkFirst(event, DATA))
   } else if (path.startsWith('/research/') || path.startsWith('/quiz/')) {
     event.respondWith(networkFirst(event, RESEARCH, MAX_RESEARCH))
-  } else if (/^\/(icons|images|kids)\//.test(path)) {
+  } else if (/^\/(icons|images|kids|portraits)\//.test(path)) {
     // not hashed, so they can change in place: show the saved copy and refresh it
     event.respondWith(staleWhileRevalidate(event, DATA))
   }

@@ -14,6 +14,7 @@ import { todayFeature, upcomingHillulot, yahrzeitOf } from '@/lib/todayServer'
 import { SiteTopBar } from '@/components/layout/SiteTopBar'
 import { EraChip } from '@/components/ui/EraChip'
 import { ShareToday } from '@/components/today/ShareToday'
+import { TodayFeaturedHead } from '@/components/today/TodayPortrait'
 import { ERA_COLORS, ERA_LABELS } from '@/lib/types'
 import { clipWords } from '@/lib/ogText'
 import type { TodayCard } from '@/lib/todayVideo'
@@ -145,19 +146,21 @@ export default async function TodayPage({ params }: PageProps) {
         </header>
 
         <section aria-labelledby="today-featured" className="mt-8 rounded-2xl border border-gold-500/30 bg-gold-500/[0.06] p-5 sm:p-7">
-          <p className="inline-flex items-center gap-2 rounded-full bg-gold-500/15 px-3 py-1 text-xs font-semibold text-gold-300">
-            <span aria-hidden>{t.kind === 'hillula' ? '🕯️' : '📜'}</span>
-            {t.kind === 'hillula' ? S.hillula[loc] : S.daily[loc]}
-          </p>
-          <h2 id="today-featured" className="mt-3 font-serif text-3xl font-bold leading-tight text-ink-50 md:text-4xl">
-            <Link href={href} className="hover:text-gold-300">{name}</Link>
-          </h2>
-          {tagline && <p className="mt-1 font-serif text-lg text-gold-300">{tagline}</p>}
-          <p className="mt-3 flex flex-wrap items-center gap-2 text-sm text-ink-300">
-            <EraChip period={featured.period} locale={loc} size="sm" />
-            {years && <span className="tabular-nums">{years}</span>}
-            {y && <span>· {S.diedOn[loc]} {dayMonth(y.day, y.month, loc)}</span>}
-          </p>
+          <TodayFeaturedHead id={t.featured.id} name={name} locale={loc} accent={card.accent}>
+            <p className="inline-flex items-center gap-2 rounded-full bg-gold-500/15 px-3 py-1 text-xs font-semibold text-gold-300">
+              <span aria-hidden>{t.kind === 'hillula' ? '🕯️' : '📜'}</span>
+              {t.kind === 'hillula' ? S.hillula[loc] : S.daily[loc]}
+            </p>
+            <h2 id="today-featured" className="mt-3 font-serif text-3xl font-bold leading-tight text-ink-50 md:text-4xl">
+              <Link href={href} className="hover:text-gold-300">{name}</Link>
+            </h2>
+            {tagline && <p className="mt-1 font-serif text-lg text-gold-300">{tagline}</p>}
+            <p className="mt-3 flex flex-wrap items-center gap-2 text-sm text-ink-300">
+              <EraChip period={featured.period} locale={loc} size="sm" />
+              {years && <span className="tabular-nums">{years}</span>}
+              {y && <span>· {S.diedOn[loc]} {dayMonth(y.day, y.month, loc)}</span>}
+            </p>
+          </TodayFeaturedHead>
 
           {t.kind === 'hillula' && y && loc === 'he' && (
             <blockquote className="mt-4 border-s-2 border-gold-500/50 ps-4 font-serif text-ink-200">

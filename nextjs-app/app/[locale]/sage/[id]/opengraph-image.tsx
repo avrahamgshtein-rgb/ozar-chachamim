@@ -15,6 +15,7 @@ import { sageVideos } from '@/lib/youtube'
 import { SITE_URL } from '@/lib/siteUrl'
 import { clipWords } from '@/lib/ogText'
 import { OG, OgLine, ogAssets } from '@/lib/ogCard'
+import { CARD_PORTRAIT_PX, ogPortrait } from '@/lib/ogPortrait'
 
 export const alt = 'אוצר חכמים · Ozar Chachamim'
 export const size = { width: 1200, height: 630 }
@@ -66,6 +67,9 @@ export default async function Image({ params }: { params: Promise<{ locale: stri
   const nameSize = name.length <= 16 ? 92 : name.length <= 28 ? 76 : name.length <= 44 ? 62 : 52
   const meta = [era, years].filter(Boolean).join('  ·  ')
   const align = rtl ? 'end' : 'start'
+  // A sage with a portrait gets it in the right column in place of the medallion (which becomes a small badge on its
+  // corner); one without keeps the card as it was.
+  const portrait = await ogPortrait(raw.id, loc)
 
   return new ImageResponse(
     (
@@ -119,8 +123,31 @@ export default async function Image({ params }: { params: Promise<{ locale: stri
         </div>
 
         <div style={{ width: 400, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={medallionSrc} width={330} height={330} alt="" style={{ opacity: 0.95 }} />
+          {portrait ? (
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: 380 }}>
+              <div style={{ display: 'flex', position: 'relative', width: CARD_PORTRAIT_PX, height: CARD_PORTRAIT_PX }}>
+                <div style={{
+                  display: 'flex', width: CARD_PORTRAIT_PX, height: CARD_PORTRAIT_PX, borderRadius: 36,
+                  border: `4px solid ${accent}`, overflow: 'hidden',
+                }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={portrait.src} width={CARD_PORTRAIT_PX - 8} height={CARD_PORTRAIT_PX - 8} alt="" />
+                </div>
+                {/* The medallion, as a badge on the outer bottom corner */}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={medallionSrc} width={84} height={84} alt=""
+                  style={{ position: 'absolute', bottom: -26, ...(rtl ? { left: -26 } : { right: -26 }) }}
+                />
+              </div>
+              <div style={{ display: 'flex', width: 380, marginTop: 40, justifyContent: 'center' }}>
+                <Line text={portrait.caption} size={20} color={MUTED} font={sans} weight={500} align="center" />
+              </div>
+            </div>
+          ) : (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={medallionSrc} width={330} height={330} alt="" style={{ opacity: 0.95 }} />
+          )}
         </div>
       </div>
     ),
