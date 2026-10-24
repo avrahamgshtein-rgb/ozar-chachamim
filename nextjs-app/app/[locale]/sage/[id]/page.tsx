@@ -5,6 +5,7 @@ import { getSageById, getSageConnections, getResearchDocs, hasLocalisedResearch 
 import { localizeSage, localizeTerm, translatedFields } from '@/lib/serverDataTranslator'
 import { parseResearchDocs } from '@/lib/researchParse'
 import { getSageBreadcrumbSchema, getSageSchema, jsonLdScript } from '@/lib/structuredData'
+import { sageSameAs } from '@/lib/sageSameAs'
 import { labelParts } from '@/lib/displayName'
 import { isValidLocale, UI, LOCALES, LOCALE_SHORT } from '@/lib/i18n'
 import { ERA_LABELS, ERA_COLORS } from '@/lib/types'
@@ -106,7 +107,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       title,
       description,
       type: 'article',
+      // a page's openGraph replaces the layout's whole, so the site name is set here too
+      siteName: UI[loc].appTitle,
       locale: OG_LOCALES[loc],
+      alternateLocale: LOCALES.filter(l => l !== loc).map(l => OG_LOCALES[l]),
       url: `${SITE_URL}/${loc}/sage/${id}`,
     },
     // The image itself is opengraph-image.tsx beside this page; X shows it large.
@@ -181,13 +185,21 @@ export default async function SagePage({ params }: PageProps) {
     related: related.flatMap(g => g.people.slice(0, 2).map(p => ({ group: g.group, name: p.name }))).slice(0, 6),
   }
 
+  // sameAs: the Wikipedia / Sefaria / Wikisource pages the site links for him (lib/sageSameAs.ts), then the episode
+  const sameAs = sageSameAs(raw.id, sage.spotify_url)
   const jsonLd = jsonLdScript(
-    getSageSchema(sage, loc, {
-      url: pageUrl,
-      // On en/ru pages the Hebrew name is an alternate name too.
-      alternateNames: loc !== 'he' ? [labelParts(raw.label).name] : [],
-      research: researchDocs.map(d => ({ title: d.title, wordCount: d.wordCount, inLanguage: d.dir === 'rtl' ? 'he' : loc === 'he' ? 'en' : loc })),
-    }),
+    {
+      ...getSageSchema(sage, loc, {
+        url: pageUrl,
+        // On en/ru pages the Hebrew name is an alternate name too.
+        alternateNames: loc !== 'he' ? [labelParts(raw.label).name] : [],
+        research: researchDocs.map(d => ({ title: d.title, wordCount: d.wordCount, inLanguage: d.dir === 'rtl' ? 'he' : loc === 'he' ? 'en' : loc })),
+      }),
+      // the place and the field in the page's language, as the page shows them (the record stores them in Hebrew)
+      workLocation: sage.location ? { '@type': 'Place', name: shownLocation(sage) } : undefined,
+      knowsAbout: shownField(sage) || undefined,
+      sameAs: sameAs.length ? sameAs : undefined,
+    },
     getSageBreadcrumbSchema(loc, {
       home: t.appTitle,
       era: { name: era, period: sage.period },

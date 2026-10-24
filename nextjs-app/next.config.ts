@@ -28,6 +28,11 @@ const nextConfig: NextConfig = {
       },
     ]
   },
+  // Everyone gets the page's metadata (title, description, canonical, hreflang, Open Graph) inside the
+  // <head> of the first response. By default Next.js streams it into the <body> for any client that is
+  // not on its short list of crawlers that cannot run scripts (Googlebot is deliberately not on it), and
+  // the browser moves it into the head only once the page's script has run.
+  htmlLimitedBots: /.*/,
   images: {
     remotePatterns: [
       {

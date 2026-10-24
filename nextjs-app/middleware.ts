@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createServerClient, type CookieOptions } from '@supabase/ssr'
-import { LOCALES, DEFAULT_LOCALE, isValidLocale } from '@/lib/i18n'
+import { isValidLocale } from '@/lib/i18n'
+import { localePrefixedPath, preferredLocale } from '@/lib/localeDetect'
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL ?? 'https://ulluacifirzywhmzkvkr.supabase.co'
 const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? 'sb_publishable_ObxKLFsDTE41KoAMfMV1dw_Nu38ZI2C'
@@ -49,14 +50,12 @@ export async function middleware(request: NextRequest) {
     return response
   }
 
-  // Detect locale from Accept-Language header
-  const acceptLanguage = request.headers.get('accept-language') ?? ''
-  const preferredLocale = LOCALES.find(locale =>
-    acceptLanguage.toLowerCase().includes(locale)
-  ) ?? DEFAULT_LOCALE
+  // Detect locale from Accept-Language header (best q-value among the languages we serve; Hebrew when none)
+  const locale = preferredLocale(request.headers.get('accept-language'))
 
-  // Preserve query parameters when redirecting
-  const redirectUrl = new URL(`/${preferredLocale}${pathname}${search}`, request.url)
+  // Preserve query parameters when redirecting. The bare "/" goes straight to "/<locale>", not to
+  // "/<locale>/" (which Next.js would redirect once more, a two-hop chain).
+  const redirectUrl = new URL(localePrefixedPath(locale, pathname, search), request.url)
   return NextResponse.redirect(redirectUrl)
 }
 

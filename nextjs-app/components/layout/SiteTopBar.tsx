@@ -5,6 +5,13 @@ import { UI } from '@/lib/i18n'
 import { LocaleLinks } from './LocaleLinks'
 import { SoundtrackToggle } from '@/components/ui/SoundtrackToggle'
 
+const INDEX_LABEL: Record<Locale, string> = { he: 'כל החכמים', en: 'All sages', ru: 'Все мудрецы' }
+const INDEX_TITLE: Record<Locale, string> = {
+  he: 'האינדקס: כל החכמים לפי תקופות',
+  en: 'The index: every sage, by era',
+  ru: 'Указатель: все мудрецы по эпохам',
+}
+
 /**
  * Slim top bar for the site's standalone pages (About, 404): the site title
  * back to the home page, a way back to the map, and the same page in the other
@@ -26,6 +33,22 @@ export function SiteTopBar({ locale, path = '', followUrl = false }: {
         </Link>
 
         <div className="flex items-center gap-1.5">
+          {/* The plain index of every sage (a crawlable way to each sage page): a plain link, no prefetch of its 500 links.
+              Not under 380px: the title would wrap onto two lines there (every page also carries a skip link to it) */}
+          <a
+            href={`/${locale}/sages`}
+            title={INDEX_TITLE[locale]}
+            aria-label={INDEX_LABEL[locale]}
+            aria-current={path === '/sages' ? 'page' : undefined}
+            className={cn(
+              'hidden min-[380px]:inline-flex items-center justify-center rounded-xl h-9 min-w-[36px] px-2 sm:px-3 font-sans text-xs',
+              'glass-light border border-ink-600/40 text-ink-300 transition-colors hover:border-gold-500/30 hover:text-ink-100',
+              path === '/sages' && 'border-gold-500/40 text-gold-300',
+            )}
+          >
+            <span aria-hidden>📚</span>
+            <span className="hidden sm:inline ms-1.5">{INDEX_LABEL[locale]}</span>
+          </a>
           <Link
             href={`/${locale}`}
             className={cn(

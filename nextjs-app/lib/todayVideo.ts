@@ -23,7 +23,7 @@ export interface TodayCard {
   line: string
   /** "מחקר מלא · האזנה · סרטון · חידון" */
   more: string
-  /** "ozar-chachamim.vercel.app/he/today" */
+  /** the site address without the scheme, from SITE_URL: "example.org/he/today" */
   host: string
   appTitle: string
   /** His era's colour. */
