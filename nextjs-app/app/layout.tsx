@@ -1,6 +1,9 @@
 import type { Metadata, Viewport } from 'next'
 import { SITE_URL } from '@/lib/siteUrl'
+import { verificationMetadata } from '@/lib/siteVerification'
 import './globals.css'
+
+const verification = verificationMetadata()
 
 // Fallback metadata for documents outside a locale (the root 404). Locale
 // pages get theirs from app/[locale]/layout.tsx. A plain string, not a
@@ -9,6 +12,8 @@ import './globals.css'
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: 'אוצר חכמים — גרף הידע של חכמי ישראל',
+  // Search Console / Bing ownership codes (lib/siteVerification.ts): no tag at all while they are empty.
+  ...(verification ? { verification } : {}),
 }
 
 export const viewport: Viewport = {

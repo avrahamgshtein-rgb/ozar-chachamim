@@ -3,6 +3,8 @@ import { notFound } from 'next/navigation'
 import { isValidLocale, getDirection, getHtmlLang, OG_LOCALES, UI } from '@/lib/i18n'
 import type { Locale } from '@/lib/types'
 import { SITE_URL } from '@/lib/siteUrl'
+import { SAGE_INDEX_TEXT } from '@/lib/sageIndexText'
+import { verificationMetadata } from '@/lib/siteVerification'
 import { SkipLink } from '@/components/layout/SkipLink'
 import { SiteTelemetry } from '@/components/layout/SiteTelemetry'
 import { Soundtrack } from '@/components/layout/Soundtrack'
@@ -24,6 +26,7 @@ export async function generateMetadata({ params }: LocaleLayoutProps): Promise<M
   const { locale } = await params
   if (!isValidLocale(locale)) return {}
   const t = UI[locale]
+  const verification = verificationMetadata()
 
   return {
     metadataBase: new URL(SITE_URL),
@@ -39,6 +42,8 @@ export async function generateMetadata({ params }: LocaleLayoutProps): Promise<M
       locale: OG_LOCALES[locale],
     },
     twitter: { card: 'summary' },
+    // Search Console / Bing ownership codes (lib/siteVerification.ts): no tag at all while they are empty.
+    ...(verification ? { verification } : {}),
   }
 }
 
@@ -69,6 +74,10 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
       </head>
       <body className="font-sans bg-ink-900 text-ink-100 antialiased">
         <SkipLink label={UI[validLocale].skipToContent} />
+        {/* The second skip link goes to the plain list of every sage (the graph and the map are not readable
+            without sight or a pointer). It also gives every page of the site, home included, an ordinary
+            link to the one page that links to all the sages. */}
+        <a href={`/${validLocale}/sages`} className="skip-link">{SAGE_INDEX_TEXT[validLocale].skip}</a>
         {children}
         <SiteTelemetry />
         <Soundtrack />
