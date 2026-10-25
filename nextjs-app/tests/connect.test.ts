@@ -528,6 +528,32 @@ test('the net: only sages with a link, in id order, named in the language, eras 
   for (const [a, b] of samplePairs(100)) assert.deepEqual(shortestPath(back, a, b), shortestPath(g, a, b), `${a} to ${b}`)
 })
 
+// Six women the roster left without the 'נשים' tag until 2026-10-25, by name (ids drift, names do not).
+const WOMEN_ONCE_UNTAGGED = ['הרבנית חיה מושקא שניאורסון', 'גאולה כהן', 'לאה אמנו', "סוליקא חג'ואל", 'אימא שלום', 'מרים הנביאה']
+
+test('the six women once left untagged are women in the net, and a Hebrew caption that describes one is in the feminine', () => {
+  const he = connectNet('he')
+  let described = 0
+  for (const label of WOMEN_ONCE_UNTAGGED) {
+    const id = byLabel(label)
+    assert.ok(sages.find(s => s.id === id)!.tags?.includes('נשים'), `${id} ${label} lacks the 'נשים' tag`)
+    const row = he.sages.find(s => s[0] === id)
+    assert.equal(!!row, degreeOf(g, id) > 0, `${label}: in the net exactly when she has a recorded link`)
+    if (!row) continue
+    assert.equal(row[3], 1, `${id} ${label} is not marked as a woman in the net`)
+    for (const { id: prev } of sages) {
+      const via = linkBetween(g, prev, id)
+      if (!via) continue
+      const prevName = he.sages.find(s => s[0] === prev)![1]
+      const caption = describePath(he, { steps: [{ id: prev }, { id, via }], weight: 0, links: 1 }, 'he')[1].caption!
+      assert.equal(caption, stepCaption(via, prevName, 'he', true), `${id} ${label} from ${prev}`)
+      assert.notEqual(caption, stepCaption(via, prevName, 'he', false), `${id} ${label} from ${prev}: the masculine caption`)
+      described++
+    }
+  }
+  assert.ok(described >= 1, 'no caption describes any of them')
+})
+
 test('the Hebrew net fits the page\'s budget (the whole payload, net and the game\'s day, is under 28 KB)', () => {
   const bytes = (l: Locale) => Buffer.byteLength(JSON.stringify(connectNet(l)), 'utf8')
   console.log(`       (net bytes: he ${bytes('he')}, en ${bytes('en')}, ru ${bytes('ru')})`)
