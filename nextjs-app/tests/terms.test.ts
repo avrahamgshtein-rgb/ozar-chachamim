@@ -99,6 +99,15 @@ test('every sage has a Hebrew bio and core concept (the page shows nothing under
   assert.deepEqual(missing, [], 'write them into the spreadsheet columns תקציר (2–3 שורות) and רעיון מרכזי/חידוש')
 })
 
+test("a tag that holds the word נשים inside a longer tag (נשים בתלמוד) is not the women's tag: that sage carries the whole tag נשים too", () => {
+  // the site matches whole tags (tags.includes('נשים')): the tower, the captions, the filter and the description
+  // lines read nothing else, so a woman tagged only 'נשים בתלמוד' (624 until 2026-10-25) was spoken of as a man
+  const bad = sages
+    .filter(s => (s.tags ?? []).some(t => t !== 'נשים' && t.split(/[\s־-]+/).includes('נשים')) && !(s.tags ?? []).includes('נשים'))
+    .map(s => `${s.id} ${s.label}: ${(s.tags ?? []).filter(t => t.includes('נשים')).join(', ')}`)
+  assert.deepEqual(bad, [], "add the whole tag נשים to these sages (the spreadsheet's תגיות cell and both copies of data.json)")
+})
+
 test('the translation is shown beside the Hebrew, never over it: regions and places still read Hebrew', () => {
   for (const s of sages) {
     const en = localizeSage(s, 'en')

@@ -58,6 +58,19 @@ test("direction follows region: each sage stands inside his region's sector", ()
   assert.deepEqual(off.map(n => n.id), [])
 })
 
+// Six women the roster left without the 'נשים' tag until 2026-10-25, by name (ids drift, names do not).
+const WOMEN_ONCE_UNTAGGED = ['הרבנית חיה מושקא שניאורסון', 'גאולה כהן', 'לאה אמנו', "סוליקא חג'ואל", 'אימא שלום', 'מרים הנביאה']
+
+test('a woman is feminine in the tower, the six once left untagged among them (Hebrew agrees with her)', () => {
+  assert.deepEqual(tower.nodes.filter(n => n.feminine).map(n => n.id), sages.filter(s => s.tags?.includes('נשים')).map(s => s.id))
+  for (const label of WOMEN_ONCE_UNTAGGED) {
+    const s = sages.find(x => x.label === label)
+    assert.ok(s, `no sage labelled ${label}`)
+    assert.ok(s.tags?.includes('נשים'), `${s.id} ${label} lacks the 'נשים' tag`)
+    assert.equal(byId.get(s.id)?.feminine, true, `${s.id} ${label} is not feminine in the tower`)
+  }
+})
+
 test('the same corpus gives the same tower (a sage keeps his place between builds)', () => {
   assert.deepEqual(buildTower(sages, connections, 'he').nodes, tower.nodes)
 })

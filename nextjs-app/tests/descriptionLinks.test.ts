@@ -81,8 +81,8 @@ const roster = new Map((graph.nodes as Array<{ id: string; label: string; chapte
 const sages = new Map(getAllSages().map(s => [s.id, s]))
 // An entry that is a book, a group or a topic: no possessive, no teachers or students (as in rebuild_data_from_csv.py).
 const NOT_A_PERSON = new Set(['נושא/מושג', 'נושא', 'ספר', 'חיבור', 'אירוע היסטורי', 'דמויות', 'מחזור ויטרי', 'מדרש רבה'])
-// Women whose roster entry lacks the 'נשים' tag, by name (scripts/build_description_links.py::WOMEN_UNTAGGED).
-const WOMEN_UNTAGGED = ['הרבנית חיה מושקא שניאורסון', 'גאולה כהן', 'לאה אמנו', "סוליקא חג'ואל", 'מרים הנביאה']
+// Six women the roster left without the 'נשים' tag until 2026-10-25, by name: ids drift, names do not.
+const WOMEN_ONCE_UNTAGGED = ['הרבנית חיה מושקא שניאורסון', 'גאולה כהן', 'לאה אמנו', "סוליקא חג'ואל", 'אימא שלום', 'מרים הנביאה']
 
 const researchExists = (id: string, lang: Lang): boolean => {
   const p = path.join(PUBLIC, 'research', lang === 'he' ? `${id}.json` : `${id}.${lang}.json`)
@@ -96,7 +96,7 @@ const quizExists = (id: string, lang: Lang): boolean =>
 function factsOf(id: string, lang: Lang): Claims {
   const node = roster.get(id)!
   const person = !NOT_A_PERSON.has(node.chapter_type ?? '') && !NOT_A_PERSON.has(node.label)
-  const woman = !!sages.get(id)!.tags?.includes('נשים') || WOMEN_UNTAGGED.includes(node.label)
+  const woman = !!sages.get(id)!.tags?.includes('נשים')
   const links = getSageConnections(id).filter(c => c.source !== c.target)
   // `teacher`: the source teaches the target; `student`: the source is the student of the target
   const asTeacher = (c: (typeof links)[number]) => (c.type === 'teacher' && c.source === id) || (c.type === 'student' && c.target === id)
@@ -366,9 +366,14 @@ test('the three languages are all there, and each sage kind (man, woman, book or
   assert.ok(doc.youtube.some(e => !e.claims.research) && doc.youtube.some(e => e.claims.quiz) && doc.youtube.some(e => e.claims.teachers && !e.claims.students))
 })
 
-test('the women the roster does not tag are still on the roster under the names the script knows', () => {
-  const labels = new Set([...roster.values()].map(n => n.label))
-  for (const n of WOMEN_UNTAGGED) assert.ok(labels.has(n), `"${n}" is not a roster label any more: update WOMEN_UNTAGGED here and in the script`)
+test('the tag alone decides who is a woman: the six once left untagged carry it now, and their lines are a woman\'s', () => {
+  const idOf = new Map([...roster.values()].map(n => [n.label, n.id]))
+  for (const label of WOMEN_ONCE_UNTAGGED) {
+    const id = idOf.get(label)
+    assert.ok(id, `"${label}" is not a roster label any more`)
+    assert.ok(sages.get(id)!.tags?.includes('נשים'), `${id} ${label} lacks the 'נשים' tag`)
+    for (const e of [...doc.youtube, ...doc.spotify].filter(x => x.sage === id)) assert.equal(e.claims.kind, 'f', `${id} ${label}: a line that does not take her for a woman`)
+  }
   const tagged = getAllSages().filter(s => s.tags?.includes('נשים'))
   assert.ok(tagged.length >= 25, `only ${tagged.length} tagged women`)
 })

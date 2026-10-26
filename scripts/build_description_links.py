@@ -37,9 +37,9 @@ the video's language is its own `defaultLanguage` from data/youtube-playlist.tsv
 title: see scripts/snapshot_youtube.py). Rows in `_left_out` are not listed. The Hebrew name is the roster
 label without its subtitle (lib/displayName.ts), with proper gershayim; en/ru use the overlay label.
 
-Grammatical gender: women carry the 'נשים' tag, but the tag is missing on a few (WOMEN_UNTAGGED below, found by
-reading the roster; the data is not touched here). Every such entry is joined by NAME, and the build stops
-when the roster no longer has that name on an entry.
+Grammatical gender: a woman is a sage whose tags (as the app serves them) hold 'נשים', and nothing else
+decides it. (Until 2026-10-25 five women lacked the tag and a list of their names stood in for it here; they
+were tagged in the roster, so the list is gone.)
 
 Views come from the YouTube Data API (videos.list, 50 ids a call), called the way scripts/snapshot_youtube.py
 does: curl, no key unless $YOUTUBE_API_KEY is set (the cloud environment's network secret adds the key as an
@@ -64,9 +64,6 @@ API_LANG = {'ru': 'ru', 'en': 'en', 'iw': 'he', 'he': 'he'}
 LINE_LIMIT = 200          # a line is shorter than this, the url included, counted in UTF-16 units (as JavaScript's .length does: the emoji is two)
 NOT_A_PERSON = {'נושא/מושג', 'נושא', 'ספר', 'חיבור', 'אירוע היסטורי', 'דמויות'}   # as in rebuild_data_from_csv.py
 TEXTS = {'מחזור ויטרי', 'מדרש רבה'}   # typed 'טקסט יסוד' like Rav Sherira Gaon and Ben Sira, but books (as in build_catalog_links.py)
-# Women whose roster entry lacks the 'נשים' tag (checked by reading all 509 labels on 2026-10-24). Joined by
-# name: the build fails when the roster has another name on the entry that carries this label.
-WOMEN_UNTAGGED = {'הרבנית חיה מושקא שניאורסון', 'גאולה כהן', 'לאה אמנו', "סוליקא חג'ואל", 'מרים הנביאה'}
 
 ap = argparse.ArgumentParser()
 ap.add_argument('--check', action='store_true', help='rebuild in memory and exit 1 when the committed files differ')
@@ -233,18 +230,12 @@ def build_doc(site):
     for sid, node in roster.items():       # the app serves the roster the script reads
         if sid not in facts or facts[sid]['label'] != node['label']:
             sys.exit('sage %s: the app says "%s", data.json says "%s"' % (sid, facts.get(sid, {}).get('label'), node['label']))
-    untagged = {}
-    for sid, node in roster.items():
-        if node['label'] in WOMEN_UNTAGGED:
-            untagged[node['label']] = sid
-    if set(untagged) != WOMEN_UNTAGGED:
-        sys.exit('WOMEN_UNTAGGED names a sage the roster no longer has: %s' % sorted(WOMEN_UNTAGGED - set(untagged)))
 
     def kind_of(sid):
         node = roster[sid]
         if node.get('chapter_type') in NOT_A_PERSON or node['label'] in TEXTS:
             return 'n'
-        return 'f' if ('נשים' in facts[sid]['tags'] or node['label'] in WOMEN_UNTAGGED) else 'm'
+        return 'f' if 'נשים' in facts[sid]['tags'] else 'm'
 
     def claims_of(sid, lang):
         f = facts[sid]
