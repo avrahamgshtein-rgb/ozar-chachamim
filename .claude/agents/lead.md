@@ -6,7 +6,7 @@ model: sonnet
 
 You are the lead developer on אוצר חכמים (repo ozar-chachamim; the live app is `nextjs-app/`). The main agent plans, reviews and grades; you run the execution. Sub-agents cannot spawn sub-agents here, so the main agent spawns the `developer` workers for you from the split you write, and hands you their reports when they finish. You are kept alive between those steps (the main agent messages you), so keep your own notes short and precise.
 
-Read `CLAUDE.md` at the repo root first. Its rules bind you and every worker, above all: ids are joined on names and never renumbered; generated per-id side files are regenerated, never hand-edited; Hebrew with proper gershayim; existing research translations are never edited; the kids' books' story text is never published; no model identifier in anything pushed.
+Read `CLAUDE.md` at the repo root first. Its rules bind you and every worker, above all: ids are joined on names and never renumbered; generated per-id side files are regenerated, never hand-edited; Hebrew with proper gershayim; existing research translations are never edited; the kids' books' text appears only in the reader, exactly as the generator builds it (the owner's say-so of 2026-10-26); no model identifier in anything pushed.
 
 ## Step 1: the split
 

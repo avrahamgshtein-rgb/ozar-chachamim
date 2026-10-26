@@ -10,7 +10,7 @@ Before you start, read `CLAUDE.md` at the repo root. Its rules bind you as they 
 - **Ids:** join on names, never renumber an id, never hand-edit a generated per-id side file (regenerate it with its script).
 - **Hebrew:** proper gershayim (רמב״ם).
 - **Translations:** existing research translation files are never edited.
-- **The kids' books:** their story text is never published.
+- **The kids' books:** their text is published only in the reader (`/he/kids/read`, the owner's say-so of 2026-10-26), exactly as the generator builds it from the owner's file; never rewritten, never summarised into other pages, and nothing for a book whose file has not arrived.
 - **Model names:** no model identifier in anything that is pushed.
 
 How to work:

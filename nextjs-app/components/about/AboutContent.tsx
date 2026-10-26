@@ -8,6 +8,7 @@ import { TAB_META } from '@/lib/types'
 import type { Locale, Tab } from '@/lib/types'
 import { UI } from '@/lib/i18n'
 import { SITE_URL } from '@/lib/siteUrl'
+import { KIDS_BOOKS_AVAILABLE, KIDS_READ_PATH, readBookHref, type BookRoute } from '@/lib/kidsBookLinks'
 import type { CorpusStats } from '@/lib/siteStats'
 import { YoutubeWatch } from '@/components/sages/YoutubeWatch'
 import { InstallApp } from '@/components/ui/InstallApp'
@@ -19,6 +20,9 @@ import { CiteBox } from './CiteBox'
 export type { CorpusStats }
 
 const VIEWS: Tab[] = ['graph', 'map', 'traditions', 'timeline', 'genealogy', 'ideas']
+
+/** The kids' books that can be read on the site (lib/kidsBookLinks.ts): the line under the kids' card follows it. */
+const BOOKS_HERE = (Object.keys(KIDS_BOOKS_AVAILABLE) as BookRoute[]).filter(k => KIDS_BOOKS_AVAILABLE[k])
 
 const CONTACT_NAME = 'Avraham Goldshtein'
 const CONTACT_EMAIL = 'avraham.gshtein@gmail.com'
@@ -215,6 +219,14 @@ export function AboutContent({ locale, stats, variant, onOpenTab }: AboutContent
               <span className="mt-3 inline-block font-sans text-sm font-semibold text-gold-300 group-hover:underline">יוצאים לדרך {arrow}</span>
             </div>
           </a>
+          {/* beside the card, not in it: the card is one link already, and links do not nest */}
+          {BOOKS_HERE.length > 0 && (
+            <p className="mt-3 font-sans text-sm text-ink-300">
+              <a href={BOOKS_HERE.length === 1 ? readBookHref(BOOKS_HERE[0]) : KIDS_READ_PATH} className="font-semibold text-gold-300 hover:underline">
+                <span aria-hidden>📖</span> {BOOKS_HERE.length === 1 ? 'אפשר גם לקרוא את הספר יחד' : 'אפשר גם לקרוא את הספרים יחד'}
+              </a>
+            </p>
+          )}
         </section>
       )}
 

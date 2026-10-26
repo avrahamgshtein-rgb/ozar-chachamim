@@ -263,6 +263,30 @@ test('service worker: the kids\' illustrations are kept for offline reading', as
   online = true
 })
 
+test('service worker: the books\' reader needs no rule of its own: its pictures are stale-while-revalidate under /kids/, its pages are network-first navigations', async () => {
+  online = true
+  const pic = '/kids/books/saltiel/m1.webp'
+  const first = await ask(pic)                                // not saved yet: the network, then saved
+  assert.equal(await first!.text(), 'network:' + pic)
+  const before = fetched.length
+  const again = await ask(pic)                                // the saved copy at once, refreshed in the background
+  assert.equal(await again!.text(), 'network:' + pic)
+  assert.ok(fetched.length > before, 'the copy is refreshed behind the saved one (stale-while-revalidate)')
+  await ask('/kids/books/saltiel/m1.sm.webp')
+  const page = '/he/kids/read/saltiel/meeting-1'
+  const live = await ask(page, { mode: 'navigate' })          // a page: the network first
+  assert.equal(await live!.text(), 'network:' + page)
+  const n = fetched.length
+  await ask(page, { mode: 'navigate' })
+  assert.ok(fetched.length > n, 'online, a reader page is asked of the network first')
+  online = false
+  for (const f of [pic, '/kids/books/saltiel/m1.sm.webp']) assert.equal(await (await ask(f))!.text(), 'network:' + f, `${f} offline`)
+  assert.equal(await (await ask(page, { mode: 'navigate' }))!.text(), 'network:' + page, 'a part once read opens offline: the last good copy')
+  online = true
+  assert.ok(/\(icons\|images\|kids\|portraits\)/.test(swSource), 'the rule that covers /kids/books/ is the /kids/ one')
+  assert.ok(!/kids\/books|kids\/read/.test(swSource), 'and the worker names neither the books\' pictures nor the reader')
+})
+
 test('service worker: the sages\' portraits are shown from the saved copy and refreshed behind it, and kept for offline reading', async () => {
   online = true
   const first = await ask('/portraits/41.webp')               // not saved yet: the network, then saved

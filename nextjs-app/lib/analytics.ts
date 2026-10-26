@@ -30,6 +30,8 @@ export type AnalyticsEvent =
   | 'quiz_complete'       // ... and finished                             { locale, kind, score: 0..100, stars: 0..3 }
   | 'kids_station_done'   // a child stamped a station of the kids' journey { route: saltiel|shira }
   | 'kids_tour'           // the kids' journey flown in the tower (time machine) { route, stage: start|end }
+  | 'kids_read'           // a part of a children's book was opened in the reader { book: saltiel|shira, part_kind }
+  | 'kids_read_listen'    // ... and read aloud (first press)             { book }
   | 'music_toggle'        // the background music was turned on or off   { locale, state: on|off }
   | 'return_visit'        // the browser came back on another day        { visits: '2'..'10+' }
   | 'pwa_prompt_available' // the browser offered installation          {}
