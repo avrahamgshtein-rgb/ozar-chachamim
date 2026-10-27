@@ -3,6 +3,7 @@ import { getAllSages } from '@/lib/serverData'
 import { LOCALES } from '@/lib/i18n'
 import { localeAlternates } from '@/lib/siteMetadata'
 import { SITE_URL } from '@/lib/siteUrl'
+import { kidsBookSitemapPaths } from '@/lib/kidsBooks'
 
 // When the pages' content was last built. A module constant, not `new Date()`
 // inside the function: the sitemap is prerendered at build time, so the date is
@@ -59,6 +60,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   addDaily('/connect', 0.6)
   // The kids' journey: Hebrew only (the other two addresses are noindex and point here).
   entries.push({ url: `${SITE_URL}/he/kids`, lastModified, changeFrequency: 'monthly', priority: 0.6 })
+  // The reading edition of the books: nothing while KIDS_BOOKS_INDEXED (lib/kidsBookLinks.ts) is false, as it is
+  // now; the one switch also lets the Hebrew reader pages be indexed.
+  for (const path of kidsBookSitemapPaths()) entries.push({ url: `${SITE_URL}${path}`, lastModified, changeFrequency: 'monthly', priority: 0.5 })
 
   // Sage pages — the substantive, indexable content of the site.
   for (const sage of getAllSages()) {

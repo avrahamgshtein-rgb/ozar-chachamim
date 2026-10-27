@@ -1,10 +1,10 @@
 'use client'
 
 // The card of the kids' journey in the tower ("מכונת הזמן"): the station's travel card as the kids'
-// page shows it (never the story), how far the time machine jumped to get there, Shira's bag filling
-// up, and the way on. Hebrew only, like the books.
+// page shows it (never the story: that is one link away, the station's page in the book's reader), how far
+// the time machine jumped to get there, Shira's bag filling up, and the way on. Hebrew only, like the books.
 import type { KidsTour } from '@/lib/kidsTour'
-import { jumpLabel, kidsTourPath } from '@/lib/kidsTour'
+import { jumpLabel, kidsTourPath, readStationText } from '@/lib/kidsTour'
 import { KIDS_PATH } from '@/lib/kidsJourney'
 
 interface Props {
@@ -83,7 +83,13 @@ export function KidsTourPanel({ tour, at, playing, onGo, onPlay, onOverview }: P
             {bag.map(b => <span key={b.n} title={b.object!.name}>{b.object!.icon}</span>)}
           </p>
         )}
-        <a href={st.href} className="mt-3 inline-block text-sm font-semibold text-gold-300 underline-offset-4 hover:underline">למשחק, למשימה ולחידון של התחנה ←</a>
+        <div className="mt-3 flex flex-col items-start gap-1.5">
+          {/* a plain link: the reader is not prefetched from a page that already holds the whole tower */}
+          {st.read && (
+            <a href={st.read} className="text-sm font-semibold text-gold-300 underline-offset-4 hover:underline"><span aria-hidden>📖</span> {readStationText(tour.route)} ←</a>
+          )}
+          <a href={st.href} className="text-sm font-semibold text-gold-300 underline-offset-4 hover:underline">למשחק, למשימה ולחידון של התחנה ←</a>
+        </div>
       </div>
 
       <div className="mt-4 flex items-center gap-2">

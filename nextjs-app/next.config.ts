@@ -1,4 +1,5 @@
 import type { NextConfig } from 'next'
+import { legacyRedirects } from './lib/legacyRedirects'
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
@@ -14,6 +15,11 @@ const nextConfig: NextConfig = {
     // The card and the status image of a path (Six Steps) read the same fonts, medallion and portraits.
     '/[locale]/tower/path/[from]/[to]/opengraph-image': ['./assets/og/**'],
     '/[locale]/tower/path/[from]/[to]/story': ['./assets/og/**'],
+  },
+  // Whoever follows the address the site was shared under (the project's old Vercel host) lands on the
+  // same page of the site's own domain, with the same query string (lib/legacyRedirects.ts, lib/siteUrl.ts).
+  async redirects() {
+    return legacyRedirects()
   },
   // The service worker must never be served from a stale cache, or a fix to it would not reach
   // visitors until the old copy expired; it may control the whole site.

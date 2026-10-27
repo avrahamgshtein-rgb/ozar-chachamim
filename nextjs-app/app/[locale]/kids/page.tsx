@@ -5,7 +5,8 @@ import { isValidLocale } from '@/lib/i18n'
 import type { Locale } from '@/lib/types'
 import { SITE_URL } from '@/lib/siteUrl'
 import { KIDS_ROUTES, stationAnchor, type JourneyRoute, type JourneyStation } from '@/lib/kidsJourney'
-import { kidsTourPath } from '@/lib/kidsTour'
+import { KIDS_BOOKS_AVAILABLE, KIDS_READ_PATH, readBookHref, readStationHref } from '@/lib/kidsBookLinks'
+import { READ_BOOK_TEXT, booksReadNote, kidsTourPath, readStationText } from '@/lib/kidsTour'
 import { SiteTopBar } from '@/components/layout/SiteTopBar'
 import { KidsPassport } from '@/components/kids/KidsPassport'
 import { StationDone } from '@/components/kids/StationDone'
@@ -43,6 +44,7 @@ export default async function KidsPage({ params }: PageProps) {
   const { locale } = await params
   if (!isValidLocale(locale)) notFound()
   const saltiel = KIDS_ROUTES[0]
+  const readNote = booksReadNote()
 
   return (
     <div className="h-dvh overflow-y-auto scroll-smooth bg-ink-900 text-ink-100">
@@ -85,7 +87,8 @@ export default async function KidsPage({ params }: PageProps) {
           <p className="mt-3 max-w-3xl leading-relaxed text-ink-300">
             המסעות לקוחים מסדרת הספרים ״היכן החכמה מתגוררת״: ״מסע בעקבות החכמים״ ו״קולה של החכמה״, מאת אברהם גולדשטיין,
             עם איורים של בנו משה יהודה גולדשטיין. הסיפורים משלבים עובדות היסטוריות ומקורות חז״ל עם דמיון: המסע בזמן והשיחות עם החכמים הם פרי הדמיון,
-            ונועדו לקרב את הקוראים הצעירים אל עולמם של החכמים. כאן מופיעים רק כרטיסי המסע, תקציר קצר ודפי ״משחק ומשימה״; הסיפורים עצמם בספרים.
+            ונועדו לקרב את הקוראים הצעירים אל עולמם של החכמים. כאן מופיעים כרטיסי המסע, תקציר קצר ודפי ״משחק ומשימה״; {readNote.before}
+            {readNote.link && <a href={KIDS_READ_PATH} className="link-gold font-semibold">{readNote.link}</a>}{readNote.after}
           </p>
           <figure className="mt-6">
             <div className="flex flex-wrap gap-4">
@@ -111,12 +114,21 @@ function RouteSection({ route }: { route: JourneyRoute }) {
           <h2 id={`${route.key}-title`} className="mt-1 font-serif text-3xl font-bold text-ink-50">{route.title}</h2>
           <p className="mt-1 text-ink-300">{route.subtitle} · עם {route.guide}</p>
           <p className="mt-4 max-w-3xl leading-relaxed text-ink-200">{route.intro}</p>
-          {/* a plain link: the kids' page does not prefetch the tower (three.js and every sage) */}
-          <a href={kidsTourPath(route.key)}
-            className="mt-5 inline-flex items-center gap-2 rounded-2xl border border-gold-500/60 bg-gradient-to-b from-gold-500/30 to-gold-500/10 px-5 py-3 font-semibold text-gold-100 shadow-[0_0_24px_rgba(233,196,106,0.2)] transition-colors hover:from-gold-500/40">
-            <span aria-hidden className="text-xl">🚀</span>
-            <span>מכונת הזמן: {route.title} בתלת־ממד</span>
-          </a>
+          <div className="mt-5 flex flex-wrap items-center gap-3">
+            {/* plain links: the kids' page prefetches neither the reader nor the tower (three.js and every sage) */}
+            {KIDS_BOOKS_AVAILABLE[route.key] && (
+              <a href={readBookHref(route.key)}
+                className="inline-flex items-center gap-2 rounded-2xl border border-gold-400 bg-gold-500 px-5 py-3 font-semibold text-ink-900 transition-colors hover:bg-gold-400">
+                <span aria-hidden className="text-xl">📖</span>
+                <span>{READ_BOOK_TEXT}</span>
+              </a>
+            )}
+            <a href={kidsTourPath(route.key)}
+              className="inline-flex items-center gap-2 rounded-2xl border border-gold-500/60 bg-gradient-to-b from-gold-500/30 to-gold-500/10 px-5 py-3 font-semibold text-gold-100 shadow-[0_0_24px_rgba(233,196,106,0.2)] transition-colors hover:from-gold-500/40">
+              <span aria-hidden className="text-xl">🚀</span>
+              <span>מכונת הזמן: {route.title} בתלת־ממד</span>
+            </a>
+          </div>
         </div>
         {route.key === 'shira' && (
           <img src={route.cover.src} width={route.cover.width} height={route.cover.height} alt={`כריכת הספר ״${route.book}״`} loading="lazy"
@@ -133,6 +145,8 @@ function RouteSection({ route }: { route: JourneyRoute }) {
 }
 
 function Station({ route, station: s }: { route: JourneyRoute; station: JourneyStation }) {
+  // the station's chapter in the book's reader, only for a book that is on the site
+  const read = KIDS_BOOKS_AVAILABLE[route.key] ? readStationHref(route.key, s.n) : null
   const rows: Array<[string, React.ReactNode]> = [
     ['לאן?', s.place],
     ['מתי?', s.when],
@@ -177,6 +191,15 @@ function Station({ route, station: s }: { route: JourneyRoute; station: JourneyS
             </dl>
 
             <p className="mt-4 leading-relaxed text-ink-200">{s.summary}</p>
+
+            {read && (
+              <p className="mt-4">
+                <a href={read} className="inline-flex items-center gap-2 rounded-xl border border-gold-500/50 bg-gold-500/10 px-4 py-2 text-sm font-semibold text-gold-200 transition-colors hover:bg-gold-500/20">
+                  <span aria-hidden>📖</span>
+                  <span>{readStationText(route.key)}</span>
+                </a>
+              </p>
+            )}
 
             {s.tasks.length > 0 && (
               <details className="mt-4 rounded-xl border border-ink-700/40 bg-ink-900/30 p-4">

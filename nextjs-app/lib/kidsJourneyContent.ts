@@ -1,9 +1,10 @@
 // "היכן החכמה מתגוררת": the children's journey (ages 9–12), from the two books by the site's owner and
-// his son, which they gave to the site. © The Goldshtein family; the stories themselves are not published
-// here, only what a reader needs on the way: each station's travel card, a few lines of what happens, the
-// sages it meets (linked to their pages) and the book's "game and task" page, which the book itself lets
-// parents and teachers copy for personal and educational use. Written once from the manuscripts
-// (October 2026) and edited here by hand.
+// his son, which they gave to the site. © The Goldshtein family. This file holds only what a reader needs on
+// the way: each station's travel card, a few lines of what happens, the sages it meets (linked to their pages)
+// and the book's "game and task" page, which the book itself lets parents and teachers copy for personal and
+// educational use. Written once from the manuscripts (October 2026) and edited here by hand. The stories
+// themselves are in the reading edition (content/kids-books/, shown by app/[locale]/kids/read, since
+// 2026-10-26 with the owner's say-so), which a station links to; they are not copied into this file.
 import type { JourneyRoute } from './kidsJourney'
 
 export const KIDS_ROUTES: JourneyRoute[] = [

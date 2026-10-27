@@ -8,7 +8,7 @@ on:
     inputs:
       base:
         description: Site to record
-        default: https://ozar-chachamim-app.vercel.app
+        default: https://ozarchachamim.org
       langs:
         description: Languages, space separated
         default: he en ru

@@ -15,7 +15,7 @@ the number of seconds to trim from the start (page-load time).
 mkdir -p /tmp/pw && cd /tmp/pw && npm init -y && npm i playwright && npx playwright install chromium
 
 # record (BASE: the live site, or a local `npm run build && npm run start`)
-PW_DIR=/tmp/pw BASE=https://ozar-chachamim-app.vercel.app LANG_CODE=he OUT_DIR=./out \
+PW_DIR=/tmp/pw BASE=https://ozarchachamim.org LANG_CODE=he OUT_DIR=./out \
   node tools/video/record-intro.mjs
 
 # encode (needs ffmpeg with libx264)

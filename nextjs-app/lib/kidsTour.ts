@@ -2,10 +2,12 @@
 // owner's books, in the book's order, each at the place in the tower of the sage it meets. Saltiel's
 // route jumps back and forth in time (950 → 70 → 300 → 1538 …), so the flight climbs and drops through
 // the centuries; Shira's climbs the generations in order and her bag fills on the way. Only what the
-// /he/kids page already publishes travels here: the travel card, never the story. Pure: the page
-// computes it on the server, components/tower/TowerScene.tsx flies it.
+// /he/kids page already publishes travels here: the travel card, never the story; the story itself is one
+// link away, the station's page in the book's reader (lib/kidsBookLinks.ts). Pure: the page computes it on
+// the server, components/tower/TowerScene.tsx flies it.
 import type { RoadPoint, TowerData } from './tower'
 import { KIDS_ROUTES, KIDS_PATH, stationAnchor, type KidsImage, type RouteKey } from './kidsJourney'
+import { KIDS_BOOKS_AVAILABLE, readStationHref } from './kidsBookLinks'
 
 export interface KidsTourStation {
   n: number
@@ -17,6 +19,8 @@ export interface KidsTourStation {
   object?: { name: string; icon: string }
   /** The station on the kids' page: its game, task and quiz. */
   href: string
+  /** The station's page in the book's reader; only for a route whose book is on the site (KIDS_BOOKS_AVAILABLE). */
+  read?: string
   /** Years from the previous station, by the books' own dates (their "when"): negative is back in time. */
   jump?: number
 }
@@ -39,6 +43,29 @@ export const KIDS_TOUR_ROUTES: RouteKey[] = ['saltiel', 'shira']
 
 export const kidsTourPath = (route: RouteKey) => `${KIDS_PATH}/journey/${route}`
 
+/** The entry points to the reader, in the words the kids' page, the time machine and About share (the 📖 is drawn beside them). */
+export const READ_BOOK_TEXT = 'לקרוא את הספר יחד'
+/** Saltiel's chapters are "meetings", Shira's "stations", as on the kids' page. */
+export const readStationText = (route: RouteKey) => (route === 'saltiel' ? 'לקרוא את המפגש' : 'לקרוא את התחנה')
+
+const BOOK_NAME: Record<RouteKey, string> = { saltiel: 'מסע בעקבות החכמים', shira: 'קולה של החכמה' }
+
+/**
+ * The end of the kids page's "על הספרים" paragraph, after "כאן מופיעים כרטיסי המסע, תקציר קצר ודפי ״משחק ומשימה״; ":
+ * where the stories are. It follows KIDS_BOOKS_AVAILABLE, so it stays true when Shira's book is added (or a book
+ * is pulled). `link` is the words that lead to the reader; with no book on the site there is none.
+ */
+export function booksReadNote(available: Record<RouteKey, boolean> = KIDS_BOOKS_AVAILABLE): { before: string; link?: string; after: string } {
+  const here = KIDS_TOUR_ROUTES.filter(k => available[k])
+  const later = KIDS_TOUR_ROUTES.filter(k => !available[k])
+  if (here.length === 0) return { before: 'הסיפורים עצמם בספרים.', after: '' }
+  return {
+    before: `את ${later.length ? `״${BOOK_NAME[here[0]]}״` : 'הספרים'} אפשר `,
+    link: 'לקרוא כאן ביחד',
+    after: later.length ? `, ובקרוב גם את ״${BOOK_NAME[later[0]]}״.` : '.',
+  }
+}
+
 /** The route as the tower flies it, or null for a route that is not one of the books'. */
 export function kidsTour(data: Pick<TowerData, 'nodes'>, route: string): KidsTour | null {
   const r = KIDS_ROUTES.find(x => x.key === route)
@@ -58,6 +85,7 @@ export function kidsTour(data: Pick<TowerData, 'nodes'>, route: string): KidsTou
       ...(s.image ? { image: s.image } : {}),
       ...(s.object ? { object: s.object } : {}),
       href: `${KIDS_PATH}#${stationAnchor(r.key, s.n)}`,
+      ...(KIDS_BOOKS_AVAILABLE[r.key] ? { read: readStationHref(r.key, s.n) } : {}),
       ...(jump != null ? { jump } : {}),
     })
     points.push({ id: n.id, name: s.title, label: `${s.n} · ${s.who[0].name}`, how: 'teacher', x: n.x, y: n.y, z: n.z })

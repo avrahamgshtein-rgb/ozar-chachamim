@@ -23,7 +23,7 @@ const OUT_DIR = path.resolve(process.env.OUT_DIR || './out')
 const W = +(process.env.W || 1920)
 const H = +(process.env.H || 1080)
 const SCALE = +(process.env.SCALE || 1)
-const URL_SHOWN = process.env.URL_SHOWN || 'ozar-chachamim-app.vercel.app'
+const URL_SHOWN = process.env.URL_SHOWN || 'ozarchachamim.org'
 
 const T = {
   he: {

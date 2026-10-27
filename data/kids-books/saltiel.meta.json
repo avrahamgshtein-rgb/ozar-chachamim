@@ -1,0 +1,68 @@
+{
+ "_about": "The input of scripts/build_kids_book.py --book saltiel (never run by hand; the generator reads this file, the source and the oracle named below and writes nextjs-app/content/kids-books/saltiel.json and nextjs-app/public/kids/books/saltiel/). The source is the owner's HTML edition of 2026-10-17 (Drive folder 'ספר מסע בין החכמים', 'היכן החכמה מתגוררת - יראת שמים'), because the docx of the same edition (6.3 MB) is too big for the Drive connector to move; the HTML is the same book exported in the same minute, with the semantic classes (key, activity, card, kv, verse, mem, glossary) the docx only has as one-cell tables. The oracle is the text of the docx as the Drive connector extracts it: the test proves that every segment of it is in the generated JSON, in order, except the print_only list.",
+ "book": "saltiel",
+ "route": "saltiel",
+ "source": {
+  "file": "data/kids-books/saltiel-yirat-shamayim.html",
+  "sha256": "9aaca4c3f262cabfa419eb807d49111e49053531a2f9f259e8a319d1fa571eb4",
+  "edition": "2026-10-17",
+  "drive": {
+   "html": "1gipE8TJCnZXY-Uxyrn3eTgGPXgGWI0xJ",
+   "docx": "1tvPrYHNOzIwYlF1R2UywR6CUMH9DfzZB"
+  }
+ },
+ "oracle": {
+  "file": "data/kids-books/saltiel-docx-text.txt",
+  "sha256": "7395220b8499374702775f567c044d7812498e1787c0e67db5dd16e480f4387b",
+  "cover_lines": 6
+ },
+ "credit": {
+  "author": "אברהם גולדשטיין",
+  "illustrator": "משה יהודה גולדשטיין",
+  "rights": "© כל הזכויות שמורות למשפחת גולדשטיין"
+ },
+ "kinds": {
+  "copyright": "front",
+  "parents": "front",
+  "map": "front",
+  "timeline": "front",
+  "prologue": "intro",
+  "epilogue": "closing",
+  "glossary": "glossary",
+  "passport": "activities"
+ },
+ "print_only": [
+  {
+   "docx_line": "ציר הזמן של המסע · עמוד 7",
+   "reason": "print layout only: a line of the printed table of contents with its page number; the site has the contents page and the part links instead"
+  },
+  {
+   "docx_line": "מבוא: הקדמה קטנה לקטנים · עמוד 8",
+   "reason": "print layout only: a line of the printed table of contents with its page number; the site has the contents page and the part links instead"
+  },
+  {
+   "docx_line": "השער האחרון: היכן החכמה מתגוררת? · עמוד 58",
+   "reason": "print layout only: a line of the printed table of contents with its page number; the site has the contents page and the part links instead"
+  },
+  {
+   "docx_line": "מילון המושגים המצויר · עמוד 60",
+   "reason": "print layout only: a line of the printed table of contents with its page number; the site has the contents page and the part links instead"
+  },
+  {
+   "docx_line": "דרכון המסע שלי · עמוד 63",
+   "reason": "print layout only: a line of the printed table of contents with its page number; the site has the contents page and the part links instead"
+  },
+  {
+   "docx_line": "איך קוראים את הציר? מימין לשמאל הולכים מן הדורות הקדומים אל ימינו. המספר הזהוב בכל עיגול מראה באיזה מפגש בספר נפגוש את התחנה. נסו לעקוב באצבע אחרי המסע של שאלתי — מ-1 עד 7 — ותראו איך הוא קופץ קדימה ואחורה בזמן\\! (סובבו את הספר כדי לקרוא את הציר)",
+   "reason": "print layout only: the instruction for the printed timeline, a wide picture the reader turns the book to read; the web edition rebuilds the timeline as a list with its own note (the p.note under it, which is in the JSON)"
+  },
+  {
+   "docx_line": "והפעם — אתם המאיירים\\! ליד כל מושג יש מסגרת ריקה ורעיון לציור. ציירו אותו בדרך שלכם.",
+   "reason": "print wording of the glossary's caption (an empty frame beside each term to draw in); the web edition says 'לכל מושג יש רעיון לציור. ציירו אותו בדרך שלכם במחברת.', which is in the JSON"
+  },
+  {
+   "docx_line": "— —",
+   "reason": "print ornament at the end of the book"
+  }
+ ]
+}
