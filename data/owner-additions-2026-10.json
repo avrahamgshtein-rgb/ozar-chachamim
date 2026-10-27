@@ -1,0 +1,1681 @@
+{
+ "_about": "Provenance of the six sages added from the owner's new podcast episodes, videos and NotebookLM papers of 18-26 October 2026 (ids 680-685), generated from the validated fragments. Per sage: the sources read (kept in full outside the repo) with the verbatim quotes that support each sentence of the bio and core idea, in Hebrew, English and Russian; the links with their quotes; the vocabulary and places added; the paper-link and death-date candidates; and the writer's notes on disagreeing sources and what was left out. Never hand-edit; tests/ownerAdditions.test.ts fails when an id now belongs to another sage. 660 and 638 are existing sages that gained an episode and a paper; their paper-link candidates are in data/links-from-research.json.",
+ "dropped_links": [],
+ "sages": [
+  {
+   "id": "680",
+   "label": "רב אחאי משבחא (בעל השאילתות)",
+   "package": "owner-2026-10",
+   "episode": {
+    "id": "5ojAh8QooySuLiNI8GpY6u",
+    "url": "https://open.spotify.com/episode/5ojAh8QooySuLiNI8GpY6u",
+    "title": "רב אחאי משבחא - הגאון שנדחה מראשות הישיבה, אך כתב את הספר ששינה את עולם ההלכה",
+    "released": "2026-10-26"
+   },
+   "woman": false,
+   "sources": [
+    {
+     "kind": "paper",
+     "url": "https://docs.google.com/document/d/1PYhQQbCoNV5vzbmrK1hXnpArUVd-fmLJ6ur31YOa1bw/edit",
+     "title": "פועלו, משנתו התורנית ומורשתו של רב אחאי גאון משבחא: עיון היסטורי, טקסטואלי והלכתי",
+     "fetched": "2026-10-27",
+     "quotes": [
+      "מרכז פועלו התורני של רב אחאי בבבל היה בישיבת פומבדיתא",
+      "תחתיו מינה ראש הגולה לתפקיד הרם את רב נטרונאי כהנא בר רב אמונה",
+      "רב אחאי החליט לנטוש את מרכז כוחו בבבל ולהעתיק את מקום מושבו לארץ ישראל",
+      "מאחר שלא מונה בפועל לעמוד בראשות אחת משתי הישיבות הגדולות בבבל (סורא או פומבדיתא)",
+      "החיבור נכתב בארמית בבלית"
+     ],
+     "paper": "680",
+     "file": "פועלו, משנתו התורנית ומורשתו של רב אחאי גאון משבחא- עיון היסטורי, טקסטואלי והלכתי.docx"
+    },
+    {
+     "kind": "he.wikipedia",
+     "url": "https://he.wikipedia.org/wiki/%D7%A8%D7%91_%D7%90%D7%97%D7%90_%D7%9E%D7%A9%D7%91%D7%97%D7%90",
+     "title": "רב אחא משבחא",
+     "fetched": "2026-10-27",
+     "quotes": [
+      "היה מחכמי פומבדיתא שבבבל. נודע בעקבות ספרו, השאילתות.",
+      "ספרו, ה\"שאילתות\", הוא הספר הראשון הידוע לנו אחרי תקופת התלמוד",
+      "בעקבות מינוי לגאון של רב נטרוני בר רב אמונה שהיה כפוף לרב אחא, על ידי שלמה בר חסדאי ראש הגולה, עלה רב אחא לארץ ישראל"
+     ]
+    },
+    {
+     "kind": "he.wikipedia",
+     "url": "https://he.wikipedia.org/wiki/%D7%A9%D7%90%D7%99%D7%9C%D7%AA%D7%95%D7%AA_%D7%93%D7%A8%D7%91_%D7%90%D7%97%D7%90",
+     "title": "שאילתות דרב אחא",
+     "fetched": "2026-10-27",
+     "quotes": [
+      "הספר, הכתוב בארמית בבלית, הוא אוסף של דרשות מסוג השאילתא, על סדר פרשות השבוע",
+      "פתיחה במצווה מסוימת, שאלה הלכתית הקשורה אליה, דברי אגדה הקשורים באופן כללי לנושא, ולבסוף תשובה לשאלה ההלכתית",
+      "דברי האגדה, אשר במקור היוו חלק נכבד מגוף הספר, כמעט ואינם נמצאים בנוסחים שלנו, משום שהמעתיקים לא מצאו בהם עניין רב; בתחילה דחקו אותם לסוף השאילתא, ולבסוף השמיטו אותם לחלוטין, ברוב השאילתות.",
+      "מעטות הן הפסיקות בספר שאינם נמצאים בתלמוד, אלא שבתוך הרצאת הדברים מובלעים חידושים רבים בפרשנות התלמוד ובפסיקת ההלכה"
+     ]
+    },
+    {
+     "kind": "en.wikipedia",
+     "url": "https://en.wikipedia.org/wiki/Ahai_of_Shabha",
+     "title": "Ahai of Shabha",
+     "fetched": "2026-10-27",
+     "quotes": [
+      "He enjoys the distinction of being the first rabbinical author known to history after the completion of the Talmud.",
+      "As he never actually became the Gaon of either of the two academies, the description \"Gaon\" attached to his name is a misnomer."
+     ]
+    },
+    {
+     "kind": "sefaria",
+     "url": "https://www.sefaria.org/topics/achai-gaon",
+     "title": "Achai Gaon (Sefaria topic)",
+     "fetched": "2026-10-27",
+     "quotes": []
+    },
+    {
+     "kind": "sefaria",
+     "url": "https://www.sefaria.org/Sheiltot_d'Rav_Achai_Gaon",
+     "title": "Sheiltot d'Rav Achai Gaon (Sefaria index record)",
+     "fetched": "2026-10-27",
+     "quotes": [
+      "The work was considered a critical and highly authoritative work for subsequent legal authorities."
+     ]
+    }
+   ],
+   "sentences": {
+    "bio": [
+     {
+      "he": "רב אחאי משבחא היה מחכמי פומבדיתא שבבבל, ונודע בעקבות ספרו ״השאילתות״, הספר הראשון הידוע לנו אחרי תקופת התלמוד.",
+      "en": "Rav Achai of Shabha was one of the sages of Pumbedita in Babylonia, and became known through his book, the She'iltot, the first book known to us from after the Talmudic period.",
+      "ru": "Рав Ахай из Шабхи был одним из мудрецов Пумбедиты в Вавилонии и стал известен благодаря своей книге «Шеилтот» — первой известной нам книге после талмудической эпохи.",
+      "support": [
+       {
+        "src": 1,
+        "quote": "היה מחכמי פומבדיתא שבבבל. נודע בעקבות ספרו, השאילתות."
+       },
+       {
+        "src": 1,
+        "quote": "ספרו, ה\"שאילתות\", הוא הספר הראשון הידוע לנו אחרי תקופת התלמוד"
+       },
+       {
+        "src": 3,
+        "quote": "He enjoys the distinction of being the first rabbinical author known to history after the completion of the Talmud."
+       },
+       {
+        "src": 0,
+        "quote": "מרכז פועלו התורני של רב אחאי בבבל היה בישיבת פומבדיתא"
+       }
+      ]
+     },
+     {
+      "he": "בעקבות מינויו של רב נטרונאי בר רב אמונה, שהיה כפוף לרב אחאי, לגאון על ידי ראש הגולה שלמה בר חסדאי, עלה רב אחאי לארץ ישראל.",
+      "en": "After the exilarch Solomon bar Chasdai appointed Rav Natronai bar Rav Amunah, who was subordinate to Rav Achai, as Gaon, Rav Achai went up to the Land of Israel.",
+      "ru": "После того как эксиларх Шломо бар Хасдай назначил гаоном рава Натроная бар рава Амуну, подчинённого раву Ахаю, рав Ахай переселился в Землю Израиля.",
+      "support": [
+       {
+        "src": 1,
+        "quote": "בעקבות מינוי לגאון של רב נטרוני בר רב אמונה שהיה כפוף לרב אחא, על ידי שלמה בר חסדאי ראש הגולה, עלה רב אחא לארץ ישראל"
+       },
+       {
+        "src": 0,
+        "quote": "תחתיו מינה ראש הגולה לתפקיד הרם את רב נטרונאי כהנא בר רב אמונה"
+       },
+       {
+        "src": 0,
+        "quote": "רב אחאי החליט לנטוש את מרכז כוחו בבבל ולהעתיק את מקום מושבו לארץ ישראל"
+       }
+      ]
+     },
+     {
+      "he": "אף שהתואר ״גאון״ מצורף לשמו, הוא לא עמד בפועל בראש אחת משתי הישיבות הגדולות בבבל.",
+      "en": "Although the title \"Gaon\" is attached to his name, he never actually headed either of the two great yeshivas of Babylonia.",
+      "ru": "Хотя к его имени прилагается титул «гаон», он на деле не возглавлял ни одну из двух больших ешив Вавилонии.",
+      "support": [
+       {
+        "src": 3,
+        "quote": "As he never actually became the Gaon of either of the two academies, the description \"Gaon\" attached to his name is a misnomer."
+       },
+       {
+        "src": 0,
+        "quote": "מאחר שלא מונה בפועל לעמוד בראשות אחת משתי הישיבות הגדולות בבבל (סורא או פומבדיתא)"
+       }
+      ]
+     },
+     {
+      "he": "לפי ספריא, החיבור נחשב ליצירה חשובה ביותר ובעלת סמכות רבה עבור הפוסקים שבאו אחריו.",
+      "en": "According to Sefaria, the work was considered extremely important and highly authoritative for the halakhic authorities who came after it.",
+      "ru": "По словам Сефарии, труд считался чрезвычайно важным и весьма авторитетным для более поздних галахических авторитетов.",
+      "support": [
+       {
+        "src": 5,
+        "quote": "The work was considered a critical and highly authoritative work for subsequent legal authorities."
+       }
+      ]
+     }
+    ],
+    "core_idea": [
+     {
+      "he": "ספר השאילתות הוא אוסף של דרשות מסוג השאילתא על סדר פרשות השבוע, הכתוב בארמית.",
+      "en": "The She'iltot is a collection of sermons of the sheilta type, arranged by the weekly Torah portions and written in Aramaic.",
+      "ru": "«Шеилтот» — сборник проповедей типа шеилта, расположенных по недельным главам Торы и написанных на арамейском.",
+      "support": [
+       {
+        "src": 2,
+        "quote": "הספר, הכתוב בארמית בבלית, הוא אוסף של דרשות מסוג השאילתא, על סדר פרשות השבוע"
+       },
+       {
+        "src": 0,
+        "quote": "החיבור נכתב בארמית בבלית"
+       }
+      ]
+     },
+     {
+      "he": "כל שאילתא בנויה מארבעה חלקים: פתיחה במצווה מסוימת, שאלה הלכתית הקשורה אליה, דברי אגדה ותשובה לשאלה ההלכתית; אך דברי האגדה כמעט אינם מצויים בנוסחים שבידינו.",
+      "en": "Each sheilta is built in four parts: an opening with a particular commandment, a halakhic question connected to it, aggadic material, and an answer to the halakhic question; but the aggadic material is almost entirely missing from the versions we have.",
+      "ru": "Каждая шеилта строится из четырёх частей: вступление с определённой заповедью, связанный с ней галахический вопрос, агадический материал и ответ на галахический вопрос; однако агадический материал почти не сохранился в известных нам версиях.",
+      "support": [
+       {
+        "src": 2,
+        "quote": "פתיחה במצווה מסוימת, שאלה הלכתית הקשורה אליה, דברי אגדה הקשורים באופן כללי לנושא, ולבסוף תשובה לשאלה ההלכתית"
+       },
+       {
+        "src": 2,
+        "quote": "דברי האגדה, אשר במקור היוו חלק נכבד מגוף הספר, כמעט ואינם נמצאים בנוסחים שלנו, משום שהמעתיקים לא מצאו בהם עניין רב; בתחילה דחקו אותם לסוף השאילתא, ולבסוף השמיטו אותם לחלוטין, ברוב השאילתות."
+       }
+      ]
+     },
+     {
+      "he": "לפי ויקיפדיה, מעטות הפסיקות בספר שאינן מצויות בתלמוד, אך בתוך ההרצאה מובלעים חידושים רבים בפרשנות התלמוד ובפסיקת ההלכה.",
+      "en": "According to Hebrew Wikipedia, the book contains few rulings that are not found in the Talmud, but within its exposition many innovations in the interpretation of the Talmud and in halakhic ruling are embedded.",
+      "ru": "По словам ивритской Википедии, в книге мало постановлений, которых нет в Талмуде, но в самом изложении скрыто много новшеств в толковании Талмуда и в вынесении галахических решений.",
+      "support": [
+       {
+        "src": 2,
+        "quote": "מעטות הן הפסיקות בספר שאינם נמצאים בתלמוד, אלא שבתוך הרצאת הדברים מובלעים חידושים רבים בפרשנות התלמוד ובפסיקת ההלכה"
+       }
+      ]
+     }
+    ]
+   },
+   "links": [],
+   "paper_links": [],
+   "yahrzeit": null,
+   "new_places": [],
+   "terms_added": {
+    "en": {
+     "ספר השאילתות": "the She'iltot",
+     "ספרות הגאונים": "the literature of the Geonim",
+     "רב נטרונאי בר רב אמונה": "Rav Natronai bar Rav Amunah",
+     "דרשות על פרשות השבוע": "sermons on the weekly Torah portions",
+     "העמק שאלה": "Haamek Sheilah"
+    },
+    "ru": {
+     "ספר השאילתות": "«Шеилтот»",
+     "ספרות הגאונים": "литература гаонов",
+     "רב נטרונאי בר רב אמונה": "рав Натронай бар рав Амуна",
+     "דרשות על פרשות השבוע": "проповеди на недельные главы Торы",
+     "העמק שאלה": "«Хаамек шеила»"
+    }
+   },
+   "related_cell": "",
+   "notes": "IDENTITY. This is Ahai (Achai) of Shabha, the 8th-century Babylonian author of the She'iltot: not 619 (Rabbi Achai bar Pappa, an Amora) and not the Savora Rav Achai. The Hebrew Wikipedia article titled \"רב אחאי\" is about the Savora (the paper's own section \"הבחנה היסטוריוגרפית\" separates the two); it was fetched and saved (he-wiki-rav-achai.txt) only to check this and is NOT a source of the record. His own Hebrew article is \"רב אחא משבחא\" (sources[1]); the book's article is \"שאילתות דרב אחא\" (sources[2]); English \"Ahai of Shabha\" (sources[3]; Sefaria links it as \"Achai_Gaon\", a redirect); Sefaria topic slug achai-gaon, Hebrew title \"אחאי גאון\" with the alternative \"רב אחא משבחא\" (sources[4]); the Sefaria record of the book (sources[5]) names him as its author (authors: achai-gaon).\nLABEL. \"(בעל השאילתות)\" is the paper's own wording (\"רב אחאי משבחא בעל ה״שאילתות״\", also the table header). No \"גאון\" in the label: English Wikipedia and Sefaria call the title a misnomer and the paper an honorific (he never headed Sura or Pumbedita); the bio says so. English and Russian follow the site's existing renderings in the translated research (paper 294: \"Rav Achai of Shabha\", \"Рав Ахай из Шабхи\"; papers 349 and 616: \"She'iltot\", «Шеилтот»), not Sefaria's \"Shabcha\".\nYEARS. Sources disagree, so the row is \"680–752 לערך\". The paper: \"סביב השנים 680–752\" (and its table \"סביב 680–752\"). Sefaria: born 680 (approximate), died 752 (not approximate). The National Library's authority record, as the Hebrew Wikipedia pages link it: 680-752. Hebrew Wikipedia: \"ד׳ת״מ (680) לערך - סביבות ד׳תק״כ (760)\", and that he went up to the Land of Israel after 750. English Wikipedia (Jewish Encyclopedia 1901-1906): he settled in the Land of Israel \"about 752 or 753\" and stayed until his death; \"the exact date of his death is unknown\" (Steinschneider's 761 is called erroneous). The paper itself puts the move at \"סביב השנים 750–753\" and says he stayed there until his death, so its own 752 cannot be a firm death date. Birth about 680 is common to all; the death year is the open one (752 in three catalogue-type sources, about 760 in Hebrew Wikipedia). The lead may prefer \"כ־680–760\" or the century; the bio and core idea carry no year.\nPLACES. Pumbedita (resolves, city) and the Land of Israel (resolves). Babylonia is in the bio through Pumbedita. \"Shabha\" is NOT a place on the row: the paper presents a place named Shabha near Nehardea and Pumbedita as only one of two proposals for the epithet (the other: an Aramaic word of praise), and Hebrew Wikipedia says only \"משבחא שבבבל\". No new place needed.\nSENTENCES. Bio 1: Hebrew Wikipedia's own two sentences (\"היה מחכמי פומבדיתא שבבבל. נודע בעקבות ספרו…\", \"הספר הראשון הידוע לנו אחרי תקופת התלמוד\"); \"first known\" keeps Hebrew Wikipedia's and English Wikipedia's hedge (Sefaria says \"first extant\", the Hebrew article on the book \"כנראה\"). Authorship: the Hebrew Wikipedia article says \"לא ידוע מה היה חלקו של רב אחא בשאילתות עצמן - האם חיבר אותן, או שמא רק ליקט\" and the one on the book repeats it; every other source (English Wikipedia, Sefaria, the paper) says he wrote it. The bio says \"his book\" as all of them do and the core idea describes the book without saying what he did to it. Bio 2 is Hebrew Wikipedia's sentence (it gives the appointment as the occasion, \"בעקבות\", on which he went up to the Land of Israel); the paper and English Wikipedia/Sefaria add a cause (a personal grudge of the exilarch) and a verdict (Natronai \"inferior in learning\"): left out on purpose, the Hebrew article states neither. The name of the appointee is spelled \"נטרוני\" by Hebrew Wikipedia, \"נטרונאי כהנא בר רב אמונה\" by the paper, \"Natroi Kahana ben Amuna\" by English Wikipedia: the row uses the paper's spelling without \"כהנא\" (he is not on the roster, so no link). Bio 4 is Sefaria's description of the book (\"critical and highly authoritative … for subsequent legal authorities\"), attributed to Sefaria. Core 3 is attributed to Wikipedia (Hebrew article on the book: \"מעטות הן הפסיקות בספר שאינם נמצאים בתלמוד, אלא שבתוך הרצאת הדברים מובלעים חידושים רבים…\").\nLEFT OUT ON PURPOSE (paper only, or contested). (1) The 748 death of the head of Pumbedita and the succession dispute (the paper cites the Seder HaDorot HaKatzar; English Wikipedia has the dispute without a year). (2) His teacher: the paper says his master was the head of the Pumbedita yeshiva until 748, \"כדוגמת רב מר בר רב שמואל\" (a garbled sentence: \"such as\"), Mar bar Rav Shmuel is not on the roster; no teacher is stated by Hebrew Wikipedia, English Wikipedia or Sefaria. (3) That Natronai was his pupil: the paper says \"תלמידו ומשמשו\", Sefaria \"Achai's pupil\", Hebrew Wikipedia only \"כפוף\"; the bio says \"כפוף\". (4) The paper's section on the \"עיזא כרכוז\" ruling and \"היזהרו ברבינו אחאי, שמאיר עיני גולה הוא\": Hebrew Wikipedia (\"רב אחאי\") tells this of the Savora/Amora Rav Achai, while the paper uses it as an example of the standing of Ahai of Shabha; not used. (5) The origin of \"משבחא\". (6) The paper's claims that the Rishonim \"quote\" the Sheiltot (Rashi, Rashbam, Tosafot, Rif, Rambam, Ramban, Rav Sherira, Rav Hai): a citing of a book, not a relation between persons, so not recorded as links; if the lead wants them, the sentence is \"רב שרירא גאון, רב האי גאון, רש״י, רשב״ם, בעלי התוספות, הרי״ף, הרמב״ם והרמב״ן מרבים לצטט את השאילתות\" (roster ids 21, 25, 594, 41 and others). (7) The editions and commentaries (Venice 1546, Sheilat Shalom, the Netziv's Haamek Sheilah, Mirsky, Brody) are in the tags only (\"העמק שאלה\"), not in the sentences.\nLINKS. No roster sage is stated as his teacher, student or relative by any source (Natronai, Mar bar Rav Shmuel, Shimon Kayyara and the Netziv are not on the roster), so paper_links is empty. One influence link 680 -> 685, resting on the paper alone: \"ספר הלכות פסוקות המיוחס לרב יהודאי גאון … נשענו באופן נרחב על הניתוחים המשפטיים והפסקים המובאים בשאילתות\". It is a relation through a book that the paper itself calls \"attributed\" to Yehudai; the Hebrew Wikipedia article on Yehudai (saved: he-wiki-yehudai-gaon-context.txt, not a source of this record) says \"על פי חלק מן החוקרים\" he wrote the Halakhot Pesukot, calls him \"הגאון הראשון שהחל בחיבור קובצי הלכה לאחר חתימת התלמוד\" and says the same exilarch moved him from Pumbedita to Sura, and its section on Halakhot Gedolot reports an argument that Rav Yehudai bar Nachman \"מוזכר בספר השאילתות של רב אחאי משבחא\". The Yehudai paper (685) does not repeat the claim. The lead should keep this link only if it is content with a book-mediated, paper-only influence, and decide with the 685 fragment (a link in the other direction or none there).\nYAHRZEIT. None: the paper gives no Hebrew day or month of his death (only \"עד יום מותו\"); the Hebrew and English Wikipedia give none.\nSLIPS IN THE PAPER (copied as they are; the Drive text and the converted text keep them): \"ההההדיר\" (\"פרופ' שמואל קלמן מירסקי ההההדיר מהדורה ביקורתית\"); \"בשקקנות\" (probably \"בשקדנות\"); \"מכרזת\" (\"השפעה מכרזת\", probably \"מכרעת\"); \"ומשנון שבעל פה\" (probably \"ושינון\"); \"במישור ההלכתי הפסוק\" (probably \"הפסקי\" or \"הפסיקתי\"); \"נבחי תורה שבעל פה\" (possibly \"נבכי\"); and the sentence on his teacher, \"כדוגמת רב מר בר רב שמואל\", which does not parse. The paper's own dates do not fit each other: it gives his life as \"סביב השנים 680–752\" but his move to the Land of Israel as \"סביב השנים 750–753\" with \"פעל בה עד יום מותו\".\nDRIVE. The owner's Drive holds one paper on him (the 680 paper, created 2026-10-18); the other Drive hits for his name are the two earlier papers on Rabbi Achai bar Pappa (619), the Yehudai paper (685) and data dumps (research.json, drive-research-import, shg_wiki_17.json, 294.json and similar); none read, none attributable to this sage. The episode (title, cover, the list of sources the owner's episode was made from) is saved as episode.txt; the list is a set of leads, nothing in the record rests on it. This record's paper text is byte-identical to the second independent copy (cmp of papers_raw/680.a.md and 680.b.md). LEAD (2026-10-27): the link 680 -> 685 is dropped (the second reader: the paper only says a book attributed to Yehudai relied on the Sheiltot, which is no relation between the two men; no page supports it). 680 therefore has no recorded link. \"Babylonian Aramaic\" is now \"Aramaic\" because the sources disagree which Aramaic (Hebrew Wikipedia reports Ginzberg against Epstein; English Wikipedia says the place of composition is unclear); the tag `ארמית בבלית` is dropped with it, since the vocabulary has no `ארמית` piece."
+  },
+  {
+   "id": "681",
+   "label": "רבי יצחק אייזיק מקומרנא",
+   "package": "owner-2026-10",
+   "episode": {
+    "id": "2Hwqxeswo6x7sutb2IM9cr",
+    "url": "https://open.spotify.com/episode/2Hwqxeswo6x7sutb2IM9cr",
+    "title": "רבי יצחק אייזיק מקומרנא - המקובל שראה סודות בכל אות בתורה וסירב לשנות אפילו מילה אחת",
+    "released": "2026-10-25"
+   },
+   "woman": false,
+   "sources": [
+    {
+     "kind": "he.wikipedia",
+     "url": "https://he.wikipedia.org/wiki/%D7%99%D7%A6%D7%97%D7%A7_%D7%90%D7%99%D7%99%D7%96%D7%99%D7%A7_%D7%A1%D7%A4%D7%A8%D7%99%D7%9F",
+     "title": "יצחק אייזיק ספרין (Hebrew Wikipedia)",
+     "fetched": "2026-10-27",
+     "quotes": [
+      "יחיאל ספרין (כ\"ה בשבט ה'תקס\"ו, 1806 – י' באייר ה'תרל\"ד, 1874) היה האדמו\"ר השני בשושלת חסידות קומרנה, ומחבר תורני פורה",
+      "לאחר שהתייתם מאביו בגיל 12, גדל אצל דודו רבי צבי הירש מזידיטשוב",
+      "מדודו, אחי אביו, רבי צבי הירש מזידיטשוב",
+      "ולאחר חתונתו עבר לגור בעיירה פינצ'וב שם כיהן חמיו, רבי אברהם מרדכי, כרב. מאוחר יותר עבר לגור בעירו של אביו, קומרנו, שבה חי עד סוף ימיו",
+      "את תורתו קיבל מרבי אברהם יהושע השיל מאפטא ומדודו, אחי אביו, רבי צבי הירש מזידיטשוב. למד גם אצל רבי נפתלי צבי מרופשיץ, רבי משה צבי מסאווראן ורבי אשר ישעיה רובין מרופשיץ",
+      "את עיקר מפעל חייו ראה בחיבור ספרים רבים, בהם שילב את קבלת האר\"י ותורת הבעש\"ט",
+      "היכל הברכה – פירוש על חמישה חומשי תורה, בדגש על פירוש המסורה",
+      "זוהר חי – פירוש על ספר הזוהר על פי קבלת האר\"י והבעש\"ט",
+      "שלחן הטהור – על סדר ההלכות שבשולחן ערוך אורח חיים",
+      "עד אמצע המאה ה-20 היה הספר מגילת סתרים ספר סודי, ועבר בכתבי יד רק למעטים מחסידי קומרנא. בשנות החמשים יצאה לאור גרסה"
+     ]
+    },
+    {
+     "kind": "sefaria",
+     "url": "https://www.sefaria.org/topics/yitzchak-aizik-safrin-of-komarna",
+     "title": "Yitzchak Aizik Safrin of Komarna (Sefaria topic, author; API answer)",
+     "fetched": "2026-10-27",
+     "quotes": [
+      "בנו של ר' אלכסנדר סנדר ספרין, מייסד שושלת קומרנא. התייתם מאביו בגיל צעיר, וגדל אצל דודו רבי צבי הירש מזידיטשוב",
+      "הוא מצטט הרבה מתורת הבעל שם טוב, אותו הוא החשיב כמורו ורבו על אף שנולד אחר פטירתו",
+      "הוא גם כתב יומן אישי בו הוא רשם חזיונות מיוחדות שנגלו לו בחלום",
+      "עד המאה ה-20 היה קיומו של היומן נשמר בסוד, ובשנות החמישים יצא לאור מתוך כתבי יד תחת השם \"מגילת סתרים.\""
+     ]
+    },
+    {
+     "kind": "he.wikipedia",
+     "url": "https://he.wikipedia.org/wiki/%D7%97%D7%A1%D7%99%D7%93%D7%95%D7%AA_%D7%A7%D7%95%D7%9E%D7%A8%D7%A0%D7%94",
+     "title": "חסידות קומרנה (Hebrew Wikipedia)",
+     "fetched": "2026-10-27",
+     "quotes": []
+    },
+    {
+     "kind": "en.wikipedia",
+     "url": "https://en.wikipedia.org/wiki/Komarno_(Hasidic_dynasty)",
+     "title": "Komarno (Hasidic dynasty) (English Wikipedia; there is no separate English article on him)",
+     "fetched": "2026-10-27",
+     "quotes": [
+      "Rabbi Yitzchak Eisik Yehuda Yechiel Safrin (born 13 February 1806; died 28 April 1874)",
+      "was raised by his uncle (his father's brother), Rabbi Tzvi Hirsh Eichenstein"
+     ]
+    },
+    {
+     "kind": "he.wikipedia",
+     "url": "https://he.wikipedia.org/wiki/%D7%A4%D7%99%D7%A0%D7%A6%27%D7%95%D7%91",
+     "title": "פינצ'וב (Hebrew Wikipedia; identifies the town)",
+     "fetched": "2026-10-27",
+     "quotes": []
+    },
+    {
+     "kind": "he.wikipedia",
+     "url": "https://he.wikipedia.org/wiki/%D7%96%27%D7%99%D7%93%D7%90%D7%A6%27%D7%95%D7%91",
+     "title": "ז'ידאצ'וב (Hebrew Wikipedia; identifies the town)",
+     "fetched": "2026-10-27",
+     "quotes": []
+    },
+    {
+     "kind": "spotify-episode",
+     "url": "https://open.spotify.com/episode/2Hwqxeswo6x7sutb2IM9cr",
+     "title": "the owner's episode (title and the list of sources NotebookLM used: leads only, no sentence rests on it)",
+     "fetched": "2026-10-27",
+     "quotes": []
+    }
+   ],
+   "sentences": {
+    "bio": [
+     {
+      "he": "רבי יצחק אייזיק יהודה יחיאל ספרין (1806–1874) היה האדמו״ר השני בשושלת חסידות קומרנא ומחבר תורני פורה.",
+      "en": "Rabbi Yitzchak Eizik Yehuda Yechiel Safrin (1806–1874) was the second Rebbe in the Komarno Hasidic dynasty and a prolific author of Torah works.",
+      "ru": "Рабби Ицхак Айзик Йехуда Йехиэль Сафрин (1806–1874) был вторым ребе хасидской династии Комарно и плодовитым автором трудов по Торе.",
+      "support": [
+       {
+        "src": 0,
+        "quote": "יחיאל ספרין (כ\"ה בשבט ה'תקס\"ו, 1806 – י' באייר ה'תרל\"ד, 1874) היה האדמו\"ר השני בשושלת חסידות קומרנה, ומחבר תורני פורה"
+       },
+       {
+        "src": 3,
+        "quote": "Rabbi Yitzchak Eisik Yehuda Yechiel Safrin (born 13 February 1806; died 28 April 1874)"
+       }
+      ]
+     },
+     {
+      "he": "הוא היה בנו של רבי אלכסנדר סנדר, מייסד השושלת, ולאחר שהתייתם מאביו בגיל 12 גדל אצל דודו, אחי אביו, רבי צבי הירש מזידיטשוב.",
+      "en": "He was the son of Rabbi Alexander Sender, the founder of the dynasty, and after he was orphaned of his father at the age of 12 he was raised by his uncle, his father's brother, Rabbi Zvi Hirsch of Zidichov.",
+      "ru": "Он был сыном рабби Александра Сендера, основателя династии, а после того как в возрасте 12 лет остался без отца, воспитывался у своего дяди, брата отца, рабби Цви Гирша из Зидичова.",
+      "support": [
+       {
+        "src": 1,
+        "quote": "בנו של ר' אלכסנדר סנדר ספרין, מייסד שושלת קומרנא. התייתם מאביו בגיל צעיר, וגדל אצל דודו רבי צבי הירש מזידיטשוב"
+       },
+       {
+        "src": 0,
+        "quote": "לאחר שהתייתם מאביו בגיל 12, גדל אצל דודו רבי צבי הירש מזידיטשוב"
+       },
+       {
+        "src": 0,
+        "quote": "מדודו, אחי אביו, רבי צבי הירש מזידיטשוב"
+       },
+       {
+        "src": 3,
+        "quote": "was raised by his uncle (his father's brother), Rabbi Tzvi Hirsh Eichenstein"
+       }
+      ]
+     },
+     {
+      "he": "לאחר חתונתו עבר לפינצ׳וב, שבה כיהן חמיו, רבי אברהם מרדכי, כרב, ובהמשך עבר לקומרנא, עירו של אביו, וחי בה עד סוף ימיו.",
+      "en": "After his marriage he moved to Pińczów, where his father-in-law, Rabbi Avraham Mordechai, served as rabbi, and later he moved to Komarno, his father's town, and lived there until the end of his life.",
+      "ru": "После женитьбы он переехал в Пиньчув, где раввином служил его тесть, рабби Авраам Мордехай, а позднее переехал в Комарно, город своего отца, и жил там до конца своих дней.",
+      "support": [
+       {
+        "src": 0,
+        "quote": "ולאחר חתונתו עבר לגור בעיירה פינצ'וב שם כיהן חמיו, רבי אברהם מרדכי, כרב. מאוחר יותר עבר לגור בעירו של אביו, קומרנו, שבה חי עד סוף ימיו"
+       }
+      ]
+     },
+     {
+      "he": "את תורתו קיבל מרבי אברהם יהושע השיל מאפטא ומדודו, ולמד גם אצל רבי נפתלי צבי מרופשיץ, רבי משה צבי מסאווראן ורבי אשר ישעיה רובין מרופשיץ.",
+      "en": "He received his teaching from Rabbi Avraham Yehoshua Heshel of Apta and from his uncle, and he also studied with Rabbi Naftali Zvi of Ropshitz, Rabbi Moshe Zvi of Savran and Rabbi Asher Yeshaya Rubin of Ropshitz.",
+      "ru": "Своё учение он получил от рабби Авраама Йехошуа Хешеля из Апты и от своего дяди, а также учился у рабби Нафтали Цви из Ропшица, рабби Моше Цви из Саврани и рабби Ашера Йешаи Рубина из Ропшица.",
+      "support": [
+       {
+        "src": 0,
+        "quote": "את תורתו קיבל מרבי אברהם יהושע השיל מאפטא ומדודו, אחי אביו, רבי צבי הירש מזידיטשוב. למד גם אצל רבי נפתלי צבי מרופשיץ, רבי משה צבי מסאווראן ורבי אשר ישעיה רובין מרופשיץ"
+       }
+      ]
+     }
+    ],
+    "core_idea": [
+     {
+      "he": "את עיקר מפעל חייו ראה בחיבור ספרים רבים, ובהם שילב את קבלת האר״י ואת תורת הבעש״ט.",
+      "en": "He saw the main work of his life in writing many books, in which he combined the Kabbalah of the Ari with the teaching of the Baal Shem Tov.",
+      "ru": "Главным делом своей жизни он считал написание многих книг, в которых соединил каббалу Ари с учением Бааль Шем Това.",
+      "support": [
+       {
+        "src": 0,
+        "quote": "את עיקר מפעל חייו ראה בחיבור ספרים רבים, בהם שילב את קבלת האר\"י ותורת הבעש\"ט"
+       }
+      ]
+     },
+     {
+      "he": "בין ספריו: ״היכל הברכה״, פירוש על חמישה חומשי תורה בדגש על פירוש המסורה; ״זוהר חי״, פירוש על ספר הזוהר על פי קבלת האר״י והבעש״ט; ו״שלחן הטהור״, על סדר ההלכות שבשולחן ערוך אורח חיים.",
+      "en": "Among his books are Heichal HaBeracha, a commentary on the five books of the Torah with an emphasis on the interpretation of the Masorah; Zohar Chai, a commentary on the Zohar according to the Kabbalah of the Ari and the Baal Shem Tov; and Shulchan HaTahor, on the order of the laws in the Shulchan Arukh, Orach Chaim.",
+      "ru": "Среди его книг: «Хейхал а-браха» — комментарий на Пятикнижие с упором на толкование масоры; «Зоар хай» — комментарий на Зоар по каббале Ари и Бааль Шем Това; «Шулхан а-тахор» — о порядке законов в «Шулхан арухе», раздел «Орах хаим».",
+      "support": [
+       {
+        "src": 0,
+        "quote": "היכל הברכה – פירוש על חמישה חומשי תורה, בדגש על פירוש המסורה"
+       },
+       {
+        "src": 0,
+        "quote": "זוהר חי – פירוש על ספר הזוהר על פי קבלת האר\"י והבעש\"ט"
+       },
+       {
+        "src": 0,
+        "quote": "שלחן הטהור – על סדר ההלכות שבשולחן ערוך אורח חיים"
+       }
+      ]
+     },
+     {
+      "he": "הוא החשיב את הבעש״ט מורו ורבו אף שנולד אחרי פטירתו, וכתב יומן אישי שבו רשם חזיונות שנגלו לו; היומן נשמר בסוד עד אמצע המאה ה־20, ובשנות החמישים יצא לאור מכתבי יד בשם ״מגילת סתרים״.",
+      "en": "He regarded the Baal Shem Tov as his master and teacher even though he was born after the Baal Shem Tov’s death, and he wrote a personal diary in which he recorded visions revealed to him; the diary was kept secret until the middle of the twentieth century, and in the 1950s it was published from manuscripts under the title Megilat Setarim.",
+      "ru": "Он считал Бааль Шем Това своим учителем и наставником, хотя родился после его смерти, и вёл личный дневник, в который записывал открывшиеся ему видения; дневник хранился в тайне до середины XX века, а в 1950-х годах был издан по рукописям под названием «Мегилат сетарим».",
+      "support": [
+       {
+        "src": 1,
+        "quote": "הוא מצטט הרבה מתורת הבעל שם טוב, אותו הוא החשיב כמורו ורבו על אף שנולד אחר פטירתו"
+       },
+       {
+        "src": 1,
+        "quote": "הוא גם כתב יומן אישי בו הוא רשם חזיונות מיוחדות שנגלו לו בחלום"
+       },
+       {
+        "src": 1,
+        "quote": "עד המאה ה-20 היה קיומו של היומן נשמר בסוד, ובשנות החמישים יצא לאור מתוך כתבי יד תחת השם \"מגילת סתרים.\""
+       },
+       {
+        "src": 0,
+        "quote": "עד אמצע המאה ה-20 היה הספר מגילת סתרים ספר סודי, ועבר בכתבי יד רק למעטים מחסידי קומרנא. בשנות החמשים יצאה לאור גרסה"
+       }
+      ]
+     }
+    ]
+   },
+   "links": [
+    {
+     "a": "558",
+     "b": "681",
+     "type": "influence",
+     "quote": "הוא מצטט הרבה מתורת הבעל שם טוב, אותו הוא החשיב כמורו ורבו על אף שנולד אחר פטירתו",
+     "source": "https://www.sefaria.org/topics/yitzchak-aizik-safrin-of-komarna"
+    },
+    {
+     "a": "462",
+     "b": "681",
+     "type": "influence",
+     "quote": "את עיקר מפעל חייו ראה בחיבור ספרים רבים, בהם שילב את קבלת האר\"י ותורת הבעש\"ט",
+     "source": "https://he.wikipedia.org/wiki/%D7%99%D7%A6%D7%97%D7%A7_%D7%90%D7%99%D7%99%D7%96%D7%99%D7%A7_%D7%A1%D7%A4%D7%A8%D7%99%D7%9F"
+    }
+   ],
+   "paper_links": [],
+   "yahrzeit": null,
+   "new_places": [
+    {
+     "name": "קומרנא",
+     "region": "east-europe",
+     "lat": 49.631,
+     "lng": 23.703,
+     "coords_source": {
+      "url": "https://en.wikipedia.org/wiki/Komarno,_Ukraine",
+      "quote": "en.wikipedia \"Komarno, Ukraine\": lat 49.63055556, lng 23.70305556 (the API says: {\"lat\": 49.63055556, \"lon\": 23.70305556, \"primary\": true, \"globe\": \"earth\"})"
+     }
+    },
+    {
+     "name": "פינצ׳וב",
+     "region": "east-europe",
+     "lat": 50.533,
+     "lng": 20.533,
+     "coords_source": {
+      "url": "https://en.wikipedia.org/wiki/Pi%C5%84cz%C3%B3w",
+      "quote": "en.wikipedia \"Pińczów\": lat 50.53333333, lng 20.53333333 (the API says: {\"lat\": 50.53333333, \"lon\": 20.53333333, \"primary\": true, \"globe\": \"earth\"})"
+     }
+    },
+    {
+     "name": "זידיטשוב",
+     "region": "east-europe",
+     "lat": 49.385,
+     "lng": 24.144,
+     "coords_source": {
+      "url": "https://en.wikipedia.org/wiki/Zhydachiv",
+      "quote": "en.wikipedia \"Zhydachiv\": lat 49.385, lng 24.14444444 (the API says: {\"lat\": 49.385, \"lon\": 24.14444444, \"primary\": true, \"globe\": \"earth\"})"
+     }
+    }
+   ],
+   "terms_added": {
+    "en": {
+     "היכל הברכה": "Heichal HaBeracha",
+     "זוהר חי": "Zohar Chai",
+     "שלחן הטהור": "Shulchan HaTahor",
+     "מגילת סתרים": "Megilat Setarim",
+     "חסידות קומרנא": "Komarno Hasidism",
+     "רבי צבי הירש מזידיטשוב": "Rabbi Zvi Hirsch of Zidichov",
+     "רבי אברהם יהושע השיל מאפטא": "Rabbi Avraham Yehoshua Heshel of Apta",
+     "קומרנא": "Komarno",
+     "פינצ׳וב": "Pińczów",
+     "זידיטשוב": "Zidichov"
+    },
+    "ru": {
+     "היכל הברכה": "«Хейхал а-браха»",
+     "זוהר חי": "«Зоар хай»",
+     "שלחן הטהור": "«Шулхан а-тахор»",
+     "מגילת סתרים": "«Мегилат сетарим»",
+     "חסידות קומרנא": "хасидизм Комарно",
+     "רבי צבי הירש מזידיטשוב": "рабби Цви Гирш из Зидичова",
+     "רבי אברהם יהושע השיל מאפטא": "рабби Авраам Йехошуа Хешель из Апты",
+     "קומרנא": "Комарно",
+     "פינצ׳וב": "Пиньчув",
+     "זידיטשוב": "Зидичов"
+    }
+   },
+   "related_cell": "הבעל שם טוב, האר״י הקדוש",
+   "notes": "Years: the sources agree, so the row is exact: 1806-1874. Hebrew Wikipedia: born 25 Shevat 5566 (1806), died 10 Iyar 5634 (1874); English Wikipedia (the Komarno dynasty page): born 13 February 1806, died 28 April 1874 (the two calendars match); Sefaria: birth 1806 and death 1874, neither marked approximate; Wikidata: 1806 and 1874 (year precision). The English and Russian sentence on the diary says \"in the 1950s\" for the Hebrew \"בשנות החמישים\": both Hebrew Wikipedia and Sefaria give the decade and no year, so a decade is all that is stated. Era: most of the roster's Hasidic masters of this period are filed as acharonim (587 Sadilkov, 589 Nathan of Breslov, 501 and 502 of Chabad, 129 Gur, 131 Sochatchov; 203 Gutmacher, a kabbalist of 1796-1874, too); 117, Tzadok HaKohen of Lublin, is the exception (modern). The era cell is therefore \"אחרונים\" and the years sit in the years cell, as in their rows.\nLabel and spelling: the label is the owner's own title of the episode, \"רבי יצחק אייזיק מקומרנא\". The sources spell the town several ways: קומרנא (Hebrew Wikipedia in \"חסידות קומרנא\", Sefaria's alternative title \"אדמו\"ר מקומרנא\", the owner), קומרנה (the dynasty article's title and the first sentence of his own article), קומרנו (his article: \"בעירו של אביו, קומרנו\"), קאמארנא / קאמרנא (the dynasty article, Wikidata's description). The row, the bio and the tags use קומרנא throughout. Hebrew Wikipedia names him \"רבי יצחק אייזיק יהודה יחיאל ספרין\" (the article's title is \"יצחק אייזיק ספרין\"; according to the dynasty article he was the first to use the name Safrin, after the town of his grandfather, in place of Eichenstein). No page I saved calls him \"בעל היכל הברכה\" or gives another epithet, so the label has none. English and Russian labels follow the roster's \"Rabbi Yitzchak Eizik X\" and \"Рабби Ицхак Айзик X\" (493, 447).\nWhich Komarno: the Hebrew dynasty article says \"העיירה קומרנה שבגליציה המזרחית, כיום במערב אוקראינה\"; English Wikipedia: \"Komarno, Ukraine\"; Sefaria: death place Komarno, Ukraine; Wikidata: death place Komarno (city of Ukraine). It is not Komarom/Komarno on the Danube. The coordinates are those of the English Wikipedia article \"Komarno, Ukraine\" (Lviv oblast).\nPlaces in the row, in the sources' words: קומרנא (he lived there to the end of his life; the dynasty's seat); פינצ׳וב (after his marriage he moved to the town where his father-in-law served as rabbi; Hebrew Wikipedia writes \"פינצ'וב\", the dynasty article \"הפולנית פינטשוב\"; identified as Pińczów, Poland, because the Hebrew Wikipedia article on that town lists \"רבי אברהם מרדכי מפינטשוב\" among its Hasidic rebbes, the name of the father-in-law); זידיטשוב (the dynasty article: \"זמן מה שימש רבי יצחק אייזיק כדיין בזידיטשוב\"; he was also raised by his uncle \"מזידיטשוב\"; the town is Zhydachiv, Ukraine, where the Hebrew Wikipedia article says the Zidichov Hasidic group operated). None of the three resolves in the site's gazetteer today, so they are declared in new_places with the coordinates the English Wikipedia API gives. Left out of the row: Sambir, which Sefaria and Wikidata give as his birth place (neither Hebrew article says where he was born). Left out of the bio: the father's rabbinic posts, because the sources disagree (his article: \"רב בזידיטשוב ובקומרנו\"; the dynasty article: rabbi of Zhuravno and then of Komarno); the bio says only that he was the founder's son.\nLeft out on purpose: the statement of his son (in the introduction to Zohar Chai) that he was a reincarnation of the Yenuka of the Zohar, the Ari, the Baal Shem Tov and the Gaon of Vilna, and his own statement in Megilat Setarim that he was born in the year of Mashiach ben Yosef (the dynasty article reports both as what was written, not as facts); his reputation as a wonder-worker (\"בעל מופתים\") and as \"אדמו\"ר לאלפים\"; his removal from the post of dayan in Zidichov and the hardships after it; his successors and sons-in-law (not on the roster); about ten more of his books; the claim in the owner's episode title that he \"refused to change even a single word\": no page I saved says it, so it is not used (Hebrew Wikipedia describes Heichal HaBeracha as a commentary \"בדגש על פירוש המסורה\", which is all the core idea says). The episode description lists the 20 sources the owner's episode was made from (auction catalogues with sets of Heichal HaBeracha, the HaMichlol article, an essay by Rachel Elior on the Ben-Yehuda Project, pages of Sifrei Chaim, and an owner Markdown document): leads only, nothing is taken from it. HaMichlol, Wikisource and Yiddish Wikipedia could not be reached from this environment.\nLinks: the Baal Shem Tov (558) to him, influence (Sefaria: \"אותו הוא החשיב כמורו ורבו על אף שנולד אחר פטירתו\"; the dynasty article: \"החשיב את עצמו כמעט כתלמידו הישיר של הבעש\"ט אף שהיה כמה דורות אחריו\"): influence and not teacher, since both say he was born after the Baal Shem Tov's death. The Ari (462) to him, influence (Hebrew Wikipedia: in his books he combined \"קבלת האר\"י ותורת הבעש\"ט\"). His teachers named by Hebrew Wikipedia (Avraham Yehoshua Heshel of Apta, his uncle Zvi Hirsch of Zidichov, Naftali Zvi of Ropshitz, Moshe Zvi of Savran, Asher Yeshaya Rubin of Ropshitz), his father Alexander Sender and his father-in-law Avraham Mordechai are not on the roster, so no teacher or family link can be recorded; the quotes are in the saved Hebrew Wikipedia page should one of them join. He is not 447 (Rabbi Yitzchak Eizik Tyrnau) and not 493 (Rabbi Yitzchak Eizik Chaver).\nNo owner paper (the Drive holds none on him), so there are no paper-link candidates and no yahrzeit candidate. His day of death, 10 Iyar 5634, is given by Hebrew Wikipedia and the dynasty article, but the death-date file takes dates from papers only.\nSpelling: book titles in English follow Sefaria (Heichal HaBeracha, Zohar Chai, Shulchan HaTahor, Megilat Setarim); Russian town names follow the Hasidic usage (Зидичов, Ропшиц, Савран, Апта), except Pińczów (Пинчув). LEAD (2026-10-27): Pińczów in Russian is «Пиньчув» (Russian Wikipedia's name, Wikidata Q275592), in the sentence and in the vocabulary. The diary \"kept secret until the middle of the twentieth century\" (his own Hebrew Wikipedia article), not \"until the twentieth century\" (Sefaria)."
+  },
+  {
+   "id": "682",
+   "label": "רבי נתן נטע שפירא (בעל מגלה עמוקות)",
+   "package": "owner-2026-10",
+   "episode": {
+    "id": "1W9jLv41tnXGcgNYDIEbrL",
+    "url": "https://open.spotify.com/episode/1W9jLv41tnXGcgNYDIEbrL",
+    "title": "רבי נתן נטע שפירא - המקובל שגילה 252 סודות בתפילה אחת של משה רבינו",
+    "released": "2026-10-22"
+   },
+   "woman": false,
+   "sources": [
+    {
+     "kind": "paper",
+     "url": "https://docs.google.com/document/d/1YXwErMDJNSUjasevIdlNYAv0QuFT7h4EfSfMYKym6F8/edit",
+     "title": "פועלו, משנתו התורנית ומורשתו של רבי נתן נטע שפירא מקראקא: בעל \"מגלה עמוקות\"",
+     "fetched": "2026-10-27",
+     "quotes": [
+      "הוא נולד בעיר הורדנה (גרודנא)",
+      "בשנת ה'שע\"ז (1617), בהיותו כבן שלושים ואחת בלבד, נתמנה לראש ישיבה ודרשן הקהילה בקראקא",
+      "על פי עדות בנו בהקדמת ספרו, חיבר רבי נתן נטע שפירא חמישה עשר ספרים בנגלה ובנסתר, מתוכם שבעה חיבורים מקיפים על התורה",
+      "ומציעה רנ\"ב (252) אופנים שונים ומורכבים לבאר תפילה זו על פי סודות הקבלה",
+      "בנה בניינים תיאולוגיים מקיפים המבוססים על ערכים נומריים",
+      "רבי נתן נטע שימש חוליה מרכזית בקליטתה, בניסוחה מחדש ובשילובה של הקבלה הלוריאנית",
+      "הש\"ך קיבל מרבו את היסודות לעיונו החריף ולבקיאותו המקיפה.",
+      "מרת דבורה נישאה לרבי ישעיה אשכנזי אב\"ד קובלא (ונינם היה הגאון רבי יהונתן אייבשיץ)",
+      "נפטר בדמי ימיו, כבן 48 בלבד, ביום י\"ג באב ה'שצ\"ג"
+     ],
+     "paper": "682",
+     "file": "פועלו, משנתו התורנית ומורשתו של רבי נתן נטע שפירא מקראקא- בעל מגלה עמוקות.docx"
+    },
+    {
+     "kind": "he.wikipedia",
+     "url": "https://he.wikipedia.org/wiki/%D7%A0%D7%AA%D7%9F_%D7%A0%D7%98%D7%A2_%D7%A9%D7%A4%D7%99%D7%A8%D7%90",
+     "title": "נתן נטע שפירא",
+     "fetched": "2026-10-27",
+     "quotes": [
+      "היה מרבני פולין ומחשובי המקובלים בתקופתו, מכונה על שם ספרו מגלה עמוקות",
+      "בשנת ה'שס\"ח (1608) (בערך) עבר מהורדנה לקז'ימייז' שעל יד קראקא",
+      "בשנת ה'שע\"ז (1617), בהיותו בן שלושים ואחת, נתקבל לראש ישיבה ודרשן בקהילת קרקוב",
+      "חמישה עשר ספרים בנגלה ובנסתר חיבר רבי נתן שפירא, ומהם שבעה על התורה",
+      "ספר \"מגלה עמוקות\" שהוא רנ\"ב (252) אופנים להסביר את תפילת משה רבינו \"אעברה נא\" בפרשת ואתחנן",
+      "גדול תלמידיו היה רבי שבתי כהן",
+      "לתלמידיו בישיבה לימד את תורת הנגלה בדרך הפלפול וחלוקי הדעות",
+      "כשהופיע מדי שבת בשבתו לדרוש ברבים בבית מדרשו או בבית הכנסת העתיק של העיר קראקא, הסתמך גם על תורת הנסתר",
+      "ועל ידו התרבו העוסקים בחכמה זו",
+      "ועל צרופי מילים ומספרם היה בונה בניינים למחשבת ומגלה סודות קבליים טמירים הרמוזים בסתרי אותיות התורה",
+      "== מצאצאיו == רבי יהונתן אייבשיץ מפראג"
+     ]
+    },
+    {
+     "kind": "en.wikipedia",
+     "url": "https://en.wikipedia.org/wiki/Nathan_Nata_Spira",
+     "title": "Nathan Nata Spira",
+     "fetched": "2026-10-27",
+     "quotes": [
+      "Spira played an important role in spreading Isaac Luria's teachings throughout Poland"
+     ]
+    },
+    {
+     "kind": "sefaria",
+     "url": "https://www.sefaria.org/topics/nathan-nota-spira",
+     "title": "Nathan Nota Spira (topic page, API answer)",
+     "fetched": "2026-10-27",
+     "quotes": [
+      "but his community sermons had mystical elements and inspired many listeners to study Kabbalah"
+     ]
+    },
+    {
+     "kind": "he.wikipedia",
+     "url": "https://he.wikipedia.org/wiki/%D7%A0%D7%AA%D7%9F_%D7%A9%D7%A4%D7%99%D7%A8%D7%90_%D7%94%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%9E%D7%99",
+     "title": "נתן שפירא הירושלמי (the article on sage 626, read for his uncle)",
+     "fetched": "2026-10-27",
+     "quotes": []
+    },
+    {
+     "kind": "he.wikipedia",
+     "url": "https://he.wikipedia.org/wiki/%D7%A9%D7%91%D7%AA%D7%99_%D7%94%D7%9B%D7%94%D7%9F",
+     "title": "שבתי הכהן (the article on sage 83, read for his teacher)",
+     "fetched": "2026-10-27",
+     "quotes": [
+      "והיה לומד בילדותו אצל המגלה עמוקות"
+     ]
+    },
+    {
+     "kind": "spotify-episode",
+     "url": "https://open.spotify.com/episode/1W9jLv41tnXGcgNYDIEbrL",
+     "title": "the owner's episode: title and description (a list of the sources the episode used; a lead, not a source of facts)",
+     "fetched": "2026-10-27",
+     "quotes": []
+    }
+   ],
+   "sentences": {
+    "bio": [
+     {
+      "he": "מרבני פולין ומחשובי המקובלים בתקופתו, הנקרא על שם ספרו ״מגלה עמוקות״.",
+      "en": "One of the rabbis of Poland and among the esteemed kabbalists of his time, known by the name of his book “Megaleh Amukot”.",
+      "ru": "Один из раввинов Польши и один из уважаемых каббалистов своего времени, известный по названию своей книги «Мегале амукот».",
+      "support": [
+       {
+        "src": 1,
+        "quote": "היה מרבני פולין ומחשובי המקובלים בתקופתו, מכונה על שם ספרו מגלה עמוקות"
+       }
+      ]
+     },
+     {
+      "he": "נולד בהורדנה, בסביבות שנת 1608 עבר לקז׳ימייז׳ שליד קרקוב, ובשנת 1617 נתמנה לראש ישיבה ודרשן בקהילת קרקוב.",
+      "en": "Born in Hrodna, he moved around 1608 to Kazimierz near Kraków, and in 1617 was appointed head of a yeshiva and preacher in the Kraków community.",
+      "ru": "Родился в Гродно, около 1608 года переехал в Казимеж близ Кракова, а в 1617 году был назначен главой ешивы и проповедником общины Кракова.",
+      "support": [
+       {
+        "src": 0,
+        "quote": "הוא נולד בעיר הורדנה (גרודנא)"
+       },
+       {
+        "src": 1,
+        "quote": "בשנת ה'שס\"ח (1608) (בערך) עבר מהורדנה לקז'ימייז' שעל יד קראקא"
+       },
+       {
+        "src": 0,
+        "quote": "בשנת ה'שע\"ז (1617), בהיותו כבן שלושים ואחת בלבד, נתמנה לראש ישיבה ודרשן הקהילה בקראקא"
+       },
+       {
+        "src": 1,
+        "quote": "בשנת ה'שע\"ז (1617), בהיותו בן שלושים ואחת, נתקבל לראש ישיבה ודרשן בקהילת קרקוב"
+       }
+      ]
+     },
+     {
+      "he": "לפי עדות בנו בהקדמת ספרו חיבר חמישה עשר ספרים בנגלה ובנסתר, ומהם שבעה על התורה; בספרו ״מגלה עמוקות״ על פרשת ואתחנן הוא מציע רנ״ב (252) אופנים לבאר את תפילת משה ״אעברה נא״.",
+      "en": "According to his son’s testimony in the preface to his book, he wrote fifteen books in the revealed and the hidden Torah, seven of them on the Torah; in his book “Megaleh Amukot” on the portion Va’etchanan he offers 252 ways to explain Moses’ prayer “Let me cross over”.",
+      "ru": "По свидетельству его сына в предисловии к его книге, он написал пятнадцать книг по открытой и скрытой Торе, семь из них — на Тору; в книге «Мегале амукот» на недельную главу «Ваэтханан» он предлагает 252 способа объяснить молитву Моше «Позволь мне перейти».",
+      "support": [
+       {
+        "src": 0,
+        "quote": "על פי עדות בנו בהקדמת ספרו, חיבר רבי נתן נטע שפירא חמישה עשר ספרים בנגלה ובנסתר, מתוכם שבעה חיבורים מקיפים על התורה"
+       },
+       {
+        "src": 1,
+        "quote": "חמישה עשר ספרים בנגלה ובנסתר חיבר רבי נתן שפירא, ומהם שבעה על התורה"
+       },
+       {
+        "src": 1,
+        "quote": "ספר \"מגלה עמוקות\" שהוא רנ\"ב (252) אופנים להסביר את תפילת משה רבינו \"אעברה נא\" בפרשת ואתחנן"
+       },
+       {
+        "src": 0,
+        "quote": "ומציעה רנ\"ב (252) אופנים שונים ומורכבים לבאר תפילה זו על פי סודות הקבלה"
+       }
+      ]
+     },
+     {
+      "he": "בין תלמידיו היה רבי שבתאי הכהן (הש״ך).",
+      "en": "Among his students was Rabbi Shabtai HaKohen (the Shach).",
+      "ru": "Среди его учеников был рабби Шабтай ха-Коэн (Шах).",
+      "support": [
+       {
+        "src": 1,
+        "quote": "גדול תלמידיו היה רבי שבתי כהן"
+       },
+       {
+        "src": 5,
+        "quote": "והיה לומד בילדותו אצל המגלה עמוקות"
+       }
+      ]
+     }
+    ],
+    "core_idea": [
+     {
+      "he": "בישיבה לימד את תלמידיו את הנגלה בדרך הפלפול, ואילו בדרשותיו ברבים מדי שבת הסתמך גם על תורת הנסתר, ועל ידו התרבו העוסקים בקבלה.",
+      "en": "To his students in the yeshiva he taught the revealed Torah by way of pilpul, while in his public sermons every Shabbat he drew also on the hidden Torah, and through him the number of those who engaged in Kabbalah grew.",
+      "ru": "Своим ученикам в ешиве он преподавал открытую Тору путём пилпула, а в публичных проповедях каждую субботу опирался также на тайное учение, и благодаря ему число занимающихся каббалой выросло.",
+      "support": [
+       {
+        "src": 1,
+        "quote": "לתלמידיו בישיבה לימד את תורת הנגלה בדרך הפלפול וחלוקי הדעות"
+       },
+       {
+        "src": 1,
+        "quote": "כשהופיע מדי שבת בשבתו לדרוש ברבים בבית מדרשו או בבית הכנסת העתיק של העיר קראקא, הסתמך גם על תורת הנסתר"
+       },
+       {
+        "src": 1,
+        "quote": "ועל ידו התרבו העוסקים בחכמה זו"
+       },
+       {
+        "src": 3,
+        "quote": "but his community sermons had mystical elements and inspired many listeners to study Kabbalah"
+       }
+      ]
+     },
+     {
+      "he": "על צירופי מילים ומספרם בנה בניינים של מחשבה וגילה סודות קבליים הרמוזים בסתרי אותיות התורה.",
+      "en": "On combinations of words and their numerical values he built structures of thought and uncovered kabbalistic secrets alluded to in the inner recesses of the letters of the Torah.",
+      "ru": "На сочетаниях слов и их числовых значениях он строил здания мысли и раскрывал каббалистические тайны, на которые намекает сокровенный смысл букв Торы.",
+      "support": [
+       {
+        "src": 1,
+        "quote": "ועל צרופי מילים ומספרם היה בונה בניינים למחשבת ומגלה סודות קבליים טמירים הרמוזים בסתרי אותיות התורה"
+       },
+       {
+        "src": 0,
+        "quote": "בנה בניינים תיאולוגיים מקיפים המבוססים על ערכים נומריים"
+       }
+      ]
+     },
+     {
+      "he": "הוא מילא תפקיד חשוב בהפצת תורת האר״י בפולין.",
+      "en": "He played an important role in spreading the Ari’s teaching in Poland.",
+      "ru": "Он сыграл важную роль в распространении учения Ари в Польше.",
+      "support": [
+       {
+        "src": 2,
+        "quote": "Spira played an important role in spreading Isaac Luria's teachings throughout Poland"
+       },
+       {
+        "src": 0,
+        "quote": "רבי נתן נטע שימש חוליה מרכזית בקליטתה, בניסוחה מחדש ובשילובה של הקבלה הלוריאנית"
+       }
+      ]
+     }
+    ]
+   },
+   "links": [
+    {
+     "a": "682",
+     "b": "83",
+     "type": "teacher",
+     "quote": "גדול תלמידיו היה רבי שבתי כהן",
+     "source": "https://he.wikipedia.org/wiki/%D7%A0%D7%AA%D7%9F_%D7%A0%D7%98%D7%A2_%D7%A9%D7%A4%D7%99%D7%A8%D7%90"
+    },
+    {
+     "a": "682",
+     "b": "653",
+     "type": "family",
+     "relation": "ancestor",
+     "quote": "== מצאצאיו == רבי יהונתן אייבשיץ מפראג",
+     "source": "https://he.wikipedia.org/wiki/%D7%A0%D7%AA%D7%9F_%D7%A0%D7%98%D7%A2_%D7%A9%D7%A4%D7%99%D7%A8%D7%90"
+    },
+    {
+     "a": "462",
+     "b": "682",
+     "type": "influence",
+     "quote": "רבי נתן נטע שימש חוליה מרכזית בקליטתה, בניסוחה מחדש ובשילובה של הקבלה הלוריאנית",
+     "source": "https://docs.google.com/document/d/1YXwErMDJNSUjasevIdlNYAv0QuFT7h4EfSfMYKym6F8/edit"
+    }
+   ],
+   "paper_links": [
+    {
+     "paper": "682",
+     "a": "682",
+     "b": "83",
+     "a_label": "רבי נתן נטע שפירא (בעל מגלה עמוקות)",
+     "b_label": "רבי שבתאי הכהן (הש\"ך)",
+     "type": "teacher",
+     "quote": "הש\"ך קיבל מרבו את היסודות לעיונו החריף ולבקיאותו המקיפה."
+    },
+    {
+     "paper": "682",
+     "a": "682",
+     "b": "653",
+     "a_label": "רבי נתן נטע שפירא (בעל מגלה עמוקות)",
+     "b_label": "רבי יהונתן אייבשיץ",
+     "type": "family",
+     "relation": "ancestor",
+     "quote": "מרת דבורה נישאה לרבי ישעיה אשכנזי אב\"ד קובלא (ונינם היה הגאון רבי יהונתן אייבשיץ)"
+    }
+   ],
+   "yahrzeit": {
+    "day": 13,
+    "month": "Av",
+    "quote": "נפטר בדמי ימיו, כבן 48 בלבד, ביום י\"ג באב ה'שצ\"ג"
+   },
+   "new_places": [
+    {
+     "name": "הורדנה",
+     "region": "east-europe",
+     "lat": 53.67,
+     "lng": 23.83,
+     "coords_source": {
+      "url": "https://en.wikipedia.org/wiki/Grodno",
+      "quote": "{\"lat\": 53.66666667, \"lon\": 23.83333333, \"primary\": true, \"globe\": \"earth\"} (the Wikipedia API answer for the article \"Grodno\"; the Hebrew sources spell the city הורדנה)"
+     }
+    }
+   ],
+   "terms_added": {
+    "en": {
+     "הורדנה": "Hrodna",
+     "מגלה עמוקות": "Megaleh Amukot",
+     "אעברה נא": "Let me cross over",
+     "פרשת ואתחנן": "the portion Va’etchanan",
+     "רנ״ב אופנים": "252 ways",
+     "אגרא דכלה": "Agra DeKalla",
+     "חידושי אנשי שם": "Chiddushei Anshei Shem"
+    },
+    "ru": {
+     "הורדנה": "Гродно",
+     "מגלה עמוקות": "«Мегале амукот»",
+     "אעברה נא": "«Позволь мне перейти»",
+     "פרשת ואתחנן": "недельная глава «Ваэтханан»",
+     "רנ״ב אופנים": "252 способа",
+     "אגרא דכלה": "«Агра де-калла»",
+     "חידושי אנשי שם": "«Хидушей аншей шем»"
+    }
+   },
+   "related_cell": "רבי שבתאי הכהן (הש\"ך), רבי יהונתן אייבשיץ, האר״י הקדוש",
+   "notes": "NOT 626 (Rabbi Nathan Shapira of Jerusalem, \"HaNasi\"): 626 is the nephew of this sage. Hebrew Wikipedia on 626 says \"דודו, גם הרב נתן נטע שפירא, היה מפורסם ונקרא בשם המגלה עמוקות\", and the research paper already on the site for 626 says \"ודודו היה המקובל המפורסם רבי נתן נטע שפירא, מחבר הספר מגלה עמוקות\". Recorded as a family link 682 -> 626 (relation uncle), sourced from Hebrew Wikipedia's article on 626 (sources[4]). The paper of 626, not the paper of 682, states it, and the validator accepts paper-link candidates only for the fragment's own paper, so it is not in paper_links: the lead may add it to data/links-from-research.json as an entry of paper 626 (paper \"626\", a \"682\", b \"626\", relation \"uncle\", quote from public/research/626.json: ודודו היה המקובל המפורסם רבי נתן נטע שפירא, מחבר הספר \"מגלה עמוקות\").\n\nYEARS. The sources disagree on the birth year: Hebrew Wikipedia \"ה'שמ\"ה, ~ 1584\"; the owner's paper \"ה'שמ\"ה, 1584/1585 בקירוב\" (5345 runs from autumn 1584 to autumn 1585); English Wikipedia and Sefaria 1585 (Sefaria's birthYearIsApprox is false, but the paper's own source list quotes the National Library of Israel record as \"approximately 1585-1633\"). Death is agreed: 13 Av 5393 = 20 July 1633 (the paper and Hebrew Wikipedia; English Wikipedia 20 July 1633; Sefaria 1633; the conversion of 13 Av 5393 to 20 July 1633 was checked with the Hebrew calendar). The row says כ־1585–1633 (the birth is approximate, as the National Library's wording and the paper's \"בקירוב\" say); the bio and the core idea give no birth or death year. The other years in the bio come from the sources: 1608 (the move to Kazimierz: \"בערך\" in Hebrew Wikipedia, \"סביב\" in the paper) and 1617 (the appointment: the paper \"כבן שלושים ואחת בלבד\", Hebrew Wikipedia \"בן שלושים ואחת\"). 252 is the number of ways in the book, not a year.\n\nOFFICE. English Wikipedia and Sefaria call him \"Chief Rabbi of Kraków\". Hebrew Wikipedia and the paper say he was appointed head of the yeshiva and preacher (ראש ישיבה ודרשן) of the Kraków community, and the paper says that at the time the Bach (Rabbi Yoel Sirkis, 76) was the city's rabbi and head of the court. The bio follows Hebrew Wikipedia and the paper; \"chief rabbi\" is not written.\n\nPLACES. Born in Hrodna is the paper's statement (\"הוא נולד בעיר הורדנה (גרודנא)\"); Hebrew Wikipedia says only that he moved from Hrodna to Kazimierz about 1608, and English Wikipedia and Sefaria give no birthplace (Sefaria gives Krakow as the place of death). Spelling: the sources write הורדנה; the gazetteer has the same city as גרודנה (53.68, 23.83) but no entry for הורדנה, so it is declared in new_places with the coordinates the Wikipedia API gives for the article \"Grodno\" (53.667, 23.833); the lead may alias it to the existing point instead. Kraków is written קרקוב (Hebrew Wikipedia's spelling and the one the gazetteer knows; the owner's episode and paper spell it קראקא, as sage 626's row does, which the map does not resolve). Kraków comes first as the place where he worked and the map pin. Kazimierz, where he lived (a place by Kraków, \"קז'ימייז' שעל יד קראקא\"), is not a separate piece.\n\nTHE BOOKS. \"Fifteen books, seven of them on the Torah\" is written \"according to his son's testimony in the preface to his book\", as the paper attributes it (Hebrew Wikipedia states it flatly). \"252 ways\" is in Hebrew Wikipedia, in Sefaria's description and in the paper (the owner's episode title says it too). The paper's table of works gives printing places and years (Kraków 5397/1637 for the Va'etchanan book, Lublin 5383/1623 for the Zohar commentary, Zalkow 5555/1795 for the work on the whole Torah); Hebrew Wikipedia gives the same for the first two. None of it is in the bio.\n\nTEACHERS. English Wikipedia (\"A student of Meir Lublin\"), Sefaria (a teacher link to the Maharam of Lublin, slug maharam-lublin) and the paper (naming the Maharam of Lublin, citing the National Library) give the Maharam of Lublin (Rabbi Meir ben Gedaliah) as his teacher; Hebrew Wikipedia and the paper say he received guidance in the mysteries of Kabbalah from Rabbi Moshe Mordechai Margaliot, whom he replaced as head of the yeshiva. Neither is on the roster (no sage there is the Maharam of Lublin or Margaliot of Kraków; 453 and 480 are other Margaliots), so no teacher link is recorded. His father Shlomo, his grandfather Nata Shapira the First and his father-in-law are not on the roster either.\n\nLINKS RECORDED. (1) teacher 682 -> 83 (the Shach): Hebrew Wikipedia \"גדול תלמידיו היה רבי שבתי כהן\"; Hebrew Wikipedia on the Shach \"והיה לומד בילדותו אצל המגלה עמוקות\"; Sefaria lists the Shach as his student; the paper lists him among the main students and says \"הש\"ך קיבל מרבו את היסודות\" (a paper-link candidate). To look at: the Shach was born in 1622 (Hebrew Wikipedia; the roster has 1622) and Nata died in 1633, so the Shach was a child, which is what his own article says (\"בילדותו\"). (2) family 682 -> 626, uncle (above). (3) family 682 -> 653 (Rabbi Yehonatan Eybeschutz), relation ancestor: Hebrew Wikipedia lists him under \"מצאצאיו\"; the paper says of Nata's daughter Devorah and her husband \"ונינם היה הגאון רבי יהונתן אייבשיץ\" (a paper-link candidate), that is, a great-grandson of that couple. The pages disagree on which daughter married which Yeshaya (the paper: Devorah to Rabbi Yeshaya Ashkenazi, head of the court of Kovla, and Lifsha to Rabbi Yeshaya of Hildesheim; Hebrew Wikipedia: Devorah to Rabbi Yeshaya Hildesheim Ashkenazi of Kraków, and Lifsha Simcha to Israel Heilprin of Kerstein); both put Eybeschutz among his descendants. (4) influence 462 (the Ari) -> 682: the paper says the teaching of the Ari came to the Polish centre and that Rabbi Nata \"שימש חוליה מרכזית בקליטתה, בניסוחה מחדש ובשילובה של הקבלה הלוריאנית\", and English Wikipedia says he \"played an important role in spreading Isaac Luria's teachings throughout Poland\" (Hebrew Wikipedia adds that he took on Tikkun Chatzot). The lead may drop this one if it is thought too general; the other three are explicit.\n\nSEEN, NOT RECORDED AS LINKS. The Bach (76) was the rabbi of Kraków at the same time (the paper: \"באותה תקופה שימש הגאון רבי יואל סירקיש ... כרב העיר\", and \"the combination\" of the two made Kraków a centre): the paper does not call them colleagues, so there is no colleague link. Chaim Vital (542) and Israel Sarug appear in the paper only as authors of the Lurianic writings that spread elsewhere, in contrast to his sermons. The other students and descendants named in the paper and in Hebrew Wikipedia are not on the roster: Berachia Berakh, Noach of Pinsk, Yehoshua Heschel Zoref, Pinchas Shapira of Koretz, Shmuel HaLevi Kelin, Chaim Halberstam of Sanz, Shlomo Rabinowitz of Radomsk, Meir Shapiro of Lublin, Liber the Great of Berditchev, Mordechai of Neshchiz, Menachem Mendel of Rimanov, Aryeh Leib Zunz, Tzvi Elimelech of Dinov (who interpreted the Megaleh Amukot in Agra DeKalla: Hebrew Wikipedia and the paper). The roster's Rabbi Eliyahu Shapira (648) is not named as a descendant by any of the pages saved. The sons-in-law (Naftali Zvi Hirsch Shor, Yeshaya Ashkenazi and others) are not on the roster.\n\nLEFT OUT ON PURPOSE (given by the sources as a tradition, a legend or a family lineage): his descent \"על פי המסורת המשפחתית\" from Rashi, Rabbi Shimshon Shapira of Pozna, Rabbi Nathan ben Yechiel of Rome and King David (the paper) and \"ייחוסו מגיע עד לרש\"י\" (Hebrew Wikipedia); the tombstone's text that Elijah spoke with him face to face, which the paper and Hebrew Wikipedia give as what was said about him (\"הוא שאומרים עליו\"); the heavenly voice that stopped him at 252 (the paper \"לפי המסורת\", Hebrew Wikipedia \"ע\"פ המסורת\"); the legend of the stone \"יגיד עליו רעו\" and of the stranger buried beside him; the story of the man in a hair cloak who appeared at Tikkun Chatzot. The paper's evaluations (\"אחת הדמויות המרכזיות והמשפיעות ביותר\", \"קו פרשת מים\", a synthesis \"חסרת תקדים\") are not repeated: the core idea has only the plain statement of English Wikipedia, which the paper's description of his role in the Ari's teaching supports. His wealth and his father-in-law's support (the paper: a synagogue, a study house and a mikveh built for him), and that he took no salary (English Wikipedia; Hebrew Wikipedia \"שלא על מנת לקבל פרס\"), were left out for length.\n\nCHILDREN. Hebrew Wikipedia lists ten children; English Wikipedia seven (three sons, four daughters), and the paper names three sons and four daughters. No number is written. His son Rabbi Shlomo, who published the book (died at 32 according to the paper and Hebrew Wikipedia), is not on the roster.\n\nTHE PAPER (Drive: Google Doc 1YXwErMDJNSUjasevIdlNYAv0QuFT7h4EfSfMYKym6F8, created 2026-10-18; copied to W/papers_raw/682.a.md and converted to W/papers/682.txt). It is about this sage. Slips and doubtful points in the Drive text, copied as they are (a list for the owner): \"שני רבות מובהקים\" (the noun does not agree: \"רבים\"); \"ומורת יוטל נישאה לרבי מנחם מנדל\" (\"ומורת\" for \"ומרת\"); the marriages of the daughters (above) differ from Hebrew Wikipedia's; the Maharam of Lublin as his teacher rests in the paper on one citation, the National Library record ([cite: 2]); the first paragraph and the closing paragraphs are evaluations (\"אחת הדמויות המרכזיות והמשפיעות ביותר\"); source 6 has typographic quotation marks inside \"י”ג אב שצ”ג\". No Arabic letters and no markdown debris after conversion.\n\nDRIVE. The only document in the owner's Drive whose title names him is this paper; a full-text search for \"מגלה עמוקות\" finds mentions in the owner's papers on other sages (the Rokeach, the Shach, the Shelah), not a second document on him.\n\nSEFARIA. Author topic \"nathan-nota-spira\": English \"Nathan Nota Spira\", Hebrew \"נתן נטע שפירא\" (alternative title \"מגלה עמוקות\"); a description in English only; links: teacher the Maharam of Lublin, student the Shach; death place Krakow.\n\nEPISODE. The owner's episode title says \"המקובל שגילה 252 סודות בתפילה אחת של משה רבינו\"; the bio says only what the sources say (252 ways to explain one prayer of Moses). The episode description lists the twenty sources the episode used: a lead, not a source of facts. LEAD (2026-10-27, main agent's decision): the uncle link 682 -> 626 is recorded from paper 626's own sentence (data/links-from-research.json, paper 626: 'ודודו היה המקובל המפורסם רבי נתן נטע שפירא, מחבר הספר \"מגלה עמוקות\"') and not as a data.json link, so the paper-link build keeps it; the Hebrew Wikipedia sentence on 626 that S682 found says the same. LEAD (2026-10-27): the link 462 -> 682 stays (second reader: the paper says R. Nata himself was a central link in absorbing, reformulating and integrating Lurianic Kabbalah); its quote is trimmed to that sentence. Rachel gets no ancestor links to Esther or Mordecai."
+  },
+  {
+   "id": "683",
+   "label": "רחל אמנו",
+   "package": "owner-2026-10",
+   "episode": {
+    "id": "1EKJiVlFPRzq9U3HlgXXGq",
+    "url": "https://open.spotify.com/episode/1EKJiVlFPRzq9U3HlgXXGq",
+    "title": "רחל אמנו - האישה ששתקה למען אחותה, אך זעקתה הכריעה את השמים",
+    "released": "2026-10-22"
+   },
+   "woman": true,
+   "sources": [
+    {
+     "kind": "sefaria-text",
+     "url": "https://www.sefaria.org/Genesis.29",
+     "title": "Genesis 29 (Miqra according to the Masorah, via Sefaria)",
+     "fetched": "2026-10-27",
+     "quotes": [
+      "וללבן שתי בנות שם הגדלה לאה ושם הקטנה רחל",
+      "ויאמר לבן לא־יעשה כן במקומנו לתת הצעירה לפני הבכירה",
+      "ויתן־לו את־רחל בתו לו לאשה",
+      "ויבא גם אל־רחל ויאהב גם־את־רחל מלאה",
+      "וירא יהוה כי־שנואה לאה ויפתח את־רחמה ורחל עקרה"
+     ]
+    },
+    {
+     "kind": "sefaria-text",
+     "url": "https://www.sefaria.org/Genesis.30",
+     "title": "Genesis 30 (Miqra according to the Masorah, via Sefaria)",
+     "fetched": "2026-10-27",
+     "quotes": [
+      "ויזכר אלהים את־רחל וישמע אליה אלהים ויפתח את־רחמה",
+      "ותהר ותלד בן ותאמר אסף אלהים את־חרפתי",
+      "ותקרא את־שמו יוסף לאמר יסף יהוה לי בן אחר"
+     ]
+    },
+    {
+     "kind": "sefaria-text",
+     "url": "https://www.sefaria.org/Genesis.35",
+     "title": "Genesis 35 (Miqra according to the Masorah, via Sefaria)",
+     "fetched": "2026-10-27",
+     "quotes": [
+      "ויסעו מבית אל ויהי־עוד כברת־הארץ לבוא אפרתה ותלד רחל ותקש בלדתה",
+      "ויהי בצאת נפשה כי מתה ותקרא שמו בן־אוני ואביו קרא־לו בנימין",
+      "ותמת רחל ותקבר בדרך אפרתה הוא בית לחם"
+     ]
+    },
+    {
+     "kind": "sefaria-text",
+     "url": "https://www.sefaria.org/Jeremiah.31",
+     "title": "Jeremiah 31 (Miqra according to the Masorah, via Sefaria)",
+     "fetched": "2026-10-27",
+     "quotes": [
+      "רחל מבכה על־בניה מאנה להנחם על־בניה כי איננו",
+      "מנעי קולך מבכי ועיניך מדמעה כי יש שכר לפעלתך"
+     ]
+    },
+    {
+     "kind": "sefaria-text",
+     "url": "https://www.sefaria.org/Ruth.4",
+     "title": "Ruth 4 (Miqra according to the Masorah, via Sefaria)",
+     "fetched": "2026-10-27",
+     "quotes": [
+      "כרחל וכלאה אשר בנו שתיהם את־בית ישראל"
+     ]
+    },
+    {
+     "kind": "sefaria-text",
+     "url": "https://www.sefaria.org/Rashi_on_Genesis.29.25",
+     "title": "Rashi on Genesis 29:25",
+     "fetched": "2026-10-27",
+     "quotes": [
+      "לפי שמסר יעקב סימנים לרחל, וכשראתה רחל שמכניסין לו לאה אמרה: עכשו תכלם אחותי, עמדה ומסרה לה אותן סימנים"
+     ]
+    },
+    {
+     "kind": "sefaria-text",
+     "url": "https://www.sefaria.org/Rashi_on_Genesis.30.22",
+     "title": "Rashi on Genesis 30:22",
+     "fetched": "2026-10-27",
+     "quotes": [
+      "ויזכור אלהים את רחל. זכר לה שמסרה סימניה לאחותה",
+      "ויזכור אלהים את רחל. זכר לה שמסרה סימניה לאחותה ושהיתה מצרה שמא תעלה בגורלו של עשו"
+     ]
+    },
+    {
+     "kind": "sefaria-text",
+     "url": "https://www.sefaria.org/Rashi_on_Genesis.48.7",
+     "title": "Rashi on Genesis 48:7",
+     "fetched": "2026-10-27",
+     "quotes": [
+      "שעל פי הדבור קברתיה שם, שתהא לעזרה לבניה כשיגלה אותם נבוזראדן",
+      "יוצאת רחל על קברה ובוכה ומבקשת עליהם רחמים"
+     ]
+    },
+    {
+     "kind": "sefaria-text",
+     "url": "https://www.sefaria.org/Megillah.13b",
+     "title": "Babylonian Talmud, Megillah 13b (William Davidson Edition, via Sefaria)",
+     "fetched": "2026-10-27",
+     "quotes": [
+      "אית לי אחתא דקשישא מינאי ולא מנסיב לי מקמה. מסר לה סימנים",
+      "כי מטא ליליא, אמרה: השתא מיכספא אחתאי. מסרתינהו ניהלה"
+     ]
+    },
+    {
+     "kind": "sefaria",
+     "url": "https://www.sefaria.org/topics/rachel",
+     "title": "Sefaria topic page: Rachel",
+     "fetched": "2026-10-27",
+     "quotes": [
+      "רחל היא אחת מארבע האימהות של עם ישראל",
+      "היא מתה בשעת לידתו של בנימין"
+     ]
+    },
+    {
+     "kind": "he.wikipedia",
+     "url": "https://he.wikipedia.org/wiki/%D7%A8%D7%97%D7%9C",
+     "title": "רחל (ויקיפדיה העברית)",
+     "fetched": "2026-10-27",
+     "quotes": [
+      "היא מתוארת כרעייתו האהובה של יעקב"
+     ]
+    },
+    {
+     "kind": "en.wikipedia",
+     "url": "https://en.wikipedia.org/wiki/Rachel",
+     "title": "Rachel (English Wikipedia)",
+     "fetched": "2026-10-27",
+     "quotes": [
+      "Her aunt Rebecca was Jacob's mother."
+     ]
+    },
+    {
+     "kind": "spotify-episode",
+     "url": "https://open.spotify.com/episode/1EKJiVlFPRzq9U3HlgXXGq",
+     "title": "The owner's episode on Rachel Our Matriarch (title and description only)",
+     "fetched": "2026-10-27",
+     "quotes": []
+    }
+   ],
+   "sentences": {
+    "bio": [
+     {
+      "he": "אחת מארבע האמהות של עם ישראל: בתו הצעירה של לבן, אחותה של לאה ואשתו האהובה של יעקב.",
+      "en": "One of the four matriarchs of the people of Israel: the younger daughter of Laban, the sister of Leah and the beloved wife of Jacob.",
+      "ru": "Одна из четырёх праматерей народа Израиля: младшая дочь Лавана, сестра Леи и любимая жена Яакова.",
+      "support": [
+       {
+        "src": 9,
+        "quote": "רחל היא אחת מארבע האימהות של עם ישראל"
+       },
+       {
+        "src": 0,
+        "quote": "וללבן שתי בנות שם הגדלה לאה ושם הקטנה רחל"
+       },
+       {
+        "src": 0,
+        "quote": "ויאמר לבן לא־יעשה כן במקומנו לתת הצעירה לפני הבכירה"
+       },
+       {
+        "src": 0,
+        "quote": "ויתן־לו את־רחל בתו לו לאשה"
+       },
+       {
+        "src": 0,
+        "quote": "ויבא גם אל־רחל ויאהב גם־את־רחל מלאה"
+       },
+       {
+        "src": 10,
+        "quote": "היא מתוארת כרעייתו האהובה של יעקב"
+       }
+      ]
+     },
+     {
+      "he": "היא הייתה עקרה; אלוהים זכר אותה ופתח את רחמה, והיא ילדה את יוסף.",
+      "en": "She was barren; God remembered her and opened her womb, and she bore Joseph.",
+      "ru": "Она была бесплодной; Бог вспомнил её, открыл её чрево, и она родила Йосефа.",
+      "support": [
+       {
+        "src": 0,
+        "quote": "וירא יהוה כי־שנואה לאה ויפתח את־רחמה ורחל עקרה"
+       },
+       {
+        "src": 1,
+        "quote": "ויזכר אלהים את־רחל וישמע אליה אלהים ויפתח את־רחמה"
+       },
+       {
+        "src": 1,
+        "quote": "ותהר ותלד בן ותאמר אסף אלהים את־חרפתי"
+       },
+       {
+        "src": 1,
+        "quote": "ותקרא את־שמו יוסף לאמר יסף יהוה לי בן אחר"
+       }
+      ]
+     },
+     {
+      "he": "בדרך לאפרת ילדה את בנימין ומתה בלידתו; היא קבורה ״בדרך אפרתה הוא בית לחם״.",
+      "en": "On the way to Ephrath she gave birth to Benjamin and died in childbirth; she is buried “on the road to Ephrath, which is Bethlehem”.",
+      "ru": "На пути в Эфрат она родила Биньямина и умерла при родах; она похоронена «на дороге в Эфрат, то есть в Вифлееме».",
+      "support": [
+       {
+        "src": 2,
+        "quote": "ויסעו מבית אל ויהי־עוד כברת־הארץ לבוא אפרתה ותלד רחל ותקש בלדתה"
+       },
+       {
+        "src": 2,
+        "quote": "ויהי בצאת נפשה כי מתה ותקרא שמו בן־אוני ואביו קרא־לו בנימין"
+       },
+       {
+        "src": 2,
+        "quote": "ותמת רחל ותקבר בדרך אפרתה הוא בית לחם"
+       },
+       {
+        "src": 9,
+        "quote": "היא מתה בשעת לידתו של בנימין"
+       }
+      ]
+     },
+     {
+      "he": "חז״ל סיפרו שמסרה ללאה את הסימנים שמסר לה יעקב, שלא תיכלם אחותה, ורש״י מפרש בין השאר את ״ויזכר אלהים את־רחל״: ״זכר לה שמסרה סימניה לאחותה״.",
+      "en": "The Sages related that she gave her sister Leah the signs that Jacob had given her, so that her sister would not be put to shame, and Rashi explains, among other things, “God remembered Rachel” in this way: “He remembered in her favour that she had given her signs to her sister”.",
+      "ru": "Мудрецы рассказали, что она передала сестре Лее знаки, которые дал ей Яаков, чтобы сестра не была посрамлена, а Раши, среди прочего, так объясняет слова «и вспомнил Бог Рахель»: «Он вспомнил ей в заслугу, что она передала свои знаки сестре».",
+      "support": [
+       {
+        "src": 8,
+        "quote": "אית לי אחתא דקשישא מינאי ולא מנסיב לי מקמה. מסר לה סימנים"
+       },
+       {
+        "src": 8,
+        "quote": "כי מטא ליליא, אמרה: השתא מיכספא אחתאי. מסרתינהו ניהלה"
+       },
+       {
+        "src": 5,
+        "quote": "לפי שמסר יעקב סימנים לרחל, וכשראתה רחל שמכניסין לו לאה אמרה: עכשו תכלם אחותי, עמדה ומסרה לה אותן סימנים"
+       },
+       {
+        "src": 6,
+        "quote": "ויזכור אלהים את רחל. זכר לה שמסרה סימניה לאחותה"
+       },
+       {
+        "src": 6,
+        "quote": "ויזכור אלהים את רחל. זכר לה שמסרה סימניה לאחותה ושהיתה מצרה שמא תעלה בגורלו של עשו"
+       }
+      ]
+     }
+    ],
+    "core_idea": [
+     {
+      "he": "בנבואת ירמיהו היא האם הבוכה על בניה: ״רחל מבכה על־בניה מאנה להנחם על־בניה כי איננו״, ובפסוק הבא נאמר ״מנעי קולך מבכי ועיניך מדמעה כי יש שכר לפעלתך״.",
+      "en": "In Jeremiah’s prophecy she is the mother weeping for her children: “Rachel weeping for her children, refusing to be comforted for her children, for they are not”, and the next verse says: “Restrain your voice from weeping and your eyes from tears, for there is reward for your work”.",
+      "ru": "В пророчестве Йирмияху она — мать, плачущая о своих детях: «Рахель плачет о детях своих, не хочет утешиться о детях своих, потому что их нет», а в следующем стихе сказано: «Удержи голос свой от плача и глаза свои от слёз, ибо есть награда за труд твой».",
+      "support": [
+       {
+        "src": 3,
+        "quote": "רחל מבכה על־בניה מאנה להנחם על־בניה כי איננו"
+       },
+       {
+        "src": 3,
+        "quote": "מנעי קולך מבכי ועיניך מדמעה כי יש שכר לפעלתך"
+       }
+      ]
+     },
+     {
+      "he": "לפי רש״י, יעקב קבר אותה בדרך ״על פי הדבור״, כדי שתהא ״לעזרה לבניה״ כשיגלה אותם נבוזראדן: ״יוצאת רחל על קברה ובוכה ומבקשת עליהם רחמים״.",
+      "en": "According to Rashi, Jacob buried her on the road “by the divine word”, so that she would be “a help to her children” when Nebuzaradan exiled them: “Rachel goes out upon her grave, weeping and pleading for mercy for them”.",
+      "ru": "По Раши, Яаков похоронил её на дороге «по слову Всевышнего», чтобы она была «помощью детям своим», когда Невузарадан уведёт их в изгнание: «Рахель выходит на свою могилу, плачет и молит о милосердии для них».",
+      "support": [
+       {
+        "src": 7,
+        "quote": "שעל פי הדבור קברתיה שם, שתהא לעזרה לבניה כשיגלה אותם נבוזראדן"
+       },
+       {
+        "src": 7,
+        "quote": "יוצאת רחל על קברה ובוכה ומבקשת עליהם רחמים"
+       }
+      ]
+     },
+     {
+      "he": "ובברכת העם והזקנים בשער, בספר רות, נזכרת רחל לצד לאה: ״כרחל וכלאה אשר בנו שתיהם את־בית ישראל״.",
+      "en": "And in the blessing of the people and the elders at the gate, in the Book of Ruth, she is mentioned beside Leah: “like Rachel and like Leah, who both built the house of Israel”.",
+      "ru": "А в благословении народа и старейшин у ворот, в Книге Рут, она упомянута рядом с Леей: «как Рахель и как Леа, которые обе построили дом Израиля».",
+      "support": [
+       {
+        "src": 4,
+        "quote": "כרחל וכלאה אשר בנו שתיהם את־בית ישראל"
+       }
+      ]
+     }
+    ]
+   },
+   "links": [
+    {
+     "a": "570",
+     "b": "683",
+     "type": "family",
+     "relation": "husband",
+     "quote": "ויתן־לו את־רחל בתו לו לאשה",
+     "source": "https://www.sefaria.org/Genesis.29"
+    },
+    {
+     "a": "613",
+     "b": "683",
+     "type": "family",
+     "relation": "sister",
+     "quote": "וללבן שתי בנות שם הגדלה לאה ושם הקטנה רחל",
+     "source": "https://www.sefaria.org/Genesis.29"
+    },
+    {
+     "a": "593",
+     "b": "683",
+     "type": "family",
+     "relation": "aunt",
+     "quote": "Her aunt Rebecca was Jacob's mother.",
+     "source": "https://en.wikipedia.org/wiki/Rachel"
+    }
+   ],
+   "paper_links": [],
+   "yahrzeit": null,
+   "new_places": [
+    {
+     "name": "בית לחם",
+     "region": "eretz-israel",
+     "lat": 31.705,
+     "lng": 35.2,
+     "coords_source": {
+      "url": "https://en.wikipedia.org/wiki/Bethlehem",
+      "quote": "lat 31.70444444, lon 35.20638889"
+     }
+    }
+   ],
+   "terms_added": {
+    "en": {
+     "לאה אמנו": "Leah our mother",
+     "לבן": "Laban",
+     "בנימין": "Benjamin",
+     "קבר רחל": "Rachel's Tomb",
+     "בקשת רחמים": "pleading for mercy"
+    },
+    "ru": {
+     "לאה אמנו": "праматерь Леа",
+     "לבן": "Лаван",
+     "בנימין": "Биньямин",
+     "קבר רחל": "Гробница Рахели",
+     "בקשת רחמים": "мольба о милосердии"
+    }
+   },
+   "related_cell": "יעקב אבינו, לאה אמנו, רבקה אמנו",
+   "notes": "No years: like Leah's row (613) the years cell is “תקופת האבות” and no source gives a date, so the record carries none and the bio and core idea carry no year. The Hebrew Wikipedia also says, from sources outside the Bible, that she was 36 at her death: left out (a number the Torah does not give). Primary source: the Torah text through Sefaria (Genesis 29, 30, 35; Jeremiah 31; Ruth 4), quoted verbatim in the Masoretic spelling (with maqaf), saved in full under sources/683. What the Sages say is attributed to them: the Talmud (Megillah 13b) and Rashi (on Genesis 29:25, 30:22, 48:7); Rashi's words on Genesis 48:7 are Jacob's explanation to Joseph in Rashi's reading and are given as Rashi's, not as fact. In the Hebrew sentence the quoted word is Rashi's own spelling “הדבור” (the divine word). Jeremiah 31:15 is the verse of Rachel weeping in the Masoretic numbering (Sefaria 31:15); the Hebrew Wikipedia cites it as 31:14. The answer “מנעי קולך מבכי” is the next verse (31:16); who is addressed is not named in the verse and the sentence does not say. The Sefaria topic page and the Hebrew Wikipedia say she is 'one of the four matriarchs'; the Torah text does not use the term. Left out on purpose: the midrash that Leah and Rachel were twins and that Leah was to marry Esau (Hebrew Wikipedia: 'according to various midrashim'); the claim that the silence passed to Benjamin and Esther (Hebrew Wikipedia marks it [דרוש מקור]); Rachel and the teraphim (Genesis 31:19, 34-35) and the commentators' reasons for it; the dispute between commentators on the site of her grave (Hebrew Wikipedia: the Bethlehem tomb or a grave north of Jerusalem; 1 Samuel 10:2) - the bio gives only the verse; the date of her death: Hebrew Wikipedia gives 11 Cheshvan ('according to the various midrashim', Yalkut Shimoni, from the Book of Jubilees) and the Pesikta Rabbati 'between Pesach and Shavuot', and a scholar's view that the Yalkut means Iyar: sources disagree and none is the Torah, so no yahrzeit is recorded (the sage has no paper). Place: Genesis 35:19 and 48:7 give “בדרך אפרת הוא בית לחם” and “בארץ כנען”; Genesis 29:4-6 place her in Haran. The location cell names בית לחם first, where she is buried (the first place named at the same level is the map point, so her marker stands in the Land of Israel with Jacob, Isaac, Rebecca and Sarah, and agrees with the region), then Leah's form for the rest (פדן ארם (חרן); ארץ כנען; Leah's row names Haran first). No keyword of lib/regions.ts matches any of the three (Leah's row gets its region from חברון), so the validator found no region: בית לחם is declared in new_places with region eretz-israel (its map point already exists in lib/locationCoords.ts). Adding that keyword to lib/regions.ts also changes the derived region of 535 (צרויה, location “בית לחם; ממלכת דוד”) from none to eretz-israel: the lead decides. Links: Jacob (husband) from Genesis 29:28; Leah (sister, the elder first) from Genesis 29:16; Rebecca (aunt) from the English Wikipedia ('Her aunt Rebecca was Jacob's mother'; the Torah says Rachel is the daughter of Laban, Jacob's mother's brother, Genesis 29:10). Not recorded as links (offered to the lead): the English Wikipedia says Mordecai and Queen Esther 'were descendants of Rachel through her son Benjamin' (family, relation ancestor, to 606 and 268, quote: 'were descendants of Rachel through her son Benjamin'); Joseph, Benjamin, Bilhah and Laban are not on the roster. The roster's 570->613 link is an influence link from the spreadsheet, there is no existing pair with 683. Labels: Hebrew “רחל אמנו” as the roster's “לאה אמנו” / “רבקה אמנו” / “שרה אמנו”; English 'Rachel Our Matriarch' (the form of 613, 593, 448 and of the owner's English video title); Russian 'Праматерь Рахель' (the form of 613, 593, 448 and of the owner's Russian video title; the Russian research translations spell her Рахель, Рахели; the vocabulary already holds “רחל אמנו” = праматерь Рахель). The owner's Drive was searched (by title and full text) for the 'Markdown' document on Rachel cited in the episode description (“דמותה, פועלה ומשנתה התורנית-קבלית של רחל אמנו: עיון מקיף במסורת חז״ל, הקבלה והמחשבה היהודית”): no such document exists there; the nearest are the owner's papers on Leah (a Google Doc in folder 1_E2VtWpJ6RLyHCxvOV9_NUmIUZkZU3Jc) and on Sarah, Miriam, Hannah, Abigail and Imma Shalom; none is about Rachel, so none is used. The episode description lists the episode's thirty sources (Rabbi Kook's teaching, Rachel's modesty and devotion, her burial place, Rachel and Leah, midnight rectification, Megillah 13b): they are leads, not sources of facts here."
+  },
+  {
+   "id": "684",
+   "label": "רב עמרם גאון",
+   "package": "owner-2026-10",
+   "episode": {
+    "id": "2ULZn2cKuetkTGLFWYrUx8",
+    "url": "https://open.spotify.com/episode/2ULZn2cKuetkTGLFWYrUx8",
+    "title": "רב עמרם גאון - איך הפכה תשובה הלכתית אחת לספר ששינה את העולם היהודי?",
+    "released": "2026-10-20"
+   },
+   "woman": false,
+   "sources": [
+    {
+     "kind": "paper",
+     "url": "https://docs.google.com/document/d/1FsHBZmrdQ2O8K9QXp9C0uT_eteggIIiJyIk4pugCoAg/edit",
+     "title": "פועלו, משנתו התורנית ומורשתו הליטורגית של רב עמרם גאון",
+     "fetched": "2026-10-27",
+     "quotes": [
+      "רב עמרם בר ששנא (הידוע כרב עמרם גאון) עמד בראש ישיבת סורא שבבבל במחצית השנייה של המאה התשיעית למניינם",
+      "רב עמרם היה תלמידו המובהק של רב נטרונאי בר הילאי",
+      "השתמרו בקובצי תשובות הגאונים הדפוסים – כגון ״שערי צדק״ (שאלוניקי תקנ״ב)",
+      "בעלי הטורים (רבי יעקב בן אשר) והשולחן ערוך (רבי יוסף קארו) שילבו עשרות מפסקי רב עמרם גאון בספרי הפסיקה היסודיים של אורח חיים"
+     ],
+     "paper": "684",
+     "file": "פועלו, משנתו התורנית ומורשתו הליטורגית של רב עמרם גאון.docx"
+    },
+    {
+     "kind": "he.wikipedia",
+     "url": "https://he.wikipedia.org/wiki/%D7%A8%D7%91_%D7%A2%D7%9E%D7%A8%D7%9D_%D7%92%D7%90%D7%95%D7%9F",
+     "title": "רב עמרם גאון",
+     "fetched": "2026-10-27",
+     "quotes": [
+      "אחד מהגאונים וראש ישיבת סורא",
+      "אך מפני כבודו של רב נטרונאי ירש תפקיד זה רק לאחר מותו",
+      "התפרסם בעיקר בזכות סידורו, סדר רב עמרם גאון, שאותו ערך",
+      "הסידור נערך כתשובה לבקשה שיכתוב את סדר התפילות והברכות לכל השנה עבור קהילת ברצלונה",
+      "הסידור, שהיה ראשון מסוגו",
+      "היה ערוך בסדר קבוע של ימי חול, שבתות ומועדים",
+      "סדר רב עמרם השפיע השפעה מכרעת על נוסח התפילה ברוב קהילות ישראל"
+     ]
+    },
+    {
+     "kind": "he.wikipedia",
+     "url": "https://he.wikipedia.org/wiki/%D7%A1%D7%93%D7%A8_%D7%A8%D7%91_%D7%A2%D7%9E%D7%A8%D7%9D_%D7%92%D7%90%D7%95%D7%9F",
+     "title": "סדר רב עמרם גאון",
+     "fetched": "2026-10-27",
+     "quotes": [
+      "לבקשתה של אחת מקהילות יהדות ספרד, ככל הנראה קהילת ברצלונה",
+      "מכיל הן את נוסחי התפילות עצמן והן הלכות ומנהגים הקשורים עמהן. מקורם של קטעי ההלכה הוא מן התלמוד וכן מפסקי גאונים",
+      "סדר זה מהווה מודל למבנה של מרבית הסידורים עד ימינו",
+      "הגיע לידינו ממספר כתבי יד השונים זה מזה במידה ניכרת",
+      "הסדר כפי שמצוי בידינו אינו זה שיצא מתחת ידיו של רב עמרם גאון עצמו",
+      "ההשערה המקובלת במחקר היא שלאחר ששלח רב עמרם את סידורו לספרד המשיכו לערוך אותו ולהוסיף עליו תוספות שונות",
+      "וכבר הרי״ף והרמב״ם השתמשו רבות בסידורו בקביעת הנוסח וההלכות",
+      "השתמש גם רבי דוד אבודרהם בפירושו המפורסם על הסידור והוא מרבה לצטטו"
+     ]
+    },
+    {
+     "kind": "en.wikipedia",
+     "url": "https://en.wikipedia.org/wiki/Amram_ben_Sheshna",
+     "title": "Amram ben Sheshna",
+     "fetched": "2026-10-27",
+     "quotes": [
+      "Amram bar Sheshna was a pupil of gaon of Sura Natronai ben Hilai",
+      "He authored many responsa",
+      "most of which were published in Salonica in 1792 in a collection entitled Sha'arei Tzedek",
+      "Amram did not content himself with giving the mere text of the prayers",
+      "However, it never seems to have been adopted by them as a package deal, though they respected the individual halachic rulings contained in it.",
+      "we therefore cannot be certain of the exact wording preferred by Amram Gaon himself",
+      "served as the model for Saadia's and Maimonides' own prayer texts"
+     ]
+    },
+    {
+     "kind": "sefaria",
+     "url": "https://www.sefaria.org/topics/amram-gaon",
+     "title": "Amram Gaon (Sefaria topic)",
+     "fetched": "2026-10-27",
+     "quotes": []
+    },
+    {
+     "kind": "spotify-episode",
+     "url": "https://open.spotify.com/episode/2ULZn2cKuetkTGLFWYrUx8",
+     "title": "רב עמרם גאון - איך הפכה תשובה הלכתית אחת לספר ששינה את העולם היהודי?",
+     "fetched": "2026-10-27",
+     "quotes": []
+    },
+    {
+     "kind": "sefaria-text",
+     "url": "https://www.sefaria.org/Tur%2C_Orach_Chaim.46",
+     "title": "Tur, Orach Chaim 46 (Sefaria, Hebrew)",
+     "fetched": "2026-10-27",
+     "quotes": [
+      "וראיתי בסדורי רב עמרם כיון שבירך זוקף כפופים אין לברך מתיר אסורים"
+     ],
+     "ref": "Tur, Orach Chaim 46"
+    },
+    {
+     "kind": "sefaria-text",
+     "url": "https://www.sefaria.org/Beit_Yosef%2C_Orach_Chaim.48",
+     "title": "Beit Yosef, Orach Chaim 48 (Sefaria, Hebrew)",
+     "fetched": "2026-10-27",
+     "quotes": [
+      "ובסידור רב עמרם כתב פרשת ברכת כהנים אחר ברכת התורה קודם פרשת התמיד וכן אנו נוהגים"
+     ],
+     "ref": "Beit Yosef, Orach Chaim 48"
+    }
+   ],
+   "sentences": {
+    "bio": [
+     {
+      "he": "רב עמרם בר ששנא, הידוע כרב עמרם גאון, עמד בראש ישיבת סורא שבבבל במחצית השנייה של המאה התשיעית.",
+      "en": "Rav Amram bar Sheshna, known as Rav Amram Gaon, headed the Sura yeshiva in Babylonia in the second half of the ninth century.",
+      "ru": "Рав Амрам бар Шешна, известный как рав Амрам Гаон, возглавлял ешиву Суры в Вавилонии во второй половине IX века.",
+      "support": [
+       {
+        "src": 0,
+        "quote": "רב עמרם בר ששנא (הידוע כרב עמרם גאון) עמד בראש ישיבת סורא שבבבל במחצית השנייה של המאה התשיעית למניינם"
+       },
+       {
+        "src": 1,
+        "quote": "אחד מהגאונים וראש ישיבת סורא"
+       }
+      ]
+     },
+     {
+      "he": "הוא היה תלמידו של רב נטרונאי גאון, וירש את ראשות הישיבה רק לאחר מותו.",
+      "en": "He was a student of Rav Natronai Gaon, and inherited the headship of the yeshiva only after Rav Natronai's death.",
+      "ru": "Он был учеником рава Натроная Гаона и унаследовал руководство ешивой только после смерти рава Натроная.",
+      "support": [
+       {
+        "src": 0,
+        "quote": "רב עמרם היה תלמידו המובהק של רב נטרונאי בר הילאי"
+       },
+       {
+        "src": 1,
+        "quote": "אך מפני כבודו של רב נטרונאי ירש תפקיד זה רק לאחר מותו"
+       },
+       {
+        "src": 3,
+        "quote": "Amram bar Sheshna was a pupil of gaon of Sura Natronai ben Hilai"
+       }
+      ]
+     },
+     {
+      "he": "ערך את ״סדר רב עמרם גאון״, סידור שהיה ראשון מסוגו, כתשובה לבקשת קהילה בספרד, ככל הנראה קהילת ברצלונה, שביקשה את סדר התפילות והברכות לכל השנה.",
+      "en": "He compiled Seder Rav Amram Gaon, a prayer book that was the first of its kind, as a reply to a request from a community in Spain, most likely the Barcelona community, for the order of prayers and blessings for the whole year.",
+      "ru": "Он составил «Седер рав Амрам Гаон», молитвенник, первый в своём роде, в ответ на просьбу общины в Испании, скорее всего барселонской, прислать порядок молитв и благословений на весь год.",
+      "support": [
+       {
+        "src": 1,
+        "quote": "התפרסם בעיקר בזכות סידורו, סדר רב עמרם גאון, שאותו ערך"
+       },
+       {
+        "src": 1,
+        "quote": "הסידור נערך כתשובה לבקשה שיכתוב את סדר התפילות והברכות לכל השנה עבור קהילת ברצלונה"
+       },
+       {
+        "src": 1,
+        "quote": "הסידור, שהיה ראשון מסוגו"
+       },
+       {
+        "src": 2,
+        "quote": "לבקשתה של אחת מקהילות יהדות ספרד, ככל הנראה קהילת ברצלונה"
+       }
+      ]
+     },
+     {
+      "he": "הוא חיבר תשובות הלכתיות רבות, ורבות מהן נדפסו בשאלוניקי בקובץ ״שערי צדק״.",
+      "en": "He wrote many halakhic responsa, and many of them were printed in Salonica in the collection Sha'arei Tzedek.",
+      "ru": "Он написал много галахических респонсов, и многие из них были напечатаны в Салониках в сборнике «Шаарей Цедек».",
+      "support": [
+       {
+        "src": 3,
+        "quote": "He authored many responsa"
+       },
+       {
+        "src": 3,
+        "quote": "most of which were published in Salonica in 1792 in a collection entitled Sha'arei Tzedek"
+       },
+       {
+        "src": 0,
+        "quote": "השתמרו בקובצי תשובות הגאונים הדפוסים – כגון ״שערי צדק״ (שאלוניקי תקנ״ב)"
+       }
+      ]
+     }
+    ],
+    "core_idea": [
+     {
+      "he": "סדר רב עמרם גאון מכיל לא רק את נוסחי התפילות עצמן אלא גם הלכות ומנהגים הקשורים בהן, ומקורם של קטעי ההלכה בתלמוד ובפסקי גאונים.",
+      "en": "Seder Rav Amram Gaon contains not only the texts of the prayers themselves but also laws and customs connected with them, and the halakhic passages come from the Talmud and from rulings of the Geonim.",
+      "ru": "«Седер рав Амрам Гаон» содержит не только сами тексты молитв, но и связанные с ними законы и обычаи, а галахические отрывки восходят к Талмуду и к решениям гаонов.",
+      "support": [
+       {
+        "src": 2,
+        "quote": "מכיל הן את נוסחי התפילות עצמן והן הלכות ומנהגים הקשורים עמהן. מקורם של קטעי ההלכה הוא מן התלמוד וכן מפסקי גאונים"
+       },
+       {
+        "src": 3,
+        "quote": "Amram did not content himself with giving the mere text of the prayers"
+       }
+      ]
+     },
+     {
+      "he": "הוא ערוך בסדר קבוע של ימי חול, שבתות ומועדים, סדר המהווה מודל למבנה של מרבית הסידורים עד ימינו, והוא השפיע השפעה רבה על נוסח התפילה בקהילות רבות בישראל.",
+      "en": "It is arranged in a fixed order of weekdays, Sabbaths and festivals, an order that is a model for the structure of most prayer books to this day, and it had a major influence on the wording of prayer in many Jewish communities.",
+      "ru": "Он выстроен в постоянном порядке будней, суббот и праздников, а этот порядок служит образцом для структуры большинства молитвенников до наших дней; он оказал большое влияние на текст молитвы во многих еврейских общинах.",
+      "support": [
+       {
+        "src": 1,
+        "quote": "היה ערוך בסדר קבוע של ימי חול, שבתות ומועדים"
+       },
+       {
+        "src": 2,
+        "quote": "סדר זה מהווה מודל למבנה של מרבית הסידורים עד ימינו"
+       },
+       {
+        "src": 1,
+        "quote": "סדר רב עמרם השפיע השפעה מכרעת על נוסח התפילה ברוב קהילות ישראל"
+       },
+       {
+        "src": 3,
+        "quote": "However, it never seems to have been adopted by them as a package deal, though they respected the individual halachic rulings contained in it."
+       }
+      ]
+     },
+     {
+      "he": "הנוסח שבידינו כנראה אינו זה שיצא מתחת ידו: כתבי היד שונים זה מזה במידה ניכרת, וההשערה המקובלת במחקר היא שאחרי ששלח את הסידור לספרד המשיכו לערוך אותו ולהוסיף עליו.",
+      "en": "The text we have is probably not the one that left his hands: the manuscripts differ considerably from one another, and the accepted hypothesis in research is that after he sent the prayer book to Spain it continued to be edited and added to.",
+      "ru": "Текст, которым мы располагаем, вероятно, не тот, что вышел из-под его пера: рукописи заметно отличаются друг от друга, а принятая в науке гипотеза состоит в том, что после отправки молитвенника в Испанию его продолжали редактировать и дополнять.",
+      "support": [
+       {
+        "src": 2,
+        "quote": "הגיע לידינו ממספר כתבי יד השונים זה מזה במידה ניכרת"
+       },
+       {
+        "src": 2,
+        "quote": "הסדר כפי שמצוי בידינו אינו זה שיצא מתחת ידיו של רב עמרם גאון עצמו"
+       },
+       {
+        "src": 2,
+        "quote": "ההשערה המקובלת במחקר היא שלאחר ששלח רב עמרם את סידורו לספרד המשיכו לערוך אותו ולהוסיף עליו תוספות שונות"
+       },
+       {
+        "src": 3,
+        "quote": "we therefore cannot be certain of the exact wording preferred by Amram Gaon himself"
+       }
+      ]
+     }
+    ]
+   },
+   "links": [
+    {
+     "a": "684",
+     "b": "41",
+     "type": "influence",
+     "quote": "וכבר הרי״ף והרמב״ם השתמשו רבות בסידורו בקביעת הנוסח וההלכות",
+     "source": "https://he.wikipedia.org/wiki/%D7%A1%D7%93%D7%A8_%D7%A8%D7%91_%D7%A2%D7%9E%D7%A8%D7%9D_%D7%92%D7%90%D7%95%D7%9F"
+    },
+    {
+     "a": "684",
+     "b": "582",
+     "type": "influence",
+     "quote": "וכבר הרי״ף והרמב״ם השתמשו רבות בסידורו בקביעת הנוסח וההלכות",
+     "source": "https://he.wikipedia.org/wiki/%D7%A1%D7%93%D7%A8_%D7%A8%D7%91_%D7%A2%D7%9E%D7%A8%D7%9D_%D7%92%D7%90%D7%95%D7%9F"
+    },
+    {
+     "a": "684",
+     "b": "344",
+     "type": "influence",
+     "quote": "served as the model for Saadia's and Maimonides' own prayer texts",
+     "source": "https://en.wikipedia.org/wiki/Amram_ben_Sheshna"
+    },
+    {
+     "a": "684",
+     "b": "343",
+     "type": "influence",
+     "quote": "השתמש גם רבי דוד אבודרהם בפירושו המפורסם על הסידור והוא מרבה לצטטו",
+     "source": "https://he.wikipedia.org/wiki/%D7%A1%D7%93%D7%A8_%D7%A8%D7%91_%D7%A2%D7%9E%D7%A8%D7%9D_%D7%92%D7%90%D7%95%D7%9F"
+    },
+    {
+     "a": "684",
+     "b": "189",
+     "type": "influence",
+     "quote": "בעלי הטורים (רבי יעקב בן אשר) והשולחן ערוך (רבי יוסף קארו) שילבו עשרות מפסקי רב עמרם גאון בספרי הפסיקה היסודיים של אורח חיים",
+     "source": "https://docs.google.com/document/d/1FsHBZmrdQ2O8K9QXp9C0uT_eteggIIiJyIk4pugCoAg/edit"
+    },
+    {
+     "a": "684",
+     "b": "443",
+     "type": "influence",
+     "quote": "בעלי הטורים (רבי יעקב בן אשר) והשולחן ערוך (רבי יוסף קארו) שילבו עשרות מפסקי רב עמרם גאון בספרי הפסיקה היסודיים של אורח חיים",
+     "source": "https://docs.google.com/document/d/1FsHBZmrdQ2O8K9QXp9C0uT_eteggIIiJyIk4pugCoAg/edit"
+    },
+    {
+     "a": "684",
+     "b": "189",
+     "type": "influence",
+     "quote": "וראיתי בסדורי רב עמרם כיון שבירך זוקף כפופים אין לברך מתיר אסורים",
+     "source": "https://www.sefaria.org/Tur%2C_Orach_Chaim.46"
+    },
+    {
+     "a": "684",
+     "b": "443",
+     "type": "influence",
+     "quote": "ובסידור רב עמרם כתב פרשת ברכת כהנים אחר ברכת התורה קודם פרשת התמיד וכן אנו נוהגים",
+     "source": "https://www.sefaria.org/Beit_Yosef%2C_Orach_Chaim.48"
+    }
+   ],
+   "paper_links": [],
+   "yahrzeit": null,
+   "new_places": [],
+   "terms_added": {
+    "en": {
+     "סדר רב עמרם גאון": "Seder Rav Amram Gaon",
+     "רב נטרונאי גאון": "Rav Natronai Gaon",
+     "נוסח התפילה": "the text of the prayers",
+     "מאה ברכות": "the hundred blessings",
+     "שערי צדק": "Sha'arei Tzedek",
+     "קהילת ברצלונה": "the Barcelona community"
+    },
+    "ru": {
+     "סדר רב עמרם גאון": "«Седер рав Амрам Гаон»",
+     "רב נטרונאי גאון": "рав Натронай Гаон",
+     "נוסח התפילה": "текст молитв",
+     "מאה ברכות": "сто благословений",
+     "שערי צדק": "«Шаарей Цедек»",
+     "קהילת ברצלונה": "барселонская община"
+    }
+   },
+   "related_cell": "הרמב\"ם, רבי יצחק אלפסי (הרי\"ף), רב סעדיה גאון, רבי דוד אבודרהם, יעקב בן אשר, רבי יוסף קארו",
+   "notes": "Years: the sources disagree. Hebrew Wikipedia: born c. 810 and died c. 875 (both marked approximate), head of the Sura yeshiva 853-872. English Wikipedia: died 875; the gaonate was conferred on him when Natronai ben Hilai died (c. 857) and he held it 18 years until his death. Sefaria topic: 810-875, not flagged approximate. The owner's paper: head of Sura 'probably from 857/858' until his death 'around 875', in the same sentence 'about a month and eighteen years' (a slip, below); the Seder 'edited and sent around 872', which is also the creation date Hebrew Wikipedia's article on the Seder gives, while its article on the sage says he edited the Seder 'in his youth' (ibn Yichya is its authority); with a birth near 810 the two do not sit together, so the bio gives no date for the Seder and no age. The row says כ־810–כ־875 (the birth year Hebrew Wikipedia and Sefaria agree on, the death year all four sources give, both ends approximate in Hebrew Wikipedia); the bio and core idea carry no year, because the tenure dates are disputed (853-872 against c. 857-875). A footnote in the Hebrew Wikipedia wikitext (saved as he-wiki-wikitext.txt) records Gedalya ibn Yichya's view that he died in 4708 (947-948) and spells the patronymic 'bar Shishna': both left out. Teacher: Natronai ben Hilai (stated as his teacher by the paper and English Wikipedia) is not on the roster, so no teacher link is recorded; the successors the paper names (Nachshon ben Zadok, Zemach ben Chaim, Malka, 'his students and friends in the beit midrash') are not on the roster and no other source says it. Influence links (a = Amram influenced b): 41 and 582 (Hebrew Wikipedia's Seder article: the Rif and the Rambam used his siddur much in fixing the text and the laws), 344 (English Wikipedia: his siddur 'served as the model for Saadia's and Maimonides' own prayer texts'), 343 (the same Hebrew article: Abudirham's commentary on the siddur cites him often), 189 and 443 (the paper alone: the author of the Turim and the author of the Shulchan Aruch 'incorporated dozens of his rulings' into the codes of Orach Chayim; none of the other pages says so, and the second reader should weigh it). Not recorded as links: Sherira (21) and Hai (25) (the paper says the Babylonian tradition was later handed to them and cites Sherira's letter as its witness for the title; no relation to Amram is stated), Paltoi (667) (English Wikipedia only lists him among the geonim the siddur's explanations cite), Rabbeinu Tam (33) and Rashi (594) (the Seder article quotes Rabbeinu Tam on knowing the Seder, and 'Siddur Rashi' is a book: no relation to the man is stated), Machzor Vitry (a book). Left out on purpose: that he broke away and founded his own school (English Wikipedia, citing Sherira's letter; the paper: 'according to some of the historical sources'); the number of responsa (English Wikipedia: about 120; the paper: 'over 120 up to 200'); the three rulings the paper and English Wikipedia describe (interest from non-Jews, a slave who converts and delays circumcision, no fasting for bad dreams); the paper's lists of places the Seder reached, of its liturgical sections and of its printed editions. Where the request came from: Hebrew Wikipedia says Barcelona flatly, its Seder article and the paper say 'most likely Barcelona' (the paper adds Elishana or Lucena as a possibility), English Wikipedia says 'the Jews of al-Andalus': the bio says a community in Spain, most likely Barcelona. 'First of its kind' is Hebrew Wikipedia's wording; English Wikipedia and Sefaria say he was the first to arrange a complete liturgy; the paper's 'the earliest complete prayer book that reached us' and the Seder article's 'one of the earliest' are not used. The owner's episode title speaks of 'a single halakhic responsum': the bio says the Seder was edited as a reply to a request, as Hebrew Wikipedia says. Places: Sura (in the gazetteer) and Babylonia; the Seder was sent to Spain but he did not live there. Paper links: no teacher or family relation to a roster sage is stated (Natronai and the successors are off the roster), so paper_links is empty. The paper gives no Hebrew day and month of his death (only years), so yahrzeit is null. Slips in the paper, copied as the Drive text has them and not corrected: “כהונתו כגאון התפרסה על פני כחודש ימים ושמונה עשרה שנה” (a month and eighteen years); the Hebrew-year pairs ד׳תרי״ח / ד׳תרכ״א for 857/858 (4621 is 860/861) and ד׳תרל״א / ד׳תרל״ב for 875 (4631 and 4632 are 870/871 and 871/872; 875 is 4635, as Hebrew Wikipedia has it); Nachshon ben Zadok (872-879) and his successors are said to have led the yeshiva 'after his death' although the paper gives his death as around 875 and his tenure until then; “למעלה מ-120 עד 200” (over 120 up to 200); “מגמות עמיות” (probably עממיות); “אחד מגדול עיצובה” (probably מגדולי); “ורבדונית” (an unclear word, probably רבדית); source list items 22 (a book on early Christian hymns) and 25 (a search-results page of a catalogue) are not sources on him. The Drive holds no other document on him (searched by title and by full text: “עמרם”, “רב עמרם גאון”, “סדר רב עמרם”, “Amram”); the papers on Saadia Gaon and on Abudirham mention the Seder in passing and are about other men. The Sefaria topic lists no teacher or student links and no works (numSources 1); the Wikidata item (Q477541, saved) gives birth 810, death 875 and no relations. LEAD (2026-10-27): the links 684 -> 189 (Tur) and 684 -> 443 (Karo) rest on the paper's sentence (line 39: \"שילבו עשרות מפסקי רב עמרם גאון\"); the second reader confirmed them on Sefaria: the Tur names Rav Amram in 50 simanim of Orach Chayim (e.g. Tur OC 46) and Karo's Beit Yosef in 34 (e.g. Beit Yosef OC 48); the Shulchan Aruch text itself names him once (OC 15), so for Karo the independent evidence is the Beit Yosef."
+  },
+  {
+   "id": "685",
+   "label": "רב יהודאי גאון",
+   "package": "owner-2026-10",
+   "episode": {
+    "id": "187HitcBGTOzR3Lgzja106",
+    "url": "https://open.spotify.com/episode/187HitcBGTOzR3Lgzja106",
+    "title": "רב יהודאי גאון - החכם סגי הנהור שהאיר את עולם ההלכה לדורות",
+    "released": "2026-10-19"
+   },
+   "woman": false,
+   "sources": [
+    {
+     "kind": "paper",
+     "url": "https://docs.google.com/document/d/1peOlj50YUKK9V3F4C52zGfA8n0zl4cssQ9V1BqVRHwM/edit",
+     "title": "פועלו, משנתו והשפעתו ההלכתית של רב יהודאי גאון: תולדות חייו, ספרות הפסיקה ומורשתו",
+     "fetched": "2026-10-27",
+     "quotes": [
+      "היותו סגי נהור (עיוור)",
+      "ספר זה הוא הניסיון הקודיפיקטיבי הראשון בתולדות ההלכה לאחר חתימת התלמוד הבבלי",
+      "מבנה הספר עוקב במידה רבה אחרי הסדר התלמודי, אך הדיון בו אינו משמר את השקלא וטריא התלמודית, ותחת זאת מציע ניסוח תמציתי של שורה תחתונה ופסוקה",
+      "חיבורו הגדול של רב יהודאי גאון – או חיבור שנערך בבית מדרשו ובהשראתו הישירה – הוא ספר \"הלכות פסוקות\""
+     ],
+     "paper": "685",
+     "file": "פועלו, משנתו והשפעתו ההלכתית של רב יהודאי גאון- תולדות חייו, ספרות הפסיקה ומורשתו.docx"
+    },
+    {
+     "kind": "he.wikipedia",
+     "url": "https://he.wikipedia.org/wiki/%D7%99%D7%94%D7%95%D7%93%D7%90%D7%99_%D7%92%D7%90%D7%95%D7%9F",
+     "title": "יהודאי גאון",
+     "fetched": "2026-10-27",
+     "quotes": [
+      "רב יהודאי בן נחמן גאון היה ראש ישיבת סורא (757–761), ואחד מחשובי הגאונים.",
+      "רב יהודאי היה סגי נהור.",
+      "היה מחכמי ישיבת פומבדיתא, אבל ראש הגולה שלמה בן חסדאי העבירו לסורא מפני \"שלא נמצא בה מופלג בחכמה כמותו\" (אגרת רב שרירא גאון).",
+      "רב יהודאי היה הגאון הראשון שהחל בחיבור קובצי הלכה לאחר חתימת התלמוד בבלי.",
+      "על פי חלק מן החוקרים, רב יהודאי כתב את הספר \"הלכות פסוקות\"",
+      "רב יהודאי לחם בחריפות למען השלטת התלמוד הבבלי כסמכות הלכתית יחידה בעם ישראל. במלחמתו זו נתקל בהתנגדות קשה של בני ארץ ישראל, שהסתמכו על פסיקת התלמוד הירושלמי ומנהגיהם הקדומים.",
+      "רב יהודאי קבע כי רבים ממנהגיהם הם \"מנהגי שמד\", שהתקבלו בזמנים קשים בהם לא הועברה המסורת בשלמותה."
+     ]
+    },
+    {
+     "kind": "en.wikipedia",
+     "url": "https://en.wikipedia.org/wiki/Yehudai_ben_Nahman",
+     "title": "Yehudai ben Nahman",
+     "fetched": "2026-10-27",
+     "quotes": [
+      "was the head of the yeshiva in Sura from 757 to 761",
+      "He was originally a member of the academy of Pumbedita, but Exilarch Solomon ben Hisdai appointed him as Gaon of Sura as \"there is no one there (at Sura) as distinguished as he is for wisdom\".",
+      "has been attributed to Gaon, although this has been disputed by scholars",
+      "for the acceptance of the Babylonian Talmud as the standard for Jewish law in all countries. This was opposed by the Jews of Eretz Yisrael, who relied on the Jerusalem Talmud and their own older traditions.",
+      "Yehudai argued that, as a result of Byzantine persecution, the Jews of Eretz Yisrael had only preserved Jewish tradition in a fragmentary and unreliable form."
+     ]
+    }
+   ],
+   "sentences": {
+    "bio": [
+     {
+      "he": "ראש ישיבת סורא בשנים 757–761 ואחד מחשובי הגאונים, שהיה סגי נהור (עיוור).",
+      "en": "Head of the Sura yeshiva from 757 to 761 and one of the important Geonim, who was blind.",
+      "ru": "Глава ешивы Суры в 757–761 годах и один из значимых гаонов; был слепым.",
+      "support": [
+       {
+        "src": 1,
+        "quote": "רב יהודאי בן נחמן גאון היה ראש ישיבת סורא (757–761), ואחד מחשובי הגאונים."
+       },
+       {
+        "src": 1,
+        "quote": "רב יהודאי היה סגי נהור."
+       },
+       {
+        "src": 0,
+        "quote": "היותו סגי נהור (עיוור)"
+       },
+       {
+        "src": 2,
+        "quote": "was the head of the yeshiva in Sura from 757 to 761"
+       }
+      ]
+     },
+     {
+      "he": "היה מחכמי ישיבת פומבדיתא, ולפי אגרת רב שרירא גאון העביר אותו ראש הגולה שלמה בן חסדאי לסורא מפני שלא נמצא בה מופלג בחכמה כמותו.",
+      "en": "He was among the sages of the Pumbedita yeshiva, and, according to the Epistle of Rav Sherira Gaon, the Exilarch Solomon ben Chasdai moved him to Sura because no one there was as distinguished in wisdom as he.",
+      "ru": "Он был одним из мудрецов ешивы Пумбедиты, и, согласно «Посланию Рав Шрира Гаона», эксиларх Шломо бен Хасдай перевёл его в Суру, потому что там не нашлось никого столь выдающегося в мудрости, как он.",
+      "support": [
+       {
+        "src": 1,
+        "quote": "היה מחכמי ישיבת פומבדיתא, אבל ראש הגולה שלמה בן חסדאי העבירו לסורא מפני \"שלא נמצא בה מופלג בחכמה כמותו\" (אגרת רב שרירא גאון)."
+       },
+       {
+        "src": 2,
+        "quote": "He was originally a member of the academy of Pumbedita, but Exilarch Solomon ben Hisdai appointed him as Gaon of Sura as \"there is no one there (at Sura) as distinguished as he is for wisdom\"."
+       }
+      ]
+     },
+     {
+      "he": "הגאון הראשון שהחל בחיבור קובצי הלכה לאחר חתימת התלמוד הבבלי; על פי חלק מן החוקרים כתב את הספר ״הלכות פסוקות״.",
+      "en": "The first Gaon to begin compiling collections of halakha after the closing of the Babylonian Talmud; according to some scholars he wrote the book Halakhot Pesukot.",
+      "ru": "Первый из гаонов, начавший составлять сборники галахи после завершения Вавилонского Талмуда; по мнению части исследователей, он написал книгу «Галахот псукот».",
+      "support": [
+       {
+        "src": 1,
+        "quote": "רב יהודאי היה הגאון הראשון שהחל בחיבור קובצי הלכה לאחר חתימת התלמוד בבלי."
+       },
+       {
+        "src": 1,
+        "quote": "על פי חלק מן החוקרים, רב יהודאי כתב את הספר \"הלכות פסוקות\""
+       }
+      ]
+     }
+    ],
+    "core_idea": [
+     {
+      "he": "ספר ״הלכות פסוקות״, המיוחס לו, הוא הניסיון הקודיפיקטיבי הראשון לאחר חתימת התלמוד הבבלי: הוא עוקב במידה רבה אחר הסדר התלמודי, אך במקום השקלא וטריא התלמודית מציע ניסוח תמציתי של שורה תחתונה ופסוקה.",
+      "en": "The book Halakhot Pesukot, which is attributed to him, is the first attempt at codification after the closing of the Babylonian Talmud: it follows the Talmudic order to a large extent, but in place of the Talmudic give-and-take (shakla ve-tarya) it offers a concise formulation of a bottom line, stated as a ruling.",
+      "ru": "Книга «Галахот псукот», которую ему приписывают, — первая попытка кодификации после завершения Вавилонского Талмуда: она в значительной мере следует талмудическому порядку, но вместо талмудической дискуссии (шакла ве-тарья) предлагает краткую формулировку итога, изложенного как решение.",
+      "support": [
+       {
+        "src": 0,
+        "quote": "ספר זה הוא הניסיון הקודיפיקטיבי הראשון בתולדות ההלכה לאחר חתימת התלמוד הבבלי"
+       },
+       {
+        "src": 0,
+        "quote": "מבנה הספר עוקב במידה רבה אחרי הסדר התלמודי, אך הדיון בו אינו משמר את השקלא וטריא התלמודית, ותחת זאת מציע ניסוח תמציתי של שורה תחתונה ופסוקה"
+       },
+       {
+        "src": 0,
+        "quote": "חיבורו הגדול של רב יהודאי גאון – או חיבור שנערך בבית מדרשו ובהשראתו הישירה – הוא ספר \"הלכות פסוקות\""
+       },
+       {
+        "src": 2,
+        "quote": "has been attributed to Gaon, although this has been disputed by scholars"
+       }
+      ]
+     },
+     {
+      "he": "הוא לחם בחריפות למען השלטת התלמוד הבבלי כסמכות הלכתית יחידה בעם ישראל, ונתקל בהתנגדות קשה של בני ארץ ישראל, שהסתמכו על פסיקת התלמוד הירושלמי ומנהגיהם הקדומים.",
+      "en": "He fought fiercely to establish the Babylonian Talmud as the sole halakhic authority among the Jewish people, and met stiff opposition from the people of the Land of Israel, who relied on the rulings of the Jerusalem Talmud and on their ancient customs.",
+      "ru": "Он яростно боролся за утверждение Вавилонского Талмуда как единственного галахического авторитета в еврейском народе и встретил жёсткое сопротивление жителей Земли Израиля, которые опирались на решения Иерусалимского Талмуда и на свои древние обычаи.",
+      "support": [
+       {
+        "src": 1,
+        "quote": "רב יהודאי לחם בחריפות למען השלטת התלמוד הבבלי כסמכות הלכתית יחידה בעם ישראל. במלחמתו זו נתקל בהתנגדות קשה של בני ארץ ישראל, שהסתמכו על פסיקת התלמוד הירושלמי ומנהגיהם הקדומים."
+       },
+       {
+        "src": 2,
+        "quote": "for the acceptance of the Babylonian Talmud as the standard for Jewish law in all countries. This was opposed by the Jews of Eretz Yisrael, who relied on the Jerusalem Talmud and their own older traditions."
+       }
+      ]
+     },
+     {
+      "he": "הוא קבע כי רבים ממנהגיהם הם ״מנהגי שמד״, שהתקבלו בזמנים קשים בהם לא הועברה המסורת בשלמותה.",
+      "en": "He held that many of their customs were \"customs of persecution\" (minhagei shemad), adopted in hard times when the tradition was not transmitted in full.",
+      "ru": "Он утверждал, что многие из их обычаев — это «минхаге шмад» (обычаи времён гонений), принятые в тяжёлые времена, когда предание не передавалось полностью.",
+      "support": [
+       {
+        "src": 1,
+        "quote": "רב יהודאי קבע כי רבים ממנהגיהם הם \"מנהגי שמד\", שהתקבלו בזמנים קשים בהם לא הועברה המסורת בשלמותה."
+       },
+       {
+        "src": 2,
+        "quote": "Yehudai argued that, as a result of Byzantine persecution, the Jews of Eretz Yisrael had only preserved Jewish tradition in a fragmentary and unreliable form."
+       }
+      ]
+     }
+    ]
+   },
+   "links": [],
+   "paper_links": [],
+   "yahrzeit": null,
+   "new_places": [],
+   "terms_added": {
+    "en": {
+     "הלכות פסוקות": "Halakhot Pesukot",
+     "הלכות ראו": "Halakhot Re'u",
+     "רב דודאי גאון": "Rav Dodai Gaon",
+     "פירקוי בן באבוי": "Pirkoi ben Baboi",
+     "מנהג שמד": "customs of persecution (minhag shemad)"
+    },
+    "ru": {
+     "הלכות פסוקות": "«Галахот псукот»",
+     "הלכות ראו": "«Галахот реу»",
+     "רב דודאי גאון": "рав Додай Гаон",
+     "פירקוי בן באבוי": "Пиркой бен Бабой",
+     "מנהג שמד": "обычаи времён гонений («минхаг шмад»)"
+    }
+   },
+   "related_cell": "",
+   "notes": "Years: no source I read gives his birth or death. The paper (which also gives the Hebrew-calendar years in its own notation), Hebrew Wikipedia and English Wikipedia agree that he headed the Sura yeshiva from 757 to 761. The row therefore carries those years as his term of office, the form the roster already uses for Geonim known by their term (667: 842-858, 27: 997-1013); the validator reads them as birth 757 / death 761, precision exact, which is that existing convention and not a statement that he was born in 757. If the lead prefers, the alternative is the century (the 8th) with precision century. Wikidata (Q455836, saved as wikidata-entity.json) has born 700 and died 762 with no reference on either claim; not used. The bio and core idea carry only 757 and 761. Name: the paper and Hebrew Wikipedia call him Rav Yehudai ben Nachman Gaon; the label is the owner's title for him and the roster's usual form (as in \"רב האי גאון\"). Namesake: both Wikipedias mention a second gaon of Sura, Rav Yehudai HaKohen (English Wikipedia: served 4519-4524), to whom some assign Halakhot Gedolot; he is not this sage and nothing about him is recorded. Blindness: Hebrew Wikipedia (\"רב יהודאי היה סגי נהור\") and the paper (\"היותו סגי נהור (עיוור)\") both say it; the owner's episode title does too. Authorship: Halakhot Pesukot is attributed as the sources attribute it: Hebrew Wikipedia \"according to some scholars\", English Wikipedia \"attributed to Gaon, although this has been disputed by scholars\", the paper \"his great work - or a work compiled in his study hall and under his direct inspiration\"; the core idea says \"attributed to him\". Left out on purpose: Halakhot Ketzuvot and Halakhot Gedolot as his works (Hebrew Wikipedia says the attribution of both was disproved, English Wikipedia that the legitimacy of Halakhot Ketzuvot is questioned); the paper's account of the Anan affair (the paper says \"according to historical traditions\"); the paper's students (Rav Abba, Pirkoi ben Baboi as Rav Abba's student; Hebrew Wikipedia calls Pirkoi \"the student of his student\" and names Natronai ben Chakhinai as a student), none of whom is on the roster; the paper's account of the takanat ha-moredet, collection from orphans' movable property and oaths (it cites Simcha Assaf; neither Wikipedia mentions them); the paper's account of minhag shemad as caused by Byzantine decrees (English Wikipedia says the same; Hebrew Wikipedia says only \"hard times\", and the core idea uses Hebrew Wikipedia's wording); the paper's modern research history (Sassoon manuscript, Danzig, the critical edition); Rabbeinu Tam's remark that he headed two yeshivot, the Ritva's remark that sayings of his entered the Gemara, Rav Hai's remark about transmission through scribes. Link: 685 -> 582 (the Rif), influence, is the paper's sentence only (\"Spain was deeply influenced by the structure of Halakhot Pesukot, and the Rif's central work largely continues Rav Yehudai's way in narrowing the Talmudic discussion ...\"); neither Wikipedia says it, and the sentence's footnote marker [14] points at a listed source whose title is an article about women reading the Megillah, so the claim may rest on a loose footnote: the lead may drop it. No teacher, student or family link to the roster otherwise: his brother Rav Dodai, his student Rav Abba, Pirkoi, Natronai ben Chakhinai and Simeon Kayyara are not on the roster, and no source I read names his teacher. paper_links is empty for that reason (the paper states no teacher or family relation to a roster sage) and yahrzeit is null (the paper gives years only, no Hebrew day and month of death). Ahai of Shabha (680): Hebrew Wikipedia has one sentence, in its Halakhot Gedolot section (quoting the chronicle Tzemach David), that sets Rav Yehudai ben Nachman beside Ahai's Sheiltot in an argument about an anachronism; it states no relation between the two sages. No source of mine says that Halakhot Pesukot draws on the Sheiltot or states a teacher or succession relation, so no link to 680 is recorded here (the lead reconciles with the 680 fragment). Places: the row uses Sura (his seat) and Pumbedita (where he was one of the sages before being moved); no source of mine places him anywhere else. Sefaria: no topic page for him (the name search and the slugs yehudai-gaon, yehudai-ben-nahman, yehudai-b-nahman, rav-yehudai-gaon, yehudai and yehudai-gaon-of-sura return nothing); Sefaria holds a text \"Halakhot Ketzuvot\" (הלכות קצובות דרב יהודאי גאון) inside \"Toratan shel Rishonim\" (idx-halakhot-ketzuvot.json), not used, since the attribution is disputed. The Jewish Encyclopedia article (linked from Hebrew Wikipedia) could not be fetched (HTTP 403). Vocabulary: five tags are new (Halakhot Pesukot, Halakhot Re'u, Rav Dodai Gaon, Pirkoi ben Baboi, minhag shemad); the field and place pieces are in the vocabulary already. Slips in the paper, kept as the Drive text has them: \"רשי\"י\" (for רש\"י) in the section on his influence; \"בלבלול\" (for בלבול); \"ממנם\" (for ממנו or מהם) in \"ודרש ממנם לבטל\"; \"למדיין\" in \"אין למדיין מסכת נדרים\" (for למדין); \"פירוק היחידות ההלכתית\" (for היחידה ההלכתית); \"וביקוד בהכרעה המעשית\" (unclear what word was meant). The paper's table cells carry their citation markers in a doubled escape form, which the converter normalises. Drive holds no other document on him: a title search for \"יהודאי\" returns only this paper; the full-text hits for \"יהודאי גאון\" and \"הלכות פסוקות\" are this paper, the Ahai paper (680) and documents on other sages. LEAD (2026-10-27): the link 685 -> 582 (the Rif) is dropped: the paper's clause only says that the Rif's work \"largely continues\" Rav Yehudai's way in narrowing the Talmudic discussion, a similarity of method; its footnote [14] points at an unrelated source (an article on women reading the Megillah). The years 757-761 are the years of his term as head of the Sura yeshiva, not of his birth and death."
+  }
+ ]
+}

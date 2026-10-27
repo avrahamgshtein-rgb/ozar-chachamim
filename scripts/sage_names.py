@@ -43,6 +43,18 @@ def forms(n, raw=''):
     return out
 
 
+# Names a sage is also catalogued under that his roster label does not carry: a spelling variant, or the title his Wikipedia article
+# has. Keyed by the LABEL (ids drift, labels do not). variants() and raw_names() add them, so the catalogue builders look the sage up
+# under them too; every match still has to agree with his years (years_ok), so a name shared with another man links nobody.
+#   רב אחאי משבחא: Sefaria's topic is "אחאי גאון" / "רב אחא משבחא" and his Hebrew Wikipedia article "רב אחא משבחא" (the roster spells אחאי,
+#   as the owner's episode and the Sefaria translations do); it is a different man from רבי אחאי בר פפא (619), whose years do not agree.
+ALSO_KNOWN_AS = {
+    'רב אחאי משבחא (בעל השאילתות)': ['רב אחא משבחא', 'אחאי גאון'],
+    'רבי יצחק אייזיק מקומרנא': ['יצחק אייזיק ספרין', 'אדמו"ר מקומרנא'],
+    'רב יהודאי גאון': ['יהודאי גאון'],
+}
+
+
 def variants(label):
     """Every name a sage label can be looked up under, normalized."""
     main = label.split(' – ')[0]
@@ -54,6 +66,7 @@ def variants(label):
         if re.search(r'\d', p):
             continue
         out.append(p)
+    out.extend(ALSO_KNOWN_AS.get(label, []))
     res = []
     for v in out:
         n = norm(v)
@@ -108,6 +121,9 @@ def raw_names(label):
         for cand in [n] + ([' '.join(toks[1:])] if len(toks) >= 3 and norm(toks[0]) in HONORIFIC else []):
             if cand and cand not in out:
                 out.append(cand)
+    for cand in ALSO_KNOWN_AS.get(label, []):
+        if cand not in out:
+            out.append(cand)
     return out
 
 

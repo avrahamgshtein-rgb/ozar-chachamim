@@ -169,6 +169,10 @@ export const LOCATION_COORDS: Record<string, { lat: number; lng: number }> = {
   'קרקוב':       { lat: 50.062,  lng: 19.937  },
   'Krakow':      { lat: 50.062,  lng: 19.937  },
   'גור':         { lat: 52.05,   lng: 21.0    },
+  // Added with the owner's new episodes of October 2026 (coordinates from Wikipedia's API)
+  'קומרנא':     { lat: 49.631,  lng: 23.703  },
+  "פינצ'וב":    { lat: 50.533,  lng: 20.533  },
+  'זידיטשוב':   { lat: 49.385,  lng: 24.144  },
 
   // ── רוסיה / אוקראינה ───────────────────────────────────────────────────
   'רוסיה':       { lat: 55.751,  lng: 37.617  },
@@ -471,6 +475,7 @@ const PLACE_ALIASES: Record<string, string> = {
   'Modena': 'מודינה', 'Pisa': 'פיזה', 'Reggio Emilia': "רג'ו אמיליה",
   'Greece': 'יוון', 'Athens': 'אתונה', 'Yemen': 'תימן', 'India': 'הודו',
   'USA': 'ארה"ב', 'ארצות הברית': 'ארה"ב', 'Europe': 'אירופה',
+  'הורדנה': 'גרודנה',
 }
 
 // ── Place kinds ───────────────────────────────────────────────────────────

@@ -1700,14 +1700,14 @@
      "url": "/Ma'amar_Torat_HaBayit"
     },
     {
-     "he": "שמירת הלשון",
-     "en": "Shemirat HaLashon",
-     "url": "/Shemirat_HaLashon"
-    },
-    {
      "he": "מאמר צפית לישועה",
      "en": "Ma'amar Tzipita LeYeshuah",
      "url": "/Ma'amar_Tzipita_LeYeshuah"
+    },
+    {
+     "he": "שמירת הלשון",
+     "en": "Shemirat HaLashon",
+     "url": "/Shemirat_HaLashon"
     }
    ],
    "wiki": {
@@ -5203,6 +5203,95 @@
     "he": "אליהו בחור",
     "en": "Elia Levita"
    }
+  },
+  "680": {
+   "label": "רב אחאי משבחא (בעל השאילתות)",
+   "slug": "achai-gaon",
+   "kind": "author",
+   "he": "אחאי גאון",
+   "en": "Achai Gaon",
+   "total": 1,
+   "works": [
+    {
+     "he": "שאילתות דרב אחאי גאון",
+     "en": "Sheiltot d'Rav Achai Gaon",
+     "url": "/Sheiltot_d'Rav_Achai_Gaon"
+    }
+   ],
+   "wiki": {
+    "he": "רב אחא משבחא",
+    "en": "Achai Gaon"
+   }
+  },
+  "681": {
+   "label": "רבי יצחק אייזיק מקומרנא",
+   "slug": "yitzchak-aizik-safrin-of-komarna",
+   "kind": "author",
+   "he": "יצחק אייזיק ספרין",
+   "en": "Yitzchak Aizik Safrin of Komarna",
+   "total": 1,
+   "works": [
+    {
+     "he": "מותר קנים על משנה קינים",
+     "en": "Motar Kinnim",
+     "url": "/Motar_Kinnim"
+    }
+   ],
+   "wiki": {
+    "he": "יצחק אייזיק ספרין",
+    "en": "Komarno (Hasidic dynasty)"
+   }
+  },
+  "682": {
+   "label": "רבי נתן נטע שפירא (בעל מגלה עמוקות)",
+   "slug": "nathan-nota-spira",
+   "kind": "author",
+   "he": "נתן נטע שפירא",
+   "en": "Nathan Nota Spira",
+   "total": 3,
+   "works": [
+    {
+     "he": "מגלה עמוקות על התורה",
+     "en": "Megalleh Amukkot on Torah",
+     "url": "/Megalleh_Amukkot_on_Torah"
+    },
+    {
+     "he": "חידושי אנשי שם על רי\"ף",
+     "en": "Chiddushei Anshei Shem on Rif",
+     "url": "/texts/Talmud/Bavli/Rishonim on Talmud/Rif/Commentary/Chiddushei Anshei Shem",
+     "cat": true
+    },
+    {
+     "he": "מגלה עמוקות על פרשת ואתחנן",
+     "en": "Megalleh Amukkot on Parashat VaEtchanan",
+     "url": "/Megalleh_Amukkot_on_Parashat_VaEtchanan"
+    }
+   ],
+   "wiki": {
+    "en": "Nathan Nata Spira"
+   }
+  },
+  "683": {
+   "label": "רחל אמנו",
+   "slug": "rachel",
+   "kind": "person",
+   "he": "רחל",
+   "en": "Rachel",
+   "total": 0,
+   "works": [],
+   "wiki": {
+    "he": "רחל",
+    "en": "Rachel"
+   }
+  },
+  "684": {
+   "label": "רב עמרם גאון",
+   "slug": "amram-gaon",
+   "kind": "person",
+   "he": "רב עמרם גאון",
+   "en": "Amram Gaon",
+   "total": 0,
+   "works": []
   }
  }
 }
