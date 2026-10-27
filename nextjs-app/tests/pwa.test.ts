@@ -127,9 +127,12 @@ const cacheStore = new Map<string, FakeCache>()
 let online = true
 const fetched: string[] = []
 let slow: Promise<Response> | null = null
+/** When set, the network answers every request with this (the site moved: the old address now redirects). */
+let network: ((req: Request) => Response) | null = null
 async function fetchImpl(req: Request): Promise<Response> {
   fetched.push(new URL(req.url).pathname)
   if (slow) return slow
+  if (network) return network(req)
   if (!online) throw new TypeError('offline')
   return new Response('network:' + new URL(req.url).pathname, { status: 200 })
 }
@@ -213,6 +216,60 @@ test('service worker: an unvisited page offline lands on the offline page', asyn
   online = false
   const res = await ask('/en/never-visited', { mode: 'navigate' })
   assert.equal(await res!.text(), 'network:/offline.html')
+  online = true
+})
+
+/** What a browser gives a worker for a navigation (`redirect: 'manual'`) the server answers with a redirect: status 0, no headers, nothing to read. */
+function opaqueRedirect(): Response {
+  const res = new Response(null, { status: 200 })
+  for (const [k, v] of Object.entries({ type: 'opaqueredirect', status: 0, ok: false, redirected: false, url: '' })) Object.defineProperty(res, k, { value: v })
+  return res
+}
+
+test('service worker: a page the network moves to another address (the old host, now redirected to the domain) is handed to the browser as it is, never saved, and the earlier saved copy still serves offline', async () => {
+  // This worker is the one every visitor of the old address already holds: its own update check (/sw.js) now meets a
+  // redirect, which a browser refuses for a worker script, so it stays. It must therefore let a redirect through.
+  // The worker did this before the move: no change to sw.js was needed (and VERSION stays).
+  const pages = () => cacheStore.get('ozar-pages-v1')!
+  const page = '/he/sage/2?utm_source=youtube&utm_medium=video'
+  online = true
+  network = null
+  assert.equal(await (await ask(page, { mode: 'navigate' }))!.text(), 'network:/he/sage/2', 'an earlier visit, answered directly, is saved')
+  const kept = await (await pages().match(page))!.text()
+  const entries = pages().store.size
+
+  // the opaque redirect of a navigation: the very response goes back to the browser, which follows it
+  const opaque = opaqueRedirect()
+  network = () => opaque
+  const seen = await ask(page, { mode: 'navigate' })
+  assert.equal(seen, opaque, 'returned untouched (respondWith(opaqueredirect) makes the browser follow it)')
+  assert.equal(seen!.type, 'opaqueredirect')
+
+  // a plain 308 (a fetch that is allowed to see it), and a 200 that was reached through a redirect
+  const moved = Response.redirect('https://ozarchachamim.org/he/sage/2?utm_source=youtube&utm_medium=video', 308)
+  network = () => moved
+  const plain = await ask(page, { mode: 'navigate' })
+  assert.equal(plain, moved)
+  assert.equal(plain!.status, 308)
+  assert.equal(plain!.headers.get('location'), 'https://ozarchachamim.org/he/sage/2?utm_source=youtube&utm_medium=video')
+  const followed = new Response('the new domain\'s page', { status: 200 })
+  Object.defineProperty(followed, 'redirected', { value: true })
+  network = () => followed
+  assert.equal(await ask(page, { mode: 'navigate' }), followed)
+
+  // none of the three replaced the saved page or added another
+  assert.equal(pages().store.size, entries)
+  assert.equal(await (await pages().match(page))!.text(), kept)
+  network = null
+
+  // a page never seen before, first met as a redirect, is not saved either: offline it is the offline page
+  network = () => opaqueRedirect()
+  await ask('/en/moved-before-it-was-seen', { mode: 'navigate' })
+  network = null
+  assert.equal(pages().store.size, entries, 'a redirect is not a page')
+  online = false
+  assert.equal(await (await ask(page, { mode: 'navigate' }))!.text(), 'network:/he/sage/2', 'offline, the earlier saved copy')
+  assert.equal(await (await ask('/en/moved-before-it-was-seen', { mode: 'navigate' }))!.text(), 'network:/offline.html')
   online = true
 })
 
