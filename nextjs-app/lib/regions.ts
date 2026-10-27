@@ -51,6 +51,9 @@ export const LOCATION_REGION_MAP: Array<[string, Region]> = [
   // Prussia (Danzig, Königsberg, Thorn) was filed under east-europe only because 'רוסיה' sat inside פרוסיה; Shklov was
   // filed under north-africa because 'לוב' sat inside שקלוב. Both are now stated outright.
   ['פרוסיה', 'east-europe'], ['שקלוב', 'east-europe'],
+  // Added with the owner's new episodes of October 2026: Komarno, Pinczow and Zhydachiv (Rabbi Yitzchak Isaac of Komarno), Grodno (also
+  // spelled הורדנה, an alias of גרודנה) and Bethlehem (Rachel's grave; it also gives sage 535, whose place it is, her region).
+  ['קומרנא', 'east-europe'], ['פינצ׳וב', 'east-europe'], ["פינצ'וב", 'east-europe'], ['זידיטשוב', 'east-europe'], ['בית לחם', 'eretz-israel'], ['הורדנה', 'east-europe'], ['גרודנה', 'east-europe'],
   ['ישראל', 'eretz-israel'],
 ]
 

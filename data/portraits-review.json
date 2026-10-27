@@ -3215,6 +3215,97 @@
     370
    ],
    "note": "AI illustration; the Chizkuni at his desk, quill in hand; the page text begins below the box; no watermark"
+  },
+  "638": {
+   "label": "רבי יהושע פלק כ״ץ (הסמ״ע)",
+   "episode": "3sBHDuG9aT7dx4zmtYyDjH",
+   "title": "רבי יהושע פלק כ\"ץ (הסמ\"ע) - הגאון שהזהיר מפני פסיקת הלכה מתוך השולחן ערוך בלבד",
+   "image": "da279e4e9ce46054577a15b3",
+   "kind": "illustration",
+   "crop": [
+    215,
+    83,
+    214
+   ],
+   "note": "AI infographic cover; the sage at his desk with a quill. The title plate above ends at y=81, so the box starts at y=83 and shaves about 4 px off the beret's top; the \"Seder Beit Yisrael\" label and the book pages' text (from y=300) are below; the captions, the panels and the other figures are outside, only a background scholar's hat shows at the right edge; tight (214 px, soft at 384); no watermark"
+  },
+  "660": {
+   "label": "רבי יעקב ריישר (בעל שבות יעקב)",
+   "episode": "0mmLEt5P6cWWmeGViach5r",
+   "title": "רבי יעקב ריישר - הגאון שהתעוור, שב לראות והאיר את עולם ההלכה",
+   "image": "84ea4e9db6dec1fff69196d3",
+   "kind": "illustration",
+   "crop": [
+    249,
+    112,
+    253
+   ],
+   "note": "AI infographic cover; the sage with his finger at his temple. The title plate and dates above (y<=108), the map labels at the right (x>=505), the lettering of the book spines below (y>=370) and the scholars at the left are outside; the map behind him shows a castle and a bridge, no text; the beard tip is cut at the bottom; no watermark"
+  },
+  "680": {
+   "label": "רב אחאי משבחא (בעל השאילתות)",
+   "episode": "5ojAh8QooySuLiNI8GpY6u",
+   "title": "רב אחאי משבחא - הגאון שנדחה מראשות הישיבה, אך כתב את הספר ששינה את עולם ההלכה",
+   "image": "143bfc0be846a341f88de37a",
+   "kind": "illustration",
+   "crop": [
+    207,
+    62,
+    240
+   ],
+   "note": "AI infographic cover; Ahai writing with a quill. The title plate, the map labels, the captions and the open book's text lines are outside the box (it ends just above the page's first line); a thin decorative divider (no text) crosses the top edge; no watermark"
+  },
+  "682": {
+   "label": "רבי נתן נטע שפירא (בעל מגלה עמוקות)",
+   "episode": "1W9jLv41tnXGcgNYDIEbrL",
+   "title": "רבי נתן נטע שפירא - המקובל שגילה 252 סודות בתפילה אחת של משה רבינו",
+   "image": "a8d1dd7485f2c47f333bae93",
+   "kind": "illustration",
+   "crop": [
+    240,
+    113,
+    258
+   ],
+   "note": "AI illustration; the sage at his desk, his hand at his temple. The title scroll at the top left (x<=235) and the lettering of the book stack at the right (x>=507) are outside; a faint wall panel at the top left holds a tree-of-sefirot diagram with tiny unreadable marks; the beard tip is cut at the bottom; no watermark"
+  },
+  "683": {
+   "label": "רחל אמנו",
+   "episode": "1EKJiVlFPRzq9U3HlgXXGq",
+   "title": "רחל אמנו - האישה ששתקה למען אחותה, אך זעקתה הכריעה את השמים",
+   "image": "5857c1759210e0c62fa7781b",
+   "kind": "illustration",
+   "crop": [
+    240,
+    0,
+    230
+   ],
+   "note": "AI collage (photorealistic render, no text anywhere on the cover); the large central woman with a tear on her cheek is the figure, the other scenes (a wedding, a woman praying before a burning city, the tomb, two women, a woman at a rock, two riders) are outside the box; a faint second woman's veil shows at the right edge (her face is outside) and a sliver of a red veil at the far left; no watermark in the box"
+  },
+  "684": {
+   "label": "רב עמרם גאון",
+   "episode": "2ULZn2cKuetkTGLFWYrUx8",
+   "title": "רב עמרם גאון - איך הפכה תשובה הלכתית אחת לספר ששינה את העולם היהודי?",
+   "image": "038e0bd314349da16ad2a2a6",
+   "kind": "illustration",
+   "crop": [
+    291,
+    64,
+    270
+   ],
+   "note": "AI illustration; the gaon writing with a quill. The Sura-yeshiva plaque at the left ends at x=289 and his head begins at x=288, so the box starts at x=291 and the head touches its left edge; the lettering of the book spines and the page's text lines are outside; a city and palms behind him; no watermark"
+  },
+  "685": {
+   "label": "רב יהודאי גאון",
+   "episode": "187HitcBGTOzR3Lgzja106",
+   "title": "רב יהודאי גאון - החכם סגי הנהור שהאיר את עולם ההלכה לדורות",
+   "image": "fcf207f4e685d6002ca1ced8",
+   "kind": "illustration",
+   "crop": [
+    228,
+    84,
+    232
+   ],
+   "note": "AI infographic cover; the gaon at his desk, eyes closed. The arch plaque \"Sura Yeshiva 761\" ends at y=82 and the map labels end at x=225, so the box starts at (228, 84); the scribe at the left, the scroll of the main teachings at the right and the book \"Halachot Pesukot\" below (y>=330) are outside; three background scholars show at the right; no watermark"
   }
  },
  "_left_out": {
@@ -5114,12 +5205,6 @@
    "reason": "no-episode",
    "note": "no spotify_url"
   },
-  "638": {
-   "label": "רבי יהושע פלק כ״ץ (הסמ״ע)",
-   "episode": "",
-   "reason": "no-episode",
-   "note": "no spotify_url"
-  },
   "639": {
    "label": "רבי שמואל די מדינה (המהרשד״ם)",
    "episode": "",
@@ -5246,12 +5331,6 @@
    "reason": "no-episode",
    "note": "no spotify_url"
   },
-  "660": {
-   "label": "רבי יעקב ריישר (בעל שבות יעקב)",
-   "episode": "",
-   "reason": "no-episode",
-   "note": "no spotify_url"
-  },
   "661": {
    "label": "רבי שמשון חיים נחמני (בעל זרע שמשון)",
    "episode": "",
@@ -5365,6 +5444,18 @@
    "episode": "",
    "reason": "no-episode",
    "note": "no spotify_url"
+  },
+  "681": {
+   "label": "רבי יצחק אייזיק מקומרנא",
+   "episode": "2Hwqxeswo6x7sutb2IM9cr",
+   "reason": "text",
+   "note": "AI illustration, otherwise a clean portrait (the sage resting his head on his hand over an open book): the Kabbalistic tree of sefirot with its Hebrew labels (גבורה, תפארת, חסד, נצח) stands right behind the hat, and no box that holds the whole hat avoids them; best-effort box recorded, it includes the labels תפארת and גבורה at the top right (the book spines' lettering at the left is outside); no watermark",
+   "crop": [
+    195,
+    105,
+    270
+   ],
+   "image": "8dfecac8300a7d031bfe0196"
   }
  }
 }

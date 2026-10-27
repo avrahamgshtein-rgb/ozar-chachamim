@@ -13,6 +13,7 @@ import {
 } from '../lib/geoLayers'
 import { ALL_PERIODS } from '../lib/types'
 import { keywordIndex, locationToRegion, regionsOf } from '../lib/regions'
+import { canonicalPlace, coordsForName } from '../lib/locationCoords'
 import type { Sage } from '../lib/types'
 
 let passed = 0
@@ -217,6 +218,41 @@ test('a stem still matches the longer word it stands for, and a one-letter prefi
 test('a three-letter name must be a whole word: פס is Fez, not the middle of כפסים', () => {
   assert.deepEqual(regionsOf('פס'), ['north-africa'])
   assert.deepEqual(regionsOf('כפסים'), [])
+})
+
+console.log("\nregions and map points added with the owner's episodes of October 2026")
+
+test('Bethlehem is in the Land of Israel (Rachel\'s grave; it also gives sage 535, צרויה, her region), with a prefix too', () => {
+  assert.deepEqual(regionsOf('בית לחם'), ['eretz-israel'])
+  assert.deepEqual(regionsOf('בית לחם; ממלכת דוד'), ['eretz-israel'])
+  assert.deepEqual(regionsOf('בבית לחם'), ['eretz-israel'])
+  assert.deepEqual(regionsOf('לחם'), [])
+  assert.ok(coordsForName('בית לחם'), 'Bethlehem was on the map before it had a region')
+})
+
+test("Pinczow is found as the sheet writes it, with the Hebrew geresh, and as the gazetteer's own spelling with the ASCII apostrophe", () => {
+  assert.deepEqual(regionsOf('פינצ׳וב'), ['east-europe'])
+  assert.deepEqual(regionsOf("פינצ'וב"), ['east-europe'])
+  assert.deepEqual(regionsOf('קומרנא; פינצ׳וב; זידיטשוב'), ['east-europe'])
+  assert.equal(canonicalPlace('פינצ׳וב'), "פינצ'וב")
+  assert.deepEqual(coordsForName('פינצ׳וב'), coordsForName("פינצ'וב"))
+  assert.ok(coordsForName('פינצ׳וב'), 'Pinczow has a map point')
+})
+
+test('Komarno and Zhydachiv have a map point and a region; Komarno is not found inside a longer word', () => {
+  for (const place of ['קומרנא', 'זידיטשוב']) {
+    assert.deepEqual(regionsOf(place), ['east-europe'], place)
+    assert.ok(coordsForName(place), place)
+    assert.equal(canonicalPlace(place), place)
+  }
+  assert.deepEqual(regionsOf('מקומרנא'), ['east-europe'])
+})
+
+test('הורדנה (Grodno, as Rabbi Nata Shapira\'s paper spells it) is an alias of גרודנה: one place, one point, one region', () => {
+  assert.equal(canonicalPlace('הורדנה'), 'גרודנה')
+  assert.deepEqual(coordsForName('הורדנה'), coordsForName('גרודנה'))
+  assert.deepEqual(regionsOf('הורדנה'), ['east-europe'])
+  assert.deepEqual(regionsOf('גרודנה'), ['east-europe'])
 })
 
 console.log(`\n${'-'.repeat(46)}`)

@@ -41,7 +41,12 @@ const HEBREW = /[א-ת]/
 const LETTERS = 'Alef|Bet|Gimel|Dalet|He|Vav|Zayin|Chet|Tet|Yod|Kaf|Lamed|Mem|Nun|Samekh|Ayin|Peh|Tzadi|Kof|Resh|Shin|Tav'
 const EPISODES: Record<string, string> = {
   '630': '7xXl4sOy18MABmQdtXzrQu', '631': '6Umixwtvl1Jh3iq0E1sCHW', '632': '0V7vkwok6itxSw9niOhmW0', '633': '6VBVggnMCgZu86mq2JMniv',
+  // 638 (the Sma) and 660 (Reischer) were added here without an episode and gained theirs, and a paper, with the owner's batch of 2026-10-27
+  // (data/owner-additions-2026-10.json, tests/ownerAdditions.test.ts)
+  '638': '3sBHDuG9aT7dx4zmtYyDjH', '660': '0mmLEt5P6cWWmeGViach5r',
 }
+// the owner's papers: 630, 631 and 634 with this batch, 638 and 660 with the one of 2026-10-27
+const WITH_PAPER = ['630', '631', '634', '638', '660']
 
 console.log('\ndata/shem-hagedolim-additions.json')
 
@@ -133,18 +138,18 @@ test('English and Russian: a label, a bio and a core idea for each, with no Hebr
   assert.deepEqual(bad, [])
 })
 
-test('the owner\'s four episodes are wired to 630-633 and to no other new sage', () => {
+test('the owner\'s episodes are wired to 630-633 (and, since 2026-10-27, 638 and 660) and to no other sage of this batch', () => {
   for (const id of IDS) {
     const want = EPISODES[id]
     assert.equal(byId.get(id)!.spotify_url ?? '', want ? `https://open.spotify.com/episode/${want}` : '', id)
   }
 })
 
-test('the owner\'s papers: 630, 631 and 634 have a Hebrew, English and Russian research file; the other new sages have none', () => {
+test('the owner\'s papers: 630, 631, 634 (and, since 2026-10-27, 638 and 660) have a Hebrew, English and Russian research file; the other sages of this batch have none', () => {
   const dir = join(__dirname, '../public/research')
   for (const id of IDS) {
     const files = ['', '.en', '.ru'].map(x => existsSync(join(dir, `${id}${x}.json`)))
-    const has = ['630', '631', '634'].includes(id)
+    const has = WITH_PAPER.includes(id)
     assert.deepEqual(files, has ? [true, true, true] : [false, false, false], id)
     assert.equal(Boolean(byId.get(id)!.has_research), has, `${id} has_research`)
   }

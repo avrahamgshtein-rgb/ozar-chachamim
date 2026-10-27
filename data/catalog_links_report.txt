@@ -143,15 +143,17 @@ roster sages, and what became of it. Generated; do not edit.
   teacher: רבי יוסי בן חלפתא [605] (100–200) -> רבי יהודה הנשיא [580] (135–217)  [ספריא: rabi learned-from rabbi-yose-b-chalafta; ספריא: rabbi-yose-b-chalafta taught rabi]
   teacher: רבי משה גלאנטי (המג״ן) [671] (1620–1689) -> רבי משה חגיז – הקנאי הירושלמי שניסה להציל את היהדות מן הקריסה הפנימית [86] (1671–1750)  [ויקינתונים: Q12409588 student of (P1066) Q12409579]
 
-== already on the site: 41 ==
+== already on the site: 43 ==
   colleague: הרשב״א [395] (1235–1310) -> רבנו אשר בן יחיאל (הרא״ש) [598] (1200–1400)  [ספריא: rashba1 corresponded-with rosh; ספריא: rosh corresponded-with rashba1]
   family: אהרן הכהן [521] (-1300–-1200) -> מרים הנביאה [629] (ללא שנים)  [ספריא: aaron sibling-of miriam; ספריא: miriam sibling-of aaron]
   family: אברהם אבינו [555] (ללא שנים) -> יצחק אבינו [571] (ללא שנים)  [ספריא: abraham parent-of isaac; ספריא: isaac child-of abraham]
   family: דוד המלך [557] (-1040–-970) -> שלמה המלך [595] (-1010–-931)  [ספריא: king-david parent-of king-solomon; ספריא: king-solomon child-of king-david; ויקינתונים: Q37085 father (P22) Q41370; ויקינתונים: Q41370 child (P40) Q37085]
+  family: יעקב אבינו [570] (ללא שנים) -> רחל אמנו [683] (ללא שנים)  [ספריא: jacob spouse-of rachel; ספריא: rachel spouse-of jacob; ויקינתונים: Q207389 spouse (P26) Q289957; ויקינתונים: Q289957 spouse (P26) Q207389]
   family: יצחק אבינו [571] (ללא שנים) -> יעקב אבינו [570] (ללא שנים)  [ספריא: jacob child-of isaac; ספריא: isaac parent-of jacob]
   family: משה רבנו [574] (-1391–-1271) -> מרים הנביאה [629] (ללא שנים)  [ספריא: moses sibling-of miriam; ספריא: miriam sibling-of moses; ויקינתונים: Q1938388 sibling (P3373) Q9077; ויקינתונים: Q9077 sibling (P3373) Q1938388]
   family: רש"י (רבי שלמה יצחקי) [594] (1040–1105) -> רבנו תם (ר׳ יעקב בן מאיר) – מהפכן השיטה התוספתית [33] (1100–1171)  [ספריא: rabbenu-tam grandchild-of rashi; ספריא: rashi grandparent-of rabbenu-tam]
   family: רש"י (רבי שלמה יצחקי) [594] (1040–1105) -> הרשב״ם [276] (1085–1158)  [ספריא: rashbam grandchild-of rashi; ספריא: rashi grandparent-of rashbam]
+  family: לאה אמנו [613] (ללא שנים) -> רחל אמנו [683] (ללא שנים)  [ויקינתונים: Q128847 sibling (P3373) Q207389; ויקינתונים: Q207389 sibling (P3373) Q128847]
   family: רבי משה מטראני (המבי״ט) [632] (1500–1580) -> רבי יוסף מטראני (המהרי״ט) [641] (1568–1639)  [ספריא: moshe-ben-yosef-di-trani parent-of yosef-trani; ספריא: yosef-trani child-of moshe-ben-yosef-di-trani; ויקינתונים: Q1949234 child (P40) Q633076; ויקינתונים: Q633076 father (P22) Q1949234]
   family: רבי יעקב חגיז (בעל הלכות קטנות) [655] (1620–1674) -> רבי משה חגיז – הקנאי הירושלמי שניסה להציל את היהדות מן הקריסה הפנימית [86] (1671–1750)  [ויקינתונים: Q12409588 father (P22) Q1678956; ויקינתונים: Q1678956 child (P40) Q12409588]
   influence: הרמב"ם [41] (1138–1204) -> רבי יוסף אלבו [17] (1380–1444)  [ויקינתונים: Q559622 influenced by (P737) Q127398]

@@ -392,7 +392,7 @@
     {
      "id": "sk-8_se67No",
      "title": "Rabbi Abraham ibn Daud – The Sephardic thinker who restored sacred intellect to its rightful place",
-     "seconds": 423
+     "seconds": 424
     }
    ],
    "ru": [
@@ -6068,6 +6068,142 @@
      "id": "zLJxc3eEdCU",
      "title": "Рабби Моше из Трани (Мабит) - мудрец Цфата, 40 лет споривший с Бейт-Йосефом",
      "seconds": 521
+    }
+   ]
+  },
+  "638": {
+   "label": "רבי יהושע פלק כ״ץ (הסמ״ע)",
+   "en": [
+    {
+     "id": "bpENxT6NLkU",
+     "title": "Rabbi Yehoshua Falk Katz (the Sma) -The Sage Who Warned Against Ruling from the Shulchan Aruch Alone",
+     "seconds": 603
+    }
+   ],
+   "ru": [
+    {
+     "id": "u2b5eTQAMWw",
+     "title": "Рабби Йеошуа Фальк Кац (Сма) - мудрец, предостерегавший от решений лишь по «Шулхан аруху»",
+     "seconds": 494
+    }
+   ]
+  },
+  "660": {
+   "label": "רבי יעקב ריישר (בעל שבות יעקב)",
+   "en": [
+    {
+     "id": "eTqjBRDE28k",
+     "title": "Rabbi Yaakov Reischer - The Genius Who Lost His Sight, Regained It, and Illuminated Jewish Law",
+     "seconds": 281
+    }
+   ],
+   "ru": [
+    {
+     "id": "2hulZG9z-og",
+     "title": "Рабби Яаков Райшер - гений, потерявший зрение, вновь прозревший и озаривший мир еврейского закона",
+     "seconds": 470
+    }
+   ]
+  },
+  "680": {
+   "label": "רב אחאי משבחא (בעל השאילתות)",
+   "en": [
+    {
+     "id": "4Oy-yaftVLY",
+     "title": "Rav Achai of Shabcha - Denied Leadership of the Yeshiva, He Wrote a Book That Changed Halacha",
+     "seconds": 565
+    }
+   ],
+   "ru": [
+    {
+     "id": "_1TWRjKDa-s",
+     "title": "Рав Ахай из Шабхи - ему отказали в руководстве ешивой, но его книга изменила Галаху",
+     "seconds": 456
+    }
+   ]
+  },
+  "681": {
+   "label": "רבי יצחק אייזיק מקומרנא",
+   "en": [
+    {
+     "id": "ToiikYmzKmE",
+     "title": "Rabbi Yitzchak Isaac of Komarno - Kabbalist Who Found Secrets in Every Letter and Changed Not a Word",
+     "seconds": 343
+    }
+   ],
+   "ru": [
+    {
+     "id": "3BOmN4bmM4Q",
+     "title": "Рабби Ицхак Айзик из Комарно - каббалист, видевший тайны в каждой букве и не менявший ни слова",
+     "seconds": 598
+    }
+   ]
+  },
+  "682": {
+   "label": "רבי נתן נטע שפירא (בעל מגלה עמוקות)",
+   "en": [
+    {
+     "id": "r-lEDt3upnU",
+     "title": "Rabbi Nathan Nata Shapira - The Kabbalist Who Uncovered 252 Secrets in a Single Prayer of Moses",
+     "seconds": 326
+    }
+   ],
+   "ru": [
+    {
+     "id": "s7Dv9JPI7wA",
+     "title": "Рабби Натан Нета Шапира - каббалист, раскрывший 252 тайны в одной молитве Моше Рабейну",
+     "seconds": 363
+    }
+   ]
+  },
+  "683": {
+   "label": "רחל אמנו",
+   "en": [
+    {
+     "id": "AnyE77SNhhM",
+     "title": "Rachel Our Matriarch - The Woman Who Remained Silent for Her Sister, Yet Whose Cry Moved Heaven",
+     "seconds": 555
+    }
+   ],
+   "ru": [
+    {
+     "id": "lVS-MVsvyp4",
+     "title": "Праматерь Рахель - женщина, которая молчала ради сестры, но чей плач потряс небеса",
+     "seconds": 476
+    }
+   ]
+  },
+  "684": {
+   "label": "רב עמרם גאון",
+   "en": [
+    {
+     "id": "XvlcoPfNXEI",
+     "title": "Rav Amram Gaon - How Did a Single Halachic Responsum Become a Book That Changed the Jewish World?",
+     "seconds": 462
+    }
+   ],
+   "ru": [
+    {
+     "id": "mOo8ndnmE-U",
+     "title": "Рав Амрам Гаон - Как один галахический ответ превратился в книгу, изменившую еврейский мир?",
+     "seconds": 390
+    }
+   ]
+  },
+  "685": {
+   "label": "רב יהודאי גאון",
+   "en": [
+    {
+     "id": "ioIhmFy6IU8",
+     "title": "Rav Yehudai Gaon - The Blind Sage Who Illuminated the World of Jewish Law for Generations",
+     "seconds": 466
+    }
+   ],
+   "ru": [
+    {
+     "id": "O2tIT5HSCd4",
+     "title": "Рав Йехудай Гаон - Незрячий мудрец, озаривший мир еврейского закона на многие поколения",
+     "seconds": 493
     }
    ]
   }

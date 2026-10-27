@@ -1067,5 +1067,38 @@
   "day": 10,
   "month": "Nisan",
   "quote": "תאריך פטירתה חל בי' בניסן, בשנת הארבעים ליציאת מצרים"
+ },
+ {
+  "id": "638",
+  "day": 19,
+  "month": "Nisan",
+  "quote": "רבי יהושע נפטר בלבוב ביום י\"ט בניסן שע\"ד (29 במרץ 1614)"
+ },
+ {
+  "id": "660",
+  "day": 8,
+  "month": "Shevat",
+  "quote": "רבי יעקב נפטר במץ בשבת, ח' בשבט ה'תצ\"ג (24 בינואר 1733)"
+ },
+ {
+  "id": "680",
+  "day": null,
+  "reason": "the paper gives no Hebrew day of death: only that he settled in the Land of Israel and stayed there until his death"
+ },
+ {
+  "id": "682",
+  "day": 13,
+  "month": "Av",
+  "quote": "נפטר בדמי ימיו, כבן 48 בלבד, ביום י\"ג באב ה'שצ\"ג"
+ },
+ {
+  "id": "684",
+  "day": null,
+  "reason": "the paper gives years only (about 875), no Hebrew month or day"
+ },
+ {
+  "id": "685",
+  "day": null,
+  "reason": "the paper gives no date of his death (757-761 are the years of his term as head of the Sura yeshiva)"
  }
 ]
