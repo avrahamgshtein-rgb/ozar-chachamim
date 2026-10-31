@@ -45,8 +45,11 @@ const EPISODES: Record<string, string> = {
   // (data/owner-additions-2026-10.json, tests/ownerAdditions.test.ts)
   '638': '3sBHDuG9aT7dx4zmtYyDjH', '660': '0mmLEt5P6cWWmeGViach5r',
 }
-// the owner's papers: 630, 631 and 634 with this batch, 638 and 660 with the one of 2026-10-27
-const WITH_PAPER = ['630', '631', '634', '638', '660']
+// the owner's papers: 630, 631 and 634 with this batch, 638 and 660 with the one of 2026-10-27, and fifteen more on 2026-10-27 (phase 2a, the owner's
+// NotebookLM papers of 18 October on sages this batch added: 632, 635, 636, 639, 640, 641, 642, 643, 646, 647, 648, 651, 652, 657, 669;
+// data/owner-papers-2026-10.json, tests/ownerPapers.test.ts)
+const WITH_PAPER = ['630', '631', '634', '638', '660',
+  '632', '635', '636', '639', '640', '641', '642', '643', '646', '647', '648', '651', '652', '657', '669']
 
 console.log('\ndata/shem-hagedolim-additions.json')
 
@@ -145,7 +148,7 @@ test('the owner\'s episodes are wired to 630-633 (and, since 2026-10-27, 638 and
   }
 })
 
-test('the owner\'s papers: 630, 631, 634 (and, since 2026-10-27, 638 and 660) have a Hebrew, English and Russian research file; the other sages of this batch have none', () => {
+test('the owner\'s papers: 630, 631, 634 (and, since 2026-10-27, 638, 660 and the fifteen of WITH_PAPER) have a Hebrew, English and Russian research file; the other sages of this batch have none', () => {
   const dir = join(__dirname, '../public/research')
   for (const id of IDS) {
     const files = ['', '.en', '.ru'].map(x => existsSync(join(dir, `${id}${x}.json`)))

@@ -8790,7 +8790,7 @@
    "birth_year": 1500,
    "death_year": 1580,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "633",
@@ -8841,7 +8841,7 @@
    "birth_year": 1470,
    "death_year": 1549,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "636",
@@ -8859,7 +8859,7 @@
    "birth_year": 1290,
    "death_year": 1350,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "637",
@@ -8913,7 +8913,7 @@
    "birth_year": 1505,
    "death_year": 1589,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "640",
@@ -8931,7 +8931,7 @@
    "birth_year": 1503,
    "death_year": 1580,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "641",
@@ -8949,7 +8949,7 @@
    "birth_year": 1568,
    "death_year": 1639,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "642",
@@ -8967,7 +8967,7 @@
    "birth_year": 1500,
    "death_year": 1600,
    "date_precision": "century",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "643",
@@ -8985,7 +8985,7 @@
    "birth_year": 1650,
    "death_year": 1706,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "644",
@@ -9039,7 +9039,7 @@
    "birth_year": 1603,
    "death_year": 1673,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "647",
@@ -9057,7 +9057,7 @@
    "birth_year": 1500,
    "death_year": 1600,
    "date_precision": "century",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "648",
@@ -9075,7 +9075,7 @@
    "birth_year": 1660,
    "death_year": 1712,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "649",
@@ -9129,7 +9129,7 @@
    "birth_year": 1567,
    "death_year": 1630,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "652",
@@ -9147,7 +9147,7 @@
    "birth_year": 1680,
    "death_year": 1756,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "653",
@@ -9237,7 +9237,7 @@
    "birth_year": 1638,
    "death_year": 1702,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "658",
@@ -9453,7 +9453,7 @@
    "birth_year": 1440,
    "death_year": 1508,
    "date_precision": "exact",
-   "has_research": false
+   "has_research": true
   },
   {
    "id": "670",

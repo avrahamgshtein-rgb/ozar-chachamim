@@ -284,12 +284,12 @@
    "title": "Рабби Моше из Трани (Мабит) - мудрец Цфата, 40 лет споривший с Бейт-Йосефом",
    "claims": {
     "kind": "m",
-    "research": false,
+    "research": true,
     "quiz": false,
     "teachers": true,
-    "students": false
+    "students": true
    },
-   "line": "📜 Рабби Моше из Трани (Мабит) в «Оцар Хахамим» — его страница и его учителя: https://ozarchachamim.org/ru/sage/632?utm_source=youtube&utm_medium=video"
+   "line": "📜 Рабби Моше из Трани (Мабит) в «Оцар Хахамим» — полное исследование, а также его учителя и ученики: https://ozarchachamim.org/ru/sage/632?utm_source=youtube&utm_medium=video"
   },
   {
    "row": 18,
@@ -301,12 +301,12 @@
    "title": "Rabbi Moshe of Trani (Mabit) - The Sage of Safed Who Challenged the Beit Yosef for 40 Years",
    "claims": {
     "kind": "m",
-    "research": false,
+    "research": true,
     "quiz": false,
     "teachers": true,
-    "students": false
+    "students": true
    },
-   "line": "📜 Rabbi Moshe of Trani (the Mabit) on Ozar Chachamim — his page and his teachers: https://ozarchachamim.org/en/sage/632?utm_source=youtube&utm_medium=video"
+   "line": "📜 Rabbi Moshe of Trani (the Mabit) on Ozar Chachamim — the full research and his teachers and students: https://ozarchachamim.org/en/sage/632?utm_source=youtube&utm_medium=video"
   },
   {
    "row": 19,
@@ -18275,12 +18275,12 @@
    "episode": "https://open.spotify.com/episode/0V7vkwok6itxSw9niOhmW0",
    "claims": {
     "kind": "m",
-    "research": false,
+    "research": true,
     "quiz": false,
     "teachers": true,
-    "students": false
+    "students": true
    },
-   "line": "📜 רבי משה מטראני (המבי״ט) באוצר חכמים — הדף שלו ורבותיו: https://ozarchachamim.org/he/sage/632?utm_source=spotify&utm_medium=podcast"
+   "line": "📜 רבי משה מטראני (המבי״ט) באוצר חכמים — המחקר המלא ורבותיו ותלמידיו: https://ozarchachamim.org/he/sage/632?utm_source=spotify&utm_medium=podcast"
   },
   {
    "sage": "633",
