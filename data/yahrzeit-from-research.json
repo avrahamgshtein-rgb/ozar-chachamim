@@ -1100,5 +1100,87 @@
   "id": "685",
   "day": null,
   "reason": "the paper gives no date of his death (757-761 are the years of his term as head of the Sura yeshiva)"
+ },
+ {
+  "id": "632",
+  "day": 21,
+  "month": "Nisan",
+  "quote": "לפטירתו ביום טוב אחרון של פסח (כ\"א בניסן) בשנת 1580"
+ },
+ {
+  "id": "635",
+  "day": null,
+  "reason": "the paper gives the death by years only (ה'ש\"ט 1549 or ה'ש\"י 1550); its one Hebrew day and month is the date of his medical degree, not of his death"
+ },
+ {
+  "id": "636",
+  "day": null,
+  "reason": "the paper gives his life only as 1290-1350 approximately and no day, month or year of death"
+ },
+ {
+  "id": "639",
+  "day": 2,
+  "month": "Heshvan",
+  "quote": "עד לפטירתו בב' בחשוון ה'ש\"ן (12 באוקטובר 1589)"
+ },
+ {
+  "id": "640",
+  "day": null,
+  "reason": "No Hebrew day and month: line 17 says \"תאריך פטירתו המדויק אינו מופיע ברשומות\" and gives only the last mention (5339 = 1578) and death \"בסביבות שנת ה'ש\"ם (1580)\", at about 75; years only."
+ },
+ {
+  "id": "641",
+  "day": 14,
+  "month": "Tamuz",
+  "quote": "בליל שבת קודש, י\"ד בתמוז ה'שצ\"ט (1639)"
+ },
+ {
+  "id": "642",
+  "day": null,
+  "reason": "No Hebrew day and month: the paper gives years only (born about 5305 / 1545, died \"ככל הנראה בגיל 43\", \"ה'שמ\"ח (1588)\", with later proposals for the 1590s; line 4) and says he died on a Friday afternoon (line 5, \"בערב שבת\"), a weekday without a date."
+ },
+ {
+  "id": "643",
+  "day": null,
+  "reason": "the paper gives years only for his death (probably between 5459/1699 and 5467/1706, the date 'not fixed in the sources'), no Hebrew day and month"
+ },
+ {
+  "id": "646",
+  "day": 19,
+  "month": "Elul",
+  "quote": "נפטר באיזמיר ביום י\"ט באלול ה'תל\"ג (31 באוגוסט 1673)"
+ },
+ {
+  "id": "647",
+  "day": null,
+  "reason": "The paper gives the year of his death only (\"הלך לעולמו בחברון בשנת ה'שמ\"ז (1587)\", line 6), no Hebrew day or month. The only Hebrew day and month in the paper, 18 Adar 5335 (1575, line 5), is the date the writing of Reshit Chochmah was finished, not his death."
+ },
+ {
+  "id": "648",
+  "day": 8,
+  "month": "Nisan",
+  "quote": "נפטר בדמי ימיו בחיי אביו, כבן 52 בלבד, ביום ח' בניסן ה'תע\"ב (1712)"
+ },
+ {
+  "id": "651",
+  "day": null,
+  "reason": "the paper gives years only ('שפ\"ה בקירוב (1625)', in the table and in the first paragraph), no Hebrew day or month of his death"
+ },
+ {
+  "id": "652",
+  "day": null,
+  "reason": "the paper's civil date 17 January 1756 (a Saturday) is 15 Shevat, one day off its own Hebrew date 14 Shevat and its 'ערב שבת' (14 Shevat 5516 is Friday 16 January 1756)"
+ },
+ {
+  "id": "657",
+  "day": 1,
+  "month": "Tevet",
+  "quote": "הסתלקותו ביום א' בטבת ה'תס\"ב (1 בינואר 1702)"
+ },
+ {
+  "id": "669",
+  "day": 9,
+  "month": "Tishri",
+  "quote": "נפטר כעבור יומיים (בט' בתשרי, ערב יום הכיפורים)"
  }
 ]

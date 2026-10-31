@@ -1,0 +1,3070 @@
+{
+ "_about": "Provenance of the owner's 15 NotebookLM papers of 18 October 2026 on sages already on the roster (phase 2a; ids 632 ... 669): per paper the roster label, the Drive document, the Word file, the line and word counts of the Hebrew text, how the two independent copies of the Drive text compared and how each difference was settled, what the paper says that the roster's entry does not (the entry is not edited), the slips and footnote problems found in the Hebrew (never corrected), the teacher and family relations the paper states (each with its quote and what became of it in data/links-from-research.json and public/data-paper-links.json), those a second reader rejected, and the death date or why none. Written by P/tools/assemble_record.py from the workers' files; tests/ownerPapers.test.ts reads it. A line number is the line of the paper's file; the English and Russian files are line for line with it.",
+ "date": "2026-10-27",
+ "drive_folder": "1_E2VtWpJ6RLyHCxvOV9_NUmIUZkZU3Jc",
+ "counts": {
+  "papers_before": 454,
+  "papers_after": 469
+ },
+ "papers": [
+  {
+   "id": "632",
+   "label": "רבי משה מטראני (המבי״ט)",
+   "key": "המבי\"ט",
+   "drive": {
+    "doc": "1MGUxIdEthSV3a2q7pADzAyiPhsVyHCguI0tQZTRRPpg",
+    "title": "פועלו, מורשתו ומשנתו התורנית של רבי משה בן יוסף מטראני (המבי\"ט): עיון היסטורי, הלכתי ומחשבתי"
+   },
+   "docx": "פועלו, מורשתו ומשנתו התורנית של רבי משה בן יוסף מטראני (המביט)- עיון היסטורי, הלכתי ומחשבתי.docx",
+   "he": {
+    "lines": 96,
+    "words": 2640
+   },
+   "copies": {
+    "a_lines": 96,
+    "b_lines": 96,
+    "identical": true,
+    "differences": []
+   },
+   "about_sage": "his own paper; evidence at line(s) 1, 3, 5; excluded: 641 (His son: the paper calls him \"בנו, רבי יוסף מטראני (המהרי\"ט)\" and \"אביו המבי\"ט\" (line 21) and sets him in the next generation (line 19, line 66). The Mabit's own father is also called \"רבי יוסף מטראני\" (line 3), so the name Yosef Matrani on line 3 is the father, not the Maharit (b. 1568).); 308 (A 13th-century Italian sage; the paper names \"רבי ישעיה די טראני (הרִיד)\" only as the head of the family of sages in Trani to which the Matrani family traced itself (line 3), not as a contemporary or a relative of the Mabit's own lifetime.); 68 (The paper's \"המהרי\"ט\" is always R. Yosef Matrani, the Mabit's son (lines 19, 21, 57, 66, \"רבי יוסף מטראני (המהרי\"ט)\" and \"בנו, המהרי\"ט (רבי יוסף מטראני)\"); R. Yosef Taitazak is not named in the paper.)",
+   "disagreements": [
+    {
+     "field": "works",
+     "kind": "conflict",
+     "node": "bio: \"ושני כרכי תשובות שנדפסו אחרי מותו\" (record: Hebrew Wikipedia \"את שני כרכי תשובותיו\")",
+     "paper": "his responsa are in three parts (\"בשלושה חלקים\"; the table: \"שלושה חלקים\")",
+     "line": 43,
+     "quote": "שאלות ותשובות המבי\"ט (בשלושה חלקים)"
+    },
+    {
+     "field": "office",
+     "kind": "adds",
+     "node": "bio: head of a yeshiva, judge and posek; says nothing of an office after Karo's death",
+     "paper": "after Karo's death in 1575 he was appointed head of the sages of Safed and head of the court (av beit din), an office he held five years until his death",
+     "line": 5,
+     "quote": "מונה המבי\"ט לראש חכמי צפת ולאב בית הדין בעיר"
+    },
+    {
+     "field": "office",
+     "kind": "nuance",
+     "node": "record, Sefaria: \"appointed that community's rabbi at the age of twenty\" and \"the next fifty-five years\"; Hebrew Wikipedia: sat in the Safed court 54 years",
+     "paper": "appointed a member of the Great Court of Safed at 25, in 1525; served as judge and teacher of halakha for 54 consecutive years (the paper agrees with Hebrew Wikipedia on 54)",
+     "line": 5,
+     "quote": "כבר בגיל עשרים וחמש, בשנת 1525 (ה'רפ\"ה), מונה לכהן כחבר בית הדין הגדול של צפת"
+    },
+    {
+     "field": "death",
+     "kind": "adds",
+     "node": "death year 1580 (record: Hebrew Wikipedia \"ניסן ה׳ש״ם\"; no day)",
+     "paper": "he died on the last day of Pesach, 21 Nisan, 1580 (ה'ש\"ם): the year agrees, the day is added (not on the node)",
+     "line": 5,
+     "quote": "ביום טוב אחרון של פסח (כ\"א בניסן) בשנת 1580 (ה'ש\"ם)"
+    },
+    {
+     "field": "teacher",
+     "kind": "adds",
+     "node": "teacher link 573 (R. Yaakov Berab) only; the record notes the ordination only in passing (\"both ordained together by Berab\")",
+     "paper": "the paper dates the renewed ordination to 1538 (ה'רצ\"ח) by his teacher Berab and names the four sages Berab ordained: Karo, the Mabit, R. Avraham Shalom and R. Levi ibn Habib (the Maharalbach, who rejected it)",
+     "line": 59,
+     "quote": "לחידוש הסמיכה בשנת 1538 (ה'רצ\"ח) על ידי רבו, רבי יעקב בירב"
+    },
+    {
+     "field": "teacher",
+     "kind": "nuance",
+     "node": "bio: \"למד באדריאנופול אצל דודו רבי אהרן מטראני\" (the record's notes list R. Yosef Fasi too, not on the roster)",
+     "paper": "he studied in Adrianople in the yeshiva of R. Yosef Fasi and also with his uncle R. Aharon Matrani (the bio names only the uncle)",
+     "line": 4,
+     "quote": "בישיבתו של רבי יוסף פאסי, וכן אצל דודו, רבי אהרן מטראני"
+    },
+    {
+     "field": "student",
+     "kind": "adds",
+     "node": "no student link (no student of his is on the roster except his son 641)",
+     "paper": "the table names R. Yom Tov Zahalon (the Maharitz, author of the Maharitz responsa) as his distinguished student in Safed (he is not on the roster)",
+     "line": 18,
+     "quote": "רבי יום טוב צהלון (מהריט\"ץ) | תלמיד מובהק בצפת"
+    },
+    {
+     "field": "record",
+     "kind": "adds",
+     "node": "no link with R. Yosef Karo (443); the record notes the friendship and leaves it out (\"colleague\")",
+     "paper": "Karo and the Mabit sat side by side in the Safed court, were colleagues and also differed on principal questions, above all the shmita polemic (1532-1574); the table lists as colleagues Karo (443), the Radbaz (69), R. Betzalel Ashkenazi (442) and R. Moshe Alshich (630)",
+     "line": 20,
+     "quote": "ובד בבד חלקו זה על זה בסוגיות הלכתיות עקרוניות וראשוניות במעלה, בראשן פולמוס השמיטה"
+    },
+    {
+     "field": "central_idea",
+     "kind": "adds",
+     "node": "central idea: Kiryat Sefer and Beit Elohim only",
+     "paper": "the paper makes the shmita polemic with Karo on produce of gentile-owned land a main part of his halakhic teaching (the Mabit: a gentile's ownership does not remove the land's holiness)",
+     "line": 48,
+     "quote": "פולמוס השמיטה בין מרן רבי יוסף קארו (בעל ה\"בית יוסף\") לבין המבי\"ט"
+    },
+    {
+     "field": "central_idea",
+     "kind": "adds",
+     "node": "central idea does not mention his social and moral teaching",
+     "paper": "he spoke against ascetic tendencies and total withdrawal from society that spread in some kabbalistic circles in Safed",
+     "line": 61,
+     "quote": "המבי\"ט יצא נגד מגמות סגפניות ופרישות מוחלטת מן החברה"
+    },
+    {
+     "field": "works",
+     "kind": "nuance",
+     "node": "central idea: \"הפירוש הראשון שנדפס על פרק שירה\" (record: Hebrew Wikipedia)",
+     "paper": "says only that a detailed commentary on the midrash Perek Shira was attached to Beit Elohim; it does not say it was the first printed",
+     "line": 41,
+     "quote": "לחיבור זה צורף ביאור מפורט למדרש \"פרק שירה\""
+    },
+    {
+     "field": "works",
+     "kind": "adds",
+     "node": "no print date for Kiryat Sefer",
+     "paper": "Kiryat Sefer was first printed in Venice in 1551 (ה'שי\"א)",
+     "line": 30,
+     "quote": "נדפס לראשונה בוונציה בשנת 1551, ה'שי\"א"
+    },
+    {
+     "field": "bio",
+     "kind": "adds",
+     "node": "bio has nothing on his public activity",
+     "paper": "in 1556 he was among the Safed sages who joined the economic boycott that Don Joseph Nasi declared against the port of Ancona, after twenty-four returning conversos were burned",
+     "line": 6,
+     "quote": "בשנת 1556 היה בין נציגי חכמי צפת שסמכו ידיהם על החרם הכלכלי שיזם דון יוסף נשיא נגד נמל אנקונה באיטליה"
+    },
+    {
+     "field": "family",
+     "kind": "nuance",
+     "node": "record: the Rid of Trani is only a family ancestor in the sources (\"משפחה שהתייחסה לרבי ישעיה דיטראני\"), not recorded as a link",
+     "paper": "the same: the Matrani family \"התייחסה לייחוס אבות ישיר\" to a family of sages headed by R. Yeshayah di Trani (the Rid); the paper does not say that the Mabit himself descends from the Rid",
+     "line": 3,
+     "quote": "ובראשם רבי ישעיה די טראני (הרִיד)"
+    },
+    {
+     "field": "label",
+     "kind": "nuance",
+     "node": "label \"רבי משה מטראני (המבי״ט)\"",
+     "paper": "the paper writes the full name \"רבי משה בן יוסף מטראני\" and the epithet המבי\"ט",
+     "line": 3,
+     "quote": "רבי משה בן יוסף מטראני (הנודע בכינויו המבי\"ט"
+    },
+    {
+     "field": "record",
+     "kind": "nuance",
+     "node": "record: age at aliyah 18 in Hebrew Wikipedia, 16 in English Wikipedia, \"not stated\" in the bio",
+     "paper": "agrees with Hebrew Wikipedia: he went up in 1518, at about 18",
+     "line": 4,
+     "quote": "בהיותו כבן שמונה עשרה, עלה לארץ ישראל והשתקע בעיר צפת"
+    }
+   ],
+   "slips": [
+    {
+     "line": 14,
+     "quote": "כיהנו יחד 54 שנים",
+     "kind": "number",
+     "note": "Karo died in 1575 (line 5) and the Mabit joined the court in 1525, so they could sit together 50 years, not 54; 54 is the paper's figure for the Mabit's own term (line 5). Nothing corrected."
+    },
+    {
+     "line": 20,
+     "quote": "במשך למעלה מחמישה עשורים",
+     "kind": "number",
+     "note": "By the paper's own dates (1525 to Karo's death in 1575) the two sat together exactly 50 years, not more than five decades; the same wording is in line 70 (\"מעלה מיובל שנים\"). Nothing corrected."
+    },
+    {
+     "line": 70,
+     "quote": "במשך מעלה מיובל שנים",
+     "kind": "number",
+     "note": "See line 20: \"more than fifty years\" beside Karo does not fit 1525 to 1575 (50 years). Nothing corrected."
+    },
+    {
+     "line": 24,
+     "quote": "מתאפיינת בהקיפה הנרחב",
+     "kind": "typo",
+     "note": "\"בהקיפה\" is probably \"בהיקפה\". Nothing corrected."
+    },
+    {
+     "line": 26,
+     "quote": "(מקרקרא, י\"ג מדות",
+     "kind": "garbled",
+     "note": "\"מקרקרא\" is probably \"מקרא\" (the Scripture), the first of the four sources listed in lines 32-35. Nothing corrected."
+    },
+    {
+     "line": 39,
+     "quote": "התקשרות משפטית-חיובים",
+     "kind": "garbled",
+     "note": "Probably \"משפטית-חיובית\" or \"התקשרות משפטית־חיובית\"; an odd compound as written. Nothing corrected."
+    },
+    {
+     "line": 39,
+     "quote": "בשונה ממלאכים שאינם נדונים למקרים וחסרונות",
+     "kind": "wrong-word",
+     "note": "\"נדונים\" is probably \"נתונים\" (not subject to accidents and deficiencies). Nothing corrected."
+    },
+    {
+     "line": 42,
+     "quote": "הגישה הפסוקית",
+     "kind": "wrong-word",
+     "note": "In a heading about halakhic rulings (responsa) \"הפסוקית\" is probably \"הפסיקתית\". Nothing corrected."
+    },
+    {
+     "line": 62,
+     "quote": "האנוסים שנגאלו ספרד ופורטוגל",
+     "kind": "garbled",
+     "note": "\"שנגאלו ספרד\" has no preposition and the verb is odd; probably \"שנמלטו מספרד ופורטוגל\" (or \"שגורשו מ־\"). Nothing corrected."
+    },
+    {
+     "line": 65,
+     "quote": "משמש תשתיות למדניות",
+     "kind": "grammar",
+     "note": "Singular verb \"משמש\" with the plural \"תשתיות\"; probably \"משמש תשתית למדנית\" or \"משמשים תשתיות\". Nothing corrected."
+    },
+    {
+     "line": 80,
+     "quote": "התשפ;quot&ו - דרשו",
+     "kind": "garbled",
+     "note": "Source 9's title in the list carries an HTML entity left over (&quot;)."
+    },
+    {
+     "line": 21,
+     "quote": "מפירושיו ומשמועותיו של אביו המבי\"ט [cite: 7, 8, 9]",
+     "kind": "other",
+     "note": "Markers 8 and 9 point at sources whose titles are about Shabbat HaGadol customs (source 8 'מנהג שבת הגדול', source 9 a Dirshu bulletin for Parashat Tzav); judged by title only, they do not evidently carry the sentence about the Maharit citing his father in Tsafnat Paneach."
+    },
+    {
+     "line": 44,
+     "quote": "גליותיהם",
+     "kind": "garbled",
+     "note": "found by the translator: unclear word in 'כשרות גליותיהם' (perhaps גיטיהם, their bills of divorce, or גלותם); rendered literally in the translations, not reconstructed"
+    }
+   ],
+   "footnotes": [],
+   "links": [
+    {
+     "a": "573",
+     "b": "632",
+     "type": "teacher",
+     "quote": "נכנס המבי\"ט ללמוד בישיבתו של רבי יעקב בירב, והיה לתלמידו המובהק",
+     "outcome": "already-on-site",
+     "reason": "the site already states this relation (data.json, the supplements or the catalogue links)"
+    },
+    {
+     "a": "632",
+     "b": "641",
+     "type": "family",
+     "relation": "father",
+     "quote": "רבי יוסף מטראני (מהרי\"ט) | בנו ותלמידו",
+     "outcome": "already-on-site",
+     "reason": "the site already states this relation (data.json, the supplements or the catalogue links)"
+    },
+    {
+     "a": "632",
+     "b": "641",
+     "type": "teacher",
+     "quote": "רבי יוסף מטראני (מהרי\"ט) | בנו ותלמידו",
+     "outcome": "added",
+     "reason": "in data-paper-links.json"
+    }
+   ],
+   "links_rejected": [],
+   "yahrzeit": {
+    "day": 21,
+    "month": "Nisan",
+    "quote": "לפטירתו ביום טוב אחרון של פסח (כ\"א בניסן) בשנת 1580",
+    "outcome": "added"
+   }
+  },
+  {
+   "id": "635",
+   "label": "רבי עובדיה ספורנו",
+   "key": "ספורנו",
+   "drive": {
+    "doc": "1imB02YhmCiH4LB4RiUguT8jGUtqec38gYUSCtXfEme8",
+    "title": "דיוקנו של חכם רנסאנס עברי: פועלו, משנתו ומורשתו התורנית של רבי עובדיה ספורנו"
+   },
+   "docx": "דיוקנו של חכם רנסאנס עברי- פועלו, משנתו ומורשתו התורנית של רבי עובדיה ספורנו.docx",
+   "he": {
+    "lines": 73,
+    "words": 2396
+   },
+   "copies": {
+    "a_lines": 73,
+    "b_lines": 73,
+    "identical": true,
+    "differences": []
+   },
+   "about_sage": "his own paper; evidence at line(s) 1, 3, 3; excluded: 18 (the paper's man was born in Cesena, was a physician and community head in Rome and in Bologna, wrote the Torah commentary and Or Amim, and lived 1468/1473-1549/1550 by its own figures; roster 18 is Ovadia of Bartenura (1445-1515 on the roster), and the paper never calls its sage by that place name); 336 (a modern man (roster 1920-2013); the paper's man lived in the Renaissance); 144 (a modern man (roster 1889-1969); the paper's man lived in the Renaissance)",
+   "disagreements": [
+    {
+     "field": "birth",
+     "kind": "nuance",
+     "node": "birth_year 1470 (exact), era label כ־1470–1549",
+     "paper": "gives the birth year as 1468 or 1473 and the death as 1549 or 1550 (both with a slash), i.e. no single year",
+     "line": 3,
+     "quote": "רבי עובדיה בן יעקב ספורנו (1468/1473–1549/1550)"
+    },
+    {
+     "field": "death",
+     "kind": "nuance",
+     "node": "death_year 1549 (the record: Hebrew Wikipedia fixes 1549, English Wikipedia says 1549 or 1550)",
+     "paper": "the death is the Hebrew year 5309 (1549) or 5310 (1550); no day or month",
+     "line": 7,
+     "quote": "בשנת ה'ש\"ט (1549) או ה'ש\"י (1550)"
+    },
+    {
+     "field": "label",
+     "kind": "nuance",
+     "node": "roster label רבי עובדיה ספורנו",
+     "paper": "calls him with his patronymic, רבי עובדיה בן יעקב ספורנו",
+     "line": 3,
+     "quote": "רבי עובדיה בן יעקב ספורנו"
+    },
+    {
+     "field": "office",
+     "kind": "nuance",
+     "node": "bio: מראשי קהילת רומא וקהילת בולוניה (head of the Rome and the Bologna communities)",
+     "paper": "in Rome one of the heads of the community; in Bologna a printer, physician, dayan and av beit din (not called a community head there)",
+     "line": 7,
+     "quote": "וכיהן כדיין ואב בית דין אשר אליו הופנו שאלות הלכתיות מחכמי איטליה"
+    },
+    {
+     "field": "place",
+     "kind": "nuance",
+     "node": "the record (English Wikipedia): he left Rome about 1525 and founded a yeshiva in Bologna",
+     "paper": "he left Rome after the sack of Rome in 1527 (\"ככל הנראה\", probably) for financial reasons and moved to Bologna, where his brother Hananel already lived; no yeshiva",
+     "line": 6,
+     "quote": "ביזת רומא בשנת 1527"
+    },
+    {
+     "field": "bio",
+     "kind": "adds",
+     "node": "no date for his medical degree",
+     "paper": "received the degree of doctor of medicine in Rome on 29 Nisan 5261 (7 April 1501): the two dates do not agree, see slips",
+     "line": 4,
+     "quote": "זכה בתואר מוסמך ברפואה ביום כ\"ט בניסן ה'רס\"א (7 באפריל 1501)"
+    },
+    {
+     "field": "bio",
+     "kind": "adds",
+     "node": "bio says he served as a physician in Bologna",
+     "paper": "adds that he was known as \"אביר הרופאים\"",
+     "line": 7,
+     "quote": "אשר זכה לכינוי \"אביר הרופאים\""
+    },
+    {
+     "field": "works",
+     "kind": "adds",
+     "node": "bio lists the Torah commentary, Psalms, Song of Songs, Kohelet, Job, Avot and Or Amim",
+     "paper": "adds that he translated Or Amim into Latin himself and dedicated it, with his Kohelet commentary, to Henri II, king of France",
+     "line": 12,
+     "quote": "והקדיש אותו, יחד עם פירושו לספר קהלת, לאנרי השני, מלך צרפת"
+    },
+    {
+     "field": "works",
+     "kind": "adds",
+     "node": "no translation of Euclid and no commentary on the Twelve Prophets",
+     "paper": "the table gives a Hebrew translation of Euclid's Elements (\"שמונת היסודות\"), a manuscript of about 1520",
+     "line": 25,
+     "quote": "תרגום \"שמונת היסודות\" לאוקלידס | מדע ומתמטיקה | סביבות 1520 (כתב יד)"
+    },
+    {
+     "field": "works",
+     "kind": "adds",
+     "node": "no commentary on the Twelve Prophets",
+     "paper": "the table gives a commentary on Jonah, Habakkuk and Zechariah printed in the book Likutei Shoshanim, Amsterdam 1724",
+     "line": 24,
+     "quote": "פירוש לתרי עשר (יונה, חבקוק, זכריה) | פרשנות מקראית | אמסטרדם"
+    },
+    {
+     "field": "works",
+     "kind": "nuance",
+     "node": "the record (Maarekhet Sefarim): printed in the Mikraot Gedolot called \"קהלת משה\"",
+     "paper": "writes the edition's name as \"קהלות משה\", Amsterdam 5484",
+     "line": 46,
+     "quote": "כגון מהדורת \"קהלות משה\", אמסטרדם תפ\"ד"
+    },
+    {
+     "field": "teacher",
+     "kind": "adds",
+     "node": "no teacher on the site (his father, R. Yaakov Sforno, is not on the roster)",
+     "paper": "he received his Torah and his first knowledge of Talmud and halakha from his father, R. Yaakov Sforno",
+     "line": 9,
+     "quote": "קיבל רבי עובדיה ספורנו מאביו, ר' יעקב ספורנו"
+    },
+    {
+     "field": "record",
+     "kind": "nuance",
+     "node": "four influence links (Rashi, Ibn Ezra, the Rashbam, the Ramban), from English Wikipedia's sentence that he selected interpretations from earlier exegetes",
+     "paper": "says only that his Torah commentary was printed in most Mikraot Gedolot beside the commentaries of Rashi, Ibn Ezra and the Ramban; it does not say he drew on them, and the Rashbam is not named",
+     "line": 46,
+     "quote": "לצד פירושי רש\"י, ראב\"ע ורמב\"ן"
+    }
+   ],
+   "slips": [
+    {
+     "line": 3,
+     "quote": "נתון המעידה על ייחוסה התורני",
+     "kind": "grammar",
+     "note": "gender: masculine \"נתון\" with feminine \"המעידה\" (probably \"נתון המעיד\" or \"נתונים המעידים\")"
+    },
+    {
+     "line": 4,
+     "quote": "כרואי-השפה המרכזיים",
+     "kind": "garbled",
+     "note": "\"רואי-השפה\" is not a Hebrew word; the sentence calls Latin and Arabic the central languages of antiquity and the Middle Ages, so a word like \"שפות\" or \"לשונות\" was probably meant"
+    },
+    {
+     "line": 4,
+     "quote": "כ\"ט בניסן ה'רס\"א (7 באפריל 1501)",
+     "kind": "date",
+     "note": "the Hebrew and the civil date do not match: 7 April 1501 is 9 Nisan 5261 on the Gregorian calendar and 19 Nisan 5261 on the Julian one (hebdate.mjs), while 29 Nisan 5261 falls on 27 April (Gregorian) or 17 April (Julian) 1501"
+    },
+    {
+     "line": 11,
+     "quote": "במעגל השני",
+     "kind": "other",
+     "note": "\"in the second circle\" has no antecedent in the paper (probably a leftover of the text generator); nothing is corrected"
+    },
+    {
+     "line": 11,
+     "quote": "שעוסק היה בשאלת שריפת הכתבים",
+     "kind": "grammar",
+     "note": "odd word order and form (\"שעסק\" or \"שעסק בשאלת\" would be usual)"
+    },
+    {
+     "line": 11,
+     "quote": "יוהנס פפפרקורן",
+     "kind": "name",
+     "note": "three peh in a row; probably פפרקורן (Pfefferkorn) was meant"
+    },
+    {
+     "line": 12,
+     "quote": "לאנרי השני",
+     "kind": "typo",
+     "note": "probably \"להנרי השני\" (Henri II); the aleph for a he"
+    },
+    {
+     "line": 42,
+     "quote": "בפירושו לשמות י\"פ, ה'",
+     "kind": "typo",
+     "note": "\"י\"פ\" is not a chapter number; the verse quoted in the same sentence (\"והייתם לי סגולה מכל העמים כי לי כל הארץ\") is Exodus 19:5, so י\"ט was probably meant"
+    },
+    {
+     "line": 43,
+     "quote": "(שמות י\"ג, י\"פ)",
+     "kind": "typo",
+     "note": "\"י\"פ\" again, the same ט to פ slip; the Exodus 13 verse is probably י\"ט"
+    },
+    {
+     "line": 43,
+     "quote": "במידות תרומיות",
+     "kind": "wrong-word",
+     "note": "\"תרומיות\" does not fit \"מידות\" (character traits); the sentence says wisdom and leadership are worthless without them, so a word like \"טובות\" or \"תרבותיות\" may have been meant; unclear"
+    },
+    {
+     "line": 46,
+     "quote": "התקבלו בתפוסה רחבה",
+     "kind": "wrong-word",
+     "note": "probably \"בתפוצה רחבה\" (wide circulation)"
+    },
+    {
+     "line": 72,
+     "quote": "quot&ר אברהם פרווינצאלו",
+     "kind": "garbled",
+     "note": "text-generator leftover (\"quot&\", the HTML entity for a quotation mark) in the title of source 20, where a geresh or quotation mark was meant"
+    },
+    {
+     "line": 61,
+     "quote": "היהודים לאן?",
+     "kind": "other",
+     "note": "Marker [9] (a Hartman Institute page 'היהודים לאן? הגאונות היהודית כהזדמנות ציונית') is cited on lines 12, 42 and 51 for Sforno's universalism and the meaning of the chosen people; by its title it is not evidently about that."
+    }
+   ],
+   "footnotes": [
+    {
+     "marker": 10,
+     "line": 32,
+     "source_title": "תכלית המצוות - ויקיספר",
+     "note": "cited for Sforno's commentary on Psalms (the four pillars of the book) and for the Fear and Love of God; a Wikibooks page on the purpose of the commandments is by its title not about the Psalms commentary (it fits the Kavvanot HaTorah sentences)"
+    },
+    {
+     "marker": 10,
+     "line": 23,
+     "source_title": "תכלית המצוות - ויקיספר",
+     "note": "the same source cited in the table row for the Psalms commentary (prayer, confession, fear and love)"
+    },
+    {
+     "marker": 10,
+     "line": 22,
+     "source_title": "תכלית המצוות - ויקיספר",
+     "note": "the same source cited in the table row for the Job commentary (the righteous who suffers, providence)"
+    },
+    {
+     "marker": 21,
+     "line": 47,
+     "source_title": "פרשת האזינו - \"זכר ימות עולם בינו שנות דור ודור\" - ספריא",
+     "note": "judged by the title alone: a Sefaria sheet on the portion Haazinu is not evidently about how Azariah de' Rossi and David Gans admired Sforno"
+    }
+   ],
+   "links": [],
+   "links_rejected": [],
+   "links_none_reason": "the paper relates to its sage only his father R. Yaakov Sforno, his brother Hananel, his pupil Reuchlin and the later admirers Azariah de' Rossi and R. David Gans (roster 428, whom the paper mentions only in admiration, with no teaching or family relation), and none of these is a teacher, student or relative of his on the roster; the roster names the paper's lines list (the Maharik 459, Rashi 594, the Ramban 44, King David 557) are a citation, printed commentaries and the author of Psalms, and the mention of Rashi, Ibn Ezra and the Ramban on line 46 is of editions, not of study; the site's four influence links to Rashi, Ibn Ezra, Rashbam and the Ramban are not stated by this paper",
+   "yahrzeit": null,
+   "yahrzeit_none_reason": "the paper gives the death by years only (ה'ש\"ט 1549 or ה'ש\"י 1550); its one Hebrew day and month is the date of his medical degree, not of his death"
+  },
+  {
+   "id": "636",
+   "label": "רבנו ירוחם בן משולם",
+   "key": "ירוחם",
+   "drive": {
+    "doc": "1V9Wcbm_CemNN-4K7t1YArRY5Ky4zqYQ93SThJ-xqfAA",
+    "title": "פועלו, משנתו ומורשתו של רבינו ירוחם בן משולם: עיון היסטורי, הלכתי וטקסטואלי"
+   },
+   "docx": "פועלו, משנתו ומורשתו של רבינו ירוחם בן משולם- עיון היסטורי, הלכתי וטקסטואלי.docx",
+   "he": {
+    "lines": 65,
+    "words": 2258
+   },
+   "copies": {
+    "a_lines": 65,
+    "b_lines": 65,
+    "identical": true,
+    "differences": []
+   },
+   "about_sage": "his own paper; evidence at line(s) 1, 3, 11; excluded: 283 (shares only the name Meshullam; the paper's man is Yerucham ben Meshullam, born in Provence (or Languedoc), who moved to Toledo, author of Meisharim and Toldot Adam VeChava, with the years 1290-1350 approximately)",
+   "disagreements": [
+    {
+     "field": "label",
+     "kind": "nuance",
+     "node": "roster label רבנו ירוחם בן משולם",
+     "paper": "writes \"רבינו\" (with yod) and gives the abbreviation רי\"ו",
+     "line": 3,
+     "quote": "רבינו ירוחם בן משולם (המכונה רי\"ו; 1290–1350 לערך)"
+    },
+    {
+     "field": "birth",
+     "kind": "nuance",
+     "node": "birth_year 1290 and death_year 1350 with date_precision exact (the era label says כ־1290–1350)",
+     "paper": "gives the years as approximate (\"לערך\") and the expulsion from France as 1306 or, according to some, 1320",
+     "line": 3,
+     "quote": "רבינו ירוחם בן משולם (המכונה רי\"ו; 1290–1350 לערך)"
+    },
+    {
+     "field": "teacher",
+     "kind": "adds",
+     "node": "teachers: the Rosh and R. Avraham ben Ishmael only",
+     "paper": "adds that he received his first Torah from his father, from a confidant and uncle, and from other sages of Provence (none named, none on the roster)",
+     "line": 4,
+     "quote": "את תורתו הראשונה קבל מאביו, מאיש אמונו ודודו, ומחכמי פרובאנס נוספים בני התקופה"
+    },
+    {
+     "field": "teacher",
+     "kind": "adds",
+     "node": "bio: studied with the Rosh (the record: for a short time)",
+     "paper": "adds that the study lasted until the Rosh died in the Hebrew year 5088 (1327)",
+     "line": 14,
+     "quote": "רי\"ו למד אצלו פרק זמן קצר עד לפטירת הרא\"ש בשנת ה'פ\"ח (1327)"
+    },
+    {
+     "field": "works",
+     "kind": "adds",
+     "node": "no dates of composition",
+     "paper": "Meisharim was begun in 5090 (1330) and finished four years later (1334)",
+     "line": 19,
+     "quote": "בשנת ה'צ' (1330) החל רי\"ו לחבר את ספרו הראשון, \"ספר מישרים\", וסיימו כעבור ארבע שנים (1334)"
+    },
+    {
+     "field": "works",
+     "kind": "adds",
+     "node": "no mention of Issur VeHeter",
+     "paper": "later printers attached the book Issur VeHeter to his volumes and some attributed it to him, which the paper calls a mistake (its author a pupil of R. Peretz of Corbeil)",
+     "line": 21,
+     "quote": "בדפוסים מאוחרים צורף לעיתים \"ספר איסור והיתר\" לכרכי רבינו ירוחם, ומדפיסים מסוימים אף יחסו אותו אליו"
+    },
+    {
+     "field": "works",
+     "kind": "adds",
+     "node": "no mention of a lost work",
+     "paper": "he wrote a booklet of hints and explanations on the aggadot of the Talmud in the order of the weekly portions, never printed and lost",
+     "line": 21,
+     "quote": "חיבר קונטרס של רמזים וביאורים על אגדות הש\"ס על פי סדר פרשיות התורה"
+    },
+    {
+     "field": "record",
+     "kind": "adds",
+     "node": "the record has the Chida's tradition that commentaries on his book are lost or harm their authors (Maarekhet Sefarim Ayin 32:3)",
+     "paper": "adds that the Maggid of R. Yosef Karo called him by the Aramaic name \"ירוחם טמירי\" (the hidden Yerucham)",
+     "line": 35,
+     "quote": "המלאך המגיד מכנה את רי\"ו בשם הארמי \"ירוחם טמירי\""
+    },
+    {
+     "field": "record",
+     "kind": "nuance",
+     "node": "Hebrew Wikipedia (the record): his rulings are mentioned many times in the Beit Yosef",
+     "paper": "his rulings are brought hundreds of times in the Beit Yosef",
+     "line": 34,
+     "quote": "פסקיו של רי\"ו מובאים מאות פעמים ב\"בית יוסף\""
+    }
+   ],
+   "slips": [
+    {
+     "line": 3,
+     "quote": "פרובאנס וחצי האי הסיני",
+     "kind": "wrong-word",
+     "note": "\"חצי האי הסיני\" is the Sinai Peninsula; the sentence is about France, Provence and Spain, so \"חצי האי האיברי\" was meant"
+    },
+    {
+     "line": 6,
+     "quote": "לחצי האי הסיני והפריית",
+     "kind": "wrong-word",
+     "note": "the same slip again (the Iberian peninsula, written as the Sinai peninsula)"
+    },
+    {
+     "line": 9,
+     "quote": "מעבר מטולדו לספרד",
+     "kind": "wrong-word",
+     "note": "Toledo is in Spain; the text says he moved from France (Provence) to Toledo in Castile, so this probably should read from Provence to Spain or to Toledo"
+    },
+    {
+     "line": 15,
+     "quote": "תמסורת זו",
+     "kind": "typo",
+     "note": "probably \"מסורת זו\" (an extra letter tav)"
+    },
+    {
+     "line": 20,
+     "quote": "לאחר שפשטה שמעו של",
+     "kind": "grammar",
+     "note": "gender: the feminine verb \"פשטה\" with the masculine noun \"שמעו\" (usually \"פשט שמעו\")"
+    },
+    {
+     "line": 35,
+     "quote": "(ירוחם הנסתר/המוכסא)",
+     "kind": "garbled",
+     "note": "unclear word: \"טמירי\" means hidden or covered, so a form of \"מכוסה\" (the covered one) was probably meant; nothing is corrected"
+    },
+    {
+     "line": 45,
+     "quote": "המחקר והההדרה המודרניים",
+     "kind": "typo",
+     "note": "a doubled he: \"והההדרה\" for \"וההדרה\""
+    },
+    {
+     "line": 60,
+     "quote": "בספרו \"פסקי מהרי - Yeshiva University",
+     "kind": "other",
+     "note": "the title of source 14 is cut off in the middle (an unclosed quotation mark, no end of the book's name): a truncated entry in the source list"
+    }
+   ],
+   "footnotes": [
+    {
+     "marker": 7,
+     "line": 6,
+     "source_title": "מנהג ריבוי הדסים וערבות בספרד בתקופת הראשונים",
+     "note": "cited for the shift of the centre of Torah from France and Provence to Spain and the enrichment of the Spanish school by the Tosafists' methods; by its title the source is a study of the custom of many myrtles and willows"
+    },
+    {
+     "marker": 7,
+     "line": 16,
+     "source_title": "מנהג ריבוי הדסים וערבות בספרד בתקופת הראשונים",
+     "note": "cited again for the mixing of the Provençal, Ashkenazi-French and Spanish traditions in his writing; the same custom-study by title"
+    }
+   ],
+   "links": [
+    {
+     "a": "598",
+     "b": "636",
+     "type": "teacher",
+     "quote": "הרא\"ש (רבינו אשר בן יחיאל), מגדולי חכמי אשכנז שהיגר לספרד ועמד בראש בית המדרש בטולדו, היה מרבותיו הראשונים של רי\"ו בספרד",
+     "outcome": "already-on-site",
+     "reason": "the site already states this relation (data.json, the supplements or the catalogue links)"
+    }
+   ],
+   "links_rejected": [],
+   "yahrzeit": null,
+   "yahrzeit_none_reason": "the paper gives his life only as 1290-1350 approximately and no day, month or year of death"
+  },
+  {
+   "id": "639",
+   "label": "רבי שמואל די מדינה (המהרשד״ם)",
+   "key": "המהרשד\"ם",
+   "drive": {
+    "doc": "1VKaOPHR1ITd2qwKyJ6yjfphx1L8k5M3V_OM-fMUzydk",
+    "title": "פועלו, מנהיגותו ומשנתו התורנית של רבי שמואל די מדינה (המהרשד\"ם): תולדות חייו, דרכו ההלכתית ומורשתו לדורות"
+   },
+   "docx": "פועלו, מנהיגותו ומשנתו התורנית של רבי שמואל די מדינה (המהרשדם)- תולדות חייו, דרכו ההלכתית ומורשתו לדורות.docx",
+   "he": {
+    "lines": 90,
+    "words": 2782
+   },
+   "copies": {
+    "a_lines": 90,
+    "b_lines": 90,
+    "identical": true,
+    "differences": []
+   },
+   "about_sage": "his own paper; evidence at line(s) 1, 3, 20; excluded: 631 (The paper is about R. Shmuel \"די מדינה\" of Salonika (lines 1, 3, 15), born 1506, died 2 Heshvan 5350 (line 5), author of the responsa \"שו\"ת מהרשד\"ם\" and of \"בן שמואל\" (lines 20, 25); neither \"אוזידא\" nor \"מדרש שמואל\" occurs in it.); 641 (Line 14 writes \"רבי יוסף טאיטאצאק (מהרי\"ט)\": the paper's \"מהרי\"ט\" is R. Yosef Taitazak, the Salonika teacher (roster 68), not R. Yosef Mitrani of Safed (641); the scan matches the abbreviation to 641.)",
+   "disagreements": [
+    {
+     "line": 3,
+     "quote": "נולד בשנת ה'רס\"ו (1506) בעיר סלוניקי",
+     "field": "birth",
+     "kind": "nuance",
+     "node": "birth_year 1505 (era \"כ־1505–1589\"; the record says Sefaria 1505, Hebrew Wikipedia 1506)",
+     "paper": "born 5266 (1506), in Salonika; \"כבן 83\" at death (line 5) fits 1506"
+    },
+    {
+     "line": 5,
+     "quote": "בב' בחשוון ה'ש\"ן (12 באוקטובר 1589)",
+     "field": "death",
+     "kind": "adds",
+     "node": "death_year 1589 only (the record notes 12 October 1589 from Hebrew Wikipedia)",
+     "paper": "the day: 2 Heshvan 5350, with the civil date 12 October 1589 (line 7 repeats it); the pair agrees (Gregorian)"
+    },
+    {
+     "line": 5,
+     "quote": "ראב\"ד וראש ישיבה מרכזי",
+     "field": "office",
+     "kind": "nuance",
+     "node": "bio: \"דיין וראש ישיבה בעירו\"",
+     "paper": "\"ראב\"ד\" (head of the court) and head of a central yeshiva; line 10: \"אב בית דין בסלוניקי, ראש ישיבה, פוסק בינלאומי\""
+    },
+    {
+     "line": 15,
+     "quote": "בשנת רצ\"א (1531), והוא כבן 25 בלבד, הקים המהרשד\"ם ישיבה גדולה בסלוניקי ועמד בראשה",
+     "field": "office",
+     "kind": "adds",
+     "node": "no founding year for his yeshiva",
+     "paper": "founded and headed a great yeshiva in Salonika in 5291 (1531), aged about 25; line 15 adds support from Doña Gracia Mendes-Nasi (roster 524) for the students (a patron, not teaching or family)"
+    },
+    {
+     "line": 22,
+     "quote": "יצא לאור בסלוניקי בשנים ה'ש\"ם–ה'שמ\"ב (1580–1582) בחיי המחבר",
+     "field": "works",
+     "kind": "adds",
+     "node": "bio: about a thousand responsa \"נדפסו\" in \"שו\"ת מהרשד\"ם\" (no printing history)",
+     "paper": "first printing \"פסקי רשד\"ם\", Salonika 1580–1582, in his lifetime; second printing 1594–1598 by his son R. Moshe (line 23)"
+    },
+    {
+     "line": 27,
+     "quote": "חיבר חידושים עמוקים על כמה ממסכתות הש\"ס, וביניהן מסכת קידושין ומסכת ביצה, וכן פירוש על מסכת אבות",
+     "field": "works",
+     "kind": "adds",
+     "node": "works named: \"שו\"ת מהרשד\"ם\", \"בן שמואל\"",
+     "paper": "also novellae on Kiddushin and Beitza and a commentary on Avot, mostly left in manuscript"
+    },
+    {
+     "line": 25,
+     "quote": "ספר דרשות שנערך והובא לבית הדפוס במנטובה בשנת ה'שפ\"ב (1622) על ידי נכדו רבי שמעיה די מדינה",
+     "field": "works",
+     "kind": "nuance",
+     "node": "record: the Maarekhet Sefarim quote says \"נדפס בוויניציא שע\"ו\" (the notes say the Chida dates the Venice printing 5336 and that Mantua 5382 is not used)",
+     "paper": "\"בן שמואל\": thirty sermons, edited and sent to press in Mantua in 5382 (1622) by his grandson R. Shemaya de Medina"
+    },
+    {
+     "line": 23,
+     "quote": "נטל בנו, רבי משה די מדינה (שהיה דיין ומנהיג בסלוניקי), את מלאכת העריכה",
+     "field": "family",
+     "kind": "adds",
+     "node": "no relative named in the bio; family links: none",
+     "paper": "an older brother R. Shemaya raised him (line 3); his son R. Moshe edited the responsa; sons-in-law R. Yitzchak Chayon, R. Yosef Tzarfati, R. Moshe Ezra (line 5); grandsons R. Shemaya (line 25) and R. Shmuel Chayon (line 50). None is on the roster"
+    },
+    {
+     "line": 50,
+     "quote": "כמו כן למדו אצלו רבי אברהם בן בורג'יל (מחבר \"לחם אבירים\" על הש\"ס)",
+     "field": "student",
+     "kind": "adds",
+     "node": "students on the site: 642 and 654; the record names R. Yosef ibn Ezra and R. Shmuel Chayon as students not on the roster",
+     "paper": "also R. Avraham ben Burgil (author of \"לחם אבירים\"), who is not on the roster and not in the record; line 50 also names R. Yosef ibn Ezra, rabbi of Sofia, and the grandson R. Shmuel Chayon"
+    },
+    {
+     "line": 50,
+     "quote": "רבי מנחם די לונזאנו (מחבר \"מאור עיניים\")",
+     "field": "student",
+     "kind": "nuance",
+     "node": "link 639 -> 654 rests (record) on English Wikipedia and Sefaria, not on Hebrew Wikipedia",
+     "paper": "the paper also lists him among those who \"למדו אצלו\" (lines 50 and 57)"
+    },
+    {
+     "line": 14,
+     "quote": "רבי יוסף טאיטאצאק (מהרי\"ט)",
+     "field": "teacher",
+     "kind": "nuance",
+     "node": "teacher 68 \"רבי יוסף טאיטצאק\" (spelling without the second alef)",
+     "paper": "\"טאיטאצאק\" (the spelling the record's Hebrew Wikipedia quote also uses) and the abbreviation \"מהרי\"ט\", which is also the label of roster 641"
+    },
+    {
+     "line": 52,
+     "quote": "עמד בקשרי פסיקה רציפים עם ענקי הדור: רבי יוסף בן לב (ריב\"ל)",
+     "field": "record",
+     "kind": "nuance",
+     "node": "record notes: English Wikipedia lists Joseph ibn Leb (640) as a schoolmate (colleague, not recorded)",
+     "paper": "continuous halakhic correspondence with him (and the Radbaz, R. Betzalel Ashkenazi and the Maharshakh); no schoolmate relation is stated"
+    }
+   ],
+   "slips": [
+    {
+     "line": 3,
+     "quote": "עוד בבחרותו שורגרו אליו שאלות",
+     "kind": "garbled",
+     "note": "\"שורגרו\" is not a word; probably \"שוגרו\" (were sent). Nothing corrected."
+    },
+    {
+     "line": 5,
+     "quote": "שיכל את אחיו הגדול שגדלו",
+     "kind": "garbled",
+     "note": "\"שגדלו\" does not fit; probably \"שגידלו\" (who raised him; line 3 says the older brother raised him). Nothing corrected."
+    },
+    {
+     "line": 5,
+     "quote": "וכן שניים מחתניו הבולטים (בהם רבי יצחק חיון, רבי יוסף צרפתי ורבי משה עזרא)",
+     "kind": "number",
+     "note": "\"two\" sons-in-law, three names in the brackets."
+    },
+    {
+     "line": 15,
+     "quote": "הפכה למוקד מתוודע לטובי התלמידים",
+     "kind": "wrong-word",
+     "note": "\"מתוודע\" (confessing, making oneself known) does not fit \"a centre of attraction\"; probably \"מושך\"/\"משיכה\". Nothing corrected."
+    },
+    {
+     "line": 28,
+     "quote": "סוגה ותוכן מבוקש",
+     "kind": "wrong-word",
+     "note": "table header: \"מבוקש\" (sought) is an odd word for the content of a work; the rows give the main content. Nothing corrected."
+    },
+    {
+     "line": 36,
+     "quote": "הקודש הבלעדי של ההלכה",
+     "kind": "wrong-word",
+     "note": "\"הקודש\" (the sacred) is odd in \"the sole ... of halakha rests on pure Talmudic study\"; probably \"הבסיס\"/\"היסוד\". Nothing corrected."
+    },
+    {
+     "line": 46,
+     "quote": "בנהגת בית הדין הפעיל",
+     "kind": "typo",
+     "note": "\"בנהגת\" for \"בהנהגת\"."
+    },
+    {
+     "line": 53,
+     "quote": "תחום ע עיסוק מרכזי",
+     "kind": "typo",
+     "note": "table header: a stray letter \"ע\" between \"תחום\" and \"עיסוק\"."
+    },
+    {
+     "line": 57,
+     "quote": "קושטא ואטליה",
+     "kind": "typo",
+     "note": "\"ואטליה\" for \"ואיטליה\" (a missing yod; line 3 and the rest of the paper write \"איטליה\")."
+    },
+    {
+     "line": 70,
+     "quote": "שמואל די מדינה, מהרשד\"ם ;,",
+     "kind": "list",
+     "note": "source 3 (line 70): a stray \";\" before the comma in the source title."
+    },
+    {
+     "line": 79,
+     "quote": "במאות הט\"ז הי\" ז",
+     "kind": "typo",
+     "note": "source 12 (line 79): a stray space inside \"הי\" ז\" (probably \"הי\"ז\", 17th century), in the source title."
+    },
+    {
+     "line": 11,
+     "quote": "חקירת פסוק יחיד",
+     "kind": "wrong-word",
+     "note": "found by the translator: 'חקירת' (inquiry) is evidently 'חקיקת' (engraving), since the paper says only a verse was cut on the stone; rendered 'Engraving of a single verse'"
+    }
+   ],
+   "footnotes": [
+    {
+     "line": 52,
+     "quote": "ורבי שלמה הכהן (מהרש\"ך) בסלוניקי [cite: 2, 19]",
+     "marker": 19,
+     "source_title": "במקום מנהג - פסקי דין רבניים",
+     "note": "Source 19 is a tag page of rabbinic court rulings (\"psakim.org/psakim/tags/35679\") titled \"במקום מנהג\": by title and address it is not evidently about R. Shlomo HaKohen (the Maharshakh) as a contemporary in Salonika; marker 2 (Jewish Virtual Library) is the one that fits."
+    },
+    {
+     "line": 60,
+     "quote": "תופסים פסקיו של המהרשד\"ם מקום מרכזי בדיני ממונות ותקנות קהל [cite: 20]",
+     "marker": 20,
+     "source_title": "הצמדה למדד בהלכה - הרב ישועה רטבי - ישיבת מצפה יריחו",
+     "note": "Source 20 is, by its title, a study of indexation to a price index in halakha; the sentence is about the place of the Maharashdam's rulings in the \"כנסת הגדולה\" in monetary law and communal ordinances in general."
+    }
+   ],
+   "links": [
+    {
+     "a": "68",
+     "b": "639",
+     "type": "teacher",
+     "quote": "רבו המובהק שמעמדו היה המרכזי ביותר בעיצוב דרכו הלימודית היה רבי יוסף טאיטאצאק",
+     "outcome": "already-on-site",
+     "reason": "the site already states this relation (data.json, the supplements or the catalogue links)"
+    },
+    {
+     "a": "585",
+     "b": "639",
+     "type": "teacher",
+     "quote": "רבו השני היה רבי לוי בן חביב (מהרלב\"ח)",
+     "outcome": "already-on-site",
+     "reason": "the site already states this relation (data.json, the supplements or the catalogue links)"
+    },
+    {
+     "a": "639",
+     "b": "642",
+     "type": "teacher",
+     "quote": "רבי אברהם די בוטון, מחבר החיבור הנודע \"לחם משנה\" על משנה תורה לרמב\"ם ושו\"ת \"לחם רב\", הנחשב לאחד מחשובי מפרשי הרמב\"ם בכל הדורות",
+     "outcome": "already-on-site",
+     "reason": "the site already states this relation (data.json, the supplements or the catalogue links)"
+    },
+    {
+     "a": "639",
+     "b": "654",
+     "type": "teacher",
+     "quote": "למדו אצלו רבי אברהם בן בורג'יל (מחבר \"לחם אבירים\" על הש\"ס) [cite: 6], רבי מנחם די לונזאנו",
+     "outcome": "already-on-site",
+     "reason": "the site already states this relation (data.json, the supplements or the catalogue links)"
+    }
+   ],
+   "links_rejected": [],
+   "yahrzeit": {
+    "day": 2,
+    "month": "Heshvan",
+    "quote": "עד לפטירתו בב' בחשוון ה'ש\"ן (12 באוקטובר 1589)",
+    "outcome": "added"
+   }
+  },
+  {
+   "id": "640",
+   "label": "רבי יוסף בן לב (מהריב״ל)",
+   "key": "מהריב\"ל",
+   "drive": {
+    "doc": "1FLCmr8H10tU50K358eQnQ-EKHEo7-7vaoowVCAmxcjw",
+    "title": "פועלו, משנתו התורנית ומורשתו של רבי יוסף אבן לב (מהריב\"ל): עמוד ההוראה מן האימפריה העות'מאנית"
+   },
+   "docx": "פועלו, משנתו התורנית ומורשתו של רבי יוסף אבן לב (מהריבל)- עמוד ההוראה מן האימפריה העות'מאנית.docx",
+   "he": {
+    "lines": 109,
+    "words": 3375
+   },
+   "copies": {
+    "a_lines": 109,
+    "b_lines": 109,
+    "identical": true,
+    "differences": []
+   },
+   "about_sage": "his own paper; evidence at line(s) 1, 4, 8; excluded: 68 (One of the \"שלשת היוספים\" the paper names beside him (lines 4, 11, 69): \"רבי יוסף טאיטאצאק\" is a senior contemporary and correspondent, not the paper's sage.); 443 (\"מרן רבי יוסף קארו\", another of the three Yosefs (lines 4, 11, 31, 62-64, 69): the author of the Beit Yosef, whose book the sage first banned; not the paper's sage.); 639 (\"המהרשד\"ם (רבי שמואל די מדינה)\" is a correspondent (lines 4, 31, 72); the paper is about \"מהריב\"ל\" of Monastir, Salonika and Constantinople.)",
+   "disagreements": [
+    {
+     "line": 8,
+     "quote": "נולד בין השנים ה'ר\"ס לה'רס\"ה (1503–1505 לערך)",
+     "field": "birth",
+     "kind": "nuance",
+     "node": "birth_year 1503, era \"כ־1503–1580\" (record: Hebrew Wikipedia \"סביב ה'רס\"ג 1503\", i.e. about 1500-1505)",
+     "paper": "born between 5260 and 5265, \"1503–1505 לערך\", in Monastir; see the date slip below: 5260-5265 are about 1500-1505, and the aged \"כבן 75\" at death c. 1580 fits 1505"
+    },
+    {
+     "line": 17,
+     "quote": "האזכורים האחרונים לחייו מתוארכים לשנת ה'של\"ט (1578)",
+     "field": "death",
+     "kind": "adds",
+     "node": "death_year 1580 (record: Hebrew Wikipedia \"ה'ש\"מ, 1580 לערך\")",
+     "paper": "no exact date; the last mention of him is 5339 (1578), death \"בסביבות שנת ה'ש\"ם (1580)\" in Constantinople at about 75"
+    },
+    {
+     "line": 16,
+     "quote": "דונה גרציה הקימה עבורו ישיבה רוממה",
+     "field": "office",
+     "kind": "nuance",
+     "node": "bio: in Constantinople \"מינתה אותו דונה גרציה מנדס לראש הישיבה שהקימה\" (Hebrew Wikipedia: appointed head of the yeshiva she had founded)",
+     "paper": "Doña Gracia \"הקימה עבורו ישיבה\" (founded a yeshiva for him) and supported his students; line 44 adds her and Don Yosef Nasi thanked in the preface of part 1"
+    },
+    {
+     "line": 45,
+     "quote": "חלקיו השני והשלישי של השו\"ת נדפסו בקושטא בין השנים ה'שכ\"א לה'של\"ג (1561–1573)",
+     "field": "works",
+     "kind": "nuance",
+     "node": "bio and record: \"עוד בחייו נדפסו 2 כרכים\" (Hebrew Wikipedia)",
+     "paper": "part 1 about 1558 in his lifetime (line 44), parts 2 and 3 in 1561-1573 (before his death c. 1580), part 4 only in 1598 by his students: three parts in his lifetime on the paper's own dates"
+    },
+    {
+     "line": 56,
+     "quote": "שיטת הלימוד של מהריב\"ל מייצגת את שיא העיון התלמודי של מחנה חכמי ספרד",
+     "field": "central_idea",
+     "kind": "nuance",
+     "node": "central idea: his way \"מיזגה את הדרך הספרדית … עם הדרך האשכנזית\" and, like the Ashkenazi yeshivot, he taught by topics and sugyot (Hebrew Wikipedia)",
+     "paper": "calls his method the peak of the Sephardic camp's Talmudic analysis (line 56; line 31: the Sephardic way of his teacher); no Ashkenazi blend and no study by topics; the paper puts the Ashkenazi side in his later reception (lines 76-77)"
+    },
+    {
+     "line": 31,
+     "quote": "את יסודות לימודו קיבל מהריב\"ל מרבו המובהק, רבי יצחק אבן צדיק אבן לב",
+     "field": "teacher",
+     "kind": "adds",
+     "node": "no teacher named in the bio or the record; links: none",
+     "paper": "his \"רבו המובהק\", a kinsman (line 8: \"קרוב משפחתו, הגאון\"), R. Yitzchak ibn Tzadik ibn Lev; not on the roster"
+    },
+    {
+     "line": 26,
+     "quote": "לעומתו, מהריב\"ל התייצב בראש התומכים בחרם ופרסם תשובה הלכתית תקיפה ומנומקת",
+     "field": "bio",
+     "kind": "adds",
+     "node": "bio: not mentioned",
+     "paper": "led the supporters of the commercial boycott of the port of Ancona (1554-1556 on the paper's dates; line 24) against R. Yehoshua Soncino, and ruled that the community may impose it on all merchants"
+    },
+    {
+     "line": 60,
+     "quote": "מהריב\"ל פסק הלכה למעשה כי קידושי האנוסים שנעשו בספרד ובפורטוגל אינם קידושין תקפים כלל מדאורייתא",
+     "field": "bio",
+     "kind": "adds",
+     "node": "bio: only that he was known for uncompromising rulings; the tags hold \"אנוסים\"",
+     "paper": "ruled that the kiddushin of anusim made in Spain and Portugal are not valid by Torah law, so such a woman needs no get to remarry"
+    },
+    {
+     "line": 64,
+     "quote": "מהריב\"ל הודה מיד כי זכותו וענוותנותו של ר' יוסף קארו עמדו לו מן השמיים, ביטל את גזירתו",
+     "field": "record",
+     "kind": "adds",
+     "node": "record: Maarekhet Sefarim says he ruled his students were not to study the Beit Yosef",
+     "paper": "adds how the ban ended: after failing to find a source in the Tur he asked for the Beit Yosef, found it there, lifted the ban and allowed the book to all his students; line 69 adds the Chida's tradition that three men (Taitazak, Karo, Maharival) were fit to compose the code"
+    },
+    {
+     "line": 14,
+     "quote": "בנו הבכור, רבי דוד – תלמיד חכם מופלג בן 28 שנמלט לכפר סמוך מפני המגפה – נרצח בידי מתנקשים",
+     "field": "family",
+     "kind": "adds",
+     "node": "family links: none; the record says the deaths of his sons were left out of the bio on purpose",
+     "paper": "eldest son R. David (28, murdered during the plague after the fire of 1545) and a second son Moshe (drowned); father R. David ibn Lev (line 8); none is on the roster"
+    },
+    {
+     "line": 1,
+     "quote": "רבי יוסף אבן לב (מהריב\"ל)",
+     "field": "label",
+     "kind": "nuance",
+     "node": "roster label \"רבי יוסף בן לב (מהריב״ל)\"",
+     "paper": "the paper writes \"אבן לב\" in the title and the text (lines 1, 4, 8); \"בן לב\" appears only in a quotation (line 76)"
+    }
+   ],
+   "slips": [
+    {
+     "line": 8,
+     "quote": "בין השנים ה'ר\"ס לה'רס\"ה (1503–1505 לערך)",
+     "kind": "date",
+     "note": "Hebrew years 5260-5265 are about 1500-1505, not 1503-1505; the record says Hebrew Wikipedia has 5263 (1503), so \"ה'ר\"ס\" may be a slip for \"ה'רס\"ג\". Nothing corrected."
+    },
+    {
+     "line": 14,
+     "quote": "בן 28 שנמלט לכפר סמוך מפני המגפה",
+     "kind": "doubtful-fact",
+     "note": "by the paper's own figures: born 1503-1505 (line 8), a son of 28 after the 1545 fire and plague (lines 13-14) was born about 1517, when the father was 12-14. The age or a date is wrong. Nothing corrected."
+    },
+    {
+     "line": 20,
+     "quote": "הריגת בנו דוד שטביעת בנו משה",
+     "kind": "garbled",
+     "note": "table cell: \"שטביעת\" is not a word; probably \"ו־\" or \"וטביעת\" (and the drowning of his son Moshe). Nothing corrected."
+    },
+    {
+     "line": 24,
+     "quote": "בין השנים ה'שי\"ד ה'שט\"ז (1554–1556)",
+     "kind": "typo",
+     "note": "the connector is missing between the two years (\"ה'שי\"ד ל־ה'שט\"ז\"; line 45 writes \"ה'שכ\"א לה'של\"ג\")."
+    },
+    {
+     "line": 29,
+     "quote": "רבותיו, חבריו בית מדרשו ותלמידיו",
+     "kind": "grammar",
+     "note": "heading: \"חבריו בית מדרשו\" lacks a preposition (probably \"חבריו לבית מדרשו\"). Nothing corrected."
+    },
+    {
+     "line": 60,
+     "quote": "שאייימה",
+     "kind": "typo",
+     "note": "\"שאייימה\" has an extra yod; \"שאיימה\"."
+    },
+    {
+     "line": 69,
+     "quote": "נתגלה בדול מרן ז\"ל",
+     "kind": "garbled",
+     "note": "inside the quotation from the Chida: \"בדול\" does not fit (perhaps \"בדורו של מרן\"). Nothing corrected."
+    },
+    {
+     "line": 81,
+     "quote": "שקובעה במסורת",
+     "kind": "grammar",
+     "note": "\"שקובעה\" is not the standard form of \"שנקבעה\". Nothing corrected."
+    },
+    {
+     "line": 71,
+     "quote": "הגאון רבי יצחק אלפאנדרי בספר \"מגיד מראשית\"",
+     "kind": "name",
+     "note": "paper 639 (line 60) calls the same scholar \"רבי יעקב אלפאנדרי\" and attributes to him and to R. Chaim Shabbetai the comparison of two sages (Maharashdam and Maharshakh) with the Rambam and the Rosh; here the quotation names three (Maharival, Maharashdam, Maharshakh) and compares them with the Rif, Rambam and Rosh. Not corrected; the two papers disagree."
+    }
+   ],
+   "footnotes": [
+    {
+     "line": 47,
+     "quote": "חידושים עמוקים על מספר מסכתות מרכזיות בש\"ס [cite: 3, 12, 13]",
+     "marker": 12,
+     "source_title": "מפני מה זכה רבי יוסף קארו לחבר את השולחן ערוך? - הידברות",
+     "note": "By title and address (hidabroot.org/article/1127573) an article about R. Yosef Karo and the Shulchan Aruch, not about the Maharival's novellae on the Talmud. It is cited again for the Gittin novellae and for the Maharsha (line 76), where its subject fits no better; it does fit the Beit Yosef story of lines 62-64."
+    },
+    {
+     "line": 47,
+     "quote": "נחשב ליצירת מופת עיונית [cite: 3, 12, 14]",
+     "marker": 14,
+     "source_title": "\"בית יוסף\" ו\"שלחן ערוך\": מניעים ותכליות - יד יצחק בן צבי",
+     "note": "Sefunot article, by title about the motives and purposes of the Beit Yosef and the Shulchan Aruch, cited for the praise of the Maharival's novellae on Gittin (also in the table, line 52)."
+    },
+    {
+     "line": 56,
+     "quote": "ורק לאחר מכן מסיק את המסקנה להלכה ולמעשה [cite: 3, 7, 15, 16]",
+     "marker": 15,
+     "source_title": "כלים שבישלו בהם בשר שאינו חלק' פרק ה | את\"צ - צה\"ל",
+     "note": "By title a chapter of the military rabbinate's halakha handbook on utensils cooked with meat; the sentence describes the method of his responsa in general."
+    },
+    {
+     "line": 56,
+     "quote": "ורק לאחר מכן מסיק את המסקנה להלכה ולמעשה [cite: 3, 7, 15, 16]",
+     "marker": 16,
+     "source_title": "טור יורה דעה - הגהות חשובות רבות בכת\"י אשכנזי קדום משנות הש' | קדם בית מכירות פומביות בע״מ",
+     "note": "By title an auction lot (a Tur Yoreh Deah with glosses in an old Ashkenazi manuscript); not evidently about his method of arguing a responsum."
+    },
+    {
+     "line": 76,
+     "quote": "ובכינוי \"הקשה הרב בן לב\" [cite: 12]",
+     "marker": 12,
+     "source_title": "מפני מה זכה רבי יוסף קארו לחבר את השולחן ערוך? - הידברות",
+     "note": "The only marker of the sentence about the Maharsha's citations of the Maharival in his novellae on Gittin; the source is, by title, an article on why Karo merited to compose the Shulchan Aruch."
+    }
+   ],
+   "links": [],
+   "links_rejected": [],
+   "links_none_reason": "None of the men the paper links to him is on the roster: his teacher R. Yitzchak ibn Tzadik ibn Lev (a kinsman), father R. David, sons David and Moshe, and the five students of the table (R. Shmuel Yaffe Ashkenazi, R. Shlomo HaLevi of Salonica, R. Chananya ben Yakar, R. Moshe ben Shmuel, R. Yaakov of Talon). The roster men named (Karo, Taitazak, the Maharashdam, Doña Gracia and the later authorities) are colleagues, correspondents, a patron or readers of his books.",
+   "yahrzeit": null,
+   "yahrzeit_none_reason": "No Hebrew day and month: line 17 says \"תאריך פטירתו המדויק אינו מופיע ברשומות\" and gives only the last mention (5339 = 1578) and death \"בסביבות שנת ה'ש\"ם (1580)\", at about 75; years only."
+  },
+  {
+   "id": "641",
+   "label": "רבי יוסף מטראני (המהרי״ט)",
+   "key": "רבי יוסף מטראני",
+   "drive": {
+    "doc": "1y6hNN7Zcjpp4SrjZcdV6eKacM92o20ggj4qsd8L9oi4",
+    "title": "פועלו, משנתו ומורשתו התורנית של רבי יוסף מטראני (מהרימ\"ט)"
+   },
+   "docx": "פועלו, משנתו ומורשתו התורנית של רבי יוסף מטראני (מהרימט).docx",
+   "he": {
+    "lines": 99,
+    "words": 2461
+   },
+   "copies": {
+    "a_lines": 99,
+    "b_lines": 99,
+    "identical": true,
+    "differences": []
+   },
+   "about_sage": "his own paper; evidence at line(s) 1, 2, 5; excluded: 632 (His father: \"אביו היה רבי משה מטראני (המבי\"ט)\" (line 5); the Mabit is the one who died when the Maharit was about twelve (line 6). In the table of line 15 \"רבי ישעיה ורבי משה מטראני | בניו\" the Moshe Matrani is the Maharit's SON, not the Mabit.); 68 (The paper's \"המהרי\"ט\" is R. Yosef Matrani, born in Safed in 1568, son of the Mabit and Chacham Bashi of Constantinople (lines 2, 5, 24); R. Yosef Taitazak is not named in the paper.); 132 (Line 38 names \"רבי יוסף רוזין – הרוגאצ'ובר\" only to warn that his 20th-century series \"צפנת פענח\" is another book with the same title.); 573 (Line 20 speaks of the death of \"רבי יעקב בירב השני\" before 1600 (the Maharit then headed the Safed community); the roster's Berab (1474-1546) is the first, the paper's teacher figure of the Mabit, not the second.)",
+   "disagreements": [
+    {
+     "field": "place",
+     "kind": "adds",
+     "node": "location \"צפת; קושטא\"",
+     "paper": "also Egypt (a year and a half, 1586, fleeing the plague) and Jerusalem (refuge from the plague of 1595, where he wrote Kuntres Tzurat HaBayit), before the move to Constantinople",
+     "line": 19,
+     "quote": "המהרי\"ט מצא מקלט בירושלים"
+    },
+    {
+     "field": "works",
+     "kind": "nuance",
+     "node": "bio: \"בפירושו ״צפנת פענח״ על התורה והמועדים\" (record: Hebrew Wikipedia \"פירושו צפנת פענח\")",
+     "paper": "describes it as a book of derashot (sermons) on the Torah and the festivals, not as a commentary",
+     "line": 38,
+     "quote": "ספר דרשות מעמיק על התורה והמועדים"
+    },
+    {
+     "field": "works",
+     "kind": "nuance",
+     "node": "central idea: \"קיבל אלפי שאלות והשיב עליהן\" (record: Hebrew Wikipedia)",
+     "paper": "says the responsa book holds hundreds of complex responses sent to him from the East and Europe (no figure of thousands)",
+     "line": 31,
+     "quote": "מכיל מאות תשובות סבוכות שנשלחו אליו מכל קצוות המזרח ואירופה"
+    },
+    {
+     "field": "works",
+     "kind": "nuance",
+     "node": "central idea: \"חיבר פירושים על הר״ן, הרי״ף והרמב״ם\"",
+     "paper": "lists his commentaries on the Rif, the Ran, the Rambam and the Raam, and says most of them remained in manuscript and were lost",
+     "line": 44,
+     "quote": "ביאורים על הרי\"ף, הר\"ן, הרמב\"ם והרא\"ם | נותרו ברובם בכתבי יד שנאבדו"
+    },
+    {
+     "field": "works",
+     "kind": "adds",
+     "node": "no mention of Kuntres Tzurat HaBayit",
+     "paper": "while taking refuge in Jerusalem (1595) he wrote \"קונטרס צורת הבית\" (also called \"דרך הקודש\") on the measures, form and laws of the Temple; the table says it was not preserved in print",
+     "line": 19,
+     "quote": "לכתיבת חיבורו המדעי-הלכתי \"קונטרס צורת הבית\" (נקרא גם \"דרך הקודש\")"
+    },
+    {
+     "field": "office",
+     "kind": "adds",
+     "node": "bio: \"ונתמנה לחכם באשי של טורקיה\" (no year); nothing on the Safed leadership",
+     "paper": "in 1625, after the death of the city's rabbi R. Yechiel Bassan, he was made Chacham Bashi; earlier (1600) he was chosen to head the Safed community; in 1620 R. Yaakov Anqua founded a central yeshiva for him in Constantinople, with over 80 students",
+     "line": 24,
+     "quote": "בשנת ה'שפ\"ה (1625), לאחר פטירתו של רב העיר רבי יחיאל בסאן, הועלה המהרי\"ט כס הרבנות הראשית"
+    },
+    {
+     "field": "bio",
+     "kind": "nuance",
+     "node": "bio: \"ולישיבתו נהרו תלמידים מכל טורקיה ואף מעבר לה\" (record: Hebrew Wikipedia)",
+     "paper": "gives over 80 chosen students in the yeshiva founded in 1620 and speaks of the sages of his school leading the communities of the East, North Africa and Europe in the 17th and 18th centuries",
+     "line": 23,
+     "quote": "שבה למדו מעל 80 תלמידים מובחרים"
+    },
+    {
+     "field": "birth",
+     "kind": "nuance",
+     "node": "record: Hebrew Wikipedia \"נולד כנראה בכ״ו תשרי\" (probably)",
+     "paper": "states the day flatly: born in Safed on 26 Tishrei 5329 (1568)",
+     "line": 5,
+     "quote": "רבי יוסף מטראני נולד בצפת בכ\"ו בתשרי ה'שכ\"ט (1568)"
+    },
+    {
+     "field": "death",
+     "kind": "adds",
+     "node": "death year 1639 (record: 14 Tammuz 5399 from Hebrew Wikipedia); nothing on the burial",
+     "paper": "died in Constantinople on the night of Shabbat, 14 Tammuz 5399 (1639); by his will his sons brought his body to Safed and buried it by the grave of his father the Mabit and of R. Moshe Alshich; the grave was found again in 2008",
+     "line": 27,
+     "quote": "העבירו את גופתו לצפת וטמנו אותו בבית העלמין העתיק בצפת"
+    },
+    {
+     "field": "teacher",
+     "kind": "adds",
+     "node": "no teacher link; the record notes R. Shlomo Sagis \"is not on the roster\"; the bio names none",
+     "paper": "after his father's death (1580) he was adopted and taught by R. Shlomo Sagis, the Ari's son-in-law, for about seven years (the table: \"רבו ומאמצו\")",
+     "line": 6,
+     "quote": "אומץ תורנית ורוחנית על ידי רבי שלמה סאגיס"
+    },
+    {
+     "field": "family",
+     "kind": "adds",
+     "node": "only the family link with his father the Mabit (632)",
+     "paper": "also names his two grandfathers (R. Yosef Matrani the Elder, \"בעל התוספות\", and R. Yosef Kalai), his brothers-in-law (R. Shlomo Karo, the son of R. Yosef Karo, and R. Eliezer Shalom, son of R. Avraham Shalom) and his sons R. Yeshayah and R. Moshe; none of them is on the roster",
+     "line": 7,
+     "quote": "הוא הפך לגיסו של רבי שלמה קארו (בנו של מרן רבי יוסף קארו)"
+    },
+    {
+     "field": "label",
+     "kind": "nuance",
+     "node": "label \"רבי יוסף מטראני (המהרי״ט)\"",
+     "paper": "the title and the first sentence give the epithet in two spellings, המהרי\"ט and המהרימ\"ט (the title writes \"מהרימ\"ט\")",
+     "line": 2,
+     "quote": "(המהרי\"ט / המהרימ\"ט;"
+    }
+   ],
+   "slips": [
+    {
+     "line": 6,
+     "quote": "במשך כשתים-שבע שנים",
+     "kind": "garbled",
+     "note": "\"כשתים-שבע\" is not a number; the table (line 12) says 7 years (\"במשך 7 שנים\"), so probably \"כשבע שנים\". Nothing corrected."
+    },
+    {
+     "line": 20,
+     "quote": "ויצא יחד עם גיסו, רבי אברהם שלום",
+     "kind": "name",
+     "note": "Lines 7 and 14 make R. Avraham Shalom the father of the Maharit's brother-in-law R. Eliezer Shalom (\"בנו של הדרשן רבי אברהם שלום\"), not his brother-in-law; probably \"רבי אליעזר שלום\". Nothing corrected."
+    },
+    {
+     "line": 27,
+     "quote": "קברו אותור מחדש בשנת 2008",
+     "kind": "typo",
+     "note": "\"אותור\" is probably \"אותר\" (his grave was located again). Nothing corrected."
+    },
+    {
+     "line": 42,
+     "quote": "נדפס בכתבי הקודש של חכמי ספרד",
+     "kind": "garbled",
+     "note": "In the column on printing, \"נדפס בכתבי הקודש של חכמי ספרד\" has no clear meaning (probably a print in a collection of writings of the Sephardic sages). Nothing corrected."
+    },
+    {
+     "line": 47,
+     "quote": "נחשבת לציור דרך במעבר",
+     "kind": "typo",
+     "note": "\"לציור דרך\" is probably \"לציון דרך\" (a milestone). Nothing corrected."
+    },
+    {
+     "line": 54,
+     "quote": "כזות שלקח חלק בדיונים",
+     "kind": "typo",
+     "note": "\"כזות שלקח\" is probably \"כמי שלקח\" or \"כזה שלקח\". Nothing corrected."
+    },
+    {
+     "line": 55,
+     "quote": "החזיק המהרי\"ט בשיטת אביו המבי\"ט שחייבה הפרשה, בניגוד לדעת מרן רבי יוסף קארו שפטר זאת",
+     "kind": "doubtful-fact",
+     "note": "Opposite of paper 632 on the same dispute (632, lines 50 and 52: Karo: \"חייבים בתרומות ומעשרות\"; the Mabit: \"פטורים מכל מעשרות\"); here the Mabit's view \"obliged\" the separation and Karo \"exempted\" it. The two papers cannot both be right. For the owner. Nothing corrected."
+    },
+    {
+     "line": 29,
+     "quote": "כשרבים מכתביו נותרו",
+     "kind": "grammar",
+     "note": "found by the translator: an odd conjunction (probably 'כיוון ש'); rendered as written"
+    }
+   ],
+   "footnotes": [
+    {
+     "marker": 10,
+     "line": 34,
+     "source_title": "בירור חשדות לכשרות יוחסין בבתי הדין / ד\"ר מיכאל ויגודה (mishpat-ivri, havat)",
+     "note": "The sentence is about civil law (monetary law, local custom, taxes, partners); source 10 by its title is about checking suspicions about genealogical fitness (yuchasin) in the courts."
+    },
+    {
+     "marker": 10,
+     "line": 59,
+     "source_title": "בירור חשדות לכשרות יוחסין בבתי הדין / ד\"ר מיכאל ויגודה (mishpat-ivri, havat)",
+     "note": "The sentence is about the apportionment of community taxes and the force of communal agreements and local custom; source 10 by its title is about genealogical fitness (yuchasin); source 11 on monetary custom is the one that fits."
+    },
+    {
+     "marker": 16,
+     "line": 41,
+     "source_title": "באורי אגדות הוריות - מכון הלכה ברורה (halachabrura.org/agada/hor14.htm)",
+     "note": "The cell says the Maharit's chidushim are a pillar of yeshiva learning and conceptual analysis; source 16 by its title explains the aggadot of tractate Horayot."
+    },
+    {
+     "marker": 16,
+     "line": 47,
+     "source_title": "באורי אגדות הוריות - מכון הלכה ברורה (halachabrura.org/agada/hor14.htm)",
+     "note": "The sentence is about his method of study (a move from the Sephardic way to abstract conceptual analysis); source 16 by its title explains the aggadot of tractate Horayot."
+    }
+   ],
+   "links": [
+    {
+     "a": "632",
+     "b": "641",
+     "type": "family",
+     "relation": "father",
+     "quote": "אביו היה רבי משה מטראני (המבי\"ט)",
+     "outcome": "already-on-site",
+     "reason": "the site already states this relation"
+    },
+    {
+     "a": "641",
+     "b": "646",
+     "type": "teacher",
+     "quote": "הובל על ידי רבי חיים בנבנישתי (בעל \"כנסת הגדולה\")",
+     "outcome": "already-on-site",
+     "reason": "the site already states this relation (data.json, the supplements or the catalogue links)"
+    }
+   ],
+   "links_rejected": [],
+   "yahrzeit": {
+    "day": 14,
+    "month": "Tamuz",
+    "quote": "בליל שבת קודש, י\"ד בתמוז ה'שצ\"ט (1639)",
+    "outcome": "added"
+   }
+  },
+  {
+   "id": "642",
+   "label": "רבי אברהם די בוטון (בעל לחם משנה)",
+   "key": "לחם משנה",
+   "drive": {
+    "doc": "19ydFJXHWJDnE0kGY1qrzlmtowmrslz99Jf3A0yR0qjw",
+    "title": "פועלו, משנתו התורנית ומורשתו של רבי אברהם די בוטון (בעל \"לחם משנה\")"
+   },
+   "docx": "פועלו, משנתו התורנית ומורשתו של רבי אברהם די בוטון (בעל לחם משנה).docx",
+   "he": {
+    "lines": 47,
+    "words": 1985
+   },
+   "copies": {
+    "a_lines": 47,
+    "b_lines": 47,
+    "identical": true,
+    "differences": []
+   },
+   "about_sage": "his own paper; evidence at line(s) 1, 4, 10; excluded: 432 (The scan flags the shared first name and \"די\". The paper's man is \"רבי חייא אברהם ברבי משה די בוטון\" of Salonika, author of the Lechem Mishneh and the responsa Lechem Rav (lines 3, 4, 10, 20); \"Herrera\" does not occur in it.); 34 (Not a namesake of the sage but a trap in the scan: the paper's \"הראב\"ד\" whose objections the Lechem Mishneh answers is \"רבי אברהם בן דוד מפוֹשְקִירָה\" (line 10), i.e. 195, not the first Ra'avad (34).)",
+   "disagreements": [
+    {
+     "line": 4,
+     "quote": "נולד בסלוניקי בשנות ה-40 של המאה ה-16 (סביב שנת ה'ש\"ה / 1545)",
+     "field": "birth",
+     "kind": "adds",
+     "node": "birth_year 1500, date_precision \"century\" (era \"המאה ה־16\"); the record says three sources disagree on the years and gives Sefaria 1545-1588",
+     "paper": "born in Salonica in the 1540s, \"סביב שנת ה'ש\"ה / 1545\", to a family of descendants of the Spanish exiles"
+    },
+    {
+     "line": 4,
+     "quote": "שנת פטירתו המקובלת במחקר ובמסורת היא ה'שמ\"ח (1588)",
+     "field": "death",
+     "kind": "adds",
+     "node": "death_year 1600 (century bound); the bio states no death; the record: Hebrew Wikipedia header 1593/1598 but its biography 5348 (1588), English Wikipedia c. 1605",
+     "paper": "died young, \"ככל הנראה בגיל 43\", in a plague in Salonica; accepted year 5348 (1588), \"אף כי קיימות במקורות מסוימים הצעות מאוחרות יותר לשנות ה-90\"; buried in the old Jewish cemetery of Salonica"
+    },
+    {
+     "line": 1,
+     "quote": "רבי אברהם די בוטון (בעל \"לחם משנה\")",
+     "field": "label",
+     "kind": "nuance",
+     "node": "roster label \"רבי אברהם די בוטון (בעל לחם משנה)\"; the bio says \"בשעת מחלתו נוסף לו השם חייא\"",
+     "paper": "the paper calls him \"רבי חייא אברהם ברבי משה די בוטון\" in lines 3 and 4 and in the summary (line 28) and \"רבי אברהם\" elsewhere; the title uses the roster form"
+    },
+    {
+     "line": 11,
+     "quote": "הוא השמיט מכתב היד שלו את כל הביאורים והמקורות שהובאו כבר ב\"כסף משנה\"",
+     "field": "central_idea",
+     "kind": "nuance",
+     "node": "central idea: \"החיד\"א כתב שהחל לכתוב את חיבורו לפני שהתוודע לפירוש כסף משנה, ולאחר שהתוודע אליו ציין אותו גם בו\" (attributed to the Chida)",
+     "paper": "states without attribution that he left out of his manuscript everything the Kesef Mishneh already had and kept only what Karo did not treat or left \"בצריך עיון\"; the name \"לחם משנה\" then means a double portion on Karo's commentary"
+    },
+    {
+     "line": 20,
+     "quote": "החיבור הובא לבית הדפוס באיזמיר בשנת ה'ת\"כ (1660) על ידי נכדו",
+     "field": "works",
+     "kind": "adds",
+     "node": "\"לחם רב\" named without a printing history",
+     "paper": "the responsa \"לחם רב\" were not printed in his lifetime; printed in Izmir in 5420 (1660) by his grandson R. Avraham ben R. Aharon de Boton with the wealthy Yitzchak Algranti"
+    },
+    {
+     "line": 5,
+     "quote": "בניו – רבי מאיר די בוטון (מחבר \"שו\"ת מהר\"ם די בוטון\"), רבי יעקב ורבי אהרן",
+     "field": "family",
+     "kind": "adds",
+     "node": "no relative in the bio; family links: none; the record only lists the sons R. Meir (Maharam) and R. Yaakov as namesakes to keep apart",
+     "paper": "sons R. Meir (author of the responsa of the Maharam de Boton), R. Yaakov and R. Aharon; the grandson R. Avraham ben R. Aharon (line 20); Yitzchak Algranti married the daughter of the author's son (line 20). None is on the roster"
+    },
+    {
+     "line": 8,
+     "quote": "מבין תלמידיו הבולטים שנזכרו בספרות הדור נמנים רבי שמואל חיון",
+     "field": "student",
+     "kind": "adds",
+     "node": "student links: none; the record names R. Shmuel Chayon and R. Shabtai Yonah as students not on the roster",
+     "paper": "the same two students (neither on the roster); paper 639 (line 50) calls R. Shmuel Chayon the grandson and student of the Maharashdam"
+    }
+   ],
+   "slips": [
+    {
+     "line": 4,
+     "quote": "והכתוזייתו",
+     "kind": "garbled",
+     "note": "\"והכתוזייתו\" is not a word; the sense is \"and his being known/standing as one of the sages of Salonica\" (perhaps \"והכרתו\"). Nothing corrected."
+    },
+    {
+     "line": 4,
+     "quote": "באופן יחסית",
+     "kind": "grammar",
+     "note": "\"יחסית\" is an adjective/adverb form; \"באופן יחסי\" (or \"יחסית\" alone). Nothing corrected."
+    },
+    {
+     "line": 11,
+     "quote": "מרוכז, עמוק ומפולפל, המשלימה את ה\"כסף משנה\"",
+     "kind": "grammar",
+     "note": "gender: \"חיבור\" (masculine) with \"המשלימה\" (feminine); \"המשלים\". Nothing corrected."
+    },
+    {
+     "line": 20,
+     "quote": "כקרן קישור שפירותיה",
+     "kind": "wrong-word",
+     "note": "\"קרן קישור\" (a binding/connection fund) is not a known expression; the sense is a fund whose proceeds support scholars. Nothing corrected."
+    },
+    {
+     "line": 21,
+     "quote": "לכוונת המשוערת של הצדדים",
+     "kind": "grammar",
+     "note": "construct state with an adjective: \"לכוונת … המשוערת\" (probably \"לכוונה המשוערת\"). Nothing corrected."
+    },
+    {
+     "line": 12,
+     "quote": "לחזרות או לטעויות העתקה",
+     "kind": "wrong-word",
+     "note": "found by the translator: 'חזרות' literally 'repetitions', in context probably 'retractions' (חזרה); rendered 'retractions or copyists' errors'"
+    }
+   ],
+   "footnotes": [
+    {
+     "line": 4,
+     "quote": "למשפחה מיוחסת מצאצאי מגורשי ספרד [cite: 1, 4]",
+     "marker": 4,
+     "source_title": "משנה תורה - ויקיפדיה",
+     "note": "By title the Hebrew Wikipedia article on the Mishneh Torah, not on the sage; the sentence gives his birth place, year and family (marker 1, the article on him, fits)."
+    },
+    {
+     "line": 7,
+     "quote": "המהרשד\"ם הנחיל לתלמידו את הגישה הלימודית הניתוחית",
+     "marker": 7,
+     "source_title": "תשובות הרשב\"א: מעט סדר במבוך כתבי היד",
+     "note": "By title a study of the manuscripts of the Rashba's responsa, cited twice in this paragraph (the Maharashdam's analytic method and his place in the commentary of the Lechem Mishneh); not evidently about either."
+    },
+    {
+     "line": 13,
+     "quote": "ומנסח את המחלוקת שבינו לבין הרמב\"ם כיחידה תפיסתית-הלכתית שלמה [cite: 11, 14]",
+     "marker": 11,
+     "source_title": "ילקוט יוסף",
+     "note": "The address (rabbinicalalliance.org … \"ילקוט-יוסף-ערב-פסח-שחל-בשבת.pdf\") is a Yalkut Yosef text on Erev Pesach falling on Shabbat; the sentence is about the Lechem Mishneh's way of treating the Ra'avad's objections in general (the same marker stands at line 10)."
+    }
+   ],
+   "links": [
+    {
+     "a": "639",
+     "b": "642",
+     "type": "teacher",
+     "quote": "רבו המובהק והעיקרי היה רבי שמואל די מדינה",
+     "outcome": "already-on-site",
+     "reason": "the site already states this relation"
+    }
+   ],
+   "links_rejected": [],
+   "yahrzeit": null,
+   "yahrzeit_none_reason": "No Hebrew day and month: the paper gives years only (born about 5305 / 1545, died \"ככל הנראה בגיל 43\", \"ה'שמ\"ח (1588)\", with later proposals for the 1590s; line 4) and says he died on a Friday afternoon (line 5, \"בערב שבת\"), a weekday without a date."
+  },
+  {
+   "id": "643",
+   "label": "רבי שמואל בן אורי שרגא פייבוש (בעל בית שמואל)",
+   "key": "בית שמואל",
+   "drive": {
+    "doc": "1w0uzl1hd6WFhZ-OCDf_Ryz2Xdl_TuyitavMPWF7vZu8",
+    "title": "פועלו ומשנתו התורנית של רבי שמואל בן אורי שרגא פייבוש, בעל \"בית שמואל\""
+   },
+   "docx": "פועלו ומשנתו התורנית של רבי שמואל בן אורי שרגא פייבוש, בעל בית שמואל.docx",
+   "he": {
+    "lines": 43,
+    "words": 1856
+   },
+   "copies": {
+    "a_lines": 43,
+    "b_lines": 43,
+    "identical": true,
+    "differences": []
+   },
+   "about_sage": "his own paper; evidence at line(s) 1, 7, 18; excluded: 631 (the roster entry is the author of Midrash Shmuel (1545-1604); the paper's Shmuel is the son of R. Uri Shraga Feivush, of Wodzislaw, Krakow, Shidlov and Furth, author of the Beit Shmuel on Even HaEzer); 639 (the roster entry lived 1505-1589; the paper dates its Shmuel to the mid-17th century onward (printings of 1689 and 1694) and calls him son of R. Uri Shraga Feivush); 663 (the roster entry is the author of Dvar Shmuel; the paper's book is the Beit Shmuel, and its Shmuel is rabbi of Shidlov and Furth, son of R. Uri Shraga Feivush); 675 (the roster entry is Shmuel the son of R. Chaim (Vital); the paper's Shmuel is the son of R. Uri Shraga Feivush); 638 (named once (line 28) among the earlier Acharonim whose rulings Rabbi Shmuel weighs, as the Sma; not a relation and not the paper's sage); 91 (the paper's Rabbi Aryeh Leib is the son of Zecharya Mendel, called the Long, head of the Krakow yeshiva after R. Yehoshua Heshel and Rabbi Shmuel's father-in-law (lines 7-8), teacher of a man born around 1650; the roster's 91 lived 1695-1785); 97 (same given name as the Krakow Rabbi Aryeh Leib of line 7, but the roster entry lived 1745-1812 and the paper's man is the teacher and father-in-law of its sage); 123 (line 18 has Rabbi Yechiel Michal of Krakow (Seder Gittin, printed in the first edition of 1689) and line 34 the book Aruch HaShulchan as a later authority; the roster entry lived 1829-1908); 453 (line 18 has Rabbi Yaakov Margalit, author of a Seder HaGet printed in the first edition; the paper does not say he is the Nuremberg rabbi, and states no relation to its sage)",
+   "disagreements": [
+    {
+     "field": "death",
+     "kind": "nuance",
+     "node": "death_year 1706, precision exact (era כ־1650–1706; Sefaria); the record: Hebrew Wikipedia says only 'probably between 5459 (1699) and 5467 (1707), the date is unknown'",
+     "paper": "the date of death is not fixed in the sources; he died in the early 18th century, probably between 5459 (1699) and 5467 (1706); 1706 is the upper end of a range, not a year",
+     "line": 9,
+     "quote": "ככל הנראה בין השנים ה'תנ\"ט (1699) ל-ה'תס\"ז (1706)"
+    },
+    {
+     "field": "birth",
+     "kind": "nuance",
+     "node": "birth_year 1650 (Sefaria's value, in the era כ־1650–1706); bio: 'באמצע המאה ה־17'",
+     "paper": "born 'in the middle of the 17th century'; the paper gives no year",
+     "line": 7,
+     "quote": "נולד באמצע המאה השבע-עשרה"
+    },
+    {
+     "field": "place",
+     "kind": "nuance",
+     "node": "record (Hebrew Wikipedia): 'נולד בווידיסלב, פולין'; places column: פולין; גרמניה",
+     "paper": "birthplace spelled וודז'יסלאב with a second spelling in brackets (וואיידסלב), in Poland",
+     "line": 7,
+     "quote": "בעיר וודז'יסלאב (וואיידסלב) שבפולין"
+    },
+    {
+     "field": "place",
+     "kind": "nuance",
+     "node": "bio: 'את המהדורה הראשונה הדפיס בדירנפורט'",
+     "paper": "the same town, spelled דיהרנפורט (lines 18-20), first edition printed 1689 (ה'תמ\"ט)",
+     "line": 18,
+     "quote": "נדפסה בשנת ה'תמ\"ט (1689) בעיר דיהרנפורט"
+    },
+    {
+     "field": "teacher",
+     "kind": "adds",
+     "node": "record (Hebrew Wikipedia): studied at the Krakow yeshiva 'אצל רבי יהושע השל בן רבי יעקב'; the bio names no teacher; no teacher link on the site",
+     "paper": "adds a second teacher: after R. Yehoshua Heshel's death he continued with his successor as rabbi and head of the Krakow yeshiva, R. Aryeh Leib ben Zecharya Mendel 'the Long' (neither is on the roster)",
+     "line": 7,
+     "quote": "המשיך רבי שמואל את חוק לימודיו אצל ממלא מקומו ברבנות ובראשות הישיבה בקראקא, רבי אריה לייב בן רבי זכריה מנדל"
+    },
+    {
+     "field": "family",
+     "kind": "adds",
+     "node": "the bio and the site's links name no relative (the record: teachers and sons-in-law 'not on the roster')",
+     "paper": "R. Aryeh Leib took him as son-in-law; his brothers-in-law were R. Hizkiya Yehoshua Feivel Teomim (author of Panim Meirot, as the paper has it) and R. Shaul ben R. Heshil of Krakow (none on the roster)",
+     "line": 8,
+     "quote": "ולקח אותו כחתן לבתו"
+    },
+    {
+     "field": "family",
+     "kind": "adds",
+     "node": "record: sons-in-law 'not on the roster'; no sons named",
+     "paper": "names his son R. Yosef (father of a R. Shmuel, av beit din of Amdur and Minsk), his sons R. Aryeh Leib and R. Shilem, and his sons-in-law R. Uri Feivush Hamburger (later the first Chief Rabbi of the Ashkenazi community of Britain), R. Betzalel Slutzki and R. Yitzchak Isaac of Amdur",
+     "line": 33,
+     "quote": "בין חתניו בלטו רבי אורי פייבוש המבורגר, אשר עקר מאוחר יותר ללונדון וכיהן כרב הראשי הראשון של הקהילה האשכנזית בבריטניה"
+    },
+    {
+     "field": "office",
+     "kind": "adds",
+     "node": "bio: 'רבן של שידלוב ופיורדא' with no dates, no Lviv",
+     "paper": "adds that some sources have him as preacher and 'maggid meisharim' in Lviv, though some doubt it; and that he was av beit din and mara d'atra in Shidlov before Furth",
+     "line": 8,
+     "quote": "כי שימש כדרשן ו\"מגיד מישרים\" בלבוב, אם כי יש המפקפקים בעובדה זו"
+    },
+    {
+     "field": "office",
+     "kind": "adds",
+     "node": "bio: 'רבן של שידלוב ופיורדא'; no years for the Furth period",
+     "paper": "invited by the Furth community committee in 5451 (1691), came in the winter of 5452 (1692), served as av beit din, mara d'atra and head of the yeshiva, left in 5454 (1694) and returned to Shidlov, where he stayed until his death",
+     "line": 9,
+     "quote": "בשנת ה'תנ\"ד (1694) עזב רבי שמואל את פיורדא וחזר לפולין, לכהונתו הקודמת בשידלוב"
+    },
+    {
+     "field": "works",
+     "kind": "adds",
+     "node": "bio and core idea: only the Beit Shmuel (two editions)",
+     "paper": "adds a lost commentary on Yoreh De'ah (known from his son-in-law's preface to Urim VeTumim) and responsa and derashot, some absorbed into the books of his contemporaries",
+     "line": 32,
+     "quote": "רבי שמואל חיבר פירוש מקיף גם על חלק \"יורה דעה\" של השולחן ערוך"
+    },
+    {
+     "field": "works",
+     "kind": "adds",
+     "node": "record: Chelkat Mechokek 'printed with it as Apei Ravrevei'; the first edition's contents not stated",
+     "paper": "the first edition (1689) carried Kuntres Agunot, R. Yaakov Margalit's Seder HaGet and R. Yechiel Michal of Krakow's Seder Gittin with additions and notes 'from his house of study'",
+     "line": 18,
+     "quote": "\"קונטרס עגונות\" המרכז בתמצית את תשובות הפוסקים לסימן יז"
+    },
+    {
+     "field": "central_idea",
+     "kind": "nuance",
+     "node": "core idea: the second edition, where 'המחבר הוסיף וגרע ושינה בה בעצמו יחד עם תלמידיו' (the Chida, and Hebrew Wikipedia on the students); the record's Chida quote: 'הוסיף וגרע ושינה'",
+     "paper": "the Chida's rule is given for the reason that the author himself 'חזר בו ותיקן את מסקנותיו' (retracted and corrected his conclusions); the students are not mentioned for the editing",
+     "line": 18,
+     "quote": "כיוון שהמחבר עצמו חזר בו ותיקן את מסקנותיו"
+    },
+    {
+     "field": "label",
+     "kind": "nuance",
+     "node": "roster label: רבי שמואל בן אורי שרגא פייבוש (בעל בית שמואל)",
+     "paper": "the paper writes the father's name with a title: 'רבי שמואל בן רבי אורי שרגא פייבוש' (line 7); the title and the rest of the name are otherwise the roster's",
+     "line": 7,
+     "quote": "רבי שמואל בן רבי אורי שרגא פייבוש"
+    }
+   ],
+   "slips": [
+    {
+     "line": 7,
+     "quote": "הנודע כ\"רבי ר' השיל\"",
+     "kind": "other",
+     "note": "a double title, רבי ר'; the same line has 'הרבי ר' השיל' (with the Rebbe's article) and line 11 has it again; the teacher is R. Yehoshua Heshel ben Yaakov"
+    },
+    {
+     "line": 9,
+     "quote": "במשך כשלום שנים",
+     "kind": "typo",
+     "note": "כשלום for probably כשלוש (about three years)"
+    },
+    {
+     "line": 9,
+     "quote": "נפטר בשנים הראשונות של המאה ה-18, ככל הנראה בין השנים ה'תנ\"ט (1699)",
+     "kind": "date",
+     "note": "'the first years of the 18th century' against a range that begins in 1699 (5459 begins in September 1698), a 17th-century year; hebdate.mjs: 1699-03-01 is 30 Adar I 5459, 1706-09-20 is 12 Tishri 5467"
+    },
+    {
+     "line": 17,
+     "quote": "והמליץ על מחקרו את הפסוק",
+     "kind": "garbled",
+     "note": "'recommended on his research the verse' does not parse; the sense is probably that he applied the verse to his work"
+    },
+    {
+     "line": 17,
+     "quote": "את הפסוק ”אֶבֶן מָאֲסוּ",
+     "kind": "other",
+     "note": "the quotation opens with the closing mark ” (the verse is inside ” … ”)"
+    },
+    {
+     "line": 27,
+     "quote": "מקח שנשה בכפייה",
+     "kind": "typo",
+     "note": "שנשה for probably שנעשה (a sale made under compulsion)"
+    },
+    {
+     "line": 27,
+     "quote": "מן הדין הביולוגי והמשפטי",
+     "kind": "wrong-word",
+     "note": "'the biological and legal law' for a ruling on betrothal: 'ביולוגי' is evidently not meant"
+    },
+    {
+     "line": 27,
+     "quote": "בעוד שאיש הכופה אישה אינו מקודש עקב תקנת חכמים",
+     "kind": "grammar",
+     "note": "the one not betrothed is the woman (the sentence before says so), yet the verb agrees with the man: probably אינה מקודשת, or the sentence is garbled"
+    }
+   ],
+   "footnotes": [],
+   "links": [],
+   "links_rejected": [],
+   "links_none_reason": "No sage on the roster is named as his teacher, student or relative: his teachers (R. Yehoshua Heshel ben Yaakov and his successor and father-in-law R. Aryeh Leib ben Zecharya Mendel), brothers-in-law (R. Hizkiya Yehoshua Feivel Teomim, R. Shaul ben Heshil), sons, sons-in-law (R. Uri Feivush Hamburger, R. Betzalel Slutzki, R. Yitzchak Isaac of Amdur) and the families named in line 33 are not in roster.tsv; the roster sages the paper does name (Karo, the Rema, the Chida, the Rishonim and Acharonim whose rulings he weighs, the Noda BiYehuda, the Chatam Sofer) are authorities, not teachers or kin.",
+   "yahrzeit": null,
+   "yahrzeit_none_reason": "the paper gives years only for his death (probably between 5459/1699 and 5467/1706, the date 'not fixed in the sources'), no Hebrew day and month"
+  },
+  {
+   "id": "646",
+   "label": "רבי חיים בנבנשתי (בעל כנסת הגדולה)",
+   "key": "בנבנשת",
+   "drive": {
+    "doc": "1RP6ypxhiHmJXfqgbiKzszfXSTV4DxGwO3TUhPNmzAA0",
+    "title": "פועלו, משנתו ומורשתו של רבי חיים בנבנשת: מנהיגות הלכתית בצילן של תמורות סוערות"
+   },
+   "docx": "פועלו, משנתו ומורשתו של רבי חיים בנבנשת- מנהיגות הלכתית בצילן של תמורות סוערות.docx",
+   "he": {
+    "lines": 89,
+    "words": 2609
+   },
+   "copies": {
+    "a_lines": 89,
+    "b_lines": 89,
+    "identical": true,
+    "differences": []
+   },
+   "about_sage": "his own paper; evidence at line(s) 1, 2, 4; excluded: 103 (R. Chaim Palagi (the Chabif, 1787-1868 on the roster) is another man with a similar epithet; this paper is about the author of \"כנסת הגדולה\" (1603-1673), whom it calls \"החבי\"ב\" (with a bet), and it names the Maharit as his teacher.); 325 (The Chida (Chaim Yosef David Azulai, 1724-1806) is cited in the paper as a later author who praises the Knesset HaGedolah (\"שם הגדולים\"); he is not its subject.); 542 (R. Chaim Vital (1542-1620) shares only the first name; the paper places its sage in Constantinople and Izmir, 1603-1673.); 641 (The Maharit (R. Yosef Trani) is the teacher the paper names, not its subject.)",
+   "disagreements": [
+    {
+     "field": "office",
+     "kind": "adds",
+     "node": "bio: served as rabbi in Tire and then in Izmir, \"as a judge and head of a yeshiva\"; nothing on a divided rabbinate",
+     "paper": "after the death of R. Yosef Iskafa the rabbinate of Izmir was split: he was appointed the rabbi who decides issur ve-heter, R. Aharon Lapapa the one for monetary law; the paper says he felt bitter about it",
+     "line": 7,
+     "quote": "רבי חיים בנבנשת מונה לרב הפוסק בדיני איסור והיתר, בעוד שלתפקיד הרב הפוסק בדיני ממונות מונה רבי אהרן לפפה"
+    },
+    {
+     "field": "record",
+     "kind": "adds",
+     "node": "record notes: the Sabbatai Zevi episode and the dispute with R. Aharon Lapapa were left out of the page on purpose (Hebrew Wikipedia: first opposed him, supported him for about nine months, then returned to the fight)",
+     "paper": "a whole section: he first opposed Sabbatai Zevi, then accepted the post of sole rabbi of Izmir under him for nine months, then repented; the paper treats it as an honest error (\"טועה בהילכתא למשיחא\")",
+     "line": 53,
+     "quote": "במשך תשעה חודשים – מסוף 1665 ועד ספטמבר 1666 – כיהן רבי חיים בנבנשת כרב העיר מטעם התנועה המשיחית"
+    },
+    {
+     "field": "teacher",
+     "kind": "adds",
+     "node": "record notes: besides the Maharit, R. Yosef Samegah and R. Tzemach Narboni (neither on the roster); nothing on R. Shmuel ben Vilyasid",
+     "paper": "names Samegah and Narboni as further teachers in Istanbul (agrees with the record) and adds that he was deeply influenced by the rulings and customs of R. Shmuel ben Vilyasid (an influence, not a teacher)",
+     "line": 5,
+     "quote": "ובהם רבי יוסף סאמיגה (מהר\"י סאמיגה) ורבי צמח נרבוני, וכמו כן הושפע עמוקות מפסוקיו ומנהגיו של רבי שמואל בן וילייסיד"
+    },
+    {
+     "field": "family",
+     "kind": "adds",
+     "node": "record notes: his brother R. Yehoshua Raphael Benveniste is not on the roster; the node holds no father",
+     "paper": "father R. Yisrael ben R. Moshe Benveniste; the elder brother R. Yehoshua Raphael Benveniste \"the sage and decisor\"",
+     "line": 4,
+     "quote": "אביו היה רבי ישראל בן הרב משה בנבנשת, ואחיו הבכור היה החכם והפוסק רבי יהושע רפאל בנבנשת"
+    },
+    {
+     "field": "bio",
+     "kind": "adds",
+     "node": "bio: the Maharit blessed him to write on the Smag; no marriage mentioned",
+     "paper": "the Maharit also married him to the daughter of one of the community's rich men (agrees on the blessing)",
+     "line": 5,
+     "quote": "השיאו לבתו של אחד מעשירי הקהילה"
+    },
+    {
+     "field": "death",
+     "kind": "adds",
+     "node": "node: death year 1673 only (the record notes hold 19 Elul 5433, 31 August 1673, from Hebrew Wikipedia)",
+     "paper": "gives the day and month of his death in Izmir, 19 Elul 5433 = 31 August 1673 (the pair is consistent), \"about 70\" years old (born 1603)",
+     "line": 69,
+     "quote": "נפטר באיזמיר ביום י\"ט באלול ה'תל\"ג (31 באוגוסט 1673)"
+    },
+    {
+     "field": "label",
+     "kind": "nuance",
+     "node": "roster label and Hebrew Wikipedia: בנבנשתי / בנבנישתי",
+     "paper": "the paper and its Drive title write בנבנשת throughout (the source list writes בנבנישתי and בנבנשתי)",
+     "line": 2,
+     "quote": "רבי חיים בן ישראל בנבנשת (החבי\"ב, 1603–1673)"
+    }
+   ],
+   "slips": [
+    {
+     "line": 5,
+     "quote": "מפסוקיו ומנהגיו של רבי שמואל בן וילייסיד",
+     "kind": "wrong-word",
+     "note": "probably מפסקיו (his rulings); פסוקיו means his verses. The name וילייסיד is as written."
+    },
+    {
+     "line": 7,
+     "quote": "הנהגת העיר פוצלה שני רבנים ראשיים",
+     "kind": "grammar",
+     "note": "a word is missing: probably פוצלה בין שני רבנים ראשיים (or ל־)."
+    },
+    {
+     "line": 17,
+     "quote": "שהתרבו ללא נשוא",
+     "kind": "wrong-word",
+     "note": "an odd phrase; probably ללא סוף / ללא גבול or similar."
+    },
+    {
+     "line": 23,
+     "quote": "שהחל בכתיבתו בחרפות נעוריו",
+     "kind": "garbled",
+     "note": "probably בחריפות נעוריו or בחורף/בחרף נעוריו; as written it means \"in the insults of his youth\"."
+    },
+    {
+     "line": 25,
+     "quote": "עריי הנמל העות'מאניות",
+     "kind": "typo",
+     "note": "עריי for ערי (the cities of), a doubled yod."
+    },
+    {
+     "line": 42,
+     "quote": "מהכרעות חרדיות קיצוניות",
+     "kind": "wrong-word",
+     "note": "probably חריפות (sharp) for חרדיות (ultra-Orthodox); as written it reads oddly for a 17th-century decisor."
+    },
+    {
+     "line": 36,
+     "quote": "(Codifier and Synthesizer)",
+     "kind": "other",
+     "note": "a leftover English gloss of the text generator in the Hebrew sentence."
+    },
+    {
+     "line": 50,
+     "quote": "לאחר שנורש מגאז'ה ומרושלים",
+     "kind": "typo",
+     "note": "מרושלים for מירושלים."
+    },
+    {
+     "line": 78,
+     "quote": "דרך כתיבת מפעל חייהם של ספרי",
+     "kind": "garbled",
+     "note": "the plural מפעל חייהם (with ספרי) does not fit the singular man; the sentence reads as if two phrasings were cut together."
+    }
+   ],
+   "footnotes": [
+    {
+     "marker": 9,
+     "line": 48,
+     "source_title": "צבי שבתי, https://avp310.leutkirch-psychiatrie.de/blog/automating-ethical-hacking-with-ai/",
+     "note": "the address (a blog post on \"automating ethical hacking with AI\" on a clinic domain, leutkirch-psychiatrie.de) is evidently not about Sabbatai Zevi; [9] stands after the sentences on his return to Izmir and the opposition of the rabbis, and in the table (lines 48, 50, 51, 55)."
+    }
+   ],
+   "links": [
+    {
+     "a": "641",
+     "b": "646",
+     "type": "teacher",
+     "quote": "רבו המובהק היה מרן רבי יוסף מטראני (המהרי\"ט)",
+     "outcome": "already-on-site",
+     "reason": "the site already states this relation"
+    }
+   ],
+   "links_rejected": [],
+   "yahrzeit": {
+    "day": 19,
+    "month": "Elul",
+    "quote": "נפטר באיזמיר ביום י\"ט באלול ה'תל\"ג (31 באוגוסט 1673)",
+    "outcome": "added"
+   }
+  },
+  {
+   "id": "647",
+   "label": "רבי אליהו די וידאש (בעל ראשית חכמה)",
+   "key": "וידאש",
+   "drive": {
+    "doc": "154V--TVOdEnxUJLY4ohYeoHAGpiJ1HdpZcSuNYWOhDE",
+    "title": "פועלו, משנתו ומורשתו של רבי אליהו די וידאש: עיונים בתולדות חייו, בחיבורו \"ראשית חכמה\" ובקבלה המוסרית בצפת ובחברון"
+   },
+   "docx": "פועלו, משנתו ומורשתו של רבי אליהו די וידאש- עיונים בתולדות חייו, בחיבורו ראשית חכמה ובקבלה המוסרית בצפת ובחברון.docx",
+   "he": {
+    "lines": 76,
+    "words": 2450
+   },
+   "copies": {
+    "a_lines": 76,
+    "b_lines": 76,
+    "identical": true,
+    "differences": []
+   },
+   "about_sage": "his own paper; evidence at line(s) 1, 3, 5; excluded: 656 (A false match of the scan on line 9. The paper's \"רבי אברהם הלוי ברוכים (מוגרבי), מגדולי הפרושים בצפת, הידוע בקינותיו על חורבן בית המקדש\" is a 16th-century Safed ascetic, De Vidas's teacher, not on the roster; the roster's R. Avraham HaLevi (1650-1712) is the author of Ginat Veradim.); 651 (Named on line 34 only as another sage buried in the same plot of the Hebron cemetery (\"נקברו לצידו חכמים נוספים, בהם רבי שלמה עדני\"); a different man (1567-1630), no relation.); 327 (Named on line 10 as a member of the Safed kabbalists' circle (\"שכללה את הרמ\"ק, רבי שלמה אלקבץ\"), a colleague; the paper does not call him a teacher or a relative.)",
+   "disagreements": [
+    {
+     "field": "birth",
+     "kind": "nuance",
+     "node": "date precision century (1500-1600, \"המאה ה־16\"); record: Hebrew Wikipedia 5276 (about 1516), Sefaria 1518, \"the sources disagree on both ends\"",
+     "paper": "gives both: ה'רע\"ו (5276, which is 1515/16) and 1518, \"בקירוב\"; the Hebrew year and the civil year do not agree with each other",
+     "line": 3,
+     "quote": "ה'רע\"ו – ה'שמ\"ז; 1518–1587 בקירוב"
+    },
+    {
+     "field": "death",
+     "kind": "conflict",
+     "node": "date precision century; record: Hebrew Wikipedia 5339/5345 (about 1579/1585) and Sefaria 1587, \"the sources disagree\"",
+     "paper": "states his death in Hebron in 5347 (1587), the figure of Sefaria, flatly beside \"בקירוב\" in line 3; no day or month",
+     "line": 6,
+     "quote": "הלך לעולמו בחברון בשנת ה'שמ\"ז (1587)"
+    },
+    {
+     "field": "office",
+     "kind": "nuance",
+     "node": "bio: \"עבר לחברון והתמנה לראש רבניה\" (record: Hebrew Wikipedia 1566, \"needs clarification\")",
+     "paper": "states the 1566 appointment as head of the rabbis of Hebron without reservation, and that it opened the city's rise as a kabbalah centre",
+     "line": 5,
+     "quote": "בשנת ה'שכ\"ו (1566) מונה רבי אליהו די וידאש לראש רבני חברון"
+    },
+    {
+     "field": "teacher",
+     "kind": "nuance",
+     "node": "teacher link 462 (the Ari); bio: \"תלמידו של הרמ״ק, שלמד גם מפי האר״י\"",
+     "paper": "puts him in the Ari's circle of learners and says he calls the Ari \"מורי\" in some writings, but says his basic teaching rests on Cordovero's Kabbalah (\"משנתו הבסיסית נשענת על הקבלה הקורדובירית\"); the Ramak is \"רבו המובהק\"",
+     "line": 9,
+     "quote": "אף על פי שמשנתו הבסיסית נשענת על הקבלה הקורדובירית"
+    },
+    {
+     "field": "family",
+     "kind": "adds",
+     "node": "no family link; the record names no relative",
+     "paper": "his father was R. Moshe de Vidas, he was the brother-in-law of R. Shalom HaKohen, head of the Safed court, and his nephew R. Eliezer HaKohen printed the book (none of them is on the roster)",
+     "line": 3,
+     "quote": "רבי אליהו היה גם גיסו של רבי שלום הכהן, אב בית הדין של צפת"
+    },
+    {
+     "field": "works",
+     "kind": "adds",
+     "node": "bio: \"זכה למהדורות רבות, למהדורה מקוצרת ולתרגום ליידיש\" (no place or year of the first printing)",
+     "paper": "the first printing was in Venice in 5338 (1578) by his nephew R. Eliezer HaKohen, then over fifty editions",
+     "line": 12,
+     "quote": "נדפס לראשונה בוונציה בשנת ה'של\"ח (1578) על ידי אחיינו, רבי אליעזר הכהן"
+    },
+    {
+     "field": "works",
+     "kind": "adds",
+     "node": "bio and central idea name only Reshit Chochmah (the tags add Totzaot Chayim)",
+     "paper": "lists besides it Totzaot Chayim (a popular abridgement), Michtav Eliyahu (a moral-kabbalistic work) and Or Olam (Kavanat HaShem), and the additions Chuppat Eliyahu Rabba and Or Olam / Or Gadol to Reshit Chochmah",
+     "line": 25,
+     "quote": "מכתב אליהו: חיבור מוסרי-קבלי העוסק בתיקון המידות ובדביקות"
+    },
+    {
+     "field": "central_idea",
+     "kind": "adds",
+     "node": "central idea: a kabbalistic book on proper character traits based on the Zohar; says nothing of its reception",
+     "paper": "makes the book's reception a main part of his legacy: a canonical text in Hasidism (the Besht and his students; the Alter Rebbe of Chabad required daily study of it before the Tanya), banned by some Misnagdim for that reason, and learned in the Lithuanian Musar movement",
+     "line": 38,
+     "quote": "\"ראשית חכמה\" שימש כספר יסוד קנוני"
+    },
+    {
+     "field": "death",
+     "kind": "adds",
+     "node": "bio: \"ושם נקבר\" (no more on the grave)",
+     "paper": "he was buried in the old Hebron cemetery in a plot later called \"שדה ראשית חכמה\" or the Rabbis' plot; his grave was a place of pilgrimage, the tent built over it early in the 20th century was destroyed under Jordanian rule after the 1929 riots and later rebuilt by Prof. Ben Zion Tavger",
+     "line": 6,
+     "quote": "בחלקה שזכתה לאחר מכן לשם \"שדה ראשית חכמה\" או חלקת הרבנים"
+    }
+   ],
+   "slips": [
+    {
+     "line": 3,
+     "quote": "ה'רע\"ו – ה'שמ\"ז; 1518–1587 בקירוב",
+     "kind": "date",
+     "note": "ה'רע\"ו is 5276, that is autumn 1515 to autumn 1516, not 1518; ה'שמ\"ז (5347) is 1586/87 and agrees with 1587. The two birth years differ by two years. Nothing corrected."
+    },
+    {
+     "line": 16,
+     "quote": "פיתוח אהבת ה' הקדישא",
+     "kind": "other",
+     "note": "\"הקדישא\" is Aramaic in a Hebrew sentence; probably \"הקדוש\" or a generator leftover. Nothing corrected."
+    },
+    {
+     "line": 22,
+     "quote": "חתומה קבלית-מוסרית המיועדת",
+     "kind": "wrong-word",
+     "note": "\"חתומה\" is probably \"חתימה\" (a closing), in the row on Or Olam / Or Gadol. Nothing corrected."
+    },
+    {
+     "line": 43,
+     "quote": "האדמו\"ר (רשש\"ז) מקאפוסט",
+     "kind": "other",
+     "note": "The abbreviation \"רשש\"ז\" (double shin) is unclear; it may be a corruption of the Rebbe of Kopust's initials. Nothing corrected."
+    }
+   ],
+   "footnotes": [],
+   "links": [
+    {
+     "a": "71",
+     "b": "647",
+     "type": "teacher",
+     "quote": "רבו המובהק, רבי משה קורדובירו (הרמ\"ק)",
+     "outcome": "already-on-site",
+     "reason": "the site already states this relation (data.json, the supplements or the catalogue links)"
+    },
+    {
+     "a": "462",
+     "b": "647",
+     "type": "teacher",
+     "quote": "נמנה רבי אליהו די וידאש גם על חוג לומדיו של רבי יצחק לוריא (האר\"י)",
+     "outcome": "already-on-site",
+     "reason": "the site already states this relation (data.json, the supplements or the catalogue links)",
+     "second_reader_note": "second reader (V2): borderline - the paper puts de Vidas in the circle of the Ari's students ('מורי'), and the Ari is about 16 years younger than the roster's century window for de Vidas; the relation is already on the site, so nothing is added either way"
+    }
+   ],
+   "links_rejected": [],
+   "yahrzeit": null,
+   "yahrzeit_none_reason": "The paper gives the year of his death only (\"הלך לעולמו בחברון בשנת ה'שמ\"ז (1587)\", line 6), no Hebrew day or month. The only Hebrew day and month in the paper, 18 Adar 5335 (1575, line 5), is the date the writing of Reshit Chochmah was finished, not his death."
+  },
+  {
+   "id": "648",
+   "label": "רבי אליה שפירא (בעל אליה רבה)",
+   "key": "אליה רבה",
+   "drive": {
+    "doc": "1Lyz1D7mWZ-6kdAj14sb9QusErFr5d1wTOShjb4gD_kg",
+    "title": "פועלו, משנתו ומורשתו של רבי אליהו שפירא (בעל \"אליה רבה\"): עיון מקיף בהיסטוריה, בהלכה ובביבליוגרפיה"
+   },
+   "docx": "פועלו, משנתו ומורשתו של רבי אליהו שפירא (בעל אליה רבה)- עיון מקיף בהיסטוריה, בהלכה ובביבליוגרפיה.docx",
+   "he": {
+    "lines": 63,
+    "words": 2345
+   },
+   "copies": {
+    "a_lines": 63,
+    "b_lines": 63,
+    "identical": true,
+    "differences": []
+   },
+   "about_sage": "his own paper; evidence at line(s) 1, 3, 3; excluded: 626 (the paper's Shapira is of Prague, 1660-1712, author of the Eliyah Zuta and Eliyah Rabbah on the Levush; it says nothing of Jerusalem and the roster's 626 is of the 17th-century Jerusalem Nasi); 682 (the roster's 682 is Nata Shapira (1585-1633), author of Megaleh Amukot; the paper's man is of Prague, died in 1712, wrote on the Levush); 323 (a 20th-century Shapira on the roster; the paper's man died on 8 Nisan 5472 (1712)); 265 (a 12th-century name on the roster; nothing in the paper links the Prague Shapira to him)",
+   "disagreements": [
+    {
+     "field": "label",
+     "kind": "nuance",
+     "node": "roster label: רבי אליה שפירא (בעל אליה רבה); the record's sources write אליה שפירא and the Sefaria topic eliyahu-spira",
+     "paper": "the title and the text write the first name אליהו (רבי אליהו שפירא); the book is אליה רבה, as on the roster",
+     "line": 1,
+     "quote": "רבי אליהו שפירא (בעל \"אליה רבה\")"
+    },
+    {
+     "field": "teacher",
+     "kind": "adds",
+     "node": "bio and links: the grandfather R. Aharon Shimon and the Magen Avraham (84); no third teacher",
+     "paper": "adds a Prague teacher, R. Shmuel Helman, one of the city's important dayanim, who taught him the legal method of the community courts (not on the roster)",
+     "line": 16,
+     "quote": "למד בפראג גם אצל רבי שמואל הלמן, מדייני העיר החשובים"
+    },
+    {
+     "field": "teacher",
+     "kind": "nuance",
+     "node": "record (Hebrew Wikipedia): 'רבו המובהק היה סבו (אבי אביו) רבי אהרן שמעון מפראג'",
+     "paper": "line 15 agrees (the grandfather is 'רבו המובהק'), but line 27 gives the same title to the Magen Avraham ('רבו המובהק, בעל ה\"מגן אברהם\"'); line 14 has 'רבותיו המובהקים' in the plural",
+     "line": 27,
+     "quote": "יחס דומה מציג רבי אליהו כלפי רבו המובהק, בעל ה\"מגן אברהם\""
+    },
+    {
+     "field": "place",
+     "kind": "adds",
+     "node": "places column: פראג only; the record notes Kolin 1688-94 and a possible call to Tykocin as not written",
+     "paper": "rabbi of Kolin in Bohemia from about 5448 (1688) to about 5455 (1694), then dayan in Prague; about 5459 (1699) an invitation from Tiktin (Poland), and it is disputed whether he served there for a short time or declined and stayed in Prague (line 4 and the table, line 11)",
+     "line": 4,
+     "quote": "מונה לכהונת רב העיר קולין (Kolín) שבבוהמיה"
+    },
+    {
+     "field": "family",
+     "kind": "adds",
+     "node": "the record names the father only as 'רבי בנימין וואלף' (Hebrew Wikipedia)",
+     "paper": "the father R. Binyamin Wolf Shapira was darshan and dayan in Prague, later av beit din of the community and 'רב מדינת בוהמיה'",
+     "line": 3,
+     "quote": "אביו, רבי בנימין וולף שפירא, שימש כדרשן ודיין בפראג, ולימים מונה לאב בית דין הקהילה ולרב מדינת בוהמיה"
+    },
+    {
+     "field": "family",
+     "kind": "adds",
+     "node": "links: only the brother-in-law R. Yaakov Reischer (660) and a family link to 653 that this paper does not mention; no wife or children",
+     "paper": "his wife Dabrish (died 5485), daughter of R. Azriel Yom Tov Bondi; his sons R. Aryeh Leib (av beit din of Leipnik, died 5472), R. Shmuel (av beit din of Prague) and R. Shimon; his daughter Rivka, wife of R. Wolf Segal Frankel, son of the author of Matteh Yissachar (none on the roster)",
+     "line": 5,
+     "quote": "אשתו, דאבריש (נפטרה בה'תפ\"ה), הייתה בתו של ר' עזריאל יום טוב בונדי מפרנסי פראג"
+    },
+    {
+     "field": "works",
+     "kind": "adds",
+     "node": "bio and core idea: the Eliyah Zuta and the Eliyah Rabbah on the Levush only",
+     "paper": "a second book also called Eliyah Rabbah, novellae on tractates of the Talmud, first printed by his grandson in Furth in 5528 (1768)",
+     "line": 20,
+     "quote": "ספר חידושים ופיושים על מסכתות התלמוד הבבלי, שנקרא אף הוא \"אליה רבה\", אשר נדפס לראשונה על ידי נכדו בפיורדא בשנת ה'תקכ\"ח (1768)"
+    },
+    {
+     "field": "works",
+     "kind": "adds",
+     "node": "bio: no mention of lost writings",
+     "paper": "his own manuscript of the Eliyah Rabbah, with other manuscripts of his (a book of derashot and responsa), burned in the great fire of the Prague Jewish quarter in 5514 (1754)",
+     "line": 19,
+     "quote": "כתב היד המקורי והאוטוגרפי של המחבר נשרף כליל בשריפה הגדולה שכילתה את הרובע היהודי בפראג בשנת ה'תקי\"ד (1754)"
+    },
+    {
+     "field": "works",
+     "kind": "adds",
+     "node": "record: the Eliyah Zuta as a short commentary on the Levush, no printing dates",
+     "paper": "the Eliyah Zuta was printed in his lifetime in two editions in Prague (5449 / 1689 and 5461 / 1701)",
+     "line": 18,
+     "quote": "ספר זה נדפס בחיי המחבר בשתי מהדורות בפראג (בה'תמ\"ט/1689 ובה'תס\"א/1701)"
+    },
+    {
+     "field": "record",
+     "kind": "nuance",
+     "node": "record (English Wikipedia): the Eliyah Rabbah was published in Sulzbach in 1757 'by his son'; Hebrew Wikipedia: 'by his students'",
+     "paper": "not printed in his lifetime; after his death 'his family and his students' (the paper names neither a son nor a place or year) worked to bring it to print from copies",
+     "line": 19,
+     "quote": "ולאחר פטירתו עמלו בני משפחתו ותלמידיו להביאו לדפוס מתוך העתקים"
+    }
+   ],
+   "slips": [
+    {
+     "line": 17,
+     "quote": "מילוסופיה של פרשנות",
+     "kind": "typo",
+     "note": "a heading: מילוסופיה for probably פילוסופיה"
+    },
+    {
+     "line": 20,
+     "quote": "חידושים ופיושים על מסכתות",
+     "kind": "typo",
+     "note": "ופיושים for probably ופירושים"
+    },
+    {
+     "line": 16,
+     "quote": "הניתוחית והקורפוסיונלית",
+     "kind": "garbled",
+     "note": "הקורפוסיונלית is not a Hebrew word (perhaps 'corpus-like', an invented adjective); nothing is corrected"
+    },
+    {
+     "line": 7,
+     "quote": "באליטה התורנית והנהגתית",
+     "kind": "grammar",
+     "note": "table cell: probably והנהגתית for וההנהגתית (the article is missing on the second adjective)"
+    },
+    {
+     "line": 8,
+     "quote": "שנות התמ\"ח המוקדמות",
+     "kind": "date",
+     "note": "'the early years of the התמ\"ח' (the 5440s, 1680s?) in a table where ה'תמ\"ח is the year 1688 (line 4: his call to Kolin); the studies in Kalisch are also placed before the Kolin years in line 4; not corrected"
+    },
+    {
+     "line": 38,
+     "quote": "לאחר פטירתו בבחרותו",
+     "kind": "doubtful-fact",
+     "note": "'after his death in his youth' against the paper's own age, about 52 (line 5: 'כבן 52 בלבד'; the table, line 12, says 'פטירה בגיל צעיר'); בחרותו is the word line 4 uses for his student years"
+    },
+    {
+     "line": 43,
+     "quote": "וראש וראשונים בספר \"משנה ברורה\"",
+     "kind": "other",
+     "note": "an elliptical phrase inside a long sentence (probably 'being first and foremost in the Mishna Berura'); reads as garbled"
+    },
+    {
+     "line": 5,
+     "quote": "נישא לבתו של ר' בנימין וולף בן הרב אהרן שמעון שפירא",
+     "kind": "doubtful-fact",
+     "note": "Shimon, the sage's son, marries the daughter of 'ר' בנימין וולף בן הרב אהרן שמעון שפירא', which is exactly how the paper names the sage's own father (line 3 'אביו, רבי בנימין וולף שפירא', line 15 'זקנו, אבי אביו, רבי אהרן שמעון שפירא'); read plainly it would be his own sister, so it is probably another man of the same name or a mix-up; not corrected"
+    }
+   ],
+   "footnotes": [
+    {
+     "marker": 6,
+     "line": 16,
+     "source_title": "יארצייטן פון צדיקים - אידישער ווינקל",
+     "note": "cited for what he acquired from the Magen Avraham (the wish to trace the sources of the law, precision, readiness to differ from early authorities); the source is a Yiddish list of yahrzeits of tzaddikim for a Torah portion"
+    },
+    {
+     "marker": 13,
+     "line": 27,
+     "source_title": "שולחן ערוך אורח חיים רמח א - ויקיטקסט",
+     "note": "cited, with 5, 11 and 12, for his arguing with the Magen Avraham and ruling against his teacher; a Wikisource page of the Shulchan Aruch text itself, which holds neither"
+    },
+    {
+     "marker": 13,
+     "line": 40,
+     "source_title": "שולחן ערוך אורח חיים רמח א - ויקיטקסט",
+     "note": "cited, with 2, 3, 12, 14 and 15, for the Mishna Berura deciding a dispute between the Taz and the Magen Avraham like the Eliyah Rabbah; the same Shulchan Aruch text page"
+    }
+   ],
+   "links": [
+    {
+     "a": "84",
+     "b": "648",
+     "type": "teacher",
+     "quote": "תקופת לימודו בקאליש אצל רבי אברהם אבלי הלוי גומבינר",
+     "outcome": "already-on-site",
+     "reason": "the site already states this relation (data.json, the supplements or the catalogue links)"
+    },
+    {
+     "a": "660",
+     "b": "648",
+     "type": "family",
+     "relation": "brother-in-law",
+     "quote": "גיסו, חתן אביו, היה הגאון רבי יעקב ריישר",
+     "outcome": "already-on-site",
+     "reason": "the site already states this relation"
+    }
+   ],
+   "links_rejected": [],
+   "yahrzeit": {
+    "day": 8,
+    "month": "Nisan",
+    "quote": "נפטר בדמי ימיו בחיי אביו, כבן 52 בלבד, ביום ח' בניסן ה'תע\"ב (1712)",
+    "outcome": "added"
+   }
+  },
+  {
+   "id": "651",
+   "label": "רבי שלמה עדני (בעל מלאכת שלמה)",
+   "key": "מלאכת שלמה",
+   "drive": {
+    "doc": "1vfZaRTxAU4so4FR-x1Zyh69rCvpBpzMlktyuieRtbUk",
+    "title": "מפעל חייו, משנתו ומורשתו של רבי שלמה עדני בעל \"מלאכת שלמה\""
+   },
+   "docx": "מפעל חייו, משנתו ומורשתו של רבי שלמה עדני בעל מלאכת שלמה.docx",
+   "he": {
+    "lines": 68,
+    "words": 2357
+   },
+   "copies": {
+    "a_lines": 68,
+    "b_lines": 68,
+    "identical": true,
+    "differences": []
+   },
+   "about_sage": "his own paper; evidence at line(s) 1, 5, 2; excluded: 645 (R. Shlomo Sirilio (1485-1554 on the roster) is a Safed commentator on the Jerusalem Talmud; the paper never names him, and its R. Shlomo \"אמירליו\" is a teacher of its sage (born 1567 in the paper), which a man who died in 1554 could not be. This paper is about the author of the Melekhet Shlomo on the Mishnah.); 327 (R. Shlomo HaLevi Alkabetz (1505-1584) is not named in the paper; its sage is a Yemenite-born Mishnah commentator in Hebron.); 326 (Shlomo Molcho (1500-1532) is not named; his dates end 35 years before the paper's birth year 1567.); 488 (R. Shlomo Ephraim of Lunschitz (the Kli Yakar, 1550-1619) is not named; the paper's work is a commentary on the Mishnah, not on the Torah.)",
+   "disagreements": [
+    {
+     "field": "death",
+     "kind": "conflict",
+     "node": "node: died 1630 (\"כ־1567–1630\"; the record lists 1624, 1625, 1630 and about 1640 from different sources)",
+     "paper": "the table gives his death in Hebron as \"שפ\"ה בקירוב (1625)\" and buries him in the old cemetery of the city; the first paragraph also ends his years at 1625",
+     "line": 16,
+     "quote": "פטירה בחברון | שפ\"ה בקירוב (1625)"
+    },
+    {
+     "field": "works",
+     "kind": "nuance",
+     "node": "record: Hebrew Wikipedia says he wrote the Melekhet Shlomo \"during thirty years in Hebron\"; English Wikipedia places the commentary in 1624 (or 1622)",
+     "paper": "the work spread over about 35 years, from 1589 (given as שמ\"פ) to 1624, in three main editions; the third and final one was completed in Hebron in 1622-1624",
+     "line": 30,
+     "quote": "התפרסה על פני כ-35 שנים (משנת שמ\"פ עד שפ\"ד / 1589–1624)"
+    },
+    {
+     "field": "works",
+     "kind": "nuance",
+     "node": "bio and record: \"בנין שלמה לחכמת בצלאל\", in which he copied glosses and novellae of his teacher Betzalel Ashkenazi",
+     "paper": "the table describes \"בנין שלמה\" as glosses and novellae on the order Kodashim in the Babylonian Talmud, partly kept in manuscripts (no word on Betzalel Ashkenazi in that row)",
+     "line": 28,
+     "quote": "בנין שלמה | הגהות וחידושים לסדר קדשים בתלמוד הבבלי"
+    },
+    {
+     "field": "works",
+     "kind": "adds",
+     "node": "bio: mentions the Melekhet Shlomo, the Binyan Shlomo and the \"Divrei Emet\" (glosses to the Bible); no \"Sela HaMachloket\"",
+     "paper": "a further work, \"סלע המחלוקת\", a survey of disputes of the Rishonim, partly worked into the manuscript of the Melekhet Shlomo",
+     "line": 29,
+     "quote": "סלע המחלוקת | בירור מקיף של מחלוקות ראשונים"
+    },
+    {
+     "field": "works",
+     "kind": "adds",
+     "node": "bio: \"דברי אמת\", glosses to the Bible (no word on its fate)",
+     "paper": "the paper says \"דברי אמת\" is lost: it existed in manuscript and was cited by the Chida",
+     "line": 27,
+     "quote": "אבד; היה קיים בכתב יד וצוטט על ידי החיד\"א"
+    },
+    {
+     "field": "teacher",
+     "kind": "nuance",
+     "node": "links: an influence link 645 (R. Shlomo Sirilio, 1485-1554) -> 651, from the Hebrew Wikipedia article on Sirilio",
+     "paper": "kind should be nuance, not conflict: the node's link is an influence link (645 -> 651), and the paper neither names Sirilio nor says what its 'שלמה אמירליו' wrote; only if the paper's teacher were the same man as 645 would the roster dates (645 d. 1554, 651 b. 1567) exclude personal teaching. Wording: 'the paper names a teacher R. Shlomo Amirilyo whom it does not identify; it says nothing of Sirilio or of an influence of his writings, and the roster's 645 died in 1554, before the paper's birth year 1567'",
+     "line": 19,
+     "quote": "וכן למד אצל רבי שלמה אמירליו וחכמים נוספים",
+     "corrected_by_second_reader": true
+    },
+    {
+     "field": "teacher",
+     "kind": "nuance",
+     "node": "node and record: the two teachers Betzalel Ashkenazi (442) and Chaim Vital (542) are named together, as equals",
+     "paper": "the paper calls Betzalel Ashkenazi his \"רבו המובהק\" and says he took from him the critical approach and the habit of annotating; Chaim Vital is the second teacher, in Jerusalem (agrees on both names)",
+     "line": 19,
+     "quote": "רבו המובהק היה רבי בצלאל אשכנזי"
+    },
+    {
+     "field": "family",
+     "kind": "adds",
+     "node": "the node holds no family; the record notes only the foster father Moshe Chami (not on the roster)",
+     "paper": "father Mori Yeshua ben David ben Chalfon Adani, a Yemenite sage and grocer; his mother and brother died in Safed, his father in Jerusalem in 1582; his wife died and he had no surviving children",
+     "line": 5,
+     "quote": "אביו, מרי ישועה בן דוד בן חלפון עדני"
+    },
+    {
+     "field": "record",
+     "kind": "adds",
+     "node": "record: the foster father Rabbi Moshe Chami is left out (not on the roster)",
+     "paper": "R. Moshe Chami, a rich sage from Egypt, took the orphan into his house, kept him seven years and married him off; the paper treats him as the turning point of his life",
+     "line": 7,
+     "quote": "ר' משה חאמי דאג לכל מחסורו של רבי שלמה במשך שבע שנים"
+    },
+    {
+     "field": "office",
+     "kind": "adds",
+     "node": "bio: no livelihood given",
+     "paper": "in Hebron he did not trade (against the Yemenite custom) and lived in poverty as a teacher of small children and as one supported by others",
+     "line": 8,
+     "quote": "התפרנס בדוחק כמלמד תינוקות וכנתמך"
+    }
+   ],
+   "slips": [
+    {
+     "line": 2,
+     "quote": "של\"ז–שפ\"ה בקירוב / 1567–1625",
+     "kind": "date",
+     "note": "של\"ז is 5337 = 1577, while the paper gives his birth elsewhere as שכ\"ז (1567) (5327); probably שכ\"ז."
+    },
+    {
+     "line": 7,
+     "quote": "ואף השיא לו אישה בשנת שמ\"פ (1589)",
+     "kind": "date",
+     "note": "שמ\"פ is 5420 (1660), not 1589; 1589 is 5349, שמ\"ט. The civil year fits the seven years after 1582."
+    },
+    {
+     "line": 13,
+     "quote": "שמ\"ב–שמ\"פ (1582–1589)",
+     "kind": "date",
+     "note": "same slip: שמ\"פ for שמ\"ט (1589)."
+    },
+    {
+     "line": 14,
+     "quote": "מעבר לחברון ותחילת הכתיבה | שמ\"פ (1589)",
+     "kind": "date",
+     "note": "same slip: שמ\"פ for שמ\"ט (1589)."
+    },
+    {
+     "line": 30,
+     "quote": "משנת שמ\"פ עד שפ\"ד / 1589–1624",
+     "kind": "date",
+     "note": "same slip: שמ\"פ for שמ\"ט (1589); שפ\"ד (1624) is right."
+    },
+    {
+     "line": 26,
+     "quote": "נכתב בין השנים שמ\"פ–שפ\"ד (1589–1624)",
+     "kind": "date",
+     "note": "same slip: שמ\"פ for שמ\"ט (1589)."
+    },
+    {
+     "line": 6,
+     "quote": "נפטררו בזה אחר זה",
+     "kind": "typo",
+     "note": "נפטרו, with a doubled resh."
+    },
+    {
+     "line": 6,
+     "quote": "מחשף המחבר בגילוי לב נדיר",
+     "kind": "garbled",
+     "note": "probably חושף / מגלה (or מחשוף); מחשף as written is not a verb form."
+    },
+    {
+     "line": 8,
+     "quote": "נפטר בצעירותם ממגפות",
+     "kind": "grammar",
+     "note": "singular verb for \"all his children\": probably נפטרו."
+    },
+    {
+     "line": 21,
+     "quote": "התרחשה מצליבה רעיונית מרתקת",
+     "kind": "wrong-word",
+     "note": "probably הצלבה / התלכדות רעיונית; מצליבה is not a word in this sense."
+    },
+    {
+     "line": 39,
+     "quote": "כאחד מבשר הביקורת הטקסטואלית-מדעית",
+     "kind": "grammar",
+     "note": "singular מבשר for the plural: probably מבשרי."
+    },
+    {
+     "line": 41,
+     "quote": "שהתבששו בתרגומים המקובלים",
+     "kind": "garbled",
+     "note": "probably שובשו / התבלבלו; התבששו as written means \"were ashamed\"."
+    },
+    {
+     "line": 13,
+     "quote": "אימוצו וכלכלתו על ידי הנדיב והרב ר' משה חאמי במשך שבע שנים עד לנישואיו",
+     "kind": "doubtful-fact",
+     "note": "line 6 says he lived about two and a half years in the streets of Jerusalem after his father's death in 1582, and only then did R. Moshe Chami take him in; seven years of support 'from 1582 to 1589' (this row) cannot hold together with that; not corrected"
+    }
+   ],
+   "footnotes": [
+    {
+     "marker": 3,
+     "line": 39,
+     "source_title": "When was the Afar of the Para Adumah lost? - The Seforim Blog, https://seforimblog.com/2014/06/when-was-afar-of-para-adumah-los/",
+     "note": "the title is about the ashes of the red heifer; it stands after general statements on the Mishnah commentary's critical method (also lines 2, 26 and 40) and after the 20th-century research (line 49)."
+    },
+    {
+     "marker": 8,
+     "line": 41,
+     "source_title": "Preface 1 – מבוא א - Mishneh Torah - ALHATORAH.ORG, https://rambam.alhatorah.org/Main/Preface/1.1",
+     "note": "the title and address are the preface of the Mishneh Torah (rambam.alhatorah.org/Main/Preface/1.1), while the sentences (lines 2, 39, 41, 52) are about a manuscript of the Rambam's commentary on the Mishnah from Zoba."
+    },
+    {
+     "marker": 13,
+     "line": 46,
+     "source_title": "מלאכת שלמה על משנה אבות | האוסף של ספריא, https://www.sefaria.org.il/Melekhet_Shelomoh_on_Pirkei_Avot",
+     "note": "a page of the commentary's text (Avot) cannot by its title carry a statement that the work stayed in manuscript about 250 years."
+    },
+    {
+     "marker": 14,
+     "line": 46,
+     "source_title": "מלאכת שלמה על משנה ברכות | האוסף של ספריא, https://www.sefaria.org.il/Melekhet_Shelomoh_on_Mishnah_Berakhot",
+     "note": "same: a page of the text (Berakhot), not about its publication history."
+    },
+    {
+     "marker": 15,
+     "line": 46,
+     "source_title": "מלאכת שלמה על משנה בבא קמא | האוסף של ספריא, https://www.sefaria.org.il/Melekhet_Shelomoh_on_Mishnah_Bava_Kamma",
+     "note": "same: a page of the text (Bava Kamma), not about its publication history."
+    }
+   ],
+   "links": [
+    {
+     "a": "442",
+     "b": "651",
+     "type": "teacher",
+     "quote": "רבו המובהק היה רבי בצלאל אשכנזי",
+     "outcome": "already-on-site",
+     "reason": "the site already states this relation (data.json, the supplements or the catalogue links)"
+    },
+    {
+     "a": "542",
+     "b": "651",
+     "type": "teacher",
+     "quote": "למד תורה וקבלה בירושלים מפי רבי חיים ויטאל",
+     "outcome": "already-on-site",
+     "reason": "the site already states this relation (data.json, the supplements or the catalogue links)"
+    }
+   ],
+   "links_rejected": [],
+   "yahrzeit": null,
+   "yahrzeit_none_reason": "the paper gives years only ('שפ\"ה בקירוב (1625)', in the table and in the first paragraph), no Hebrew day or month of his death"
+  },
+  {
+   "id": "652",
+   "label": "רבי יעקב יהושע פלק (בעל פני יהושע)",
+   "key": "פני יהושע",
+   "drive": {
+    "doc": "1dyiTKIcj7tu-Csv3Y_hvf0-vH8dcBJ8tdye8ACM_-CM",
+    "title": "פועלו, משנתו התורנית ומורשתו של רבי יעקב יהושע פלק: בעל \"פני יהושע\""
+   },
+   "docx": "פועלו, משנתו התורנית ומורשתו של רבי יעקב יהושע פלק- בעל פני יהושע.docx",
+   "he": {
+    "lines": 131,
+    "words": 3180
+   },
+   "copies": {
+    "a_lines": 131,
+    "b_lines": 131,
+    "identical": true,
+    "differences": []
+   },
+   "about_sage": "his own paper; evidence at line(s) 1, 2, 6; excluded: 638 (the roster's Sma lived 1555-1614; the paper's man was born in Krakow on 28 Kislev 5441 (1680), wrote the Talmud commentary Pnei Yehoshua and held Lviv, Berlin, Metz and Frankfurt; the paper names no Sma, and the 'Yehoshua' he is named for is R. Yehoshua Heshel of Krakow (line 6)); 457 (a 15th-16th century Polak (1460-1541); the paper's Falk is of 1680-1756); 644 (the roster's R. Yehoshua Boaz (Shiltei HaGibborim); the paper's Yehoshua is the Krakow-born author of the Pnei Yehoshua); 656 (the paper's R. Avraham HaLevi is the sage's mother's father (line 6), so born well before 1680; the roster's 656 (Ginat Vradim) is dated 1650-1712, and the paper gives him no work, city or date)",
+   "disagreements": [
+    {
+     "field": "family",
+     "kind": "conflict",
+     "node": "record: Hebrew Wikipedia on the author of Maginei Shlomo, R. Yehoshua Heshel of Krakow: his 'אבי סבתו של אביו' (the father of his father's grandmother), also a maternal ancestor; the Chida (Peh 95:1): the sage is 'בן בתו' (a daughter's son) of R. Yehoshua of Krakow",
+     "paper": "his mother Miriam was the daughter of R. Avraham HaLevi, 'חתנו' (son-in-law) of R. Yehoshua Heshel of Krakow, and he was named for 'זקנו המפורסם' (also 'מפעל זקנו בעל מגיני שלמה'): a maternal line, and a different degree from the other two",
+     "line": 6,
+     "quote": "ואמו, מרת מרים, הייתה בתו של הרב אברהם הלוי, חתנו של הגאון רבי יהושע העשיל מקראקא"
+    },
+    {
+     "field": "office",
+     "kind": "conflict",
+     "node": "record notes: he sided with Emden and left Frankfurt in 1751 (Hebrew Wikipedia and Sefaria); English Wikipedia: compelled to leave Frankfurt in 1750; the bio gives no years",
+     "paper": "rabbi (av beit din) of Frankfurt from 5501 (1741) to 5515 (1755), and then Mannheim, Worms and Offenbach; the paper also says an attempt to bring him back was made before Passover 5514 (1754)",
+     "line": 18,
+     "quote": "פרנקפורט דמיין (ה'תק\"א–ה'תקט\"ו / 1741–1755)"
+    },
+    {
+     "field": "works",
+     "kind": "conflict",
+     "node": "record (the Chida, Peh 94:1 against Peh 95:1; 'שו\"ת פני יהושע' of R. Yehoshua of Krakow is a separate entry): the responsa Pnei Yehoshua belong to the grandfather of Krakow, the Talmud commentary to this man",
+     "paper": "line 6 gives 'שו\"ת פני יהושע' to R. Yehoshua Heshel of Krakow, and this line (and the table, line 72) lists 'שו\"ת פני יהושע' among the sage's own works: remnants of his responsa",
+     "line": 64,
+     "quote": "שו\"ת פני יהושע: נאספו שרידי תשובותיו ההלכתיות"
+    },
+    {
+     "field": "place",
+     "kind": "adds",
+     "node": "places column: לבוב; ברלין; מץ; פרנקפורט; גרמניה; גליציה; the record says only Krakow, Offenbach",
+     "paper": "adds Rzeszow (ריישא, from 5450 / 1690), Tarla and Lisko in Galicia as his first rabbinic posts (1704-1717), and after Frankfurt Mannheim, Worms and Offenbach; buried in the old Jewish cemetery of Frankfurt",
+     "line": 26,
+     "quote": "טארלא וליסקו | ה'תס\"ד–ה'תע\"ז (1704–1717)"
+    },
+    {
+     "field": "teacher",
+     "kind": "adds",
+     "node": "record: he received ordination from the Chacham Tzvi; no teacher on the site; none of these on the roster",
+     "paper": "teachers: R. Gavriel Eskeles of Krakow, his mother's brother R. Shmuel (av beit din of Rzeszow), R. Zvi Hirsch 'בלחוב' (as the paper spells it), R. Chaim Reitzes of Lviv, and the Chacham Tzvi (R. Zvi Ashkenazi), who ordained him",
+     "line": 7,
+     "quote": "את דרכו בלימוד החל בקראקא אצל רבי גבריאל אסקלס"
+    },
+    {
+     "field": "student",
+     "kind": "adds",
+     "node": "no student on the site or in the record; none of these on the roster",
+     "paper": "'thousands' of students; among them R. David Tevele Schiff (later of London), R. Nathan Maas of Frankfurt and R. Moshe ben Yitzchak Yehuda Lima; and the future Maggid of Mezritch studied in his Lviv yeshiva as a youth and learned privately with him (the Maggid is not on the roster)",
+     "line": 51,
+     "quote": "למד בנערותו בישיבתו של רבי יעקב יהושע בלבוב"
+    },
+    {
+     "field": "family",
+     "kind": "adds",
+     "node": "bio: no wife, children or deaths; record: 'the explosion that killed his wife and daughter is not mentioned in the bio'",
+     "paper": "first wife Leah (daughter of R. Shlomo Segal Landau of Lviv), her mother Reizel and their small daughter Gittel died in the explosion of 3 Kislev 5463 (1702); then Toyba, then Gitta; four sons (R. Natan of Dobromil, R. Yissachar Dov of Podhajce, R. Shmuel of Brody, R. Aryeh Leib of Podhajce and Hanover) and at least two daughters, and Maital, wife of R. Shlomo Dov Herzfeld, whose novellae the paper calls those of 'חתנו' (his son-in-law)",
+     "line": 9,
+     "quote": "נספו אשתו לאה, חמותו רייזל, ובתו הקטנה גיטל"
+    },
+    {
+     "field": "works",
+     "kind": "adds",
+     "node": "bio: 'סדרת ספרי פני יהושע על התלמוד הבבלי'; the record names no other work",
+     "paper": "adds: the four printed parts with places and years, Pnei Yehoshua on the Tur Choshen Mishpat, Minchat Ani, the polemic Charavot Tzurim (5515 / 1755) against R. Yehonatan Eybeschutz's Luchot Edut, and manuscripts that were lost",
+     "line": 66,
+     "quote": "חרבות צורים (ה'תקט\"ו / 1755): קונטרס פולמוסי חריף"
+    },
+    {
+     "field": "label",
+     "kind": "adds",
+     "node": "label: רבי יעקב יהושע פלק; no word on the name",
+     "paper": "he was named 'יהושע' for his famous ancestor and the name 'יעקב' was added later, during a severe illness in his youth, as a remedy and for long life",
+     "line": 6,
+     "quote": "והשם \"יעקב\" נוסף לו מאוחר יותר במהלך מחלה קשה"
+    },
+    {
+     "field": "bio",
+     "kind": "nuance",
+     "node": "bio: 'לפי הקדמתו התחיל לכתוב את הספר בנדר, אחרי שניצל מפיצוץ מחסן חומר נפץ'; record: 'בהקדמה לספרו כתב שהמניע ... פיצוץ מחסן חומר הנפץ'",
+     "paper": "tells the vow made under the rubble ('נדר נדר') and that, 'the tradition says', a passage opened for him; it names no preface as the source, and the explosion as 'מחסני אבק שרפה עירוניים' (several city powder stores)",
+     "line": 10,
+     "quote": "נדר נדר לייחד את שרעפיו"
+    },
+    {
+     "field": "death",
+     "kind": "nuance",
+     "node": "record (Hebrew Wikipedia): 'נפטר בי\"ד בשבט תקט\"ז, (17 בינואר 1756)'; Sefaria and English Wikipedia: 14 Shevat, Offenbach",
+     "paper": "the same Hebrew day and civil date, with a weekday: 'בערב שבת קודש' (a Friday), at the age of 75, in Offenbach; hebdate.mjs: 17 January 1756 is 15 Shevat 5516 and a Saturday, while 14 Shevat 5516 is 16 January, a Friday",
+     "line": 22,
+     "quote": "בערב שבת קודש, י\"ד בשבט ה'תקט\"ז (17 בינואר 1756)"
+    }
+   ],
+   "slips": [
+    {
+     "line": 2,
+     "quote": "לאחד מטקסט היסוד הקנוניים",
+     "kind": "grammar",
+     "note": "a singular noun with a plural adjective: probably 'מטקסטי היסוד' or 'הקנוני'"
+    },
+    {
+     "line": 20,
+     "quote": "המבורג ורנדסבורג (אה\"ו)",
+     "kind": "wrong-word",
+     "note": "רנדסבורג (Rendsburg?) next to the acronym אה\"ו, whose last letter is ו: probably ואנדסבק (Wandsbek)"
+    },
+    {
+     "line": 22,
+     "quote": "בערב שבת קודש, י\"ד בשבט ה'תקט\"ז (17 בינואר 1756)",
+     "kind": "date",
+     "note": "hebdate.mjs: 14 Shevat 5516 is 16 January 1756, a Friday ('ערב שבת'); 17 January 1756 is 15 Shevat and a Saturday. The record's Hebrew Wikipedia has the same pair"
+    },
+    {
+     "line": 22,
+     "quote": "לקראת חג הפסח ה'תקי\"ד נעשה ניסיון לפייסו ולהשיבו לכהונת הרבנות בפרנקפורט",
+     "kind": "date",
+     "note": "Passover 5514 is spring 1754 (hebdate.mjs: 9 Nisan 5514 is 1 April 1754) and an attempt to bring him back to Frankfurt presupposes that he had left, but lines 18 and 30 have him rabbi of Frankfurt until 5515 (1755) and living in Mannheim, Worms and Offenbach only from 1755"
+    },
+    {
+     "line": 49,
+     "quote": "בראשויות הישיבה השונות שניהל",
+     "kind": "wrong-word",
+     "note": "'בראשויות' is not a Hebrew plural of 'ראשות'; probably בראשות הישיבות השונות שניהל"
+    },
+    {
+     "line": 61,
+     "quote": "פיורדא תקמ\"ד / 1780",
+     "kind": "date",
+     "note": "5544 is September 1783 to September 1784; 1780 is 5540 (hebdate.mjs: 1 June 1780 is 27 Iyar 5540, 1 December 1783 is 6 Kislev 5544). The table (line 72) repeats the pair"
+    },
+    {
+     "line": 72,
+     "quote": "פיורדא תקמ\"ד (1780)",
+     "kind": "date",
+     "note": "the same Hebrew year and civil year that do not agree (see line 61)"
+    },
+    {
+     "line": 64,
+     "quote": "שו\"ת פני יהושע: נאספו שרידי תשובותיו",
+     "kind": "doubtful-fact",
+     "note": "line 6 says that 'שו\"ת פני יהושע' is the work of R. Yehoshua Heshel of Krakow, the grandfather; here the same title is the sage's own, and it appears again in the table (line 72) inside part 4; possibly a mix-up of the two books of the same name"
+    },
+    {
+     "line": 80,
+     "quote": "התמקדנות מוחלטת",
+     "kind": "typo",
+     "note": "התמקדנות for probably התמקדות"
+    },
+    {
+     "line": 103,
+     "quote": "תירא את התרגשותו",
+     "kind": "typo",
+     "note": "תירא for probably תיאר (described)"
+    }
+   ],
+   "footnotes": [],
+   "links": [],
+   "links_rejected": [],
+   "links_none_reason": "No roster sage is named as his teacher, student or relative: his teachers (R. Gavriel Eskeles, R. Shmuel of Rzeszow, R. Chaim Reitzes, the Chacham Tzvi), his students (R. David Tevele Schiff, R. Nathan Maas, R. Moshe Lima and the Maggid of Mezritch) and all his relatives (R. Avraham HaLevi, R. Yehoshua Heshel of Krakow, R. Shlomo Segal Landau, his sons and sons-in-law) are not in roster.tsv. The roster sages the paper does name are others: Emden (89) and Eybeschutz (653) as the two sides of the controversy, the Noda BiYehuda (95) who eulogised him, the Chida (325) who met him, the Besht (558) in a Hasidic friendship tradition, and Rashi (594), David (557) and Rashi's descent as a tradition ('לפי המסורת').",
+   "yahrzeit": null,
+   "yahrzeit_none_reason": "the paper's civil date 17 January 1756 (a Saturday) is 15 Shevat, one day off its own Hebrew date 14 Shevat and its 'ערב שבת' (14 Shevat 5516 is Friday 16 January 1756)"
+  },
+  {
+   "id": "657",
+   "label": "רבי יאיר חיים בכרך (בעל חוות יאיר)",
+   "key": "חוות יאיר",
+   "drive": {
+    "doc": "1V7IsrFudNZ2xabeT4JjJ_umUk_uOoRhlhWfmoZWiUCg",
+    "title": "פועלו, משנתו התורנית ומורשתו של רבי יאיר חיים בכרך: עיון היסטורי-הלכתי בבעל \"חוות יאיר\""
+   },
+   "docx": "פועלו, משנתו התורנית ומורשתו של רבי יאיר חיים בכרך- עיון היסטורי-הלכתי בבעל חוות יאיר.docx",
+   "he": {
+    "lines": 74,
+    "words": 2431
+   },
+   "copies": {
+    "a_lines": 74,
+    "b_lines": 74,
+    "identical": true,
+    "differences": []
+   },
+   "about_sage": "his own paper; evidence at line(s) 1, 7, 4; excluded: 72 (The Maharal of Prague (1522-1609) is named as the sage's ancestor (the grandfather of his grandmother Chava), not as the subject; the paper is about the author of the Chavot Yair, 1638-1702, rabbi of Worms.); 309 (R. Avigdor Katz of Vienna (1200-1300 on the roster) has the first name of one teacher the paper lists (\"רבי אביגדור\"), but that teacher is not further identified and lived in the sage's own time.)",
+   "disagreements": [
+    {
+     "field": "family",
+     "kind": "conflict",
+     "node": "record: the Maharal is an ancestor four generations up, through the grandmother Chava (Sefaria's bio says great-grandfather; the link carries \"ancestor\")",
+     "paper": "calls the Maharal \"זקנו\" (grandfather) here and in the section on his method, although the line on Chava (the sage's paternal grandmother, the Maharal's granddaughter) puts him four generations above",
+     "line": 22,
+     "quote": "הותירה בו מורשת זקנו המהר\"ל מפראג"
+    },
+    {
+     "field": "death",
+     "kind": "adds",
+     "node": "node: died 1702 (the record notes a variant \"א' טבת תס\"ב (1701)\" once in Hebrew Wikipedia)",
+     "paper": "gives the day: 1 Tevet 5462 = 1 January 1702, at the age of 64, buried in the old cemetery of Worms (the pair is consistent)",
+     "line": 11,
+     "quote": "הסתלקותו ביום א' בטבת ה'תס\"ב (1 בינואר 1702)"
+    },
+    {
+     "field": "label",
+     "kind": "nuance",
+     "node": "roster label: רבי יאיר חיים בכרך; Hebrew Wikipedia: born Chaim",
+     "paper": "writes his full name as \"רבי שמעון יאיר חיים בכרך\" (the Drive source MyTzadik has it in its title)",
+     "line": 4,
+     "quote": "רבי שמעון יאיר חיים בכרך (ה'שצ\"ח–ה'תס\"ב, 1638–1702)"
+    },
+    {
+     "field": "label",
+     "kind": "adds",
+     "node": "bio: no word on his name",
+     "paper": "his original name was Chaim; \"Yair\" was added later after a serious illness that endangered his life",
+     "line": 7,
+     "quote": "שמו המקורי היה חיים, והשם \"יאיר\" נוסף לו מאוחר יותר בעקבות מחלה קשה שסיכנה את חייו"
+    },
+    {
+     "field": "birth",
+     "kind": "nuance",
+     "node": "record notes: Hebrew Wikipedia has a variant claim of birth in Mahersbrod in 1628, repeated by English Wikipedia; 1638 in Leipnik is kept",
+     "paper": "gives 1638 in Leipnik and puts the 1628 Mahersbrod version in a parenthesis as \"an alternative version\"",
+     "line": 7,
+     "quote": "קיימת גרסה אמפורית המקדימה את לידתו לשנת ה'שפ\"ח/1628 במאהריש-ברוד"
+    },
+    {
+     "field": "place",
+     "kind": "adds",
+     "node": "place column: Worms; Mainz; Koblenz; Frankfurt (where he lived 1689-99)",
+     "paper": "after the burning of Worms he wandered for about ten years between Metz, Frankfurt am Main and Heidelberg",
+     "line": 11,
+     "quote": "ולנדוד במשך כעשור בין קהילות מצץ, פרנקפורט דמיין והיידלברג"
+    },
+    {
+     "field": "office",
+     "kind": "adds",
+     "node": "bio: rabbi in Koblenz and Mainz and at the end of his life in Worms",
+     "paper": "Worms chose R. Aharon Teomim instead of him when his father died in 1670; he was officially appointed av beit din of Worms only in 1699 (about two and a half years before his death); Koblenz lasted three years",
+     "line": 10,
+     "quote": "פרנסי הקהילה העדיפו למנות תחתיו את רבי אהרן תאומים"
+    },
+    {
+     "field": "family",
+     "kind": "adds",
+     "node": "the node holds no wife or mother; father and grandfather as named in the record",
+     "paper": "married Dina, the daughter of a notable of Fulda, in 1654; his mother, Rabbanit Tuprish, was the daughter of the rabbi of Moravia",
+     "line": 9,
+     "quote": "נישא לדינה, בתו של נכבד מקהילת פולדא"
+    },
+    {
+     "field": "teacher",
+     "kind": "adds",
+     "node": "no teacher on the node (the record names the father and grandfather only as relatives)",
+     "paper": "his father was his \"רב מובהק\"; in his writings he names R. Menachem Mendel, R. Yitzchak and R. Avigdor as his teachers (none identified, none on the roster)",
+     "line": 22,
+     "quote": "מנה בכתביו את רבי מנחם מענדיל, רבי יצחק ורבי אביגדור כמוריו"
+    },
+    {
+     "field": "student",
+     "kind": "adds",
+     "node": "record notes: his student David Oppenheim (not on the roster); no student on the node",
+     "paper": "R. David Oppenheim (av beit din of Nikolsburg and Prague) is named his foremost student, who saw him as \"רבו המובהק\" and included his responsa in his books",
+     "line": 23,
+     "quote": "מבין תלמידיו בלט במיוחד רבי דוד אופנהיים"
+    },
+    {
+     "field": "works",
+     "kind": "adds",
+     "node": "bio: names the Chavot Yair, the Mekor Chaim and the Chut HaShani",
+     "paper": "also a 46-volume manuscript encyclopedia that he collected and catalogued (science, mathematics, astronomy, grammar, poetry and documents on Sabbateanism); the catalogue survives, the volumes were lost; and the Mar Kashisha, the glosses on the Rif and the lost Etz Chaim",
+     "line": 29,
+     "quote": "רבי יאיר חיים אף קיבץ וקטלג אנציקלופדיה בת 46 כרכים בכתב יד"
+    },
+    {
+     "field": "works",
+     "kind": "adds",
+     "node": "bio: names the Mekor Chaim without its history",
+     "paper": "the manuscript was thought lost for centuries; parts were found in the 1970s and printed in two volumes by Machon Yerushalayim, edited by R. Eliyahu Dov Pines, in 1982",
+     "line": 28,
+     "quote": "רק בשנות ה-70 של המאה ה-20 התגלו חלקים מכתב היד"
+    },
+    {
+     "field": "record",
+     "kind": "adds",
+     "node": "record notes: the bio leaves out the Israeli court's use of his rulings",
+     "paper": "the paper says his analysis of abortion (responsum 31) has been cited at length by the Supreme Court of Israel, and treats his responsa on abortion, on kaddish by women, on community taxation and on coins bearing holy names",
+     "line": 42,
+     "quote": "ואף צוטט בהרחבה בפסיקת בית המשפט העליון בישראל"
+    }
+   ],
+   "slips": [
+    {
+     "line": 8,
+     "quote": "בעצוב אישיותו",
+     "kind": "typo",
+     "note": "בעיצוב (the yod is missing)."
+    },
+    {
+     "line": 7,
+     "quote": "גרסה אמפורית המקדימה",
+     "kind": "wrong-word",
+     "note": "probably חלופית / אחרת, or אמפירית; אמפורית as written is not a word in this sense."
+    },
+    {
+     "line": 22,
+     "quote": "מיוצר זה קיבל",
+     "kind": "garbled",
+     "note": "probably ממנו / ממקור זה; מיוצר has no meaning here."
+    },
+    {
+     "line": 23,
+     "quote": "קים רבי יאיר חיים חליפת מכתבים",
+     "kind": "typo",
+     "note": "קיים (the yod is missing)."
+    },
+    {
+     "line": 28,
+     "quote": "חיבור יסודי נוסף מ פועלו",
+     "kind": "typo",
+     "note": "מ פועלו for מפועלו (a stray space)."
+    },
+    {
+     "line": 39,
+     "quote": "ובפורום תשובותיו",
+     "kind": "wrong-word",
+     "note": "probably ובקובץ תשובותיו; \"forum\" as written is odd for a book of responsa."
+    },
+    {
+     "line": 42,
+     "quote": "מבחינה הגדרתית-מוסגרית",
+     "kind": "garbled",
+     "note": "probably מושגית / מוגדרת; מוסגרית is not a word in this sense."
+    },
+    {
+     "line": 29,
+     "quote": "של זקנו רבי אברהם שמואל, אביו רבי משה שמשון, לצד",
+     "kind": "grammar",
+     "note": "a conjunction is missing: probably \"ואביו\"."
+    },
+    {
+     "line": 14,
+     "quote": "נישואין לדינה מפולדא | מעבר לוורמייזא והתעמקות",
+     "kind": "date",
+     "note": "the table puts a move to Worms in the row of 1654, while the text says he moved to Worms at the age of twelve (about 1650) when his father was appointed there."
+    },
+    {
+     "line": 74,
+     "quote": "אם רשאי רופא כהן... (see list) חוות יאיר",
+     "kind": "other",
+     "note": "the title of source 25 is a leftover mix of the title of source 23 and the Sefaria page of the Chavot Yair (with a \"(see list)\" note of the text generator)."
+    }
+   ],
+   "footnotes": [
+    {
+     "marker": 22,
+     "line": 40,
+     "source_title": "שני זיתים – מילים, פירושים וביצועים | ר' שלמה אבן גבירול | פיוט | הספרייה הלאומית – אתר הפיוט והתפילה, https://www.nli.org.il/he/piyut/Piyut1song_010043800000005171/NLI",
+     "note": "a page on the piyyut \"Shnei Zeitim\" of Ibn Gabirol cannot carry the sentence that he encouraged his students to learn the sciences."
+    }
+   ],
+   "links": [
+    {
+     "a": "72",
+     "b": "657",
+     "type": "family",
+     "relation": "ancestor",
+     "quote": "זקנתו מצד אביו, הרבנית חוה בכרך (1585–1652), בתו של רבי יצחק כ\"ץ ונכדתו של המהר\"ל מפראג",
+     "outcome": "already-on-site",
+     "reason": "the site already states this relation (data.json, the supplements or the catalogue links)"
+    }
+   ],
+   "links_rejected": [],
+   "yahrzeit": {
+    "day": 1,
+    "month": "Tevet",
+    "quote": "הסתלקותו ביום א' בטבת ה'תס\"ב (1 בינואר 1702)",
+    "outcome": "added"
+   }
+  },
+  {
+   "id": "669",
+   "label": "רבי אברהם סבע (בעל צרור המור)",
+   "key": "סבע",
+   "drive": {
+    "doc": "14mFOuabrmn0D6GKvmuTFgZQuDNFncxDzBkSJg2AbRyM",
+    "title": "פועלו, משנתו ומורשתו התורנית של רבי אברהם סבע: עיון היסטורי, פרשני וקבלי"
+   },
+   "docx": "פועלו, משנתו ומורשתו התורנית של רבי אברהם סבע- עיון היסטורי, פרשני וקבלי.docx",
+   "he": {
+    "lines": 78,
+    "words": 2464
+   },
+   "copies": {
+    "a_lines": 78,
+    "b_lines": 78,
+    "identical": true,
+    "differences": []
+   },
+   "about_sage": "his own paper; evidence at line(s) 1, 3, 7; excluded: 130 (only a similar spelling (סבא, with aleph, the elder); the paper's man is spelled סבע, was born in Zamora in Castile and lived 1440-1508 by its figures, while the roster dates 130 to 1850-1919); 324 (only a similar spelling (הסבא, with aleph); the roster dates him 1849-1927, the paper's man died in 1508)",
+   "disagreements": [
+    {
+     "field": "label",
+     "kind": "nuance",
+     "node": "roster label רבי אברהם סבע (בעל צרור המור)",
+     "paper": "gives his patronymic, רבי אברהם בן יעקב סבע",
+     "line": 3,
+     "quote": "רבי אברהם בן יעקב סבע (ר'-רס\"ט / 1440–1508 לערך)"
+    },
+    {
+     "field": "birth",
+     "kind": "nuance",
+     "node": "birth_year 1440 and death_year 1508 with date_precision exact",
+     "paper": "gives the years as approximate (\"לערך\") and the birth as \"around\" 5200 (1440)",
+     "line": 3,
+     "quote": "(ר'-רס\"ט / 1440–1508 לערך)"
+    },
+    {
+     "field": "place",
+     "kind": "adds",
+     "node": "location: קסטיליה (the record: born and active in Castile)",
+     "paper": "adds that he was born in the city of Zamora in the region of Castile",
+     "line": 7,
+     "quote": "רבי אברהם סבע נולד בעיר זמורה שבחבל קסטיליה בספרד סביב שנת ה'ר' (1440)"
+    },
+    {
+     "field": "place",
+     "kind": "adds",
+     "node": "location: קסטיליה; פורטוגל; פאס; אדריאנופול",
+     "paper": "adds Tlemcen in Algeria between Fez (about ten years) and Adrianople",
+     "line": 9,
+     "quote": "ולאחר מכן המשיך בנדודיו לתלמסאן שבאלג'יריה ולאדריאנופול"
+    },
+    {
+     "field": "bio",
+     "kind": "nuance",
+     "node": "bio: שני ילדיו נחטפו (two children)",
+     "paper": "his two young sons (\"בניו הצעירים\") were kidnapped and baptized",
+     "line": 8,
+     "quote": "נחטפו שני בניו הצעירים של ר' אברהם סבע"
+    },
+    {
+     "field": "bio",
+     "kind": "nuance",
+     "node": "bio: הוא עצמו נאסר ועונה ונמלט לפאס (he fled to Fez)",
+     "paper": "after the arrest he was caught a second time when he tried to dig up his writings, flogged and put on a ship to North Africa",
+     "line": 9,
+     "quote": "נלכד שוב, הולקה והועלה על ספינה רעועה שהפליגה לצפון אפריקה"
+    },
+    {
+     "field": "bio",
+     "kind": "adds",
+     "node": "bio: נאסר ועונה (arrested and tortured), no length",
+     "paper": "adds that he was held for about six months",
+     "line": 9,
+     "quote": "ונכלא למשך כשישה חודשים"
+    },
+    {
+     "field": "death",
+     "kind": "adds",
+     "node": "bio: נפטר בדרכו לאיטליה בשנת 1508 (the record: Hebrew Wikipedia, 9 Tishri 5269, buried in Verona)",
+     "paper": "the paper says the other accounts of some Eastern sages and historians link 'his last days or his place of rest' (ימיו האחרונים או את מקום מנוחתו) to Fez, not only the place of rest; so: 'gives the day, 9 Tishri (the eve of Yom Kippur), two days after a storm at sea, and burial in Verona, as the central tradition (Divrei Yosef, cited by the Chida); it adds that other accounts tie his last days or his resting place to Fez'",
+     "line": 10,
+     "quote": "נפטר כעבור יומיים (בט' בתשרי, ערב יום הכיפורים)",
+     "corrected_by_second_reader": true
+    },
+    {
+     "field": "works",
+     "kind": "nuance",
+     "node": "bio: אשכול הכופר על רות ואסתר (the record: English Wikipedia, a commentary on Ruth and Esther)",
+     "paper": "the paper does not say that the fragments stayed in manuscript only: 'the parts on Ruth and Esther were printed in the modern period, while fragments of his commentaries on Song of Songs, Lamentations and Kohelet remained in manuscript and were printed in annotated scholarly editions in later years' (line 19)",
+     "line": 19,
+     "quote": "הביאור המקיף על חמש המגילות",
+     "corrected_by_second_reader": true
+    },
+    {
+     "field": "works",
+     "kind": "adds",
+     "node": "no mention of Tzror HaChaim or Eshel Avraham",
+     "paper": "adds Tzror HaChaim, a kabbalistic-ethical commentary on Avot and on the order of prayers and blessings (edition in Bnei Brak, 5775), and the name Eshel Avraham for his collected explanations, with lost commentaries on Job and Psalms",
+     "line": 19,
+     "quote": "לצדו חיבר את \"צרור החיים\" – פירוש קבלי-מוסרי על מסכת אבות"
+    },
+    {
+     "field": "works",
+     "kind": "nuance",
+     "node": "the record (Maarekhet Sefarim): Tzror HaKesef is a work \"על דינים\"",
+     "paper": "Tzror HaKesef was written in his youth in Spain on the laws of Rosh Hashana, Yom Kippur and idolatry by way of the secret, and was lost in Portugal",
+     "line": 20,
+     "quote": "ועסק בהלכות ראש השנה, יום הכיפורים ועבודה זרה ע\"ד הסוד"
+    },
+    {
+     "field": "works",
+     "kind": "nuance",
+     "node": "the record: the attribution of Kitzur Smag was left out as doubtful",
+     "paper": "states that recent research also attributes to him an abridgement of the Sefer Mitzvot Gadol (\"קיצור סמ\"ג\")",
+     "line": 20,
+     "quote": "מחקרים חדישים מייחסים לו גם את קצור ספר מצוות גדול"
+    },
+    {
+     "field": "works",
+     "kind": "adds",
+     "node": "no editions",
+     "paper": "Tzror HaMor was first printed in Venice in 5283 (1523) by Daniel Bomberg and again in Venice in 5306 (1546)",
+     "line": 18,
+     "quote": "החיבור זכה להערצה רבה והודפס לראשונה בוונציה בשנת רפ\"ג (1523) על ידי המדפיס דניאל בומברג"
+    },
+    {
+     "field": "family",
+     "kind": "adds",
+     "node": "family: the granddaughter married Karo; the son is not named",
+     "paper": "adds that his son, R. Yitzchak Saba, survived the expulsion and settled in Salonica and Adrianople (the son is not on the roster)",
+     "line": 14,
+     "quote": "בנו, רבי יצחק סבע, ניצל מתלאות הגירוש והתיישב במרכזים התורניים של סלוניקי ואדריאנופול"
+    },
+    {
+     "field": "record",
+     "kind": "adds",
+     "node": "no link on the site between him and R. Moshe Alshich (630) or the Shelah (599)",
+     "paper": "says the Alshich adopted his method of questions and homily and set ideas from his commentaries into his own, and that the Shelah quotes Tzror HaMor at length; influence on later authors, not teaching",
+     "line": 39,
+     "quote": "רבי משה אלשיך (האלשיך הקדוש) בצפת אימץ את מתודת השאלות והדרש של סבע"
+    }
+   ],
+   "slips": [
+    {
+     "line": 3,
+     "quote": "גזירות תנ\"ד (1391)",
+     "kind": "date",
+     "note": "the Hebrew year and the civil year do not match: תנ\"ד is 5454 (1693/94), while 1391 is 5151, i.e. קנ\"א"
+    },
+    {
+     "line": 3,
+     "quote": "המלטשים ביותר",
+     "kind": "wrong-word",
+     "note": "\"הדרמטיים והמלטשים\" does not fit \"פרקים\"; the meaning (the most dramatic and shattering chapters) suggests another word, probably \"המטלטלים\" or \"המזעזעים\"; unclear"
+    },
+    {
+     "line": 13,
+     "quote": "ינוקתה ישירות",
+     "kind": "garbled",
+     "note": "\"ינוקתה\" is not a Hebrew form that fits the sentence (his development drew directly from the Castilian house of study); probably \"ינקה\""
+    },
+    {
+     "line": 30,
+     "quote": "במישנתו ההגותית",
+     "kind": "typo",
+     "note": "an extra yod: \"במשנתו\""
+    },
+    {
+     "line": 31,
+     "quote": "הציון הבלעדי על הרציונליזם האריסטוטלי",
+     "kind": "garbled",
+     "note": "\"הציון הבלעדי\" (the exclusive mark) has no sense here; the sentence means that exclusive reliance on Aristotelian rationalism failed the test of the decrees, so \"הסתמכות\" or \"הדגש\" was probably meant; unclear"
+    },
+    {
+     "line": 41,
+     "quote": "מהדורות מפוראות",
+     "kind": "typo",
+     "note": "probably \"מפוארות\" (splendid)"
+    },
+    {
+     "line": 75,
+     "quote": "וְ לִ פְ נֵ י עִ וֵּר הַּׁשָלֵם",
+     "kind": "garbled",
+     "note": "the title of source 28 is spaced-out letters with niqqud (an OCR leftover of a PDF title, probably \"ולפני עור השלם\")"
+    },
+    {
+     "line": 9,
+     "quote": "בפאס התגורר כעשר שנים, ולאחר מכן המשיך בנדודיו לתלמסאן שבאלג'יריה ולאדריאנופול",
+     "kind": "doubtful-fact",
+     "note": "ten years in Fez after the flight of 1497, then Tlemcen and Adrianople, cannot be fitted with line 10, where he sails for Italy and dies in 5269 (1508), eleven years after the decree; the paper's order of stations and its date of death are not reconciled; not corrected"
+    }
+   ],
+   "footnotes": [
+    {
+     "marker": 20,
+     "line": 30,
+     "source_title": "שיר השירים רבה א, סא - ישיבת ההסדר בני-עקיבא מעלות",
+     "note": "cited for Saba's theology of suffering (the expulsion as a process of refining, \"ייסורים של אהבה\") and his Song of Songs commentary; by its title the source is a page on the midrash Song of Songs Rabbah 1:61, not on Saba"
+    },
+    {
+     "marker": 26,
+     "line": 31,
+     "source_title": "מחברים | מקורות מתוך ספריית ספריא",
+     "note": "cited three times for Saba's critical stance towards medieval philosophy; by its title the source is Sefaria's index page of authors, which cannot carry a claim about his thought"
+    },
+    {
+     "marker": 27,
+     "line": 35,
+     "source_title": "מהלכות הנוגעות מיד אחר הפסח - קו ההלכה הספרדי",
+     "note": "cited in the table for the halakhic layer of Saba's commentary (Talmud and Castilian rulings); by its title the source is a page of laws that apply right after Pesach"
+    }
+   ],
+   "links": [
+    {
+     "a": "669",
+     "b": "443",
+     "type": "family",
+     "relation": "relative",
+     "quote": "בתו של רבי יצחק – נכדתו של ר' אברהם סבע – נישאה למרן רבי יוסף קארו",
+     "outcome": "already-on-site",
+     "reason": "the site already states this relation (data.json, the supplements or the catalogue links)"
+    }
+   ],
+   "links_rejected": [],
+   "yahrzeit": {
+    "day": 9,
+    "month": "Tishri",
+    "quote": "נפטר כעבור יומיים (בט' בתשרי, ערב יום הכיפורים)",
+    "outcome": "added"
+   }
+  }
+ ]
+}

@@ -503,6 +503,56 @@ test('660 and 638 hold their episode in the sheet (every row of the id), under t
   }
 })
 
+// R. Yaakov Reischer's years (660). They said כ־1661–1733 from 2026-10-18; on 2026-10-27 the owner, asked whether to keep 1661 or change it to
+// 1655, answered "לדייק בתאריך", and they now follow his own paper ("נולד בפראג באמצע המאה ה-17, בסביבות שנת ה'תט"ו (1655)", "1655 בקירוב – 1733")
+// and Hebrew Wikipedia ("1655 בקירוב"), the owner's research being the first source (CLAUDE.md, items 11-12). The sources disagree: Sefaria and
+// English Wikipedia say 1661, the National Library's title-page card 1670; death 1733 in all. A rebuild or an edit that brings 1661 back has to say why.
+const REISCHER_YEARS = 'כ־1655–1733'
+interface YearsView { where: string; era: string | null; numbers: { birth?: number; death?: number; precision?: string } | null }
+function reischerYearProblems(views: YearsView[]): string[] {
+  return views.flatMap(v => {
+    const out: string[] = []
+    if (v.era !== null && v.era !== REISCHER_YEARS) out.push(`${v.where}: years "${v.era}", not "${REISCHER_YEARS}"`)
+    if (v.numbers) {
+      if (v.numbers.birth !== 1655) out.push(`${v.where}: birth_year ${v.numbers.birth}, not 1655`)
+      if (v.numbers.death !== 1733) out.push(`${v.where}: death_year ${v.numbers.death}, not 1733`)
+      if (v.numbers.precision !== 'exact') out.push(`${v.where}: date_precision ${v.numbers.precision}, not exact`)
+    }
+    return out
+  })
+}
+function reischerViews(): YearsView[] {
+  type Raw = { id: string; era?: string; birth_year?: number; death_year?: number; date_precision?: string }
+  const views: YearsView[] = dataRows.filter(r => sheetRows.get(r)!.get(COL.id) === '660')
+    .map(r => ({ where: `sheet row ${r}`, era: sheetRows.get(r)!.get(COL.years) ?? '', numbers: null }))
+  for (const [where, file] of [['data.json (root)', join(REPO, 'data.json')], ['public/data.json', join(APP, 'public/data.json')]] as const) {
+    const n = readJson<{ nodes: Raw[] }>(file).nodes.filter(x => x.id === '660')
+    views.push(...n.map(x => ({ where, era: x.era ?? '', numbers: { birth: x.birth_year, death: x.death_year, precision: x.date_precision } })))
+    if (n.length !== 1) views.push({ where: `${where}: ${n.length} nodes with the id`, era: null, numbers: { birth: undefined, death: undefined } })
+  }
+  const s = byId.get('660')!
+  views.push({ where: 'the corpus the pages read', era: null, numbers: { birth: s.birth_year, death: s.death_year, precision: s.date_precision } })
+  return views
+}
+
+test('R. Yaakov Reischer (660) is כ־1655–1733 in every row of the sheet, in both copies of data.json and in the corpus the pages read', () => {
+  const views = reischerViews()
+  assert.ok(views.length >= 4, `the sheet row and the three nodes: ${views.map(v => v.where).join('; ')}`)
+  assert.deepEqual(reischerYearProblems(views), [])
+  // the reason is in the owner's paper, which is what the years follow
+  assert.ok(inText('נולד בפראג באמצע המאה ה-17, בסביבות שנת ה\'תט"ו (1655)', paperText('660') ?? ''), 'the paper no longer says 1655')
+})
+
+test('the years rule fires: 1661 in the sheet, in either data.json or in the corpus, and a wrong precision or death year, are found', () => {
+  const good = reischerViews()
+  for (const i of good.keys()) {
+    const bad = good.map((v, k) => (k !== i ? v : { ...v, era: v.era === null ? null : 'כ־1661–1733', numbers: v.numbers && { ...v.numbers, birth: 1661 } }))
+    assert.ok(reischerYearProblems(bad).length > 0, `${good[i].where}: 1661 was not found`)
+  }
+  assert.ok(reischerYearProblems(good.map(v => (v.numbers ? { ...v, numbers: { ...v.numbers, precision: 'century' } } : v))).some(p => /date_precision/.test(p)))
+  assert.ok(reischerYearProblems(good.map(v => (v.numbers ? { ...v, numbers: { ...v.numbers, death: 1729 } } : v))).some(p => /death_year/.test(p)))
+})
+
 test('the whole tag נשים is in Rachel\'s tags cell, and in no other new row\'s', () => {
   for (const w of NEW) {
     const row = sheetRows.get(dataRows.find(r => sheetRows.get(r)!.get(COL.id) === w.id)!)!
