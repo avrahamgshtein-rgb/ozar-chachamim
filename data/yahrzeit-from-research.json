@@ -1182,5 +1182,74 @@
   "day": 9,
   "month": "Tishri",
   "quote": "נפטר כעבור יומיים (בט' בתשרי, ערב יום הכיפורים)"
+ },
+ {
+  "id": "686",
+  "day": null,
+  "reason": "the paper gives only years for his death ('נפטר בסביבות שנת 1230') and no Hebrew day or month"
+ },
+ {
+  "id": "687",
+  "day": null,
+  "reason": "the paper gives only 'בסביבות שנת 1230' for his death in Marseille, no Hebrew day or month"
+ },
+ {
+  "id": "688",
+  "day": null,
+  "reason": "the paper gives only the year of death (ה'שנ\"ה, 1595 בקירוב), no Hebrew day or month"
+ },
+ {
+  "id": "689",
+  "day": null,
+  "reason": "the paper gives the Hebrew date 1 Iyar 5478 with the civil date 3 May 1718, but 3 May 1718 is 2 Iyar 5478 (1 Iyar is 2 May, the date English Wikipedia gives); a Hebrew date that contradicts the paper's own civil date is recorded as none"
+ },
+ {
+  "id": "690",
+  "day": null,
+  "reason": "the paper gives years only (born about 990, died about 1062 in Mahdia), no Hebrew day or month of his death"
+ },
+ {
+  "id": "691",
+  "day": 21,
+  "month": "Adar",
+  "quote": "מוצאי שבת, כ\"א באדר ה'ת\"א (מרץ 1641)"
+ },
+ {
+  "id": "692",
+  "day": 27,
+  "month": "Sivan",
+  "quote": "עד יום פטירתו בכ\"ז בסיוון ה'תק\"ד (1744)"
+ },
+ {
+  "id": "693",
+  "day": null,
+  "reason": "the paper gives only years for his death ('לאחר 1626') and no Hebrew day or month"
+ },
+ {
+  "id": "694",
+  "day": 7,
+  "month": "Tishri",
+  "quote": "עד לפטירתו בז' בתשרי ה'תצ\"ז (12 בספטמבר 1736)"
+ },
+ {
+  "id": "695",
+  "day": null,
+  "reason": "the paper gives only years for his death ('בשנת 1215 לערך') and no Hebrew day or month"
+ },
+ {
+  "id": "696",
+  "day": null,
+  "reason": "the paper gives years only (around 1515, in Jerusalem or Damascus), no Hebrew day or month of his death"
+ },
+ {
+  "id": "697",
+  "day": 26,
+  "month": "Tamuz",
+  "quote": "נפטר במודינה ביום כ\"ו בתמוז ה'שצ\"ט (28 ביולי 1639)"
+ },
+ {
+  "id": "698",
+  "day": null,
+  "reason": "the paper gives no date of his death, neither Hebrew nor civil (it gives only 226 for the fall of the Parthians and 219 for his return to Babylonia); the Hebrew date is not in it"
  }
 ]

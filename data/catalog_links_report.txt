@@ -44,8 +44,9 @@ roster sages, and what became of it. Generated; do not edit.
 == added: oppose: 1 ==
   oppose: הרב יעקב עמדין (יעב"ץ) [89] (1697–1776) -> רבי יהונתן אייבשיץ [653] (1690–1764)  [ספריא: yaakov-emden opposed jonathan-eybeschutz; ספריא: jonathan-eybeschutz opposed yaakov-emden]
 
-== added: teacher: 97 ==
+== added: teacher: 99 ==
   teacher: רבי עקיבא בן יוסף [4] (0–100) -> רבי שמעון בר יוחאי [435] (100–200)  [ויקינתונים: Q310821 student (P802) Q557405; ויקינתונים: Q557405 student of (P1066) Q310821]
+  teacher: רבי חייא הגדול [7] (100–200) -> רב (אבא אריכא) [698] (175–247)  [ספריא: rabbi-chiyya taught rav; ספריא: rav learned-from rabbi-chiyya]
   teacher: רבי יהודה החסיד (חסידי אשכנז) [11] (1100–1200) -> רבי יצחק מווינה (בעל האור זרוע) [43] (1180–1250)  [ויקינתונים: Q1391474 student (P802) Q647348; ויקינתונים: Q647348 student of (P1066) Q1391474]
   teacher: רבי יהודה החסיד (חסידי אשכנז) [11] (1100–1200) -> רבי אלעזר מגרמייזא (בעל הרוקח) [280] (1160–1238)  [ויקינתונים: Q106336 student of (P1066) Q1391474; ויקינתונים: Q1391474 student (P802) Q106336]
   teacher: רבי יהודה החסיד (חסידי אשכנז) [11] (1100–1200) -> רבי משה מקוצי (הסמ"ג) [588] (1200–1260)  [ויקינתונים: Q1391474 student (P802) Q2916539; ויקינתונים: Q2916539 student of (P1066) Q1391474]
@@ -142,9 +143,11 @@ roster sages, and what became of it. Generated; do not edit.
   teacher: רבי יעקב בן יקר [604] (990–1064) -> רש"י (רבי שלמה יצחקי) [594] (1040–1105)  [ויקינתונים: Q1187659 student (P802) Q26456; ויקינתונים: Q26456 student of (P1066) Q1187659]
   teacher: רבי יוסי בן חלפתא [605] (100–200) -> רבי יהודה הנשיא [580] (135–217)  [ספריא: rabi learned-from rabbi-yose-b-chalafta; ספריא: rabbi-yose-b-chalafta taught rabi]
   teacher: רבי משה גלאנטי (המג״ן) [671] (1620–1689) -> רבי משה חגיז – הקנאי הירושלמי שניסה להציל את היהדות מן הקריסה הפנימית [86] (1671–1750)  [ויקינתונים: Q12409588 student of (P1066) Q12409579]
+  teacher: רבנו נסים בן יעקב מקירואן [690] (990–1062) -> רבי יצחק אלפסי (הרי"ף) [582] (1013–1103)  [ויקינתונים: Q523491 student of (P1066) Q690381; ויקינתונים: Q690381 student (P802) Q523491]
 
-== already on the site: 43 ==
+== already on the site: 53 ==
   colleague: הרשב״א [395] (1235–1310) -> רבנו אשר בן יחיאל (הרא״ש) [598] (1200–1400)  [ספריא: rashba1 corresponded-with rosh; ספריא: rosh corresponded-with rashba1]
+  family: הריצב״א [279] (1100–1200) -> רבי שמשון בן אברהם משאנץ (הר״ש) [686] (1150–1230)  [ויקינתונים: Q16157996 sibling (P3373) Q84128; ויקינתונים: Q84128 sibling (P3373) Q16157996]
   family: אהרן הכהן [521] (-1300–-1200) -> מרים הנביאה [629] (ללא שנים)  [ספריא: aaron sibling-of miriam; ספריא: miriam sibling-of aaron]
   family: אברהם אבינו [555] (ללא שנים) -> יצחק אבינו [571] (ללא שנים)  [ספריא: abraham parent-of isaac; ספריא: isaac child-of abraham]
   family: דוד המלך [557] (-1040–-970) -> שלמה המלך [595] (-1010–-931)  [ספריא: king-david parent-of king-solomon; ספריא: king-solomon child-of king-david; ויקינתונים: Q37085 father (P22) Q41370; ויקינתונים: Q41370 child (P40) Q37085]
@@ -156,11 +159,13 @@ roster sages, and what became of it. Generated; do not edit.
   family: לאה אמנו [613] (ללא שנים) -> רחל אמנו [683] (ללא שנים)  [ויקינתונים: Q128847 sibling (P3373) Q207389; ויקינתונים: Q207389 sibling (P3373) Q128847]
   family: רבי משה מטראני (המבי״ט) [632] (1500–1580) -> רבי יוסף מטראני (המהרי״ט) [641] (1568–1639)  [ספריא: moshe-ben-yosef-di-trani parent-of yosef-trani; ספריא: yosef-trani child-of moshe-ben-yosef-di-trani; ויקינתונים: Q1949234 child (P40) Q633076; ויקינתונים: Q633076 father (P22) Q1949234]
   family: רבי יעקב חגיז (בעל הלכות קטנות) [655] (1620–1674) -> רבי משה חגיז – הקנאי הירושלמי שניסה להציל את היהדות מן הקריסה הפנימית [86] (1671–1750)  [ויקינתונים: Q12409588 father (P22) Q1678956; ויקינתונים: Q1678956 child (P40) Q12409588]
+  family: רבי צבי הירש אשכנזי (החכם צבי) [689] (1658–1718) -> הרב יעקב עמדין (יעב"ץ) [89] (1697–1776)  [ספריא: yaakov-emden child-of zvi-ashkenazi; ספריא: zvi-ashkenazi parent-of yaakov-emden; ויקינתונים: Q244519 child (P40) Q473756; ויקינתונים: Q473756 father (P22) Q244519]
   influence: הרמב"ם [41] (1138–1204) -> רבי יוסף אלבו [17] (1380–1444)  [ויקינתונים: Q559622 influenced by (P737) Q127398]
   influence: הרמב"ם [41] (1138–1204) -> רבי נחמן קרוכמל (רנ״ק) [315] (1785–1840)  [ויקינתונים: Q85942 influenced by (P737) Q127398]
   influence: הרב חסדאי קרשקש [57] (1340–1410) -> רבי יוסף אלבו [17] (1380–1444)  [ויקינתונים: Q559622 influenced by (P737) Q528415]
   influence: רבינו דוד בונפיד [460] (1200–1300) -> הר"ן (רבנו נסים מגירונה) [13] (1300–1400)  [ויקינתונים: Q723531 influenced by (P737) Q20502319]
   oppose: שמאי הזקן [504] (-100–0) -> הלל הזקן [505] (-100–0)  [ספריא: shammai opposed hillel; ספריא: hillel opposed shammai]
+  teacher: רבנו תם (ר׳ יעקב בן מאיר) – מהפכן השיטה התוספתית [33] (1100–1171) -> רבי שמשון בן אברהם משאנץ (הר״ש) [686] (1150–1230)  [ספריא: rabbenu-tam taught samson-ben-abraham-of-sens; ספריא: samson-ben-abraham-of-sens learned-from rabbenu-tam]
   teacher: רבנו חננאל בן חושיאל [35] (ללא שנים) -> רבי יצחק אלפסי (הרי"ף) [582] (1013–1103)  [ויקינתונים: Q1061624 student (P802) Q523491; ויקינתונים: Q523491 student of (P1066) Q1061624]
   teacher: הרמב"ם [41] (1138–1204) -> רבי יוסף בן יהודה אבן שמעון [339] (1160–1226)  [ויקינתונים: Q3810290 student of (P1066) Q127398]
   teacher: הרדב"ז (1479–1573) – מגדולי הפוסקים: בין ספרד למצרים וארץ ישראל [69] (1479–1573) -> רבי יעקב קשטרו (מהריק״ש) [673] (1525–1612)  [ויקינתונים: Q21931887 student of (P1066) Q5241455]
@@ -168,6 +173,8 @@ roster sages, and what became of it. Generated; do not edit.
   teacher: רבי משה קורדובירו (הרמ״ק) [71] (1522–1570) -> רבי חיים ויטאל [542] (1542–1620)  [ספריא: moses-cordovero taught chaim-vital; ספריא: chaim-vital learned-from moses-cordovero; ויקינתונים: Q2302424 student of (P1066) Q733598; ויקינתונים: Q733598 student (P802) Q2302424]
   teacher: הרב אברהם יצחק הכהן קוק – החזון שאיחד קודש וחול [134] (1865–1935) -> הרב צבי יהודה הכהן קוק [196] (1891–1982)  [ויקינתונים: Q2704231 student of (P1066) Q330110; ויקינתונים: Q330110 student (P802) Q2704231]
   teacher: הרב צבי יהודה הכהן קוק [196] (1891–1982) -> הרב אברהם יהושע צוקרמן [490] (1900–2000)  [ויקינתונים: Q2704231 student (P802) Q6833618; ויקינתונים: Q6833618 student of (P1066) Q2704231]
+  teacher: ר״י הזקן מדמפייר [275] (1115–1190) -> רבי שמשון בן אברהם משאנץ (הר״ש) [686] (1150–1230)  [ויקינתונים: Q84128 student of (P1066) Q1970330]
+  teacher: הרמ״ע מפאנו [439] (1548–1620) -> רבי אהרן ברכיה ממודינה (בעל מעבר יבוק) [697] (1549–1639)  [ויקינתונים: Q301722 student of (P1066) Q1402747]
   teacher: רבי בצלאל אשכנזי [442] (1520–1592) -> רבי שלמה עדני (בעל מלאכת שלמה) [651] (1567–1630)  [ספריא: betzalel-ben-abraham-ashkenazi taught solomon-adeni; ספריא: solomon-adeni learned-from betzalel-ben-abraham-ashkenazi]
   teacher: רבי יוסף קארו [443] (1488–1575) -> רבי משה קורדובירו (הרמ״ק) [71] (1522–1570)  [ויקינתונים: Q467148 student (P802) Q733598; ויקינתונים: Q733598 student of (P1066) Q467148]
   teacher: רבי יוסף קארו [443] (1488–1575) -> רבי משה אלשיך (האלשיך הקדוש) [630] (1507–1600)  [ספריא: joseph-karo taught moses-alshikh; ספריא: moses-alshikh learned-from joseph-karo; ויקינתונים: Q467148 student (P802) Q786391; ויקינתונים: Q786391 student of (P1066) Q467148]
@@ -176,6 +183,7 @@ roster sages, and what became of it. Generated; do not edit.
   teacher: הלל הזקן [505] (-100–0) -> רבן יוחנן בן זכאי [592] (ללא שנים)  [ספריא: hillel taught rabban-yochanan-b-zakkai; ספריא: rabban-yochanan-b-zakkai learned-from hillel; ויקינתונים: Q319219 student (P802) Q733660; ויקינתונים: Q733660 student of (P1066) Q319219]
   teacher: רבי אליהו בן שלמה זלמן – הגאון מווילנה [539] (1720–1797) -> רבי חיים מוולוז'ין – מייסד 'אם הישיבות' ו'נפש החיים' [99] (1749–1821)  [ויקינתונים: Q1059243 student of (P1066) Q279359; ויקינתונים: Q279359 student (P802) Q1059243]
   teacher: מהר"י בירב (רבי יעקב בירב) [573] (1474–1546) -> רבי יוסף קארו [443] (1488–1575)  [ויקינתונים: Q2909966 student (P802) Q467148; ויקינתונים: Q467148 student of (P1066) Q2909966]
+  teacher: רבי יהודה הנשיא [580] (135–217) -> רב (אבא אריכא) [698] (175–247)  [ספריא: rabi taught rav; ספריא: rav learned-from rabi; ויקינתונים: Q305760 student of (P1066) Q380427; ויקינתונים: Q380427 student (P802) Q305760]
   teacher: רבי יצחק אלפסי (הרי"ף) [582] (1013–1103) -> רבי יוסף אבן מיגאש [32] (1077–1141)  [ספריא: joseph-ibn-migash learned-from rif; ספריא: rif taught joseph-ibn-migash; ויקינתונים: Q523491 student (P802) Q958361; ויקינתונים: Q958361 student of (P1066) Q523491]
   teacher: רבי יצחק הלוי (סגן לויה) [583] (1000–1080) -> רש"י (רבי שלמה יצחקי) [594] (1040–1105)  [ויקינתונים: Q12408247 student (P802) Q26456; ויקינתונים: Q26456 student of (P1066) Q12408247]
   teacher: רבי לוי בן חביב (המהרלב"ח) [585] (1483–1545) -> רבי שלמה סיריליו [645] (1485–1554)  [ויקינתונים: Q1291930 student of (P1066) Q6535573]
@@ -187,6 +195,10 @@ roster sages, and what became of it. Generated; do not edit.
   teacher: רבי שמואל די מדינה (המהרשד״ם) [639] (1505–1589) -> רבי אברהם די בוטון (בעל לחם משנה) [642] (1500–1600)  [ספריא: samuel-de-medina taught abraham-de-boton; ספריא: abraham-de-boton learned-from samuel-de-medina; ויקינתונים: Q4669274 student of (P1066) Q7413006; ויקינתונים: Q7413006 student (P802) Q4669274]
   teacher: רבי שמואל די מדינה (המהרשד״ם) [639] (1505–1589) -> רבי מנחם די לונזאנו [654] (1550–1626)  [ספריא: samuel-de-medina taught menachem-di-lonzano; ספריא: menachem-di-lonzano learned-from samuel-de-medina]
   teacher: רבי שמואל אבוהב (בעל דבר שמואל) [663] (1610–1694) -> רבי יעקב חגיז (בעל הלכות קטנות) [655] (1620–1674)  [ויקינתונים: Q1678956 student of (P1066) Q3946667; ויקינתונים: Q3946667 student (P802) Q1678956]
+  teacher: רבי שמשון בן אברהם משאנץ (הר״ש) [686] (1150–1230) -> רבי יצחק מקורביל (הסמ"ק) [303] (ללא שנים)  [ויקינתונים: Q84128 student (P802) Q6077408]
+  teacher: רב (אבא אריכא) [698] (175–247) -> רב יהודה בר יחזקאל [522] (220–299)  [ספריא: rav-yehudah-b-yechezkel learned-from rav; ספריא: rav taught rav-yehudah-b-yechezkel; ויקינתונים: Q305760 student (P802) Q359777; ויקינתונים: Q359777 student of (P1066) Q305760]
+  teacher: רב (אבא אריכא) [698] (175–247) -> רב חסדא [536] (217–309)  [ספריא: rav-chisda learned-from rav; ספריא: rav taught rav-chisda]
+  teacher: רב (אבא אריכא) [698] (175–247) -> רב הונא [576] (216–296)  [ספריא: rav-huna learned-from rav; ספריא: rav taught rav-huna; ויקינתונים: Q1794530 student of (P1066) Q305760; ויקינתונים: Q305760 student (P802) Q1794530]
 
 == dropped: not a person: 1 ==
   teacher: רש"י (רבי שלמה יצחקי) [594] (1040–1105) -> מחזור ויטרי [356] (ללא שנים)  [ספריא: simchah-of-vitry learned-from rashi; ספריא: rashi taught simchah-of-vitry]

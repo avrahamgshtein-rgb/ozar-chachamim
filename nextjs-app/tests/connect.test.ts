@@ -557,8 +557,9 @@ test('the six women once left untagged are women in the net, and a Hebrew captio
 test('the Hebrew net fits the page\'s budget (the whole payload, net and the game\'s day, is under 28 KB)', () => {
   const bytes = (l: Locale) => Buffer.byteLength(JSON.stringify(connectNet(l)), 'utf8')
   console.log(`       (net bytes: he ${bytes('he')}, en ${bytes('en')}, ru ${bytes('ru')})`)
-  // room is left for the day's route and hints; every name is kept. 23 500 until the roster grew from 459 to 509 sages
-  assert.ok(bytes('he') <= 26_500, `the Hebrew net is ${bytes('he')} bytes`)
+  // room is left for the day's route and hints; every name is kept. 23 500 until the roster grew from 459 to 509 sages; 26 500 until the owner's
+  // 13 papers of 18 October brought sages 515 -> 528 with 46 new sourced links (the net was 25 914 bytes, now 27 081): a true link is never dropped to fit
+  assert.ok(bytes('he') <= 28_000, `the Hebrew net is ${bytes('he')} bytes`)
 })
 
 test('connectPathFor: the chain in a language, or null for an unknown sage, the same sage twice, or no chain', () => {

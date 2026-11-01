@@ -5292,6 +5292,126 @@
    "en": "Amram Gaon",
    "total": 0,
    "works": []
+  },
+  "686": {
+   "label": "רבי שמשון בן אברהם משאנץ (הר״ש)",
+   "slug": "samson-ben-abraham-of-sens",
+   "kind": "author",
+   "he": "שמשון בן אברהם משאנץ",
+   "en": "Samson ben Abraham of Sens",
+   "total": 2,
+   "works": [
+    {
+     "he": "ר\"ש משאנץ על משנה",
+     "en": "Rash MiShantz on Mishnah",
+     "url": "/texts/Mishnah/Rishonim on Mishnah/Rash MiShantz",
+     "cat": true
+    },
+    {
+     "he": "תוספות שאנץ על סוטה",
+     "en": "Tosafot Shantz on Sotah",
+     "url": "/Tosafot_Shantz_on_Sotah"
+    }
+   ],
+   "wiki": {
+    "he": "שמשון משאנץ",
+    "en": "Samson ben Abraham of Sens"
+   }
+  },
+  "688": {
+   "label": "רבי שמואל יפה אשכנזי",
+   "slug": "shmuel-yaffe-ashkenazi",
+   "kind": "author",
+   "he": "שמואל יפה אשכנזי",
+   "en": "Shmuel Yaffe Ashkenazi",
+   "total": 3,
+   "works": [
+    {
+     "he": "יפה ענף על מדרש רבה",
+     "en": "Yefeh Anaf on Midrash Rabbah",
+     "url": "/texts/Midrash/Aggadah/Midrash Rabbah/Commentary/Yefeh Anaf",
+     "cat": true
+    },
+    {
+     "he": "יפה קול על שיר השירים רבה",
+     "en": "Yefeh Kol on Shir HaShirim Rabbah",
+     "url": "/Yefeh_Kol_on_Shir_HaShirim_Rabbah"
+    },
+    {
+     "he": "יפה תואר על מדרש רבה",
+     "en": "Yefeh To'ar on Midrash Rabbah",
+     "url": "/texts/Midrash/Aggadah/Midrash Rabbah/Commentary/Yefeh To'ar",
+     "cat": true
+    }
+   ],
+   "wiki": {
+    "he": "שמואל יפה אשכנזי"
+   }
+  },
+  "689": {
+   "label": "רבי צבי הירש אשכנזי (החכם צבי)",
+   "slug": "zvi-ashkenazi",
+   "kind": "author",
+   "he": "צבי אשכנזי",
+   "en": "Zvi Ashkenazi",
+   "total": 1,
+   "works": [
+    {
+     "he": "חכם צבי",
+     "en": "Chakham Tzvi",
+     "url": "/Chakham_Tzvi"
+    }
+   ],
+   "wiki": {
+    "he": "צבי הירש אשכנזי",
+    "en": "Tzvi Ashkenazi"
+   }
+  },
+  "693": {
+   "label": "רבי ידידיה שלמה רפאל נורצי",
+   "slug": "yedidiah-norzi",
+   "kind": "author",
+   "he": "ידידיה שלמה רפאל נורצי",
+   "en": "Yedidiah Norzi",
+   "total": 1,
+   "works": [
+    {
+     "he": "מנחת שי על תנ\"ך",
+     "en": "Minchat Shai on Tanakh",
+     "url": "/texts/Tanakh/Rishonim on Tanakh/Minchat Shai",
+     "cat": true
+    }
+   ],
+   "wiki": {
+    "he": "ידידיה שלמה רפאל נורצי",
+    "en": "Jedidiah Norzi"
+   }
+  },
+  "694": {
+   "label": "רבי דוד אופנהיים",
+   "slug": "david-oppenheim",
+   "kind": "person",
+   "he": "דוד אופנהיים",
+   "en": "David Oppenheim",
+   "total": 0,
+   "works": [],
+   "wiki": {
+    "he": "דוד אופנהיים",
+    "en": "David Oppenheim (rabbi)"
+   }
+  },
+  "698": {
+   "label": "רב (אבא אריכא)",
+   "slug": "rav",
+   "kind": "person",
+   "he": "רב (שם אמורא)",
+   "en": "Rav",
+   "total": 0,
+   "works": [],
+   "wiki": {
+    "he": "רב (אמורא)",
+    "en": "Abba Arika"
+   }
   }
  }
 }

@@ -443,6 +443,17 @@
    "evidence_source": "ויקינתונים: Q310821 student (P802) Q557405 | ויקינתונים: Q557405 student of (P1066) Q310821"
   },
   {
+   "source": "7",
+   "target": "698",
+   "type": "teacher",
+   "via": [
+    "sefaria"
+   ],
+   "source_label": "רבי חייא הגדול",
+   "target_label": "רב (אבא אריכא)",
+   "evidence_source": "ספריא: rabbi-chiyya taught rav | ספריא: rav learned-from rabbi-chiyya"
+  },
+  {
    "source": "11",
    "target": "43",
    "type": "teacher",
@@ -1509,6 +1520,17 @@
    "source_label": "רבי משה גלאנטי (המג״ן)",
    "target_label": "רבי משה חגיז – הקנאי הירושלמי שניסה להציל את היהדות מן הקריסה הפנימית",
    "evidence_source": "ויקינתונים: Q12409588 student of (P1066) Q12409579"
+  },
+  {
+   "source": "690",
+   "target": "582",
+   "type": "teacher",
+   "via": [
+    "wikidata"
+   ],
+   "source_label": "רבנו נסים בן יעקב מקירואן",
+   "target_label": "רבי יצחק אלפסי (הרי\"ף)",
+   "evidence_source": "ויקינתונים: Q523491 student of (P1066) Q690381 | ויקינתונים: Q690381 student (P802) Q523491"
   }
  ]
 }

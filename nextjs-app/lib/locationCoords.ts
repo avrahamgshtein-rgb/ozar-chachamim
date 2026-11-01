@@ -173,6 +173,13 @@ export const LOCATION_COORDS: Record<string, { lat: number; lng: number }> = {
   'קומרנא':     { lat: 49.631,  lng: 23.703  },
   "פינצ'וב":    { lat: 50.533,  lng: 20.533  },
   'זידיטשוב':   { lat: 49.385,  lng: 24.144  },
+  // Added with the owner's 13 papers of 18 October 2026 on sages new to the site (coordinates from Wikipedia's API)
+  'סנס':        { lat: 48.197,  lng: 3.288  },
+  'מהדיה':      { lat: 35.500,  lng: 11.067  },
+  'שידלובצא':   { lat: 51.233,  lng: 20.850  },
+  'פרוסניץ':    { lat: 49.472,  lng: 17.111  },
+  'ניקלשבורג':  { lat: 48.806,  lng: 16.638  },
+  'סלמנקה':     { lat: 40.965,  lng: -5.664  },
 
   // ── רוסיה / אוקראינה ───────────────────────────────────────────────────
   'רוסיה':       { lat: 55.751,  lng: 37.617  },

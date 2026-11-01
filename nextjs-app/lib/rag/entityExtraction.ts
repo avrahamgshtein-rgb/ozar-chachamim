@@ -28,6 +28,11 @@ const STOPWORDS = new Set(
    'старший', 'святой', 'ребецн', 'майор', 'проф'].map(normalizeHe),
 )
 
+const onlyTitles = (alias: string) => {
+  const tokens = alias.split(' ').map(stripPunct).filter(Boolean)
+  return tokens.length > 0 && tokens.every(t => STOPWORDS.has(t))
+}
+
 const HEBREW_LETTER = /[א-ת]/
 const CYRILLIC_LETTER = /[Ѐ-ӿ]/
 
@@ -85,6 +90,9 @@ export function extractMentionedSages(
     const aliases = [...aliasesOf(sage.label), ...(sage.name_en ? [sage.name_en] : []), ...(local ? aliasesOf(local) : [])]
     for (const alias of aliases) {
       const normAlias = normalizeHe(alias)
+      // An alias made only of titles is no name: "רב" (Rav, Abba Arikha, whose label is "רב (אבא אריכא)") would be found inside
+      // "הרב", "רבו" and every "הרב קוק", and "Rav" in "Rav Kook". He is found by his other name ("אבא אריכא") instead.
+      if (onlyTitles(normAlias)) continue
       const hit = HEBREW_LETTER.test(normAlias)
         ? normAlias.length >= 2 && q.includes(normAlias)
         : normAlias.length >= 3 && ` ${qClean} `.includes(` ${stripPunct(normAlias)} `)
