@@ -10,7 +10,7 @@ import { cn } from '@/lib/utils'
 
 const ALL_REGIONS: Region[] = [
   'eretz-israel', 'mizrach', 'sefarad', 'ashkenaz', 'tsarfat', 'provence',
-  'italy', 'north-africa', 'east-europe', 'other'
+  'italy', 'north-africa', 'east-europe', 'north-america', 'other'
 ]
 
 const REGION_LABELS: Record<Region, Record<Locale, string>> = {
@@ -23,6 +23,7 @@ const REGION_LABELS: Record<Region, Record<Locale, string>> = {
   'italy': { he: 'איטליה', en: 'Italy', ru: 'Италия' },
   'north-africa': { he: 'צפון אפריקה', en: 'North Africa', ru: 'Северная Африка' },
   'east-europe': { he: 'מזרח אירופה', en: 'Eastern Europe', ru: 'Восточная Европа' },
+  'north-america': { he: 'צפון אמריקה', en: 'North America', ru: 'Северная Америка' },
   'other': { he: 'אחר', en: 'Other', ru: 'Другое' },
 }
 

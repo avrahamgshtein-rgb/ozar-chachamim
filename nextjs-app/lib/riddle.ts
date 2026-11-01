@@ -326,9 +326,9 @@ export function riddleIdOn(pool: string[], day: number, avoidId: string | null =
 
 /* ── Guesses ──────────────────────────────────────────────────────────── */
 
-/** The order of `TOWER_REGIONS`-like keys in a candidate's `regions` bit mask. */
+/** The order of keys in a candidate's `regions` bit mask (north-america was appended last, so no earlier bit moved). */
 export const REGION_ORDER: Region[] = [
-  'eretz-israel', 'mizrach', 'north-africa', 'sefarad', 'provence', 'tsarfat', 'italy', 'ashkenaz', 'east-europe', 'other',
+  'eretz-israel', 'mizrach', 'north-africa', 'sefarad', 'provence', 'tsarfat', 'italy', 'ashkenaz', 'east-europe', 'other', 'north-america',
 ]
 
 export function regionMask(location: string | undefined): number {

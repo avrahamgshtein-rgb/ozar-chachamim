@@ -28,6 +28,7 @@ export type Region =
   | 'north-africa'
   | 'mizrach'
   | 'eretz-israel'
+  | 'north-america'
   | 'other'
 
 export type ConnectionType =
@@ -212,6 +213,7 @@ export const REGION_LABELS: Record<Region, Record<Locale, string>> = {
   'north-africa':{ he: 'צפון אפריקה', en: 'North Africa',   ru: 'Северная Африка'  },
   'mizrach':     { he: 'המזרח',        en: 'Middle East',    ru: 'Ближний Восток'   },
   'eretz-israel':{ he: 'ארץ ישראל',   en: 'Eretz Israel',   ru: 'Земля Израиля'    },
+  'north-america':{ he: 'צפון אמריקה', en: 'North America',  ru: 'Северная Америка' },
   'other':       { he: 'אחר',          en: 'Other',          ru: 'Другое'           },
 }
 
@@ -225,6 +227,7 @@ export const REGION_COLORS: Record<Region, string> = {
   'north-africa':'#8e24aa',
   'mizrach':     '#ef6c00',
   'eretz-israel':'#00897b',
+  'north-america':'#e53935',
   'other':       '#90a4ae',
 }
 

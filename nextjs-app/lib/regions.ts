@@ -57,6 +57,14 @@ export const LOCATION_REGION_MAP: Array<[string, Region]> = [
   // Added with the owner's 13 papers of 18 October 2026 on sages new to the site: Sens, Mahdia, Szydlowiec, Prostejov, Mikulov, Salamanca (new points)
   // and region keywords for places the gazetteer already held (Bursa, Adrianople, Poznan, Eisenstadt, Tunis).
   ['סנס', 'tsarfat'], ['בורסה', 'mizrach'], ['אדריאנופול', 'mizrach'], ['מהדיה', 'north-africa'], ['פוזנא', 'east-europe'], ['שידלובצא', 'east-europe'], ['פרוסניץ', 'ashkenaz'], ['אייזנשטט', 'ashkenaz'], ['ניקלשבורג', 'ashkenaz'], ['סלמנקה', 'sefarad'], ['טוניס', 'north-africa'],
+  // North America (2026-11-01): every place of that continent the corpus's `location` texts hold (15 sages), both quote forms of ארה"ב.
+  // Not included because no text holds them: Canada, Toronto, Montreal and 'אמריקה' (which would also mean South America).
+  ['ארה"ב', 'north-america'], ['ארה״ב', 'north-america'], ['ארצות הברית', 'north-america'], ['ניו יורק', 'north-america'],
+  ['ברונקס', 'north-america'], ['בולטימור', 'north-america'], ['בוסטון', 'north-america'],
+  // Places phase 2b left without a region, by precedent: Frankfurt and Fulda beside Karlsruhe, Mainz and Worms (ashkenaz); Sarajevo beside
+  // Salonika, Bursa and Greece (the Ottoman Balkans, mizrach). Amsterdam and London stay without one: the file files neither the Netherlands
+  // nor England (no 'הולנד' / 'אנגליה' keyword), and a Western Europe region is out of scope.
+  ['פרנקפורט', 'ashkenaz'], ['פולדא', 'ashkenaz'], ['סרייבו', 'mizrach'],
   ['ישראל', 'eretz-israel'],
 ]
 

@@ -11,7 +11,11 @@ import {
   buildGraticule,
   occupiedLayers,
 } from '../lib/geoLayers'
-import { ALL_PERIODS } from '../lib/types'
+import { ALL_PERIODS, REGION_COLORS, REGION_LABELS } from '../lib/types'
+import { getAllSages } from '../lib/serverData'
+import { buildTower, TOWER_REGIONS } from '../lib/tower'
+import { regionMask, REGION_ORDER } from '../lib/riddle'
+import { parseURLState, serializeURLState } from '../lib/urlState'
 import { keywordIndex, locationToRegion, regionsOf } from '../lib/regions'
 import { canonicalPlace, coordsForName } from '../lib/locationCoords'
 import type { Sage } from '../lib/types'
@@ -253,6 +257,82 @@ test('הורדנה (Grodno, as Rabbi Nata Shapira\'s paper spells it) is an alia
   assert.deepEqual(coordsForName('הורדנה'), coordsForName('גרודנה'))
   assert.deepEqual(regionsOf('הורדנה'), ['east-europe'])
   assert.deepEqual(regionsOf('גרודנה'), ['east-europe'])
+})
+
+// ── North America (2026-11-01) and the places phase 2b left without a region ──────────────────────────────────────────
+console.log('\nNorth America')
+
+const corpus = getAllSages()
+const regionsByLabel = (label: string) => {
+  const s = corpus.find(x => x.label === label)
+  assert.ok(s, `no sage labelled ${label}`)
+  return regionsOf(s.location)
+}
+
+test('north-america has labels in three languages, a colour of its own, a tower sector and a riddle bit', () => {
+  assert.deepEqual(REGION_LABELS['north-america'], { he: 'צפון אמריקה', en: 'North America', ru: 'Северная Америка' })
+  const others = Object.entries(REGION_COLORS).filter(([k]) => k !== 'north-america').map(([, c]) => c)
+  assert.ok(!others.includes(REGION_COLORS['north-america']))
+  assert.ok(TOWER_REGIONS.includes('north-america'))
+  assert.equal(new Set(TOWER_REGIONS).size, Object.keys(REGION_LABELS).length)
+  assert.equal(REGION_ORDER.length, Object.keys(REGION_LABELS).length)
+  // appended last: no earlier bit of a candidate's mask moved
+  assert.equal(REGION_ORDER.indexOf('north-america'), REGION_ORDER.length - 1)
+  assert.equal(regionMask('ארה"ב'), 1 << REGION_ORDER.indexOf('north-america'))
+  const tower = buildTower(corpus, [], 'he')
+  assert.ok(tower.regions.some(r => r.region === 'north-america' && r.label === 'צפון אמריקה'))
+})
+
+test('a URL with ?regions=north-america round-trips', () => {
+  const state = parseURLState('?regions=north-america,east-europe')
+  assert.deepEqual(state.regions, ['north-america', 'east-europe'])
+  assert.equal(serializeURLState({ tab: null, sage: null, regions: ['north-america'], periods: null }).get('regions'), 'north-america')
+})
+
+test('the keywords: both quote forms of ארה"ב, ארצות הברית, New York, the Bronx, Baltimore, Boston; with a prefix letter too', () => {
+  for (const place of ['ארה"ב', 'ארה״ב', 'ארצות הברית', 'ניו יורק', 'ברונקס', 'בולטימור', 'בוסטון', 'בארה"ב', 'בניו יורק', 'מבוסטון']) {
+    assert.deepEqual(regionsOf(place), ['north-america'], place)
+  }
+  assert.deepEqual(regionsOf('ורשה; ניו יורק; ירושלים'), ['east-europe', 'north-america', 'eretz-israel'])
+})
+
+test('a keyword does not match inside another word (the mutation that lets it fail: a matcher that finds it anywhere)', () => {
+  for (const place of ['שבוסטונאי', 'דברונקסים', 'אבולטימורי', 'קארה"בים']) assert.deepEqual(regionsOf(place), [], place)
+  // 'אמריקה' is no keyword: it would also mean South America
+  assert.deepEqual(regionsOf('דרום אמריקה'), [])
+  assert.equal(keywordIndex('שבוסטונאי', 'בוסטון'), -1)
+})
+
+test('pinned by label: the Lubavitcher Rebbe gains north-america and keeps east-europe; R. Aharon Kotler is north-america only; Kahane puts it before Israel', () => {
+  assert.deepEqual(regionsByLabel('הרבי מליובאוויטש'), ['east-europe', 'north-america'])
+  assert.deepEqual(regionsByLabel('הרב אהרן קוטלר'), ['north-america'])
+  assert.deepEqual(regionsByLabel('הרב מאיר כהנא'), ['north-america', 'eretz-israel'])
+  assert.deepEqual(regionsByLabel('הרב יוסף דוב הלוי סולובייצ׳יק (הגרי״ד)'), ['north-america'])
+  assert.deepEqual(regionsByLabel('הנרייטה סאלד'), ['north-america', 'eretz-israel'])
+})
+
+test('exactly 15 sages are in north-america, each by a place text that names an American place', () => {
+  const na = corpus.filter(s => regionsOf(s.location).includes('north-america'))
+  assert.equal(na.length, 15)
+  for (const s of na) assert.match(s.location!, /ארה["״]ב|ארצות הברית|ניו יורק|בולטימור|בוסטון/, s.label)
+})
+
+test('Frankfurt and Fulda are ashkenaz, Sarajevo mizrach; Amsterdam and London stay without a region (the file files neither the Netherlands nor England)', () => {
+  assert.deepEqual(regionsOf('פרנקפורט'), ['ashkenaz'])
+  assert.deepEqual(regionsOf('פולדא'), ['ashkenaz'])
+  assert.deepEqual(regionsOf('סרייבו'), ['mizrach'])
+  assert.deepEqual(regionsOf('אמסטרדם; לונדון'), [])
+  assert.deepEqual(regionsOf('הולנד'), [])
+  assert.deepEqual(regionsOf('אנגליה'), [])
+  assert.deepEqual(regionsByLabel('רבי אהרן שמואל קאיידנובר (המהרש״ק)'), ['east-europe', 'ashkenaz'])
+  assert.deepEqual(regionsByLabel('הרב רפאל יהודה מנחם לוי – רבי יהודה מרגוזה'), ['mizrach', 'eretz-israel'])
+})
+
+test('every north-american place has a map point (none was added) and the map keeps its marker on the same point', () => {
+  for (const place of ['ארה"ב', 'ניו יורק', 'ברונקס', 'בולטימור', 'בוסטון', 'פרנקפורט', 'פולדא', 'סרייבו']) {
+    assert.ok(coordsForName(place), place)
+  }
+  assert.ok(Math.abs(coordsForName('ארצות הברית')!.lng - -95.71) < 0.01)
 })
 
 console.log(`\n${'-'.repeat(46)}`)
