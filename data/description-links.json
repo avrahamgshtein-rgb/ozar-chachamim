@@ -3381,9 +3381,9 @@
     "research": true,
     "quiz": false,
     "teachers": false,
-    "students": false
+    "students": true
    },
-   "line": "📜 The Rama of Fano (Rabbi Menachem Azariah) on Ozar Chachamim — the full research: https://ozarchachamim.org/en/sage/439?utm_source=youtube&utm_medium=video"
+   "line": "📜 The Rama of Fano (Rabbi Menachem Azariah) on Ozar Chachamim — the full research and his students: https://ozarchachamim.org/en/sage/439?utm_source=youtube&utm_medium=video"
   },
   {
    "row": 202,
@@ -3398,9 +3398,9 @@
     "research": true,
     "quiz": false,
     "teachers": false,
-    "students": false
+    "students": true
    },
-   "line": "📜 Рама из Фано (рабби Менахем Азария) в «Оцар Хахамим» — полное исследование: https://ozarchachamim.org/ru/sage/439?utm_source=youtube&utm_medium=video"
+   "line": "📜 Рама из Фано (рабби Менахем Азария) в «Оцар Хахамим» — полное исследование и его ученики: https://ozarchachamim.org/ru/sage/439?utm_source=youtube&utm_medium=video"
   },
   {
    "row": 203,
@@ -6594,9 +6594,9 @@
     "research": true,
     "quiz": false,
     "teachers": true,
-    "students": false
+    "students": true
    },
-   "line": "📜 Rabbi Chiya the Great on Ozar Chachamim — the full research and his teachers: https://ozarchachamim.org/en/sage/7?utm_source=youtube&utm_medium=video"
+   "line": "📜 Rabbi Chiya the Great on Ozar Chachamim — the full research and his teachers and students: https://ozarchachamim.org/en/sage/7?utm_source=youtube&utm_medium=video"
   },
   {
    "row": 391,
@@ -6611,9 +6611,9 @@
     "research": true,
     "quiz": false,
     "teachers": true,
-    "students": false
+    "students": true
    },
-   "line": "📜 Рабби Хия Великий в «Оцар Хахамим» — полное исследование и его учителя: https://ozarchachamim.org/ru/sage/7?utm_source=youtube&utm_medium=video"
+   "line": "📜 Рабби Хия Великий в «Оцар Хахамим» — полное исследование, а также его учителя и ученики: https://ozarchachamim.org/ru/sage/7?utm_source=youtube&utm_medium=video"
   },
   {
    "row": 392,
@@ -9976,10 +9976,10 @@
     "kind": "m",
     "research": true,
     "quiz": false,
-    "teachers": false,
+    "teachers": true,
     "students": false
    },
-   "line": "📜 Рав Яаков Эмден (Яавец) в «Оцар Хахамим» — полное исследование: https://ozarchachamim.org/ru/sage/89?utm_source=youtube&utm_medium=video"
+   "line": "📜 Рав Яаков Эмден (Яавец) в «Оцар Хахамим» — полное исследование и его учителя: https://ozarchachamim.org/ru/sage/89?utm_source=youtube&utm_medium=video"
   },
   {
    "row": 590,
@@ -9993,10 +9993,10 @@
     "kind": "m",
     "research": true,
     "quiz": false,
-    "teachers": false,
+    "teachers": true,
     "students": false
    },
-   "line": "📜 Rabbi Yaakov Emden (the Yaavetz) on Ozar Chachamim — the full research: https://ozarchachamim.org/en/sage/89?utm_source=youtube&utm_medium=video"
+   "line": "📜 Rabbi Yaakov Emden (the Yaavetz) on Ozar Chachamim — the full research and his teachers: https://ozarchachamim.org/en/sage/89?utm_source=youtube&utm_medium=video"
   },
   {
    "row": 591,
@@ -12664,9 +12664,9 @@
     "research": true,
     "quiz": false,
     "teachers": true,
-    "students": false
+    "students": true
    },
-   "line": "📜 רבי חייא הגדול באוצר חכמים — המחקר המלא ורבותיו: https://ozarchachamim.org/he/sage/7?utm_source=spotify&utm_medium=podcast"
+   "line": "📜 רבי חייא הגדול באוצר חכמים — המחקר המלא ורבותיו ותלמידיו: https://ozarchachamim.org/he/sage/7?utm_source=spotify&utm_medium=podcast"
   },
   {
    "sage": "8",
@@ -13629,10 +13629,10 @@
     "kind": "m",
     "research": true,
     "quiz": false,
-    "teachers": false,
+    "teachers": true,
     "students": false
    },
-   "line": "📜 הרב יעקב עמדין (יעב״ץ) באוצר חכמים — המחקר המלא: https://ozarchachamim.org/he/sage/89?utm_source=spotify&utm_medium=podcast"
+   "line": "📜 הרב יעקב עמדין (יעב״ץ) באוצר חכמים — המחקר המלא ורבותיו: https://ozarchachamim.org/he/sage/89?utm_source=spotify&utm_medium=podcast"
   },
   {
    "sage": "90",
@@ -16318,9 +16318,9 @@
     "research": true,
     "quiz": false,
     "teachers": false,
-    "students": false
+    "students": true
    },
-   "line": "📜 הרמ״ע מפאנו באוצר חכמים — המחקר המלא: https://ozarchachamim.org/he/sage/439?utm_source=spotify&utm_medium=podcast"
+   "line": "📜 הרמ״ע מפאנו באוצר חכמים — המחקר המלא ותלמידיו: https://ozarchachamim.org/he/sage/439?utm_source=spotify&utm_medium=podcast"
   },
   {
    "sage": "440",

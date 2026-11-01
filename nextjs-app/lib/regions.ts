@@ -54,6 +54,9 @@ export const LOCATION_REGION_MAP: Array<[string, Region]> = [
   // Added with the owner's new episodes of October 2026: Komarno, Pinczow and Zhydachiv (Rabbi Yitzchak Isaac of Komarno), Grodno (also
   // spelled הורדנה, an alias of גרודנה) and Bethlehem (Rachel's grave; it also gives sage 535, whose place it is, her region).
   ['קומרנא', 'east-europe'], ['פינצ׳וב', 'east-europe'], ["פינצ'וב", 'east-europe'], ['זידיטשוב', 'east-europe'], ['בית לחם', 'eretz-israel'], ['הורדנה', 'east-europe'], ['גרודנה', 'east-europe'],
+  // Added with the owner's 13 papers of 18 October 2026 on sages new to the site: Sens, Mahdia, Szydlowiec, Prostejov, Mikulov, Salamanca (new points)
+  // and region keywords for places the gazetteer already held (Bursa, Adrianople, Poznan, Eisenstadt, Tunis).
+  ['סנס', 'tsarfat'], ['בורסה', 'mizrach'], ['אדריאנופול', 'mizrach'], ['מהדיה', 'north-africa'], ['פוזנא', 'east-europe'], ['שידלובצא', 'east-europe'], ['פרוסניץ', 'ashkenaz'], ['אייזנשטט', 'ashkenaz'], ['ניקלשבורג', 'ashkenaz'], ['סלמנקה', 'sefarad'], ['טוניס', 'north-africa'],
   ['ישראל', 'eretz-israel'],
 ]
 

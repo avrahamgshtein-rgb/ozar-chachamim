@@ -53,7 +53,14 @@ if len(lines) < 5:
 title = lines[0]
 content = '\n'.join(lines)
 
-arabic = re.findall(r'[؀-ۿݐ-ݿ]+', content)
+# The one exception, narrow and explicit (2026-11-01): paper 687 (R. Shmuel ibn Tibbon) names the Arabic original of Maimonides' Guide of the
+# Perplexed, "دلالة الحائرين", in Arabic letters, in the owner's own text. It stays exactly as he wrote it. The rule above exists to catch Arabic
+# letters that Google's export leaves inside Hebrew words, so only this phrase, for this sage, is let through; anything else still stops the ingest.
+ARABIC_ALLOWED = {'687': ['دلالة الحائرين']}
+checked = content
+for phrase in ARABIC_ALLOWED.get(args.sage_id, []):
+    checked = checked.replace(phrase, '')
+arabic = re.findall(r'[؀-ۿݐ-ݿ]+', checked)
 if arabic:
     die(f'Arabic letters inside the text: {arabic[:5]}')
 if re.search(r'\*\*|^#|\\\[|\\"', content, flags=re.M):

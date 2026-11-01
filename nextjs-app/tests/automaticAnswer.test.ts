@@ -183,6 +183,28 @@ async function main() {
     assert.deepEqual(idsFor('кто был рабби', 'ru'), [])
   })
 
+  await test('a label that is only a title is no name: Rav (Abba Arikha) is not found inside הרב, רבו or Rav Kook', () => {
+    const rav = sages.find(s => s.label === 'רב (אבא אריכא)')
+    assert.ok(rav, 'Rav (Abba Arikha) is on the roster')
+    for (const q of ['מי היה הרב קוק?', 'מי היה רבו של רש״י?', 'מהם ספרי הרב', 'מי היה רב?']) {
+      assert.ok(!idsFor(q, 'he').includes(rav!.id), `${q}: not Rav`)
+    }
+    for (const q of ['who was Rav?', 'who was Rav Kook?']) assert.ok(!idsFor(q, 'en').includes(rav!.id), `${q}: not Rav`)
+    assert.ok(!idsFor('кто такой Рав Кук?', 'ru').includes(rav!.id), 'Рав Кук: not Рав')
+    // ...but his other name finds him
+    assert.ok(idsFor('מי היה אבא אריכא?', 'he').includes(rav!.id), 'אבא אריכא')
+    assert.equal(idsFor('מי היה רש״י?', 'he')[0], '594')
+  })
+
+  await test('Abraham Zacuto (696) is found by his name and his teacher, the Gaon of Castile, is not mistaken for 62', async () => {
+    const zacut = sages.find(s => s.label === 'רבי אברהם זכות')
+    assert.ok(zacut, 'Abraham Zacut is on the roster')
+    const ctx = await ask('מי היה רבי אברהם זכות?', 'he')
+    const links = referralAnswer(ctx, 'he').links
+    assert.equal(links[0]?.href, `/he/sage/${zacut!.id}`)
+    assert.ok(!links.some(l => l.href.includes('/sage/62')), 'no chip for R. Yitzchak Aboab of Menorat HaMaor (62)')
+  })
+
   await test('the Hebrew matching is unchanged', async () => {
     assert.ok(idsFor('מי היה רש״י?', 'he').includes('594'))
     assert.ok(idsFor('מה לימד הרמב״ם', 'he').includes('41'))

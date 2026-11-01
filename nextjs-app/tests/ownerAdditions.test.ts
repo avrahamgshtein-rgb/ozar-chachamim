@@ -303,9 +303,9 @@ test('the real records are clean (680 with a paper, 683 without one), and each r
 // =====================================================================================================================
 console.log('\nthe roster')
 
-test('the roster holds 515 sages: the ids 680-685 are the only ones added, and none lies above 685', () => {
-  assert.equal(sages.length, 515)
-  assert.equal(Math.max(...sages.map(s => Number(s.id))), 685)
+// The totals are not pinned: later batches add sages (the owner's 13 papers of 18 October, ids 686-698, pin their own in ownerAdditions2.test.ts).
+test('the ids 680-685 are on the roster once each, under their labels; the roster has no id twice', () => {
+  assert.ok(Math.max(...sages.map(s => Number(s.id))) >= 685)
   assert.equal(byId.size, sages.length, 'an id twice')
   for (const w of NEW) assert.equal(byId.get(w.id)?.label, w.label, `${w.id}`)
 })
@@ -472,10 +472,10 @@ const COL = {
 const dataRows = [...sheetRows.keys()].filter(r => r > 1 && sheetRows.get(r)!.has(COL.id)).sort((a, b) => a - b)
 const rawNodes = new Map(readJson<{ nodes: Array<Record<string, string>> }>(join(APP, 'public/data.json')).nodes.map(n => [n.id, n]))
 
-test('the sheet has 685 rows: the six new sages were appended after row 679, in order, under their labels', () => {
-  assert.equal(dataRows.length, 685)
-  assert.deepEqual(dataRows.slice(-6).map(r => sheetRows.get(r)!.get(COL.id)), NEW_IDS)
-  assert.deepEqual(dataRows.slice(-6).map(r => sheetRows.get(r)!.get(COL.label)), NEW.map(w => w.label))
+test('the six new sages were appended to the sheet after row 679 (the 680th to 685th data rows), in order, under their labels', () => {
+  assert.ok(dataRows.length >= 685)
+  assert.deepEqual(dataRows.slice(679, 685).map(r => sheetRows.get(r)!.get(COL.id)), NEW_IDS)
+  assert.deepEqual(dataRows.slice(679, 685).map(r => sheetRows.get(r)!.get(COL.label)), NEW.map(w => w.label))
 })
 
 test('each new row says what the corpus says: years, places, era, field, tags, bio, core idea, related names and episode', () => {
