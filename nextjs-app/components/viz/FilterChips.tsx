@@ -20,7 +20,7 @@ const TOP_FIELDS = 15
 
 const REGIONS: Region[] = [
   'eretz-israel', 'sefarad', 'ashkenaz', 'east-europe',
-  'tsarfat', 'provence', 'italy', 'north-africa', 'mizrach',
+  'tsarfat', 'provence', 'italy', 'north-africa', 'mizrach', 'north-america',
 ]
 
 /**

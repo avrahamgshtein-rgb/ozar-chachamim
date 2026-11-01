@@ -13,7 +13,7 @@ import { formatYearRangeFor } from './utils'
 /** Around the tower, neighbours on the map are neighbours on the circle. */
 export const TOWER_REGIONS: Region[] = [
   'eretz-israel', 'mizrach', 'north-africa', 'sefarad', 'provence',
-  'tsarfat', 'italy', 'ashkenaz', 'east-europe', 'other',
+  'tsarfat', 'italy', 'ashkenaz', 'east-europe', 'north-america', 'other',
 ]
 
 /** Where an undated sage stands: the middle of his era. */
