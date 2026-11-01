@@ -1581,7 +1581,7 @@
     }
    },
    "related_cell": "הרב יעקב עמדין (יעב\"ץ)",
-   "notes": "Years: the owner's paper (line 4: 'ה'תי\"ח (1658)') and Hebrew Wikipedia ('א' באלול ה'תי\"ח, 30 באוגוסט 1658') say born 1658; English Wikipedia and the Sefaria topic say 1656 (Sefaria birthYear 1656). Death 1718 (1 Iyar 5478) in all four. The row says 1658-1718, the years of the paper and Hebrew Wikipedia, which agree with each other and with the Chabad title the paper lists (5418-5478; 1658-1718). Birthplace: the paper and Hebrew Wikipedia say Trebitsch in Moravia; English Wikipedia says most likely Gross Meseritsch; the bio follows the paper and Hebrew Wikipedia. Death date: the paper's 3 May 1718 is 2 Iyar 5478, a day off its 1 Iyar, so the death date is recorded as none. The Amsterdam appointment is dated by the paper 'ה'תס\"ט (1710)' (5469 ended in September 1709; English Wikipedia: letter of 10 January 1710), so the bio gives no year for it. Places: Altona, Amsterdam, Lemberg, Budapest (Alt-Ofen/Obuda is 'כיום חלק מבודפשט' in the paper; the gazetteer has Budapest), Salonica, Sarajevo, London; the country words add the region keywords (Germany ashkenaz, Galicia and Hungary east-europe). No new place. Left out on purpose: the Emden family link beyond the father-son (the paper and Hebrew Wikipedia state the son); the paper's 'אביו ... ושימש כרבו של רבי דוד אופנהיים' (the father's pupil, 694), the grandfather Ephraim HaKohen and the teacher Eliyahu Kovo (not on the roster), the student David Frankel (not on the roster), the descendants Lorberbaum, Benet and Halberstam (not on the roster), the dispute with Moshe Rothenburg and the Hayyun affair in the bio (the core idea keeps to the hen, the method and Sefaria's sentence). The teacher link to Emden (Hebrew Wikipedia: 'אביו ורבו') and the colleague link to Moshe Hagiz (Hebrew Wikipedia: 'יחד עם רבי משה חגיז שסייע לו') rest on Hebrew Wikipedia, not on the paper, which names Emden as son only. Slips in the paper: 13 listed in notes/689.json (the garbled 'הרסנותה הסתרת', 'וכרכש', 'הביתה את עמדותיו'; his age 58 at death; 'ה'תס\"ט (1710)'); two footnotes (17 and 4) point at sources that are not about the sentence. The Drive holds no other document on him. [Second reading (R2, 2026-11-01): {'ok': 24, 'imprecise': 0, 'wrong': 0}; applied: nothing to change.] Five places have no keyword in lib/regions.ts and so no region of their own: Amsterdam, Sarajevo and London (689), Frankfurt and Fulda (691). Adding a keyword would move the regions of existing sages, so it was left out of this batch and listed for the owner as a follow-up; each sage is still painted in a region by his other places.",
+   "notes": "Years: the owner's paper (line 4: 'ה'תי\"ח (1658)') and Hebrew Wikipedia ('א' באלול ה'תי\"ח, 30 באוגוסט 1658') say born 1658; English Wikipedia and the Sefaria topic say 1656 (Sefaria birthYear 1656). Death 1718 (1 Iyar 5478) in all four. The row says 1658-1718, the years of the paper and Hebrew Wikipedia, which agree with each other and with the Chabad title the paper lists (5418-5478; 1658-1718). Birthplace: the paper and Hebrew Wikipedia say Trebitsch in Moravia; English Wikipedia says most likely Gross Meseritsch; the bio follows the paper and Hebrew Wikipedia. Death date: the paper's 3 May 1718 is 2 Iyar 5478, a day off its 1 Iyar, so the death date is recorded as none. The Amsterdam appointment is dated by the paper 'ה'תס\"ט (1710)' (5469 ended in September 1709; English Wikipedia: letter of 10 January 1710), so the bio gives no year for it. Places: Altona, Amsterdam, Lemberg, Budapest (Alt-Ofen/Obuda is 'כיום חלק מבודפשט' in the paper; the gazetteer has Budapest), Salonica, Sarajevo, London; the country words add the region keywords (Germany ashkenaz, Galicia and Hungary east-europe). No new place. Left out on purpose: the Emden family link beyond the father-son (the paper and Hebrew Wikipedia state the son); the paper's 'אביו ... ושימש כרבו של רבי דוד אופנהיים' (the father's pupil, 694), the grandfather Ephraim HaKohen and the teacher Eliyahu Kovo (not on the roster), the student David Frankel (not on the roster), the descendants Lorberbaum, Benet and Halberstam (not on the roster), the dispute with Moshe Rothenburg and the Hayyun affair in the bio (the core idea keeps to the hen, the method and Sefaria's sentence). The teacher link to Emden (Hebrew Wikipedia: 'אביו ורבו') and the colleague link to Moshe Hagiz (Hebrew Wikipedia: 'יחד עם רבי משה חגיז שסייע לו') rest on Hebrew Wikipedia, not on the paper, which names Emden as son only. Slips in the paper: 13 listed in notes/689.json (the garbled 'הרסנותה הסתרת', 'וכרכש', 'הביתה את עמדותיו'; his age 58 at death; 'ה'תס\"ט (1710)'); two footnotes (17 and 4) point at sources that are not about the sentence. The Drive holds no other document on him. [Second reading (R2, 2026-11-01): {'ok': 24, 'imprecise': 0, 'wrong': 0}; applied: nothing to change.] Five places have no keyword in lib/regions.ts and so no region of their own: Amsterdam, Sarajevo and London (689), Frankfurt and Fulda (691). Adding a keyword would move the regions of existing sages, so it was left out of this batch and listed for the owner as a follow-up; each sage is still painted in a region by his other places. Five places have no keyword in lib/regions.ts and so no region of their own: Amsterdam, Sarajevo and London (689), Frankfurt and Fulda (691). Adding a keyword would move the regions of existing sages, so it was left out of this batch and listed for the owner as a follow-up; each sage is still painted in a region by his other places.",
    "reading": {
     "reader": "R2",
     "summary": {
@@ -2423,7 +2423,7 @@
     }
    },
    "related_cell": "",
-   "notes": "Years: the row says כ־1605–1641. Birth: the paper says ה'שס\"ה, 1605 (table row: 'בקירוב') and Hebrew Wikipedia's opening line has 1605, but its biography section says 'על תאריך לידתו יש מסורות חולקות, אך נראה שנולד בשנת 1608' and English Wikipedia says 1608; the row takes the paper's and the Wikipedia opening's year with 'כ־' for that reason and the bio gives no birth year. Death: 21 Adar 5401, 2 March 1641 (paper; Hebrew Wikipedia 'כ\"א באדר ה'ת\"א, 2 במרץ 1641'); English Wikipedia 'about 1644' is not followed. The bio's 1622 is stated by the paper and Hebrew Wikipedia (English Wikipedia says 'at the age of seventeen'). Label: 'רבי מאיר בן יעקב שיף (מהר״ם שיף)' as proposed: the paper's title and Hebrew Wikipedia use 'מהר\"ם שיף'; no work epithet is given by a source, so none. Not the Maharam of Rothenburg (47), not 407 R. Meir HaKohen of Rothenburg, not 692 (the Maharam Eisenstadt). Sefaria topic meir-ben-jacob-ha-kohen-schiff has no years. Places: Frankfurt (born; paper, Hebrew Wikipedia), Fulda (rabbi from 1622; Hebrew Wikipedia spells פולדה, the paper פולדא, the roster's gazetteer פולדא) and Prague (the call to the rabbinate); Schmalkalden (English Wikipedia, 1636) left out. All three resolve to map points; the validator's two warnings say Frankfurt and Fulda carry no keyword in lib/regions.ts, but the sage's region (ashkenaz) comes from Prague and the row does not need new keywords, so none was declared (accepted warnings). The tag 'פרנקפורט דמיין' follows the paper. Left out on purpose: the paper's teacher R. Chaim HaKohen Katz and R. Yehuda Miller Reutlingen (Shevut Yehudah) and R. Mordechai Mardush as roster sages (not on the roster); the Maharsha and the Maharam of Lublin as 'בני דורו' (no relation stated); the tradition of Elijah's appearance (Tzemach David); the father-in-law, son and daughter's marriage and the relative 'המהר\"ם שיף השני'; criticism of the Maharshal, Meir of Lublin, Edels and Rashi (Hebrew Wikipedia, English Wikipedia, Sefaria) not recorded as oppose links, since the sources speak of criticism of their writings, not of an exchange; birth year 1608 not used. Links: 599->691 teacher rests on the paper alone (line 16, 'למד מפי'; the paper gives no years of study; the Shelah was in Frankfurt c. 1606-1614 per his roster place list only); 691->97 and 691->102 influence rest on the paper alone (lines 43, 44; the paper's footnotes [8, 9] cite a book and an article on the prosbul): the second reader should judge all three. Slips (8) and disagreements (12) are in notes/691.json; the most important for the owner: 67 years in line 22 (70), Chullin among Moed/Nashim/Nezikin, birth 1605 vs 1608, death 1641 vs 'about 1644', garbled 'עציון' and 'סגור לבו'. The Drive holds no other document on him (search by title and full text found only this paper). [Second reading (R2, 2026-11-01): {'ok': 21, 'imprecise': 3, 'wrong': 0}; applied: core_idea 2 en, core_idea 3 en, core_idea 3 ru.] Five places have no keyword in lib/regions.ts and so no region of their own: Amsterdam, Sarajevo and London (689), Frankfurt and Fulda (691). Adding a keyword would move the regions of existing sages, so it was left out of this batch and listed for the owner as a follow-up; each sage is still painted in a region by his other places.",
+   "notes": "Years: the row says כ־1605–1641. Birth: the paper says ה'שס\"ה, 1605 (table row: 'בקירוב') and Hebrew Wikipedia's opening line has 1605, but its biography section says 'על תאריך לידתו יש מסורות חולקות, אך נראה שנולד בשנת 1608' and English Wikipedia says 1608; the row takes the paper's and the Wikipedia opening's year with 'כ־' for that reason and the bio gives no birth year. Death: 21 Adar 5401, 2 March 1641 (paper; Hebrew Wikipedia 'כ\"א באדר ה'ת\"א, 2 במרץ 1641'); English Wikipedia 'about 1644' is not followed. The bio's 1622 is stated by the paper and Hebrew Wikipedia (English Wikipedia says 'at the age of seventeen'). Label: 'רבי מאיר בן יעקב שיף (מהר״ם שיף)' as proposed: the paper's title and Hebrew Wikipedia use 'מהר\"ם שיף'; no work epithet is given by a source, so none. Not the Maharam of Rothenburg (47), not 407 R. Meir HaKohen of Rothenburg, not 692 (the Maharam Eisenstadt). Sefaria topic meir-ben-jacob-ha-kohen-schiff has no years. Places: Frankfurt (born; paper, Hebrew Wikipedia), Fulda (rabbi from 1622; Hebrew Wikipedia spells פולדה, the paper פולדא, the roster's gazetteer פולדא) and Prague (the call to the rabbinate); Schmalkalden (English Wikipedia, 1636) left out. All three resolve to map points; the validator's two warnings say Frankfurt and Fulda carry no keyword in lib/regions.ts, but the sage's region (ashkenaz) comes from Prague and the row does not need new keywords, so none was declared (accepted warnings). The tag 'פרנקפורט דמיין' follows the paper. Left out on purpose: the paper's teacher R. Chaim HaKohen Katz and R. Yehuda Miller Reutlingen (Shevut Yehudah) and R. Mordechai Mardush as roster sages (not on the roster); the Maharsha and the Maharam of Lublin as 'בני דורו' (no relation stated); the tradition of Elijah's appearance (Tzemach David); the father-in-law, son and daughter's marriage and the relative 'המהר\"ם שיף השני'; criticism of the Maharshal, Meir of Lublin, Edels and Rashi (Hebrew Wikipedia, English Wikipedia, Sefaria) not recorded as oppose links, since the sources speak of criticism of their writings, not of an exchange; birth year 1608 not used. Links: 599->691 teacher rests on the paper alone (line 16, 'למד מפי'; the paper gives no years of study; the Shelah was in Frankfurt c. 1606-1614 per his roster place list only); 691->97 and 691->102 influence rest on the paper alone (lines 43, 44; the paper's footnotes [8, 9] cite a book and an article on the prosbul): the second reader should judge all three. Slips (8) and disagreements (12) are in notes/691.json; the most important for the owner: 67 years in line 22 (70), Chullin among Moed/Nashim/Nezikin, birth 1605 vs 1608, death 1641 vs 'about 1644', garbled 'עציון' and 'סגור לבו'. The Drive holds no other document on him (search by title and full text found only this paper). [Second reading (R2, 2026-11-01): {'ok': 21, 'imprecise': 3, 'wrong': 0}; applied: core_idea 2 en, core_idea 3 en, core_idea 3 ru.] Five places have no keyword in lib/regions.ts and so no region of their own: Amsterdam, Sarajevo and London (689), Frankfurt and Fulda (691). Adding a keyword would move the regions of existing sages, so it was left out of this batch and listed for the owner as a follow-up; each sage is still painted in a region by his other places. Five places have no keyword in lib/regions.ts and so no region of their own: Amsterdam, Sarajevo and London (689), Frankfurt and Fulda (691). Adding a keyword would move the regions of existing sages, so it was left out of this batch and listed for the owner as a follow-up; each sage is still painted in a region by his other places.",
    "reading": {
     "reader": "R2",
     "summary": {
@@ -3958,7 +3958,7 @@
     {
      "field": "family",
      "kind": "adds",
-     "node": "Hebrew Wikipedia does not say it in its own voice, but its raw text quotes Reischer addressing him as \"גיסי הגאון הגדול\" (my brother-in-law the great Gaon); the plain text drops the quotation",
+     "node": "Hebrew Wikipedia: married Gnendel, daughter of Lipman Katz of Hanover",
      "paper": "after her death he married a daughter of R. Benjamin Wolf Shapira, av beit din of Prague",
      "line": 5,
      "quote": "נישא בשנית לבתו של רבי בנימין וולף שפירא",
@@ -3967,7 +3967,7 @@
     {
      "field": "family",
      "kind": "adds",
-     "node": "Hebrew Wikipedia names Reischer nowhere as a relative",
+     "node": "Hebrew Wikipedia does not say it in its own voice, but its raw text quotes Reischer addressing him as \"גיסי הגאון הגדול\" (my brother-in-law the great Gaon); the plain text drops the quotation",
      "paper": "R. Yaakov Reischer was his brother-in-law",
      "line": 16,
      "quote": "היה גיסו",
@@ -3976,7 +3976,7 @@
     {
      "field": "record",
      "kind": "nuance",
-     "node": "Hebrew Wikipedia lists among his titles \"נשיא ישראל\" (given by Yechezkel Katzenellenbogen) and \"רבן של בני הגולה\"; the title \"נשיא ארץ ישראל\", granted by the sages of Jerusalem, is the paper's alone, and the paper's own source 1 (Hebrew Wikipedia) says only \"נשיא ישראל\"",
+     "node": "English Wikipedia: married in 1681",
      "paper": "married in his youth",
      "line": 5,
      "quote": "בצעירותו נישא רבי דוד לגנענדל",
@@ -3985,7 +3985,7 @@
     {
      "field": "office",
      "kind": "adds",
-     "node": "not in Wikipedia: the title Nasi Eretz Yisrael given by the sages of Jerusalem",
+     "node": "Hebrew Wikipedia lists among his titles \"נשיא ישראל\" (given by Yechezkel Katzenellenbogen) and \"רבן של בני הגולה\"; the title \"נשיא ארץ ישראל\", granted by the sages of Jerusalem, is the paper's alone, and the paper's own source 1 (Hebrew Wikipedia) says only \"נשיא ישראל\"",
      "paper": "the title was granted by the sages of Jerusalem",
      "line": 7,
      "quote": "הוענק לו על ידי חכמי ירושלים תואר הכבוד המרומם",
@@ -4439,7 +4439,7 @@
     },
     {
      "field": "place",
-     "kind": "conflict",
+     "kind": "nuance",
      "node": "Hebrew Wikipedia: went back to Provence for an unknown time, returned to Toledo in 1211",
      "paper": "a short return to Provence and France about 1208, then Toledo until his death",
      "line": 17,
@@ -4457,7 +4457,7 @@
     },
     {
      "field": "teacher",
-     "kind": "conflict",
+     "kind": "nuance",
      "node": "English Wikipedia: 'may have studied under Abraham ben David' at Lunel",
      "paper": "states flatly that he studied at Posquières under the Ra'avad",
      "line": 12,
@@ -4466,7 +4466,7 @@
     },
     {
      "field": "works",
-     "kind": "nuance",
+     "kind": "conflict",
      "node": "English Wikipedia: the Manhig 'did not exert any important influence on halakhic literature'",
      "paper": "its influence on the codification of halakha was 'מכרעת ורחבת היקף'",
      "line": 55,
@@ -4511,8 +4511,8 @@
     },
     {
      "field": "family",
-     "kind": "nuance",
-     "node": "Hebrew Wikipedia names the same three teachers (R. Yedidya of Melun, R. Chaim ben Chanan and R. Elchanan, the Ri's son); none is on the roster",
+     "kind": "adds",
+     "node": "English Wikipedia: Isaac ben Abba Mari is 'a relative of Abraham's'",
      "paper": "'הקרבה המשפחתית' to R. Yitzchak ben Abba Mari, no degree given",
      "line": 12,
      "quote": "הקרבה המשפחתית לרבי יצחק בן אבא מרי",
@@ -4520,11 +4520,11 @@
     },
     {
      "field": "teacher",
-     "kind": "adds",
-     "node": "Hebrew Wikipedia: his other teachers R. Yedidya of Melun and R. Chaim ben Chananel HaKohen of Paris",
-     "paper": "the same two, and R. Elchanan, the son of the Ri HaZaken, who are not on the roster",
+     "kind": "nuance",
+     "node": "Hebrew Wikipedia names R. Yedidya of Melun, R. Chaim ben Chananel HaKohen of Paris and R. Elchanan, the Ri's son, as his other teachers",
+     "paper": "names the same three other teachers: R. Elchanan, the son of the Ri HaZaken, R. Yedidya of Melun and R. Chaim ben Chananel HaKohen of Paris; none is on the roster",
      "line": 13,
-     "quote": "רבי ידידיה ממלאן (Melun) ורבי חיים בן חננאל הכהן מפריז",
+     "quote": "למד מפי בנו, רבי אלחנן הי\"ד, וכן אצל רבי ידידיה ממלאן (Melun) ורבי חיים בן חננאל הכהן מפריז",
      "second_reading": "inaccurate"
     },
     {
@@ -5471,7 +5471,7 @@
      "field": "works",
      "kind": "conflict",
      "node": "English Wikipedia: Me'il Tzedakah and Bigdei Kodesh published at Mantua in 1767",
-     "paper": "does not mention the arrest; it tells instead of a tax exemption granted by the Duke of Modena",
+     "paper": "Pisa 1785 (ה'תקמ\"ה)",
      "line": 23,
      "quote": "פיזה 1785 (ה'תקמ\"ה)",
      "second_reading": "ok"
@@ -5480,7 +5480,7 @@
      "field": "record",
      "kind": "adds",
      "node": "English Wikipedia: arrested in 1636 for forbidden books",
-     "paper": "not mentioned",
+     "paper": "does not mention the arrest; it tells instead of a tax exemption granted by the Duke of Modena",
      "line": 9,
      "quote": "קיבל פטור רשמי ממסים מטעם דוכס מודנה",
      "second_reading": "unclear"
@@ -5962,7 +5962,7 @@
     {
      "field": "birth",
      "kind": "adds",
-     "node": "Hebrew Wikipedia's list of his students names Rav Huna, Rav Yehuda and Rav Sheshet, but not Rav Chisda or Rav Hamnuna",
+     "node": "Hebrew Wikipedia: 175 (approx.) - 247; English Wikipedia 175-247",
      "paper": "the paper gives no birth or death year",
      "line": 3,
      "quote": "במאה השלישית למניינם",
@@ -5971,8 +5971,8 @@
     {
      "field": "student",
      "kind": "adds",
-     "node": "Hebrew Wikipedia's students list names Rav Huna and Rav Yehuda but not Rav Chisda, Rav Sheshet or Rav Hamnuna",
-     "paper": "the paper names Rav Chisda as a prominent student and Rav Sheshet and Rav Hamnuna among the sages who headed study houses",
+     "node": "Hebrew Wikipedia's list of his students names Rav Huna, Rav Yehuda and Rav Sheshet, but not Rav Chisda",
+     "paper": "names Rav Chisda as a prominent further student",
      "line": 32,
      "quote": "תלמיד בולט נוסף, רב חסדא, שימר מסורות רבות בשם רב",
      "second_reading": "inaccurate"
