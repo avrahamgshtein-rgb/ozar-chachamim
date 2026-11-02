@@ -27,6 +27,7 @@
 // ── Centres ────────────────────────────────────────────────────────────────
 // One per place, the place the map pins a sage to: lib/locationCoords.ts
 // `primaryPlaceOf` (city over region over country, first mentioned wins).
+// A borough counts at its city (`centrePlace`: the Bronx and Brooklyn at New York; the markers on the map keep their own points).
 // Each sage counts once, at that one place — the data gives no dates for the
 // stops of a journey, so a sage is never moved along it by guesswork.
 //
@@ -50,7 +51,7 @@
 // MIN_FLOW_KM are the same area named twice ("ספרד" → "טולדו"), not a move.
 import type { Connection, Period, Sage } from './types'
 import { ALL_PERIODS } from './types'
-import { canonicalPlace, coordsForName, primaryPlaceOf, resolveCoords } from './locationCoords'
+import { canonicalPlace, centrePlace, coordsForName, primaryPlaceOf, resolveCoords } from './locationCoords'
 
 export { JOURNEY_START, JOURNEY_END, clampYear } from './journeyRange'
 /** Distance between the two epochs a centre's trend compares. */
@@ -224,9 +225,12 @@ export function buildJourney(sages: Sage[], connections: Connection[], reference
   const figures: JourneyFigure[] = []
   const byId = new Map<string, JourneyFigure>()
   for (const sage of sages) {
-    const pos = resolveCoords(sage)
-    if (!pos) continue
-    const place = primaryPlaceOf(sage) ?? `${pos.lat.toFixed(3)},${pos.lng.toFixed(3)}`
+    const own = resolveCoords(sage)
+    if (!own) continue
+    const primary = primaryPlaceOf(sage)
+    const place = primary ? centrePlace(primary) : `${own.lat.toFixed(3)},${own.lng.toFixed(3)}`
+    // A borough's sage stands at the city's point in the journey (the centre is one place), not at his own borough's.
+    const pos = primary && place !== primary ? (coordsForName(place) ?? own) : own
     const { kind, from, to } = datingOf(sage)
     const span = Math.max(1, to - from)
     const presence = kind === 'exact' ? 1 : Math.min(1, lifespan / span)
@@ -243,7 +247,7 @@ export function buildJourney(sages: Sage[], connections: Connection[], reference
     const path = f.sage.migration_path
     if (!path || f.kind === 'era') continue
     const stops = [path.from, ...(path.intermediate ?? []), path.to]
-      .map(name => ({ name: canonicalPlace(name), c: coordsForName(name) }))
+      .map(name => { const n = canonicalPlace(name); return { name: n ? centrePlace(n) : n, c: coordsForName(name) } })
       .filter((s): s is { name: string; c: LatLng } => !!s.name && !!s.c)
     for (let i = 1; i < stops.length; i++) {
       const p = stops[i - 1]

@@ -61,6 +61,9 @@ export const LOCATION_REGION_MAP: Array<[string, Region]> = [
   // Not included because no text holds them: Canada, Toronto, Montreal and 'אמריקה' (which would also mean South America).
   ['ארה"ב', 'north-america'], ['ארה״ב', 'north-america'], ['ארצות הברית', 'north-america'], ['ניו יורק', 'north-america'],
   ['ברונקס', 'north-america'], ['בולטימור', 'north-america'], ['בוסטון', 'north-america'],
+  // 2026-11-02, with the refined American places (data/place-refinements-2026-11.json): Brooklyn (Kahane's and the Rayatz's place) and Lakewood,
+  // New Jersey (Rabbi Aharon Kotler's yeshiva). Both forms of the geresh in the state's name.
+  ['ברוקלין', 'north-america'], ['לייקווד', 'north-america'], ["ניו ג'רזי", 'north-america'], ['ניו ג׳רזי', 'north-america'],
   // Places phase 2b left without a region, by precedent: Frankfurt and Fulda beside Karlsruhe, Mainz and Worms (ashkenaz); Sarajevo beside
   // Salonika, Bursa and Greece (the Ottoman Balkans, mizrach). Amsterdam and London stay without one: the file files neither the Netherlands
   // nor England (no 'הולנד' / 'אנגליה' keyword), and a Western Europe region is out of scope.

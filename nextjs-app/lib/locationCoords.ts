@@ -626,6 +626,21 @@ export function primaryPlace(text: string | undefined | null): PlaceHit | null {
   return best
 }
 
+/**
+ * The Journey ("מסע התורה") draws one centre per place, but a borough is not a separate centre of Torah from the city it belongs to:
+ * the Bronx and Brooklyn count at New York. This is the one mechanism for it; the map's markers keep their own points (a sage in the
+ * Bronx still stands in the Bronx), only the journey's centre key (and its migration stops) go through `centrePlace`.
+ */
+export const CENTRE_OF_PLACE: Record<string, string> = {
+  'ברונקס': 'ניו יורק',
+  'ברוקלין': 'ניו יורק',
+}
+
+/** A canonical place name → the name of the centre it counts at in the Journey (itself, unless it is a borough). */
+export function centrePlace(name: string): string {
+  return CENTRE_OF_PLACE[name] ?? name
+}
+
 /** A single place name (a migration stop, a cohort chip) → its canonical name. */
 export function canonicalPlace(name: string | undefined | null): string | null {
   return primaryPlace(name)?.name ?? null
