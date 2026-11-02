@@ -64,11 +64,13 @@ test('the mutation: without the alias a borough is a centre of its own again (th
   } finally { Object.assign(CENTRE_OF_PLACE, saved) }
 })
 
-test('the record: five changes, each with sources that have a URL and a quote, the sage\'s label, and a before that held the country', () => {
-  assert.equal(record.changes.length, 5)
+test('the record: eight changes (five, then the Rebbe, Heschel and Heschel\'s second sheet row on the owner\'s decision), each with sources that have a URL and a quote, the sage\'s label, and a before that held the country', () => {
+  assert.equal(record.changes.length, 8)
   for (const c of record.changes) {
-    const s = byLabel(c.label)
-    assert.equal(s.id, c.id, `${c.label}: id drift`)
+    if (c.sheet_only) { assert.ok(!sages.some(x => x.id === c.id), `${c.id}: a node now exists, so it is no longer sheet-only`); assert.match(c.note, /SHEET ONLY/) } else {
+      const s = byLabel(c.label)
+      assert.equal(s.id, c.id, `${c.label}: id drift`)
+    }
     assert.ok(c.before.includes('ארה"ב'), c.id)
     assert.ok(!c.after.includes('ארה"ב'), c.id)
     assert.ok(c.sources.length >= 2, c.id)
@@ -90,7 +92,7 @@ test('the record: five changes, each with sources that have a URL and a quote, t
 test('each refined sage\'s node holds the record\'s `after` (corpus and both data.json copies), and nothing else of him differs from the record', () => {
   const copies = ['data.json', path.join('nextjs-app', 'public', 'data.json')].map(p => JSON.parse(fs.readFileSync(path.join(ROOT, p), 'utf8')))
   assert.deepEqual(copies[0], copies[1])
-  for (const c of record.changes) {
+  for (const c of record.changes.filter((x: { sheet_only?: boolean }) => !x.sheet_only)) {
     assert.equal(byLabel(c.label).location, c.after, c.id)
     for (const d of copies) assert.equal(d.nodes.find((n: { id: string }) => n.id === c.id).location, c.after, c.id)
   }
@@ -124,7 +126,7 @@ test('the sheet\'s cells hold the record\'s `after`', () => {
 })
 
 test('the refined places have regions, points and translations: north-america, the sourced city, English and Russian terms', () => {
-  for (const c of record.changes) {
+  for (const c of record.changes.filter((x: { sheet_only?: boolean }) => !x.sheet_only)) {
     const s = byLabel(c.label)
     assert.ok(regionsOf(s.location).includes('north-america'), c.id)
     assert.ok(resolveCoords(s), c.id)
@@ -140,10 +142,18 @@ test('the refined places have regions, points and translations: north-america, t
   assert.deepEqual(regionsOf('ברוקלין'), ['north-america'])
 })
 
-test('sages the record leaves alone keep their text (335, 152, 610 and the European-first ones)', () => {
-  assert.equal(byLabel('הרבי מליובאוויטש').location, 'רוסיה, ארה"ב')
-  assert.equal(byLabel('הרב אברהם יהושע השל – הגות ומעורבות מוסרית').location, 'פולין / ארה"ב')
+test('the Rebbe and Heschel keep their European place first and are pinned to New York by their new city (city over country); sages the record leaves alone keep their text', () => {
+  const rebbe = byLabel('הרבי מליובאוויטש'), heschel = byLabel('הרב אברהם יהושע השל – הגות ומעורבות מוסרית')
+  assert.equal(rebbe.location, 'רוסיה, ברוקלין, ניו יורק')
+  assert.equal(heschel.location, 'פולין / ניו יורק')
+  assert.equal(primaryPlaceOf(rebbe), 'ברוקלין')
+  assert.equal(primaryPlaceOf(heschel), 'ניו יורק')
+  assert.deepEqual(regionsOf(rebbe.location), ['east-europe', 'north-america'])
+  assert.deepEqual(regionsOf(heschel.location), ['east-europe', 'north-america'])
+  const m = buildJourney(sages, getAllConnections())
+  for (const f of [rebbe, heschel]) assert.equal(m.byId.get(f.id)!.place, 'ניו יורק', f.label)
   assert.equal(byLabel('הרבנית חיה מושקא שניאורסון').location, 'ליובאוויטש ורוסטוב, רוסיה; ניו יורק')
+  assert.equal(byLabel('הרב יצחק הוטנר').location, 'ורשה; סלבודקה; ניו יורק; ירושלים')
 })
 
 test('the journey: New York is a centre in 1950, 1970 and 1990 with the sages the record supports; Lakewood is Kotler\'s own', () => {
@@ -153,6 +163,8 @@ test('the journey: New York is a centre in 1950, 1970 and 1990 with the sages th
   assert.ok(names(1950).includes('הרב אריה קפלן') && names(1950).includes('הרבנית ד"ר ברוריה דייוויד') && names(1950).includes('הרב מאיר כהנא'))
   assert.ok(names(1970).includes('הרב שלמה קרליבך') && names(1970).includes('אלי ויזל'))
   assert.ok(names(1990).includes('הרב מאיר כהנא'))
+  assert.ok(names(1970).includes('הרבי מליובאוויטש') && names(1970).includes('הרב אברהם יהושע השל – הגות ומעורבות מוסרית'))
+  assert.equal(at(1970, 'ניו יורק')!.count, 7)
   assert.ok(at(1950, 'לייקווד')!.figures.some(f => f.sage.label === 'הרב אהרן קוטלר'))
   assert.equal(at(1970, 'לייקווד'), undefined, 'Kotler died in 1962')
   // the country point no longer holds the American sages whose city is now known
