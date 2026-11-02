@@ -13,7 +13,7 @@ import { ALL_PERIODS } from './types'
 
 const ALL_REGIONS: Region[] = [
   'eretz-israel', 'mizrach', 'sefarad', 'ashkenaz', 'tsarfat', 'provence',
-  'italy', 'north-africa', 'east-europe', 'other'
+  'italy', 'north-africa', 'east-europe', 'north-america', 'other'
 ]
 
 export interface NavigationState {

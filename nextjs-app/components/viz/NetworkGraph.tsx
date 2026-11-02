@@ -1414,7 +1414,7 @@ function ZoomBtn({ onClick, children, label }: {
 const ERAS_LIST: Period[] = ALL_PERIODS
 const REGIONS_LIST: Region[] = [
   'eretz-israel', 'sefarad', 'ashkenaz', 'east-europe',
-  'tsarfat', 'provence', 'italy', 'north-africa', 'mizrach', 'other',
+  'tsarfat', 'provence', 'italy', 'north-africa', 'mizrach', 'north-america', 'other',
 ]
 
 /**

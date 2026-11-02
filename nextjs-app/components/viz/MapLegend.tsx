@@ -10,7 +10,7 @@ import { useJourneyStore } from '@/lib/journeyStore'
 const ERAS: Period[] = ALL_PERIODS
 const REGIONS: Region[] = [
   'eretz-israel', 'sefarad', 'ashkenaz', 'east-europe',
-  'tsarfat', 'provence', 'italy', 'north-africa', 'mizrach',
+  'tsarfat', 'provence', 'italy', 'north-africa', 'mizrach', 'north-america',
 ]
 
 /**

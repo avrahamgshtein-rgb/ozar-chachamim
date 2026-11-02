@@ -51,6 +51,7 @@ const config: Config = {
           'north-africa':  '#8e24aa',
           mizrach:         '#ef6c00',
           'eretz-israel':  '#00897b',
+          'north-america': '#e53935',
           other:           '#90a4ae',
         },
       },

@@ -62,7 +62,7 @@ const ERA_WINDOW: Partial<Record<Period, [number, number]>> = {
 
 const REGION_ORDER: Region[] = [
   'eretz-israel', 'mizrach', 'sefarad', 'provence', 'tsarfat', 'ashkenaz',
-  'italy', 'east-europe', 'north-africa', 'other',
+  'italy', 'east-europe', 'north-africa', 'north-america', 'other',
 ]
 
 const REL_COLOR: Record<SchoolRelation, string> = {
