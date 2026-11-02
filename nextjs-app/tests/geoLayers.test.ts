@@ -311,10 +311,16 @@ test('pinned by label: the Lubavitcher Rebbe gains north-america and keeps east-
   assert.deepEqual(regionsByLabel('הנרייטה סאלד'), ['north-america', 'eretz-israel'])
 })
 
+test('Brooklyn and Lakewood, New Jersey are north-america (2026-11-02), with a prefix letter and both geresh forms', () => {
+  for (const place of ['ברוקלין', 'בברוקלין', 'לייקווד', 'בלייקווד', "ניו ג'רזי", 'ניו ג׳רזי', "לייקווד, ניו ג'רזי"]) {
+    assert.deepEqual(regionsOf(place), ['north-america'], place)
+  }
+})
+
 test('exactly 15 sages are in north-america, each by a place text that names an American place', () => {
   const na = corpus.filter(s => regionsOf(s.location).includes('north-america'))
   assert.equal(na.length, 15)
-  for (const s of na) assert.match(s.location!, /ארה["״]ב|ארצות הברית|ניו יורק|בולטימור|בוסטון/, s.label)
+  for (const s of na) assert.match(s.location!, /ארה["״]ב|ארצות הברית|ניו יורק|ברוקלין|לייקווד|בולטימור|בוסטון/, s.label)
 })
 
 test('Frankfurt and Fulda are ashkenaz, Sarajevo mizrach; Amsterdam and London stay without a region (the file files neither the Netherlands nor England)', () => {
