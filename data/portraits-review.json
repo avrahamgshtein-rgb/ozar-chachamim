@@ -3216,6 +3216,19 @@
    ],
    "note": "AI illustration; the Chizkuni at his desk, quill in hand; the page text begins below the box; no watermark"
   },
+  "635": {
+   "label": "רבי עובדיה ספורנו",
+   "episode": "4otfv1Y2HmpdtA7p1oXPe2",
+   "title": "רבי עובדיה ספורנו - הרופא היהודי שלימד את אירופה עברית, והאמין שהתורה נועדה להאיר לעולם כולו",
+   "image": "4aacd045e35a8796df2b0369",
+   "kind": "illustration",
+   "crop": [
+    180,
+    20,
+    310
+   ],
+   "note": "AI painting; the sage in a beret with his hand at his temple, the window with the Bologna towers at the right is outside the box"
+  },
   "638": {
    "label": "רבי יהושע פלק כ״ץ (הסמ״ע)",
    "episode": "3sBHDuG9aT7dx4zmtYyDjH",
@@ -3229,6 +3242,32 @@
    ],
    "note": "AI infographic cover; the sage at his desk with a quill. The title plate above ends at y=81, so the box starts at y=83 and shaves about 4 px off the beret's top; the \"Seder Beit Yisrael\" label and the book pages' text (from y=300) are below; the captions, the panels and the other figures are outside, only a background scholar's hat shows at the right edge; tight (214 px, soft at 384); no watermark"
   },
+  "640": {
+   "label": "רבי יוסף בן לב (מהריב״ל)",
+   "episode": "0BzXyQX7GBCu7Vgb9OVlJO",
+   "title": "רבי יוסף אבן לב - החכם שלא נכנע לבעלי השררה, וידע לשנות את דעתו",
+   "image": "a00cbc1adde2e9e12000e44e",
+   "kind": "illustration",
+   "crop": [
+    150,
+    60,
+    300
+   ],
+   "note": "AI painting; the sage in a turban at his desk, the harbour behind; two small background figures at the left edge are outside the box"
+  },
+  "643": {
+   "label": "רבי שמואל בן אורי שרגא פייבוש (בעל בית שמואל)",
+   "episode": "0phf7iRQMctye9TjtzxRhp",
+   "title": "רבי שמואל בעל \"בית שמואל\" - הפוסק שהפך את החלק המוזנח בשולחן ערוך לאבן יסוד בעולם ההלכה",
+   "image": "8fab0fa1deecc14c4bb1cc4a",
+   "kind": "illustration",
+   "crop": [
+    190,
+    90,
+    255
+   ],
+   "note": "AI painting; the sage writing, the title page of Beit Shmuel at the right (outside the box, x>=405); the coat of a second scholar behind him shows at the right edge, his face does not"
+  },
   "660": {
    "label": "רבי יעקב ריישר (בעל שבות יעקב)",
    "episode": "0mmLEt5P6cWWmeGViach5r",
@@ -3241,6 +3280,19 @@
     253
    ],
    "note": "AI infographic cover; the sage with his finger at his temple. The title plate and dates above (y<=108), the map labels at the right (x>=505), the lettering of the book spines below (y>=370) and the scholars at the left are outside; the map behind him shows a castle and a bridge, no text; the beard tip is cut at the bottom; no watermark"
+  },
+  "669": {
+   "label": "רבי אברהם סבע (בעל צרור המור)",
+   "episode": "5IA3skcoCirYA0SxOQTtsO",
+   "title": "רבי אברהם סבע - החכם שקבר את ספריו והקים אותם לתחייה",
+   "image": "409058696be55e3502dbacc4",
+   "kind": "illustration",
+   "crop": [
+    140,
+    95,
+    310
+   ],
+   "note": "AI painting; the sage at his desk writing, olive tree and a harbour behind; head and shoulders inside, the lamp (x<130) and the books at the right below"
   },
   "680": {
    "label": "רב אחאי משבחא (בעל השאילתות)",
@@ -3306,6 +3358,32 @@
     232
    ],
    "note": "AI infographic cover; the gaon at his desk, eyes closed. The arch plaque \"Sura Yeshiva 761\" ends at y=82 and the map labels end at x=225, so the box starts at (228, 84); the scribe at the left, the scroll of the main teachings at the right and the book \"Halachot Pesukot\" below (y>=330) are outside; three background scholars show at the right; no watermark"
+  },
+  "691": {
+   "label": "רבי מאיר בן יעקב שיף (מהר״ם שיף)",
+   "episode": "3EkYnOGgOi3Mg6f6GibANH",
+   "title": "המהר\"ם שיף - הגאון שנעשה רב בגיל 17, וכתביו ששרדו את האש מאתגרים דורות של לומדים",
+   "image": "0f06ef7a6901d37aa27bdaf4",
+   "kind": "illustration",
+   "crop": [
+    225,
+    200,
+    280
+   ],
+   "note": "AI painting; a young scholar teaching among his students, the whale scene (the Jonah story) above him; the students at the left and right edges are outside the box; no watermark"
+  },
+  "696": {
+   "label": "רבי אברהם זכות",
+   "episode": "0ESvrI7UNJYYdZRfKVMGrJ",
+   "title": "רבי אברהם זכות - החכם היהודי שעזר לאירופה לגלות את העולם, אך גורש ממנה",
+   "image": "d108a72cff5f17ea02a48825",
+   "kind": "illustration",
+   "crop": [
+    210,
+    30,
+    305
+   ],
+   "note": "AI painting; the sage in a black cap at his desk with an astrolabe and the Almanach Perpetuum; the star chart with Hebrew letters at the top right starts at x=517, outside the box; the book titles below are outside the box"
   }
  },
  "_left_out": {
@@ -5187,12 +5265,6 @@
    "reason": "no-episode",
    "note": "no spotify_url"
   },
-  "635": {
-   "label": "רבי עובדיה ספורנו",
-   "episode": "",
-   "reason": "no-episode",
-   "note": "no spotify_url"
-  },
   "636": {
    "label": "רבנו ירוחם בן משולם",
    "episode": "",
@@ -5207,15 +5279,10 @@
   },
   "639": {
    "label": "רבי שמואל די מדינה (המהרשד״ם)",
-   "episode": "",
-   "reason": "no-episode",
-   "note": "no spotify_url"
-  },
-  "640": {
-   "label": "רבי יוסף בן לב (מהריב״ל)",
-   "episode": "",
-   "reason": "no-episode",
-   "note": "no spotify_url"
+   "episode": "1Vi9fNM1sys1kguSYWnbeS",
+   "reason": "text",
+   "note": "AI infographic: the title banner above the head, a text panel at the left (x<=200) and the book \"שו\"ת מהרשד\"ם\" at the right (x>=448) leave 248 px for a head and beard 295 px tall; no clean square around him",
+   "image": "61a6bee98141f03ab5892517"
   },
   "641": {
    "label": "רבי יוסף מטראני (המהרי״ט)",
@@ -5225,12 +5292,6 @@
   },
   "642": {
    "label": "רבי אברהם די בוטון (בעל לחם משנה)",
-   "episode": "",
-   "reason": "no-episode",
-   "note": "no spotify_url"
-  },
-  "643": {
-   "label": "רבי שמואל בן אורי שרגא פייבוש (בעל בית שמואל)",
    "episode": "",
    "reason": "no-episode",
    "note": "no spotify_url"
@@ -5379,12 +5440,6 @@
    "reason": "no-episode",
    "note": "no spotify_url"
   },
-  "669": {
-   "label": "רבי אברהם סבע (בעל צרור המור)",
-   "episode": "",
-   "reason": "no-episode",
-   "note": "no spotify_url"
-  },
   "670": {
    "label": "רבי אליעזר אשכנזי (בעל מעשי ה׳)",
    "episode": "",
@@ -5459,9 +5514,10 @@
   },
   "686": {
    "label": "רבי שמשון בן אברהם משאנץ (הר״ש)",
-   "episode": "",
-   "reason": "no-episode",
-   "note": "no spotify_url"
+   "episode": "0H3njgQC6i6HGGeEqUWgBi",
+   "reason": "quality",
+   "note": "AI collage: the scholar at his desk is the left panel, but the other panels (a caravan, a crusader harbour, a coast) start at x=305 behind his head, so no square around the head and beard is clear of them",
+   "image": "0951273afe3e59d0e71e3235"
   },
   "687": {
    "label": "רבי שמואל אבן תיבון",
@@ -5487,12 +5543,6 @@
    "reason": "no-episode",
    "note": "no spotify_url"
   },
-  "691": {
-   "label": "רבי מאיר בן יעקב שיף (מהר״ם שיף)",
-   "episode": "",
-   "reason": "no-episode",
-   "note": "no spotify_url"
-  },
   "692": {
    "label": "רבי מאיר אייזנשטט (בעל פנים מאירות)",
    "episode": "",
@@ -5513,12 +5563,6 @@
   },
   "695": {
    "label": "רבנו אברהם בר נתן הירחי (בעל ספר המנהיג)",
-   "episode": "",
-   "reason": "no-episode",
-   "note": "no spotify_url"
-  },
-  "696": {
-   "label": "רבי אברהם זכות",
    "episode": "",
    "reason": "no-episode",
    "note": "no spotify_url"
