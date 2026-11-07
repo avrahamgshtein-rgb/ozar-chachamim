@@ -44,6 +44,12 @@ import { ALL_PERIODS } from '../lib/types'
 import termsEn from '../public/i18n/terms.en.json'
 import termsRu from '../public/i18n/terms.ru.json'
 
+// Phase 3 (2026-11-07): the owner's episodes for three of these sages arrived later (tests/ownerPhase3.test.ts pins all eight); until then none had one.
+const PHASE3_EPISODES: Record<string, string> = {
+  '686': 'https://open.spotify.com/episode/0H3njgQC6i6HGGeEqUWgBi',
+  '691': 'https://open.spotify.com/episode/3EkYnOGgOi3Mg6f6GibANH',
+  '696': 'https://open.spotify.com/episode/0ESvrI7UNJYYdZRfKVMGrJ',
+}
 let passed = 0
 let failed = 0
 function test(name: string, fn: () => void) {
@@ -380,7 +386,7 @@ function nodeProblems(d: Doc, env: Env): string[] {
       if (n.era_key && !(ALL_PERIODS as string[]).includes(n.era_key)) say(`${at}: era_key "${n.era_key}" is not a period`)
       if (t && n.era_key !== t.period) say(`${at}: era_key "${n.era_key}", the plan has ${t.period}`)
       if (String(n.tags ?? '').split(/\s*,\s*/).filter(Boolean).length < 4) say(`${at}: fewer than 4 tags`)
-      if ((n.spotify_url ?? '') !== '') say(`${at}: spotify_url is "${n.spotify_url}"; the owner has no episode for these sages`)
+      if ((n.spotify_url ?? '') !== (PHASE3_EPISODES[r.id] ?? '')) say(`${at}: spotify_url is "${n.spotify_url}"; the owner has no episode for these sages`)
       if (n.has_research !== true) say(`${at}: has_research is not true`)
     })
     if (env.copies.length === 2 && env.copies[0][r.id] && env.copies[1][r.id] && !isDeepStrictEqual(env.copies[0][r.id], env.copies[1][r.id])) say('the two data.json copies hold different nodes')
@@ -395,7 +401,7 @@ function nodeProblems(d: Doc, env: Env): string[] {
         ['tags', c.tags, n.tags], ['bio', c.bio, n.bio], ['core idea', c.core, n.central_idea],
       ]
       for (const [name, got, want] of cells) if (got !== want) say(`sheet ${name}: "${(got ?? '').slice(0, 40)}", the node has "${(want ?? '').slice(0, 40)}"`)
-      if ((c.spotify ?? '') !== '') say('the sheet row holds an episode address')
+      if ((c.spotify ?? '') !== (PHASE3_EPISODES[r.id] ?? '')) say('the sheet row holds an episode address')
     }
   }
   return out

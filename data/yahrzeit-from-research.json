@@ -1251,5 +1251,32 @@
   "id": "698",
   "day": null,
   "reason": "the paper gives no date of his death, neither Hebrew nor civil (it gives only 226 for the fall of the Parthians and 219 for his return to Babylonia); the Hebrew date is not in it"
+ },
+ {
+  "id": "470",
+  "day": 3,
+  "month": "Adar I",
+  "quote": "בג' באדר א' ה'תרס\"ה (8 בפברואר 1905), והוא בן 61 בלבד, נפטר האדר\"ת"
+ },
+ {
+  "id": "68",
+  "day": 21,
+  "month": "Sivan",
+  "quote": "יום פטירתו מצוין בכ\"א בסיוון"
+ },
+ {
+  "id": "583",
+  "day": null,
+  "reason": "the paper gives no date of his death, neither Hebrew nor civil (it gives his dates only as \"בקירוב\")"
+ },
+ {
+  "id": "277",
+  "day": null,
+  "reason": "the paper gives only the year of his death (1704, תס\"ד), no Hebrew day or month"
+ },
+ {
+  "id": "161",
+  "day": null,
+  "reason": "the paper gives only the year of his death (1988), no Hebrew day or month"
  }
 ]

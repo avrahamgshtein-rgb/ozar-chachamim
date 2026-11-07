@@ -814,10 +814,14 @@ function videoProblems(id: string, label: string, entry: YoutubeEntry | undefine
 }
 
 interface PlaylistRow { row: number; id: string; seconds: number; lang: string; title: string }
+// Phase 3 (2026-11-07) put sixteen more uploads at the top (rows 1-16) and moved every row by 16 again. This file pins the state
+// after the batch of 2026-10-27, so it looks at the playlist and the map as they were then: the first 16 rows dropped, the rest
+// renumbered by -16 (tests/ownerPhase3.test.ts pins the new top and the new numbering).
+const PHASE3_ROWS = 16
 const playlist: PlaylistRow[] = readFileSync(join(REPO, 'data/youtube-playlist.tsv'), 'utf8').split('\n').filter(l => l.trim()).map(l => {
   const [row, id, seconds, lang, ...title] = l.split('\t')
-  return { row: Number(row), id, seconds: Number(seconds), lang, title: title.join('\t') }
-})
+  return { row: Number(row) - PHASE3_ROWS, id, seconds: Number(seconds), lang, title: title.join('\t') }
+}).filter(r => r.row >= 1)
 
 console.log('\nvideos')
 
@@ -861,7 +865,12 @@ test('rows 1-16 of the playlist snapshot are the sixteen new uploads, in the lan
 })
 
 test('the hand-checked map: the eight sages hold rows 1-16 as the plan lists them; every other row moved by 16 (the older six uploads and the left-out keys)', () => {
-  const map = readJson<{ sages: Record<string, number[]>; _left_out: Record<string, string> }>(join(REPO, 'data/youtube-sage-map.json'))
+  const raw = readJson<{ sages: Record<string, number[]>; _left_out: Record<string, string> }>(join(REPO, 'data/youtube-sage-map.json'))
+  const phase3 = new Set(['669', '640', '691', '639', '635', '686', '696', '643'])
+  const map = {
+    sages: Object.fromEntries(Object.entries(raw.sages).filter(([id]) => !phase3.has(id)).map(([id, rs]) => [id, rs.map(r => r - PHASE3_ROWS)])),
+    _left_out: Object.fromEntries(Object.entries(raw._left_out).map(([k, v]) => [k.split('-').map(x => Number(x) - PHASE3_ROWS).join('-'), v])),
+  }
   for (const [id, v] of Object.entries(VIDEOS)) assert.deepEqual(map.sages[id], v.rows, id)
   // the three sages whose uploads were at the top of the snapshot before this batch (Mabit, Alshich, R. Shmuel de Uzeda) now start at row 17
   assert.deepEqual([map.sages['632'], map.sages['630'], map.sages['631']], [[17, 18], [19, 20], [21, 22]])

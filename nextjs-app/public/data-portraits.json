@@ -1985,15 +1985,39 @@
   "w": 384,
   "kind": "illustration"
  },
+ "635": {
+  "label": "רבי עובדיה ספורנו",
+  "episode": "4otfv1Y2HmpdtA7p1oXPe2",
+  "w": 384,
+  "kind": "illustration"
+ },
  "638": {
   "label": "רבי יהושע פלק כ״ץ (הסמ״ע)",
   "episode": "3sBHDuG9aT7dx4zmtYyDjH",
   "w": 384,
   "kind": "illustration"
  },
+ "640": {
+  "label": "רבי יוסף בן לב (מהריב״ל)",
+  "episode": "0BzXyQX7GBCu7Vgb9OVlJO",
+  "w": 384,
+  "kind": "illustration"
+ },
+ "643": {
+  "label": "רבי שמואל בן אורי שרגא פייבוש (בעל בית שמואל)",
+  "episode": "0phf7iRQMctye9TjtzxRhp",
+  "w": 384,
+  "kind": "illustration"
+ },
  "660": {
   "label": "רבי יעקב ריישר (בעל שבות יעקב)",
   "episode": "0mmLEt5P6cWWmeGViach5r",
+  "w": 384,
+  "kind": "illustration"
+ },
+ "669": {
+  "label": "רבי אברהם סבע (בעל צרור המור)",
+  "episode": "5IA3skcoCirYA0SxOQTtsO",
   "w": 384,
   "kind": "illustration"
  },
@@ -2024,6 +2048,18 @@
  "685": {
   "label": "רב יהודאי גאון",
   "episode": "187HitcBGTOzR3Lgzja106",
+  "w": 384,
+  "kind": "illustration"
+ },
+ "691": {
+  "label": "רבי מאיר בן יעקב שיף (מהר״ם שיף)",
+  "episode": "3EkYnOGgOi3Mg6f6GibANH",
+  "w": 384,
+  "kind": "illustration"
+ },
+ "696": {
+  "label": "רבי אברהם זכות",
+  "episode": "0ESvrI7UNJYYdZRfKVMGrJ",
   "w": 384,
   "kind": "illustration"
  }
