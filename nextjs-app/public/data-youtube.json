@@ -6071,6 +6071,23 @@
     }
    ]
   },
+  "635": {
+   "label": "רבי עובדיה ספורנו",
+   "en": [
+    {
+     "id": "fjUcQ4e4yHg",
+     "title": "Rabbi Ovadia Sforno - The Jewish Physician Who Taught Europe Hebrew and Saw Torah as Light for All",
+     "seconds": 264
+    }
+   ],
+   "ru": [
+    {
+     "id": "0Qv5S6KkAJ0",
+     "title": "Рабби Овадия Сфорно - еврейский врач, обучавший Европу ивриту и видевший в Торе свет для всего мира",
+     "seconds": 482
+    }
+   ]
+  },
   "638": {
    "label": "רבי יהושע פלק כ״ץ (הסמ״ע)",
    "en": [
@@ -6088,6 +6105,57 @@
     }
    ]
   },
+  "639": {
+   "label": "רבי שמואל די מדינה (המהרשד״ם)",
+   "en": [
+    {
+     "id": "MYnteOX4rQk",
+     "title": "Rabbi Shmuel de Medina (Maharashdam) - The decisor who defied his peers and defended the minority",
+     "seconds": 480
+    }
+   ],
+   "ru": [
+    {
+     "id": "2JLoYg2O334",
+     "title": "Рабби Шмуэль ди Медина (Маарашдам) - Законоучитель, споривший с мудрецами и защищавший меньшинство",
+     "seconds": 520
+    }
+   ]
+  },
+  "640": {
+   "label": "רבי יוסף בן לב (מהריב״ל)",
+   "en": [
+    {
+     "id": "fqISOry2nFc",
+     "title": "Rabbi Joseph ibn Lev - The Sage Who Defied the Powerful and Knew How to Change His Mind",
+     "seconds": 444
+    }
+   ],
+   "ru": [
+    {
+     "id": "Y0DTa2PUiFo",
+     "title": "Рабби Йосеф ибн Лев - мудрец, не склонявшийся перед власть имущими и умевший менять своё мнение",
+     "seconds": 492
+    }
+   ]
+  },
+  "643": {
+   "label": "רבי שמואל בן אורי שרגא פייבוש (בעל בית שמואל)",
+   "en": [
+    {
+     "id": "OtQH6W01d_A",
+     "title": "Rabbi Shmuel, Author of Beit Shmuel - Who Made a Neglected Section a Pillar of Jewish Law",
+     "seconds": 394
+    }
+   ],
+   "ru": [
+    {
+     "id": "P8gunhqtycU",
+     "title": "Рабби Шмуэль, автор «Бейт Шмуэль», - превративший забытый раздел в опору Галахи",
+     "seconds": 471
+    }
+   ]
+  },
   "660": {
    "label": "רבי יעקב ריישר (בעל שבות יעקב)",
    "en": [
@@ -6102,6 +6170,23 @@
      "id": "2hulZG9z-og",
      "title": "Рабби Яаков Райшер - гений, потерявший зрение, вновь прозревший и озаривший мир еврейского закона",
      "seconds": 470
+    }
+   ]
+  },
+  "669": {
+   "label": "רבי אברהם סבע (בעל צרור המור)",
+   "en": [
+    {
+     "id": "QD0kwb46PPE",
+     "title": "Rabbi Abraham Saba - The Sage Who Buried His Books and Brought Them Back to Life",
+     "seconds": 379
+    }
+   ],
+   "ru": [
+    {
+     "id": "sDrqQKtaw4Y",
+     "title": "Рабби Авраам Саба - Мудрец, который похоронил свои книги и вернул их к жизни",
+     "seconds": 424
     }
    ]
   },
@@ -6204,6 +6289,57 @@
      "id": "O2tIT5HSCd4",
      "title": "Рав Йехудай Гаон - Незрячий мудрец, озаривший мир еврейского закона на многие поколения",
      "seconds": 493
+    }
+   ]
+  },
+  "686": {
+   "label": "רבי שמשון בן אברהם משאנץ (הר״ש)",
+   "en": [
+    {
+     "id": "Stg0v7HTudM",
+     "title": "Rabbi Samson of Sens - The Scholar Who Shaped the Talmud Page and Led Hundreds of Sages to Israel",
+     "seconds": 343
+    }
+   ],
+   "ru": [
+    {
+     "id": "NqqbTpW30bc",
+     "title": "Рабби Шимшон из Санса - мудрец, определивший облик страницы Талмуда и возглавивший сотни мудрецов",
+     "seconds": 470
+    }
+   ]
+  },
+  "691": {
+   "label": "רבי מאיר בן יעקב שיף (מהר״ם שיף)",
+   "en": [
+    {
+     "id": "xiGp1R5AQ7Q",
+     "title": "Maharam Schiff - Rabbi at 17, Whose Writings Survived Fire and Still Challenge Generations",
+     "seconds": 307
+    }
+   ],
+   "ru": [
+    {
+     "id": "q-uaA44tYlg",
+     "title": "Маарам Шиф - раввин в 17 лет, чьи труды пережили пожар и бросают вызов поколениям учеников",
+     "seconds": 458
+    }
+   ]
+  },
+  "696": {
+   "label": "רבי אברהם זכות",
+   "en": [
+    {
+     "id": "Q5peBkd5n8w",
+     "title": "Rabbi Abraham Zacuto - The Jewish Sage Who Helped Europe Discover the World, Yet Was Expelled",
+     "seconds": 409
+    }
+   ],
+   "ru": [
+    {
+     "id": "rNlyM6XhLW8",
+     "title": "Рабби Авраам Закуто - еврейский мудрец, помогший Европе открыть мир, но изгнанный из неё",
+     "seconds": 524
     }
    ]
   }

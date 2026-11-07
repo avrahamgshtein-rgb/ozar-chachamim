@@ -1,7 +1,9 @@
 # Line-aligned translation of the research papers (no API): shared helpers.
 import json, os, re, glob
 REPO = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-RES = f'{REPO}/nextjs-app/public/research'
+# $TX_RES points the whole toolchain at another folder of papers (phase 3: a scratch folder holding only the NEW document of a sage
+# whose site paper already exists, so that only it is prepared, sent and built; tx_append.py then appends the result)
+RES = os.environ.get('TX_RES') or f'{REPO}/nextjs-app/public/research'
 PUB = f'{REPO}/nextjs-app/public'
 # working files (<id>.src.txt, <id>.en.txt, ...) live outside the repo
 TX = os.environ.get('TX_WORK', '/tmp/ozar-translate-lines')
