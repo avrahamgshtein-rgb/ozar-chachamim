@@ -23,3 +23,17 @@ Working files go to `$TX_WORK` (default `/tmp/ozar-translate-lines`), never into
 
 A translation says what the Hebrew paper says, including its slips; nothing is corrected from memory. Typos in the Hebrew
 source are better fixed in the Hebrew paper first, then re-translated.
+
+## A new document for a sage whose paper already exists (`TX_RES`, `tx_append.py`)
+
+When a sage already has a paper (and its English and Russian files) and a second document is appended to `<id>.json`, only the
+new document is translated, so the existing translations stay byte-identical:
+
+1. put the new document alone, as a one-element array, in a scratch folder: `$SCRATCH/<id>.json`;
+2. run the whole toolchain with `TX_RES=$SCRATCH TX_WORK=$WORK` (`tx_prepare.py`, `tx_api.py submit/collect`, `tx_build.py`,
+   `tx_verify.py`): everything is read from and written to the scratch folder (do not list the repo's files in `protected.txt`:
+   they are not in the scratch folder, and the list would only block the rebuild there);
+3. `TX_RES=$SCRATCH python3 tx_append.py <id>` checks (no write) and `--write` appends the translated document to the repo's
+   `<id>.en.json` and `<id>.ru.json`. It refuses unless the repo's Hebrew paper is the old documents plus exactly that document,
+   the English and Russian files hold the old documents only (in the files' own formatting), the translation is line-aligned,
+   and the old documents would not change by a byte. Afterwards `tx_verify.py <id>` (without `TX_RES`) checks the whole file.
