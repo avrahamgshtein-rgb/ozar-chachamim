@@ -35,7 +35,7 @@ for lang in ('en', 'ru'):
     assert len(tr) == 1 and sorted(tr[0]) == sorted(new_he[0])
     assert len(lines_of(tr[0]['content'])) == len(lines_of(new_he[0]['content'])), 'line count differs'
     out = json.dumps(old + tr, ensure_ascii=False, indent=1)
-    assert out.startswith(raw[:-1]), 'the old documents would change'
+    assert raw.endswith('\n]') and out.startswith(raw[:-2] + ','), 'the old documents would change'
     print(f'{sid}.{lang}: ok, {len(old)} old doc(s) kept, new document {tr[0]["word_count"]} words')
     if write:
         open(p, 'w', encoding='utf-8').write(out)
