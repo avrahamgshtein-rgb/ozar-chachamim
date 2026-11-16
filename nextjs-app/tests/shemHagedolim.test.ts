@@ -47,6 +47,8 @@ const EPISODES: Record<string, string> = {
   // 635, 639, 640, 643, 669, 686, 691 and 696 gained theirs on 2026-11-07 (phase 3, data/owner-papers-2026-11.json, tests/ownerPhase3.test.ts)
   '635': '4otfv1Y2HmpdtA7p1oXPe2', '639': '1Vi9fNM1sys1kguSYWnbeS', '640': '0BzXyQX7GBCu7Vgb9OVlJO', '643': '0phf7iRQMctye9TjtzxRhp',
   '669': '5IA3skcoCirYA0SxOQTtsO', '686': '0H3njgQC6i6HGGeEqUWgBi', '691': '3EkYnOGgOi3Mg6f6GibANH', '696': '0ESvrI7UNJYYdZRfKVMGrJ',
+  // 641 and 657 gained theirs on 2026-11-16 (phase 4, data/owner-papers-2026-11b.json, tests/ownerPhase4.test.ts)
+  '641': '0WLtimjKylLYG0OhH13fbv', '657': '4Abibma1mlPvzUY7LjQ3tF',
 }
 // the owner's papers: 630, 631 and 634 with this batch, 638 and 660 with the one of 2026-10-27, and fifteen more on 2026-10-27 (phase 2a, the owner's
 // NotebookLM papers of 18 October on sages this batch added: 632, 635, 636, 639, 640, 641, 642, 643, 646, 647, 648, 651, 652, 657, 669;

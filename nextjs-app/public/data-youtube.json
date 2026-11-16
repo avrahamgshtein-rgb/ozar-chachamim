@@ -4955,7 +4955,7 @@
     {
      "id": "HN4xheHyH7s",
      "title": "Рабби Авиад Сар Шалом Базила - где каббала, Евклид и астрономия встретились в бейт-мидраше",
-     "seconds": 413
+     "seconds": 414
     }
    ]
   },
@@ -5965,7 +5965,7 @@
     {
      "id": "qbhTWbSmqKA",
      "title": "Рабби Рафаэль Бердуго - «Ангел Рафаэль» из Мекнеса",
-     "seconds": 388
+     "seconds": 389
     }
    ]
   },
@@ -5975,7 +5975,7 @@
     {
      "id": "bVC_T1MR4nE",
      "title": "Rabbi Nathan Shapira of Jerusalem - The Kabbalist Who Organized the Writings of the Ari",
-     "seconds": 304
+     "seconds": 305
     }
    ],
    "ru": [
@@ -6139,6 +6139,23 @@
     }
    ]
   },
+  "641": {
+   "label": "רבי יוסף מטראני (המהרי״ט)",
+   "en": [
+    {
+     "id": "pgkn351qJQY",
+     "title": "Rabbi Yosef Mitrani (Maharit) - He Fled Plagues, Saved Communities, and Transformed Talmud Study",
+     "seconds": 385
+    }
+   ],
+   "ru": [
+    {
+     "id": "xB_JgvR1rw8",
+     "title": "Рабби Йосеф Митрани (Магарит) - бежал от эпидемий, спас общины и изменил изучение Талмуда",
+     "seconds": 432
+    }
+   ]
+  },
   "643": {
    "label": "רבי שמואל בן אורי שרגא פייבוש (בעל בית שמואל)",
    "en": [
@@ -6153,6 +6170,23 @@
      "id": "P8gunhqtycU",
      "title": "Рабби Шмуэль, автор «Бейт Шмуэль», - превративший забытый раздел в опору Галахи",
      "seconds": 471
+    }
+   ]
+  },
+  "657": {
+   "label": "רבי יאיר חיים בכרך (בעל חוות יאיר)",
+   "en": [
+    {
+     "id": "OVxy6bNcfUk",
+     "title": "Rabbi Yair Chaim Bacharach - Denied the Rabbinate, He Became a Leading Ashkenazi Halachic Authority",
+     "seconds": 391
+    }
+   ],
+   "ru": [
+    {
+     "id": "M6CFL14ED0M",
+     "title": "Рабби Яир Хаим Бахрах - ему отказали в должности раввина, но он стал великим авторитетом Галахи",
+     "seconds": 422
     }
    ]
   },
@@ -6309,6 +6343,23 @@
     }
    ]
   },
+  "690": {
+   "label": "רבנו נסים בן יעקב מקירואן",
+   "en": [
+    {
+     "id": "-_swpFKwBXE",
+     "title": "Rav Nissim Gaon - The Sage Who Unlocked the Talmud and Brought Babylonian Geonim's Legacy to Spain",
+     "seconds": 371
+    }
+   ],
+   "ru": [
+    {
+     "id": "N8uyc1ppiU4",
+     "title": "Рав Нисим Гаон - мудрец, открывший тайны Талмуда и передавший наследие вавилонских гаонов Испании",
+     "seconds": 429
+    }
+   ]
+  },
   "691": {
    "label": "רבי מאיר בן יעקב שיף (מהר״ם שיף)",
    "en": [
@@ -6323,6 +6374,40 @@
      "id": "q-uaA44tYlg",
      "title": "Маарам Шиф - раввин в 17 лет, чьи труды пережили пожар и бросают вызов поколениям учеников",
      "seconds": 458
+    }
+   ]
+  },
+  "692": {
+   "label": "רבי מאיר אייזנשטט (בעל פנים מאירות)",
+   "en": [
+    {
+     "id": "nQ321Il3KtI",
+     "title": "Rabbi Meir Eisenstadt - The Persecuted Sage Who Raised Eybeschutz and Illuminated Jewish Law",
+     "seconds": 386
+    }
+   ],
+   "ru": [
+    {
+     "id": "O2qMUh3oO_U",
+     "title": "Рабби Меир Айзенштадт (Магарам Аш) - оклеветанный мудрец, воспитавший Эйбешица и озаривший Галаху",
+     "seconds": 563
+    }
+   ]
+  },
+  "693": {
+   "label": "רבי ידידיה שלמה רפאל נורצי",
+   "en": [
+    {
+     "id": "Qu-Hhfnv7do",
+     "title": "Rabbi Yedidiah Shlomo Raphael Norzi - The Sage Who Safeguarded Every Letter of the Bible",
+     "seconds": 579
+    }
+   ],
+   "ru": [
+    {
+     "id": "kqyFOkBSTwc",
+     "title": "Рабби Йедидья Шломо Рафаэль Норци - мудрец, защитивший каждую букву Танаха",
+     "seconds": 522
     }
    ]
   },

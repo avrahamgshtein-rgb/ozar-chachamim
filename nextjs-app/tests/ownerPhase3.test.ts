@@ -15,6 +15,8 @@ function t(name: string, fn: () => void) {
   try { fn(); passed++; console.log('  ok  ' + name) } catch (e) { failed++; console.log('  FAIL ' + name + '\n       ' + (e as Error).message) }
 }
 
+// Phase 4 (2026-11-16) put ten new videos at the top of the playlist: the rows of this record moved by 10
+const SHIFT_P4 = 10
 const rec = rd('data/owner-papers-2026-11.json')
 const nodes: any[] = rd('nextjs-app/public/data.json').nodes
 const label = (id: string) => nodes.find(n => n.id === id)?.label as string
@@ -37,10 +39,11 @@ t('the sixteen videos are mapped by row, each pair one Russian and one English v
   const map = rd('data/youtube-sage-map.json').sages as Record<string, number[]>
   const rows = new Map<number, string[]>(readFileSync(join(ROOT, 'data/youtube-playlist.tsv'), 'utf8').split('\n').filter(Boolean).map(l => { const p = l.split('\t'); return [Number(p[0]), p] as [number, string[]] }))
   for (const [id, rs] of Object.entries(rec.videos.rows as Record<string, number[]>)) {
-    assert.deepEqual(map[id], rs)
-    assert.deepEqual(rs.map(r => rows.get(r)![3]).sort(), ['en', 'ru'], id)
+    // phase 4 added ten videos at the top of the playlist, so every phase-3 row moved by SHIFT_P4
+    assert.deepEqual(map[id], rs.map(r => r + SHIFT_P4))
+    assert.deepEqual(rs.map(r => rows.get(r + SHIFT_P4)![3]).sort(), ['en', 'ru'], id)
   }
-  assert.equal(rows.size, 762)
+  assert.equal(rows.size, 762 + SHIFT_P4)
 })
 t('the youtube data holds those videos', () => {
   const yt = rd('nextjs-app/public/data-youtube.json')
