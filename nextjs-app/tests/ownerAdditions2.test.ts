@@ -49,6 +49,10 @@ const PHASE3_EPISODES: Record<string, string> = {
   '686': 'https://open.spotify.com/episode/0H3njgQC6i6HGGeEqUWgBi',
   '691': 'https://open.spotify.com/episode/3EkYnOGgOi3Mg6f6GibANH',
   '696': 'https://open.spotify.com/episode/0ESvrI7UNJYYdZRfKVMGrJ',
+  // Phase 4 (2026-11-16): the episodes of 690, 692 and 693 (tests/ownerPhase4.test.ts pins all five of that batch)
+  '690': 'https://open.spotify.com/episode/2pVSl1Uav91WIFONmFBqvd',
+  '692': 'https://open.spotify.com/episode/4GpbesLad7Apg7Fq8xQovD',
+  '693': 'https://open.spotify.com/episode/03kxCoiasKr80gOMotIbsX',
 }
 let passed = 0
 let failed = 0

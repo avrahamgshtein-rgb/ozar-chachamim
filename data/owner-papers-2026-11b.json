@@ -1,0 +1,69 @@
+{
+ "_about": "Phase 4 (2026-11-16): the owner's five new Spotify episodes and ten new YouTube videos of sages already on the roster (the Shem HaGedolim batch, ids 641, 657, 690, 692, 693, whose papers came in phases 2a and 2b). No paper changed (the owner's Drive folder holds nothing created after 2026-10-18). Written by hand, pinned by tests/ownerPhase4.test.ts.",
+ "episodes": {
+  "657": "4Abibma1mlPvzUY7LjQ3tF",
+  "693": "03kxCoiasKr80gOMotIbsX",
+  "692": "4GpbesLad7Apg7Fq8xQovD",
+  "690": "2pVSl1Uav91WIFONmFBqvd",
+  "641": "0WLtimjKylLYG0OhH13fbv"
+ },
+ "labels": {
+  "657": "רבי יאיר חיים בכרך (בעל חוות יאיר)",
+  "693": "רבי ידידיה שלמה רפאל נורצי",
+  "692": "רבי מאיר אייזנשטט (בעל פנים מאירות)",
+  "690": "רבנו נסים בן יעקב מקירואן",
+  "641": "רבי יוסף מטראני (המהרי״ט)"
+ },
+ "videos": {
+  "playlist_rows": "1-10 (the playlist now has 772 rows; the 762 of before are rows 11-772, same ids, order, languages and titles; three videos' durations differ by one second, YouTube's current value, which the snapshot now holds: nothing pins them); language = the API's defaultLanguage",
+  "rows": {
+   "657": [
+    1,
+    2
+   ],
+   "693": [
+    3,
+    4
+   ],
+   "692": [
+    5,
+    6
+   ],
+   "690": [
+    7,
+    8
+   ],
+   "641": [
+    9,
+    10
+   ]
+  }
+ },
+ "portraits": {
+  "kept_illustration": {
+   "657": [
+    110,
+    10,
+    335
+   ],
+   "693": [
+    140,
+    15,
+    300
+   ],
+   "692": [
+    165,
+    65,
+    275
+   ],
+   "690": [
+    150,
+    70,
+    300
+   ]
+  },
+  "left_out": {
+   "641": "quality (a collage: the writing scholar is the large figure at the bottom left, other panels start behind his head)"
+  }
+ }
+}

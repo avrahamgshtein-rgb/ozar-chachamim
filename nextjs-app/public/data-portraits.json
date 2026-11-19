@@ -2009,6 +2009,12 @@
   "w": 384,
   "kind": "illustration"
  },
+ "657": {
+  "label": "רבי יאיר חיים בכרך (בעל חוות יאיר)",
+  "episode": "4Abibma1mlPvzUY7LjQ3tF",
+  "w": 384,
+  "kind": "illustration"
+ },
  "660": {
   "label": "רבי יעקב ריישר (בעל שבות יעקב)",
   "episode": "0mmLEt5P6cWWmeGViach5r",
@@ -2051,9 +2057,27 @@
   "w": 384,
   "kind": "illustration"
  },
+ "690": {
+  "label": "רבנו נסים בן יעקב מקירואן",
+  "episode": "2pVSl1Uav91WIFONmFBqvd",
+  "w": 384,
+  "kind": "illustration"
+ },
  "691": {
   "label": "רבי מאיר בן יעקב שיף (מהר״ם שיף)",
   "episode": "3EkYnOGgOi3Mg6f6GibANH",
+  "w": 384,
+  "kind": "illustration"
+ },
+ "692": {
+  "label": "רבי מאיר אייזנשטט (בעל פנים מאירות)",
+  "episode": "4GpbesLad7Apg7Fq8xQovD",
+  "w": 384,
+  "kind": "illustration"
+ },
+ "693": {
+  "label": "רבי ידידיה שלמה רפאל נורצי",
+  "episode": "03kxCoiasKr80gOMotIbsX",
   "w": 384,
   "kind": "illustration"
  },

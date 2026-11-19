@@ -816,8 +816,9 @@ function videoProblems(id: string, label: string, entry: YoutubeEntry | undefine
 interface PlaylistRow { row: number; id: string; seconds: number; lang: string; title: string }
 // Phase 3 (2026-11-07) put sixteen more uploads at the top (rows 1-16) and moved every row by 16 again. This file pins the state
 // after the batch of 2026-10-27, so it looks at the playlist and the map as they were then: the first 16 rows dropped, the rest
-// renumbered by -16 (tests/ownerPhase3.test.ts pins the new top and the new numbering).
-const PHASE3_ROWS = 16
+// renumbered by -16 (tests/ownerPhase3.test.ts pins the new top and the new numbering). Phase 4 (2026-11-16) put ten more at the top,
+// so the first 26 rows are dropped now and the rest renumbered by -26 (tests/ownerPhase4.test.ts pins the newest ten).
+const PHASE3_ROWS = 26
 const playlist: PlaylistRow[] = readFileSync(join(REPO, 'data/youtube-playlist.tsv'), 'utf8').split('\n').filter(l => l.trim()).map(l => {
   const [row, id, seconds, lang, ...title] = l.split('\t')
   return { row: Number(row) - PHASE3_ROWS, id, seconds: Number(seconds), lang, title: title.join('\t') }
@@ -866,7 +867,7 @@ test('rows 1-16 of the playlist snapshot are the sixteen new uploads, in the lan
 
 test('the hand-checked map: the eight sages hold rows 1-16 as the plan lists them; every other row moved by 16 (the older six uploads and the left-out keys)', () => {
   const raw = readJson<{ sages: Record<string, number[]>; _left_out: Record<string, string> }>(join(REPO, 'data/youtube-sage-map.json'))
-  const phase3 = new Set(['669', '640', '691', '639', '635', '686', '696', '643'])
+  const phase3 = new Set(['669', '640', '691', '639', '635', '686', '696', '643', '657', '693', '692', '690', '641'])
   const map = {
     sages: Object.fromEntries(Object.entries(raw.sages).filter(([id]) => !phase3.has(id)).map(([id, rs]) => [id, rs.map(r => r - PHASE3_ROWS)])),
     _left_out: Object.fromEntries(Object.entries(raw._left_out).map(([k, v]) => [k.split('-').map(x => Number(x) - PHASE3_ROWS).join('-'), v])),

@@ -3268,6 +3268,19 @@
    ],
    "note": "AI painting; the sage writing, the title page of Beit Shmuel at the right (outside the box, x>=405); the coat of a second scholar behind him shows at the right edge, his face does not"
   },
+  "657": {
+   "label": "רבי יאיר חיים בכרך (בעל חוות יאיר)",
+   "episode": "4Abibma1mlPvzUY7LjQ3tF",
+   "title": "רבי יאיר חיים בכרך - הרב שנדחה מכיסא הרבנות והפך לאחד מגדולי פוסקי אשכנז",
+   "image": "a235851a9c1fb605fb7181fc",
+   "kind": "illustration",
+   "crop": [
+    110,
+    10,
+    335
+   ],
+   "note": "AI painting; the sage in a black cap and fur-collared robe writes at his desk; the armillary sphere at the left (x<110) and the globe at the right are outside the box; a river town in the window at the top right is background"
+  },
   "660": {
    "label": "רבי יעקב ריישר (בעל שבות יעקב)",
    "episode": "0mmLEt5P6cWWmeGViach5r",
@@ -3359,6 +3372,19 @@
    ],
    "note": "AI infographic cover; the gaon at his desk, eyes closed. The arch plaque \"Sura Yeshiva 761\" ends at y=82 and the map labels end at x=225, so the box starts at (228, 84); the scribe at the left, the scroll of the main teachings at the right and the book \"Halachot Pesukot\" below (y>=330) are outside; three background scholars show at the right; no watermark"
   },
+  "690": {
+   "label": "רבנו נסים בן יעקב מקירואן",
+   "episode": "2pVSl1Uav91WIFONmFBqvd",
+   "title": "רב נסים גאון - החכם שפתח את מנעולי התלמוד והעביר את מסורת גאוני בבל לספרד",
+   "image": "8d4eab3fdcdaa6819e19063a",
+   "kind": "illustration",
+   "crop": [
+    150,
+    70,
+    300
+   ],
+   "note": "AI painting; the Gaon in a turban and a striped tallit rests his chin on his hand; the lantern at the top right (x>=380, y<110) touches only the corner; the scales at the right and the scroll at the bottom are outside the box"
+  },
   "691": {
    "label": "רבי מאיר בן יעקב שיף (מהר״ם שיף)",
    "episode": "3EkYnOGgOi3Mg6f6GibANH",
@@ -3371,6 +3397,32 @@
     280
    ],
    "note": "AI painting; a young scholar teaching among his students, the whale scene (the Jonah story) above him; the students at the left and right edges are outside the box; no watermark"
+  },
+  "692": {
+   "label": "רבי מאיר אייזנשטט (בעל פנים מאירות)",
+   "episode": "4GpbesLad7Apg7Fq8xQovD",
+   "title": "רבי מאיר אייזנשטט (מהר\"ם א\"ש) - הגאון שנרדף בעלילות, גידל את רבי יהונתן אייבשיץ והאיר את עולם ההלכה",
+   "image": "4555704c96357c5f1bfc711a",
+   "kind": "illustration",
+   "crop": [
+    165,
+    65,
+    275
+   ],
+   "note": "AI painting; the sage points at a page and a boy (the young Eybeschutz) sits to his right, from x=425 on, outside the box; the two students behind at the left end before x=170; the beard ends at about y=330"
+  },
+  "693": {
+   "label": "רבי ידידיה שלמה רפאל נורצי",
+   "episode": "03kxCoiasKr80gOMotIbsX",
+   "title": "רבי ידידיה שלמה רפאל נורצי - החכם שנלחם על כל אות בתנ״ך והציל את מסורת המקרא משיבושי הדפוס",
+   "image": "1f0871ca9b3f508d266b8e94",
+   "kind": "illustration",
+   "crop": [
+    140,
+    15,
+    300
+   ],
+   "note": "AI painting; the sage in a burgundy cap writes in a manuscript; the bookshelf with the Bible page at the right (x>=440) and the castle window at the left are outside the box"
   },
   "696": {
    "label": "רבי אברהם זכות",
@@ -5286,9 +5338,10 @@
   },
   "641": {
    "label": "רבי יוסף מטראני (המהרי״ט)",
-   "episode": "",
-   "reason": "no-episode",
-   "note": "no spotify_url"
+   "episode": "0WLtimjKylLYG0OhH13fbv",
+   "reason": "quality",
+   "note": "AI collage: the scholar writing at his desk is the large figure at the bottom left, but the other panels (a caravan, a court of judges, a harbour with a mosque, a crowd) start at x=300 behind his head and shoulders, so no square around the head and beard is clear of them",
+   "image": "ed6a5c9efaa93d689cf85439"
   },
   "642": {
    "label": "רבי אברהם די בוטון (בעל לחם משנה)",
@@ -5370,12 +5423,6 @@
   },
   "656": {
    "label": "רבי אברהם הלוי (בעל גינת ורדים)",
-   "episode": "",
-   "reason": "no-episode",
-   "note": "no spotify_url"
-  },
-  "657": {
-   "label": "רבי יאיר חיים בכרך (בעל חוות יאיר)",
    "episode": "",
    "reason": "no-episode",
    "note": "no spotify_url"
@@ -5533,24 +5580,6 @@
   },
   "689": {
    "label": "רבי צבי הירש אשכנזי (החכם צבי)",
-   "episode": "",
-   "reason": "no-episode",
-   "note": "no spotify_url"
-  },
-  "690": {
-   "label": "רבנו נסים בן יעקב מקירואן",
-   "episode": "",
-   "reason": "no-episode",
-   "note": "no spotify_url"
-  },
-  "692": {
-   "label": "רבי מאיר אייזנשטט (בעל פנים מאירות)",
-   "episode": "",
-   "reason": "no-episode",
-   "note": "no spotify_url"
-  },
-  "693": {
-   "label": "רבי ידידיה שלמה רפאל נורצי",
    "episode": "",
    "reason": "no-episode",
    "note": "no spotify_url"
