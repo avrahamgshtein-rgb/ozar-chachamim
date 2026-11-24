@@ -145,7 +145,7 @@
      {
       "he": "רב שמעון קיירא, בעל ״הלכות גדולות״ (בה״ג), היה חכם ופוסק בבבל בתקופת הגאונים, אך מעולם לא מונה רשמית לראש ישיבה, ולכן אינו נושא את התואר ״גאון״.",
       "en": "Rav Shimon Kayyara, the author of the Halakhot Gedolot (the Bahag), was a scholar and halakhic authority of the Geonic period in Babylonia, but he was never officially appointed head of a yeshiva and so does not bear the title \"Gaon\".",
-      "ru": "Рав Шимон Кайяра, автор «Галахот гедолот» (Баhаг), был ученым и галахическим авторитетом эпохи гаонов в Вавилонии, но никогда не был официально назначен главой ешивы и потому не носит титул «гаон».",
+      "ru": "Рав Шимон Кайяра, автор «Галахот гедолот» (Бахаг), был ученым и галахическим авторитетом эпохи гаонов в Вавилонии, но никогда не был официально назначен главой ешивы и потому не носит титул «гаон».",
       "support": [
        {
         "src": 1,
@@ -215,7 +215,7 @@
      {
       "he": "ייחוס הספר שנוי בפולמוס: רב שרירא גאון, רב האי גאון ו״ספר הקבלה״ מייחסים אותו לרב שמעון קיירא, ואילו רש״י והסמ״ג סברו שחיבר אותו רב יהודאי גאון.",
       "en": "The attribution of the book is disputed: Rav Sherira Gaon, Rav Hai Gaon and the Sefer HaKabbalah attribute it to Rav Shimon Kayyara, whereas Rashi and the Semag held that Rav Yehudai Gaon wrote it.",
-      "ru": "Авторство книги оспаривается: рав Шерира гаон, рав Хай гаон и «Сефер ха-каббала» приписывают её рав Шимону Кайяре, тогда как Раши и Семаг считали, что её написал рав Йегудай гаон.",
+      "ru": "Авторство книги оспаривается: рав Шрира Гаон, рав Хай Гаон и «Сефер ха-каббала» приписывают её рав Шимону Кайяре, тогда как Раши и Семаг считали, что её написал рав Йехудай Гаон.",
       "support": [
        {
         "src": 0,
@@ -243,14 +243,22 @@
      "b": "699",
      "type": "influence",
      "quote": "לפני המחבר ספר 'הלכות פסוקות' של רב יהודאי גאון וספר 'שאילתות' של רב אחאי משבחא. בה\"ג העתיק קטעים נרחבים מה'שאילתות'",
-     "source": "https://docs.google.com/document/d/1f1bXKEOLlbwNQ8u64EIWYxJDaIGXrWuZdlbVO6Y2kaE/edit"
+     "source": "https://docs.google.com/document/d/1f1bXKEOLlbwNQ8u64EIWYxJDaIGXrWuZdlbVO6Y2kaE/edit",
+     "also": {
+      "source": "https://he.wikipedia.org/wiki/%D7%A9%D7%9E%D7%A2%D7%95%D7%9F_%D7%A7%D7%99%D7%99%D7%A8%D7%90",
+      "quote": "מבוסס על החיבור הלכות פסוקות בשילוב השאילתות"
+     }
     },
     {
      "a": "685",
      "b": "699",
      "type": "influence",
      "quote": "לפני המחבר ספר 'הלכות פסוקות' של רב יהודאי גאון וספר 'שאילתות' של רב אחאי משבחא",
-     "source": "https://docs.google.com/document/d/1f1bXKEOLlbwNQ8u64EIWYxJDaIGXrWuZdlbVO6Y2kaE/edit"
+     "source": "https://docs.google.com/document/d/1f1bXKEOLlbwNQ8u64EIWYxJDaIGXrWuZdlbVO6Y2kaE/edit",
+     "also": {
+      "source": "https://he.wikipedia.org/wiki/%D7%A9%D7%9E%D7%A2%D7%95%D7%9F_%D7%A7%D7%99%D7%99%D7%A8%D7%90",
+      "quote": "מבוסס על החיבור הלכות פסוקות בשילוב השאילתות"
+     }
     },
     {
      "a": "699",
@@ -273,7 +281,7 @@
    "id": "700",
    "label": "רב נטרונאי גאון (בר הילאי)",
    "en_label": "Rav Natronai Gaon (bar Hilai)",
-   "ru_label": "Рав Натронай гаон (бар Хилай)",
+   "ru_label": "Рав Натронай Гаон (бар Хилай)",
    "era": "כ־853–861 (ראש ישיבת סורא)",
    "location": "סורא; בבל",
    "field": "הלכה ותשובות הגאונים, ליטורגיה, הנהגת ישיבה",
@@ -466,8 +474,8 @@
      },
      {
       "he": "בשמחת תורה של שנת ת״ר (1839) פרש מרבי מנחם מנדל מקוצק יחד עם חסידים רבים, וקבע את חצרו בתחילה בטומשוב ומאוחר יותר באיזביצה.",
-      "en": "On Simchat Torah of the year 5600 (1839) he broke with Rabbi Menachem Mendel of Kotzk together with many Hasidim, and set up his court first in Tomashov and later in Izbica.",
-      "ru": "В Симхат Тора 5600 (1839) года он порвал с рабби Менахемом Менделем из Коцка вместе со многими хасидами и устроил свой двор сначала в Томашове, а позднее в Избице.",
+      "en": "On Simchat Torah of the year 5600 (1839) he left Rabbi Menachem Mendel of Kotzk together with many Hasidim, and set up his court first in Tomashov and later in Izbica.",
+      "ru": "В Симхат Тора 5600 (1839) года он ушёл от рабби Менахема Менделя из Коцка вместе со многими хасидами и устроил свой двор сначала в Томашове, а позднее в Избице.",
       "support": [
        {
         "src": 1,
@@ -501,9 +509,9 @@
     ],
     "core_idea": [
      {
-      "he": "בהגותו ניתן דגש עיקרי על האינדיבידואל ועל פנימיות התורה; לפי ויקיפדיה העברית מקובלת במחקר המודרני תפיסתו כפנתאיזם קיצוני שממנו נגזרת השקפה דטרמיניסטית, ולפיה גם רצונותיו והכרעותיו של האדם הם ״דבר האלוהים״.",
-      "en": "His thought places the main emphasis on the individual and on the inner dimension of the Torah; according to Hebrew Wikipedia, modern scholarship accepts his view as an extreme pantheism from which a deterministic outlook follows, in which even a person's wishes and decisions are \"the word of God\".",
-      "ru": "В его учении главный акцент сделан на личности и на внутреннем измерении Торы; согласно еврейской Википедии, современные исследователи принимают его взгляд как крайний пантеизм, из которого вытекает детерминистский взгляд: даже желания и решения человека — «слово Бога».",
+      "he": "בהגותו ניתן דגש עיקרי על האינדיבידואל ועל פנימיות התורה; לפי ויקיפדיה העברית מקובלת במחקר המודרני תפיסתו כפנתאיזם קיצוני, שלפיו גם רצונותיו והכרעותיו של האדם הם ״דבר האלוהים״, ומכך נגזרת השקפה דטרמיניסטית.",
+      "en": "His thought places the main emphasis on the individual and on the inner dimension of the Torah; according to Hebrew Wikipedia, modern scholarship accepts his view as an extreme pantheism, according to which even a person's wishes and decisions are \"the word of God\", and from this a deterministic outlook follows.",
+      "ru": "В его учении главный акцент сделан на личности и на внутреннем измерении Торы; согласно еврейской Википедии, современные исследователи принимают его взгляд как крайний пантеизм, согласно которому даже желания и решения человека — «слово Бога», и отсюда вытекает детерминистский взгляд.",
       "support": [
        {
         "src": 0,
@@ -524,9 +532,9 @@
       ]
      },
      {
-      "he": "הוא עצמו לא כתב את דברי תורתו; נכדו רבי גרשון חנוך ליינר ליקט אותם בספר ״מי השילוח״, שהודפס בווינה בשנת תר״ך, ופרסומו עורר התנגדות עזה בקרב חלק מהציבור.",
-      "en": "He himself did not write down his teachings; his grandson Rabbi Gershon Chanoch Leiner collected them in the book Mei HaShiloach, printed in Vienna in 5620 (1860), and its publication aroused fierce opposition among part of the public.",
-      "ru": "Сам он не записывал свои учения; его внук рабби Гершон Ханох Лейнер собрал их в книге «Мей ха-Шилоах», напечатанной в Вене в 5620 (1860) году, и её издание вызвало резкое сопротивление части общества.",
+      "he": "הוא עצמו לא כתב את דברי תורתו; נכדו רבי גרשון חנוך ליינר ליקט חלק מהם בספר ״מי השילוח״, שהודפס בווינה בשנת תר״ך, ופרסומו עורר התנגדות עזה בקרב חלק מהציבור.",
+      "en": "He himself did not write down his teachings; his grandson Rabbi Gershon Chanoch Leiner collected some of them in the book Mei HaShiloach, printed in Vienna in 5620 (1860), and its publication aroused fierce opposition among part of the public.",
+      "ru": "Сам он не записывал свои учения; его внук рабби Гершон Ханох Лейнер собрал часть из них в книге «Мей ха-Шилоах», напечатанной в Вене в 5620 (1860) году, и её издание вызвало резкое сопротивление части общества.",
       "support": [
        {
         "src": 1,
@@ -543,9 +551,9 @@
       ]
      },
      {
-      "he": "תלמידו המובהק, רבי צדוק הכהן מלובלין, נחשב לרוב כממשיך תורתו, ובדורות האחרונים התרחבה השפעתה בעולם הנאו־חסידי, ומהבולטים בהוגים בה היה שלמה קרליבך.",
-      "en": "His foremost student, Rabbi Tzadok HaKohen of Lublin, is generally regarded as the continuer of his teaching, and in recent generations its influence has grown in the neo-Hasidic world, among the most prominent thinkers in it being Shlomo Carlebach.",
-      "ru": "Его главный ученик, рабби Цадок ха-Коэн из Люблина, считается, как правило, продолжателем его учения, а в последние поколения его влияние выросло в неохасидском мире, и среди самых заметных мыслителей, изучавших его, был Шломо Карлебах.",
+      "he": "תלמידו המובהק, רבי צדוק הכהן מלובלין, נחשב לרוב כממשיך תורתו, ובדור האחרון התרחבה השפעתו בעולם הנאו־חסידי, ומהבולטים שבהוגים בספר היה שלמה קרליבך.",
+      "en": "His foremost student, Rabbi Tzadok HaKohen of Lublin, is generally regarded as the continuer of his teaching, and in the last generation his influence has grown in the neo-Hasidic world, among the most prominent who engaged with the book being Shlomo Carlebach.",
+      "ru": "Его главный ученик, рабби Цадок ха-Коэн из Люблина, считается, как правило, продолжателем его учения, а в последнем поколении его влияние выросло в неохасидском мире, и среди самых заметных тех, кто изучал книгу, был Шломо Карлебах.",
       "support": [
        {
         "src": 0,
@@ -558,6 +566,10 @@
        {
         "src": 0,
         "quote": "מהבולטים שבהוגים בו בדור האחרון היה שלמה קרליבך"
+       },
+       {
+        "src": 0,
+        "quote": "בדור האחרון התרחבה השפעתו"
        },
        {
         "src": 0,
@@ -583,13 +595,13 @@
      "source": "https://he.wikipedia.org/wiki/%D7%9E%D7%99_%D7%94%D7%A9%D7%9C%D7%95%D7%97"
     }
    ],
-   "notes": "YEARS: Hebrew Wikipedia 1800 (ה'תק\"ס) - 1854, English Wikipedia 1801-1854, so the row says כ־1800–1854. PLACES: Izbica has no point in the gazetteer (Wikipedia's API returns no coordinates for it), Tomaszow Lubelski (טומשוב, 50.45, 23.4167 from Wikipedia) was added; the map stands at Tomashov. Kotzk, Peshischa, and the Kotzker Rebbe are not on the roster. LEFT OUT ON PURPOSE: the break with the Kotzker (the sources give several versions of its cause), Hebrew Wikipedia's remark that his two best students were dissatisfied with the book. His date of death (7 Tevet) is in the bio but not in data-yahrzeit.json, which is built from papers only."
+   "notes": "YEARS: Hebrew Wikipedia 1800 (ה'תק\"ס) - 1854, English Wikipedia 1801-1854, so the row says כ־1800–1854. THE BREAK WITH KOTZK: Hebrew Wikipedia dates it to Simchat Torah 5600 (1839), English Wikipedia says 1840; the bio follows Hebrew Wikipedia with the Hebrew year and says he left Kotzk (\"פרש\"), not that he broke with the Kotzker Rebbe. PLACES: Izbica has no point in the gazetteer (Wikipedia's API returns no coordinates for it), Tomaszow Lubelski (טומשוב, 50.45, 23.4167 from Wikipedia) was added; the map stands at Tomashov. Kotzk, Peshischa, and the Kotzker Rebbe are not on the roster. LEFT OUT ON PURPOSE: the break with the Kotzker (the sources give several versions of its cause), Hebrew Wikipedia's remark that his two best students were dissatisfied with the book. His date of death (7 Tevet) is in the bio but not in data-yahrzeit.json, which is built from papers only."
   },
   "702": {
    "id": "702",
    "label": "רב נחשון גאון",
    "en_label": "Rav Nachshon Gaon",
-   "ru_label": "Рав Нахшон гаон",
+   "ru_label": "Рав Нахшон Гаон",
    "era": "כ־872–879 (ראש ישיבת סורא)",
    "location": "סורא; בבל",
    "field": "לוח השנה העברי, הלכה ותשובות הגאונים, הנהגת ישיבה",
@@ -625,9 +637,9 @@
       ]
      },
      {
-      "he": "לפי ויקיפדיה העברית כיהן כראש הישיבה שבע שנים, בשנים 872–879, ולפי ויקיפדיה האנגלית בשנים 874–882, אחרי מר עמרם בן ששנא.",
-      "en": "According to Hebrew Wikipedia he headed the yeshiva for seven years, in 872–879, and according to English Wikipedia in 874–882, after Mar Amram ben Sheshna.",
-      "ru": "Согласно еврейской Википедии, он возглавлял ешиву семь лет, в 872–879 годах, а согласно английской Википедии, в 874–882 годах, после мара Амрама бен Шешны.",
+      "he": "לפי ויקיפדיה העברית כיהן כראש הישיבה שבע שנים, בשנים 872–879, ולפי ויקיפדיה האנגלית בשנים 874–882, אחרי רב עמרם גאון (בר ששנא).",
+      "en": "According to Hebrew Wikipedia he headed the yeshiva for seven years, in 872–879, and according to English Wikipedia in 874–882, after Rav Amram Gaon (bar Sheshna).",
+      "ru": "Согласно еврейской Википедии, он возглавлял ешиву семь лет, в 872–879 годах, а согласно английской Википедии, в 874–882 годах, после рава Амрама Гаона (бар Шешны).",
       "support": [
        {
         "src": 0,
@@ -708,12 +720,99 @@
   }
  },
  "relations": {
-  "checked": "The three papers were scanned for words of relation (בנו, רבו, תלמידו, אביו, חתנו ...) and for a Hebrew day and month of death. One teacher link: 700's paper names his student Rav Amram Gaon (684): added to data/links-from-research.json (506 -> 507). 667's paper names no teacher or relative of the roster; 699's none. NOTE: this scan was made by the author of the records, not by a blind second reader.",
+  "checked": "The three papers were scanned for words of relation (בנו, רבו, תלמידו, אביו, חתנו ...) and for a Hebrew day and month of death, then read blind by an independent reader who agreed on all three (667 none, 699 none, 700 -> 684 teacher, no death dates; 667's paper says the transmission to Rav Sherira, Rabbenu Chananel and the Rif was not by a direct student, so no link). One teacher link: 700's paper names his student Rav Amram Gaon (684): added to data/links-from-research.json (506 -> 507).",
   "death_dates": "none for 667, 699, 700: no paper gives a Hebrew day and month of death (667: only 857 as the end of his term and the year of his death; 700: 861 or 865)"
  },
- "second_reading": "pending: not done by the author. The 4 records (bio, core idea and label in three languages) and the 4 links to the owner's paper alone (680 -> 699, 685 -> 699, 699 -> 41, 699 -> 189) await an independent reader.",
+ "dropped_links": [],
+ "second_reading": {
+  "reader": "independent reader of 2026-11-24 (the coordinator's)",
+  "summary": {
+   "wrong": 0,
+   "imprecise": 18
+  },
+  "applied": "18 findings in he, en and ru (data.json both copies, the sheet cells, the overlays, the sentences of this record): 699 ru Бахаг (Latin h removed); 699 ru core idea 3 names as the roster has them (Шрира, Хай, Йехудай, Гаон); 700 and 702 ru labels with a capital Гаон; 701 bio 3 \"left\" / \"ушёл от\" (the 1839 date is Hebrew Wikipedia's Simchat Torah 5600, English Wikipedia says 1840: noted in the record); 701 core idea 1 (the pantheism is the premise, the determinism its consequence), 2 (\"some of\" his teachings), 3 (\"in the last generation\", Carlebach among those who engaged with the book); 702 bio 2 Rav Amram Gaon (bar Sheshna) in three languages.",
+  "links": "all seven kept: 680 -> 699 and 685 -> 699 (paper plus Hebrew Wikipedia: \"מבוסס על החיבור הלכות פסוקות בשילוב השאילתות\", fetched through the API), 699 -> 41, 699 -> 189 (the paper alone, its sentence clear), 700 -> 684, 701 -> 117, 701 -> 567"
+ },
  "follow_up_for_the_owner": {
   "places": "Izbica has no map point (Wikipedia's API gives no coordinates for it); the map stands at Tomaszow (טומשוב), added with a region keyword",
-  "duplicates": "the duplicate Nachshon episode of 24 November; the Rav Huna episode and videos to be replaced"
+  "duplicates": "the duplicate Nachshon episode of 24 November; the Rav Huna episode and videos to be replaced",
+  "description_lines_to_repaste": [
+   {
+    "sheet": "יוטיוב",
+    "sage": "684",
+    "label": "רב עמרם גאון",
+    "old_line": "📜 Рав Амрам Гаон в «Оцар Хахамим» — полное исследование: https://ozarchachamim.org/ru/sage/684?utm_source=youtube&utm_medium=video",
+    "new_line": "📜 Рав Амрам Гаон в «Оцар Хахамим» — полное исследование и его учителя: https://ozarchachamim.org/ru/sage/684?utm_source=youtube&utm_medium=video",
+    "lang": "ru",
+    "row": 50,
+    "video": "mOo8ndnmE-U",
+    "studio": "https://studio.youtube.com/video/mOo8ndnmE-U/edit",
+    "youtu_be": "https://youtu.be/mOo8ndnmE-U",
+    "sheet_row": 48,
+    "note": "the sage gained a teacher link in phase 5 (117 from 701, 684 from 700), so the line now says \"and his teachers\"; replace the pasted line"
+   },
+   {
+    "sheet": "יוטיוב",
+    "sage": "684",
+    "label": "רב עמרם גאון",
+    "old_line": "📜 Rav Amram Gaon on Ozar Chachamim — the full research: https://ozarchachamim.org/en/sage/684?utm_source=youtube&utm_medium=video",
+    "new_line": "📜 Rav Amram Gaon on Ozar Chachamim — the full research and his teachers: https://ozarchachamim.org/en/sage/684?utm_source=youtube&utm_medium=video",
+    "lang": "en",
+    "row": 51,
+    "video": "XvlcoPfNXEI",
+    "studio": "https://studio.youtube.com/video/XvlcoPfNXEI/edit",
+    "youtu_be": "https://youtu.be/XvlcoPfNXEI",
+    "sheet_row": 49,
+    "note": "the sage gained a teacher link in phase 5 (117 from 701, 684 from 700), so the line now says \"and his teachers\"; replace the pasted line"
+   },
+   {
+    "sheet": "יוטיוב",
+    "sage": "117",
+    "label": "הרב צדוק הכהן מלובלין – המיסטיקן האינטלקטואלי",
+    "old_line": "📜 Rabbi Tzadok HaKohen of Lublin on Ozar Chachamim — the full research: https://ozarchachamim.org/en/sage/117?utm_source=youtube&utm_medium=video",
+    "new_line": "📜 Rabbi Tzadok HaKohen of Lublin on Ozar Chachamim — the full research and his teachers: https://ozarchachamim.org/en/sage/117?utm_source=youtube&utm_medium=video",
+    "lang": "en",
+    "row": 548,
+    "video": "YHggVMwG7FE",
+    "studio": "https://studio.youtube.com/video/YHggVMwG7FE/edit",
+    "youtu_be": "https://youtu.be/YHggVMwG7FE",
+    "sheet_row": 544,
+    "note": "the sage gained a teacher link in phase 5 (117 from 701, 684 from 700), so the line now says \"and his teachers\"; replace the pasted line"
+   },
+   {
+    "sheet": "יוטיוב",
+    "sage": "117",
+    "label": "הרב צדוק הכהן מלובלין – המיסטיקן האינטלקטואלי",
+    "old_line": "📜 Рав Цадок ха-Коэн из Люблина в «Оцар Хахамим» — полное исследование: https://ozarchachamim.org/ru/sage/117?utm_source=youtube&utm_medium=video",
+    "new_line": "📜 Рав Цадок ха-Коэн из Люблина в «Оцар Хахамим» — полное исследование и его учителя: https://ozarchachamim.org/ru/sage/117?utm_source=youtube&utm_medium=video",
+    "lang": "ru",
+    "row": 549,
+    "video": "EzzrD5P9qvo",
+    "studio": "https://studio.youtube.com/video/EzzrD5P9qvo/edit",
+    "youtu_be": "https://youtu.be/EzzrD5P9qvo",
+    "sheet_row": 545,
+    "note": "the sage gained a teacher link in phase 5 (117 from 701, 684 from 700), so the line now says \"and his teachers\"; replace the pasted line"
+   },
+   {
+    "sheet": "ספוטיפיי",
+    "sage": "117",
+    "label": "הרב צדוק הכהן מלובלין – המיסטיקן האינטלקטואלי",
+    "old_line": "📜 הרב צדוק הכהן מלובלין באוצר חכמים — המחקר המלא: https://ozarchachamim.org/he/sage/117?utm_source=spotify&utm_medium=podcast",
+    "new_line": "📜 הרב צדוק הכהן מלובלין באוצר חכמים — המחקר המלא ורבותיו: https://ozarchachamim.org/he/sage/117?utm_source=spotify&utm_medium=podcast",
+    "episode": "https://open.spotify.com/episode/6DLhfveOXBJupYoYqgceWx",
+    "sheet_row": 96,
+    "note": "the sage gained a teacher link in phase 5 (117 from 701, 684 from 700), so the line now says \"and his teachers\"; replace the pasted line"
+   },
+   {
+    "sheet": "ספוטיפיי",
+    "sage": "684",
+    "label": "רב עמרם גאון",
+    "old_line": "📜 רב עמרם גאון באוצר חכמים — המחקר המלא: https://ozarchachamim.org/he/sage/684?utm_source=spotify&utm_medium=podcast",
+    "new_line": "📜 רב עמרם גאון באוצר חכמים — המחקר המלא ורבותיו: https://ozarchachamim.org/he/sage/684?utm_source=spotify&utm_medium=podcast",
+    "episode": "https://open.spotify.com/episode/2ULZn2cKuetkTGLFWYrUx8",
+    "sheet_row": 425,
+    "note": "the sage gained a teacher link in phase 5 (117 from 701, 684 from 700), so the line now says \"and his teachers\"; replace the pasted line"
+   }
+  ]
  }
 }

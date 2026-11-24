@@ -131,5 +131,21 @@ t('the places: Tomaszow has a point and a region, so 701 stands in Eastern Europ
   assert.ok(/'טומשוב':\s*\{ lat: 50\.45/.test(coords))
   assert.ok(readFileSync(join(__dirname, '..', 'lib', 'regions.ts'), 'utf8').includes("['טומשוב', 'east-europe']"))
 })
+t('the second reading is applied: no Latin letter inside a Russian word, the Gaon labels carry a capital, 685 -> 699 and 680 -> 699 cite Hebrew Wikipedia too', () => {
+  for (const lang of ['ru']) {
+    const ov = rd(`nextjs-app/public/i18n/sages.${lang}.json`)
+    for (const id of NEW) {
+      for (const f of ['label', 'bio', 'core_concept']) assert.ok(!/[\u0400-\u04FF][A-Za-z]|[A-Za-z][\u0400-\u04FF]/.test(ov[id][f]), `${id} ${f}: a Latin letter inside a Russian word`)
+    }
+    assert.equal(ov['700'].label, 'Рав Натронай Гаон (бар Хилай)')
+    assert.equal(ov['702'].label, 'Рав Нахшон Гаон')
+  }
+  for (const src of ['680', '685']) {
+    const l = links.find(k => k.source === src && k.target === '699')
+    assert.ok(l.evidence_source.includes('מחקר 699') && l.evidence_source.includes('ויקיפדיה העברית') && l.evidence_source.includes('הלכות פסוקות'), src)
+  }
+  assert.deepEqual(rec.dropped_links, [])
+  assert.equal(rec.follow_up_for_the_owner.description_lines_to_repaste.length, 6)
+})
 console.log(`ownerPhase5: ${passed} passed, ${failed} failed`)
 process.exit(failed ? 1 : 0)
