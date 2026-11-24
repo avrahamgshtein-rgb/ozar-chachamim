@@ -1,0 +1,719 @@
+{
+ "_about": "Phase 5 (2026-11-24): what the owner published 16-24 November 2026: three NotebookLM papers (667 Rav Paltoi Gaon, who is on the roster and gets his first document; 699 Rav Shimon Kayyara and 700 Rav Natronai Gaon, new sages), two new sages without a paper but with the owner's episode and videos (701 the Mei HaShiloach, 702 Rav Nachshon Gaon), three episodes of sages already on the roster (667, 646, 614), 13 new videos at the top of the playlist. Written by hand and pinned by tests/ownerPhase5.test.ts. Method of items 11 and 12 of CLAUDE.md: every sentence of a bio and a core idea carries the verbatim quotes of the sources it rests on (quotes from the owner's papers are checked against the files by the test; Wikipedia quotes were checked by machine against the fetched article text when the record was made).",
+ "date": "2026-11-24",
+ "drive_folder": "1_E2VtWpJ6RLyHCxvOV9_NUmIUZkZU3Jc",
+ "papers": {
+  "667": {
+   "drive_id": "1VnJt0LAcsT-eyR4UvS4uJwy3ga5-GQr8Hkv5EBMX6sI",
+   "drive_created": "2026-11-19",
+   "title": "פועלו, משנתו התורנית ומורשתו של רב פלטוי גאון: מחקר הלכתי-היסטורי מקיף",
+   "source_file": "פועלו, משנתו התורנית ומורשתו של רב פלטוי גאון- מחקר הלכתי-היסטורי מקיף.docx",
+   "word_count": 3311,
+   "lines": 135,
+   "document_index": 1
+  },
+  "699": {
+   "drive_id": "1f1bXKEOLlbwNQ8u64EIWYxJDaIGXrWuZdlbVO6Y2kaE",
+   "drive_created": "2026-11-19",
+   "title": "פועלו, משנתו התורנית ומורשתו של רב שמעון קיירא (בעל הלכות גדולות)",
+   "source_file": "פועלו, משנתו התורנית ומורשתו של רב שמעון קיירא (בעל הלכות גדולות).docx",
+   "word_count": 3224,
+   "lines": 115,
+   "document_index": 1
+  },
+  "700": {
+   "drive_id": "1-D7dWUVy6BgawFv6WtcJb9BtR4graHVasTV9zlMKy2U",
+   "drive_created": "2026-11-19",
+   "title": "פועלו, משנתו התורנית ומורשתו של רב נטרונאי גאון (בר הילאי)",
+   "source_file": "פועלו, משנתו התורנית ומורשתו של רב נטרונאי גאון (בר הילאי).docx",
+   "word_count": 2120,
+   "lines": 74,
+   "document_index": 1
+  }
+ },
+ "repairs": [
+  {
+   "paper": "667",
+   "drive_line": 29,
+   "line": 16,
+   "before": "המفهום המשפטי",
+   "after": "המושג המשפטי",
+   "reason": "Google export: Arabic letters (مفهوم, \"concept\") inside the Hebrew word",
+   "approval": "owner 2026-11-24"
+  },
+  {
+   "paper": "699",
+   "drive_line": 31,
+   "line": 18,
+   "before": "הפולמוס السבוך",
+   "after": "הפולמוס הסבוך",
+   "reason": "Google export: the Arabic letters ال stand for Hebrew ה, as in \"הפולמוס הסבוך\"",
+   "approval": "owner 2026-11-24"
+  }
+ ],
+ "paper_method": "Fetched from Drive by the main agent in two copies. Paltoi and Natronai were byte-identical; Kayyara's copies differed in two CSV table cells (lines 17 and 19 of the Markdown: copy b had dropped one of the doubled quotes of (אלף נ\"ב) and (אלף קנ\"ב)); Drive was checked and copy a is right. Converted by a converter rewritten for this phase (the earlier one lived in a session's scratch directory): heading marks, bold and italic stars, bullet markers and backslash escapes removed, CSV table rows written 'cell | cell', box-drawing lines of a diagram in 667 (a sanctions chart, lines 50-72 and 165-173 of the Markdown) dropped and the lines with letters kept, stripped of the drawing characters (the owner's side decides if the chart's text lines should go instead). The converted copies of a and b were compared by machine after conversion: identical for 667 and 700; 699 differs only in the two cells above. Ingested with scripts/ingest_drive_doc.py; the Hebrew is the Drive text exactly, slips included, except the two approved repairs.",
+ "episodes": {
+  "667": "73xIseG97uujZEc6yfJXK5",
+  "646": "0kAaubmh6YSEQXDa91J4z7",
+  "614": "03T3xQ9GMmrNI1O7FVp4Mq",
+  "701": "3lH0q8ejVJjqej3zas5QOt",
+  "702": "5z2DbAD3xrqmLxV5MVG0vj"
+ },
+ "episode_labels": {
+  "667": "רב פלטוי גאון",
+  "646": "רבי חיים בנבנשתי (בעל כנסת הגדולה)",
+  "614": "סוליקא חג'ואל",
+  "701": "רבי מרדכי יוסף ליינר מאיזביצה (בעל מי השילוח)",
+  "702": "רב נחשון גאון"
+ },
+ "excluded": {
+  "576": "Rav Huna: the owner said on 2026-11-24 that his episode of 23 November (220soVS89CD4qz2zYdQlSh) and his two videos were made from the wrong prompt and will be replaced; neither the episode nor the videos (playlist rows 3 and 4) are linked; rows 3-4 are in _left_out of data/youtube-sage-map.json with that reason",
+  "702_duplicate_episode": "The owner's second Nachshon episode of 24 November (1E8h317NNYQm7AgcagjWqm) duplicates the 22 November one (5z2DbAD3xrqmLxV5MVG0vj, linked); the owner is to delete the duplicate and it is linked nowhere"
+ },
+ "videos": {
+  "playlist_rows": "1-13 (the playlist now has 785 rows; the 772 of before are rows 14-785, same ids, order, languages and titles, no duration changed); language = the API's defaultLanguage",
+  "rows": {
+   "702": [
+    1,
+    2
+   ],
+   "536": [
+    5,
+    6
+   ],
+   "614": [
+    7
+   ],
+   "558": [
+    8,
+    9
+   ],
+   "701": [
+    10,
+    11
+   ],
+   "646": [
+    12,
+    13
+   ]
+  },
+  "left_out": {
+   "3-4": "Rav Huna (576): to be replaced, owner 2026-11-24"
+  },
+  "note": "Rav Chisda (536) and the Baal Shem Tov (558) already had their episodes; the Solika video is English only (the playlist has no Russian one); 667 has an episode and no video"
+ },
+ "portraits": {
+  "kept_illustration": {
+   "614": [
+    150,
+    50,
+    320
+   ]
+  },
+  "left_out": {
+   "667": "text (an infographic: lettering touches the head)",
+   "646": "text (an infographic: the banner ends at the turban)",
+   "701": "quality (a collage)",
+   "702": "quality (an ornate collage)"
+  }
+ },
+ "sages": {
+  "699": {
+   "id": "699",
+   "label": "רב שמעון קיירא (בעל הלכות גדולות)",
+   "en_label": "Rav Shimon Kayyara (the Halakhot Gedolot)",
+   "ru_label": "Рав Шимон Кайяра («Галахот гедолот»)",
+   "era": "המאות ה־8–9",
+   "location": "בבל",
+   "field": "הלכה ופסיקה, קודיפיקציה, ספרות הגאונים",
+   "tags": "הלכות גדולות, בה״ג, רב יהודאי גאון, שאילתות, הלכות פסוקות, מניין המצוות, מהדורת הילדסהיימר",
+   "paper": "699",
+   "drive_doc": "1f1bXKEOLlbwNQ8u64EIWYxJDaIGXrWuZdlbVO6Y2kaE",
+   "episode": null,
+   "sources": [
+    {
+     "kind": "paper",
+     "url": "https://docs.google.com/document/d/1f1bXKEOLlbwNQ8u64EIWYxJDaIGXrWuZdlbVO6Y2kaE/edit"
+    },
+    {
+     "kind": "he.wikipedia",
+     "url": "https://he.wikipedia.org/wiki/%D7%A9%D7%9E%D7%A2%D7%95%D7%9F_%D7%A7%D7%99%D7%99%D7%A8%D7%90"
+    }
+   ],
+   "sentences": {
+    "bio": [
+     {
+      "he": "רב שמעון קיירא, בעל ״הלכות גדולות״ (בה״ג), היה חכם ופוסק בבבל בתקופת הגאונים, אך מעולם לא מונה רשמית לראש ישיבה, ולכן אינו נושא את התואר ״גאון״.",
+      "en": "Rav Shimon Kayyara, the author of the Halakhot Gedolot (the Bahag), was a scholar and halakhic authority of the Geonic period in Babylonia, but he was never officially appointed head of a yeshiva and so does not bear the title \"Gaon\".",
+      "ru": "Рав Шимон Кайяра, автор «Галахот гедолот» (Баhаг), был ученым и галахическим авторитетом эпохи гаонов в Вавилонии, но никогда не был официально назначен главой ешивы и потому не носит титул «гаон».",
+      "support": [
+       {
+        "src": 1,
+        "quote": "היה תלמיד חכם ופוסק שחי בתקופת הגאונים"
+       },
+       {
+        "src": 0,
+        "quote": "רב שמעון קיירא לא מונה מעולם באופן רשמי לכהונת ראש ישיבה (גאון) בסורא או בפומבדיתא"
+       },
+       {
+        "src": 0,
+        "quote": "לא על שם משרה ישיבתית, כי אם על שם חיבורו היסודי – \"בעל הלכות גדולות\" (ובקיצור: בה\"ג)"
+       },
+       {
+        "src": 0,
+        "quote": "בעזבונם של חכמי בבל, בלט רב שמעון קיירא"
+       }
+      ]
+     },
+     {
+      "he": "זמנו שנוי במחלוקת: לפי מסורת חכמי תימן נכתב ״הלכות גדולות״ במחצית הראשונה של המאה ה־8, ואילו הצעת הרכבי מעבירה את פועלו אל המאה ה־9; ויקיפדיה העברית מציינת שחי ״בסביבות שנת 840״.",
+      "en": "His time is disputed: according to the Yemenite scholars' tradition the Halakhot Gedolot was written in the first half of the 8th century, whereas Harkavy's proposal moves his activity to the 9th century; Hebrew Wikipedia says he lived \"around the year 840\".",
+      "ru": "Время его жизни спорно: по традиции йеменских мудрецов «Галахот гедолот» написаны в первой половине VIII века, а предположение Харкави переносит его деятельность в IX век; еврейская Википедия сообщает, что он жил «около 840 года».",
+      "support": [
+       {
+        "src": 0,
+        "quote": "המחצית הראשונה של המאה ה-8"
+       },
+       {
+        "src": 0,
+        "quote": "הופעה המעבירה את פועלו אל המאה ה-9"
+       },
+       {
+        "src": 1,
+        "quote": "חי בסביבות שנת 840"
+       }
+      ]
+     }
+    ],
+    "core_idea": [
+     {
+      "he": "לפי המחקר באתר, ״הלכות גדולות״ ארג את התלמוד, המדרשים והמנהגים למסכת הלכתית אחת ושימש גשר בין הדיון התלמודי לספרות הפסיקה של ימי הביניים.",
+      "en": "According to the paper on this site, the Halakhot Gedolot wove the Talmud, the midrashim and customs into a single halakhic treatise and served as a bridge between the Talmudic discussion and the medieval literature of halakhic rulings.",
+      "ru": "Согласно исследованию на сайте, «Галахот гедолот» объединили Талмуд, мидраши и обычаи в единый галахический трактат и стали мостом между талмудической дискуссией и средневековой литературой галахических постановлений.",
+      "support": [
+       {
+        "src": 0,
+        "quote": "כגשר היסטורי ומתודולוגי: הוא קישר בין עולם הדיון התלמודי האמוראי לבין ספרות הפסיקה הקודקודתית של ימי הביניים"
+       },
+       {
+        "src": 0,
+        "quote": "כמי שהשכיל לארוג את התלמוד, המדרשים והמנהגים למסכת הלכתית אחת"
+       }
+      ]
+     },
+     {
+      "he": "לפי המחקר באתר, מבנה הספר ושיטת הפשטת הדין שלו שימשו מודל לגדולי המקודדים המאוחרים, ובראשם הרמב״ם ב״משנה תורה״ ורבי יעקב בן אשר ב״ארבעה טורים״.",
+      "en": "According to the paper on this site, the book's structure and its method of distilling the law served as a model for the great later codifiers, foremost the Rambam in the Mishneh Torah and Rabbi Jacob ben Asher in the Arba'ah Turim.",
+      "ru": "Согласно исследованию на сайте, структура книги и её метод изложения закона послужили образцом для великих позднейших кодификаторов, прежде всего Рамбама в «Мишне Тора» и рабби Яакова бен Ашера в «Арба турим».",
+      "support": [
+       {
+        "src": 0,
+        "quote": "שימשו כמודל ארגוני ומתודי ראשון במעלה עבור גדולי המקודדים המאוחרים, ובראשם הרמב\"ם בספרו 'משנה תורה' ורבי יעקב בן אשר ב'ארבעה טורים'"
+       }
+      ]
+     },
+     {
+      "he": "ייחוס הספר שנוי בפולמוס: רב שרירא גאון, רב האי גאון ו״ספר הקבלה״ מייחסים אותו לרב שמעון קיירא, ואילו רש״י והסמ״ג סברו שחיבר אותו רב יהודאי גאון.",
+      "en": "The attribution of the book is disputed: Rav Sherira Gaon, Rav Hai Gaon and the Sefer HaKabbalah attribute it to Rav Shimon Kayyara, whereas Rashi and the Semag held that Rav Yehudai Gaon wrote it.",
+      "ru": "Авторство книги оспаривается: рав Шерира гаон, рав Хай гаон и «Сефер ха-каббала» приписывают её рав Шимону Кайяре, тогда как Раши и Семаг считали, что её написал рав Йегудай гаон.",
+      "support": [
+       {
+        "src": 0,
+        "quote": "מסורת הייחוס המרכזית והמקובלת מייחסת את החיבור לרב שמעון קיירא"
+       },
+       {
+        "src": 0,
+        "quote": "ובראשם רב שרירא גאון ורב האי גאון"
+       },
+       {
+        "src": 0,
+        "quote": "ייחוס זה מופיע בבירור גם ב'ספר הקבלה'"
+       },
+       {
+        "src": 0,
+        "quote": "רש\"י ובעל ספר מצוות גדול (הסמ\"ג) סברו כי ספר 'הלכות גדולות' חובר על ידי רב יהודאי גאון"
+       }
+      ]
+     }
+    ]
+   },
+   "links": [
+    {
+     "a": "680",
+     "b": "699",
+     "type": "influence",
+     "quote": "לפני המחבר ספר 'הלכות פסוקות' של רב יהודאי גאון וספר 'שאילתות' של רב אחאי משבחא. בה\"ג העתיק קטעים נרחבים מה'שאילתות'",
+     "source": "https://docs.google.com/document/d/1f1bXKEOLlbwNQ8u64EIWYxJDaIGXrWuZdlbVO6Y2kaE/edit"
+    },
+    {
+     "a": "685",
+     "b": "699",
+     "type": "influence",
+     "quote": "לפני המחבר ספר 'הלכות פסוקות' של רב יהודאי גאון וספר 'שאילתות' של רב אחאי משבחא",
+     "source": "https://docs.google.com/document/d/1f1bXKEOLlbwNQ8u64EIWYxJDaIGXrWuZdlbVO6Y2kaE/edit"
+    },
+    {
+     "a": "699",
+     "b": "41",
+     "type": "influence",
+     "quote": "ובראשם הרמב\"ם בספרו 'משנה תורה' ורבי יעקב בן אשר ב'ארבעה טורים'",
+     "source": "https://docs.google.com/document/d/1f1bXKEOLlbwNQ8u64EIWYxJDaIGXrWuZdlbVO6Y2kaE/edit"
+    },
+    {
+     "a": "699",
+     "b": "189",
+     "type": "influence",
+     "quote": "ובראשם הרמב\"ם בספרו 'משנה תורה' ורבי יעקב בן אשר ב'ארבעה טורים'",
+     "source": "https://docs.google.com/document/d/1f1bXKEOLlbwNQ8u64EIWYxJDaIGXrWuZdlbVO6Y2kaE/edit"
+    }
+   ],
+   "notes": "YEARS: no birth or death year in any source; Hebrew Wikipedia \"חי בסביבות שנת 840\", English Wikipedia \"first half of the 8th century\", the paper gives the dates of the book (743 and 741 by the Yemenite and Raavad traditions, 841 by Harkavy), so the row says the 8th-9th centuries. PLACE: Hebrew Wikipedia \"ככל הנראה מן העיר בצרה שבבבל\" is not used as a place (no Basra point; hedged); the row says בבל. The paper's claims that the introduction and the 613 commandments count are his are hedged by the paper itself and are not used. The identification Rav Yehudai (the paper, line 22-23: Rav Yehudai Gaon, or Yehudai Kohen Gaon) is a different man from 685 and is not linked."
+  },
+  "700": {
+   "id": "700",
+   "label": "רב נטרונאי גאון (בר הילאי)",
+   "en_label": "Rav Natronai Gaon (bar Hilai)",
+   "ru_label": "Рав Натронай гаон (бар Хилай)",
+   "era": "כ־853–861 (ראש ישיבת סורא)",
+   "location": "סורא; בבל",
+   "field": "הלכה ותשובות הגאונים, ליטורגיה, הנהגת ישיבה",
+   "tags": "ישיבת סורא, תשובות הגאונים, מאה ברכות, פסוקי דזמרא, המאבק בקראים, רב עמרם גאון, ערבית־יהודית, קפיצת הדרך",
+   "paper": "700",
+   "drive_doc": "1-D7dWUVy6BgawFv6WtcJb9BtR4graHVasTV9zlMKy2U",
+   "episode": null,
+   "sources": [
+    {
+     "kind": "paper",
+     "url": "https://docs.google.com/document/d/1-D7dWUVy6BgawFv6WtcJb9BtR4graHVasTV9zlMKy2U/edit"
+    },
+    {
+     "kind": "he.wikipedia",
+     "url": "https://he.wikipedia.org/wiki/%D7%A0%D7%98%D7%A8%D7%95%D7%A0%D7%90%D7%99_%D7%92%D7%90%D7%95%D7%9F"
+    }
+   ],
+   "sentences": {
+    "bio": [
+     {
+      "he": "רב נטרונאי בן הילאי היה גאון ישיבת סורא בבבל, מהבולטים והמשפיעים בשלשלת גאוני בבל.",
+      "en": "Rav Natronai bar Hilai was a Gaon of the Sura yeshiva in Babylonia, among the most prominent and influential in the chain of the Babylonian Geonim.",
+      "ru": "Рав Натронай бар Хилай был гаоном ешивы Суры в Вавилонии, одним из самых заметных и влиятельных в цепи вавилонских гаонов.",
+      "support": [
+       {
+        "src": 0,
+        "quote": "רב נטרונאי בן הילאי נמנה עם הדמויות הבולטות והמשפיעות ביותר בשלשלת גאוני בבל"
+       },
+       {
+        "src": 1,
+        "quote": "היה אחד מגאוני סורא"
+       }
+      ]
+     },
+     {
+      "he": "לפי המחקר באתר נבחר לראשות הישיבה כשהיה כבר בגיל זקנה, וכיהן בשנים 853–861 (לפי נוסח אחר 857–865); ויקיפדיה העברית מונה את כהונתו בשנים 853–858.",
+      "en": "According to the paper on this site he was chosen to head the yeshiva when already of advanced age and served in the years 853–861 (by another version 857–865); Hebrew Wikipedia gives his term as 853–858.",
+      "ru": "Согласно исследованию на сайте, он был избран главой ешивы уже в преклонном возрасте и возглавлял её в 853–861 годах (по другой версии, в 857–865); еврейская Википедия указывает годы его правления: 853–858.",
+      "support": [
+       {
+        "src": 0,
+        "quote": "נבחר לכהן כראש ישיבת סורא כשהיה כבר באישון ימיו ובגיל זקנה"
+       },
+       {
+        "src": 0,
+        "quote": "בשנים 853–861 למניינם"
+       },
+       {
+        "src": 0,
+        "quote": "בשנים 857–865"
+       },
+       {
+        "src": 1,
+        "quote": "בשנים ד'תרי\"ג - ד'תרי\"ח בלוח העברי (858-853)"
+       }
+      ]
+     },
+     {
+      "he": "לפי המחקר באתר, בנו רב הילאי בן נטרונאי כיהן אף הוא כגאון בסורא, ותלמידו רב עמרם גאון מילא את מקומו לאחר פטירתו.",
+      "en": "According to the paper on this site, his son Rav Hilai bar Natronai also served as Gaon at Sura, and his student Rav Amram Gaon filled his place after his death.",
+      "ru": "Согласно исследованию на сайте, его сын рав Хилай бар Натронай тоже был гаоном в Суре, а его ученик рав Амрам гаон занял его место после его смерти.",
+      "support": [
+       {
+        "src": 0,
+        "quote": "ובנו, רב הילאי בן נטרונאי, הלך בעקבות אביו וכיהן אף הוא לימים כגאון בישיבת סורא"
+       },
+       {
+        "src": 0,
+        "quote": "מילא את מקומו תלמידו וממשיך דרכו, רב עמרם גאון"
+       }
+      ]
+     }
+    ],
+    "core_idea": [
+     {
+      "he": "לפי המחקר באתר, הוא הגאון הראשון המתועד שכתב תשובות בערבית־יהודית, ומתשובותיו השתמרו כ־300 בקובצי שו״ת שונים.",
+      "en": "According to the paper on this site, he is the first documented Gaon to write responsa in Judeo-Arabic, and about 300 of his responsa survive in various responsa collections.",
+      "ru": "Согласно исследованию на сайте, он первый известный гаон, писавший респонсы на иудео-арабском языке, и около 300 его респонсов сохранились в различных сборниках.",
+      "support": [
+       {
+        "src": 0,
+        "quote": "הוא הגאון הראשון המתועד אשר כתב תשובות לחכמים ולשואלים בלשון הערבית"
+       },
+       {
+        "src": 0,
+        "quote": "כ-300 מתשובותיו השתמרו בקובצי שו\"ת שונים"
+       }
+      ]
+     },
+     {
+      "he": "לפי ויקיפדיה העברית שלח לקהילת אליסאנו (לוסנה) שבספרד את סדר מאה הברכות שיש לברך בכל יום, ובזאת התווה את היסוד לסידור התפילה שחיבר לאחר מכן רב עמרם גאון.",
+      "en": "According to Hebrew Wikipedia he sent the community of Eliseno (Lucena) in Spain the order of the hundred blessings to be said each day, and thereby set the foundation for the prayer book that Rav Amram Gaon later composed.",
+      "ru": "Согласно еврейской Википедии, он отправил общине Элисано (Лусены) в Испании порядок ста благословений, которые следует произносить каждый день, и тем самым заложил основу молитвенника, составленного позднее равом Амрамом гаоном.",
+      "support": [
+       {
+        "src": 1,
+        "quote": "בין התשובות שלח לקהילת אליסאנו, היא לוסנה (Lucena) שבספרד, סדר מאה ברכות שאדם חייב לברך בכל יום, ובזאת התווה את היסוד לסידור התפילה שחיבר לאחר מכן רב עמרם גאון"
+       }
+      ]
+     },
+     {
+      "he": "לפי המחקר באתר, חלק נכבד מפעילותו הוקדש להדיפת השפעת הכת הקראית; ומסורת מאוחרת ייחסה לו ״קפיצת הדרך״ לבבל ולצרפת, אגדה שרב האי גאון דחה.",
+      "en": "According to the paper on this site, a considerable part of his activity was devoted to repelling the influence of the Karaite sect; and a later tradition attributed to him \"the leaping of the road\" to Babylonia and France, a legend that Rav Hai Gaon rejected.",
+      "ru": "Согласно исследованию на сайте, значительная часть его деятельности была посвящена отражению влияния караимской секты; а позднейшая традиция приписывала ему «скачок пути» в Вавилонию и Францию, легенду, которую отверг рав Хай гаон.",
+      "support": [
+       {
+        "src": 0,
+        "quote": "חלק נכבד מפעילותו של רב נטרונאי הוקדש להדיפת השפעותיה של הכת הקראית"
+       },
+       {
+        "src": 0,
+        "quote": "מסורת מאוחרת ייחסה לו שליטה בסוד \"קפיצת הדרך\""
+       },
+       {
+        "src": 0,
+        "quote": "רב האי גאון (בן רב שרירא גאון) דחה מכל וכל את הסיפור"
+       }
+      ]
+     }
+    ]
+   },
+   "links": [
+    {
+     "a": "700",
+     "b": "684",
+     "type": "teacher",
+     "quote": "מילא את מקומו תלמידו וממשיך דרכו, רב עמרם גאון",
+     "source": "https://docs.google.com/document/d/1-D7dWUVy6BgawFv6WtcJb9BtR4graHVasTV9zlMKy2U/edit"
+    }
+   ],
+   "notes": "YEARS: the paper gives 853-861 (or 857-865 in another version of the sources), Hebrew Wikipedia 853-858 (the Hebrew year range ד'תרי\"ג - ד'תרי\"ח); the row says כ־853–861 (term of office) as the paper first. Hebrew Wikipedia also says he reached the Gaonate 56 years after his father's death; not used. The paper's ex-Hebrew-Wikipedia disagreement: the paper says his predecessor was Rav Sar Shalom ben Boaz, which Hebrew Wikipedia does not state. LEFT OUT: the halakhic rulings (\"אחיזת הציצית\", \"רשות הרבים\") and the paper's long treatment of the Pesukei DeZimra and Karaite tables (too detailed for a core idea)."
+  },
+  "701": {
+   "id": "701",
+   "label": "רבי מרדכי יוסף ליינר מאיזביצה (בעל מי השילוח)",
+   "en_label": "Rabbi Mordechai Yosef Leiner of Izbica (the Mei HaShiloach)",
+   "ru_label": "Рабби Мордехай Йосеф Лейнер из Избицы («Мей ха-Шилоах»)",
+   "era": "כ־1800–1854",
+   "location": "איזביצה; טומשוב; פולין",
+   "field": "חסידות, הגות חסידית",
+   "tags": "חסידות איזביצה־ראדזין, מי השילוח, רבי צדוק הכהן מלובלין, רבי שמחה בונם מפשיסחא, רבי מנחם מנדל מקוצק, רבי גרשון חנוך ליינר, דטרמיניזם, פנתאיזם, בחירה חופשית, נאו־חסידות",
+   "paper": null,
+   "drive_doc": null,
+   "episode": "3lH0q8ejVJjqej3zas5QOt",
+   "sources": [
+    {
+     "kind": "he.wikipedia",
+     "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%99_%D7%94%D7%A9%D7%9C%D7%95%D7%97"
+    },
+    {
+     "kind": "he.wikipedia",
+     "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%A8%D7%93%D7%9B%D7%99_%D7%99%D7%95%D7%A1%D7%A3_%D7%9C%D7%99%D7%99%D7%A0%D7%A8"
+    },
+    {
+     "kind": "en.wikipedia",
+     "url": "https://en.wikipedia.org/wiki/Mordechai_Yosef_Leiner"
+    }
+   ],
+   "sentences": {
+    "bio": [
+     {
+      "he": "רבי מרדכי יוסף ליינר מאיזביצה, מחבר הספר ״מי השילוח״, היה מייסד חסידות איזביצה־ראדזין.",
+      "en": "Rabbi Mordechai Yosef Leiner of Izbica, the author of the book Mei HaShiloach, was the founder of the Izbica-Radzyn Hasidic dynasty.",
+      "ru": "Рабби Мордехай Йосеф Лейнер из Избицы, автор книги «Мей ха-Шилоах», был основателем хасидской династии Избица-Радзин.",
+      "support": [
+       {
+        "src": 1,
+        "quote": "מחבר ספר \"מי השילוח\", היה מייסד חסידות איזביצה ראדזין"
+       }
+      ]
+     },
+     {
+      "he": "נולד בטומשוב בשנת 1800 (לפי ויקיפדיה האנגלית, ב־1801), והיה תלמידו של רבי שמחה בונם מפשיסחא.",
+      "en": "He was born in Tomashov in 1800 (according to English Wikipedia, in 1801) and was a student of Rabbi Simcha Bunim of Peshischa.",
+      "ru": "Он родился в Томашове в 1800 году (по английской Википедии, в 1801) и был учеником рабби Симхи Бунима из Пшисхи.",
+      "support": [
+       {
+        "src": 1,
+        "quote": "מרדכי יוסף נולד בטומשוב בשנת 1800"
+       },
+       {
+        "src": 2,
+        "quote": "was born in Tomashov (Polish: Tomaszów Lubelski) in 1801"
+       },
+       {
+        "src": 1,
+        "quote": "היה תלמידו של רבי שמחה בונם מפשיסחא"
+       }
+      ]
+     },
+     {
+      "he": "בשמחת תורה של שנת ת״ר (1839) פרש מרבי מנחם מנדל מקוצק יחד עם חסידים רבים, וקבע את חצרו בתחילה בטומשוב ומאוחר יותר באיזביצה.",
+      "en": "On Simchat Torah of the year 5600 (1839) he broke with Rabbi Menachem Mendel of Kotzk together with many Hasidim, and set up his court first in Tomashov and later in Izbica.",
+      "ru": "В Симхат Тора 5600 (1839) года он порвал с рабби Менахемом Менделем из Коцка вместе со многими хасидами и устроил свой двор сначала в Томашове, а позднее в Избице.",
+      "support": [
+       {
+        "src": 1,
+        "quote": "בשמחת תורה של שנת ת\"ר (1839) פרץ משבר"
+       },
+       {
+        "src": 1,
+        "quote": "פרש רבי מרדכי יוסף מקוצק יחד עם חסידים רבים"
+       },
+       {
+        "src": 1,
+        "quote": "קבע את חצרו בתחילה בטומשוב ומאוחר יותר באיזביצא"
+       }
+      ]
+     },
+     {
+      "he": "נפטר בז׳ בטבת תרי״ד (1854).",
+      "en": "He died on the 7th of Tevet 5614 (1854).",
+      "ru": "Он умер 7 тевета 5614 (1854) года.",
+      "support": [
+       {
+        "src": 1,
+        "quote": "נפטר בז' בטבת תרי\"ד"
+       },
+       {
+        "src": 1,
+        "quote": "עד לפטירתו בשנת 1854"
+       }
+      ]
+     }
+    ],
+    "core_idea": [
+     {
+      "he": "בהגותו ניתן דגש עיקרי על האינדיבידואל ועל פנימיות התורה; לפי ויקיפדיה העברית מקובלת במחקר המודרני תפיסתו כפנתאיזם קיצוני שממנו נגזרת השקפה דטרמיניסטית, ולפיה גם רצונותיו והכרעותיו של האדם הם ״דבר האלוהים״.",
+      "en": "His thought places the main emphasis on the individual and on the inner dimension of the Torah; according to Hebrew Wikipedia, modern scholarship accepts his view as an extreme pantheism from which a deterministic outlook follows, in which even a person's wishes and decisions are \"the word of God\".",
+      "ru": "В его учении главный акцент сделан на личности и на внутреннем измерении Торы; согласно еврейской Википедии, современные исследователи принимают его взгляд как крайний пантеизм, из которого вытекает детерминистский взгляд: даже желания и решения человека — «слово Бога».",
+      "support": [
+       {
+        "src": 0,
+        "quote": "ניתן דגש עיקרי על האינדיבידואל, ועל הפנימיות של התורה"
+       },
+       {
+        "src": 0,
+        "quote": "במחקר המודרני, תפיסה זו מקובלת כפנאנתאיזם קיצוני"
+       },
+       {
+        "src": 1,
+        "quote": "גם רצונותיו והכרעותיו של האדם, אף על פי שהם נראים לו כהכרעות אישיות שלו, לאמיתו של דבר אינם אלא דבר האלוהים"
+       },
+       {
+        "src": 1,
+        "quote": "מכך מתבקשת השקפה דטרמיניסטית"
+       }
+      ]
+     },
+     {
+      "he": "הוא עצמו לא כתב את דברי תורתו; נכדו רבי גרשון חנוך ליינר ליקט אותם בספר ״מי השילוח״, שהודפס בווינה בשנת תר״ך, ופרסומו עורר התנגדות עזה בקרב חלק מהציבור.",
+      "en": "He himself did not write down his teachings; his grandson Rabbi Gershon Chanoch Leiner collected them in the book Mei HaShiloach, printed in Vienna in 5620 (1860), and its publication aroused fierce opposition among part of the public.",
+      "ru": "Сам он не записывал свои учения; его внук рабби Гершон Ханох Лейнер собрал их в книге «Мей ха-Шилоах», напечатанной в Вене в 5620 (1860) году, и её издание вызвало резкое сопротивление части общества.",
+      "support": [
+       {
+        "src": 1,
+        "quote": "רבי מרדכי יוסף עצמו לא כתב את דברי תורתו"
+       },
+       {
+        "src": 0,
+        "quote": "ליקט נכדו רבי גרשון חנוך מאמריו והדפיסם בווינה בשנת ה'תר\"ך"
+       },
+       {
+        "src": 1,
+        "quote": "פרסום הספר עורר התנגדות עזה בקרב חלק מהציבור"
+       }
+      ]
+     },
+     {
+      "he": "תלמידו המובהק, רבי צדוק הכהן מלובלין, נחשב לרוב כממשיך תורתו, ובדורות האחרונים התרחבה השפעתה בעולם הנאו־חסידי, ומהבולטים בהוגים בה היה שלמה קרליבך.",
+      "en": "His foremost student, Rabbi Tzadok HaKohen of Lublin, is generally regarded as the continuer of his teaching, and in recent generations its influence has grown in the neo-Hasidic world, among the most prominent thinkers in it being Shlomo Carlebach.",
+      "ru": "Его главный ученик, рабби Цадок ха-Коэн из Люблина, считается, как правило, продолжателем его учения, а в последние поколения его влияние выросло в неохасидском мире, и среди самых заметных мыслителей, изучавших его, был Шломо Карлебах.",
+      "support": [
+       {
+        "src": 0,
+        "quote": "בעיקר אצל רבי צדוק הכהן מלובלין תלמידו המובהק"
+       },
+       {
+        "src": 0,
+        "quote": "נחשב לרוב כמייצג וכממשיך תורת רבו"
+       },
+       {
+        "src": 0,
+        "quote": "מהבולטים שבהוגים בו בדור האחרון היה שלמה קרליבך"
+       },
+       {
+        "src": 0,
+        "quote": "בפרט בעולם הנאו חסידי"
+       }
+      ]
+     }
+    ]
+   },
+   "links": [
+    {
+     "a": "701",
+     "b": "117",
+     "type": "teacher",
+     "quote": "רבי צדוק הכהן מלובלין תלמידו המובהק",
+     "source": "https://he.wikipedia.org/wiki/%D7%9E%D7%99_%D7%94%D7%A9%D7%9C%D7%95%D7%97"
+    },
+    {
+     "a": "701",
+     "b": "567",
+     "type": "influence",
+     "quote": "מהבולטים שבהוגים בו בדור האחרון היה שלמה קרליבך",
+     "source": "https://he.wikipedia.org/wiki/%D7%9E%D7%99_%D7%94%D7%A9%D7%9C%D7%95%D7%97"
+    }
+   ],
+   "notes": "YEARS: Hebrew Wikipedia 1800 (ה'תק\"ס) - 1854, English Wikipedia 1801-1854, so the row says כ־1800–1854. PLACES: Izbica has no point in the gazetteer (Wikipedia's API returns no coordinates for it), Tomaszow Lubelski (טומשוב, 50.45, 23.4167 from Wikipedia) was added; the map stands at Tomashov. Kotzk, Peshischa, and the Kotzker Rebbe are not on the roster. LEFT OUT ON PURPOSE: the break with the Kotzker (the sources give several versions of its cause), Hebrew Wikipedia's remark that his two best students were dissatisfied with the book. His date of death (7 Tevet) is in the bio but not in data-yahrzeit.json, which is built from papers only."
+  },
+  "702": {
+   "id": "702",
+   "label": "רב נחשון גאון",
+   "en_label": "Rav Nachshon Gaon",
+   "ru_label": "Рав Нахшон гаон",
+   "era": "כ־872–879 (ראש ישיבת סורא)",
+   "location": "סורא; בבל",
+   "field": "לוח השנה העברי, הלכה ותשובות הגאונים, הנהגת ישיבה",
+   "tags": "ישיבת סורא, תשובות הגאונים, לוח השנה העברי, חשבון העיבור, עיגול דרבי נחשון, רב עמרם גאון, נימוקי רב נחשון גאון",
+   "paper": null,
+   "drive_doc": null,
+   "episode": "5z2DbAD3xrqmLxV5MVG0vj",
+   "sources": [
+    {
+     "kind": "he.wikipedia",
+     "url": "https://he.wikipedia.org/wiki/%D7%A0%D7%97%D7%A9%D7%95%D7%9F_%D7%92%D7%90%D7%95%D7%9F"
+    },
+    {
+     "kind": "en.wikipedia",
+     "url": "https://en.wikipedia.org/wiki/Nahshon_ben_Zadok"
+    }
+   ],
+   "sentences": {
+    "bio": [
+     {
+      "he": "רב נחשון בן רבי צדוק, שכונה הרנ״ג, היה גאון ישיבת סורא בבבל, רב, אסטרונום ומתמטיקאי.",
+      "en": "Rav Nachshon ben Rabbi Tzadok, known as the Harn\"g, was the Gaon of the Sura yeshiva in Babylonia, a rabbi, astronomer and mathematician.",
+      "ru": "Рав Нахшон бен рабби Цадок, известный как Харнаг, был гаоном ешивы Суры в Вавилонии, раввином, астрономом и математиком.",
+      "support": [
+       {
+        "src": 0,
+        "quote": "ובשמו המלא: רב נחשון בן רבי צדוק גאון), כונה הרנ\"ג, היה רב, אסטרונום ומתמטיקאי"
+       },
+       {
+        "src": 0,
+        "quote": "כיהן כראש ישיבת סורא בבבל"
+       }
+      ]
+     },
+     {
+      "he": "לפי ויקיפדיה העברית כיהן כראש הישיבה שבע שנים, בשנים 872–879, ולפי ויקיפדיה האנגלית בשנים 874–882, אחרי מר עמרם בן ששנא.",
+      "en": "According to Hebrew Wikipedia he headed the yeshiva for seven years, in 872–879, and according to English Wikipedia in 874–882, after Mar Amram ben Sheshna.",
+      "ru": "Согласно еврейской Википедии, он возглавлял ешиву семь лет, в 872–879 годах, а согласно английской Википедии, в 874–882 годах, после мара Амрама бен Шешны.",
+      "support": [
+       {
+        "src": 0,
+        "quote": "במשך 7 שנים (ד'תרל\"ב - ד'תרל\"ט (872-879)"
+       },
+       {
+        "src": 1,
+        "quote": "head of the Academy of Sura from 874 to 882, in succession to Mar Amram ben Sheshna"
+       }
+      ]
+     },
+     {
+      "he": "לפי ויקיפדיה העברית למדו בישיבתו תלמידים רבים מכל רחבי העולם היהודי, ובהם רב אלעזר בר שמואל אלוף.",
+      "en": "According to Hebrew Wikipedia, many students from all over the Jewish world studied in his yeshiva, among them Rav Elazar bar Shmuel Aluf.",
+      "ru": "Согласно еврейской Википедии, в его ешиве учились многие ученики со всего еврейского мира, среди них рав Эльазар бар Шмуэль Алуф.",
+      "support": [
+       {
+        "src": 0,
+        "quote": "בישיבתו למדו תלמידים רבים מכל רחבי העולם היהודי"
+       },
+       {
+        "src": 0,
+        "quote": "אחד המפורסמים שבהם רב אלעזר בר שמואל אלוף"
+       }
+      ]
+     }
+    ],
+    "core_idea": [
+     {
+      "he": "עסק רבות בלוח השנה העברי ובחשבונות העיבור; לפי ויקיפדיה העברית מיוחסת לו הטענה המוטעית שסימני הקביעות של השנים חוזרים תמיד בכל 247 שנים (13 מחזורי עיבור של 19 שנה), ולוח המכונה ״עיגול דרבי נחשון״ מיוחס לו.",
+      "en": "He dealt extensively with the Hebrew calendar and the calculations of intercalation; according to Hebrew Wikipedia he is credited with the mistaken claim that the signs of the years' fixing always recur every 247 years (13 intercalation cycles of 19 years), and a calendar known as \"Iggul de-Rabbi Nachshon\" is attributed to him.",
+      "ru": "Он много занимался еврейским календарём и расчётами вставных месяцев; согласно еврейской Википедии, ему приписывают ошибочное утверждение, что признаки определения года всегда повторяются каждые 247 лет (13 циклов по 19 лет), и ему приписывается календарь под названием «Иггуль де-рабби Нахшон».",
+      "support": [
+       {
+        "src": 0,
+        "quote": "רב נחשון עסק רבות בלוח השנה העברי, במיוחד בחשבונות העיבור"
+       },
+       {
+        "src": 0,
+        "quote": "ומיחסים לו את הטענה המוטעית שבכל 13 מחזורי עיבור של 19 שנים, שהם 247 שנים (רמ\"ז בגימטריה), סימני הקביעות של השנים חוזרים תמיד"
+       },
+       {
+        "src": 0,
+        "quote": "לוח המכונה עיגול דרבי נחשון מיוחס לו"
+       }
+      ]
+     },
+     {
+      "he": "לפי ויקיפדיה העברית פירש מסכתות בתלמוד וביאר מילים קשות במקרא, וכתב ״פירוש פיתגוראי״, פירוש נומרולוגי וסטטיסטי של פסוקים בתנ״ך.",
+      "en": "According to Hebrew Wikipedia he explained tractates of the Talmud and clarified difficult words in the Bible, and wrote a \"Pythagorean commentary\", a numerological and statistical commentary on verses of the Tanakh.",
+      "ru": "Согласно еврейской Википедии, он толковал трактаты Талмуда и разъяснял трудные слова Писания, а также написал «пифагорейский комментарий» — нумерологическое и статистическое толкование стихов Танаха.",
+      "support": [
+       {
+        "src": 0,
+        "quote": "פירש מסכתות בתלמוד וביאר מילים קשות במקרא"
+       },
+       {
+        "src": 0,
+        "quote": "כתב \"פירוש פיתגוראי\" - פירוש נומרולוגי וסטטיסטי של פסוקים בתנ\"ך"
+       }
+      ]
+     },
+     {
+      "he": "לקט מתשובותיו ופסקיו נקרא ״נימוקי רב נחשון גאון״, ושרידים ממנו נדפסו ב״גאון הגאונים״.",
+      "en": "A collection of his responsa and rulings is called \"Nimukei Rav Nachshon Gaon\", and remnants of it were printed in \"Gaon HaGeonim\".",
+      "ru": "Сборник его респонсов и постановлений называется «Нимуким рав Нахшон гаон», а его остатки были напечатаны в «Гаон ха-геоним».",
+      "support": [
+       {
+        "src": 0,
+        "quote": "לקט מתשובותיו ופסקיו נקרא נימוקי רב נחשון גאון ושרידים ממנו נדפסו בתוך גאון הגאונים"
+       }
+      ]
+     }
+    ]
+   },
+   "links": [],
+   "notes": "YEARS: Hebrew Wikipedia 872-879 (ד'תרל\"ב - ד'תרל\"ט), English Wikipedia 874-882, both years of office (no birth or death): the row says כ־872–879 (office) as Hebrew Wikipedia, and the bio gives both. SPELLING: the roster follows the owner's episode and videos, \"נחשון\" as Hebrew Wikipedia. NO LINKS: the sources state a succession after Rav Amram (684), not teaching or influence, and the site has no predecessor links; his student Elazar bar Shmuel Aluf and his successor Zemach ben Chayim are not on the roster. A Hebrew Wikipedia remark \"Nahshon and his son Hai Gaon did not approve of Kol Nidre\" (English Wikipedia) is not used. The owner's episode of 22 November is linked; the duplicate of 24 November is not."
+  }
+ },
+ "relations": {
+  "checked": "The three papers were scanned for words of relation (בנו, רבו, תלמידו, אביו, חתנו ...) and for a Hebrew day and month of death. One teacher link: 700's paper names his student Rav Amram Gaon (684): added to data/links-from-research.json (506 -> 507). 667's paper names no teacher or relative of the roster; 699's none. NOTE: this scan was made by the author of the records, not by a blind second reader.",
+  "death_dates": "none for 667, 699, 700: no paper gives a Hebrew day and month of death (667: only 857 as the end of his term and the year of his death; 700: 861 or 865)"
+ },
+ "second_reading": "pending: not done by the author. The 4 records (bio, core idea and label in three languages) and the 4 links to the owner's paper alone (680 -> 699, 685 -> 699, 699 -> 41, 699 -> 189) await an independent reader.",
+ "follow_up_for_the_owner": {
+  "places": "Izbica has no map point (Wikipedia's API gives no coordinates for it); the map stands at Tomaszow (טומשוב), added with a region keyword",
+  "duplicates": "the duplicate Nachshon episode of 24 November; the Rav Huna episode and videos to be replaced"
+ }
+}

@@ -16,7 +16,8 @@ function t(name: string, fn: () => void) {
 }
 
 // Phase 4 (2026-11-16) put ten new videos at the top of the playlist: the rows of this record moved by 10
-const SHIFT_P4 = 10
+// phase 4 (+10) and phase 5 (+13, 2026-11-24) each put new uploads at the top of the playlist
+const SHIFT_P4 = 23
 const rec = rd('data/owner-papers-2026-11.json')
 const nodes: any[] = rd('nextjs-app/public/data.json').nodes
 const label = (id: string) => nodes.find(n => n.id === id)?.label as string
@@ -39,7 +40,7 @@ t('the sixteen videos are mapped by row, each pair one Russian and one English v
   const map = rd('data/youtube-sage-map.json').sages as Record<string, number[]>
   const rows = new Map<number, string[]>(readFileSync(join(ROOT, 'data/youtube-playlist.tsv'), 'utf8').split('\n').filter(Boolean).map(l => { const p = l.split('\t'); return [Number(p[0]), p] as [number, string[]] }))
   for (const [id, rs] of Object.entries(rec.videos.rows as Record<string, number[]>)) {
-    // phase 4 added ten videos at the top of the playlist, so every phase-3 row moved by SHIFT_P4
+    // phases 4 and 5 added 23 videos at the top of the playlist, so every phase-3 row moved by SHIFT_P4
     assert.deepEqual(map[id], rs.map(r => r + SHIFT_P4))
     assert.deepEqual(rs.map(r => rows.get(r + SHIFT_P4)![3]).sort(), ['en', 'ru'], id)
   }

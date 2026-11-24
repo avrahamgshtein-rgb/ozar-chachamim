@@ -5412,6 +5412,25 @@
     "he": "רב (אמורא)",
     "en": "Abba Arika"
    }
+  },
+  "701": {
+   "label": "רבי מרדכי יוסף ליינר מאיזביצה (בעל מי השילוח)",
+   "slug": "mordechai-leiner",
+   "kind": "author",
+   "he": "מרדכי ליינר",
+   "en": "Mordechai Leiner",
+   "total": 1,
+   "works": [
+    {
+     "he": "מי השלוח",
+     "en": "Mei HaShiloach",
+     "url": "/Mei_HaShiloach"
+    }
+   ],
+   "wiki": {
+    "he": "מרדכי יוסף ליינר",
+    "en": "Mordechai Yosef Leiner"
+   }
   }
  }
 }

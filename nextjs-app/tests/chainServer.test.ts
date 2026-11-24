@@ -327,7 +327,8 @@ test('the game renders a fresh day in each language: title and number, A, the op
   for (const l of LOCALES) {
     const day = chainDay(l, dateOf(D0 + 1))
     const net = connectNet(l)
-    const name = (id: string) => net.sages.find(s => s[0] === id)![1]
+    // React writes a quotation mark or an apostrophe of a name (the roster's ASCII " in an acronym) as an entity, so the name is compared as HTML
+    const name = (id: string) => net.sages.find(s => s[0] === id)![1].replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#x27;').replace(/</g, '&lt;')
     const html = gameHtml(l, D0 + 1)
     assert.ok(html.includes(CHAIN_TITLE[l]), l)
     assert.ok(html.includes(`#${day.number}`), l)

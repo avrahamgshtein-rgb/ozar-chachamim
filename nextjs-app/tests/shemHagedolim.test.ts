@@ -49,12 +49,16 @@ const EPISODES: Record<string, string> = {
   '669': '5IA3skcoCirYA0SxOQTtsO', '686': '0H3njgQC6i6HGGeEqUWgBi', '691': '3EkYnOGgOi3Mg6f6GibANH', '696': '0ESvrI7UNJYYdZRfKVMGrJ',
   // 641 and 657 gained theirs on 2026-11-16 (phase 4, data/owner-papers-2026-11b.json, tests/ownerPhase4.test.ts)
   '641': '0WLtimjKylLYG0OhH13fbv', '657': '4Abibma1mlPvzUY7LjQ3tF',
+  // 646 and 667 gained theirs on 2026-11-24 (phase 5, data/owner-phase5-2026-11.json, tests/ownerPhase5.test.ts)
+  '646': '0kAaubmh6YSEQXDa91J4z7', '667': '73xIseG97uujZEc6yfJXK5',
 }
 // the owner's papers: 630, 631 and 634 with this batch, 638 and 660 with the one of 2026-10-27, and fifteen more on 2026-10-27 (phase 2a, the owner's
 // NotebookLM papers of 18 October on sages this batch added: 632, 635, 636, 639, 640, 641, 642, 643, 646, 647, 648, 651, 652, 657, 669;
 // data/owner-papers-2026-10.json, tests/ownerPapers.test.ts)
 const WITH_PAPER = ['630', '631', '634', '638', '660',
-  '632', '635', '636', '639', '640', '641', '642', '643', '646', '647', '648', '651', '652', '657', '669']
+  '632', '635', '636', '639', '640', '641', '642', '643', '646', '647', '648', '651', '652', '657', '669',
+  // 667 (Rav Paltoi Gaon) gained his first document, with its English and Russian files, on 2026-11-24 (phase 5)
+  '667']
 
 console.log('\ndata/shem-hagedolim-additions.json')
 

@@ -180,6 +180,8 @@ export const LOCATION_COORDS: Record<string, { lat: number; lng: number }> = {
   'פרוסניץ':    { lat: 49.472,  lng: 17.111  },
   'ניקלשבורג':  { lat: 48.806,  lng: 16.638  },
   'סלמנקה':     { lat: 40.965,  lng: -5.664  },
+  // Added with phase 5 (2026-11-24): Tomaszow Lubelski, where R. Mordechai Yosef Leiner was born and first held court (coordinates from Wikipedia's API)
+  'טומשוב':     { lat: 50.450,  lng: 23.417  },
 
   // ── רוסיה / אוקראינה ───────────────────────────────────────────────────
   'רוסיה':       { lat: 55.751,  lng: 37.617  },

@@ -3436,6 +3436,19 @@
     305
    ],
    "note": "AI painting; the sage in a black cap at his desk with an astrolabe and the Almanach Perpetuum; the star chart with Hebrew letters at the top right starts at x=517, outside the box; the book titles below are outside the box"
+  },
+  "614": {
+   "label": "סוליקא חג'ואל",
+   "episode": "03T3xQ9GMmrNI1O7FVp4Mq",
+   "title": "סוליקא הצדקת - הנערה בת ה־17 שהעדיפה את המוות על פני בגידה באמונתה",
+   "image": "eba20da326342b9a7ae84fc7",
+   "kind": "illustration",
+   "crop": [
+    150,
+    50,
+    320
+   ],
+   "note": "AI painting; the young woman in a gold-embroidered shawl, her hands in chains, stands in the middle; the seated figure at the left (x<130) and the guard at the right (x>505) are outside the box; the Star of David on her necklace is inside it, the chain at her wrists is below it"
   }
  },
  "_left_out": {
@@ -5263,12 +5276,6 @@
    "reason": "no-episode",
    "note": "no spotify_url"
   },
-  "614": {
-   "label": "סוליקא חג'ואל",
-   "episode": "",
-   "reason": "no-episode",
-   "note": "no spotify_url"
-  },
   "617": {
    "label": "הרב ישראל יצחק בזאנסון זצ״ל",
    "episode": "5qT5Z7oVMNOWfC9CTUkR30",
@@ -5363,9 +5370,10 @@
   },
   "646": {
    "label": "רבי חיים בנבנשתי (בעל כנסת הגדולה)",
-   "episode": "",
-   "reason": "no-episode",
-   "note": "no spotify_url"
+   "episode": "0kAaubmh6YSEQXDa91J4z7",
+   "reason": "text",
+   "note": "AI infographic: the title banner ends at the top of his turban (y~128) and note boxes (the Sabbatean crisis at the left, the works at the right) surround the head, so no square holding the whole head is free of lettering",
+   "image": "d0a2c2bb17e3f38501faee4b"
   },
   "647": {
    "label": "רבי אליהו די וידאש (בעל ראשית חכמה)",
@@ -5477,9 +5485,10 @@
   },
   "667": {
    "label": "רב פלטוי גאון",
-   "episode": "",
-   "reason": "no-episode",
-   "note": "no spotify_url"
+   "episode": "73xIseG97uujZEc6yfJXK5",
+   "reason": "text",
+   "note": "AI infographic: the Gaon at his desk is the central figure, but the title banner ends at his turban (y~65), a note box touches his left shoulder (x<190) and the \"years of office\" panel starts at y~285 under his chin, so only a 225 px square is clear of lettering, too small for a 384 px portrait",
+   "image": "d5152140dddecba91847ff76"
   },
   "668": {
    "label": "רבי יעקב הלוי ממרויש (בעל שו״ת מן השמים)",
@@ -5604,6 +5613,32 @@
   },
   "698": {
    "label": "רב (אבא אריכא)",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "701": {
+   "label": "רבי מרדכי יוסף ליינר מאיזביצה (בעל מי השילוח)",
+   "episode": "3lH0q8ejVJjqej3zas5QOt",
+   "reason": "quality",
+   "note": "AI collage: the Rebbe in a fur hat is the large central figure, but other panels (a second scholar at the top left, a bearded man at the right from x~405, a crowd and a book below) touch his hat, shoulder and beard, so no square around the head and beard is clear of them",
+   "image": "5e784fbe3b0c70263905c9ef"
+  },
+  "702": {
+   "label": "רב נחשון גאון",
+   "episode": "5z2DbAD3xrqmLxV5MVG0vj",
+   "reason": "quality",
+   "note": "AI collage inside an ornate frame: the Gaon at his desk is the central figure (about x 215-380, y 165-330) but the gold arches and the column of small medallions cross it at both sides, so no square around the head and beard is clear of them",
+   "image": "2b8b5d56ffd9a83386caa587"
+  },
+  "699": {
+   "label": "רב שמעון קיירא (בעל הלכות גדולות)",
+   "episode": "",
+   "reason": "no-episode",
+   "note": "no spotify_url"
+  },
+  "700": {
+   "label": "רב נטרונאי גאון (בר הילאי)",
    "episode": "",
    "reason": "no-episode",
    "note": "no spotify_url"

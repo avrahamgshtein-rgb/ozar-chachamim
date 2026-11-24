@@ -18,6 +18,8 @@ const rec = rd('data/owner-papers-2026-11b.json')
 const nodes: any[] = rd('nextjs-app/public/data.json').nodes
 const EPISODES = rec.episodes as Record<string, string>
 const ids = Object.keys(EPISODES)
+// phase 5 (2026-11-24) put thirteen more uploads at the top, so the rows of this batch moved by 13
+const SHIFT_P5 = 13
 
 t('every sage of the batch is still the man the record means', () => {
   for (const id of ids) assert.equal(nodes.find(n => n.id === id)?.label, rec.labels[id], id)
@@ -42,10 +44,10 @@ t('the ten videos are mapped by row, each pair one Russian and one English video
   const map = rd('data/youtube-sage-map.json').sages as Record<string, number[]>
   const rows = new Map<number, string[]>(readFileSync(join(ROOT, 'data/youtube-playlist.tsv'), 'utf8').split('\n').filter(Boolean).map(l => { const p = l.split('\t'); return [Number(p[0]), p] as [number, string[]] }))
   for (const [id, rs] of Object.entries(rec.videos.rows as Record<string, number[]>)) {
-    assert.deepEqual(map[id], rs)
-    assert.deepEqual(rs.map(r => rows.get(r)![3]).sort(), ['en', 'ru'], id)
+    assert.deepEqual(map[id], rs.map(r => r + SHIFT_P5))
+    assert.deepEqual(rs.map(r => rows.get(r + SHIFT_P5)![3]).sort(), ['en', 'ru'], id)
   }
-  assert.ok(rows.size >= 772)
+  assert.ok(rows.size >= 772 + SHIFT_P5)
 })
 t('the youtube data holds those videos, one per language, in the playlist\'s ids', () => {
   const yt = rd('nextjs-app/public/data-youtube.json')
@@ -54,7 +56,7 @@ t('the youtube data holds those videos, one per language, in the playlist\'s ids
   const text = JSON.stringify(sages)
   for (const [id, rs] of Object.entries(rec.videos.rows as Record<string, number[]>)) {
     assert.ok(sages[id], id)
-    for (const r of rs) assert.ok(text.includes(lines[r - 1][1]), `${id} row ${r}`)
+    for (const r of rs) assert.ok(text.includes(lines[r + SHIFT_P5 - 1][1]), `${id} row ${r}`)
   }
 })
 t('portraits: four kept with a crop and the episode, 641 left out with a reason', () => {

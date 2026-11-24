@@ -57,6 +57,8 @@ export const LOCATION_REGION_MAP: Array<[string, Region]> = [
   // Added with the owner's 13 papers of 18 October 2026 on sages new to the site: Sens, Mahdia, Szydlowiec, Prostejov, Mikulov, Salamanca (new points)
   // and region keywords for places the gazetteer already held (Bursa, Adrianople, Poznan, Eisenstadt, Tunis).
   ['סנס', 'tsarfat'], ['בורסה', 'mizrach'], ['אדריאנופול', 'mizrach'], ['מהדיה', 'north-africa'], ['פוזנא', 'east-europe'], ['שידלובצא', 'east-europe'], ['פרוסניץ', 'ashkenaz'], ['אייזנשטט', 'ashkenaz'], ['ניקלשבורג', 'ashkenaz'], ['סלמנקה', 'sefarad'], ['טוניס', 'north-africa'],
+  // Phase 5 (2026-11-24): Tomaszow Lubelski and Izbica (R. Mordechai Yosef Leiner), the latter with no point of its own
+  ['טומשוב', 'east-europe'], ['איזביצה', 'east-europe'],
   // North America (2026-11-01): every place of that continent the corpus's `location` texts hold (15 sages), both quote forms of ארה"ב.
   // Not included because no text holds them: Canada, Toronto, Montreal and 'אמריקה' (which would also mean South America).
   ['ארה"ב', 'north-america'], ['ארה״ב', 'north-america'], ['ארצות הברית', 'north-america'], ['ניו יורק', 'north-america'],
