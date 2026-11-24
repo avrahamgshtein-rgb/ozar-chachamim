@@ -71,7 +71,7 @@ IMG_PREFIX = 'ab6765630000ba8a'
 UA = 'Mozilla/5.0 (compatible; ozar-chachamim-portraits/1.0)'
 
 TOP_KEYS = {'_about', '_approved_photos', 'portraits', '_left_out'}
-PORTRAIT_KEYS = {'label', 'episode', 'title', 'image', 'kind', 'crop', 'note', 'title_confirmed'}
+PORTRAIT_KEYS = {'label', 'episode', 'title', 'image', 'kind', 'crop', 'note', 'title_confirmed', 'raw'}
 PORTRAIT_REQ = {'label', 'episode', 'title', 'image', 'kind', 'crop'}
 LEFT_KEYS = {'label', 'episode', 'reason', 'note', 'crop', 'image'}
 LEFT_REQ = {'label', 'episode', 'reason', 'note'}
@@ -221,6 +221,8 @@ def validate(doc, roster, log):
                 log.err(f'{i}: unknown key {k!r} in portraits entry')
         for k in sorted(PORTRAIT_REQ - set(e)):
             log.err(f'{i}: portraits entry lacks {k!r}')
+        if 'raw' in e and not isinstance(e['raw'], bool):
+            log.err(f'{i}: "raw" must be true or false')
         r = roster.get(i)
         if r is None:
             continue
@@ -247,7 +249,7 @@ def validate(doc, roster, log):
             log.err(f'{i}: the episode title {e.get("title")!r} does not name {r["label"]!r}: add "title_confirmed" (why it is about him) or leave him out as title-mismatch')
         by_episode.setdefault(e.get('episode'), []).append(i)
         if crop_ok and kind in KINDS and HASH_RE.match(str(e.get('image', ''))):
-            kept[i] = {'label': r['label'], 'episode': e.get('episode'), 'kind': kind, 'crop': e['crop'], 'image': e['image'], 'source': 'portraits'}
+            kept[i] = {'label': r['label'], 'episode': e.get('episode'), 'kind': kind, 'crop': e['crop'], 'image': e['image'], 'raw': e.get('raw') is True, 'source': 'portraits'}
 
     approved_left = {}
     for i in sort_ids(left):
@@ -329,9 +331,11 @@ def curl_to(url, dest, tries=4):
     raise RuntimeError(last)
 
 
-def fetch_cover(h, dest):
+def fetch_cover(h, dest, raw=False):
     """Download the 640 px cover <h> into the cache as <h>.jpg (decoded and saved as a JPEG of quality 95, as the
-    Fetch step did, so a cache filled here and one filled there give the same pictures). Verifies 640 x 640."""
+    Fetch step did, so a cache filled here and one filled there give the same pictures). Verifies 640 x 640.
+    With raw=True (the review entry says "raw": true) the CDN's bytes are kept exactly, and only when they are a 640 x 640 JPEG:
+    the portraits of phase 3 were built from those bytes, not from a re-save, and a re-save would give other pixels."""
     tmp = dest + '.part'
     last = ''
     for host in IMG_HOSTS:
@@ -347,7 +351,15 @@ def fetch_cover(h, dest):
                 if im.size != (PIC, PIC):
                     last = f'{host}: size {im.size}'
                     continue
-                im.convert('RGB').save(dest, 'JPEG', quality=95)
+                if raw:
+                    if im.format != 'JPEG':
+                        last = f'{host}: raw cover is a {im.format}, not a JPEG'
+                        continue
+                else:
+                    im.convert('RGB').save(dest, 'JPEG', quality=95)
+            if raw:
+                os.replace(tmp, dest)
+                return
             os.remove(tmp)
             return
         except Exception as e:
@@ -457,6 +469,7 @@ def check_atlas(atlas, geom, ids, small):
 def build_outputs(kept, lay, log, fetch):
     """The files the review says: { path: bytes }, the data file text, and the pictures that are missing."""
     need = sorted({k['image'] for k in kept.values()})
+    raw_hashes = {k['image'] for k in kept.values() if k.get('raw')}
     if fetch:
         os.makedirs(lay.cache, exist_ok=True)
     missing = []
@@ -468,7 +481,7 @@ def build_outputs(kept, lay, log, fetch):
             missing.append(h)
             continue
         try:
-            fetch_cover(h, f)
+            fetch_cover(h, f, raw=h in raw_hashes)
         except RuntimeError as e:
             log.err(f'picture {h}: could not fetch it ({e})')
     if missing:

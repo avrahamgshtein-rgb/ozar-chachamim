@@ -57,7 +57,7 @@ const ATLAS_FILES = ['atlas.webp', 'atlas.json']
 const REASONS = ['photo', 'other-person', 'symbol', 'text', 'gender', 'quality', 'no-episode', 'title-mismatch']
 const KINDS = ['illustration', 'photo']
 const TOP_KEYS = ['_about', '_approved_photos', 'portraits', '_left_out']
-const PORTRAIT_KEYS = ['label', 'episode', 'title', 'image', 'kind', 'crop', 'note', 'title_confirmed']
+const PORTRAIT_KEYS = ['label', 'episode', 'title', 'image', 'kind', 'crop', 'note', 'title_confirmed', 'raw']
 const PORTRAIT_REQ = ['label', 'episode', 'title', 'image', 'crop']   // `kind` has its own rule
 const LEFT_KEYS = ['label', 'episode', 'reason', 'note', 'crop', 'image']
 const LEFT_REQ = ['label', 'episode', 'reason', 'note']
@@ -82,6 +82,7 @@ const RULES: Array<[string, string]> = [
   ['kinds', 'kind is illustration or photo, and photo only for an id the owner approved'],
   ['photo-crops', 'a left-out photograph (or an uncertain one) has a crop and an image, or says "no crop"'],
   ['title-confirmed', 'a kept sage whose episode title does not name him has title_confirmed'],
+  ['raw', 'raw, when present, is a boolean (true: the cover is kept as the CDN sends it)'],
   ['portrait-lookup', 'portraitOf is null for a left-out sage and the right portrait for a kept one'],
 ]
 
@@ -264,6 +265,7 @@ function portraitProblems(root: string, lookup: Lookup): Problem[] {
       const p = cropProblem(e.crop)
       if (p) add('crops', `${id} (kept): crop ${p}`)
     }
+    if ('raw' in e && typeof e.raw !== 'boolean') add('raw', `${id}: "raw" is ${JSON.stringify(e.raw)}, not true or false`)
     if (!KINDS.includes(e.kind)) add('kinds', `${id}: kind "${e.kind}" is not one of ${KINDS.join(' | ')}`)
     if (e.kind === 'photo' && !approved.has(id)) add('kinds', `${id}: kind "photo" but the owner has not approved this photograph`)
     if (e.kind === 'illustration' && approved.has(id)) add('kinds', `${id}: approved as a photograph, so kind must be "photo", never the illustration caption`)
@@ -610,6 +612,8 @@ const BROKEN: Array<[string, string, (p: Parts) => void]> = [
   ['a kind that is neither', 'kinds', p => { p.review.portraits['9001'].kind = 'drawing' }],
   ['an approved left-out photograph with no crop', 'kinds', p => { delete p.review._left_out['9005'].crop; delete p.review._left_out['9005'].image }],
   ['an approved id that the review does not mention', 'kinds', p => { p.review._approved_photos.push('9999') }],
+  // raw
+  ['raw that is a string', 'raw', p => { (p.review.portraits['9001'] as any).raw = 'yes' }],
   // photographs left out
   ['a left-out photograph with neither a crop nor "no crop"', 'photo-crops', p => { delete p.review._left_out['9006'].crop; delete p.review._left_out['9006'].image }],
   ['an uncertain one with neither a crop nor "no crop"', 'photo-crops', p => { p.review._left_out['9007'].note = 'uncertain: colourised photo or AI' }],
